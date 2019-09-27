@@ -1,0 +1,481 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.1d3" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0177414</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-16-43668</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Heredity</subject><subj-group><subject>Genetic mapping</subject><subj-group><subject>Haplotypes</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biogeography</subject><subj-group><subject>Phylogeography</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Ecology and environmental sciences</subject><subj-group><subject>Biogeography</subject><subj-group><subject>Phylogeography</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Earth sciences</subject><subj-group><subject>Geography</subject><subj-group><subject>Biogeography</subject><subj-group><subject>Phylogeography</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Evolutionary biology</subject><subj-group><subject>Population genetics</subject><subj-group><subject>Phylogeography</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Population genetics</subject><subj-group><subject>Phylogeography</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Population biology</subject><subj-group><subject>Population genetics</subject><subj-group><subject>Phylogeography</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Evolutionary biology</subject><subj-group><subject>Population genetics</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Population genetics</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Population biology</subject><subj-group><subject>Population genetics</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Gene identification and analysis</subject><subj-group><subject>Genetic networks</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Computer and information sciences</subject><subj-group><subject>Network analysis</subject><subj-group><subject>Genetic networks</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Earth sciences</subject><subj-group><subject>Geography</subject><subj-group><subject>Historical geography</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Evolutionary biology</subject><subj-group><subject>Evolutionary genetics</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Database and informatics methods</subject><subj-group><subject>Bioinformatics</subject><subj-group><subject>Sequence analysis</subject><subj-group><subject>DNA sequence analysis</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>People and places</subject><subj-group><subject>Geographical locations</subject><subj-group><subject>South America</subject><subj-group><subject>Brazil</subject></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Recent evolutionary history of <italic>Chrysoperla externa</italic> (Hagen 1861) (Neuroptera: Chrysopidae) in Brazil</article-title>
+<alt-title alt-title-type="running-head">The evolutionary history of <italic>Chrysoperla externa</italic></alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Morales-Corrêa e Castro</surname>
+<given-names>Adriana C.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Barbosa</surname>
+<given-names>Nara Cristina Chiarini Pena</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Programa de Pós-Graduação em Biociências, Departamento de Biologia, Instituto de Biociências, Letras e Ciências Exatas, Univ. Estadual Paulista “Júlio de Mesquita Filho”, São José do Rio Preto, SP, Brazil</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Departamento de Biologia Aplicada à Agropecuária, Faculdade de Ciências Agrárias e Veterinárias, Univ. Estadual Paulista “Júlio de Mesquita Filho”, Jaboticabal, SP, Brazil</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Chiang</surname>
+<given-names>Tzen-Yuh</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>National Cheng Kung University, TAIWAN</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con">
+<p><list list-type="simple"> <list-item>
+<p><bold>Conceptualization:</bold> ACMCC.</p></list-item> <list-item>
+<p><bold>Data curation:</bold> ACMCC NCCPB.</p></list-item> <list-item>
+<p><bold>Formal analysis:</bold> NCCPB.</p></list-item> <list-item>
+<p><bold>Funding acquisition:</bold> ACMCC NCCPB.</p></list-item> <list-item>
+<p><bold>Investigation:</bold> ACMCC NCCPB.</p></list-item> <list-item>
+<p><bold>Methodology:</bold> ACMCC NCCPB.</p></list-item> <list-item>
+<p><bold>Project administration:</bold> ACMCC NCCPB.</p></list-item> <list-item>
+<p><bold>Resources:</bold> ACMCC NCCPB.</p></list-item> <list-item>
+<p><bold>Validation:</bold> ACMCC NCCPB.</p></list-item> <list-item>
+<p><bold>Visualization:</bold> ACMCC NCCPB.</p></list-item> <list-item>
+<p><bold>Writing – original draft:</bold> ACMCC NCCPB.</p></list-item> <list-item>
+<p><bold>Writing – review &amp; editing:</bold> ACMCC NCCPB.</p></list-item></list>
+</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">dri_morales@fcav.unesp.br</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>16</day>
+<month>5</month>
+<year>2017</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2017</year>
+</pub-date>
+<volume>12</volume>
+<issue>5</issue>
+<elocation-id>e0177414</elocation-id>
+<history>
+<date date-type="received">
+<day>2</day>
+<month>11</month>
+<year>2016</year>
+</date>
+<date date-type="accepted">
+<day>26</day>
+<month>4</month>
+<year>2017</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2017</copyright-year>
+<copyright-holder>Morales-Corrêa e Castro, Barbosa</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0177414"/>
+<abstract>
+<p>This work aimed to elucidate the distribution of <italic>Chrysoperla externa</italic> haplotypes and investigate whether it exhibits structure based on genetic composition as opposed to geographic location. The genetic diversity of <italic>C</italic>. <italic>externa</italic>, analyzed by AMOVA using the <italic>COI</italic> and <italic>16S</italic> rRNA genes as mitochondrial markers, showed significant haplotype structure arising from genetic differences that was not associated with sampling location. This was reflected in the network grouping. Bayesian inference showed that haplotype distribution may have its origins in <italic>C</italic>. <italic>externa</italic> divergence into two distinct clades, which dispersed to various locations, and their subsequent diversification. The evolutionary history of <italic>C</italic>. <italic>externa</italic> may include multiple ancestral haplotypes differentiating within the same geographic area to generate the current broad genetic diversity, so that the earlier geographical history has been erased, and now we have highlighted its more recent genetic history.</p>
+</abstract>
+<funding-group>
+<award-group id="award001">
+<funding-source>
+<institution>CNPq</institution>
+</funding-source>
+<award-id>CNPq Protax (no. 150150/2007-5)</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Morales Corrêa e Castro</surname>
+<given-names>Adriana Coletto</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award002">
+<funding-source>
+<institution>FAPESP</institution>
+</funding-source>
+<award-id>2008/05727-8</award-id>
+</award-group>
+<award-group id="award003">
+<funding-source>
+<institution>Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES)</institution>
+</funding-source>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Barbosa</surname>
+<given-names>Nara Cristina Chiarini Pena</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<funding-statement>ACMCC received support from Conselho Nacional de Desenvolvimento Científico e Tecnológico—Programa Taxonomia (150150/2007-5). NCCPB received support from Conselho Nacional de Desenvolvimento Científico e Tecnológico—(grant to master degree).</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="5"/>
+<table-count count="1"/>
+<page-count count="12"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Green lacewings are insects of the Chrysopidae, a family of 1,413 species and subspecies distributed among 82 genera [<xref ref-type="bibr" rid="pone.0177414.ref001">1</xref>]. <italic>Chrysoperla</italic> Steinmann 1964 comprises 36 lacewing species, four of which are found in Brazil: <italic>Chrysoperla defreitasi</italic> Brooks 1994, <italic>Chrysoperla raimundoi</italic> Freitas &amp; Penny 2001, <italic>Chrysoperla genanigra</italic> Freitas 2003, and <italic>Chrysoperla externa</italic> (Hagen 1861). The last named is one of the most common lacewing species in the Americas and can be found from the southern USA to Argentina [<xref ref-type="bibr" rid="pone.0177414.ref002">2</xref>].</p>
+<p>Studies of the biology of <italic>C</italic>. <italic>externa</italic> and its use as a biological control agent have been published since the 1970s [<xref ref-type="bibr" rid="pone.0177414.ref003">3</xref>]. The genetic variation and degree of population structure of <italic>C</italic>. <italic>externa</italic> began to be studied only in 2007, culminating in publication of a study conducted in different agrosystems and seasons using mitochondrial DNA as a molecular marker in specimens from Jaboticabal, São Paulo (SP), Brazil [<xref ref-type="bibr" rid="pone.0177414.ref004">4</xref>]. The specimens of <italic>C</italic>. <italic>externa</italic> showed high haplotype diversity (0.956) with 24 haplotypes in 36 specimens analyzed, and no population structure. The study of population structure of this species in São Paulo State was the main, but not sole, focus of later research. The genetic variability and genetic relationships among populations were estimated by genetic markers <italic>ISSR</italic> and the <italic>COI</italic> gene in 90 specimens from 12 populations in SP. High levels of diversity were observed for both markers, with the highest values found in municipalities having the largest areas of native vegetation [<xref ref-type="bibr" rid="pone.0177414.ref005">5</xref>]. A further 12 populations and 114 specimens were studied in SP, revealing high genetic diversity and lack of geographic structure, suggesting that <italic>C</italic>. <italic>externa</italic> is a single population, regardless of sampling location [<xref ref-type="bibr" rid="pone.0177414.ref006">6</xref>]. The most comprehensive study of <italic>C</italic>. <italic>externa</italic> distribution compared the variability and degree of structure in populations from areas of native vegetation with those from agrosystems, analyzing 122 specimens and 12 previously unstudied locations, primarily Brazilian states. The results showed population expansion in agro-ecosystems, whereas populations in the native environment remained stable over time. Analysis showed significant genetic structure among the sampled groups, which, combined with its within-group absence, corroborated group identities [<xref ref-type="bibr" rid="pone.0177414.ref007">7</xref>].</p>
+<p>Although the studies carried out to date have analyzed a sufficient number of specimens for population studies of <italic>C</italic>. <italic>externa</italic>, different groups were sampled, making it difficult to compare parameters and gain a comprehensive understanding of the species evolution. Research using the mitochondrial marker <italic>16S rRNA</italic> gene, as proposed in this study, provides information on population history on a wider time scale than do the <italic>COI</italic> gene and <italic>ISSR</italic> markers previously used [<xref ref-type="bibr" rid="pone.0177414.ref004">4</xref>–<xref ref-type="bibr" rid="pone.0177414.ref007">7</xref>].</p>
+<p>The goal of this study was to reveal the genetic structure of <italic>C</italic>. <italic>externa</italic>, combining, for the first time, data on all specimens analyzed for the <italic>COI</italic> gene in different locations and data of specimens from locations not previously analyzed, along with analysis of the <italic>16S rRNA</italic> gene, to investigate whether populations of <italic>C</italic>. <italic>externa</italic> exhibits differentiation based on genetic composition or on the geographic source of the specimens.</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Materials and methods</title>
+<sec id="sec003">
+<title>Biological materials</title>
+<p>This study gathers new specimens of <italic>C</italic>. <italic>externa</italic> and analyzed in previous papers by our group [4, 5 and 7]. We sampled 123 localities in Brazil in the states of São Paulo (110), Minas Gerais (7), Paraná (3), Goiás (1), Rio Grande do Norte (1) and Distrito Federal (1) and at a location in Paraguay; all the localities are georeferenced (<xref ref-type="supplementary-material" rid="pone.0177414.s004">S1 Table</xref>). Collections were performed from 2005 to 2010 with permission issued by the agency responsible for environmental studies in Brazil—ICMBio-IBAMA (Chico Mendes Institute for Biodiversity Conservation of the Brazilian Institute of the Environment). All the specimens were collected in open areas and on agrosystems borders. No collecting activities occurred in protected areas, natural reserves or state/federal parks, nor did it involve endangered or protected species, as shown in the table of localities (<xref ref-type="supplementary-material" rid="pone.0177414.s004">S1 Table</xref>). The specimens were stored in absolute ethanol and identified based on external morphological characteristics according to Brooks and Barnard [<xref ref-type="bibr" rid="pone.0177414.ref008">8</xref>] by Dr. Sérgio de Freitas. Currently, the vouchers specimens of this work, together with the other individual specimens collected in the expeditions are deposited in the Coleção de Referência Entomológica (Collection of Entomological Reference) do Departamento de Fitossanidade of the Faculdade de Ciências Agrárias e Veterinárias (FCAV-UNESP), as part of the Neuroptera Collection and open for scientific consultation.</p>
+</sec>
+<sec id="sec004">
+<title>DNA extraction</title>
+<p>DNA was extracted from the thorax, while the head, wings, and abdomen were stored in absolute ethanol also in the Coleção de Referência Entomológica at the Departamento de Fitossanidade of the FCAV-UNESP (<xref ref-type="supplementary-material" rid="pone.0177414.s004">S1 Table</xref>). The DNA was extracted using the Wizard<sup>®</sup> Genomic DNA Purification Kit (Promega), following the manufacturer’s protocol and it is stored at the Laboratório de Biologia Evolutiva (LaBE) do Departamento de Biologia Aplicada à Agropecuária—FCAV-UNESP.</p>
+</sec>
+<sec id="sec005">
+<title>Amplification and sequencing</title>
+<p>The mitochondrial genes <italic>COI</italic> and <italic>16S rRNA</italic> were amplified by PCR in a Mastercycler thermal cycler (Eppendorf). The reaction was conducted in a final volume of 25 μL consisting of 12.5 μL of GoTaq<sup>®</sup> Colorless Master Mix (Promega), 0.4 μM of each of the primers, and 2.5 μL total DNA (~40 ng). The <italic>COI</italic> gene was amplified with primers C1-J-2183 (<monospace>5’CAACATTTATTTTGATTTTTTGG3’</monospace>) and TL2-N-3014 (<monospace>5’TCCATTGCACTAATCTGCCATATTA3’</monospace>) [<xref ref-type="bibr" rid="pone.0177414.ref009">9</xref>] under the following conditions: initial denaturation at 94°C for 2 minutes followed by 35 cycles of 40 seconds at 94°C, 50 seconds at 55°C, and 1 minute at 72°C; with a final extension phase of 72°C for 10 minutes. The <italic>16S</italic> gene was amplified with primers LR-J-12887 (<monospace>5’ CCGGTTTGAACTCAGATCATGT 3’</monospace>) and SR-N-13398b (<monospace>5’ CRCYTGTTTAWCAAAAACAT 3’</monospace>) [<xref ref-type="bibr" rid="pone.0177414.ref009">9</xref>] under conditions as follows: initial denaturation at 95°C for 5 minutes followed by 33 cycles of 20 seconds at 93°C, 40 seconds at 50°C, and 2 minutes at 72°C; with a final extension phase of 72°C for 10 minutes. The PCR products were subjected to electrophoresis in 1% agarose gel and stained with ethidium bromide (1ng/mL) to confirm amplification. Each PCR product was purified using the Wizard<sup>®</sup> SV Gel and PCR Clean-Up System (Promega) according to the manufacturer’s protocol. The products were sequenced using the same primers and amplification conditions. The sequencing reactions were conducted in an ABI 3730 XL DNA Analyzer (Applied Biosystems, Foster City, California, CA) automatic sequencer using the BigDye<sup>®</sup> Terminator v.3.1 Cycle Sequencing Kit (Perkin-Elmer Applied Biosystems), and the sequences were deposited in the Laboratório de Biologia Evolutiva (LaBE) database at the Departamento de Biologia Aplicada à Agropecuária, FCAV. The haplotypes were deposited in the GenBank database under the accession numbers KJ586656 to KJ586673 and KX099401 to KX099607 (<xref ref-type="supplementary-material" rid="pone.0177414.s005">S2</xref> and <xref ref-type="supplementary-material" rid="pone.0177414.s006">S3</xref> Tables).</p>
+</sec>
+<sec id="sec006">
+<title>Data analysis</title>
+<p>The sequences were read in Chromas Lite v.2.1.1 [<xref ref-type="bibr" rid="pone.0177414.ref010">10</xref>] and aligned with Muscle Tool Web Services [<xref ref-type="bibr" rid="pone.0177414.ref011">11</xref>]. Descriptive analyses were performed using DnaSP v.5.10.01 [<xref ref-type="bibr" rid="pone.0177414.ref012">12</xref>], and the number of polymorphic sites (S), number of haplotypes (h), haplotype diversity (Hd), nucleotide diversity (π), and average number of nucleotide differences (k) were obtained. Nucleotide composition was calculated by MEGA v.6.06 [<xref ref-type="bibr" rid="pone.0177414.ref013">13</xref>]. The Analysis of Molecular Variance (AMOVA) was applied using Arlequin v.3.5.1.3 [<xref ref-type="bibr" rid="pone.0177414.ref014">14</xref>]. A haplotype network was built using TCS v.1.21 [<xref ref-type="bibr" rid="pone.0177414.ref015">15</xref>]. The presence of population structure was tested for the genes separately using a Bayesian approach with Structure v.2.3.4 [<xref ref-type="bibr" rid="pone.0177414.ref016">16</xref>–<xref ref-type="bibr" rid="pone.0177414.ref019">19</xref>]. Several runs were realized without replicates to estimate the probable K value (clusters) based on the ln(Pr(X|K) value. Twenty-five independent runs were carried out for each K value, ranging from 1 to 8 for the <italic>COI</italic> gene and 1 to 5 for the <italic>16S</italic> gene. For each run, 10,000 iterations were carried out after a burn-in of 10,000 iterations. The assumed parameters for both genes were "no model admixture" because they were haploid mitochondrial genes, and "all frequencies correlated" since the sequences had high similarity [<xref ref-type="bibr" rid="pone.0177414.ref017">17</xref>]. To detect the number of genetically homogeneous groups (K) that best fit the data, we used Evanno implemented [<xref ref-type="bibr" rid="pone.0177414.ref020">20</xref>] in the Structure Harvester website [<xref ref-type="bibr" rid="pone.0177414.ref021">21</xref>]. A graphic representation of the results obtained by the Structure program was created in CLUMPAK beta version [<xref ref-type="bibr" rid="pone.0177414.ref022">22</xref>]. Tajima’s D [<xref ref-type="bibr" rid="pone.0177414.ref023">23</xref>] and Fu’s Fs [<xref ref-type="bibr" rid="pone.0177414.ref024">24</xref>] neutrality tests were performed with concatenated data by DnaSP v.5.10.01 [<xref ref-type="bibr" rid="pone.0177414.ref012">12</xref>], to determine if populations followed a neutral model of evolution with constant population size over time. The saturation of the data was assessed with the DAMBE v.6.0.48 [<xref ref-type="bibr" rid="pone.0177414.ref025">25</xref>] using the Test of substitution saturation by Xia et al. [<xref ref-type="bibr" rid="pone.0177414.ref026">26</xref>, <xref ref-type="bibr" rid="pone.0177414.ref027">27</xref>]. The phylogenetic reconstruction was performed by Bayesian inference using the package BEAUti and BEAST v.1.8.2 [<xref ref-type="bibr" rid="pone.0177414.ref028">28</xref>] with concatenated data. The substitution model most appropriate for the <italic>COI</italic> gene was GTR+I+G and for <italic>16S</italic> gene was HKY+I, obtained using JModelTest v.2.1.3, utilizing the Bayesian Information Criterion [<xref ref-type="bibr" rid="pone.0177414.ref029">29</xref>]. We performed 150 million MCMC simulations and sampled every 1500 steps, under the lognormal relaxed clock model and a constant-size coalescent tree prior. The species of Chrysopidae, <italic>Chrysoperla defreitase</italic> (<italic>COI</italic>: KX099404; <italic>16S</italic>: KX099549), <italic>Chrysopodes divisa</italic> (<italic>COI</italic>: KX099403; <italic>16S</italic>: KX099548), <italic>Ceraeochrysa cubana</italic> (<italic>COI</italic>: KX099402; <italic>16S</italic>: KX099547), <italic>Leucochrysa cruentata</italic> (<italic>COI</italic>: KX099401; <italic>16S</italic>: KX099546), and Hemerobiidae, <italic>Neuronema laminatum</italic> (NC_028153.1) were used as outgroups. The priors were checked in Tracer v.1.6 [<xref ref-type="bibr" rid="pone.0177414.ref030">30</xref>] and the maximum clade credibility tree was generated using Tree Annotator v.1.8.2 [<xref ref-type="bibr" rid="pone.0177414.ref031">31</xref>], considering the burn-in value to equal 1% of the total trees generated in BEAST. This was viewed and edited in FigTree v.1.4.2 [<xref ref-type="bibr" rid="pone.0177414.ref032">32</xref>].</p>
+</sec>
+</sec>
+<sec id="sec007" sec-type="results">
+<title>Results</title>
+<sec id="sec008">
+<title>Descriptive statistics</title>
+<p>We obtained 477 sequences of 730 bp each for the <italic>COI</italic> gene and 158 haplotypes (<xref ref-type="supplementary-material" rid="pone.0177414.s005">S2 Table</xref>), and 466 sequences of 488 bp each for the <italic>16S</italic> gene and 58 haplotypes (<xref ref-type="supplementary-material" rid="pone.0177414.s006">S3 Table</xref>). The concatenated data generated 387 sequences of 1,218 bp each, which presented an average nucleotide composition of 40.3% thymine (T), 14.5% cytosine (C), 32.8% adenine (A), and 12.4% guanine (G). One hundred fifty-eight polymorphic sites (S) were obtained, resulting in 193 haplotypes (h) (<xref ref-type="supplementary-material" rid="pone.0177414.s007">S4 Table</xref>) and an average haplotype diversity (Hd) of 0.9627. The average number of nucleotide differences (k) and average nucleotide diversity (π) were 3.321 and 0.00274, respectively.</p>
+</sec>
+<sec id="sec009">
+<title>Population structure</title>
+<p>The genetic structure was used to investigate the species <italic>C</italic>. <italic>externa</italic> in a geographic and genetic context. Initially, AMOVA was used to test the structure by locality, considering all populations as a single group. For this grouping, the p-value was not significant for either gene (<italic>COI</italic>: p = 0.69404±0.01436; <italic>16S</italic>: p = 0.56794±0.01391), showing that there was not sufficient evidence to prove that there is genetic structure among geographic populations.</p>
+<p>The haplotype network for both genes showed well-defined groups. The <italic>COI</italic> gene comprised four groups (<xref ref-type="fig" rid="pone.0177414.g001">Fig 1</xref>), and the 16S gene exhibited five groups (<xref ref-type="fig" rid="pone.0177414.g002">Fig 2</xref>). All groups contained specimens from different localities; hence grouping based on geographic distribution was not observed (<xref ref-type="supplementary-material" rid="pone.0177414.s004">S1</xref>–<xref ref-type="supplementary-material" rid="pone.0177414.s006">S3</xref> Tables). The distribution of haplotypes was coincident in Group 4, in which the specimens were isolated from the other groups with respect to both genes (<xref ref-type="supplementary-material" rid="pone.0177414.s001">S1 Fig</xref> and <xref ref-type="supplementary-material" rid="pone.0177414.s002">S2 Fig</xref>). All specimens in Group 3 of the <italic>16S</italic> gene were also in Group 1 of the <italic>COI</italic> gene. The specimens were not coincident in other groups; specimens belonging to a group in the <italic>COI</italic> gene appeared in different groups in the <italic>16S</italic> gene, and vice-versa (<xref ref-type="supplementary-material" rid="pone.0177414.s001">S1 Fig</xref> and <xref ref-type="supplementary-material" rid="pone.0177414.s002">S2 Fig</xref>).</p>
+<fig id="pone.0177414.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0177414.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Haplotype network for the <italic>COI</italic> gene of <italic>Chrysoperla externa</italic>.</title>
+<p>Square represent the ancestral haplotypes. The size of circle reflects the frequency of the haplotypes in the sample. Solid lines correspond to a mutational change connecting two haplotypes with a probability &gt;95%. Small black dots denote missing intermediate haplotypes.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.g001" xlink:type="simple"/>
+</fig>
+<fig id="pone.0177414.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0177414.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Haplotype network for the <italic>16S</italic> gene of <italic>Chrysoperla externa</italic>.</title>
+<p>Square represents the ancestral haplotype. The size of circle reflects the frequency of the haplotypes in the sample. Solid lines correspond to a mutational change connecting two haplotypes with a probability &gt;95%. Small black circles denote missing intermediate haplotypes.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.g002" xlink:type="simple"/>
+</fig>
+<p>Posteriorly, AMOVA was used to test the structure based on groups defined by the parsimony analysis in TCS. For this grouping, the p-value was significant for both genes (p = 0.00000 ± 0.00000 for both), and the F<sub>ST</sub> presented high values (<italic>COI</italic>: F<sub>ST</sub> = 0.55559; <italic>16S</italic>: F<sub>ST</sub> = 0.75517). The population pairwise F<sub>ST</sub>s also presented high values, demonstrating that Group 4 did not skew this structure (<xref ref-type="table" rid="pone.0177414.t001">Table 1</xref>).</p>
+<table-wrap id="pone.0177414.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0177414.t001</object-id>
+<label>Table 1</label> <caption><title>Pairwise F<sub>ST</sub>s for grouping based on haplotype network constructed by using the statistical parsimony method of <italic>Chrysoperla externa</italic>.</title></caption>
+<alternatives>
+<graphic id="pone.0177414.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center"/>
+<th align="center" colspan="4"><italic>COI</italic></th>
+<th align="center" colspan="5"><italic>16S</italic></th>
+</tr>
+<tr>
+<th align="center"/>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">0.00000</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center">0.00000</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">0.42111</td>
+<td align="center">0.00000</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center">0.65494</td>
+<td align="center">0.00000</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">0.43204</td>
+<td align="center">0.56469</td>
+<td align="center">0.00000</td>
+<td align="center"/>
+<td align="center">0.65333</td>
+<td align="center">0.87631</td>
+<td align="center">0.00000</td>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">0.69990</td>
+<td align="center">0.65796</td>
+<td align="center">0.72509</td>
+<td align="center">0.00000</td>
+<td align="center">0.60208</td>
+<td align="center">0.84387</td>
+<td align="center">0.86208</td>
+<td align="center">0.00000</td>
+<td align="center"/>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">0.74191</td>
+<td align="center">0.71340</td>
+<td align="center">0.89001</td>
+<td align="center">0.83259</td>
+<td align="center">0.00000</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>Structure analysis was used to visualize the genetic similarity among individuals and test the presence of population structure. For the <italic>COI</italic> gene, individuals were grouped into six clusters (Figs <xref ref-type="fig" rid="pone.0177414.g001">1</xref> and <xref ref-type="fig" rid="pone.0177414.g003">3</xref>), which were interpreted as mutational steps occurring from an ancestral haplotype not present in the analysis. Individuals of the Groups 1 and 3 presented similar proportions of the coloured segments that represent the individual’s probability of belonging to the cluster with that colour. Group 2 presented the same clusters as Groups 1 and 3, but in different probability. Group 4 appeared separately, similar to results of TCS, indicating genetic composition distinct from other groups. The <italic>16S</italic> gene was separated into two clusters, with Groups 1, 3, and 4 in a cluster and Groups 2 and 5 in another (Figs <xref ref-type="fig" rid="pone.0177414.g002">2</xref> and <xref ref-type="fig" rid="pone.0177414.g004">4</xref>).</p>
+<fig id="pone.0177414.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0177414.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Population structure for grouping based on haplotype network constructed by using the statistical parsimony method for <italic>COI</italic> gene of <italic>Chrysoperla externa</italic>.</title>
+<p>Each individual is represented by a thin vertical line, which is partitioned into coloured segments that represent the individual’s probability of belonging to the cluster with that colour. Colors represent clusters (K), interpreted as mutational steps from an ancestral haplotype not present in the analysis.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.g003" xlink:type="simple"/>
+</fig>
+<fig id="pone.0177414.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0177414.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Population structure for grouping based on haplotype network constructed by using the statistical parsimony method for <italic>16S</italic> gene of <italic>Chrysoperla externa</italic>.</title>
+<p>Each individual is represented by a thin vertical line, which is partitioned into coloured segments that represent the individual’s probability of belonging to the cluster with that colour. Colors represent clusters (K), interpreted as mutational steps from an ancestral haplotype not present in the analysis.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.g004" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec010">
+<title>Bayesian analysis and neutrality test</title>
+<p>Bayesian inference analysis was performed to obtain the probable relationship between haplotypes of <italic>C</italic>. <italic>externa</italic>. The saturation test showed little saturation, indicating that the date was appropriate for phylogenetic analysis (Iss&lt;ISSc; p &lt; 0.05). <italic>Chrysoperla externa</italic> split into two distinct clades with 100% posterior probability, one comprised of individuals appearing only in the TCS Group 4 and a second clade including individuals of other groups (<xref ref-type="fig" rid="pone.0177414.g005">Fig 5</xref>). The clade comprising Groups 1, 2, 3, and 5 showed internal clades that were not monophyletic, while the Group 4 clade was monophyletic and showed more recent divergence.</p>
+<fig id="pone.0177414.g005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0177414.g005</object-id>
+<label>Fig 5</label>
+<caption>
+<title>Bayesian inference analysis for the concatenated genes of <italic>Chrysoperla externa</italic>.</title>
+<p>The node type represents Bayesian posterior probability.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.g005" xlink:type="simple"/>
+</fig>
+<p>Based on the Bayesian inference separation, the neutrality test was conducted for Group 4 separately from the remaining groups. The observed values of Tajima’s D and Fu’s F<sub>S</sub> neutrality tests were -2.27254 (p &lt; 0.01) and -17.508 (p = 0.000), respectively, for Group 4, and -2.68706 (p &lt; 0.01) and -315.397 (p = 0.000), respectively, for other groups.</p>
+</sec>
+</sec>
+<sec id="sec011" sec-type="conclusions">
+<title>Discussion</title>
+<p>Our results demonstrated that <italic>C</italic>. <italic>externa</italic> has significant haplotype structure arising from genetic differences not shown to be influenced by present geography. Almost all the 158 <italic>COI</italic> haplotypes and 58 <italic>16S</italic> haplotypes were found in all sampled locations.</p>
+<p>The AMOVA demonstrated that haplotype differences among locations were not significant, showing that the distances between sampling sites, in Brazil and Paraguay, did not act as a barrier, and produced no geographic differentiation. This would be a necessary premise for the phylogeographic inference test, which could assess the haplotype and geographic association [<xref ref-type="bibr" rid="pone.0177414.ref033">33</xref>]. This did not occur in the present or in previous studies of <italic>C</italic>. <italic>externa</italic> [<xref ref-type="bibr" rid="pone.0177414.ref004">4</xref>–<xref ref-type="bibr" rid="pone.0177414.ref007">7</xref>]. However, the presence of distinct groups was notable in the haplotype networks (Figs <xref ref-type="fig" rid="pone.0177414.g001">1</xref> and <xref ref-type="fig" rid="pone.0177414.g002">2</xref>) as a consequence of the level of difference/mutation among them (<xref ref-type="supplementary-material" rid="pone.0177414.s003">S1 Supporting Information</xref>).</p>
+<p>Phylogeographic studies use the clades formed in the haplotype network to test the hypotheses of genetic/geographical association and several studies show a correspondence between the geographic distribution and network topology [<xref ref-type="bibr" rid="pone.0177414.ref034">34</xref>–<xref ref-type="bibr" rid="pone.0177414.ref043">43</xref>]. Therefore, we used the groups formed in the network to assess by AMOVA the relationship between the distinct haplotypic groups, and the analysis revealed significant differences in both analyzed genes. Hence, the haplotypes showed genetic differences sufficient to be allocated into groups, and that different haplotypic groups coexisted in a location.</p>
+<p>Bayesian inference performed on the concatenated data suggested that there was initially a divergence of <italic>C</italic>. <italic>externa</italic> haplotypes into two distinct clades, which diversified posteriorly (<xref ref-type="fig" rid="pone.0177414.g005">Fig 5</xref>). This clear separation of haplotypes into clades of <italic>C</italic>. <italic>externa</italic> does not correspond to a geographic structure, as confirmed by AMOVA. The clade with the most recent diversification was composed exclusively of individuals from Group 4 in both gene haplotype networks. In both analyzed genes, these 34 individuals showed greater similarity to one another than to the other groups.</p>
+<p>In the structure analysis of the <italic>COI</italic> gene using Structure (<xref ref-type="fig" rid="pone.0177414.g003">Fig 3</xref>), the union of Groups 1, 2, and 3 indicated by the presence of at least one cluster in common, and the segregation of Group 4, reinforced the results of the Bayesian analysis (<xref ref-type="fig" rid="pone.0177414.g005">Fig 5</xref>) for the divergence into two clades. For <italic>16S</italic>, the structure analysis showed the separation into only two clusters (<xref ref-type="fig" rid="pone.0177414.g004">Fig 4</xref>) with Group 4 remaining associated with Groups 1 and 3. This can be attributed to the fact that the <italic>16S</italic> gene is conserved and non-coding, so that the primary difference observed between the two clusters is the insertion of one or two bases at positions 173 and 174 (<xref ref-type="supplementary-material" rid="pone.0177414.s003">S1 Supporting Information</xref>). Thus, the phylogenetic information that shows the initial divergence may have been diluted in the structure analysis, since it does not include the ancestral state present in the outgroup [<xref ref-type="bibr" rid="pone.0177414.ref044">44</xref>, <xref ref-type="bibr" rid="pone.0177414.ref045">45</xref>].</p>
+<p>The population expansion followed by diversification of haplotypes can be inferred by the star-like network topology of both genes, as well as by the neutrality tests. The networks displayed two more frequent haplotypes that were considered ancestral (<xref ref-type="supplementary-material" rid="pone.0177414.s005">S2 Table</xref> and <xref ref-type="supplementary-material" rid="pone.0177414.s006">S3 Table</xref>) from which many haplotypes were derived, suggesting that most of these haplotypes emerged later [<xref ref-type="bibr" rid="pone.0177414.ref046">46</xref>]. The results of Tajima's D and Fu's F<sub>S</sub> neutrality tests were negative, indicating an excess of rare alleles within the population, which may suggest population expansion [<xref ref-type="bibr" rid="pone.0177414.ref047">47</xref>, <xref ref-type="bibr" rid="pone.0177414.ref048">48</xref>].</p>
+<p>These results suggest that the evolutionary history of <italic>C</italic>. <italic>externa</italic> may include the existence of multiple ancestral haplotypes within a same geographic area. However, it is possible to infer that this pattern found for <italic>C</italic>. <italic>externa</italic> can be derived from a strong anthropic action, involving exchanges of plant seedlings with the petiolate eggs between agricultural producers. Thus, this agricultural practice may have promoted homogenization in the populations trough the introduction of haplotypes from other regions with distinct genetic characteristics, covering up a possible regional differentiation. As a result of this introduction, it is currently observed a pattern of co-existence of multiple ancestral haplotypes in the same place, but belonging to groups excessively genetically distinct to be sharing the same area of occurrence in a biogeographic point of view, and thus indicating that these haplotypes have had an allopatric differentiation.</p>
+<p>Therefore, it is possible that the earlier geographical history of <italic>C</italic>. <italic>externa</italic> has been erased, and now we have highlighted its more recent genetic history.</p>
+</sec>
+<sec id="sec012">
+<title>Supporting information</title>
+<supplementary-material id="pone.0177414.s001" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.s001" xlink:type="simple">
+<label>S1 Fig</label>
+<caption>
+<title>Haplotype network for the <italic>COI</italic> gene of <italic>Chrysoperla externa</italic>.</title>
+<p>Square represents the ancestral haplotype. The size of circles reflects the frequency of the haplotypes in the sample. Haplotype names correspond to names in <xref ref-type="supplementary-material" rid="pone.0177414.s004">S1 Table</xref>. Solid lines correspond to a mutational change connecting two haplotypes with probability &gt;95%. Small circles denote missing intermediate haplotypes.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0177414.s002" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.s002" xlink:type="simple">
+<label>S2 Fig</label>
+<caption>
+<title>Haplotype network for the <italic>16S</italic> gene of <italic>Chrysoperla externa</italic>.</title>
+<p>Square represents the ancestral haplotype. The size of circles reflects the frequency of the haplotypes in the sample. Haplotype names correspond to names in <xref ref-type="supplementary-material" rid="pone.0177414.s004">S1 Table</xref>. Solid lines correspond to a mutational change connecting two haplotypes with probability &gt;95%. Small circles denote missing intermediate haplotypes.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0177414.s003" mimetype="text/plain" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.s003" xlink:type="simple">
+<label>S1 Supporting Information</label>
+<caption>
+<title>Variable sites of haplotypes in concatenated genes of <italic>Chrysoperla externa</italic>.</title>
+<p>Positions from 1 to 730 are for the <italic>COI</italic> gene, and from 731 to 1218 are for the <italic>16S</italic> gene.</p>
+<p>(TXT)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0177414.s004" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.s004" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>Sampled localities.</title>
+<p>Sampling localities, geographic coordinates, number of specimens analyzed (<italic>COI</italic>/<italic>16S</italic>), and <italic>Chrysoperla externa</italic> voucher number.</p>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0177414.s005" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.s005" xlink:type="simple">
+<label>S2 Table</label>
+<caption>
+<title>Haplotype list of the <italic>COI</italic> gene.</title>
+<p>Identification code (ID) of haplotypes for <italic>COI</italic> gene; number of specimens containing each haplotype; GenBank accession number; <italic>Chrysoperla externa</italic> voucher number.</p>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0177414.s006" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.s006" xlink:type="simple">
+<label>S3 Table</label>
+<caption>
+<title>Haplotype list of the <italic>16S</italic> gene.</title>
+<p>Identification code (ID) of haplotypes for <italic>16S</italic> gene; number of specimens containing each haplotype; GenBank accession number; <italic>Chrysoperla externa</italic> voucher number.</p>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0177414.s007" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0177414.s007" xlink:type="simple">
+<label>S4 Table</label>
+<caption>
+<title>Haplotype list of concatenated genes.</title>
+<p>Identification code (ID) of haplotypes for concatenated data (<italic>COI</italic> and <italic>16S</italic> genes); number of specimens containing each haplotype; <italic>Chrysoperla externa</italic> voucher number.</p>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>We thank to deceased Prof. Dr. Sergio de Freitas, who was supported by Fundação de Amparo à Pesquisa do Estado de São Paulo—(2008/05727-8), by morphological identification of specimens and laboratory support to research, and two reviewers by critical reading of this manuscript.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0177414.ref001"><label>1</label><mixed-citation publication-type="other" xlink:type="simple">Oswald JD. Neuropterida Species of the World. Version 4.0 [Internet]. College Station (TX): Department of Entomology, Texas A&amp;M University (US); 2015 [updated 2015 July 6; cited 2016 July 13]. Available from: <ext-link ext-link-type="uri" xlink:href="http://lacewing.tamu.edu/SpeciesCatalogue/" xlink:type="simple">http://lacewing.tamu.edu/SpeciesCatalogue/</ext-link>.</mixed-citation></ref>
+<ref id="pone.0177414.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brooks</surname> <given-names>SJ</given-names></name>. <article-title>A taxonomic review of the common green lacewing genus <italic>Chrysoperla</italic> (Neuroptera: Chrysoperla)</article-title>. <source>Bull Nat Hist Mus Entomol ser</source>.<year>1994</year>; <volume>63</volume>: <fpage>137</fpage>–<lpage>210</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Albuquerque</surname> <given-names>GS</given-names></name>, <name name-style="western"><surname>Tauber</surname> <given-names>CA</given-names></name>, <name name-style="western"><surname>Tauber</surname> <given-names>MJ</given-names></name>. <article-title><italic>Chrysoperla externa</italic> (Neuroptera: Chrysopidae): life history and potential for biological control in Central and South America</article-title>. <source>Biol control</source>. <year>1994</year>; <volume>4</volume>: <fpage>8</fpage>–<lpage>13</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Morales</surname> <given-names>AC</given-names></name>, <name name-style="western"><surname>Freitas</surname> <given-names>S</given-names></name>. <article-title>Haplotype characterization of the COI mitochondrial gene in <italic>Chrysoperla externa</italic> (Neuroptera: Chrysopidae) from different environments in Jaboticabal, state of São Paulo, southeastern Brazil</article-title>. <source>Braz J Biol</source>. <year>2010</year>; <volume>70</volume>: <fpage>1115</fpage>–<lpage>1121</lpage>. <object-id pub-id-type="pmid">21180923</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Barbosa</surname> <given-names>NCCP</given-names></name>, <name name-style="western"><surname>Freitas</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Morales</surname> <given-names>AC</given-names></name>. <article-title>Distinct genetic structure in populations of <italic>Chrysoperla externa</italic> (Hagen) (Neuroptera, Chrysopidae) shown by genetic markers ISSR and COI gene</article-title>. <source>Rev Bras Entomol</source>. <year>2014</year>; <volume>58</volume>: <fpage>203</fpage>–<lpage>211</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lavagnini</surname> <given-names>TC</given-names></name>, <name name-style="western"><surname>Morales</surname> <given-names>AC</given-names></name>, <name name-style="western"><surname>Freitas</surname> <given-names>S</given-names></name>. <article-title>Population genetics of <italic>Chrysoperla externa</italic> (Neuroptera: Chrysopidae) and implications for biological control</article-title>. <source>Braz. J. Biol</source>. <year>2015</year>; <volume>75</volume>:<fpage>878</fpage>–<lpage>885</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1590/1519-6984.02014" xlink:type="simple">10.1590/1519-6984.02014</ext-link></comment> <object-id pub-id-type="pmid">26675904</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Morales</surname> <given-names>AC</given-names></name>, <name name-style="western"><surname>Lavagnini</surname> <given-names>TC</given-names></name>, <name name-style="western"><surname>Freitas</surname> <given-names>S</given-names></name>. <article-title>Loss of genetic variability induced by agroecosystems: <italic>Chrysoperla externa</italic> (Hagen) (Neuroptera: Chrysopidae) as a case study</article-title>. <source>Neotrop Entomol</source>. <year>2013</year>; <volume>42</volume>: <fpage>32</fpage>–<lpage>38</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s13744-012-0085-1" xlink:type="simple">10.1007/s13744-012-0085-1</ext-link></comment> <object-id pub-id-type="pmid">23949710</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brooks</surname> <given-names>SJ</given-names></name>, <name name-style="western"><surname>Barnard</surname> <given-names>PC</given-names></name>. <article-title>The green lacewings of the world: a generic review (Neuroptera: Chrysopidae)</article-title>. <source>Bull Nat Hist Mus Entomol ser</source>. <year>1990</year>; <volume>59</volume>: <fpage>117</fpage>–<lpage>286</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Simon</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Frati</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Beckenbach</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Crespi</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Flook</surname> <given-names>P</given-names></name>. <article-title>Evolution, weighting and phylogenetic utility of mitochondrial gene sequences and a compilation of conserved Polymerase Chain Reaction primers</article-title>. <source>Ann Entomol Soc Am</source>. <year>1994</year>; <volume>87</volume>: <fpage>651</fpage>–<lpage>701</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref010"><label>10</label><mixed-citation publication-type="other" xlink:type="simple">Technelysium Ltd. Chromas Lite. Version 2.1.1 [software].1998–2013 [cited 2016 Mai 5]. Available from: <ext-link ext-link-type="uri" xlink:href="http://www.technelysium.com.au/chromas_lite.html" xlink:type="simple">http://www.technelysium.com.au/chromas_lite.html</ext-link>.</mixed-citation></ref>
+<ref id="pone.0177414.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>McWilliam</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Uludag</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Squizzato</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Park</surname> <given-names>YM</given-names></name>, <name name-style="western"><surname>Buso</surname> <given-names>N</given-names></name>, <etal>et al</etal>. <article-title>Analysis Tool Web Services from the EMBL-EBI</article-title>. <source>Nucleic Acids Res</source>. <year>2013</year>; <volume>41</volume> (Web Server issue): <fpage>W597</fpage>–<lpage>600</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/nar/gkt376" xlink:type="simple">10.1093/nar/gkt376</ext-link></comment> <object-id pub-id-type="pmid">23671338</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Librado</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Rozas</surname> <given-names>J</given-names></name>. <article-title>DnaSP v5: a software for comprehensive analysis of DNA polymorphism data</article-title>. <source>Bioinformatics</source>. <year>2009</year>; <volume>25</volume>: <fpage>1451</fpage>–<lpage>1452</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/bioinformatics/btp187" xlink:type="simple">10.1093/bioinformatics/btp187</ext-link></comment> <object-id pub-id-type="pmid">19346325</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tamura</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Stecher</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Peterson</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Filipski</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Kumar</surname> <given-names>S</given-names></name>. <article-title>MEGA6: Molecular Evolutionary Genetics Analysis Version 6.0</article-title>. <source>Mol Biol Evol</source>. <year>2013</year>; <volume>30</volume>: <fpage>2725</fpage>–<lpage>2729</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/molbev/mst197" xlink:type="simple">10.1093/molbev/mst197</ext-link></comment> <object-id pub-id-type="pmid">24132122</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Excoffier</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Lischer</surname> <given-names>HEL</given-names></name>. <article-title>Arlequin suite ver 3.5: A new series of programs to perform population genetics analyses under Linux and Windows</article-title>. <source>Mol Ecol Resour</source>. <year>2010</year>; <volume>10</volume>: <fpage>564</fpage>–<lpage>567</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1755-0998.2010.02847.x" xlink:type="simple">10.1111/j.1755-0998.2010.02847.x</ext-link></comment> <object-id pub-id-type="pmid">21565059</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Clement</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Posada</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Crandall</surname> <given-names>KA</given-names></name>. <article-title>TCS: a computer program to estimate gene genealogies</article-title>. <source>Mol Ecol</source>. <year>2000</year>; <volume>9</volume>: <fpage>1657</fpage>–<lpage>1659</lpage>. <object-id pub-id-type="pmid">11050560</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pritchard</surname> <given-names>JK</given-names></name>, <name name-style="western"><surname>Stephens</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Donnelly</surname> <given-names>P</given-names></name>. <article-title>Inference of population structure using multilocus genotype data</article-title>. <source>Genetics</source>. <year>2000</year>; <volume>155</volume>: <fpage>945</fpage>–<lpage>959</lpage>. <object-id pub-id-type="pmid">10835412</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Falush</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Stephens</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Pritchard</surname> <given-names>JK</given-names></name>. <article-title>Inference of population structure using multilocus genotype data: linked loci and correlated allele frequencies</article-title>. <source>Genetics</source>. <year>2003</year>; <volume>164</volume>: <fpage>1567</fpage>–<lpage>1587</lpage>. <object-id pub-id-type="pmid">12930761</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Falush</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Stephens</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Pritchard</surname> <given-names>JK</given-names></name>. <article-title>Inference of population structure using multilocus genotype data: dominant markers and null alleles</article-title>. <source>Mol Ecol Notes</source>. <year>2007</year>; <volume>7</volume>: <fpage>574</fpage>–<lpage>578</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1471-8286.2007.01758.x" xlink:type="simple">10.1111/j.1471-8286.2007.01758.x</ext-link></comment> <object-id pub-id-type="pmid">18784791</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hubisz</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Falush</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Stephens</surname> <given-names>M</given-names></name>., <name name-style="western"><surname>Pritchard</surname> <given-names>JK</given-names></name>. <article-title>Inferring weak population structure with the assistance of sample group information</article-title>. <source>Mol Ecol Resour</source>. <year>2009</year>; <volume>9</volume>: <fpage>1322</fpage>–<lpage>1332</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1755-0998.2009.02591.x" xlink:type="simple">10.1111/j.1755-0998.2009.02591.x</ext-link></comment> <object-id pub-id-type="pmid">21564903</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Evanno</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Regnaut</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Goudet</surname> <given-names>J</given-names></name>. <article-title>Detecting the number of clusters of individuals using the software Structure: a simulation study</article-title>. <source>Mol Ecol</source>. <year>2005</year>; <volume>14</volume>: <fpage>2611</fpage>–<lpage>2620</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1365-294X.2005.02553.x" xlink:type="simple">10.1111/j.1365-294X.2005.02553.x</ext-link></comment> <object-id pub-id-type="pmid">15969739</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Earl</surname> <given-names>DA</given-names></name>. <article-title>Structure Harvester: a website and program for visualizing STRUCTURE output and implementing the Evanno method</article-title>. <source>Conserv Gene Resour</source>. <year>2012</year>; <volume>4</volume>: <fpage>359</fpage>–<lpage>361</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kopelman</surname> <given-names>NM</given-names></name>, <name name-style="western"><surname>Mayzel</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Jakobsson</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Rosenberg</surname> <given-names>NA</given-names></name>, <name name-style="western"><surname>Mayrose</surname> <given-names>I</given-names></name>. <article-title>CLUMPAK: a program for identifying clustering modes and packaging population structure inferences across K</article-title>. <source>Mol Ecol Resour</source>. <year>2015</year>; <volume>15</volume>:<fpage>1179</fpage>–<lpage>1191</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/1755-0998.12387" xlink:type="simple">10.1111/1755-0998.12387</ext-link></comment> <object-id pub-id-type="pmid">25684545</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tajima</surname> <given-names>F</given-names></name>. <article-title>Statistical method for testing the neutral mutation hypothesis by DNA polymorphism</article-title>. <source>Genetics</source>. <year>1989</year>; <volume>123</volume>: <fpage>585</fpage>–<lpage>595</lpage>. <object-id pub-id-type="pmid">2513255</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fu</surname> <given-names>Y-X</given-names></name>. <article-title>Statistical tests of neutrality of mutations against population growth, hitchhiking and background selection</article-title>. <source>Genetics</source>. <year>1997</year>; <volume>147</volume>: <fpage>915</fpage>–<lpage>925</lpage>. <object-id pub-id-type="pmid">9335623</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xia</surname> <given-names>X</given-names></name>. <article-title>DAMBE5: A comprehensive software package for data analysis in molecular biology and evolution</article-title>. <source>Mol Biol Evol</source>. <year>2013</year>; <volume>30</volume>: <fpage>1720</fpage>–<lpage>1728</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/molbev/mst064" xlink:type="simple">10.1093/molbev/mst064</ext-link></comment> <object-id pub-id-type="pmid">23564938</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xia</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Xie</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Salemi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>Y</given-names></name>. <article-title>An index of substitution saturation and its application</article-title>. <source>Mol Phylogenet Evol</source>. <year>2003</year>; <volume>26</volume>: <fpage>1</fpage>–<lpage>7</lpage>. <object-id pub-id-type="pmid">12470932</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref027"><label>27</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Xia</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Lemey</surname> <given-names>P</given-names></name>. <chapter-title>Assessing substitution saturation with DAMBE</chapter-title>. In <name name-style="western"><surname>Lemey</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Salemi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Vandamme</surname> <given-names>AM</given-names></name>, editors. <source>The Phylogenetic Handbook: a practical approach to DNA and protein phylogeny</source>. <publisher-loc>Cambridge</publisher-loc>: <publisher-name>Cambridge University Press</publisher-name>; <year>2009</year>. p. <fpage>615</fpage>–<lpage>630</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Drummond</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Suchard</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Xie</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Rambaut</surname> <given-names>A</given-names></name>. <article-title>Bayesian phylogenetics with BEAUti and the BEAST 1.7</article-title>. <source>Mol Biol Evol</source>. <year>2012</year>; <volume>29</volume>: <fpage>1969</fpage>–<lpage>1973</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/molbev/mss075" xlink:type="simple">10.1093/molbev/mss075</ext-link></comment> <object-id pub-id-type="pmid">22367748</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Darriba</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Taboada</surname> <given-names>GL</given-names></name>, <name name-style="western"><surname>Doallo</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Posada</surname> <given-names>D</given-names></name>. <article-title>jModelTest 2: more models, new heuristics and parallel computing</article-title>. <source>Nat Methods</source>. <year>2012</year>; <volume>9</volume>: <fpage>772</fpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref030"><label>30</label><mixed-citation publication-type="other" xlink:type="simple">Rambaut A, Suchard MA, Xie D, Drummond AJ. Tracer v1.6 [software].2014 [cited 2016 Mai 5]. Available from: <ext-link ext-link-type="uri" xlink:href="http://beast.bio.ed.ac.uk/Tracer" xlink:type="simple">http://beast.bio.ed.ac.uk/Tracer</ext-link>.</mixed-citation></ref>
+<ref id="pone.0177414.ref031"><label>31</label><mixed-citation publication-type="other" xlink:type="simple">Rambaut A, Drummond AJ. Tree Annotator v1.8.2 [software]. 2002–2015 [cited 2016 Mai 5]. Available from: <ext-link ext-link-type="uri" xlink:href="http://beast.bio.ed.ac.uk/TreeAnnotator" xlink:type="simple">http://beast.bio.ed.ac.uk/TreeAnnotator</ext-link>.</mixed-citation></ref>
+<ref id="pone.0177414.ref032"><label>32</label><mixed-citation publication-type="other" xlink:type="simple">Rambaut A. FigTree v.1.4.2 [software]. 2006–2016 [cited 2016 Mai 5]. Available from: <ext-link ext-link-type="uri" xlink:href="http://beast.bio.ed.ac.uk/FigTree" xlink:type="simple">http://beast.bio.ed.ac.uk/FigTree</ext-link>.</mixed-citation></ref>
+<ref id="pone.0177414.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Templeton</surname> <given-names>AR</given-names></name>. <article-title>Nested clade analyses of phylogeographic data: testing hypothesis about gene flow and population history</article-title>. <source>Mol Ecol</source>. <year>1998</year>; <volume>7</volume>: <fpage>381</fpage>–<lpage>397</lpage>. <object-id pub-id-type="pmid">9627999</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Milot</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Lisle Gibbs</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Hobson</surname> <given-names>KA</given-names></name>. <article-title>Phylogeography and genetic structure of northern populations of the yellow warbler (<italic>Dendroica petechia</italic>)</article-title>. <source>Mol Ecol</source>. <year>2000</year>; <volume>9</volume>: <fpage>667</fpage>–<lpage>681</lpage>. <object-id pub-id-type="pmid">10849283</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Muwanika</surname> <given-names>VB</given-names></name>, <name name-style="western"><surname>Nyakaana</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Siegismund</surname> <given-names>HR</given-names></name>, <name name-style="western"><surname>Arctander</surname> <given-names>P</given-names></name>. <article-title>Phylogeography and population structure of the common warthog (<italic>Phacochoerus africanus</italic>) inferred from variation in mitochondrial DNA sequences and microsatellite loci</article-title>. <source>Heredity</source>. <year>2003</year>; <volume>91</volume>: <fpage>361</fpage>–<lpage>372</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/sj.hdy.6800341" xlink:type="simple">10.1038/sj.hdy.6800341</ext-link></comment> <object-id pub-id-type="pmid">14512951</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Godoy</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Negro</surname> <given-names>JJ</given-names></name>, <name name-style="western"><surname>Hiraldo</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Donázar</surname> <given-names>JA</given-names></name>. <article-title>Phylogeography, genetic structure and diversity in the endangered bearded vulture (<italic>Gypaetus barbatus</italic>, L.) as revealed by mitochondrial DNA</article-title>. <source>Mol Ecol</source>. <year>2004</year>; <volume>13</volume>: <fpage>371</fpage>–<lpage>390</lpage>. <object-id pub-id-type="pmid">14717893</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pellegrino</surname> <given-names>KCM</given-names></name>, <name name-style="western"><surname>Rodrigues</surname> <given-names>MT</given-names></name>, <name name-style="western"><surname>Waite</surname> <given-names>AN</given-names></name>, <name name-style="western"><surname>Morando</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Yassuda</surname> <given-names>YY</given-names></name>, <name name-style="western"><surname>Sites</surname> <given-names>JW</given-names> <suffix>Jr</suffix></name>. <article-title>Phylogeography and species limits in the <italic>Gymnodactylus darwinii</italic> complex (Gekkonidae, Squamata): genetic structure coincides with river systems in the Brazilian Atlantic Forest</article-title>. <source>Biol J Linn Soc Lond</source>. <year>2005</year>; <volume>85</volume>: <fpage>13</fpage>–<lpage>26</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Grazziotin</surname> <given-names>FG</given-names></name>, <name name-style="western"><surname>Monzel</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Echeverrigaray</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Bonatto</surname> <given-names>SL</given-names></name>. <article-title>Phylogeography of the <italic>Bothrops jararaca</italic> complex (Serpentes: Viperidae): past fragmentation and island colonization in the Brazilian Atlantic Forest</article-title>. <source>Mol Ecol</source>. <year>2006</year>; <volume>15</volume>: <fpage>3969</fpage>–<lpage>3982</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1365-294X.2006.03057.x" xlink:type="simple">10.1111/j.1365-294X.2006.03057.x</ext-link></comment> <object-id pub-id-type="pmid">17054497</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Horn</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Roux-Morabito</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Lieutier</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Kerdelhue</surname> <given-names>C</given-names></name>. <article-title>Phylogeographic structure and past history of the circum-Mediterranean species <italic>Tomicus destruens</italic> Woll. (Coleoptera: Scolytinae)</article-title>. <source>Mol Ecol</source>. <year>2006</year>; <volume>15</volume>: <fpage>1603</fpage>–<lpage>1615</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1365-294X.2006.02872.x" xlink:type="simple">10.1111/j.1365-294X.2006.02872.x</ext-link></comment> <object-id pub-id-type="pmid">16629814</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Finn</surname> <given-names>DS</given-names></name>, <name name-style="western"><surname>Blouin</surname> <given-names>MS</given-names></name>, <name name-style="western"><surname>Lytle</surname> <given-names>DA</given-names></name>. <article-title>Population genetic structure reveals terrestrial affinities for a headwater stream insect</article-title>. <source>Freshw Biol</source>. <year>2007</year>; <volume>52</volume>: <fpage>1881</fpage>–<lpage>1897</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref041"><label>41</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Turchetto-Zolet</surname> <given-names>AC</given-names></name>, <name name-style="western"><surname>Cruz</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Vendramin</surname> <given-names>GG</given-names></name>, <name name-style="western"><surname>Simon</surname> <given-names>MF</given-names></name>, <name name-style="western"><surname>Salgueiro</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Margis-Pinheiro</surname> <given-names>M</given-names></name>, <etal>et al</etal>. <article-title>Large-scale phylogeography of the disjunct Neotropical tree species <italic>Schizolobium parahyba</italic> (Fabaceae-Caesalpinioideae)</article-title>. <source>Mol Phylogenet Evol</source>. <year>2012</year>; <volume>65</volume>: <fpage>174</fpage>–<lpage>182</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.ympev.2012.06.012" xlink:type="simple">10.1016/j.ympev.2012.06.012</ext-link></comment> <object-id pub-id-type="pmid">22750114</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref042"><label>42</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Canestrelli</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Bisconti</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Sacco</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Nascetti</surname> <given-names>G</given-names></name>. <article-title>What triggers the rising of an intraspecific biodiversity hotspot? Hints from the agile frog</article-title>. <source>Sci Rep</source>. <year>2014</year>; <volume>4</volume>: <fpage>5042</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/srep05042" xlink:type="simple">10.1038/srep05042</ext-link></comment> <object-id pub-id-type="pmid">24853644</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref043"><label>43</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Viñas</surname> <given-names>MD</given-names></name>, <name name-style="western"><surname>Blanco-Bercial</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Bucklinb</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Verheye</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Bersano</surname> <given-names>JGF</given-names></name>, <name name-style="western"><surname>Ceballos</surname> <given-names>S</given-names></name>. <article-title>Phylogeography of the copepod <italic>Calanoides carinatus</italic> s. l. (Krøyer) reveals cryptic species and delimits <italic>C</italic>. <italic>carinatus</italic> s. s. distribution in SW Atlantic Ocean</article-title>. <source>J Exp Mar Bio Ecol</source>. <year>2015</year>; <volume>468</volume>: <fpage>97</fpage>–<lpage>104</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref044"><label>44</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ware</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Litman</surname> <given-names>JE</given-names></name>, <name name-style="western"><surname>Klass</surname> <given-names>KD</given-names></name>, <name name-style="western"><surname>Spearman</surname> <given-names>LA</given-names></name>. <article-title>Relationships among the major lineages of Dictyoptera: the effect of outgroup selection on dictyopteran tree topology</article-title>. <source>Syst Entomol</source>. <year>2008</year>; <volume>33</volume>: <fpage>429</fpage>–<lpage>450</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref045"><label>45</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Luo</surname> <given-names>AR</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>YZ</given-names></name>, <name name-style="western"><surname>Qiao</surname> <given-names>HJ</given-names></name>, <name name-style="western"><surname>Shi</surname> <given-names>WF</given-names></name>, <name name-style="western"><surname>Murphy</surname> <given-names>RW</given-names></name>, <name name-style="western"><surname>Zhu</surname> <given-names>CD</given-names></name>. <article-title>Outgroup selection in tree reconstruction: a case study of the family Halictidae (Hymenoptera: Apoidea)</article-title>. <source>Acta Entomol Sin</source>. <year>2010</year>; <volume>53</volume>: <fpage>192</fpage>–<lpage>201</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref046"><label>46</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ferreri</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Qu</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Han</surname> <given-names>B</given-names></name>. <article-title>Phylogenetic networks: A tool to display character conflict and demographic history</article-title>. <source>Afr J Biotechnol</source>.<year>2011</year>; <volume>10</volume>: <fpage>12799</fpage>–<lpage>12803</lpage>.</mixed-citation></ref>
+<ref id="pone.0177414.ref047"><label>47</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ramos-Onsins</surname> <given-names>SE</given-names></name>, <name name-style="western"><surname>Rozas</surname> <given-names>J</given-names></name>. <article-title>Statistical properties of new neutrality tests against population growth</article-title>. <source>Mol Biol Evol</source>. <year>2002</year>; <volume>19</volume>: <fpage>2092</fpage>–<lpage>2100</lpage>. <object-id pub-id-type="pmid">12446801</object-id></mixed-citation></ref>
+<ref id="pone.0177414.ref048"><label>48</label><mixed-citation publication-type="other" xlink:type="simple">Hartl DL, Clark AG. Princípios de genética de populações. 4th ed. Porto Alegre: Artmed; 2010.</mixed-citation></ref>
+</ref-list>
+</back>
+</article>

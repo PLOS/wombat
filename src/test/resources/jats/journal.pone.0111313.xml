@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id><journal-title-group>
+<journal-title>PLoS ONE</journal-title></journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="publisher-id">PONE-D-14-19290</article-id>
+<article-id pub-id-type="doi">10.1371/journal.pone.0111313</article-id>
+<article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Biology and life sciences</subject><subj-group><subject>Ecology</subject></subj-group></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Ecology and environmental sciences</subject><subj-group><subject>Soil science</subject><subj-group><subject>Soil ecology</subject></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Nitrogen-Fixing Bacteria in <italic>Eucalyptus globulus</italic> Plantations</article-title>
+<alt-title alt-title-type="running-head">Nitrogen-Fixing Bacteria in <italic>Eucalyptus globulus</italic></alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>da Silva</surname><given-names>Marliane de Cássia Soares</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Paula</surname><given-names>Thiago de Almeida</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Moreira</surname><given-names>Bruno Coutinho</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Carolino</surname><given-names>Manuela</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Cruz</surname><given-names>Cristina</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Bazzolli</surname><given-names>Denise Mara Soares</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Silva</surname><given-names>Cynthia Canedo</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Kasuya</surname><given-names>Maria Catarina Megumi</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+</contrib-group>
+<aff id="aff1"><label>1</label><addr-line>Departamento de Microbiologia, Universidade Federal de Viçosa, Viçosa, Minas Gerais, Brazil</addr-line></aff>
+<aff id="aff2"><label>2</label><addr-line>Faculdade de Ciências da Universidade de Lisboa, Centro de Biologia Ambiental, Lisboa, Campo Grande, Portugal</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Lin</surname><given-names>Wen-Xiong</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Agroecological Institute, China</addr-line></aff>
+<author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">mkasuya@ufv.br</email></corresp>
+<fn fn-type="conflict"><p>The authors have declared that no competing interests exist.</p></fn>
+<fn fn-type="con"><p>Conceived and designed the experiments: MCSDS MCMK CC MC. Performed the experiments: MCSDS TAP BCM. Analyzed the data: MCSDS TAP BCM CCS DMSB. Contributed reagents/materials/analysis tools: MCMK CC MC DMSB. Wrote the paper: MCSDS MCMK CC DMSB BCM.</p></fn>
+</author-notes>
+<pub-date pub-type="collection"><year>2014</year></pub-date>
+<pub-date pub-type="epub"><day>23</day><month>10</month><year>2014</year></pub-date>
+<volume>9</volume>
+<issue>10</issue>
+<elocation-id>e111313</elocation-id>
+<history>
+<date date-type="received"><day>7</day><month>5</month><year>2014</year></date>
+<date date-type="accepted"><day>23</day><month>9</month><year>2014</year></date>
+</history>
+<permissions>
+<copyright-year>2014</copyright-year>
+<copyright-holder>da Silva et al</copyright-holder><license xlink:type="simple"><license-p>This is an open-access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions>
+<abstract>
+<p>Eucalypt cultivation is an important economic activity worldwide. In Portugal, <italic>Eucalyptus globulus</italic> plantations account for one-third of the total forested area. The nutritional requirements of this crop have been well studied, and nitrogen (N) is one of the most important elements required for vegetal growth. N dynamics in soils are influenced by microorganisms, such as diazotrophic bacteria (DB) that are responsible for biological nitrogen fixation (BNF), so the aim of this study was to evaluate and identity the main groups of DB in <italic>E. globulus</italic> plantations. Samples of soil and root systems were collected in winter and summer from three different Portuguese regions (Penafiel, Gavião and Odemira). We observed that DB communities were affected by season, N fertilization and moisture. Furthermore <italic>Bradyrhizobium</italic> and <italic>Burkholderia</italic> were the most prevalent genera in these three regions. This is the first study describing the dynamic of these bacteria in <italic>E. globulus</italic> plantations, and these data will likely contribute to a better understanding of the nutritional requirements of eucalypt cultivation and associated organic matter turnover.</p>
+</abstract>
+<funding-group><funding-statement>The authors thank Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq), Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES) and Fundação de Amparo à Pesquisa do estado de Minas Gerais (FAPEMIG). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts><page-count count="12"/></counts><custom-meta-group><custom-meta id="data-availability" xlink:type="simple"><meta-name>Data Availability</meta-name><meta-value>The authors confirm that all data underlying the findings are fully available without restriction. All relevant data are within the paper and its Supporting Information files.</meta-value></custom-meta></custom-meta-group></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p><italic>Eucalyptus globulus</italic> Labill. occurs naturally in Tasmania and southwest Australia and was introduced into Portugal in the 1950s. The genus <italic>Eucalyptus</italic> belongs to the family Myrtaceae and is comprised of a variety of species distributed throughout the world and grown under a wide variety of environmental conditions <xref ref-type="bibr" rid="pone.0111313-ABRAF1">[1]</xref>. Eucalypts are cultivated primarily for the production of cellulose, paper, boards, plywood sheets, charcoal and pharmaceuticals <xref ref-type="bibr" rid="pone.0111313-ABRAF1">[1]</xref>. It is estimated that in 2030, due to strong demand, annual lumber consumption by industries will reach 2.44 billion m<sup>3</sup>, which represents a 45% increase over consumption in 2005 <xref ref-type="bibr" rid="pone.0111313-FAO1">[2]</xref>. The rapid growth of eucalypts demands high availability of soil nutrients, especially nitrogen (N), which is absorbed and accumulated in large quantities <xref ref-type="bibr" rid="pone.0111313-Smerthurst1">[3]</xref>, <xref ref-type="bibr" rid="pone.0111313-Gobert1">[4]</xref>. The productivity of eucalypt forests is directly related to the nutrient balance of the soil.</p>
+<p>Nitrogen in the atmosphere (N<sub>2</sub>) is the primary N reservoir and can be made available through the process of biological nitrogen fixation (BNF). Due to their high energy costs, BNF processes are restricted to microorganisms that have the nitrogenase enzyme complex <xref ref-type="bibr" rid="pone.0111313-Vitousek1">[5]</xref>. These N-fixing microorganisms can be free-living, associative or mutualistic <xref ref-type="bibr" rid="pone.0111313-Smith1">[6]</xref>, <xref ref-type="bibr" rid="pone.0111313-James1">[7]</xref>.</p>
+<p>The association of diazotrophic bacteria (DB) with different plant species has been detected using various microbiological and molecular biological techniques <xref ref-type="bibr" rid="pone.0111313-Rosado1">[8]</xref>–<xref ref-type="bibr" rid="pone.0111313-Wartiainen1">[10]</xref>. Studies of these bacteria represent new ways of understanding the dynamics of the microbial communities involved in N cycling, especially with the use of genes that encode enzymes involved in BNF. The <italic>nifH</italic> gene, which encodes nitrogenase reductase, is an example of these genes <xref ref-type="bibr" rid="pone.0111313-Rosado1">[8]</xref>, <xref ref-type="bibr" rid="pone.0111313-Rosch1">[11]</xref>, <xref ref-type="bibr" rid="pone.0111313-Hong1">[12]</xref>.</p>
+<p>The nested polymerase chain reaction with denaturing gradient gel electrophoresis (Nested-PCR-DGGE) techniques using the <italic>nifH</italic> gene is an efficient tool for detecting microorganisms that are directly related to N cycling. DGGE can monitor changes in the community structure in response to changes in environmental parameters <xref ref-type="bibr" rid="pone.0111313-Wartiainen1">[10]</xref>, <xref ref-type="bibr" rid="pone.0111313-Myers1">[13]</xref>–<xref ref-type="bibr" rid="pone.0111313-Muyzer1">[16]</xref>.</p>
+<p>Despite the commercial and economic importance of eucalypts, there are very few studies of the microbial communities in their ecosystems, and little is known of how soil microorganisms interact with and benefit eucalypt N nutrition. Furthermore, the adaptation of eucalypts to different environments could be related to their interactions with soil microorganisms, including DB, which have been found to be associated with eucalypt trees in the equatorial climate of Colombia <xref ref-type="bibr" rid="pone.0111313-Castellanos1">[17]</xref>. Thus, our hypothesis is that there are endophytic or free-living DB associated to <italic>E. globulus</italic> in the studied regions, and that these can contribute to eucalypt N nutrition. The aims of this study were to evaluate the DB community's dynamics, identify the main groups of DB in <italic>E. globulus</italic> plantations, and the effects of season and N fertilization on these microorganisms.</p>
+</sec><sec id="s2" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="s2a">
+<title>Letter of authorization</title>
+<p>In 2010, a cooperation protocol was established between the Institute of Forest and Paper Research (RAIZ Institute) of the Portucel Soporcel Group and FCUL (Science Faculty of the University of Lisbon) in the context of the latter's research project “The importance of cooperation in microbial genomics nitrogen use efficiency – The case of Eucalyptus” coordinated by Dr. Cristina Cruz. In general, the RAIZ pledged to cede some areas to allow field studies necessary for the development of the study, and in return, information of interest related to this project would be provided to RAIZ for its internal research “Dynamic N in forest soils”. The field work was led by the researcher and doctoral student Marliane Cassia Soares da Silva, FCUL, with the support of RAIZ's Lands and Forest Nutrition team and field technicians. Three study sites were selected and sampled over two seasons (winter and summer). Samples from the soil were taken according to the methodology of FCUL. RAIZ supplied information on existing methods to be used in the study, especially with regard to forestry and historical specificities of selected treatments within the trials. Authority responsible: Sergio Fabres (<email xlink:type="simple">sergio.fabres@portucelsoporcel.com</email>) and Daniela Ferreira: (<email xlink:type="simple">daniela.ferreira@portucelsoporcel.com</email>).</p>
+</sec><sec id="s2b">
+<title>Study site</title>
+<p>This study was carried out in <italic>E. globulus</italic> plantations owned by the Portucel-Soporcel Group, in three regions of Portugal: Penafiel in the north, Gavião in the central and Odemira in the south region. To realisation, this study an accord of cooperation was established between the Portucel-Soporcel Group and Faculty of Science, University of Lisbon. These plantations were about 8 years old. The three regions were selected due to their distinct soil physicochemical properties, rainfall and climate (<xref ref-type="table" rid="pone-0111313-t001">Table 1</xref>). In January (winter) and June 2011 (summer), samples of soil and root systems were collected from two plots within each plantation, which both had received the initial N fertilization (3.3 g N per plant) upon being planted, and only one plot from each plantation had then received N maintenance fertilization (60 kg N ha<sup>−1</sup>y<sup>−1</sup>) in the period 2004–2007. So, six plots were sampled.</p>
+<table-wrap id="pone-0111313-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111313.t001</object-id><label>Table 1</label><caption>
+<title>Soil characteristics, rainfall and climate for the <italic>Eucalyptus globulus</italic> in the Penafiel, Gavião and Odemira regions.</title>
+</caption><alternatives><graphic id="pone-0111313-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111313.t001" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1">Region</td>
+<td colspan="2" align="left" rowspan="1">Textural Class</td>
+<td colspan="2" align="left" rowspan="1">FAO Classification (1998)</td>
+<td align="left" rowspan="1" colspan="1">Lithology</td>
+<td align="left" rowspan="1" colspan="1">Stony (%)</td>
+<td align="left" rowspan="1" colspan="1">Average Rainfall annual (mm)</td>
+<td align="left" rowspan="1" colspan="1">Winter</td>
+<td align="left" rowspan="1" colspan="1">Summer</td>
+<td colspan="2" align="left" rowspan="1">Average Temperature annual (°C)</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Penafiel</td>
+<td colspan="2" align="left" rowspan="1">Sandy loam</td>
+<td colspan="2" align="left" rowspan="1">Regosols epileptic</td>
+<td align="left" rowspan="1" colspan="1">Sediments</td>
+<td align="left" rowspan="1" colspan="1">10%</td>
+<td align="left" rowspan="1" colspan="1">1500</td>
+<td align="left" rowspan="1" colspan="1">Fresh</td>
+<td align="left" rowspan="1" colspan="1">Moderate</td>
+<td colspan="2" align="left" rowspan="1">12.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gavião</td>
+<td colspan="2" align="left" rowspan="1">Sandy loam</td>
+<td colspan="2" align="left" rowspan="1">Regosols epileptic skeletic</td>
+<td align="left" rowspan="1" colspan="1">Shale and Grauvaques</td>
+<td align="left" rowspan="1" colspan="1">5%</td>
+<td align="left" rowspan="1" colspan="1">850</td>
+<td align="left" rowspan="1" colspan="1">Moderate</td>
+<td align="left" rowspan="1" colspan="1">Hot</td>
+<td colspan="2" align="left" rowspan="1">9.7</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Odemira</td>
+<td colspan="2" align="left" rowspan="1">Sandy loam</td>
+<td colspan="2" align="left" rowspan="1">Umbrisol endoleptic arenic</td>
+<td align="left" rowspan="1" colspan="1">Granite</td>
+<td align="left" rowspan="1" colspan="1">50%</td>
+<td align="left" rowspan="1" colspan="1">750</td>
+<td align="left" rowspan="1" colspan="1">Moderate</td>
+<td align="left" rowspan="1" colspan="1">Hot</td>
+<td colspan="2" align="left" rowspan="1">14.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><bold>N</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>P</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>K</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Ca</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Mg</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Na</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>B</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Cu</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Zn</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Fe</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Mn</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><bold>g Kg<sup>−1</sup></bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>mg Kg<sup>−1</sup></bold></td>
+<td colspan="4" align="left" rowspan="1"><bold>cmol Kg<sup>−1</sup></bold></td>
+<td colspan="5" align="left" rowspan="1"><bold>mg Kg<sup>−1</sup></bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Penafiel</td>
+<td align="left" rowspan="1" colspan="1">1.3</td>
+<td align="left" rowspan="1" colspan="1">4.8</td>
+<td align="left" rowspan="1" colspan="1">0.09</td>
+<td align="left" rowspan="1" colspan="1">0.08</td>
+<td align="left" rowspan="1" colspan="1">0.05</td>
+<td align="left" rowspan="1" colspan="1">0.07</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">0.3</td>
+<td align="left" rowspan="1" colspan="1">0.7</td>
+<td align="left" rowspan="1" colspan="1">168</td>
+<td align="left" rowspan="1" colspan="1">4.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gavião</td>
+<td align="left" rowspan="1" colspan="1">1.12</td>
+<td align="left" rowspan="1" colspan="1">0.4</td>
+<td align="left" rowspan="1" colspan="1">0.6</td>
+<td align="left" rowspan="1" colspan="1">0.77</td>
+<td align="left" rowspan="1" colspan="1">0.4</td>
+<td align="left" rowspan="1" colspan="1">0.03</td>
+<td align="left" rowspan="1" colspan="1">0.5</td>
+<td align="left" rowspan="1" colspan="1">1.8</td>
+<td align="left" rowspan="1" colspan="1">1.3</td>
+<td align="left" rowspan="1" colspan="1">52</td>
+<td align="left" rowspan="1" colspan="1">0.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Odemira</td>
+<td align="left" rowspan="1" colspan="1">2.25</td>
+<td align="left" rowspan="1" colspan="1">7.0</td>
+<td align="left" rowspan="1" colspan="1">0.14</td>
+<td align="left" rowspan="1" colspan="1">0.58</td>
+<td align="left" rowspan="1" colspan="1">0.48</td>
+<td align="left" rowspan="1" colspan="1">0.22</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">0.3</td>
+<td align="left" rowspan="1" colspan="1">0.7</td>
+<td align="left" rowspan="1" colspan="1">41</td>
+<td align="left" rowspan="1" colspan="1">61.6</td>
+</tr>
+</tbody>
+</table>
+</alternatives></table-wrap></sec><sec id="s2c">
+<title>Sampling</title>
+<p>Three composite samples were collected from each plot. Each composite samples consisting of soil or roots collected from three neighbouring trees. In each tree, ten random points were sampled in a radius of 40 cm around the trunk at a depth of 0–10 cm. The fragments of roots were composed primarily of fine roots (0–1 mm in diameter). The samples were placed in plastic bags and stored on ice, transported to the laboratory, and then stored at −20°C for up to two months before analysis.</p>
+</sec><sec id="s2d">
+<title>Soil characterization</title>
+<p>Soil samples were classified according to the FAO/UNESCO (<xref ref-type="table" rid="pone-0111313-t001">Table 1</xref>). These samples were weighed and placed in an oven at 60°C for 48 h to determine moisture content.</p>
+<p>Organic matter content was determined using the loss-on-ignition method. One gram of soil was weighed in a porcelain crucible and placed in a muffle furnace (Nabertherm 30–3000°C, model L3, Germany) at 500°C for 12 h <xref ref-type="bibr" rid="pone.0111313-Schulte1">[18]</xref>.</p>
+<p>Soil extracts were prepared in potassium chlorate (2 mol L<sup>−1</sup>) using 2 g of soil for pH determination in distilled water made up to a final volume of 20 mL. A second soil extract was prepared by placing 2 g of soil from each sample in distilled water made up to a final volume of 20 mL, then incubating the mixture under constant agitation for 1 h. A 10 mL of this extract was then centrifuged and used to determine the ammonia concentration by the colorimetric method <xref ref-type="bibr" rid="pone.0111313-Mulvaney1">[19]</xref>. Absorbance was measured on a microplate reader (Spectra Rainbow – TECAN) at 665 nm.</p>
+</sec><sec id="s2e">
+<title>Urease activity</title>
+<p>Urease activity in the soil was determined using the colorimetric method according to Kandeler and Gerber <xref ref-type="bibr" rid="pone.0111313-Kandeler1">[20]</xref>. Assays were performed in triplicate with one gram of soil for each composite samples and absorbance were determined on a microplate reader (Spectra Rainbow – TECAN) at 665 nm.</p>
+</sec><sec id="s2f">
+<title>Determination of nitrification potential</title>
+<p>The nitrification potential of ammonia-oxidizing bacteria was determined using 15 g of fresh soil exposed to an ammonium sulfate solution. The accumulation of nitrite over a 6 h incubation period was then measured. Three replicates were performed for each composite samples. The soil was incubated for 6 h at 27°C at 760 rpm constant agitation in a solution containing ammonium sulfate, dibasic potassium phosphate, monobasic potassium phosphate and sodium chlorate to inhibit nitrite oxidation (according to the ISO 15685 standard). The reaction was stopped with potassium chlorate and the samples were centrifuged; the nitrite concentrations were then determined using solutions of sulfanilamide and N-(1-Naphthyl) ethylenediamine. The absorbance was determined on a microplate reader (Spectra Rainbow – TECAN) at 545 nm.</p>
+</sec><sec id="s2g">
+<title>Isolation and quantification of diazotrophic bacteria</title>
+<p>The number of DB was quantified by plate counts on LGI culture medium <xref ref-type="bibr" rid="pone.0111313-Dobereiner1">[21]</xref>. Ten grams of soil from composite samples were placed in an Erlenmeyer flask containing 90 mL of saline solution (0.9% w/v of sodium chlorate) and kept under constant agitation at 760 rpm for 1 h. Serial dilutions were then performed in saline solutions up to 10<sup>−6</sup>, and 0.1 mL of each dilution was plated on LGI medium. The analyses were conducted in triplicate.</p>
+</sec><sec id="s2h">
+<title>Nested-PCR of <italic>nifH</italic> genes</title>
+<p>Total DNA was extracted from 250 mg of the root system and soil samples using an <italic>UltraClean PowerSoil</italic> kit (Mobio Laboratories, <italic>Solana Beach, CA</italic>, USA) according to the manufacturer's instructions.</p>
+<p>The total DNA was used as template in a PCR reaction to amplify the <italic>nifH</italic> gene, which is involved in the N fixation process. The primers 19F and 407R used to amplify <italic>nifH</italic>, producing a 390 bp fragment, as described by Ueda et al. <xref ref-type="bibr" rid="pone.0111313-Ueda1">[22]</xref>. This step was followed by nested-PCR using the oligonucleotides 19F-C (with addition of the GC-clamp) and the primer 278R <xref ref-type="bibr" rid="pone.0111313-Coelho1">[24]</xref>, which yields a 260-bp fragment. The PCR mixture consisted of 20 ng of total DNA, 0.2 µM of each oligonucleotide, 200 µM dNTP, 2 mM MgCl<sub>2</sub>, 0.5 mg mL<sup>−1</sup> bovine serum albumin (BSA) and 1.25 units of GO Taq DNA polymerase (Promega, Madison, USA) in a total reaction volume of 50 µL. PCR reaction cycling conditions were those described by Direito and Teixeira <xref ref-type="bibr" rid="pone.0111313-Direito1">[23]</xref>.</p>
+</sec><sec id="s2i">
+<title>DGGE</title>
+<p>The DNA fragments obtained using the nested-PCR technique on the soil and fine root samples were analysed by DGGE (DCode System, Bio-Rad Inc., California). DNA extracted from pure cultures of DB of the genera <italic>Pseudomonas fluorescens</italic>, <italic>Bradyrhizobium</italic> sp., <italic>Bradyrhizobium elkanii</italic>, <italic>Bradyrhizobium japonicum</italic>, <italic>Rhizobium tropici</italic>, <italic>Burkholderia brasiliensis</italic>, <italic>Burkholderia sabiae</italic>, <italic>Stenotrophomonas maltrophila</italic>, and <italic>Acinetobacter calcoaceticus</italic> were used as templates in nested-PCR, and the amplicons obtained were used as external markers. A 20 µL sample of the nested-PCR products ranging from 150 to 200 ng of DNA was loaded onto an 8% (w/v) polyacrylamide gel in 1 X Tris-acetate-EDTA (TAE) buffer. The gel was prepared with a denaturing gradient ranging from 50% to 65% (where 100% denaturation indicates a concentration of 7 mol L<sup>−1</sup> urea and 40% formamide). The gel was subjected to vertical electrophoresis at 60 V for 12 h at 60°C, then stained for 40 min with <italic>Sybr Gold</italic> (1x) (Molecular Probes, Leiden, The Netherlands); the gel was then photographed under UV light on a Molecular Imaging System (Loccus Biotecnologic L-Pix Chemi). The bands of interest were excised, eluted, used as templates in a new PCR reaction using the same primers but without addition of the GC-clamp <xref ref-type="bibr" rid="pone.0111313-Coelho1">[24]</xref>, and then sequenced by Macrogen, Inc. (Korea). All sequences obtained in the present study were edited using Sequencher software (Version 4.1, Gene Codes Corp., Ann Arbor, USA). The results were analysed by comparing the obtained sequences with those deposited in the GenBank database using the BLASTx search tool (NCBI).</p>
+</sec><sec id="s2j">
+<title>Statistical analyses</title>
+<p>The analyses of soil characterization were made in triplicate. The data were subjected to variance analysis (ANOVA), and mean values were compared using Tukey's test (p&lt;0.05) by Saeg software (version 9.1, Universidade Federal de Viçosa).</p>
+<p>The DGGE profiles, aligned based on the external markers, were analysed and compared using BioNumerics software (Version 5.1, Applied Maths NV). The bands were identified and the areas corresponding to each band were quantified relative to total sample area, allowing for normalization and subsequent comparisons between samples. The correlations between the environmental data and the occurrence of DGGE bands and their intensities were determined using Principal Component Analysis (PCA) with Canoco software (version 4.5, Biometris, Wageningen, Netherlands). Distinct bands observed in the DGGE gels were considered to be different species, and their relative intensities were considered to be the frequency at which these species occur. The ammonia, urease, organic matter, moisture and pH results were considered as environmental variables.</p>
+</sec></sec><sec id="s3">
+<title>Results</title>
+<sec id="s3a">
+<title>Soil characterization</title>
+<p>Soils were acidic and moisture varied greatly with season and region, reaching very low values in summer, specially in Gavião. Ammonia was present in very small amounts both in winter and summer, even in the areas which received N fertilizer (<xref ref-type="table" rid="pone-0111313-t002">Table 2</xref>). At all regions, the nitrification potential was very low and the urease activity was influenced by the season analysed.</p>
+<table-wrap id="pone-0111313-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111313.t002</object-id><label>Table 2</label><caption>
+<title>Physicochemical characteristics of the soils of the studied <italic>Eucalyptus globulus</italic> plantations in the Penafiel, Gavião and Odemira regions.</title>
+</caption><alternatives><graphic id="pone-0111313-t002-2" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111313.t002" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1">Region</td>
+<td align="left" rowspan="1" colspan="1">Treatment</td>
+<td colspan="2" align="left" rowspan="1">Organic matter (%)</td>
+<td colspan="2" align="left" rowspan="1">pH</td>
+<td colspan="2" align="left" rowspan="1">Moisture (%)</td>
+<td colspan="2" align="left" rowspan="1">Urease activity (µg N-NH<sub>4</sub> g<sup>−1</sup> dry soil h<sup>−1</sup>)</td>
+<td colspan="2" align="left" rowspan="1">Ammonia (µg N-NH<sub>4</sub> g<sup>−1</sup> dry soil)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">winter</td>
+<td align="left" rowspan="1" colspan="1">summer</td>
+<td align="left" rowspan="1" colspan="1">winter</td>
+<td align="left" rowspan="1" colspan="1">summer</td>
+<td align="left" rowspan="1" colspan="1">winter</td>
+<td align="left" rowspan="1" colspan="1">summer</td>
+<td align="left" rowspan="1" colspan="1">winter</td>
+<td align="left" rowspan="1" colspan="1">summer</td>
+<td align="left" rowspan="1" colspan="1">winter</td>
+<td align="left" rowspan="1" colspan="1">summer</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Penafiel</td>
+<td align="left" rowspan="1" colspan="1">WNF</td>
+<td align="left" rowspan="1" colspan="1">7.57±0.98</td>
+<td align="left" rowspan="1" colspan="1">9.02±1.56</td>
+<td align="left" rowspan="1" colspan="1">3.76±0.08</td>
+<td align="left" rowspan="1" colspan="1">3.85±0.08</td>
+<td align="left" rowspan="1" colspan="1">16.53±1.95</td>
+<td align="left" rowspan="1" colspan="1">9.36±0.99</td>
+<td align="left" rowspan="1" colspan="1">9.48±2.62</td>
+<td align="left" rowspan="1" colspan="1">19.32±18.19</td>
+<td align="left" rowspan="1" colspan="1">4.96±8.12</td>
+<td align="left" rowspan="1" colspan="1">0.00±0.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">NF</td>
+<td align="left" rowspan="1" colspan="1">9.42±0.87</td>
+<td align="left" rowspan="1" colspan="1">9.46±0.76</td>
+<td align="left" rowspan="1" colspan="1">3.79±0.07</td>
+<td align="left" rowspan="1" colspan="1">4.04±0.38</td>
+<td align="left" rowspan="1" colspan="1">14.68±3.91</td>
+<td align="left" rowspan="1" colspan="1">8.34±2.32</td>
+<td align="left" rowspan="1" colspan="1">10.49±6.63</td>
+<td align="left" rowspan="1" colspan="1">8.12±14.06</td>
+<td align="left" rowspan="1" colspan="1">0.00±0.00</td>
+<td align="left" rowspan="1" colspan="1">1.09±1.89</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gavião</td>
+<td align="left" rowspan="1" colspan="1">WNF</td>
+<td align="left" rowspan="1" colspan="1">5.24±1.38</td>
+<td align="left" rowspan="1" colspan="1">4.82±0.07</td>
+<td align="left" rowspan="1" colspan="1">4.17±0.07</td>
+<td align="left" rowspan="1" colspan="1">4.08±0.10</td>
+<td align="left" rowspan="1" colspan="1">11.64±2.20</td>
+<td align="left" rowspan="1" colspan="1">5.75±2.04</td>
+<td align="left" rowspan="1" colspan="1">1.73±1.81</td>
+<td align="left" rowspan="1" colspan="1">13.92±6.00</td>
+<td align="left" rowspan="1" colspan="1">2.25±3.89</td>
+<td align="left" rowspan="1" colspan="1">2.67±4.62</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">NF</td>
+<td align="left" rowspan="1" colspan="1">7.66±3.12</td>
+<td align="left" rowspan="1" colspan="1">6.05±0.06</td>
+<td align="left" rowspan="1" colspan="1">3.75±0.06</td>
+<td align="left" rowspan="1" colspan="1">3.79±0.17</td>
+<td align="left" rowspan="1" colspan="1">10.50±1.17</td>
+<td align="left" rowspan="1" colspan="1">4.49±0.85</td>
+<td align="left" rowspan="1" colspan="1">0.00±0.00</td>
+<td align="left" rowspan="1" colspan="1">5.85±8.33</td>
+<td align="left" rowspan="1" colspan="1">0.00±0.00</td>
+<td align="left" rowspan="1" colspan="1">0.00±0.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Odemira</td>
+<td align="left" rowspan="1" colspan="1">WNF</td>
+<td align="left" rowspan="1" colspan="1">12.74±0.40</td>
+<td align="left" rowspan="1" colspan="1">17.50±3.98</td>
+<td align="left" rowspan="1" colspan="1">3.43±0.17</td>
+<td align="left" rowspan="1" colspan="1">4.74±1.32</td>
+<td align="left" rowspan="1" colspan="1">18.22±1.08</td>
+<td align="left" rowspan="1" colspan="1">15.20±0.75</td>
+<td align="left" rowspan="1" colspan="1">14.92±7.55</td>
+<td align="left" rowspan="1" colspan="1">26.06±8.01</td>
+<td align="left" rowspan="1" colspan="1">3.80±6.58</td>
+<td align="left" rowspan="1" colspan="1">6.10±6.72</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">NF</td>
+<td align="left" rowspan="1" colspan="1">12.85±0.95</td>
+<td align="left" rowspan="1" colspan="1">14.09±1.90</td>
+<td align="left" rowspan="1" colspan="1">3.20±0.06</td>
+<td align="left" rowspan="1" colspan="1">3.52±0.03</td>
+<td align="left" rowspan="1" colspan="1">21.04±1.61</td>
+<td align="left" rowspan="1" colspan="1">15.66±2.73</td>
+<td align="left" rowspan="1" colspan="1">8.76±2.04</td>
+<td align="left" rowspan="1" colspan="1">29.29±18.38</td>
+<td align="left" rowspan="1" colspan="1">0.00±0.00</td>
+<td align="left" rowspan="1" colspan="1">0.00±0.00</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt101"><label/><p>WNF- Without nitrogen maintenance fertilization; NF – with nitrogen maintenance fertilization.</p></fn></table-wrap-foot></table-wrap></sec><sec id="s3b">
+<title>Quantification of culturable diazotrophic bacteria (DB)</title>
+<p>Culturable diazotrophic bacteria were found in all studied areas. However, no influence of region, season or N fertilization on the number of culturable DB was observed (CFU; p&gt;0.05) (<xref ref-type="table" rid="pone-0111313-t003">Table 3</xref>).</p>
+<table-wrap id="pone-0111313-t003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111313.t003</object-id><label>Table 3</label><caption>
+<title>Influence of nitrogen maintenance fertilization and season on Colony Forming Unit (CFU) counts of diazotrophic bacteria in soil samples from <italic>Eucalyptus globulus</italic> plantations in the Penafiel, Odemira and Gavião regions.</title>
+</caption><alternatives><graphic id="pone-0111313-t003-3" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111313.t003" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1">Region</td>
+<td align="left" rowspan="1" colspan="1">Treatment</td>
+<td colspan="2" align="left" rowspan="1">Log (CFU) g<sup>−1</sup> dry soil</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Winter</td>
+<td align="left" rowspan="1" colspan="1">Summer</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Penafiel</td>
+<td align="left" rowspan="1" colspan="1">WNF</td>
+<td align="left" rowspan="1" colspan="1">5.26±0.35</td>
+<td align="left" rowspan="1" colspan="1">5.61±0.14</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">NF</td>
+<td align="left" rowspan="1" colspan="1">5.67±0.09</td>
+<td align="left" rowspan="1" colspan="1">5.49±0.28</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gavião</td>
+<td align="left" rowspan="1" colspan="1">WNF</td>
+<td align="left" rowspan="1" colspan="1">5.57±0.16</td>
+<td align="left" rowspan="1" colspan="1">5.46±0.40</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">NF</td>
+<td align="left" rowspan="1" colspan="1">5.61±0.15</td>
+<td align="left" rowspan="1" colspan="1">5.26±0.31</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Odemira</td>
+<td align="left" rowspan="1" colspan="1">WNF</td>
+<td align="left" rowspan="1" colspan="1">6.03±0.13</td>
+<td align="left" rowspan="1" colspan="1">6.33±0.19</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">NF</td>
+<td align="left" rowspan="1" colspan="1">5.84±0.10</td>
+<td align="left" rowspan="1" colspan="1">5.96±0.41</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt102"><label/><p>WNF – Without nitrogen maintenance fertilization; NF – with nitrogen maintenance fertilization.</p></fn></table-wrap-foot></table-wrap></sec><sec id="s3c">
+<title>Analysis of Diazotrophic bacteria communities</title>
+<p>The <italic>nifH</italic> gene was successfully amplified, thus enabling analysis of the amplicon by DGGE. This technique allowed for the culture-independent analysis of DB from the soil and root of the sampled plots (<xref ref-type="fig" rid="pone-0111313-g001">Figures 1</xref>, <xref ref-type="fig" rid="pone-0111313-g002">2</xref> and <xref ref-type="fig" rid="pone-0111313-g003">3</xref>).</p>
+<fig id="pone-0111313-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111313.g001</object-id><label>Figure 1</label><caption>
+<title>Analysis of the neighbour-joining cluster obtained from the DGGE banding patterns of the microbial communities in soils of <italic>E. globulus</italic> plantations in the Penafiel region of northern Portugal.</title>
+<p><bold>A</bold>) DGGE band pattern of soil samples using the <italic>nifH</italic> gene. <bold>B</bold>) DGGE band pattern of root system samples using the <italic>nifH</italic> gene. <bold>C</bold>) Dendrogram of soil samples. <bold>D</bold>) Dendrogram of root system samples. NF: with nitrogen maintenance fertilization; WNF: without nitrogen maintenance fertilization; W: winter; S: summer; M: Marker. Scale  =  similarity (%).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111313.g001" position="float" xlink:type="simple"/></fig><fig id="pone-0111313-g002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111313.g002</object-id><label>Figure 2</label><caption>
+<title>Analysis of the neighbour-joining cluster obtained from the DGGE banding patterns of the microbial communities in soils of <italic>E. globulus</italic> plantations in the Gavião region of central Portugal.</title>
+<p><bold>A</bold>) DGGE band pattern of soil samples using the <italic>nifH</italic> gene. <bold>B</bold>) DGGE band pattern of the root system samples using the <italic>nifH</italic> gene. <bold>C</bold>) Dendrogram of soil samples. <bold>D</bold>) Dendrogram of root system samples. NF: with nitrogen maintenance fertilization; WNF: without nitrogen maintenance fertilization; W: winter; S: summer; M: Marker. Scale  =  similarity (%).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111313.g002" position="float" xlink:type="simple"/></fig><fig id="pone-0111313-g003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111313.g003</object-id><label>Figure 3</label><caption>
+<title>Analysis of the neighbour-joining cluster obtained from the DGGE banding patterns of the microbial communities in soils of <italic>E. globulus</italic> plantations in the Odemira region of southern Portugal.</title>
+<p><bold>A</bold>) DGGE band pattern of soil samples using the <italic>nifH</italic> gene. <bold>B</bold>) DGGE band pattern of the root system samples using the <italic>nifH</italic> gene. <bold>C</bold>) Dendrogram of soil samples. <bold>D</bold>) Dendrogram of root system samples. NF: with nitrogen maintenance fertilization; WNF: without nitrogen maintenance fertilization; W: winter; S: summer; M: Marker. Scale  =  similarity (%).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111313.g003" position="float" xlink:type="simple"/></fig>
+<p>The band patterns observed in the DGGE gels were similar between studied plots. Intense bands were predominant in the centres of the gels of all samples; however, it was possible to identify distinct bands, with some appearing more abundant than others (<xref ref-type="fig" rid="pone-0111313-g001">Figures 1</xref>–<xref ref-type="fig" rid="pone-0111313-g003">3A</xref> and <xref ref-type="fig" rid="pone-0111313-g003">B</xref>).</p>
+<p>Dendrogram analysis (<xref ref-type="fig" rid="pone-0111313-g001">Figures 1</xref>–<xref ref-type="fig" rid="pone-0111313-g003">3C</xref> and <xref ref-type="fig" rid="pone-0111313-g003">D</xref>) showed that the DB were grouped primarily according to season analysed. However, DB in some soil and root system samples were also grouped by nitrogen fertilization.</p>
+<p>In the soils from Penafiel, the DB communities varied more with season than according to N fertilization. Samples taken from the both plots (with and without maintenance N fertilization) in winter displayed 78% similarity (<xref ref-type="fig" rid="pone-0111313-g001">Figure 1C</xref>). However, root system samples contained two major groups with 72% similarity according to N fertilization (<xref ref-type="fig" rid="pone-0111313-g001">Figure 1D</xref>): the first group which had received maintenance N, with 76% similarity; and the second, which did not receive maintenance N, with 73% similarity (<xref ref-type="fig" rid="pone-0111313-g001">Figure 1D</xref>).</p>
+<p>Season had the strongest impact on DB communities in both the soil and root systems from Gavião (<xref ref-type="fig" rid="pone-0111313-g002">Figures 2C and 2D</xref>). In the soil, three main groups of DB communities were observed, with 74% similarity. Those collected in the summer showed 80% similarity (<xref ref-type="fig" rid="pone-0111313-g002">Figure 2C</xref>). Samples of the root systems, showed two main groups of DB communities, with 68% similarity: the first group of the summer samples exhibited 75% similarity; and the second group the winter samples, with 70% similarity (<xref ref-type="fig" rid="pone-0111313-g002">Figure 2D</xref>).</p>
+<p>Soil samples from Odemira contained three main groups of DB with 58% similarity (<xref ref-type="fig" rid="pone-0111313-g003">Figure 3C</xref>); the first showed about 70% similarity and was grouped based on nitrogen fertilization. The season was also a determining factor of the DB communities in soils that had not received N maintenance fertilization: in the summer the DB community profile was very distinct, forming a group with 80% similarity, while in the winter the DB formed a group with 76% similarity (<xref ref-type="fig" rid="pone-0111313-g003">Figure 3C</xref>). In the root system the DB community profile formed two major groups with 72% similarity, the first group had 74% similarity and consisted primarily of winter samples, and the second group had 86% similarity and consisted only of summer samples (<xref ref-type="fig" rid="pone-0111313-g003">Figure 3D</xref>). In this region, the communities of DB in both soil and root systems of the plot that did not receive maintenance N, were grouped with more than 80% similarity in the summer.</p>
+</sec><sec id="s3d">
+<title>Effect of environmental factors on diazotrophic bacteria communities</title>
+<p>Multivariate analysis demonstrated that in the soils from Penafiel, there was an explanation of 36.1% of variation in the DB community (<xref ref-type="fig" rid="pone-0111313-g004">Figure 4A</xref>). The first axis explained 31.9% of the variability, and the differentiation in the microbial community was primarily associated with the season, winter and summer (<xref ref-type="fig" rid="pone-0111313-g004">Figure 4A</xref>). The DB communities in the summer samples were more closely related to soil pH and organic matter, whereas those in the winter samples showed a higher relation with soil moisture.</p>
+<fig id="pone-0111313-g004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111313.g004</object-id><label>Figure 4</label><caption>
+<title>PCA based on PCR-DGGE profiles of the <italic>nifH</italic> gene from soil and root system samples from <italic>E. globulus</italic> plantations in Penafiel (northern), Gavião (central) and Odemira (southern) regions of Portugal, overlaid with environmental data.</title>
+<p>A and B – soil and root systems (Penafiel); C and D – soil and root systems (Gavião); E and F – soil and root systems (Odemira); om -Organic matter.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111313.g004" position="float" xlink:type="simple"/></fig>
+<p>In the root system samples, there was an explanation of 33.5% of variation in DB communities, and the groups were primarily separated by nitrogen fertilization (<xref ref-type="fig" rid="pone-0111313-g004">Figure 4B</xref>). The samples from plots that did not receive maintenance N presented high relation with ammonia and urease activity (<xref ref-type="fig" rid="pone-0111313-g004">Figure 4B</xref>). However, the DB communities in winter samples from plots that received maintenance N fertilization were more affected by soil moisture, while those in summer samples were highly related with soil pH (<xref ref-type="fig" rid="pone-0111313-g004">Figure 4B</xref>).</p>
+<p>In soils and root systems from the Gavião region, DB communities were grouped according to the seasons (<xref ref-type="fig" rid="pone-0111313-g004">Figures 4C and 4D</xref>). Independent of nitrogen maintenance fertilization, winter samples were strongly affected by soil moisture, while those in summer samples from plots without maintenance fertilization were more influenced by urease activity and ammonia. The DB communities in soil and root systems, respectively, 51% and 65.5% of the variations could be explained (<xref ref-type="fig" rid="pone-0111313-g004">Figures 4C and 4D</xref>).</p>
+<p>In the Odemira region 39.3% of the variability in DB communities in the soils could be explained by the factors considered principally moisture. They were grouped according to nitrogen fertilization (<xref ref-type="fig" rid="pone-0111313-g004">Figure 4E</xref>). In samples from plots that did not receive maintenance N fertilization, pH, organic matter and ammonia content were the factors that were more related with the variation in DB communities' structure. The DB community in the root system 57.8% of the variation could be explained and was grouped according to season (<xref ref-type="fig" rid="pone-0111313-g004">Figure 4F</xref>). A strong relation between DB communities' structure and moisture was observed in winter samples, whereas a strong relation with pH, urease and organic matter was observed in summer samples (<xref ref-type="fig" rid="pone-0111313-g004">Figure 4F</xref>).</p>
+</sec><sec id="s3e">
+<title>Identification of diazotrophic bacteria communities</title>
+<p>The DGGE gel bands of DB from the three regions were sequenced, and the results were compared using the BLASTx algorithm (NCBI). Many bands collected from different positions in the gel were identified as belonging to the same species and most of the bands corresponded to bacteria of the phylum Proteobacteria (<xref ref-type="fig" rid="pone-0111313-g005">Figure 5</xref>).</p>
+<fig id="pone-0111313-g005" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111313.g005</object-id><label>Figure 5</label><caption>
+<title>Distribution of predominant bacterial groups in the soils and root systems of <italic>E. globulus</italic> plantations in three regions of Portugal (Penafiel, Gavião and Odemira).</title>
+<p>Bacteria were identified by band sequencing of the <italic>nifH</italic> gene obtained using the DGGE technique.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111313.g005" position="float" xlink:type="simple"/></fig>
+<p>Band sequencing indicated that soil from the Penafiel region contained more species of N-fixing bacteria than samples from the other regions (<xref ref-type="fig" rid="pone-0111313-g005">Figure 5</xref>). The phyla Firmicutes (classes Bacilli and Clostridia), Proteobacteria (Deltaproteobacteria class) and also Archaea (Methanobacteria class) were only observed in soil from the Penafiel region (<xref ref-type="fig" rid="pone-0111313-g005">Figure 5</xref>). The Deltaproteobacteria class was also observed in root systems from this region (<xref ref-type="fig" rid="pone-0111313-g005">Figure 5</xref>).</p>
+<p>Alphaproteobacteria predominated in the soils from the Odemira and Penafiel whereas there was co-predominance of both Alphaproteobacteria and Betaproteobacteria in soils from the Gavião. Betaproteobacteria predominated in root systems from the Penafiel and Gavião while Alphaproteobacteria predominated in those from the Odemira (<xref ref-type="fig" rid="pone-0111313-g005">Figures 5</xref> and <xref ref-type="fig" rid="pone-0111313-g006">6</xref>). Gammaproteobacteria were less abundant than other classes in samples from all regions (<xref ref-type="fig" rid="pone-0111313-g005">Figure 5</xref> and <xref ref-type="fig" rid="pone-0111313-g006">6</xref>).</p>
+<fig id="pone-0111313-g006" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111313.g006</object-id><label>Figure 6</label><caption>
+<title>Distribution of bacterial genera found in the soil and root systems of <italic>E. globulus</italic> plantations in three regions of Portugal (Penafiel, Gavião and Odemira) obtained by sequencing the <italic>nifH</italic> gene DGGE bands.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111313.g006" position="float" xlink:type="simple"/></fig>
+<p>The genera <italic>Bradyrhizobium</italic> and <italic>Burkholderia</italic> predominated in the soil and root system samples from Penafiel. In samples from Gavião, the genera <italic>Rubrivivax</italic>, <italic>Bradyrhizobium</italic> and <italic>Burkholderia</italic> were predominant in the soil, while the genus <italic>Burkholderia</italic> predominated in the root system. In samples from the Odemira plantation, the soil contained primarily the genera <italic>Bradyrhizobium</italic> and <italic>Rhodomicrobium</italic>, both of which are Alphaproteobateria, while the root system contained mainly <italic>Rhodomicrobium</italic>, <italic>Bradyrhizobium</italic> and <italic>Burkholderia</italic> (<xref ref-type="fig" rid="pone-0111313-g006">Figure 6</xref>).</p>
+<p>Of the bacteria belonging to the class Alphaproteobacteria were found in the three regions, 25.1% were of the genus <italic>Bradyrhizobium</italic> and 11.7% of <italic>Rhodomicrobium</italic>. Within the class Betaproteobacteria, the most common genera were <italic>Burkholderia</italic> (23.4%) and <italic>Rubrivivax</italic> (10.5%).</p>
+</sec></sec><sec id="s4">
+<title>Discussion</title>
+<p>The productivity of a eucalypt forest can be affected by various biotic and abiotic factors, including soil microbial populations and their interactions with the plants. The soil microbial dynamics of these forests and in particular DB communities are relevant due to the considerable importance of eucalypts for industry, economy and the environment. DB communities may serve as a source of reactive N and plant growth promoters <xref ref-type="bibr" rid="pone.0111313-GamaRodrigues1">[25]</xref>, including phytohormones, phosphate solubilizers and antagonists of phytopathogens <xref ref-type="bibr" rid="pone.0111313-Hayat1">[26]</xref>.</p>
+<p>The differences observed in organic matter, pH, moisture, urease activity and ammonia concentrations in soils of <italic>E. globulus</italic> forests were primarily due to geographic localization and the typical Mediterranean climate, which is characterized by moderately cold, rainy winters and hot, dry summers (<xref ref-type="table" rid="pone-0111313-t001">Table 1</xref>).</p>
+<p>The low nitrification potential detected is typical of an acid soil (pH 5, <xref ref-type="table" rid="pone-0111313-t001">Table 1</xref>). Plants are therefore dependent on the microorganisms that act as potential and active reservoirs of N in the soil, and control N availability via immobilization and mineralization processes <xref ref-type="bibr" rid="pone.0111313-GamaRodrigues1">[25]</xref>.</p>
+<p>As observed in other regions with markedly different seasons <xref ref-type="bibr" rid="pone.0111313-Castellanos1">[17]</xref>; <xref ref-type="bibr" rid="pone.0111313-Silva1">[27]</xref>, no differences in the total culturable DB were observed between summer and winter (<xref ref-type="table" rid="pone-0111313-t003">Table 3</xref>). However, the structure of the DB community was much influenced firstly by the season and secondly by additional N fertilization (<xref ref-type="fig" rid="pone-0111313-g001">Figures 1</xref>, <xref ref-type="fig" rid="pone-0111313-g002">2</xref> and <xref ref-type="fig" rid="pone-0111313-g003">3</xref>).</p>
+<p>PCA indicated that the influence of season on the structure of the DB community was mostly due to soil moisture. PCA was also able to differentiate between the winter and summer samples (<xref ref-type="fig" rid="pone-0111313-g004">Figure 4</xref>). This result makes sense because water is essential for cell metabolism in all living organisms. According to Kozdroj and Van Elsas <xref ref-type="bibr" rid="pone.0111313-Kozdroj1">[28]</xref> and Baudoin et al. <xref ref-type="bibr" rid="pone.0111313-Baudoin1">[29]</xref>, the profile of species in the rhizosphere or plant root system can be affected by various environmental factors, including root exudates and the availability of water and nutrients.</p>
+<p>Nitrogen fertilization decreased both the richness and the intensity of the DGGE bands of the DB <xref ref-type="bibr" rid="pone.0111313-Coelho1">[24]</xref>. It is possible that N fertilization changed the DB community in our study, but the four-year interval between the last fertilization event and sample collection may have diminished the effects of fertilization.</p>
+<p>The band pattern observed in the DGGE gels, including the overlapping of various bands across the gel, may reflect the large number of bacterial species common to all the studied regions (<xref ref-type="supplementary-material" rid="pone.0111313.s001">Table S1</xref>, <xref ref-type="supplementary-material" rid="pone.0111313.s002">S2</xref> and <xref ref-type="supplementary-material" rid="pone.0111313.s003">S3</xref>). However, the band pattern also reflects the amplification of the most abundant species by the nested-PCR, as well as non-detection of species less abundant in the gel <xref ref-type="bibr" rid="pone.0111313-Wartiainen1">[10]</xref>.</p>
+<p>We found the principal bacterial community present in the eucalyptus forests to be Proteobacteria (<xref ref-type="fig" rid="pone-0111313-g005">Figure 5</xref>), one of the most diverse, which comprises various classes that contain at least one species of N-fixing bacteria <xref ref-type="bibr" rid="pone.0111313-Raymond1">[30]</xref>. Additionally, we observed bands that were at different positions in the gel but belong to the same species (<xref ref-type="fig" rid="pone-0111313-g001">Figures 1</xref>, <xref ref-type="fig" rid="pone-0111313-g002">2</xref> and <xref ref-type="fig" rid="pone-0111313-g003">3</xref>, <xref ref-type="supplementary-material" rid="pone.0111313.s001">Table S1</xref>, <xref ref-type="supplementary-material" rid="pone.0111313.s002">S2</xref> and <xref ref-type="supplementary-material" rid="pone.0111313.s003">S3</xref>). This may be due to the presence of multiple copies of the <italic>nifH</italic> gene in the genome of DB <xref ref-type="bibr" rid="pone.0111313-Coelho1">[24]</xref>, <xref ref-type="bibr" rid="pone.0111313-Zehr1">[31]</xref>, <xref ref-type="bibr" rid="pone.0111313-Zhan2">[32]</xref>. This gene was selected as marker for DB for its presence in the vast majority of N-fixing bacteria, because it displays highly conserved regions, and since its phylogeny has shown to be consistent with the phylogeny of DB based on the 16S ribosomal RNA gene <xref ref-type="bibr" rid="pone.0111313-Zehr1">[31]</xref>. The database of the genes that encode for the nitrogenase enzyme is currently one of the largest non-ribosomal gene databases for nonculturable microorganisms <xref ref-type="bibr" rid="pone.0111313-Zehr1">[31]</xref>.</p>
+<p><italic>Bradyrhizobium</italic> and <italic>Burkholderia</italic> (<xref ref-type="fig" rid="pone-0111313-g006">Figure 6</xref>), which were also identified in eucalypt plantations in Colombia <xref ref-type="bibr" rid="pone.0111313-Castellanos1">[17]</xref>, were the dominant genera of DB in the studied Portuguese eucalypt forests. The genus <italic>Bradyrhizobium</italic> is characterized by moderate adaptation to semi-arid conditions, a propensity to colonize the roots of many non-leguminous plants and the ability to fix nitrogen under both symbiotic and non-symbiotic conditions <xref ref-type="bibr" rid="pone.0111313-Kahindi1">[33]</xref>, <xref ref-type="bibr" rid="pone.0111313-Coelho2">[34]</xref>. The genus <italic>Burkholderia</italic> includes free-living endophytic bacteria that are able to fix nitrogen and bacteria that form symbiotic associations with leguminous plants <xref ref-type="bibr" rid="pone.0111313-EstradadeLosSantos1">[35]</xref>, <xref ref-type="bibr" rid="pone.0111313-Silva2">[36]</xref>. Furthermore, the genus <italic>Burkholderia</italic> is able to promote plant growth in different ways, including by solubilizing phosphate, producing siderophores and indole compounds and acting as biocontrol agents <xref ref-type="bibr" rid="pone.0111313-Silva2">[36]</xref>, <xref ref-type="bibr" rid="pone.0111313-CastroGonzlez1">[37]</xref>.</p>
+</sec><sec id="s5">
+<title>Conclusions</title>
+<p>Culturable methods did not reveal differences in the numbers of DB between the sampling regions or N-fertilization. The profile of the N-fixing bacterial communities was influenced by seasons and nitrogen fertilization regime. The most abundant groups of DB were affiliated to Alpha- and Betaproteobacteria, the main genera being <italic>Burkholderia</italic> and <italic>Bradyrhizobium</italic>. This is the first study of these bacteria in Portuguese eucalypt plantations, and its results contribute to understanding of the specific requirements for the cultivation of these plants.</p>
+</sec><sec id="s6">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0111313.s001" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0111313.s001" position="float" xlink:type="simple"><label>Table S1</label><caption>
+<p><bold>Identification based on the </bold><bold><italic>nifH</italic></bold><bold> gene of bands eluted from DGGE gels of soil and root system samples from the Penafiel region.</bold></p>
+<p>(DOC)</p>
+</caption></supplementary-material><supplementary-material id="pone.0111313.s002" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0111313.s002" position="float" xlink:type="simple"><label>Table S2</label><caption>
+<p><bold>Identification based on the </bold><bold><italic>nifH</italic></bold><bold> gene of bands eluted from DGGE gels of soil and root system samples from the Gavião region.</bold></p>
+<p>(DOC)</p>
+</caption></supplementary-material><supplementary-material id="pone.0111313.s003" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0111313.s003" position="float" xlink:type="simple"><label>Table S3</label><caption>
+<p><bold>Identification based on the </bold><bold><italic>nifH</italic></bold><bold> gene of bands eluted from DGGE gels of soil and root system samples from the Odemira region.</bold></p>
+<p>(DOC)</p>
+</caption></supplementary-material></sec></body>
+<back>
+<ack>
+<p>We are also very grateful to The Institute of Forest and Paper Research (RAIZ Institute) of the Portucel Soporcel Group, especially to the researchers Antonio Sergio Fabres and Daniela Ferreira, for all their help during the field sampling and for providing data on the collection areas. We are also very grateful to Edynei Miguel Cristino, for all help during the field sampling and enzymatic analysis.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0111313-ABRAF1"><label>1</label>
+<mixed-citation publication-type="other" xlink:type="simple">ABRAF, Associação Brasileira de Produtores de Florestas Plantadas (2010) Anuário estatístico da ABRAF 2010 ano base 2009/ABRAF. – Brasília, 140p.</mixed-citation>
+</ref>
+<ref id="pone.0111313-FAO1"><label>2</label>
+<mixed-citation publication-type="other" xlink:type="simple">FAO (2009) Global demand for wood products. State of the World's Forests 62–96.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Smerthurst1"><label>3</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Smerthurst</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Holz</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Moroni</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Bailliea</surname><given-names>C</given-names></name> (<year>2004</year>) <article-title>Nitrogen management in <italic>Eucalyptus nitens</italic> plantation</article-title>. <source>Forest Ecol Manag</source> <volume>193</volume>: <fpage>63</fpage>–<lpage>80</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Gobert1"><label>4</label>
+<mixed-citation publication-type="other" xlink:type="simple">Gobert A, Plassard C (2008) The beneficial effect of Mycorrhiza on N utilization by the host-plant: Myth or reality? A. Varma (ed.) Mycorrhiza 209–240.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Vitousek1"><label>5</label>
+<mixed-citation publication-type="other" xlink:type="simple">Vitousek PM, Hättenschwiler S, Olander L, Allison S (2002) Nitrogen and Nature. Ambio 31, 97–101.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Smith1"><label>6</label>
+<mixed-citation publication-type="other" xlink:type="simple">Smith H, Wingfiald MJ, Petrini O (1996) <italic>Botryosphaeriadothidea</italic> endophytic in <italic>Eucalyptus grandis</italic> and <italic>Eucalyptus nitens</italic> in South Africa. Forest Ecol Manag 89, 189–195.</mixed-citation>
+</ref>
+<ref id="pone.0111313-James1"><label>7</label>
+<mixed-citation publication-type="other" xlink:type="simple">James EK (2000) Nitrogen fixation in endophytic and associative symbiosis. Field Crop Res 65, 197–209.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Rosado1"><label>8</label>
+<mixed-citation publication-type="other" xlink:type="simple">Rosado AS, Duarte GF, Seldin L, Van Elsas JD (1998) Genetic diversity of <italic>nifH</italic> gene sequences in <italic>Paenibacillus azotofixans</italic> strains and soil samples analyzed by denaturing gradient gel electrophoresis of PCR-amplified gene fragments. Appl Environ Microb 64, 2770.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Costa1"><label>9</label>
+<mixed-citation publication-type="other" xlink:type="simple">Costa R, Gomes NCM, Peixoto RS, Rumjanek N, Berg G, et al. (2006) Diversity and antagonistic potential of <italic>Pseudomonas</italic> spp. associated to the rhizosphere of maize grown in a subtropical organic farm. Soil Biol Biochem 38, 2434–2447.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Wartiainen1"><label>10</label>
+<mixed-citation publication-type="other" xlink:type="simple">Wartiainen I, Eriksson T, Zheng W, Rasmussen U (2008) Variation in the active diazotrophic community in rice Paddy <italic>nif</italic>H PCR-DGGE analysis of rhizosphere and bulk soil. Appl Soil Ecol 39, 65–75.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Rosch1"><label>11</label>
+<mixed-citation publication-type="other" xlink:type="simple">Rosch C, Mergel A, Bothe H (2002) Biodiversity of denitrifying and dinitrogen-fixing bacteria in an acid forest soil. Appl Environ Microb 68, 3818–3829.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Hong1"><label>12</label>
+<mixed-citation publication-type="other" xlink:type="simple">Hong Y, Maa Y, Wua L, Makib M, Qinb W, et al. (2012) Characterization and analysis of <italic>nifH</italic> genes from <italic>Paenibacillus sabinae</italic> T27. Microbiol Res 167, 596–601.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Myers1"><label>13</label>
+<mixed-citation publication-type="other" xlink:type="simple">Myers RM, Maniatis T, Lerman LS, (1987) Detection and localization of single base changes by denaturing gradient gel electrophoresis. Methods Enzymol 155, 501–527.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Nicolaisen1"><label>14</label>
+<mixed-citation publication-type="other" xlink:type="simple">Nicolaisen MH, Ramsing NB (2002) Denaturing gradient gel electrophoresis (DGGE) approaches to study the diversity of ammonia-oxidizing bacteria. J Microbiol Meth 50, 189–203.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Zhan1"><label>15</label>
+<mixed-citation publication-type="other" xlink:type="simple">Zhan J, Sun Q (2012) Diversity of free-living nitrogen-fixing microorganisms in the rhizosphere and non-rhizosphere of pioneer plants growing on wastelands of copper mine tailings. Microbiol Res 167,157–165.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Muyzer1"><label>16</label>
+<mixed-citation publication-type="other" xlink:type="simple">Muyzer G, Smalla K (1998) Application of denaturing gradient gel electrophoresis (DGGE) and temperature gradient gel electrophoresis (TGGE) in microbial ecology. Antonie Van Leeuwenhoek 73, 127–41.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Castellanos1"><label>17</label>
+<mixed-citation publication-type="other" xlink:type="simple">Castellanos DMO, Zabala LBB, Botía DMR, Garrido MFR, Baldani VLD, et al. (2010) Characterization of diazotrophic bacteria non-symbiotic associated with Eucalyptus (<italic>Eucalyptus</italic> sp.) in Codazzi, Cesar (Colombia). Acta biol. Colomb 15, 107–120.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Schulte1"><label>18</label>
+<mixed-citation publication-type="other" xlink:type="simple">Schulte EE, Peters JB, Hodgson PR (1987) Wisconsin Procedures for soil testing, plant analysis and fud &amp; forage analysis. Madison: University of Wisconsin/Department of soil Science, 9p.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Mulvaney1"><label>19</label>
+<mixed-citation publication-type="other" xlink:type="simple">Mulvaney RL (1996) Nitrogen-Inorganic forms. In: Sparks DL, et al., editor. Methods of soil analysis. Part 3. SSSA Book Ser. 5. SSSA, Madison, WI. 1123–1184.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Kandeler1"><label>20</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kandeler</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Gerber</surname><given-names>H</given-names></name> (<year>1988</year>) <article-title>Short-term assay of soil urease activity using colorimetric determination of ammonium</article-title>. <source>Biol Fert Soils</source> <volume>6</volume>: <fpage>68</fpage>–<lpage>72</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Dobereiner1"><label>21</label>
+<mixed-citation publication-type="other" xlink:type="simple">Dobereiner J (1988) Isolation and identification of root associated diazotrophs. Plant Soil 110 (2), 207–212.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Ueda1"><label>22</label>
+<mixed-citation publication-type="other" xlink:type="simple">Ueda T, Suga Y, Yahiro N, Matsuguchi T (1995) Remarkable N<sub>2</sub>-fixing bacterial diversity detected in rice roots by molecular evolutionary analysis of <italic>nifH</italic> gene sequences. J. Bacteriol. 177, 1414–1417.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Direito1"><label>23</label>
+<mixed-citation publication-type="other" xlink:type="simple">Direito ICN, Teixeira KRS (2002) Simulação e comportamento de migração de produtos da amplificação parcial do gene <italic>nifH</italic> quando submetidos ao DGGE. Revista Universidade Rural, Série Ciências da vida 22, 123–129.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Coelho1"><label>24</label>
+<mixed-citation publication-type="other" xlink:type="simple">Coelho MRR, Marriel IE, Jenkins SN, Lanyon CV, Seldin L, et al. (2009) Molecular detection and quantification of <italic>nifH</italic> gene sequences in the rhizosphere of sorghum (<italic>Sorghum bicolor</italic>) sown with two levels of nitrogen fertilizer. Appl Soil Ecol 42, 48–53.</mixed-citation>
+</ref>
+<ref id="pone.0111313-GamaRodrigues1"><label>25</label>
+<mixed-citation publication-type="other" xlink:type="simple">Gama-Rodrigues EF, Barros NF, Gama-Rodrigues AC, Santos GA (2005) Nitrogênio, carbono e atividade da biomassa microbiana do solo em plantações de eucalipto. Rev. Bras. Ciênc. Solo 29, 893–901.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Hayat1"><label>26</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hayat</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Ali</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Amara</surname><given-names>U</given-names></name>, <name name-style="western"><surname>Khalid</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Ahmed</surname><given-names>I</given-names></name> (<year>2010</year>) <article-title>Soil beneficial bacteria and their role in plant growth promotion: a review</article-title>. <source>Ann Microbiol</source> <volume>60</volume>: <fpage>579</fpage>–<lpage>598</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Silva1"><label>27</label>
+<mixed-citation publication-type="other" xlink:type="simple">Silva TF, Melloni R (2011) Densidade e diversidade fenotípica de bactérias diazotróficas não simbióticas em solos da reserva biológica serra dos toledos, Itajubá (MG). Rev. Bras. Ciênc. Solo 35, 359–371.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Kozdroj1"><label>28</label>
+<mixed-citation publication-type="other" xlink:type="simple">Kozdroj J, Van Elsas JD (2000) Response of the bacterial community to root exudates in soil polluted with heavy metals assessed by molecular and cultural approaches. Soil Biol Biochem 32, 1405–1417.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Baudoin1"><label>29</label>
+<mixed-citation publication-type="other" xlink:type="simple">Baudoin E, Benizri E, Guckert A (2003) Impact of artificial root exudates on the bacterial community structure in bulk soil and maize rhizosphere. Soil Biol Biochem 35, 1183–1192.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Raymond1"><label>30</label>
+<mixed-citation publication-type="other" xlink:type="simple">Raymond J, Siefert JL, Staples CR, Blankenship RE (2004) The Natural history of nitrogen fixation. Mol. Biol. Evol. 21, 541–554.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Zehr1"><label>31</label>
+<mixed-citation publication-type="other" xlink:type="simple">Zehr JP, Jenkins BD, Short SM, Steward GF (2003) Nitrogenase gene diversity and microbial community structure: a cross-system comparison. Environ Microbiol 5, 539–554.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Zhan2"><label>32</label>
+<mixed-citation publication-type="other" xlink:type="simple">Zhan J, Sun Q (2011) Diversity of free-living nitrogen-fixing microorganisms in wastelands of copper mine tailings during the process of natural ecological restoration. J. Environ. Sci. 23, 476–487.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Kahindi1"><label>33</label>
+<mixed-citation publication-type="other" xlink:type="simple">Kahindi JHP, Woomer P, George T, Moreira FMS, Karanja NK, et al. (1997) Agricultural intensification, soil biodiversity and ecosystem function in the tropics: the role of nitrogen-fixing bacteria. Appl Soil Ecol 6, 55–76.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Coelho2"><label>34</label>
+<mixed-citation publication-type="other" xlink:type="simple">Coelho MRR, de Vos M, Carneiro NP, Marriel IE, Paiva E, et al. (2007) Diversity of <italic>nifH</italic> gene pools in the rhizosphere of two cultivars of sorghum (<italic>Sorghum bicolor</italic>) treated with contrasting levels of nitrogen fertilizer. FEMS Microbiol. Lett. 279, 15–22.</mixed-citation>
+</ref>
+<ref id="pone.0111313-EstradadeLosSantos1"><label>35</label>
+<mixed-citation publication-type="other" xlink:type="simple">Estrada-de Los Santos P, Bustillos-Cristales R, Caballejo-Mellado J (2001) <italic>Burkholderia</italic>, a genus rich in plant-associated Nitrogen fixers with wide environmental and geographic distribution. Appl Environ Microb 67, 2790–2798.</mixed-citation>
+</ref>
+<ref id="pone.0111313-Silva2"><label>36</label>
+<mixed-citation publication-type="other" xlink:type="simple">Silva K, Cassetarib AS, Adriana Silva Limab, De Brandtc E, Pinnock E, et al. (2012) Diazotrophic <italic>Burkholderia</italic> species isolated from the Amazon region exhibit phenotypical, functional and genetic diversity. Syst Sppl Microbiol 35, 253–262.</mixed-citation>
+</ref>
+<ref id="pone.0111313-CastroGonzlez1"><label>37</label>
+<mixed-citation publication-type="other" xlink:type="simple">Castro-González R, Martínez-Aguilar L, Ramírez-Trujillo A, Estrada-de los Santos P, Caballero-Mellado J (2011) High diversity of culturable <italic>Burkholderia</italic> species associated with sugarcane. Plant Soil 345, 155–169.</mixed-citation>
+</ref>
+</ref-list></back>
+</article>

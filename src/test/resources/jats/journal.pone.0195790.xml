@@ -1,0 +1,1563 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.1d3" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0195790</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-17-22577</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Engineering and technology</subject><subj-group><subject>Electronics</subject><subj-group><subject>Comparators</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Oncology</subject><subj-group><subject>Cancer treatment</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Diagnostic medicine</subject><subj-group><subject>Signs and symptoms</subject><subj-group><subject>Pain</subject><subj-group><subject>Abdominal pain</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Pathology and laboratory medicine</subject><subj-group><subject>Signs and symptoms</subject><subj-group><subject>Pain</subject><subj-group><subject>Abdominal pain</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Research design</subject><subj-group><subject>Clinical research design</subject><subj-group><subject>Adverse events</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Hematology</subject><subj-group><subject>Anemia</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Gastroenterology and hepatology</subject><subj-group><subject>Diarrhea</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Diagnostic medicine</subject><subj-group><subject>Signs and symptoms</subject><subj-group><subject>Diarrhea</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Pathology and laboratory medicine</subject><subj-group><subject>Signs and symptoms</subject><subj-group><subject>Diarrhea</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Oncology</subject><subj-group><subject>Cancers and neoplasms</subject><subj-group><subject>Genitourinary tract tumors</subject><subj-group><subject>Prostate cancer</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Urology</subject><subj-group><subject>Prostate diseases</subject><subj-group><subject>Prostate cancer</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Cell biology</subject><subj-group><subject>Cellular types</subject><subj-group><subject>Animal cells</subject><subj-group><subject>Blood cells</subject><subj-group><subject>White blood cells</subject><subj-group><subject>Neutropenia</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Cell biology</subject><subj-group><subject>Cellular types</subject><subj-group><subject>Animal cells</subject><subj-group><subject>Immune cells</subject><subj-group><subject>White blood cells</subject><subj-group><subject>Neutropenia</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Immunology</subject><subj-group><subject>Immune cells</subject><subj-group><subject>White blood cells</subject><subj-group><subject>Neutropenia</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Immunology</subject><subj-group><subject>Immune cells</subject><subj-group><subject>White blood cells</subject><subj-group><subject>Neutropenia</subject></subj-group></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Indirect treatment comparison of cabazitaxel for patients with metastatic castrate-resistant prostate cancer who have been previously treated with a docetaxel-containing regimen</article-title>
+<alt-title alt-title-type="running-head">Indirect treatment comparison for cabazitaxel, abiraterone or enzalutamide among mCRPC patients</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Fryzek</surname>
+<given-names>Jon P.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Validation</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Reichert</surname>
+<given-names>Heidi</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0003-0529-0994</contrib-id>
+<name name-style="western">
+<surname>Summers</surname>
+<given-names>Nicholas</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Project administration</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Townes</surname>
+<given-names>Lindsay</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Deuson</surname>
+<given-names>Robert</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Alexander</surname>
+<given-names>Dominik D.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<role content-type="http://credit.casrai.org/">Validation</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Vanderpuye-Orgle</surname>
+<given-names>Jackie</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>EpidStat Institute, Ann Arbor, Michigan, United States of America</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Precision Health Economics, Los Angeles, California, United States of America</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Medenomics, LLC, Moorpark, California, United States of America</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Filleur</surname>
+<given-names>Stéphanie</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Texas Technical University Health Sciences Center, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>JPF, HR, LT, and DDA are employees of EpidStat Institute, which is a research institute that provides expert assistance on the evaluation of complex health issues and on the conduct and interpretation of epidemiological studies to pharmaceutical and medical device companies. NS is an employee of Precision Health Economics (PHE), which provides consulting and other research services to pharmaceutical, device, governmental, and non-governmental organizations. JV-O was an employee of PHE at the time this manuscript was written. RD was a consultant to PHE during the execution of this study and is the Founder and President of Medenomics LLC, a consultancy that provides health economic and outcomes research services to companies in the life sciences industry. The study was sponsored by Sanofi. This does not alter our adherence to PLOS ONE policies on sharing data and materials. Meghan Gallagher, an employee of Sanofi contributed to the study design. Sanofi reviewed the final version of the manuscript for medical accuracy, but did not take part in the writing of the manuscript.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">jon@epidstat.com</email> (JPF); <email xlink:type="simple">nick.summers@pheconomics.com</email> (NS)</corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>11</day>
+<month>4</month>
+<year>2018</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2018</year>
+</pub-date>
+<volume>13</volume>
+<issue>4</issue>
+<elocation-id>e0195790</elocation-id>
+<history>
+<date date-type="received">
+<day>13</day>
+<month>6</month>
+<year>2017</year>
+</date>
+<date date-type="accepted">
+<day>29</day>
+<month>3</month>
+<year>2018</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2018</copyright-year>
+<copyright-holder>Fryzek et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0195790"/>
+<abstract>
+<sec id="sec001">
+<title>Background</title>
+<p>The objective of this study was to conduct an indirect treatment comparison between cabazitaxel, abiraterone and enzalutamide to determine the clinical efficacy and safety of cabazitaxel relative to comparators in the treatment of patients with metastatic castrate-resistant prostate cancer who progress on docetaxel-based therapies.</p>
+</sec>
+<sec id="sec002">
+<title>Methods</title>
+<p>A systematic literature review was conducted to inform the network meta-analysis of cabazitaxel, abiraterone and enzalutamide. Due to a lack of head-to-head trials, studies with a comparator arm of best supportive care were included in the analysis. Overall survival, progression-free survival, and adverse events were compared within both Bayesian and Frequentist frameworks. The ratios for survival outcomes were estimated using hazard ratios (HR), and the ratios for adverse events between groups were estimated using odds ratios (ORs); uncertainty was reported as 95% confidence (Frequentist) and credible (Baysesian) Intervals.</p>
+</sec>
+<sec id="sec003">
+<title>Results</title>
+<p>Three of thirteen trials identified for abstraction were relevant for analyses. Median overall survival was not statistically significantly different for abiraterone (HR = 1.04; 95% CI = 0.83–1.28) or enzalutamide (HR = 0.88; 95% CI = 0.69–1.11) when compared to cabazitaxel in the Bayesian analysis. Anaemia (OR = 3.71; 95% CI = 1.01–10.44), diarrhoea (OR = 16.60; 95% CI = 1.41–75.31) and haematuria (OR = 3.88; 95% CI = 1.03–10.09) were more likely to occur in the cabazitaxel group than the abiraterone group, while pyrexia risk was higher in cabazitaxel compared to enzalutamide (OR = 36.23; 95% CI = 1.14–206.40). Frequentist analyses produced similar results.</p>
+</sec>
+<sec id="sec004">
+<title>Conclusions</title>
+<p>The scarcity of clinical studies and lack of a common comparator limited analyses. The adverse event results must be interpreted with caution as many were based on small numbers. The results from this analysis indicate comparable survival outcomes and adverse event profiles. As these pivotal studies may not reflect the contemporary treatment landscape and patient profiles, additional research, including head-to-head clinical trials and real world observational studies, should be conducted to further elucidate the beneficial effects of these therapies.</p>
+</sec>
+</abstract>
+<funding-group>
+<award-group id="award001">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/100004339</institution-id>
+<institution>Sanofi</institution>
+</institution-wrap>
+</funding-source>
+<principal-award-recipient>
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0003-0529-0994</contrib-id>
+<name name-style="western">
+<surname>Summers</surname>
+<given-names>Nicholas</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<funding-statement>This research was funded by Sanofi to NS. Sanofi contributed to the study design and reviewed the final version of the manuscript to ensure that the descriptions of Sanofi products are medically accurate, but did not take part in the writing of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="2"/>
+<table-count count="8"/>
+<page-count count="15"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec005" sec-type="intro">
+<title>Introduction</title>
+<p>Despite evolution in the treatment paradigm over the past decade, prostate cancer remains a significant public health burden. According to the American Cancer Society’s estimates, in 2016, approximately 180,890 new cases of prostate cancer were diagnosed in the United States, and about 26,120 men died of prostate cancer. It is estimated that 1 in 7 men will be diagnosed with prostate cancer during his lifetime [<xref ref-type="bibr" rid="pone.0195790.ref001">1</xref>]. In the United Kingdom, approximately 47,300 incident cases of prostate cancer occurred in 2013, with an estimated 11,287 deaths from this malignancy in 2014 [<xref ref-type="bibr" rid="pone.0195790.ref002">2</xref>].</p>
+<p>Health Technology Assessment agencies often need to make new drug coverage decisions despite incomplete data on the comparative safety and efficacy of available treatment options. More often than not, newly approved drugs lack head-to-head comparison data from clinical trials for all available treatment options, limiting comparators to one or two legacy treatments. Due to concerns around adequate assessments of comparative effectiveness, global reimbursement agencies such as the United Kingdom’s National Institute for Health and Care Excellence (NICE), and more recently, major private payers in the United States, require alternative approaches for assessing comparative risk and efficacy be performed [<xref ref-type="bibr" rid="pone.0195790.ref003">3</xref>].</p>
+<p>The challenge of inadequate comparative efficacy and safety data is prevalent in clinical studies of treatments for metastatic castrate-resistant prostate cancer (mCRPC). In particular, as new therapies were approved for this difficult to treat population, no direct head-to-head comparisons for novel therapies versus cabazitaxel have become available. Therefore, this study was undertaken to assess the comparative effectiveness and safety of cabazitaxel in patients with mCRPC who have been treated with docetaxel-based regimens relative to therapies endorsed by the latest guidelines in the United Kingdom for this indication (e.g., abiraterone and enzalutamide).</p>
+</sec>
+<sec id="sec006" sec-type="materials|methods">
+<title>Materials and methods</title>
+<p>This indirect treatment comparison follows the PRISMA extension statement for reporting of systematic reviews incorporating network meta-analyses [<xref ref-type="bibr" rid="pone.0195790.ref004">4</xref>].</p>
+<sec id="sec007">
+<title>Eligibility criteria</title>
+<p>Phase 2 or Phase 3 randomized controlled trials with any blinding status of adult (age 18 or older) mCRPC patients previously treated with docetaxel-based regimens were included.</p>
+</sec>
+<sec id="sec008">
+<title>Systematic literature review</title>
+<p>Results of the systematic literature review are available in a separate publication [<xref ref-type="bibr" rid="pone.0195790.ref005">5</xref>]. A formal protocol is not available for the systematic review. Details on the eligibility criteria, information sources or databases, key words and search strings utilized for the databases, study selection criteria, data collection process, and qualitative information and quantitative data extracted are presented in the prior publication. Database searches of MEDLINE, Embase, and Cochrane CENTRAL were conducted from January 1, 2010 to February 26, 2015 (see <xref ref-type="supplementary-material" rid="pone.0195790.s002">S1 Appendix</xref> for complete search strategies). Manual searches were conducted for abstracts from multiple congresses held between January 1, 2011 and March 8, 2015 –American Society of Clinical Oncology (ASCO); ASCO-Genitourinary; European Society for Medical Oncology; American Urological Association; American Association for Cancer Research; European Association of Urology; and Société Internationale d’Urologie. Two reviewers screened articles for inclusion using a two-step process whereby article titles and abstracts were screened, followed by full-text review. Any disputes about the abstracted data were resolved through discussion between reviewers or consultation with a third reviewer. To be eligible for inclusion, studies were required to have a population of patients with mCRPC who had received a docetaxel-based regimen for any previous line of therapy, and who were treated by one or more interventions of interest (cabazitaxel, abiraterone, enzalutamide, mitoxantrone, ipilimumab, radium-223, sipuleucel-T, and estramustine). A pre-specified list of relevant efficacy and safety outcomes, such as overall survival (OS), progression-free survival (PFS) data and adverse events (AE), were required to be reported. The PRISMA flow diagram is illustrated in <xref ref-type="fig" rid="pone.0195790.g001">Fig 1</xref>.</p>
+<fig id="pone.0195790.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0195790.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>PRISMA trial flow diagram.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.g001" xlink:type="simple"/>
+</fig>
+<p>Data from relevant articles were extracted in parallel by two independent reviewers, and studies were critically examined using both a qualitative appraisal and a study grade. Both sets of extracted data were compared and combined into a final data extraction table, which was subsequently verified for the accuracy of all content by an independent third reviewer. In instances where multiple publications were identified for the same trial, the novel data reported in each publication were initially extracted separately and then grouped together to create the most complete dataset for each study population while avoiding double counting of the patients. Both qualitative study characteristics and quantitative data were extracted from each study. This enabled us to perform a systematic and critical evaluation of study relevancy and design homogeneity as described in the sections below. Variables abstracted included the following: study acronym and authors, country, randomization, blinding, control, line of therapy, age, sample size (%), length of follow-up, ECOG/WHO performance status, race, prior therapy, OS rate, PFS rate, and grade 3 or 4 AEs.</p>
+</sec>
+<sec id="sec009">
+<title>Geometry of the network</title>
+<p>In order to conduct the analyses, the first step was to synthesize the relevant studies by developing a map (network geometry) that details the specific direct comparisons, indirect comparisons, and comparisons of analytical interest across the trials. Before constructing a network, it is critical to review each study’s characteristics, methodology, and analytical comparisons and techniques in an effort to assemble a harmonized group of studies that could be evaluated collectively in a meta-analytic framework. Only studies that do not present significant heterogeneity relative to the other studies were included in the final analysis. The network depicts each drug in the analysis as a node, where the links between different nodes represent trials comparing the connected agents.</p>
+</sec>
+<sec id="sec010">
+<title>Risk of bias within individual studies</title>
+<p>Studies were assessed by performing semi-quantitative evaluations, qualitative appraisals, and study quality grading. Various components of the included studies were assessed for the possible introduction of bias using guidance adapted from the University of York’s Centre for Reviews and Dissemination [<xref ref-type="bibr" rid="pone.0195790.ref006">6</xref>]. Examples of the evaluated study criteria include appropriate patient randomization technique, double-blind study design and description of blinding methods, and adequate explanation of withdrawals and drop-outs. An overall qualitative study appraisal was also conducted using the Jadad score [<xref ref-type="bibr" rid="pone.0195790.ref007">7</xref>]. Additional information can be found in the systematic literature review manuscript [<xref ref-type="bibr" rid="pone.0195790.ref005">5</xref>].</p>
+<p>Both a qualitative assessment and an analysis of statistical heterogeneity were used to determine the risk of bias during the study selection process. As indicated in the previous section, it is of critical importance to systematically examine the qualitative study appraisals for potential “design heterogeneity” or “conceptual heterogeneity” before it can be included in the quantitative assessment. Design heterogeneity is evaluated by qualitatively examining the study specific characteristics, such as the nature of the study population (e.g., age and gender), duration of follow-up, drop-out rate, and the sample size among other important characteristics. To evaluate statistical heterogeneity, statistical testing is performed to evaluate the magnitude and degree of between-study variability. By conducting an in-depth review of these study parameters, we were able to determine if there were substantial differences between the studies that would prevent the combining of quantitative data.</p>
+</sec>
+<sec id="sec011">
+<title>Analytic methods</title>
+<p>The outcomes of interest in these analyses included median OS, median PFS, and risk of various AEs. The measure of association for OS and PFS was the hazard ratio (HR) with 95% Confidence Intervals (95% CI) for Frequentist analyses and 95% Credible Intervals (also referred to as 95% CI henceforth) for Bayesian analyses. The ratios of AEs between groups were estimated using odds ratios (ORs) with 95% CIs. The monitoring scheme for PFS differed among the included studies; therefore, these analyses should be considered exploratory. The conduct of specific analyses was limited to the available data and to the scientific justification for including similar studies together in a quantitative fashion. A network meta-analysis comparing the effect of treatment with cabazitaxel to its comparators was performed within a Frequentist and a Bayesian framework, offering two different methodological approaches to the analyses [<xref ref-type="bibr" rid="pone.0195790.ref008">8</xref>]. These two analytical methodologies were utilized for the purpose of evaluating the consistency of findings. To address possible heterogeneity between studies, fixed and random effects models were used.</p>
+<p>NICE recommends that vague or flat priors, such as N (0, 1002) be used for Bayesian analyses if there are a minimal number of clinical trials with large numbers of subjects [<xref ref-type="bibr" rid="pone.0195790.ref009">9</xref>]. Given that only one study for each drug of interest was identified in the systematic literature review, only a single model was built. The Deviance Information Criterion (DIC) was used to assess “goodness of fit” of the model. Statistical heterogeneity was measured with the I<sup>2</sup> statistic.</p>
+<p>Frequentist analyses were conducted in Stata [<xref ref-type="bibr" rid="pone.0195790.ref010">10</xref>], and Bayesian analyses were performed using WinBugs based on code supplied by Woods et al., 2010 [<xref ref-type="bibr" rid="pone.0195790.ref011">11</xref>].</p>
+</sec>
+<sec id="sec012">
+<title>Assessment of inconsistency</title>
+<p>Inconsistency can be assessed using statistical methodology when the network geography contains closed loops. However, we were not able to evaluate inconsistency because there is no available literature that accommodates closed loops for these treatments.</p>
+</sec>
+<sec id="sec013">
+<title>Risk of bias across studies</title>
+<p>Factors that may differ across studies and lead to bias include the characteristics of the patients (e.g., age distribution), the way in which the outcomes are measured (e.g., HRs for OS vs. proportions for disease free progression), the length of follow-up (e.g., comparable evaluations based on variable lengths of patient follow-up), and the study timeframe.</p>
+</sec>
+</sec>
+<sec id="sec014" sec-type="results">
+<title>Results</title>
+<sec id="sec015">
+<title>Study selection</title>
+<p>The comprehensive literature search produced 935 studies that underwent initial screening. After careful review for eligibility, 13 studies were fully abstracted from 31 publications. A flow diagram of the studies included and excluded at each stage is provided in <xref ref-type="fig" rid="pone.0195790.g001">Fig 1</xref>.</p>
+<p>Only three of the clinical trials (AFFIRM, COU-AA-301, and TROPIC) had similar comparator groups. Thus, the analyses focused on these trials. Results for the TROPIC study came from Joulain et al (2010) [<xref ref-type="bibr" rid="pone.0195790.ref012">12</xref>], results for AFFIRM were published by Scher et al (2012) [<xref ref-type="bibr" rid="pone.0195790.ref013">13</xref>], and results for COU-AA-301 were reported by Fizazi (2012) [<xref ref-type="bibr" rid="pone.0195790.ref014">14</xref>].</p>
+</sec>
+<sec id="sec016">
+<title>Summary of network geometry</title>
+<p>The treatment network was based on three clinical trials. For the drugs of interest, no direct comparisons could be made. Therefore, all comparisons were made indirectly through their relationship with a common comparator (<xref ref-type="fig" rid="pone.0195790.g002">Fig 2</xref>).</p>
+<fig id="pone.0195790.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0195790.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Network geometry of published randomized studies.</title>
+<p>Direct comparisons = solid line/link between the nodes; best supportive care varied by study: TROPIC = mitoxantrone + prednisone, COU-AA-301 = prednisone, and AFFIRM = placebo.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.g002" xlink:type="simple"/>
+</fig>
+<p>For these analyses, it was assumed that comparator patients in all three trials received best supportive care. Furthermore, we assumed that the placebo used in the comparator group in the AFFIRM trial had no relationship to any of our outcomes (OS, PFS, AEs). The COU-AA-301 trial used prednisone to treat their comparator patients, while TROPIC used mitoxantrone and prednisone. A recent study showed that survival patterns were similar for prednisone and mitoxantrone/prednisone treated groups; although, AEs may be more abundant in the mitoxantrone/prednisone group among mCRPC patients [<xref ref-type="bibr" rid="pone.0195790.ref015">15</xref>]. Therefore, the indirect treatment comparison of cabazitaxel, abiraterone, and enzalutamide is anchored on best supportive care.</p>
+</sec>
+<sec id="sec017">
+<title>Study characteristics</title>
+<p><xref ref-type="table" rid="pone.0195790.t001">Table 1</xref> compares the characteristics for each study included in the indirect treatment comparisons. The studies are similar in terms of treatment line (pre-treated with docetaxel-based regimen), study years (range: 2007–2010), total patients (range: 755–1199), age (median range: 68–69) and ECOG score (0–1 range: 90%-93%).</p>
+<table-wrap id="pone.0195790.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0195790.t001</object-id>
+<label>Table 1</label> <caption><title>Baseline characteristics of the studies included in the indirect treatment comparison for cabazitaxel, abiraterone acetate and enzalutamide.</title></caption>
+<alternatives>
+<graphic id="pone.0195790.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="2" style="border-bottom:thick;border-top:thick">Author (Year)</th>
+<th align="left" rowspan="2" style="border-bottom:thick;border-top:thick">Acronym</th>
+<th align="center" rowspan="2" style="border-bottom:thick;border-top:thick">TX Line</th>
+<th align="center" rowspan="2" style="border-bottom:thick;border-top:thick">Study Type</th>
+<th align="center" style="border-top:thick">Treatment /</th>
+<th align="center" rowspan="2" style="border-bottom:thick;border-top:thick">Study Years</th>
+<th align="center" rowspan="2" style="border-bottom:thick;border-top:thick">Region</th>
+<th align="center" rowspan="2" style="border-bottom:thick;border-top:thick">Total Patients</th>
+<th align="center" rowspan="2" style="border-bottom:thick;border-top:thick">Age</th>
+<th align="center" rowspan="2" style="border-bottom:thick;border-top:thick">Race</th>
+<th align="center" rowspan="2" style="border-bottom:thick;border-top:thick">ECOG</th>
+</tr>
+<tr>
+<th align="center" style="border-bottom:thick">Comparator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="2">Joulain (2010)<break/></td>
+<td align="left" rowspan="2">TROPIC</td>
+<td align="center" rowspan="2">3</td>
+<td align="center" rowspan="2">RCT</td>
+<td align="center">Cabazitaxel + prednisone /</td>
+<td align="center" rowspan="2">2007–2008</td>
+<td align="center" rowspan="2">26 countries</td>
+<td align="center" rowspan="2">755</td>
+<td align="center" rowspan="2">≥75 yrs: 18%<break/>median: 68</td>
+<td align="center" rowspan="2">White: 83.5%<break/>Asian: 7.5%<break/>Black: 5%<break/>Other: 3.5%</td>
+<td align="center" rowspan="2">0–1: 93%</td>
+</tr>
+<tr>
+<td align="center">Mitoxantrone + prednisone</td>
+</tr>
+<tr>
+<td align="left" rowspan="2">Fizazi (2012)</td>
+<td align="left" rowspan="2">COU-AA-301</td>
+<td align="center" rowspan="2">3</td>
+<td align="center" rowspan="2">RCT</td>
+<td align="center">Abiraterone acetate + prednisone /</td>
+<td align="center" rowspan="2">2008–2009</td>
+<td align="center" rowspan="2">13 countries</td>
+<td align="center" rowspan="2">1195</td>
+<td align="center" rowspan="2">≥75 yrs: 28%<break/>median: 69</td>
+<td align="center" rowspan="2">NR</td>
+<td align="center" rowspan="2">0–1: 90%<break/>2: 10%</td>
+</tr>
+<tr>
+<td align="center">Placebo + prednisone</td>
+</tr>
+<tr>
+<td align="left" rowspan="2">Scher (2012)</td>
+<td align="left" rowspan="2">AFFIRM</td>
+<td align="center" rowspan="2">3</td>
+<td align="center" rowspan="2">RCT</td>
+<td align="center">Enzalutamide /</td>
+<td align="center" rowspan="2">2009–2010</td>
+<td align="center" rowspan="2">15 countries</td>
+<td align="center" rowspan="2">1199</td>
+<td align="center" rowspan="2">≥75 yrs: 25.3%<break/>median: 69</td>
+<td align="center" rowspan="2">NR</td>
+<td align="center" rowspan="2">0–1: 91.5%<break/>2: 8.5%</td>
+</tr>
+<tr>
+<td align="center">Placebo</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>RCT = Randomized controlled trial; TX = Treatment</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec018">
+<title>Results of individual studies</title>
+<p>Individual study results for median OS are reported in <xref ref-type="table" rid="pone.0195790.t002">Table 2</xref>. Similar median lengths of study follow-up were found for the TROPIC and COU-AA-301 studies (i.e., 623.96 days and 614.82 days, respectively). The median length of follow-up for the AFFIRM study was slightly less at 428.29 days. The active arm of all studies had better median survival compared to best supportive care.</p>
+<table-wrap id="pone.0195790.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0195790.t002</object-id>
+<label>Table 2</label> <caption><title>Hazard ratios (HR) and 95% Confidence Interval (CI) for overall survival (OS) for studies included in the indirect treatment comparison for cabazitaxel, abiraterone acetate and enzalutamide.</title></caption>
+<alternatives>
+<graphic id="pone.0195790.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" style="border-bottom:thick;border-top:thick">Author (Year)</th>
+<th align="left" style="border-bottom:thick;border-top:thick">Acronym</th>
+<th align="left" style="border-bottom:thick;border-top:thick">Treatment / Comparator</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Length of follow-up<break/>(median)</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Median OS HR<break/>(95% CI)</th>
+<th align="center" style="border-bottom:thick;border-top:thick">HR<break/>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="2">Joulain (2010)</td>
+<td align="left" rowspan="2">TROPIC</td>
+<td align="left">Cabazitaxel + prednisone /</td>
+<td align="center" rowspan="2">623.96 days</td>
+<td align="center" rowspan="2">0.72 (0.61–0.84)</td>
+<td align="center" rowspan="2">&lt;0.0001</td>
+</tr>
+<tr>
+<td align="left">Mitoxantrone + prednisone</td>
+</tr>
+<tr>
+<td align="left" rowspan="2">Fizazi (2012)</td>
+<td align="left" rowspan="2">COU-AA-301</td>
+<td align="left">Abiraterone acetate + prednisone /</td>
+<td align="center" rowspan="2">614.82 days</td>
+<td align="center" rowspan="2">0.74 (0.64–0.86)</td>
+<td align="center" rowspan="2">&lt;0.0001</td>
+</tr>
+<tr>
+<td align="left">Placebo + prednisone</td>
+</tr>
+<tr>
+<td align="left" rowspan="2" style="border-bottom:thick">Scher (2012)</td>
+<td align="left" rowspan="2" style="border-bottom:thick">AFFIRM</td>
+<td align="left">Enzalutamide /</td>
+<td align="center" rowspan="2" style="border-bottom:thick">438.29 days</td>
+<td align="center" rowspan="2" style="border-bottom:thick">0.63 (0.53–0.75)</td>
+<td align="center" rowspan="2" style="border-bottom:thick">&lt;0.001</td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick">Placebo</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>Median PFS is reported in <xref ref-type="table" rid="pone.0195790.t003">Table 3</xref> along with the definitions used to measure PFS in each study. These differences may contribute to the considerably shorter median length of follow-up for the TROPIC study compared to COU-AA-301 and AFFIRM since TROPIC uses a broader definition of the PFS endpoint. As with OS, PFS was statistically significantly longer in the active arm compared to best supportive care in all three trials.</p>
+<table-wrap id="pone.0195790.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0195790.t003</object-id>
+<label>Table 3</label> <caption><title>Hazard ratios (HR) and 95% Confidence Interval (CI) for progression-free survival (PFS) for studies included in the indirect treatment comparison for cabazitaxel, abiraterone acetate and enzalutamide.</title></caption>
+<alternatives>
+<graphic id="pone.0195790.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" style="border-bottom:thick;border-top:thick">Study</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Treatment</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Length of follow-up (median)</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Median PFS HR (95% CI; p-value)</th>
+<th align="left" style="border-bottom:thick;border-top:thick">Description of PFS Endpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="2">TROPIC</td>
+<td align="center">Cabazitaxel + prednisone</td>
+<td align="center">85 days</td>
+<td align="center" rowspan="2">0.75 (0.65–0.87; &lt;0.0001)</td>
+<td align="left" rowspan="2">The earliest progression in tumor, PSA or pain or death</td>
+</tr>
+<tr>
+<td align="center">Mitoxantrone + prednisone</td>
+<td align="center">43 days</td>
+</tr>
+<tr>
+<td align="left" rowspan="2">COU-AA-301</td>
+<td align="center">Abiraterone acetate + prednisone</td>
+<td align="center">170.45 days</td>
+<td align="center" rowspan="2">0.66 (0.58–0.76; &lt;0.0001)</td>
+<td align="left" rowspan="2">Soft-tissue disease progression by modified Response Evaluation Criteria In Solid Tumors (RECIST) criteria</td>
+</tr>
+<tr>
+<td align="center">Placebo + prednisone</td>
+<td align="center">109.57 days</td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick">AFFIRM</td>
+<td align="center" style="border-bottom:thick">Enzalutamide</td>
+<td align="center" style="border-bottom:thick">252.63 days</td>
+<td align="center" style="border-bottom:thick">0.40 (0.35–0.47; &lt;0.001)</td>
+<td align="left" style="border-bottom:thick">Progression of soft-tissue disease according to RECIST, version 1.1, progression of osseous disease according to bone scans showing two or more new lesions per PCWG2, and death from any cause.</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>The proportion of individuals with AEs graded 3 or higher for each study is reported in <xref ref-type="table" rid="pone.0195790.t004">Table 4</xref>. Adverse events in the TROPIC trials were ascertained from the Sanofi internal report [<xref ref-type="bibr" rid="pone.0195790.ref012">12</xref>] for all AEs except cardiac disorders and abnormalities in liver function tests (available on clinicaltrials.gov for trial NCT00417079). All AEs identified in the COU-AA-301 trials were published in Fizazi (2012) [<xref ref-type="bibr" rid="pone.0195790.ref014">14</xref>], while AEs from the AFFIRM trials were mainly identified from clinicaltrials.gov for trial NCT00974311, except for diarrhoea, fatigue, cardiac disorder and abnormalities in liver function tests, which were available in Scher (2012) [<xref ref-type="bibr" rid="pone.0195790.ref013">13</xref>]. The most common AEs among cabazitaxel users were neutropenia (21.3%), febrile neutropenia (7.5%), and diarrhoea (6.2%). The most common AEs among abiraterone were fatigue (9.5%), followed by anaemia (8%) and back pain (7.5%). For enzalutamide, fatigue (6%), anaemia (2.63%), haematuria (1.5%), and bone pain (1.5%) were most common.</p>
+<table-wrap id="pone.0195790.t004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0195790.t004</object-id>
+<label>Table 4</label> <caption><title>Percent grade 3 and above adverse events (AEs) for cabazitaxel, abiraterone acetate and enzalutamide and their comparators.</title></caption>
+<alternatives>
+<graphic id="pone.0195790.t004g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.t004" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<tbody>
+<tr>
+<td align="left" colspan="5" style="border-top:thick"><bold>CABAZITAXEL (TROPIC)</bold></td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick"><bold>Adverse Event</bold></td>
+<td align="left" style="border-bottom:thick"><bold>Author (year)</bold></td>
+<td align="left" style="border-bottom:thick"><bold>Follow-up</bold></td>
+<td align="center" style="border-bottom:thick"><bold>Cabazitaxel % with AE</bold></td>
+<td align="center" style="border-bottom:thick"><bold>Comparator % with AE</bold></td>
+</tr>
+<tr>
+<td align="left">Abdominal pain</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">1.9%</td>
+<td align="right">0%</td>
+</tr>
+<tr>
+<td align="left">Abnormalities in liver function tests</td>
+<td align="left">NCT00417079 (2011)</td>
+<td align="left">max: 2 yrs</td>
+<td align="right">0.3%</td>
+<td align="right">0%</td>
+</tr>
+<tr>
+<td align="left">Anaemia</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">3.5%</td>
+<td align="right">1.3%</td>
+</tr>
+<tr>
+<td align="left">Arthralgia</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">1.1%</td>
+<td align="right">1.1%</td>
+</tr>
+<tr>
+<td align="left">Asthenia</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">4.6%</td>
+<td align="right">2.4%</td>
+</tr>
+<tr>
+<td align="left">Back pain</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">3.8%</td>
+<td align="right">3%</td>
+</tr>
+<tr>
+<td align="left">Bone pain</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">0.8%</td>
+<td align="right">2.4%</td>
+</tr>
+<tr>
+<td align="left">Cardiac disorders</td>
+<td align="left">NCT00417079 (2011)</td>
+<td align="left">max: 2 yrs</td>
+<td align="right">1.89%</td>
+<td align="right">0.81%</td>
+</tr>
+<tr>
+<td align="left">Constipation</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">1.1%</td>
+<td align="right">0.5%</td>
+</tr>
+<tr>
+<td align="left">Diarrhoea</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">6.2%</td>
+<td align="right">0.3%</td>
+</tr>
+<tr>
+<td align="left">Dyspnoea</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">1.3%</td>
+<td align="right">0.8%</td>
+</tr>
+<tr>
+<td align="left">Fatigue</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">4.9%</td>
+<td align="right">3%</td>
+</tr>
+<tr>
+<td align="left">Febrile neutropenia</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">7.5%</td>
+<td align="right">1.3%</td>
+</tr>
+<tr>
+<td align="left">Haematuria</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">1.9%</td>
+<td align="right">0.5%</td>
+</tr>
+<tr>
+<td align="left">Nausea</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">1.9%</td>
+<td align="right">0.3%</td>
+</tr>
+<tr>
+<td align="left">Neutropenia</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">21.3%</td>
+<td align="right">7%</td>
+</tr>
+<tr>
+<td align="left">Pain</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">1.1%</td>
+<td align="right">1.9%</td>
+</tr>
+<tr>
+<td align="left">Pain in extremity</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">1.6%</td>
+<td align="right">1.1%</td>
+</tr>
+<tr>
+<td align="left">Pyrexia</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">1.1%</td>
+<td align="right">0.3%</td>
+</tr>
+<tr>
+<td align="left">Thrombocytopenia</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">2.4%</td>
+<td align="right">0.3%</td>
+</tr>
+<tr>
+<td align="left">Urinary-tract infection</td>
+<td align="left">TROPIC (2010)</td>
+<td align="left">max: 3 yrs / med: 20.5 mos</td>
+<td align="right">1.1%</td>
+<td align="right">0.8%</td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick">Vomiting</td>
+<td align="left" style="border-bottom:thick">TROPIC (2010)</td>
+<td align="left" style="border-bottom:thick">max: 3 yrs / med: 20.5 mos</td>
+<td align="right" style="border-bottom:thick">1.9%</td>
+<td align="right" style="border-bottom:thick">0%</td>
+</tr>
+<tr>
+<td align="left" colspan="5"><bold>ABIRATERONE (COU-AA-301)</bold></td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick"><bold>Adverse Event</bold></td>
+<td align="left" style="border-bottom:thick"><bold>Author (year)</bold></td>
+<td align="left" style="border-bottom:thick"><bold>Follow-up</bold></td>
+<td align="center" style="border-bottom:thick"><bold>Abiraterone % with AE</bold></td>
+<td align="center" style="border-bottom:thick"><bold>Comparator % with AE</bold></td>
+</tr>
+<tr>
+<td align="left">Abdominal pain</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">2%</td>
+<td align="right">2%</td>
+</tr>
+<tr>
+<td align="left">Abnormalities in liver function tests</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">4.5%</td>
+<td align="right">3.5%</td>
+</tr>
+<tr>
+<td align="left">Anaemia</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">8%</td>
+<td align="right">9%</td>
+</tr>
+<tr>
+<td align="left">Arthralgia</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">5%</td>
+<td align="right">4%</td>
+</tr>
+<tr>
+<td align="left">Asthenia</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">3%</td>
+<td align="right">2.5%</td>
+</tr>
+<tr>
+<td align="left">Back pain</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">7.5%</td>
+<td align="right">10.5%</td>
+</tr>
+<tr>
+<td align="left">Bone pain</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">6.5%</td>
+<td align="right">8%</td>
+</tr>
+<tr>
+<td align="left">Cardiac disorders</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">5%</td>
+<td align="right">2.5%</td>
+</tr>
+<tr>
+<td align="left">Constipation</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">1%</td>
+<td align="right">1%</td>
+</tr>
+<tr>
+<td align="left">Diarrhoea</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">1.5%</td>
+<td align="right">1%</td>
+</tr>
+<tr>
+<td align="left">Dyspnoea</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">2.5%</td>
+<td align="right">2.5%</td>
+</tr>
+<tr>
+<td align="left">Fatigue</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">9.5%</td>
+<td align="right">10.5%</td>
+</tr>
+<tr>
+<td align="left">Febrile neutropenia</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">0.5%</td>
+<td align="right">0%</td>
+</tr>
+<tr>
+<td align="left">Haematuria</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">2%</td>
+<td align="right">2%</td>
+</tr>
+<tr>
+<td align="left">Nausea</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">2.5%</td>
+<td align="right">3%</td>
+</tr>
+<tr>
+<td align="left">Neutropenia</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">0.5%</td>
+<td align="right">0.5%</td>
+</tr>
+<tr>
+<td align="left">Pain</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">0.5%</td>
+<td align="right">2.5%</td>
+</tr>
+<tr>
+<td align="left">Pain in extremity</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">3.5%</td>
+<td align="right">5%</td>
+</tr>
+<tr>
+<td align="left">Pyrexia</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs /med: 20.2 mos</td>
+<td align="right">0.5%</td>
+<td align="right">1%</td>
+</tr>
+<tr>
+<td align="left">Thrombocytopenia</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">1.5%</td>
+<td align="right">1%</td>
+</tr>
+<tr>
+<td align="left">Urinary-tract infection</td>
+<td align="left">Fizazi (2012)</td>
+<td align="left">max: 2 yrs / med: 20.2 mos</td>
+<td align="right">2%</td>
+<td align="right">0.5%</td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick">Vomiting</td>
+<td align="left" style="border-bottom:thick">Fizazi (2012)</td>
+<td align="left" style="border-bottom:thick">max: 2 yrs / med: 20.2 mos</td>
+<td align="right" style="border-bottom:thick">3.5%</td>
+<td align="right" style="border-bottom:thick">3%</td>
+</tr>
+<tr>
+<td align="left" colspan="5"><bold>ENZALUTAMIDE (AFFIRM)</bold></td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick"><bold>Adverse Event</bold></td>
+<td align="left" style="border-bottom:thick"><bold>Author (year)</bold></td>
+<td align="left" style="border-bottom:thick"><bold>Follow-up</bold></td>
+<td align="center" style="border-bottom:thick"><bold>Enzalutamide % with AE</bold></td>
+<td align="center" style="border-bottom:thick"><bold>Comparator % with AE</bold></td>
+</tr>
+<tr>
+<td align="left">Abdominal pain</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.13%</td>
+<td align="right">0.5%</td>
+</tr>
+<tr>
+<td align="left">Abnormalities in liver function tests</td>
+<td align="left">Scher (2012)</td>
+<td align="left">max: 2 yrs / med: 14.4 mos</td>
+<td align="right">0.5%</td>
+<td align="right">0.5%</td>
+</tr>
+<tr>
+<td align="left">Anaemia</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">2.63%</td>
+<td align="right">3.01%</td>
+</tr>
+<tr>
+<td align="left">Arthralgia</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.38%</td>
+<td align="right">0.25%</td>
+</tr>
+<tr>
+<td align="left">Asthenia</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.38%</td>
+<td align="right">0.75%</td>
+</tr>
+<tr>
+<td align="left">Back pain</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">1.38%</td>
+<td align="right">1.75%</td>
+</tr>
+<tr>
+<td align="left">Bone pain</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">1.5%</td>
+<td align="right">1%</td>
+</tr>
+<tr>
+<td align="left">Cardiac disorders</td>
+<td align="left">Scher (2012)</td>
+<td align="left">max: 2 yrs / med: 14.4 mos</td>
+<td align="right">1%</td>
+<td align="right">2%</td>
+</tr>
+<tr>
+<td align="left">Constipation</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.63%</td>
+<td align="right">0.75%</td>
+</tr>
+<tr>
+<td align="left">Diarrhoea</td>
+<td align="left">Scher (2012)</td>
+<td align="left">max: 2 yrs / med: 14.4 mos</td>
+<td align="right">1.0%</td>
+<td align="right">0.5%</td>
+</tr>
+<tr>
+<td align="left">Dyspnoea</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.13%</td>
+<td align="right">0.25%</td>
+</tr>
+<tr>
+<td align="left">Fatigue</td>
+<td align="left">Scher (2012)</td>
+<td align="left">max: 2 yrs / med: 14.4 mos</td>
+<td align="right">6.0%</td>
+<td align="right">7%</td>
+</tr>
+<tr>
+<td align="left">Febrile neutropenia</td>
+<td align="left">Not Available</td>
+<td align="left"/>
+<td align="right"/>
+<td align="right"/>
+</tr>
+<tr>
+<td align="left">Haematuria</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">1.50%</td>
+<td align="right">1.25%</td>
+</tr>
+<tr>
+<td align="left">Nausea</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.63%</td>
+<td align="right">0.75%</td>
+</tr>
+<tr>
+<td align="left">Neutropenia</td>
+<td align="left">Not Available</td>
+<td align="left"/>
+<td align="right"/>
+<td align="right"/>
+</tr>
+<tr>
+<td align="left">Pain</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.63%</td>
+<td align="right">0.25%</td>
+</tr>
+<tr>
+<td align="left">Pain in extremity</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.38%</td>
+<td align="right">0.5%</td>
+</tr>
+<tr>
+<td align="left">Pyrexia</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.25%</td>
+<td align="right">1.25%</td>
+</tr>
+<tr>
+<td align="left">Thrombocytopenia</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.13%</td>
+<td align="right">0%</td>
+</tr>
+<tr>
+<td align="left">Urinary-tract infection</td>
+<td align="left">NCT00974311 (2014)</td>
+<td align="left">max: 3 yrs</td>
+<td align="right">0.88%</td>
+<td align="right">1.25%</td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick">Vomiting</td>
+<td align="left" style="border-bottom:thick">NCT00974311 (2014)</td>
+<td align="left" style="border-bottom:thick">max: 3 yrs</td>
+<td align="right" style="border-bottom:thick">0.25%</td>
+<td align="right" style="border-bottom:thick">2.01%</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec019">
+<title>Indirect treatment comparison results</title>
+<sec id="sec020">
+<title>Overall survival</title>
+<p>We used the TROPIC, COU-AA-301, and AFFIRM trials to compare cabazitaxel with abiraterone and enzalutamide indirectly through a common comparator using a Bayesian fixed effects model. No statistically significant difference in median OS for patients treated with abiraterone was observed when compared with patients treated with cabazitaxel (HR = 1.04; 95% CI = 0.83–1.28). While patients on enzalutamide had a better median OS compared to cabazitaxel, this difference was not statistically significant (HR = 0.88; 95% CI = 0.69–1.11) (<xref ref-type="table" rid="pone.0195790.t005">Table 5</xref>). For this analysis, statistical heterogeneity was not significant (I<sup>2</sup> 3.1% (0%-89.9%)) and the DIC was low (DIC = 5.93).</p>
+<table-wrap id="pone.0195790.t005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0195790.t005</object-id>
+<label>Table 5</label> <caption><title>Median overall survival and progression-free survival hazard ratios (HRs) and 95% Credible Intervals for cabazitaxel, abiraterone and enzalutamide using Bayesian fixed effects modeling.</title></caption>
+<alternatives>
+<graphic id="pone.0195790.t005g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.t005" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="justify" style="border-bottom:thick;border-top:thick"/>
+<th align="center" style="border-bottom:thick;border-top:thick">Hazard Ratio</th>
+<th align="center" style="border-bottom:thick;border-top:thick">95% Credible Interval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="justify"><bold>Overall Survival</bold></td>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left">    Cabazitaxel vs comparator</td>
+<td align="center">0.72</td>
+<td align="center">0.61–0.85</td>
+</tr>
+<tr>
+<td align="left">    Abiraterone vs comparator</td>
+<td align="center">0.74</td>
+<td align="center">0.64–0.86</td>
+</tr>
+<tr>
+<td align="left">    Enzalutamide vs comparator</td>
+<td align="center">0.63</td>
+<td align="center">0.53–0.75</td>
+</tr>
+<tr>
+<td align="left">    Abiraterone vs Cabazitaxel</td>
+<td align="center">1.04</td>
+<td align="center">0.83–1.28</td>
+</tr>
+<tr>
+<td align="left">    Enzalutamide vs Cabazitaxel</td>
+<td align="center">0.88</td>
+<td align="center">0.69–1.11</td>
+</tr>
+<tr>
+<td align="left">    Enzalutamide vs Abiraterone</td>
+<td align="center">0.86</td>
+<td align="center">0.68–1.07</td>
+</tr>
+<tr>
+<td align="justify"><bold>Progression-Free Survival</bold></td>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left">    Cabazitaxel vs comparator</td>
+<td align="center">0.75</td>
+<td align="center">0.65–0.87</td>
+</tr>
+<tr>
+<td align="left">    Abiraterone vs comparator</td>
+<td align="center">0.66</td>
+<td align="center">0.58–0.76</td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick">    Abiraterone vs Cabazitaxel</td>
+<td align="center" style="border-bottom:thick">0.88</td>
+<td align="center" style="border-bottom:thick">0.72–1.07</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec021">
+<title>Progression-free survival</title>
+<p>We compared the median PFS of patients on abiraterone to patients on cabazitaxel indirectly through a common comparator using a Bayesian fixed effects model. Data from the AFFIRM trial was excluded because the confidence interval for PFS did not overlap the confidence interval of the two other trials, indicating heterogeneity. PFS was modestly lower for abiraterone than cabazitaxel, but the difference was not statistically significant (HR = 0.88; 95% CI = 0.72–1.07) (<xref ref-type="table" rid="pone.0195790.t005">Table 5</xref>).</p>
+</sec>
+<sec id="sec022">
+<title>Adverse events</title>
+<p>The results for the AEs must be interpreted with caution as many of these outcomes were based on very few events resulting in unstable risk estimates. Of some of the more frequently reported AEs in the 3 included trials (e.g., fatigue, anaemia, back pain, diarrhoea), only anaemia (OR = 3.71; 95% CI = 1.01–10.44) and diarrhoea (OR = 16.60; 95% CI = 1.41–75.31) were statistically significantly more likely to occur in the cabazitaxel group compared to abiraterone (<xref ref-type="table" rid="pone.0195790.t006">Table 6</xref>). In addition, the indirect treatment comparison showed haematuria (OR = 3.88; 95% CI = 1.03–10.09) and pyrexia (OR = 36.23; 95% CI = 1.14–206.40) were higher among those receiving cabazitaxel compared to those receiving abiraterone and enzalutamide, respectively. None of the other AEs were statistically significantly different for the three groups.</p>
+<table-wrap id="pone.0195790.t006" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0195790.t006</object-id>
+<label>Table 6</label> <caption><title>Odds ratios and 95% Credible Intervals for grade 3 and above adverse events.</title></caption>
+<alternatives>
+<graphic id="pone.0195790.t006g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.t006" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" style="border-top:thick">Adverse Event</th>
+<th align="center" colspan="2" style="border-top:thick">Cabazitaxel vs Abiraterone<xref ref-type="table-fn" rid="t006fn002">*</xref></th>
+<th align="center" colspan="2" style="border-top:thick">Cabazitaxel vs Enzalutamide<xref ref-type="table-fn" rid="t006fn002">*</xref></th>
+</tr>
+<tr>
+<th align="left" style="border-bottom:thick"/>
+<th align="center" style="border-bottom:thick;border-top:thick">Odds Ratios</th>
+<th align="center" style="border-bottom:thick;border-top:thick">95% Credible Intervals</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Odds Ratios</th>
+<th align="center" style="border-bottom:thick;border-top:thick">95% Credible Intervals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Anaemia</td>
+<td align="center">3.71</td>
+<td align="center">1.01–10.44</td>
+<td align="center">3.99</td>
+<td align="center">0.89–12.24</td>
+</tr>
+<tr>
+<td align="left">Arthralgia</td>
+<td align="center">1.07</td>
+<td align="center">0.16–3.79</td>
+<td align="center">2.68</td>
+<td align="center">0.10–13.86</td>
+</tr>
+<tr>
+<td align="left">Asthenia</td>
+<td align="center">2.01</td>
+<td align="center">0.55–5.27</td>
+<td align="center">6.99</td>
+<td align="center">0.63–29.56</td>
+</tr>
+<tr>
+<td align="left">Back pain</td>
+<td align="center">2.04</td>
+<td align="center">0.76–4.50</td>
+<td align="center">1.95</td>
+<td align="center">0.44–5.54</td>
+</tr>
+<tr>
+<td align="left">Bone pain</td>
+<td align="center">0.48</td>
+<td align="center">0.07–1.45</td>
+<td align="center">0.27</td>
+<td align="center">0.56–1.03</td>
+</tr>
+<tr>
+<td align="left">Cardiac disorders</td>
+<td align="center">1.74</td>
+<td align="center">0.26–6.58</td>
+<td align="center">8.04</td>
+<td align="center">0.95–32.86</td>
+</tr>
+<tr>
+<td align="left">Constipation</td>
+<td align="center">4.28</td>
+<td align="center">0.24–21.05</td>
+<td align="center">5.63</td>
+<td align="center">0.24–29.43</td>
+</tr>
+<tr>
+<td align="left">Diarrhoea</td>
+<td align="center">16.60</td>
+<td align="center">1.41–75.31</td>
+<td align="center">11.44</td>
+<td align="center">0.55–56.73</td>
+</tr>
+<tr>
+<td align="left">Dyspnoea</td>
+<td align="center">2.59</td>
+<td align="center">0.32–10.13</td>
+<td align="center">72.84</td>
+<td align="center">0.09–178.30</td>
+</tr>
+<tr>
+<td align="left">Fatigue</td>
+<td align="center">2.01</td>
+<td align="center">0.79–4.33</td>
+<td align="center">2.13</td>
+<td align="center">0.79–4.76</td>
+</tr>
+<tr>
+<td align="left">Haematuria</td>
+<td align="center">3.88</td>
+<td align="center">1.03–10.09</td>
+<td align="center">0.81</td>
+<td align="center">0.16–2.43</td>
+</tr>
+<tr>
+<td align="left">Nausea</td>
+<td align="center">3.05</td>
+<td align="center">0.83–7.79</td>
+<td align="center">0.17</td>
+<td align="center">0.04–0.47</td>
+</tr>
+<tr>
+<td align="left">Neutropenia</td>
+<td align="center">5.14</td>
+<td align="center">0.42–19.98</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr>
+<td align="left">Pain</td>
+<td align="center">4.49</td>
+<td align="center">0.50–17.75</td>
+<td align="center">0.69</td>
+<td align="center">0.04–3.09</td>
+</tr>
+<tr>
+<td align="left">Pain in extremity</td>
+<td align="center">3.00</td>
+<td align="center">0.54–10.08</td>
+<td align="center">2.11</td>
+<td align="center">0.03–11.74</td>
+</tr>
+<tr>
+<td align="left">Pyrexia</td>
+<td align="center">9.92</td>
+<td align="center">0.46–52.19</td>
+<td align="center">36.23</td>
+<td align="center">1.14–206.40</td>
+</tr>
+<tr>
+<td align="left">Thrombocytopenia</td>
+<td align="center">6.61</td>
+<td align="center">0.48–31.99</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick">Urinary-tract infection</td>
+<td align="center" style="border-bottom:thick">0.53</td>
+<td align="center" style="border-bottom:thick">0.03–2.48</td>
+<td align="center" style="border-bottom:thick">3.32</td>
+<td align="center" style="border-bottom:thick">0.26–14.83</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t006fn001"><p>Note: all omitted AEs had a least one cell with 0 observations</p></fn>
+<fn id="t006fn002"><p>*Referent (or comparison) group</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+</sec>
+<sec id="sec023">
+<title>Risk of bias across studies</title>
+<p>Based on our assessment of design heterogeneity, we did not identify potential sources of qualitative variability or bias that would preclude the combination of quantitative data across studies. Because only a few studies were deemed relevant for the quantitative meta-analysis, we were able to efficiently compare and contrast the study design and characteristics between studies. Specifically, for OS, important study characteristics, such as age, ECOG score, and length of follow-up were relatively similar between studies. The TROPIC study had an expanded definition for a progression-free endpoint, which may have shortened PFS compared to AFFIRM or COU-AA-301. A broad overview of comparisons of the three trials is in <xref ref-type="table" rid="pone.0195790.t007">Table 7</xref>.</p>
+<table-wrap id="pone.0195790.t007" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0195790.t007</object-id>
+<label>Table 7</label> <caption><title>Comparison of age, ECOG score, and lengths of follow-up for overall survival (OS) and progression-free survival (PFS) for clinical trials used in the indirect treatment comparison.</title></caption>
+<alternatives>
+<graphic id="pone.0195790.t007g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.t007" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" style="border-bottom:thick;border-top:thick">Study</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Total Patients</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Age</th>
+<th align="center" style="border-bottom:thick;border-top:thick">ECOG</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Length of OS follow-up (median)</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Length of PFS follow-up (median)</th>
+<th align="left" style="border-bottom:thick;border-top:thick">Description of PFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="2">TROPIC</td>
+<td align="center" rowspan="2">755</td>
+<td align="left" rowspan="2">≥ 75 yrs: 18%; median: 68</td>
+<td align="center" rowspan="2">0–1: 93%</td>
+<td align="center" rowspan="2">623.96 days</td>
+<td align="center">Treatment: 85 days</td>
+<td align="left" rowspan="2">The earliest progression in tumor, PSA or pain or death</td>
+</tr>
+<tr>
+<td align="center">Comparator: 43 days</td>
+</tr>
+<tr>
+<td align="left" rowspan="2">COU-AA-301</td>
+<td align="center" rowspan="2">1195</td>
+<td align="left">Treatment: ≥75 yrs: 25%; median: 69</td>
+<td align="center">Treatment: 0–1: 91%; 2: 9%</td>
+<td align="center" rowspan="2">614.82 days</td>
+<td align="center">Treatment: 170.45 days</td>
+<td align="left" rowspan="2">Soft-tissue disease progression by modified Response Evaluation Criteria In Solid Tumors (RECIST) criteria</td>
+</tr>
+<tr>
+<td align="left">Comparator: ≥75 yrs: 26%; median: 69</td>
+<td align="center">Comparator: 0–1: 92%; 2: 8%</td>
+<td align="center">Comparator: 109.57 days</td>
+</tr>
+<tr>
+<td align="left" rowspan="2" style="border-bottom:thick">AFFIRM</td>
+<td align="center" rowspan="2" style="border-bottom:thick">1199</td>
+<td align="left">Treatment: ≥75 yrs: 24.9%</td>
+<td align="center" rowspan="2" style="border-bottom:thick">0–1: 91.5%; 2: 8.5%</td>
+<td align="center" rowspan="2" style="border-bottom:thick">438.29 days</td>
+<td align="center">Treatment: 252.63 days</td>
+<td align="left" rowspan="2" style="border-bottom:thick">Progression of soft-tissue disease according to RECIST, version 1.1, progression of osseous disease according to bone scans showing two or more new lesions per PCWG2, and death from any cause.</td>
+</tr>
+<tr>
+<td align="left" style="border-bottom:thick">Comparator: ≥75 yrs: 26.1%</td>
+<td align="center" style="border-bottom:thick">Comparator: 88.27 day</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec024">
+<title>Additional analyses</title>
+<p>We repeated analyses using a Frequentist model, a Bayesian fixed effects model, and a Bayesian random effects model to understand the robustness of the results for overall survival. It should be noted that the posterior distributions of the Bayesian random effects model are skewed, and thus in the presence of skewed distributions, the median was used for inference. The three approaches produced similar findings (<xref ref-type="table" rid="pone.0195790.t008">Table 8</xref>).</p>
+<table-wrap id="pone.0195790.t008" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0195790.t008</object-id>
+<label>Table 8</label> <caption><title>Hazard ratios and 95% Credible Intervals for indirect treatment comparisons between cabazitaxel, abiraterone and enzalutamide using Bayesian fixed and random effects and Frequentist fixed effects modeling.</title></caption>
+<alternatives>
+<graphic id="pone.0195790.t008g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.t008" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="justify" style="border-bottom:thick;border-top:thick">Approach</th>
+<th align="center" style="border-bottom:thick;border-top:thick">Hazard Ratio</th>
+<th align="center" style="border-bottom:thick;border-top:thick">95% Credible Interval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="justify"><bold>Bayesian Fixed Effects</bold></td>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="justify">    Cabazitaxel vs comparator</td>
+<td align="center">0.72</td>
+<td align="center">0.61–0.85</td>
+</tr>
+<tr>
+<td align="justify">    Abiraterone vs comparator</td>
+<td align="center">0.74</td>
+<td align="center">0.64–0.86</td>
+</tr>
+<tr>
+<td align="justify">    Enzalutamide vs comparator</td>
+<td align="center">0.63</td>
+<td align="center">0.53–0.75</td>
+</tr>
+<tr>
+<td align="justify">    Abiraterone vs Cabazitaxel</td>
+<td align="center">1.04</td>
+<td align="center">0.83–1.28</td>
+</tr>
+<tr>
+<td align="justify">    Enzalutamide vs Cabazitaxel</td>
+<td align="center">0.88</td>
+<td align="center">0.69–1.11</td>
+</tr>
+<tr>
+<td align="justify">    Enzalutamide vs Abiraterone</td>
+<td align="center">0.86</td>
+<td align="center">0.68–1.07</td>
+</tr>
+<tr>
+<td align="justify"><bold>Bayesian Random Effects</bold></td>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="justify">    Cabazitaxel vs comparator</td>
+<td align="center">0.71</td>
+<td align="center">0.21–2.43</td>
+</tr>
+<tr>
+<td align="justify">    Abiraterone vs comparator</td>
+<td align="center">0.74</td>
+<td align="center">0.22–2.50</td>
+</tr>
+<tr>
+<td align="justify">    Enzalutamide vs comparator</td>
+<td align="center">0.62</td>
+<td align="center">0.19–2.16</td>
+</tr>
+<tr>
+<td align="justify">    Abiraterone vs Cabazitaxel</td>
+<td align="center">1.03</td>
+<td align="center">0.29–3.60</td>
+</tr>
+<tr>
+<td align="justify">    Enzalutamide vs Cabazitaxel</td>
+<td align="center">0.87</td>
+<td align="center">0.25–3.14</td>
+</tr>
+<tr>
+<td align="justify">    Enzalutamide vs Abiraterone</td>
+<td align="center">0.85</td>
+<td align="center">0.24–3.05</td>
+</tr>
+<tr>
+<td align="justify"><bold>Frequentist Fixed Effects</bold></td>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="justify">    Cabazitaxel vs comparator</td>
+<td align="center">0.72</td>
+<td align="center">0.61–0.84</td>
+</tr>
+<tr>
+<td align="justify">    Abiraterone vs comparator</td>
+<td align="center">0.74</td>
+<td align="center">0.64–0.86</td>
+</tr>
+<tr>
+<td align="justify">    Enzalutamide vs comparator</td>
+<td align="center">0.63</td>
+<td align="center">0.53–0.75</td>
+</tr>
+<tr>
+<td align="justify">    Abiraterone vs Cabazitaxel</td>
+<td align="center">1.03</td>
+<td align="center">0.83–1.28</td>
+</tr>
+<tr>
+<td align="justify">    Enzalutamide vs Cabazitaxel</td>
+<td align="center">0.88</td>
+<td align="center">0.69–1.11</td>
+</tr>
+<tr>
+<td align="justify" style="border-bottom:thick">    Enzalutamide vs Abiraterone</td>
+<td align="center" style="border-bottom:thick">0.85</td>
+<td align="center" style="border-bottom:thick">0.68–1.07</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+</sec>
+<sec id="sec025" sec-type="conclusions">
+<title>Discussion</title>
+<sec id="sec026">
+<title>Summary of evidence</title>
+<p>Median OS was similar for cabazitaxel, abiraterone and enzalutamide. While median PFS was modestly lower for abiraterone than cabazitaxel, the results of the exploratory analysis were not statistically significant. Anaemia, diarrhoea and haematuria were statistically significantly more likely to occur in the cabazitaxel group compared to abiraterone, while only pyrexia was higher among those receiving cabazitaxel compared to those receiving enzalutamide. None of the other AEs were statistically significantly different for the three groups.</p>
+</sec>
+<sec id="sec027">
+<title>Comparison to past studies</title>
+<p>Four studies have conducted indirect treatment comparisons between abiraterone and enzalutamide for overall survival [<xref ref-type="bibr" rid="pone.0195790.ref016">16</xref>–<xref ref-type="bibr" rid="pone.0195790.ref019">19</xref>], but these did not consider cabazitaxel in the analysis. Two of the past studies [<xref ref-type="bibr" rid="pone.0195790.ref018">18</xref>, <xref ref-type="bibr" rid="pone.0195790.ref019">19</xref>] supported our findings for the indirect estimate of OS between abiraterone and enzalutamide (HR = 0.86; 95% CI 0.68–1.07). In modest contrast, an HR of 0.97 (95% CI = 0.75–1.25) for OS was reported in a study by Brodszky [<xref ref-type="bibr" rid="pone.0195790.ref016">16</xref>]. It appears that this study included an interim report [<xref ref-type="bibr" rid="pone.0195790.ref020">20</xref>] and a final report [<xref ref-type="bibr" rid="pone.0195790.ref014">14</xref>] from the COU-AA-301 trial for abiraterone in their indirect treatment comparisons which may have skewed their results. One study [<xref ref-type="bibr" rid="pone.0195790.ref017">17</xref>] compared mean survival for the two groups and found that the mean survival for enzalutamide (38.7 months; 95% CI = 36.4–40.7) was greater than the mean survival for abiraterone (34.6 months; 95% CI = 31.8–37.8). However, the mean survival time is not informative for understanding the efficacy of a drug on survival as all of the deaths in the study population would have to be observed before a valid mean survival time could be calculated. Indirect estimates of median radiographic PFS for abiraterone and enzalutamide were similar (both calculated an indirect HR = 0.61; 95% CI = 0.50–0.74) in two studies [<xref ref-type="bibr" rid="pone.0195790.ref018">18</xref>, <xref ref-type="bibr" rid="pone.0195790.ref019">19</xref>] while a third study compared means of radiographic PFS [<xref ref-type="bibr" rid="pone.0195790.ref017">17</xref>]. We did not include enzalutamide in our indirect treatment comparison analysis of PFS as the AFFIRM trial introduced heterogeneity into the model. While three of the studies [<xref ref-type="bibr" rid="pone.0195790.ref016">16</xref>, <xref ref-type="bibr" rid="pone.0195790.ref018">18</xref>, <xref ref-type="bibr" rid="pone.0195790.ref019">19</xref>] also evaluated AEs, to our knowledge, our study was the first to formally compare these outcomes for abiraterone, enzalutamide and cabazitaxel.</p>
+</sec>
+<sec id="sec028">
+<title>Limitations</title>
+<p>The main limitation of these analyses is the lack of a specified common comparator. While evidence exists showing that survival among prostate cancer patients taking mitoxantrone/prednisone and prednisone alone is similar [<xref ref-type="bibr" rid="pone.0195790.ref015">15</xref>], there is no evidence to support that PFS is similar in these groups. The PFS analyses should be considered exploratory as the studies did not have a consistent definition for PFS. The results for the analysis of AEs must be interpreted with caution as well since patients treated with mitoxantrone/prednisone may experience different rates of safety outcomes than those treated with prednisone alone [<xref ref-type="bibr" rid="pone.0195790.ref015">15</xref>]. Additionally, many of the specific AEs were based on very small numbers resulting in unstable risk estimates, and follow-up time varied between studies. The scarcity of clinical studies also limited the types and numbers of analyses that could be performed, and brings with it the inability to conduct or rely on the findings of the underlying tests of publication bias and study heterogeneity.</p>
+<p>In order to conduct an indirect treatment comparison, treatments are compared through their comparators. Given this, we were only able to identify three registrational trials conducted pre-marketing to include in our study. In essence, the comparative assessment methodology was limited to randomized controlled trial-defined data reporting under circumstances that do not reflect current therapeutic sequencing and utilization patterns that are based on additional scientific evidence generated from post-marketing trials and observational studies. The addition of new studies may change findings reported here.</p>
+</sec>
+</sec>
+<sec id="sec029" sec-type="conclusions">
+<title>Conclusions</title>
+<p>In this analysis of pivotal clinical trial data, cabazitaxel, abiraterone and enzalutamide had similar survival outcomes and AE profiles. To the best of our knowledge, this is the first indirect treatment comparison including these 3 agents evaluating both efficacy and safety outcomes. Data from future trials should be incorporated into this study framework to garner additional information about the relative performance of these drugs.</p>
+</sec>
+<sec id="sec030">
+<title>Supporting information</title>
+<supplementary-material id="pone.0195790.s001" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.s001" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>PRISMA checklist.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0195790.s002" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0195790.s002" xlink:type="simple">
+<label>S1 Appendix</label>
+<caption>
+<title>Complete search strategy.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ref-list>
+<title>References</title>
+<ref id="pone.0195790.ref001"><label>1</label><mixed-citation publication-type="book" xlink:type="simple"><collab>American Cancer Society</collab>. <chapter-title>Key Statistics for Prostate Cancer</chapter-title>. <publisher-name>American Cancer Society</publisher-name>; <year>2016</year> [cited 2016 Oct. 20]; Available from: <ext-link ext-link-type="uri" xlink:href="http://www.cancer.org/cancer/prostatecancer/detailedguide/prostate-cancer-key-statistics" xlink:type="simple">http://www.cancer.org/cancer/prostatecancer/detailedguide/prostate-cancer-key-statistics</ext-link>.</mixed-citation></ref>
+<ref id="pone.0195790.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple">Cancer Research UK. Prostate Cancer Statistics. 2016 [cited 2016 Oct. 20]; Available from: <ext-link ext-link-type="uri" xlink:href="http://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/prostate-cancer" xlink:type="simple">http://www.cancerresearchuk.org/health-professional/cancer-statistics/statistics-by-cancer-type/prostate-cancer</ext-link>.</mixed-citation></ref>
+<ref id="pone.0195790.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Glenny</surname> <given-names>AM</given-names></name>, <name name-style="western"><surname>Altman</surname> <given-names>DG</given-names></name>, <name name-style="western"><surname>Song</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Sakarovitch</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Deeks</surname> <given-names>JJ</given-names></name>, <name name-style="western"><surname>D'Amico</surname> <given-names>R</given-names></name>, <etal>et al</etal>. <article-title>Indirect comparisons of competing interventions</article-title>. <source>Health Technol Assess</source>. <year>2005</year>;<volume>9</volume>(<issue>26</issue>):<fpage>1</fpage>–<lpage>134</lpage>, iii-iv. <object-id pub-id-type="pmid">16014203</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hutton</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Salanti</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Caldwell</surname> <given-names>DM</given-names></name>, <name name-style="western"><surname>Chaimani</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Schmid</surname> <given-names>CH</given-names></name>, <name name-style="western"><surname>Cameron</surname> <given-names>C</given-names></name>, <etal>et al</etal>. <article-title>The PRISMA Extension Statement for Reporting of Systematic Reviews Incorporating Network Meta-analyses of Health Care Interventions: Checklist and Explanations</article-title>. <source>Ann Intern Med</source>. <year>2015</year>;<volume>162</volume>(<issue>11</issue>):<fpage>777</fpage>–<lpage>84</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.7326/M14-2385" xlink:type="simple">10.7326/M14-2385</ext-link></comment> <object-id pub-id-type="pmid">26030634</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Summers</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Vanderpuye-Orgle</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Reinhart</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Gallagher</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sartor</surname> <given-names>O</given-names></name>. <article-title>Efficacy and safety of post-docetaxel therapies in metastatic castrate-resistant prostate cancer: A systematic review of the literature</article-title>. <source>Current Medical Research and Opinion</source>. <year>2017</year>;<volume>33</volume>(<issue>11</issue>):<fpage>1995</fpage>–<lpage>2008</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1080/03007995.2017.1341869" xlink:type="simple">10.1080/03007995.2017.1341869</ext-link></comment> <object-id pub-id-type="pmid">28604117</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref006"><label>6</label><mixed-citation publication-type="book" xlink:type="simple"><collab>Centre for Reviews and Dissemination</collab>. <chapter-title>Systematic reviews: CRD’s guidance for undertaking reviews in health care</chapter-title>. <publisher-loc>York</publisher-loc>: <publisher-name>University of York</publisher-name>; <year>2009</year>.</mixed-citation></ref>
+<ref id="pone.0195790.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jadad</surname> <given-names>AR</given-names></name>, <name name-style="western"><surname>Moore</surname> <given-names>RA</given-names></name>, <name name-style="western"><surname>Carroll</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Jenkinson</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Reynolds</surname> <given-names>DJ</given-names></name>, <name name-style="western"><surname>Gavaghan</surname> <given-names>DJ</given-names></name>, <etal>et al</etal>. <article-title>Assessing the quality of reports of randomized clinical trials: is blinding necessary?</article-title> <source>Control Clin Trials</source>. <year>1996</year>;<volume>17</volume>(<issue>1</issue>):<fpage>1</fpage>–<lpage>12</lpage>. <object-id pub-id-type="pmid">8721797</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mills</surname> <given-names>EJ</given-names></name>, <name name-style="western"><surname>Thorlund</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Ioannidis</surname> <given-names>JP</given-names></name>. <article-title>Demystifying trial networks and network meta-analysis</article-title>. <source>BMJ</source>. <year>2013</year>;<volume>346</volume>:<fpage>f2914</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1136/bmj.f2914" xlink:type="simple">10.1136/bmj.f2914</ext-link></comment> <object-id pub-id-type="pmid">23674332</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref009"><label>9</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Dias</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Welton</surname> <given-names>NJ</given-names></name>, <name name-style="western"><surname>Sutton</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Ades</surname> <given-names>A</given-names></name>. <chapter-title>NICE DSU Technical Support Document 2: a generalised linear modelling framework for pairwise and network meta-analysis of randomised controlled trials</chapter-title>. <publisher-loc>London, UK</publisher-loc>: <publisher-name>National Institute for Health and Clinical Excellence</publisher-name>, <year>2011</year>.</mixed-citation></ref>
+<ref id="pone.0195790.ref010"><label>10</label><mixed-citation publication-type="book" xlink:type="simple"><collab>StataCorp</collab>. <chapter-title>Stata Statistical Software: Release 14</chapter-title>. <publisher-loc>College Station, TX</publisher-loc>: <publisher-name>StataCorp LP</publisher-name>, <year>2015</year>.</mixed-citation></ref>
+<ref id="pone.0195790.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Woods</surname> <given-names>BS</given-names></name>, <name name-style="western"><surname>Hawkins</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Scott</surname> <given-names>DA</given-names></name>. <article-title>Network meta-analysis on the log-hazard scale, combining count and hazard ratio statistics accounting for multi-arm trials: a tutorial</article-title>. <source>BMC Med Res Methodol</source>. <year>2010</year>;<volume>10</volume>:<fpage>54</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/1471-2288-10-54" xlink:type="simple">10.1186/1471-2288-10-54</ext-link></comment> <object-id pub-id-type="pmid">20537177</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref012"><label>12</label><mixed-citation publication-type="other" xlink:type="simple">Joulain F. A Randomized, Open Label Multi Center Study of XRP6258 at 25 mg/m2 in Combination With Prednisone Every 3 Weeks Compared To Mitoxantrone in Combination With Prednisone For The Treatment of Hormone Refractory Metastatic Prostate Cancer Previously Treated With A Taxotere® -Containing Regimen. Data analysis for cost-effectiveness modelling—OS update. Internal Sanofi Report: Sanofi, 2010 June. Report No.: 2010_01.</mixed-citation></ref>
+<ref id="pone.0195790.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Scher</surname> <given-names>HI</given-names></name>, <name name-style="western"><surname>Fizazi</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Saad</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Taplin</surname> <given-names>ME</given-names></name>, <name name-style="western"><surname>Sternberg</surname> <given-names>CN</given-names></name>, <name name-style="western"><surname>Miller</surname> <given-names>K</given-names></name>, <etal>et al</etal>. <article-title>Increased survival with enzalutamide in prostate cancer after chemotherapy</article-title>. <source>N Engl J Med</source>. <year>2012</year>;<volume>367</volume>(<issue>13</issue>):<fpage>1187</fpage>–<lpage>97</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1056/NEJMoa1207506" xlink:type="simple">10.1056/NEJMoa1207506</ext-link></comment> <object-id pub-id-type="pmid">22894553</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fizazi</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Scher</surname> <given-names>HI</given-names></name>, <name name-style="western"><surname>Molina</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Logothetis</surname> <given-names>CJ</given-names></name>, <name name-style="western"><surname>Chi</surname> <given-names>KN</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>RJ</given-names></name>, <etal>et al</etal>. <article-title>Abiraterone acetate for treatment of metastatic castration-resistant prostate cancer: Final overall survival analysis of the COU-AA-301 randomised, double-blind, placebo-controlled phase 3 study</article-title>. <source>Lancet Oncol</source>. <year>2012</year>;<volume>13</volume>(<issue>10</issue>):<fpage>983</fpage>–<lpage>92</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/S1470-2045(12)70379-0" xlink:type="simple">10.1016/S1470-2045(12)70379-0</ext-link></comment> <object-id pub-id-type="pmid">22995653</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Green</surname> <given-names>AK</given-names></name>, <name name-style="western"><surname>Corty</surname> <given-names>RW</given-names></name>, <name name-style="western"><surname>Wood</surname> <given-names>WA</given-names></name>, <name name-style="western"><surname>Meeneghan</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Reeder-Hayes</surname> <given-names>KE</given-names></name>, <name name-style="western"><surname>Basch</surname> <given-names>E</given-names></name>, <etal>et al</etal>. <article-title>Comparative effectiveness of mitoxantrone plus prednisone versus prednisone alone in metastatic castrate-resistant prostate cancer after docetaxel failure</article-title>. <source>Oncologist</source>. <year>2015</year>;<volume>20</volume>(<issue>5</issue>):<fpage>516</fpage>–<lpage>22</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1634/theoncologist.2014-0432" xlink:type="simple">10.1634/theoncologist.2014-0432</ext-link></comment> <object-id pub-id-type="pmid">25888270</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brodszky</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Pentek</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Baji</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Rencz</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Geczi</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Szucs</surname> <given-names>M</given-names></name>, <etal>et al</etal>. <article-title>[Clinical efficacy and safety of enzalutamide in metastatic castration-resistant prostate cancer: systematic review and meta-analysis]</article-title>. <source>Magyar onkologia</source>. <year>2014</year>;<volume>58</volume>(<issue>3</issue>):<fpage>189</fpage>–<lpage>97</lpage>. <object-id pub-id-type="pmid">25260083</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dearden</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Majer</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Heeg</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Liwing</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Sandstrom</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Diels</surname> <given-names>J</given-names></name>. <article-title>Comparison of Mean Overall Survival (OS) and Radiographic Progression Free Survival (RPFS) Based on Matching Adjusted Indirect Comparison of Abiraterone Acetate and Enzalutamide for the Treatment of Castration-Resistant Prostate Cancer in Chemotherapy Naive Patients</article-title>. <source>Value Health</source>. <year>2014</year>;<volume>17</volume>(<issue>7</issue>):<fpage>A616</fpage>.</mixed-citation></ref>
+<ref id="pone.0195790.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tan</surname> <given-names>PS</given-names></name>, <name name-style="western"><surname>Haaland</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Montero</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Kyriakopoulos</surname> <given-names>CE</given-names></name>, <name name-style="western"><surname>Lopes</surname> <given-names>G</given-names></name>. <article-title>Hormonal Therapeutics Enzalutamide and Abiraterone Acetate in the Treatment of Metastatic Castration-Resistant Prostate Cancer (mCRPC) Post-docetaxel-an Indirect Comparison</article-title>. <source>Clin Med Insights Oncol</source>. <year>2014</year>;<volume>8</volume>:<fpage>29</fpage>–<lpage>36</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.4137/CMO.S13671" xlink:type="simple">10.4137/CMO.S13671</ext-link></comment> <object-id pub-id-type="pmid">24678245</object-id></mixed-citation></ref>
+<ref id="pone.0195790.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhang</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>TY</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Shi</surname> <given-names>XL</given-names></name>, <name name-style="western"><surname>Xiao</surname> <given-names>GA</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>L</given-names></name>, <etal>et al</etal>. <article-title>Indirect comparison between abiraterone acetate and enzalutamide for the treatment of metastatic castration-resistant prostate cancer: a systematic review</article-title>. <source>Asian J Androl</source>. <year>2016</year>.</mixed-citation></ref>
+<ref id="pone.0195790.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>de Bono</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Logothetis</surname> <given-names>CJ</given-names></name>, <name name-style="western"><surname>Molina</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Fizazi</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>North</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Chu</surname> <given-names>L</given-names></name>, <etal>et al</etal>. <article-title>Abiraterone and increased survival in metastatic prostate cancer</article-title>. <source>N Engl J Med</source>. <year>2011</year>;<volume>364</volume>(<issue>21</issue>):<fpage>1995</fpage>–<lpage>2005</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1056/NEJMoa1014618" xlink:type="simple">10.1056/NEJMoa1014618</ext-link></comment> <object-id pub-id-type="pmid">21612468</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

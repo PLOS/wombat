@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URI;
@@ -38,6 +39,10 @@ public class FileUtils {
     catch (java.net.URISyntaxException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  public static InputStream getInputStream(String file) {
+    return FileUtils.class.getClassLoader().getResourceAsStream(file);
   }
 
   public static String read(File file) {

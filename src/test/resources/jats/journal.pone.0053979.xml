@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+      <journal-id journal-id-type="publisher-id">plos</journal-id>
+      <journal-id journal-id-type="pmc">plosone</journal-id>
+      <journal-title-group>
+        <journal-title>PLoS ONE</journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">1932-6203</issn>
+      <publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">PONE-D-12-32949</article-id>
+      <article-id pub-id-type="doi">10.1371/journal.pone.0053979</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Biochemistry</subject>
+            <subj-group>
+              <subject>Proteins</subject>
+              <subj-group>
+                <subject>Ion channels</subject>
+                <subject>Protein chemistry</subject>
+                <subject>Protein interactions</subject>
+                <subject>Recombinant proteins</subject>
+                <subject>Regulatory proteins</subject>
+                <subject>Transmembrane proteins</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Molecular cell biology</subject>
+            <subj-group>
+              <subject>Signal transduction</subject>
+              <subj-group>
+                <subject>Signaling in cellular processes</subject>
+                <subj-group>
+                  <subject>Calcium signaling</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Biochemistry</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Comprehensive Analysis and Identification of the Human STIM1 Domains for Structural and Functional Studies</article-title>
+        <alt-title alt-title-type="running-head">Identification of High Quality hSTIM1 Domains</alt-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>How</surname>
+            <given-names>Jonathan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Zhang</surname>
+            <given-names>Ai</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Phillips</surname>
+            <given-names>Margaret</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Reynaud</surname>
+            <given-names>Aline</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Lu</surname>
+            <given-names>Si Yan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Pan</surname>
+            <given-names>Lucy Xin</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Ho</surname>
+            <given-names>Hai Ting</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Yau</surname>
+            <given-names>Yin Hoe</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Guskov</surname>
+            <given-names>Albert</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Pervushin</surname>
+            <given-names>Konstantin</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Shochat</surname>
+            <given-names>Susana Geifman</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Eshaghi</surname>
+            <given-names>Said</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <addr-line>Division of Structural Biology and Biochemistry, School of Biological Sciences, Nanyang Technological University, Singapore, Republic of Singapore</addr-line>
+      </aff>
+      <contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Koch</surname>
+            <given-names>Karl-Wilhelm</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group>
+      <aff id="edit1">
+        <addr-line>University of Oldenburg, Germany</addr-line>
+      </aff>
+      <author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">said.eshaghi@ntu.edu.sg</email></corresp>
+        <fn fn-type="conflict">
+          <p>The authors have declared that no competing interests exist.</p>
+        </fn>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: JH AZ MP KP SGS SE. Performed the experiments: JH AZ MP AR SYL SE. Analyzed the data: JH AZ MP LXP HTH YHY AG KP SGS SE. Contributed reagents/materials/analysis tools: LXP HTH. Wrote the paper: JH AZ MP KP SGS SE.</p>
+        </fn>
+      </author-notes>
+      <pub-date pub-type="collection">
+        <year>2013</year>
+      </pub-date>
+      <pub-date pub-type="epub">
+        <day>8</day>
+        <month>1</month>
+        <year>2013</year>
+      </pub-date>
+      <volume>8</volume>
+      <issue>1</issue>
+      <elocation-id>e53979</elocation-id>
+      <history>
+        <date date-type="received">
+          <day>25</day>
+          <month>10</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>4</day>
+          <month>12</month>
+          <year>2012</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-year>2013</copyright-year>
+        <copyright-holder>How et al</copyright-holder>
+        <license xlink:type="simple">
+          <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>STIM1 is a Ca<sup>2+</sup> sensor within the ER membrane known to activate the plasma membrane store-operated Ca<sup>2+</sup> channel upon depletion of its target ion in the ER lumen. This activation is a crucial step to initiate the Ca<sup>2+</sup> signaling cascades within various cell types. Human STIM1 is a 77.4 kDa protein consisting of various domains that are involved in Ca<sup>2+</sup> sensing, oligomerization, and channel activation and deactivation. In this study, we identify the domains and boundaries in which functional and stable recombinant human STIM1 can be produced in large quantities. To achieve this goal, we cloned nearly 200 constructs that vary in their initial and terminal residues, length and presence of the transmembrane domain, and we conducted expression and purification analyses using these constructs. The results revealed that nearly half of the constructs could be expressed and purified with high quality, out of which 25% contained the integral membrane domain. Further analyses using surface plasmon resonance, nuclear magnetic resonance and a thermostability assay verified the functionality and integrity of these constructs. Thus, we have been able to identify the most stable and well-behaved domains of the hSTIM1 protein, which can be used for future <italic>in vitro</italic> biochemical and biophysical studies.</p>
+      </abstract>
+      <funding-group>
+        <funding-statement>This work was supported by funding from Nanyang Technological University, the National Research Foundation grant NRF-CRP4-2008-02, and the Biomedical Research Council. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+      </funding-group>
+      <counts>
+        <page-count count="12"/>
+      </counts>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>A primary route for calcium ion (Ca<sup>2+</sup>) entry across the plasma membrane is through store-operated channels that are widespread yet primordial among Ca<sup>2+</sup> permeable ion channels <xref ref-type="bibr" rid="pone.0053979-Lewis1">[1]</xref>. The prototypic store-operated channel, as characterized in T-lymphocytes and mast cells, is the Ca<sup>2+</sup> release-activated Ca<sup>2+</sup> (CRAC) channel <xref ref-type="bibr" rid="pone.0053979-Shaw1">[2]</xref>. This channel is activated by the depletion of intracellular Ca<sup>2+</sup> stores within the endoplasmic reticulum (ER) lumen caused by the release of the second messenger inositol-1,4,5-trisphosphate (IP<sub>3</sub>). STIM1 has been identified as the Ca<sup>2+</sup> sensor and regulator of Ca<sup>2+</sup> influx and CRAC channel function <xref ref-type="bibr" rid="pone.0053979-Shaw1">[2]</xref>–<xref ref-type="bibr" rid="pone.0053979-Feske1">[4]</xref> and is an ER membrane protein with a single transmembrane helix. STIM1 consists of an N-terminal region, which contains two EF-hand Ca<sup>2+</sup>-binding motifs, that is located in the ER lumen; a sterile alpha motif (SAM) known to be involved in protein-protein interactions; one transmembrane domain; and a cytosolic C-terminus containing three coiled-coil regions, a Ser/Pro region and a Lys-rich domain. STIM1 senses the Ca<sup>2+</sup> concentration inside the ER lumen through its EF-hand motif. Upon depletion of Ca<sup>2+</sup> from the ER lumen, STIM1 loses its bound Ca<sup>2+</sup>, oligomerizes and interacts with the plasma membrane Ca<sup>2+</sup> channel, Orai1, thereby activating the channel <xref ref-type="bibr" rid="pone.0053979-Lewis1">[1]</xref>. The activation of Orai1 is believed to occur through the interactions of residues 339–448, also known as the channel activation domain (CAD), within the coiled-coil region of the human STIM1 (hSTIM1) with the C-terminus of Orai1 <xref ref-type="bibr" rid="pone.0053979-Park1">[5]</xref>–<xref ref-type="bibr" rid="pone.0053979-Kawasaki1">[7]</xref>. Recently, the crystal structure of the CAD domain was reported, which was the first evidence that confirmed its coiled-coil nature <xref ref-type="bibr" rid="pone.0053979-Yang1">[8]</xref>. The structures of the CAD and the N-terminal region of hSTIM1 <xref ref-type="bibr" rid="pone.0053979-Stathopulos1">[9]</xref> are the only high-resolution structures of this protein available to date. In fact, most of the current knowledge concerning the function of hSTIM1 is based on <italic>in vivo</italic> studies. This limited knowledge can be attributed to the nature of hSTIM1; it is a transmembrane protein with a large coiled-coil region (approximately 150 amino acids) and has evolved to oligomerize in order to reach its active state. In an attempt to produce large quantities of different domains of hSTIM1 using both an <italic>Escherichia coli</italic> (<italic>E. coli</italic>) and a <italic>Saccharomyces cerevisiae</italic> (S. <italic>cerevisiae</italic>) expression system, we noticed that many of the constructs were very unstable and either heavily aggregated or degraded. This result would further explain the lack of information available regarding large-scale preparation of hSTIM1 that hampers the detailed biochemical, biophysical and characterization studies of hSTIM1 using <italic>in vitro</italic> systems.</p>
+      <p>Challenges in the production of recombinant proteins may be correlated to the amino acid composition of the primary sequence. Designing multiple constructs of a single protein often leads to the production of large quantities of stable protein once the region of the amino acid sequence that yields high expression is determined <xref ref-type="bibr" rid="pone.0053979-Graslund1">[10]</xref>. In this approach, each protein domain is maintained intact and minor changes are made to the length of the construct at either the N and/or C-termini. Here, we present a comprehensive high-throughput study using over 200 hSTIM1 constructs to identify the key domains and boundaries that must be maintained to obtain a high yield of stable and homogeneous hSTIM1. This multi-construct approach has also revealed constructs that were not expressed properly and therefore should be avoided. Finally, to validate the integrity of high quality constructs, we have performed surface plasmon resonance (SPR), nuclear magnetic resonance (NMR) and thermostability analyses, which demonstrate the functionality of the resulting constructs.</p>
+    </sec>
+    <sec id="s2">
+      <title>Results and Discussion</title>
+      <sec id="s2a">
+        <title>Expression of hSTIM1</title>
+        <p>A total of 211 hSTIM1 constructs were designed based on the key regions of wild-type hSTIM1. Within each key region, a number of highly similar constructs were designed that differ only slightly in their lengths (1–2 amino acids difference) to identify the exact regions that could yield stable and homogeneous protein constructs for further biophysical characterization and crystallization. <xref ref-type="table" rid="pone-0053979-t001">Table 1</xref> summarizes the results for the screen of the expression of these constructs. A total of 196 constructs were successfully cloned and expressed of which 30 contained both the N-terminal and the transmembrane region. All the constructs that contained the N-terminal region were truncated and began from S58 because this truncation was previously shown to yield the most stable N-terminal constructs <xref ref-type="bibr" rid="pone.0053979-Stathopulos1">[9]</xref>. The successfully cloned constructs were further sorted by scoring them from 1–4 based on their observed expression level, with ‘4’ indicating a high expression level, ‘3’ good expression, ‘2’ low expression and ‘1’ very low or no expression. The expression levels were determined empirically through the estimation of the observed protein level by SDS-PAGE followed by Coomassie staining (<xref ref-type="fig" rid="pone-0053979-g001">Fig. 1</xref>). Using this scoring system, over 70% of the constructs yielded good or high levels of expression (<xref ref-type="table" rid="pone-0053979-t001">Table 1</xref>). Nevertheless, some of the constructs were found to contain high levels of impurities and possible degradation products (<xref ref-type="fig" rid="pone-0053979-g001">Fig. 1</xref>).</p>
+        <fig id="pone-0053979-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>Coomassie stained gel images of selected hSTIM1 constructs.</title>
+            <p>The hSTIM1 constructs are scored from a range of 1 to 4: An expression score of ‘4’ indicates high expression of target protein relative to gel background with the appropriate MW; ‘3’ indicates high expression of target protein relative to gel background with the appropriate MW; ‘2’ indicates medium to low expression of target protein relative to gel background with the appropriate MW; ‘1’ indicates either the absence of expression of target protein or an incorrect MW representation.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.g001" position="float" xlink:type="simple"/>
+        </fig>
+        <table-wrap id="pone-0053979-t001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.t001</object-id>
+          <label>Table 1</label>
+          <caption>
+            <title>Expression scores for the hSTIM1 constructs.</title>
+          </caption>
+          <alternatives>
+            <graphic id="pone-0053979-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.t001" xlink:type="simple"/>
+            <table>
+              <colgroup span="1">
+                <col align="left" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+              </colgroup>
+              <thead>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">Constructs</td>
+                  <td colspan="5" align="left" rowspan="1">Expression Score</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">4</td>
+                  <td align="left" rowspan="1" colspan="1">3</td>
+                  <td align="left" rowspan="1" colspan="1">2</td>
+                  <td align="left" rowspan="1" colspan="1">1</td>
+                  <td align="left" rowspan="1" colspan="1">Failed</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>Transmembrane</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">23</td>
+                  <td align="left" rowspan="1" colspan="1">6</td>
+                  <td align="left" rowspan="1" colspan="1">1</td>
+                  <td align="left" rowspan="1" colspan="1">0</td>
+                  <td align="left" rowspan="1" colspan="1">3</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>Soluble</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">70</td>
+                  <td align="left" rowspan="1" colspan="1">55</td>
+                  <td align="left" rowspan="1" colspan="1">17</td>
+                  <td align="left" rowspan="1" colspan="1">28</td>
+                  <td align="left" rowspan="1" colspan="1">8</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>Total</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">93</td>
+                  <td align="left" rowspan="1" colspan="1">61</td>
+                  <td align="left" rowspan="1" colspan="1">18</td>
+                  <td align="left" rowspan="1" colspan="1">28</td>
+                  <td align="left" rowspan="1" colspan="1">11</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>Percentage</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">44%</td>
+                  <td align="left" rowspan="1" colspan="1">29%</td>
+                  <td align="left" rowspan="1" colspan="1">9%</td>
+                  <td align="left" rowspan="1" colspan="1">13%</td>
+                  <td align="left" rowspan="1" colspan="1">5%</td>
+                </tr>
+              </tbody>
+            </table>
+          </alternatives>
+          <table-wrap-foot>
+            <fn id="nt101">
+              <label/>
+              <p>An expression score of ‘4’ indicates high expression, ‘3’ indicates good expression, ‘2’ indicates low expression and ‘1’ indicates very low expression. Overall, majority of soluble hSTIM1 constructs expressed well with 73% having good to high expression.</p>
+            </fn>
+          </table-wrap-foot>
+        </table-wrap>
+      </sec>
+      <sec id="s2b">
+        <title>Expression analysis of the transmembrane-containing constructs</title>
+        <p>The expression level of the transmembrane-containing constructs was determined by SDS-PAGE analysis, following small-scale extraction and purification with the detergent Fos-Choline-12 (FC12). This detergent was previously shown to be very efficient for the extraction and subsequent identification of low-expressing membrane proteins <xref ref-type="bibr" rid="pone.0053979-Eshaghi1">[11]</xref>–<xref ref-type="bibr" rid="pone.0053979-Niegowski1">[13]</xref>. Because this strong detergent can solubilize even unfolded membrane proteins, which might result in false positive data <xref ref-type="bibr" rid="pone.0053979-Geertsma1">[14]</xref>, the quality of any membrane protein purified with FC12 must be further verified with less harsh detergents. As shown previously, a detergent screen is typically required to identify the optimal extraction and purification condition for the target membrane protein <xref ref-type="bibr" rid="pone.0053979-Eshaghi2">[12]</xref>. Such detailed analysis of the transmembrane-containing constructs of hSTIM1 was excluded from this study. Hence, the scoring of such constructs is solely based upon the level of the small-scale FC12-extracted construct with the correct molecular weight, as judged by SDS-PAGE. The relative expression levels of the transmembrane protein constructs are shown in <xref ref-type="fig" rid="pone-0053979-g002">Figure 2</xref>. Most of the transmembrane-containing constructs were found to express very well. The main interesting observation from this expression analysis was the decreased expression of the constructs containing the S600-K685 region, which is the Ser/Pro and Lys-rich domain (S600-K685).</p>
+        <fig id="pone-0053979-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>The relative expression levels of various transmembrane hSTIM1 constructs.</title>
+            <p>Most of the transmembrane constructs expressed very well. The amino acid identity of both the start and end residues are displayed at the end of each color bar. Green indicates an expression score of 4; Yellow indicates an expression score of 3; Red indicates an expression score of 2. Grey indicates an expression score of 1. A graphical representation (not to scale) of wild-type hSTIM1 protein is embedded at the top for easier reference to the key domains with the approximate amino acid numbers listed: EF hand (EF), the sterile-α motif (SAM) domain, transmembrane region (TM), three coiled-coil domains (CC1, CC2 and CC3), serine/proline rich region (S/P) and the lysine rich region (K).</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.g002" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2c">
+        <title>Constructs beginning at K246 yield a high level of expression</title>
+        <p>Two similar sets of hSTIM1 C-terminal constructs, one beginning at Q233 and the other beginning at K246, were cloned, and their expression levels were analyzed. Each set consisted of seven constructs that differed in their lengths. Q233 is predicted to be the first amino acid on the cytosolic side, whereas K246 corresponds to the beginning of the first predicted coiled-coil region. The expression and quality studies of these fourteen constructs revealed that all the constructs beginning at K246 yielded a very high level of expression, in contrast to those beginning at Q233 (<xref ref-type="fig" rid="pone-0053979-g003">Fig. 3</xref>). We expanded the number of constructs beginning at K246, and the majority showed very high levels of expression (<xref ref-type="fig" rid="pone-0053979-g004">Fig. 4</xref>). Thus, constructs beginning at K246 yield high levels of C-terminal hSTIM1 fragments. Currently, it is unclear why the Q233-constructs demonstrated much less expression compared with those beginning at K246. It is possible that the Q233-K246 region makes the protein more flexible or less stable, which leads to higher levels of inclusion bodies or severe degradation of the hSTIM1 constructs. Most of the reported C-terminal constructs have been designed to begin at position Q233, but the expression was performed in eukaryotic cells that typically resulted in fairly low levels of expression <xref ref-type="bibr" rid="pone.0053979-Muik1">[15]</xref>. Note that we were able to obtain the expression of all constructs beginning at Q233, but the level of the expression was low in comparison to the K246 constructs. Therefore, it would be interesting to investigate whether C-terminal constructs beginning at K246 would also yield much higher expression levels in eukaryotic cells.</p>
+        <fig id="pone-0053979-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>Comparison of expression scores for hSTIM1 constructs starting with either Q233 or K246.</title>
+            <p>Same representation as in Fig. 2. Note that constructs starting from K246 have better expression compared to those starting from Q233 when having the same end residue.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.g003" position="float" xlink:type="simple"/>
+        </fig>
+        <fig id="pone-0053979-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Comparison between hSTIM1 constructs that have identical starting points with different end regions.</title>
+            <p>Same representation as in Figs. 2 and 3. Note that expression score dropped once there is a truncation of residues within the coiled-coil 2 and coiled-coil 3 regions.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.g004" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2d">
+        <title>The first coiled-coil domain is required for stable hSTIM1 expression</title>
+        <p>The large cytosolic domain of hSTIM1 is distinguished by the high content of coiled-coil forming helical regions. Three coiled-coil domains have been predicted within the regions K246-Y342, I364-N388 and S399-L423. The channel activating domain (CAD) <xref ref-type="bibr" rid="pone.0053979-Park1">[5]</xref> and the inhibitory domain are found within this region <xref ref-type="bibr" rid="pone.0053979-Park1">[5]</xref>, <xref ref-type="bibr" rid="pone.0053979-Muik2">[16]</xref>, <xref ref-type="bibr" rid="pone.0053979-Korzeniowski1">[17]</xref>. Therefore, this region is of special interest when studying the mechanism of hSTIM1 function. As outlined in <xref ref-type="fig" rid="pone-0053979-g004">Figure 4</xref>, nearly all constructs containing the entire coiled-coil region demonstrated a high level of expression. However, there was a clear decrease in the expression level when the constructs were made slightly shorter than the coiled-coil region. To investigate the effect of the absence/presence of each coiled-coil domain on the expression level of hSTIM1 fragments, new constructs were designed beginning from either coiled coil 2 (S340) or coiled coil 3 (N388). The latter had a detrimental effect on the expression level of the constructs (<xref ref-type="fig" rid="pone-0053979-g005">Fig. 5</xref>). The constructs beginning at S340 yielded a high level of expression only when an extended region beyond the coiled-coil domains was included. Compared with the constructs beginning at K246, the overall yield of the two sets of coiled-coil constructs was much lower. Complete removal of the coiled-coil domains yielded proteins with good expression levels (<xref ref-type="fig" rid="pone-0053979-g005">Fig. 5</xref>). Hence, we could conclude that to obtain stable hSTIM1 C-terminal fragments, the presence of an intact coiled-coil region, especially coiled coil 1, is necessary. This conclusion was further strengthened by the increased stability of constructs containing coiled coil 1 compared with those lacking it, as shown by the results of the thermostability shift assay (<xref ref-type="table" rid="pone-0053979-t002">Table 2</xref>).</p>
+        <fig id="pone-0053979-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title>Relative expression scores of various soluble hSTIM1 constructs.</title>
+            <p>Same representation as in Figs. 2, 3, 4. Note that lower expression levels were observed for these hSTIM1 constructs that do not contain any coiled-coil regions compared to constructs with the entire coiled-coil domain region.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.g005" position="float" xlink:type="simple"/>
+        </fig>
+        <table-wrap id="pone-0053979-t002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.t002</object-id>
+          <label>Table 2</label>
+          <caption>
+            <title>hSTIM1 melting temperature (T<sub>m</sub>) comparison between constructs with different start regions and identical end points.</title>
+          </caption>
+          <alternatives>
+            <graphic id="pone-0053979-t002-2" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.t002" xlink:type="simple"/>
+            <table>
+              <colgroup span="1">
+                <col align="left" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+              </colgroup>
+              <thead>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">Start residue</td>
+                  <td align="left" rowspan="1" colspan="1">End residue</td>
+                  <td align="left" rowspan="1" colspan="1">Coiled-coil regions</td>
+                  <td align="left" rowspan="1" colspan="1">Melting Temperature (T<sub>m</sub>)/°C</td>
+                  <td align="left" rowspan="1" colspan="1">T<sub>m</sub> Difference<xref ref-type="table-fn" rid="nt103">*</xref></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>246</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">516</td>
+                  <td align="left" rowspan="1" colspan="1">1–3</td>
+                  <td align="left" rowspan="1" colspan="1">56.7</td>
+                  <td align="left" rowspan="1" colspan="1">9.7</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>340</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">516</td>
+                  <td align="left" rowspan="1" colspan="1">2–3</td>
+                  <td align="left" rowspan="1" colspan="1">47.0</td>
+                  <td align="left" rowspan="1" colspan="1"/>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>246</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">514</td>
+                  <td align="left" rowspan="1" colspan="1">1–3</td>
+                  <td align="left" rowspan="1" colspan="1">54.4</td>
+                  <td align="left" rowspan="1" colspan="1">7.2</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>340</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">514</td>
+                  <td align="left" rowspan="1" colspan="1">2–3</td>
+                  <td align="left" rowspan="1" colspan="1">47.2</td>
+                  <td align="left" rowspan="1" colspan="1"/>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>246</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">500</td>
+                  <td align="left" rowspan="1" colspan="1">1–3</td>
+                  <td align="left" rowspan="1" colspan="1">53.7</td>
+                  <td align="left" rowspan="1" colspan="1">7.0</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>340</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">500</td>
+                  <td align="left" rowspan="1" colspan="1">2–3</td>
+                  <td align="left" rowspan="1" colspan="1">46.7</td>
+                  <td align="left" rowspan="1" colspan="1"/>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>246</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">490</td>
+                  <td align="left" rowspan="1" colspan="1">1–3</td>
+                  <td align="left" rowspan="1" colspan="1">53.4</td>
+                  <td align="left" rowspan="1" colspan="1">6.6</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>340</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">490</td>
+                  <td align="left" rowspan="1" colspan="1">2–3</td>
+                  <td align="left" rowspan="1" colspan="1">46.8</td>
+                  <td align="left" rowspan="1" colspan="1"/>
+                </tr>
+              </tbody>
+            </table>
+          </alternatives>
+          <table-wrap-foot>
+            <fn id="nt102">
+              <label/>
+              <p>The difference in their melting temperatures is tabulated at the end and is colored green. Constructs were found to have a higher T<sub>m</sub> when the first coiled-coil region (246–342) was present.</p>
+            </fn>
+            <fn id="nt103">
+              <label>*</label>
+              <p>between constructs with identical end points.</p>
+            </fn>
+          </table-wrap-foot>
+        </table-wrap>
+      </sec>
+      <sec id="s2e">
+        <title>Identification of high quality hSTIM1 constructs</title>
+        <p>Next, we identified hSTIM1 constructs that are of high quality and useful for biochemical and biophysical studies. To achieve this goal, we used analytical size exclusion chromatography (ASEC) to ascertain the promising constructs. ASEC has proven to be a highly reliable technique to verify the quality of protein preparations, which is typically scalable <xref ref-type="bibr" rid="pone.0053979-Kim1">[18]</xref>, <xref ref-type="bibr" rid="pone.0053979-Lecchi1">[19]</xref>. Thus, samples that were originally scored as 3 or 4 were further analyzed by ASEC. Here, the chromatograms were the main factors in determining the protein quality. As shown in <xref ref-type="fig" rid="pone-0053979-g006">Figure 6</xref>, high quality samples are referred to as highly homogenous samples judged by both SDS-PAGE and ASEC, whereas low/medium quality samples contain impurities and are heterogeneous. After analyzing the constructs, the high quality constructs were identified and are summarized in <xref ref-type="table" rid="pone-0053979-t003">Table 3</xref>.</p>
+        <fig id="pone-0053979-g006" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title>Analytical Size Exclusion chromatograms and SDS-Page gel electrophoresis photos of selected hSTIM1 constructs.</title>
+            <p>The scoring of the chromatograms is differentiated into High, Medium and Low quality. The chromatograms are plotted as relative absorbance (mAU) against retention volume (mL). Chromatograms of high quality constructs have a dominant peak area of &gt;80% of the entire peak area. Chromatograms of medium quality constructs quality have a dominant peak area of &gt;60% but &lt;80% of the entire peak area. Chromatograms of low quality constructs have multiple peaks present. Their corresponding SDS-Page gel photos are placed next to the chromatograms.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.g006" position="float" xlink:type="simple"/>
+        </fig>
+        <table-wrap id="pone-0053979-t003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.t003</object-id>
+          <label>Table 3</label>
+          <caption>
+            <title>List of hSTIM1 constructs that have both the highest expression score and quality out of the 211 constructs that have been cloned and expressed.</title>
+          </caption>
+          <alternatives>
+            <graphic id="pone-0053979-t003-3" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.t003" xlink:type="simple"/>
+            <table>
+              <colgroup span="1">
+                <col align="left" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+              </colgroup>
+              <thead>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <italic>Number</italic>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">
+                    <italic>Start residue</italic>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">
+                    <italic>End residue</italic>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>1</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">58</td>
+                  <td align="left" rowspan="1" colspan="1">520</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>2</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">58</td>
+                  <td align="left" rowspan="1" colspan="1">557</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>3</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">58</td>
+                  <td align="left" rowspan="1" colspan="1">580</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>4</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">58</td>
+                  <td align="left" rowspan="1" colspan="1">600</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>5</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">345</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>6</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">360</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>7</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">490</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>8</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">500</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>9</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">520</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>10</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">556</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>11</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">561</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>12</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">567</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>13</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">571</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>14</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">575</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>15</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">580</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>16</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">587</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>17</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">595</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>18</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">600</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>19</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">632</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>20</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">650</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>21</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">660</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>22</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">667</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>23</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">246</td>
+                  <td align="left" rowspan="1" colspan="1">685</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>24</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">340</td>
+                  <td align="left" rowspan="1" colspan="1">490</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>25</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">340</td>
+                  <td align="left" rowspan="1" colspan="1">520</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>26</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">340</td>
+                  <td align="left" rowspan="1" colspan="1">556</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>27</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">340</td>
+                  <td align="left" rowspan="1" colspan="1">571</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>28</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">340</td>
+                  <td align="left" rowspan="1" colspan="1">575</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>29</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">340</td>
+                  <td align="left" rowspan="1" colspan="1">580</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>30</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">340</td>
+                  <td align="left" rowspan="1" colspan="1">685</td>
+                </tr>
+              </tbody>
+            </table>
+          </alternatives>
+          <table-wrap-foot>
+            <fn id="nt104">
+              <label/>
+              <p>Expression score was determined based on protein expression in SDS-Page gel electrophoresis analysis. Quality score was determined based on Analytical Size exclusion chromatogram profile.</p>
+            </fn>
+          </table-wrap-foot>
+        </table-wrap>
+      </sec>
+      <sec id="s2f">
+        <title>SEC at low ionic strength improves the quality of purified hSTIM1 constructs</title>
+        <p>For constructs lacking coiled coil 1, we noticed that the increased instability and decreased solubility of the protein correlated with increased impurities. Hence, we included ion exchange chromatography (IEX) as a subsequent step to immobilized metal affinity chromatography (IMAC) and size exclusion chromatography (SEC). When purifying the CAD-containing construct (S340-M490), two peaks were separated by IEX, with the peak that eluted with a higher salt concentration (Peak 2) as the most prominent (<xref ref-type="fig" rid="pone-0053979-g007">Fig. 7A</xref>). SDS-PAGE analysis of the protein content of Peak 2 revealed that the hSTIM1 construct was eluted together with a prominent portion of impurities (<xref ref-type="fig" rid="pone-0053979-g007">Fig. 7B</xref>). The target protein appeared to elute with a conductivity of approximately 30 mS/cm (equivalent to approximately 300 mM NaCl), i.e., at relatively high ionic strength. Taking into consideration the coiled-coil rich nature of this construct, it is possible that the protein would precipitate in a high ionic condition as a result of promoted protein-protein hydrophobic interactions. In this particular case, the impurities may associate with the target protein via hydrophobic interactions. To test this hypothesis, the eluate from Peak 2 was subjected to SEC at a low ionic strength (50 mM NaCl). SDS-PAGE analysis of the eluates from this low salt SEC step (<xref ref-type="fig" rid="pone-0053979-g007">Fig. 7C</xref>) reveals a clear improvement in the purity of the hSTIM1 construct compared with those that were obtained from IEX. Additionally, the solubility of this construct increased more than twenty fold from 70 μM to 1.6 mM, which indicates increased stability. The introduction of a similar low salt SEC step into the purification of other hSTIM1 constructs lacking coiled coil 1 resulted in increased purity and solubility as well (data not shown).</p>
+        <fig id="pone-0053979-g007" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.g007</object-id>
+          <label>Figure 7</label>
+          <caption>
+            <title>Ion exchange</title>
+            <p>(<bold>IEX</bold>) <bold>chromatogram and SDS-PAGE photos of hSTIM1 S340-M490 purification.</bold> <bold>A</bold>: The UV signal at 280 nm (UV_280 nm) is plotted relative absorbance (mAU) against retention volume (mL) as shown in blue. The corresponding salt concentration is plotted as conductivity (mS/cm) against retention volume (mL) as shown in green. On UV_280 nm plot, two peaks were separated. Fractions from Peak1 and Peak2 were analyzed by SDS-PAGE as shown in <bold>B</bold>: The most prominent band represents protein of interest. 1, protein marker; 2, injected sample before IEX; 3, empty; 4 and 5, fractions from peak 1; 6–9, fractions from peak 2. Fractions from peak 2 were pooled and subsequently purified by size exclusion chromatography (SEC) with low salt (50 mM NaCl) buffer. SDS-PAGE analysis of the protein content after SEC is shown in <bold>C</bold>: 1, protein marker; 2–9, fractions of elution peak from SEC.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.g007" position="float" xlink:type="simple"/>
+        </fig>
+        <p>The coiled coil 1 domain has been reported to be involved in the autoinhibition mechanism of hSTIM1 activation <xref ref-type="bibr" rid="pone.0053979-Muik2">[16]</xref>, <xref ref-type="bibr" rid="pone.0053979-Korzeniowski1">[17]</xref>. Through this autoinhibition mechanism, a weak electrostatic interaction between the CAD and the coiled coil 1 domain of hSTIM1 appears to mask the CAD when hSTIM1 is in a resting state. Hence, activation of hSTIM1 would require unmasking the CAD region, which could be achieved by a conformational change in hSTIM1 in response to Ca<sup>2+</sup> loss. Therefore, constructs lacking coiled coil 1 would contain an exposed CAD, possibly mimicking the active state of hSTIM1. With the CAD domain exposed, the probability of binding other contaminant proteins could also increase. In contrast, constructs containing the coiled coil 1 domain would mimic hSTIM1 in its resting state, in which coiled coil 1 masks the CAD domain. Hence, the increased stability and purity of constructs containing coiled coil 1 can be attributed to the masking of CAD by coiled coil 1 that would prevent the interaction between hSTIM1 and impurities.</p>
+      </sec>
+      <sec id="s2g">
+        <title>Monitoring the hSTIM1-Orai1 interaction with surface plasmon resonance (SPR)</title>
+        <p>To verify the functionality of the high quality samples, we performed SPR studies to monitor the interactions between the hSTIM1 constructs with the Orai1 C-terminus. The Orai1 C-terminus was synthesized with the addition of an extra Cys at the N-terminus to immobilize it on a carboxymethylated dextran matrix via thiol coupling. Such coupling leaves a free C-terminal end that mimics the <italic>in vivo</italic> topology of the Orai1 C-terminus. We monitored the interactions between the immobilized Orai1 C-terminus using three different hSTIM1 constructs: coiled coil 1 only (K246-Q360), the CAD (S340-M490) and K240-D520 in which the entire coiled-coil domain, including the CAD, were present. These constructs were chosen as their overall electronegativity and hydrophobicity are rather similar. Therefore, under identical experimental conditions (i.e., a constant level of immobilized Orai1 C-terminus in all experiments, an identical concentration of hSTIM1 constructs and an identical buffer condition) any significant differences in the interactions with the Orai1 C-terminus could reflect specific interactions. At this point, SPR was only used to probe the proximity interaction between the Orai1 C-terminus and hSTIM1 constructs. As shown in <xref ref-type="fig" rid="pone-0053979-g008">Figure 8</xref>, no interactions between the coiled coil 1 (lacking the CAD) and the Orai1 C-terminus were observed, whereas the CAD-containing hSTIM1 constructs and the Orai1 C-terminus demonstrated strong responses. Lysozyme was used as a negative control and, similar to the coiled coil 1 (K246-Q360) construct, demonstrated no response when injected over the identical immobilized Orai1 surface. Hence, the observed interactions between the CAD-containing hSTIM1 constructs and the Orai1 C-terminus are specific protein-protein interactions. These results strongly suggest that the hSTIM1 constructs are indeed functional, as the Orai1 C-terminus has been shown to interact only with CAD-containing constructs <xref ref-type="bibr" rid="pone.0053979-Vig1">[20]</xref>, <xref ref-type="bibr" rid="pone.0053979-Yeromin1">[21]</xref>.</p>
+        <fig id="pone-0053979-g008" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.g008</object-id>
+          <label>Figure 8</label>
+          <caption>
+            <title>SPR sensorgrams with their corresponding ASEC and gel images of selected hSTIM1 constructs.</title>
+            <p><bold>A</bold>: All hSTIM1 constructs injected have a concentration of 10 µM. The Orai1 peptide was immobilized at 1000 RU for all runs. Lysozyme is included as negative control. SPR sensorgrams are plotted as response units (RU) against time (seconds). <bold>B–D</bold>: Analytical Size Exclusion chromatograms and SDS-Page gel electrophoresis of K246-Q360 (<bold>B</bold>); S340-M490 (<bold>C</bold>); K246-D520 (<bold>D</bold>). Chromatograms are plotted as relative absorbance (mAU) against retention volume (mL).</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.g008" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2h">
+        <title>Characterization of hSTIM1 with nuclear magnetic resonance (NMR)</title>
+        <p>To characterize the binding of hSTIM1 coiled-coil domains with the peptides derived from the Orai1 C-terminal region, we recorded the [<sup>15</sup>N, <sup>1</sup>H]-TROSY spectrum of hSTIM1 (K246–S600) and monitored the chemical shift perturbations of hSTIM1 resonances upon titration with the Orai1-derived peptide. Complete residue specific assignment of the F resonances was not achieved due to significant line broadening on a majority of the resonances. This finding is presumably a result of pervasive conformational exchange. However, resonances in TROSY spectra were still observed and tentatively assigned to the terminal regions of hSTIM1. Upon titration with an Orai1-derived peptide, changes in the position of cross-peaks of hSTIM1 were observed (<xref ref-type="fig" rid="pone-0053979-g009">Fig. 9</xref>). The majority of the resonances stemming from the Orai1 peptide were significantly perturbed compared to its free state, indicating the acquisition of secondary structure in the otherwise unstructured peptide. <xref ref-type="fig" rid="pone-0053979-g010">Figure 10</xref> illustrates the spectral perturbations caused by the addition of the peptide, indicating interactions between the CAD-containing hSTIM1 and the Orai1 peptide.</p>
+        <fig id="pone-0053979-g009" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.g009</object-id>
+          <label>Figure 9</label>
+          <caption>
+            <title>Superimposed [<sup>15</sup>N, <sup>1</sup>H]-TROSY spectra of free hSTIM1 and hSTIM1 bound to Orai1 C-terminal derived peptide.</title>
+            <p>The free hSTIM1 is colored blue and the Orai C-terminal peptide is red. The spectra were collected at 298 K in 20 mM TRIS, 300 mM NaCl, 0.1 mM TCEP at pH 8.0.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.g009" position="float" xlink:type="simple"/>
+        </fig>
+        <fig id="pone-0053979-g010" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0053979.g010</object-id>
+          <label>Figure 10</label>
+          <caption>
+            <title>Superimposed [<sup>15</sup>N, <sup>1</sup>H]-HSQC spectra of Orai1 derived C terminal peptide.</title>
+            <p>[<sup>15</sup>N, <sup>1</sup>H]-HSQC of free peptide (colored blue) contains specifically <sup>15</sup>N labeled Leu. [<sup>15</sup>N, <sup>1</sup>H]-HSQC of peptide with unlabeled hSTIM1 K246-S600 is colored red. The spectra were collected at 298 K in 20 mM HEPES, 300 mM NaCl, 0.1 mM TCEP at pH 8.0.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0053979.g010" position="float" xlink:type="simple"/>
+        </fig>
+        <p>In conclusion, the presented report based on the comprehensive analyses of hSTIM1 regions indicates three key factors for obtaining large quantities of stable hSTIM1 constructs: 1) K246 is the most suitable initial amino acid for soluble cytosolic constructs, 2) the first coiled-coil region is required to obtain stable constructs, and 3) SEC using a buffer of low ionic strength improves the quality of the obtained constructs. In addition, the wealth of various constructs produced and characterized in this study identifies the suitable constructs, which we have shown to be functional by various biophysical assays, for in-depth structural and functional investigations of this protein.</p>
+      </sec>
+    </sec>
+    <sec id="s3" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s3a">
+        <title>Cloning of hSTIM1 constructs</title>
+        <p>The hSTIM1 constructs were cloned into the expression vector pNIC-28-<italic>Bsa</italic>I by ligation independent cloning (LIC) to introduce an additional DNA encoding for an N-terminal hexa-histidine tag paired together with a TEV protease cleavage site (MHHHHHHSSGVDLGTENLYFQSM), as previously described <xref ref-type="bibr" rid="pone.0053979-Graslund2">[22]</xref>. The genes were amplified by PCR with an equal mixture of both Phusion™ High-Fidelity DNA Polymerase (Finnzymes) and Platinum® Pfx DNA Polymerase (Invitrogen) following the manufacturer's recommendation.</p>
+        <p>The PCR products were subsequently purified using the PureLink Pro 96 PCR Purification Kit (Invitrogen) and treated with T4 DNA polymerase in the presence of dCTP to generate sticky ends. The pNIC-28-<italic>Bsa</italic>I vector was linearized using the restriction enzyme <italic>Bsa</italic>I and further treated with T4 DNA polymerase in the presence of dGTP to generate sticky ends complementary to the PCR products. This step was followed by an annealing step and transformation into <italic>E. coli</italic> MACH1 cells. Colonies were subsequently grown in Luria-Bertani broth (LB) agar plates containing 50 µg/mL kanamycin and screened for correctly sized inserts by PCR using the BIOTAQ™ Red DNA Polymerase (Bioline). Plasmids from the positive colonies were transformed into <italic>E. coli</italic> Rosetta cells (DE3). Colonies were then grown on LB agar plates containing 50 µg/mL kanamycin and 34 µg/mL chloramphenicol.</p>
+      </sec>
+      <sec id="s3b">
+        <title>Small-scale expression screen</title>
+        <p>Overnight cultures were diluted 1∶100 in 1 mL of Terrific Broth (TB) medium (Formedium, United Kingdom) and grown at 37°C in 96-well deep-well plates by shaking at 220 rpm until the OD<sub>600</sub> reached 0.8. Protein expression was induced with 0.2 mM of isopropy1-β-D-thiogalactopyranoside (IPTG), and the cultures were further grown overnight at 18°C. The cells were then harvested by centrifugation at 3200× <italic>g</italic> for 5 minutes. The cells pellets were resuspended in lysis buffer (20 mM HEPES, pH 8.0, 150 mM NaCl, 30 mM imidazole) supplemented with a cocktail of protease inhibitors (Roche, Switzerland), 1 mg/mL lysozyme (Sigma-Aldrich, USA) and 10 units/mL Benzonase (Merck, USA). The cells were then lysed by three cycles of freezing at −80°C and thawing at 25°C. The lysate was clarified by centrifugation at 3200× <italic>g</italic> for 15 minutes through a 96-well filter plate (0.65 µm) (Millipore, USA). The filtrate was then transferred to a 96-well filter plate containing Ni-NTA agarose resin (Invitrogen) for purification using IMAC. After 15 min of incubation at 4°C, the unbound material was removed by centrifugation at 100× <italic>g</italic> for 30 s. The wells were then washed with 10 column volumes (CV) of wash buffer (20 mM HEPES, pH 8.0, 150 mM NaCl, 30 mM imidazole) by centrifugation at 100× <italic>g</italic> for 1 min. The bound recombinant proteins were then recovered in 30 μL of elution buffer (20 mM HEPES, pH 8.0, 150 mM NaC1, 300 mM imidazole) by centrifugation at 100× <italic>g</italic> for 1 min. The eluted material was analyzed by SDS-PAGE using NuPAGE 4%–12% Bis-Tris gels (Invitrogen) and stained with SimplyBlue Coomassie stain (Invitrogen). Purified protein constructs were subsequently loaded onto a Superdex 200 5/150 analytical size exclusion column (GE Healthcare) connected to an AKTAmicro chromatography system controlled by Unicorn software version 5.20 (GE Healthcare).</p>
+      </sec>
+      <sec id="s3c">
+        <title>Large-scale protein purification</title>
+        <p>The overnight cultures were diluted 1∶500 in 1 L of TB (Formedium, United Kingdom). The cells were then grown further at 37°C by shaking at 220 rpm until the OD<sub>600</sub> reached 0.6–0.7. Protein expression was induced by the addition of 0.2 mM IPTG and grown overnight at 18°C. The cell cultures were harvested by centrifugation at 10,000× <italic>g</italic> for 10 min, and the pellets were resuspended in lysis buffer supplemented with a cocktail of protease inhibitors (Roche, Switzerland), 1 mg/mL lysozyme (Sigma-Aldrich, USA) and 10 units/mL Benzonase (Merck, USA). The cells were lysed by three cycles of freezing at −80°C and thawing at 25°C. Unbroken cells and cell debris were removed by centrifugation at 30,000× <italic>g</italic> for 20 minutes. The supernatant was loaded onto 1 mL of Ni-NTA agarose beads (Invitrogen, USA), washed with 10 CV of wash buffer and then eluted with elution buffer. Purified protein constructs were then injected onto either a Superdex 75 or Superdex 200 16/60 size exclusion column (GE Healthcare). Prior to IEX, the samples were desalted using a PD-10 desalting column (GE Healthcare) into an initial buffer (20 mM Tris-HCl, pH 8.0, 50 mM NaCl, 5 mM TCEP). The desalted samples were subsequently injected into a pre-equilibrated 1 mL HiTrap Q HP column (GE Healthcare, USA). A linear NaCl gradient from 50 mM to 1 M NaCl in an identical buffer was used for the elution of the target protein. All IEX and SEC were performed using an AKTAexplorer FPLC chromatography system controlled by Unicorn software version 5.20 (GE Healthcare), and the fractions were analyzed by SDS-PAGE using NuPAGE 4%–12% Bis-Tris gels (Invitrogen) and stained with SimplyBlue Coomassie stain (Invitrogen).</p>
+      </sec>
+      <sec id="s3d">
+        <title>Production and sequence of the Orai1 C-terminal domain</title>
+        <p>The Orai1 C-terminal domain was synthesized by Peptide 2.0 (USA) and delivered in a lyophilized state. The sequence of the Orai1 C-terminal peptide is as follows: CRSLVSHKTDRQFQELNELAEFARLQDQLDHRGDHPLTPGSHYA.</p>
+        <p>A Cys was added to the N-terminus of the Orai1 peptide to enable immobilization via thiol coupling to a CM5 chip (GE Healthcare). The lyophilized peptides were dissolved in acidic buffer (10 mM sodium acetate, pH 6.0) and injected onto a Superdex Peptide 10/300 size exclusion column (GE Healthcare) connected to an AKTAmicro controlled by Unicorn software version 5.20 (GE Healthcare). The quality of the fractions was analyzed by SDS-PAGE using NuPAGE 4%–12% Bis-Tris gels (Invitrogen) and stained with SimplyBlue Coomassie stain (Invitrogen). The purified peptides (approximately 100 µM) were then stored in 100 µL aliquots at −20°C.</p>
+      </sec>
+      <sec id="s3e">
+        <title>SPR analysis of hSTIM1 constructs</title>
+        <p>The binding of different hSTIM1 constructs to Orai1 peptides (synthesized by Peptide 2.0) was assessed on a Biacore T200 (GE Healthcare). Orai1 peptide was immobilized on a CM5 sensor chip (GE Healthcare) by ligand thiol coupling. The surface was activated using 20 µL of a 1∶1 mixture of 0.4 M 1-ethyl-3-(3-dimethylaminopropyl)-carbodiimide (EDC) and 0.1 M N-hydroxysuccinimide (NHS) with a running flow rate of 10 µL/min. Reactive disulfide groups were introduced to the surface with an injection of 80 mM 2-(2-pyridinyldithio)ethaneamine (PDEA) in 0.1 M sodium borate, pH 8.5, at a running flow rate of 10 μL/min for 4 min. The Orai1 peptide (approximately 100 µM) was injected at a flow rate of 10 μL/min until an immobilization of 1,000 RU was obtained. Twenty microliters of 50 mM cysteine and 1 M NaCl in 0.1 M sodium acetate buffer, pH 4.3, at a running flow rate of 5 μL/min was subsequently injected for 4 min to deactivate any remaining reactive groups. Blank immobilization was performed on the first flow cell, which was used as a reference flow cell for subsequent analysis. Various hSTIM1 constructs at concentrations of 10 µM were injected over the sensor surfaces with HBS-EP buffer (20 mM HEPES, pH 7.4, 150 mM NaCl, 3.4 mM EDTA, 0.005% Polysorbate 20) at a flow rate of 30 μL/min for 1 min, allowing 4 min for the dissociation before regeneration. The interactions between the ligand and the analyte were measured over a 6-min time period allowing for a dissociation time of four minutes. Between injection cycles, 10 mM glycine-HCl pH 3.5 was used to regenerate the surface with a contact time of 30 sec. Lysozyme (approximately 10 µM) was injected as a negative control. SPR data were analyzed using Scrubber software (v2.0c, Biologic, Australia).</p>
+      </sec>
+      <sec id="s3f">
+        <title>Protein Expression and Purification for NMR studies</title>
+        <p>Constructs of hSTIM1 containing the domains coiled coil 1, 2 and 3 with an extension (K246-S600) were used for this study. <sup>13</sup>C, <sup>15</sup>N-isotope labeled hSTIM1 protein was obtained by growing <italic>E. coli</italic> cells in M9 minimal media containing isotope labeled glucose and NH<sub>4</sub>Cl (Cambridge Isotope Laboratories). Induction was performed using 0.5 mM IPTG for approximately 18 hours at 18°C and purified using identical chromatographic procedures as described previously. The Orai1 C-terminus derived peptide (China Peptides) contained an identical sequence used previously except for the presence of six <sup>15</sup>N-labeled Leu.</p>
+      </sec>
+      <sec id="s3g">
+        <title>NMR Sample Preparation</title>
+        <p>The sample used for the NMR study consisted of 0.3 mM <sup>15</sup>N-labeled hSTIM1 in 90% H<sub>2</sub>O/10% D<sub>2</sub>O. All samples used to record the two-dimensional TROSY were prepared in 20 mM Tris-HCl and 300 mM NaCl adjusted to pH 8.0. Identical buffer conditions were used for the binding studies of hSTIM1 with the Orai1 C-terminus-derived peptide. The peptide was prepared as a 50 mM stock solution in an identical buffer as that for the hSTIM1 protein. The addition of the Orai1 C-terminus-derived peptide to the peptide-free hSTIM1 sample was performed stepwise to achieve a final concentration of Orai1 peptide: hSTIM1 protein with a ratio of 1∶1. The hSTIM1 sample without any Orai1 peptide was used as the reference for observing any chemical shifts. All NMR experiments were conducted at 298 K.</p>
+      </sec>
+      <sec id="s3h">
+        <title>NMR Spectroscopy</title>
+        <p>All NMR experiments were performed on a Bruker AVANCE II 600 MHz and 700 MHz NMR Spectrometer equipped with four RF channels and a 5 mm Z-gradient TCI CryoProbe. All NMR experiments were performed at 298 K, and sweep widths for <sup>1</sup>H and <sup>15</sup>N were 9804 and 2412 Hz, respectively. Two-dimensional [<sup>15</sup>N,<sup>1</sup>H]-TROSY was performed for each sample and binding experiments. Data were processed using Topspin 2.1, and the chemical shifts were referenced directly (<sup>1</sup>H) to the frequency of DSS. Peak picking and spectral analysis was performed using CARA.</p>
+      </sec>
+      <sec id="s3i">
+        <title>Thermal shift assay</title>
+        <p>The thermostability of the hSTIM1 constructs was studied using differential static light scattering as described by Hong et al. <xref ref-type="bibr" rid="pone.0053979-Senisterra1">[23]</xref> using a multiwell instrument (Stargazer, Harbinger Biotech, Toronto, Canada). Protein samples with concentrations of 30 µM in 50 μL of buffer (20 mM HEPES, pH 7.5, 300 mM NaCl) were heated from 25–80°C at a rate of 1°C/min. The aggregation of protein was determined through the recording of scattered light using a CCD camera and images of the plate were taken at every 0.5°C interval. Using proprietary software, pixel intensities of selected wells were integrated, thereby obtaining an approximate value that is representative of the total amount of scattered light in that particular region. The total intensities were then plotted against temperature and fitted to the Boltzmann equation by nonlinear regression. The temperature it takes for 50% of the studied protein to achieve the aggregation state was defined as the melting temperature, T<sub>m</sub>.</p>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>The authors would like to thank Newsha Sahaf and Martina Nilsson for their technical assistance in this work, and Greg Taylor for his help with preparing the final draft of the manuscript.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0053979-Lewis1">
+        <label>1</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lewis</surname><given-names>RS</given-names></name> (<year>2007</year>) <article-title>The molecular choreography of a store-operated calcium channel</article-title>. <source>Nature</source> <volume>446</volume>: <fpage>284</fpage>–<lpage>287</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Shaw1">
+        <label>2</label>
+        <mixed-citation publication-type="other" xlink:type="simple">Shaw PJ, Feske S (2012) Regulation of lymphocyte function by ORAI and STIM proteins in infection and autoimmunity. The Journal of physiology.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Roos1">
+        <label>3</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Roos</surname><given-names>J</given-names></name>, <name name-style="western"><surname>DiGregorio</surname><given-names>PJ</given-names></name>, <name name-style="western"><surname>Yeromin</surname><given-names>AV</given-names></name>, <name name-style="western"><surname>Ohlsen</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Lioudyno</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>STIM1, an essential and conserved component of store-operated Ca2+ channel function</article-title>. <source>J Cell Biol</source> <volume>169</volume>: <fpage>435</fpage>–<lpage>445</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Feske1">
+        <label>4</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Feske</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Gwack</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Prakriya</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Srikanth</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Puppel</surname><given-names>SH</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>A mutation in Orai1 causes immune deficiency by abrogating CRAC channel function</article-title>. <source>Nature</source> <volume>441</volume>: <fpage>179</fpage>–<lpage>185</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Park1">
+        <label>5</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Park</surname><given-names>CY</given-names></name>, <name name-style="western"><surname>Hoover</surname><given-names>PJ</given-names></name>, <name name-style="western"><surname>Mullins</surname><given-names>FM</given-names></name>, <name name-style="western"><surname>Bachhawat</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Covington</surname><given-names>ED</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>STIM1 clusters and activates CRAC channels via direct binding of a cytosolic domain to Orai1</article-title>. <source>Cell</source> <volume>136</volume>: <fpage>876</fpage>–<lpage>890</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Yuan1">
+        <label>6</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yuan</surname><given-names>JP</given-names></name>, <name name-style="western"><surname>Zeng</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Dorwart</surname><given-names>MR</given-names></name>, <name name-style="western"><surname>Choi</surname><given-names>YJ</given-names></name>, <name name-style="western"><surname>Worley</surname><given-names>PF</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>SOAR and the polybasic STIM1 domains gate and regulate Orai channels</article-title>. <source>Nat Cell Biol</source> <volume>11</volume>: <fpage>337</fpage>–<lpage>343</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Kawasaki1">
+        <label>7</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kawasaki</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Lange</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Feske</surname><given-names>S</given-names></name> (<year>2009</year>) <article-title>A minimal regulatory domain in the C terminus of STIM1 binds to and activates ORAI1 CRAC channels</article-title>. <source>Biochem Biophys Res Commun</source> <volume>385</volume>: <fpage>49</fpage>–<lpage>54</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Yang1">
+        <label>8</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yang</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Jin</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Cai</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Li</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Shen</surname><given-names>Y</given-names></name> (<year>2012</year>) <article-title>Structural and mechanistic insights into the activation of Stromal interaction molecule 1 (STIM1)</article-title>. <source>Proceedings of the National Academy of Sciences of the United States of America</source> <volume>109</volume>: <fpage>5657</fpage>–<lpage>5662</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Stathopulos1">
+        <label>9</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Stathopulos</surname><given-names>PB</given-names></name>, <name name-style="western"><surname>Zheng</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Li</surname><given-names>GY</given-names></name>, <name name-style="western"><surname>Plevin</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Ikura</surname><given-names>M</given-names></name> (<year>2008</year>) <article-title>Structural and mechanistic insights into STIM1-mediated initiation of store-operated calcium entry</article-title>. <source>Cell</source> <volume>135</volume>: <fpage>110</fpage>–<lpage>122</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Graslund1">
+        <label>10</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Graslund</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Nordlund</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Weigelt</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Hallberg</surname><given-names>BM</given-names></name>, <name name-style="western"><surname>Bray</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Protein production and purification</article-title>. <source>Nat Methods</source> <volume>5</volume>: <fpage>135</fpage>–<lpage>146</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Eshaghi1">
+        <label>11</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Eshaghi</surname><given-names>S</given-names></name> (<year>2009</year>) <article-title>High-throughput expression and detergent screening of integral membrane proteins</article-title>. <source>Methods Mol Biol</source> <volume>498</volume>: <fpage>265</fpage>–<lpage>271</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Eshaghi2">
+        <label>12</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Eshaghi</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Hedren</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Nasser</surname><given-names>MI</given-names></name>, <name name-style="western"><surname>Hammarberg</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Thornell</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>An efficient strategy for high-throughput expression screening of recombinant integral membrane proteins</article-title>. <source>Protein Sci</source> <volume>14</volume>: <fpage>676</fpage>–<lpage>683</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Niegowski1">
+        <label>13</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Niegowski</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Hedren</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Nordlund</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Eshaghi</surname><given-names>S</given-names></name> (<year>2006</year>) <article-title>A simple strategy towards membrane protein purification and crystallization</article-title>. <source>Int J Biol Macromol</source> <volume>39</volume>: <fpage>83</fpage>–<lpage>87</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Geertsma1">
+        <label>14</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Geertsma</surname><given-names>ER</given-names></name>, <name name-style="western"><surname>Groeneveld</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Slotboom</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Poolman</surname><given-names>B</given-names></name> (<year>2008</year>) <article-title>Quality control of overexpressed membrane proteins</article-title>. <source>Proc Natl Acad Sci USA</source> <volume>105</volume>: <fpage>5722</fpage>–<lpage>5727</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Muik1">
+        <label>15</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Muik</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Fahrner</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Derler</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Schindl</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Bergsmann</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>A Cytosolic Homomerization and a Modulatory Domain within STIM1 C Terminus Determine Coupling to ORAI1 Channels</article-title>. <source>J Biol Chem</source> <volume>284</volume>: <fpage>8421</fpage>–<lpage>8426</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Muik2">
+        <label>16</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Muik</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Fahrner</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Schindl</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Stathopulos</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Frischauf</surname><given-names>I</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>STIM1 couples to ORAI1 via an intramolecular transition into an extended conformation</article-title>. <source>The EMBO journal</source> <volume>30</volume>: <fpage>1678</fpage>–<lpage>1689</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Korzeniowski1">
+        <label>17</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Korzeniowski</surname><given-names>MK</given-names></name>, <name name-style="western"><surname>Manjarres</surname><given-names>IM</given-names></name>, <name name-style="western"><surname>Varnai</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Balla</surname><given-names>T</given-names></name> (<year>2010</year>) <article-title>Activation of STIM1-Orai1 involves an intramolecular switching mechanism</article-title>. <source>Science signaling</source> <volume>3</volume>: <fpage>ra82</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Kim1">
+        <label>18</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kim</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Babnigg</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Jedrzejczak</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Eschenfeldt</surname><given-names>WH</given-names></name>, <name name-style="western"><surname>Li</surname><given-names>H</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>High-throughput protein purification and quality assessment for crystallization</article-title>. <source>Methods</source> <volume>55</volume>: <fpage>12</fpage>–<lpage>28</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Lecchi1">
+        <label>19</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lecchi</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Abramson</surname><given-names>FP</given-names></name> (<year>1999</year>) <article-title>Size exclusion chromatography-chemical reaction interface mass spectrometry: “a perfect match”</article-title>. <source>Anal Chem</source> <volume>71</volume>: <fpage>2951</fpage>–<lpage>2955</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Vig1">
+        <label>20</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vig</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Beck</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Billingsley</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Lis</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Parvez</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>CRACM1 multimers form the ion-selective pore of the CRAC channel</article-title>. <source>Curr Biol</source> <volume>16</volume>: <fpage>2073</fpage>–<lpage>2079</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Yeromin1">
+        <label>21</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yeromin</surname><given-names>AV</given-names></name>, <name name-style="western"><surname>Zhang</surname><given-names>SL</given-names></name>, <name name-style="western"><surname>Jiang</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Yu</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Safrina</surname><given-names>O</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Molecular identification of the CRAC channel by altered ion selectivity in a mutant of Orai</article-title>. <source>Nature</source> <volume>443</volume>: <fpage>226</fpage>–<lpage>229</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Graslund2">
+        <label>22</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Graslund</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Sagemark</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Berglund</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Dahlgren</surname><given-names>LG</given-names></name>, <name name-style="western"><surname>Flores</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>The use of systematic N- and C-terminal deletions to promote production and structural studies of recombinant proteins</article-title>. <source>Protein Expr Purif</source> <volume>58</volume>: <fpage>210</fpage>–<lpage>221</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0053979-Senisterra1">
+        <label>23</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Senisterra</surname><given-names>GA</given-names></name>, <name name-style="western"><surname>Markin</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Yamazaki</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Hui</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Vedadi</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Screening for ligands using a generic and high-throughput light-scattering-based assay</article-title>. <source>Journal of biomolecular screening</source> <volume>11</volume>: <fpage>940</fpage>–<lpage>948</lpage>.</mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

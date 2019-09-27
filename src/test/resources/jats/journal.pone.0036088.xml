@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-11-13550</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0036088</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Anatomy and physiology</subject>
+            <subj-group>
+              <subject>Reproductive system</subject>
+              <subj-group>
+                <subject>Sexual reproduction</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Developmental biology</subject>
+            <subj-group>
+              <subject>Evolutionary developmental biology</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Evolutionary biology</subject>
+            <subj-group>
+              <subject>Evolutionary processes</subject>
+              <subj-group>
+                <subject>Evolutionary selection</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Evolutionary developmental biology</subject>
+              <subject>Evolutionary genetics</subject>
+              <subject>Evolutionary theory</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Genetics</subject>
+            <subj-group>
+              <subject>Human genetics</subject>
+              <subj-group>
+                <subject>X-linked</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Heredity</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Social and behavioral sciences</subject>
+          <subj-group>
+            <subject>Anthropology</subject>
+            <subj-group>
+              <subject>Biological anthropology</subject>
+              <subject>Cultural anthropology</subject>
+              <subject>Ethnobiology</subject>
+              <subject>Psychological anthropology</subject>
+              <subject>Social anthropology</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Psychology</subject>
+            <subj-group>
+              <subject>Developmental psychology</subject>
+              <subject>Social psychology</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Sociology</subject>
+            <subj-group>
+              <subject>Human families</subject>
+              <subject>Sexual and gender issues</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Genetics and Genomics</subject>
+          <subject>Physiology</subject>
+          <subject>Developmental Biology</subject>
+          <subject>Evolutionary Biology</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Offspring Production among the Extended Relatives of Samoan Men and <italic>Fa'afafine</italic></article-title><alt-title alt-title-type="running-head">Reproduction of Samoan Men's and <italic>Fa'afafine's</italic> Kin</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>VanderLaan</surname>
+            <given-names>Doug P.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Forrester</surname>
+            <given-names>Deanna L.</given-names>
+          </name>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Petterson</surname>
+            <given-names>Lanna J.</given-names>
+          </name>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Vasey</surname>
+            <given-names>Paul L.</given-names>
+          </name>
+        </contrib>
+      </contrib-group><aff id="aff1">          <addr-line>Department of Psychology, University of Lethbridge, Lethbridge, Alberta, Canada</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Vitzthum</surname>
+            <given-names>Virginia J.</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">Indiana University, United States of America</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">doug.vanderlaan@uleth.ca</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: DPV DLF LJP PLV. Performed the experiments: DPV DLF LJP PLV. Analyzed the data: DPV DLF LJP. Contributed reagents/materials/analysis tools: DPV DLF LJP PLV. Wrote the paper: DPV DLF LJP PLV. Data acquisition: DPV DLF LJP PLV.</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>The authors have declared that no competing interests exist.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2012</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>27</day>
+        <month>4</month>
+        <year>2012</year>
+      </pub-date><volume>7</volume><issue>4</issue><elocation-id>e36088</elocation-id><history>
+        <date date-type="received">
+          <day>14</day>
+          <month>7</month>
+          <year>2011</year>
+        </date>
+        <date date-type="accepted">
+          <day>30</day>
+          <month>3</month>
+          <year>2012</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2012</copyright-year><copyright-holder>VanderLaan et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <p><italic>Androphilia</italic> refers to sexual attraction to adult males, whereas <italic>gynephilia</italic> refers to sexual attraction to adult females. Male androphilia is an evolutionary paradox. Its development is at least partially influenced by genetic factors, yet male androphiles exhibit lower reproductive output, thus raising the question of how genetic factors underlying its development persist. The sexual antagonism hypothesis posits that the fitness costs associated with genetic factors underlying male androphilia are offset because these same factors lead to elevated reproduction on the part of the female relatives of androphilic males. Western samples drawn from low fertility populations have yielded inconsistent results when testing this hypothesis. Some studies documented elevated reproduction among the matrilineal female kin of androphilic males, whereas others found such effects in the paternal line. Samoa is a high-fertility population in which individuals reproduce closer to their maximum capacities. This study compared the reproductive output of the paternal and maternal line grandmothers, aunts, and uncles of 86 Samoan androphilic males, known locally as <italic>fa'afafine</italic>, and 86 Samoan gynephilic males. Reproductive output was elevated in the paternal and maternal line grandmothers, but not aunts or uncles, of <italic>fa'afafine</italic>. These findings are consistent with the sexual antagonism hypothesis and suggest that male androphilia is associated with elevated reproduction among extended relatives in both the maternal and paternal line. <xref ref-type="sec" rid="s4">Discussion</xref> focuses on how this study, in conjunction with the broader literature, informs various models for the evolution of male androphilia via elevated reproduction on the part of female kin.</p>
+      </abstract><funding-group><funding-statement>The students involved in this research were funded by the Government of Alberta Awards and Federal Scholarships. Government of Alberta Awards include a Ralph Steinhauer Award of Distinction and a Chinook Summer Research Award. Federal scholarships include scholarships from the Social Sciences and Engineering Research Council of Canada (<ext-link ext-link-type="uri" xlink:href="http://www.sshrc-crsh.gc.ca/" xlink:type="simple">http://www.sshrc-crsh.gc.ca/</ext-link>), and the Natural Sciences and Engineering Research Council of Canada (URL below). The research was funded by the Natural Sciences and Engineering Research Council of Canada (<ext-link ext-link-type="uri" xlink:href="http://www.nserc-crsng.gc.ca/Index_eng.asp" xlink:type="simple">http://www.nserc-crsng.gc.ca/Index_eng.asp</ext-link>), Sigma Xi Grant in Aid of Research (<ext-link ext-link-type="uri" xlink:href="http://www.sigmaxi.org/" xlink:type="simple">http://www.sigmaxi.org/</ext-link>), the University of Lethbridge (<ext-link ext-link-type="uri" xlink:href="http://www.uleth.ca/" xlink:type="simple">http://www.uleth.ca/</ext-link>), and a Henry David Travel Grant from the American Psychological Foundation (<ext-link ext-link-type="uri" xlink:href="http://www.apa.org/apf/" xlink:type="simple">http://www.apa.org/apf/</ext-link>). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="6"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>The manner in which male same-sex sexual orientation is publicly expressed varies cross-culturally <xref ref-type="bibr" rid="pone.0036088-Murray1">[1]</xref>. In Western societies, for example, men who are preferentially sexually attracted to other men typically identify as “gay” or “homosexual.” Such men exhibit what is referred to as an egalitarian pattern of same-sex sexual interaction that occurs between two males who are not markedly different in age or gender-related characteristics. As part of this egalitarian pattern, partners treat each other as social equals given that they both adopt culturally prescribed gender roles as men.</p>
+      <p>In contrast, male same-sex sexual orientation is publically expressed in a transgendered form in many non-Western societies. As the name suggests, same-sex sexually oriented males in such societies are typically transgendered in their appearance and mannerisms, and often occupy “alternative” gender role categories. These categories are distinguished linguistically from the gender-normative categories of “man” and “woman.” This transgendered pattern is associated with male same-sex sexual behavior that occurs between a male who is markedly gender-atypical (i.e., transgendered) and another who is more or less gender-typical for his own sex and adopts the culturally prescribed gender role of “man.” Thus, unlike the egalitarian pattern, partners exhibiting this transgendered pattern adopt different social roles and do not treat each other as social equals. Some contemporary examples include the <italic>xanith</italic> of Oman, the <italic>hijra</italic> of India, the <italic>kathoey</italic> of Thailand, the <italic>travestí</italic> of Brazil, the <italic>fakafefine</italic> of Tonga, and the <italic>fa'afafine</italic> of Samoa <xref ref-type="bibr" rid="pone.0036088-Murray1">[1]</xref>, <xref ref-type="bibr" rid="pone.0036088-Herdt1">[2]</xref>.</p>
+      <p>Given these unique attributes, using terms that are associated with male same-sex sexual orientation in Western societies (e.g., gay, homosexual, or even men-who-have-sex-with-men) to describe the sexual orientation of transgendered males in these other societies would be misleading. It is, therefore, more accurate to use terminology that transcends culturally constructed concepts when examining hypotheses concerning the evolution of male same-sex sexual orientation within a cross-cultural framework, as we do here. Hence, to describe male same-sex sexual orientation, we use the term <italic>androphilia</italic>, which refers to sexual attraction and arousal toward adult males. To describe male opposite-sex sexual orientation, we use the term <italic>gynephilia</italic>, which refers to sexual attraction and arousal toward adult females.</p>
+      <p>Male individuals within numerous non-human primate species are known to exhibit same-sex sexual behavior (most commonly mounting) as part of a behavioral repertoire that includes opposite-sex sexual behavior as well <xref ref-type="bibr" rid="pone.0036088-Dixson1">[3]</xref>, <xref ref-type="bibr" rid="pone.0036088-Vasey1">[4]</xref>. A small subset of human males appear to share this capacity for sexual arousal toward men and women, and engage in sexual behavior with members of both sexes <xref ref-type="bibr" rid="pone.0036088-Rosenthal1">[5]</xref>. For this subset of individuals, direct reproduction (i.e., passing on genes through offspring) is a possibility given that same-sex sexual behavior is accompanied by opposite-sex sexual behavior as well. As such, the non-human primate literature on same-sex sexual behavior might provide valuable insight into the evolution of human males' capacity to become aroused by, and engage in sexual interactions with, members of both sexes. The non-human primate literature is limited, however, with respect to its ability to inform evolutionary explanations for why a substantial minority of human males (less than, but up to, 5% cross-culturally) <xref ref-type="bibr" rid="pone.0036088-Whitam1">[6]</xref> exhibit life-long androphilia and exclusive to near-exclusive same-sex sexual behavior. This latter aspect of male same-sex sexual behavior is the evolutionary paradox that we focus on here.</p>
+      <p>This paradox is founded on three sets of empirical findings. First, studies of sexual orientation concordance rates among monozygotic and dizygotic twins indicate that the development of male androphilia is at least partially influenced by genetic factors <xref ref-type="bibr" rid="pone.0036088-Alanko1">[7]</xref>–<xref ref-type="bibr" rid="pone.0036088-Lngstrm1">[10]</xref>. Second, in Western societies, androphilic men exhibit lower reproductive output than gynephilic men <xref ref-type="bibr" rid="pone.0036088-King1">[11]</xref>, <xref ref-type="bibr" rid="pone.0036088-Schwartz1">[12]</xref>. Meanwhile, transgendered androphilic males are unlikely to reproduce whatsoever <xref ref-type="bibr" rid="pone.0036088-LeVay1">[13]</xref>, <xref ref-type="bibr" rid="pone.0036088-Vasey2">[14]</xref>. Third, prehistoric cave art and pottery suggest that male-male sexual activity is not evolutionarily recent <xref ref-type="bibr" rid="pone.0036088-LarcoHoyle1">[15]</xref>–<xref ref-type="bibr" rid="pone.0036088-Yates1">[17]</xref>. Consequently, it is unclear how genetic factors underlying male androphilia persist from one generation to the next. The persistence of genetic factors for male androphilia over evolutionary time is a paradox in need of explanation given that natural selection is a process that favors the evolution of traits that facilitate reproductive success.</p>
+      <p>The sexual antagonism hypothesis is one potential resolution to this paradox <xref ref-type="bibr" rid="pone.0036088-CamperioCiani1">[18]</xref>. Sexually antagonistic selection pertains to situations in which genetic factors that produce fitness costs when present in one sex result in fitness benefits when present in the other sex. In the present case, genetic factors for male androphilia might result in fitness costs when expressed in males, but conversely, result in fitness benefits in the form of elevated reproduction when expressed in females. In essence, the fitness benefits of increased reproduction on the part of female relatives of androphilic males would balance out the fitness costs of androphilic males' lack of reproduction, thus facilitating the persistence of genetic factors for male androphilia. Thus, the sexual antagonism hypothesis predicts that the female relatives of androphilic males should tend to produce more offspring than those of gynephilic males.</p>
+      <p>To date, several studies carried out in Western populations have compared the reproductive output of the extended relatives of male androphiles versus gynephiles. In two Italian samples, elevated reproduction was documented among the matrilineal female kin of androphilic men (i.e., mothers and maternal line grandmothers and aunts) <xref ref-type="bibr" rid="pone.0036088-CamperioCiani1">[18]</xref>, <xref ref-type="bibr" rid="pone.0036088-Iemmola1">[19]</xref>. Likewise, a similar matrilineal effect was found in one British sample in which elevated reproduction was documented among the maternal aunts of androphilic men <xref ref-type="bibr" rid="pone.0036088-Rahman1">[20]</xref>. However, such matrilineal effects have not been replicated in other samples. In a separate British sample, androphilic males had significantly more aunts and uncles as well as cousins in the paternal, but not maternal, line <xref ref-type="bibr" rid="pone.0036088-King1">[11]</xref>. Similarly, in a study from the USA comparing the reproductive output of maternal and paternal kin of androphilic and gynephilic males, elevated reproduction was documented among paternal grandmothers, but not the matrilineal female kin, of androphilic males <xref ref-type="bibr" rid="pone.0036088-Schwartz1">[12]</xref>.</p>
+      <p>One important limitation of this literature is its focus on samples drawn from Western populations. Such populations exhibit relatively low fertility <xref ref-type="bibr" rid="pone.0036088-Central1">[21]</xref>. In relation to this pattern of low fertility, individuals often exhibit “stopping rules” with respect to their reproductive behavior (e.g., cessation of reproduction once a certain number of children are produced or once at least one child of each sex is produced). Consequently, samples from low fertility populations can, in certain instances, produce anomalous patterns by obscuring the presence of biodemographic correlates of male sexual orientation <xref ref-type="bibr" rid="pone.0036088-Blanchard1">[22]</xref>, <xref ref-type="bibr" rid="pone.0036088-Zucker1">[23]</xref>. Discrepancies between Western studies of the familial patterning of male androphilia may, therefore, result from examining samples from low fertility populations. The susceptibility of these populations to producing anomalous familial patterning raises the possibility that some subset, or possibly all, of the aforementioned Western studies on male sexual orientation and family size are inaccurate (i.e., they do not provide clear indications of the reproductive output tendencies of androphilic males' extended relatives). Hence, examining the reproductive output of androphilic and gynephilic males' kin in a high fertility population in which individuals are more likely to be reproducing closer to their maximum capacities could provide valuable insight.</p>
+      <p>The Samoan population is suitable for such an examination. The Samoan population is characterized by higher fertility than the West <xref ref-type="bibr" rid="pone.0036088-Central1">[21]</xref>. Furthermore, male androphilia shows developmental commonalities in the West and Samoa. As in the West, male androphilia in Samoa is associated with elevated recall of childhood gender-atypical behavior <xref ref-type="bibr" rid="pone.0036088-Bailey2">[24]</xref>, <xref ref-type="bibr" rid="pone.0036088-Bartlett1">[25]</xref> and traits of separation anxiety <xref ref-type="bibr" rid="pone.0036088-VanderLaan1">[26]</xref>, <xref ref-type="bibr" rid="pone.0036088-Vasey3">[27]</xref>, later birth order <xref ref-type="bibr" rid="pone.0036088-Blanchard2">[28]</xref>–<xref ref-type="bibr" rid="pone.0036088-Vasey4">[30]</xref>, greater numbers of older biological brothers <xref ref-type="bibr" rid="pone.0036088-VanderLaan2">[29]</xref>, <xref ref-type="bibr" rid="pone.0036088-Bogaert1">[31]</xref>, and greater numbers of siblings <xref ref-type="bibr" rid="pone.0036088-CamperioCiani1">[18]</xref>, <xref ref-type="bibr" rid="pone.0036088-VanderLaan2">[29]</xref>, <xref ref-type="bibr" rid="pone.0036088-Vasey4">[30]</xref>.</p>
+      <p>In Samoa, androphilic males are known locally as <italic>fa'afafine</italic>. Translated literally, <italic>fa'afafine</italic> means “in the manner of a woman.” Status as <italic>fa'afafine</italic> is initially assigned on the basis of gender-atypical behavior beginning in childhood <xref ref-type="bibr" rid="pone.0036088-Poasa1">[32]</xref>–<xref ref-type="bibr" rid="pone.0036088-Vasey5">[35]</xref>. In adulthood, <italic>fa'afafine</italic> are extremely feminine in their appearance and mannerisms <xref ref-type="bibr" rid="pone.0036088-Bartlett1">[25]</xref>, <xref ref-type="bibr" rid="pone.0036088-Shore1">[34]</xref>, <xref ref-type="bibr" rid="pone.0036088-Vasey6">[36]</xref>, <xref ref-type="bibr" rid="pone.0036088-Croall1">[37]</xref>. Effeminate patterns of behavior, not adult sexual orientation, are the primary basis for having <italic>fa'afafine</italic> status (as opposed to status as “man” or “woman”). Nevertheless, <italic>fa'afafine</italic> are overwhelmingly androphilic in adulthood and only engage in sexual behavior with masculine males who identify as “straight men” (i.e., <italic>fa'afafine</italic> do not engage in sexual behavior with one another); exceptions to these rules are exceedingly rare to the point where they are considered questionable and highly suspect by Samoans both within and outside of the <italic>fa'afafine</italic> community <xref ref-type="bibr" rid="pone.0036088-Vasey2">[14]</xref>, <xref ref-type="bibr" rid="pone.0036088-Croall1">[37]</xref>. Also, it is important to note that the vast majority of <italic>fa'afafine</italic> are not transsexual because they do not experience dysphoria with respect to their genitalia <xref ref-type="bibr" rid="pone.0036088-Vasey5">[35]</xref>.</p>
+      <p>In a Samoan cultural context, “straight men” are those who self-identify as men and are masculine with respect to gender role presentation. Inclusion in this category is not contingent on exclusive sexual activity with women. Most self-identified straight men are gynephilic, but may engage in sexual activity with <italic>fa'afafine</italic> or even other straight men on a temporary basis, particularly if female sexual partners are unavailable. It has been noted, and is probably underappreciated by many researchers, that one of the most cross-culturally variable aspects of gynephilic male sexuality appears to be their willingness to engage in sexual activity with their less preferred sex, namely, other males <xref ref-type="bibr" rid="pone.0036088-Whitam1">[6]</xref>. Indeed, our participants informed us that many straight men in Samoa have engaged in sexual interactions with <italic>fa'afafine</italic> at least once in their lives <xref ref-type="bibr" rid="pone.0036088-Croall1">[also see 37]</xref>. While this seems paradoxical to many Western observers, it is important to keep in mind that <italic>fa'afafine</italic> represent much closer facsimiles of women—the preferred sex of gynephilic men—than do Western gay men. As such, when constructing a participant group of gynephilic Samoan men to compare to androphilic <italic>fa'afafine</italic>, it is appropriate to use sexual attraction as a basis for inclusion, not sexual behavior. This measure provides a window on sexual orientation in the absence of real-world constraints. In contrast, using sexual behavior as a measure of sexual orientation is confounded by the participant's ability, or lack thereof, to access female sexual partners. Self-identification as a straight man is also an inadequate basis for forming a comparison group given that although the majority of such men are gynephilic, a small minority may be more or less equally attracted to both sexes or exhibit a preference for males.</p>
+      <p>Previous research has shown repeatedly that the mothers of <italic>fa'afafine</italic> have significantly higher reproductive output than those of gynephilic men <xref ref-type="bibr" rid="pone.0036088-VanderLaan2">[29]</xref>, <xref ref-type="bibr" rid="pone.0036088-Vasey4">[30]</xref>. The current study compared the reproductive output of the maternal and paternal line male and female extended relatives (i.e., grandmothers, aunts, and uncles) of Samoan <italic>fa'afafine</italic> and gynephilic males. It did so to shed light on whether male androphilia in this relatively high fertility population is associated with elevated reproduction in the maternal line, paternal line, or both.</p>
+    </sec>
+    <sec id="s2" sec-type="methods">
+      <title>Methods</title>
+      <sec id="s2a">
+        <title>Ethics Statement</title>
+        <p>This research was approved by the University of Lethbridge Human Subjects Research Ethics Committee. Informed written consent was obtained from all participants.</p>
+      </sec>
+      <sec id="s2b">
+        <title>Participants and Measures</title>
+        <p>Data were collected on Samoa's most populous islands, Upolu and Savai'i, during July–September, 2008. Participants were recruited through a network sampling procedure, which involved contacting initial participants, then obtaining referrals from them to additional participants who, in turn, provided further referrals, and so on. The rate of participation for all groups was greater than 90%. All participants were interviewed in English or Samoan, depending on their preference, using a standardized questionnaire. The questionnaire included questions concerning gender identity (i.e., status as a man or <italic>fa'afafine</italic>), age, sexual orientation, and numbers of children produced by various categories of kin (i.e., maternal and paternal grandmothers, aunts, and uncles).</p>
+        <p>Participants included 86 gynephilic males (<italic>M</italic> ± <italic>SD</italic> age: 29.80±9.61) and 86 <italic>fa'afafine</italic> (<italic>M</italic> ± <italic>SD</italic> age: 29.60±8.44). Across the entire sample, none of the participants were brothers or first cousins. Groups were comparable with respect to age (<italic>t</italic>[170] = .15, <italic>p</italic> = .88). Kinsey ratings of sexual feelings toward males (i.e., men and/or <italic>fa'afafine</italic>) and females (i.e., women) during the previous year were obtained. Specifically, participants were asked the following question: “Which statement best describes your sexual feelings during the last year?” Participants then selected one of the following seven possible responses: “sexual feelings only toward females” (Kinsey rating = 0), “most sexual feelings toward females, but an occasional fantasy about males” (Kinsey rating = 1), “most sexual feelings toward females, but some definite fantasy about males” (Kinsey rating = 2), “sexual feelings about equally divided between males and females with no strong preference for one or the other” (Kinsey rating = 3), “most sexual feelings toward males, but some definite fantasy about females” (Kinsey rating = 4), “most sexual feelings toward males, but an occasional fantasy about females” (Kinsey rating = 5), or “sexual feelings only toward males” (Kinsey rating = 6). Samoans, both inside and outside the <italic>fa'afafine</italic> community, recognize that <italic>fa'afafine</italic> are biological males that are socially distinct from men and women. Nevertheless, for the sake of consistency, participants were told, prior to answering questions pertaining to the Kinsey ratings, that the category “males” included straight men and/or <italic>fa'afafine</italic>, whereas the category “females” included women. All 86 gynephilic males described their sexual feelings as exclusively gynephilic (Kinsey rating = 0). Of the <italic>fa'afafine</italic>, 84 (97.7%) described their sexual feelings as exclusively androphilic (Kinsey rating = 6), and two (2.3%) reported most sexual feelings toward males, but an occasional fantasy about females (Kinsey rating = 5).</p>
+        <p>Finally, following previous studies <xref ref-type="bibr" rid="pone.0036088-CamperioCiani1">[18]</xref>–<xref ref-type="bibr" rid="pone.0036088-Rahman1">[20]</xref>, participants were asked to report the number of children born to their grandmothers and each of their aunts and uncles (i.e., not including adopted or step-family) for the maternal and paternal sides of their families. From this information, for each participant, we calculated the mean number of children produced by their maternal aunts, maternal uncles, paternal aunts, and paternal uncles. Importantly, Samoans often emigrate to countries with lower fertility populations (e.g., Australia, New Zealand, USA) for the entirety, or a portion, of their reproductive lives. There is reason to suspect that such emigration lowers fertility. Although the US territory of American Samoa is populated principally by ethnic Samoans, its fertility rate is lower than in the politically autonomous portion of the Samoan archipelago where we conducted the present study <xref ref-type="bibr" rid="pone.0036088-Central1">[21]</xref>. Consequently, our analyses focused on the reproduction of grandmothers, aunts, and uncles for whom all offspring were born in Samoa.</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Results</title>
+      <p>The offspring production of paternal and maternal line grandmothers, aunts, and uncles in Samoan androphilic (i.e., <italic>fa'afafine</italic>) versus gynephilic male probands was compared using independent <italic>t</italic>-tests. Comparisons were made using SPSS, version 19. An alpha level of 0.008 was used for determining statistical significance in order to maintain a Type I Error rate of 0.05 across the six comparisons. These comparisons are summarized in <xref ref-type="table" rid="pone-0036088-t001">Table 1</xref>, and showed that the paternal and maternal grandmothers, but not aunts or uncles, of androphilic males exhibited elevated reproduction.</p>
+      <table-wrap id="pone-0036088-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0036088.t001</object-id><label>Table 1</label><caption>
+          <title>Sample sizes (n), means (M), standard deviations (SD), t-values (t), degrees of freedom (df), p-values (p), and effect sizes (Cohen's d) pertaining to comparisons of numbers of offspring produced by the paternal and maternal line grandmothers, aunts, and uncles of Samoan fa'afafine versus gynephilic males.</title>
+        </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0036088-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0036088.t001" xlink:type="simple"/><table>
+          <colgroup span="1">
+            <col align="left" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+          </colgroup>
+          <thead>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="3" rowspan="1">
+                <italic>Fa'afafine</italic>
+              </td>
+              <td align="left" colspan="3" rowspan="1">Gynephilic males</td>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1"/>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">
+                <italic>n</italic>
+              </td>
+              <td align="left" colspan="1" rowspan="1">
+                <italic>M</italic>
+              </td>
+              <td align="left" colspan="1" rowspan="1">
+                <italic>SD</italic>
+              </td>
+              <td align="left" colspan="1" rowspan="1">
+                <italic>n</italic>
+              </td>
+              <td align="left" colspan="1" rowspan="1">
+                <italic>M</italic>
+              </td>
+              <td align="left" colspan="1" rowspan="1">
+                <italic>SD</italic>
+              </td>
+              <td align="left" colspan="1" rowspan="1">
+                <italic>t</italic>
+              </td>
+              <td align="left" colspan="1" rowspan="1">
+                <italic>df</italic>
+              </td>
+              <td align="left" colspan="1" rowspan="1">
+                <italic>p</italic>
+                <xref ref-type="table-fn" rid="nt103">c</xref>
+              </td>
+              <td align="left" colspan="1" rowspan="1">Cohen's <italic>d</italic></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">Paternal grandmothers</td>
+              <td align="left" colspan="1" rowspan="1">85</td>
+              <td align="left" colspan="1" rowspan="1">6.35</td>
+              <td align="left" colspan="1" rowspan="1">2.46</td>
+              <td align="left" colspan="1" rowspan="1">83</td>
+              <td align="left" colspan="1" rowspan="1">4.99</td>
+              <td align="left" colspan="1" rowspan="1">1.71</td>
+              <td align="left" colspan="1" rowspan="1">4.19</td>
+              <td align="left" colspan="1" rowspan="1">150<xref ref-type="table-fn" rid="nt101">a</xref></td>
+              <td align="left" colspan="1" rowspan="1">&lt;0.001</td>
+              <td align="left" colspan="1" rowspan="1">0.64</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">Paternal aunts</td>
+              <td align="left" colspan="1" rowspan="1">66</td>
+              <td align="left" colspan="1" rowspan="1">4.93</td>
+              <td align="left" colspan="1" rowspan="1">3.42</td>
+              <td align="left" colspan="1" rowspan="1">73</td>
+              <td align="left" colspan="1" rowspan="1">4.63</td>
+              <td align="left" colspan="1" rowspan="1">3.80</td>
+              <td align="left" colspan="1" rowspan="1">0.49</td>
+              <td align="left" colspan="1" rowspan="1">137</td>
+              <td align="left" colspan="1" rowspan="1">0.625</td>
+              <td align="left" colspan="1" rowspan="1">0.08</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">Paternal uncles</td>
+              <td align="left" colspan="1" rowspan="1">70</td>
+              <td align="left" colspan="1" rowspan="1">4.84</td>
+              <td align="left" colspan="1" rowspan="1">3.24</td>
+              <td align="left" colspan="1" rowspan="1">74</td>
+              <td align="left" colspan="1" rowspan="1">4.70</td>
+              <td align="left" colspan="1" rowspan="1">2.90</td>
+              <td align="left" colspan="1" rowspan="1">0.27</td>
+              <td align="left" colspan="1" rowspan="1">142</td>
+              <td align="left" colspan="1" rowspan="1">0.791</td>
+              <td align="left" colspan="1" rowspan="1">0.05</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">Maternal grandmothers</td>
+              <td align="left" colspan="1" rowspan="1">86</td>
+              <td align="left" colspan="1" rowspan="1">7.29</td>
+              <td align="left" colspan="1" rowspan="1">2.97</td>
+              <td align="left" colspan="1" rowspan="1">86</td>
+              <td align="left" colspan="1" rowspan="1">5.47</td>
+              <td align="left" colspan="1" rowspan="1">2.08</td>
+              <td align="left" colspan="1" rowspan="1">4.67</td>
+              <td align="left" colspan="1" rowspan="1">152.3<xref ref-type="table-fn" rid="nt102">b</xref></td>
+              <td align="left" colspan="1" rowspan="1">&lt;0.001</td>
+              <td align="left" colspan="1" rowspan="1">0.71</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">Maternal aunts</td>
+              <td align="left" colspan="1" rowspan="1">65</td>
+              <td align="left" colspan="1" rowspan="1">5.28</td>
+              <td align="left" colspan="1" rowspan="1">3.70</td>
+              <td align="left" colspan="1" rowspan="1">76</td>
+              <td align="left" colspan="1" rowspan="1">4.92</td>
+              <td align="left" colspan="1" rowspan="1">3.43</td>
+              <td align="left" colspan="1" rowspan="1">0.61</td>
+              <td align="left" colspan="1" rowspan="1">139</td>
+              <td align="left" colspan="1" rowspan="1">0.546</td>
+              <td align="left" colspan="1" rowspan="1">0.10</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">Maternal uncles</td>
+              <td align="left" colspan="1" rowspan="1">74</td>
+              <td align="left" colspan="1" rowspan="1">5.31</td>
+              <td align="left" colspan="1" rowspan="1">5.01</td>
+              <td align="left" colspan="1" rowspan="1">79</td>
+              <td align="left" colspan="1" rowspan="1">5.78</td>
+              <td align="left" colspan="1" rowspan="1">4.12</td>
+              <td align="left" colspan="1" rowspan="1">−0.64</td>
+              <td align="left" colspan="1" rowspan="1">151</td>
+              <td align="left" colspan="1" rowspan="1">0.522</td>
+              <td align="left" colspan="1" rowspan="1">−0.10</td>
+            </tr>
+          </tbody>
+        </table></alternatives><table-wrap-foot>
+          <fn id="nt101">
+            <label>a</label>
+            <p>Degrees of freedom adjusted based on Levene's test for equality of variances: <italic>F</italic> = 10.80, <italic>p</italic> = .001.</p>
+          </fn>
+          <fn id="nt102">
+            <label>b</label>
+            <p>Degrees of freedom adjusted based on Levene's test for equality of variances: <italic>F</italic> = 6.09, <italic>p</italic> = .015.</p>
+          </fn>
+          <fn id="nt103">
+            <label>c</label>
+            <p>Two-tailed <italic>p</italic>-value.</p>
+          </fn>
+        </table-wrap-foot></table-wrap>
+    </sec>
+    <sec id="s4">
+      <title>Discussion</title>
+      <p>Some studies conducted in low fertility, Western populations reported elevated offspring production among the matrilineal female kin of androphilic males <xref ref-type="bibr" rid="pone.0036088-CamperioCiani1">[18]</xref>–<xref ref-type="bibr" rid="pone.0036088-Rahman1">[20]</xref> while others reported elevated offspring production among female paternal relatives <xref ref-type="bibr" rid="pone.0036088-King1">[11]</xref>, <xref ref-type="bibr" rid="pone.0036088-Schwartz1">[12]</xref>. The present study compared the number of children born to the paternal and maternal line grandmothers, aunts, and uncles of androphilic (i.e., <italic>fa'afafine</italic>) versus gynephilic males in Samoa, a relatively high fertility population in which individuals are more likely to reproduce closer to their maximum capacities. These comparisons indicated that offspring production in Samoa is elevated among the maternal and paternal line grandmothers, but not aunts and uncles, of androphilic males.</p>
+      <p>One may wonder whether the lack of group differences for aunts and uncles is due to the possibility that these relative categories are less likely to have completed their reproductive careers compared to grandmothers. The samples presented here were age-matched. As such, if the reproduction of androphilic males' relatives was elevated throughout their reproductive careers, then group differences should have emerged. The only manner in which incompleteness of reproductive careers can account for the lack of group differences for aunts and uncles is, therefore, if the kin of <italic>fa'afafine</italic> have greater reproductive output than the kin of gynephilic males toward the latter part of their reproductive careers. Future research may benefit from focusing on the reproductive output of the extended relatives of androphilic versus gynephilic males as a function of relatives' ages.</p>
+      <p>One may also wonder whether elevated reproduction by the maternal and paternal grandmothers of <italic>fa'afafine</italic> supports the sexual antagonism hypothesis given that the reproduction of grandmothers is naturally confounded with that of grandfathers. As such, it is difficult to discern from this study alone as to whether elevated reproduction is strictly limited to the female relatives of androphilic males. That said, in the present study and all previous studies comparing the offspring production of the extended relatives (i.e., grandmothers, aunts, and uncles) of androphilic versus gynephilic males, the only categories of androphilic male relatives to show elevated reproduction were those comprised partially (i.e., reproduction of aunts and uncles combined) <xref ref-type="bibr" rid="pone.0036088-King1">[11]</xref> or entirely of female kin <xref ref-type="bibr" rid="pone.0036088-Schwartz1">[12]</xref>, <xref ref-type="bibr" rid="pone.0036088-CamperioCiani1">[18]</xref>–<xref ref-type="bibr" rid="pone.0036088-Rahman1">[20]</xref>. In addition, the mothers of androphilic males appear to have greater numbers of children compared to the mothers of gynephilic males in the West <xref ref-type="bibr" rid="pone.0036088-CamperioCiani1">[18]</xref>, <xref ref-type="bibr" rid="pone.0036088-Iemmola1">[19]</xref> as well as in Samoa <xref ref-type="bibr" rid="pone.0036088-VanderLaan2">[29]</xref>, <xref ref-type="bibr" rid="pone.0036088-Vasey4">[30]</xref>. Based on this information, the sexual antagonism hypothesis is still a tenable explanation for the evolution of male androphilia.</p>
+      <p>The main strength of the study presented here was its consideration of reproductive output among the relatives of androphilic and gynephilic males within a population that has higher fertility compared to the West. As mentioned previously, studies conducted in the West had reported elevated extended family size effects in either the paternal or maternal line of androphilic males, but not both. These discrepancies possibly exist because the use of “stopping rules” that curtail reproduction make low fertility populations susceptible to producing anomalous patterns with respect to biodemographic correlates of male sexual orientation. Anomalous patterns would be less likely to occur in the Samoan population because it exhibits relatively higher fertility and, as such, individuals are less likely employ “stopping rules” that curtail offspring production early in their reproductive careers. The data presented here showed that male androphilia in Samoa is associated with elevated reproduction in both maternal and paternal grandmothers. Hence, if the Samoan population is relatively free of susceptibility to anomalous patterns, then the present study indicates that male androphilia is actually associated with larger extended family size in both the maternal and paternal line. Replications of this research in various populations would further help to identify factors that influence inter-population differences in the expression of elevated reproduction among the relatives of androphilic males, and to discern which categories of kin show elevated reproduction most reliably.</p>
+      <p>Identifying that elevated female reproduction is most likely inherent to both the maternal and paternal lines of androphilic males has important implications regarding the proximate bases of this pattern. The sexual antagonism hypothesis suggests that the proximate basis of this elevated reproduction is genetic. Previous debate in the literature concerning the genetic basis of such sexually antagonistic genetic factors has centered around the issue of whether these factors are located on the X chromosome. Such X-linkage was suggested based on a number of findings. First, as mentioned previously, some studies reported that elevated reproduction on the part of androphilic males' relatives was specific to the matrilineal female kin, and noted that this pattern would depend on X-linkage because males share this chromosome with their matrilineal kin only <xref ref-type="bibr" rid="pone.0036088-CamperioCiani1">[18]</xref>–<xref ref-type="bibr" rid="pone.0036088-Rahman1">[20]</xref>. Second, this suggestion is in agreement with other studies indicating that genetic factors on the X chromosome are associated with the etiology of male androphilia. For example, in several Western samples, androphilic male probands show preponderances of androphilic male relatives (i.e., uncles and cousins) in the maternal, but not paternal, line <xref ref-type="bibr" rid="pone.0036088-CamperioCiani1">[18]</xref>, <xref ref-type="bibr" rid="pone.0036088-Rahman1">[20]</xref>, <xref ref-type="bibr" rid="pone.0036088-Hamer1">[38]</xref>, <xref ref-type="bibr" rid="pone.0036088-Hu1">[39]</xref>, a pattern that would depend on X-linkage. Moreover, two genetic studies have documented differences in the X chromosomes of androphilic and gynephilic males at the Xq28 locus <xref ref-type="bibr" rid="pone.0036088-Hamer1">[38]</xref>, <xref ref-type="bibr" rid="pone.0036088-Hu1">[39]</xref>, while another study has indicated that activation (i.e., epigenetic) processes related to genetic factors on the X chromosome are important <xref ref-type="bibr" rid="pone.0036088-Bocklandt1">[40]</xref>.</p>
+      <p>At the same time, however, findings from various studies, including the present study, raise doubt about the existence of sexually antagonistic, X-linked genetic factors in the development and evolution of male androphilia. To begin with, androphilic male probands have shown preponderances of androphilic male relatives in both the maternal and paternal lines in some samples <xref ref-type="bibr" rid="pone.0036088-Schwartz1">[12]</xref>, <xref ref-type="bibr" rid="pone.0036088-Bailey3">[41]</xref>. Also, two genetic studies did not show X-chromosome differences between androphilic and gynephilic males <xref ref-type="bibr" rid="pone.0036088-Mustanski1">[42]</xref>, <xref ref-type="bibr" rid="pone.0036088-Rice1">[43]</xref>. The original findings of male sexual orientation differences at Xq28 may reflect Type I Error due to the fact that genotyping was performed using microsatellite markers, which have high error rates <xref ref-type="bibr" rid="pone.0036088-Weeks1">[44]</xref>. Furthermore, linkage disequilibrium (i.e., non-random allelic association) between the markers was not assessed and taken into account during analysis, which can also result in false positives <xref ref-type="bibr" rid="pone.0036088-Huang1">[45]</xref>. Lastly, and perhaps most importantly, elevated reproduction does not appear to be limited to the matrilineal female kin of androphilic males. As the present study and other studies <xref ref-type="bibr" rid="pone.0036088-King1">[11]</xref>, <xref ref-type="bibr" rid="pone.0036088-Schwartz1">[12]</xref> have shown, elevated reproduction exists among the patrilineal female kin of androphilic males as well. Based on these findings, one would argue that male androphilia is not primarily an X-linked phenomenon, and that X-linked sexual antagonism might not be the form of selection responsible for its evolution. One might instead argue that sexually antagonistic genetic factors are present on the autosomal chromosomes because androphilic males share genetic factors on these chromosomes with both paternal and maternal relatives. Indeed, autosomal linkage of sexually antagonistic genetic factors favoring the evolution of male androphilia is plausible given previously reported mathematical models of sexually antagonistic selection for the evolution of male androphilia <xref ref-type="bibr" rid="pone.0036088-Gavrilets1">[46]</xref>.</p>
+      <p>It is possible that genetic factors underlying male androphilia do not have any influence on female reproduction. Rather, the female relatives of male androphiles may simply have a propensity for elevated reproduction due to social mechanisms that are not under genetic influence. Specifically, if certain families have social norms that encourage offspring production and larger family sizes, then elevated reproduction among the female, but not male, members of such families is likely. This is because male reproductive output is limited by access to females who are willing to reproduce <xref ref-type="bibr" rid="pone.0036088-Trivers1">[47]</xref>. As such, the reproductive outputs of the gynephilic male relatives of androphilic males would be relatively more constrained because their female sexual partners might come from families that do not have social norms that encourage offspring production and larger family size. If this line of reasoning were correct, it would explain why the current study and all previous studies have repeatedly found elevated reproduction among the female, but not male, relatives of androphilic males. As a result of elevated female reproduction, shared genetic factors associated wtih male androphilia would gain fitness benefits within families with social norms encouraging reproduction. These fitness benefits would accrue without the genetic factors associated with male androphilia exerting any shared influence over reproduction in the female kin of androphilic males. To discern whether this scenario accounts for why androphilic males tend to belong to families with elevated female reproduction, future research should examine whether such elevated reproduction is owing to family social norms related to reproductive output.</p>
+      <p>It is also noteworthy that a number of studies have demonstrated that Samoan <italic>fa'afafine</italic> are more willing to help care for their nieces and nephews than Samoan women and gynephilic males <xref ref-type="bibr" rid="pone.0036088-Vasey2">[14]</xref>, <xref ref-type="bibr" rid="pone.0036088-Vasey6">[36]</xref>, <xref ref-type="bibr" rid="pone.0036088-VanderLaan3">[48]</xref>–<xref ref-type="bibr" rid="pone.0036088-Vasey8">[50]</xref>. These avuncular (uncle-like) tendencies are expressed by <italic>fa'afafine</italic> in an economical, efficient, reliable, and precise manner, all of which are indicative of past selection for adaptive design <xref ref-type="bibr" rid="pone.0036088-VanderLaan3">[48]</xref>, <xref ref-type="bibr" rid="pone.0036088-Vasey9">[51]</xref>. It is possible that such elevated avuncularity on the part of <italic>fa'afafine</italic> contributes to the reproduction of kin and that genetic factors underlying male androphilia accrue fitness in this manner as well. As such, genetic factors associated with an adaptive avuncular androphilic male phenotype may influence reproductive output in the female kin of male androphiles, but this relationship may be mediated by the phenotypic expression of elevated altruism toward nieces and nephews by androphilic males. Interestingly, one study focusing on monetary donations found that <italic>fa'afafine</italic> allocate more money toward younger siblings' daughters in particular <xref ref-type="bibr" rid="pone.0036088-Vasey8">[50]</xref>. A bias toward investing in nieces on the part of <italic>fa'afafine</italic> could be the most adaptive means of maximizing fitness given that the female, but not male, kin of androphilic males seem to exhibit elevated reproduction. Future research should, therefore, examine whether the kin investment tendencies of androphilic males promote the reproduction of female kin in particular.</p>
+      <p>The increased interest in investing in kin exhibited by <italic>fa'afafine</italic> might also be related to increased knowledge about kin. If so, then the androphilic <italic>fa'afafine</italic> might be better informed about their extended family members' reproductive outputs, thus confounding comparisons of androphilic and gynephilic males' relatives' reproduction. For example, greater knowledge of relatives' reproductive outputs could lead to more reliable reporting of offspring who died at a young age. Such confounds could contribute toward the impression of greater fertility among the relatives of androphilic males. Future research may limit such confounds by corroborating probands' reports of their relatives' reproductive outputs with those of knowledgeable relatives (e.g., mothers, fathers, siblings). Furthermore, such reports could be expanded to include additional pertinent information regarding relatives' offspring. For example, number of live births is a proxy for reproductive success, however, offspring survival (and subsequent reproduction) are critical aspects of relatives' reproductive success that influence the biological fitness and evolution of genetic factors underlying male androphilia. Consequently, in addition to collecting information about live births, it would be worthwhile if future studies also obtained information concerning offspring survival.</p>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>The authors wish to thank Resitara Apa, Nancy Bartlett, Gardenia Elisaia, Vaosa Epa, Peniamina Tolovaa Fagai, Sarah Faletoese Su'a, Vester Fido Collins, Liulauulu Faaleolea Ah Fook, Vaasatia Poloma Komiti, Anita Latai, Tyrone Laurenson, Gaualofa Matalavea, Avau Memea, Nella Tavita-Levy, Andrew Paterson, Palanitina Toelupe, Trisha Tuiloma, Avalogo Togi A. Tunupopo, the Kuka family of Savai'i, the Samoan AIDS Foundation, the National University of Samoa, and the Government of Samoa. We are grateful to all of the individuals who agreed to participate in our study. We extend special thanks to Alatina Ioelu without whose help this study would not have been possible. We also thank the Editor and three anonymous reviewers for helpful comments on earlier drafts of this article.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0036088-Murray1">
+        <label>1</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Murray</surname><given-names>SO</given-names></name></person-group>             <year>2000</year>             <source>Homosexualities</source>             <publisher-loc>Chicago</publisher-loc>             <publisher-name>The University of Chicago Press</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Herdt1">
+        <label>2</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Herdt</surname><given-names>G</given-names></name></person-group>             <year>1996</year>             <source>Third sex, third gender: Beyond sexual dimorphism in culture and history</source>             <publisher-loc>New York, NY</publisher-loc>             <publisher-name>Zone Books</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Dixson1">
+        <label>3</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Dixson</surname><given-names>A</given-names></name></person-group>             <year>2010</year>             <article-title>Homosexual behaviour in primates.</article-title>             <person-group person-group-type="editor"><name name-style="western"><surname>Polani</surname><given-names>A</given-names></name></person-group>             <source>Animal homosexuality: A biosocial perspective</source>             <publisher-loc>Cambridge</publisher-loc>             <publisher-name>Cambridge University Press</publisher-name>             <fpage>381</fpage>             <lpage>400</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Vasey1">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name></person-group>             <year>1995</year>             <article-title>Homosexual behaviour in primates: A review of evidence and theory.</article-title>             <source>Int J Primatol</source>             <volume>16</volume>             <fpage>173</fpage>             <lpage>203</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/BF02735477" xlink:type="simple">10.1007/BF02735477</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Rosenthal1">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rosenthal</surname><given-names>AM</given-names></name><name name-style="western"><surname>Sylva</surname><given-names>D</given-names></name><name name-style="western"><surname>Safron</surname><given-names>A</given-names></name><name name-style="western"><surname>Bailey</surname><given-names>JM</given-names></name></person-group>             <year>2012</year>             <article-title>The male bisexuality debate revisited: Some bisexual men have bisexual arousal patterns.</article-title>             <source>Arch Sex Behav</source>             <volume>41</volume>             <fpage>135</fpage>             <lpage>147</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-011-9881-7" xlink:type="simple">10.1007/s10508-011-9881-7</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Whitam1">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Whitam</surname><given-names>FL</given-names></name></person-group>             <year>1983</year>             <article-title>Culturally invariable properties of male homosexuality: Tentative conclusions from cross-cultural research.</article-title>             <source>Arch Sex Behav</source>             <volume>12</volume>             <fpage>207</fpage>             <lpage>226</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/BF01542072" xlink:type="simple">10.1007/BF01542072</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Alanko1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Alanko</surname><given-names>K</given-names></name><name name-style="western"><surname>Santtila</surname><given-names>P</given-names></name><name name-style="western"><surname>Harlaar</surname><given-names>N</given-names></name><name name-style="western"><surname>Witting</surname><given-names>K</given-names></name><name name-style="western"><surname>Varjoen</surname><given-names>M</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Common genetic effects of gender atypical behavior in childhood and sexual orientation in adulthood: A study of Finnish twins.</article-title>             <source>Arch Sex Behav</source>             <volume>39</volume>             <fpage>81</fpage>             <lpage>92</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-008-9457-3" xlink:type="simple">10.1007/s10508-008-9457-3</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Bailey1">
+        <label>8</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bailey</surname><given-names>JM</given-names></name><name name-style="western"><surname>Dunne</surname><given-names>MP</given-names></name><name name-style="western"><surname>Martin</surname><given-names>NG</given-names></name></person-group>             <year>2000</year>             <article-title>Genetics and environmental influences on sexual orientation and its correlates in an Australian twin sample.</article-title>             <source>J Pers Soc Psychol</source>             <volume>78</volume>             <fpage>524</fpage>             <lpage>536</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1037//0022-3514.78.3.524" xlink:type="simple">10.1037//0022-3514.78.3.524</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Kendler1">
+        <label>9</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kendler</surname><given-names>KS</given-names></name><name name-style="western"><surname>Thornton</surname><given-names>LM</given-names></name><name name-style="western"><surname>Gilman</surname><given-names>SE</given-names></name><name name-style="western"><surname>Kessler</surname><given-names>RC</given-names></name></person-group>             <year>2000</year>             <article-title>Sexual orientation in a US national sample of twin and non-twin sibling pairs.</article-title>             <source>Am J Psychiatry</source>             <volume>157</volume>             <fpage>1843</fpage>             <lpage>1846</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Lngstrm1">
+        <label>10</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Långström</surname><given-names>N</given-names></name><name name-style="western"><surname>Rahman</surname><given-names>Q</given-names></name><name name-style="western"><surname>Carlström</surname><given-names>E</given-names></name><name name-style="western"><surname>Lichtenstein</surname><given-names>P</given-names></name></person-group>             <year>2010</year>             <article-title>Genetic and environmental effects on same-sex sexual behavior: A population study of twins in Sweden.</article-title>             <source>Arch Sex Behav</source>             <volume>39</volume>             <fpage>75</fpage>             <lpage>80</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-008-9386-1" xlink:type="simple">10.1007/s10508-008-9386-1</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-King1">
+        <label>11</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>King</surname><given-names>MD</given-names></name><name name-style="western"><surname>Green</surname><given-names>J</given-names></name><name name-style="western"><surname>Osborn</surname><given-names>DPJ</given-names></name><name name-style="western"><surname>Arkell</surname><given-names>J</given-names></name><name name-style="western"><surname>Hetherton</surname><given-names>J</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Family size in white gay and heterosexual men.</article-title>             <source>Arch Sex Behav</source>             <volume>34</volume>             <fpage>117</fpage>             <lpage>122</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-005-1006-8" xlink:type="simple">10.1007/s10508-005-1006-8</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Schwartz1">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Schwartz</surname><given-names>G</given-names></name><name name-style="western"><surname>Kim</surname><given-names>RM</given-names></name><name name-style="western"><surname>Kolundziji</surname><given-names>AB</given-names></name><name name-style="western"><surname>Rieger</surname><given-names>G</given-names></name><name name-style="western"><surname>Sanders</surname><given-names>AR</given-names></name></person-group>             <year>2010</year>             <article-title>Biodemographic and physical correlates of sexual orientation in men.</article-title>             <source>Arch Sex Behav</source>             <volume>39</volume>             <fpage>93</fpage>             <lpage>109</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-009-9499-1" xlink:type="simple">10.1007/s10508-009-9499-1</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-LeVay1">
+        <label>13</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>LeVay</surname><given-names>S</given-names></name></person-group>             <year>1996</year>             <source>Queer science: The use and abuse of research into homosexuality</source>             <publisher-loc>Cambridge, MA</publisher-loc>             <publisher-name>MIT Press</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Vasey2">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name><name name-style="western"><surname>VanderLaan</surname><given-names>DP</given-names></name></person-group>             <year>2010</year>             <article-title>Avuncular tendencies and the evolution of male androphilia in Samoan <italic>fa'afafine</italic>.</article-title>             <source>Arch Sex Behav</source>             <volume>39</volume>             <fpage>821</fpage>             <lpage>830</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-008-9404-3" xlink:type="simple">10.1007/s10508-008-9404-3</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-LarcoHoyle1">
+        <label>15</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Larco Hoyle</surname><given-names>R</given-names></name></person-group>             <year>1998</year>             <source>Arte erotico en el antiguo Peru</source>             <publisher-loc>Lima</publisher-loc>             <publisher-name>Museo Arqueologico Rafael Larco Herrera</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Nash1">
+        <label>16</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nash</surname><given-names>G</given-names></name></person-group>             <year>2001</year>             <article-title>The subversive male: Homosexual and bestial images on European mesolithic rock art.</article-title>             <person-group person-group-type="editor"><name name-style="western"><surname>Bevan</surname><given-names>L</given-names></name></person-group>             <source>Indecent exposure: Sexuality, society and the archaeological record</source>             <publisher-loc>Glasgow</publisher-loc>             <publisher-name>Cruithne Press</publisher-name>             <fpage>43</fpage>             <lpage>55</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Yates1">
+        <label>17</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yates</surname><given-names>T</given-names></name></person-group>             <year>1993</year>             <article-title>Frameworks for an archaeology of the body.</article-title>             <person-group person-group-type="editor"><name name-style="western"><surname>Tilley</surname><given-names>C</given-names></name></person-group>             <source>Interpretive archaeology</source>             <publisher-loc>Providence, RI</publisher-loc>             <publisher-name>Berg Publishers</publisher-name>             <fpage>31</fpage>             <lpage>72</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-CamperioCiani1">
+        <label>18</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Camperio-Ciani</surname><given-names>A</given-names></name><name name-style="western"><surname>Corna</surname><given-names>F</given-names></name><name name-style="western"><surname>Capiluppi</surname><given-names>C</given-names></name></person-group>             <year>2004</year>             <article-title>Evidence for maternally inherited factors favoring male homosexuality and promoting female fecundity.</article-title>             <source>Proc R Soc B</source>             <volume>271</volume>             <fpage>2217</fpage>             <lpage>2221</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1098/rspb.2004.2872" xlink:type="simple">10.1098/rspb.2004.2872</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Iemmola1">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Iemmola</surname><given-names>F</given-names></name><name name-style="western"><surname>Camperio Ciani</surname><given-names>A</given-names></name></person-group>             <year>2009</year>             <article-title>New evidence of genetic factors influencing sexual orientation in men: Female fecundity increase in the maternal line.</article-title>             <source>Arch Sex Behav</source>             <volume>38</volume>             <fpage>393</fpage>             <lpage>399</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-008-9381-6" xlink:type="simple">10.1007/s10508-008-9381-6</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Rahman1">
+        <label>20</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rahman</surname><given-names>Q</given-names></name><name name-style="western"><surname>Collins</surname><given-names>A</given-names></name><name name-style="western"><surname>Morrison</surname><given-names>M</given-names></name><name name-style="western"><surname>Orrells</surname><given-names>JC</given-names></name><name name-style="western"><surname>Cadinouche</surname><given-names>K</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Maternal inheritance and familial fecundity factors in male homosexuality.</article-title>             <source>Arch Sex Behav</source>             <volume>37</volume>             <fpage>962</fpage>             <lpage>969</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-007-9191-2" xlink:type="simple">10.1007/s10508-007-9191-2</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Central1">
+        <label>21</label>
+        <element-citation publication-type="other" xlink:type="simple">             <collab xlink:type="simple">Central Intelligence Agency</collab>             <year>2011</year>             <article-title>The World Factbook.</article-title>             <comment>Available: <ext-link ext-link-type="uri" xlink:href="https://www.cia.gov/library/publications/the-world-factbook/rankorder/2127rank.html" xlink:type="simple">https://www.cia.gov/library/publications/the-world-factbook/rankorder/2127rank.html</ext-link> Accessed 2011 Jun 23</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Blanchard1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Blanchard</surname><given-names>R</given-names></name><name name-style="western"><surname>Lippa</surname><given-names>RA</given-names></name></person-group>             <year>2007</year>             <article-title>Birth order, sibling sex ratio, handedness, and sexual orientation of male and female participants in a BBC Internet research project.</article-title>             <source>Arch Sex Behav</source>             <volume>36</volume>             <fpage>163</fpage>             <lpage>176</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-006-9159-7" xlink:type="simple">10.1007/s10508-006-9159-7</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Zucker1">
+        <label>23</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zucker</surname><given-names>KJ</given-names></name><name name-style="western"><surname>Blanchard</surname><given-names>R</given-names></name><name name-style="western"><surname>Kim</surname><given-names>T-S</given-names></name><name name-style="western"><surname>Pae</surname><given-names>C-U</given-names></name><name name-style="western"><surname>Lee</surname><given-names>C</given-names></name></person-group>             <year>2007</year>             <article-title>Birth order and sibling sex ratio in homosexual transsexual South Korean males: Effects of the male-preference stopping rule.</article-title>             <source>Psychiatry Clin Neurosci</source>             <volume>61</volume>             <fpage>529</fpage>             <lpage>533</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/j.1440-1819.2007.01703.x" xlink:type="simple">10.1111/j.1440-1819.2007.01703.x</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Bailey2">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bailey</surname><given-names>JM</given-names></name><name name-style="western"><surname>Zucker</surname><given-names>KJ</given-names></name></person-group>             <year>1995</year>             <article-title>Childhood sex-typed behavior and sexual orientation: A conceptual analysis and quantitative review.</article-title>             <source>Dev Psychol</source>             <volume>31</volume>             <fpage>43</fpage>             <lpage>55</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1037/0012-1649.31.1.43" xlink:type="simple">10.1037/0012-1649.31.1.43</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Bartlett1">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bartlett</surname><given-names>NH</given-names></name><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name></person-group>             <year>2006</year>             <article-title>A retrospective study of childhood gender-atypical behavior in Samoan <italic>fa'afafine</italic>.</article-title>             <source>Arch Sex Behav</source>             <volume>35</volume>             <fpage>559</fpage>             <lpage>566</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-006-9055-1" xlink:type="simple">10.1007/s10508-006-9055-1</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-VanderLaan1">
+        <label>26</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>VanderLaan</surname><given-names>DP</given-names></name><name name-style="western"><surname>Gothreau</surname><given-names>LM</given-names></name><name name-style="western"><surname>Bartlett</surname><given-names>NH</given-names></name><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name></person-group>             <year>2011</year>             <article-title>Recalled separation anxiety and gender atypicality in childhood: A study of Canadian heterosexual and homosexual men and women.</article-title>             <source>Arch Sex Behav</source>             <volume>40</volume>             <fpage>1233</fpage>             <lpage>1240</lpage>             <comment>doi 10.1007/s10508-010-9695-z</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Vasey3">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name><name name-style="western"><surname>VanderLaan</surname><given-names>DP</given-names></name><name name-style="western"><surname>Gothreau</surname><given-names>LM</given-names></name><name name-style="western"><surname>Bartlett</surname><given-names>NH</given-names></name></person-group>             <year>2011</year>             <article-title>Traits of separation anxiety in childhood: A retrospective study of Samoan men, women, and <italic>fa'afafine</italic>.</article-title>             <source>Arch Sex Behav</source>             <volume>40</volume>             <fpage>511</fpage>             <lpage>517</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-009-9589-0" xlink:type="simple">10.1007/s10508-009-9589-0</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Blanchard2">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Blanchard</surname><given-names>R</given-names></name></person-group>             <year>2004</year>             <article-title>Quantitative and theoretical analyses of the relation between older brothers and homosexuality in men.</article-title>             <source>J Theor Biol</source>             <volume>230</volume>             <fpage>173</fpage>             <lpage>187</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.jtbi.2004.04.021" xlink:type="simple">10.1016/j.jtbi.2004.04.021</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-VanderLaan2">
+        <label>29</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>VanderLaan</surname><given-names>DP</given-names></name><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name></person-group>             <year>2011</year>             <article-title>Male sexual orientation in Independent Samoa: Evidence for fraternal birth order and maternal fecundity effects.</article-title>             <source>Arch Sex Behav</source>             <volume>40</volume>             <fpage>495</fpage>             <lpage>503</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10508-009-9576-5" xlink:type="simple">10.1007/s10508-009-9576-5</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Vasey4">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name><name name-style="western"><surname>VanderLaan</surname><given-names>DP</given-names></name></person-group>             <year>2007</year>             <article-title>Birth order and male androphilia in Samoan <italic>fa'afafine</italic>.</article-title>             <source>Proc R Soc Lond B Biol Sci</source>             <volume>274</volume>             <fpage>1437</fpage>             <lpage>1442</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1098/rspb.2007.0120" xlink:type="simple">10.1098/rspb.2007.0120</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Bogaert1">
+        <label>31</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bogaert</surname><given-names>AF</given-names></name><name name-style="western"><surname>Skorska</surname><given-names>M</given-names></name></person-group>             <year>2011</year>             <article-title>Sexual orientation, fraternal birth order, and the maternal immune hypothesis: A review.</article-title>             <source>Front Neuroendrocrinol</source>             <volume>32</volume>             <fpage>247</fpage>             <lpage>254</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.yfrne.2011.02.004" xlink:type="simple">10.1016/j.yfrne.2011.02.004</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Poasa1">
+        <label>32</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Poasa</surname><given-names>K</given-names></name></person-group>             <year>1992</year>             <article-title>The Samoan <italic>fa'afafine</italic>: One case study and a discussion of transsexualism.</article-title>             <source>J Psychol Human Sex</source>             <volume>5</volume>             <fpage>39</fpage>             <lpage>51</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1300/J056v05n03_04" xlink:type="simple">10.1300/J056v05n03_04</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Schmidt1">
+        <label>33</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Schmidt</surname><given-names>J</given-names></name></person-group>             <year>2003</year>             <article-title>Paradise lost? Social change and <italic>fa'afafine</italic> in Samoa.</article-title>             <source>Curr Sociol</source>             <volume>51</volume>             <fpage>417</fpage>             <lpage>432</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1177/0011392103051003014" xlink:type="simple">10.1177/0011392103051003014</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Shore1">
+        <label>34</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Shore</surname><given-names>B</given-names></name></person-group>             <year>1981</year>             <article-title>Sexuality and gender in Samoa: Conceptions and missed conceptions in sexual meaning.</article-title>             <person-group person-group-type="editor"><name name-style="western"><surname>Ortner</surname><given-names>SB</given-names></name><name name-style="western"><surname>Whitehead</surname><given-names>H</given-names></name></person-group>             <source>The Cultural Construction of Gender and Sexuality</source>             <publisher-loc>Cambridge</publisher-loc>             <publisher-name>Cambridge University Press</publisher-name>             <fpage>192</fpage>             <lpage>215</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Vasey5">
+        <label>35</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name><name name-style="western"><surname>Bartlett</surname><given-names>NH</given-names></name></person-group>             <year>2007</year>             <article-title>What can the Samoan <italic>fa'afafine</italic> teach us about the Western concept of “Gender Identity Disorder in Childhood”?</article-title>             <source>Perspect Biol Med</source>             <volume>50</volume>             <fpage>481</fpage>             <lpage>490</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1353/pbm.2007.0056" xlink:type="simple">10.1353/pbm.2007.0056</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Vasey6">
+        <label>36</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name><name name-style="western"><surname>Pocock</surname><given-names>DS</given-names></name><name name-style="western"><surname>VanderLaan</surname><given-names>DP</given-names></name></person-group>             <year>2007</year>             <article-title>Kin selection and male androphilia in Samoan <italic>fa'afafine</italic>.</article-title>             <source>Evol Hum Behav</source>             <volume>28</volume>             <fpage>159</fpage>             <lpage>167</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.evolhumbehav.2006.08.004" xlink:type="simple">10.1016/j.evolhumbehav.2006.08.004</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Croall1">
+        <label>37</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Croall</surname><given-names>H</given-names></name><name name-style="western"><surname>Wunderman</surname><given-names>E (Directors)</given-names></name></person-group>             <year>1999</year>             <source>Paradise bent: Gender diversity in Samoa [Motion picture]</source>             <publisher-loc>New York</publisher-loc>             <publisher-name>Filmakers Library</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Hamer1">
+        <label>38</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hamer</surname><given-names>DH</given-names></name><name name-style="western"><surname>Hu</surname><given-names>S</given-names></name><name name-style="western"><surname>Magnunson</surname><given-names>VL</given-names></name><name name-style="western"><surname>Hu</surname><given-names>N</given-names></name><name name-style="western"><surname>Pattattucci</surname><given-names>AM</given-names></name></person-group>             <year>1993</year>             <article-title>A linkage between DNA markers on the X-chromosome and male sexual orientation.</article-title>             <source>Science</source>             <volume>261</volume>             <fpage>321</fpage>             <lpage>327</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1126/science.8332896" xlink:type="simple">10.1126/science.8332896</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Hu1">
+        <label>39</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hu</surname><given-names>S</given-names></name><name name-style="western"><surname>Pattatuci</surname><given-names>A</given-names></name><name name-style="western"><surname>Patterson</surname><given-names>C</given-names></name><name name-style="western"><surname>Li</surname><given-names>L</given-names></name><name name-style="western"><surname>Fulker</surname><given-names>DW</given-names></name><etal/></person-group>             <year>1995</year>             <article-title>Linkage between sexual orientation and chromosome Xq28 in males but not in females.</article-title>             <source>Nat Genet</source>             <volume>11</volume>             <fpage>248</fpage>             <lpage>256</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1038/ng1195-248" xlink:type="simple">10.1038/ng1195-248</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Bocklandt1">
+        <label>40</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bocklandt</surname><given-names>S</given-names></name><name name-style="western"><surname>Horvath</surname><given-names>S</given-names></name><name name-style="western"><surname>Vilain</surname><given-names>E</given-names></name><name name-style="western"><surname>Hamer</surname><given-names>DH</given-names></name></person-group>             <year>2006</year>             <article-title>Extreme skewing of X chromosome inactivation in mothers of homosexual men.</article-title>             <source>Hum Genet</source>             <volume>118</volume>             <fpage>691</fpage>             <lpage>694</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00439-005-0119-4" xlink:type="simple">10.1007/s00439-005-0119-4</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Bailey3">
+        <label>41</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bailey</surname><given-names>JM</given-names></name><name name-style="western"><surname>Pillard</surname><given-names>RC</given-names></name><name name-style="western"><surname>Dawood</surname><given-names>K</given-names></name><name name-style="western"><surname>Miller</surname><given-names>MB</given-names></name><name name-style="western"><surname>Farrer</surname><given-names>LA</given-names></name><etal/></person-group>             <year>1999</year>             <article-title>A family history study of male sexual orientation using three independent samples.</article-title>             <source>Behav Genet</source>             <volume>29</volume>             <fpage>79</fpage>             <lpage>86</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1023/A:1021652204405" xlink:type="simple">10.1023/A:1021652204405</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Mustanski1">
+        <label>42</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Mustanski</surname><given-names>BS</given-names></name><name name-style="western"><surname>Dupree</surname><given-names>MG</given-names></name><name name-style="western"><surname>Nievergelt</surname><given-names>CM</given-names></name><name name-style="western"><surname>Bocklandt</surname><given-names>S</given-names></name><name name-style="western"><surname>Schork</surname><given-names>NJ</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>A genomewide scan of male sexual orientation.</article-title>             <source>Hum Genet</source>             <volume>116</volume>             <fpage>272</fpage>             <lpage>278</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00439-004-1241-4" xlink:type="simple">10.1007/s00439-004-1241-4</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Rice1">
+        <label>43</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rice</surname><given-names>G</given-names></name><name name-style="western"><surname>Anderson</surname><given-names>C</given-names></name><name name-style="western"><surname>Risch</surname><given-names>N</given-names></name><name name-style="western"><surname>Ebers</surname><given-names>G</given-names></name></person-group>             <year>1999</year>             <article-title>Male homosexuality: Absence of linkage to microsatellite markers at Xq28.</article-title>             <source>Science</source>             <volume>284</volume>             <fpage>665</fpage>             <lpage>667</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1126/science.284.5414.665" xlink:type="simple">10.1126/science.284.5414.665</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Weeks1">
+        <label>44</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Weeks</surname><given-names>DE</given-names></name><name name-style="western"><surname>Conley</surname><given-names>YP</given-names></name><name name-style="western"><surname>Ferrell</surname><given-names>RE</given-names></name><name name-style="western"><surname>Mah</surname><given-names>TS</given-names></name><name name-style="western"><surname>Gorin</surname><given-names>MB</given-names></name></person-group>             <year>2002</year>             <article-title>A tale of two genotypes: Consistency between two high-throughput genotyping centers.</article-title>             <source>Genome Res</source>             <volume>12</volume>             <fpage>430</fpage>             <lpage>435</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1101/gr.211502" xlink:type="simple">10.1101/gr.211502</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Huang1">
+        <label>45</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Huang</surname><given-names>Q</given-names></name><name name-style="western"><surname>Shete</surname><given-names>S</given-names></name><name name-style="western"><surname>Amos</surname><given-names>CI</given-names></name></person-group>             <year>2004</year>             <article-title>Ignoring linkage disequilibrium among tightly linked markers induces false-positive evidence of linkage for affected sib pair analysis.</article-title>             <source>Am J Hum Genet</source>             <volume>75</volume>             <fpage>1106</fpage>             <lpage>1112</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1086/426000" xlink:type="simple">10.1086/426000</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Gavrilets1">
+        <label>46</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Gavrilets</surname><given-names>S</given-names></name><name name-style="western"><surname>Rice</surname><given-names>WR</given-names></name></person-group>             <year>2006</year>             <article-title>Genetic models of homosexuality: Generating testable predictions.</article-title>             <source>Proc R Soc B</source>             <volume>273</volume>             <fpage>3031</fpage>             <lpage>3038</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1098/rspb.2006.3684" xlink:type="simple">10.1098/rspb.2006.3684</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Trivers1">
+        <label>47</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Trivers</surname><given-names>RL</given-names></name></person-group>             <year>1972</year>             <article-title>Parental investment and sexual selection.</article-title>             <person-group person-group-type="editor"><name name-style="western"><surname>Campbell</surname><given-names>B</given-names></name></person-group>             <source>Sexual selection and the descent of man 1871–1971</source>             <publisher-loc>Chicago</publisher-loc>             <publisher-name>Aldine</publisher-name>             <fpage>136</fpage>             <lpage>179</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-VanderLaan3">
+        <label>48</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>VanderLaan</surname><given-names>DP</given-names></name><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name></person-group>             <year>in press</year>             <article-title>Relationship status and elevated avuncularity in Samoan <italic>fa'afafine</italic>.</article-title>             <source>Pers Rel</source>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/j.1475-6811.2011.01364.x" xlink:type="simple">10.1111/j.1475-6811.2011.01364.x</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Vasey7">
+        <label>49</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name><name name-style="western"><surname>VanderLaan</surname><given-names>DP</given-names></name></person-group>             <year>2009</year>             <article-title>Materteral and avuncular tendencies in Samoa: A comparative study of women, men, and <italic>fa'afafine</italic>.</article-title>             <source>Hum Nat</source>             <volume>20</volume>             <fpage>269</fpage>             <lpage>281</lpage>             <comment>doi 10.1007/s12110-009-9066-4</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Vasey8">
+        <label>50</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name><name name-style="western"><surname>VanderLaan</surname><given-names>DP</given-names></name></person-group>             <year>2010</year>             <article-title>Monetary exchanges with nieces and nephews: A comparison of Samoan men, women, and <italic>fa'afafine</italic>.</article-title>             <source>Evol Hum Behav</source>             <volume>31</volume>             <fpage>373</fpage>             <lpage>380</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.evolhumbehav.2010.04.001" xlink:type="simple">10.1016/j.evolhumbehav.2010.04.001</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0036088-Vasey9">
+        <label>51</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Vasey</surname><given-names>PL</given-names></name><name name-style="western"><surname>VanderLaan</surname><given-names>DP</given-names></name></person-group>             <year>2010</year>             <article-title>An adaptive cognitive dissociation between willingness to help kin and non-kin in Samoan <italic>fa'afafine</italic>.</article-title>             <source>Psych Sci</source>             <volume>21</volume>             <fpage>292</fpage>             <lpage>297</lpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1177/0956797609359623" xlink:type="simple">10.1177/0956797609359623</ext-link></comment>          </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

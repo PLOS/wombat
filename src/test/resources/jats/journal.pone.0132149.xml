@@ -1,0 +1,1026 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0132149</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-14-38507</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+</article-categories>
+<title-group>
+<article-title>Validation of High Resolution Melting Analysis (HRM) of the Amplified ITS2 Region for the Detection and Identification of Yeasts from Clinical Samples: Comparison with Culture and MALDI-TOF Based Identification</article-title>
+<alt-title alt-title-type="running-head"><italic>Candida</italic> Detection from Clinical Samples</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Duyvejonck</surname>
+<given-names>Hans</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+<xref rid="aff005" ref-type="aff"><sup>5</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Cools</surname>
+<given-names>Piet</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Decruyenaere</surname>
+<given-names>Johan</given-names>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Roelens</surname>
+<given-names>Kristien</given-names>
+</name>
+<xref rid="aff003" ref-type="aff"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Noens</surname>
+<given-names>Lucien</given-names>
+</name>
+<xref rid="aff004" ref-type="aff"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Vermeulen</surname>
+<given-names>Stefan</given-names>
+</name>
+<xref rid="aff005" ref-type="aff"><sup>5</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Claeys</surname>
+<given-names>Geert</given-names>
+</name>
+<xref rid="aff006" ref-type="aff"><sup>6</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Decat</surname>
+<given-names>Ellen</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Van Mechelen</surname>
+<given-names>Els</given-names>
+</name>
+<xref rid="aff005" ref-type="aff"><sup>5</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Vaneechoutte</surname>
+<given-names>Mario</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+<xref rid="cor001" ref-type="corresp">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Laboratory Bacteriology Research, Department of Clinical Chemistry, Microbiology and Immunology, Faculty of Medicine and Health Sciences, University of Ghent, De Pintelaan 185, 9000, Ghent, Belgium</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Department of Intensive Care Medicine, Ghent University Hospital, De Pintelaan 185, 9000, Ghent, Belgium</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Department of Obstetrics and Gynaecology, Faculty of Medicine and Health Sciences, Ghent University Hospital, 9000, Ghent, Belgium</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Department of Haematology and Blood Bank, Ghent University Hospital, 9000, Ghent, Belgium</addr-line></aff>
+<aff id="aff005"><label>5</label> <addr-line>Department of Biomedical Sciences, Faculty of Education, Health and Social Work, University College Ghent, Keramiekstraat 80, 9000, Ghent, Belgium</addr-line></aff>
+<aff id="aff006"><label>6</label> <addr-line>Department of Clinical Chemistry, Microbiology and Immunology, Ghent University Hospital, De Pintelaan 185, 9000, Ghent, Belgium</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Sturtevant</surname>
+<given-names>Joy</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Louisiana State University, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: HD MV ED GC EVM SV. Performed the experiments: HD. Analyzed the data: HD MV GC. Contributed reagents/materials/analysis tools: SV EVM MV GC JD KR LN. Wrote the paper: MV HD PC JD LN GC ED EVM SV.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">Mario.Vaneechoutte@UGent.be</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>21</day>
+<month>8</month>
+<year>2015</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2015</year>
+</pub-date>
+<volume>10</volume>
+<issue>8</issue>
+<elocation-id>e0132149</elocation-id>
+<history>
+<date date-type="received">
+<day>2</day>
+<month>9</month>
+<year>2014</year>
+</date>
+<date date-type="accepted">
+<day>10</day>
+<month>6</month>
+<year>2015</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2015</copyright-year>
+<copyright-holder>Duyvejonck et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0132149" xlink:type="simple"/>
+<abstract>
+<sec id="sec001">
+<title>Aim</title>
+<p><italic>Candida</italic> species are known as opportunistic pathogens, and a possible cause of invasive infections. Because of their species-specific antimycotic resistance patterns, reliable techniques for their detection, quantification and identification are needed. We validated a DNA amplification method for direct detection of <italic>Candida</italic> spp. from clinical samples, namely the ITS2-High Resolution Melting Analysis (direct method), by comparing it with a culture and MALDI-TOF Mass Spectrometry based method (indirect method) to establish the presence of <italic>Candida</italic> species in three different types of clinical samples.</p>
+</sec>
+<sec id="sec002">
+<title>Materials and Methods</title>
+<p>A total of 347 clinical samples, i.e. throat swabs, rectal swabs and vaginal swabs, were collected from the gynaecology/obstetrics, intensive care and haematology wards at the Ghent University Hospital, Belgium. For the direct method, ITS2-HRM was preceded by NucliSENS easyMAG DNA extraction, directly on the clinical samples. For the indirect method, clinical samples were cultured on <italic>Candida</italic> ID and individual colonies were identified by MALDI-TOF.</p>
+</sec>
+<sec id="sec003">
+<title>Results</title>
+<p>For 83.9% of the samples there was complete concordance between both techniques, i.e. the same <italic>Candida</italic> species were detected in 31.1% of the samples or no <italic>Candida</italic> species were detected in 52.8% of the samples. In 16.1% of the clinical samples, discrepant results were obtained, of which only 6.01% were considered as major discrepancies. Discrepancies occurred mostly when overall numbers of <italic>Candida</italic> cells in the samples were low and/or when multiple species were present in the sample.</p>
+</sec>
+<sec id="sec004">
+<title>Discussion</title>
+<p>Most of the discrepancies could be decided in the advantage of the direct method. This is due to samples in which no yeast could be cultured whereas low amounts could be detected by the direct method and to samples in which high quantities of <italic>Candida robusta</italic> according to ITS2-HRM were missed by culture on <italic>Candida</italic> ID agar. It remains to be decided whether the diagnostic advantages of the direct method compensate for its disadvantages.</p>
+</sec>
+</abstract>
+<funding-group>
+<funding-statement>This study has been funded by the PWO (Projectmatig Wetenschappelijk Onderzoek) project, entitled "Study of the Microbiological Application for Real Time PCR (SMART)" of the University College Ghent as well as Ghent University Hospital. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="4"/>
+<table-count count="4"/>
+<page-count count="16"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability" xlink:type="simple">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec005" sec-type="intro">
+<title>Introduction</title>
+<p>The incidence and importance of invasive fungal infection, generally associated with high morbidity and mortality rates [<xref rid="pone.0132149.ref001" ref-type="bibr">1</xref>], continue to increase among intensive care unit (ICU) patients, with a global average ranging between 5 and 10 cases per 1000 ICU admissions. This increasing incidence of candidemia is mainly due to the growing number of invasive methods [<xref rid="pone.0132149.ref002" ref-type="bibr">2</xref>,<xref rid="pone.0132149.ref003" ref-type="bibr">3</xref>] and the frequent use of broad-spectrum antibiotics, leading to the suppression of bacterial colonization and possible subsequent proliferation of pathogenic fungi [<xref rid="pone.0132149.ref004" ref-type="bibr">4</xref>,<xref rid="pone.0132149.ref005" ref-type="bibr">5</xref>]. In addition, effective antifungal therapy is often started with delay due to the time consuming culture based identification and susceptibility testing of fungi [<xref rid="pone.0132149.ref002" ref-type="bibr">2</xref>,<xref rid="pone.0132149.ref003" ref-type="bibr">3</xref>].</p>
+<p><italic>Candida albicans</italic> is still the most important opportunistic fungal pathogen causing infections in humans [<xref rid="pone.0132149.ref006" ref-type="bibr">6</xref>]. However, candidemia caused by non-<italic>albicans Candida</italic> species is increasing worldwide [<xref rid="pone.0132149.ref001" ref-type="bibr">1</xref>]. The most prevalent non-<italic>albicans Candida</italic> species of clinical importance include <italic>C</italic>. <italic>dubliniensis</italic>, <italic>C</italic>. <italic>glabrata</italic>, <italic>C</italic>. <italic>parapsilosis</italic>, <italic>C</italic>. <italic>tropicalis</italic> and <italic>C</italic>. <italic>krusei</italic> [<xref rid="pone.0132149.ref007" ref-type="bibr">7</xref>–<xref rid="pone.0132149.ref010" ref-type="bibr">10</xref>]. This increase in diversity and the associated species-dependent susceptibility to antimycotics [<xref rid="pone.0132149.ref011" ref-type="bibr">11</xref>] complicate the appropriate choice of antifungal therapy. For example, almost all <italic>C</italic>. <italic>albicans</italic> isolates are susceptible to fluconazole, a first-line antimycotic in the treatment of candidiasis. But non-<italic>albicans</italic> species, such as <italic>C</italic>. <italic>glabrata</italic> and <italic>C</italic>. <italic>krusei</italic>, are respectively partially or totally resistant to this antimycotic agent, with as a consequence that inappropriate therapy is continued until proper identification of the yeast becomes available. Over the past decade, echinocandins are more frequently used as first-line therapy for invasive candidiasis because of their broad-spectrum antimycotic activity. However, the emerging resistance of <italic>C</italic>. <italic>glabrata</italic> against echinocandins has been suggested to be the result of the extensive use of echinocandins [<xref rid="pone.0132149.ref011" ref-type="bibr">11</xref>,<xref rid="pone.0132149.ref012" ref-type="bibr">12</xref>].</p>
+<p>These observations emphasize the importance of developing methods for rapid and accurate species identification [<xref rid="pone.0132149.ref013" ref-type="bibr">13</xref>,<xref rid="pone.0132149.ref014" ref-type="bibr">14</xref>], especially in patients requiring intensive care [<xref rid="pone.0132149.ref012" ref-type="bibr">12</xref>].</p>
+<p>Since conventional phenotypic methods are often time-consuming and their results are sometimes ambiguous, molecular techniques for routine identification of fungi have been developed [<xref rid="pone.0132149.ref015" ref-type="bibr">15</xref>–<xref rid="pone.0132149.ref022" ref-type="bibr">22</xref>].</p>
+<p>We previously optimized ITS2-High Resolution Melting curve analysis (ITS2-HRM) and showed that this technique, applied after ITS2-qPCR, led to the unambiguous identification of the clinically most relevant <italic>Candida</italic> species [<xref rid="pone.0132149.ref023" ref-type="bibr">23</xref>]. The use of ITS2-HRM enables elimination of the additional step of electrophoresis or sequencing, increasing the speed of the technique and rendering the assay less labor-intensive and more cost-effective compared to approaches relying on electrophoresis and/or sequencing. When applied to cultured strains, DNA extraction can be obtained by boiling colonies, a simple and inexpensive method.</p>
+<p>The aim of this study was to validate the ability of using ITS2-HRM for the rapid detection and identification of the clinically most relevant <italic>Candida</italic> species, and <italic>Saccharomyces cerevisiae</italic>, directly from clinical samples, i.e. without prior cultivation. Whereas Decat et al. (2012) started from crude DNA extracts from cultured strains, we started from pure DNA extracts from different types of clinical samples. This more laborious and more expensive DNA extraction (combining Lyticase treatment and commercial NucliSENS easyMAG DNA extraction) was needed to remove possible inhibitory components from the clinical samples and to optimize sensitivity of the direct approach.</p>
+<p>We assessed the applicability of ITS2-HRM directly on clinical samples by comparing it with culture of the samples (for isolation) and MALDI-TOF Mass Spectrometry (for identification) of the cultured yeasts, as used in the routine laboratory of the Ghent University Hospital.</p>
+</sec>
+<sec id="sec006" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="sec007">
+<title>Ethical approval</title>
+<p>This procedure was approved by the Ethical Committee of the Ghent University Hospital (IRB Protocol n° 2012/703). The consent was waived by the Ethical Committee because the research did not influence diagnosis or treatment of the patients and because samples were anonymized. Hence, no written or verbal consent was obtained from the patients to use their samples. Moreover, research was carried out on rests of samples, which would have otherwise been discarded.</p>
+</sec>
+<sec id="sec008">
+<title>Study set up</title>
+<p><xref rid="pone.0132149.g001" ref-type="fig">Fig 1</xref> summarizes the setup of the study. A total of 347 clinical samples were screened for the presence of Fungi (with emphasis on <italic>Candida</italic>). Once the clinical samples were collected, three different processes were followed in order to isolate and identify the <italic>Candida</italic> species present in the clinical samples. The indirect method, and the ITS2-HRM based confirmation method, consisted of a joint cultivation step for isolation of yeasts followed by identification, respectively with Matrix Assisted Laser Desorption Ionization—Time of Flight Mass Spectrometry (MALDI-TOF) or ITS2-HRM. In contrast to the indirect method, the direct method did not require prior culture. This method consisted of DNA extraction directly from the sample, combining Lyticase treatment and the NucliSENS easyMAG automated system, followed by the identification and quantification of the <italic>Candida</italic> species by means of ITS2-HRM.</p>
+<fig id="pone.0132149.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0132149.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>A schematic overview of the study set up.</title>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0132149.g001" position="float" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec009">
+<title>Clinical samples</title>
+<p>Clinical samples were obtained with an ESwab. The collection tube contained 1 ml of liquid transport medium in which the entire patient sample, collected with the aid of a Nylon Flocked Swab, was delivered. The homogenous liquid sample suspension was then used for further analysis.</p>
+<p>A total of 347 samples from three wards at the Ghent University Hospital, Belgium, were included, i.e. the gynaecology/obstetrics (n = 73), intensive care (IC, n = 200) and haematology wards (n = 74). Sample types were throat swabs (n = 111, i.e., 11 from the haematology ward and 100 from the IC), rectal swab (n = 163, i.e., 63 from the haematology ward and 100 from the IC) and vaginal swabs (n = 73, all from the gynaecology/obstetrics ward).</p>
+</sec>
+<sec id="sec010">
+<title>Isolation of yeasts</title>
+<p>In order to obtain isolated colonies for identification using MALDI-TOF (indirect method) and ITS2-HRM (confirmation method), 10 μl of the clinical sample was cultivated on selective ‘<italic>Candida</italic> ID’ medium (bioMérieux, Marcy l’Etoile, France). In the context of standardization of this study, the agar plates were incubated under the same conditions used by the routine laboratory, namely 48 hours at 32°C. Isolated colonies were further processed on Sabouraud agar (see below).</p>
+</sec>
+<sec id="sec011">
+<title>Isolation of DNA</title>
+<p>Two DNA extraction methods were used. For cultured yeasts, a simple boiling/freezing approach was used [<xref rid="pone.0132149.ref023" ref-type="bibr">23</xref>], whereas for the clinical samples, DNA was extracted by the commercial NucliSENS easyMAG extraction platform.</p>
+<p>Boiling/freezing extraction was applied on yeast colonies subcultured on Sabouraud agar (Becton Dickinson, Erembodegem, Belgium), after initial isolation from the clinical samples on <italic>Candida</italic> ID agar. A 10 μl inoculation loop of yeast colonies was suspended in 250 μl TE-buffer (10 mM Tris, 100 mM EDTA, pH 8 (Sigma-Aldrich, St. Louis, MO)). This suspension was then heated during 15 minutes at 95°C, frozen for 15 minutes at -80°C, thawed at room temperature and centrifuged to pellet the cell debris. The supernatant was used as DNA extract.</p>
+<p>Prior to the commercial DNA extraction of the clinical sample, the yeast cell wall was weakened by means of Lyticase (Sigma-Aldrich) and β-mercaptoethanol (Fluka Chemie GmbH, Buchs, Switzerland). A total of 200 μl of clinical sample was mixed with 250 μl of Lyticase Lysis Buffer (50 mM Tris-HCl (pH 8.0), 10 mM EDTA, 1.2 M sorbitol, 10 mM β-mercaptoethanol, 2 U Lyticase/μl) in 1.7 ml Eppendorf tubes, and incubated for 30 minutes at 37°C. After incubation, the suspension was transferred to 4 ml of NucliSENS easyMAG disposable sample vessels, after which 1450 μl of NucliSENS easyMAG Lysis Buffer was added. During incubation for 10 minutes at room temperature, magnetic silica was mixed in equal volumes with NucliSENS easyMAG extraction buffer 3. After the 10 min incubation period, 100 μl of magnetic silica v/v NucliSENS easyMAG extraction buffer 3 was added to each clinical sample vial (total volume of 2 ml), followed by the semi-automated NucliSENS easyMAG extraction protocol on the apparatus (bioMérieux).</p>
+</sec>
+<sec id="sec012">
+<title>Matrix-Assisted Laser Desorption Ionization—Time of Flight</title>
+<sec id="sec013">
+<title>Mass Spectrometry</title>
+<p>Colonies isolated from the clinical samples after 48 h of incubation at 32°C on <italic>Candida</italic> ID agar were identified by MALDI-TOF. Colonies with different colony morphology were spotted onto the polished steel MALDI-TOF target plate and overlaid with one μl of formic acid (Sigma-Aldrich) 70% (v/v) to weaken the cell wall of the yeast. After the plate was air dried at room temperature, one μl of matrix solution, i.e. 10 mg/ml α-cyano-4-hydroxycinnamic acid (Bruker Daltonics, Bremen, Germany) in 50% (v/v) acetonitrile/2.5% (v/v) trifluoroacetic acid (Sigma-Aldrich), was added to each spot and the plate was again air dried at room temperature. A bacterial test standard (BTS 255343, Bruker Daltonics) was used as positive control and an empty well covered with matrix served as negative control. Mass spectra were generated with a Microflex Biotyper spectrometer (Bruker Daltonics), using the manufacturer’s standard settings. For each sample, mass fingerprints were acquired, using Bruker Daltonics’ flexControl version 3.0 software, analyzed over a mass range from 2000 to 20,000 Da, and compared with the Bruker Daltonics’ database. The integrated software generated an outcome list, in which species with the most similar fingerprints were ordered according to their logarithmic score value (log (score value)) [<xref rid="pone.0132149.ref024" ref-type="bibr">24</xref>]. For clinical yeast isolates, log(score values) ≥ 1.7 were considered sufficient for secure species identification [<xref rid="pone.0132149.ref025" ref-type="bibr">25</xref>]. For values below 1.7, no isolate identification was possible [<xref rid="pone.0132149.ref024" ref-type="bibr">24</xref>].</p>
+</sec>
+<sec id="sec014">
+<title>ITS2-HRM</title>
+<p>Each DNA extract was run in duplicate by ITS2-HRM, whereby the ITS2 region was amplified as described previously [<xref rid="pone.0132149.ref023" ref-type="bibr">23</xref>]. Briefly, the universal fungal primers ITS4 (<monospace>5’-TCC TCC GCT TAT TGA TAT GC-3’</monospace>) and ITS86 (<monospace>5’-GTG AAT CAT CGA ATC TTT GAA C-3’</monospace>) were used at a final concentration of 0.5 μM. Two μl of template DNA was added to a total volume of 10 μl LightCycler 480 HRM master mix (Roche, Basel, Switzerland). Amplification was carried out on a LightCycler 480 (Roche) using the following program: pre-incubation for 10 min at 95°C and amplification for 45 cycles of 20 s at 95°C, 30 s at 55°C and 30 s at 72°C, after which a high resolution melting curve was generated using the following protocol: 5 s at 95°C, 1 min at 60°C, followed by a gradual increase in temperature from 60°C to 97°C, using a ramp rate of 0.02°C per s, with one measurement per 2 s. Results were analyzed with the standard LightCycler 480 Software, version 1.5 (Roche), as described previously [<xref rid="pone.0132149.ref023" ref-type="bibr">23</xref>].</p>
+<p>It should be noted that the final sample volumes used for the direct and indirect methods are not very much different between both methods: For culture, 10 μl of clinical sample is inoculated, such that, of an original presumptive 1000 cfu present in one ml of clinical sample, 10 would have been used for the culture approach.</p>
+<p>For DNA extraction, 200 μl of clinical sample is used, which is finally eluted in 100 μl of elution buffer. Of this eluate, 2 μl is used in the qPCR, such that, of the original 1000 cfu present in one ml, 4 would have been used for the PCR approach, which is only 2.5 times less than for culture.</p>
+</sec>
+</sec>
+</sec>
+<sec id="sec015" sec-type="results">
+<title>Results</title>
+<p>During validation, the results showed that there was a perfect agreement between identification with both methods, respectively MALDI-TOF and ITS2-HRM, for identification of the cultured strains. Only MALDI-TOF based identification was used to validate the direct ITS2-HRM method, because MALDI-TOF provides an independent identification approach and because this approach is used in the routine bacteriology laboratory.</p>
+<p>The detection limit of the direct approach ranged between 1.5 cells/μl (for <italic>C</italic>. <italic>dubliniensis</italic>) and 55.6 cells/μl (for <italic>C</italic>. <italic>krusei</italic>), as determined on the basis of standard dilution series for each of the 17 species studied (<xref rid="pone.0132149.t001" ref-type="table">Table 1</xref>). Using these standard curves of the reference strains (<xref rid="pone.0132149.t001" ref-type="table">Table 1</xref>), optimized prior to analysis of clinical samples, quantification of the initial number of yeast cells present was possible. During each run one dilution of each of the standard series of <italic>C</italic>. <italic>albicans</italic>, <italic>C</italic>. <italic>glabrata</italic>, <italic>C</italic>. <italic>dubliniensis</italic>, <italic>C</italic>. <italic>parapsilosis</italic> and <italic>C</italic>. <italic>robusta</italic> was run along to serve as reference melting peaks for correct identification of the most prevalent species. It should be noted that quantification was not possible when two or more species were present simultaneously in the clinical sample.</p>
+<table-wrap id="pone.0132149.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0132149.t001</object-id>
+<label>Table 1</label> <caption><title>Overview of the detection limit and the ITS2-fragment length of the reference strains.</title></caption>
+<alternatives>
+<graphic id="pone.0132149.t001g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0132149.t001" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Species</th>
+<th align="left" rowspan="1" colspan="1">Reference strains</th>
+<th align="left" rowspan="1" colspan="1">GenBank accession no.</th>
+<th align="left" rowspan="1" colspan="1">ITS2-fragment length (bp) derived from GenBank sequences</th>
+<th align="left" rowspan="1" colspan="1">Detection limit (cells/μl)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Candida dubliniensis</italic></td>
+<td align="left" rowspan="1" colspan="1">IHEM 14280</td>
+<td align="center" rowspan="1" colspan="1">AF218993</td>
+<td align="center" rowspan="1" colspan="1">289</td>
+<td align="char" char="." rowspan="1" colspan="1">1.52</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>nivariensis</italic></td>
+<td align="left" rowspan="1" colspan="1">CBS 9983</td>
+<td align="center" rowspan="1" colspan="1">KJ957824</td>
+<td align="center" rowspan="1" colspan="1">396</td>
+<td align="char" char="." rowspan="1" colspan="1">1.81</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>metapsilosis</italic></td>
+<td align="left" rowspan="1" colspan="1">CBS 10907</td>
+<td align="center" rowspan="1" colspan="1">KP131737</td>
+<td align="center" rowspan="1" colspan="1">261</td>
+<td align="char" char="." rowspan="1" colspan="1">1.87</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>parapsilosis</italic></td>
+<td align="left" rowspan="1" colspan="1">ATCC 22019</td>
+<td align="center" rowspan="1" colspan="1">AJ585347</td>
+<td align="center" rowspan="1" colspan="1">257</td>
+<td align="char" char="." rowspan="1" colspan="1">2.08</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>lipolytica</italic></td>
+<td align="left" rowspan="1" colspan="1">CBS 6660</td>
+<td align="center" rowspan="1" colspan="1">AF218983</td>
+<td align="center" rowspan="1" colspan="1">190</td>
+<td align="char" char="." rowspan="1" colspan="1">3.36</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>kefyr</italic></td>
+<td align="left" rowspan="1" colspan="1">IHEM 04211</td>
+<td align="center" rowspan="1" colspan="1">HE650694</td>
+<td align="center" rowspan="1" colspan="1">378</td>
+<td align="char" char="." rowspan="1" colspan="1">5.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>guilliermondii</italic></td>
+<td align="left" rowspan="1" colspan="1">IHEM 03283</td>
+<td align="center" rowspan="1" colspan="1">AF218996</td>
+<td align="center" rowspan="1" colspan="1">325</td>
+<td align="char" char="." rowspan="1" colspan="1">5.58</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>famata</italic></td>
+<td align="left" rowspan="1" colspan="1">CBS 1795</td>
+<td align="center" rowspan="1" colspan="1">AB696581</td>
+<td align="center" rowspan="1" colspan="1">327</td>
+<td align="char" char="." rowspan="1" colspan="1">7.87</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>lusitaniae</italic></td>
+<td align="left" rowspan="1" colspan="1">IHEM 10293</td>
+<td align="center" rowspan="1" colspan="1">AF009215</td>
+<td align="center" rowspan="1" colspan="1">205</td>
+<td align="char" char="." rowspan="1" colspan="1">11.4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>albicans</italic></td>
+<td align="left" rowspan="1" colspan="1">ATCC 90028</td>
+<td align="center" rowspan="1" colspan="1">AF217609</td>
+<td align="center" rowspan="1" colspan="1">284</td>
+<td align="char" char="." rowspan="1" colspan="1">12.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>orthopsilosis</italic></td>
+<td align="left" rowspan="1" colspan="1">J 960161</td>
+<td align="center" rowspan="1" colspan="1">HG970739</td>
+<td align="center" rowspan="1" colspan="1">262</td>
+<td align="char" char="." rowspan="1" colspan="1">22.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>glabrata</italic></td>
+<td align="left" rowspan="1" colspan="1">IHEM 04566</td>
+<td align="center" rowspan="1" colspan="1">AF218994</td>
+<td align="center" rowspan="1" colspan="1">365</td>
+<td align="char" char="." rowspan="1" colspan="1">23.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>norvegensis</italic></td>
+<td align="left" rowspan="1" colspan="1">CBS 6564</td>
+<td align="center" rowspan="1" colspan="1">AF333096</td>
+<td align="center" rowspan="1" colspan="1">319</td>
+<td align="char" char="." rowspan="1" colspan="1">28.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>inconspicua</italic></td>
+<td align="left" rowspan="1" colspan="1">HHR 0304 00305</td>
+<td align="center" rowspan="1" colspan="1">KP131717</td>
+<td align="center" rowspan="1" colspan="1">253</td>
+<td align="char" char="." rowspan="1" colspan="1">39.4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>tropicalis</italic></td>
+<td align="left" rowspan="1" colspan="1">IHEM 04222</td>
+<td align="center" rowspan="1" colspan="1">HG970740</td>
+<td align="center" rowspan="1" colspan="1">274</td>
+<td align="char" char="." rowspan="1" colspan="1">39.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Saccharomyces cerevisiae</italic> (<italic>C</italic>. <italic>robusta</italic>)</td>
+<td align="left" rowspan="1" colspan="1">IHEM 14402</td>
+<td align="center" rowspan="1" colspan="1">AF219006</td>
+<td align="center" rowspan="1" colspan="1">366</td>
+<td align="char" char="." rowspan="1" colspan="1">40.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>krusei</italic></td>
+<td align="left" rowspan="1" colspan="1">ATCC 06258</td>
+<td align="center" rowspan="1" colspan="1">L47113</td>
+<td align="center" rowspan="1" colspan="1">294</td>
+<td align="char" char="." rowspan="1" colspan="1">55.6</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>Legend: ATCC: American Type Culture Collection, Rockville, Maryland; IHEM: Institute for Hygiene &amp; Epidemiology, Mycology, Brussels, Belgium; CS Fungal Biodiversity Centre; J: non-CBS strains, obtained from CBS.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Overall, the results of both the indirect and direct methods agreed in 83.9% of samples, with 52.8% that were negative with both methods, 25.6% that were positive for the same species, 5.2% that were positive for the same two species and one sample (0.3%) positive for the same three species (Tables <xref rid="pone.0132149.t002" ref-type="table">2</xref> and <xref rid="pone.0132149.t003" ref-type="table">3</xref>). From <xref rid="pone.0132149.t002" ref-type="table">Table 2</xref>, sensitivity, specificity, positive predictive value (PPV) and negative predictive value (NPV) of the direct method can be calculated. A sensitivity of 91.5%, a specificity of 80.8% and a NPV of 94.9% indicate that the direct method enables to clearly distinguish between a positive and negative culture result. The direct method has a PPV of 71.1%.</p>
+<table-wrap id="pone.0132149.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0132149.t002</object-id>
+<label>Table 2</label> <caption><title>Comparison of the direct (ITS2-HRM) and indirect (culture/MALDI-TOF) method, expressed as percentage of samples relative to the total number (347) of samples tested.</title></caption>
+<alternatives>
+<graphic id="pone.0132149.t002g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0132149.t002" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" rowspan="1" colspan="1"/>
+<th align="center" rowspan="1" colspan="1"/>
+<th colspan="2" align="center" rowspan="1">Indirect</th>
+<th align="center" rowspan="1" colspan="1">Total number</th>
+<th align="center" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<th align="center" rowspan="1" colspan="1"/>
+<th align="center" rowspan="1" colspan="1"/>
+<th align="center" rowspan="1" colspan="1">Positive</th>
+<th align="center" rowspan="1" colspan="1">Negative</th>
+<th align="center" rowspan="1" colspan="1"/>
+<th align="center" rowspan="1" colspan="1"/>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2" align="center" colspan="1">Direct</td>
+<td align="center" rowspan="1" colspan="1">Positive</td>
+<td align="center" rowspan="1" colspan="1">31.1% (TP)</td>
+<td align="center" rowspan="1" colspan="1">12.7<xref rid="t002fn002" ref-type="table-fn"><sup>a</sup></xref> % (FP)</td>
+<td align="center" rowspan="1" colspan="1">152</td>
+<td align="center" rowspan="1" colspan="1">71.1% (PPV)</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">Negative</td>
+<td align="center" rowspan="1" colspan="1">2.9<xref rid="t002fn003" ref-type="table-fn"><sup>b</sup></xref> % (FN)</td>
+<td align="center" rowspan="1" colspan="1">53.3<xref rid="t002fn004" ref-type="table-fn"><sup>c</sup></xref> % (TN)</td>
+<td align="center" rowspan="1" colspan="1">195</td>
+<td align="center" rowspan="1" colspan="1">94.9% (NPV)</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">Total number</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">118</td>
+<td align="center" rowspan="1" colspan="1">229</td>
+<td align="center" rowspan="1" colspan="1">347</td>
+<td align="center" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">91.5% (Sensitivity)</td>
+<td align="center" rowspan="1" colspan="1">80.8% (Specificity)</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>Legend: TP: True positive; FP: False-positive; FN: False-negative; TN: True negative; PPV: positive predictive value, TP/(TP+FP); NPV: negative predictive value, TN/(TN+FN); Sensitivity: TP/(TP+FN); Specificity: TN/(TN+FP)</p></fn>
+<fn id="t002fn002"><p><sup>a</sup> No species or less species than the number of species detected with the direct method. This category also contains one sample that was positive only for <italic>Achromobacter xylosoxidans</italic> with the indirect method, while the direct method showed the presence of <italic>Candida albicans</italic>.</p></fn>
+<fn id="t002fn003"><p><sup>b</sup> No species or less species than the number of species detected with the indirect method</p></fn>
+<fn id="t002fn004"><p><sup>c</sup> Two of these samples were positive for <italic>Achromobacter xylosoxidans</italic> with the indirect method, but are counted as negative for Fungi.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<table-wrap id="pone.0132149.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0132149.t003</object-id>
+<label>Table 3</label> <caption><title>Detailed overview of the results comparing the direct and indirect method, expressed as percentages for each of 5 types of samples.</title></caption>
+<alternatives>
+<graphic id="pone.0132149.t003g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0132149.t003" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" rowspan="1" colspan="1">Categories</th>
+<th align="center" rowspan="1" colspan="1">Throat (IC)</th>
+<th align="center" rowspan="1" colspan="1">Throat (H)</th>
+<th align="center" rowspan="1" colspan="1">Rectal (IC)</th>
+<th align="center" rowspan="1" colspan="1">Rectal (H)</th>
+<th align="center" rowspan="1" colspan="1">Vaginal (G)</th>
+<th align="center" rowspan="1" colspan="1">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" rowspan="1" colspan="1"><bold>Total number of samples</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>100</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>11</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>100</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>63</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>73</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>347</bold></td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1"><bold>Negative with both methods (%)</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>25.0</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>72.7</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>55.0</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>61.9</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>76.7</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>52.8</bold></td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1"><bold>Positive with both methods (1 species) (%)</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>41.0</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>9.1</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>26.0</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>12.7</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>17.8</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>25.6</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Candida albicans</italic></td>
+<td align="center" rowspan="1" colspan="1">34.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">19.0</td>
+<td align="center" rowspan="1" colspan="1">4.8</td>
+<td align="center" rowspan="1" colspan="1">12.3</td>
+<td align="center" rowspan="1" colspan="1">18.7</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>dubliniensis</italic></td>
+<td align="center" rowspan="1" colspan="1">3.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">1.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">1.4</td>
+<td align="center" rowspan="1" colspan="1">1.4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>glabrata</italic></td>
+<td align="center" rowspan="1" colspan="1">1.0</td>
+<td align="center" rowspan="1" colspan="1">9.1</td>
+<td align="center" rowspan="1" colspan="1">3.0</td>
+<td align="center" rowspan="1" colspan="1">1.6</td>
+<td align="center" rowspan="1" colspan="1">4.1</td>
+<td align="center" rowspan="1" colspan="1">2.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>guilliermondii</italic></td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">1.6</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>parapsilosis</italic></td>
+<td align="center" rowspan="1" colspan="1">2.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">3.2</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">1.2</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>robusta</italic></td>
+<td align="center" rowspan="1" colspan="1">1.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">1.0</td>
+<td align="center" rowspan="1" colspan="1">1.6</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.9</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>tropicalis</italic></td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">1.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Geotrichum silvicola</italic></td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">1.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.3</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1"><bold>Positive with both methods (2 or more species) (%)</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>12.0</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>0.0</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>6.0</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>1.6</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>0.0</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>5.5</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>albicans</italic>/<italic>C</italic>. <italic>dubliniensis</italic></td>
+<td align="center" rowspan="1" colspan="1">1.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>albicans</italic>/<italic>C</italic>. <italic>glabrata</italic></td>
+<td align="center" rowspan="1" colspan="1">7.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">5.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">3.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>glabrata</italic>/<italic>C</italic>. <italic>krusei</italic></td>
+<td align="center" rowspan="1" colspan="1">1.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">1.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>glabrata/C</italic>. <italic>lusitaniae</italic></td>
+<td align="center" rowspan="1" colspan="1">1.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>kefyr</italic>/<italic>C</italic>. <italic>parapsilosis</italic>/<italic>Pichia manshurica</italic></td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">1.6</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic>. <italic>parapsilosis</italic>/<italic>C</italic>. <italic>robusta</italic></td>
+<td align="center" rowspan="1" colspan="1">2.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.0</td>
+<td align="center" rowspan="1" colspan="1">0.6</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1"><bold>Discrepancies (%)</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>22.0</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>18.2</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>13.0</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>23.8</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>5.5</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>16.1</bold></td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t003fn001"><p>Legend: IC: Intensive Care, H: Haematology, G: Gynaecology.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>In the cases where two or more species are present simultaneously, one would expect multiple peaks, each representing one of the species present in the clinical sample, as is the case for e.g. the combination of <italic>C</italic>. <italic>guilliermondii</italic> and <italic>C</italic>. <italic>robusta</italic> (<xref rid="pone.0132149.g002" ref-type="fig">Fig 2a</xref>). However, in the case of the simultaneous presence of <italic>C</italic>. <italic>albicans</italic> and <italic>C</italic>. <italic>glabrata</italic> (<xref rid="pone.0132149.g002" ref-type="fig">Fig 2b and 2c</xref>), only a subtle change in the melting curve of the most abundant species indicates the presence of the other <italic>Candida</italic> species. These findings in clinical samples led us to design an experiment in which various ratios of <italic>C</italic>. <italic>albicans</italic> and <italic>C</italic>. <italic>glabrata</italic> were mixed and analyzed with ITS2-HRM, in order to assess the impact on melting peak formation. <xref rid="pone.0132149.g003" ref-type="fig">Fig 3</xref> illustrates the change in melting peak pattern when the ratio between <italic>C</italic>. <italic>glabrata</italic> and <italic>C</italic>. <italic>albicans</italic> is experimentally varied. It showed that <italic>C</italic>. <italic>glabrata</italic> needs to be present to a much higher degree than <italic>C</italic>. <italic>albicans</italic> in order to be observed as the main peak in the melting pattern (<xref rid="pone.0132149.g003" ref-type="fig">Fig 3a and 3b</xref>). But, even when <italic>C</italic>. <italic>glabrata</italic> is present in a higher quantity relative to <italic>C</italic>. <italic>albicans</italic>, the mean peak in the pattern still results from <italic>C</italic>. <italic>albicans</italic>. A ratio of 1 part of <italic>C</italic>. <italic>albicans</italic> to 4 parts of <italic>C</italic>. <italic>glabrata</italic> seems to be the limit in order to detect the presence of <italic>C</italic>. <italic>glabrata</italic> in a mixed sample (<xref rid="pone.0132149.g003" ref-type="fig">Fig 3e</xref>). Its presence in this situation was only indicated by the disappearance of the valley between the minor and the major peak of <italic>Candida albicans</italic>.</p>
+<fig id="pone.0132149.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0132149.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>ITS2 High Resolution Melting Curve Analysis of clinical samples containing two <italic>Candida</italic> species.</title>
+<p>The melting curve of the sample (solid line) containing two species (according to culture results) is plotted against the melting curves of the standard strains (dotted curves) of the two respective species.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0132149.g002" position="float" xlink:type="simple"/>
+</fig>
+<fig id="pone.0132149.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0132149.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Evaluation of the impact on the shape of the melting peak pattern by analyzing 5 different experimental ratios between <italic>Candida albicans</italic> and <italic>C</italic>. <italic>glabrata</italic>, in which the latter one is respectively 250 (a), 200 (b), 100 (c), 10 (d) and 4 (e) fold more present.</title>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0132149.g003" position="float" xlink:type="simple"/>
+</fig>
+<p>Samples with both <italic>C</italic>. <italic>albicans</italic> and <italic>C</italic>. <italic>glabrata</italic> were observed a total of 20 times, of which 17 times by the direct and 15 times by the indirect method. For 12 of these 20 samples, both the direct and the indirect method detected both species.</p>
+<p>The most abundant species was <italic>C</italic>. <italic>albicans</italic>, present in 24.8% of all samples, and the second most abundant species was <italic>C</italic>. <italic>glabrata</italic> (9.6% of all samples). Accordingly, the most frequent type of samples containing two or more species comprised <italic>C</italic>. <italic>albicans</italic> and <italic>C</italic>. <italic>glabrata</italic>, and all of them (4.9% of all samples) were from the IC ward (<xref rid="pone.0132149.t003" ref-type="table">Table 3</xref>).</p>
+<p>Interestingly, one sample contained <italic>Geotrichum silvicola</italic>, which was identified as such with culture and MALDI-TOF (indirect method) and which resulted in a melting peak of 79.7°C (direct method), not present in the <italic>Candida</italic> ITS2-HRM library. The same melting peak value was obtained when performing ITS2-HRM on the cultured isolate, confirming the correct identification when applying the direct method on the sample, and therefore the melting peak value of this species was added to the library. Another interesting case was presented by a sample where three different species, namely <italic>C</italic>. <italic>kefyr</italic>, <italic>C</italic>. <italic>parapsilosis</italic> and <italic>Pichia manshurica</italic>, were cultured and identified by MALDI-TOF. After ITS2-HRM, performed directly on the sample, a melting curve pattern (<xref rid="pone.0132149.g004" ref-type="fig">Fig 4</xref>, solid line) was obtained which comprised six low intensity melting peaks. Although the melting peaks observed in the sample corresponded to the peaks that could be obtained from the cultured isolates of the sample (<xref rid="pone.0132149.g004" ref-type="fig">Fig 4</xref>, dashed lines), direct ITS2-HRM would not have yielded a sufficiently reliable identification in this situation.</p>
+<fig id="pone.0132149.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0132149.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Graphic display of the ITS2-HRM curve of the sample containing <italic>C</italic>. <italic>kefyr</italic>, <italic>C</italic>. <italic>parapsilosis</italic> and <italic>Pichia manshurica</italic>, according to culture.</title>
+<p>ITS2-HRM patterns of strains of each species are added for comparison.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0132149.g004" position="float" xlink:type="simple"/>
+</fig>
+<p>Discrepancies were observed in 56 (i.e. 16.1%) of the samples, with two samples (S01 and S54) representing two discrepancies, resulting in a total of 58 discrepancies. Most of the 58 discrepancies could be considered as minor, because in most samples whereby one method detected more species than the other, this usually concerned species that were present in low numbers. Twenty-one discrepancies were considered as major (see below), with 18 of these major discrepancies (S21-S37 and S54) in the advantage of the direct method (<xref rid="pone.0132149.t004" ref-type="table">Table 4</xref>).</p>
+<table-wrap id="pone.0132149.t004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0132149.t004</object-id>
+<label>Table 4</label> <caption><title>Detailed overview of the discrepancies, divided into following categories: Category A: direct method positive, but indirect method negative (n = 38); Category B: direct method more species than indirect method (n = 6); Category C: indirect method positive, but direct method negative (n = 2); Category D: indirect method more species than direct method (n = 9); and Category E: aspecific detection of nonfungal species by indirect method (n = 3).</title></caption>
+<alternatives>
+<graphic id="pone.0132149.t004g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0132149.t004" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" rowspan="1" colspan="1">Category N°</th>
+<th align="center" rowspan="1" colspan="1">Discrepancy</th>
+<th align="center" rowspan="1" colspan="1">D &gt; I <xref rid="t004fn002" ref-type="table-fn"><sup>a</sup></xref></th>
+<th align="center" rowspan="1" colspan="1">Sample ID</th>
+<th align="center" rowspan="1" colspan="1">Culture + N°</th>
+<th align="center" rowspan="1" colspan="1">ITS2-HRM pattern</th>
+<th align="center" rowspan="1" colspan="1">Concentration (Cq or log cells/ml)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" rowspan="1" colspan="1">A+E</td>
+<td align="center" rowspan="1" colspan="1">m+m</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">S01</td>
+<td align="center" rowspan="1" colspan="1">ACHXYL 52</td>
+<td align="center" rowspan="1" colspan="1">ALB</td>
+<td align="center" rowspan="1" colspan="1">3.83</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">A</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1">13</td>
+<td align="center" rowspan="1" colspan="1">S02-S11, S13-S15</td>
+<td align="center" rowspan="1" colspan="1">N</td>
+<td align="center" rowspan="1" colspan="1">ALB</td>
+<td align="center" rowspan="1" colspan="1">3.62–4.90</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">A</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">S12</td>
+<td align="center" rowspan="1" colspan="1">N</td>
+<td align="center" rowspan="1" colspan="1">ALB &gt; GLA</td>
+<td align="center" rowspan="1" colspan="1">Cq 28.07</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">A</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">S16</td>
+<td align="center" rowspan="1" colspan="1">N</td>
+<td align="center" rowspan="1" colspan="1">? <xref rid="t004fn003" ref-type="table-fn"><sup>b</sup></xref></td>
+<td align="center" rowspan="1" colspan="1">Cq 27.66</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">A</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1">4</td>
+<td align="center" rowspan="1" colspan="1">S17-S20</td>
+<td align="center" rowspan="1" colspan="1">N</td>
+<td align="center" rowspan="1" colspan="1">? <xref rid="t004fn004" ref-type="table-fn"><sup>c</sup></xref></td>
+<td align="center" rowspan="1" colspan="1">Cq 26.84–28.39</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">A</td>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="center" rowspan="1" colspan="1">17</td>
+<td align="center" rowspan="1" colspan="1">S21-S37</td>
+<td align="center" rowspan="1" colspan="1">N</td>
+<td align="center" rowspan="1" colspan="1">ROB</td>
+<td align="center" rowspan="1" colspan="1">4.39–7.51</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">B</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">S38</td>
+<td align="center" rowspan="1" colspan="1">ALB 1</td>
+<td align="center" rowspan="1" colspan="1">ALB &gt; GLA</td>
+<td align="center" rowspan="1" colspan="1">Cq 28.08</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">B</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">S39</td>
+<td align="center" rowspan="1" colspan="1">GLA 30</td>
+<td align="center" rowspan="1" colspan="1">GLA &gt; ALB</td>
+<td align="center" rowspan="1" colspan="1">Cq 24.97</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">B</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">S40</td>
+<td align="center" rowspan="1" colspan="1">GLA 3</td>
+<td align="center" rowspan="1" colspan="1">GLA &gt; ALB</td>
+<td align="center" rowspan="1" colspan="1">Cq 29.86</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">B</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">S41</td>
+<td align="center" rowspan="1" colspan="1">GUI 5</td>
+<td align="center" rowspan="1" colspan="1">GUI &gt; ROB</td>
+<td align="center" rowspan="1" colspan="1">Cq 26.45</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">B</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">S42</td>
+<td align="center" rowspan="1" colspan="1">GLA 4</td>
+<td align="center" rowspan="1" colspan="1">GLA &lt;? <xref rid="t004fn005" ref-type="table-fn"><sup>d</sup></xref></td>
+<td align="center" rowspan="1" colspan="1">Cq 26.13</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">B</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">S43</td>
+<td align="center" rowspan="1" colspan="1">GLA 4</td>
+<td align="center" rowspan="1" colspan="1">ALB &gt; GLA</td>
+<td align="center" rowspan="1" colspan="1">Cq 28.27</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">C</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S44</td>
+<td align="center" rowspan="1" colspan="1">ALB 11</td>
+<td align="center" rowspan="1" colspan="1">N</td>
+<td align="center" rowspan="1" colspan="1">Below detection level</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">D</td>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S45</td>
+<td align="center" rowspan="1" colspan="1">ALB +++/DUB +++/GLA ++</td>
+<td align="center" rowspan="1" colspan="1">ALB</td>
+<td align="center" rowspan="1" colspan="1">8.09</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">D</td>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S46</td>
+<td align="center" rowspan="1" colspan="1">ALB +++/DUB +++/GLA +++</td>
+<td align="center" rowspan="1" colspan="1">GLA</td>
+<td align="center" rowspan="1" colspan="1">8.60</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">D</td>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S47</td>
+<td align="center" rowspan="1" colspan="1">ALB +++/GLA ++</td>
+<td align="center" rowspan="1" colspan="1">ALB</td>
+<td align="center" rowspan="1" colspan="1">8.35</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">D</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S48</td>
+<td align="center" rowspan="1" colspan="1">ALB +++/GLA 95</td>
+<td align="center" rowspan="1" colspan="1">ALB</td>
+<td align="center" rowspan="1" colspan="1">7.32</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">D</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S49</td>
+<td align="center" rowspan="1" colspan="1">ALB 187/GLA 3</td>
+<td align="center" rowspan="1" colspan="1">ALB</td>
+<td align="center" rowspan="1" colspan="1">7.23</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">D</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S50</td>
+<td align="center" rowspan="1" colspan="1">ALB +++/LUS 1</td>
+<td align="center" rowspan="1" colspan="1">ALB</td>
+<td align="center" rowspan="1" colspan="1">8.09</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">D</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S51</td>
+<td align="center" rowspan="1" colspan="1">ALB 108/ROB 1</td>
+<td align="center" rowspan="1" colspan="1">ALB</td>
+<td align="center" rowspan="1" colspan="1">6.63</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">D</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S52</td>
+<td align="center" rowspan="1" colspan="1">PAR +++/GUI 53</td>
+<td align="center" rowspan="1" colspan="1">PAR</td>
+<td align="center" rowspan="1" colspan="1">8.17</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">D</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S53</td>
+<td align="center" rowspan="1" colspan="1">ROB +++/PAR 74</td>
+<td align="center" rowspan="1" colspan="1">ROB</td>
+<td align="center" rowspan="1" colspan="1">9.39</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">A+C</td>
+<td align="center" rowspan="1" colspan="1">M+m</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">S54</td>
+<td align="center" rowspan="1" colspan="1">TRO 2</td>
+<td align="center" rowspan="1" colspan="1">ROB</td>
+<td align="center" rowspan="1" colspan="1">6.83</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">E</td>
+<td align="center" rowspan="1" colspan="1">m</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">S55-S56</td>
+<td align="center" rowspan="1" colspan="1">ACHXYL +++</td>
+<td align="center" rowspan="1" colspan="1">N</td>
+<td align="center" rowspan="1" colspan="1">Below detection level</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t004fn001"><p>Legend: ALB: <italic>Candida albicans</italic>; DUB: <italic>Candida dubliniensis</italic>; GLA: <italic>Candida glabrata</italic>; GUI: <italic>Candida guilliermondii</italic>; LUS: <italic>Candida lusitaniae</italic>; PAR: <italic>Candida parapsilosis</italic>; ROB: <italic>Candida robusta</italic>; TRO: <italic>Candida tropicalis</italic>; ACHXYL: <italic>Achromobacter xylosoxidans</italic>; &gt;: The left species is more abundant than the right species; m: minor discrepancy; M: Major discrepancy; N: No species detected, below detection level; S: Sample; D: Direct method; I: Indirect method; +: Indication of the quantity of a species, on the basis of number of colonies cultured;?: Unknown melting peak pattern.</p></fn>
+<fn id="t004fn002"><p><sup>a</sup>: Number of samples for which the direct method established the presence of more species than the indirect method (total number: 44).</p></fn>
+<fn id="t004fn003"><p><sup>b</sup>: Pattern of low intensity with unknown peak. Sequencing yielded an unreliable identification (closest match <italic>Cladosporium cladosporioides</italic>).</p></fn>
+<fn id="t004fn004"><p><sup>c</sup>: Pattern of low intensity, similar to the pattern observed with a mixture of <italic>C</italic>. <italic>glabrata</italic> and <italic>C</italic>. <italic>robusta</italic>. Sequencing yielded an unreliable identification (closest match <italic>Physarum loratum</italic>).</p></fn>
+<fn id="t004fn005"><p><sup>d</sup>: Unknown peak at a Tm of 88.78°C</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Overall, the 58 discrepancies (in 56 samples) could be divided in the following 5 categories (<xref rid="pone.0132149.t004" ref-type="table">Table 4</xref>): Category A: direct method positive, but indirect method negative (n = 38); Category B: direct method more species than indirect method (n = 6); Category C: direct method negative, but indirect method positive (n = 2); Category D: direct method less species than indirect method (n = 9); and Category E: detection of nonfungal species by indirect method (n = 3).</p>
+<p>The direct method discovered more species than the indirect method for 44 of the 56 samples with discrepant results (<xref rid="pone.0132149.t004" ref-type="table">Table 4</xref>, column D &gt; I).</p>
+<p>Minor discrepancies were observed for 15 category A samples whereby <italic>C</italic>. <italic>albicans</italic> was detected by the direct method (of which one sample (S12) also contained <italic>C</italic>. <italic>glabrata</italic> according to the direct method), but not by the indirect method, because the number of cells/ml of sample was determined by ITS2-HRM to be log 4.9 or lower in all of these samples. For the six category B samples (S38-S43), two species were detected by the direct method, compared to only one by the indirect method. The most abundant of both species (as determined on the basis of the melting peak intensities) was also detected by the indirect method in five of these six cases (whereas the least abundant was detected by the indirect method in the sixth case), although this resulted only in low numbers of colonies (between 1 and 30) for all six samples. Also these six cases can be considered as minor discrepancies because the number of yeasts as estimated by the direct method was also low, according to the high Cq values (which however could not be converted to log values, because the samples contained more than one species). Another minor discrepancy was presented by the only category C sample S44 for which only the indirect method was positive for <italic>C</italic>. <italic>albicans</italic>, but whereby only 11 colonies were cultured. For the nine category D samples (S45-S53), the direct method yielded only a single species, whereas the indirect method yielded two (n = 7) or three (n = 2) species. Six of these nine cases could be considered as minor discrepancies, because the one species that was missed by the direct method was represented by only a low number of colonies in the indirect method. In the three category E samples, the direct method remained negative (S55-S56) or yielded a low number of <italic>C</italic>. <italic>albicans</italic> (S01), but the indirect method was positive. However, MALDI-TOF indicated that in all three samples, the cultured organism was a bacterium, i.e. <italic>Achromobacter xylosoxidans</italic>. This was considered as a minor discrepancy.</p>
+<p>Another five samples (category A, S16-S20) comprised unknown melting peak patterns versus negative indirect method results (i.e. negative culture). Vaginal sample S16 had low intensity melting peaks, not corresponding to any of the peaks in the library and sequencing yielded an unreliable identification (See below). The other four samples (S17-S20) had a combination of peaks that was similar to the peaks observed when both <italic>C</italic>. <italic>glabrata</italic> and <italic>C</italic>. <italic>robusta</italic> were present in the sample, but sequencing yielded no identification (due to mixed sequences). The rather high Cq values indicated that the number of fungal cells present in all five of these samples was rather low, and was therefore considered a minor discrepancy.</p>
+<p>The 21 major discrepancies comprised 18 category A samples (S21-S37: 14 rectal swabs and four throat swabs, 13 from the haematology ward, five from the IC, and S54 (rectal swab, hematology ward)), whereby the direct method detected the presence of <italic>C</italic>. <italic>robusta</italic> in relatively high loads (between log4.39 and log7.51 cells/ml), whereas this species was missed by the indirect method because the culture remained negative. For sample S54, culture yielded only two colonies of <italic>C</italic>. <italic>tropicalis</italic>. The identification of <italic>C</italic>. <italic>robusta</italic> based on the melting peak temperature was confirmed for 12 cases by sequencing of the amplified ITS2 region. Apparently, <italic>C</italic>. <italic>robusta</italic> (the anamorph of <italic>Saccharomyces cerevisiae</italic>), predominant in haematology samples (13 out of 74, compared to 5 out of 200 IC samples), is difficult to culture on <italic>Candida</italic> ID agar.</p>
+<p>Major discrepancies were also present for three category D samples, whereby the indirect method detected <italic>C</italic>. <italic>albicans</italic> and <italic>C</italic>. <italic>glabrata</italic> in large numbers, and in two of these three samples also <italic>C</italic>. <italic>dubliniensis</italic>, whereas the direct method indicated the presence of only <italic>C</italic>. <italic>albicans</italic> (S45, S47) or only <italic>C</italic>. <italic>glabrata</italic> (S46).</p>
+<p>In summary, there was full agreement in 83.90% of the 347 samples, minor discrepancy in 10.09% and major discrepancy in 6.01%, with most of these major discrepancies (18/21) due to the lack of detection of <italic>C</italic>. <italic>robusta</italic> (<italic>S</italic>. <italic>cerevisiae</italic>) by the culture-based method (indirect method).</p>
+<p>The number of discrepancies for Haematology and IC departments and for throat and rectal swabs were comparable (Tables <xref rid="pone.0132149.t003" ref-type="table">3</xref> and <xref rid="pone.0132149.t004" ref-type="table">4</xref>). Only 5.5% (4 samples) of the 73 vaginal samples resulted in outcomes that were discrepant between both methods, moreover considerable as minor discrepancies. In three of these vaginal samples (S13-S15), <italic>C</italic>. <italic>albicans</italic> was found to be present only by the direct method, but only in low amounts (between log3.95 and log4.28 cells/ml). In one vaginal sample (S16), the direct method established, at only a low concentration (Cq = 27.66), a low intensity melting peak pattern (not observed in any of the species present in the library). Sequencing of the amplified ITS2 yielded only query cover of 62% to <italic>Cladosporium cladosporoides</italic>.</p>
+</sec>
+<sec id="sec016" sec-type="conclusions">
+<title>Discussion</title>
+<p>In this study, the efficacy of a molecular method (designated the ‘direct method’) to quantify and identify the yeast species present in three types of clinical samples, i.e. throat swabs, rectal and vaginal swabs, from three different departments was compared with the routine method (the ‘indirect method’).</p>
+<p>When the indirect method, i.e. culture of samples on <italic>Candida</italic> ID agar, followed by identification of the colonies by means of MALDI-TOF, is taken as the reference method, the direct method, consisting of DNA-extraction of the sample, followed by ITS2-qPCR and ITS2-HRM, has a low positive predictive value. However, closer inspection of the observed discrepancies (<xref rid="pone.0132149.t004" ref-type="table">Table 4</xref>) indicates that most can be considered as minor. These minor discrepancies mostly concern samples with low numbers of yeasts, as indicated by the high Ct-values of the qPCR, whereby no yeasts could be cultured. Moreover, 18 of the 21 major discrepancies can be considered in the advantage of the direct method as well, because these concern samples that are—strongly—positive for <italic>Candida robusta</italic> (the anamorph of <italic>Saccharomyces cerevisiae</italic>) by means of the direct method, but negative by the indirect method, indicating that this species is missed by culture on <italic>Candida</italic> ID agar. In intensive care unit patients, the probiotic use of <italic>Saccharomyces cerevisiae</italic> has been documented to potentially lead to a fatal systemic disease [<xref rid="pone.0132149.ref026" ref-type="bibr">26</xref>–<xref rid="pone.0132149.ref028" ref-type="bibr">28</xref>]. The ability of the direct method to detect and quantify the presence of this species might be considered as an additional advantage. Still, to control for false positive results due to contamination from environment or during the DNA extraction procedure, simultaneous DNA extraction from sterile water should be performed.</p>
+<p>The most abundant species was <italic>C</italic>. <italic>albicans</italic>, present in 30.6% of all 111 throat swabs, 13.5% of all 163 rectal swabs and 12.3% of all 73 vaginal samples. The second most abundant species was <italic>C</italic>. <italic>glabrata</italic> in 2.6% of samples, most abundant in throat swabs of the haematology ward (9.1% of all throat samples) and vaginal samples (4.1% of all vaginal samples). Accordingly, the most frequent type of double positive samples comprised <italic>C</italic>. <italic>albicans</italic> and <italic>C</italic>. <italic>glabrata</italic>, and all of them (3.5% of all samples) were from the IC department, equally distributed between throat and rectal swabs. Consequently, given the predominance of <italic>C</italic>. <italic>albicans</italic> and <italic>C</italic>. <italic>glabrata</italic> (and <italic>C</italic>. <italic>robusta</italic>), the development of qPCR formats, specific for these species, instead of ITS2-HRM, could be considered, to optimize the discriminative detection and quantification for samples where both species are present.</p>
+<p>The samples containing species such as <italic>Geotrichum silvicola</italic> and <italic>Pichia manshurica</italic> indicate that ITS2-HRM also enables the detection of species of which no representative melting curves were present in the original library. These species can be recognized by carrying out ITS2-HRM on the cultured isolates that were identified by other means (e.g. MALDI-TOF) or—in case of lack of a positive culture—by sequencing the ITS2 region that was amplified from the sample. However, the latter approach is not possible when more than one species is present in the sample.</p>
+<p>The presence of yeast in a clinical sample was also examined through gram staining. Results (data not presented) showed a correlation between the threshold cycle (Cq) and the detection of yeast through microscopical analysis. The detection was possible in samples with a Cq lower than 22, i.e. a yeast concentration of log6. Apparently, yeast present in concentrations below log6 cfu/ml will be missed by Gram stain.</p>
+<p>In conclusion, the direct method has some advantages over the indirect method, such as i) speed (result possible within one day), ii) the possibility for more accurate quantification of the number of yeasts present in the sample (by quantitative PCR), and iii) better sensitivity by detecting also yeasts when present in low numbers, missed by culture, and by detection of <italic>Candida robusta</italic> (missed by culture, also when present in large numbers). It remains to be decided whether these putative advantages compensate for the disadvantages of this method, such as the cost for consumables (especially due to the need for pure DNA-extraction when handling clinical samples), estimated to amount to five times that of culture in combination with MALDI-TOF, its laboriousness, and the lack of a cultured organism, needed to assess the antimycotic susceptibility. However, the possibility offered by a molecular approach for rapid detection, quantification and identification of yeasts from blood samples would certainly compensate for the disadvantages of this approach.</p>
+</sec>
+</body>
+<back>
+<ack>
+<p>This work has been supported by the Ghent University Hospital, the University College Ghent and the Flemish government and by funding of the PWO project “Study of Microbiological Application for Real Time PCR (SMART)”.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0132149.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Morace</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Borghi</surname> <given-names>E</given-names></name> (<year>2010</year>) <article-title>Fungal infections in ICU patients: epidemiology and the role of diagnostics</article-title>. <source>Minerva Anestesiol</source> <volume>76</volume>: <fpage>950</fpage>–<lpage>956</lpage>. <object-id pub-id-type="pmid">21102391</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kett</surname> <given-names>DH</given-names></name>, <name name-style="western"><surname>Azoulay</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Echeverria</surname> <given-names>PM</given-names></name>, <name name-style="western"><surname>Vincent</surname> <given-names>JL</given-names></name> (<year>2011</year>) <article-title><italic>Candida</italic> bloodstream infections in intensive care units: analysis of the extended prevalence of infection in intensive care unit study</article-title>. <source>Crit Care Med</source> <volume>39</volume>: <fpage>665</fpage>–<lpage>670</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1097/CCM.0b013e318206c1ca" xlink:type="simple">10.1097/CCM.0b013e318206c1ca</ext-link></comment> <object-id pub-id-type="pmid">21169817</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kautzky</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Staudinger</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Presterl</surname> <given-names>E</given-names></name> (<year>2015</year>) <article-title>Invasive <italic>Candida</italic> infections in patients of a medical intensive care unit</article-title>. <source>Wien Klin Wochenschr</source> <volume>127</volume>: <fpage>132</fpage>–<lpage>142</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00508-014-0644-z" xlink:type="simple">10.1007/s00508-014-0644-z</ext-link></comment> <object-id pub-id-type="pmid">25412592</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Perea</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Patterson</surname> <given-names>TF</given-names></name> (<year>2002</year>) <article-title>Antifungal resistance in pathogenic fungi</article-title>. <source>Clin Infect Dis</source> <volume>35</volume>: <fpage>1073</fpage>–<lpage>1080</lpage>. <object-id pub-id-type="pmid">12384841</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tascano</surname> <given-names>CM</given-names></name>, <name name-style="western"><surname>Jarvis</surname> <given-names>WR</given-names></name> (<year>1999</year>) <article-title>Emerging issues in nosocomial fungal infections</article-title>. <source>Curr Infect Dis Rep</source> <volume>1</volume>: <fpage>347</fpage>–<lpage>361</lpage>. <object-id pub-id-type="pmid">11095808</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bondaryk</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Kurzątkowski</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Staniszewska</surname> <given-names>M</given-names></name> (<year>2013</year>) <article-title>Antifungal agents commonly used in the superficial and mucosal candidiasis treatment: mode of action and resistance development</article-title>. <source>Postęp Derm Alergol</source> <volume>5</volume>: <fpage>293</fpage>–<lpage>301</lpage>.</mixed-citation></ref>
+<ref id="pone.0132149.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kothavade</surname> <given-names>RJ</given-names></name>, <name name-style="western"><surname>Kura</surname> <given-names>MM</given-names></name>, <name name-style="western"><surname>Valand</surname> <given-names>AG</given-names></name>, <name name-style="western"><surname>Panthaki</surname> <given-names>MH</given-names></name> (<year>2010</year>) <article-title><italic>Candida tropicalis</italic>: its prevalence, pathogenicity and increasing resistance to fluconazole</article-title>. <source>J Med Microbiol</source> <volume>59</volume>: <fpage>873</fpage>–<lpage>880</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1099/jmm.0.013227-0" xlink:type="simple">10.1099/jmm.0.013227-0</ext-link></comment> <object-id pub-id-type="pmid">20413622</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Meurman</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Pärnänen</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Seneviratne</surname> <given-names>JC</given-names></name>, <name name-style="western"><surname>Samaranayake</surname> <given-names>LP</given-names></name>, <name name-style="western"><surname>Saarinen</surname> <given-names>AMJ</given-names></name>, <name name-style="western"><surname>Kari</surname> <given-names>K</given-names></name> (<year>2011</year>) <article-title>Prevalence and antifungal drug sensitivity of non-albicans <italic>Candida</italic> in oral rinse samples of self-caring elderly</article-title>. <source>Gerodontology</source> <volume>28</volume>: <fpage>246</fpage>–<lpage>252</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/j.1741-2358.2010.00407.x" xlink:type="simple">10.1111/j.1741-2358.2010.00407.x</ext-link></comment> <object-id pub-id-type="pmid">20609005</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nejad</surname> <given-names>BS</given-names></name>, <name name-style="western"><surname>Rafnei</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Moosanejad</surname> <given-names>F</given-names></name> (<year>2011</year>) <article-title>Prevalence of <italic>Candida</italic> species in the oral cavity of patients with periodontitis</article-title>. <source>Afr J Biotechnol</source> <volume>10</volume>: <fpage>2987</fpage>–<lpage>2990</lpage>.</mixed-citation></ref>
+<ref id="pone.0132149.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pfaller</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Messer</surname> <given-names>SA</given-names></name>, <name name-style="western"><surname>Hollis</surname> <given-names>RJ</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>RN</given-names></name>, <name name-style="western"><surname>Doern</surname> <given-names>GV</given-names></name>, <name name-style="western"><surname>Brandt</surname> <given-names>ME</given-names></name>, <etal>et al</etal>. (<year>1999</year>) <article-title>Trends in species distribution and susceptibility to fluconazole among blood stream isolates of <italic>Candida</italic> species in the United States</article-title>. <source>Diagn Microbiol Infect Dis</source> <volume>33</volume>: <fpage>217</fpage>–<lpage>222</lpage>. <object-id pub-id-type="pmid">10212747</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pappas</surname> <given-names>PG</given-names></name>, <name name-style="western"><surname>Kauffman</surname> <given-names>CA</given-names></name>, <name name-style="western"><surname>Andes</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Benjamin</surname> <given-names>DK</given-names></name>, <name name-style="western"><surname>Calandra</surname> <given-names>TF</given-names></name>, <name name-style="western"><surname>Edwards</surname> <given-names>JE</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Clinical practice guidelines for the management of candidiasis: 2009 update by the infectious diseases society of America</article-title>. <source>Clin Infect Dis</source> <volume>48</volume>: <fpage>503</fpage>–<lpage>535</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1086/596757" xlink:type="simple">10.1086/596757</ext-link></comment> <object-id pub-id-type="pmid">19191635</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Alexander</surname> <given-names>BD</given-names></name>, <name name-style="western"><surname>Johnson</surname> <given-names>MD</given-names></name>, <name name-style="western"><surname>Pfeiffer</surname> <given-names>CD</given-names></name>, <name name-style="western"><surname>Jiménez-Ortigosa</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Catania</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Booker</surname> <given-names>R</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>Increasing echinocandins resistance in <italic>Candida glabrata</italic>: clinical failure correlates with presence of FKS mutations and elevated minimum inhibitory concentrations</article-title>. <source>Clin Infect Dis</source> <volume>56</volume>: <fpage>1724</fpage>–<lpage>1732</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1093/cid/cit136" xlink:type="simple">10.1093/cid/cit136</ext-link></comment> <object-id pub-id-type="pmid">23487382</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lemieux</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>St-Germain</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Vincelette</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Kaufman</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>de Repentigny</surname> <given-names>L</given-names></name> (<year>1990</year>) <article-title>Collaborative evaluation of antigen detection by a commercial latex agglutination test and enzyme immunoassay in the diagnosis of invasive candidiasis</article-title>. <source>J Clin Microbiol</source> <volume>28</volume>(<issue>2</issue>): <fpage>249</fpage>–<lpage>253</lpage>. <object-id pub-id-type="pmid">2179258</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Noumi</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Snoussi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>del Pilar Vercher</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Valentin</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Del Castillo</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Bakhrouf</surname> <given-names>A</given-names></name> (<year>2010</year>) <article-title>Identification of <italic>Candida glabrata</italic> and <italic>Candida parapsilosis</italic> strains by polymerase chain reaction assay using RPS0 gene fragment</article-title>. <source>J Yeast Fungal Res</source> <volume>1</volume>: <fpage>170</fpage>–<lpage>173</lpage>.</mixed-citation></ref>
+<ref id="pone.0132149.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Arabatzis</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Xylouri</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Frangiadaki</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Tzimogianni</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Milioni</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Arsenis</surname> <given-names>G</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Rapid detection of <italic>Arthroderma vanbreuseghemii</italic> in rabbit skin specimens by PCR-RFLP</article-title>. <source>Vet Dermatol</source> <volume>17</volume>: <fpage>322</fpage>–<lpage>326</lpage>. <object-id pub-id-type="pmid">16961817</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Arabatzis</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>van Coppenraet</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Kuijper</surname> <given-names>EJ</given-names></name>, <name name-style="western"><surname>de Hoog</surname> <given-names>GS</given-names></name>, <name name-style="western"><surname>Lavrijsen</surname> <given-names>APM</given-names></name>, <name name-style="western"><surname>Templeton</surname> <given-names>K</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Diagnosis of common dermatophyte infections by a novel multiplex real-time polymerase chain reaction detection/identification scheme</article-title>. <source>Br J Dermatol</source> <volume>157</volume>: <fpage>681</fpage>–<lpage>689</lpage>. <object-id pub-id-type="pmid">17672875</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Arancia</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Sandini</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>De Bernardis</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Fortini</surname> <given-names>D</given-names></name> (<year>2011</year>) <article-title>Rapid, simple, and low-cost identification of <italic>Candida</italic> species using high-resolution melting analysis</article-title>. <source>Diagn Microbiol Infect Dis</source> <volume>69</volume>: <fpage>283</fpage>–<lpage>285</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.diagmicrobio.2010.10.003" xlink:type="simple">10.1016/j.diagmicrobio.2010.10.003</ext-link></comment> <object-id pub-id-type="pmid">21353953</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>De Baere</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Claeys</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Swinne</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Massonet</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Verschraegen</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Muylaert</surname> <given-names>A</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>Identification of cultured isolates of clinically important yeast species using fluorescent fragment length analysis of the amplified internally transcribed rRNA spacer 2 region</article-title>. <source>BMC Microbiol</source> <volume>2</volume>: <fpage>21</fpage>. <object-id pub-id-type="pmid">12139769</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mandviwala</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Shinde</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Kalra</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Sobel</surname> <given-names>JD</given-names></name>, <name name-style="western"><surname>Alkins</surname> <given-names>RA</given-names></name> (<year>2010</year>) <article-title>High-throughput identification and quantification of <italic>Candida</italic> species using high resolution derivative melt analysis of panfungal amplicons</article-title>. <source>J Mol Diagn</source> <volume>12</volume>: <fpage>91</fpage>–<lpage>101</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.2353/jmoldx.2010.090085" xlink:type="simple">10.2353/jmoldx.2010.090085</ext-link></comment> <object-id pub-id-type="pmid">20007848</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Marklein</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Josten</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Klanke</surname> <given-names>U</given-names></name>, <name name-style="western"><surname>Müller</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Horré</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Maier</surname> <given-names>T</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Matrix-assisted laser desorption ionization-time of flight mass spectrometry for fast and reliable identification of clinical yeast isolates</article-title>. <source>J Clin Microbiol</source> <volume>47</volume>: <fpage>2912</fpage>–<lpage>2917</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1128/JCM.00389-09" xlink:type="simple">10.1128/JCM.00389-09</ext-link></comment> <object-id pub-id-type="pmid">19571014</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Massonet</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Van Eldere</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Vaneechoutte</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>De Baere</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Verhaegen</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Lagrou</surname> <given-names>K</given-names></name> (<year>2004</year>) <article-title>Comparison of VITEK 2 with ITS2-fragment length polymorphism analysis for identification of yeast species</article-title>. <source>J Clin Microbiol</source> <volume>42</volume>: <fpage>2209</fpage>–<lpage>2211</lpage>. <object-id pub-id-type="pmid">15131191</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Turenne</surname> <given-names>CY</given-names></name>, <name name-style="western"><surname>Sanche</surname> <given-names>SE</given-names></name>, <name name-style="western"><surname>Hoban</surname> <given-names>DJ</given-names></name>, <name name-style="western"><surname>Karlowsky</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Kabani</surname> <given-names>AM</given-names></name> (<year>1999</year>) <article-title>Rapid identification of fungi by using the ITS2 genetic region and an automated fluorescent capillary electrophoresis system</article-title>. <source>J Clin Microbiol</source> <volume>37</volume>: <fpage>1846</fpage>–<lpage>1851</lpage>. <object-id pub-id-type="pmid">10325335</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Decat</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Van Mechelen</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Saerens</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Vermeulen</surname> <given-names>SJT</given-names></name>, <name name-style="western"><surname>Boekhout</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>De Blaiser</surname> <given-names>S</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Rapid and accurate identification of isolates of <italic>Candida</italic> species by melting peak and melting curve analysis of the internally transcribed spacer region 2 fragment (ITS2-HRM)</article-title>. <source>Res Microbiol</source> <volume>164</volume>: <fpage>110</fpage>–<lpage>117</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.resmic.2012.10.017" xlink:type="simple">10.1016/j.resmic.2012.10.017</ext-link></comment> <object-id pub-id-type="pmid">23142490</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pavlovic</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Huber</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Konrad</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Busch</surname> <given-names>U</given-names></name> (<year>2013</year>) <article-title>Application of MALDI-TOF MS for the identification of food borne bacteria</article-title>. <source>Open Microbiol J</source> <volume>7</volume>: <fpage>135</fpage>–<lpage>141</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.2174/1874285801307010135" xlink:type="simple">10.2174/1874285801307010135</ext-link></comment> <object-id pub-id-type="pmid">24358065</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Van Herendael</surname> <given-names>BH</given-names></name>, <name name-style="western"><surname>Bruynseels</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Bensaid</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Boekhout</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>De Baere</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Surmont</surname> <given-names>I</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Validation of a modified algorithm for the identification of yeast isolates using matrix assisted laser desorption/ionisation time-of-flight mass spectrometry (MALDI-TOF MS)</article-title>. <source>Eur J Clin Microbiol Infect Dis</source> <volume>31</volume>: <fpage>841</fpage>–<lpage>848</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10096-011-1383-y" xlink:type="simple">10.1007/s10096-011-1383-y</ext-link></comment> <object-id pub-id-type="pmid">21861205</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>De Llanos</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Querol</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Pemán</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Gobernado</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Fernández-Espinar</surname> <given-names>MT</given-names></name> (<year>2006</year>) <article-title>Food and probiotic strains from the <italic>Saccharomyces cerevisiae</italic> species as a possible origin of human systemic infections</article-title>. <source>Int J Food Microbiol</source> <volume>110</volume>: <fpage>286</fpage>–<lpage>290</lpage>. <object-id pub-id-type="pmid">16782223</object-id></mixed-citation></ref>
+<ref id="pone.0132149.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Murphy</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Kavanagh</surname> <given-names>K</given-names></name> (<year>1999</year>) <article-title>Emergence of <italic>Saccharomyces cerevisiae</italic> as a human pathogen: Implications for biotechnology</article-title>. <source>Enzyme Microb Tech</source> <volume>25</volume>: <fpage>551</fpage>–<lpage>557</lpage>.</mixed-citation></ref>
+<ref id="pone.0132149.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Muñoz</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Bouza</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Cuenca-Estrella</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Eiros</surname> <given-names>JM</given-names></name>, <name name-style="western"><surname>Pérez</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Sánchez-Somolinos</surname> <given-names>M</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title><italic>Saccharomyces cerevisiae</italic> fungemia: an emerging infectious disease</article-title>. <source>Clin Infect Dis</source> <volume>40</volume>: <fpage>1625</fpage>–<lpage>1634</lpage>. <object-id pub-id-type="pmid">15889360</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

@@ -1,0 +1,1338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1d3" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0213146</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-18-26332</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Epidemiology</subject><subj-group><subject>Medical risk factors</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Health care</subject><subj-group><subject>Health care facilities</subject><subj-group><subject>Hospitals</subject><subj-group><subject>Intensive care units</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Cardiology</subject><subj-group><subject>Myocardial infarction</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Engineering and technology</subject><subj-group><subject>Equipment</subject><subj-group><subject>Laboratory equipment</subject><subj-group><subject>Ventilators</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Pharmacology</subject><subj-group><subject>Drugs</subject><subj-group><subject>Sedatives</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Physical sciences</subject><subj-group><subject>Chemistry</subject><subj-group><subject>Chemical elements</subject><subj-group><subject>Oxygen</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Cardiology</subject><subj-group><subject>Cardiac arrest</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Engineering and technology</subject><subj-group><subject>Equipment</subject></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Intra-hospital transport of critically ill patients with rapid response team and risk factors for cardiopulmonary arrest: A retrospective cohort study</article-title>
+<alt-title alt-title-type="running-head">Cardiopulmonary risk factors during intra-hospital transport of critically ill patients</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Min</surname>
+<given-names>Hyun Ju</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kim</surname>
+<given-names>Hyung-Jun</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Lee</surname>
+<given-names>Dong Seon</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Choi</surname>
+<given-names>Yun Young</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Yoon</surname>
+<given-names>Miae</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Lee</surname>
+<given-names>Dayoon</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Cho</surname>
+<given-names>Jun Yeun</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Park</surname>
+<given-names>Jong Sun</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Cho</surname>
+<given-names>Young-Jae</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Yoon</surname>
+<given-names>Ho Il</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Lee</surname>
+<given-names>Jae Ho</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Lee</surname>
+<given-names>Choon-Taek</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0001-7697-4272</contrib-id>
+<name name-style="western">
+<surname>Lee</surname>
+<given-names>Yeon Joo</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Division of Pulmonary and Critical Care Medicine, Department of Internal Medicine, Seoul National University Bundang Hospital, Seongnam-si, Gyeonggi-do, Republic of Korea</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Department of Nursing, Seoul National University Bundang Hospital, Seongnam, Gyeonggi-do, Republic of Korea</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Department of Internal Medicine, Armed Forces Daegu Hospital, Gyeongsan-si, Gyeongsangbuk-do, Republic of Korea</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Lazzeri</surname>
+<given-names>Chiara</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Azienda Ospedaliero Universitaria Careggi, ITALY</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">yjlee1117@snubh.org</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>5</day>
+<month>3</month>
+<year>2019</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2019</year>
+</pub-date>
+<volume>14</volume>
+<issue>3</issue>
+<elocation-id>e0213146</elocation-id>
+<history>
+<date date-type="received">
+<day>8</day>
+<month>9</month>
+<year>2018</year>
+</date>
+<date date-type="accepted">
+<day>17</day>
+<month>2</month>
+<year>2019</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2019</copyright-year>
+<copyright-holder>Min et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0213146"/>
+<abstract>
+<sec id="sec001">
+<title>Introduction</title>
+<p>This study aimed to determine the occurrence rate and risk factors of cardiopulmonary arrest (CPA) during intra-hospital transport (IHT) among critically ill patients, accompanied by a rapid response team (RRT).</p>
+</sec>
+<sec id="sec002">
+<title>Methods</title>
+<p>We performed a retrospective cohort study in a 1300-bed tertiary-care teaching hospital. Data of all admitted patients transported within the hospital and accompanied by the RRT from October 2012 to May 2016 were included. We compared patients with CPA (+) and patients without CPA (-) to identify risk factors for CPA during transport.</p>
+</sec>
+<sec id="sec003">
+<title>Results</title>
+<p>Among 535 patients, CPA occurred in eight (1.5%) patients during IHT. There were no significant differences in age, sex, and comorbidities between groups. More patients in the CPA (+) group than in the CPA (-) group received manual ventilation during IHT (75% vs. 23.0%, p = 0.001). An increased risk of CPA (p&lt;0.001) corresponded with a higher number of vasopressors used during IHT. In univariate logistic regression analysis, history of myocardial infarction (OR 10.7, 95% CI 2.4–50.5, p = 0.005), manual ventilation (OR 10.1, 95% CI 2.0–50.5, p = 0.005), and use of three or more vasopressors (OR 11.1, 95% CI 2.5–48.9, p = 0.001) were significantly associated with risk of CPA during RRT-led IHT.</p>
+</sec>
+<sec id="sec004">
+<title>Conclusions</title>
+<p>Despite accompaniment by a specialized team such as the RRT, CPA can occur during IHT. History of myocardial infarction, manual ventilation with bag-valve mask, and the use of three or more vasopressors were independent risk factors of CPA during IHT of critically ill patients accompanied by the RRT.</p>
+</sec>
+</abstract>
+<funding-group>
+<funding-statement>The authors received no specific funding for this work.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="1"/>
+<table-count count="5"/>
+<page-count count="13"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the manuscript and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec005" sec-type="intro">
+<title>Introduction</title>
+<p>In practical guidelines on the transport of critically ill patients, published in 2004 [<xref ref-type="bibr" rid="pone.0213146.ref001">1</xref>], four components of intra-hospital transport (IHT) were suggested as essential for safe patient transport: “pre-transport coordination, accompanying personnel, equipment, and monitoring during transport”. Ideally, these guidelines recommend that all critical care transports be performed by specially trained individuals, as qualified personnel in critical care can adequately cope with at-risk patients and intervene in the event of serious adverse events (AEs), such as hypoxia, hypotension, etc. as well as minor AEs [<xref ref-type="bibr" rid="pone.0213146.ref001">1</xref>]. Nevertheless, even when accompanied by specially trained teams, cardiopulmonary arrest (CPA)—one of the most serious AEs—can occur during IHT despite the care provided by a dedicated transport team [<xref ref-type="bibr" rid="pone.0213146.ref002">2</xref>] or specially trained intensive care unit (ICU) staff [<xref ref-type="bibr" rid="pone.0213146.ref003">3</xref>].</p>
+<p>A rapid response team (RRT) was launched in our institution in October 2012. The RRT in our institution began to accompany the transfers of critical patients, in addition to their regular task of early detection and management of “at risk” patients. The RRT staffs have existing competencies in providing care for critically ill patients, and the efficacy of the team was previously shown to decrease the overall rates of CPA among hospitalized patients after RRT implementation [<xref ref-type="bibr" rid="pone.0213146.ref004">4</xref>].</p>
+<p>CPA during IHT is the most serious complication that can occur during the transport process and can result in very poor patient outcomes. Family members of the patient can perceive CPA during transport as an accident caused by medical-staff negligence which may result in a lawsuit against the medical staff or institution. Although previous studies have reported a rate of CPA during IHT that ranged from 0.3–3% [<xref ref-type="bibr" rid="pone.0213146.ref005">5</xref>–<xref ref-type="bibr" rid="pone.0213146.ref009">9</xref>], these studies did not evaluate the risk factors for CPA during IHT, instead they focused on the risk factors for the broader range of overall AEs during IHT. Therefore, we aimed to determine the occurrence rate of CPA during IHT among critically ill patients, and to identify risk factors for CPA during transport, accompanied by the RRT comprised of specialized critical care staff.</p>
+</sec>
+<sec id="sec006" sec-type="materials|methods">
+<title>Materials and methods</title>
+<sec id="sec007">
+<title>Study design</title>
+<p>We performed a retrospective, single center cohort study using the RRT registry data of a 1300-bed tertiary-care teaching hospital affiliated with Seoul National University in South Korea. All IHTs of admitted patients accompanied by the RRT from October 2012 to May 2016 were included in this study. We extracted the transport-monitoring list from the RRT registry and compared patients with CPA (+) to patients without CPA (-) to identify the risk factors for CPA during IHT.</p>
+</sec>
+<sec id="sec008">
+<title>Transport of critically ill patients with RRT</title>
+<p>RRT accompaniment refers to cases in which at least one RRT nurse and either the patient’s physician in charge or an RRT physician accompanied the traditional escort team. Cases accompanied by the RRT can be divided into two major categories: (1) If a patient in the general ward needs to be transported to the ICU or other room for diagnostic or therapeutic purposes and the transport risk is thought to be high, the intensivist of the RRT requests RRT accompaniment during transport; and (2) If a patient in the ICU needs to be transported for diagnostic or therapeutic purposes and the transport risk is thought to be high, the intensivist in charge of the ICU(who is also a member of the RRT) requests RRT accompaniment for the transport. The transport risk is subjectively determined by the intensivist, and RRT accompaniment in our hospital was limited to cases for which the RRT intensivist had requested RRT transportation support.</p>
+<p>Before the launch of the RRT, critically ill patients were typically escorted by couriers and occasionally one or two physicians (usually an intern). Because in-hospital guidelines for IHT of critically ill patients have not been established in our institution, the transportation of high-risk patients was conducted inconsistently. Also, an escort decision, such as whether the patient would be accompanied by a physician, was dependent on the physician on duty (usually a trainee).</p>
+</sec>
+<sec id="sec009">
+<title>Data collection</title>
+<p>The following data were obtained from the RRT registry: patient demographic data, primary diagnosis, transport time, departure place, arrival place, airway and oxygen supply during transport, medications, CPA during transport, length of stay, and survival.</p>
+</sec>
+<sec id="sec010">
+<title>Statistical analysis</title>
+<p>Categorical variables and continuous variables are expressed as numbers and percentages, and mean ± standard deviation, respectively. Differences between the CPA (+) group and CPA (-) group were analyzed by the independent samples t-test for continuous variables and the chi-square test for categorical variables. A value of p &lt; 0.05 was considered significant. Risk factors for AE during IHT were tested first by uni-variate analysis. Results were reported as odds ratios (OR), and statistical significance was ascertained by the 95% confidence interval. All statistical analyses were performed with SPSS version version 17.0 (SPSS Inc, Chicago, IL, USA).</p>
+</sec>
+<sec id="sec011">
+<title>Ethics statement</title>
+<p>The Institutional Review Board of Seoul National University Bundang Hospital approved the study protocol and waived the need for informed consent because of the retrospective study design (IRB number: B-1408-262-114).</p>
+</sec>
+</sec>
+<sec id="sec012" sec-type="results">
+<title>Results</title>
+<p>During the study period of 40 months, 558 critically ill patients were transported with the RRT. Of these, data from the following sets of patients were excluded: 11 patients due to the lack of information, seven patients who were admitted despite having no CPA event and five patients who were under 18 years of age. A final total of 535 patients were included in this study, of which eight (1.5%) developed CPA. Patients’ baseline demographics are described in <xref ref-type="table" rid="pone.0213146.t001">Table 1</xref>. There were no significant differences in age, sex, and comorbidities between the CPA (+) and CPA (-) groups, but there were more patients with previous myocardial infarction (MI) in the CPA (+) group. ICU survival was significantly higher in the CPA (-) group than in the CPA (+) group (67.2% vs. 25.0%, p = 0.015). Origins of departure and transport destinations for included patients are depicted in <xref ref-type="fig" rid="pone.0213146.g001">Fig 1</xref>. Computed tomography rooms were the most frequent destination of ICU departures, while the ICU was the most frequent destination of ward departures.</p>
+<table-wrap id="pone.0213146.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0213146.t001</object-id>
+<label>Table 1</label> <caption><title>Characteristics of intra-hospital transport.</title></caption>
+<alternatives>
+<graphic id="pone.0213146.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0213146.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">Variables</th>
+<th align="center">Total N = 535</th>
+<th align="center">CPA(+) N = 8</th>
+<th align="center">CPA(-) N = 527</th>
+<th align="center">P Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><bold>Age</bold></td>
+<td align="center">65.0(14.8)</td>
+<td align="center">52.1(20.5)</td>
+<td align="center">65.2(14.6)</td>
+<td align="char" char=".">0.056</td>
+</tr>
+<tr>
+<td align="left"><bold>Male</bold></td>
+<td align="center">349(65.2)</td>
+<td align="center">4(50.0)</td>
+<td align="center">345(65.5)</td>
+<td align="char" char=".">0.362</td>
+</tr>
+<tr>
+<td align="left"><bold>Charlson Comorbidity Index</bold></td>
+<td align="center">5.7(2.7)</td>
+<td align="center">4.4(2.5)</td>
+<td align="center">5.7(2.7)</td>
+<td align="char" char=".">0.131</td>
+</tr>
+<tr>
+<td align="left"><bold>Underlying disease</bold></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"> Tumor</td>
+<td align="center">195(36.4)</td>
+<td align="center">2(25.0)</td>
+<td align="center">193(36.1)</td>
+<td align="char" char=".">0.498</td>
+</tr>
+<tr>
+<td align="left"> Diabetes</td>
+<td align="center">124(23.2)</td>
+<td align="center">1(12.5)</td>
+<td align="center">123(23.3)</td>
+<td align="char" char=".">0.471</td>
+</tr>
+<tr>
+<td align="left"> Chronic lung disease</td>
+<td align="center">108(20.2)</td>
+<td align="center">2(25.0)</td>
+<td align="center">106(20.1)</td>
+<td align="char" char=".">0.733</td>
+</tr>
+<tr>
+<td align="left"> Cerebrovascular disease</td>
+<td align="center">100(18.7)</td>
+<td align="center">1(12.5)</td>
+<td align="center">99(18.8)</td>
+<td align="char" char=".">0.651</td>
+</tr>
+<tr>
+<td align="left"> Chronic renal disease</td>
+<td align="center">60(11.2)</td>
+<td align="center">0</td>
+<td align="center">60(11.4)</td>
+<td align="char" char=".">0.311</td>
+</tr>
+<tr>
+<td align="left"> Chronic liver disease</td>
+<td align="center">45(8.4)</td>
+<td align="center">1(12.5)</td>
+<td align="center">44(8.3)</td>
+<td align="char" char=".">0.675</td>
+</tr>
+<tr>
+<td align="left"> Myocardial infarction</td>
+<td align="center">31(5.8)</td>
+<td align="center">3(37.5)</td>
+<td align="center">28(5.3)</td>
+<td align="char" char=".">&lt;0.001</td>
+</tr>
+<tr>
+<td align="left"> Peripheral vascular disease</td>
+<td align="center">5(0.9)</td>
+<td align="center">0</td>
+<td align="center">5(0.9)</td>
+<td align="char" char=".">0.782</td>
+</tr>
+<tr>
+<td align="left"><bold>Department</bold></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"> Internal Medicine</td>
+<td align="center">269(50.3)</td>
+<td align="center">6(75.0)</td>
+<td align="center">263(49.9)</td>
+<td align="char" char=".">0.159</td>
+</tr>
+<tr>
+<td align="left"> General Surgery</td>
+<td align="center">109(20.4)</td>
+<td align="center">0(0.0)</td>
+<td align="center">109(20.7)</td>
+<td align="char" char=".">0.149</td>
+</tr>
+<tr>
+<td align="left"> Thoracic Surgery</td>
+<td align="center">56(10.5)</td>
+<td align="center">1(12.5)</td>
+<td align="center">55(10.4)</td>
+<td align="char" char=".">0.850</td>
+</tr>
+<tr>
+<td align="left"> Neurology</td>
+<td align="center">23(4.3)</td>
+<td align="center">0</td>
+<td align="center">23(4.4)</td>
+<td align="char" char=".">0.546</td>
+</tr>
+<tr>
+<td align="left"> Emergency room</td>
+<td align="center">18(3.4)</td>
+<td align="center">0</td>
+<td align="center">18(3.4)</td>
+<td align="char" char=".">0.595</td>
+</tr>
+<tr>
+<td align="left"> Rehabilitation Medicine</td>
+<td align="center">11(2.1)</td>
+<td align="center">1(12.5)</td>
+<td align="center">10(1.9)</td>
+<td align="char" char=".">0.136</td>
+</tr>
+<tr>
+<td align="left"> Others<xref ref-type="table-fn" rid="t001fn002"><sup>a</sup></xref></td>
+<td align="center">49(9.2)</td>
+<td align="center">0</td>
+<td align="center">49(9.2)</td>
+<td align="char" char=".">0.366</td>
+</tr>
+<tr>
+<td align="left"><bold>Characteristics of hospitalization</bold></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"> Hospital survival</td>
+<td align="center">305(57.0)</td>
+<td align="center">2(25.0)</td>
+<td align="center">303(57.5)</td>
+<td align="char" char=".">0.065</td>
+</tr>
+<tr>
+<td align="left"> ICU Survival</td>
+<td align="center">356(66.5)</td>
+<td align="center">2(25.0)</td>
+<td align="center">354(67.2)</td>
+<td align="char" char=".">0.012</td>
+</tr>
+<tr>
+<td align="left"> Length of ICU stay (days)</td>
+<td align="center">17.6(31.5)</td>
+<td align="center">5.4(3.9)</td>
+<td align="center">17.7(31.7)</td>
+<td align="char" char=".">&lt;0.001</td>
+</tr>
+<tr>
+<td align="left"> Length of Hospital stay (days)</td>
+<td align="center">48.9(44.4)</td>
+<td align="center">26.9(33.5)</td>
+<td align="center">49.2(44.4)</td>
+<td align="char" char=".">0.032</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>Values are shown as number (percentage) or mean (standard deviation).</p></fn>
+<fn id="t001fn002"><p><sup>a</sup>Others included orthopedics (11), neurosurgery (9), otolaryngology (7), obstetrics and gynecology (7), spinal centers (7), urology (7), and plastic surgery (1).</p></fn>
+<fn id="t001fn003"><p>Abbreviations: CPA, Cardio Pulmonary Arrest; ICU, Intensive Care Unit; SD, Standard Deviation.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<fig id="pone.0213146.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0213146.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Transport origin and destination.</title>
+<p>(a) Transport destination from ICU departure, (b) Transport destination from general ward departure.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0213146.g001" xlink:type="simple"/>
+</fig>
+<p>Airway and oxygen supply received by patients during transport are described in <xref ref-type="table" rid="pone.0213146.t002">Table 2</xref>. The mean fraction of inspired oxygen (FiO<sub>2</sub>) of patients receiving oxygen during transport was 69.8%, which was significantly higher in the CPA (+) group than in the CPA (-) group (100% vs. 69.3%, p = 0.001). A higher proportion of patients in the CPA (+) group than in the CPA (-) group received manual ventilation during transport (75.0% vs. 23.0%, p = 0.001).</p>
+<table-wrap id="pone.0213146.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0213146.t002</object-id>
+<label>Table 2</label> <caption><title>Oxygenation method and type of airway of included patients.</title></caption>
+<alternatives>
+<graphic id="pone.0213146.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0213146.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="2">Variables</th>
+<th align="center">Total</th>
+<th align="center">CPA(+)</th>
+<th align="center">CPA(-)</th>
+<th align="center">P</th>
+</tr>
+<tr>
+<th align="center">N = 535</th>
+<th align="center">N = 8</th>
+<th align="center">N = 527</th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><bold>Transport time (min)</bold></td>
+<td align="center">37.2(35.8)</td>
+<td align="center">14.8(11.7)</td>
+<td align="center">37.5(35.9)</td>
+<td align="char" char=".">0.045</td>
+</tr>
+<tr>
+<td align="left"><bold>Required Fio2 (%)</bold></td>
+<td align="center">69.8(29.2)</td>
+<td align="center">100(0.0)</td>
+<td align="center">69.3(29.2)</td>
+<td align="char" char=".">0.001</td>
+</tr>
+<tr>
+<td align="left" colspan="5"><bold>Oxygenation</bold></td>
+</tr>
+<tr>
+<td align="left"> Portable ventilator</td>
+<td align="center">251(46.9)</td>
+<td align="center">2(25.0)</td>
+<td align="center">249(47.2)</td>
+<td align="char" char=".">0.211</td>
+</tr>
+<tr>
+<td align="left">Manual ventilation using a bag-valve mask</td>
+<td align="center">127(23.7)</td>
+<td align="center">6(75.0)</td>
+<td align="center">121(23.0)</td>
+<td align="char" char=".">0.001</td>
+</tr>
+<tr>
+<td align="left"> Facial Mask</td>
+<td align="center">61(11.6)</td>
+<td align="center">0</td>
+<td align="center">61(11.6)</td>
+<td align="char" char=".">0.307</td>
+</tr>
+<tr>
+<td align="left"> Nasal prong</td>
+<td align="center">37(6.9)</td>
+<td align="center">0</td>
+<td align="center">37(7.0)</td>
+<td align="char" char=".">0.437</td>
+</tr>
+<tr>
+<td align="left"> High Flow Nasal Cannula</td>
+<td align="center">25(4.7)</td>
+<td align="center">0</td>
+<td align="center">25(4.7)</td>
+<td align="char" char=".">0.528</td>
+</tr>
+<tr>
+<td align="left"> Room air</td>
+<td align="center">25(4.7)</td>
+<td align="center">0</td>
+<td align="center">25(4.7)</td>
+<td align="char" char=".">0.528</td>
+</tr>
+<tr>
+<td align="left"> T-piece</td>
+<td align="center">7(1.3)</td>
+<td align="center">0</td>
+<td align="center">7(1.3)</td>
+<td align="char" char=".">0.743</td>
+</tr>
+<tr>
+<td align="left"> Home ventilator</td>
+<td align="center">2(0.4)</td>
+<td align="center">0</td>
+<td align="center">2(0.4)</td>
+<td align="char" char=".">0.861</td>
+</tr>
+<tr>
+<td align="left"><bold>Type of airway</bold></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"> Artificial airway</td>
+<td align="center">381(71.2)</td>
+<td align="center">8(100)</td>
+<td align="center">373(70.8)</td>
+<td align="char" char=".">0.070</td>
+</tr>
+<tr>
+<td align="left">  Endotracheal tube</td>
+<td align="center">330(61.7)</td>
+<td align="center">7(87.5)</td>
+<td align="center">323(61.3)</td>
+<td align="char" char=".">0.130</td>
+</tr>
+<tr>
+<td align="left">  Tracheostomy</td>
+<td align="center">51(9.5)</td>
+<td align="center">1(12.5)</td>
+<td align="center">50(9.5)</td>
+<td align="char" char=".">0.773</td>
+</tr>
+<tr>
+<td align="left"> No artificial airway</td>
+<td align="center">154(28.8)</td>
+<td align="center">0</td>
+<td align="center">154(29.2)</td>
+<td align="char" char=".">0.070</td>
+</tr>
+<tr>
+<td align="left" colspan="4"><bold>Mode of Portable ventilator</bold></td>
+<td align="char" char=".">0.132</td>
+</tr>
+<tr>
+<td align="left"> PCV</td>
+<td align="center">123(23.0)</td>
+<td align="center">2(25.0)</td>
+<td align="center">121(23.0)</td>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"> PSV</td>
+<td align="center">66(12.3)</td>
+<td align="center">0</td>
+<td align="center">66(12.5)</td>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"> SIMV</td>
+<td align="center">57(10.7)</td>
+<td align="center">0</td>
+<td align="center">57(10.8)</td>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"> VCV</td>
+<td align="center">3(0.6)</td>
+<td align="center">0</td>
+<td align="center">3(0.6)</td>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"> CPAP</td>
+<td align="center">2(0.4)</td>
+<td align="center">0</td>
+<td align="center">2(0.4)</td>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"><bold>Mode of ECMO</bold></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="char" char=".">0.595</td>
+</tr>
+<tr>
+<td align="left"> VV</td>
+<td align="center">12(2.2)</td>
+<td align="center">0</td>
+<td align="center">12(2.3)</td>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"> VA</td>
+<td align="center">6(1.1)</td>
+<td align="center">0</td>
+<td align="center">6(1.1)</td>
+<td align="center"/>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>Values are shown as number (percentage) or mean (standard deviation), or median (interquartile range). Abbreviations; CPA, Cardio Pulmonary Arrest; Fio2, Fraction of inspired oxygen; PCV, Pressure Control Ventilation; PSV, Pressure Support Ventilation; SIMV, Synchronized Intermittent Mechanical Ventilation; VCV, Volume Control Ventilation; CPAP, Continuous Positive Airway Pressure; ECMO, Extracorporeal Membrane Oxygenation; VV, Veno Venous; VA, Veno Arterial.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>A total of 239 (44.7%) patients received continuous vasopressor infusion, and the most commonly used vasopressor was norepinephrine, with 217 (40.2%) patients receiving a mean amount of 19.8 (±21.9) mcg/min (<xref ref-type="table" rid="pone.0213146.t003">Table 3</xref>). There was a significant difference in the number of vasopressors received between the CPA (+) and CPA (-) groups; the greater the number of vasopressors used, the higher the risk of CPA (p&lt;0.001). In addition, 171 (32.0%) patients received continuous infusion of a sedative, with remifentanyl and dexmedetomidine being the most commonly used. No difference in the type and the dose of sedative was found between patients with or without CPA during IHT.</p>
+<table-wrap id="pone.0213146.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0213146.t003</object-id>
+<label>Table 3</label> <caption><title>Use of sedatives and vasopressors during intra-hospital transport.</title></caption>
+<alternatives>
+<graphic id="pone.0213146.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0213146.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="2">Variables</th>
+<th align="left">Total</th>
+<th align="left">CPA(+)</th>
+<th align="left">CPA(-)</th>
+<th align="left">P</th>
+<th align="left" rowspan="2">Mean dose</th>
+<th align="left" rowspan="2">Unit</th>
+</tr>
+<tr>
+<th align="left">N = 535</th>
+<th align="left">N = 8</th>
+<th align="left">N = 527</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><bold>Continuous vasopressors</bold></td>
+<td align="left">239(44.7)</td>
+<td align="left">6(75.0)</td>
+<td align="left">233(44.2)</td>
+<td align="char" char=".">0.082</td>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Norepinephrine</td>
+<td align="left">215(40.2)</td>
+<td align="left">6(75.0)</td>
+<td align="left">209(39.1)</td>
+<td align="char" char=".">0.043</td>
+<td align="left">19.8(±21.9)</td>
+<td align="left">mcg/min</td>
+</tr>
+<tr>
+<td align="left"> Dopamine</td>
+<td align="left">59(11.0)</td>
+<td align="left">3(37.5)</td>
+<td align="left">56(10.6)</td>
+<td align="char" char=".">0.016</td>
+<td align="left">13.1(±11.6)</td>
+<td align="left">mcg/kg/min</td>
+</tr>
+<tr>
+<td align="left"> Dobutamine</td>
+<td align="left">26(4.9)</td>
+<td align="left">2(25.0)</td>
+<td align="left">24(4.6)</td>
+<td align="char" char=".">0.008</td>
+<td align="left">11.2(±8.7)</td>
+<td align="left">mcg/kg/min</td>
+</tr>
+<tr>
+<td align="left"> Epinephrine</td>
+<td align="left">27(5.0)</td>
+<td align="left">2(25.0)</td>
+<td align="left">25(4.7)</td>
+<td align="char" char=".">0.009</td>
+<td align="left">0.09(±0.05)</td>
+<td align="left">mcg/kg/min</td>
+</tr>
+<tr>
+<td align="left"> Vasopressin</td>
+<td align="left">26(4.9)</td>
+<td align="left">1(12.5)</td>
+<td align="left">25(4.7)</td>
+<td align="char" char=".">0.311</td>
+<td align="left">0.06(±0.05)</td>
+<td align="left">unit/min</td>
+</tr>
+<tr>
+<td align="left"><bold>Number of vasopressor</bold></td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="char" char=".">&lt; 0.001</td>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> 0 Vasopressor</td>
+<td align="left">296(55.3)</td>
+<td align="left">2(25.0)</td>
+<td align="left">294(55.8)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> 1 Vasopressor</td>
+<td align="left">167(31.2)</td>
+<td align="left">3(37.5)</td>
+<td align="left">164(31.1)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> 2 Vasopressors</td>
+<td align="left">42(7.9)</td>
+<td align="left">0(0.0)</td>
+<td align="left">42(8.0)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> 3 Vasopressors</td>
+<td align="left">19(3.6)</td>
+<td align="left">2(25.0)</td>
+<td align="left">17(3.2)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> 4 Vasopressors</td>
+<td align="left">10(1.9)</td>
+<td align="left">0(0.0)</td>
+<td align="left">10(1.9)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> 5 Vasopressors</td>
+<td align="left">1(0.2)</td>
+<td align="left">1(12.5))</td>
+<td align="left">0(0.0)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>Continuous sedatives</bold></td>
+<td align="left">171(32.0)</td>
+<td align="left">1(12.5)</td>
+<td align="left">170(32.2)</td>
+<td align="char" char=".">0.234</td>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Remifentanyl</td>
+<td align="left">110(20.6)</td>
+<td align="left">1(12.5)</td>
+<td align="left">109(20.7)</td>
+<td align="char" char=".">0.570</td>
+<td align="left">0.08(±0.06)</td>
+<td align="left">mcg/kg/min</td>
+</tr>
+<tr>
+<td align="left"> Dexmedetomidine</td>
+<td align="left">96(17.9)</td>
+<td align="left">0(0.0)</td>
+<td align="left">96(18.2)</td>
+<td align="char" char=".">0.183</td>
+<td align="left">0.49((±0.35)</td>
+<td align="left">mcg/kg/hr</td>
+</tr>
+<tr>
+<td align="left"> Midazolam</td>
+<td align="left">52(9.7)</td>
+<td align="left">0(0.0)</td>
+<td align="left">52(9.9)</td>
+<td align="char" char=".">0.350</td>
+<td align="left">3.96((±1.9)</td>
+<td align="left">mg/min</td>
+</tr>
+<tr>
+<td align="left"> Cisatracurium</td>
+<td align="left">43(8.0)</td>
+<td align="left">0(0.0)</td>
+<td align="left">43(8.2)</td>
+<td align="char" char=".">0.400</td>
+<td align="left">2.45((±1.3)</td>
+<td align="left">mcg/kg/min</td>
+</tr>
+<tr>
+<td align="left"> Vecuronium</td>
+<td align="left">8(1.5)</td>
+<td align="left">0(0.0)</td>
+<td align="left">8(1.5)</td>
+<td align="char" char=".">0.725</td>
+<td align="left">5.21((±1.4)</td>
+<td align="left">mg/min</td>
+</tr>
+<tr>
+<td align="left"><bold>Number of sedatives</bold></td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="char" char=".">0.735</td>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left">0 Sedative</td>
+<td align="left">364(68.0)</td>
+<td align="left">7(87.5)</td>
+<td align="left">357(67.7)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left">1 Sedative</td>
+<td align="left">69(12.9)</td>
+<td align="left">1(12.5)</td>
+<td align="left">68(12.9)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left">2 Sedatives</td>
+<td align="left">64(12.0)</td>
+<td align="left">0(0.0)</td>
+<td align="left">64(12.1)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left">3 Sedatives</td>
+<td align="left">34(6.4)</td>
+<td align="left">0(0.0)</td>
+<td align="left">34(6.5)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left">4 Sedatives</td>
+<td align="left">4(0.7)</td>
+<td align="left">0(0.0)</td>
+<td align="left">4(0.8)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left">5 Sedatives</td>
+<td align="left">0(0.0)</td>
+<td align="left">0(0.0)</td>
+<td align="left">0(0.0)</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t003fn001"><p>Values are shown as number (percentage) or mean ± standard deviation. Abbreviations: CPA, Cardio Pulmonary Arrest.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>We examined which parameters could predict CPA during IHT. In the univariate analysis, age (OR = 0.9 [0.90–0.99]; p = 0.018), APACHE-II score (OR = 1.1 [1.02–1.19]; p = 0.012), history of myocardial infarction (OR = 10.7 [2.4–47.0]; p = 0.002), manual ventilation using a bag-valve mask (OR = 10.1 [2.0–50.5], p = 0.005), and the use of three or more vasopressors (OR = 11.1 [2.5–48.9], p = 0.001) were significant (<xref ref-type="table" rid="pone.0213146.t004">Table 4</xref>). Our result showed that the lower the age, the higher the risk of CPA but this seems to be due to the small number of CPA (n = 8) patients including those with younger age.</p>
+<table-wrap id="pone.0213146.t004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0213146.t004</object-id>
+<label>Table 4</label> <caption><title>Univariate analysis of risk factors for cardiopulmonary arrest during intra-hospital transport.</title></caption>
+<alternatives>
+<graphic id="pone.0213146.t004g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0213146.t004" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">Variables</th>
+<th align="left">Odd ratio</th>
+<th align="left">95% CI</th>
+<th align="left">P value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Age</td>
+<td align="char" char=".">0.9</td>
+<td align="left">0.90–0.99</td>
+<td align="char" char=".">0.018</td>
+</tr>
+<tr>
+<td align="left">Sex, male</td>
+<td align="char" char=".">0.5</td>
+<td align="left">0.10–2.10</td>
+<td align="char" char=".">0.370</td>
+</tr>
+<tr>
+<td align="left">APACHE-II score</td>
+<td align="char" char=".">1.1</td>
+<td align="left">1.02–1.19</td>
+<td align="char" char=".">0.012</td>
+</tr>
+<tr>
+<td align="left">Charlson Comorbidity Index</td>
+<td align="char" char=".">0.8</td>
+<td align="left">0.60–1.10</td>
+<td align="char" char=".">0.173</td>
+</tr>
+<tr>
+<td align="left">History of myocardial infarction</td>
+<td align="char" char=".">10.7</td>
+<td align="left">2.40–47.0</td>
+<td align="char" char=".">0.002</td>
+</tr>
+<tr>
+<td align="left">Manual ventilation using a bag-valve mask</td>
+<td align="char" char=".">10.1</td>
+<td align="left">2.0–50.5</td>
+<td align="char" char=".">0.005</td>
+</tr>
+<tr>
+<td align="left">Required FiO<sub>2</sub></td>
+<td align="char" char=".">1.0</td>
+<td align="left">0.9–1.0</td>
+<td align="char" char=".">0.053</td>
+</tr>
+<tr>
+<td align="left">Three or more vasopressors</td>
+<td align="char" char=".">11.1</td>
+<td align="left">2.5–48.9</td>
+<td align="char" char=".">0.001</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t004fn001"><p>Abbreviations: APACHE, Acute Physiology and Chronic Health Evaluation; Fio2, Fraction of Inspired Oxygen; CI, Confidence Interval</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>The characteristics of each of the eight CPA cases are briefly summarized in <xref ref-type="table" rid="pone.0213146.t005">Table 5</xref>. Among these cases, manual ventilation with mask bag valve was used in six cases while only two cases used portable ventilators. Required FiO<sub>2</sub> for all was 100%.</p>
+<table-wrap id="pone.0213146.t005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0213146.t005</object-id>
+<label>Table 5</label> <caption><title>Characteristics of the eight patients with cardiopulmonary arrest during intrahospital transport with the rapid response team.</title></caption>
+<alternatives>
+<graphic id="pone.0213146.t005g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0213146.t005" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Case</th>
+<th align="center">Sex</th>
+<th align="center">Age</th>
+<th align="center">Departure</th>
+<th align="center">Destination</th>
+<th align="center">MI</th>
+<th align="center">Manual ventilation</th>
+<th align="center">Portable ventilator</th>
+<th align="center">Three or more vasopressors</th>
+<th align="center">Initial rhythm</th>
+<th align="center">Airway</th>
+<th align="center">FiO<sub>2</sub></th>
+<th align="center">Survival</th>
+<th align="center">Type of arrest</th>
+<th align="center">Diagnosis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">M</td>
+<td align="center">44</td>
+<td align="center">CCU</td>
+<td align="center">ICU</td>
+<td align="center">Y</td>
+<td align="center"/>
+<td align="center">Y</td>
+<td align="center">Y</td>
+<td align="center">Ventricular tachycardia</td>
+<td align="center">E</td>
+<td align="center">100</td>
+<td align="center">S</td>
+<td align="center">C</td>
+<td align="center">STEMI</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">F</td>
+<td align="center">77</td>
+<td align="center">Ward</td>
+<td align="center">ICU</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center">Asystole</td>
+<td align="center">E</td>
+<td align="center">100</td>
+<td align="center">D</td>
+<td align="center">R</td>
+<td align="center">Sepsis, OM</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">F</td>
+<td align="center">57</td>
+<td align="center">Ward</td>
+<td align="center">ICU</td>
+<td align="center"/>
+<td align="center">Y</td>
+<td align="center"/>
+<td align="center">Y</td>
+<td align="center">Asystole</td>
+<td align="center">E</td>
+<td align="center">100</td>
+<td align="center">D</td>
+<td align="center">R</td>
+<td align="center">Sepsis, SICMP</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">M</td>
+<td align="center">21</td>
+<td align="center">ICU</td>
+<td align="center">CT room</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center">Y</td>
+<td align="center"/>
+<td align="center">PEA</td>
+<td align="center">E</td>
+<td align="center">100</td>
+<td align="center">D</td>
+<td align="center">R</td>
+<td align="center">HFRS,ICH</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">F</td>
+<td align="center">57</td>
+<td align="center">ICU</td>
+<td align="center">CT room</td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+<td align="center"/>
+<td align="center">Y</td>
+<td align="center">Asystole</td>
+<td align="center">E</td>
+<td align="center">100</td>
+<td align="center">D</td>
+<td align="center">C</td>
+<td align="center">3VD, Acute stroke</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">F</td>
+<td align="center">25</td>
+<td align="center">Ward</td>
+<td align="center">ICU</td>
+<td align="center"/>
+<td align="center">Y</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center">Asystole</td>
+<td align="center">E</td>
+<td align="center">100</td>
+<td align="center">D</td>
+<td align="center">C</td>
+<td align="center">Pulmonary embolism</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">M</td>
+<td align="center">70</td>
+<td align="center">Ward</td>
+<td align="center">ICU</td>
+<td align="center"/>
+<td align="center">Y</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center">Asystole</td>
+<td align="center">E</td>
+<td align="center">100</td>
+<td align="center">D</td>
+<td align="center">R</td>
+<td align="center">Lung cancer MPE</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">M</td>
+<td align="center">66</td>
+<td align="center">Ward</td>
+<td align="center">Interventional radiology</td>
+<td align="center"/>
+<td align="center">Y</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center">Asystole</td>
+<td align="center">T</td>
+<td align="center">100</td>
+<td align="center">S</td>
+<td align="center">R</td>
+<td align="center">Tetraplegia Pneumonia</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t005fn001"><p>Abbreviations: ICU, intensive care unit; MI, myocardial infarction; CPA, cardiopulmonary arrest; OM, osteomyelitis; E tube, endotracheal tube; T-tube, tracheal tube; STEMI, ST elevated myocardial infarction; SICMP, stress induced cardiomyopathy; PEA, Pulseless electrical activity; HFRS, Hantavirus hemorrhagic fever with renal syndrome; ICH, intracerebral hemorrhage; 3VD, three vessel disease; MPE, Malignant pleural effusion; S, survaval; D, death; FiO<sub>2</sub>, Fraction of inspired oxygen; C, Cardiac arrest; R, Respiratory arrest</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<sec id="sec013">
+<title>Subgroup analysis</title>
+<p>We limited the comparison to patients with similar levels of critical illness to find what factors are associated with safer transport for very unstable patients because oftentimes, very unstable patients still need transport. We compared the risk factors of CPA in a subgroup of patients with advanced airway, at least one vasopressor, requiring an advanced airway, and three vasopressors (<xref ref-type="supplementary-material" rid="pone.0213146.s001">S1</xref>–<xref ref-type="supplementary-material" rid="pone.0213146.s003">S3</xref> Tables).</p>
+<p>In the first subgroup (patients with advanced airway, N = 381), eight cases of CPA (2.1%) occurred. Differences in patients’ characteristics and important variables are described in <xref ref-type="supplementary-material" rid="pone.0213146.s001">S1 Table</xref>. We found similar risk factors for CPA during IHT among this population compared with the original full population. Age and APACHE-II score were also significant, but each OR was closer to 1.0. Especially in this group, the use of portable ventilator significantly reduced the CPA risk during IHT (OR = 0.17 [0.03–0.83], p = 0.029). Also, we found that the risk increased significantly when the ward was the departure point and the ICU was the destination.</p>
+<p>In the second subgroup (patients with vasopressor support, N = 239), six patients (2.5%) had CPA during RRT-led IHT (<xref ref-type="supplementary-material" rid="pone.0213146.s002">S2 Table</xref>). Overall, similar risk factors were observed, but history of hemiplegia was also significant (OR = 9.5 [1.19–76.29], p = 0.033) in this group.</p>
+<p>In the third subgroup (patients with advanced airway and more than three vasopressors, N = 28), three patients (10.7%) had CPA (<xref ref-type="supplementary-material" rid="pone.0213146.s003">S3 Table</xref>). Because of the small number of the patients in this subgroup (N = 28), only history of myocardial infarction was observed to be marginally significant (OR = 10.7 [0.92–124.38], p = 0.058).</p>
+</sec>
+</sec>
+<sec id="sec014" sec-type="conclusions">
+<title>Discussion</title>
+<p>In this study, we aimed to determine the occurrence rate of CPA during IHT among patients accompanied by the RRT, and to identify risk factors for CPA during transport. We determined that 1.5% of critically ill patients transported with an RRT developed CPA during transport, and that history of MI, manual ventilation with a bag-valve mask, and the use of three or more vasopressors were independent risk factors for developing CPA during transport. Age and APACHE-II score appeared to be significant also, but each OR was near 1.0, and there were two young patients in their 20’s among the eight CPA patients (<xref ref-type="table" rid="pone.0213146.t005">Table 5</xref>). Thus the OR value, which indicated that the risk of CPA increased as the age decreased, should be interpreted along with other clinical findings.</p>
+<p>Critically ill patients require various diagnostic imaging and interventions due to the complexities of their medical needs, and IHT for these patients is often inevitable. When clinicians make the decision to transport these patients within a hospital, it is essential to consider whether the intervention that requires transport will benefit the patient; considering possible risks that can arise during transit is equally important [<xref ref-type="bibr" rid="pone.0213146.ref002">2</xref>, <xref ref-type="bibr" rid="pone.0213146.ref010">10</xref>]. To estimate the risk-benefit of transport, it would be helpful to identify patients with a high risk for the development of complications during or after transport.</p>
+<p>Suggested risk factors of AEs during IHT in previous research include the type of transport (emergency transports in particular) [<xref ref-type="bibr" rid="pone.0213146.ref008">8</xref>, <xref ref-type="bibr" rid="pone.0213146.ref009">9</xref>], the number of infusion pumps [<xref ref-type="bibr" rid="pone.0213146.ref011">11</xref>] especially with catecholamine [<xref ref-type="bibr" rid="pone.0213146.ref008">8</xref>, <xref ref-type="bibr" rid="pone.0213146.ref012">12</xref>], positive end expiratory pressure [<xref ref-type="bibr" rid="pone.0213146.ref006">6</xref>, <xref ref-type="bibr" rid="pone.0213146.ref008">8</xref>, <xref ref-type="bibr" rid="pone.0213146.ref013">13</xref>], and sedation before transport [<xref ref-type="bibr" rid="pone.0213146.ref013">13</xref>]. However, the definition of AEs varied in each of these studies, and Fanara et al. [<xref ref-type="bibr" rid="pone.0213146.ref014">14</xref>] mentioned that most of the risk factors described in these studies did not have any significant statistical value and were usually based on the good clinical sense of the authors.</p>
+<p>The four main categories of possible risk factors for AEs during IHT [<xref ref-type="bibr" rid="pone.0213146.ref014">14</xref>] comprise equipment factors, human factors, organizational factors, and patient factors (i.e. clinical instability). Although patient-related risk factors are difficult to identify, other risk factors such as equipment-related, human error, and organizational factors might be controlled more easily [<xref ref-type="bibr" rid="pone.0213146.ref014">14</xref>]. An RRT can address most of the risk categories described above. The four basic elements of IHT guidelines cover communication, qualified personnel, proper equipment, and monitoring [<xref ref-type="bibr" rid="pone.0213146.ref001">1</xref>]. Since the RRT is comprised of staffs who are competent and skilled in caring for critically ill patients, the RRT can generally fulfill these recommendations in institutions, such as ours, where a specialized dedicated transport team has not been formed due to workforce limitations. RRT staffs are already specialized for care of critically ill patients, and most RRT have their own equipment, emergency medicines, and monitoring devices needed for critical situations. An RRT also has the advantage of being able to contact a team leader (intensivist) directly in the event of a serious problem during transfer, so that the chain of action can be very fast in terms of communication and problem solving.</p>
+<p>Considering the role that the RRT filled in our institution, we aimed to understand the rates of CPA occurrence and risk factors for CPA in critically ill patients who were transported by this highly trained team. We found that the rate of CPA in this patient population in our institution (1.5%) was similar to that in previous studies (ranging from 0.3–3%) [<xref ref-type="bibr" rid="pone.0213146.ref005">5</xref>–<xref ref-type="bibr" rid="pone.0213146.ref009">9</xref>]. Although this may be considered a low rate, the consequences can be so devastating that some might consider it an event that should “never” occur [<xref ref-type="bibr" rid="pone.0213146.ref003">3</xref>]. Thus, it is essential to understand the risk factors underlying the occurrence of CPA in critically ill patients transported by an RRT.</p>
+<p>In our study, history of MI was found to be a significant risk factor for CPA. Minor hemodynamic changes in blood pressure, electrocardiogram rhythm, and heart rate (acceleration and deceleration) can result in a major series of events that put vulnerable patients at a high risk of severe outcomes. In a study by Taylor et al. [<xref ref-type="bibr" rid="pone.0213146.ref015">15</xref>], arrhythmia occurred during transport in 85% of 55 patients with cardiac disease. It is well known that risk of sudden cardiac death increases after MI, with an overall incidence ranging from 2–4% per year in many large observational and randomized studies [<xref ref-type="bibr" rid="pone.0213146.ref016">16</xref>–<xref ref-type="bibr" rid="pone.0213146.ref020">20</xref>]. Therefore, the results of our study are in line with previous results, and show that patients with a history of MI are particularly vulnerable to CPA during IHT, thus requiring additional attention and care.</p>
+<p>The second risk factor for developing CPA during IHT when accompanied by RRT was use of three or more vasopressors. In a study by Parmentier-Decrucq et al. [<xref ref-type="bibr" rid="pone.0213146.ref013">13</xref>], increased risk of AE was significantly associated with fluid challenge during transport (OR 6.5, 95% CI 1.3–31.7; p = 0.021). Additionally, the number of infusion pumps [<xref ref-type="bibr" rid="pone.0213146.ref011">11</xref>], especially with catecholamine [<xref ref-type="bibr" rid="pone.0213146.ref008">8</xref>, <xref ref-type="bibr" rid="pone.0213146.ref012">12</xref>] were suggested as risk factors for AE during IHT. However, there is no available evidence establishing the upper limits of number or dose of each vasopressor that can be safely permitted during patient transport. In the Mayo Clinic’s IHT protocol [<xref ref-type="bibr" rid="pone.0213146.ref002">2</xref>], the most at-risk patients are classified as Level 4 transports, which require advanced medical care and monitoring. One of the defining criteria for Level 4 transport is “continued manipulation of vasoactive infusions”, which is unclear and ambiguous. Although our study found that the risk of CPA increased by more than 10-fold (OR 11.1, 95% CI 2.548.9, p = 0.001) when three or more vasopressors were used during IHT, we could not determine the optimum cutoff level of vasopressor dose to contraindicate IHT. Therefore, the amount of vasopressor for transport contraindication remains to be established.</p>
+<p>Manual ventilation was found to be a significant risk factor for CPA in our study. Manual ventilation has been widely used due to its simple manipulation and good portability. In a single blind prospective study [<xref ref-type="bibr" rid="pone.0213146.ref021">21</xref>], manual ventilation during IHT of mechanically ventilated critically ill patients was determined to be safe when provided by trained personnel (e.g. a respiratory therapist). However, there are also concerns about the potential risk of hyperventilation [<xref ref-type="bibr" rid="pone.0213146.ref022">22</xref>] or inconsistent respiration [<xref ref-type="bibr" rid="pone.0213146.ref023">23</xref>]. Braman et al. [<xref ref-type="bibr" rid="pone.0213146.ref024">24</xref>] identified that mean changes in PCO2 and pH were significantly lower in a portable mechanical ventilator group than in a manual ventilatory group (p&lt;0.01). Although previous studies have shown that manual ventilation induces changes in physiologic variables or in arterial blood gases, these studies only mentioned as a matter of concern that manual ventilation could lead to fatal AEs [<xref ref-type="bibr" rid="pone.0213146.ref022">22</xref>–<xref ref-type="bibr" rid="pone.0213146.ref025">25</xref>]. Our study is meaningful in that it shows that the risks of CPA during IHT are significantly increased with the use of manual ventilation OR 10.1, 95% CI 2.0–50.5, p = 0.005). However, there are still no clear guidelines for determining the use of portable ventilators according to oxygen level or ventilator pressure. As individual institutions each have different resources, these thresholds should be determined to aid in effective resource distribution. In a transport protocol of the Mayo Clinic [<xref ref-type="bibr" rid="pone.0213146.ref002">2</xref>], use of a portable ventilator is recommended if the required FiO2 is greater than 40%, positive end-expiratory pressure &gt;5 mmHg, and respiratory rate &gt;20 bpm, but it also relies on expert opinion and experience, rather than the results from a well-designed study.</p>
+<p>In our three subgroup analyses (<xref ref-type="supplementary-material" rid="pone.0213146.s001">S1</xref>, <xref ref-type="supplementary-material" rid="pone.0213146.s002">S2</xref> and <xref ref-type="supplementary-material" rid="pone.0213146.s003">S3</xref> Tables), relatively consistent significant risk factors of CPA during RRT-led IHT included, history of myocardial infarction, manual ventilation using a bag-valve mask, and the use of three or more vasopressors. Required FiO2 appeared to be less important. Especially in the subgroup with artificial airways (n = 381), using portable ventilator was found to significantly reduce the CPA risk during transport (OR = 0.166 [0.033–0.834], p = 0.029). Also, the risk increased significantly when the ward was the departure point and the ICU was the destination. It is thought that CPA occurs during IHT while the patient is being moved to the ICU without being fully stabilized in the ward room. Therefore, In this case, one needs to both be extremely careful and to move the patient to the ICU as soon as possible; however, it is also necessary to ensure maximum stabilization in the ward room as much as possible and before starting the transfer. History of hemiplegia was especially significant (OR = 9.54 [1.19–76.29], p = 0.033) in the subgroup with vasopressors (N = 239). The most common cause of hemiplegia is stroke; and both MI and stroke are the most important cerebrovascular diseases. Therefore, the ischemic episodes in cerebrovascular diseases would be significant risk factors for CPA during IHT especially in those with one or more vasopressors’ support.</p>
+<p>Our study has several limitations. First, selection bias may have occurred as our data does not represent all transported patients who were in critical condition in the hospital in the study period. The RRT cannot accompany every transport of all critical patients due to limited human and equipment resource; thus, RRT accompaniment is limited to cases for which an intensivist requests RRT transport. This leads to the potential problem of high-risk patients being defined arbitrarily by the intensivist in the team, as described in the methods section. Secondly, although our findings showed that manual ventilation and number of vasopressors used are risk factors for CPA during IHT, our findings did not provide specific cutoffs for portable ventilator use, or specific vasopressor dosage limit during transport. Thirdly, we did not review minor variations in physiologic parameters as complications of transport. Because this study was a retrospective review, we focused on the definite outcome of CPA to reduce bias. Additionally, previous studies [<xref ref-type="bibr" rid="pone.0213146.ref005">5</xref>, <xref ref-type="bibr" rid="pone.0213146.ref007">7</xref>, <xref ref-type="bibr" rid="pone.0213146.ref008">8</xref>, <xref ref-type="bibr" rid="pone.0213146.ref026">26</xref>, <xref ref-type="bibr" rid="pone.0213146.ref027">27</xref>] have evaluated the outcome data of patients who were transported, and reported that AEs such as arterial blood gas changes, physiologic changes, and equipment-related problems are frequent. Fourth, we did not compare CPA rates before and after implementation of RRT accompanied transport to determine whether accompaniment by a specialized team such as the RRT can reduce AEs during IHT. There are only a few existing studies evaluating whether implementation of a dedicated specialized transport team for critically ill patients promotes stable transport and patient safety [<xref ref-type="bibr" rid="pone.0213146.ref002">2</xref>, <xref ref-type="bibr" rid="pone.0213146.ref003">3</xref>, <xref ref-type="bibr" rid="pone.0213146.ref010">10</xref>]. The level of evidence is weak, and none of these previous studies were well-designed prospective studies. Further prospective study is needed to provide evidence that implementation of a team trained specifically in the transfer of critically ill patients is cost-effective, that it reduces the occurrence of harmful side effects and accidents during transportation, and that it improves overall patient outcomes.</p>
+</sec>
+<sec id="sec015" sec-type="conclusions">
+<title>Conclusions</title>
+<p>This is the first study to report the incidence rate of CPA in critically ill patients during IHT accompanied by the RRT. The occurrence rate of CPA was 1.5%. Furthermore, we determined that history of MI, manual ventilation with a bag-valve mask, and the use of three or more vasopressors were independent risk factors of CPA during IHT of critically ill patients who were accompanied by the RRT. Despite the use of this type of specialized team, CPA still occurred during IHT, and special attention should be devoted to high-risk, critically ill patients, particularly those with the risk factors determined by this study. Further prospective studies with larger sample sizes are needed to clarify when and how a portable ventilator should be used in the transport of critically ill patients, and to confirm the cutoff point for number of vasopressor use during transport.</p>
+</sec>
+<sec id="sec016">
+<title>Supporting information</title>
+<supplementary-material id="pone.0213146.s001" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0213146.s001" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>Patients with advanced airway.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0213146.s002" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0213146.s002" xlink:type="simple">
+<label>S2 Table</label>
+<caption>
+<title>Patients with vasopressors.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0213146.s003" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0213146.s003" xlink:type="simple">
+<label>S3 Table</label>
+<caption>
+<title>Patients with artificial airway and three or more vasopressors.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>We gratefully acknowledge all the following dedicated Seoul National University Bundang Hospital Medical Alert First Responder (SAFER) team members who participated by sharing their time and experiences with us to improve patients’ safety and care: Koung Jin Suh, Hyoung Woo Chang, Joonghee Kim, Dong Jung Kim, Inae Song, Jae-Hyuk Lee, and You Hwan Jo.</p>
+<p>We also acknowledge the members of the medical informatics team for preparing the screening system (BESTBOARD) for the SAFER team in Seoul National University Bundang Hospital.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0213146.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Warren</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Fromm</surname> <given-names>RE</given-names> <suffix>Jr.</suffix></name>, <name name-style="western"><surname>Orr</surname> <given-names>RA</given-names></name>, <name name-style="western"><surname>Rotello</surname> <given-names>LC</given-names></name>, <name name-style="western"><surname>Horst</surname> <given-names>HM</given-names></name>, <collab>American College of Critical Care M</collab>. <article-title>Guidelines for the inter- and intrahospital transport of critically ill patients</article-title>. <source>Crit Care Med</source>. <year>2004</year>;<volume>32</volume>(<issue>1</issue>):<fpage>256</fpage>–<lpage>62</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1097/01.CCM.0000104917.39204.0A" xlink:type="simple">10.1097/01.CCM.0000104917.39204.0A</ext-link></comment> <object-id pub-id-type="pmid">14707589</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kue</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Brown</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Ness</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Scheulen</surname> <given-names>J</given-names></name>. <article-title>Adverse clinical events during intrahospital transport by a specialized team: a preliminary report</article-title>. <source>Am J Crit Care</source>. <year>2011</year>;<volume>20</volume>(<issue>2</issue>):<fpage>153</fpage>–<lpage>61</lpage>; quiz 62. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.4037/ajcc2011478" xlink:type="simple">10.4037/ajcc2011478</ext-link></comment> <object-id pub-id-type="pmid">21362719</object-id></mixed-citation></ref>
+<ref id="pone.0213146.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Stearley</surname> <given-names>HE</given-names></name>. <article-title>Patients’ outcomes: intrahospital transportation and monitoring of critically ill patients by a specially trained ICU nursing staff</article-title>. <source>Am J Crit Care</source>. <year>1998</year>;<volume>7</volume>(<issue>4</issue>):<fpage>282</fpage>–<lpage>7</lpage>. <object-id pub-id-type="pmid">9656042</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kim</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>DS</given-names></name>, <name name-style="western"><surname>Min</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Choi</surname> <given-names>YY</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>EY</given-names></name>, <name name-style="western"><surname>Song</surname> <given-names>I</given-names></name>, <etal>et al</etal>. <article-title>Effectiveness Analysis of a Part-Time Rapid Response System During Operation Versus Nonoperation</article-title>. <source>Crit Care Med</source>. <year>2017</year>;<volume>45</volume>(<issue>6</issue>):<fpage>e592</fpage>–<lpage>e9</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1097/CCM.0000000000002314" xlink:type="simple">10.1097/CCM.0000000000002314</ext-link></comment> <object-id pub-id-type="pmid">28346260</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Beckmann</surname> <given-names>U</given-names></name>, <name name-style="western"><surname>Gillies</surname> <given-names>DM</given-names></name>, <name name-style="western"><surname>Berenholtz</surname> <given-names>SM</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>AW</given-names></name>, <name name-style="western"><surname>Pronovost</surname> <given-names>P</given-names></name>. <article-title>Incidents relating to the intra-hospital transfer of critically ill patients. An analysis of the reports submitted to the Australian Incident Monitoring Study in Intensive Care</article-title>. <source>Intensive Care Med</source>. <year>2004</year>;<volume>30</volume>(<issue>8</issue>):<fpage>1579</fpage>–<lpage>85</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s00134-004-2177-9" xlink:type="simple">10.1007/s00134-004-2177-9</ext-link></comment> <object-id pub-id-type="pmid">14991102</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Damm</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Vandelet</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Petit</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Richard</surname> <given-names>JC</given-names></name>, <name name-style="western"><surname>Veber</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Bonmarchand</surname> <given-names>G</given-names></name>, <etal>et al</etal>. [<article-title>Complications during the intrahospital transport in critically ill patients</article-title>]. <source>Ann Fr Anesth Reanim</source>. <year>2005</year>;<volume>24</volume>(<issue>1</issue>):<fpage>24</fpage>–<lpage>30</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.annfar.2004.10.026" xlink:type="simple">10.1016/j.annfar.2004.10.026</ext-link></comment> <object-id pub-id-type="pmid">15661461</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gillman</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Leslie</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Williams</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Fawcett</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Bell</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>McGibbon</surname> <given-names>V</given-names></name>. <article-title>Adverse events experienced while transferring the critically ill patient from the emergency department to the intensive care unit</article-title>. <source>Emerg Med J</source>. <year>2006</year>;<volume>23</volume>(<issue>11</issue>):<fpage>858</fpage>–<lpage>61</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1136/emj.2006.037697" xlink:type="simple">10.1136/emj.2006.037697</ext-link></comment> <object-id pub-id-type="pmid">17057138</object-id></mixed-citation></ref>
+<ref id="pone.0213146.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lahner</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Nikolic</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Marhofer</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Koinig</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Germann</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Weinstabl</surname> <given-names>C</given-names></name>, <etal>et al</etal>. <article-title>Incidence of complications in intrahospital transport of critically ill patients--experience in an Austrian university hospital</article-title>. <source>Wien Klin Wochenschr</source>. <year>2007</year>;<volume>119</volume>(<issue>13–14</issue>):<fpage>412</fpage>–<lpage>6</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s00508-007-0813-4" xlink:type="simple">10.1007/s00508-007-0813-4</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0213146.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Papson</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Russell</surname> <given-names>KL</given-names></name>, <name name-style="western"><surname>Taylor</surname> <given-names>DM</given-names></name>. <article-title>Unexpected events during the intrahospital transport of critically ill patients</article-title>. <source>Acad Emerg Med</source>. <year>2007</year>;<volume>14</volume>(<issue>6</issue>):<fpage>574</fpage>–<lpage>7</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1197/j.aem.2007.02.034" xlink:type="simple">10.1197/j.aem.2007.02.034</ext-link></comment> <object-id pub-id-type="pmid">17535981</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>McLenon</surname> <given-names>M</given-names></name>. <article-title>Use of a specialized transport team for intrahospital transport of critically ill patients</article-title>. <source>Dimens Crit Care Nurs</source>. <year>2004</year>;<volume>23</volume>(<issue>5</issue>):<fpage>225</fpage>–<lpage>9</lpage>. <object-id pub-id-type="pmid">15722846</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Doring</surname> <given-names>BL</given-names></name>, <name name-style="western"><surname>Kerr</surname> <given-names>ME</given-names></name>, <name name-style="western"><surname>Lovasik</surname> <given-names>DA</given-names></name>, <name name-style="western"><surname>Thayer</surname> <given-names>T</given-names></name>. <article-title>Factors that contribute to complications during intrahospital transport of the critically ill</article-title>. <source>J Neurosci Nurs</source>. <year>1999</year>;<volume>31</volume>(<issue>2</issue>):<fpage>80</fpage>–<lpage>6</lpage>. <object-id pub-id-type="pmid">14964607</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lovell</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Mudaliar</surname> <given-names>MY</given-names></name>, <name name-style="western"><surname>Klineberg</surname> <given-names>PL</given-names></name>. <article-title>Intrahospital transport of critically ill patients: complications and difficulties</article-title>. <source>Anaesth Intensive Care</source>. <year>2001</year>;<volume>29</volume>(<issue>4</issue>):<fpage>400</fpage>–<lpage>5</lpage>. <object-id pub-id-type="pmid">11512652</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Parmentier-Decrucq</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Poissy</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Favory</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Nseir</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Onimus</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Guerry</surname> <given-names>MJ</given-names></name>, <etal>et al</etal>. <article-title>Adverse events during intrahospital transport of critically ill patients: incidence and risk factors</article-title>. <source>Ann Intensive Care</source>. <year>2013</year>;<volume>3</volume>(<issue>1</issue>):<fpage>10</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/2110-5820-3-10" xlink:type="simple">10.1186/2110-5820-3-10</ext-link></comment> <object-id pub-id-type="pmid">23587445</object-id></mixed-citation></ref>
+<ref id="pone.0213146.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fanara</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Manzon</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Barbot</surname> <given-names>O</given-names></name>, <name name-style="western"><surname>Desmettre</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Capellier</surname> <given-names>G</given-names></name>. <article-title>Recommendations for the intra-hospital transport of critically ill patients</article-title>. <source>Crit Care</source>. <year>2010</year>;<volume>14</volume>(<issue>3</issue>):<fpage>R87</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/cc9018" xlink:type="simple">10.1186/cc9018</ext-link></comment> <object-id pub-id-type="pmid">20470381</object-id></mixed-citation></ref>
+<ref id="pone.0213146.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Taylor</surname> <given-names>JO</given-names></name>, <name name-style="western"><surname>Chulay</surname></name>, <name name-style="western"><surname>Landers</surname> <given-names>CF</given-names></name>, <name name-style="western"><surname>Hood</surname> <given-names>W</given-names> <suffix>Jr.</suffix></name>, <name name-style="western"><surname>Abelman</surname> <given-names>WH</given-names></name>. <article-title>Monitoring high-risk cardiac patients during transportation in hospital</article-title>. <source>Lancet</source>. <year>1970</year>;<volume>2</volume>(<issue>7685</issue>):<fpage>1205</fpage>–<lpage>8</lpage>. <object-id pub-id-type="pmid">4098656</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zaman</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Kovoor</surname> <given-names>P</given-names></name>. <article-title>Sudden cardiac death early after myocardial infarction: pathogenesis, risk stratification, and primary prevention</article-title>. <source>Circulation</source>. <year>2014</year>;<volume>129</volume>(<issue>23</issue>):<fpage>2426</fpage>–<lpage>35</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/CIRCULATIONAHA.113.007497" xlink:type="simple">10.1161/CIRCULATIONAHA.113.007497</ext-link></comment> <object-id pub-id-type="pmid">24914016</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Peltola</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Tulppo</surname> <given-names>MP</given-names></name>, <name name-style="western"><surname>Kiviniemi</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Hautala</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Seppanen</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Barthel</surname> <given-names>P</given-names></name>, <etal>et al</etal>. <article-title>Respiratory sinus arrhythmia as a predictor of sudden cardiac death after myocardial infarction</article-title>. <source>Ann Med</source>. <year>2008</year>;<volume>40</volume>(<issue>5</issue>):<fpage>376</fpage>–<lpage>82</lpage>. <object-id pub-id-type="pmid">18499938</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cairns</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Connolly</surname> <given-names>SJ</given-names></name>, <name name-style="western"><surname>Roberts</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Gent</surname> <given-names>M</given-names></name>. <article-title>Randomised trial of outcome after myocardial infarction in patients with frequent or repetitive ventricular premature depolarisations: CAMIAT. Canadian Amiodarone Myocardial Infarction Arrhythmia Trial Investigators</article-title>. <source>Lancet</source>. <year>1997</year>;<volume>349</volume>(<issue>9053</issue>):<fpage>675</fpage>–<lpage>82</lpage>. <object-id pub-id-type="pmid">9078198</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Julian</surname> <given-names>DG</given-names></name>, <name name-style="western"><surname>Camm</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Frangin</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Janse</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Munoz</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Schwartz</surname> <given-names>PJ</given-names></name>, <etal>et al</etal>. <article-title>Randomised trial of effect of amiodarone on mortality in patients with left-ventricular dysfunction after recent myocardial infarction: EMIAT. European Myocardial Infarct Amiodarone Trial Investigators</article-title>. <source>Lancet</source>. <year>1997</year>;<volume>349</volume>(<issue>9053</issue>):<fpage>667</fpage>–<lpage>74</lpage>. <object-id pub-id-type="pmid">9078197</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Adabag</surname> <given-names>AS</given-names></name>, <name name-style="western"><surname>Therneau</surname> <given-names>TM</given-names></name>, <name name-style="western"><surname>Gersh</surname> <given-names>BJ</given-names></name>, <name name-style="western"><surname>Weston</surname> <given-names>SA</given-names></name>, <name name-style="western"><surname>Roger</surname> <given-names>VL</given-names></name>. <article-title>Sudden death after myocardial infarction</article-title>. <source>JAMA</source>. <year>2008</year>;<volume>300</volume>(<issue>17</issue>):<fpage>2022</fpage>–<lpage>9</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1001/jama.2008.553" xlink:type="simple">10.1001/jama.2008.553</ext-link></comment> <object-id pub-id-type="pmid">18984889</object-id></mixed-citation></ref>
+<ref id="pone.0213146.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Weg</surname> <given-names>JG</given-names></name>, <name name-style="western"><surname>Haas</surname> <given-names>CF</given-names></name>. <article-title>Safe intrahospital transport of critically ill ventilator-dependent patients</article-title>. <source>Chest</source>. <year>1989</year>;<volume>96</volume>(<issue>3</issue>):<fpage>631</fpage>–<lpage>5</lpage>. Epub 1989/09/01. <object-id pub-id-type="pmid">2766824</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hurst</surname> <given-names>JM</given-names></name>, <name name-style="western"><surname>Davis</surname> <given-names>K</given-names> <suffix>Jr.</suffix></name>, <name name-style="western"><surname>Branson</surname> <given-names>RD</given-names></name>, <name name-style="western"><surname>Johannigman</surname> <given-names>JA</given-names></name>. <article-title>Comparison of blood gases during transport using two methods of ventilatory support</article-title>. <source>J Trauma</source>. <year>1989</year>;<volume>29</volume>(<issue>12</issue>):<fpage>1637</fpage>–<lpage>40</lpage>. <object-id pub-id-type="pmid">2593192</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dockery</surname> <given-names>WK</given-names></name>, <name name-style="western"><surname>Futterman</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Keller</surname> <given-names>SR</given-names></name>, <name name-style="western"><surname>Sheridan</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Akl</surname> <given-names>BF</given-names></name>. <article-title>A comparison of manual and mechanical ventilation during pediatric transport</article-title>. <source>Crit Care Med</source>. <year>1999</year>;<volume>27</volume>(<issue>4</issue>):<fpage>802</fpage>–<lpage>6</lpage>. <object-id pub-id-type="pmid">10321673</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Braman</surname> <given-names>SS</given-names></name>, <name name-style="western"><surname>Dunn</surname> <given-names>SM</given-names></name>, <name name-style="western"><surname>Amico</surname> <given-names>CA</given-names></name>, <name name-style="western"><surname>Millman</surname> <given-names>RP</given-names></name>. <article-title>Complications of intrahospital transport in critically ill patients</article-title>. <source>Annals of internal medicine</source>. <year>1987</year>;<volume>107</volume>(<issue>4</issue>):<fpage>469</fpage>–<lpage>73</lpage>. Epub 1987/10/01. <object-id pub-id-type="pmid">3477105</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Singer</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Vermaat</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Hall</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Latter</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Patel</surname> <given-names>M</given-names></name>. <article-title>Hemodynamic effects of manual hyperinflation in critically ill mechanically ventilated patients</article-title>. <source>Chest</source>. <year>1994</year>;<volume>106</volume>(<issue>4</issue>):<fpage>1182</fpage>–<lpage>7</lpage>. <object-id pub-id-type="pmid">7924493</object-id>.</mixed-citation></ref>
+<ref id="pone.0213146.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Knight</surname> <given-names>PH</given-names></name>, <name name-style="western"><surname>Maheshwari</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Hussain</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Scholl</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Hughes</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Papadimos</surname> <given-names>TJ</given-names></name>, <etal>et al</etal>. <article-title>Complications during intrahospital transport of critically ill patients: Focus on risk identification and prevention</article-title>. <source>Int J Crit Illn Inj Sci</source>. <year>2015</year>;<volume>5</volume>(<issue>4</issue>):<fpage>256</fpage>–<lpage>64</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.4103/2229-5151.170840" xlink:type="simple">10.4103/2229-5151.170840</ext-link></comment> <object-id pub-id-type="pmid">26807395</object-id></mixed-citation></ref>
+<ref id="pone.0213146.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jia</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Gao</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Yu</surname> <given-names>K</given-names></name>. <article-title>High incidence of adverse events during intra-hospital transport of critically ill patients and new related risk factors: a prospective, multicenter study in China</article-title>. <source>Crit Care</source>. <year>2016</year>;<volume>20</volume>:<fpage>12</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/s13054-016-1183-y" xlink:type="simple">10.1186/s13054-016-1183-y</ext-link></comment> <object-id pub-id-type="pmid">26781179</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

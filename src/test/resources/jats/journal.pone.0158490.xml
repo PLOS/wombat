@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1d3" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0158490</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-15-05325</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Health care</subject><subj-group><subject>Environmental health</subject><subj-group><subject>Sanitation</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Public and occupational health</subject><subj-group><subject>Environmental health</subject><subj-group><subject>Sanitation</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>People and places</subject><subj-group><subject>Geographical locations</subject><subj-group><subject>Africa</subject><subj-group><subject>Kenya</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Earth sciences</subject><subj-group><subject>Geography</subject><subj-group><subject>Geographic areas</subject><subj-group><subject>Urban areas</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Physical sciences</subject><subj-group><subject>Mathematics</subject><subj-group><subject>Numerical analysis</subject><subj-group><subject>Interpolation</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Population biology</subject><subj-group><subject>Population metrics</subject><subj-group><subject>Population density</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Earth sciences</subject><subj-group><subject>Geography</subject><subj-group><subject>Geographic areas</subject><subj-group><subject>Rural areas</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Earth sciences</subject><subj-group><subject>Marine and aquatic sciences</subject><subj-group><subject>Bodies of water</subject><subj-group><subject>Lakes</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Ecology and environmental sciences</subject><subj-group><subject>Aquatic environments</subject><subj-group><subject>Freshwater environments</subject><subj-group><subject>Lakes</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Earth sciences</subject><subj-group><subject>Marine and aquatic sciences</subject><subj-group><subject>Aquatic environments</subject><subj-group><subject>Freshwater environments</subject><subj-group><subject>Lakes</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Ecology and environmental sciences</subject><subj-group><subject>Natural resources</subject><subj-group><subject>Water resources</subject></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>High-Resolution Spatial Distribution and Estimation of Access to Improved Sanitation in Kenya</article-title>
+<alt-title alt-title-type="running-head">High-Resolution Mapping and Estimation of Improved Sanitation in Kenya</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Jia</surname>
+<given-names>Peng</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Anderson</surname>
+<given-names>John D.</given-names>
+</name>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Leitner</surname>
+<given-names>Michael</given-names>
+</name>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+<xref ref-type="aff" rid="aff005"><sup>5</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Rheingans</surname>
+<given-names>Richard</given-names>
+</name>
+<xref ref-type="aff" rid="aff006"><sup>6</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Faculty of Geo-information Science and Earth Observation (ITC), University of Twente, Enschede, 7500, The Netherlands</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Emerging Pathogens Institute, University of Florida, Gainesville, FL, United States of America</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Department of Environmental and Global Health, University of Florida, Gainesville, FL, United States of America</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Department of Geography and Anthropology, Louisiana State University, Baton Rouge, LA, United States of America</addr-line></aff>
+<aff id="aff005"><label>5</label> <addr-line>Department of Geoinformatics - Z_GIS, University of Salzburg, Salzburg, Austria</addr-line></aff>
+<aff id="aff006"><label>6</label> <addr-line>Goodnight Sustainable Development Department, Appalachian State University, Boone, NC, United States of America</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Chen</surname>
+<given-names>Yanguang</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Peking UIniversity, CHINA</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors declare that they have no competing interests.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: PJ RR. Performed the experiments: PJ JDA RR. Analyzed the data: PJ JDA RR. Wrote the paper: PJ JDA ML RR.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">jiapengff@hotmail.com</email> (PJ); <email xlink:type="simple">rheingansrd@appstate.edu</email> (RR)</corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>12</day>
+<month>7</month>
+<year>2016</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2016</year>
+</pub-date>
+<volume>11</volume>
+<issue>7</issue>
+<elocation-id>e0158490</elocation-id>
+<history>
+<date date-type="received">
+<day>6</day>
+<month>2</month>
+<year>2015</year>
+</date>
+<date date-type="accepted">
+<day>16</day>
+<month>6</month>
+<year>2016</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2016</copyright-year>
+<copyright-holder>Jia et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0158490"/>
+<abstract>
+<sec id="sec001">
+<title>Background</title>
+<p>Access to sanitation facilities is imperative in reducing the risk of multiple adverse health outcomes. A distinct disparity in sanitation exists among different wealth levels in many low-income countries, which may hinder the progress across each of the Millennium Development Goals.</p>
+</sec>
+<sec id="sec002">
+<title>Methods</title>
+<p>The surveyed households in 397 clusters from 2008–2009 Kenya Demographic and Health Surveys were divided into five wealth quintiles based on their national asset scores. A series of spatial analysis methods including excess risk, local spatial autocorrelation, and spatial interpolation were applied to observe disparities in coverage of improved sanitation among different wealth categories. The total number of the population with improved sanitation was estimated by interpolating, time-adjusting, and multiplying the surveyed coverage rates by high-resolution population grids. A comparison was then made with the annual estimates from United Nations Population Division and World Health Organization /United Nations Children's Fund Joint Monitoring Program for Water Supply and Sanitation.</p>
+</sec>
+<sec id="sec003">
+<title>Results</title>
+<p>The Empirical Bayesian Kriging interpolation produced minimal root mean squared error for all clusters and five quintiles while predicting the raw and spatial coverage rates of improved sanitation. The coverage in southern regions was generally higher than in the north and east, and the coverage in the south decreased from Nairobi in all directions, while Nyanza and North Eastern Province had relatively poor coverage. The general clustering trend of high and low sanitation improvement among surveyed clusters was confirmed after spatial smoothing.</p>
+</sec>
+<sec id="sec004">
+<title>Conclusions</title>
+<p>There exists an apparent disparity in sanitation among different wealth categories across Kenya and spatially smoothed coverage rates resulted in a closer estimation of the available statistics than raw coverage rates. Future intervention activities need to be tailored for both different wealth categories and nationally where there are areas of greater needs when resources are limited.</p>
+</sec>
+</abstract>
+<funding-group>
+<funding-statement>The research was funded by UK aid from the Department for International Development (DfID), as part of the SHARE (<ext-link ext-link-type="uri" xlink:href="http://www.SHAREresearch.org" xlink:type="simple">www.SHAREresearch.org</ext-link>) research programme and the Austrian Science Fund (FWF) through the Doctoral College GIScience (DK W 1237-N23).</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="12"/>
+<table-count count="3"/>
+<page-count count="21"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>DHS data are available via <ext-link ext-link-type="uri" xlink:href="http://www.dhsprogram.com/" xlink:type="simple">http://www.dhsprogram.com/</ext-link>, but may have limited access to different roles. AfriPop can be downloaded from <ext-link ext-link-type="uri" xlink:href="http://www.worldpop.org.uk/" xlink:type="simple">http://www.worldpop.org.uk/</ext-link>. All the data are owned by third parties and not the authors.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec005" sec-type="intro">
+<title>Introduction</title>
+<p>Sanitation facilities refer to latrines and other facilities to contain or safely dispose of human excreta [<xref ref-type="bibr" rid="pone.0158490.ref001">1</xref>, <xref ref-type="bibr" rid="pone.0158490.ref002">2</xref>]. Access to adequate sanitation facilities is important in reducing the risk of a wide range of adverse health outcomes, including diarrhea, soil-transmitted helminthes infection, schistosomiasis, trachoma, cystocercosis, poor nutritional status, tropical enteropathy, etc. [<xref ref-type="bibr" rid="pone.0158490.ref003">3</xref>–<xref ref-type="bibr" rid="pone.0158490.ref013">13</xref>]. Worldwide, 2.5 billion people still lack access to improved sanitation, and about 1 billion of those practice open defecation [<xref ref-type="bibr" rid="pone.0158490.ref014">14</xref>].</p>
+<p>The coverage of improved sanitation is also a key indicator for the socio-economic status of households, which has been repeatedly highlighted by recent efforts [<xref ref-type="bibr" rid="pone.0158490.ref015">15</xref>, <xref ref-type="bibr" rid="pone.0158490.ref016">16</xref>]. Owing to the significant variance in the economy in many low-income countries, there exists a distinct disparity in sanitation among different wealth groups, which may hinder the progress across each of the Millennium Development Goals (MDGs) [<xref ref-type="bibr" rid="pone.0158490.ref002">2</xref>, <xref ref-type="bibr" rid="pone.0158490.ref014">14</xref>, <xref ref-type="bibr" rid="pone.0158490.ref016">16</xref>, <xref ref-type="bibr" rid="pone.0158490.ref017">17</xref>].</p>
+<p>The importance of sanitation facilities with greater quality than quantity has been demonstrated in a range of recent studies in Kenya [<xref ref-type="bibr" rid="pone.0158490.ref018">18</xref>–<xref ref-type="bibr" rid="pone.0158490.ref020">20</xref>]. Jackson [<xref ref-type="bibr" rid="pone.0158490.ref021">21</xref>] indicated that limited financial resources in Kenya are the primary constraint to the large-scale adoption of sanitation technologies more so than a multitude of other reasons (e.g., lack of sanitation and hygiene awareness, knowledge on diseases and how to build latrines). Nevertheless, even the poorest can still afford pit latrines and, in addition, more than half of the households without access to sanitation were willing to invest in facilities and 62% of households with access expressed their willingness to pay for further improvement [<xref ref-type="bibr" rid="pone.0158490.ref021">21</xref>]. Therefore, it is of extreme importance to direct the resources and technologies at the areas of greatest need, and a greater disaggregation and a higher resolution in the resultant datasets are necessary for better decision-making [<xref ref-type="bibr" rid="pone.0158490.ref022">22</xref>].</p>
+<p>Location matters in unequal access to improved sanitation in Latin American and Caribbean countries [<xref ref-type="bibr" rid="pone.0158490.ref023">23</xref>]. Some efforts for estimating the urban, rural, and overall population with improved sanitation have been undertaken [<xref ref-type="bibr" rid="pone.0158490.ref014">14</xref>, <xref ref-type="bibr" rid="pone.0158490.ref022">22</xref>, <xref ref-type="bibr" rid="pone.0158490.ref024">24</xref>, <xref ref-type="bibr" rid="pone.0158490.ref025">25</xref>], but few studies were conducted for locating the areas of highest need at higher detail. To fill this gap, the goals of this study are 1) observing the spatial heterogeneity of improved sanitation coverage in different wealth categories and among the overall population at the 100-meter grid cell and county levels, 2) estimating the population covered by improved sanitation based on household survey data and a high-resolution gridded population data product, and 3) comparing the estimates of covered population with the nationwide estimates from the World Health Organization (WHO)/UNICEF Joint Monitoring Program (JMP) for Water Supply and Sanitation [<xref ref-type="bibr" rid="pone.0158490.ref022">22</xref>, <xref ref-type="bibr" rid="pone.0158490.ref025">25</xref>]. The approach of estimation including time adjustment can be applied to other studies with similar goals.</p>
+</sec>
+<sec id="sec006" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="sec007">
+<title>Study Area</title>
+<p>As one of the countries in East Africa, Kenya is located on the equator and bordered by Tanzania to the south, Uganda to the west, South Sudan to the northwest, Ethiopia to the north, and Somalia to the northeast. It has a land area of approximately 581,082 km<sup>2</sup> and a population of nearly 40.5 million people according to a 2010 estimate by the World Bank. Following a High Court ruling in September 2009, Kenya is divided into 47 counties that belong to eight provinces (from largest to smallest in area: Rift Valley, Eastern, North Eastern, Coast, Central, Nyanza, Western, and the capital Nairobi). However, the population ranking based on a 2009 Kenya Census is different from the size ranking of the provinces (<xref ref-type="table" rid="pone.0158490.t001">Table 1</xref>). Many Kenyans still live in rural areas (76.8% and 76.4% in 2009 and 2010, respectively), according to the 2011 revision of World Urbanization Prospects (UNPD 2012). The Gross Domestic Product (GDP) per capita (US $) in Kenya during 2009–2013 is $994, higher than the neighbouring countries of Ethiopia ($498), Uganda ($572), and Tanzania ($695), but lower than South Sudan ($1,221) (The World Bank 2014).</p>
+<table-wrap id="pone.0158490.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.t001</object-id>
+<label>Table 1</label> <caption><title>General spatial and demographic information of Kenya.</title></caption>
+<alternatives>
+<graphic id="pone.0158490.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">Province</th>
+<th align="left">County Number</th>
+<th align="left">Area (km<sup>2</sup>)</th>
+<th align="left">Area Rank</th>
+<th align="left">Total Population</th>
+<th align="left">Pop Rank</th>
+<th align="left">Male</th>
+<th align="left">Female</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Rift Valley</td>
+<td align="left">14</td>
+<td align="left">183,014</td>
+<td align="left">1</td>
+<td align="left">10,006,805</td>
+<td align="left">1</td>
+<td align="left">5,026,462</td>
+<td align="left">4,980,343</td>
+</tr>
+<tr>
+<td align="left">Eastern</td>
+<td align="left">8</td>
+<td align="left">153,527</td>
+<td align="left">2</td>
+<td align="left">5,668,123</td>
+<td align="left">2</td>
+<td align="left">2,783,347</td>
+<td align="left">2,884,776</td>
+</tr>
+<tr>
+<td align="left">North Eastern</td>
+<td align="left">3</td>
+<td align="left">127,355</td>
+<td align="left">3</td>
+<td align="left">2,310,757</td>
+<td align="left">8</td>
+<td align="left">1,258,648</td>
+<td align="left">1,052,109</td>
+</tr>
+<tr>
+<td align="left">Coast</td>
+<td align="left">6</td>
+<td align="left">82,510</td>
+<td align="left">4</td>
+<td align="left">3,325,307</td>
+<td align="left">6</td>
+<td align="left">1,656,679</td>
+<td align="left">1,668,628</td>
+</tr>
+<tr>
+<td align="left">Central</td>
+<td align="left">5</td>
+<td align="left">13,168</td>
+<td align="left">5</td>
+<td align="left">4,383,743</td>
+<td align="left">4</td>
+<td align="left">2,152,983</td>
+<td align="left">2,230,760</td>
+</tr>
+<tr>
+<td align="left">Nyanza</td>
+<td align="left">6</td>
+<td align="left">12,542</td>
+<td align="left">6</td>
+<td align="left">5,442,711</td>
+<td align="left">3</td>
+<td align="left">2,617,734</td>
+<td align="left">2,824,977</td>
+</tr>
+<tr>
+<td align="left">Western</td>
+<td align="left">4</td>
+<td align="left">8,267</td>
+<td align="left">7</td>
+<td align="left">4,334,282</td>
+<td align="left">5</td>
+<td align="left">2,091,375</td>
+<td align="left">2,242,907</td>
+</tr>
+<tr>
+<td align="left">Nairobi</td>
+<td align="left">1</td>
+<td align="left">698</td>
+<td align="left">8</td>
+<td align="left">3,138,369</td>
+<td align="left">7</td>
+<td align="left">1,605,230</td>
+<td align="left">1,533,139</td>
+</tr>
+<tr>
+<td align="left">TOTAL</td>
+<td align="left">47</td>
+<td align="left">581,082</td>
+<td align="left"/>
+<td align="left">38,610,097</td>
+<td align="left"/>
+<td align="left">19,192,45</td>
+<td align="left">19,417,63</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>Source: Kenya Census 2009</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec008">
+<title>Data Collection</title>
+<p>Household-level data from the 2008–2009 Kenya Demographic and Health Surveys (KDHS) were collected from a representative sample of 10,000 households grouped into clusters randomly selected within a two-stage sampling design [<xref ref-type="bibr" rid="pone.0158490.ref026">26</xref>, <xref ref-type="bibr" rid="pone.0158490.ref027">27</xref>]. Each cluster was represented by a GPS point with latitude and longitude coordinates and defined as either an urban or rural cluster [<xref ref-type="bibr" rid="pone.0158490.ref028">28</xref>]. There are 397 total clusters included in this study after initial data quality control and processing, with 384 clusters including 19–25 households and the remaining 13 clusters including 9–18 households. Among all the surveyed clusters, 132 are urban and 265 are rural clusters. Their actual locations were offset towards a random direction by a maximum of 2 kilometers for urban clusters and a maximum of 5 kilometers for rural clusters, with a further 1% of the rural clusters displaced a maximum of 10 kilometers, to maintain confidentiality of the surveyed respondents.</p>
+<p>The <italic>AfriPop</italic> project, now becoming part of the <italic>WorldPop</italic> project, is at present the best freely available source of data for population-related studies in Africa and in most cases it has outperformed the <italic>African Population Database</italic> (APD), <italic>Global Rural-Urban Mapping Project</italic> (GRUMP), <italic>Gridded Population of the World version 3</italic> (GPW3), and <italic>LandScan</italic> in Kenya [<xref ref-type="bibr" rid="pone.0158490.ref029">29</xref>]. The <italic>AfriPop 2010</italic>, adjusted to match UN national estimates with a resolution of 100 meters, was used in this study to represent the population density (persons/ha) (<xref ref-type="fig" rid="pone.0158490.g001">Fig 1</xref>).</p>
+<fig id="pone.0158490.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Spatial distribution of the population in Kenya (Unit: persons/ha).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g001" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec009">
+<title>Data Processing</title>
+<p>Drinking water supply and sanitation facilities have been included as household assets in the default asset scores and quintiles of DHS datasets [<xref ref-type="bibr" rid="pone.0158490.ref017">17</xref>]. Therefore, an asset score for each household was constructed using Principal Components Analysis (PCA) in <italic>Stata 12</italic> [<xref ref-type="bibr" rid="pone.0158490.ref030">30</xref>], on the basis of household ownership of durable goods and housing characteristics excluding sanitation and drinking water supply [<xref ref-type="bibr" rid="pone.0158490.ref031">31</xref>, <xref ref-type="bibr" rid="pone.0158490.ref032">32</xref>]. According to the asset scores, all households in Kenya were ranked and divided into five ordered subgroups called wealth quintiles, where the first quintile included the poorest 20% households and the fifth quintile included the wealthiest 20%.</p>
+<p>Five subsets of clusters representing five quintiles were created, each of which included all of the clusters that contained at least one household in the corresponding quintile. It is worth noting that those five subsets were not mutually exclusive. As the surveyed households in one cluster might fall in multiple quintiles but be only represented by one GPS point, a cluster can appear in all subsets only if it included at least one household in the corresponding wealth quintile.</p>
+<p>An improved sanitation facility was defined by JMP as one that ‘hygienically separates human excreta from human contact’, for MDG monitoring [<xref ref-type="bibr" rid="pone.0158490.ref014">14</xref>]. In this study, five types of toilet facilities are defined as improved: (1) Pit latrines with slabs, (2) ventilated improved pit latrines (VIP), (3–5) toilets that flush or pour to piped sewer systems/septic tanks/pit latrines. Pit latrines without slabs and flush toilets that do not have an outflow to an appropriate site were considered unimproved sanitation. Shared and private facilities were included provided they met the definition of improved facilities. The percentage of households with any of the five improved types in each cluster was calculated as the coverage rate of improved sanitation for the overall population and for each quintile and accounted for the survey design and weights in <italic>Stata 12</italic> [<xref ref-type="bibr" rid="pone.0158490.ref030">30</xref>].</p>
+</sec>
+<sec id="sec010">
+<title>Data Analysis</title>
+<p>Excess risk in the overall population and in each wealth quintile was assessed where the risk for lack of improved sanitation was higher (excess ratio risk &gt;1) and lower (excess ratio risk &lt;1) than the national average level, and where extremely high risk was present (excess ratio risk &gt;2). The national average level was calculated as the ratio between the total number of households without improved sanitation and the number of all surveyed households, instead of simply using the average of all clusters. The excess risk in each quintile was calculated as:
+<disp-formula id="pone.0158490.e001">
+<alternatives>
+<graphic id="pone.0158490.e001g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0158490.e001" xlink:type="simple"/>
+<mml:math display="block" id="M1">
+<mml:mrow><mml:msub><mml:mi>r</mml:mi><mml:mrow><mml:mi>c</mml:mi><mml:mi>q</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mo stretchy="false">(</mml:mo><mml:msub><mml:mi>n</mml:mi><mml:mrow><mml:mi>c</mml:mi><mml:mi>q</mml:mi></mml:mrow></mml:msub><mml:mo>/</mml:mo><mml:msub><mml:mi>N</mml:mi><mml:mrow><mml:mi>c</mml:mi><mml:mi>q</mml:mi></mml:mrow></mml:msub><mml:mo stretchy="false">)</mml:mo><mml:mo>/</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:munder><mml:mstyle displaystyle="true" mathsize="140%"><mml:mo>∑</mml:mo></mml:mstyle><mml:mrow><mml:mtext>x</mml:mtext><mml:mo>∈</mml:mo><mml:mtext>P</mml:mtext></mml:mrow></mml:munder><mml:msub><mml:mi>n</mml:mi><mml:mi>x</mml:mi></mml:msub><mml:mo>/</mml:mo><mml:munder><mml:mstyle displaystyle="true" mathsize="140%"><mml:mo>∑</mml:mo></mml:mstyle><mml:mrow><mml:mtext>x</mml:mtext><mml:mo>∈</mml:mo><mml:mtext>P</mml:mtext></mml:mrow></mml:munder><mml:msub><mml:mi>N</mml:mi><mml:mi>x</mml:mi></mml:msub></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+where <italic>r</italic><sub>cq</sub> = excess risk for the cluster c in quintile q, <italic>n</italic><sub>cq</sub> = number of households without improved sanitation in cluster c in quintile q, <italic>N</italic><sub>cq</sub> = total number of households in cluster c in quintile q, <italic>n</italic><sub>x</sub> = total number of households without improved sanitation in cluster x, <italic>N</italic><sub>x</sub> = total number of surveyed households in cluster x, and P represents all 397 clusters in this study.</p>
+<p>A Thiessen polygon was created around each cluster, within which any location was closer to the centered cluster than other surrounding clusters. According to Tobler’s first law of geography that ‘everything is related to everything else, but near things are more related than distant things [<xref ref-type="bibr" rid="pone.0158490.ref033">33</xref>],’ spatial smoothing was used to produce a corresponding estimate to the raw coverage rate of each cluster from a collection of neighboring clusters enclosed by Thiessen polygons. The first order rook contiguity was applied as the spatial smoothing rule in this study, meaning that all neighboring polygons sharing a border of some length that is longer than a point-length border, with the target Thiessen polygon were defined as neighbors.</p>
+<p>Local Moran’s I were calculated using <italic>GeoDa</italic> [<xref ref-type="bibr" rid="pone.0158490.ref034">34</xref>] to identify clusters of high and low coverage of improved sanitation, where a Random Permutation Procedure (RPP) was additionally used to replicate the statistics 999 times to generate reference distributions. By comparison with reference distributions, the statistical significance of high and low spatial clustering was tested. The Local Moran’s I was calculated for both raw and spatially-smoothed rates.</p>
+</sec>
+<sec id="sec011">
+<title>Interpolation</title>
+<p>There are two broad classes of interpolation methods, deterministic (for example, inverse distance weighted (IDW) interpolation) and probabilistic (for example, Kriging interpolation), both of which were used in this study to predict values where sampling was not conducted [<xref ref-type="bibr" rid="pone.0158490.ref035">35</xref>]. According to Tobler’s first law of geography, the IDW interpolation uses the measured values surrounding each unsampled location, weighted by the proximity to this location, to predict the value.</p>
+<p>A semivariogram is a function of the distance and direction separating two locations, which is estimated from the data for quantifying the spatial dependence in the data and assumed to be the same at all locations (spatial homogeneity) in the classical Kriging method. This assumption rarely holds true in practice, so the empirical Bayesian Kriging (EBK) interpolation was used to account for the variance by estimating multiple semivariogram models from the data instead of a standalone semivariogram. The selection of models and parameters in the common Kriging methods, such as ordinary and universal Kriging, was automated in the EBK.</p>
+<p>The raw and spatially smoothed coverage rates of improved sanitation in the overall population and in each quintile were interpolated by the IDW and EBK based on all clusters that included at least one household in that quintile. The root mean squared error (RMSE) was calculated by omitting a measured value then predicting its value based on surrounding point values. The measured and predicted values were compared through an iterative cross validation process within each model to compare the level of accuracy different models predicted as values at unobserved sites. The IDW and EBK interpolation models for the overall population and for each quintile were both adjusted to obtain a minimal RMSE, and the ones with the smaller RMSE, either IDW or EBK, were selected as final models.</p>
+</sec>
+<sec id="sec012">
+<title>Estimating the Population with Improved Sanitation</title>
+<p>Both the continuous raw and spatially-smoothed coverage rates of improved sanitation for the overall population, interpolated by final models, were re-sampled to spatially match the actual population distribution in <italic>AfriPop</italic>, and also adjusted separately in urban and rural areas for temporally matching the 2010 <italic>AfriPop</italic>. Adjustment rates between 2008–2010 for urban and rural areas were determined by linear regression, established based on multiple surveys during 1989–2008, including DHS (1989, 1993, 1998, 2003 and 2008), Census (1989 and 1999), Welfare Monitoring Survey (1994), Core Welfare Monitoring Questionnaire (1997), Multiple Indicator Cluster Survey (2000), World Health Survey (2004), and National Bureau of Statistics (2006) [<xref ref-type="bibr" rid="pone.0158490.ref036">36</xref>].</p>
+<p>Due to a lack of city boundaries, the urban areas were extracted under the assumption that the population density is greater in the city than outside. According to the World Bank estimates, 24% of the total population in Kenya lived in urban areas in 2010 (23% in 2009, and also 24% in 2011 and 2012). All grid cells were ranked in order from highest to lowest population density. Starting with the highest population density, all cells including 24% of the total population were extracted as urban areas in this study, and the remaining areas were marked as rural. The total number of the population covered by improved sanitation was the sum of urban and rural estimates, separately calculated by adding together all grid cell values by time-adjusted coverage rates and population.</p>
+<p>Additionally, the interpolated raw and spatially-smoothed coverage rates of improved sanitation for the overall population and each quintile were masked with the populated areas (population density ≥ 1 person/km<sup>2</sup>, namely ≥ 0.01 person/ha in the <italic>AfriPop 2010</italic>), and then averaged at the county level for a better view.</p>
+</sec>
+</sec>
+<sec id="sec013" sec-type="results">
+<title>Results</title>
+<sec id="sec014">
+<title>Raw Coverage</title>
+<p>Each household was assigned to one of five quintiles, according to its national asset scores. The numbers and percentages of clusters with different households in each subset (quintile) are shown in <xref ref-type="fig" rid="pone.0158490.g002">Fig 2</xref>. When comparing the distribution of surveyed households for the five quintiles (<xref ref-type="fig" rid="pone.0158490.g003">Fig 3</xref>), we found a clear transition of wealth from periphery to the capital Nairobi. Most of the households in quintile 1 are located in the north and west (Western and Nyanza Province) of Kenya and southeastern coastline regions (Coast Province). The households in quintile 2 were primarily clustered in the west, with the clustering trend in the north and southeastern coastlines waning. In quintile 3, an obvious clustering trend emerged in the Central Province and this trend continued into quintile 4. The majority of the richest 20% households in quintile 5 were congregated in Nairobi to the south of the Central Province, and in Mombasa in the southeast, the second largest city in Kenya.</p>
+<fig id="pone.0158490.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Numbers and percentages of clusters categorized by the number of households each cluster represents, presented for all clusters by quintile.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g002" xlink:type="simple"/>
+</fig>
+<fig id="pone.0158490.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Number of households in each cluster for the overall population and each subset (quintile).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g003" xlink:type="simple"/>
+</fig>
+<p>The numbers and percentages of sampled clusters with varying coverage of improved sanitation in each quintile are shown in <xref ref-type="fig" rid="pone.0158490.g004">Fig 4</xref>, where a clear rise and decline in percentage of the clusters with 80–100% and 0–20% coverage, respectively, were indicated from quintile 1 to 5. The differences in raw coverage rates among the sampled clusters between each subsequent and preceding quintile were statistically tested (<xref ref-type="table" rid="pone.0158490.t002">Table 2</xref>). It was obvious that the coverage rates of improved sanitation have continuously increased from the poorest to the richest quintile, with significant differences between each subsequent and preceding quintile (α ≤ 0.001).</p>
+<fig id="pone.0158490.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Numbers and percentages of clusters categorized by the raw coverage rates of improved sanitation, presented for all clusters by quintile.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g004" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0158490.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.t002</object-id>
+<label>Table 2</label> <caption><title>Results of 2-tailed <italic>t</italic>-tests for the differences in the coverage rates of improved sanitation between each subsequent and preceding quintile.</title></caption>
+<alternatives>
+<graphic id="pone.0158490.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left"/>
+<th align="left" colspan="2">Levene’s Test</th>
+<th align="left" colspan="7"><italic>t</italic>-test for Equality of Means</th>
+</tr>
+<tr>
+<th align="left">Quintile</th>
+<th align="left">F.</th>
+<th align="left">Sig.</th>
+<th align="left">t</th>
+<th align="left">df</th>
+<th align="left">Sig.</th>
+<th align="left">Mean Difference</th>
+<th align="left">Std. Error Difference</th>
+<th align="left">95% Lower</th>
+<th align="left">95% Upper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2 versus 1</td>
+<td align="char" char=".">3.623</td>
+<td align="char" char=".">0.058</td>
+<td align="char" char=".">-3.292</td>
+<td align="left">488</td>
+<td align="char" char=".">0.001</td>
+<td align="char" char=".">-0.092</td>
+<td align="char" char=".">0.028</td>
+<td align="char" char=".">-0.146</td>
+<td align="char" char=".">-0.037</td>
+</tr>
+<tr>
+<td align="left">3 versus 2</td>
+<td align="char" char=".">3.724</td>
+<td align="char" char=".">0.054</td>
+<td align="char" char=".">-5.566</td>
+<td align="left">562</td>
+<td align="char" char=".">0.000</td>
+<td align="char" char=".">-0.157</td>
+<td align="char" char=".">0.028</td>
+<td align="char" char=".">-0.213</td>
+<td align="char" char=".">-0.102</td>
+</tr>
+<tr>
+<td align="left">4 versus 3</td>
+<td align="char" char=".">1.549</td>
+<td align="char" char=".">0.214</td>
+<td align="char" char=".">-7.866</td>
+<td align="left">623</td>
+<td align="char" char=".">0.000</td>
+<td align="char" char=".">-0.214</td>
+<td align="char" char=".">0.027</td>
+<td align="char" char=".">-0.267</td>
+<td align="char" char=".">-0.160</td>
+</tr>
+<tr>
+<td align="left">5 versus 4</td>
+<td align="char" char=".">22.702</td>
+<td align="char" char=".">0.000</td>
+<td align="char" char=".">-6.342</td>
+<td align="left">525</td>
+<td align="char" char=".">0.000</td>
+<td align="char" char=".">-0.176</td>
+<td align="char" char=".">0.028</td>
+<td align="char" char=".">-0.230</td>
+<td align="char" char=".">-0.121</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>*Equal variances assumed</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Excess risk was mapped overall and for each quintile to illustrate the degree of potential risks for sanitation-related diseases due to low coverage (<xref ref-type="fig" rid="pone.0158490.g005">Fig 5</xref>). The clusters with highest risks relative to the national average were highlighted with larger rose and red points. The distribution of high risks was generally consistent with that of low coverage and clusters having households in the poorest quintiles. For example, quintile 1 has the highest number of red points representing clusters with extremely high excess risk (ranging from 2 to 11.4). In contrast, clusters with households in quintile 5 showed lower excess risk, with most clusters falling into the low excess risk range (0–0.5).</p>
+<fig id="pone.0158490.g005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g005</object-id>
+<label>Fig 5</label>
+<caption>
+<title>Excess risk for sanitation-related diseases in clusters for the overall population and each subset (quintile).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g005" xlink:type="simple"/>
+</fig>
+<p>Local Moran’s I was calculated for the overall population (<xref ref-type="fig" rid="pone.0158490.g006">Fig 6a</xref>), demonstrating the clustering of high (High-High) and low coverage (Low-Low), high surrounded by low coverage (High-Low), and low surrounded by high coverage (Low-High). The majority of clusters with high coverage were located in Nairobi, Kiambu County (Central Province) that bordered Nairobi to the north, and Mombasa. Some high coverage clusters were sparsely spread across neighboring counties around Mombasa, including Malindi County (Coast Province) to the north of Mombasa, Kwale County (Coast Province) to the south of Mombasa, and Taita Taveta County (Coast Province) to the northwest of Mombasa. Most clusters in northern and western Kenya had lower coverage, especially in the south of the Western Province and around the branch of Lake Victoria that stretches to Nyanza Province in the southwest, called Lake Victoria region hereafter. Although there were few clusters with high coverage in the north and west of Kenya, each of these clusters was surrounded by clusters with poor coverage. Clustering with low coverage was found in the Lake Victoria region and northern rural regions.</p>
+<fig id="pone.0158490.g006" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g006</object-id>
+<label>Fig 6</label>
+<caption>
+<title>Clustering trends of coverage rates in cluster before (a) and after spatial smoothing (b).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g006" xlink:type="simple"/>
+</fig>
+<p>The raw coverage rates of improved sanitation were interpolated based on surveyed households by EBK interpolation (<xref ref-type="fig" rid="pone.0158490.g007">Fig 7</xref>), which produced less RMSEs than IDW for the overall population and for the five quintiles (<xref ref-type="table" rid="pone.0158490.t003">Table 3</xref>). The general trend in coverage rates of improved sanitation has increased from quintile 1 to 5, due primarily to the elevated rates at sampled clusters. A balance for the resolution of spatial heterogeneity was found, where interpolated coverage rates were re-sampled, masked with the populated areas (≥ 0.01 person/ha), and averaged by county (<xref ref-type="fig" rid="pone.0158490.g008">Fig 8</xref>). Except Bungoma (58.7%) and Trans Nzoia County (53.0%) in the west, nine out of eleven counties with more than 50% coverage rates were located in the south, forming a continuous band from Nyandarua (54.9%) to Kwale (52.7%), going through Muranga (52.1%), Kiambu (66.0%), Nairobi (94.0%), Machakos (52.1%), Kajiado (59.9%), Taita Taveta (63.2%), and Mombasa (60.5%). The coverage rates in the south, decreasing from Nairobi in all directions, were generally higher than in the north and east, while Nyanza and North Eastern Province had relatively poor coverage.</p>
+<fig id="pone.0158490.g007" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g007</object-id>
+<label>Fig 7</label>
+<caption>
+<title>Kenya map of the raw coverage rates of improved sanitation interpolated by Empirical Bayesian Kriging (EBK) for the overall population and each subset (quintile).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g007" xlink:type="simple"/>
+</fig>
+<fig id="pone.0158490.g008" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g008</object-id>
+<label>Fig 8</label>
+<caption>
+<title>Raw coverage rates of improved sanitation averaged by county for the overall population and each subset (quintile).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g008" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0158490.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.t003</object-id>
+<label>Table 3</label> <caption><title>Numbers and percentages of clusters categorized by smoothed improved sanitation coverage rates, presented for all clusters by quintile.</title></caption>
+<alternatives>
+<graphic id="pone.0158490.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left"/>
+<th align="left">Total</th>
+<th align="left" colspan="2">Raw</th>
+<th align="left" colspan="2">Spatial</th>
+</tr>
+<tr>
+<th align="left">Quintile</th>
+<th align="left">number</th>
+<th align="left">EBK</th>
+<th align="left">IDW</th>
+<th align="left">EBK</th>
+<th align="left">IDW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">229</td>
+<td align="char" char=".">0.265</td>
+<td align="char" char=".">0.286</td>
+<td align="char" char=".">0.059</td>
+<td align="char" char=".">0.065</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">261</td>
+<td align="char" char=".">0.286</td>
+<td align="char" char=".">0.305</td>
+<td align="char" char=".">0.074</td>
+<td align="char" char=".">0.076</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">303</td>
+<td align="char" char=".">0.311</td>
+<td align="char" char=".">0.332</td>
+<td align="char" char=".">0.087</td>
+<td align="char" char=".">0.091</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">322</td>
+<td align="char" char=".">0.303</td>
+<td align="char" char=".">0.314</td>
+<td align="char" char=".">0.084</td>
+<td align="char" char=".">0.089</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">205</td>
+<td align="char" char=".">0.226</td>
+<td align="char" char=".">0.242</td>
+<td align="char" char=".">0.062</td>
+<td align="char" char=".">0.066</td>
+</tr>
+<tr>
+<td align="left">ALL</td>
+<td align="left">397</td>
+<td align="char" char=".">0.215</td>
+<td align="char" char=".">0.234</td>
+<td align="char" char=".">0.064</td>
+<td align="char" char=".">0.070</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec015">
+<title>Spatially-Smoothed Coverage</title>
+<p>Similarly, a spatially-smoothed coverage rate was calculated for each cluster from a collection of its neighboring clusters to overcome the small number issue that may happen in this study, since 26.2%-45.7% of clusters in separate quintile subsets included only three households or less (<xref ref-type="fig" rid="pone.0158490.g002">Fig 2</xref>). The spatially-smoothed coverage rates had stronger correlation with the predicted coverage rates, which were produced by omitting a point and calculating the rate of this location based on the remaining points. The numbers and percentages of clusters with different smoothed coverage in each quintile are shown in <xref ref-type="fig" rid="pone.0158490.g009">Fig 9</xref>. The percentages of clusters with high coverage in quintile 1 and 2, and of the clusters with low coverage in quintile 4 and 5 declined significantly, which resulted from spatial smoothing that adjusted the raw coverage rates of clusters in each quintile towards a level suitable for the average economic status at that level. Quintile 3 was a middle-level status, so the raw coverage rates in clusters at two ends were adjusted towards the middle with the percentages of the clusters with 0–20% and &gt;80–100% coverage dwindling and of the clusters with &gt;20–80% coverage growing.</p>
+<fig id="pone.0158490.g009" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g009</object-id>
+<label>Fig 9</label>
+<caption>
+<title>Numbers and percentages of clusters categorized by the spatially-smoothed coverage rates of improved sanitation, presented for all clusters by quintile.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g009" xlink:type="simple"/>
+</fig>
+<p>The spatially-smoothed coverage rates interpolated on the basis of sampled clusters were shown in <xref ref-type="fig" rid="pone.0158490.g010">Fig 10</xref>, where EBK remained superior to IDW. Likewise, the continuous smoothed rates were re-sampled, masked with populated areas (population density ≥ 1 person/km<sup>2</sup>), and averaged by county (<xref ref-type="fig" rid="pone.0158490.g011">Fig 11</xref>). The direction (increase or decrease) and degree of spatial smoothing in all counties, measured by subtracting the raw from spatially-smoothed coverage rates, were categorized (<xref ref-type="fig" rid="pone.0158490.g012">Fig 12</xref>). In general, the spatially-smoothed coverage rates decreased in the south (surrounding Nairobi), and increased in the north and west (surrounding Lake Victoria), with the degree of being spatially smoothed varying by wealth and across Kenya. In the subsets, the rates in quintile 1 and 5 were most intensively under- and over-estimated, respectively. The degree of spatial smoothing in each quintile was examined against the numbers of surveyed households within clusters. A consistent trend in all five quintiles indicated that the coverage in clusters including fewer households was more drastically changed by spatial smoothing.</p>
+<fig id="pone.0158490.g010" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g010</object-id>
+<label>Fig 10</label>
+<caption>
+<title>Kenya map of the spatially-smoothed coverage rates of improved sanitation interpolated by Empirical Bayesian Kriging (EBK) for the overall population and each subset (quintile).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g010" xlink:type="simple"/>
+</fig>
+<fig id="pone.0158490.g011" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g011</object-id>
+<label>Fig 11</label>
+<caption>
+<title>Spatially-smoothed coverage rates of improved sanitation averaged by county for the overall population and each subset (quintile).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g011" xlink:type="simple"/>
+</fig>
+<fig id="pone.0158490.g012" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0158490.g012</object-id>
+<label>Fig 12</label>
+<caption>
+<title>Differences between the raw and spatially-smoothed coverage rates of improved sanitation for the overall population and each subset (quintile) on the county level.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0158490.g012" xlink:type="simple"/>
+</fig>
+<p>Local Moran’s I was also calculated for the overall population after spatial smoothing (<xref ref-type="fig" rid="pone.0158490.g006">Fig 6b</xref>). The general clustering trend of hot and cold spots among sampled clusters was confirmed after smoothing, although clustering of spatial outliers was eliminated.</p>
+</sec>
+<sec id="sec016">
+<title>Estimated Population with Improved Sanitation</title>
+<p>Among the surveyed clusters by the 2008–2009 KDHS, mean coverage rates were 82.1% and 35.1% in urban and rural regions, respectively, while the median rates were 91.5% and 20.8% in urban and rural areas, respectively. According to the linear regression, the estimated urban coverage rates in 2008 and 2010 were 78% and 79.2%, respectively, while the estimated rural coverage rates in 2008 and 2010 were 50% and 50.5%, respectively. Therefore, growth rates of 1.2% and 0.5% were added to the interpolated coverage rates in urban and rural grid cells, respectively, under the assumption that the coverage rate has increased by the same extent nationwide during 2008–2010.</p>
+<p>Adding together all products by time-adjusted coverage rates and total population, the estimated total population with improved sanitation in 2010, based on raw and spatially-smoothed rates, were 19,875,164 (6,569,164 in urban and 13,306,000 in rural regions) and 18,978,948 (6,084,058 in urban and 12,894,890 in rural areas), respectively. When divided by the total population, the estimated overall coverage rates, before and after spatial smoothing, were 49.1% (67% in urban and 43.5% in rural regions) and 46.9% (62.1% in urban and 42% in rural areas), respectively.</p>
+<p>According to annual updates of the Progress on Drinking Water and Sanitation, nationwide estimates of coverage rates of improved sanitation (improved + shared) in 2008 were 78% and 50% for urban and rural Kenya, respectively [<xref ref-type="bibr" rid="pone.0158490.ref022">22</xref>]. According to the 2012 update report, estimates for urban and rural Kenya in 2010 were 80% and 53%, respectively [<xref ref-type="bibr" rid="pone.0158490.ref025">25</xref>]. However, estimates for urban areas in Kenya in 2011 [<xref ref-type="bibr" rid="pone.0158490.ref014">14</xref>] and 2012 [<xref ref-type="bibr" rid="pone.0158490.ref024">24</xref>] were only 78% and 79%, respectively, while estimates for rural Kenya were 48% in both 2011 and 2012. It implies that the coverage rates in 2010 either peaked in that year or was overestimated in 2012. Also considering estimates in the preceding (2008) and subsequent year (2011), a reasonable range of estimates in 2010 by JMP should be about 78–80% in urban areas and 48–50% in rural areas. As a result, our estimation based on the coverage rates of improved sanitation before spatial smoothing provides a close approximation of the JMP estimates.</p>
+</sec>
+</sec>
+<sec id="sec017" sec-type="conclusions">
+<title>Discussion</title>
+<p>Declared as the International Year of Sanitation, the year 2008 serves as an important baseline for assessing the progress towards the Millennium Development Goal (MDG) target to reduce by half the proportion of the 2.6 billion people without access to basic sanitation by 2015. Therefore, a basic understanding of the status quo of the sanitation in the baseline year is a necessary requirement for future strategies. In addition to several recent and encouraging studies in Kenya, the availability of data sources in proximate years (improved sanitation coverage rates in 2008 and population in 2010) offers the possibility to develop a spatial approach for estimating the size and location of the population covered by improved sanitation.</p>
+<p>This is the first study to comprehensively analyze the spatial distribution of improved sanitation coverage among Kenyan households by their socioeconomic status at the county and even finer levels. Among all surveyed households, we found that wealthier populations were located in central regions in or near Nairobi and poorer populations were dispersed outwards from Nairobi in all directions, particularly in the northwest and northeast, and Lake Victoria region. The patterns of high coverage of improved sanitation were generally consistent with locations where wealthier populations lived. Wealthier populations were often collocated in areas with the most improved sanitation services and poorer populations were often collocated in areas with less effective sanitation services.</p>
+<p>Excess risk and Local Moran’s I showed the relationship between sanitation nationally and across socioeconomic status using different parameters. The former showed the extent of potential risk in surveyed clusters relative to the national average of households without sanitation, independent of surrounding clusters. The latter showed the relationship of improved sanitation coverage for each cluster to neighboring clusters. Excess risk in each quintile indicated that a gap of coverage existed among households with comparable socioeconomic status. Clusters with the poorest households (quintile 1) had more than twice the excess risk relative to the national average in both clusters around urban areas of Nairobi and Kisumu as well as in urban areas in northern Kenya. Households in quintile 3 generally had lower risk for lack of improved sanitation than the poorest households, but still show significant excess risk, especially around urban areas. Significantly higher risks appeared in the west and middle regions in quintile 4, possibly as the clusters had greater wealth heterogeneity, with richer households located near middle and poorer households. Additionally, a minor clustering of low coverage in quintile 4 occurred in the Lake Victoria region.</p>
+<p>Most clusters fell into two categories, namely hot spots and cold spots, indicating that areas of high and low coverage are often surrounded by neighboring clusters with similar coverage rates of improved sanitation. This is important in deciding areas of highest priority for risk for sanitation-related diseases. In contrast, high coverage clusters were infrequently surrounded by low coverage clusters and such a relationship was dispersed across Kenya. Local Moran’s I using spatial smoothing coverage likewise considered not only the coverage in each cluster but also in their neighborhoods, to adjust outliers to a local average level. Most of the noticeably adjusted clusters had inconsistent raw rates within neighborhoods or small numbers of households in quintile subsets. For example, rates in most clusters with less than three households in all quintiles were adjusted, but in most clusters with more than ten households the rates remained or were only slightly adjusted. In addition to adjusting possible outliers, spatial smoothing also more clearly showed the same trend resulting from raw coverage estimates. Further surveys and analytical methods are needed to assess the accuracy of spatial smoothing used to adjust inconsistent rates, especially in regions with large differences in coverage before and after smoothing.</p>
+<p>The IDW interpolation, widely used in many socioeconomic, disease, and health studies [<xref ref-type="bibr" rid="pone.0158490.ref037">37</xref>–<xref ref-type="bibr" rid="pone.0158490.ref040">40</xref>], was used for comparison purposes. Since the numbers of households in clusters varied considerably in quintile subsets, from 1 to 25 depending on the national asset scores of households, we used the numbers of households to weight the clusters for the IDW interpolation under the assumption that the rates in clusters with more surveyed households were more reliable. However, the RMSE from the IDW was higher compared to the EBK interpolation in all five subsets and the overall dataset, which demonstrated the strengths of the EBK for small datasets over not only other kriging methods, but also the deterministic interpolation approach.</p>
+<p>A primary concern was the representativeness of surveyed clusters. The low coverage was partly attributed to rural clusters across Kenya. Fewer clusters were sampled in the northern and eastern regions than in the central and western regions. Spatial patterns of coverage in wealth quintiles were in part attributed to the sampling strategy. For instance, most of the surveyed households in the north were located in rural areas with very low population density, while all surveyed households in Nairobi and Mombasa were in urban areas. Furthermore, all households in each of 397 clusters were sparsely sampled instead of completely surveyed, subjecting them to some level of bias.</p>
+<p>There is an ongoing debate about whether shared facilities are able to provide a similar level of protection as private ones [<xref ref-type="bibr" rid="pone.0158490.ref017">17</xref>]. In this study, we included the households with all types of improved sanitation facilities regardless of their status as shared or private. When averaging the coverage rates by county, all populated areas within each county were given the same weight under the assumption that the population density was homogeneous across each county. Additional approaches should be explored to seek more fairly representative values of the average level in each county. Additionally, spatial smoothing may misinterpret some truly abnormal values as outliers, which would introduce new sources of error and mitigate the degree of true spatial heterogeneity.</p>
+<p>The estimates from our approach, even prior to spatial smoothing, are apparently lower than the JMP estimates in both urban and rural areas, most likely due to the random shift of the original location of the surveyed urban clusters away from the actual urban areas. This resulted in the urban clusters not matching the underlying urban grid cells in <italic>AfriPop</italic>. Therefore, when calculating the total urban population with improved sanitation, the coverage rate was most likely multiplied by the underlying rural grid cells with relatively low population density, instead of the correct urban grid cells with high population density. This greatly reduced the size of covered population in urban areas. In contrast to urban regions, rural regions possess relatively large areas, which made estimates of the rural coverage rates less subjective to the mismatch resulting from the random shift in the original data. Another limitation of our estimation approach may lie in the assumption that the population density is greater in the city than outside the city when determining urban boundaries. Some rural areas may be misclassified as urban areas due to their high population density. However, using an only cut-off value of population density to extract urban boundaries is considered more arbitrary by comparison, as the cut-off value may vary over time and across countries. We thus took advantage of the strengths of the high-resolution <italic>AfriPop</italic> population grids, which captured the clustering of the population at a finer resolution.</p>
+<p>This study suggests that interpolating and time-adjusting coverage rates in sampled clusters in DHS, matching with and multiplying by <italic>AfriPop</italic> population grids, is a feasible and acceptable approach to estimate the size of the population with improved sanitation and their spatial distribution, especially for the rural areas. Due to the limited urban areas in low- and middle-income countries, the estimates in the urban areas need to be explained with caution. This study adds to the growing body of literature highlighting the importance of improved sanitation, demonstrating spatial evidence for future intervention activities to be tailored for both different wealth categories and nationally where there are areas of greater needs when resources are limited.</p>
+</sec>
+</body>
+<back>
+<ref-list>
+<title>References</title>
+<ref id="pone.0158490.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Clasen</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Schmidt</surname> <given-names>W-P</given-names></name>, <name name-style="western"><surname>Rabie</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Roberts</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Cairncross</surname> <given-names>S</given-names></name>. <article-title>Interventions to improve water quality for preventing diarrhoea: systematic review and meta-analysis</article-title>. <source>British Medical Journal</source>. <year>2007</year>;<volume>334</volume>(<issue>7597</issue>):<fpage>782</fpage>–<lpage>5</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1136/bmj.39118.489931.BE" xlink:type="simple">10.1136/bmj.39118.489931.BE</ext-link></comment> 000246037300028. <object-id pub-id-type="pmid">17353208</object-id></mixed-citation></ref>
+<ref id="pone.0158490.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mara</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Lane</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Scott</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Trouba</surname> <given-names>D</given-names></name>. <article-title>Sanitation and health</article-title>. <source>PLoS medicine</source>. <year>2010</year>;<volume>7</volume>(<issue>11</issue>):<fpage>e1000363</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pmed.1000363" xlink:type="simple">10.1371/journal.pmed.1000363</ext-link></comment> <object-id pub-id-type="pmid">21125018</object-id>; PubMed Central PMCID: PMCPMC2981586.</mixed-citation></ref>
+<ref id="pone.0158490.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Andrade</surname> <given-names>IG</given-names></name>, <name name-style="western"><surname>Queiroz</surname> <given-names>JW</given-names></name>, <name name-style="western"><surname>Cabral</surname> <given-names>AP</given-names></name>, <name name-style="western"><surname>Lieberman</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Jeronimo</surname> <given-names>SMB</given-names></name>. <article-title>Improved sanitation and income are associated with decreased rates of hospitalization for diarrhoea in Brazilian infants</article-title>. <source>Transactions of the Royal Society of Tropical Medicine and Hygiene</source>. <year>2009</year>;<volume>103</volume>(<issue>5</issue>):<fpage>506</fpage>–<lpage>11</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.trstmh.2008.12.017" xlink:type="simple">10.1016/j.trstmh.2008.12.017</ext-link></comment> <object-id pub-id-type="pmid">19215948</object-id></mixed-citation></ref>
+<ref id="pone.0158490.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Barreto</surname> <given-names>ML</given-names></name>, <name name-style="western"><surname>Genser</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Strina</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Teixeira</surname> <given-names>MG</given-names></name>, <name name-style="western"><surname>Assis</surname> <given-names>AMO</given-names></name>, <name name-style="western"><surname>Rego</surname> <given-names>RF</given-names></name>, <etal>et al</etal>. <article-title>Impact of a citywide sanitation program in Northeast Brazil on intestinal parasites infection in young children</article-title>. <source>Environmental health perspectives</source>. <year>2010</year>;<volume>118</volume>(<issue>11</issue>):<fpage>1637</fpage>–<lpage>42</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1289/ehp.1002058" xlink:type="simple">10.1289/ehp.1002058</ext-link></comment> <object-id pub-id-type="pmid">20705544</object-id>; PubMed Central PMCID: PMCPMC2974706.</mixed-citation></ref>
+<ref id="pone.0158490.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Black</surname> <given-names>RE</given-names></name>, <name name-style="western"><surname>Cousens</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Johnson</surname> <given-names>HL</given-names></name>, <name name-style="western"><surname>Lawn</surname> <given-names>JE</given-names></name>, <name name-style="western"><surname>Rudan</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Bassani</surname> <given-names>DG</given-names></name>, <etal>et al</etal>. <article-title>Global, regional, and national causes of child mortality in 2008: a systematic analysis</article-title>. <source>Lancet</source>. <year>2010</year>;<volume>375</volume>(<issue>9730</issue>):<fpage>1969</fpage>–<lpage>87</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S0140-6736(10)60549-1" xlink:type="simple">10.1016/S0140-6736(10)60549-1</ext-link></comment> <object-id pub-id-type="pmid">20466419</object-id>.</mixed-citation></ref>
+<ref id="pone.0158490.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Daniels</surname> <given-names>DL</given-names></name>, <name name-style="western"><surname>Cousens</surname> <given-names>SN</given-names></name>, <name name-style="western"><surname>Makoae</surname> <given-names>LN</given-names></name>, <name name-style="western"><surname>Feachem</surname> <given-names>RG</given-names></name>. <article-title>A case-control study of the impact of improved sanitation on diarrhoea morbidity in Lesotho</article-title>. <source>Bulletin of the World Health Organization</source>. <year>1990</year>;<volume>68</volume>(<issue>4</issue>):<fpage>455</fpage>–<lpage>63</lpage>. <object-id pub-id-type="pmid">2208559</object-id>; PubMed Central PMCID: PMCPMC2393155.</mixed-citation></ref>
+<ref id="pone.0158490.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Esrey</surname> <given-names>SA</given-names></name>, <name name-style="western"><surname>Potash</surname> <given-names>JB</given-names></name>, <name name-style="western"><surname>Roberts</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Shiff</surname> <given-names>C</given-names></name>. <article-title>Effects of improved water supply and sanitation on ascariasis, diarrhoea, dracunculiasis, hookworm infection, schistosomiasis, and trachoma</article-title>. <source>Bulletin of the World Health Organization</source>. <year>1991</year>;<volume>69</volume>(<issue>5</issue>):<fpage>609</fpage>. <object-id pub-id-type="pmid">1835675</object-id>; PubMed Central PMCID: PMCPMC2393264.</mixed-citation></ref>
+<ref id="pone.0158490.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Humphrey</surname> <given-names>JH</given-names></name>. <article-title>Child undernutrition, tropical enteropathy, toilets, and handwashing</article-title>. <source>Lancet</source>. <year>2009</year>;<volume>374</volume>(<issue>9694</issue>):<fpage>1032</fpage>–<lpage>5</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S0140-6736(09)60950-8" xlink:type="simple">10.1016/S0140-6736(09)60950-8</ext-link></comment> <object-id pub-id-type="pmid">19766883</object-id>.</mixed-citation></ref>
+<ref id="pone.0158490.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kotloff</surname> <given-names>KL</given-names></name>, <name name-style="western"><surname>Nataro</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Blackwelder</surname> <given-names>WC</given-names></name>, <name name-style="western"><surname>Nasrin</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Farag</surname> <given-names>TH</given-names></name>, <name name-style="western"><surname>Panchalingam</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>Burden and aetiology of diarrhoeal disease in infants and young children in developing countries (the Global Enteric Multicenter Study, GEMS): a prospective, case-control study</article-title>. <source>Lancet</source>. <year>2013</year>;<volume>382</volume>(<issue>9888</issue>):<fpage>209</fpage>–<lpage>22</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S0140-6736(13)60844-2" xlink:type="simple">10.1016/S0140-6736(13)60844-2</ext-link></comment> <object-id pub-id-type="pmid">23680352</object-id>.</mixed-citation></ref>
+<ref id="pone.0158490.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lee</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Rosenzweig</surname> <given-names>MR</given-names></name>, <name name-style="western"><surname>Pitt</surname> <given-names>MM</given-names></name>. <article-title>The effects of improved nutrition, sanitation, and water quality on child health in high-mortality populations</article-title>. <source>Journal of Econometrics</source>. <year>1997</year>. 6873056970129114281related:qYSROeYAYl8J.</mixed-citation></ref>
+<ref id="pone.0158490.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Norman</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Pedley</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Takkouche</surname> <given-names>B</given-names></name>. <article-title>Effects of sewerage on diarrhoea and enteric infections: a systematic review and meta-analysis</article-title>. <source>Lancet Infectious Diseases</source>. <year>2010</year>;<volume>10</volume>(<issue>8</issue>):<fpage>536</fpage>–<lpage>44</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S1473-3099(10)70123-7" xlink:type="simple">10.1016/S1473-3099(10)70123-7</ext-link></comment> 000280887300013. <object-id pub-id-type="pmid">20620115</object-id></mixed-citation></ref>
+<ref id="pone.0158490.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tate</surname> <given-names>JE</given-names></name>, <name name-style="western"><surname>Burton</surname> <given-names>AH</given-names></name>, <name name-style="western"><surname>Boschi-Pinto</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Steele</surname> <given-names>AD</given-names></name>, <name name-style="western"><surname>Duque</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Parashar</surname> <given-names>UD</given-names></name>, <etal>et al</etal>. <article-title>2008 estimate of worldwide rotavirus-associated mortality in children younger than 5 years before the introduction of universal rotavirus vaccination programmes: a systematic review and meta-analysis</article-title>. <source>The Lancet Infectious Diseases</source>. <year>2012</year>;<volume>12</volume>(<issue>2</issue>):<fpage>136</fpage>–<lpage>41</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S1473-3099(11)70253-5" xlink:type="simple">10.1016/S1473-3099(11)70253-5</ext-link></comment> 16174309925369854786related:Qru-lC6xduAJ. <object-id pub-id-type="pmid">22030330</object-id></mixed-citation></ref>
+<ref id="pone.0158490.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ziegelbauer</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Speich</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Mäusezahl</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Bos</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Keiser</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Utzinger</surname> <given-names>J</given-names></name>. <article-title>Effect of Sanitation on Soil-Transmitted Helminth Infection: Systematic Review and Meta-Analysis</article-title>. <source>PLoS medicine</source>. <year>2012</year>;<volume>9</volume>(<issue>1</issue>):<fpage>e1001162</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pmed.1001162" xlink:type="simple">10.1371/journal.pmed.1001162</ext-link></comment> 15949875024031966709related:9eVMC9RWWd0J. <object-id pub-id-type="pmid">22291577</object-id></mixed-citation></ref>
+<ref id="pone.0158490.ref014"><label>14</label><mixed-citation publication-type="other" xlink:type="simple"><name name-style="western"><surname>WHO</surname> <given-names>UNICEF</given-names></name>. <source>Progress on Sanitation and Drinking-Water</source>: <fpage>2013</fpage> Update. WHO/UNICEF Joint Monitoring Programme for Water Supply and Sanitation (JMP), <year>2013</year> <month>Jun</month> <day>14</day>. Report No.: 978 92 4 150539 0.</mixed-citation></ref>
+<ref id="pone.0158490.ref015"><label>15</label><mixed-citation publication-type="other" xlink:type="simple"><name name-style="western"><surname>Watkins</surname> <given-names>K</given-names></name>. <source>Human Development Report</source> 2006—Beyond Scarcity: <publisher-loc>Power</publisher-loc>, poverty and the global water crisis. United Nations Development Programme (UNDP). <year>2009</year> 8922197817941590799related:D4MswqQD0nsJ.</mixed-citation></ref>
+<ref id="pone.0158490.ref016"><label>16</label><mixed-citation publication-type="book" xlink:type="simple"><collab>UNICEF</collab>. <source>Progress for Children: Achieving MDGs with Equity</source>. <publisher-loc>New York, NY</publisher-loc>: <publisher-name>UNICEF</publisher-name>, <year>2010</year> <month>Sep</month> <day>01</day>. Report No.: 978-92-806-4537-8.</mixed-citation></ref>
+<ref id="pone.0158490.ref017"><label>17</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Rheingans</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Cumming</surname> <given-names>O</given-names></name>, <name name-style="western"><surname>Anderson</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Showalter</surname> <given-names>J</given-names></name>. <source>Estimating inequities in sanitation-related disease burden and estimating the potential impacts of pro-poor targeting</source>. <publisher-loc>London</publisher-loc>: <publisher-name>SHARE: Sanitation and Hygiene Applied Research for Equity</publisher-name>, <year>2012</year> <month>Jun</month> <day>03</day>. Report No.</mixed-citation></ref>
+<ref id="pone.0158490.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dreibelbis</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Greene</surname> <given-names>LE</given-names></name>, <name name-style="western"><surname>Freeman</surname> <given-names>MC</given-names></name>, <name name-style="western"><surname>Saboori</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Chase</surname> <given-names>RP</given-names></name>, <name name-style="western"><surname>Rheingans</surname> <given-names>R</given-names></name>. <article-title>Water, sanitation, and primary school attendance: a multi-level assessment of determinants of household-reported absence in kenya</article-title>. <source>International Journal of Educational Development</source>. <year>2013</year>;<volume>33</volume>(<issue>5</issue>):<fpage>457</fpage>–<lpage>65</lpage>.</mixed-citation></ref>
+<ref id="pone.0158490.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Greene</surname> <given-names>LE</given-names></name>, <name name-style="western"><surname>Freeman</surname> <given-names>MC</given-names></name>, <name name-style="western"><surname>Akoko</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Saboori</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Moe</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Rheingans</surname> <given-names>R</given-names></name>. <article-title>Impact of a school-based hygiene promotion and sanitation intervention on pupil hand contamination in Western Kenya: a cluster randomized trial</article-title>. <source>Am J Trop Med Hyg</source>. <year>2012</year>;<volume>87</volume>(<issue>3</issue>):<fpage>385</fpage>–<lpage>93</lpage>. Epub 2012/07/18. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.4269/ajtmh.2012.11-0633" xlink:type="simple">10.4269/ajtmh.2012.11-0633</ext-link></comment> <object-id pub-id-type="pmid">22802437</object-id>; PubMed Central PMCID: PMC3435337.</mixed-citation></ref>
+<ref id="pone.0158490.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Freeman</surname> <given-names>MC</given-names></name>, <name name-style="western"><surname>Snel</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Yousif</surname> <given-names>MEF</given-names></name>, <name name-style="western"><surname>Gitahi</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Khan</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Wachira</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>The usage of urinals in Kenyan schools</article-title>. <source>Waterlines</source>. <year>2012</year>;<volume>31</volume>(<issue>3</issue>):<fpage>226</fpage>–<lpage>39</lpage>.</mixed-citation></ref>
+<ref id="pone.0158490.ref021"><label>21</label><mixed-citation publication-type="other" xlink:type="simple"><name name-style="western"><surname>Jackson</surname> <given-names>B</given-names></name>. <source>Sanitation and Hygiene in Kenya: Lessons on What Drives Demand for Improved Sanitation</source>. The Water and Sanitation Program, <year>2004</year> <month>Jul</month> <day>13</day>. Report No.</mixed-citation></ref>
+<ref id="pone.0158490.ref022"><label>22</label><mixed-citation publication-type="book" xlink:type="simple"><collab>UNICEF</collab>, <collab>WHO</collab>. <source>Progress on Sanitation and Drinking Water: 2010 Update</source>. <year>2010</year>.</mixed-citation></ref>
+<ref id="pone.0158490.ref023"><label>23</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>de Barros</surname> <given-names>RP</given-names></name>. <source>Measuring inequality of opportunities in Latin America and the Caribbean</source>: <publisher-name>World Bank Publications</publisher-name>; <year>2009</year>.</mixed-citation></ref>
+<ref id="pone.0158490.ref024"><label>24</label><mixed-citation publication-type="book" xlink:type="simple"><collab>UNICEF</collab>, <collab>WHO</collab>. <source>Progress on Drinking Water and Sanitation: 2014 Update</source>. <year>2014</year>.</mixed-citation></ref>
+<ref id="pone.0158490.ref025"><label>25</label><mixed-citation publication-type="book" xlink:type="simple"><collab>WHO</collab>. <source>Progress on Drinking Water and Sanitation: 2012 Update</source>. <year>2012</year>.</mixed-citation></ref>
+<ref id="pone.0158490.ref026"><label>26</label><mixed-citation publication-type="book" xlink:type="simple"><collab>ICF International</collab>. <source>Demographic and Health Survey Sampling and Household Listing Manual</source>. <publisher-loc>Calverton, MD</publisher-loc>: <publisher-name>MEASURE DHS</publisher-name>, <year>2012</year> <month>Oct</month> <day>10</day>. Report No.</mixed-citation></ref>
+<ref id="pone.0158490.ref027"><label>27</label><mixed-citation publication-type="book" xlink:type="simple"><collab>Kenya National Bureau of Statistics (KNBS)</collab>, <collab>ICF Macro</collab>. <source>Kenya Demographic and Health Survey 2008–09</source>. <publisher-loc>Calverton, MD</publisher-loc><publisher-name>: KNBS and ICF Macro</publisher-name>: <year>2010</year>.</mixed-citation></ref>
+<ref id="pone.0158490.ref028"><label>28</label><mixed-citation publication-type="book" xlink:type="simple"><collab>ICF Macro</collab>. <source>Incorporating Geographic Information Into Demographic and Health Surveys: A Field Guide to GPS Data Collection</source>. <publisher-loc>Calverton, MD</publisher-loc>: <publisher-name>ICF Macro</publisher-name>, <year>2011</year> <month>Aug</month> <day>24</day>. Report No.</mixed-citation></ref>
+<ref id="pone.0158490.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tatem</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Noor</surname> <given-names>AM</given-names></name>, <name name-style="western"><surname>von Hagen</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Di Gregorio</surname> <given-names>A</given-names></name>. <article-title>High Resolution Population Maps for Low Income Nations: Combining Land Cover and Census in East Africa</article-title>. <source>PLOS ONE</source>. <year>2007</year>. 15945586518798858480related:8HhDnHQaSt0J.</mixed-citation></ref>
+<ref id="pone.0158490.ref030"><label>30</label><mixed-citation publication-type="book" xlink:type="simple"><collab>StataCorp</collab>. <source>Stata Statistical Software: Release 12</source>. <publisher-loc>College Station, TX</publisher-loc>: <publisher-name>StataCorp LP</publisher-name>; <year>2011</year>.</mixed-citation></ref>
+<ref id="pone.0158490.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Filmer</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Pritcett</surname> <given-names>LH</given-names></name>. <article-title>Estimating Wealth Effects Without Expenditure Data—or Tears: An Application to Educational Enrollments in States of India</article-title>. <source>Demography</source>. <year>2001</year>;<volume>38</volume>(<issue>1</issue>):<fpage>115</fpage>–<lpage>32</lpage>. 7735028067128470764related:7GzejAtXWGsJ. <object-id pub-id-type="pmid">11227840</object-id></mixed-citation></ref>
+<ref id="pone.0158490.ref032"><label>32</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Rutstein</surname> <given-names>SO</given-names></name>, <name name-style="western"><surname>Johnson</surname> <given-names>K</given-names></name>. <source>The DHS Wealth Index</source>. <publisher-loc>Calverton, Maryland</publisher-loc>: <publisher-name>ORC Macro</publisher-name>, <year>2004</year> <month>Aug</month> <day>01</day>. Report No.</mixed-citation></ref>
+<ref id="pone.0158490.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tobler</surname> <given-names>WR</given-names></name>. <article-title>A Computer Movie Simulating Urban Growth in the Detroit Region</article-title>. <source>Economic Geography</source>. <year>1970</year>;<volume>46</volume>:<fpage>234</fpage>–<lpage>40</lpage>. 15192663253141002697related:yZmZC7wu19IJ.</mixed-citation></ref>
+<ref id="pone.0158490.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Aneselin</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Syabri</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Kho</surname> <given-names>Y</given-names></name>. <article-title>GeoDa: An Introduction to Spatial Data Analysis</article-title>. <source>Geographic Analysis</source>. <year>2006</year>;<volume>38</volume>(<issue>1</issue>):<fpage>5</fpage>–<lpage>22</lpage>.</mixed-citation></ref>
+<ref id="pone.0158490.ref035"><label>35</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Krivoruchko</surname> <given-names>K</given-names></name>. <article-title>Empirical Bayesian Kriging—Implemented in ArcGIS Geostatistical Analyst</article-title>. <source>ArcUser</source>. <year>2012</year>;(<edition>Fall edition</edition>):<fpage>6</fpage>–<lpage>10</lpage>.</mixed-citation></ref>
+<ref id="pone.0158490.ref036"><label>36</label><mixed-citation publication-type="book" xlink:type="simple"><collab>UNICEF</collab>, <collab>WHO</collab>. <source>Estimates for the use of improved sanitation facilities</source>. <year>2010</year>.</mixed-citation></ref>
+<ref id="pone.0158490.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Andersson</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Mitchell</surname> <given-names>S</given-names></name>. <article-title>Epidemiological geomatics in evaluation of mine risk education in Afghanistan: introducing population weighted raster maps</article-title>. <source>International Journal of Health Geographics</source>. <year>2006</year>. 10357779503358452567related:V6OAl5Q5vo8J.</mixed-citation></ref>
+<ref id="pone.0158490.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bohra</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Andrianasolo</surname> <given-names>H</given-names></name>. <article-title>Application of GIS in modeling of dengue risk based on sociocultural data: case of Jalore, Rajasthan, India</article-title>. <source>Dengue Bull</source>. <year>2001</year>;<volume>25</volume>:<fpage>92</fpage>–<lpage>102</lpage>. 3364734259829277195related:CwK2cPvvsS4J.</mixed-citation></ref>
+<ref id="pone.0158490.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>English</surname> <given-names>PB</given-names></name>, <name name-style="western"><surname>Kharrazi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Davies</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Scalf</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Waller</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Neutra</surname> <given-names>R</given-names></name>. <article-title>Changes in the spatial pattern of low birth weight in a southern California county: the role of individual and neighborhood level factors</article-title>. <source>Social Science &amp; Medicine</source>. <year>2003</year>;<volume>56</volume>(<issue>10</issue>):<fpage>2073</fpage>–<lpage>88</lpage>. <object-id pub-id-type="pmid">12697198</object-id>.</mixed-citation></ref>
+<ref id="pone.0158490.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gent</surname> <given-names>DH</given-names></name>, <name name-style="western"><surname>Schwartz</surname> <given-names>HF</given-names></name>, <name name-style="western"><surname>Khosla</surname> <given-names>R</given-names></name>. <article-title>Distribution and Incidence of Iris yellow spot virus in Colorado and Its Relation to Onion Plant Population and Yield</article-title>. <source>Plant Disease</source>. <year>2004</year>;<volume>88</volume>(<issue>5</issue>):<fpage>446</fpage>–<lpage>52</lpage>. 6550463168897289468related:_Axn2Ivr51oJ.</mixed-citation></ref>
+</ref-list>
+</back>
+</article>

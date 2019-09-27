@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-10-05967</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0019978</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Anatomy and physiology</subject>
+            <subj-group>
+              <subject>Endocrine system</subject>
+              <subj-group>
+                <subject>Endocrine physiology</subject>
+                <subj-group>
+                  <subject>Hormones</subject>
+                  <subject>Neuroendocrinology</subject>
+                  <subject>Reproductive endocrinology</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Reproductive system</subject>
+              <subj-group>
+                <subject>Reproductive physiology</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Genetics</subject>
+            <subj-group>
+              <subject>Gene expression</subject>
+              <subj-group>
+                <subject>DNA transcription</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Gene function</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Model organisms</subject>
+            <subj-group>
+              <subject>Animal models</subject>
+              <subj-group>
+                <subject>Zebrafish</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Molecular cell biology</subject>
+            <subj-group>
+              <subject>Cellular types</subject>
+              <subj-group>
+                <subject>Germ cells</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Gene expression</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Genetics and Genomics</subject>
+          <subject>Molecular Biology</subject>
+          <subject>Physiology</subject>
+          <subject>Cell Biology</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Melatonin Induces Follicle Maturation in <italic>Danio rerio</italic></article-title><alt-title alt-title-type="running-head">Melatonin Improves Zebrafish Reproduction</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Carnevali</surname>
+            <given-names>Oliana</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Gioacchini</surname>
+            <given-names>Giorgia</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Maradonna</surname>
+            <given-names>Francesca</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Olivotto</surname>
+            <given-names>Ike</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Migliarini</surname>
+            <given-names>Beatrice</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1"><label>1</label><addr-line>Dipartimento di Scienze del Mare, Università Politecnica delle Marche, Ancona, Italy</addr-line>       </aff><aff id="aff2"><label>2</label><addr-line>Istituto Nazionale Biostrutture e Biosistemi, Roma, Italy</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hansen</surname>
+            <given-names>Immo A.</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">New Mexico State University, United States of America</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">o.carnevali@univpm.it</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: OC IO BM. Performed the experiments: GG FM. Analyzed the data: GG FM BM. Contributed reagents/materials/analysis tools: OC. Wrote the paper: OC.</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>The authors have declared that no competing interests exist.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2011</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>25</day>
+        <month>5</month>
+        <year>2011</year>
+      </pub-date><volume>6</volume><issue>5</issue><elocation-id>e19978</elocation-id><history>
+        <date date-type="received">
+          <day>6</day>
+          <month>12</month>
+          <year>2010</year>
+        </date>
+        <date date-type="accepted">
+          <day>19</day>
+          <month>4</month>
+          <year>2011</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2011</copyright-year><copyright-holder>Carnevali et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <p>Most organisms modulate their reproductive activity responding to day length by the nocturnal release of melatonin by the pineal gland. This hormone is also responsible for synchronizing reproduction with specific external environment stimuli in order to optimize reproductive success.</p>
+        <p>The aim of this study was to establish the effect of melatonin on zebrafish reproduction.</p>
+        <p>Adult females were daily exposed, <italic>via</italic> water, to two different doses (100 nM and 1 µM) of melatonin. Melatonin led to an increase of the Gonado Somatic Index (GSI) associated with the increase of eggs production, and the raise of gene and protein levels of vitellogenin (VTG) and estradiol receptor α (ERα) in the liver. The ability of melatonin to increase fecundity was consistent with a significant increase of gene transcription of <italic>kiss 1</italic>, <italic>kiss 2</italic>, <italic>gnrh3</italic>, in the brain, and <italic>lh</italic> in the pituitary, while in the ovary (in class IIIB follicles), with a significant decrease of two genes codifying for intra-ovarian regulators of premature oocyte maturation, the <italic>tgfβ1</italic> and the <italic>bmp15</italic>. The reduction in the expression of these two genes was concomitant with the increase of <italic>lhr</italic> and a modulation of <italic>mprα</italic> and <italic>mprβ</italic> gene transcription, whose proteins are involved in oocyte maturation. Melatonin also exerted a direct action on follicles as shown by the increase of the oocytes undergoing to germinal vesicle break down (GVBD) and modulated <italic>mpr α</italic> and <italic>β</italic> gene expression in the <italic>in vitro</italic> exposure.</p>
+        <p>These data highlight the effects of melatonin in promoting zebrafish reproduction exerting its effects either in the brain-pituitary and in the gonads.</p>
+      </abstract><funding-group><funding-statement>This work was financially supported by Fondi di Ateneo 2009 to Oliana Carnevali. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="9"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>Melatonin, a multifunctional molecule, rhythmically secreted by the pineal gland, plays a major role in several circadian and seasonal processes including animal reproduction <xref ref-type="bibr" rid="pone.0019978-Bromage1">[1]</xref>, <xref ref-type="bibr" rid="pone.0019978-Kauffman1">[2]</xref>, <xref ref-type="bibr" rid="pone.0019978-Falcn1">[3]</xref>, <xref ref-type="bibr" rid="pone.0019978-Falcn2">[4]</xref>, <xref ref-type="bibr" rid="pone.0019978-Renuka1">[5]</xref>.</p>
+      <p>Reproduction is regulated by the neuroendocrine system: the reciprocal control of the brain and the endocrine system <xref ref-type="bibr" rid="pone.0019978-Zohar1">[6]</xref> contributes to adapting reproduction to environmental changes. In this regard, melatonin receptors have been found to be localized on the suprachiasmatic nuclei in the brain and in the pars tuberalis of the pituitary <xref ref-type="bibr" rid="pone.0019978-Barret1">[7]</xref>, <xref ref-type="bibr" rid="pone.0019978-Dubocovich1">[8]</xref> as well as in the ovary <xref ref-type="bibr" rid="pone.0019978-Yie1">[9]</xref>, <xref ref-type="bibr" rid="pone.0019978-Woo1">[10]</xref> suggesting multiple melatonin sites of action in the modulation of reproduction.</p>
+      <p>The control of reproduction by melatonin is species-specific; in seasonal breeders, it is the duration of the daily melatonin secretion rather than its amplitude that encodes day length information <xref ref-type="bibr" rid="pone.0019978-Bartness1">[11]</xref>, <xref ref-type="bibr" rid="pone.0019978-Goldman1">[12]</xref>. In addition, in mammals the administration of melatonin may induce or inhibit reproduction depending on the species reproductive strategy: melatonin induces a short day winter phenotype reproduction and inhibits long day summer phenotype <xref ref-type="bibr" rid="pone.0019978-Prendergast1">[13]</xref>, <xref ref-type="bibr" rid="pone.0019978-Carter1">[14]</xref>. However, little information is currently available on the role of melatonin on zebrafish, a species that in laboratory conditions behaves as daily spawner with asynchronous ovaries <xref ref-type="bibr" rid="pone.0019978-BlancoVives1">[15]</xref>.</p>
+      <p>The reproduction of seasonal and daily breeders involves a close association between the gonadotropin releasing hormone (GnRH) neurons and newly discovered kisspeptin fibers (metastin), <xref ref-type="bibr" rid="pone.0019978-Kitahashi1">[16]</xref>, encoded by <italic>kiss 1/kiss 2</italic> genes. These genes, recently isolated also in zebrafish <xref ref-type="bibr" rid="pone.0019978-Biran1">[17]</xref>, were found to be present in the median eminence of primates <xref ref-type="bibr" rid="pone.0019978-Shahab1">[18]</xref>, <xref ref-type="bibr" rid="pone.0019978-Keen1">[19]</xref>, in the arcuate nucleus (ARC) of rodents <xref ref-type="bibr" rid="pone.0019978-Ansel1">[20]</xref> and in the GnRH neurons of fish <xref ref-type="bibr" rid="pone.0019978-Parhar1">[21]</xref>. The presence of these neurons supports the role of KISS 1 <xref ref-type="bibr" rid="pone.0019978-VanAerle1">[22]</xref> and especially of KISS 2 <xref ref-type="bibr" rid="pone.0019978-Kitahashi1">[16]</xref> as potential regulators of reproduction, including puberty. The kiss system is under photoperiod control and, depending on the species, melatonin may induce or inhibit the kiss 1 system and, in turn, the hypothalamic-pituitary-gonadal (HPG) axis. Evidence of the induction of reproduction following melatonin increase has been reported for the short day winter phenotype (i.e. sheep) <xref ref-type="bibr" rid="pone.0019978-Goodman1">[23]</xref> while inhibition occurs in the long day summer phenotype (i.e. hamsters) <xref ref-type="bibr" rid="pone.0019978-Carter1">[14]</xref>, <xref ref-type="bibr" rid="pone.0019978-Kauffman1">[2]</xref>, <xref ref-type="bibr" rid="pone.0019978-Ansel1">[20]</xref>.</p>
+      <p>In all oviparous vertebrates, the oocytes arrest at prophase of the first meiotic division; during puberty or during annual recrudescence, the kiss system induces the HPG axis and oocytes enter vitellogenesis that characterizes oocyte growth. In fact, vitellogenic phase is under the neuroendocrine control of the GnRH secreted by the hypothalamus, stimulates gonadotropin release of both the follicle stimulating hormone (FSH) and the luteinizing hormone (LH). Gonadotropins, in turn, regulate gonadal steroidogenesis at theca and granulosa cell level, modulating steroidogenic enzymes that are essential for gamete maturation <xref ref-type="bibr" rid="pone.0019978-Patio1">[24]</xref>. In females, estradiol promotes hepatic vitellogenin (<italic>vtg</italic>) gene transcription. This protein is secreted in the blood stream and, once in the ovary, it is selectively incorporated by a receptor mediated process and stored in the cytoplasm as yolk for further embryo development <xref ref-type="bibr" rid="pone.0019978-Wallace1">[25]</xref>.</p>
+      <p>During the maturation phase, LH induces the production of the maturation inducing hormone (MIH) in the follicle and enhances the expression of the luteinizing hormone receptor (<italic>lhr</italic>) as well as two membrane progesterone receptors (<italic>mprα</italic> and <italic>mprβ</italic> isoforms) <xref ref-type="bibr" rid="pone.0019978-Thomas1">[26]</xref>. This pathway consists in the activation or, in some cases (as in fish), in the formation of the maturation promoting factor (MPF) made up of two subunits: cdc2 kinase and cyclin B. Subsequently, oocyte maturation occurs, the nuclear membrane is dissolved and germinal vesicle breakdown takes place (GVBD) <xref ref-type="bibr" rid="pone.0019978-Wang1">[27]</xref>.</p>
+      <p>In zebrafish, the locally produced growth factors such as insulin-like growth factors (IGFs), the transforming growth factor beta (TGFβ) super family including activins and bone morphogenetic proteins (BMPs) act in concert with gonadotropins to modulate follicular growth and prevent premature oocyte maturation by suppressing, in part, the sensitivity to MIH <xref ref-type="bibr" rid="pone.0019978-Clelland1">[28]</xref>, <xref ref-type="bibr" rid="pone.0019978-Clelland2">[29]</xref>.</p>
+      <p>Previous studies in mammals have shown that melatonin treatment remarkably increased the <italic>lh</italic> but not the <italic>fsh</italic> receptor mRNA transcription in granulosa cells <xref ref-type="bibr" rid="pone.0019978-Woo1">[10]</xref> and a large number of scientific evidences supports the positive impact of melatonin on oocyte quality and fertilization rate <xref ref-type="bibr" rid="pone.0019978-Nakamura1">[30]</xref>, <xref ref-type="bibr" rid="pone.0019978-Takasaki1">[31]</xref>. Despite increasing interest in the role of melatonin and its many physiological and pathological implications in mammals <xref ref-type="bibr" rid="pone.0019978-Tamura1">[32]</xref>, there is still little information available regarding the role of melatonin in the endocrine control of reproduction at brain and gonadal level.</p>
+      <p>In this study, zebrafish was used in order to establish the role of melatonin in the neuroendocrine control of reproduction. Specifically, we investigated the biological effects of melatonin on <italic>kiss 1</italic> and <italic>kiss 2</italic> gene expression in the brain of females exposed to two different melatonin doses in relation to the expression of <italic>gnrh3</italic> and of <italic>lh</italic> in the pituitary.</p>
+      <p>Furthermore, the role of melatonin in zebrafish oocyte growth was tested by assaying the hepatic gene and protein levels of both VTG and estrogen receptor α (ERα). In addition, in order to test the possible influence of melatonin on the oocyte maturation process, the changes in <italic>lhr</italic>, <italic>mprα</italic>, <italic>mprβ</italic>, <italic>bmp15</italic> and <italic>tgfβ1</italic> gene expression were studied in class IIIB competent oocytes <xref ref-type="bibr" rid="pone.0019978-Wu1">[33]</xref>, <xref ref-type="bibr" rid="pone.0019978-Peng1">[34]</xref>. Finally, the effects of exogenous melatonin administration on the maturation of competent class IIIB follicles were studied by <italic>in vitro</italic> exposure to two different doses of melatonin alone or in combination with the MIH, testing the induction of the GVBD and the expression of the following genes: <italic>lhr</italic>, <italic>mprα</italic>, <italic>mprβ</italic>, <italic>bmp15</italic> and <italic>tgfβ1</italic>.</p>
+      <p>The results of this study show for the first time a positive role of melatonin in the reproduction of a tropical species, the zebrafish <italic>D. rerio</italic>, providing the cascade of endocrine signals involved in the control of this process and in the direct action of melatonin on the ovarian follicles maturation leading to an increase of fecundity.</p>
+    </sec>
+    <sec id="s2" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s2a">
+        <title>Ethics Statement</title>
+        <p>Procedures were performed in accordance with the Guidelines on the handling and Training of Laboratory Animals by the Universities Federation for Animal Welfare (UFAW) and with the Italian animal welfare legislation (D.L. 116/92).</p>
+      </sec>
+      <sec id="s2b">
+        <title>Animals drug exposure</title>
+        <p>Adult zebrafish females were purchased from a commercial dealer (Acquario di Bologna, BO, IT) and kept in aquaria at 28°C and oxygenated water. Fish were fed twice daily with commercial food (Vipagran, Sera, Germany) and other two times with <italic>Artemia salina</italic>. Eggs laid by parental fish were kept and grown. Six months old adult zebrafish were used for this study. Females were kept at 25±0,5°C, 14L [400 lux]/10D [1 lux] (light on at 7 a.m.) and divided in three groups (n = 13–15 each), one control and two groups were exposed to two different doses of melatonin (final concentration 100 nM and 1 µM) (Sigma, Milan, Italy), following Zhdanova and coworkers <xref ref-type="bibr" rid="pone.0019978-Zhdanova1">[35]</xref> and Piccinetti and coworkers <xref ref-type="bibr" rid="pone.0019978-Piccinetti1">[36]</xref> for 10 days <italic>via</italic> water in a semi-static condition. Treatment was 10 days long, melatonin doses were added daily at 11.00 a.m. and the concentrations were maintained constant throughout the experiment by renewing water every 24 hours in each tank. At the end of the exposure, five females from each group were paired with 2 control males to assay fecundity; the remaining females were sacrificed by a lethal overdose of anaesthesia (500 mg/L MS-222 [3-aminobenzoic acid ethyl ester] buffered to pH 7.4; Sigma). All fish were measured for total wet weight (mg) and ovary weight (to the nearest 0.1 mg) and the gonadosomatic index (GSI), derived by expressing the gonad weight as a percentage of the total body weight, was recorded.</p>
+        <p>Liver, ovary and brain including pituitary, were excided and immediately poured in liquid nitrogen and stored at −80°C until analysis were performed. The whole experiment was repeated two times.</p>
+      </sec>
+      <sec id="s2c">
+        <title>High-performance liquid chromatography</title>
+        <p>The melatonin levels in the tanks were measured after 30 min post addition by high-performance liquid chromatography (HPLC-FL) with fluorescence detection. HPLC assay was performed with a Beckman modular system (Beckman Instruments, San Ramon, CA, USA) with spectrofluorometric detector RF-551 (Shimadzu, Columbia, MD, USA), Chromatographic separations were carried out on an Ultrasphere C<sub>18</sub> column (i.d., 250×4–6 mm; particle diameter, 5 µm; pore size, 80 Å). Excitation and emission wavelengths were set at 286 and 352 nm, respectively. An isocratic elution system was prepared. The mobile phase was 60% HPLC-grade methanol <xref ref-type="bibr" rid="pone.0019978-Kulczykowska1">[37]</xref>.</p>
+      </sec>
+      <sec id="s2d">
+        <title>Follicles collection</title>
+        <p>Fish were sacrificed as described above. Ovaries were excised from females, rinsed, and placed into sterile L15 medium at room temperature <xref ref-type="bibr" rid="pone.0019978-Wu1">[33]</xref>. The ovaries were dissected into separate follicles using transfer pipettes (Samco Scientific Corp., San Fernando, CA) without trypsinization. Therefore, follicles were separated into different maturation stages according to diameters measuring with an ocular micrometer under a dissecting microscope and stage IIIB oocyte <xref ref-type="bibr" rid="pone.0019978-Selman1">[38]</xref> were sampled for molecular, biochemical and <italic>in vitro</italic> maturation assays <xref ref-type="bibr" rid="pone.0019978-Pang1">[39]</xref>.</p>
+      </sec>
+      <sec id="s2e">
+        <title>Follicles in vitro maturation assay</title>
+        <p><italic>In vitro</italic> maturation assays were conducted as previously described <xref ref-type="bibr" rid="pone.0019978-Clelland2">[29]</xref>. Briefly, stage IIIB follicles (0.52–0.69 mm diameter) were incubated in 1 ml medium at 25°C in 24-well culture plates. For experimental purpose, incubations were carried out separately in L15 (control), melatonin 50 pg/ml (MEL50), melatonin 100 pg/ml (MEL100), only MIH (1 µg/ml, MIH), melatonin 50 pg/ml (added 4 h before addition of 1 µg/ml MIH) and MIH (MEL50 + MIH) and melatonin 100 pg/ml (administered 4 h before addition of 1 µg/ml MIH) and MIH (MEL100 +MIH). The MIH here used was 17α, 20β dihydroxyprogesterone (100 ng/ml, Sigma Aldrich, Milan Italy). Maturation was scored after 12 hours of incubation. Follicles that underwent germinal vesicle breakdown (GVBD) could be identified by their acquired translucency. Each treatment was conducted in four wells with approximately 20 follicles per well, and all experiments were repeated three times. At the end of the experiments the follicles were stored at −80°C till molecular analysis.</p>
+      </sec>
+      <sec id="s2f">
+        <title>RNA extraction and cDNA synthesis</title>
+        <p>Total RNA from all livers, brains and class IIIB follicles mechanically isolated, was extracted with TRIREAGENT (Sigma) from all experimental groups. Final RNA concentrations were determined by optical density measurement at 260 nm, and the RNA integrity was verified by ethidium bromide staining of 28S and 18S ribosomal RNA bands on 1% agarose gel.</p>
+        <p>First strand cDNA synthesis was performed as already described in <xref ref-type="bibr" rid="pone.0019978-Maradonna1">[40]</xref>.</p>
+      </sec>
+      <sec id="s2g">
+        <title>Real time PCR</title>
+        <p>Triplicate PCR reactions were carried out for each sample analyzed. After real-Time condition optimization, PCRs were performed with SYBR green method in a iQ5 iCycler thermal cycler (Biorad). The reactions were set on a 96-well plate by mixing, for each sample, 1 µl of diluted (1/20) cDNA, 5 µl of 2× concentrated iQTM SYBR Green Supermix (Bio-rad), containing SYBR Green as a fluorescent intercalating agent, 0.3 µM forward primer and 0.3 µM of reverse primer. The primer sequences are shown in <xref ref-type="table" rid="pone-0019978-t001">Table 1</xref>. The thermal profile for all reactions was 15′. at 95°C and then 45 cycles of 20″ at 95°C, 20″ at 60°C and 20″ at 72°C. Fluorescence monitoring occurred at the end of each cycle. Additional dissociation curve analysis was performed and showed in all cases one single peak.</p>
+        <table-wrap id="pone-0019978-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0019978.t001</object-id><label>Table 1</label><caption>
+            <title>List of primers used for real time PCR analyses.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0019978-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0019978.t001" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">GENE</td>
+                <td align="left" colspan="1" rowspan="1">FOR PRIMER</td>
+                <td align="left" colspan="1" rowspan="1">REW PRIMER</td>
+                <td align="left" colspan="1" rowspan="1">AMPLICON</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">GnRH3</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">TTAGCATGGAGTGGAAAGGAAGGTTG</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">CTTTCAGAGGCAAACCTTCAGCAT</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">255</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Kiss1</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">ACAGACACTCGTCCCACAGATG</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">CAATCGTGTGAGCATGTCCTG</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">131</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Kiss2</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">ATTCTCTTCATGTCTGCAATGGTCA</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">TGCTTTCTCAGGTAAAGCATCATTG</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">154</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">LH</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">AATGCCTGGTGTTTCAGACC</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">AGTATGCGGGGAAATCCTCT</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">288</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">TGFβ1</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">TCGCTTTGTCTCCAAGGACT</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">TGCAAGAGAGTTGCCATTTG</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">234</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">BMP15</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">AGGGTGACCGGATCACTATG</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">TGCTGCCAGACTTTTTAGACC</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">291</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">LHR</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">CATTAACCTGCCCGACTGTT</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">AGTATGCGGGGAAATCCTCT</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">164</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">mPRα</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">CGGTTGTGATGGAGCAGATT</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">AGTAGCGCCAGTTCTGGTCA</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">185</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">mPRβ</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">CAACGAGCTGCTGAATGTGT</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">GGGCCAGTTCAGAGTGAGAC</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">197</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">ACT</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">AAAGTCCTCGCTGGAGACAA</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <named-content content-type="gene" xlink:type="simple">TGCGAGCTGTGTGTGTATGA</named-content>
+                </td>
+                <td align="left" colspan="1" rowspan="1">242</td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt101">
+              <label/>
+              <p>Primers sequences were designed using Primer3 (v. 0.4.0) software (Accession numbers: GNRH3: NM_182887.2; KISS1: NM_001113489.1; KISS2: NM_001142585.1; LH: NM_205622.2; TGFβ1: NM_182873; BMP15: NM_001020484; LHR NM_205625.1; MPRα: NM_183345; MPRβ: NM_183344; ACT: NM_001168286.1).</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+        <p>The β-actin was used as housekeeping gene in each sample in order to standardize the results by eliminating variation in mRNA and cDNA quantity and quality. No amplification product was observed in negative control and no primers-dimer formation was observed in the control templates. The data obtained were analyzed using the iQ5 optical system software version 2.0 (Bio-rad). Modification of gene expression is represented with respect to the control.</p>
+      </sec>
+      <sec id="s2h">
+        <title>Western Blot analysis</title>
+        <p>For the VTG and ERα assays, liver samples were electrophoresed and transferred into PVDF as previously described in <xref ref-type="bibr" rid="pone.0019978-Maradonna1">[40]</xref>. Briefly, 20 µg of each protein samples were separated using 4% stacking and 10% separating sodium dodecyl sulphate polyacrylamide gel electrophoresis (SDS-PAGE) as described by <xref ref-type="bibr" rid="pone.0019978-Laemmli1">[41]</xref>, and electroblotted onto a Bio-Rad filter using a Bio-Rad mini trans-blot electrophoretic transfer cell. The transfer was carried out for 2 hours at 250 mA 4°C using a 25 mM Tris base, 192 mM glycine, and 20% methanol as electrode solution. The membrane was soaked in 5% Nonidet-P40 for 1 h to remove SDS and incubated with 2% bovine serum albumin (BSA; Sigma) in PBS buffer. The vtg primary antibody (anti-vtg <italic>D.rerio</italic>, (Biosense Labs) was diluted 1∶1000 in a solution containing 2% BSA, 0.01% NaN3 in PBS and was incubated for 2 h at room temperature (about 20°C) and rinsed 3 times with PBS plus 0.05% Tween 20. For the ERα assay, the primary antibody (anti–estrogen Receptor 154–171), diluted 1∶1000 was purchased from Sigma. Anti-β-tubulin antibody (l g/mL) (Gene Tex, Inc.) was used to normalize the sample loading. The antibody reaction was visualized with ECL-PLUS (GE Healthcare) chemiluminescent reagent for Western blot.</p>
+        <p>The densitometric analysis was performed by ImageJ software for Windows.</p>
+      </sec>
+      <sec id="s2i">
+        <title>Statistical analysis</title>
+        <p>Real time and Western blotting results were examined by one-way ANOVA followed by the Bonferroni's multiple comparison test, GVBD rate raw data were firstly arcsin transformed and then analyzed, using a statistical software package, Prism5 (Graphpad Software, Inc. USA) with significance set at P&lt;0.05.</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Results</title>
+      <sec id="s3a">
+        <title>Melatonin assay</title>
+        <p>Melatonin concentrations in the tanks, found after 30 min. post addition, were comparable to nominal ones and reach the 50% of initial levels after 24 hrs.</p>
+      </sec>
+      <sec id="s3b">
+        <title>Effects of melatonin in the brain and pituitary</title>
+        <p>The endocrine control of reproduction by exogenous melatonin was demonstrated by the modulation of the hypothalamic genes involved. Melatonin administration significantly increased, in a dose related manner, the <italic>gnrh3</italic>, <italic>kiss 1</italic> and <italic>kiss 2</italic> gene transcription, as reported in <xref ref-type="fig" rid="pone-0019978-g001">Fig. 1</xref>. The <italic>lh</italic> gene transcription was increased by both melatonin doses but only the higher ones induced a significant increase (<xref ref-type="fig" rid="pone-0019978-g001">Fig. 1</xref>).</p>
+        <fig id="pone-0019978-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0019978.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>Effects of melatonin in the brain and pituitary.</title>
+            <p>(A) <italic>kiss1</italic>, (B) <italic>kiss2</italic> (C) <italic>gnrh3</italic> and (D) <italic>lh</italic> mRNA levels, normalized against <italic>β-actin</italic> gene in fish exposed to 100 nM and 1 µM MEL, n = 15 per group. Error bars indicate mean±S.D. Asterisks denote exposure groups that are significantly different from the relative control group (CTRL) (p&lt;0.05), analyzed using ANOVA followed by Bonferroni's multiple comparison test.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0019978.g001" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3c">
+        <title>Effects of melatonin on follicle growth</title>
+        <p>These results show that complex ovarian follicle development can be modulated by exogenous melatonin, since GSI was significantly higher in fish exposed to the higher dose of melatonin (<xref ref-type="fig" rid="pone-0019978-g002">Fig. 2</xref>). A significant increase in both VTG and ERα gene expression and protein synthesis was found in the liver of fish treated with melatonin. The increase was similar in both doses used (<xref ref-type="fig" rid="pone-0019978-g003">Fig. 3A–D</xref>).</p>
+        <fig id="pone-0019978-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0019978.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Effects of melatonin on GSI.</title>
+            <p>Effect of MEL 100 nM and 1 µM on gonado- somatic index. n = 15 per group. Error bars indicate mean ± S.D. Asterisks indicate statistical significant differences respect to control group (P&lt;0.05).</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0019978.g002" xlink:type="simple"/>
+        </fig>
+        <fig id="pone-0019978-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0019978.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>Effects of melatonin on follicles growth.</title>
+            <p>(A) <italic>vtg</italic> and (B) <italic>erα</italic> mRNA levels, normalized against <italic>β-actin</italic> gene (C) VTG and (D) ERα typical Western blot normalized against β-TUBULIN and relative densitometric analysis, in liver of fish exposed to 100 nM and 1 µM MEL and control ones. n = 15 per group. Error bars indicate the mean±SD. Asterisks denote exposure groups that are significantly different from the relative control group (p&lt;0.05), analyzed using ANOVA followed by Bonferroni's multiple comparison test.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0019978.g003" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3d">
+        <title>In vivo effects of melatonin on follicle maturation</title>
+        <p>At molecular level, in class IIIB competent follicles the modulation of mRNA expression encoding for <italic>lhr</italic>, <italic>mprα</italic> and <italic>β</italic>, and of two local regulatory factors, <italic>tgfβ1</italic> and <italic>bmp15</italic> was demonstrated. With regards to the expression of the locally produced factors, <italic>tgfβ1</italic>gene expression was significantly reduced by both doses of hormone, while <italic>bmp15</italic> gene expression was significantly reduced only by the higher dose of melatonin (<xref ref-type="fig" rid="pone-0019978-g004">Fig. 4A,B</xref>).</p>
+        <fig id="pone-0019978-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0019978.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title><italic>In vivo</italic> effects of melatonin on factors preventing precocious follicle maturation.</title>
+            <p>(A) <italic>tgfβ1</italic> and (B) <italic>bmp15</italic> mRNA levels, normalized against <italic>β-actin</italic> gene in fish exposed to 100 nM and 1 µM MEL. n = 15 per group Error bars indicate mean±S.D. Asterisks denote exposure groups that are significantly different from the relative control group (CTRL) (p&lt;0.05), analyzed using ANOVA followed by Bonferroni's multiple comparison test.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0019978.g004" xlink:type="simple"/>
+        </fig>
+        <p>The higher dose of melatonin also increased <italic>lhr</italic> gene transcription (<xref ref-type="fig" rid="pone-0019978-g005">Fig. 5A</xref>). In regard to <italic>mprα</italic> and <italic>mprβ</italic> gene expression, the lower dose induced both isoforms; surprisingly the higher dose of melatonin resulted in a significant decrease of their expression (<xref ref-type="fig" rid="pone-0019978-g005">Fig. 5B,C</xref>).</p>
+        <fig id="pone-0019978-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0019978.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title><italic>In vivo</italic> effects of melatonin on follicle maturation factors.</title>
+            <p>(A) <italic>lhr</italic>, (B) <italic>mprα</italic> and (C) <italic>mprβ</italic> mRNA levels, normalized against <italic>β-actin</italic> gene in fish exposed to 100 nM and 1 µM MEL. n = 20 oocytes per group. Error bars indicate mean±S.D. (D) Number of ovulated eggs per female in fish exposed to 100 nM and 1 µM MEL. Asterisks denote exposure groups that are significantly different from the relative control group (CTRL) (p&lt;0.05), analyzed using ANOVA followed by Bonferroni's multiple comparison test.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0019978.g005" xlink:type="simple"/>
+        </fig>
+        <p>In addition, melatonin significantly affected the fecundity. Higher numbers of ovulated eggs were observed in females exposed for 10 days to both doses of melatonin, when paired with control males. The increase was statistically significant (p&lt;0.05) only with the higher melatonin dose (<xref ref-type="fig" rid="pone-0019978-g005">Fig. 5D</xref>).</p>
+      </sec>
+      <sec id="s3e">
+        <title>In vitro effects of melatonin on follicle maturation</title>
+        <p>The direct control of melatonin on follicle maturation was demonstrated by <italic>in vitro</italic> studies. The exposure of class IIIB follicles to 50 and 100 pg/ml of melatonin, alone or in combination with the MIH, induced follicle maturation. The greatest GVBD induction was obtained with the higher dose of melatonin plus MIH (<xref ref-type="fig" rid="pone-0019978-g006">Fig. 6</xref>).</p>
+        <fig id="pone-0019978-g006" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0019978.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title><italic>In vitro</italic> effects of melatonin on oocyte maturation.</title>
+            <p>GVBD rate in class IIIB oocyte exposed to 50 and 100 pg/ml of melatonin alone or in combination with the MIH. Error bars indicate the raw data mean±SD. Different letters indicate statistically significant differences (P&lt;0.05), after transformation of raw data in arcosin, analyzed by using ANOVA followed by Bonferroni's multiple comparison test.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0019978.g006" xlink:type="simple"/>
+        </fig>
+        <p>Melatonin <italic>in vitro</italic> treatment affected only the gene expression levels of the two <italic>mpr</italic> isoforms. The levels of these genes were significantly induced in follicles incubated with melatonin alone (both doses) and in higher extent with melatonin plus MIH (<xref ref-type="fig" rid="pone-0019978-g007">Fig. 7</xref>). On the contrary, no statistically significant differences were found regarding the expression levels of <italic>lhr</italic>, <italic>tgfβ1</italic> and <italic>bmp15</italic> respect to the control (data not shown).</p>
+        <fig id="pone-0019978-g007" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0019978.g007</object-id>
+          <label>Figure 7</label>
+          <caption>
+            <title><italic>mprα</italic> and <italic>mprβ</italic> m RNA levels in class IIIB follicle.</title>
+            <p>(A) <italic>mprα</italic> and (B) <italic>mprβ</italic> m RNA levels, normalized against <italic>β-actin</italic> gene in class IIIB follicle after exposure to 50 and 100 pg/ml of MEL, alone or in combination with the MIH. The different letters indicate statistically significant differences (P&lt;0.05), analyzed using ANOVA followed by Bonferroni's multiple comparison test.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0019978.g007" xlink:type="simple"/>
+        </fig>
+      </sec>
+    </sec>
+    <sec id="s4">
+      <title>Discussion</title>
+      <p>Conflicting conclusions on the role of melatonin in the neuroendocrine system of teleost have been achieved by experiments dealing with photoperiod manipulation, pinealectomy and melatonin treatment <xref ref-type="bibr" rid="pone.0019978-Popek1">[42]</xref>, <xref ref-type="bibr" rid="pone.0019978-Lpez1">[43]</xref>, <xref ref-type="bibr" rid="pone.0019978-Falcn3">[44]</xref>, <xref ref-type="bibr" rid="pone.0019978-Falcn2">[4]</xref>. In this regard, in the eel, the implant of melatonin induced a decrease in LHβ and FSHβ <xref ref-type="bibr" rid="pone.0019978-Sbert1">[45]</xref> while, an increase in LHβ secretion was found in croaker <xref ref-type="bibr" rid="pone.0019978-Khan1">[46]</xref>, in sea bass <xref ref-type="bibr" rid="pone.0019978-Bayarri1">[47]</xref> and in cultured carp pituitary <xref ref-type="bibr" rid="pone.0019978-Popek1">[42]</xref>, showing the ability of this hormone to affect reproduction.</p>
+      <p>In this study, melatonin induced a significant increase in zebrafish fecundity associated with changes in the endocrine and locally produced growth factors involved in oocyte growth and maturation.</p>
+      <p>The mechanism by which melatonin acts on the reproductive axis is still unknown although this hormone does not appear to have a direct influence on GnRH neurons <xref ref-type="bibr" rid="pone.0019978-Kauffman1">[2]</xref> suggesting an upstream regulation of GnRH secretion. In fact, in mammals, kisspeptins have been shown to be integral in the regulation of GnRH modulation and the levels of melatonin are correlated both to a decrease in kiss 1 in the ARC of the Syrian hamster, a long day breeder, and to an increase in the sheep, a short day seasonal breeder. These evidences indicate a role of melatonin in the photoperiodic control of reproduction through the modulation of HPG axis by kiss neurons (reviewed in <xref ref-type="bibr" rid="pone.0019978-Kauffman1">[2]</xref>). This effect was recently confirmed in ewe by Chalivoix and coworkers <xref ref-type="bibr" rid="pone.0019978-Chalivoix1">[48]</xref>. In mammals, the kiss system is currently thought to be the link mediating the response between environmental cues and metabolic signals and the key system in the regulation of puberty and reproduction <xref ref-type="bibr" rid="pone.0019978-TenaSempere1">[49]</xref>.</p>
+      <p>Surprisingly, the results obtained in this study suggest that melatonin might act as a signal mechanism switching for reproduction in zebrafish, by activating the cascade starting from the kiss peptide which, in turn, stimulates hypothalamic neurons to produce GnRH.</p>
+      <p>In this study, melatonin was provided once a day, at the same time for ten days to cover the entire oocyte maturation cycle, that in zebrafish has been determined as occurring in eight days <xref ref-type="bibr" rid="pone.0019978-Wang2">[50]</xref>, <xref ref-type="bibr" rid="pone.0019978-Wang1">[27]</xref>.</p>
+      <p>The concomitant increase in GSI and VTG synthesis in the liver, observed in these females, supports the positive role of melatonin in oocyte growth and suggests its involvement in the vitellogenic process. These results are in agreement with the increase of vitellogenic follicles found in <italic>Channa punctatus</italic> exposed to melatonin <italic>via</italic> water for 24 h <xref ref-type="bibr" rid="pone.0019978-Renuka1">[5]</xref> but apparently in contrast with those previously obtained in trout, a typical seasonal breeder, in which the release of melatonin is not regulated by the internal clock <xref ref-type="bibr" rid="pone.0019978-Coon1">[51]</xref>, as on the contrary occurs in zebrafish <xref ref-type="bibr" rid="pone.0019978-Cahill1">[52]</xref>. In trout, no differences in <italic>vtg</italic> and <italic>erα</italic> gene expression levels were observed in hepatocytes exposed to melatonin <italic>in vitro</italic>. A slight but significant stimulatory effect on <italic>er</italic> expression was observed in the liver of females implanted with melatonin, although this effect had no impact on <italic>vtg</italic> gene expression <xref ref-type="bibr" rid="pone.0019978-Mazurais1">[53]</xref>.</p>
+      <p>The effect on vitellogenin synthesis in zebrafish liver, might be the consequence of the melatonin ability to activate the HPG axis, as suggested by the significant increase in the brain of <italic>kiss 1</italic> and <italic>kiss 2</italic> gene expression. In tilapia, the <italic>kiss 1 receptor</italic> is expressed in the GnRH neurons <xref ref-type="bibr" rid="pone.0019978-Parhar1">[21]</xref>. In fathead minnow, KISS1 stimulates the synthesis of gnrh3, one of the most hierarchically important hypothalamic signals, and induces the pituitary to produce gonadotropins responsible for the activation of gonadal steroidogenesis, including the increase in estradiol and in the different isoforms of its receptor <xref ref-type="bibr" rid="pone.0019978-Filby1">[54]</xref>. In this study, the increase in <italic>kiss</italic> gene levels appears to be related to <italic>gnrh3</italic> gene expression.</p>
+      <p>Previous results in mammals evidenced the positive effects of LEPTIN on <italic>kiss 1</italic> <xref ref-type="bibr" rid="pone.0019978-TenaSempere1">[49]</xref>. The increase of <italic>kiss 1</italic> and <italic>2</italic> gene expression found in our study may be related with the high levels of <italic>leptin</italic> <xref ref-type="bibr" rid="pone.0019978-Piccinetti1">[36]</xref> previously determined in our laboratory in the brain of zebrafish exposed to the same melatonin doses at the same conditions used in this study. The concomitant increase in <italic>kiss 1</italic>, <italic>kiss 2</italic>, <italic>gnrh3</italic> and <italic>lh</italic> gene expression found in the present study, agrees with the increase observed in mammalian short day seasonal breeders <xref ref-type="bibr" rid="pone.0019978-Chalivoix1">[48]</xref> and clearly indicates an endocrine control of melatonin on zebrafish reproduction. The activation of the HPG axis by melatonin is confirmed by the increase in GSI and eggs production. On the contrary, in a previous study conducted in eel implanted with melatonin, the effects of this chronic treatment showed that melatonin had no effect on mGnRH and cGnRH-II, and that the continuous release of melatonin stimulates the dopaminergic system of the preoptic area with a consequent inhibitory control of gonadotropin, deeply affecting reproduction <xref ref-type="bibr" rid="pone.0019978-Sbert1">[45]</xref>. The different effects observed in the melatonin implanted eel and the zebrafish females exposed to melatonin <italic>via</italic> water may be related either to the different route of exposure or to their significantly different reproductive strategy.</p>
+      <p>In this study, in addition to melatonin action at liver, brain and pituitary level, the effect of this hormone was also shown in the ovary. In class IIIB competent follicles, from <italic>in vivo</italic> exposed females to melatonin, induction of signals involved in final oocyte maturation such as <italic>lhr</italic> and <italic>mprs</italic> (only with lower dose) was found. These increases were associated with the down-regulation of two local factors: <italic>tgfβ1</italic> and <italic>bmp15</italic> genes. These two intra-ovarian regulators of follicle development act at multiple sites. Previous studies have shown that the inhibiting effects of <italic>tgfβ1</italic> are in part due to the regulation of gene transcription including <italic>lhr</italic> and <italic>mprα</italic> and <italic>mprβ</italic> <xref ref-type="bibr" rid="pone.0019978-Kohli1">[55]</xref> and also appear to be involved in the regulation of the <italic>erα</italic> <xref ref-type="bibr" rid="pone.0019978-Chen1">[56]</xref> that in mammals has a specific role in ovulation <xref ref-type="bibr" rid="pone.0019978-Palter1">[57]</xref>.</p>
+      <p>The down-regulation of <italic>mprs</italic> we found by <italic>in vivo</italic> study in class IIIB follicles with the higher dose of melatonin opens up several questions on the involvement of this hormone in the acquiring of oocyte competence as previously observed in mammals <xref ref-type="bibr" rid="pone.0019978-Adriaens1">[58]</xref>. In addition, the control of melatonin on <italic>mprs</italic> by <italic>in vitro</italic> study demonstrated a direct effect of melatonin on the transcription of very important signals involved in oocyte competence and maturation, suggesting a local control of this hormone beside the endocrine ones.The direct role of melatonin in the ovary is supported by the presence of a melatonin receptor (MEL 1A1) in the membrane of class IIIB oocyte in carp <xref ref-type="bibr" rid="pone.0019978-Chattoraj1">[59]</xref> and by the <italic>in vitro</italic> study. Chattoraj and co-workers <xref ref-type="bibr" rid="pone.0019978-Chattoraj2">[60]</xref> through <italic>in vitro</italic> studies, demonstrated that melatonin, added to the medium 4 hrs before the addition of MIH, accelerated GVBD rate in denuded oocytes of two carp species. In these carp, the efficacy of the melatonin dose was species specific. Recently the same authors <xref ref-type="bibr" rid="pone.0019978-Chattoraj3">[61]</xref> demonstrated the direct action of melatonin in the regulation of meiotic resumption in carp oocytes. In zebrafish, we also found a direct effect of melatonin on <italic>in vitro</italic> follicle maturation supporting its role at local level.</p>
+      <p>In addition, an induction of <italic>leptin</italic> gene transcription by melatonin was previously observed in the zebrafish ovary <xref ref-type="bibr" rid="pone.0019978-Carnevali1">[62]</xref> suggesting that the positive role exerted by melatonin in zebrafish reproduction may also involve LEPTIN at gonadal level as suggested by Moschos and co-Workers <xref ref-type="bibr" rid="pone.0019978-Moschos1">[63]</xref>.</p>
+      <p>The large variability of the impact of melatonin on brain, pituitary and on gonadal factors observed among vertebrates indicates species-specific responses to this hormone.</p>
+      <p>Additional studies using different methodological approach such as the Fourier Transform Infrared (FTIR) microspectroscopy, a powerful method to study the composition and the macromolecular chemistry of fish oocytes <xref ref-type="bibr" rid="pone.0019978-Giorgini1">[64]</xref>, <xref ref-type="bibr" rid="pone.0019978-Carrnevali1">[65]</xref> are actually in progress to provide e a biochemical fingerprint of oocytes from females exposed to melatonin to better understand the role of this hormone on zebrafish reproduction.</p>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>Special thanks to Chiara Piccinetti, Francesco Lombardo and Adolfo Amici for their help at various stages of this study.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0019978-Bromage1">
+        <label>1</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bromage</surname><given-names>NR</given-names></name><name name-style="western"><surname>Porter</surname><given-names>MJR</given-names></name><name name-style="western"><surname>Randall</surname><given-names>CF</given-names></name></person-group>             <year>2001</year>             <article-title>The environmental regulation of maturation in farmed finfish with special reference to the role of photoperiod and melatonin.</article-title>             <source>Aquacult</source>             <volume>197</volume>             <fpage>63</fpage>             <lpage>98</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Kauffman1">
+        <label>2</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kauffman</surname><given-names>AS</given-names></name><name name-style="western"><surname>Clifton</surname><given-names>DK</given-names></name><name name-style="western"><surname>Steiner</surname><given-names>RA</given-names></name></person-group>             <year>2007</year>             <article-title>Emerging ideas about kisspeptin- GPR54 signaling in the neuroendocrine regulation of reproduction.</article-title>             <source>Trends Neurosci</source>             <volume>30</volume>             <fpage>504</fpage>             <lpage>511</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Falcn1">
+        <label>3</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Falcón</surname><given-names>J</given-names></name><name name-style="western"><surname>Besseau</surname><given-names>L</given-names></name><name name-style="western"><surname>Sauzet</surname><given-names>S</given-names></name><name name-style="western"><surname>Fuentès</surname><given-names>M</given-names></name><name name-style="western"><surname>Boeuf</surname><given-names>G</given-names></name></person-group>             <year>2007</year>             <article-title>Melatonin and neuroendocrine regulations in fish.</article-title>             <source>J Soc Biol</source>             <volume>201</volume>             <fpage>21</fpage>             <lpage>29</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Falcn2">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Falcón</surname><given-names>J</given-names></name><name name-style="western"><surname>Migaud</surname><given-names>H</given-names></name><name name-style="western"><surname>Munoz-Cueto</surname><given-names>JA</given-names></name><name name-style="western"><surname>Carrillo</surname><given-names>M</given-names></name></person-group>             <year>2010</year>             <article-title>Current knowledge on the melatonin system in teleost fish.</article-title>             <source>Gen Comp Endocrinol</source>             <volume>165</volume>             <fpage>469</fpage>             <lpage>482</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Renuka1">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Renuka</surname><given-names>K</given-names></name><name name-style="western"><surname>Joshi</surname><given-names>BN</given-names></name></person-group>             <year>2010</year>             <article-title>Melatonin-induced changes in ovarian function in the freshwater fish <italic>Channa punctatus</italic> (Bloch) held in long days and continuous light.</article-title>             <source>Gen Comp Endocrinol</source>             <volume>165</volume>             <fpage>42</fpage>             <lpage>46</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Zohar1">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zohar</surname><given-names>Y</given-names></name><name name-style="western"><surname>Muñoz-Cueto</surname><given-names>JA</given-names></name><name name-style="western"><surname>Elizur</surname><given-names>A</given-names></name><name name-style="western"><surname>Kah</surname><given-names>O</given-names></name></person-group>             <year>2010</year>             <article-title>Neuroendocrinology of reproduction in teleost fish.</article-title>             <source>Gen Comp Endocrinol</source>             <volume>165</volume>             <fpage>438</fpage>             <lpage>455</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Barret1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Barret</surname><given-names>P</given-names></name><name name-style="western"><surname>Conway</surname><given-names>S</given-names></name><name name-style="western"><surname>Morgan</surname><given-names>PJ</given-names></name></person-group>             <year>2003</year>             <article-title>Digging deep-structure-function relationship in the melatonin receptor family.</article-title>             <source>J Pineal Res</source>             <volume>35</volume>             <fpage>221</fpage>             <lpage>230</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Dubocovich1">
+        <label>8</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Dubocovich</surname><given-names>ML</given-names></name><name name-style="western"><surname>Rivera-Bermudez</surname><given-names>MA</given-names></name><name name-style="western"><surname>Gerdin</surname><given-names>MJ</given-names></name><name name-style="western"><surname>Masana</surname><given-names>MI</given-names></name></person-group>             <year>2003</year>             <article-title>Molecular pharmacology, regulation and function of mammalian melatonin receptors.</article-title>             <source>Front Biosci</source>             <volume>8</volume>             <fpage>1093</fpage>             <lpage>1108</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Yie1">
+        <label>9</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yie</surname><given-names>SM</given-names></name><name name-style="western"><surname>Niles</surname><given-names>LP</given-names></name><name name-style="western"><surname>Younglai</surname><given-names>EV</given-names></name></person-group>             <year>1995</year>             <article-title>Melatonin receptors on human granulosa cell membranes.</article-title>             <source>J Clin Endocrinol Metab</source>             <volume>80</volume>             <fpage>1747</fpage>             <lpage>1749</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Woo1">
+        <label>10</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Woo</surname><given-names>MM</given-names></name><name name-style="western"><surname>Tai</surname><given-names>CJ</given-names></name><name name-style="western"><surname>Kang</surname><given-names>SK</given-names></name><name name-style="western"><surname>Nathwani</surname><given-names>PS</given-names></name><name name-style="western"><surname>Pang</surname><given-names>SF</given-names></name></person-group>             <year>2001</year>             <article-title>Direct action of melatonin in human granulosa-luteal cells.</article-title>             <source>J Clin Endocrinol Metab</source>             <volume>86</volume>             <fpage>4789</fpage>             <lpage>4797</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Bartness1">
+        <label>11</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bartness</surname><given-names>TJ</given-names></name><name name-style="western"><surname>Powers</surname><given-names>JB</given-names></name><name name-style="western"><surname>Hastings</surname><given-names>MH</given-names></name><name name-style="western"><surname>Bittman</surname><given-names>EL</given-names></name><name name-style="western"><surname>Goldman</surname><given-names>BD</given-names></name></person-group>             <year>1993</year>             <article-title>The timed infusion paradigm for melatonin delivery: what has it taught us about the melatonin signal, its reception, and the photoperiodic control of seasonal responses?</article-title>             <source>J Pineal Res</source>             <volume>15</volume>             <fpage>161</fpage>             <lpage>190</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Goldman1">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Goldman</surname><given-names>BD</given-names></name></person-group>             <year>2001</year>             <article-title>Mammalian photoperiodic system: formal properties and neuroendocrine mechanisms of photoperiodic time measurement.</article-title>             <source>J Biol Rhythms</source>             <volume>16</volume>             <fpage>283</fpage>             <lpage>301</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Prendergast1">
+        <label>13</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Prendergast</surname><given-names>BJ</given-names></name></person-group>             <year>2005</year>             <article-title>Internalization of seasonal time.</article-title>             <source>Horm Behav</source>             <volume>48</volume>             <fpage>503</fpage>             <lpage>511</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Carter1">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Carter</surname><given-names>DS</given-names></name><name name-style="western"><surname>Goldman</surname><given-names>BD</given-names></name></person-group>             <year>1983</year>             <article-title>Antigonadal effects of timed melatonin infusion in pinealectomized male Djungarian hamster (<italic>Phodopus sungorus sungorus</italic>): duration is the critical parameter.</article-title>             <source>Endocrinol</source>             <volume>113</volume>             <fpage>1261</fpage>             <lpage>1267</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-BlancoVives1">
+        <label>15</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Blanco-Vives</surname><given-names>B</given-names></name><name name-style="western"><surname>Sanchez-Vazquez</surname><given-names>FJ</given-names></name></person-group>             <year>2009</year>             <article-title>Synchronization to light and feeding time of circadian rhythms of spawning and locomotor activity in zebrafish.</article-title>             <source>Physiol Behav</source>             <volume>98</volume>             <fpage>268</fpage>             <lpage>275</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Kitahashi1">
+        <label>16</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kitahashi</surname><given-names>T</given-names></name><name name-style="western"><surname>Ogawa</surname><given-names>S</given-names></name><name name-style="western"><surname>Parhar</surname><given-names>IS</given-names></name></person-group>             <year>2009</year>             <article-title>Cloning and expression of kiss2 in the zebrafish and medaka.</article-title>             <source>Endocrinol</source>             <volume>150</volume>             <fpage>821</fpage>             <lpage>831</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Biran1">
+        <label>17</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Biran</surname><given-names>J</given-names></name><name name-style="western"><surname>Ben-Dor</surname><given-names>S</given-names></name><name name-style="western"><surname>Levavi-Sivan</surname><given-names>B</given-names></name></person-group>             <year>2008</year>             <article-title>Molecular identification and functional characterization of the kisspeptin/kisspeptin receptor system in lower vertebrates.</article-title>             <source>Biol Reprod</source>             <volume>79</volume>             <fpage>776</fpage>             <lpage>786</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Shahab1">
+        <label>18</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Shahab</surname><given-names>M</given-names></name><name name-style="western"><surname>Mastronardi</surname><given-names>C</given-names></name><name name-style="western"><surname>Seminara</surname><given-names>SB</given-names></name><name name-style="western"><surname>Crowley</surname><given-names>WF</given-names></name><name name-style="western"><surname>Ojeda</surname><given-names>SR</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Increased hypothalamic GPR54 signaling: a potential mechanism for initiation of puberty in primates.</article-title>             <source>Proc Natl Acad Sci USA</source>             <volume>102</volume>             <fpage>2129</fpage>             <lpage>2134</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Keen1">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Keen</surname><given-names>KL</given-names></name><name name-style="western"><surname>Wegner</surname><given-names>FH</given-names></name><name name-style="western"><surname>Bloom</surname><given-names>SR</given-names></name><name name-style="western"><surname>Ghatei</surname><given-names>MA</given-names></name><name name-style="western"><surname>Terasawa</surname><given-names>E</given-names></name></person-group>             <year>2008</year>             <article-title>An increase in kisspeptin-54 release occurs with the pubertal increase in luteinizing hormone-releasing hormone-1 release in the stalk-median eminence of female rhesus monkeys in vivo.</article-title>             <source>Endocrinol</source>             <volume>149</volume>             <fpage>4151</fpage>             <lpage>4157</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Ansel1">
+        <label>20</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ansel</surname><given-names>L</given-names></name><name name-style="western"><surname>Bolborea</surname><given-names>M</given-names></name><name name-style="western"><surname>Bentsen</surname><given-names>AH</given-names></name><name name-style="western"><surname>Klosen</surname><given-names>P</given-names></name><name name-style="western"><surname>Mikkelsen</surname><given-names>JD</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Differential regulation of kiss1 expression by melatonin and gonadal hormones in male and female Syrian hamsters.</article-title>             <source>J Biol Rhythms</source>             <volume>25</volume>             <fpage>81</fpage>             <lpage>91</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Parhar1">
+        <label>21</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Parhar</surname><given-names>IS</given-names></name><name name-style="western"><surname>Ogawa</surname><given-names>S</given-names></name><name name-style="western"><surname>Sakuma</surname><given-names>Y</given-names></name></person-group>             <year>2004</year>             <article-title>Laser-captured single digoxigenin-labeled neurons of gonadotropin-releasing hormone types reveal a novel G protein-coupled receptor (Gpr54) during maturation in cichlid fish.</article-title>             <source>Endocrinol</source>             <volume>145</volume>             <fpage>3613</fpage>             <lpage>3618</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-VanAerle1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Van Aerle</surname><given-names>R</given-names></name><name name-style="western"><surname>Kille</surname><given-names>P</given-names></name><name name-style="western"><surname>Lange</surname><given-names>A</given-names></name><name name-style="western"><surname>Tyler</surname><given-names>CR</given-names></name></person-group>             <year>2008</year>             <article-title>Evidence for the existence of a functional Kiss1/Kiss1 receptor pathway in fish.</article-title>             <source>Peptides</source>             <volume>29</volume>             <fpage>57</fpage>             <lpage>64</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Goodman1">
+        <label>23</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Goodman</surname><given-names>RL</given-names></name><name name-style="western"><surname>Inskeep</surname><given-names>EK</given-names></name></person-group>             <year>2006</year>             <article-title>Neuroendocrine control of the ovarian cycle of the sheep.</article-title>             <person-group person-group-type="editor"><name name-style="western"><surname>Neill</surname><given-names>J</given-names></name></person-group>             <source>Knobil and Neill's physiology of reproduction</source>             <publisher-loc>New York</publisher-loc>             <publisher-name>Elsevier</publisher-name>             <fpage>2389</fpage>             <lpage>2448</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Patio1">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Patiño</surname><given-names>R</given-names></name><name name-style="western"><surname>Yoshizaki</surname><given-names>G</given-names></name><name name-style="western"><surname>Thomas</surname><given-names>P</given-names></name><name name-style="western"><surname>Kagawa</surname><given-names>H</given-names></name></person-group>             <year>2001</year>             <article-title>Gonadotropic control of ovarian follicle maturation: the two-stage concept and its mechanisms.</article-title>             <source>Comp Biochem Physiol B Biochem Mol Biol</source>             <volume>129</volume>             <fpage>427</fpage>             <lpage>439</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Wallace1">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wallace</surname><given-names>RA</given-names></name><name name-style="western"><surname>Selman</surname><given-names>K</given-names></name></person-group>             <year>1985</year>             <article-title>Major protein changes during vitellogenesis and maturation of Fundulus oocytes.</article-title>             <source>Dev Biol</source>             <volume>110</volume>             <fpage>492</fpage>             <lpage>498</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Thomas1">
+        <label>26</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Thomas</surname><given-names>P</given-names></name><name name-style="western"><surname>Pang</surname><given-names>Y</given-names></name><name name-style="western"><surname>Zhu</surname><given-names>Y</given-names></name><name name-style="western"><surname>Detweiler</surname><given-names>C</given-names></name><name name-style="western"><surname>Doughty</surname><given-names>K</given-names></name></person-group>             <year>2004</year>             <article-title>Multiple rapid progestin actions and progestin membrane receptor subtypes in fish.</article-title>             <source>Steroids</source>             <volume>69</volume>             <fpage>567</fpage>             <lpage>573</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Wang1">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wang</surname><given-names>Y</given-names></name><name name-style="western"><surname>Ge</surname><given-names>W</given-names></name></person-group>             <year>2004</year>             <article-title>Developmental profiles of activin betaA, betaB, and follistatin expression in the zebrafish ovary: evidence for their differential roles during sexual maturation and ovulatory cycle.</article-title>             <source>Biol Reprod</source>             <volume>71</volume>             <fpage>2056</fpage>             <lpage>2064</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Clelland1">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Clelland</surname><given-names>E</given-names></name><name name-style="western"><surname>Kohli</surname><given-names>G</given-names></name><name name-style="western"><surname>Campbell</surname><given-names>RK</given-names></name><name name-style="western"><surname>Sharma</surname><given-names>S</given-names></name><name name-style="western"><surname>Shimasaki</surname><given-names>S</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Bone morphogenetic protein-15 in the zebrafish ovary: complementary deoxyribonucleic acid cloning, genomic organization, tissue distribution, and role in oocyte maturation.</article-title>             <source>Endocrinol</source>             <volume>147</volume>             <fpage>201</fpage>             <lpage>209</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Clelland2">
+        <label>29</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Clelland</surname><given-names>ES</given-names></name><name name-style="western"><surname>Tan</surname><given-names>Q</given-names></name><name name-style="western"><surname>Balofsky</surname><given-names>A</given-names></name><name name-style="western"><surname>Lacivita</surname><given-names>R</given-names></name><name name-style="western"><surname>Peng</surname><given-names>C</given-names></name></person-group>             <year>2007</year>             <article-title>Inhibition of premature oocyte maturation: a role for bone morphogenetic protein 15 in zebrafish ovarian follicles.</article-title>             <source>Endocrinol</source>             <volume>148</volume>             <fpage>5451</fpage>             <lpage>5458</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Nakamura1">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nakamura</surname><given-names>Y</given-names></name><name name-style="western"><surname>Tamura</surname><given-names>H</given-names></name><name name-style="western"><surname>Takayama</surname><given-names>H</given-names></name><name name-style="western"><surname>Kato</surname><given-names>H</given-names></name></person-group>             <year>2003</year>             <article-title>Increased endogenous level of melatonin in preovulatory human follicles does not directly influence progesterone production.</article-title>             <source>Fertil Steril</source>             <volume>80</volume>             <fpage>1012</fpage>             <lpage>1016</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Takasaki1">
+        <label>31</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Takasaki</surname><given-names>A</given-names></name><name name-style="western"><surname>Nakamura</surname><given-names>Y</given-names></name><name name-style="western"><surname>Tamura</surname><given-names>H</given-names></name><name name-style="western"><surname>Shimamura</surname><given-names>K</given-names></name><name name-style="western"><surname>Morioka</surname><given-names>H</given-names></name></person-group>             <year>2003</year>             <article-title>Melatonin as a new drug for improving oocyte quality.</article-title>             <source>Repr Med Biol</source>             <volume>2</volume>             <fpage>139</fpage>             <lpage>144</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Tamura1">
+        <label>32</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Tamura</surname><given-names>H</given-names></name><name name-style="western"><surname>Nakamura</surname><given-names>Y</given-names></name><name name-style="western"><surname>Korkmaz</surname><given-names>A</given-names></name><name name-style="western"><surname>Manchester</surname><given-names>LC</given-names></name><name name-style="western"><surname>Tan</surname><given-names>DX</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Melatonin and the ovary: physiological and pathophysiological implications.</article-title>             <source>Fertil Steril</source>             <volume>92</volume>             <fpage>328</fpage>             <lpage>343</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Wu1">
+        <label>33</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wu</surname><given-names>J</given-names></name><name name-style="western"><surname>Nayudu</surname><given-names>PL</given-names></name><name name-style="western"><surname>Kiesel</surname><given-names>PS</given-names></name><name name-style="western"><surname>Michelmann</surname><given-names>HW</given-names></name></person-group>             <year>2000</year>             <article-title>Luteinizing hormone has a stage-limited effect on preantral follicle development in vitro.</article-title>             <source>Biol Reprod</source>             <volume>63</volume>             <fpage>320</fpage>             <lpage>327</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Peng1">
+        <label>34</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Peng</surname><given-names>C</given-names></name><name name-style="western"><surname>Clelland</surname><given-names>E</given-names></name><name name-style="western"><surname>Tan</surname><given-names>Q</given-names></name></person-group>             <year>2009</year>             <article-title>Potential role of bone morphogenetic protein-15 in zebrafish follicle development and oocyte maturation.</article-title>             <source>Comp Biochem Physiol A Mol Integr Physiol</source>             <volume>153</volume>             <fpage>83</fpage>             <lpage>87</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Zhdanova1">
+        <label>35</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zhdanova</surname><given-names>IV</given-names></name><name name-style="western"><surname>Yu</surname><given-names>L</given-names></name><name name-style="western"><surname>Lopez-Patino</surname><given-names>M</given-names></name><name name-style="western"><surname>Shang</surname><given-names>E</given-names></name><name name-style="western"><surname>Kishi</surname><given-names>S</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Aging of the circadian system in zebrafish and the effects of melatonin on sleep and cognitive performance.</article-title>             <source>Brain Res Bull</source>             <volume>75</volume>             <fpage>433</fpage>             <lpage>441</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Piccinetti1">
+        <label>36</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Piccinetti</surname><given-names>C</given-names></name><name name-style="western"><surname>Migliarini</surname><given-names>B</given-names></name><name name-style="western"><surname>Olivotto</surname><given-names>I</given-names></name><name name-style="western"><surname>Coletti</surname><given-names>G</given-names></name><name name-style="western"><surname>Amici</surname><given-names>A</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Appetite regulation: the central role of melatonin in <italic>Danio rerio</italic>.</article-title>             <source>Horm Behav</source>             <volume>58</volume>             <fpage>780</fpage>             <lpage>785</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Kulczykowska1">
+        <label>37</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kulczykowska</surname><given-names>E</given-names></name></person-group>             <year>1998</year>             <article-title>Effects of arginine vasotocin, isotocin and melatonin on blood pressure in the conscious atlantic cod (<italic>Gadus morhua</italic>): hormonal interactions?</article-title>             <source>Exp Physiol</source>             <volume>83</volume>             <fpage>809</fpage>             <lpage>820</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Selman1">
+        <label>38</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Selman</surname><given-names>K</given-names></name><name name-style="western"><surname>Wallace</surname><given-names>RA</given-names></name><name name-style="western"><surname>Sarka</surname><given-names>A</given-names></name><name name-style="western"><surname>Qi</surname><given-names>X</given-names></name></person-group>             <year>1993</year>             <article-title>Stages of oocyte development in the zebrafish, <italic>Brachydanio rerio</italic>.</article-title>             <source>J Morphol</source>             <volume>218</volume>             <fpage>203</fpage>             <lpage>224</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Pang1">
+        <label>39</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Pang</surname><given-names>Y</given-names></name><name name-style="western"><surname>Ge</surname><given-names>W</given-names></name></person-group>             <year>2002</year>             <article-title>Epidermal growth factor and TGFalpha promote zebrafish oocyte maturation in vitro: potential role of the ovarian activin regulatory system.</article-title>             <source>Endocrinol</source>             <volume>143</volume>             <fpage>47</fpage>             <lpage>54</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Maradonna1">
+        <label>40</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Maradonna</surname><given-names>F</given-names></name><name name-style="western"><surname>Carnevali</surname><given-names>O</given-names></name></person-group>             <year>2007</year>             <article-title>Vitellogenin, zona radiata protein, cathepsin D and heat shock protein 70 as biomarkers of exposure to xenobiotics.</article-title>             <source>Biomarkers</source>             <volume>12</volume>             <fpage>240</fpage>             <lpage>255</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Laemmli1">
+        <label>41</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Laemmli</surname><given-names>UK</given-names></name></person-group>             <year>1970</year>             <article-title>Cleavage of structural proteins during the assembly of the head of bacteriophage T4.</article-title>             <source>Nature</source>             <volume>227</volume>             <fpage>680</fpage>             <lpage>685</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Popek1">
+        <label>42</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Popek</surname><given-names>W</given-names></name><name name-style="western"><surname>Uszczek-Trojnar</surname><given-names>E</given-names></name><name name-style="western"><surname>Drng-Kozak</surname><given-names>E</given-names></name><name name-style="western"><surname>Fortuna-Wroska</surname><given-names>D</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Effects of the pineal gland and melatonin on dopamine release from perifused hypothalamus of mature female carp during spawning and winter regression.</article-title>             <source>A Ichthyol Piscator</source>             <volume>35</volume>             <fpage>65</fpage>             <lpage>71</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Lpez1">
+        <label>43</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>López</surname><given-names>LC</given-names></name><name name-style="western"><surname>Escames</surname><given-names>G</given-names></name><name name-style="western"><surname>Tapias</surname><given-names>V</given-names></name><name name-style="western"><surname>Utrilla</surname><given-names>P</given-names></name><name name-style="western"><surname>León</surname><given-names>J</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Identification of an inducible nitric oxide synthase in diaphragm mitochondria from septic mice: its relation with mitochondrial dysfunction and prevention by melatonin.</article-title>             <source>Int J Biochem Cell Biol</source>             <volume>38</volume>             <fpage>267</fpage>             <lpage>278</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Falcn3">
+        <label>44</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Falcón</surname><given-names>J</given-names></name><name name-style="western"><surname>Besseau</surname><given-names>L</given-names></name><name name-style="western"><surname>Sauzet</surname><given-names>SM</given-names></name><name name-style="western"><surname>Boeuf</surname><given-names>G</given-names></name></person-group>             <year>2006</year>             <article-title>Melatonin effects on the hypothalamo–pituitary axis in fish.</article-title>             <source>TRENDS Endocrinol Met</source>             <volume>181</volume>             <fpage>81</fpage>             <lpage>88</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Sbert1">
+        <label>45</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Sébert</surname><given-names>ME</given-names></name><name name-style="western"><surname>Legros</surname><given-names>C</given-names></name><name name-style="western"><surname>Weltzien</surname><given-names>FA</given-names></name><name name-style="western"><surname>Malpaux</surname><given-names>B</given-names></name><name name-style="western"><surname>Chemineau</surname><given-names>P</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Melatonin activates brain dopaminergic systems in the eel with an inhibitory impact on reproductive function.</article-title>             <source>J Neuroendocrinol</source>             <volume>20</volume>             <fpage>917</fpage>             <lpage>929</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Khan1">
+        <label>46</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Khan</surname><given-names>IA</given-names></name><name name-style="western"><surname>Thomas</surname><given-names>P</given-names></name></person-group>             <year>1996</year>             <article-title>Melatonin influences gonadotropin II secretion in the Atlantic croaker (<italic>Micropogonias undulatus</italic>).</article-title>             <source>Gen Comp Endocrinol</source>             <volume>104</volume>             <fpage>231</fpage>             <lpage>242</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Bayarri1">
+        <label>47</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bayarri</surname><given-names>MJ</given-names></name><name name-style="western"><surname>Rodriguez</surname><given-names>L</given-names></name><name name-style="western"><surname>Zanuy</surname><given-names>S</given-names></name><name name-style="western"><surname>Madrid</surname><given-names>JA</given-names></name><name name-style="western"><surname>Sanchez-Vazquez</surname><given-names>FJ</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>Effect of photoperiod manipulation on the daily rhythms of melatonin and reproductive hormones in caged European sea bass (<italic>Dicentrarchus labrax</italic>).</article-title>             <source>Gen Comp Endocrinol</source>             <volume>136</volume>             <fpage>72</fpage>             <lpage>81</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Chalivoix1">
+        <label>48</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Chalivoix</surname><given-names>S</given-names></name><name name-style="western"><surname>Bagnolini</surname><given-names>A</given-names></name><name name-style="western"><surname>Caraty</surname><given-names>A</given-names></name><name name-style="western"><surname>Cognie</surname><given-names>J</given-names></name><name name-style="western"><surname>Malpaux</surname><given-names>B</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Effects of photoperiod on Kisspeptin neuronal populations of the ewe diencephalon in connection with reproductive function.</article-title>             <source>J Neuroendocrinol</source>             <volume>22</volume>             <fpage>110</fpage>             <lpage>118</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-TenaSempere1">
+        <label>49</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Tena-Sempere</surname><given-names>M</given-names></name></person-group>             <year>2006</year>             <article-title>The roles of kisspeptins and G protein-coupled receptor-54 in pubertal development.</article-title>             <source>Curr Opin Pediatr</source>             <volume>18</volume>             <fpage>442</fpage>             <lpage>447</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Wang2">
+        <label>50</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wang</surname><given-names>Y</given-names></name><name name-style="western"><surname>Ge</surname><given-names>W</given-names></name></person-group>             <year>2003</year>             <article-title>Gonadotropin regulation of follistatin expression in the cultured ovarian follicle cells of zebrafish, <italic>Danio rerio</italic>.</article-title>             <source>Gen Comp Endocrinol</source>             <volume>134</volume>             <fpage>308</fpage>             <lpage>315</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Coon1">
+        <label>51</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Coon</surname><given-names>SL</given-names></name><name name-style="western"><surname>Begay</surname><given-names>V</given-names></name><name name-style="western"><surname>Falcon</surname><given-names>J</given-names></name><name name-style="western"><surname>Klein</surname><given-names>D</given-names></name></person-group>             <year>1998</year>             <article-title>Expression of melatonin synthesis genes is controlled by a circadian clock in pike organ but not in the trout.</article-title>             <source>Biol Cell</source>             <volume>90</volume>             <fpage>399</fpage>             <lpage>405</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Cahill1">
+        <label>52</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cahill</surname><given-names>GM</given-names></name></person-group>             <year>2002</year>             <article-title>Clock mechanisms in zebrafish.</article-title>             <source>Cell Tissue Res</source>             <volume>309</volume>             <fpage>27</fpage>             <lpage>34</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Mazurais1">
+        <label>53</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Mazurais</surname><given-names>D</given-names></name><name name-style="western"><surname>Porter</surname><given-names>M</given-names></name><name name-style="western"><surname>Lethimonier</surname><given-names>C</given-names></name><name name-style="western"><surname>Le Dréan</surname><given-names>G</given-names></name><name name-style="western"><surname>Le Goff</surname><given-names>P</given-names></name><etal/></person-group>             <year>2001</year>             <article-title>Effects of melatonin on liver estrogen receptor and vitellogenin expression in rainbow trout: an in vitro and in vivo study.</article-title>             <source>Gen Comp Endocrinology</source>             <volume>118</volume>             <fpage>344</fpage>             <lpage>353</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Filby1">
+        <label>54</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Filby</surname><given-names>L</given-names></name><name name-style="western"><surname>van Aerle</surname><given-names>R</given-names></name><name name-style="western"><surname>Duitman</surname><given-names>J</given-names></name><name name-style="western"><surname>Tyler</surname><given-names>CR</given-names></name></person-group>             <year>2008</year>             <article-title>The kisspeptin/gonadotropin-releasing hormone pathway and molecular signaling of puberty in fish.</article-title>             <source>Biol Reprod</source>             <volume>78</volume>             <fpage>278</fpage>             <lpage>289</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Kohli1">
+        <label>55</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kohli</surname><given-names>G</given-names></name><name name-style="western"><surname>Clelland</surname><given-names>E</given-names></name><name name-style="western"><surname>Peng</surname><given-names>C</given-names></name></person-group>             <year>2005</year>             <article-title>Potential targets of transforming growth factor-beta1during inhibition of oocyte maturation in zebrafish.</article-title>             <source>Reprod Biol Endocrinol</source>             <volume>30</volume>             <fpage>3</fpage>             <lpage>53</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Chen1">
+        <label>56</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Chen</surname><given-names>YJ</given-names></name><name name-style="western"><surname>Lee</surname><given-names>MT</given-names></name><name name-style="western"><surname>Yao</surname><given-names>HC</given-names></name><name name-style="western"><surname>Hsiao</surname><given-names>PW</given-names></name><name name-style="western"><surname>Ke</surname><given-names>FC</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Crucial Role of Estrogen Receptor-α Interaction with Transcription Coregulators in Follicle-Stimulating Hormone and Transforming Growth Factor β1 Up-Regulation of Steroidogenesis in Rat Ovarian Granulosa Cells.</article-title>             <source>Endocrinol</source>             <volume>149</volume>             <fpage>4658</fpage>             <lpage>4668</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Palter1">
+        <label>57</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Palter</surname><given-names>SF</given-names></name><name name-style="western"><surname>Tavares</surname><given-names>AB</given-names></name><name name-style="western"><surname>Hourvitz</surname><given-names>A</given-names></name><name name-style="western"><surname>Veldhuis</surname><given-names>JD</given-names></name><name name-style="western"><surname>Adashi</surname><given-names>EY</given-names></name></person-group>             <year>2001</year>             <article-title>Are estrogens of import to primate/human ovarian folliculogenesis?</article-title>             <source>Endocr Rev</source>             <volume>22</volume>             <fpage>389</fpage>             <lpage>424</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Adriaens1">
+        <label>58</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Adriaens</surname><given-names>I</given-names></name><name name-style="western"><surname>Jacquet</surname><given-names>P</given-names></name><name name-style="western"><surname>Cortvrindt</surname><given-names>R</given-names></name><name name-style="western"><surname>Janssen</surname><given-names>K</given-names></name><name name-style="western"><surname>Smitz</surname><given-names>J</given-names></name></person-group>             <year>2006</year>             <article-title>Melatonin has dose-dependent effects on folliculogenesis, oocyte maturation capacity and steroidogenesis.</article-title>             <source>Toxicol</source>             <volume>228</volume>             <fpage>333</fpage>             <lpage>343</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Chattoraj1">
+        <label>59</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Chattoraj</surname><given-names>A</given-names></name><name name-style="western"><surname>Seth</surname><given-names>M</given-names></name><name name-style="western"><surname>Maitra</surname><given-names>SK</given-names></name></person-group>             <year>2009</year>             <article-title>Localization and dynamics of Mel(1a) melatonin receptor in the ovary of carp Catla catla in relation to serum melatonin levels.</article-title>             <source>Comp Biochem Physiol A Mol Integr Physiol</source>             <volume>152</volume>             <fpage>327</fpage>             <lpage>333</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Chattoraj2">
+        <label>60</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Chattoraj</surname><given-names>A</given-names></name><name name-style="western"><surname>Bhattacharyya</surname><given-names>S</given-names></name><name name-style="western"><surname>Basu</surname><given-names>D</given-names></name><name name-style="western"><surname>Bhattacharya</surname><given-names>S</given-names></name><name name-style="western"><surname>Bhattacharya</surname><given-names>S</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Melatonin accelerates maturation inducing hormone (MIH): induced oocyte maturation in carps.</article-title>             <source>Gen Comp Endocrinol</source>             <volume>140</volume>             <fpage>145</fpage>             <lpage>155</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Chattoraj3">
+        <label>61</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Chattoraj</surname><given-names>A</given-names></name><name name-style="western"><surname>Seth</surname><given-names>M</given-names></name><name name-style="western"><surname>Maitra</surname><given-names>SK</given-names></name></person-group>             <year>2008</year>             <article-title>Influence of serotonin on the action of melatonin in MIH-induced meiotic resumptionin the oocytes of carp <italic>Catla catla</italic>.</article-title>             <source>Comp Biochem Physiol Part A</source>             <volume>150</volume>             <fpage>301</fpage>             <lpage>306</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Carnevali1">
+        <label>62</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Carnevali</surname><given-names>O</given-names></name><name name-style="western"><surname>Gioacchini</surname><given-names>G</given-names></name><name name-style="western"><surname>Piccinetti</surname><given-names>CC</given-names></name><name name-style="western"><surname>Maradonna</surname><given-names>F</given-names></name><name name-style="western"><surname>Lombardo</surname><given-names>F</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Melatonin control of oogenesis and metabolic resources in Zebrafish.</article-title>             <source>J Appl Ichthyol</source>             <volume>26</volume>             <fpage>826</fpage>             <lpage>830</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Moschos1">
+        <label>63</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Moschos</surname><given-names>S</given-names></name><name name-style="western"><surname>Chan</surname><given-names>JL</given-names></name><name name-style="western"><surname>Mantzoros</surname><given-names>CS</given-names></name></person-group>             <year>2002</year>             <article-title>Leptin and reproduction: a review.</article-title>             <source>Fertil Steril</source>             <volume>77</volume>             <fpage>433</fpage>             <lpage>444</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Giorgini1">
+        <label>64</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Giorgini</surname><given-names>E</given-names></name><name name-style="western"><surname>Conti</surname><given-names>C</given-names></name><name name-style="western"><surname>Ferraris</surname><given-names>P</given-names></name><name name-style="western"><surname>Sabbatini</surname><given-names>S</given-names></name><name name-style="western"><surname>Tosi</surname><given-names>G</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Effects of <italic>Lactobacillus rhamnosus</italic> on zebrafish oocyte maturation: an FTIR imaging and biochemical analysis.</article-title>             <source>Anal Bioanal Chem</source>             <volume>398</volume>             <fpage>3063</fpage>             <lpage>3072</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0019978-Carrnevali1">
+        <label>65</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Carrnevali</surname><given-names>O</given-names></name><name name-style="western"><surname>Conti</surname><given-names>C</given-names></name><name name-style="western"><surname>Ferraris</surname><given-names>P</given-names></name><name name-style="western"><surname>Garavagli</surname><given-names>MG</given-names></name><name name-style="western"><surname>Gioacchini</surname><given-names>G</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>FT-IR Microspectroscopy on molecular building of Zebrafish oocytes.</article-title>             <source>J Mol Structure</source>             <volume>938</volume>             <fpage>207</fpage>             <lpage>213</lpage>          </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

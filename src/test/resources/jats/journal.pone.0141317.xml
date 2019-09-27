@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article article-type="research-article" dtd-version="3.0" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0141317</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-14-53514</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+</article-categories>
+<title-group>
+<article-title>Ammonium Chloride Ingestion Attenuates Exercise-Induced mRNA Levels in Human Muscle</article-title>
+<alt-title alt-title-type="running-head">Ammonium Chloride Ingestion and mRNA Content</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" deceased="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Edge</surname>
+<given-names>Johann</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Mündel</surname>
+<given-names>Toby</given-names>
+</name>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Pilegaard</surname>
+<given-names>Henriette</given-names>
+</name>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Hawke</surname>
+<given-names>Emma</given-names>
+</name>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Leikis</surname>
+<given-names>Murray</given-names>
+</name>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Lopez-Villalobos</surname>
+<given-names>Nicolas</given-names>
+</name>
+<xref ref-type="aff" rid="aff005"><sup>5</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Oliveira</surname>
+<given-names>Rodrigo S. F.</given-names>
+</name>
+<xref ref-type="aff" rid="aff006"><sup>6</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Bishop</surname>
+<given-names>David J.</given-names>
+</name>
+<xref ref-type="aff" rid="aff006"><sup>6</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Department of Sport and Exercise Science, University of Auckland, Auckland, New Zealand</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>School of Sport and Exercise, Massey University, Palmerston North, New Zealand</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Centre of Inflammation and Metabolism (CIM), Department of Biology, University of Copenhagen, Copenhagen, Denmark</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Department of Renal Medicine, Wellington Hospital, Newtown, New Zealand</addr-line></aff>
+<aff id="aff005"><label>5</label> <addr-line>Institute of Veterinary, Animal and Biomedical Sciences, Massey University, Palmerston North, New Zealand</addr-line></aff>
+<aff id="aff006"><label>6</label> <addr-line>Institute of Sport, Exercise and Active Living (ISEAL), Victoria University, Melbourne, Australia</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Alway</surname>
+<given-names>Stephen E</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>West Virginia University School of Medicine, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: JE DB TM. Performed the experiments: JE EH ML TM. Analyzed the data: JE NLV EH TM HP. Contributed reagents/materials/analysis tools: ML HP. Wrote the paper: DB JE HP EH RO TM NLV.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">David.Bishop@vu.edu.au</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>10</day>
+<month>12</month>
+<year>2015</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2015</year>
+</pub-date>
+<volume>10</volume>
+<issue>12</issue>
+<elocation-id>e0141317</elocation-id>
+<history>
+<date date-type="received">
+<day>28</day>
+<month>11</month>
+<year>2014</year>
+</date>
+<date date-type="accepted">
+<day>7</day>
+<month>10</month>
+<year>2015</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2015</copyright-year>
+<copyright-holder>Edge et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0141317"/>
+<abstract>
+<p>Minimizing the decrease in intracellular pH during high-intensity exercise training promotes greater improvements in mitochondrial respiration. This raises the intriguing hypothesis that pH may affect the exercise-induced transcription of genes that regulate mitochondrial biogenesis. Eight males performed 10x2-min cycle intervals at 80% <inline-formula id="pone.0141317.e001"><alternatives><graphic id="pone.0141317.e001g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0141317.e001" xlink:type="simple"/><mml:math display="inline" id="M1"><mml:mover accent="true"><mml:mtext>V</mml:mtext><mml:mo>˙</mml:mo></mml:mover><mml:msub><mml:mtext>O</mml:mtext><mml:mrow><mml:mn>2</mml:mn><mml:mtext>peak</mml:mtext></mml:mrow></mml:msub></mml:math></alternatives></inline-formula> intensity on two occasions separated by ~2 weeks. Participants ingested either ammonium chloride (ACID) or calcium carbonate (PLA) the day before and on the day of the exercise trial in a randomized, counterbalanced order, using a crossover design. Biopsies were taken from the <italic>vastus lateralis</italic> muscle before and after exercise. The mRNA level of peroxisome proliferator-activated receptor co-activator 1α (PGC-1α), citrate synthase, cytochome c and FOXO1 was elevated at rest following ACID (<italic>P</italic>&lt;0.05). During the PLA condition, the mRNA content of mitochondrial- and glucose-regulating proteins was elevated immediately following exercise (<italic>P</italic>&lt;0.05). In the early phase (0–2 h) of post-exercise recovery during ACID, PGC-1α, citrate synthase, cytochome C, FOXO1, GLUT4, and HKII mRNA levels were not different from resting levels (<italic>P</italic>&gt;0.05); the difference in PGC-1α mRNA content 2 h post-exercise between ACID and PLA was not significant (P = 0.08). Thus, metabolic acidosis abolished the early post-exercise increase of PGC-1α mRNA and the mRNA of downstream mitochondrial and glucose-regulating proteins. These findings indicate that metabolic acidosis may affect mitochondrial biogenesis, with divergent responses in resting and post-exercise skeletal muscle.</p>
+</abstract>
+<funding-group>
+<funding-statement>This work was supported by a grant from the Massey University Research Fund. The Centre of Inflammation and Metabolism (CIM) is supported by a grant from the Danish National Research Foundation (# 02-512-55). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="3"/>
+<table-count count="2"/>
+<page-count count="14"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Repeated, transient changes in mRNA content have been reported to precede increases in mitochondrial proteins in response to exercise training in human skeletal muscle [<xref ref-type="bibr" rid="pone.0141317.ref001">1</xref>]. Understanding the control of this gene expression would therefore seem important to understand the mechanisms responsible for adaptations to exercise training. One factor that has been reported to affect the activity-induced transcription of metabolic genes associated with substrate utilization, such as mitochondrial uncoupling protein-3 and pyruvate dehydrogenase kinase 4 [<xref ref-type="bibr" rid="pone.0141317.ref002">2</xref>], is the intracellular environment (e.g., low muscle glycogen content). A yet-to-be-explored hypothesis, raised by our previous research [<xref ref-type="bibr" rid="pone.0141317.ref003">3</xref>], is that intracellular pH (pH<sub><italic>i</italic></sub>) may also affect the exercise-induced transcription of genes that regulate mitochondrial biogenesis.</p>
+<p>There is increasing evidence that acidosis can affect molecular signalling. For example, basal insulin receptor substrate-1 (IRS-1) associated phosphatidylinositol 3-kinase (PI3-K) activity has been reported to be suppressed following a small chronic decrease in the blood pH (0.11 of a pH unit) of rats [<xref ref-type="bibr" rid="pone.0141317.ref004">4</xref>], with a subsequent increase in mRNAs encoding ubiquitin and protease subunits [<xref ref-type="bibr" rid="pone.0141317.ref005">5</xref>]. In addition, ammonium chloride (NH<sub>4</sub>Cl) ingestion decreases the phosphorylation of mitogen-activated protein kinase (MAPK) in rat kidneys [<xref ref-type="bibr" rid="pone.0141317.ref006">6</xref>]. Given that MAPK is involved in one of the main signalling pathways involved in mitochondrial biogenesis, this result provides support for the hypothesis that acidosis may affect the transcription of genes regulating mitochondrial biogenesis. This would be consistent with the observation that the addition of sodium bicarbonate (NaHCO<sub>3</sub>) to C2C12 myotubes promotes the up-regulation of peroxisome proliferator-activated receptor coactivator 1α (PGC-1α) and some of its downstream targets (COX-II, COX-IV and cytochrome c) [<xref ref-type="bibr" rid="pone.0141317.ref007">7</xref>]. However, while the effects of acidosis on kidney function and acute changes in gene expression in mammalian tissue have received much attention, little is known about the effects of manipulating pH on activity-induced gene expression in skeletal muscle.</p>
+<p>It has previously been reported that ingesting NaHCO<sub>3</sub> prior to high-intensity exercise training promotes greater improvements in endurance performance [<xref ref-type="bibr" rid="pone.0141317.ref008">8</xref>]. It was hypothesized that this may be due to the negative effects of a decrease in pH<sub><italic>i</italic></sub> on exercise-induced changes in mitochondrial function, as measured by mitochondrial respiration [<xref ref-type="bibr" rid="pone.0141317.ref003">3</xref>]. It was subsequently reported that rats ingesting NaHCO<sub>3</sub> before physical activity (so as to reduce the activity-induced decrease in muscle pH) had significantly greater adaptations to five weeks of exercise training [<xref ref-type="bibr" rid="pone.0141317.ref009">9</xref>]. This included greater mitochondrial respiration [<xref ref-type="bibr" rid="pone.0141317.ref003">3</xref>] compared with both a control group (no training) and a placebo group (identical exercise, but ingesting sodium chloride before each session). These results raise the intriguing possibility that pH may affect skeletal muscle gene expression associated with mitochondrial biogenesis.</p>
+<p>The purpose of this study was to manipulate intra- and extracellular pH, via an acute acid load (NH<sub>4</sub>Cl ingestion), and to determine the effects on both basal mRNA levels and the exercise-induced mRNA responses of important regulators of mitochondrial biogenesis, such as PGC-1α and PGC-1β, and downstream target proteins such as citrate synthase (CS) and cytochrome c (CYT-C). We also investigated the effects of an acute acid load on basal mRNA levels and the exercise-induced mRNA responses of proteins associated with acute and chronic metabolic regulation such as glucose transporter 4 (GLUT4), hexokinase (HKII), pyruvate dehydrogenase kinase 4 (PDK4) and forkhead box protein O1 (FOXO1). We hypothesized that NH<sub>4</sub>Cl ingestion would exacerbate the exercise-induced acidosis and be associated with a decrease in the exercise-induced mRNA response of these important regulators of mitochondrial biogenesis and metabolism.</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="sec003">
+<title>Participants</title>
+<p>Eight moderately-trained males (age 25 ± 6 y, body mass 83.7 ± 9.0, <inline-formula id="pone.0141317.e002"><alternatives><graphic id="pone.0141317.e002g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0141317.e002" xlink:type="simple"/><mml:math display="inline" id="M2"><mml:mover accent="true"><mml:mtext>V</mml:mtext><mml:mo>˙</mml:mo></mml:mover><mml:msub><mml:mtext>O</mml:mtext><mml:mrow><mml:mn>2</mml:mn><mml:mtext>peak</mml:mtext></mml:mrow></mml:msub></mml:math></alternatives></inline-formula> 47.6 ± 7.6 mL·kg<sup>-1</sup>·min<sup>-1</sup>) volunteered to participate in this study. Each participant was involved in recreational physical activity ~3 d·wk<sup>-1</sup> (walking, jogging, gym), but not training for any specific sport.</p>
+</sec>
+<sec id="sec004">
+<title>Ethics Statement</title>
+<p>Participants were informed of the study requirements, benefits and risks before giving written informed consent. Approval for the study procedures was granted by the Massey University Research Ethics Committee. Raw data is included in the Supplementary file—<xref ref-type="supplementary-material" rid="pone.0141317.s001">S1 Dataset</xref>.</p>
+</sec>
+<sec id="sec005">
+<title>Experimental overview</title>
+<p>Participants performed the following tests: a) a maximal incremental cycling exercise test and b) two acute sessions of high-intensity interval exercise on a cycle-ergometer, combined with the ingestion of either ammonium chloride (metabolic acidosis; ACID) or calcium carbonate (placebo; PLA), in a randomized, counterbalanced order using a double-blind, cross-over design by the lead author (using sequentially-numbered envelopes). Each high-intensity interval exercise session was separated by approximately 2 weeks and all participants completed the study within &lt; 3 weeks. A schematic representation of each acute testing day is presented in <xref ref-type="fig" rid="pone.0141317.g001">Fig 1</xref>.</p>
+<fig id="pone.0141317.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0141317.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Participants ingested either ammonium chloride (0.15 g.kg<sup>-1</sup>, ACID) or placebo (0.15 g.kg<sup>-1</sup>, PLA) in four doses during the 24 h prior to the trial day.</title>
+<p>An 8 min warm-up (5 min at 40% of peak power output, 3 min at 60% of peak power output) was followed by 10 x 2 min intervals at 80% of peak power output, interspersed with 1 min of active rest at 40% of peak power output, performed on a cycle ergometer. Timings of additional supplementation, venous blood and muscle biopsy samples and a post-exercise meal are shown prior to and following the high-intensity interval session.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0141317.g001" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec006">
+<title>Maximal incremental cycling exercise test</title>
+<p>The maximal incremental exercise was performed on a Lode cycle ergometer (Goningen, The Netherlands). The incremental exercise test began at 100 W, with power output increments of 25 W·min<sup>-1</sup> until exhaustion [<xref ref-type="bibr" rid="pone.0141317.ref010">10</xref>]. Exhaustion was defined as the inability to maintain the minimum pedal cadence required (60 rev·min<sup>-1</sup>). In order to attain maximal values, participants received strong verbal encouragement to continue as long as possible. Expired gas was collected using Douglas Bags and measured with an Ametek analyser (Applied Electrochemistry, Pittsburgh, PA) and a dry gas meter (Harvard, UK) to determine O<sub>2</sub> consumption (<inline-formula id="pone.0141317.e003"><alternatives><graphic id="pone.0141317.e003g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0141317.e003" xlink:type="simple"/><mml:math display="inline" id="M3"><mml:mover accent="true"><mml:mtext>V</mml:mtext><mml:mo>˙</mml:mo></mml:mover><mml:msub><mml:mtext>O</mml:mtext><mml:mn>2</mml:mn></mml:msub></mml:math></alternatives></inline-formula>), CO<sub>2</sub> production (<inline-formula id="pone.0141317.e004"><alternatives><graphic id="pone.0141317.e004g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0141317.e004" xlink:type="simple"/><mml:math display="inline" id="M4"><mml:mrow><mml:mover accent="true"><mml:mtext>V</mml:mtext><mml:mo>˙</mml:mo></mml:mover><mml:msub><mml:mtext>CO</mml:mtext><mml:mn>2</mml:mn></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>) and the respiratory exchange ratio (RER). The <inline-formula id="pone.0141317.e005"><alternatives><graphic id="pone.0141317.e005g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0141317.e005" xlink:type="simple"/><mml:math display="inline" id="M5"><mml:mover accent="true"><mml:mtext>V</mml:mtext><mml:mo>˙</mml:mo></mml:mover><mml:msub><mml:mtext>O</mml:mtext><mml:mrow><mml:mn>2</mml:mn><mml:mtext>peak</mml:mtext></mml:mrow></mml:msub></mml:math></alternatives></inline-formula> was considered as the highest 30-s average for <inline-formula id="pone.0141317.e006"><alternatives><graphic id="pone.0141317.e006g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0141317.e006" xlink:type="simple"/><mml:math display="inline" id="M6"><mml:mover accent="true"><mml:mtext>V</mml:mtext><mml:mo>˙</mml:mo></mml:mover><mml:msub><mml:mtext>O</mml:mtext><mml:mn>2</mml:mn></mml:msub></mml:math></alternatives></inline-formula> obtained during the test and the peak power (PP<sub>watt</sub>) was determined from the last completed stage.</p>
+</sec>
+<sec id="sec007">
+<title>Diet/exercise control</title>
+<p>Prior to each high-intensity interval exercise session, participants were required to abstain from any vigorous physical activity for a minimum of 48 h, and were provided with a standardised meal in the 24 h prior to each trial. Meals consisted of 7 g CHO·kg<sup>-1</sup> body mass, 1 g protein·kg<sup>-1</sup> body mass and 2 g fat·kg<sup>-1</sup> body mass. Repeated tests for the same participant were carried out at approximately the same time of day in order to control for diurnal variation [<xref ref-type="bibr" rid="pone.0141317.ref011">11</xref>].</p>
+</sec>
+<sec id="sec008">
+<title>Ammonium Chloride or Calcium Carbonate ingestion</title>
+<p>Ammonium chloride has been shown to be well tolerated at doses of up to 0.3 g.kg<sup>-1</sup> [<xref ref-type="bibr" rid="pone.0141317.ref012">12</xref>]. In the present study, participants ingested gelatin capsules containing either ammonium chloride (ACID, 0.15 g·kg<sup>-1</sup>) or calcium carbonate (PLA, 0.15 g·kg<sup>-1</sup>), using a double blind cross-over design, the day prior to each high-intensity interval exercise session. Capsule ingestion was subdivided and occurred in four separate and equal aliquots spread throughout the day to coincide with feeding to reduce any side effects, such as gastrointestinal discomfort.</p>
+<p>Participants then reported to the laboratory for the high-intensity interval exercise session following an ~10 h overnight fast. Additional doses of ammonium chloride and calcium carbonate (0.05 g·kg<sup>-1</sup>) were ingested by the participants upon their arrival in the laboratory (after a resting blood sample), 1 hour after their arrival (after a resting muscle biopsy), and immediately after the completion of the high-intensity interval exercise session. Therefore, the total ingestion of each supplement was 0.15 g·kg<sup>-1</sup> on the day of the exercise protocol, equaling that consumed on the day prior to the trial. No blood or tissue samples were taken prior to the initial capsule ingestion the day before the trial.</p>
+</sec>
+<sec id="sec009">
+<title>Exercise protocol</title>
+<p>The high-intensity exercise session consisted of an 8 min warm-up—5 min at 40% of PP<sub>watt</sub> followed by 3 min at 60% of PP<sub>watt</sub>. This was immediately followed by 10 x 2-min intervals at 80% PP<sub>watt</sub>, interspersed with 1 min of active recovery at 40% PP<sub>watt</sub>. Each exercise bout was completed on the same cycle ergometer as the maximal incremental test, and all participants were able to complete all intervals in both conditions.</p>
+</sec>
+<sec id="sec010">
+<title>Blood sampling and analysis</title>
+<p>Shortly after arriving at the laboratory, a cannula (20-G, Becton Dickinson, US) was inserted into an antecubital vein of the participants and a resting venous blood sample was taken. Further venous blood samples were taken immediately prior to, immediately after exercise, and 2 h into recovery. The venflon was kept patent with 0.9% saline (AstraZeneca, Aus). For each sample, the initial 2 mL drawn was discarded and blood was then collected into two 4.5 mL EDTA-containing tubes and one 4.5 mL lithium-heparin containing tube (Becton Dickinson, UK). Heparinised samples were analysed for pH, HCO<sub>3</sub><sup>-</sup> and lactate using an automated blood-gas analyser (ABL800 FLEX, Radiometer Medical ApS, Denmark). Tubes were placed on melting ice until centrifuged (2300 <italic>g</italic> at 4°C for 10 min) and the serum or plasma aliquotted and stored at –80°C until subsequent analysis.</p>
+</sec>
+<sec id="sec011">
+<title>Muscle sampling and analysis</title>
+<p>On the day of each high-intensity exercise bout, three incisions were made through the subcutaneous tissue and underlying muscle fascia under local anaesthesia (5 mL, 1% Xylocaine) into the lateral aspect of the <italic>vastus lateralis</italic>, about one-third of the distance from the upper margin of the patella to the anterior iliac spine of each subject. Pre and post-exercise samples were taken from one leg, while the 2 h post-exercise samples were taken from the other. <italic>Vastus lateralis</italic> muscle biopsy samples were taken using the Bergstrom technique with suction applied. The samples were then removed from the biopsy needle, blotted free of excess blood and rapidly placed in liquid nitrogen and stored at -80°C until subsequent analysis.</p>
+</sec>
+<sec id="sec012">
+<title>RNA isolations, reverse transcription and PCR</title>
+<p>Total RNA was isolated from approximately 30 mg of muscle tissue and the final RNA pellet was re-suspended in 1 μL per mg original tissue in diethyl pyrocarbonate (DEPC)-treated H<sub>2</sub>O containing 0.1 mM EDTA as previously described [<xref ref-type="bibr" rid="pone.0141317.ref013">13</xref>]. Reverse transcription (RT) was performed on 3 μg total RNA of each sample using the superscript II RNase H<sup>-</sup> systemwith Oligo dT (invitrogen, Carlsbad, CA, USA) and the RT products were diluted in nuclease-free H<sub>2</sub>O as previously described [<xref ref-type="bibr" rid="pone.0141317.ref013">13</xref>]. The amount of single strand DNA (ssDNA) was determined in the RT samples using OliGreen reagent (Molecular Probes, The Netherlands) as previously described [<xref ref-type="bibr" rid="pone.0141317.ref014">14</xref>]. The mRNA content was determined for selected genes using fluorescence-based real time PCR (ABI PRSIM 7900 Sequence Detection System, Applied Biosystems, CA, USA). Forward (FP) and reverse (RP) primers and Taqman probes were designed from human specific sequence data (Entrez-NIH and Ensembl, Sanger Institute) using computer software (Primer Express, Applied Biosystems). The primer and probe sequences are given in <xref ref-type="table" rid="pone.0141317.t001">Table 1</xref>. The probes were 5’ 6-carboxyfluorescein (FAM) and 3’ 6-carboxy-N, N, N’, N’-tetramethylrhodamine (TAMRA) labeled. Prior optimization was performed to determine the optimal primer and probe concentrations. PCR amplification was performed in triplicates in a total reaction volume of 10 μL with 21 ng cDNA as previously described [<xref ref-type="bibr" rid="pone.0141317.ref014">14</xref>]. Serial dilutions were made from a pooled representative sample and these samples were amplified together with the unknown samples and used to construct a standard curve. The obtained cycle threshold (Ct) values reflecting the initial content of the specific transcript in the samples were converted to an arbitrary amount by using the standard curve. For each sample, the amount of a given target cDNA was normalized to the ssDNA content in the sample.</p>
+<table-wrap id="pone.0141317.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0141317.t001</object-id>
+<label>Table 1</label> <caption><title>Primer and TAQMAN probe sequences used for real-time PCR.</title> <p>PDK4, pyruvate dehydrogenase kinase 4; PGC-1α, peroxisome proliferator-activated receptor-γ coactivator-1α CS, citrate synthase; Cyt <italic>c</italic>, cytochrome <italic>c</italic> oxidase, HKII, hexokinase II; GLUT4, glucose transporter-4; PGC-1β, peroxisome proliferator-activated receptor gamma coactivator-1β FOXO1, forkhead box O1.</p></caption>
+<alternatives>
+<graphic id="pone.0141317.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0141317.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">Gene</th>
+<th align="left">Primer sequence (forward and reverse)</th>
+<th align="left">TaqMan Probe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><bold>PDK4</bold></td>
+<td align="left">5'-TCCACTGCACCAACGCCT-3'</td>
+<td align="left">5'-ATAATTCCCGGAATGCTCCTTTGGCTG-3'</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">5'-TGGCAAGCCGTAACCAAAA-3'</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>PGC-1α</bold></td>
+<td align="left">5’-CAAGCCAAACCAACAACTTTATCTCT-3’</td>
+<td align="left">5’-AGTCACCAAATGACCCCAAGGGTTCC-3’</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">5’-CACACTTAAGGTGCGTTCAATAGTC-3’</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>CS</bold></td>
+<td align="left">5’-GACTACATCTGGA ACACACTCAACTCA-3'</td>
+<td align="left">5'-ACGGGTTGTTCCAGGCTATGGCCA-3'</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">5'-CGCGGATCAGTCTTCCTTAGTAC-3'</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>Cyt <italic>c</italic></bold></td>
+<td align="left">5'-GGTCTCTTTGGGCGGAAGAC-3’</td>
+<td align="left">5'-CCCTGGATACTCTTACACAGCCGCCAA-3'</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">5' CTCTCCCCAGATGATGCCTTT 3’</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>HKII</bold></td>
+<td align="left">5'-TTGTCCGTAACATTCTCATCGATT-3'</td>
+<td align="left">5'-ACCAAGCGTGGACTGCTCTTCCGA-3'</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">5'-TGTCTTGAGCCGCTCTGAGAT-3'</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>GLUT4</bold></td>
+<td align="left">5'-CCTGCCAGAAAGAGTCTGAAGC-3'</td>
+<td align="left">5'-CAGAAACATCGGCCCAGCCTGTCA-3'</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">5'-ATCCTTCAGCTCAGCCAGCA-3’</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>PGC-1β</bold></td>
+<td align="left">5'-GAGGGCTCCGGCACTTCT-3'</td>
+<td align="left">5'-CCCAGATACACTGACTACGATTCCAATTCAGAAG-3'</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">5'-CATGGCTTCATACTTGCTTTTCC-3'</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>FOXO1</bold></td>
+<td align="left">5'-ACCGAACAGGATGATCTTGGA-3'</td>
+<td align="left">5'-CCATCTGCCGCAAAGATGGCCTCTA-3'</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">5'-TTGCTTATCTCAGACAGACTGGGTAA-3'</td>
+<td align="left"/>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec013">
+<title>pH analysis</title>
+<p>Muscle samples were freeze dried and dissected free of blood, fat and connective tissue. The dried muscle sample (1–3 mg) was homogenized in 10 mM NaF (i.e., 1 mg: 33 μL) and then placed in a water bath at 37°C for 5 minutes. Muscle pH was determined with a microelectrode (MI-410, Microelectrodes Inc, Bedford, NH, USA) connected to a pH meter (Schott Instruments GmbH, lab 850, Mainz, Germany). The pH values were recorded at every 30 seconds but the final pH value for each sample was determined by the average of the last two minutes.</p>
+</sec>
+<sec id="sec014">
+<title>Statistical analysis</title>
+<p>Statistical analyses were performed using SAS (Statistical Analysis System, version 9.3; SAS Institute Inc., Cary, NC, USA). Repeated measures of the dependent variables recorded in the same subject were analyzed using the MIXED procedure fitting a mixed model that included the fixed effects of treatment (ACID AND PLA), time (rest, post-ex and 2 h), the interaction between treatment and time and the random effect of subject. Using the Akaike’s information criterion, a compound symmetric error structure was determined as the most appropriate residual covariance structure for repeated measures over time within subjects. Multiple mean comparisons of gene expressions were performed on the logarithm scale and presented in graphs after back-transformation. Significant differences between means were declared at P&lt;0.05, and the number of participants for each analysis was n = 8.</p>
+</sec>
+</sec>
+<sec id="sec015" sec-type="results">
+<title>Results</title>
+<sec id="sec016">
+<title>Blood variables</title>
+<p>At rest, venous blood pH and HCO<sub>3</sub><sup>-</sup> were both lower in the ACID trial than in the PLA trial (<italic>P</italic> &lt; 0.05; <xref ref-type="table" rid="pone.0141317.t002">Table 2</xref>). Additionally, at all post-exercise time points, venous blood pH and HCO<sub>3</sub><sup>-</sup> were lower in the ACID trial than in PLA (<italic>P</italic> &lt; 0.05; <xref ref-type="table" rid="pone.0141317.t002">Table 2</xref>). Venous blood lactate concentration was similar at rest between trials, increased in response to exercise, but only the immediately post-exercise venous blood lactate concentration was lower in the ACID than in the PLA trial (<italic>P</italic> &lt; 0.05).</p>
+<table-wrap id="pone.0141317.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0141317.t002</object-id>
+<label>Table 2</label> <caption><title>Least squares means (and standard errors) for plasma pH (pH), bicarbonate (HCO<sub>3</sub>-) and lactate (Lac<sup>-</sup>) concentrations for placebo (PLA) and acidosis (ACID) trials at rest (REST), immediately after exercise (POST-EX) and 2 hours (2H) following exercise.</title></caption>
+<alternatives>
+<graphic id="pone.0141317.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0141317.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center"/>
+<th align="center"/>
+<th align="left">Rest</th>
+<th align="left">Post-Ex</th>
+<th align="left">2h</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><bold>pH</bold></td>
+<td align="left">PLA</td>
+<td align="left">7.385 (0.023)</td>
+<td align="left">7.302 (0.021)<xref ref-type="table-fn" rid="t002fn001">*</xref></td>
+<td align="left">7.396 (0.022)<xref ref-type="table-fn" rid="t002fn002">‡</xref></td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">ACID</td>
+<td align="left">7.293 (0.022)<xref ref-type="table-fn" rid="t002fn003">†</xref></td>
+<td align="left">7.184 (0.019)<xref ref-type="table-fn" rid="t002fn001">*</xref><xref ref-type="table-fn" rid="t002fn003">†</xref></td>
+<td align="left">7.303 (0.021)<xref ref-type="table-fn" rid="t002fn001">*</xref><xref ref-type="table-fn" rid="t002fn002">‡</xref><xref ref-type="table-fn" rid="t002fn003">†</xref></td>
+</tr>
+<tr>
+<td align="left"><bold>HCO</bold><sub><bold>3</bold></sub><bold>-</bold> (mmoL·L<sup>-1</sup>)</td>
+<td align="left">PLA</td>
+<td align="left">27.2 (1.2)</td>
+<td align="left">20.3 (2.5)<xref ref-type="table-fn" rid="t002fn001">*</xref></td>
+<td align="left">26.3 (1.4)<xref ref-type="table-fn" rid="t002fn002">‡</xref></td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">ACID</td>
+<td align="left">17.4 (1.1)<xref ref-type="table-fn" rid="t002fn003">†</xref></td>
+<td align="left">10.3 (0.)<xref ref-type="table-fn" rid="t002fn001">*</xref><xref ref-type="table-fn" rid="t002fn003">†</xref></td>
+<td align="left">14.1 (1.1)<xref ref-type="table-fn" rid="t002fn001">*</xref><xref ref-type="table-fn" rid="t002fn002">‡</xref><xref ref-type="table-fn" rid="t002fn003">†</xref></td>
+</tr>
+<tr>
+<td align="left"><bold>Lac</bold><sup><bold>-</bold></sup> (mmoL·L<sup>-1</sup>)</td>
+<td align="left">PLA</td>
+<td align="left">1.7 (0.2)</td>
+<td align="left">8.3 (1.2)<xref ref-type="table-fn" rid="t002fn001">*</xref></td>
+<td align="left">2.1 (0.4)<xref ref-type="table-fn" rid="t002fn002">‡</xref></td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">ACID</td>
+<td align="left">1.4 (0.2)</td>
+<td align="left">5.4 (0.7)<xref ref-type="table-fn" rid="t002fn001">*</xref><xref ref-type="table-fn" rid="t002fn003">†</xref></td>
+<td align="left">2.0 (0.2)<xref ref-type="table-fn" rid="t002fn002">‡</xref></td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>* Denotes significant difference from Rest value within the treatment (<italic>p</italic> &lt; 0.05).</p></fn>
+<fn id="t002fn002"><p><sup>‡</sup> Denotes significant difference from Post-Ex value within the treatment (<italic>p</italic> &lt; 0.05).</p></fn>
+<fn id="t002fn003"><p><sup>†</sup> Denotes significant difference to PLA value within the time (<italic>p</italic> &lt; 0.05).</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec017">
+<title>Muscle pH</title>
+<p>There were no significant differences in pre-exercise muscle pH between ACID and PLA (7.10 ± 0.04 vs 7.10 ± 0.04; <italic>P</italic> &gt; 0.05). However, there was a significantly lower muscle pH immediately post exercise (6.86 ± 0.11 vs 6.93 ± 0.09; <italic>P</italic> &lt; 0.05), and 2 h post the exercise bout (7.05 ± 0.05 vs 7.12 ± 0.04; <italic>P</italic> &lt; 0.05) in the ACID trial than in the PLA trial.</p>
+</sec>
+<sec id="sec018">
+<title>mRNA</title>
+<p>At rest there was a significantly higher mRNA content of PGC-1α, CS, CYT-C and Foxo mRNA in ACID than in PLA (<italic>P</italic> &lt; 0.05; Figs <xref ref-type="fig" rid="pone.0141317.g002">2</xref> and <xref ref-type="fig" rid="pone.0141317.g003">3</xref>). The resting mRNA content for HKII (<italic>P</italic> = 0.06) and GLUT mRNA (<italic>P</italic> = 0.10) was not significantly higher in ACID compared with PLA (<xref ref-type="fig" rid="pone.0141317.g003">Fig 3</xref>). There were no significant differences in PGC-1β or PDK4 at rest between the ACID and PLA trials (<italic>P</italic> &gt; 0.05; Figs <xref ref-type="fig" rid="pone.0141317.g002">2</xref> and <xref ref-type="fig" rid="pone.0141317.g003">3</xref> respectively).</p>
+<fig id="pone.0141317.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0141317.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Gene expression responses to a high-intensity interval exercise bout (10 x 2 min at 80% peak power output, 1 min @ 40% of peak power output) after the ingestion of ammonium chloride (ACID) or placebo (PLA).</title>
+<p>The total ingestion of each supplement was 0.15 g·kg<sup>-1</sup> on the day of the exercise protocol, equaling that consumed on the day prior to the trial. (a) PGC-1α, (b) citrate synthase, (C) cytochrome C; (d) PGC-1β. # significantly different to placebo at same time point (P &lt; 0.05); * significantly different to same ingested substance at rest (P &lt; 0.05). Values are least square means ± 95% confidence limits.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0141317.g002" xlink:type="simple"/>
+</fig>
+<fig id="pone.0141317.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0141317.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Gene expression responses to a high-intensity interval exercise bout (10 x 2 min @ 80% peak power output, 1 min @ 40% of peak power output) after the ingestion of ammonium chloride (ACID) or placebo (PLA).</title>
+<p>The total ingestion of each supplement was 0.15 g·kg<sup>-1</sup> on the day of the exercise protocol, equaling that consumed on the day prior to the trial. (a) HKII, (b) GLUT4, (C) PDK4; (d) FOXO1. # significantly different to placebo at same time point (P &lt; 0.05); * significantly different to same ingested substance at rest (P &lt; 0.05). Values are least square means ± 95% confidence limits.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0141317.g003" xlink:type="simple"/>
+</fig>
+<p>There was a significant increase in the mRNA content of PGC-1α, PGC-1β, CS, CYT-C, FOXO1, HKII, GLUT4 and PDK4 mRNA following the exercise bout relative to Pre during the PLA trial (<italic>P</italic> &lt; 0.05; Figs <xref ref-type="fig" rid="pone.0141317.g002">2</xref> and <xref ref-type="fig" rid="pone.0141317.g003">3</xref>). However, only PGC-1β was elevated early post-exercise (compared with rest) during the ACID trial (<italic>P</italic> &lt; 0.05). There were no significant differences between conditions for the post-exercise mRNA values. There was also no significant difference between ACID and PLA PGC-1α mRNA 2 h post-exercise (P = 0.08).</p>
+</sec>
+</sec>
+<sec id="sec019" sec-type="conclusions">
+<title>Discussion</title>
+<p>The present study investigated the effects of NH<sub>4</sub>Cl ingestion on mRNA content at rest and following high-intensity interval exercise. For the first time, we have shown that NH<sub>4</sub>Cl ingestion alters basal and exercise-induced changes in the mRNA content of PGC-1α mRNA and other mitochondrial/metabolic proteins in human skeletal muscle. At rest, the mRNA content of PGC-1α and its downstream targets, such as CS and CYT-C, was greater in ACID versus PLA. However, only in the PLA condition was the post-exercise mRNA content of mitochondrial- and glucose-regulating proteins greater than resting values (<italic>P</italic>&lt;0.05). In contrast, the post-exercise mRNA contents of PGC-1α, CS, CYT-C, FOXO1, GLUT4, and HKII mRNA levels were not different from resting levels in the ACID condition (<italic>P</italic>&gt;0.05). Therefore, our results show that NH<sub>4</sub>Cl ingestion increases the mRNA content of some genes in skeletal muscle at rest, but reduces the exercise-induced response of these same genes. Hence, NH<sub>4</sub>Cl ingestion appears to have different effects on the resting and post-exercise mRNA content of PGC-1α and its downstream targets.</p>
+<sec id="sec020">
+<title>Efficacy of ingestion protocol</title>
+<p>Administration of NH<sub>4</sub>Cl has widely been used to induce extracellular acidosis [<xref ref-type="bibr" rid="pone.0141317.ref012">12</xref>]. NH<sub>4</sub>Cl uptake by the liver results in the formation of urea and the net release of HCl, which is not completely buffered by extracellular bicarbonate. As a consequence, there was a significant decrease in resting values for both venous bicarbonate and blood pH (<xref ref-type="table" rid="pone.0141317.t002">Table 2</xref>). Despite the large decrease in resting extracellular pH, there was no change in resting muscle pH. This is consistent with previous human [<xref ref-type="bibr" rid="pone.0141317.ref012">12</xref>] and <italic>in-vivo</italic> rat studies [<xref ref-type="bibr" rid="pone.0141317.ref015">15</xref>], and has been suggested to be attributed to the actions of intracellular buffers (e.g., protein-bound histidine residues, imidazole-containing dipeptides and phosphates within the muscle; [<xref ref-type="bibr" rid="pone.0141317.ref016">16</xref>]) that act to maintain pH<sub><italic>i</italic></sub>. This indicates that the response of intact animals to a decrease in extracellular pH is more complex than in cultured cells where pH<sub><italic>i</italic></sub> typically decreases in parallel with extracellular pH.</p>
+<p>In contrast to the resting condition, and similar to previous results [<xref ref-type="bibr" rid="pone.0141317.ref012">12</xref>], the lower post-exercise extracellular pH following NH<sub>4</sub>Cl ingestion was associated with a significantly lower pH<sub><italic>i</italic></sub>. Consistent with previous research in humans [<xref ref-type="bibr" rid="pone.0141317.ref012">12</xref>], NH<sub>4</sub>Cl ingestion also resulted in significantly lower post-exercise plasma pH and blood lactate values (<xref ref-type="table" rid="pone.0141317.t002">Table 2</xref>). The lower post-exercise blood pH can be attributed to the reduced extracellular buffer capacity, while the lower blood lactate concentration can be attributed to both inhibition of glycolysis and reduced lactate transport out of muscle cells when the extracellular pH is increased [<xref ref-type="bibr" rid="pone.0141317.ref017">17</xref>].</p>
+</sec>
+<sec id="sec021">
+<title>The effects of metabolic acidosis on resting mRNA content</title>
+<p>At rest, PGC-1α mRNA, and the mRNA content of some of its downstream targets, such as CS and CYT-C, was elevated following NH<sub>4</sub>Cl ingestion (<xref ref-type="fig" rid="pone.0141317.g002">Fig 2</xref>). Indeed, the resting levels of these genes were elevated to a similar degree to that observed immediately post-exercise during the PLA condition. While this is the first study to determine the effects of NH<sub>4</sub>Cl ingestion on the mRNA content of mitochondrial proteins in skeletal muscle, it has previously been reported that a decrease in blood pH of 0.14 pH units increases the expression of a range of genes in mice kidneys, including citrate synthase [<xref ref-type="bibr" rid="pone.0141317.ref018">18</xref>]. These results suggest that extracellular acidosis is associated with increased resting mitochondrial gene expression in a range of tissues.</p>
+<p>In contrast to the effects of NH<sub>4</sub>Cl ingestion on mitochondrial mRNA content, there was no significant increase in the resting mRNA content of glucose-regulating genes (i.e., HKII and GLUT4; <xref ref-type="fig" rid="pone.0141317.g003">Fig 3</xref>). There was however, a significant increase in FOXO1 mRNA content (<xref ref-type="fig" rid="pone.0141317.g003">Fig 3</xref>). This is consistent with the observation that in muscle atrophying due to uremia, there is an increase in FOXO1 mRNA [<xref ref-type="bibr" rid="pone.0141317.ref019">19</xref>]. Furthermore, acute metabolic acidosis has been reported to increase protein breakdown in rat skeletal muscle [<xref ref-type="bibr" rid="pone.0141317.ref020">20</xref>], via an increase in mRNAs encoding ubiquitin and protease subunits [<xref ref-type="bibr" rid="pone.0141317.ref005">5</xref>,<xref ref-type="bibr" rid="pone.0141317.ref021">21</xref>]. Extracellular acidosis has also been reported to affect the IRS/PI3-K cascade [<xref ref-type="bibr" rid="pone.0141317.ref004">4</xref>]. Specifically, extracellular acidosis was associated with an increase in the amount of PI3-K p85 subunit protein which decreased IRS-1-associated PI3-K activity, resulting in a reduction in the phosphorylation (i.e., activation) of Akt (protein kinase B) [<xref ref-type="bibr" rid="pone.0141317.ref004">4</xref>]. As phosporylated Akt suppresses the activity of the FOXO1 class of transcription factors [<xref ref-type="bibr" rid="pone.0141317.ref022">22</xref>], a decrease in the phosphorylation of Akt could help to explain the increase in FOXO1 mRNA content that was observed at rest in the ACID condition in the present study. These results suggest that extracellular acidosis is a powerful stimulus up-regulating multiple pathways associated with an increase in protein degradation.</p>
+<p>Potential mechanisms for the altered resting mRNA levels in the present study require further investigation. Nonetheless, as NH<sub>4</sub>Cl ingestion did not alter resting pH<sub><italic>i</italic></sub>, it appears likely the mechanism(s) is related to the observed decrease in extracellular pH (and/or bicarbonate). There are a number of receptors and pathways that are thought to be affected by extracellular acidosis. For example, both the system A neutral amino acid transporter (SNAT2) [<xref ref-type="bibr" rid="pone.0141317.ref023">23</xref>] and G-protein-coupled receptors (GPCRs) [<xref ref-type="bibr" rid="pone.0141317.ref024">24</xref>] are thought to be sensitive to extracellular acidosis. Activation of GPCRs may explain why p38 MAPK has been reported to be activated by a decrease in extracellular pH [<xref ref-type="bibr" rid="pone.0141317.ref025">25</xref>]. Relevant to our findings, p38MAPK phosphorylates PGC-1α. This increases the stability of this protein, and promotes the release of PGC-1α repressors, which improves the transcription of mitochondrial genes [<xref ref-type="bibr" rid="pone.0141317.ref026">26</xref>]. Intracellular free calcium concentrations also rise in whole animals and intact cells in response to ammonium chloride treatment [<xref ref-type="bibr" rid="pone.0141317.ref027">27</xref>]. In addition, ammonia induces an increase in reactive oxygen species (ROS) production [<xref ref-type="bibr" rid="pone.0141317.ref028">28</xref>]. ROS and intracellular free calcium are known messengers in the p38MAPK and Ca<sup>2+</sup>-calmodulin-dependent kinase (CaMK) pathways, and have also been suggested to regulate PGC-1α [<xref ref-type="bibr" rid="pone.0141317.ref029">29</xref>]. Further research is required to investigate the role of p38 MAPK and CaMK in responding to extracellular pH changes and increasing the expression of mitochondrial genes in human skeletal muscle.</p>
+</sec>
+<sec id="sec022">
+<title>The effects of NH<sub>4</sub>Cl ingestion on post-exercise mRNA content</title>
+<p>During the PLA trial there was a significant post-exercise increase in most of the genes that were measured (2–20 fold; Figs <xref ref-type="fig" rid="pone.0141317.g002">2</xref> and <xref ref-type="fig" rid="pone.0141317.g003">3</xref>). These activity-induced increases in mRNA content are consistent with previous reports [<xref ref-type="bibr" rid="pone.0141317.ref030">30</xref>,<xref ref-type="bibr" rid="pone.0141317.ref031">31</xref>]. However, extracellular acidosis was associated with an attenuated exercise-induced expression of these genes, such that only PGC-1β was elevated 2 h post-exercise (compared with rest) during the ACID trial. Furthermore, PGC-1α mRNA content 2 h post-exercise in the ACID trial was 3-fold lower than in the PLA trial (<xref ref-type="fig" rid="pone.0141317.g002">Fig 2</xref>). These results indicate that NH<sub>4</sub>Cl ingestion reduces the normal post-exercise increase in mRNAs for proteins associated with mitochondrial biogenesis and glucose regulation.</p>
+<p>It has previously been reported that the intracellular environment (e.g., low muscle glycogen) affects the activity-induced transcription of metabolic genes associated with substrate utilization, such as mitochondrial uncoupling protein-3 and pyruvate dehydrogenase kinase 4 [<xref ref-type="bibr" rid="pone.0141317.ref002">2</xref>,<xref ref-type="bibr" rid="pone.0141317.ref032">32</xref>]. We provide new information that pH may also affect the exercise-induced mRNA responses of proteins that regulate mitochondrial biogenesis (and glucose regulation). This blunting of the mRNA response may be due to the already elevated resting mRNA level of PGC-1α and other metabolic proteins and/or the effects of altered metabolite levels on signaling cascades when intense muscle contraction is accompanied by ammonium-chloride-induced acidosis.</p>
+<p>Previous research has shown that NH<sub>4</sub>Cl ingestion reduces muscle AMP, ADP and lactate content following intense exercise [<xref ref-type="bibr" rid="pone.0141317.ref012">12</xref>,<xref ref-type="bibr" rid="pone.0141317.ref033">33</xref>,<xref ref-type="bibr" rid="pone.0141317.ref034">34</xref>]. It is well known that changes in phosphorylation potential (e.g., AMP:ATP ratio) initiate numerous downstream molecular events in skeletal muscle, at least in part via AMPK activation [<xref ref-type="bibr" rid="pone.0141317.ref035">35</xref>]. By sensing the energy status of the muscle cell, AMPK has been suggested to be a critical regulator involved in initiating mitochondrial biogenesis [<xref ref-type="bibr" rid="pone.0141317.ref036">36</xref>]. In addition, muscle lactate has also been proposed to be an important signaling molecule that affects transcription factors involved in mitochondrial biogenesis [<xref ref-type="bibr" rid="pone.0141317.ref029">29</xref>]. Thus, smaller exercise-induced changes in muscle AMP and lactate accumulation may contribute to our observations of smaller exercise-induced increases in mRNA content following NH<sub>4</sub>Cl ingestion. However, further research is required to identify the mechanisms by which NH<sub>4</sub>Cl ingestion blunted the normal exercised-induced increase in mRNA content in the present study.</p>
+</sec>
+<sec id="sec023">
+<title>Exercise versus rest—why the difference?</title>
+<p>An interesting and novel finding from the present study is that NH<sub>4</sub>Cl ingestion enhanced resting mRNA content, but blunted the exercise-induced increase in mRNA content. These contrasting effects may be attributable to the different effects of intracellular and extracellular pH changes. As discussed earlier, NH<sub>4</sub>Cl ingestion was associated with a decrease in both intracellular and extracellular pH post exercise, but a decrease in resting extracellular pH only. It may therefore be hypothesized that the increase in resting mRNA content was due to membrane components sensitive to extracellular acidosis (e.g., GPCRs; [<xref ref-type="bibr" rid="pone.0141317.ref024">24</xref>,<xref ref-type="bibr" rid="pone.0141317.ref037">37</xref>]) or the system A neutral amino acid transporter (SNAT2) [<xref ref-type="bibr" rid="pone.0141317.ref023">23</xref>], whereas the mechanisms explaining the blunted post-exercise mRNA response are related to changes in pH<sub><italic>i</italic></sub>. It is also possible that whether gene expression is up or down regulated depends on the magnitude of the pH change. It has previously been reported that the rate of vascular endothelial growth factor (VEGF) transcription was increased in cells at a pH of 7.1, compared with 7.4, but decreased at a pH of 6.9 [<xref ref-type="bibr" rid="pone.0141317.ref038">38</xref>]. Further research is required to investigate both of these hypotheses.</p>
+</sec>
+<sec id="sec024">
+<title>Limitations</title>
+<p>While administration of NH<sub>4</sub>Cl is a commonly-used used model of acidosis [<xref ref-type="bibr" rid="pone.0141317.ref012">12</xref>,<xref ref-type="bibr" rid="pone.0141317.ref039">39</xref>], it is possible that our results can be attributable to a specific effect of NH<sub>4</sub>Cl (e.g., urea production), rather than changes in pH. However, similar decreases in protein synthesis have been observed following administration of either NH<sub>4</sub>Cl or a cation-exchange resin [<xref ref-type="bibr" rid="pone.0141317.ref039">39</xref>]; the resin induces acidosis by releasing hydrogen ions in exchange for other cations in the gastrointestinal tract, thus lowering the systemic pH. While further research, using different substances to alter pH is required, these findings suggest that the altered mRNA levels in the present study are unlikely to be specific to NH<sub>4</sub>Cl ingestion.</p>
+</sec>
+<sec id="sec025">
+<title>Conclusions</title>
+<p>The present results suggest that disturbances to acid-base homeostasis have the potential to alter both resting and post-exercise mRNA content of proteins related to mitochondrial biogenesis and glucose regulation. The changes in the mRNA content of mitochondrial-related proteins are consistent with our previous research demonstrating that increasing extracellular pH prior to training is associated with significantly greater improvements in endurance performance in humans [<xref ref-type="bibr" rid="pone.0141317.ref008">8</xref>] and mitochondrial respiration in rats [<xref ref-type="bibr" rid="pone.0141317.ref003">3</xref>]. While further research is required, these results have potential implications for populations who experience a greater decrease in pH at rest (e.g., chronic renal failure patients [<xref ref-type="bibr" rid="pone.0141317.ref039">39</xref>]) or during physical activity (e.g., diabetics [<xref ref-type="bibr" rid="pone.0141317.ref040">40</xref>]).</p>
+</sec>
+</sec>
+<sec id="sec026">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0141317.s001" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0141317.s001" xlink:type="simple">
+<label>S1 Dataset</label>
+<caption>
+<title>Raw data for individual participants.</title>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>We would like to acknowledge the essential role of Dr Johann Edge in performing this research. Unfortunately he passed away on the 25<sup>th</sup> March 2010 and was not able to submit this manuscript himself. We thank the participants for their participation and commitment to the study.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0141317.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Perry</surname> <given-names>CG</given-names></name>, <name name-style="western"><surname>Lally</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Holloway</surname> <given-names>GP</given-names></name>, <name name-style="western"><surname>Heigenhauser</surname> <given-names>GJ</given-names></name>, <name name-style="western"><surname>Bonen</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Spriet</surname> <given-names>LL</given-names></name> (<year>2010</year>) <article-title>Repeated transient mRNA bursts precede increases in transcriptional and mitochondrial proteins during training in human skeletal muscle</article-title>. <source>J Physiol</source> <volume>588</volume>: <fpage>4795</fpage>–<lpage>4810</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1113/jphysiol.2010.199448" xlink:type="simple">10.1113/jphysiol.2010.199448</ext-link></comment> <object-id pub-id-type="pmid">20921196</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pilegaard</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Keller</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Steensberg</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Helge</surname> <given-names>JW</given-names></name>, <name name-style="western"><surname>Pedersen</surname> <given-names>BK</given-names></name>, <name name-style="western"><surname>Saltin</surname> <given-names>B</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>Influence of pre-exercise muscle glycogen content on exercise-induced transcriptional regulation of metabolic genes</article-title>. <source>J Physiol</source> <volume>541</volume>: <fpage>261</fpage>–<lpage>271</lpage>. <object-id pub-id-type="pmid">12015434</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bishop</surname> <given-names>DJ</given-names></name>, <name name-style="western"><surname>Thomas</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Moore-Morris</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Tonkonogi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sahlin</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Mercier</surname> <given-names>J</given-names></name> (<year>2010</year>) <article-title>Sodium bicarbonate ingestion prior to training improves mitochondrial adaptations in rats</article-title>. <source>American Journal of Physiology Endocrinology and Metabolism</source> <volume>299</volume>: <fpage>E225</fpage>–<lpage>233</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1152/ajpendo.00738.2009" xlink:type="simple">10.1152/ajpendo.00738.2009</ext-link></comment> <object-id pub-id-type="pmid">20484007</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bailey</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Zheng</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Hu</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Price</surname> <given-names>SR</given-names></name>, <name name-style="western"><surname>Mitch</surname> <given-names>WE</given-names></name> (<year>2006</year>) <article-title>Chronic Kidney Disease Causes Defects in Signaling through the Insulin Receptor Substrate/Phosphatidylinositol 3-Kinase/Akt Pathway: Implications for Muscle Atrophy</article-title>. <source>J Am Soc Nephrol</source> <volume>17</volume>: <fpage>1388</fpage>–<lpage>1394</lpage>. <object-id pub-id-type="pmid">16611720</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bailey</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>England</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Price</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Ding</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Mitch</surname> <given-names>WE</given-names></name> (<year>1996</year>) <article-title>The acidosis of chronic renal failure activates muscle activates muscle proteolysis in rats by augmenting transcription of genes encoding proteins of the ATP-dependent ubiquitin-proteosome pathway</article-title>. <source>Journal of Clinical Investigation</source> <volume>97</volume>: <fpage>1447</fpage>–<lpage>1453</lpage>.</mixed-citation></ref>
+<ref id="pone.0141317.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bento</surname> <given-names>LM</given-names></name>, <name name-style="western"><surname>Carvalheira</surname> <given-names>JB</given-names></name>, <name name-style="western"><surname>Menegon</surname> <given-names>LF</given-names></name>, <name name-style="western"><surname>Saad</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Gontijo</surname> <given-names>JA</given-names></name> (<year>2005</year>) <article-title>Effects of NH4Cl intake on renal growth in rats: role of MAPK signalling pathway</article-title>. <source>Nephrol Dial Transplant</source> <volume>20</volume>: <fpage>2654</fpage>–<lpage>2660</lpage>. <object-id pub-id-type="pmid">16169866</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Perez-Schindler</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Philp</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Baar</surname> <given-names>K</given-names></name> (<year>2009</year>) <article-title>Sodium bicarbonate increases glucose uptake and mitochondrial biogenesis in C2C12 myotubes potentially via the transcriptional co-activator PGC-1a</article-title>. <source>Proceedings of the Physiological Society</source> <volume>14</volume>: <fpage>PC44</fpage>.</mixed-citation></ref>
+<ref id="pone.0141317.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Edge</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Bishop</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Goodman</surname> <given-names>C</given-names></name> (<year>2006</year>) <article-title>Effects of chronic NaHCO3 ingestion during interval training on changes to muscle buffer capacity, metabolism, and short-term endurance performance</article-title>. <source>J Appl Physiol</source> <volume>101</volume>: <fpage>918</fpage>–<lpage>925</lpage>. <object-id pub-id-type="pmid">16627675</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Thomas</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Bishop</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Moore-Morris</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Mercier</surname> <given-names>J</given-names></name> (<year>2007</year>) <article-title>Effects of high-intensity training on MCT1, MCT4, and NBC expressions in rat skeletal muscles: influence of chronic metabolic alkalosis</article-title>. <source>Am J Physiol Endocrinol Metab</source> <volume>293</volume>: <fpage>E916</fpage>–<lpage>922</lpage>. <object-id pub-id-type="pmid">17609257</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bentley</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Newell</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Bishop</surname> <given-names>D</given-names></name> (<year>2007</year>) <article-title>Incremental exercise test design and analysis: implications for performance diagnostics in endurance athletes</article-title>. <source>Sports Medicine</source> <volume>37</volume>: <fpage>575</fpage>–<lpage>586</lpage>. <object-id pub-id-type="pmid">17595153</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Racinais</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Perrey</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Denis</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Bishop</surname> <given-names>D</given-names></name> (<year>2010</year>) <article-title>Maximal power, but not fatigability, is greater during repeated sprints performed in the afternoon</article-title>. <source>Chronobiol Int</source> <volume>27</volume>: <fpage>855</fpage>–<lpage>864</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.3109/07420521003668412" xlink:type="simple">10.3109/07420521003668412</ext-link></comment> <object-id pub-id-type="pmid">20560715</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hollidge-Horvat</surname> <given-names>MG</given-names></name>, <name name-style="western"><surname>Parolin</surname> <given-names>ML</given-names></name>, <name name-style="western"><surname>Wong</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>NL</given-names></name>, <name name-style="western"><surname>Heigenhauser</surname> <given-names>GJ</given-names></name> (<year>1999</year>) <article-title>Effect of induced metabolic acidosis on human skeletal muscle metabolism during exercise</article-title>. <source>Am J Physiol</source> <volume>277</volume>: <fpage>E647</fpage>–<lpage>658</lpage>. <object-id pub-id-type="pmid">10516124</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pilegaard</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Ordway</surname> <given-names>GA</given-names></name>, <name name-style="western"><surname>Saltin</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Neufer</surname> <given-names>PD</given-names></name> (<year>2000</year>) <article-title>Transcriptional regulation of gene expression in human skeletal muscle during recovery from exercise</article-title>. <source>American Journal of Physiology Endocrinology and Metabolism</source> <volume>279</volume>: <fpage>E806</fpage>–<lpage>814</lpage>. <object-id pub-id-type="pmid">11001762</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lundby</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Nordsborg</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Kusuhara</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Kristensen</surname> <given-names>KM</given-names></name>, <name name-style="western"><surname>Neufer</surname> <given-names>PD</given-names></name>, <name name-style="western"><surname>Pilegaard</surname> <given-names>H</given-names></name> (<year>2005</year>) <article-title>Gene expression in human skeletal muscle: alternative normalization method and effect of repeated biopsies</article-title>. <source>European Journal of Applied Physiology and Occupational Physiology</source> <volume>95</volume>: <fpage>351</fpage>–<lpage>360</lpage>. <object-id pub-id-type="pmid">16151837</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bailey</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>England</surname> <given-names>BK</given-names></name>, <name name-style="western"><surname>Long</surname> <given-names>RC</given-names> <suffix>Jr</suffix></name>, <name name-style="western"><surname>Weissman</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Mitch</surname> <given-names>WE</given-names></name> (<year>1995</year>) <article-title>Experimental acidemia and muscle cell pH in chronic acidosis and renal failure</article-title>. <source>American Journal of Physiology</source> <volume>269</volume>: <fpage>C706</fpage>–<lpage>712</lpage>. <object-id pub-id-type="pmid">7573401</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bishop</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Edge</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Mendez-Villanueva</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Thomas</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Schneiker</surname> <given-names>K</given-names></name> (<year>2009</year>) <article-title>High-intensity exercise decreases muscle buffer capacity via a decrease in protein buffering in human skeletal muscle</article-title>. <source>Pflugers Arch</source> <volume>458</volume>: <fpage>929</fpage>–<lpage>936</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00424-009-0673-z" xlink:type="simple">10.1007/s00424-009-0673-z</ext-link></comment> <object-id pub-id-type="pmid">19415322</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Thomas</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Bishop</surname> <given-names>DJ</given-names></name>, <name name-style="western"><surname>Lambert</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Mercier</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Brooks</surname> <given-names>GA</given-names></name> (<year>2012</year>) <article-title>Effects of acute and chronic exercise on sarcolemmal MCT1 and MCT4 contents in human skeletal muscles: current status</article-title>. <source>Am J Physiol Regul Integr Comp Physiol</source> <volume>302</volume>: <fpage>R1</fpage>–<lpage>14</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1152/ajpregu.00250.2011" xlink:type="simple">10.1152/ajpregu.00250.2011</ext-link></comment> <object-id pub-id-type="pmid">22012699</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nowik</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Lecca</surname> <given-names>MR</given-names></name>, <name name-style="western"><surname>Velic</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Rehrauer</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Brändli</surname> <given-names>AW</given-names></name>, <name name-style="western"><surname>Wagner</surname> <given-names>CA</given-names></name> (<year>2008</year>) <article-title>Genome-wide gene expression profiling reveals renal genes regulated during metabolic acidosis</article-title>. <source>Physiological Genomics</source> <volume>32</volume>: <fpage>322</fpage>–<lpage>334</lpage>. <object-id pub-id-type="pmid">18056784</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lecker</surname> <given-names>SH</given-names></name>, <name name-style="western"><surname>Jagoe</surname> <given-names>RT</given-names></name>, <name name-style="western"><surname>Gilbert</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Gomes</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Baracos</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Bailey</surname> <given-names>J</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Multiple types of skeletal muscle atrophy involve a common program of changes in gene expression</article-title>. <source>FASEB Journal</source> <volume>18</volume>: <fpage>39</fpage>–<lpage>51</lpage>. <object-id pub-id-type="pmid">14718385</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Reaich</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Channon</surname> <given-names>SM</given-names></name>, <name name-style="western"><surname>Scrimgeour</surname> <given-names>CM</given-names></name>, <name name-style="western"><surname>Goodship</surname> <given-names>TH</given-names></name> (<year>1992</year>) <article-title>Ammonium chloride-induced acidosis increases protein breakdown and amino acid oxidation in humans</article-title>. <source>Am J Physiol Endocrinol Metab</source> <volume>263</volume>: <fpage>E735</fpage>–<lpage>739</lpage>.</mixed-citation></ref>
+<ref id="pone.0141317.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mutsvangwa</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Gilmore</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Squires</surname> <given-names>JE</given-names></name>, <name name-style="western"><surname>Lindinger</surname> <given-names>MI</given-names></name>, <name name-style="western"><surname>McBride</surname> <given-names>BW</given-names></name> (<year>2004</year>) <article-title>Chronic metabolic acidosis increases mRNA levels for components of the ubiquitin-mediated proteolytic pathway in skeletal muscle of dairy cows</article-title>. <source>Journal of Nutrition</source> <volume>134</volume>: <fpage>558</fpage>–<lpage>561</lpage>. <object-id pub-id-type="pmid">14988446</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sandri</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sandri</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Gilbert</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Skurk</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Calabria</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Picard</surname> <given-names>A</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Foxo Transcription Factors Induce the Atrophy-Related Ubiquitin Ligase Atrogin-1 and Cause Skeletal Muscle Atrophy</article-title>. <source>Cell</source> <volume>117</volume>: <fpage>399</fpage>–<lpage>412</lpage>. <object-id pub-id-type="pmid">15109499</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bevington</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Brown</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Butler</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Govindji</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>K</surname> <given-names>MK</given-names></name>, <name name-style="western"><surname>Sheridan</surname> <given-names>K</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>Impaired system A amino acid transport mimics the catabolic effects of acid in L6 cells</article-title>. <source>European Journal of Clinical Investigation</source> <volume>32</volume>: <fpage>590</fpage>–<lpage>602</lpage>. <object-id pub-id-type="pmid">12190959</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ishii</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Kihara</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Shimizu</surname> <given-names>T</given-names></name> (<year>2005</year>) <article-title>Identification of T cell death-associated gene 8 (TDAG8) as a novel acid sensing G-protein-coupled receptor</article-title>. <source>Journal of Biological Chemistry</source> <volume>280</volume>: <fpage>9083</fpage>–<lpage>9087</lpage>. <object-id pub-id-type="pmid">15618224</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Stathopoulou</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Gaitanaki</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Beis</surname> <given-names>I</given-names></name> (<year>2006</year>) <article-title>Extracellular pH changes activate the p38-MAPK signalling pathway in the amphibian heart</article-title>. <source>Journal of Experimental Biology</source> <volume>209</volume>: <fpage>1344</fpage>–<lpage>1354</lpage>. <object-id pub-id-type="pmid">16547305</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fan</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Rhee</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>St-Pierre</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Handschin</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Puigserver</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Lin</surname> <given-names>J</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Suppression of mitochondrial respiration through recruitment of p160 myb binding protein to PGC-1alpha: modulation by p38 MAPK</article-title>. <source>Genes &amp; Development</source> <volume>18</volume>: <fpage>278</fpage>–<lpage>289</lpage>.</mixed-citation></ref>
+<ref id="pone.0141317.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hayashi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Shigetomi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Ueda</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Kaneda</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Matsumoto</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Tokuno</surname> <given-names>H</given-names></name>, <etal>et al</etal>. (<year>1992</year>) <article-title>Effects of ammonium chloride on membrane currents of acinar cells dispersed from the rat parotid gland</article-title>. <source>Pflugers Archiv European Journal of Physiology</source> <volume>420</volume>: <fpage>297</fpage>–<lpage>301</lpage>. <object-id pub-id-type="pmid">1598185</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rama Rao</surname> <given-names>KV</given-names></name>, <name name-style="western"><surname>Jayakumar</surname> <given-names>AR</given-names></name>, <name name-style="western"><surname>Norenberg</surname> <given-names>MD</given-names></name> (<year>2005</year>) <article-title>Role of oxidative stress in the ammonia-induced mitochondrial permeability transition in cultured astrocytes</article-title>. <source>Neurochemistry International</source> <volume>47</volume>: <fpage>31</fpage>–<lpage>38</lpage>. <object-id pub-id-type="pmid">15908047</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hashimoto</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Hussien</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Oommen</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Gohil</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Brooks</surname> <given-names>GA</given-names></name> (<year>2007</year>) <article-title>Lactate sensitive transcription factor network in L6 cells: activation of MCT1 and mitochondrial biogenesis</article-title>. <source>FASEB J</source> <volume>21</volume>: <fpage>2602</fpage>–<lpage>2612</lpage>. <object-id pub-id-type="pmid">17395833</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Egan</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Carson</surname> <given-names>BP</given-names></name>, <name name-style="western"><surname>Garcia-Roves</surname> <given-names>PM</given-names></name>, <name name-style="western"><surname>Chibalin</surname> <given-names>AV</given-names></name>, <name name-style="western"><surname>Sarsfield</surname> <given-names>FM</given-names></name>, <name name-style="western"><surname>Barron</surname> <given-names>N</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Exercise intensity-dependent regulation of peroxisome proliferator-activated receptor γ coactivator-1α mRNA abundance is associated with differential activation of upstream signalling kinases in human skeletal muscle</article-title>. <source>The Journal of Physiology</source> <volume>588</volume>: <fpage>1779</fpage>–<lpage>1790</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1113/jphysiol.2010.188011" xlink:type="simple">10.1113/jphysiol.2010.188011</ext-link></comment> <object-id pub-id-type="pmid">20308248</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Psilander</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Westergren</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Tonkonogi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sahlin</surname> <given-names>K</given-names></name> (<year>2010</year>) <article-title>Mitochondrial gene expression in elite cyclists: effects of high-intensity interval exercise</article-title>. <source>EUROPEAN JOURNAL OF APPLIED PHYSIOLOGY</source> <volume>110</volume>: <fpage>597</fpage>–<lpage>606</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00421-010-1544-1" xlink:type="simple">10.1007/s00421-010-1544-1</ext-link></comment> <object-id pub-id-type="pmid">20571821</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Morton</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Croft</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Bartlett</surname> <given-names>JD</given-names></name>, <name name-style="western"><surname>Maclaren</surname> <given-names>DP</given-names></name>, <name name-style="western"><surname>Reilly</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Evans</surname> <given-names>L</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Reduced carbohydrate availability does not modulate training-induced heat shock protein adaptations but does upregulate oxidative enzyme activity in human skeletal muscle</article-title>. <source>Journal of Applied Physiology</source> <volume>106</volume>: <fpage>1513</fpage>–<lpage>1521</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1152/japplphysiol.00003.2009" xlink:type="simple">10.1152/japplphysiol.00003.2009</ext-link></comment> <object-id pub-id-type="pmid">19265068</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jones</surname> <given-names>NL</given-names></name>, <name name-style="western"><surname>Sutton</surname> <given-names>JR</given-names></name>, <name name-style="western"><surname>Taylor</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Toews</surname> <given-names>CJ</given-names></name> (<year>1977</year>) <article-title>Effect of pH on cardiorespiratory and metabolic responses to exercise</article-title>. <source>Journal of Applied Physiology</source> <volume>43</volume>: <fpage>959</fpage>–<lpage>964</lpage>. <object-id pub-id-type="pmid">24031</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kowalchuk</surname> <given-names>JM</given-names></name>, <name name-style="western"><surname>Heigenhauser</surname> <given-names>GJ</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>NL</given-names></name> (<year>1984</year>) <article-title>Effect of pH on metabolic and cardiorespiratory responses during progressive exercise</article-title>. <source>Journal of Applied Physiology</source> <volume>57</volume>: <fpage>1558</fpage>–<lpage>1563</lpage>. <object-id pub-id-type="pmid">6520052</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hardie</surname> <given-names>DG</given-names></name>, <name name-style="western"><surname>Sakamoto</surname> <given-names>K</given-names></name> (<year>2006</year>) <article-title>AMPK: A Key Sensor of Fuel and Energy Status in Skeletal Muscle</article-title>. <source>Physiology</source> <volume>21</volume>: <fpage>48</fpage>–<lpage>60</lpage>. <object-id pub-id-type="pmid">16443822</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zong</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Ren</surname> <given-names>JM</given-names></name>, <name name-style="western"><surname>Young</surname> <given-names>LH</given-names></name>, <name name-style="western"><surname>Pypaert</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Mu</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Birnbaum</surname> <given-names>MJ</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>AMP Kinase Is Required for Mitochondrial Biogenesis in Skeletal Muscle in Response to Chronic Energy Deprivation</article-title>. <source>Proceedings of the National Academy of Sciences of the United States of America</source> <volume>99</volume>: <fpage>15983</fpage>–<lpage>15987</lpage>. <object-id pub-id-type="pmid">12444247</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ludwig</surname> <given-names>MG</given-names></name>, <name name-style="western"><surname>Vanek</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Guerini</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Gasser</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>CE</given-names></name>, <name name-style="western"><surname>Junker</surname> <given-names>U</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>Proton-sensing G-protein-coupled receptors</article-title>. <source>Nature</source> <volume>425</volume>: <fpage>93</fpage>–<lpage>98</lpage>. <object-id pub-id-type="pmid">12955148</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shi</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Le</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Abbruzzese</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Xiong</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>He</surname> <given-names>Y</given-names></name>, <etal>et al</etal>. (<year>2001</year>) <article-title>Regulation of vascular endothelial growth factor expression by acidosis in human cancer cells</article-title>. <source>Oncogene</source> <volume>20</volume>: <fpage>3751</fpage>–<lpage>3756</lpage>. <object-id pub-id-type="pmid">11439338</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Caso</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Garlick</surname> <given-names>BA</given-names></name>, <name name-style="western"><surname>Casella</surname> <given-names>GA</given-names></name>, <name name-style="western"><surname>Sasvary</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Garlick</surname> <given-names>PJ</given-names></name> (<year>2004</year>) <article-title>Acute metabolic acidosis inhibits muscle protein synthesis in rats</article-title>. <source>American Journal of Physiology</source> <volume>287</volume>: <fpage>E90</fpage>–<lpage>E96</lpage>. <object-id pub-id-type="pmid">14982751</object-id></mixed-citation></ref>
+<ref id="pone.0141317.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Regensteiner</surname> <given-names>JG</given-names></name>, <name name-style="western"><surname>Bauer</surname> <given-names>TA</given-names></name>, <name name-style="western"><surname>Reusch</surname> <given-names>JEB</given-names></name>, <name name-style="western"><surname>Brandenburg</surname> <given-names>SL</given-names></name>, <name name-style="western"><surname>Sippel</surname> <given-names>JM</given-names></name>, <name name-style="western"><surname>Vogelsong</surname> <given-names>AM</given-names></name>, <etal>et al</etal>. (<year>1998</year>) <article-title>Abnormal oxygen uptake kinetic responses in women with type II diabetes mellitus</article-title>. <source>J Appl Physiol</source> <volume>85</volume>: <fpage>310</fpage>–<lpage>317</lpage>. <object-id pub-id-type="pmid">9655791</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

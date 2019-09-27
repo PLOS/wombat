@@ -1,0 +1,2035 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+	<front>
+		<journal-meta>
+    <journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+    <journal-id journal-id-type="publisher-id">plos</journal-id>
+    <journal-id journal-id-type="pmc">plosone</journal-id>
+    <journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group>
+    <issn pub-type="epub">1932-6203</issn>
+    <publisher><publisher-name>Public Library of Science</publisher-name>
+    <publisher-loc>San Francisco, USA</publisher-loc></publisher>
+    </journal-meta><article-meta>
+			<article-id pub-id-type="publisher-id">PONE-D-13-13422</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0078473</article-id><article-categories><subj-group subj-group-type="heading">
+    <subject>Research Article</subject></subj-group></article-categories><title-group>
+				<article-title>The Epidemiology and Geographic Distribution of Relapsing Fever Borreliosis in West and North Africa, with a Review of the <italic>Ornithodoros erraticus</italic> Complex (Acari: Ixodida)</article-title>
+			<alt-title alt-title-type="running-head">Tick-Borne Borreliosis in West and North Africa</alt-title>
+      </title-group>
+			<contrib-group>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Trape</surname>
+						<given-names>Jean-François</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff1"><sup>1</sup></xref>
+					<xref ref-type="corresp" rid="cor1"><sup>*</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Diatta</surname>
+						<given-names>Georges</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff1"><sup>1</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Arnathau</surname>
+						<given-names>Céline</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff2"><sup>2</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Bitam</surname>
+						<given-names>Idir</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff3"><sup>3</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Sarih</surname>
+						<given-names>M’hammed</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff4"><sup>4</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Belghyti</surname>
+						<given-names>Driss</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff5"><sup>5</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Bouattour</surname>
+						<given-names>Ali</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff6"><sup>6</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Elguero</surname>
+						<given-names>Eric</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff2"><sup>2</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Vial</surname>
+						<given-names>Laurence</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff1"><sup>1</sup></xref>
+					<xref ref-type="aff" rid="aff2"><sup>2</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Mané</surname>
+						<given-names>Youssouph</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff1"><sup>1</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Baldé</surname>
+						<given-names>Cellou</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff7"><sup>7</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Pugnolle</surname>
+						<given-names>Franck</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff2"><sup>2</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Chauvancy</surname>
+						<given-names>Gilles</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff1"><sup>1</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Mahé</surname>
+						<given-names>Gil</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff8"><sup>8</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Granjon</surname>
+						<given-names>Laurent</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff9"><sup>9</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author">
+					<name name-style="western">
+						<surname>Duplantier</surname>
+						<given-names>Jean-Marc</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff9"><sup>9</sup></xref>
+				</contrib>
+				<contrib xlink:type="simple" contrib-type="author" equal-contrib="yes">
+					<name name-style="western">
+						<surname>Durand</surname>
+						<given-names>Patrick</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff2"><sup>2</sup></xref>
+					</contrib>
+				<contrib xlink:type="simple" contrib-type="author" equal-contrib="yes">
+					<name name-style="western">
+						<surname>Renaud</surname>
+						<given-names>François</given-names>
+					</name>
+					<xref ref-type="aff" rid="aff2"><sup>2</sup></xref>
+					</contrib>
+			</contrib-group>
+			<aff id="aff1"><label>1</label> <addr-line>Institut de recherche pour le développement, Laboratoire de Paludologie Et Zoologie Médicale, Dakar, Senegal</addr-line></aff>
+			<aff id="aff2"><label>2</label> <addr-line>Institut de Recherche pour le Développement, UMR (CNRS IRD) MIVEGEC, Montpellier, France</addr-line></aff>
+			<aff id="aff3"><label>3</label> <addr-line>Institut Pasteur d’Algérie, Laboratoire d’Écologie des Systèmes Vectoriels, Algiers, Algeria</addr-line></aff>
+			<aff id="aff4"><label>4</label> <addr-line>Institut Pasteur du Maroc, Laboratoire des Maladies Vectorielles, Casablanca, Morocco</addr-line></aff>
+			<aff id="aff5"><label>5</label> <addr-line>Université Ibn Tofail, Département de Biologie, Faculté des Sciences, Kénitra, Morocco</addr-line></aff>
+			<aff id="aff6"><label>6</label> <addr-line>Institut Pasteur de Tunis, Service d’Entomologie Médicale, Tunis, Tunisia</addr-line></aff>
+			<aff id="aff7"><label>7</label> <addr-line>Institut Pasteur de Guinée, Laboratoire d’Entomologie Médicale et de Vénimologie, Kindia, Guinea</addr-line></aff>
+			<aff id="aff8"><label>8</label> <addr-line>Institut de Recherche pour le Développement, UMR Hydrosciences, Montpellier, France</addr-line></aff>
+			<aff id="aff9"><label>9</label> <addr-line>Institut de Recherche pour le Développement, Centre de Biologie et de Gestion des Populations, Dakar, Senegal</addr-line></aff>
+			<contrib-group><contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Bergström</surname>
+            <given-names>Sven</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+        </contrib-group><aff id="edit1"><addr-line>Umeå University, Sweden</addr-line></aff><author-notes>
+				<corresp id="cor1">* E-mail: <email xlink:type="simple">jean-francois.trape@ird.fr</email></corresp>
+				<fn fn-type="conflict"><p>The authors have declared that no competing interest exist.</p></fn><fn fn-type="con"><p>Conceived and designed the experiments: JFT PD FR. Performed the experiments: JFT GD CA IB MS DB AB EE LV YM CB FP GC GM LG JMD PD FR. Analyzed the data: JFT GD EE GM LG JMD PD FR. Contributed reagents/materials/analysis tools: JFT IB MS DB AB LV YM CB FP GC GM LG JMD PD FR. Wrote the manuscript: JFT GD PR FR. </p></fn></author-notes>
+			<pub-date pub-type="collection"><year>2013</year></pub-date>
+    	
+    	<pub-date pub-type="epub">
+        <day>4</day>
+        <month>11</month>
+        <year>2013</year>
+      </pub-date>
+      <volume>8</volume><issue>11</issue><elocation-id>e78473</elocation-id><history><date date-type="received">
+          <day>29</day>
+          <month>3</month>
+          <year>2013</year>
+        </date>
+        <date date-type="accepted">
+          <day>6</day>
+          <month>9</month>
+          <year>2013</year>
+        </date>
+      </history><permissions>
+    <copyright-year>2013</copyright-year><copyright-holder>Trape et al</copyright-holder><license xlink:type="simple"><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license>
+    </permissions><abstract>
+				<sec sec-type="headed">
+					<title>Background</title><p>Relapsing fever is the most frequent bacterial disease in Africa. Four main vector / pathogen complexes are classically recognized, with the louse <italic>Pediculus humanus</italic> acting as vector for <italic>B. recurrentis</italic> and the soft ticks <italic>Ornithodoros sonrai</italic>, <italic>O. erraticus</italic> and <italic>O. moubata</italic> acting as vectors for <italic>Borrelia crocidurae, B. hispanica</italic> and <italic>B. duttonii</italic>, respectively. Our aim was to investigate the epidemiology of the disease in West, North and Central Africa.</p>
+					
+				</sec>
+				<sec sec-type="headed">
+					<title>Methods And Findings</title><p>From 2002 to 2012, we conducted field surveys in 17 African countries and in Spain. We investigated the occurrence of <italic>Ornithodoros</italic> ticks in rodent burrows in 282 study sites. We collected 1,629 small mammals that may act as reservoir for <italic>Borrelia</italic> infections. Using molecular methods we studied genetic diversity among <italic>Ornithodoros</italic> ticks and <italic>Borrelia</italic> infections in ticks and small mammals. Of 9,870 burrows investigated, 1,196 (12.1%) were inhabited by <italic>Ornithodoros</italic> ticks. In West Africa, the southern and eastern limits of the vectors and <italic>Borrelia</italic> infections in ticks and small mammals were 13°N and 01°E, respectively. Molecular studies revealed the occurrence of nine different <italic>Ornithodoros</italic> species, including five species new for science, with six of them harboring <italic>Borrelia</italic> infections. Only <italic>B. crocidurae</italic> was found in West Africa and three <italic>Borrelia</italic> species were identified in North Africa: <italic>B. crocidurae</italic>, <italic>B. hispanica</italic>, and <italic>B. merionesi</italic>.</p>
+				</sec>
+				<sec sec-type="headed">
+					<title>Conclusions</title><p><italic>Borrelia</italic> Spirochetes responsible for relapsing fever in humans are highly prevalent both in <italic>Ornithodoros</italic> ticks and small mammals in North and West Africa but <italic>Ornithodoros</italic> ticks seem absent south of 13°N and small mammals are not infected in these regions. The number of <italic>Ornithodoros</italic> species acting as vector of relapsing fever is much higher than previously known.</p>
+				</sec>
+			</abstract>
+		<funding-group><funding-statement>The study received grants from the GICC programme of the French Ministry of Ecology (ref: CV02000201), the programmes “Santé-Environnement” and “Santé-Travail” of the Agence Nationale de la Recherche (ref: 3215AO-3R077-STEV), and the IRD special programme “Evolution Climatique et Santé” (ref: IRD-ATI-ECS). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group></article-meta>
+	</front>
+	<body>
+		<sec id="s1" sec-type="introduction">
+			<title>Introduction</title>
+			<p>Relapsing fever has long been recognized as major cause of disease and death in several regions of Africa [<xref ref-type="bibr" rid="B1">1</xref>-<xref ref-type="bibr" rid="B5">5</xref>]. Initially discovered in India in 1907 [<xref ref-type="bibr" rid="B6">6</xref>], the responsibility of <italic>Pediculus humanus</italic> in the transmission of <italic>Borrelia recurrentis</italic>, the Obermeier’s spirochete, was confirmed the following year in Algeria [<xref ref-type="bibr" rid="B7">7</xref>]. Dramatic epidemics of louse-borne relapsing fever (LBRF) responsible for several millions of cases and a high fatality rate occurred throughout Africa after World Wars I and II when French and British colonial soldiers infected in Europe or North Africa returned to their countries [<xref ref-type="bibr" rid="B8">8</xref>-<xref ref-type="bibr" rid="B12">12</xref>]. More recently, several epidemics occurred in Sudan and LBRF still persists in the mountains of Ethiopia where it is endemic and can account for up to 27% of hospital admissions [<xref ref-type="bibr" rid="B5">5</xref>,<xref ref-type="bibr" rid="B13">13</xref>-<xref ref-type="bibr" rid="B16">16</xref>]. Tick-borne relapsing fever (TBRF) was first recognized in East Africa in 1904 [<xref ref-type="bibr" rid="B17">17</xref>,<xref ref-type="bibr" rid="B18">18</xref>], in North Africa in 1928 [<xref ref-type="bibr" rid="B19">19</xref>], and in West Africa in 1932 [<xref ref-type="bibr" rid="B20">20</xref>]. Studies conducted between 1905 and 1960 progressively established the classical picture of TBRF in Africa, with three different vector/pathogen complexes involving soft ticks (<italic>Argasidae</italic>) of the genus <italic>Ornithodoros</italic>. In the savanna areas of eastern and southern Africa, from 16°N (Erythrea) to 34°S (Cape province, South Africa), TBRF is caused by <italic>Borrelia duttonii</italic> with <italic>O. moubata</italic> s.l. as vector [<xref ref-type="bibr" rid="B21">21</xref>]. In the wild, the two vector species of the <italic>O. moubata</italic> complex (<italic>O. moubata s.s.</italic> and <italic>O. porcinus</italic>) lives in large animal burrows of antbears, warthogs and porcupines [<xref ref-type="bibr" rid="B22">22</xref>]. They have adapted secondarily to human dwellings and domestic animal shelters, where they live in the cracks of walls and floors. There is no known mammal reservoir of the disease and <italic>O. moubata</italic> s.l. act both as the vector and the only reservoir of <italic>B. duttonii</italic> [<xref ref-type="bibr" rid="B23">23</xref>]. The annual incidence of the disease may reach up to 384 per thousand among children &lt;1 year of age and 163 per thousand in children &lt;5 years of age in Tanzania [<xref ref-type="bibr" rid="B24">24</xref>], and a lethality rate of 16% among pregnant women suffering from the disease has been reported from Rwanda [<xref ref-type="bibr" rid="B25">25</xref>]. In North Africa, from Morocco to Algeria and Tunisia, TBRF is classically caused by <italic>Borrelia hispanica</italic> with <italic>O. erraticus</italic> as vector and small mammals as reservoir host [<xref ref-type="bibr" rid="B2">2</xref>,<xref ref-type="bibr" rid="B26">26</xref>-<xref ref-type="bibr" rid="B31">31</xref>]. <italic>O. erraticus</italic> is found both in large and small burrows, under stones, and has adapted to domestic animal shelters. Most human infections occur during summer among people sleeping in the fields or in farm buildings [<xref ref-type="bibr" rid="B32">32</xref>]. In West Africa, TBRF is caused by <italic>Borrelia crocidurae</italic>, with <italic>O. sonrai</italic> as vector and rodents and insectivores as reservoir host [<xref ref-type="bibr" rid="B33">33</xref>-<xref ref-type="bibr" rid="B37">37</xref>]. Most reports of the disease are from Senegal, but the few available data on the occurrence of the vector also include Mali, Mauritania, southern Morocco, Niger, Chad, Egypt and Kenya [<xref ref-type="bibr" rid="B23">23</xref>]. <italic>O. sonrai</italic> inhabits rodent burrows and like the other <italic>Ornithodoros</italic> species, it is a rapid feeder, blood meals lasting only a few minutes. People are generally infected during their sleep, when burrows open into their bedrooms [<xref ref-type="bibr" rid="B36">36</xref>].</p>
+			<p>The high incidence of TBRF in places where it was specifically investigated contrasts with the rarity of reports from other areas, suggesting than most cases remain undiagnosed because usually confused with malaria whose diagnosis is usually based only on clinical symptoms [<xref ref-type="bibr" rid="B38">38</xref>]. In Senegal, as a result of the ongoing drought since the 1970s, the tick has colonized the Sudan savanna, with the 750 mm isohyet as southern limit [<xref ref-type="bibr" rid="B36">36</xref>]. Rodent burrows colonized by <italic>O. sonrai</italic> occur in 87% of villages north of 13°30’N. In these areas, we have shown that the average incidence of TBRF at the community level is the highest described for any bacterial disease, reaching 11 per 100 person-years [<xref ref-type="bibr" rid="B39">39</xref>]. In out-patients clinics, TBRF is the second most common cause of fever after malaria [<xref ref-type="bibr" rid="B38">38</xref>]. These observations in Senegal have prompted us to investigate the distribution and epidemiology of TBRF in West, North, and Central Africa. Here we present the result of studies conducted between 2002 and 2012 in 17 African countries.</p>
+		</sec>
+		<sec id="s2" sec-type="methods">
+			<title>Methods</title>
+			<sec id="s2.1">
+				<title>Ticks sampling</title>
+				<p>To investigate the geographic distribution of <italic>Ornithodoros</italic> ticks, we conducted four series of studies</p>
+				<list list-type="simple">
+					<list-item>
+						<p>i) One transect study along the 14th parallel in Senegal, Mali, Burkina Faso, Niger and Chad, from 16°W (near the Atlantic coast of Senegal) to 22°E (near the border of Sudan in Chad). Sampling was conducted at each two degrees of longitude (i.e. at 16°W/14°N, 14°W/14°N, 12°W/14°N, and up to 22°E/14°N), either at the exact meridian/parallel junction point as determined with a Global Positioning System (GPS) receiver, or depending on the accessibility of this point and local environment, within a 10’ radius around it (i.e. maximum distance: 20 km). The 14th parallel was selected since it was entirely located within the limits of the supposed range of O. sonrai (presumed southern limit: 750 mm isohyet, period 1970-2002) [<xref ref-type="bibr" rid="B36">36</xref>].</p>
+					</list-item>
+					<list-item>
+						<p>ii) Three North/South transect studies along three meridians: 12°W (in Morocco, Mauritania, Senegal, and Guinea), 2°E (in Mali, Niger, Burkina Faso and Benin), and 14°E (in Chad and Cameroon). Sampling was undertaken at each degree of latitude, from 10°N to 28°N, 6°N to 19°N, and 8°N to 14°N, respectively. In Morocco, the transect was further continued SW/NE up to the Mediterranean coast.</p>
+					</list-item>
+					<list-item>
+						<p>iii) Based on the results of the transect studies, additional surveys were conducted in Senegal, The Gambia, Mauritania, Mali and Niger in order to determine either on a 10 km square scale (Western Senegal) or on a half or quarter square degree scale the southern and eastern limits of the geographic distribution of Ornithodoros species.</p>
+					</list-item>
+					<list-item>
+						<p>iv) We also undertook additional surveys in selected areas of Morocco, Algeria, Tunisia, Niger, Guinea, Guinea Bissau, Liberia, Ivory Coast, Burkina Faso and Togo. All surveys were conducted in predefined sites based on their geographic position. One site south of Spain, where the first studies on TBRF in Europe were conducted in the 1920s by Sadi de Buen [<xref ref-type="bibr" rid="B32">32</xref>], was also sampled for comparison of local tick population with African Ornithodoros species.</p>
+					</list-item>
+				</list>
+				<p>	For each sampling site, as a general rule 30 to 60 burrows were investigated (60 burrows during transect studies when all burrows were negative for the presence of <italic>Ornithodoros</italic> ticks, 30 burrows when one or more burrows were positive; only 30 burrows even when all were negative during additional surveys), except in sites rapidly positive during additional surveys in North Africa where only 5 to 15 burrows were investigated. Ticks were collected by introducing a flexible tube inside burrows and aspirating their contents using a portable petrol-powered aspirator. After collection, they were immediately stored in absolute ethanol (one tube per positive burrow) until morphological determination and DNA extraction. As a general rule, two or three sampling stations were selected in each site, including one village (except in most Saharan and North African sites) where several houses were surveyed for the occurrence of ticks both inside burrows and in cracks in the floor or walls. Outside villages, sampling stations were selected according to local environment either in natural or human-impacted ecosystems and croplands or both of them.</p>
+			</sec>
+			<sec id="s2.2">
+				<title>Small mammals sampling</title>
+				<p>To investigate the reservoir of <italic>Borrelia</italic>, we captured rodents and insectivores in Senegal, Mali, Benin, Niger, Chad, Cameroon, Mauritania and Morocco. These collections were made along 12°W, 2°E and 14°E meridians and in further sites in Senegal, Mali and Morocco. Animals were trapped alive with lattice-work traps baited with peanut butter or onions. We adopted the method of trap lines for captures, with a 10-meter space between traps. In order to collect both diurnal and nocturnal species traps were placed in the afternoon and withdrawn late in the morning. Approximately 200 traps/days of captures were made in each site. In addition, hand captures of rodents were performed by night in most sites and during travel between sites. We necropsied trapped animals in the field by means of cervical dislocation and drew 1mL of blood from each by cardiac puncture. We immediately prepared a thick blood film for detection of <italic>Borrelia</italic>. Samples of brain were stored in nitrogen then at -80°C for further intraperitoneal inoculation to white mouse as previously described [<xref ref-type="bibr" rid="B40">40</xref>] and/or <italic>Borrelia</italic> molecular studies as described below.</p>
+				<p>	The nomenclature here adopted follows Wilson &amp; Reeder [<xref ref-type="bibr" rid="B41">41</xref>] unless otherwise mentioned [<xref ref-type="bibr" rid="B42">42</xref>]. Classical body measurements were taken and some individual rodents were kept alive for further chromosomal analyses, as described in Granjon &amp; Dobigny [<xref ref-type="bibr" rid="B43">43</xref>]. Most of the rodents of the Sahelo-Sudanian region could be diagnosed to the species level based on our morphological, ecological and biogeographical knowledge on rodents from this geographic area [<xref ref-type="bibr" rid="B42">42</xref>]. However, molecular or chromosomal data were necessary to confirm unambiguously the specific determination of some specimens of the genera <italic>Arvicanthis</italic>, <italic>Gerbillus</italic>, <italic>Gerbilliscus</italic>, <italic>Mastomys</italic>, and <italic>Taterillus</italic> especially. This was done according to methods previously described [<xref ref-type="bibr" rid="B43">43</xref>-<xref ref-type="bibr" rid="B47">47</xref>]. Shrews were determined on the basis of external and skull criteria [Granjon et al, unpublished]. A selection of voucher specimens was kept in formalin or ethanol and is housed at IRD (UMR 22, Dakar and Montpellier). Organ samples as well as DNA and bone marrow cells extracts that have been used for molecular/cytogenetic studies are also kept in the IRD tissue collection. </p>
+			</sec>
+			<sec id="s2.3">
+				<title>DNA isolation and PCR amplification in ticks</title>
+				<p>Ticks were individually washed in three sterile water baths, air dried and collected in sterile microtubes. DNA was individually crushed by shaking with a bead beater (mixer mill MM301, Qiagen, Hilden, Germany), and then DNA was isolated and purified using the DNeasy Blood and Tissue extraction Kit (Qiagen). </p>
+				<p>	For each tick, 16S rRNA was amplified by PCR with Tm16S+1 (<named-content content-type="gene" xlink:type="simple">5’-CTGCTCAATGATTTTTTAAATTGC-3’</named-content>) and Tm16S-1 (<named-content content-type="gene" xlink:type="simple">5’-CCGGTCTGAACTCAGATCATGTA-3’</named-content>) primers designed by Fukunaga et al. [<xref ref-type="bibr" rid="B48">48</xref>]. The sequenced product size was around 450 bp long and PCRs were performed with the Multiplex PCR Kit (Qiagen) in a 25 µl volume containing 12.5 µl of 2x Multiplex PCR Master Mix (Qiagen), 2 µM of each Primer, 2.5 µl of Q-solution and 4 µl (40-100 ng/µL) of DNA template. The amplification cycle involved a denaturation step at 95°C for 15 min followed by 10 cycles of 1 min at 92°C, 1.5 min at 48°C, and 1.5 min at 72°C and 32 cycles of 1 min at 92°C, 1.5 min of 54°C, and 1.5 min of 72°C. A final extension step was carried out for 10 min at 72°C. The amplified products were detected by electrophoresis on 1.5% agarose gel in TAE 0.5X buffer and staining with Envision (Amaresco). Remaining reaction mixtures were stored at -20°C for direct sequencing. </p>
+			</sec>
+			<sec id="s2.4">
+				<title>Detection of <italic>Borrelia</italic> infections in ticks and small mammals</title>
+				<p>DNA isolation was conducted as above. <italic>Borrelia</italic> detection was based on nested PCR amplification of a 350 bp fragment of the flagella gene (FLA). This gene encodes the periplasmic protein peculiar to <italic>Borrelia</italic>. The amplification was performed using primers (Bfpad and Bfpdu for the first PCR, Bfpbu and Bfpcr for the second PCR) designed for <italic>B. duttonii</italic> [<xref ref-type="bibr" rid="B48">48</xref>]. Each PCR was performed in a 25 µl volume containing 5µl 5X buffer (Promega), 2 mM MgCl<sub>2</sub>, 200 µM of each dNTP, 0.2 µM of each primer and 2.5 unit of GoTaq DNA polymerase (Promega). 3µl of DNA template was added in the first reaction and 1 µl of the first amplified product was added in the second reaction. Amplification cycles consisted of an initial DNA denaturation step at 94°C for 3 min followed by 30 cycles of 40 sec at 94°C, 40 sec at 55°C for the first PCR and 51°C for the second PCR, and 40 sec at 72°C. A final extension step was carried out for 10 min at 72°C. </p>
+				<p>	For the 16S-23S ribosomal RNA intergenic spacer (IGS), <italic>rrs rrlA</italic> intergenic spacer IGS/F and IGS/R for the first PCR and <italic>rrs rrlA</italic> IGS/Fn and IGS/Rn for the second PCR were amplified as previously described [<xref ref-type="bibr" rid="B49">49</xref>]. Each PCR was performed in a 25 µl volume containing 5µl 5X buffer (Promega), 2 mM MgCl<sub>2</sub>, 200 µM of each dNTP, 5 picomoles of each primer and 2.5 unit of GoTaq DNA polymerase (Promega). 2µl of DNA template was added in the first reaction and 1 µl of the first amplified product was added in the second reaction. Amplification cycles consisted of an initial DNA denaturation step at 94°C for 3 min followed by 35 cycles of 30 sec at 94°C, 30 sec at 56°C, 30 sec at 72°C and a final extension 5 min at 72°C for the first PCR. For the second PCR, amplification cycles consisted of an initial DNA denaturation step at 94°C for 3 min followed by 40 cycles of 30 sec at 94°C, 30 sec at 60°C, 30 sec at 72°C and a final extension 5 min at 72°C for the first PCR. A final extension step was carried out for 5 min at 72°C. The amplified products were detected by electrophoresis as above. Negative control was included in each nested PCR analysis to monitor contamination and false-positive amplification. To rule out amplicon carry-over, nucleotide-free water negative control was used throughout the steps of the protocol. The sequence-derived data reported herein were authentified as negative controls introduced in every PCR experiment remained negative, excluding the possibility of cross-contamination during the experiments. The amplified products for 16S rDNA, IGS and FLA were directly sequenced by Eurofins (Ebersberg, Germany).</p>
+			</sec>
+			<sec id="s2.5">
+				<title>Sequence alignment and phylogenetic inferences</title>
+				<p>All sequences obtained were aligned using ClustalW (v.1.8.1 in BioEdit v.7.0.5.3.) [<xref ref-type="bibr" rid="B50">50</xref>]. Maximum Likelihood (PhyML) tree reconstruction was conducted from the 16S rRNA aligned sequences (457 nucleotides) of ticks. For each <italic>Borrelia</italic> of soft tick, the FlaB gene (FLA, 269 nucleotides) and Intergenic Spacer (IGS, 510 nucleotides) sequences were concatenated for the phylogenetic analyses (PhyML). For each dataset, we used Modeltest 3.4 [<xref ref-type="bibr" rid="B51">51</xref>] to select the appropriate model of molecular evolution. The best-fitting ML model was HKY85 [<xref ref-type="bibr" rid="B52">52</xref>] for 16S rRNA sequences and GTR (General Time Reversible + Gamma distribution) for IGS-FLA concatened sequences. The highest-likelihood DNA and corresponding bootstrap support values were obtained by PhyML (freely available at  <ext-link ext-link-type="uri" xlink:href="http://mobyle.pasteur.fr/cgi-bin/portal.py" xlink:type="simple"><underline>http://mobyle.pasteur.fr/cgi-bin/portal.py</underline></ext-link>) using NNI (Nearest Neighbor Interchange) branch swapping and 100 bootstrap replicates [<xref ref-type="bibr" rid="B53">53</xref>].</p>
+				<p>Molecular distances with standard error estimate were conducted using the Kimura 2-parameter model among <italic>Ornithodoros</italic> 16S sequences and among <italic>Borrelia</italic> concatened IGS-FLA sequences as used in other phylogenetical pathogens/vectors studies [<xref ref-type="bibr" rid="B54">54</xref>,<xref ref-type="bibr" rid="B55">55</xref>]. In the final dataset, the analysis involved 165 different sequences grouping 821 16s RNA tick sequences and 105 different sequences grouping 216 IGS-FLA <italic>Borrelia</italic> sequences. Evolutionary analyses were conducted in MEGA 5 [<xref ref-type="bibr" rid="B56">56</xref>] and all positions containing gaps and missing data were eliminated.</p>
+				<p>	Phylogenetic analyses of <italic>Ornithodoros moubata</italic> 16S rRNA (GenBank accession number AB073679), <italic>O. porcinus</italic> (GenBank acc. no. AB105451), <italic>O. turicata</italic> (GenBank acc. no. L34327), and <italic>O. parkeri</italic> (GenBank acc. no. EU009925) were treated as outgroups. <italic>Borrelia crocidurae</italic> (GenBank acc. no. GU350723 and NC017808), <italic>B. duttonii</italic> (GenBank acc. no. DQ000279 and DQ346833)<italic>, B. hispanica</italic> (GenBank acc. no. GU350718 and GU357614), <italic>B. merionesi</italic> (GenBank acc. no. JX257047 and JX257050) and <italic>B. recurrentis</italic> (GenBank acc. no. DQ000277 and DQ346814) for the IGS and FLA sequences were concatened for the phylogenetic analyses of spirochetes.</p>
+				<p>	In the goal of molecular diagnostic of <italic>Ornithodoros</italic> species of North and West African countries, we determined Single Nucleotide Polymorphism (SNP) based on 16S rRNA sequences using parsimony-informative site.</p>
+			</sec>
+			<sec id="s2.6">
+				<title>Analysis of environmental factors</title>
+				<p>	We investigated relationship between environmental factors (latitude, longitude, mean annual temperature, mean annual rainfall [<xref ref-type="bibr" rid="B57">57</xref>], elevation and distance to the seashore) and tick species distribution using a linear discriminant analysis. All calculations were performed with R software [<xref ref-type="bibr" rid="B58">58</xref>].</p>
+			</sec>
+			<sec id="s2.7">
+				<title>Nomenclatural acts</title>
+				<p>	The electronic edition of this article conforms to the requirements of the amended International Code of Zoological Nomenclature, and hence the new names contained herein are available under that Code from the electronic edition of this article. The published work and the nomenclatural acts it contains have been registered in ZooBank, the online registration system for the ICZN. The ZooBank LSIDs (Life Science Identifiers) can be resolved and the associated information viewed through any standard web browser by appending the LSID to the prefix <ext-link ext-link-type="uri" xlink:href="http://zoobank.org/" xlink:type="simple"><underline>http://zoobank.org/</underline></ext-link>. The LSID for this publication is: urn:lsid:zoobank.org:pub:583BB2C2-B859-4EB5-85D7-70945C923642. The electronic edition of this work was published in a journal with an ISSN, and has been archived and is available from the following digital repositories: PubMed Central, LOCKSS.</p>
+				<p>	The holotypes and paratypes of the new species are deposited at the Institut Royal des Sciences Naturelles de Belgique, Brussels, Belgium (IRSNB). Sequences obtained from a segment of leg of one or several specimens of the type series are deposited in GenBank.</p>
+			</sec>
+			<sec id="s2.8">
+				<title>Ethics Statement</title>
+				<p>	The study protocol was approved by the Steering Committee of the IRD Special Programme Evolution Climatique et Santé (IRD, Montpellier, France), reference project ATI-ECS-07-H/2002. Animals were treated in a humane manner, and in accordance with authorizations and guidelines of the American Society of Mammalogists (Animal Care and Use Committee 1998). Captures of rodents and insectivores (Senegal, Mali, Benin, Niger, Cameroon, Chad, Mauritania, Morocco) and ticks (Senegal, Mali, Burkina Faso, Niger, Cameroon, Chad, Guinea Bissau, Guinea, Gambia, Liberia, Côte d’Ivoire, Togo, Benin, Mauritania, Morocco, Algeria, Tunisia, Spain) excluded national parks and protected areas, did not involve endangered or protected species (CITES, UICN, and national guidelines), and were conducted as part of research agreements between IRD, national institutions, national ministries of health and/or scientific research. All tick, rodent and insectivores captures inside houses and private lands were conducted after the owner of the house and land gave permission to conduct the study on this site.</p>
+			</sec>
+		</sec>
+		<sec id="s3" sec-type="results">
+			<title>Results</title>
+			<sec id="s3.1">
+				<title>Geographic distribution of <italic>Ornithodoros</italic> ticks</title>
+				<p>We investigated the occurrence of <italic>Ornithodoros</italic> ticks in 9,870 burrows from 484 sampling stations in 282 study sites in 12 West African countries (Mauritania, Senegal, The Gambia, Guinea Bissau, Guinea, Mali, Burkina Faso, Niger, Ivory Coast, Benin, Togo, Liberia), three North African countries (Morocco, Algeria, Tunisia), two Central African countries (Cameroon, Chad), and one European country (Spain) (<xref ref-type="supplementary-material" rid="pone.0078473.s001">Table S1</xref>). </p>
+				<p><italic>Ornithodoros</italic> ticks morphologically attributable to <italic>O. sonrai</italic>, <italic>O. erraticus</italic> or <italic>O. normandi</italic> were collected in 136 sites distributed in Morocco, Algeria, Tunisia, Mauritania, Senegal, The Gambia, Mali and Spain (<xref ref-type="table" rid="pone-0078473-t001">Table 1</xref>). In West and Central Africa, all burrows located east of 01°E and south of 13°N were negative (<xref ref-type="fig" rid="pone-0078473-g001">Figure 1</xref>). The southernmost limits were 13°32’N, 13°35’N and 13°54’N in Senegal, The Gambia and Mali, respectively, and the easternmost limit south of Sahara was 00°34’E in Mali. In all countries where we found <italic>Ornithodoros</italic> ticks, their distribution was generally contiguous, with rarely a negative site between two positive sites, and thus it has been possible to establish in the field precise distribution limits (i.e. at a few km scale in western Senegal and at one quarter degree scale in other areas of Senegal and in western Mali). In central and eastern Mali, we found <italic>Ornithodoros</italic> ticks only in burrows located close to the flood plain of the Niger River. In other areas, the occurrence of <italic>Ornithodoros</italic> ticks in burrows was independent of any hydrographic system either active or fossil. Based on classical morphological criteria, all <italic>Ornithodoros</italic> ticks collected in burrows were attributable either to <italic>O. sonrai</italic> (Senegal, The Gambia, Mali, Mauritania, and the most arid areas of Morocco, Algeria and Tunisia), <italic>O. erraticus</italic> (northern Morocco, northwestern Algeria and a few ticks from northern Tunisia) or <italic>O. normandi</italic> (northeastern Algeria and northern Tunisia). We never observed <italic>O. moubata</italic>.</p>
+				<table-wrap id="pone-0078473-t001" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.t001</object-id><label>Table 1</label>
+					<caption>
+						<title>Number of sites and burrows investigated and number and proportion positive for the presence of <italic>Ornithodoros</italic> ticks.</title>
+					</caption>
+					<table>
+						<colgroup span="1"><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/></colgroup>
+						<thead>
+							<tr>
+								<th rowspan="1" colspan="1">Country</th>
+								<th rowspan="1" colspan="1">No. of burrows</th>
+								<th rowspan="1" colspan="1"/>
+								<th rowspan="1" colspan="1"/>
+								<th rowspan="1" colspan="1">No. of sites </th>
+								<th rowspan="1" colspan="1"/>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">Investigated</td>
+								<td rowspan="1" colspan="1">  Positive (%)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">Investigated</td>
+								<td rowspan="1" colspan="1">  Positive (%)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Algeria</td>
+								<td rowspan="1" colspan="1">435</td>
+								<td rowspan="1" colspan="1">   74 (17.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">24</td>
+								<td rowspan="1" colspan="1">  19 (79.2)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Morocco</td>
+								<td rowspan="1" colspan="1">605</td>
+								<td rowspan="1" colspan="1">239 (39.5)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">34</td>
+								<td rowspan="1" colspan="1">  33 (97.1)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Tunisia</td>
+								<td rowspan="1" colspan="1">82</td>
+								<td rowspan="1" colspan="1">   23 (28.1)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">9</td>
+								<td rowspan="1" colspan="1">   9 (100)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Mauritania</td>
+								<td rowspan="1" colspan="1">905</td>
+								<td rowspan="1" colspan="1">   96 (10.6)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">30</td>
+								<td rowspan="1" colspan="1">  12 (40.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Senegal</td>
+								<td rowspan="1" colspan="1">2.861</td>
+								<td rowspan="1" colspan="1">474 (16.6)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">61</td>
+								<td rowspan="1" colspan="1">  37 (60.7) </td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">The Gambia</td>
+								<td rowspan="1" colspan="1">30</td>
+								<td rowspan="1" colspan="1">   15 (50.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">   2 (100.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Mali</td>
+								<td rowspan="1" colspan="1">2.458</td>
+								<td rowspan="1" colspan="1">273 (11.1)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">69</td>
+								<td rowspan="1" colspan="1">  23 (33.3)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Burkina Faso</td>
+								<td rowspan="1" colspan="1">210</td>
+								<td rowspan="1" colspan="1">    0 (0.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">4</td>
+								<td rowspan="1" colspan="1">     0 (0.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Niger</td>
+								<td rowspan="1" colspan="1">631</td>
+								<td rowspan="1" colspan="1">    0 (0.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">13</td>
+								<td rowspan="1" colspan="1">      0 (0.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Benin</td>
+								<td rowspan="1" colspan="1">300</td>
+								<td rowspan="1" colspan="1">    0 (0.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">5</td>
+								<td rowspan="1" colspan="1">      0 (0.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Togo</td>
+								<td rowspan="1" colspan="1">150</td>
+								<td rowspan="1" colspan="1">    0 (0.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">5</td>
+								<td rowspan="1" colspan="1">      0 (0.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Ivory Coast</td>
+								<td rowspan="1" colspan="1">90</td>
+								<td rowspan="1" colspan="1">   0 (0.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">3</td>
+								<td rowspan="1" colspan="1">      0 (0.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Guinea</td>
+								<td rowspan="1" colspan="1">270</td>
+								<td rowspan="1" colspan="1">    0 (0.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">7</td>
+								<td rowspan="1" colspan="1">      0 (0.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Guinea Bissau</td>
+								<td rowspan="1" colspan="1">30</td>
+								<td rowspan="1" colspan="1">    0 (0.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">      0 (0.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Liberia</td>
+								<td rowspan="1" colspan="1">60</td>
+								<td rowspan="1" colspan="1">    0 (0.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">      0 (0.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Chad</td>
+								<td rowspan="1" colspan="1">458</td>
+								<td rowspan="1" colspan="1">   0 (0.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">8</td>
+								<td rowspan="1" colspan="1">      0 (0.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Cameroon</td>
+								<td rowspan="1" colspan="1">278</td>
+								<td rowspan="1" colspan="1">    0 (0.0)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">4</td>
+								<td rowspan="1" colspan="1">      0 (0.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Spain</td>
+								<td rowspan="1" colspan="1">17</td>
+								<td rowspan="1" colspan="1">   2 (11.7)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">   1 (100.0)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Total</td>
+								<td rowspan="1" colspan="1">9.87</td>
+								<td rowspan="1" colspan="1">1,196 (12.1)</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">282</td>
+								<td rowspan="1" colspan="1">136 (48.2)</td>
+							</tr>
+						</tbody>
+					</table>
+				</table-wrap>
+				<fig id="pone-0078473-g001" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.g001</object-id><label>Figure 1</label>
+					<caption>
+						<title>Map of northwestern Africa with the location of study sites positive (red circles) or negative (blue circles) for the occurrence of <italic>Ornithodoros</italic> ticks in small mammal burrows.</title><p>At least 30 burrows were investigated in each negative site.</p>
+					</caption>
+					<graphic xlink:type="simple" position="float" xlink:href="info:doi/10.1371/journal.pone.0078473.g001"/>
+				</fig>
+			</sec>
+			<sec id="s3.2">
+				<title><italic>Borrelia</italic> infections in small mammals</title>
+				<p>A total of 1,629 small mammals belonging to 8 families (rodents: Ctenodactylidae, Dipodidae, Muridae, Nesomyidae, Sciuridae; insectivores: Erinaceidae, Soricidae; carnivores: Mustelidae) were collected in Senegal, Mauritania, Mali, Niger, Benin, Chad, Cameroon and Morocco (<xref ref-type="supplementary-material" rid="pone.0078473.s002">Table S2</xref>). As shown in <xref ref-type="table" rid="pone-0078473-t002">Table 2</xref>, these specimens belonged to 50 identified species and a few additional undetermined species. A thick blood film was prepared in 1,270 specimens (Senegal: 80; Mauritania: 224; Morocco: 134; Mali: 413; Niger: 95; Benin: 101; Chad: 52; Cameroon: 171) and brain samples of 1,089 specimens (Senegal: 92; Mauritania: 176; Mali: 322; Niger: 115; Benin: 152; Chad: 52; Cameroon: 180) were inoculated to white mice. As previously reported, brain samples of the 140 specimens collected in Morocco were also studied by PCR [<xref ref-type="bibr" rid="B40">40</xref>]. A <italic>Borrelia</italic> infection was demonstrated in 57 animals from Senegal, Mali, Mauritania or Morocco (4.1 % of the 1,386 specimens tested by at least one method) belonging to 13 rodent species and two insectivore species (<xref ref-type="table" rid="pone-0078473-t002">Table 2</xref>). All infected rodents and insectivores were collected in sites or areas where we documented the presence of <italic>Ornithodoros</italic> ticks. In these areas, we tested 868 animals and the proportion of those found infected by thick blood film examination, brain inoculation and PCR was 3.3% (28/850), 4.2% (21/499), and 8.6% (12/140), respectively. Except for Senegal, where 22.8% (21/92) of brain inoculations to white mice were positive (all were performed within a few days after sampling), all other brain inoculations to white mice were negative, including those from specimens from Mali and Mauritania with positive thick blood films, this certainly in relation to badly preserved spirochetes in brain tissue after sampling.  </p>
+				<table-wrap id="pone-0078473-t002" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.t002</object-id><label>Table 2</label>
+					<caption>
+						<title>List of small mammals collected and number of specimens found infected by <italic>Borrelia</italic>.</title>
+					</caption>
+					<table>
+						<colgroup span="1"><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/></colgroup>
+						<thead>
+							<tr>
+								<th rowspan="1" colspan="1">Family</th>
+								<th rowspan="1" colspan="1">Species</th>
+								<th rowspan="1" colspan="1">No. collected</th>
+								<th rowspan="1" colspan="1">No. Tested</th>
+								<th rowspan="1" colspan="1">No. Infected *</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="1" colspan="1"><bold>Rodents</bold></td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Ctenodactylidae </td>
+								<td rowspan="1" colspan="1"><italic>Felovia vae</italic></td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Dipodidae </td>
+								<td rowspan="1" colspan="1"><italic>Jaculus jaculus</italic></td>
+								<td rowspan="1" colspan="1">37</td>
+								<td rowspan="1" colspan="1">36</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Muridae </td>
+								<td rowspan="1" colspan="1"><italic>Acomys airensis</italic></td>
+								<td rowspan="1" colspan="1">38</td>
+								<td rowspan="1" colspan="1">28</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Acomys chudeaui</italic></td>
+								<td rowspan="1" colspan="1">17</td>
+								<td rowspan="1" colspan="1">14</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Arvicanthis ansorgei</italic></td>
+								<td rowspan="1" colspan="1">3</td>
+								<td rowspan="1" colspan="1">3</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Arvicanthis niloticus</italic></td>
+								<td rowspan="1" colspan="1">26</td>
+								<td rowspan="1" colspan="1">26</td>
+								<td rowspan="1" colspan="1">1 (I:1)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Arvicanthis rufinus</italic></td>
+								<td rowspan="1" colspan="1">5</td>
+								<td rowspan="1" colspan="1">0</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Arvicanthis</italic> spp.</td>
+								<td rowspan="1" colspan="1">51</td>
+								<td rowspan="1" colspan="1">38</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Desmodilliscus braueri</italic></td>
+								<td rowspan="1" colspan="1">11</td>
+								<td rowspan="1" colspan="1">8</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbilliscus gambianus</italic></td>
+								<td rowspan="1" colspan="1">5</td>
+								<td rowspan="1" colspan="1">4</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbilliscus kempi</italic></td>
+								<td rowspan="1" colspan="1">4</td>
+								<td rowspan="1" colspan="1">0</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbilliscus</italic> spp.</td>
+								<td rowspan="1" colspan="1">54</td>
+								<td rowspan="1" colspan="1">45</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbillus campestris</italic></td>
+								<td rowspan="1" colspan="1">59</td>
+								<td rowspan="1" colspan="1">59</td>
+								<td rowspan="1" colspan="1">4 (B:2, P:3)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbillus gerbillus</italic></td>
+								<td rowspan="1" colspan="1">42</td>
+								<td rowspan="1" colspan="1">37</td>
+								<td rowspan="1" colspan="1">1 (B:1)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbillus henleyi</italic></td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbillus hoogstraali</italic></td>
+								<td rowspan="1" colspan="1">12</td>
+								<td rowspan="1" colspan="1">12</td>
+								<td rowspan="1" colspan="1">1 (B:1, P:1)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbillus pyramidum</italic></td>
+								<td rowspan="1" colspan="1">28</td>
+								<td rowspan="1" colspan="1">28</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbillus nanus</italic></td>
+								<td rowspan="1" colspan="1">25</td>
+								<td rowspan="1" colspan="1">21</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbillus nigeriae</italic></td>
+								<td rowspan="1" colspan="1">28</td>
+								<td rowspan="1" colspan="1">26</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbillus occiduus</italic></td>
+								<td rowspan="1" colspan="1">29</td>
+								<td rowspan="1" colspan="1">29</td>
+								<td rowspan="1" colspan="1">1 (P:1)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbillus tarabuli</italic></td>
+								<td rowspan="1" colspan="1">107</td>
+								<td rowspan="1" colspan="1">90</td>
+								<td rowspan="1" colspan="1">2 (B:2)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Gerbillus</italic> spp.</td>
+								<td rowspan="1" colspan="1">41</td>
+								<td rowspan="1" colspan="1">20</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Lemniscomys barbarus</italic></td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Lemniscomys bellieri</italic></td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">0</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Lemniscomys zebra</italic></td>
+								<td rowspan="1" colspan="1">10</td>
+								<td rowspan="1" colspan="1">8</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Lemniscomys</italic> spp.</td>
+								<td rowspan="1" colspan="1">14</td>
+								<td rowspan="1" colspan="1">14</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Mastomys erythroleucus</italic></td>
+								<td rowspan="1" colspan="1"><italic>205</italic></td>
+								<td rowspan="1" colspan="1">179</td>
+								<td rowspan="1" colspan="1">9 (B:2, I:8)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Mastomys huberti</italic></td>
+								<td rowspan="1" colspan="1">76</td>
+								<td rowspan="1" colspan="1">76</td>
+								<td rowspan="1" colspan="1">1 (B:1)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Mastomys kollmannspergeri</italic></td>
+								<td rowspan="1" colspan="1"><italic>38</italic></td>
+								<td rowspan="1" colspan="1">38</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Mastomys natalensis</italic></td>
+								<td rowspan="1" colspan="1">220</td>
+								<td rowspan="1" colspan="1">164</td>
+								<td rowspan="1" colspan="1">7 (B:7)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Mastomys</italic> spp.</td>
+								<td rowspan="1" colspan="1">26</td>
+								<td rowspan="1" colspan="1">18</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Meriones libycus</italic></td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Meriones shawi</italic></td>
+								<td rowspan="1" colspan="1">14</td>
+								<td rowspan="1" colspan="1">14</td>
+								<td rowspan="1" colspan="1">6 (B:1, P:6)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Mus musculus</italic></td>
+								<td rowspan="1" colspan="1">23</td>
+								<td rowspan="1" colspan="1">15</td>
+								<td rowspan="1" colspan="1">1 (I:1)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Pachyuromys duprasi</italic></td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">0</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Praomys daltoni</italic></td>
+								<td rowspan="1" colspan="1">180</td>
+								<td rowspan="1" colspan="1">175</td>
+								<td rowspan="1" colspan="1">11 (B:11)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Praomys derooi</italic></td>
+								<td rowspan="1" colspan="1">15</td>
+								<td rowspan="1" colspan="1">12</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Rattus norvegicus</italic></td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Rattus rattus</italic></td>
+								<td rowspan="1" colspan="1">18</td>
+								<td rowspan="1" colspan="1">15</td>
+								<td rowspan="1" colspan="1">2 (I:2)</td>
+							</tr>
+						
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Taterillus arenarius</italic></td>
+								<td rowspan="1" colspan="1">7</td>
+								<td rowspan="1" colspan="1">5</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Taterillus congicus</italic></td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Taterillus gracilis</italic></td>
+								<td rowspan="1" colspan="1">8</td>
+								<td rowspan="1" colspan="1">6</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Taterillus lacustris</italic></td>
+								<td rowspan="1" colspan="1">7</td>
+								<td rowspan="1" colspan="1">5</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Taterillus petteri</italic></td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Taterillus</italic> spp.</td>
+								<td rowspan="1" colspan="1">13</td>
+								<td rowspan="1" colspan="1">10</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Uranomys ruddi</italic></td>
+								<td rowspan="1" colspan="1">15</td>
+								<td rowspan="1" colspan="1">14</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Nesomyidae</td>
+								<td rowspan="1" colspan="1"><italic>Cricetomys gambianus</italic></td>
+								<td rowspan="1" colspan="1">7</td>
+								<td rowspan="1" colspan="1">4</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Sciuridae</td>
+								<td rowspan="1" colspan="1"><italic>Atlantoxerus getulus</italic></td>
+								<td rowspan="1" colspan="1">3</td>
+								<td rowspan="1" colspan="1">3</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Heliosciurus gambianus</italic></td>
+								<td rowspan="1" colspan="1"><italic>1</italic></td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Xerus erythropus</italic></td>
+								<td rowspan="1" colspan="1">6</td>
+								<td rowspan="1" colspan="1">3</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><bold>Insectivores</bold></td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Erinaceidae</td>
+								<td rowspan="1" colspan="1"><italic>Atelerix albiventris</italic></td>
+								<td rowspan="1" colspan="1">8</td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Atelerix algirus</italic></td>
+								<td rowspan="1" colspan="1">6</td>
+								<td rowspan="1" colspan="1">6</td>
+								<td rowspan="1" colspan="1">1 (P:1)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Hemiechinus aethiopicus</italic></td>
+								<td rowspan="1" colspan="1"><italic>3</italic></td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Soricidae</td>
+								<td rowspan="1" colspan="1"><italic>Crocidura olivieri</italic></td>
+								<td rowspan="1" colspan="1">41</td>
+								<td rowspan="1" colspan="1">33</td>
+								<td rowspan="1" colspan="1">9 (I:9)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Crocidura viaria</italic></td>
+								<td rowspan="1" colspan="1">9</td>
+								<td rowspan="1" colspan="1">9</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"><italic>Crocidura</italic> spp.</td>
+								<td rowspan="1" colspan="1">20</td>
+								<td rowspan="1" colspan="1">20</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+							
+							<tr>
+								<td rowspan="1" colspan="1"><bold>Carnivores</bold></td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Mustelidae</td>
+								<td rowspan="1" colspan="1"><italic>Ictonyx striatus</italic></td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">0</td>
+							</tr>
+						</tbody>
+					</table>
+					<table-wrap-foot>
+						<fn>
+							<p>* B: Thick blood film examination; I: white mice inoculation with brain tissue; P: PCR with brain tissue (Morocco specimens only).</p>
+						</fn>
+					</table-wrap-foot>
+				</table-wrap>
+			</sec>
+			<sec id="s3.3">
+				<title>Molecular analysis of <italic>Ornithodoros</italic> ticks and <italic>Borrelia</italic> infections</title>
+				<p>A total of 1,801 <italic>Ornithodoros</italic> ticks from 113 study sites distributed in 7 African countries (Mali, Senegal, The Gambia, Mauritania, Morocco, Algeria and Tunisia) and in Spain were tested for molecular species determination and associated <italic>Borrelia</italic> infection. We observed the presence of <italic>Borrelia</italic> infections in 295 ticks (16.4%) distributed in all countries and 37.2% of sites (42/113). We obtained 820 sequences of 16S rRNA of <italic>Ornithodoros</italic> ticks, 216 concatened partial sequences of FlaB gene, and partial sequences of Intergenic spacer for the <italic>Borrelia</italic> detected (<xref ref-type="table" rid="pone-0078473-t003">Table 3</xref>). </p>
+				<table-wrap id="pone-0078473-t003" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.t003</object-id><label>Table 3</label>
+					<caption>
+						<title>Distribution and prevalence of infected <italic>Ornithodoros</italic> ticks by <italic>Borrelia</italic> in seven North and West Africa countries and in one locality of Spain.</title></caption>
+					<table>
+						<colgroup span="1"><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/></colgroup>
+						<thead>
+							<tr>
+								<th rowspan="1" colspan="1">Country</th>
+								<th rowspan="1" colspan="1">Sites</th>
+								<th rowspan="1" colspan="1">No. of ticks tested</th>
+								<th rowspan="1" colspan="1">No. of infected ticks</th>
+								<th rowspan="1" colspan="1">Prevalence</th>
+								<th rowspan="1" colspan="1">No. of IGS-FLA <italic>Borrelia</italic> concatened sequences (786 nu.)</th>
+								<th rowspan="1" colspan="1">No. of 16S rDNA tick sequences (457 nu.)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="1" colspan="1">Algeria</td>
+								<td rowspan="1" colspan="1">18</td>
+								<td rowspan="1" colspan="1">199</td>
+								<td rowspan="1" colspan="1">5</td>
+								<td rowspan="1" colspan="1">2.5</td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">183</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Gambia</td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">8</td>
+								<td rowspan="1" colspan="1">4</td>
+								<td rowspan="1" colspan="1">50.0</td>
+								<td rowspan="1" colspan="1">4</td>
+								<td rowspan="1" colspan="1">1</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Mali</td>
+								<td rowspan="1" colspan="1">18</td>
+								<td rowspan="1" colspan="1">273</td>
+								<td rowspan="1" colspan="1">34</td>
+								<td rowspan="1" colspan="1">12.5</td>
+								<td rowspan="1" colspan="1">26</td>
+								<td rowspan="1" colspan="1">88</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Mauritania</td>
+								<td rowspan="1" colspan="1">9</td>
+								<td rowspan="1" colspan="1">72</td>
+								<td rowspan="1" colspan="1">7</td>
+								<td rowspan="1" colspan="1">9.7</td>
+								<td rowspan="1" colspan="1">7</td>
+								<td rowspan="1" colspan="1">21</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Morocco</td>
+								<td rowspan="1" colspan="1">29</td>
+								<td rowspan="1" colspan="1">415</td>
+								<td rowspan="1" colspan="1">40</td>
+								<td rowspan="1" colspan="1">9.6</td>
+								<td rowspan="1" colspan="1">24</td>
+								<td rowspan="1" colspan="1">188</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Senegal</td>
+								<td rowspan="1" colspan="1">28</td>
+								<td rowspan="1" colspan="1">768</td>
+								<td rowspan="1" colspan="1">199</td>
+								<td rowspan="1" colspan="1">25.9</td>
+								<td rowspan="1" colspan="1">146</td>
+								<td rowspan="1" colspan="1">281</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Spain</td>
+								<td rowspan="1" colspan="1">1</td>
+								<td rowspan="1" colspan="1">4</td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">50.0</td>
+								<td rowspan="1" colspan="1">2</td>
+								<td rowspan="1" colspan="1">1</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Tunisia</td>
+								<td rowspan="1" colspan="1">9</td>
+								<td rowspan="1" colspan="1">62</td>
+								<td rowspan="1" colspan="1">4</td>
+								<td rowspan="1" colspan="1">6.5</td>
+								<td rowspan="1" colspan="1">4</td>
+								<td rowspan="1" colspan="1">57</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1">Total</td>
+								<td rowspan="1" colspan="1">113</td>
+								<td rowspan="1" colspan="1">1801</td>
+								<td rowspan="1" colspan="1">295</td>
+								<td rowspan="1" colspan="1">16.4</td>
+								<td rowspan="1" colspan="1">215</td>
+								<td rowspan="1" colspan="1">820</td>
+							</tr>
+						</tbody>
+					</table>
+					<table-wrap-foot>
+						<fn>
+							<p>The number of partial sequences obtained of concatened Intergenic spacer – FlaB gene (IGS-FLA) for <italic>Borrelia</italic> and 16S rDNA for ticks are shown. No.: number; Nu: nucleotide.</p>
+						</fn>
+					</table-wrap-foot>
+				</table-wrap>
+			</sec>
+			<sec id="s3.4">
+				<title>Phylogenetic analysis of <italic>Ornithodoros</italic> ticks</title>
+				<p>The phylogenetic analysis based on 820 16S rRNA sequences divided on 165 unique sequences which clustered in nine entities of <italic>Ornithodoros</italic> ticks (<xref ref-type="fig" rid="pone-0078473-g002">Figure 2</xref>). The genetic distance estimates (Kimura 2-parameters model) between entities varied from 0.062±0.013 (<italic>O. costalis</italic> - <italic>O. marocanus</italic> distance) to 0.251±0.030 (<italic>O. merionesi</italic> - <italic>O. normandi</italic> distance) (<xref ref-type="table" rid="pone-0078473-t004">Table 4</xref>). The nine entities were genetically differentiated and hybrids between populations of these areas were known to be infertile [<xref ref-type="bibr" rid="B29">29</xref>], indicating that they should be considered as nine different species, including five previously undescribed species (see below and <xref ref-type="other" rid="s5">Appendix</xref> for designation of types, description of species and criteria for diagnosis): </p>
+				<fig id="pone-0078473-g002" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.g002</object-id><label>Figure 2</label>
+					<caption>
+						<title>Phylogenetic relationships among <italic>Ornithodoros</italic> species using 16S rRNA sequences (820 seq.).</title><p>The colored triangles indicate the genetic diversity of the sequences detected for each <italic>Ornithodoros</italic> species. The colored-spots correspond to the <italic>Borrelia</italic> species detected in each tick species. The phylogram was constructed using a maximum-likelihood method from partial 16S sequence data (457 nucleotides). Bootstrap values &gt;90 are shown (Scale bar, 0.05 substitutions per site). <italic>Ornithodoros moubata</italic> (GenBank accession number AB073679), <italic>O. porcinus</italic> (GenBank acc. no. AB105451), <italic>O. turicata</italic> (GenBank acc. no. L34327), and <italic>O. parkeri</italic> (GenBank acc. no. EU009925) were treated as outgroups. Five of these species are newly described: <italic>O. occidentalis</italic>, <italic>O. costalis</italic>, <italic>O. rupestris</italic>, <italic>O. kairouanensis</italic>, and <italic>O. merionesi</italic>.</p>
+					</caption>
+					<graphic xlink:type="simple" position="float" xlink:href="info:doi/10.1371/journal.pone.0078473.g002"/>
+				</fig>
+				<table-wrap id="pone-0078473-t004" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.t004</object-id><label>Table 4</label>
+					<caption>
+						<title>Estimates of molecular distance (Kimura 2-parameter model) between the nine <italic>Ornithodoros</italic> species based on 165 sequences of 16S rRNA.</title>
+					</caption>
+					<table>
+						<colgroup span="1"><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/></colgroup>
+						<thead>
+							<tr>
+								<th rowspan="1" colspan="1"/>
+								<th rowspan="1" colspan="1"><italic>O. costalis</italic></th>
+								<th rowspan="1" colspan="1"><italic>O. marocanus</italic></th>
+								<th rowspan="1" colspan="1"><italic>O. occidentalis</italic></th>
+								<th rowspan="1" colspan="1"><italic>O. merionesi</italic></th>
+								<th rowspan="1" colspan="1"><italic>O. kairouanensis</italic></th>
+								<th rowspan="1" colspan="1"><italic>O. erraticus</italic></th>
+								<th rowspan="1" colspan="1"><italic>O. normandi</italic></th>
+								<th rowspan="1" colspan="1"><italic>O. rupestris</italic></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. sonrai</italic></td>
+								<td rowspan="1" colspan="1">0.073 (0.013)</td>
+								<td rowspan="1" colspan="1">0.075 (0.013)</td>
+								<td rowspan="1" colspan="1">0.095 (0.017)</td>
+								<td rowspan="1" colspan="1">0.120 (0.019)</td>
+								<td rowspan="1" colspan="1">0.200 (0.025)</td>
+								<td rowspan="1" colspan="1">0.219 (0.025)</td>
+								<td rowspan="1" colspan="1">0.222 (0.026)</td>
+								<td rowspan="1" colspan="1">0.058 (0.012)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. costalis</italic></td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">0.062 (0.013)</td>
+								<td rowspan="1" colspan="1">0.084 (0.015)</td>
+								<td rowspan="1" colspan="1">0.113 (0.020)</td>
+								<td rowspan="1" colspan="1">0.194 (0.022)</td>
+								<td rowspan="1" colspan="1">0.212 (0.023)</td>
+								<td rowspan="1" colspan="1">0.220 (0.026)</td>
+								<td rowspan="1" colspan="1">0.052 (0.011)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. marocanus</italic></td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">0.087 (0.014)</td>
+								<td rowspan="1" colspan="1">0.113 (0.019)</td>
+								<td rowspan="1" colspan="1">0.185 (0.023)</td>
+								<td rowspan="1" colspan="1">0.209 (0.023)</td>
+								<td rowspan="1" colspan="1">0.212 (0.026)</td>
+								<td rowspan="1" colspan="1">0.061 (0.011)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. occidentalis</italic></td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">0.114 (0.019)</td>
+								<td rowspan="1" colspan="1">0.204 (0.026)</td>
+								<td rowspan="1" colspan="1">0.224 (0.025)</td>
+								<td rowspan="1" colspan="1">0.242 (0.028)</td>
+								<td rowspan="1" colspan="1">0.079 (0.015)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. merionesi</italic></td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">0.203 (0.026)</td>
+								<td rowspan="1" colspan="1">0.230 (0.026)</td>
+								<td rowspan="1" colspan="1">0.251 (0.030)</td>
+								<td rowspan="1" colspan="1">0.114 (0.020)</td>
+							</tr>
+							<tr>
+								<td colspan="2" rowspan="1"><italic>O. kairouanensis</italic></td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">0.186 (0.025)</td>
+								<td rowspan="1" colspan="1">0.223 (0.028)</td>
+								<td rowspan="1" colspan="1">0.184 (0.023)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. erraticus</italic></td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">0.109 (0.015)</td>
+								<td rowspan="1" colspan="1">0.201 (0.023)</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. normandi</italic></td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">0.198 (0.023)</td>
+							</tr>
+						</tbody>
+					</table>
+					<table-wrap-foot>
+						<fn>
+							<p>Standard error estimates are shown in parenthesis and were obtained by a boostrap procedure (100 replicates).</p>
+						</fn>
+					</table-wrap-foot>
+				</table-wrap>
+				<list list-type="simple">
+					<list-item>
+						<label>•</label>
+						
+						<p><italic>O. occidentalis</italic> Trape, Diatta, Durand &amp; Renaud, sp. nov.</p>
+					</list-item>
+				</list>
+				<p>Holotype: IRSNB IG.32.280/004/1; ZooBank: urn:lsid:zoobank.org:act:DC0E7B5B-FBC3-4A7B-A223-77E0F2CFF2F5; GenBank: KC311536, KC311537.</p>
+				<list list-type="simple">
+					<list-item>
+						<p>• 	 <italic>O. costalis</italic> Diatta, Bouattour, Durand, Renaud &amp; Trape, sp. nov.</p>
+					</list-item>
+				</list>
+				<p> Holotype: IRSNB IG.32.280/005/1; ZooBank: urn:lsid:zoobank.org:act:43B277DD-7488-4277-8EC6-7AA9653882D0; GenBank: KC311531, KC311532.</p>
+				<list list-type="simple">
+					<list-item>
+						<p>•  	 <italic>O. rupestris</italic> Trape, Bitam, Renaud &amp; Durand, sp. nov.</p>
+					</list-item>
+				</list>
+				<p> Holotype: IRSNB IG.32.280/003/1; ZooBank: urn:lsid:zoobank.org:act:B76003D9-C807-4194-97C7-1FE7CFA3398D;  GenBank: KC311545.</p>
+				<list list-type="simple">
+					<list-item>
+						<p>•  	 <italic>O. kairouanensis</italic> Trape, Diatta, Bouattour, Durand &amp; Renaud, sp. nov.</p>
+					</list-item>
+				</list>
+				<p>Holotype: IRSNB IG.32.280/002/1; ZooBank: urn:lsid:zoobank.org:act:DCC9185B-5FA8-494C-BF45-985A60478DC7;  GenBank: KC311546.</p>
+				<list list-type="simple">
+					<list-item>
+						<p>• 	 <italic>O. merionesi</italic> Trape, Diatta, Belghyti, Sarih, Durand &amp; Renaud, sp. nov.</p>
+					</list-item>
+				</list>
+				<p>Holotype: IRSNB IG.32.280/001/1; ZooBank: urn:lsid:zoobank.org:act:8B64EB2B-0288-4488-9E39-94A2E3367FF5;  GenBank: KC311538. </p>
+				<p>The four other species identified were: <italic>O. erraticus</italic>, GenBank: KC311539, KC311540, KC311541, neotype: IRSNB 32.280/006; <italic>O. marocanus</italic>, GenBank: KC11533, KC311537, KC311535; neotype: IRSNB 32.280/007; <italic>O. sonrai</italic>, GenBank: KC311525, KC311526, KC311527, KC311528, KC311529, KC311530, neotype: IRSNB 32.280/007; and <italic>O. normandi</italic>, GenBank KC311542, KC311543, KC311544. </p>
+				<p><xref ref-type="fig" rid="pone-0078473-g003">Figure 3</xref> shows that high specific diversity was observed in North Africa where the nine species were found and presented either a wide distribution in the most arid areas of Morocco, Algeria and Tunisia (one species: <italic>O. sonrai</italic>), or various restricted distribution patterns in coastal and/or inland areas of North Africa and Spain (eight species). </p>
+				<fig id="pone-0078473-g003" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.g003</object-id><label>Figure 3</label>
+					<caption>
+						<title>Map of northwestern Africa with the distribution of <italic>Ornithodoros</italic> species found in small mammal burrows.</title></caption>
+					<graphic xlink:type="simple" position="float" xlink:href="info:doi/10.1371/journal.pone.0078473.g003"/>
+				</fig>
+				<p>	In West Africa, only <italic>O. sonrai</italic> was observed, and analysis performed on the 16S sequences of 533 <italic>O. sonrai</italic> ticks from 72 study sites in Sudanian, Sahelian and Saharan areas showed a large distribution of <italic>O. sonrai</italic> in West and North Africa (<xref ref-type="fig" rid="pone-0078473-g003">Figure 3</xref>). However, over the whole molecular range observed for this species, one group was genetically distinct (bootstrap &gt;90). These ticks were sampled in an area extending from northwestern Senegal (Dagana, Richard-Toll) to northwestern Mauritania (Nouâdhibou) and the most southern part of Morocco (Adrar Souttouf) and we consider that they constitute a distinct sub-species of <italic>O. sonrai</italic> (<xref ref-type="fig" rid="pone-0078473-g003">Figure 3</xref>).</p>
+			</sec>
+			<sec id="s3.5">
+				<title>Phylogenetic analysis of <italic>Borrelia</italic></title>
+				<p>The phylogenetic analysis of <italic>Borrelia</italic> was based on 105 different sequences among 216 IGS-FLA sequences obtained. <xref ref-type="fig" rid="pone-0078473-g004">Figure 4</xref> shows that three <italic>Borrelia</italic> species were present in sampled ticks: <italic>B. crocidurae</italic>, <italic>B. hispanica</italic>, and a third species, <italic>B. merionesi</italic>, a rare spirochaete that was formerly described from <italic>Ornithodoros</italic> ticks collected in the same area of southern Morocco than our specimens [<xref ref-type="bibr" rid="B59">59</xref>,<xref ref-type="bibr" rid="B60">60</xref>] (<xref ref-type="fig" rid="pone-0078473-g005">Figure 5</xref>). The genetic distance estimates among <italic>Borrelia</italic> species varied from 0.003±0.002 (<italic>B. recurrentis</italic> - <italic>B. duttonii</italic> distance) to 0.076±0.010 (<italic>B. hispanica</italic> - <italic>B. recurrentis</italic> distance) (<xref ref-type="table" rid="pone-0078473-t005">Table 5</xref>). Sequences of <italic>B. crocidurae</italic> previously obtained from patients from Dielmo (Senegal) [<xref ref-type="bibr" rid="B39">39</xref>] and <italic>B. hispanica</italic> from patients from Kenitra, Morocco [<xref ref-type="bibr" rid="B30">30</xref>] were identical to those collected in <italic>Ornothodoros</italic> ticks in the same areas. </p>
+				<fig id="pone-0078473-g004" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.g004</object-id><label>Figure 4</label>
+					<caption>
+						<title>Phylogenetic relationships among <italic>Borrelia</italic> species using partial Intergenic spacer (IGS, 510 nucleotides) and partial FlaB gene (FLA, 269 nucleotides) concatenated sequences</title><p>(PhyML 100 bootstraps, available at <ext-link ext-link-type="uri" xlink:href="http://mobyle.pasteur.fr/cgi-bin/portal.py" xlink:type="simple"><underline>http://mobyle.pasteur.fr/cgi-bin/portal.py</underline></ext-link>). The colored triangle estimated the <italic>Borrelia</italic> species diversity. We included in the <italic>B. merionesi</italic> clade (9 seq.) a <italic>Borrelia</italic> detected in a rodent captured in El Argoub (Morocco). The colored full circle correspond to the tick species determined by the 16S phylogenetic analysis of this study. The phylogram was constructed using a maximum-likelihood method from concatenated sequence data (220 sequences including GenBank reference sequences, 779 nucleotides). Bootstrap values &gt;70 are shown (Scale bar, 0.01 substitutions per site). Seq. A.: <italic>B. crocidurae</italic> (GU350723 and NC017808), seq. B.: <italic>B. recurrentis</italic> (DQ000277 and DQ346814), seq. C.: <italic>B. duttonii</italic> (DQ000279 and DQ346833), seq. D.: <italic>B. merionesi</italic> (JX257047 and JX257050), seq. E.: <italic>B. hispanica</italic> (GU350718 and GU357614) and concatened sequences were used as references.  </p>
+					</caption>
+					<graphic xlink:type="simple" position="float" xlink:href="info:doi/10.1371/journal.pone.0078473.g004"/>
+				</fig>
+				<fig id="pone-0078473-g005" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.g005</object-id><label>Figure 5</label>
+					<caption>
+						<title>Map of northwestern Africa with the distribution of <italic>Borrelia</italic> species found in <italic>Ornithodoros</italic> ticks and/or rodents.</title>
+					</caption>
+					<graphic xlink:type="simple" position="float" xlink:href="info:doi/10.1371/journal.pone.0078473.g005"/>
+				</fig>
+				<table-wrap id="pone-0078473-t005" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.t005</object-id><label>Table 5</label>
+					<caption>
+						<title>Estimates of molecular distance (Kimura 2-parameter model) between the three <italic>Borrelia</italic> species detected, based on 220 concatened IGS-FLA sequences (779 nucleotides), and comparison with <italic>B. recurrentis</italic> and <italic>B. duttonii</italic>.</title>
+					</caption>
+					<table>
+						<colgroup span="1"><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/></colgroup>
+						<thead>
+							<tr>
+								<th rowspan="1" colspan="1"/>
+								<th rowspan="1" colspan="1"><italic>B. crocidurae</italic></th>
+								<th rowspan="1" colspan="1"><italic>B. hispanica</italic></th>
+								<th rowspan="1" colspan="1"><italic>B. merionesi</italic></th>
+								<th rowspan="1" colspan="1"><italic>B. recurrentis</italic></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>B. crocidurae</italic></td>
+								<td rowspan="1" colspan="1">-</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>B. hispanica</italic></td>
+								<td rowspan="1" colspan="1">0.062 (0.008)</td>
+								<td rowspan="1" colspan="1">-</td>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>B. merionesi</italic></td>
+								<td rowspan="1" colspan="1">0.039 (0.007)</td>
+								<td rowspan="1" colspan="1">0.065 (0.009)</td>
+								<td rowspan="1" colspan="1">-</td>
+								<td rowspan="1" colspan="1"/>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>B. recurrentis</italic></td>
+								<td rowspan="1" colspan="1">0.043 (0.008)</td>
+								<td rowspan="1" colspan="1">0.076 (0.010)</td>
+								<td rowspan="1" colspan="1">0.035 (0.006)</td>
+								<td rowspan="1" colspan="1">-</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>B. duttonii</italic></td>
+								<td rowspan="1" colspan="1">0.040 (0.007)</td>
+								<td rowspan="1" colspan="1">0.073 (0.010)</td>
+								<td rowspan="1" colspan="1">0.035 (0.006)</td>
+								<td rowspan="1" colspan="1">0.003 (0.002)</td>
+							</tr>
+						</tbody>
+					</table>
+					<table-wrap-foot>
+						<fn>
+							<p>Standard error estimates are shown in parenthesis and were obtained by a bootstrap procedure (100 replicates).</p>
+						</fn>
+					</table-wrap-foot>
+				</table-wrap>
+				<p>	The IGS-FLA phylogenetic analysis indicated that <italic>B. crocidurae</italic> was only found in <italic>O. sonrai</italic> (196 out of 533 specimens, 36.7%), <italic>B. hispanica</italic> was found in <italic>O. marocanus</italic> (5/43, 11.6%), <italic>O. occidentalis</italic> (3/55, 5.5%) and <italic>O. kairouanensis</italic> (1/5, 20.0%), and <italic>B. merionesi</italic> was found in <italic>O. costalis</italic> (3/65, 4.6%) and <italic>O. merionesi</italic> (3/ 16, 18.8%). No <italic>Borrelia</italic> infection was detected in 28 specimens of <italic>O. rupestris</italic> from 2 study sites, nor in 44 specimens of <italic>O. erraticus</italic> from 5 study sites, nor in 31 specimens of <italic>O. normandi</italic> from 7 study sites.</p>
+			</sec>
+			<sec id="s3.6">
+				<title>Diagnostic SNPs of <italic>Ornithodoros</italic> ticks</title>
+				<p>To allow a rapid molecular identification of <italic>Ornithodoros</italic> species, we highlighted 25 single nucleotide polymorphisms among the 9 species in 16S rRNA sequence dataset (<xref ref-type="table" rid="pone-0078473-t006">Table 6</xref>). We detected at least one diagnostic SNP for each species, i.e. at a given position of the 16S sequence a nucleotide type is present in all sequences of a given species and absent in other species. According to species, the total number of diagnostic SNPs that can be used for taxonomic purpose of soft tick of the genus <italic>Ornithodoros</italic> varied from 1 to 8 (<xref ref-type="table" rid="pone-0078473-t006">Table 6</xref>).</p>
+				<table-wrap id="pone-0078473-t006" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.t006</object-id><label>Table 6</label>
+					<caption>
+						<title>Twenty-five Single Nucleotide Polymorphisms (SNPs) and their position which distinguish the nine <italic>Ornithodoros</italic> species, based on 820 16S rRNA aligned sequences (457 nucleotides).</title></caption>
+					<table>
+						<colgroup span="1"><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/></colgroup>
+						<thead>
+							<tr>
+								<th rowspan="1" colspan="1">Species</th>
+								<th rowspan="1" colspan="1">No. seq.</th>
+								<th rowspan="1" colspan="1"/>
+								<th rowspan="1" colspan="1"/>
+								<th rowspan="1" colspan="1"/>
+								<th colspan="19" rowspan="1">Diagnostic SNPs and their position on the 16S rRNA aligned sequences (457 nucleotides)<hr/></th>
+								<th rowspan="1" colspan="1"/>
+								<th rowspan="1" colspan="1"/>
+								<th rowspan="1" colspan="1"/>
+								<th rowspan="1" colspan="1">Total SNPs</th>
+							</tr>
+							
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1"/>
+								<td rowspan="1" colspan="1">54</td>
+								<td rowspan="1" colspan="1">59</td>
+								<td rowspan="1" colspan="1">74</td>
+								<td rowspan="1" colspan="1">81</td>
+								<td rowspan="1" colspan="1">96</td>
+								<td rowspan="1" colspan="1">111</td>
+								<td rowspan="1" colspan="1">137</td>
+								<td rowspan="1" colspan="1">157</td>
+								<td rowspan="1" colspan="1">172</td>
+								<td rowspan="1" colspan="1">181</td>
+								<td rowspan="1" colspan="1">189</td>
+								<td rowspan="1" colspan="1">194</td>
+								<td rowspan="1" colspan="1">209</td>
+								<td rowspan="1" colspan="1">214</td>
+								<td rowspan="1" colspan="1">217</td>
+								<td rowspan="1" colspan="1">237</td>
+								<td rowspan="1" colspan="1">244</td>
+								<td rowspan="1" colspan="1">256</td>
+								<td rowspan="1" colspan="1">257</td>
+								<td rowspan="1" colspan="1">258</td>
+								<td rowspan="1" colspan="1">288</td>
+								<td rowspan="1" colspan="1">294</td>
+								<td rowspan="1" colspan="1">301</td>
+								<td rowspan="1" colspan="1">405</td>
+								<td rowspan="1" colspan="1">438</td>
+								<td rowspan="1" colspan="1"/>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. sonrai</italic></td>
+								<td rowspan="1" colspan="1">534</td>
+								<td rowspan="1" colspan="1">A/G</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">A/C</td>
+								<td rowspan="1" colspan="1">A/G</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A/T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">C/T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A/C</td>
+								<td rowspan="1" colspan="1">A/C</td>
+								<td rowspan="1" colspan="1">A/C</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">1</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. rupestris</italic></td>
+								<td rowspan="1" colspan="1">28</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">1</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. costalis</italic></td>
+								<td rowspan="1" colspan="1">65</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">C/T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1"><bold><underline>A/C</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">1</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. marocanus</italic></td>
+								<td rowspan="1" colspan="1">43</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1"><bold><underline>A</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A/G</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A/T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">1</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. occidentalis</italic></td>
+								<td rowspan="1" colspan="1">55</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A/G</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>T</underline></bold></td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1"><bold><underline>A</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">2</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. merionesi</italic></td>
+								<td rowspan="1" colspan="1">16</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1"><bold><underline>A</underline></bold></td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>A</underline></bold></td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1"><bold><underline>T</underline></bold></td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">4</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. erraticus</italic></td>
+								<td rowspan="1" colspan="1">44</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A/G</td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>C</underline></bold></td>
+								<td rowspan="1" colspan="1"><bold>T</bold></td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>T</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>T</underline></bold></td>
+								<td rowspan="1" colspan="1">A/G</td>
+								<td rowspan="1" colspan="1">8</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. normandi</italic></td>
+								<td rowspan="1" colspan="1">31</td>
+								<td rowspan="1" colspan="1"><bold><underline>T</underline></bold></td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">A/T</td>
+								<td rowspan="1" colspan="1"><bold><underline>A</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>A</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">A/C</td>
+								<td rowspan="1" colspan="1">4</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1"><italic>O. kairouanensis</italic></td>
+								<td rowspan="1" colspan="1">5</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1"><bold><underline>T</underline></bold></td>
+								<td rowspan="1" colspan="1"><bold><underline>T</underline></bold></td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1"><bold><underline>C</underline></bold></td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1"><bold><underline>T</underline></bold></td>
+								<td rowspan="1" colspan="1">T</td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1"><bold><underline>G</underline></bold></td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">A</td>
+								<td rowspan="1" colspan="1">G</td>
+								<td rowspan="1" colspan="1"><bold><underline>T</underline></bold></td>
+								<td rowspan="1" colspan="1">8</td>
+							</tr>
+						</tbody>
+					</table>
+					<table-wrap-foot>
+						<fn>
+							<p>The nucleotide in bold underlined are the SNP diagnostic of the species considered. For example, in position 54 of the aligned sequences, the nucleotide T in bold underlined is present in all sequences of the <italic>O. normandi</italic> and absent in any sequences of other species. Other example, in position 244 the nucleotides A and C are diagnostic for <italic>O. costalis</italic>. No. seq.: number of analyzed sequences.</p>
+						</fn>
+					</table-wrap-foot>
+				</table-wrap>
+			</sec>
+			<sec id="s3.7">
+				<title>Environmental factors and tick species distribution</title>
+				<p>To investigate the relationship between environmental factors and species distribution, we included in the analysis ticks from 110 study sites. <xref ref-type="fig" rid="pone-0078473-g006">Figure 6</xref> shows the projection of the individual ticks on the first factorial plane. The first two axes explain 92% of the between-species variance. The predictive power (percentage of well-classified data) is 76%. The variable most positively correlated with axis 1 is the mean annual rainfall (cor = 0.87), the most negatively correlated with axis 1 is mean temperature (cor = - 0.69). The variable most positively correlated with axis 2 is the longitude (cor = 0.81), and the most negatively correlated with axis 2 is elevation (cor = - 0.45). <italic>O. sonrai</italic> lies essentially on the negative part of axis 1, and thus appears related to drier climates and higher temperature than the other species. <italic>O. costalis</italic>, <italic>O. marocanus</italic>, <italic>O. occidentalis</italic> and <italic>O. merionesi</italic> lie generally on the negative part of axis 2 and are not well separated. <italic>O. normandi</italic> and <italic>O. erraticus</italic> lie on the positive part of both axes. Longitude (except for <italic>O. costalis</italic>) and rains (high rains for <italic>O. erraticus</italic> and <italic>O. normandi</italic>, low rains for <italic>O. merionesi</italic>) appear as the most discriminant factors.</p>
+				<fig id="pone-0078473-g006" position="float">
+					<object-id pub-id-type="doi">10.1371/journal.pone.0078473.g006</object-id><label>Figure 6</label>
+					<caption>
+						<title>Projection of individual ticks on the first factorial plane of a Linear Discriminant Analysis.</title><p>All ticks collected in the same location project to the same point. The percentages along the axes labels are the proportions of between-species variance explained by the corresponding linear discriminant. Units have no meaning. The labels indicating each species are located at the center of the individual points belonging to that species. Ellipses encompass around 66% of the distribution of each species.</p>
+						<p>Abbreviations: so: <italic>O. sonrai</italic>, co: <italic>O. costalis</italic>, ma: <italic>O. marocanus</italic>, oc: <italic>O. occidentalis</italic>, me: <italic>O. merionesi</italic>, ka: <italic>O. kairouanensis</italic>, er: <italic>O. erraticus</italic>, no: <italic>O</italic>. <italic>normandi</italic>, ru: <italic>O. rupestris</italic>.</p>
+					</caption>
+					<graphic xlink:type="simple" position="float" xlink:href="info:doi/10.1371/journal.pone.0078473.g006"/>
+				</fig>
+			</sec>
+		</sec>
+		<sec id="s4" sec-type="discussion">
+			<title>Discussion</title>
+			<p>	Genetic distances between the nine clades of <italic>Onithodoros</italic> ticks collected in this study ranged from 5.2 to 25.1%, a distance similar to those found between <italic>Ornithodoros</italic> species from other parts of the world. For comparison, the genetic distance between <italic>O. puertoricensis</italic> and <italic>O. rioplatensis</italic>, two species from South America, based on 16S rRNA sequencing, is approximately 12.7% [<xref ref-type="bibr" rid="B61">61</xref>]. Morphologically, it was easy to separate these nine species in two groups, the first one comprising two small species distributed in northeastern Algeria and northwestern Tunisia and characterized, among other diagnostic characters, by a transverse groove on coxae I, the second one comprising the seven other species and characterized by an oblique groove on coxae I, as previously illustrated elsewhere [<xref ref-type="bibr" rid="B31">31</xref>]. These two groups are confirmed by our molecular study (<xref ref-type="fig" rid="pone-0078473-g002">Figure 2</xref>). The two species of the first group includes respectively (a) all specimens from La Calle, Algeria - type locality of <italic>O. erraticus</italic> (Lucas, 1849) - and nearby coastal sites of Algeria and Tunisia, and (b) all specimens from Le Kef, Tunisia - type locality of <italic>O. normandi</italic> Larousse, 1923 - and nearby highland sites of Tunisia and Algeria [<xref ref-type="bibr" rid="B62">62</xref>,<xref ref-type="bibr" rid="B63">63</xref>]. None of 75 specimens of these two species were found infected by <italic>B. hispanica</italic>, <italic>B. crocidurae</italic> or <italic>B. merionesi</italic> in this study nor in a previous study in Tunisia [<xref ref-type="bibr" rid="B31">31</xref>], suggesting that <italic>O. erraticus</italic> sensu strico and <italic>O. normandi</italic> may be poor vectors or reservoirs of TBRF. By contrast, six of the seven species of the second morphological group of <italic>Ornithodoros</italic> ticks were found infected by one of these <italic>Borrelia</italic> species, most often with high prevalence rates (minimum 4.6% for <italic>O. costalis</italic>, maximum 36.6% for <italic>O. sonrai</italic>).</p>
+			<p>	Among the seven species of the second group, only two species were previously known: <italic>O. marocanus</italic> Velu, 1919, type locality “vieille casbah” near Casablanca, Morocco and <italic>O. sonrai</italic> Sautet and Witkovski, 1943, type locality Gao, Mali [<xref ref-type="bibr" rid="B64">64</xref>,<xref ref-type="bibr" rid="B65">65</xref>]. However, since the work of Colas-Belcour [<xref ref-type="bibr" rid="B66">66</xref>], <italic>O. marocanus</italic> was considered as a junior synonym of <italic>O. erraticus</italic> [<xref ref-type="bibr" rid="B67">67</xref>,<xref ref-type="bibr" rid="B68">68</xref>]. Although most Algerian arthropods collected by Lucas [<xref ref-type="bibr" rid="B62">62</xref>] were deposited at the Museum National d’Histoire Naturelle in Paris, part of the collection was lost, including the three <italic>O. erraticus</italic> syntypes. The original description of these specimens was very short and <italic>O. erraticus</italic> was later redescribed by Neumann [<xref ref-type="bibr" rid="B69">69</xref>] on the basis of specimens not from La Calle but from Nemours (= Ghazaouet) and Marnia in northwestern Algeria near the Moroccan border, an area where our study shows that <italic>O. erraticus</italic> is absent but where <italic>O. marocanus</italic> is widely distributed. Since our study also shows that <italic>O. erraticus</italic> is the only species distributed in coastal areas of northeastern Algeria, from where the three syntypes of Lucas were described [<xref ref-type="bibr" rid="B61">61</xref>] and our specimens match their short description, <italic>O. marocanus</italic> must be resurrected from the synonymy of <italic>O. erraticus</italic> and the distribution of this later species appears much more restricted than previously thought. Morphologically, we failed to find good criteria for distinguishing <italic>O. erraticus</italic> from <italic>O. normandi</italic>, but these two species are clearly distinct genetically and have also distinct ranges and ecological preferences. In addition, comprehensive cross-mating experiments between eight populations of <italic>O. erraticus</italic> sensu lato from areas investigated in our study (Casablanca, Oujda, Marrakech, Tunis, Dakar, southern Morocco, southern Spain) and from central and southern Iran performed by Chabaud [<xref ref-type="bibr" rid="B29">29</xref>] in the early 1950s indicated that all hybrids of the first or second generation were either sterile or have very low fertility [<xref ref-type="bibr" rid="B29">29</xref>]. The results of these experiments combined with our data and the partial sympatry of several of these species clearly support the full specific rank of the seven species of the <italic>O. marocanus</italic> / <italic>O. sonrai</italic> group identified in our study (<xref ref-type="fig" rid="pone-0078473-g007">Figure 7</xref>).</p>
+			<fig id="pone-0078473-g007" position="float">
+				<object-id pub-id-type="doi">10.1371/journal.pone.0078473.g007</object-id><label>Figure 7</label>
+				<caption>
+					<title>Dorsal view of <italic>O. erraticus</italic> (A), <italic>O. marocanus</italic> (B), <italic>O. sonrai</italic> (C), <italic>O. costalis</italic> (D), <italic>O. merionesi</italic> (E), <italic>O. occidentalis</italic> (F), <italic>O. rupestris</italic> (G), and <italic>O. kairouanensis</italic> (H).</title></caption>
+				<graphic xlink:type="simple" position="float" xlink:href="info:doi/10.1371/journal.pone.0078473.g007"/>
+			</fig>
+			<p>	Interestingly, our data confirm the tick-spirochete species specificity highlighted by previous authors [<xref ref-type="bibr" rid="B70">70</xref>]. <italic>B. crocidurae</italic> was only detected in <italic>O. sonrai</italic>, and both this vector and this spirochete were genetically very close North and South of the Sahara desert, certainly because they present a continuous distribution through Mauritania and Western Sahara (but probably not through central Sahara, a much dryer area [<xref ref-type="bibr" rid="B57">57</xref>] where we failed to find <italic>O. sonrai</italic>). The only apparent disjunction in the distribution of this vector was observed in central Mali, where we failed to find a connection between the populations of <italic>O. sonrai</italic> bordering the Niger River and those distributed from western Mali to North Africa. <italic>B. hispanica</italic> was detected in <italic>O. marocanus</italic>, <italic>O. occidentalis</italic> and <italic>O. kairouanensis</italic>, a complex of three large species (female adult length 5.5 - 7.5 mm) distributed in typically Mediterranean areas of Morocco, Algeria, Tunisia and Spain and previously confused with <italic>O. erraticus</italic> [<xref ref-type="bibr" rid="B2">2</xref>,<xref ref-type="bibr" rid="B23">23</xref>,<xref ref-type="bibr" rid="B28">28</xref>-<xref ref-type="bibr" rid="B32">32</xref>,<xref ref-type="bibr" rid="B60">60</xref>,<xref ref-type="bibr" rid="B66">66</xref>-<xref ref-type="bibr" rid="B69">69</xref>]. Finally, the poorly known <italic>B. merionesi</italic> [<xref ref-type="bibr" rid="B59">59</xref>,<xref ref-type="bibr" rid="B60">60</xref>] appears restricted to Atlantic coastal areas of the Sahara desert where it is transmitted by two <italic>Ornithodoros</italic> species previously confused with <italic>O. sonrai</italic>: <italic>O. costalis</italic> and <italic>O. merionesi</italic>. Interestingly, no <italic>Ornithodoros</italic> species was found infected by more than one <italic>Borrelia</italic> species despite the high prevalence of infected ticks.</p>
+			<p>The considerable abundance of <italic>Ornithodoros</italic> TBRF vectors in North and West Africa - from 39.5 % of rodent burrows colonized by vector ticks in Morocco to 13.7 % in West Africa (Senegal, The Gambia, Mali and Mauritania) - coupled with the high infection rate of these vectors by at least two <italic>Borrelia</italic> species pathogenic for humans suggest that TBRF is a common disease in the whole range of distribution of these vectors. In rural Senegal, we have previously shown that the incidence of <italic>B. crocidurae</italic> TBRF reached 11 per 100 person-years and was the highest described in the world literature for any bacterial disease [<xref ref-type="bibr" rid="B39">39</xref>]. In northwestern Morocco, we found that 20.5% of patients with an unexplained fever had <italic>B. hispanica</italic> TBRF [<xref ref-type="bibr" rid="B30">30</xref>]. Clearly, similar incidence rates are likely to occur in most areas where we demonstrated the occurrence of one or more of the seven species of the <italic>O. marocanus</italic> - <italic>O. sonrai</italic> complex. It is not known if <italic>B. merionesi</italic> is also pathogenic for humans. However, a few previous experiments with this spirochete failed to induce TBRF in humans [<xref ref-type="bibr" rid="B59">59</xref>].</p>
+			<p>We consistently failed to find any <italic>Ornithodoros tick</italic> inside burrows or houses in West Africa south of 13°N and east of 01°E. We also failed to find these ticks in Cameroon and Chad. In the literature, there were in these areas only two mentions of <italic>Ornithoros</italic> species known as potential vectors of TBRF, one doubtful report of two larvae of <italic>O. erraticus</italic> collected on <italic>Arvicanthis niloticus</italic> in Ndjamena before 1959 [<xref ref-type="bibr" rid="B71">71</xref>] and the mention of one nymph of <italic>O. sonrai</italic> collected in a burrow of <italic>Xerus erythropus</italic> in Niamey in 1956 [<xref ref-type="bibr" rid="B23">23</xref>]. The later report was consistent with the current known distribution of <italic>O. sonrai</italic> along the Niger River in Mali, but our extensive investigations (132 burrows examined) in Niamey and along the Niger River between Niamey and the Malian border were negative. In Mali, a recent comprehensive study of the small mammal reservoir of <italic>B. crocidurae</italic> in 20 villages from different areas of the country indicated that 11% of 663 rodents and 14% of 63 shrews had antibodies to spirochetes and 2.2% had confirmed active <italic>B. crocidurae</italic> infections [<xref ref-type="bibr" rid="B37">37</xref>]. Interestingly, distribution of seropositive mammals and <italic>O. sonrai</italic> ticks supported our own data, except for some villages of southern Mali where a few rodents were found seropositive although collected south of the known distribution limit of <italic>O. sonrai</italic>. Since low rates of serological cross reactivity and/or dispersal or accidental introduction of rodents south of places where they were infected cannot be excluded, further studies are needed to confirm local transmission of TBRF in these areas. In the Malian study, three rodent species (<italic>M. erythroleucus</italic>, <italic>M. natalensis</italic>, <italic>P. daltoni</italic>) and two insectivores species (<italic>C. olivieri</italic>, <italic>C. fulvastra</italic>) were found infected by thin blood film examination, a method where the amount of blood examined in each microscopic field is approximately 20-fold less than by thick blood film examination [<xref ref-type="bibr" rid="B72">72</xref>]. In Senegal, additional mammal species found infected during previous studies include <italic>A. albiventris</italic>, <italic>R. norvegicus</italic>, <italic>G. gambianus</italic> and <italic>G. gracilis</italic> [<xref ref-type="bibr" rid="B35">35</xref>,<xref ref-type="bibr" rid="B36">36</xref>]. With these species and <italic>C. fulvastra</italic> found infected in Mali [<xref ref-type="bibr" rid="B37">37</xref>], the known small mammal reservoir of TBRF in West and North Africa currently comprises 21 species. </p>
+			<p>A recent study in Togo indicated that 7.9% and 1.2% of 239 patients with fever from all regions of the country had <italic>B. crocidurae</italic> and <italic>B. duttonii</italic> infections, respectively, according to PCR blood testing [<xref ref-type="bibr" rid="B73">73</xref>]. However, in wet savanna and forest areas of West Africa, <italic>Ornithodoros</italic> ticks have never been reported [<xref ref-type="bibr" rid="B23">23</xref>,<xref ref-type="bibr" rid="B67">67</xref>,<xref ref-type="bibr" rid="B74">74</xref>,<xref ref-type="bibr" rid="B75">75</xref>], and this was confirmed by our surveys in Togo, Benin, Guinea, Guinea Bissau, Ivory Coast and Liberia where a total of 900 burrows and several hundred household examined were negative. If the occurrence of local transmission of <italic>B. crocidurae</italic> and <italic>B. duttonii</italic> in these areas is confirmed (since thick blood films failed to show the presence of spirochetes in PCR positive blood samples in the Togo study), this would suggest the existence of unknown vector / reservoir systems of <italic>Borrelia</italic> infections in wet savanna areas of West Africa.</p>
+			<p>Finally, our study as those previously conducted in northern, western, central, eastern and southern Africa [<xref ref-type="bibr" rid="B25">25</xref>,<xref ref-type="bibr" rid="B39">39</xref>,<xref ref-type="bibr" rid="B59">59</xref>,<xref ref-type="bibr" rid="B76">76</xref>,<xref ref-type="bibr" rid="B77">77</xref>] highlight the need of much more attention from health services, researchers and funding agencies to the continued burden of relapsing fevers due to <italic>Borrelia</italic> spp. in African populations.</p>
+		</sec>
+		<sec id="s5" sec-type="Appendix">
+			
+			<title>Appendix</title>
+			<sec id="s5.1">
+			
+				<title>Description of <italic>Ornithodoros merionesi</italic>, <italic>O. kairouanensis</italic>, <italic>O. rupestris</italic>, <italic>O. occidentalis</italic> and <italic>O. costalis</italic>, and designation of neotypes for <italic>O. erraticus</italic>,  <italic>O. marocanus</italic> and <italic>O. sonrai.</italic></title>
+				
+				
+				<sec id="s5.1.1">
+					<title><italic>Ornithodoros merionesi</italic></title>
+					<p>Trape, Diatta, Belghyti, Sarih, Durand &amp; Renaud, sp. nov.</p>
+					<p><italic>Holotype</italic>: IRSNB/RBINS IG.32.280/001/1, formerly IRD.TR-Mar7T8M, a nymph of 3.2 mm long collected on 6 October 2006 inside a rodent burrow in a steppe area located at 29°03’47”N / 09°55’42”W, approximately 16 km NE of Guelmin (Morocco), by G. Diatta, Y. Mané and J.F. Trape.</p>
+					<p><italic>Paratypes</italic>: IRSNB/RBINS IG.32.280/001/2-14. Two females, two males and nine nymphs. Same date, location and collectors than the holotype.</p>
+					<p><italic>Diagnosis</italic>: An <italic>Argasidae tick</italic> of the <italic>O. marocanus</italic> group of the genus <italic>Ornithodoros</italic>, characterized by an oblique groove on coxae I., and belonging to the subgroup of small / medium sized species (average female length &lt; 5.2 mm, average male length &lt;3.0 mm) of this complex (subgroup <italic>O. sonrai</italic> complex). Medium sized, morphologically indistinguishable from large specimens of <italic>O. sonrai</italic> and small specimens of <italic>O. marocanus</italic>, but genetically differing from these species and from all other species of the <italic>O. marocanus</italic> group by the unique position of A, A, T, and G on 16S rRNA aligned sequences (positions 209, 237, 256 and 301, respectively, see <xref ref-type="table" rid="pone-0078473-t006">Table 6</xref>).</p>
+					<p><italic>Geographic distribution</italic>: Morocco</p></sec>
+				
+				<sec id="s5.1.2">
+					
+					<title><italic>Ornithodoros kairouanensis</italic></title>
+					<p>Trape, Diatta, Bouattour, Durand &amp; Renaud, sp. nov.</p>
+					<p><italic>Holotype</italic>: IRSNB/RBINS IG.32.280/002/1, formerly IRD.TR-Tun5T3MN, a female of 7.1 mm long collected on 22 May 2010 inside a rodent burrow in a small cliff bordering a wadi located at 35°03’35”N / 10°02’23”E, approximately 70 km S of Kairouan (Tunisia), by G. Diatta and J.F. Trape.</p>
+					<p><italic>Paratypes</italic>: IRSNB/RBINS IG.32.280/002/2-3. Two nymphs. Same date, location and collectors than the holotype.</p>
+					<p><italic>Diagnosis</italic>: An Argasidae tick of the <italic>O. marocanus</italic> group of the genus <italic>Ornithodoros</italic>, characterized by an oblique groove on coxae I, and belonging to the subgroup of large species (average female length &gt; 5.2 mm, average male length &gt;3.0 mm) of this complex (subgroup <italic>O. marocanus</italic> complex). This species is characterized by crater-like formations on the soft dorsal cuticle (see Fig. 7H). Genetically differing from <italic>O. marocanus</italic> and from all other species of the <italic>O. marocanus</italic> group by the unique position of T, T, C, G, T, G, G, and T on 16S rRNA aligned sequences (positions 74, 81, 189, 194, 217, 244, 257 and 438, respectively, see Table 6).</p>
+					<p><italic>Geographic distribution</italic>: Tunisia</p>
+				</sec>
+				
+				<sec id="s5.1.3">
+					
+					<title><italic>Ornithodoros rupestris</italic></title>  <p>Trape, Bitam, Renaud &amp; Durand, sp. nov.</p>
+					<p><italic>Holotype</italic>: IRSNB/RBINS IG.32.280/003/1, formerly IRD.TR-Alg12066bMN, a female of 6.1 mm long collected on 9 June 2012 inside a rodent burrow in a canyon located at 35°56’08”N / 00°05’07”E in the town of Mostaganem (Algeria) by J.F. Trape and I. Bitam.</p>
+					<p><italic>Paratypes</italic>: IRSNB/RBINS IG.32.280/003/2-12. Three females, three males and five nymphs. Same date, location and collectors than the holotype.</p>
+					<p><italic>Diagnosis</italic>: An Argasidae tick of the <italic>O. marocanus</italic> group of the genus <italic>Ornithodoros</italic>, characterized by an oblique groove on coxae I, and belonging to the subgroup of large species (average female length &gt; 5.2 mm, average male length &gt;3.0 mm) of this complex (subgroup <italic>O. marocanus</italic> complex). Morphologically indistinguishable from <italic>O. marocanus</italic>, but genetically differing from <italic>O. marocanus</italic> and from all other species of the <italic>O. marocanus</italic> group by the unique position of G on 16S rRNA aligned sequences (position 288, see Table 6). </p>
+					<p><italic>Geographic distribution</italic>: Algeria.</p></sec>
+				
+				<sec id="s5.1.4">
+					<title><italic>Ornithodoros occidentalis</italic></title> <p>Trape, Diatta, Durand &amp; Renaud, sp. nov.</p>
+					<p><italic>Holotype</italic>: IRSNB/RBINS IG.32.280/004/1, a female of 5.3 mm long collected on 18 July 2010 inside a rodent burrow in a pine woodland located at 36°38’25”N / 04°30’41”W near Torremolinos, Spain by G. Diatta and J.F. Trape. </p>
+					<p><italic>Paratypes</italic>: IRSNB/RBINS IG.32.280/004/2-3. Two females. Same date, location and collectors than the holotype.</p>
+					<p><italic>Diagnosis</italic>: An <italic>Argasidae tick</italic> of the <italic>O. marocanus</italic> group of the genus <italic>Ornithodoros</italic>, characterized by an oblique groove on coxae I, and belonging to the subgroup of large species (average female length &gt; 5.2 mm, average male length &gt;3.0 mm) of this complex (subgroup <italic>O. marocanus</italic> complex). Morphologically indistinguishable from <italic>O. marocanus</italic>, but genetically differing from <italic>O. marocanus</italic> and from all other species of the <italic>O. marocanus</italic> group by the unique position of T and A on 16S rRNA aligned sequences (positions 172 and 214, respectively, see <xref ref-type="table" rid="pone-0078473-t006">Table 6</xref>).</p>
+					<p><italic>Geographic distribution</italic>: Spain, Morocco, Algeria.</p>
+					
+				</sec>
+				<sec id="s5.1.5">
+					
+					<title><italic>Ornithodoros costalis</italic></title> <p>Diatta, Bouattour, Durand, Renaud &amp; Trape, sp. nov.</p>
+					<p><italic>Holotype</italic>: IRSNB/RBINS IG.32.280/005/1, formerly IRD.TR-Tun9T1MN, a female of 6.0 mm collected on 2 December 2010 inside a rodent burrow located at 36°36’42’’N, 10°10’14”E near Oudhna (Tunisia) by G. Diatta.</p>
+					<p><italic>Paratypes</italic>: IRSNB/RBINS IG.32.280/005/2-4. Two females and one male. Same date, location and collectors than the holotype.</p>
+					<p><italic>Diagnosis</italic>: An <italic>Argasidae tick</italic> of the <italic>O. marocanus</italic> group of the genus <italic>Ornithodoros</italic>, characterized by an oblique groove on coxae I., and belonging to the subgroup of large sized species (average female length &gt; 5.2 mm, average male length &gt;3.0 mm) of this complex (subgroup <italic>O. marocanus</italic> complex). Morphologically indistinguishable from <italic>O. marocanus</italic>, but genetically differing from these species and from all other species of the <italic>O. marocanus</italic> group by the unique position A/C on 16S rRNA aligned sequences (position 244, see <xref ref-type="table" rid="pone-0078473-t006">Table 6</xref>).</p>
+					<p><italic>Geographic distribution</italic>: coastal areas of Morocco, Algeria and Tunisia.</p>
+				</sec>
+				<sec id="s5.1.6">
+					
+					<title><italic>Ornithodoros erraticus</italic></title> <p>(Lucas, 1849).</p>
+					<p>The three syntypes of <italic>Ornithodoros erraticus</italic> are not in Paris MNHN. According to M. Judson (curator for arthropods, personal communication), they were certainly destroyed during transport to Paris as many other specimens of Lucas’s collection of Algerian arthropods. </p>
+					<p><italic>Neotype</italic>: IRSNB/RBINS 32.280/006, formerly IRD.TR-Alg5T5MN, a female of 3.1 mm long collected on 8 December 2009 inside a rodent burrow at 36°53’N / 08°31’E near La Calle, Algeria by G. Diatta. </p></sec>
+				
+				<sec id="s5.1.7">
+					<title><italic>Ornithodoros marocanus</italic></title> <p>Velu, 1919.</p>
+					<p>The types of <italic>O. marocanus</italic> were sent by Velu [<xref ref-type="bibr" rid="B64">64</xref>] to the Pasteur Institute of Paris after he described this species. They could not be traced either in Paris or Casablanca and are now considered as lost (F. Rhodain, personal communication). </p>
+					<p><italic>Neotype</italic>: IRSNB/RBINS 32.280/007, formerly IRD.TR-Mar16T11ZC, a female of 5.9 mm long collected on 23 October 2009 inside a rodent burrow at 33°22’N / 08°00’W near Casablanca, Morocco by G. Diatta.</p></sec>
+				
+				<sec id="s5.1.8">
+					<title><italic>Ornithodoros sonrai</italic></title> <p>Sautet &amp; Witkowski, 1943.</p>
+					<p>The types of <italic>O. sonrai</italic> could not be traced either in Paris or Dakar and are now considered as lost (J.-L. Camicas and F. Rodhain, personal communications).</p>
+					<p><italic>Neotype</italic>: IRSNB/RBINS 32.280/008, formerly IRD.TR-MalG2T4, a female of 4.0 mm long collected on 22 January 2005 inside a rodent burrow at 15°59’22”N / 00°08’41”E in the village of Haousssa Foulane near Gao, Mali by G. Diatta, L. Vial &amp; J.F. Trape.</p></sec>
+				
+			</sec>
+		</sec>
+		<sec sec-type="supplementary-material">
+			<title>Supporting Information</title><supplementary-material xlink:type="simple" position="float" id="pone.0078473.s001" xlink:href="info:doi/10.1371/journal.pone.0078473.s001" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+				<label>Table S1</label>
+				<caption>
+					<p><bold>Detailed results of <italic>Ornithodoros</italic> ticks surveys.</bold>
+				</p><p>(DOCX)</p></caption>
+				</supplementary-material>
+			<supplementary-material xlink:type="simple" position="float" id="pone.0078473.s002" xlink:href="info:doi/10.1371/journal.pone.0078473.s002" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+				<label>Table S2</label>
+				<caption>
+					<p><bold>Detailed results of small mammals surveys.</bold>
+				</p><p>(DOCX)</p></caption>
+				</supplementary-material>
+		</sec>
+		
+	</body>
+	<back>
+		
+		<ack>
+			<p>We thank Jean-Louis Camicas (IRD, Montpellier) for assistance in tick determination and Stephen C. Barker (University of Queensland, Brisbane) for useful comments on a first draft of the manuscript. We thank all those in Dakar, Bamako, Ouagadougou, Niamey, NDjamena, Yaoundé, Cotonou, Lomé, Lamto, Monrovia, Kindia, Bissau, Nouakchott, Kénitra, Casablanca, Algiers, Annaba, Tunis and Montpellier who provided assistance for field surveys, laboratory work or data analysis. </p>
+		</ack>
+		<ref-list>
+			<title>References</title>
+			<ref id="B1">
+				<label>1</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Southern</surname><given-names>PM</given-names></name>, <name name-style="western"><surname>Sanford</surname><given-names>JP</given-names></name> (<year>1969</year>) <article-title>Relapsing fever. A clinical and microbiological review</article-title>. <source>Medicine</source> <volume>48</volume>: <fpage>129</fpage>-<lpage>149</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B2">
+				<label>2</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rodhain</surname><given-names>F</given-names></name> (<year>1976</year>) <article-title><italic>Borrelia</italic> et fièvres récurrentes: aspects épidémiologiques actuels</article-title>. <source>Bull Inst Pasteur</source> <volume>74</volume>: <fpage>173</fpage>-<lpage>218</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B3">
+				<label>3</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Goubau</surname><given-names>PF</given-names></name> (<year>1984</year>) <article-title>Relapsing fevers. A review</article-title>. <source>Ann Soc Belg Med Trop</source> <volume>64</volume>: <fpage>335</fpage>-<lpage>364</lpage>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/6397148" xlink:type="simple">6397148</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B4">
+				<label>4</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cadavid</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Barbour</surname><given-names>AG</given-names></name> (<year>1998</year>) <article-title>Neuroborreliosis during relapsing fever : review of clinical manifestations, pathology, and treatment of infections in humans and experimental animals</article-title>. <source>Clin Infect Dis</source> <volume>26</volume>: <fpage>151</fpage>-<lpage>164</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1086/516276" xlink:type="simple">10.1086/516276</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/9455525" xlink:type="simple">9455525</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B5">
+				<label>5</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bryceson</surname><given-names>ADM</given-names></name>, <name name-style="western"><surname>Parry</surname><given-names>EHO</given-names></name>, <name name-style="western"><surname>Perine</surname><given-names>PL</given-names></name>, <name name-style="western"><surname>Warrell</surname><given-names>DA</given-names></name>, <name name-style="western"><surname>Vukotich</surname><given-names>D</given-names></name> <etal>et al.</etal> (<year>1970</year>) <article-title>Louse-borne relapsing fever</article-title>. <source>Q J Med</source> <volume>153</volume>: <fpage>129</fpage>-<lpage>170</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B6">
+				<label>6</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mackie</surname><given-names>FP</given-names></name> (<year>1907</year>) <article-title>The part played by <italic>Pediculus</italic> <italic>corporis</italic> in the transmission of relapsing fever</article-title>. <source>BMJ</source> <volume>2</volume>: <fpage>1706</fpage>-<lpage>1709</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1136/bmj.2.2450.1706" xlink:type="simple">10.1136/bmj.2.2450.1706</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/20763589" xlink:type="simple">20763589</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B7">
+				<label>7</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sergent</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Foley</surname><given-names>H</given-names></name> (<year>1908</year>) <article-title>Fièvre récurrente du sud-oranais et <italic>Pediculus</italic> <italic>vestimenti</italic></article-title>. <source>Bull Soc Pathol Exot</source> <volume>1</volume>: <fpage>174</fpage>-<lpage>176</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B8">
+				<label>8</label>
+				<mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Mathis</surname><given-names>C</given-names></name> (<year>1946</year>) <article-title>La spirochétose à poux</article-title>. In : <person-group person-group-type="editor"><name name-style="western"><surname>Mathis</surname><given-names>C</given-names></name></person-group>. <source>L’œuvre des Pastoriens en Afrique noire (Afrique Occidentale Française)</source>. <publisher-loc>Paris</publisher-loc>: <publisher-name>Presses Universitaires de France</publisher-name>. pp. <fpage>313</fpage>-<lpage>317</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B9">
+				<label>9</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gaud</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Morgan</surname><given-names>M</given-names></name> (<year>1947</year>) <article-title>Etude épidémiologique sur la fièvre récurrente en Afrique du Nord (1943-1945)</article-title>. <source>Bull Wrld Hlth Org</source> <volume>1</volume>: <fpage>75</fpage>-<lpage>98</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B10">
+				<label>10</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gaud</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Khalil</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Vaucel</surname><given-names>M</given-names></name> (<year>1947</year>) <article-title>L’évolution de l’épidémie de fièvre récurrente (1942-1946)</article-title>. <source>Bull Wrld Hlth Org</source> <volume>1</volume>: <fpage>99</fpage>-<lpage>107</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B11">
+				<label>11</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Garnham</surname><given-names>PCC</given-names></name>, <name name-style="western"><surname>Heisch</surname><given-names>RB</given-names></name>, <name name-style="western"><surname>Timms</surname><given-names>GL</given-names></name> (<year>1947</year>) <article-title>An epidemic of louse-borne relapsing fever in Kenya</article-title>. <source>Trans R Soc Trop Med Hyg</source> <volume>41</volume>: <fpage>140</fpage>-<lpage>171</lpage>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/20270461" xlink:type="simple">20270461</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B12">
+				<label>12</label>
+				<mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Weldon</surname><given-names>ED</given-names></name> (<year>1955</year>) <article-title>World Distribution of Spirochetal Diseases. 2. Relapsing Fevers</article-title>: <person-group person-group-type="editor"><name name-style="western"><surname>Louse-Borne</surname></name><name name-style="western"><surname>Tick-Borne</surname></name></person-group>. <publisher-loc>New York</publisher-loc>: <publisher-name>Map</publisher-name>, <publisher-name>American Geographical Society</publisher-name>.</mixed-citation>
+			</ref>
+			<ref id="B13">
+				<label>13</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cutler</surname><given-names>SJ</given-names></name> (<year>2006</year>) <article-title>Possibilities for Relapsing Fever reemergence</article-title>. <source>Emerg Infect Dis</source> <volume>12</volume>: <fpage>369</fpage>-<lpage>374</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.3201/eid1203.050899" xlink:type="simple">10.3201/eid1203.050899</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/16704771" xlink:type="simple">16704771</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B14">
+				<label>14</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sparrow</surname><given-names>H</given-names></name> (<year>1958</year>) <article-title>Etude du foyer éthiopien de fièvre récurrente</article-title>. <source>Bull Wrld Hlth Org</source> <volume>19</volume>: <fpage>673</fpage>-<lpage>710</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B15">
+				<label>15</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Eguale</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Abate</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Balcha</surname><given-names>F</given-names></name> (<year>2002</year>) <article-title>Relapsing fever in Hossana, Ethiopia : a clinical and epidemiological study. Ethiop</article-title>. <source>J Health Sci</source> <volume>12</volume>: <fpage>103</fpage>-<lpage>108</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B16">
+				<label>16</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ramos</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Malmierca</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Reyes</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Tesfamariam</surname><given-names>A</given-names></name> (<year>2008</year>) <article-title>Results of a 10-year survey of louse-borne relapsing fever in southern Ethiopia: a decline in endemicity</article-title>. <source>Ann Trop Med Parasitol</source> <volume>102</volume>: <fpage>467</fpage>-<lpage>469</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1179/136485908X300887" xlink:type="simple">10.1179/136485908X300887</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/18577339" xlink:type="simple">18577339</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B17">
+				<label>17</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ross</surname><given-names>PH</given-names></name>, <name name-style="western"><surname>Milne</surname><given-names>AD</given-names></name> (<year>1904</year>) <article-title>Tick Fever</article-title>. <source>BMJ</source> <volume>ii</volume>: <fpage>1453</fpage>-<lpage>1454</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B18">
+				<label>18</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dutton</surname><given-names>JE</given-names></name>, <name name-style="western"><surname>Todd</surname><given-names>JL</given-names></name> (<year>1905</year>) <article-title>The nature of tick fever in the Eastern part of the Congo Free State, with notes on the distribution and bionomics of the tick</article-title>. <source>BMJ</source> <volume>2341</volume>: <fpage>1259</fpage>-<lpage>1260</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B19">
+				<label>19</label>
+				<mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Nicolle</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Anderson</surname><given-names>C</given-names></name> (<year>1928</year>) <source>Présence au Maroc du spirochète de la fièvre récurrente d’Espagne</source> 17. <publisher-name>Arch Inst Pasteur</publisher-name> <publisher-loc>Tunis</publisher-loc>. pp. <fpage>83</fpage>-<lpage>107</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B20">
+				<label>20</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mathis</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Durieux</surname><given-names>C</given-names></name> (<year>1932</year>) <article-title>Identité, à Dakar, de <italic>Spirochaeta</italic> <italic>duttoni</italic> var. <italic>crocidurae</italic> et du spirochète infectant dans la nature <italic>Ornithodoros</italic> <italic>erraticus</italic></article-title>. <source>Bull Soc Pathol Exot</source> <volume>21</volume> : <fpage>472</fpage>-<lpage>485</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B21">
+				<label>21</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Leeson</surname><given-names>HS</given-names></name> (<year>1952</year>) <article-title>The recorded distribution of <italic>Ornithodoros</italic> <italic>moubata</italic> (Murray) (Acarina)</article-title>. <source>Bull Entomol Res</source> <volume>43</volume>: <fpage>407</fpage>-<lpage>411</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1017/S000748530004058X" xlink:type="simple">10.1017/S000748530004058X</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B22">
+				<label>22</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Walton</surname><given-names>GA</given-names></name> (<year>1962</year>) <article-title>The <italic>Ornithodoros</italic> <italic>moubata</italic> superspecies problem in relation to human relapsing fever epidemiology</article-title>. In: <source>Aspects of disease transmission by ticks</source>. <comment>Symp Zool Soc Lond: 83-153</comment></mixed-citation>
+			</ref>
+			<ref id="B23">
+				<label>23</label>
+				<mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Morel</surname><given-names>PC</given-names></name> (<year>1965</year>) <source>Les tiques d'Afrique et du Bassin Méditerranéen</source>. <publisher-loc>Maisons-Alfort</publisher-loc>: <publisher-name>IEMVT</publisher-name>, <comment>2003</comment></mixed-citation>
+			</ref>
+			<ref id="B24">
+				<label>24</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Barclay</surname><given-names>AJG</given-names></name>, <name name-style="western"><surname>Coulter</surname><given-names>JBS</given-names></name> (<year>1990</year>) <article-title>Tick-borne relapsing fever in central Tanzania</article-title>. <source>Trans R Soc Trop Med Hyg</source> <volume>84</volume>: <fpage>852</fpage>-<lpage>856</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/0035-9203(90)90106-O" xlink:type="simple">10.1016/0035-9203(90)90106-O</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/2096523" xlink:type="simple">2096523</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B25">
+				<label>25</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Goubau</surname><given-names>PF</given-names></name>, <name name-style="western"><surname>Munyangeyo</surname><given-names>C</given-names></name> (<year>1983</year>) <article-title>Fièvre récurrente à tiques et grossesse. Une étude clinique au Rwanda</article-title>. <source>Ann Soc Belg Med Trop</source>; <volume>63</volume>: <fpage>347</fpage>-<lpage>355</lpage>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/6667057" xlink:type="simple">6667057</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B26">
+				<label>26</label>
+				<mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Hornus</surname><given-names>P</given-names></name> (<year>1928</year>) <source>Note au sujet de la fièvre récurrente marocaine</source>, 17. <publisher-loc>Tunis</publisher-loc>: <publisher-name>Arch Inst Pasteur</publisher-name>. pp. <fpage>327</fpage>-<lpage>331</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B27">
+				<label>27</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sergent</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Manceaux</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Balliste</surname><given-names>R</given-names></name> (<year>1933</year>) <article-title>Premier cas de fièvre récurrente hispano-africaine observé en Algérie</article-title>. <source>Bull Soc Pathol Exot</source> <volume>26</volume>: <fpage>906</fpage>-<lpage>908</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B28">
+				<label>28</label>
+				<mixed-citation publication-type="other" xlink:type="simple"><name name-style="western"><surname>Anderson</surname><given-names>C</given-names></name> (<year>1935</year>) <article-title>Sur la présence d’<italic>O</italic>. <italic>erraticus</italic> infecté par <italic>Sp.</italic> <italic>hispanicum</italic> dans la banlieue de Tunis</article-title>. <publisher-loc>Tunis</publisher-loc>: <publisher-name>Arch Inst Pasteur</publisher-name>; <comment>22: 350-363</comment></mixed-citation>
+			</ref>
+			<ref id="B29">
+				<label>29</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chabaud</surname><given-names>AG</given-names></name> (<year>1954</year>) <article-title>L’<italic>Ornithodoros</italic> <italic>erraticus</italic> (Lucas 1849) ; multiplicité de ses races</article-title>. <source>Ann Parasitol Hum Comp</source> <volume>29</volume>: <fpage>89</fpage>-<lpage>130</lpage>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/13181221" xlink:type="simple">13181221</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B30">
+				<label>30</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sarih</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Garnier</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Boudebouch</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Bouattour</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Rihani</surname><given-names>A</given-names></name> <etal>et al.</etal> (<year>2009</year>) <article-title><italic>Borrelia</italic> <italic>hispanica</italic> relapsing fever, Morocco</article-title>. <source>Emerg Infect Dis</source>  <volume>10</volume>: <fpage>1626</fpage>-<lpage>1629</lpage>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/19861058" xlink:type="simple">19861058</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B31">
+				<label>31</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bouattour</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Garnier</surname><given-names>M</given-names></name>, <name name-style="western"><surname>M’Ghirbi</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Sarih</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Gern</surname><given-names>L</given-names></name> <etal>et al.</etal> (<year>2010</year>) <article-title><italic>Borrelia</italic> <italic>crocidurae</italic> infection of <italic>Ornithodoros</italic> <italic>erraticus</italic> (Lucas, 1849) ticks in Tunisia</article-title>. <source>Vector Borne Zoonotic Dis</source> <volume>10</volume>: <fpage>825</fpage>-<lpage>830</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1089/vbz.2009.0151" xlink:type="simple">10.1089/vbz.2009.0151</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/20420529" xlink:type="simple">20420529</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B32">
+				<label>32</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>De Buen</surname><given-names>S</given-names></name> (<year>1926</year>) <article-title>Note préliminaire sur l’épidémiologie de la fièvre récurrente espagnole</article-title>. <source>Ann Parasit</source> <volume>4</volume>: <fpage>185</fpage>-<lpage>192</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B33">
+				<label>33</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mathis</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Durieux</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Advier</surname><given-names>M</given-names></name> (<year>1934</year>) <article-title>Transmission naturelle et expérimentale à l'homme du spirochète infectant dans la nature, à Dakar, la tique: <italic>Ornithodorus</italic> <italic>erraticus</italic> <italic>var.</italic> <italic>marocanus</italic></article-title>. <source>Ann Inst Pasteur</source> <volume>52</volume>: <fpage>166</fpage>-<lpage>178</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B34">
+				<label>34</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bergeret</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Raoult</surname><given-names>A</given-names></name> (<year>1946</year>) <article-title>La fièvre récurrente à tiques à Dakar</article-title>. <source>Bull Med AOF</source> <volume>3</volume>: <fpage>29</fpage>-<lpage>56</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B35">
+				<label>35</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Boiron</surname><given-names>H</given-names></name> (<year>1949</year>) <article-title>Considérations sur la fièvre récurrente à tiques au Sénégal. L'importance du rat comme réservoir de virus</article-title>. <source>Bull Soc Pathol Exot</source> <volume>42</volume>: <fpage>62</fpage>-<lpage>70</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B36">
+				<label>36</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Trape</surname><given-names>JF</given-names></name>, <name name-style="western"><surname>Godeluck</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Diatta</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Rogier</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Legros</surname><given-names>F</given-names></name> <etal>et al.</etal> (<year>1996</year>) <article-title>The spread of tick-borne borreliosis in West Africa and its relationship to sub-saharan drought</article-title>. <source>Am J Trop Med Hyg</source> <volume>54</volume>: <fpage>289</fpage>-<lpage>293</lpage>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/8600768" xlink:type="simple">8600768</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B37">
+				<label>37</label>
+				<mixed-citation publication-type="other" xlink:type="simple"><name name-style="western"><surname>Schwan</surname><given-names>TG</given-names></name>, <name name-style="western"><surname>Anderson</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Lopez</surname><given-names>JE</given-names></name>, <name name-style="western"><surname>Fischer</surname><given-names>RJ</given-names></name>, <name name-style="western"><surname>Raffel</surname><given-names>SJ</given-names></name> <etal>et al.</etal> (<year>2012</year>) <article-title>Endemic foci of the tick-borne relapsing fever spirochete <italic>Borrelia</italic> <italic>crocidurae</italic> in Mali</article-title>. <comment>Africa: West, and the potential for human infection. Plos Negl Trop Dis 6, e. p. 1924</comment></mixed-citation>
+			</ref>
+			<ref id="B38">
+				<label>38</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Trape</surname><given-names>JF</given-names></name>, <name name-style="western"><surname>Duplantier</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Bouganali</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Rogier</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Legros</surname><given-names>F</given-names></name> <etal>et al.</etal> (<year>1991</year>) <article-title>Tick-Borne Borreliosis in West Africa</article-title>. <source>Lancet</source>  <volume>337</volume>: <fpage>473</fpage>-<lpage>475</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/0140-6736(91)93404-W" xlink:type="simple">10.1016/0140-6736(91)93404-W</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/1671481" xlink:type="simple">1671481</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B39">
+				<label>39</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vial</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Diatta</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Tall</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Ba</surname><given-names>EH</given-names></name>, <name name-style="western"><surname>Bouganali</surname><given-names>H</given-names></name> <etal>et al.</etal> (<year>2006</year>) <article-title>Incidence of tick-borne relapsing fever in West Africa: longitudinal study</article-title>. <source>Lancet</source> <volume>368</volume>: <fpage>37</fpage>-<lpage>43</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S0140-6736(06)68968-X" xlink:type="simple">10.1016/S0140-6736(06)68968-X</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/16815378" xlink:type="simple">16815378</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B40">
+				<label>40</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Diatta</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Trape</surname><given-names>JF</given-names></name>, <name name-style="western"><surname>Legros</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Rogier</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Duplantier</surname><given-names>JM</given-names></name> (<year>1994</year>) <article-title>A comparative study of three methods of detection of <italic>Borrelia</italic> <italic>crocidurae</italic> in wild rodents in Senegal</article-title>. <source>Trans R Soc Trop Med Hyg</source> <volume>88</volume>: <fpage>423</fpage>-<lpage>424</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/0035-9203(94)90412-X" xlink:type="simple">10.1016/0035-9203(94)90412-X</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/7570827" xlink:type="simple">7570827</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B41">
+				<label>41</label>
+				<mixed-citation publication-type="book-series" xlink:type="simple"><name name-style="western"><surname>Wilson</surname><given-names>DE</given-names></name>, <name name-style="western"><surname>Reeder</surname><given-names>DM</given-names></name> (<year>2005</year>) <source>Mammals of the world: a taxonomic and geographic reference</source>, vol <volume>1</volume> &amp; <volume>2</volume>. <publisher-loc>Baltimore</publisher-loc>: <publisher-name>John Hopkins University Press</publisher-name>. 2142 pp.</mixed-citation>
+			</ref>
+			<ref id="B42">
+				<label>42</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Granjon</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Duplantier</surname><given-names>JM</given-names></name> (<year>2009</year>) <article-title>Les rongeurs de l’Afrique sahélo-soudanienne</article-title>. <source>Mars IRD</source>: <fpage>215</fpage>.</mixed-citation>
+			</ref>
+			<ref id="B43">
+				<label>43</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Granjon</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Dobigny</surname><given-names>G</given-names></name> (<year>2003</year>) <article-title>The importance of chromosomally-based identifications for correct understanding of African rodent zoogeography: Lake Chad murids as an example</article-title>. <source>Mamm Rev</source> <volume>33</volume>: <fpage>77</fpage>-<lpage>91</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1046/j.1365-2907.2003.00007.x" xlink:type="simple">10.1046/j.1365-2907.2003.00007.x</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B44">
+				<label>44</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lecompte</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Denys</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Granjon</surname><given-names>L</given-names></name> (<year>2005</year>) <article-title>Confrontation of morphological and molecular data: the <italic>Praomys</italic> group (Rodentia, Murinae) as a case of adaptative convergences and morphological stasis</article-title>. <source>Mol Phylogenet Evol</source> <volume>37</volume>: <fpage>899</fpage>-<lpage>919</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.ympev.2005.06.018" xlink:type="simple">10.1016/j.ympev.2005.06.018</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/16111900" xlink:type="simple">16111900</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B45">
+				<label>45</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dobigny</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Aniskin</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Granjon</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Cornette</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Volobouev</surname><given-names>V</given-names></name> (<year>2005</year>) <article-title>Recent radiation in West African Taterillus (Rodentia, Gerbillinae): the concerted role of climatic and chromosome changes</article-title>. <source>Heredity</source> <volume>95</volume>: <fpage>358</fpage>-<lpage>368</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1038/sj.hdy.6800730" xlink:type="simple">10.1038/sj.hdy.6800730</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/16106262" xlink:type="simple">16106262</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B46">
+				<label>46</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Colangelo</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Granjon</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Taylor</surname><given-names>PJ</given-names></name>, <name name-style="western"><surname>Corti</surname><given-names>M</given-names></name> (<year>2007</year>) <article-title>Evolutionary systematics in African gerbilline rodents of the genus Gerbilliscus: inference from mitochondrial genes</article-title>. <source>Mol Phylogenet Evol</source> <volume>42</volume>: <fpage>797</fpage>-<lpage>806</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.ympev.2006.10.001" xlink:type="simple">10.1016/j.ympev.2006.10.001</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/17113792" xlink:type="simple">17113792</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B47">
+				<label>47</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dobigny</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Tatard</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Kane</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Gauthier</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Brouat</surname><given-names>C</given-names></name> <etal>et al.</etal> (<year>2011</year>) <article-title>A cytotaxonomic and DNA-based Survey of rodents from Northern Cameroon and Western Chad</article-title>. <source>Mamm Biol</source> <volume>76</volume> : <fpage>417</fpage>-<lpage>427</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B48">
+				<label>48</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fukunaga</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Ushijima</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Aoki</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Talbert</surname><given-names>A</given-names></name> (<year>2001</year>) <article-title>Detection of <italic>Borrelia</italic> <italic>duttoni</italic>, a tick-borne relapsing fever agent in Central Tanzania, within ticks by Flagellin gene-based nested polymerase chain reaction</article-title>. <source>Vector Borne Zoonotic Dis</source> <volume>1</volume>: <fpage>331</fpage>-<lpage>338</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1089/15303660160025949" xlink:type="simple">10.1089/15303660160025949</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/12653131" xlink:type="simple">12653131</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B49">
+				<label>49</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bunikis</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Tsao</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Berglund</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Fish</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Barbour</surname><given-names>AG</given-names></name> (<year>2004</year>) <article-title>Sequence typing reveals extensive strain diversity of the Lyme borreliosis agents <italic>Borrelia</italic> <italic>burgdorferi</italic> in North America and <italic>Borrelia</italic> <italic>afzelii</italic> in Europe</article-title>. <source>Microbiology</source> <volume>150</volume>: <fpage>1741</fpage>–<lpage>1755</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1099/mic.0.26944-0" xlink:type="simple">10.1099/mic.0.26944-0</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/15184561" xlink:type="simple">15184561</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B50">
+				<label>50</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hall</surname><given-names>TA</given-names></name> (<year>1999</year>) <article-title>BioEdit: a user-friendly biological sequence alignment editor and analysis program for Windows 95/98/NT</article-title>. <source>Nucleic Acids Symp S</source> <volume>41</volume>: <fpage>95</fpage>-<lpage>98</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B51">
+				<label>51</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Posada</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Crandall</surname><given-names>KA</given-names></name> (<year>1998</year>) <article-title>MODELTEST: testing the model of DNA substitution</article-title>. <source>Bioinformatics</source> <volume>14</volume>: <fpage>817</fpage>-<lpage>818</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1093/bioinformatics/14.9.817" xlink:type="simple">10.1093/bioinformatics/14.9.817</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/9918953" xlink:type="simple">9918953</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B52">
+				<label>52</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hasegawa</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Kishino</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Yano</surname><given-names>T</given-names></name> (<year>1985</year>) <article-title>Dating of the Human-Ape splitting by a molecular clock of mitochondrial-DNA</article-title>. <source>J Mol Evol</source> <volume>22</volume>: <fpage>160</fpage>-<lpage>174</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/BF02101694" xlink:type="simple">10.1007/BF02101694</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/3934395" xlink:type="simple">3934395</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B53">
+				<label>53</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Guindon</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Gascuel</surname><given-names>O</given-names></name> (<year>2003</year>) <article-title>A simple, fast, and accurate algorithm to estimate large phylogenies by maximum likelihood</article-title>. <source>Syst Biol</source> <volume>52</volume>: <fpage>696</fpage>-<lpage>704</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1080/10635150390235520" xlink:type="simple">10.1080/10635150390235520</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/14530136" xlink:type="simple">14530136</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B54">
+				<label>54</label>
+				<mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Vitorino</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Chelo</surname><given-names>IM</given-names></name>, <name name-style="western"><surname>Bacellar</surname><given-names>F</given-names></name>, <source>Zé–Zé L</source> (<year>2007</year>) <comment>Rickettsiae phylogeny: a multigenic approach. Microbiology 153: 160–168</comment></mixed-citation>
+			</ref>
+			<ref id="B55">
+				<label>55</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chausov</surname><given-names>EV</given-names></name>, <name name-style="western"><surname>Ternovoi</surname><given-names>VA</given-names></name>, <name name-style="western"><surname>Protopopova</surname><given-names>EV</given-names></name>, <name name-style="western"><surname>Konovalova</surname><given-names>SN</given-names></name>, <name name-style="western"><surname>Kononova</surname><given-names>YV</given-names></name> <etal>et al.</etal> (<year>2010</year>) <article-title>Genetic diversity of tick-borne pathogenes in Tomsk and environs</article-title>. <source>Entomol Rev</source> <volume>90</volume>: <fpage>240</fpage>–<lpage>250</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1134/S0013873810020090" xlink:type="simple">10.1134/S0013873810020090</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B56">
+				<label>56</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tamura</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Peterson</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Peterson</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Stecher</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Nei</surname><given-names>M</given-names></name> <etal>et al.</etal> (<year>2011</year>) <article-title>MEGA5: Molecular Evolutionary Genetics Analysis using Maximum Likelihood, Evolutionary Distance, and Maximum Parsimony Methods</article-title>. <source>Mol Biol Evol</source> <volume>28</volume>: <fpage>2731</fpage>-<lpage>2739</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1093/molbev/msr121" xlink:type="simple">10.1093/molbev/msr121</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/21546353" xlink:type="simple">21546353</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B57">
+				<label>57</label>
+				<mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Mahé</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Rouché</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Dieulin</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Boyer</surname><given-names>JF</given-names></name>, <name name-style="western"><surname>Ibrahim</surname><given-names>B</given-names></name> <etal>et al.</etal> (<year>2012</year>) <source>Carte des pluies annuelles en Afrique / Annual rainfall map of Africa</source>. <publisher-loc>Bondy</publisher-loc>: <publisher-name>IRD</publisher-name>.</mixed-citation>
+			</ref>
+			<ref id="B58">
+				<label>58</label>
+				<mixed-citation publication-type="book" xlink:type="simple"><collab xlink:type="simple">R-Development Core Team</collab> (<year>2006</year>) <source>R: a language and environment for statistical computing</source>. <publisher-loc>Vienna, Austria</publisher-loc>: <publisher-name>R Foundation for Statistical Computing</publisher-name>.</mixed-citation>
+			</ref>
+			<ref id="B59">
+				<label>59</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Blanc</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Maurice</surname><given-names>A</given-names></name> (<year>1948</year>) <article-title>Contribution à l’étude du spirochète de Goulimine</article-title>. <source>Bull Soc Pathol Exot</source> <volume>41</volume>: <fpage>139</fpage>-<lpage>141</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B60">
+				<label>60</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Diatta</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Souidi</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Granjon</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Arnathau</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Durand</surname><given-names>P</given-names></name> <etal>et al.</etal> (<year>2012</year>) <article-title>Epidemiology of tick-borne borreliosis in Morocco. Plos Neg Trop</article-title>. <source>Drosophila Inf Serv</source> <volume>6</volume>: <fpage>e1810</fpage>.</mixed-citation>
+			</ref>
+			<ref id="B61">
+				<label>61</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Venzal</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Estrada-Peña</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Mangold</surname><given-names>AJ</given-names></name>, <name name-style="western"><surname>González-Acuña</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Guglielmone</surname><given-names>AA</given-names></name> (<year>2008</year>) <article-title>The <italic>Ornithodoros</italic> (<italic>Alectorobius</italic>) <italic>talaje</italic> species group (Acari: Ixodida: Argasidae): description of <italic>Ornithodoros</italic> (<italic>Alectorobius</italic>) <italic>rioplatensis</italic> n. sp. from southern South America</article-title>. <source>J Med Entomol</source> <volume>45</volume>: <fpage>832</fpage>-<lpage>840</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1603/0022-2585(2008)45[832:TOATSG]2.0.CO;2" xlink:type="simple">10.1603/0022-2585(2008)45[832:TOATSG]2.0.CO;2</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/18826024" xlink:type="simple">18826024</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B62">
+				<label>62</label>
+				<mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Lucas</surname><given-names>H</given-names></name> (<year>1849</year>) <article-title>Exploration scientifique de l’Algérie. Zoologie I. Histoire naturelle des animaux articulés</article-title> <source>Première partie. Crustacés, arachnides, myriapodes et hexapodes</source>. <publisher-loc>Paris</publisher-loc>: <publisher-name>Imprimerie Nationale</publisher-name>. pp. <fpage>316</fpage>-<lpage>317</lpage>. <comment>PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/20794664" xlink:type="simple">20794664</ext-link></comment></mixed-citation>
+			</ref>
+			<ref id="B63">
+				<label>63</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Larrousse</surname><given-names>F</given-names></name> (<year>1923</year>) <article-title>Présence au Kef (Tunisie) d’une nouvelle espèce du genre Ornithodoros : <italic>O</italic>. <italic>normandi</italic> n. sp</article-title>. <source>Ann Parasit</source> <volume>1</volume>: <fpage>170</fpage>-<lpage>177</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B64">
+				<label>64</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Velu</surname><given-names>H</given-names></name> (<year>1919</year>) <article-title>Existence au Maroc d’une nouvelle espèce d’ornithodore</article-title>. <source>Bull Soc Pathol Exot</source> <volume>12</volume>: <fpage>99</fpage>-<lpage>104</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B65">
+				<label>65</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sautet</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Witkowski</surname><given-names>M</given-names></name> (<year>1944</year>) <article-title>A propos d’un ornithodore trouvé à Gao</article-title>. <source>Bull Soc Pathol Exot</source>; <volume>37</volume>: <fpage>182</fpage>-<lpage>188</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B66">
+				<label>66</label>
+				<mixed-citation publication-type="other" xlink:type="simple"><name name-style="western"><surname>Colas Belcour</surname><given-names>J</given-names></name> (<year>1930</year>) <article-title>Sur l’identité d’<italic>Ornithodoros</italic> <italic>erraticus</italic> Lucas et d’<italic>O</italic>. <italic>marocanus</italic> Vélu</article-title>. <publisher-name>Arch Inst Pasteur Tunis</publisher-name> <comment>19: 1-12</comment></mixed-citation>
+			</ref>
+			<ref id="B67">
+				<label>67</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Camicas</surname><given-names>JL</given-names></name>, <name name-style="western"><surname>Hervy</surname><given-names>JP</given-names></name>, <name name-style="western"><surname>Adam</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Morel</surname><given-names>PC</given-names></name> (<year>1998</year>) <article-title>Les Tiques du monde. Nomenclature, stades décrits, hôtes, répartition. / The Ticks of the World Nomenclature, Described stages, Hosts, Distribution (Acarida, Ixodida)</article-title>. <source>Paris ORSTOM</source>: <fpage>233</fpage>.</mixed-citation>
+			</ref>
+			<ref id="B68">
+				<label>68</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Guglielmone</surname><given-names>AA</given-names></name>, <name name-style="western"><surname>Robbins</surname><given-names>RG</given-names></name>, <name name-style="western"><surname>Apanaskevich</surname><given-names>DA</given-names></name>, <name name-style="western"><surname>Petney</surname><given-names>TN</given-names></name>, <name name-style="western"><surname>Estrada-Peña</surname><given-names>A</given-names></name> <etal>et al.</etal> (<year>2010</year>) <article-title>The Argasidae, Ixodidae and Nuttalliellidae (Acari: Ixodida) of the world: a list of valid species names</article-title>. <source>Zootaxa</source> <volume>2528</volume>: <fpage>1</fpage>-<lpage>28</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B69">
+				<label>69</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Neumann</surname><given-names>G</given-names></name> (<year>1896</year>) <article-title>Révision de la famille des Ixodidés</article-title>. <source>Mem Soc Zool France</source> <volume>9</volume>: <fpage>25</fpage>-<lpage>44</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B70">
+				<label>70</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Balthazard</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Bahmanyar</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Modifi</surname><given-names>C</given-names></name> (<year>1950</year>) <article-title><italic>Ornithodoros</italic> <italic>erraticus</italic> et fièvres récurrentes</article-title>. <source>Bull Soc Pathol Exot</source> <volume>43</volume>: <fpage>595</fpage>-<lpage>601</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B71">
+				<label>71</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Morel</surname><given-names>PC</given-names></name>, <name name-style="western"><surname>Magimel</surname><given-names>J</given-names></name> (<year>1959</year>) <article-title>Les tiques des animaux domestiques de la région de Fort-Lamy (Tchad) et Fort-Foureau (Cameroun)</article-title>. <source>Ann Parasitol Hum Comp</source> <volume>12</volume>: <fpage>53</fpage>-<lpage>58</lpage>.</mixed-citation>
+			</ref>
+			<ref id="B72">
+				<label>72</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Trape</surname><given-names>JF</given-names></name> (<year>1985</year>) <article-title>Rapid evaluation of malaria parasite density and standardization of thick smear examination for epidemiological investigations</article-title>. <source>Trans R Soc Trop Med Hyg</source> <volume>79</volume>: <fpage>181</fpage>-<lpage>184</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/0035-9203(85)90329-3" xlink:type="simple">10.1016/0035-9203(85)90329-3</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/3890280" xlink:type="simple">3890280</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B73">
+				<label>73</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nordstrand</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Bunikis</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Larsson</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Tsogbe</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Schwan</surname><given-names>TG</given-names></name> <etal>et al.</etal> (<year>2007</year>) <article-title>Tickborne relapsing fever diagnosis obscured by malaria, Togo</article-title>. <source>Emerg Infect Dis</source> <volume>13</volume>: <fpage>117</fpage>-<lpage>123</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.3201/eid1301.060670" xlink:type="simple">10.3201/eid1301.060670</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/17370524" xlink:type="simple">17370524</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B74">
+				<label>74</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Leeson</surname><given-names>HS</given-names></name> (<year>1953</year>) <article-title>Some notes on the recorded distribution of old world species of <italic>Ornithodoros</italic> (Acarina)</article-title>. <source>Bull Entomol Res</source> <volume>44</volume>: <fpage>517</fpage>-<lpage>526</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1017/S0007485300025591" xlink:type="simple">10.1017/S0007485300025591</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B75">
+				<label>75</label>
+				<mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Hoogstraal</surname><given-names>H</given-names></name> (<year>1956</year>) <article-title><italic>Ornithodoros</italic></article-title>. In: <source>Ticks of the Sudan</source>. <publisher-loc>Cairo, U.S.</publisher-loc>: <publisher-name>Naval Medical Research Unit</publisher-name> <comment>No. 3, Research Report NM 005 050.29.07, 113-130</comment></mixed-citation>
+			</ref>
+			<ref id="B76">
+				<label>76</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cutler</surname><given-names>SJ</given-names></name>, <name name-style="western"><surname>Abdissa</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Trape</surname><given-names>JF</given-names></name> (<year>2009</year>) <article-title>New concepts for the old challenges of African relapsing fever borreliosis</article-title>. <source>Clin Microbiol Infect</source> <volume>15</volume>: <fpage>400</fpage>-<lpage>406</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/j.1469-0691.2009.02819.x" xlink:type="simple">10.1111/j.1469-0691.2009.02819.x</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/19489922" xlink:type="simple">19489922</ext-link>.</mixed-citation>
+			</ref>
+			<ref id="B77">
+				<label>77</label>
+				<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kisinza</surname><given-names>WN</given-names></name>, <name name-style="western"><surname>McCall</surname><given-names>PJ</given-names></name>, <name name-style="western"><surname>Mitani</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Talbert</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Fukunaga</surname><given-names>M</given-names></name> (<year>2003</year>) <article-title>A newly identified tick-borne <italic>Borrelia</italic> species and relapsing fever in Tanzania</article-title>. <source>Lancet</source> <volume>362</volume>: <fpage>1283</fpage>-<lpage>1284</lpage>. doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S0140-6736(03)14609-0" xlink:type="simple">10.1016/S0140-6736(03)14609-0</ext-link>. PubMed: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed/14575974" xlink:type="simple">14575974</ext-link>.</mixed-citation>
+			</ref>
+		</ref-list>
+	</back>
+</article>

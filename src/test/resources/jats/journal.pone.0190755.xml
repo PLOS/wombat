@@ -1,0 +1,1168 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.1d3" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0190755</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-17-16050</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>People and places</subject><subj-group><subject>Geographical locations</subject><subj-group><subject>Asia</subject><subj-group><subject>Vietnam</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Surgical and invasive medical procedures</subject><subj-group><subject>Autopsy</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Health care</subject><subj-group><subject>Quality of life</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Population biology</subject><subj-group><subject>Population metrics</subject><subj-group><subject>Death rates</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Neurology</subject><subj-group><subject>Cerebrovascular diseases</subject><subj-group><subject>Stroke</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Vascular medicine</subject><subj-group><subject>Stroke</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Research assessment</subject><subj-group><subject>Research validity</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Public and occupational health</subject><subj-group><subject>Traumatic injury risk factors</subject><subj-group><subject>Road traffic collisions</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>People and places</subject><subj-group><subject>Population groupings</subject><subj-group><subject>Ethnicities</subject><subj-group><subject>Thai people</subject></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Completeness and reliability of mortality data in Viet Nam: Implications for the national routine health management information system</article-title>
+<alt-title alt-title-type="running-head">Completeness and reliability of mortality data in Vietnam</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0001-5442-2063</contrib-id>
+<name name-style="western">
+<surname>Hong</surname>
+<given-names>Tran Thi</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Project administration</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Validation</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Phuong Hoa</surname>
+<given-names>Nguyen</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Project administration</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Walker</surname>
+<given-names>Sue M.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+<xref ref-type="aff" rid="aff005"><sup>5</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Hill</surname>
+<given-names>Peter S.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Rao</surname>
+<given-names>Chalapati</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff006"><sup>6</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Fundamental Sciences Faculty, Hanoi University of Public Health, Hanoi, Viet Nam</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>School of Public Health, University of Queensland, Brisbane, Australia</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Family Medicine Department, Hanoi Medical University, Hanoi, Viet Nam</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>School of Public Health and Social Work, Queensland University of Technology, Brisbane, Australia</addr-line></aff>
+<aff id="aff005"><label>5</label> <addr-line>National Centre for Health Information Research and Training, Queensland University of Technology, Brisbane, Australia</addr-line></aff>
+<aff id="aff006"><label>6</label> <addr-line>Department of Global Health, Research School of Population Health, Australian National University, Canberra, Australia</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Wagenaar</surname>
+<given-names>Bradley H</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>University of Washington, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">honghsph@gmail.com</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>25</day>
+<month>1</month>
+<year>2018</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2018</year>
+</pub-date>
+<volume>13</volume>
+<issue>1</issue>
+<elocation-id>e0190755</elocation-id>
+<history>
+<date date-type="received">
+<day>26</day>
+<month>4</month>
+<year>2017</year>
+</date>
+<date date-type="accepted">
+<day>8</day>
+<month>12</month>
+<year>2017</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2018</copyright-year>
+<copyright-holder>Hong et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0190755"/>
+<abstract>
+<sec id="sec001">
+<title>Background</title>
+<p>Mortality statistics form a crucial component of national Health Management Information Systems (HMIS). However, there are limitations in the availability and quality of mortality data at national level in Viet Nam. This study assessed the completeness of recorded deaths and the reliability of recorded causes of death (COD) in the A6 death registers in the national routine HMIS in Viet Nam.</p>
+</sec>
+<sec id="sec002">
+<title>Methodology and findings</title>
+<p>1477 identified deaths in 2014 were reviewed in two provinces. A capture-recapture method was applied to assess the completeness of the A6 death registers. 1365 household verbal autopsy (VA) interviews were successfully conducted, and these were reviewed by physicians who assigned multiple and underlying cause of death (UCOD). These UCODs from VA were then compared with the CODs recorded in the A6 death registers, using kappa scores to assess the reliability of the A6 death register diagnoses. The overall completeness of the A6 death registers in the two provinces was 89.3% (95%CI: 87.8–90.8). No COD recorded in the A6 death registers demonstrated good reliability. There is very low reliability in recording of cardiovascular deaths (kappa for stroke = 0.47 and kappa for ischaemic heart diseases = 0.42) and diabetes (kappa = 0.33). The reporting of deaths due to road traffic accidents, HIV and some cancers are at a moderate level of reliability with kappa scores ranging between 0.57–0.69 (p&lt;0.01). VA methods identify more specific COD than the A6 death registers, and also allow identification of multiple CODs.</p>
+</sec>
+<sec id="sec003">
+<title>Conclusions</title>
+<p>The study results suggest that data completeness in HMIS A6 death registers in the study sample of communes was relatively high (nearly 90%), but triangulation with death records from other sources would improve the completeness of this system. Further, there is an urgent need to enhance the reliability of COD recorded in the A6 death registers, for which VA methods could be effective. Focussed consultation among stakeholders is needed to develop a suitable mechanism and process for integrating VA methods into the national routine HMIS A6 death registers in Viet Nam.</p>
+</sec>
+</abstract>
+<funding-group>
+<award-group id="award001">
+<funding-source>
+<institution>The Centers for Diseases Control and Prevention, Viet Nam</institution>
+</funding-source>
+<award-id>CGH HSR 2015-009</award-id>
+</award-group>
+<funding-statement>This study was funded by the Centers for Disease Control and Prevention, Viet Nam (CGH HSR 2015-009). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="2"/>
+<table-count count="4"/>
+<page-count count="16"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec004" sec-type="intro">
+<title>Introduction</title>
+<p>Mortality statistics form a crucial component of national health information systems. Mortality indicators are essential for quantifying population health status and for measuring a country’s health development [<xref ref-type="bibr" rid="pone.0190755.ref001">1</xref>–<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>]. With a population of over 95 million [<xref ref-type="bibr" rid="pone.0190755.ref004">4</xref>], there is a critical need for such data for Viet Nam. However, there are limitations in the availability and quality of national mortality data in Viet Nam, in particular relating to the capture of causes of death (COD) data [<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>, <xref ref-type="bibr" rid="pone.0190755.ref005">5</xref>–<xref ref-type="bibr" rid="pone.0190755.ref007">7</xref>].</p>
+<p>Currently, information on mortality by sex and age are only derived from the annual mortality surveys conducted by the Government Statistics Office (GSO), and the limitations of these data are well known [<xref ref-type="bibr" rid="pone.0190755.ref008">8</xref>, <xref ref-type="bibr" rid="pone.0190755.ref009">9</xref>]. In addition, there are three demographic surveillance sites which record mortality data by age, sex and cause, but these are limited in term of sample size as well as representativeness at the national level [<xref ref-type="bibr" rid="pone.0190755.ref010">10</xref>–<xref ref-type="bibr" rid="pone.0190755.ref013">13</xref>]. A national sample mortality surveillance project across a representative sample of 192 communes in Viet Nam was conducted as a special study to collect data on deaths which occurred during 2008–2009 [<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>]. The data from this activity yielded the first ever nationally representative mortality data by age, sex, and causes of death. However, this surveillance-based data collection ended at the conclusion of the project period, and there has been no follow up since then. Hence, the absence of regular and reliable national mortality data remains a critical issue in Viet Nam.</p>
+<p>There are two main systems for collection and compilation of primary mortality data, which could serve as the basis for routine national mortality statistics: the national Civil Registration and Vital Statistics system (CRVS); and the national routine Health Management Information System (HMIS). The national CRVS is operated by the Ministry of Justice (MOJ) across the country. In each commune, the office of the justice clerk maintains a civil and vital events register to record births, deaths, and marriages in the resident population, which are then reported to district, provincial and central levels. However, the registration of deaths recorded in this system is incomplete. The information on the COD is often unavailable or poorly recorded [<xref ref-type="bibr" rid="pone.0190755.ref005">5</xref>, <xref ref-type="bibr" rid="pone.0190755.ref014">14</xref>, <xref ref-type="bibr" rid="pone.0190755.ref015">15</xref>] since it depends totally on whether and how the family report information about the death of their relatives to the commune justice officers.</p>
+<p>The HMIS is operated by the Ministry of Health (MOH) to routinely collect health information which serves the health sector’s planning and management purposes. The “A6 death register” is a log-book used to routinely record every death events which occur in each commune across the country–the smallest official administrative unit in Viet Nam [<xref ref-type="bibr" rid="pone.0190755.ref016">16</xref>]. <italic>(More details about the Vietnamese administrative hierarchy is presented in <xref ref-type="supplementary-material" rid="pone.0190755.s001">S1 Fig</xref>)</italic>. Accordingly, the local commune health staff at the commune health stations (CHS) identify and record basic demographic data and information on the COD for each death into the A6 death register [<xref ref-type="bibr" rid="pone.0190755.ref016">16</xref>]. However, the quality of the A6 death registers has not been comprehensively assessed. A few epidemiological studies have been conducted using data from the A6 death registers, but these studies have focussed on recorded causes of death for specific diseases or conditions only [<xref ref-type="bibr" rid="pone.0190755.ref017">17</xref>, <xref ref-type="bibr" rid="pone.0190755.ref018">18</xref>]. They did not assess the quality of data from the A6 death registers in terms of the completeness of death registration, and the validity of recorded causes of death.</p>
+<p>The HMIS’s A6 death register system could provide the most comprehensive mortality data for the health sector and could be the optimal national mortality data source, since it is designed to capture all deaths in the community. More importantly, the MOH’s A6 death registers could provide information on COD for each individual death, which is essential to address the current limitations in the national CRVS. In January 2017, the National Action Plan for CRVS for the period 2017–2024 submitted by MOJ was approved by the Vietnamese Prime Minister [<xref ref-type="bibr" rid="pone.0190755.ref019">19</xref>]. This action plan indicated the need for recording of information on COD on death certificates. The MOH has been assigned the responsibility of providing the COD and ensuring their quality.</p>
+<p>A thorough assessment of the two major aspects of mortality data quality—the completeness of death reporting, and the accuracy of reported CODs—will help identify the key strengths and limitations of the A6 death register system. This study comprises an evaluation of these two aspects of data quality in the current HMIS A6 death register reporting system. Similar assessments of national mortality and cause of death reporting systems using primary data verification methods have been conducted in recent times in China [<xref ref-type="bibr" rid="pone.0190755.ref020">20</xref>, <xref ref-type="bibr" rid="pone.0190755.ref021">21</xref>], Thailand [<xref ref-type="bibr" rid="pone.0190755.ref022">22</xref>] and Malaysia [<xref ref-type="bibr" rid="pone.0190755.ref023">23</xref>]. In general, these studies identified the need to revise structural and technical elements in the death reporting and cause of death ascertainment processes, and have led to interventions to strengthen their reporting systems.</p>
+<p>It is anticipated that our study will provide the initial evidence for strengthening the MOH A6 death register system that will serve as a reliable source of national mortality statistics in Viet Nam.</p>
+</sec>
+<sec id="sec005" sec-type="materials|methods">
+<title>Materials and methods</title>
+<sec id="sec006">
+<title>Study setting and design</title>
+<p>The study was implemented in 2 provinces, Quang Ninh and Thai Nguyen, located in the Northern region of Vietnam. These provinces were chosen based on three criteria. First, these provinces participated in the previous sample mortality surveillance system [<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>]; therefore, this assessment benefited from the involvement of health staff experienced in the processes for collating mortality records from different sources as well as in using verbal autopsy methods. Second, these provinces have a close association with the Vietnamese institutions leading this research, namely the Hanoi Medical University (HMU), and the Hanoi University of Public Health (HUPH). A considerable number of staff in the Provincial Health Departments and District Health Centres are alumni of HMU and HUPH, and were more likely to be actively involved in the study. Third, since an allied objective of this study was related to evaluating mortality records from the HIV/AIDS surveillance program, we purposively chose these two provinces—Quang Ninh and Thai Nguyen, which are among the top 10 provinces with the highest HIV/AIDS burden in Vietnam in 2014 [<xref ref-type="bibr" rid="pone.0190755.ref024">24</xref>].</p>
+<p>In each province, one urban and one rural district were chosen to assess likely differences between urban and rural areas. These districts were selected based on prior information on estimated numbers of cases of HIV/AIDS. Within each selected district, 6–7 communes with the highest number of HIV deaths were chosen as study sites based on the availability of data on HIV cases from the surveillance program [<xref ref-type="bibr" rid="pone.0190755.ref024">24</xref>]. The study sites are described in <xref ref-type="fig" rid="pone.0190755.g001">Fig 1</xref>.</p>
+<fig id="pone.0190755.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0190755.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>List of study sites in Quang Ninh and Thai Nguyen provinces.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0190755.g001" xlink:type="simple"/>
+</fig>
+<p>A cross-sectional design was employed for this study. The study population comprised all identified deaths among residents of the sample communes that occurred between 01/01/2014 and 31/12/2014. Mortality records were sourced from the A6 death registers, the death registers maintained by the commune justice clerk, and several other local health surveillance programs. Inclusion of all deaths was necessary to assess the completeness of the A6 death register reporting system. For each death, relatives of the deceased served as respondents for the verbal autopsy interviews.</p>
+</sec>
+<sec id="sec007">
+<title>Data collection methods</title>
+<p>As preparation for the field work in the two provinces, the principal investigator obtained a letter of support from her institute to introduce the purpose and significance of the study, to seek agreement for the provision of data/information and ask for support from the CHS during two pre-data collection training workshop as well as during the data collection in the field. The letters of support were sent to the heads of the provincial health departments and the heads of the provincial statistics offices of the two study provinces to obtain their permission as well as support to conduct the study and use the available death lists.</p>
+<p>As an initial step, a training workshop was held in each province for two data collectors from each of the study communes. The data collectors were health staff working at each CHS, whose work related to management of the A6 death registers. The training workshop covered the data collection tools and methods for the two main components of this study, which are the assessment of completeness of data recorded in the A6 death registers, and the conduct of Verbal Autopsy (VA) interviews and their subsequent analysis.</p>
+<sec id="sec008">
+<title>Creating the list of deaths in each commune</title>
+<p>As a first step in the data collection process, the trained CHS staff matched death cases from the A6 death register with the deaths in the CRVS death register maintained by the justice officer in each commune. Variables used for the matching process were name, sex, age, date of death and address of the deceased. A range of 5 years was allowed for matching age and a range of one month for matching date of death. In some instances, the name of the deceased was verified during the fieldwork. Regarding the address, it should be noted that each commune comprises several villages and the exact recording of specific address may vary. Hence, if all other information was matched except the village where the deceased lived, it was considered as a “conditional” matched case, which meant that the correct address needed to be confirmed during the field data collection.</p>
+<p>A process for quality control of the matching process was included in this stage. If there was uncertainty regarding the matching of cases, due to marginal variations in certain variables, consultations were undertaken with key local informants including the head of the village, other community leaders and the Justice Clerk among others, to verify whether the case matched or was unique. This helped avoid duplication in the recording of death events.</p>
+<p>After this matching procedure, the lists of deaths from different sources were merged to make a “combined list”, which reflected the unique set of deaths that occurred in the selected areas during the study period. Finally, the merged combined list was compared with lists of deaths available from other data sources at commune level, such as the Maternal and Child Health program and the district HIV/AIDS surveillance program, and updated to include any missed events, to develop the final list of identified deaths in the study sample communes. This final combined list included both matched cases, and those unique un-matched cases found in at least one of the available sources.</p>
+</sec>
+<sec id="sec009">
+<title>Verbal autopsy interviews</title>
+<p>Questionnaire-based interviews were administered to the principal caregiver for the deceased in each household for each individual death on the final combined list. The interviewer explained the purpose of the assessment to the identified respondent to obtain their consent and collaboration. The respondent was asked to sign a consent form. The interviews were conducted only for consenting respondents. The interviewers were local medical personnel at the commune where the death occurred. Data collectors demonstrated strong communication and persuasion skills and were supported by principal investigators and supervisors, who were staff of the District Health Centres who were responsible for monitoring and providing assistance to data collectors.</p>
+<p>The VA questionnaire used for this assessment was the updated version of the Vietnamese verbal autopsy questionnaire from the previous project [<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>, <xref ref-type="bibr" rid="pone.0190755.ref025">25</xref>], which had been adapted from the WHO VA questionnaire.</p>
+</sec>
+<sec id="sec010">
+<title>Diagnosis and coding of underlying causes of death</title>
+<p>All completed verbal autopsy questionnaire were sent to Hanoi Medical University for processing by a working team of three physicians led by one of the authors (NPH), who had previously undertaken an international training course on mortality coding in Australia. The other two physicians had been previously trained in cause of death diagnosis from VA questionnaires, and had participated in a previous mortality surveillance project [<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>]. In this study, each completed VA questionnaire was reviewed by a single physician, who identified causes of death for each case (including direct, antecedent, underlying and contributory causes) based on available evidence from the verbal autopsy form. Using this information they filled in an international death certificate for each case. If there was any uncertainty in assigning causes of death in an individual case, the form was reviewed and discussed by the team to achieve consensus, under the guidance of the team leader, who supervised and supported the other two physicians, and where necessary, adjudicated on the final decision on the causes of death for the case under discussion.</p>
+<p>In the next step, all causes recorded in the death certificate were assigned an ICD-10 code [<xref ref-type="bibr" rid="pone.0190755.ref026">26</xref>] and subsequently international mortality coding rules were applied to identify and code the underlying cause for each death [<xref ref-type="bibr" rid="pone.0190755.ref027">27</xref>]. For all 1365 cases with completed VA interviews, this task was conducted by the co-author (NPH) who had undertaken the international training course on mortality coding.</p>
+<p>The causes of death from the A6 death registers also needed to be assigned ICD-10 codes for subsequent data analysis. This task was performed by the first author of this manuscript (TTH) who had also been trained in mortality coding previously and during her graduate studies.</p>
+<p>Finally, the Underlying Causes of Death (UCOD) which were derived from the A6 death registers as well as from the VA reinvestigation were then aggregated using the WHO ICD-10 mortality tabulation list 1 comprising 103 cause categories, for descriptive analyses [<xref ref-type="bibr" rid="pone.0190755.ref028">28</xref>].</p>
+<p>The study process is described in <xref ref-type="fig" rid="pone.0190755.g002">Fig 2</xref>.</p>
+<fig id="pone.0190755.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0190755.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Process for assessment of completeness of deaths recorded and reliability of COD in the A6 death registers.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0190755.g002" xlink:type="simple"/>
+</fig>
+</sec>
+</sec>
+<sec id="sec011">
+<title>Statistical analysis</title>
+<p>The measure of completeness of deaths reported in the A6 death registers was assessed by applying the capture-recapture method [<xref ref-type="bibr" rid="pone.0190755.ref029">29</xref>] to the two independent sources (the A6 death registers and CRVS death registers at commune level). The completeness of each data source was calculated as the proportion of the number of deaths recorded in it out of the total estimated deaths derived from the capture-recapture method. Proportions were calculated and compared across communes and urban/rural areas. Standard errors and 95% confidence intervals were computed for each proportion [<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>, <xref ref-type="bibr" rid="pone.0190755.ref030">30</xref>].</p>
+<p>For the assessment of reliability of causes of death recorded in the A6 death registers, kappa statistics were estimated to test the level of agreement [<xref ref-type="bibr" rid="pone.0190755.ref030">30</xref>–<xref ref-type="bibr" rid="pone.0190755.ref032">32</xref>] between the A6 death registers and the results of the VA survey for selected leading CODs. Kappa scores from 0 to under 0.4 suggests low reliability; kappa from 0.4 to under 0.7 means moderate reliability; and kappa over 0.7 means good reliability [<xref ref-type="bibr" rid="pone.0190755.ref033">33</xref>].</p>
+<p>Also, a descriptive matrix of distributions of agreement and misclassification by cause across the two data sources was constructed [<xref ref-type="bibr" rid="pone.0190755.ref034">34</xref>]. Further, computation of the Sensitivity and Positive Predictive Value (PPV) for selected leading causes of death was carried out considering VA as the reference diagnosis.</p>
+</sec>
+<sec id="sec012">
+<title>Ethical considerations</title>
+<p>Ethical approval for this study was obtained from the Institutional Review Board of Ha Noi Medical University, Viet Nam (granted number 173/HMU-IRB) and the University of Queensland, Australia (granted number THT23062015). All respondents were provided with an explanation about the purpose of the study and were asked to sign an informed consent form before the interviews took place. Respondents could refuse to participate in, or withdraw from the interview at any time.</p>
+</sec>
+</sec>
+<sec id="sec013" sec-type="results">
+<title>Results</title>
+<sec id="sec014">
+<title>General information about the study population</title>
+<p>There were 15 urban and 11 rural communes chosen for this study. Although the sample was stratified across urban and rural communes in both provinces, there was a higher representation of the urban population in the study sample as compared to the national urban proportion. This was because an allied objective of the study was related to deaths from HIV/AIDS, the prevalence of which is known to be higher in the urban areas of these provinces.</p>
+<p>A total of 1477 deaths were recorded in the reference year, which comprised 746 cases in Quang Ninh province and 731 cases in Thai Nguyen province. Out of these 1477 deaths, the COD were re-investigated in 1365 cases using VA household interviews, equivalent to 92.6% of the total number of deaths. A VA interview could not be carried out in 112 cases (7.4% of total deaths), with losses to follow up mainly due to the migration of residents after the death of their family member.</p>
+<p><xref ref-type="table" rid="pone.0190755.t001">Table 1</xref> describes the key characteristics of the sample of deaths identified during the study. A considerable gender differential in numbers of deaths recorded was observed in both provinces. In regard to age, over two thirds of the deaths were among the elderly (60+). The number of deaths recorded under the age of 5 years is very low (24 cases).</p>
+<table-wrap id="pone.0190755.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0190755.t001</object-id>
+<label>Table 1</label> <caption><title>Descriptive statistics of study sample.</title></caption>
+<alternatives>
+<graphic id="pone.0190755.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0190755.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" style="background-color:#D0CECE">Study characteristic</th>
+<th align="left" style="background-color:#D0CECE">Quang Ninh</th>
+<th align="left" style="background-color:#D0CECE">Thai Nguyen</th>
+<th align="left" style="background-color:#D0CECE">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Urban population/ commune</td>
+<td align="right">141,427 (8)</td>
+<td align="right">84,898 (7)</td>
+<td align="right">226,325 (15)</td>
+</tr>
+<tr>
+<td align="left">Rural population/ commune</td>
+<td align="right">20,199 (4)</td>
+<td align="right">52,173 (7)</td>
+<td align="right">72,912 (11)</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#E7E6E6">Total deaths in the combined list</td>
+<td align="right" style="background-color:#E7E6E6">746</td>
+<td align="right" style="background-color:#E7E6E6">731</td>
+<td align="right" style="background-color:#E7E6E6">1,477</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left" style="background-color:#E7E6E6">Total deaths by VA survey</td>
+<td align="right" style="background-color:#E7E6E6">670</td>
+<td align="right" style="background-color:#E7E6E6">695</td>
+<td align="right" style="background-color:#E7E6E6">1,365<xref ref-type="table-fn" rid="t001fn001">*</xref></td>
+</tr>
+<tr>
+<td align="left">    SEX: Male/Female</td>
+<td align="right">401/269 (60%/40%)</td>
+<td align="right">434/261 (62.4%/37.6%)</td>
+<td align="right">835/530 (61.2%/38.8%)</td>
+</tr>
+<tr>
+<td align="left">    AGE group</td>
+<td align="right"/>
+<td align="right"/>
+<td align="right"/>
+</tr>
+<tr>
+<td align="left">        0–4</td>
+<td align="right">9 (1.3%)</td>
+<td align="right">15 (2.2%)</td>
+<td align="right">24 (1.8%)</td>
+</tr>
+<tr>
+<td align="left">        5–14</td>
+<td align="right">8 (1.2%)</td>
+<td align="right">9 (1.3%)</td>
+<td align="right">17 (1.2%)</td>
+</tr>
+<tr>
+<td align="left">        15–59</td>
+<td align="right">218 (32.5%)</td>
+<td align="right">237 (34.1%)</td>
+<td align="right">455 (33.3%)</td>
+</tr>
+<tr>
+<td align="left">        60+</td>
+<td align="right">435 (64.9%)</td>
+<td align="right">434 (62.4%)</td>
+<td align="right">869 (63.7%)</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#E7E6E6">Place of death (n = 1365)</td>
+<td align="right" style="background-color:#E7E6E6"/>
+<td align="right" style="background-color:#E7E6E6"/>
+<td align="right" style="background-color:#E7E6E6"/>
+</tr>
+<tr>
+<td align="left">    Home</td>
+<td align="right">596 (89.0%)</td>
+<td align="right">605 (87.1%)</td>
+<td align="right">1201 (88.0%)</td>
+</tr>
+<tr>
+<td align="left">    Health facility</td>
+<td align="right">30 (4.5%)</td>
+<td align="right">36 (5.2%)</td>
+<td align="right">66 (4.8%)</td>
+</tr>
+<tr>
+<td align="left">    Other places</td>
+<td align="right">44 (5.7%)</td>
+<td align="right">54 (7.7%)</td>
+<td align="right">98 (7.2%)</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#E7E6E6">Last treatment at heath facility (n = 1365)</td>
+<td align="right" style="background-color:#E7E6E6"/>
+<td align="right" style="background-color:#E7E6E6"/>
+<td align="right" style="background-color:#E7E6E6"/>
+</tr>
+<tr>
+<td align="left">    Yes</td>
+<td align="right">467 (69.7%)</td>
+<td align="right">492 (70.8%)</td>
+<td align="right">959 (70.3%)</td>
+</tr>
+<tr>
+<td align="left">    No</td>
+<td align="right">177 (26.4%)</td>
+<td align="right">194 (27.9%)</td>
+<td align="right">371 (27.2%)</td>
+</tr>
+<tr>
+<td align="left">    Don’t know/Unsure</td>
+<td align="right">26 (3.9%)</td>
+<td align="right">9 (1.3%)</td>
+<td align="right">35 (2.6%)</td>
+</tr>
+<tr>
+<td align="left" style="background-color:#E7E6E6">Type of health facility<xref ref-type="table-fn" rid="t001fn002">**</xref> in the last treatment (n = 959)</td>
+<td align="right" style="background-color:#E7E6E6"/>
+<td align="right" style="background-color:#E7E6E6"/>
+<td align="right" style="background-color:#E7E6E6"/>
+</tr>
+<tr>
+<td align="left">    Central/provincial hospitals</td>
+<td align="right">362 (78.4%)</td>
+<td align="right">408 (83.1%)</td>
+<td align="right">770 (80.8%)</td>
+</tr>
+<tr>
+<td align="left">    District hospitals</td>
+<td align="right">158 (34.1%)</td>
+<td align="right">118 (24.1%)</td>
+<td align="right">276 (28.9%)</td>
+</tr>
+<tr>
+<td align="left">    Commune health station</td>
+<td align="right">13 (2.8%)</td>
+<td align="right">32 (6.5%)</td>
+<td align="right">45 (4.7%)</td>
+</tr>
+<tr>
+<td align="left">    Healers (traditional medicine)</td>
+<td align="right">7 (1.5%)</td>
+<td align="right">13 (2.7%)</td>
+<td align="right">20 (2.1%)</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>(*) Information of 1356 deaths is available in supporting document <xref ref-type="supplementary-material" rid="pone.0190755.s003">S1 File</xref></p></fn>
+<fn id="t001fn002"><p>(**) The patients may have visited more than one health facility</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Only 4.8% of deaths occurred at a health facility (including hospitals, commune health stations, clinics, etc.), however, in about 70% of events, the deceased had attended a health facility for their last treatment prior to death. Most of them had visited Central/Provincial Hospitals (80%) and in about 30% of cases, a visit to a district hospital was reported. Further analysis revealed that 400 out of 959 cases who attended hospitals had been discharged within 10 days prior to death.</p>
+</sec>
+<sec id="sec015">
+<title>Completeness of deaths recorded in the A6 death registers</title>
+<p><xref ref-type="table" rid="pone.0190755.t002">Table 2</xref> describes the completeness of deaths recorded in the A6 death registers, which was measured by the Chandrasekar-Deming Capture-Recapture method, using the two independent sources of death data: the A6 death registers and CRVS death registers maintained at commune level. The completeness of the A6 death registers was 89.3% (95% CI 87.7–90.8). The completeness of the A6 death registers ranged from 72% to 100% in different communes in Quang Ninh and Thai Nguyen provinces (<xref ref-type="supplementary-material" rid="pone.0190755.s002">S1 Table</xref>). The results showed some differences in completeness in the A6 death registers between rural and urban areas in the two provinces, but these were not statistically significant.</p>
+<table-wrap id="pone.0190755.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0190755.t002</object-id>
+<label>Table 2</label> <caption><title>Completeness analysis<xref ref-type="table-fn" rid="t002fn001">*</xref>.</title></caption>
+<alternatives>
+<graphic id="pone.0190755.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0190755.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">Commune</th>
+<th align="center">Deaths recorded in the A6 register</th>
+<th align="center">Deaths recorded in CRVS register</th>
+<th align="center">Matched cases between A6 and CRVS</th>
+<th align="center">Estimated number of deaths missing from A6 and CRVS</th>
+<th align="center">All Deaths (estimated by Capture Recapture method)</th>
+<th align="center">Completeness of A6 by capture-recapture method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Total</td>
+<td align="right">1,335</td>
+<td align="right">1,231</td>
+<td align="right">1,099</td>
+<td align="right">28</td>
+<td align="right">1,495</td>
+<td align="center">89.3% (87.7;90.8)</td>
+</tr>
+<tr>
+<td align="left"> QUANG NINH province</td>
+<td align="right">661</td>
+<td align="right">637</td>
+<td align="right">558</td>
+<td align="right">15</td>
+<td align="right">755</td>
+<td align="center">87.6% (82.5;89.9)</td>
+</tr>
+<tr>
+<td align="left">Urban</td>
+<td align="right">554</td>
+<td align="right">525</td>
+<td align="right">456</td>
+<td align="right">14.8</td>
+<td align="right">638</td>
+<td align="center">86.9% (84.2;89.5)</td>
+</tr>
+<tr>
+<td align="left">Rural</td>
+<td align="right">107</td>
+<td align="right">112</td>
+<td align="right">102</td>
+<td align="right">0.5</td>
+<td align="right">117.5</td>
+<td align="center">91.1% (85.9;96.2)</td>
+</tr>
+<tr>
+<td align="left">THAI NGUYEN province</td>
+<td align="right">674</td>
+<td align="right">594</td>
+<td align="right">541</td>
+<td align="right">13</td>
+<td align="right">740.0</td>
+<td align="center">91.1% (89;93.1)</td>
+</tr>
+<tr>
+<td align="left">Urban</td>
+<td align="right">402</td>
+<td align="right">359</td>
+<td align="right">333</td>
+<td align="right">5.4</td>
+<td align="right">433.4</td>
+<td align="center">92.8% (90.3;95.2)</td>
+</tr>
+<tr>
+<td align="left">Rural</td>
+<td align="right">272</td>
+<td align="right">235</td>
+<td align="right">208</td>
+<td align="right">8.3</td>
+<td align="right">307.3</td>
+<td align="center">88.5% (84.9;92.1)</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>*A detailed table on the completeness by commune is presented in supporting document <xref ref-type="supplementary-material" rid="pone.0190755.s002">S1 Table</xref>.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec016">
+<title>Reliability of causes of death recorded in the A6 death registers</title>
+<p><xref ref-type="table" rid="pone.0190755.t003">Table 3</xref> demonstrates the reliability of COD recorded in the A6 death registers, in comparison with the results from the VA. These results indicate that no COD were recorded with good reliability in the A6 death registers. HIV and some site-specific cancers (lung cancer, liver cancer, stomach cancer, and mouth and oropharynx cancers) demonstrated moderate levels of reliability with kappa scores ranging between 0.57–0.69 (p&lt;0.001). Major cardiovascular conditions, such as stroke and ischaemic heart disease, also only demonstrated moderate levels of reliability, while there was very low reliability in the recording of diabetes (kappa = 0.33). Surprisingly, the A6 death register demonstrated only a moderate level of reliability (kappa = 0.69) for road traffic accident deaths, despite this being a reasonably straightforward COD.</p>
+<table-wrap id="pone.0190755.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0190755.t003</object-id>
+<label>Table 3</label> <caption><title>Reliability of CODs recorded in the A6 death registers by 12 leading causes.</title></caption>
+<alternatives>
+<graphic id="pone.0190755.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0190755.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Cause of death</th>
+<th align="center">ICD10 code</th>
+<th align="left">No of cases in A6</th>
+<th align="left">No of cases in VA</th>
+<th align="left">No of common cases</th>
+<th align="left">Kappa<break/>(95% CI)<break/>(p&lt;0.001)</th>
+<th align="left">Sensitivity<xref ref-type="table-fn" rid="t003fn001">*</xref> (95% CI)</th>
+<th align="left">PPV<xref ref-type="table-fn" rid="t003fn001">*</xref> (95% CI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Stroke</td>
+<td align="center">I60-I69</td>
+<td align="right">361</td>
+<td align="right">281</td>
+<td align="right">189</td>
+<td align="right">0.47 (0.41;0.52)</td>
+<td align="right">67.3 (61.8; 72.8)</td>
+<td align="right">52.4 (47.2; 55.6)</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Lung cancer</td>
+<td align="center">C43</td>
+<td align="right">79</td>
+<td align="right">113</td>
+<td align="right">59</td>
+<td align="right">0.59 (0.50;0.67)</td>
+<td align="right">52.2 (43.0; 61.4)</td>
+<td align="right">74.7 (65.1; 84.3)</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Liver cancer</td>
+<td align="center">C22</td>
+<td align="right">61</td>
+<td align="right">64</td>
+<td align="right">38</td>
+<td align="right">0.59 (0.49;0.69)</td>
+<td align="right">59.4 (47.4; 71.4)</td>
+<td align="right">62.3 (50.1; 74.5)</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Pneumonia</td>
+<td align="center">J18</td>
+<td align="right">21</td>
+<td align="right">54</td>
+<td align="right">5</td>
+<td align="right">0.11 (0.01;0.22)</td>
+<td align="right">9.3 (1.6; 17.0)</td>
+<td align="right">23.8 (5.6; 42.0)</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Road traffic accident</td>
+<td align="center">V01-V04; V06, V09-V80; V87, V89, V99</td>
+<td align="right">31</td>
+<td align="right">50</td>
+<td align="right">28</td>
+<td align="right">0.69 (0.56;0.80)</td>
+<td align="right">56 (42.2; 69.8)</td>
+<td align="right">90.3 (79.9; 100)</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left">HIV/AIDS</td>
+<td align="center">B20-B24</td>
+<td align="right">30</td>
+<td align="right">38</td>
+<td align="right">22</td>
+<td align="right">0.64 (0.50; 0.77)</td>
+<td align="right">57.9 (42.2; 73.6)</td>
+<td align="right">73.3 (57.5; 89.1)</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">Cirrhosis of liver</td>
+<td align="center">K70, K74</td>
+<td align="right">35</td>
+<td align="right">38</td>
+<td align="right">18</td>
+<td align="right">0.48 (0.34; 0.62)</td>
+<td align="right">47.4 (31.5; 63.3)</td>
+<td align="right">51.4 (34.8; 68.0)</td>
+</tr>
+<tr>
+<td align="left">8</td>
+<td align="left">Ischaemic heart disease</td>
+<td align="center">I20-I25</td>
+<td align="right">22</td>
+<td align="right">35</td>
+<td align="right">12</td>
+<td align="right">0.42 (0.25; 0.57)</td>
+<td align="right">34.3 (18.6; 50.0)</td>
+<td align="right">54.5 (33.7; 75.3)</td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left">Other cardiovascular diseases</td>
+<td align="center">I00-I09; I26-I51; I70-I99</td>
+<td align="right">75</td>
+<td align="right">34</td>
+<td align="right">16</td>
+<td align="right">0.27 (0.15; 0.38)</td>
+<td align="right">47.1 (30.3; 63.9)</td>
+<td align="right">21.3 (12.0; 30.6)</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left">Stomach cancer</td>
+<td align="center">C16</td>
+<td align="right">31</td>
+<td align="right">34</td>
+<td align="right">20</td>
+<td align="right">0.61 (0.46; 0.75)</td>
+<td align="right">58.8 (42.3; 75.3)</td>
+<td align="right">64.5 (47.7; 81.3)</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left">Diabetes mellitus</td>
+<td align="center">E10-E14</td>
+<td align="right">17</td>
+<td align="right">31</td>
+<td align="right">8</td>
+<td align="right">0.33 (0.15; 0.49)</td>
+<td align="right">25.8 (10.4; 41.2)</td>
+<td align="right">47.1 (23.4; 70.8)</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left">Mouth and oropharynx cancers</td>
+<td align="center">C01-C14</td>
+<td align="right">29</td>
+<td align="right">26</td>
+<td align="right">17</td>
+<td align="right">0.61 (0.46; 0.76)</td>
+<td align="right">65.4 (47.1; 83.7)</td>
+<td align="right">58.6 (40.7; 76.5)</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t003fn001"><p>* The VA diagnosis was considered the reference standard for evaluating sensitivity and positive predictive value</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>In this table, Sensitivity and Positive Predictive Values were calculated, considering the VA diagnosis as the reference standard. While the sensitivity scores largely reflect the levels of accuracy as inferred from the kappa statistic for each cause, the results showed that for several important causes including lung cancer, HIV/AIDS, and road traffic accidents, the A6 death registers showed reasonably high positive predictive values, indicating that in cases for which these diagnoses were recorded in the A6 death register, there was a greater likelihood of the diagnosis being confirmed by the VA. Nevertheless, there were considerable numbers of deaths reclassified to these causes from other categories (54 lung cancer deaths, 16 HIV/AIDS deaths, and 22 road traffic accident deaths), which resulted in the overall lower levels of reliability and sensitivity of the A6 death registers.</p>
+<p>In order to further understand the differences in assigning COD in the A6 death register and in the VA, a misclassification matrix was created for 12 leading CODs as presented in <xref ref-type="table" rid="pone.0190755.t004">Table 4</xref>. The rows of the table present the number of deaths recorded in the A6 while the columns present the number of deaths diagnosed by VA. As can be seen, there was considerable misclassification within the cardiovascular diseases group. For example, there were 361 cases recorded in A6 death registers as stroke deaths but only 189 cases were confirmed by VA. The remainder of the cases (172 deaths) were assigned to other causes such as ischaemic heart diseases, pneumonia, diabetes or other cardiovascular diseases by VA. Conversely, ischaemic heart diseases and other cardiovascular diseases recorded in the A6 death registers could be re-diagnosed as stroke by VA.</p>
+<table-wrap id="pone.0190755.t004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0190755.t004</object-id>
+<label>Table 4</label> <caption><title>Misclassification of the diagnoses between the A6 death registers and verbal autopsy.</title></caption>
+<alternatives>
+<graphic id="pone.0190755.t004g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0190755.t004" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" style="background-color:#E7E6E6"> </th>
+<th align="left" style="background-color:#E7E6E6"> </th>
+<th align="center" colspan="15" style="background-color:#E7E6E6">Verbal Autopsy</th>
+</tr>
+<tr>
+<th align="left" style="background-color:#E7E6E6"> A6 death register</th>
+<th align="left" style="background-color:#E7E6E6"> Leading causes of death (L)</th>
+<th align="left" style="background-color:#E7E6E6">L1</th>
+<th align="left" style="background-color:#E7E6E6">L2</th>
+<th align="left" style="background-color:#E7E6E6">L3</th>
+<th align="left" style="background-color:#E7E6E6">L4</th>
+<th align="left" style="background-color:#E7E6E6">L5</th>
+<th align="left" style="background-color:#E7E6E6">L6</th>
+<th align="left" style="background-color:#E7E6E6">L7</th>
+<th align="left" style="background-color:#E7E6E6">L8</th>
+<th align="left" style="background-color:#E7E6E6">L9</th>
+<th align="left" style="background-color:#E7E6E6">L10</th>
+<th align="left" style="background-color:#E7E6E6">L11</th>
+<th align="left" style="background-color:#E7E6E6">L12</th>
+<th align="left" style="background-color:#E7E6E6">Other diseases</th>
+<th align="left" style="background-color:#E7E6E6">Ill-defined COD</th>
+<th align="left" style="background-color:#E7E6E6"> Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Stroke      (L1)</td>
+<td align="left"><bold>189</bold></td>
+<td align="left">9</td>
+<td align="left">7</td>
+<td align="left">14</td>
+<td align="left">6</td>
+<td align="left">2</td>
+<td align="left">4</td>
+<td align="left">7</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">6</td>
+<td align="left">3</td>
+<td align="left">52</td>
+<td align="left">57</td>
+<td align="left"><bold>361</bold></td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">2</td>
+<td align="left" style="background-color:#F2F2F2">Lung cancer      (L2)</td>
+<td align="left" style="background-color:#F2F2F2">5</td>
+<td align="left" style="background-color:#F2F2F2"><bold>59</bold></td>
+<td align="left" style="background-color:#F2F2F2">2</td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"/>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2">3</td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2">6</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"><bold>79</bold></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Liver cancer      (L3)</td>
+<td align="left"/>
+<td align="left">4</td>
+<td align="left"><bold>38</bold></td>
+<td align="left">1</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">12</td>
+<td align="left"> </td>
+<td align="left"><bold>61</bold></td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">4</td>
+<td align="left" style="background-color:#F2F2F2">Pneumonia      (L4)</td>
+<td align="left" style="background-color:#F2F2F2">3</td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"><bold>5</bold></td>
+<td align="left" style="background-color:#F2F2F2"/>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"/>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2">7</td>
+<td align="left" style="background-color:#F2F2F2">3</td>
+<td align="left" style="background-color:#F2F2F2"><bold>21</bold></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Road traffic injury      (L5)</td>
+<td align="left">1</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"><bold>28</bold></td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">1</td>
+<td align="left"> </td>
+<td align="left">1</td>
+<td align="left"> </td>
+<td align="left"><bold>31</bold></td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">6</td>
+<td align="left" style="background-color:#F2F2F2">HIV/AIDS      (L6)</td>
+<td align="left" style="background-color:#F2F2F2"/>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2">2</td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"><bold>22</bold></td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"/>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2">4</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"><bold>30</bold></td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">Cirrhosis of liver      (L7)</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left"/>
+<td align="left">1</td>
+<td align="left"><bold>18</bold></td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">5</td>
+<td align="left">2</td>
+<td align="left"><bold>35</bold></td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">8</td>
+<td align="left" style="background-color:#F2F2F2">Ischaemic heart disease      (L8)</td>
+<td align="left" style="background-color:#F2F2F2">4</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"><bold>12</bold></td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2">3</td>
+<td align="left" style="background-color:#F2F2F2"><bold>22</bold></td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left">Other CVD      (L9)</td>
+<td align="left">8</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">7</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">5</td>
+<td align="left"><bold>16</bold></td>
+<td align="left"> </td>
+<td align="left">2</td>
+<td align="left"> </td>
+<td align="left">21</td>
+<td align="left">16</td>
+<td align="left"><bold>75</bold></td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">10</td>
+<td align="left" style="background-color:#F2F2F2">Stomach cancer      (L10)</td>
+<td align="left" style="background-color:#F2F2F2"/>
+<td align="left" style="background-color:#F2F2F2">3</td>
+<td align="left" style="background-color:#F2F2F2">2</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"><bold>20</bold></td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2">5</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"><bold>31</bold></td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left">Diabetes mellitus      (L11)</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left"> </td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left"><bold>8</bold></td>
+<td align="left"> </td>
+<td align="left">4</td>
+<td align="left"> </td>
+<td align="left"><bold>17</bold></td>
+</tr>
+<tr>
+<td align="left" style="background-color:#F2F2F2">12</td>
+<td align="left" style="background-color:#F2F2F2">Mouth and oropharynx cancers  (L12)</td>
+<td align="left" style="background-color:#F2F2F2"/>
+<td align="left" style="background-color:#F2F2F2">2</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2">1</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"><bold>17</bold></td>
+<td align="left" style="background-color:#F2F2F2">8</td>
+<td align="left" style="background-color:#F2F2F2"> </td>
+<td align="left" style="background-color:#F2F2F2"><bold>29</bold></td>
+</tr>
+<tr>
+<td align="left"> </td>
+<td align="left">Other diseases</td>
+<td align="left">18</td>
+<td align="left">9</td>
+<td align="left">4</td>
+<td align="left">9</td>
+<td align="left">13</td>
+<td align="left">3</td>
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left"><bold>190</bold></td>
+<td align="left">21</td>
+<td align="left"><bold>282</bold></td>
+</tr>
+<tr>
+<td align="left"> </td>
+<td align="left">Ill-defined and unknown COD</td>
+<td align="left">49</td>
+<td align="left">23</td>
+<td align="left">8</td>
+<td align="left">13</td>
+<td align="left">1</td>
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">6</td>
+<td align="left">10</td>
+<td align="left">5</td>
+<td align="left">7</td>
+<td align="left">2</td>
+<td align="left">59</td>
+<td align="left"><bold>90</bold></td>
+<td align="left"><bold>291 (21.3%)</bold></td>
+</tr>
+<tr>
+<td align="left" style="background-color:#E7E6E6"><bold> </bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>Total</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>281</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>113</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>64</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>54</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>50</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>38</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>38</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>35</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>34</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>34</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>31</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>26</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>375</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>192 (14%)</bold></td>
+<td align="left" style="background-color:#E7E6E6"><bold>1365</bold></td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p><xref ref-type="table" rid="pone.0190755.t004">Table 4</xref> identifies the significant contribution made by the VA in classifying deaths through the assignment of ill-defined causes in the A6 death register to more specific causes. As can be seen, there were 291 ill-defined and unknown causes (21% of the deaths) recorded in A6 death registers, of which 201 cases were reclassified by the VA into other leading specific causes of death such as stroke, lung cancer, pneumonia, cirrhosis, ischaemic heart disease, among others.</p>
+</sec>
+</sec>
+<sec id="sec017" sec-type="conclusions">
+<title>Discussion</title>
+<p>Findings from this study are important as a primary step towards strengthening the mortality reporting system in Viet Nam. It provides empirical evidence of the current situation of mortality data recording in the national routine HMIS. The study also provides useful observations on the utility of VA methods to identify causes for deaths occurring outside health facilities in Viet Nam.</p>
+<sec id="sec018">
+<title>Discussion regarding main findings</title>
+<p>The completeness of deaths recorded in the A6 death registers in the study sites was relatively high overall (89%). This is a positive result since it confirms the value of the A6 death registers in counting and recording deaths that occurred in the study areas. This result shows better completion of the A6 death registers in comparison to the very early study conducted in Bavi district of Hanoi [<xref ref-type="bibr" rid="pone.0190755.ref035">35</xref>], and the sample surveillance project implemented in a representative sample of 192 communes in different regions of Viet Nam [<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>]. Quang Ninh and Thai Nguyen were provinces chosen in the earlier sample based mortality surveillance conducted during 2008–2009, and it is possible that the systems in these provinces would have benefited from those activities.</p>
+<p>This study is one component of a larger research project designed to investigate the performance of the MOH A6 death register system and provide solutions to strengthen it. The quantitative research reported here was supplemented by a qualitative component (not described in this manuscript) that investigated the reasons for the problems with data quality, as well as potential solutions to strengthen the system. Although completeness of number of deaths recorded is high overall, it varies among different communes. During the qualitative enquiry, it was found that in several communes (particularly those with very high levels of completeness), the CHS staff consult with the CRVS death records. The qualitative enquiry clearly identified the value in routine local data sharing and triangulation as a solution to improve data completeness.</p>
+<p>From another perspective, the small number of reported child deaths results in very low estimated under 5 mortality rates for the study population. Similarly implausible low child mortality rates were also observed in the previous national sample mortality surveillance system that operated in 2008–2009 [<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>]. More detailed investigation of the under-five mortality reporting is necessary to confirm if under-five mortality is truly low in the sample communes for this study, or if there is a bias from under-reporting of child deaths.</p>
+<p>In contrast to the relatively high level of completeness, the reliability of different CODs recorded in the A6 death registers ranged from low to moderate, as per the scales defined in the Methods section. There are some explanations for this. First, information recorded in the A6 death registers is based on the response to the open-ended question enquiring about the COD posed by the CHS staff to the family member or someone in the commune, at the time of recording the event in the A6 death register. The response is usually very short and simple, and could be a specific disease/ injury, or some vague terms including “ill/sick”, “senility”, “unidentified cause”. In some instances, this column could even be left blank, because the respondent could be a distant relative or another member of the village who was unaware of the circumstances of the death. In general, the information is recorded in the A6 death registers without any clarification, and this affects its reliability.</p>
+<p>Secondly, the A6 death register has only a single column for recording the cause of death, and there is no potential to record multiple causes. There is no instruction as to whether the reported cause is the underlying COD or the direct COD. The detailed VA interview enabled the identification of an underlying cause, resulting in reclassification in a number of instances. In cases in which there were multiple comorbid conditions, the commune heath staff documented only one cause while the VA allowed documentation of multiple CODs, following which ICD rules [<xref ref-type="bibr" rid="pone.0190755.ref036">36</xref>] were applied to select the correct underlying cause, which could have been a condition other than the one recorded in the A6.</p>
+<p>Another factor that could influence our observations on the reliability of COD in the A6 death registers is the level of aggregation of causes used for the comparative analysis. We assessed the reliability and validity of COD for certain important specific causes (such as stroke, road traffic accident, stomach cancer and liver cancer). If we were to use a higher level of aggregation such as at the level of ICD-10 Chapters (for example “diseases of the circulatory system” or “neoplasms”) or a broader categorization (such as Communicable diseases, Non-communicable diseases, Injuries, and Other), our measurement of reliability and validity would be considerably different from those for the more specific causes. For example, based on the data from the current study, the Sensitivity and PPV of non-communicable diseases were 80% and 82% respectively, which were higher than those of the more specific such as stroke (67.3% and 52.4%), or liver cancer (59.4% and 62.3%). Similarly, Sensitivity and PPV of Injury were 72% and 91% respectively, which was higher than road traffic accidents (56% and 90% respectively). The level of aggregation of causes used in the comparative analysis therefore is very important, since it effects the interpretation of the study results. A study conducted in three provinces of Viet Nam by Stevenson et al. in 2008 indicated that sensitivity and PPV of injury deaths recorded in A6 death registers were 75% and 88% respectively, which were considered to represent good validity. These authors concluded that the A6 death registers system performed well in relation to the completeness and classification of injury related deaths [<xref ref-type="bibr" rid="pone.0190755.ref037">37</xref>]. However, this statement needs to be considered carefully when looking at the validity of the A6 death registers in recording specific types of external causes that lead to injury such as road traffic accidents, falls and drowning. For intervention purposes, it is necessary to have as specific information as possible. In this regard, the conclusions from our study were based on the results of the data analysis for more specific causes of death.</p>
+<p>This study found considerable misclassification in the diagnosis of stroke as the UCOD between the A6 death registers and VA. This phenomenon can be explained in different ways. In Viet Nam, the term “stroke” seems to be a very common term used in the community when people talk about a death that occurred suddenly in a person with a history of hypertension or cardiovascular disease. Community members had a different understanding of “stroke” which might have affected the diagnosis of stroke in some aspects [<xref ref-type="bibr" rid="pone.0190755.ref038">38</xref>]. In the Vietnamese language, “strokes” are called “tai biến mạch máu não” (cerebrovascular accident) or “đột quỵ” (stroke) or “đột tử” (instantaneous death). Also, in some cases, “stroke” may be used for people who died due to an unknown cause (for example, a person who died during their sleep). The family may assume that the death was due to a stroke, reporting this as the cause of death to commune health workers, who then recorded it as such in the A6 death register. These situations may explain the low agreement between the diagnoses of stroke in the A6 death registers and the VA based causes of death.</p>
+</sec>
+<sec id="sec019">
+<title>Suggestions for improving data quality in the A6 death registers</title>
+<p>About 11% of actual deaths were not captured by the national HMIS A6 death registers. The completeness of the registers could be improved by routinely matching them with the CRVS death registers, as well as reviewing different local data sources such as Maternal and Child health books or/and records of the HIV surveillance program, among others. In particular, there is a need for a concerted effort to improve the identification of stillbirths, and neonatal and infant deaths, for more reliable measurement of early age mortality for small areas in Viet Nam [<xref ref-type="bibr" rid="pone.0190755.ref039">39</xref>, <xref ref-type="bibr" rid="pone.0190755.ref040">40</xref>].</p>
+<p>VA methods have been widely used in many countries in the world [<xref ref-type="bibr" rid="pone.0190755.ref041">41</xref>, <xref ref-type="bibr" rid="pone.0190755.ref042">42</xref>], in different settings and diseases specific areas [<xref ref-type="bibr" rid="pone.0190755.ref043">43</xref>–<xref ref-type="bibr" rid="pone.0190755.ref047">47</xref>]. This study confirms the usefulness of VA methods in identifying the COD as well as re-classifying the conditions reported as ill-defined in the A6 death registers at CHSs in Viet Nam setting. The A6 death registers can only provide one COD for each individual death and there is no indication whether it was underlying COD or not. The detailed VA interview, however, enabled the collection of information on signs and symptoms of the deceased as well as other information relating to the patients’ medical histories, which helped to produce a more accurate COD. VA allows the collection of multiple CODs which is useful to understand more about other contributing causes that are not the underlying COD but contribute to the death, especially in elderly people and people suffering from certain specific diseases or disability [<xref ref-type="bibr" rid="pone.0190755.ref048">48</xref>]. This facilitates a better sense of the burden of disease in a community.</p>
+<p>In Viet Nam, VA methods have been used in Health and Demographic Surveillance Surveys and a number of projects/studies to identify cause-specific death rates and to measure the burden of diseases [<xref ref-type="bibr" rid="pone.0190755.ref010">10</xref>, <xref ref-type="bibr" rid="pone.0190755.ref011">11</xref>, <xref ref-type="bibr" rid="pone.0190755.ref049">49</xref>]. These studies has been conducted in both rural and urban areas of Viet Nam [<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>, <xref ref-type="bibr" rid="pone.0190755.ref010">10</xref>–<xref ref-type="bibr" rid="pone.0190755.ref012">12</xref>, <xref ref-type="bibr" rid="pone.0190755.ref050">50</xref>, <xref ref-type="bibr" rid="pone.0190755.ref051">51</xref>]. Therefore, utilizing the advantage of VA methods for routinely mortality data collection at CHS could help to provide more reliable COD for the national HMIS A6 death registers in Viet Nam.</p>
+<p>Our study found about 70% of the deceased were hospitalized for their last treatment and 42% of them died within 10 days after discharge. This finding suggests that a good system of discharge documentation may help to improve the availability of reliable information to ascertain the causes of death from the verbal autopsy. A recent study on assessing the quality of evidence for verbal autopsy diagnosis of stroke in Viet Nam also found that respondents of cases with recent hospital admissions or visits have a better recall of disease symptoms than those without hospital admission [<xref ref-type="bibr" rid="pone.0190755.ref038">38</xref>]. Therefore, the issuing of a hospital discharge summary for every patient and an appropriate mechanism of information sharing between hospitals and CHS would be useful for supporting the improved performance of VA data collection at CHS in Vietnam.</p>
+</sec>
+<sec id="sec020">
+<title>Strengths and limitations of the study</title>
+<p>There are number of strengths of the study. Firstly, it is one of very few studies assessing the completeness and reliability of the HMIS A6 death register reporting system in Viet Nam for all CODs. The measurement of reliability was conducted for specific CODs, providing better understanding of the strengths and limitations of this recording system. Thirdly, the tools and guidelines had been carefully translated into Vietnamese, used in an earlier project [<xref ref-type="bibr" rid="pone.0190755.ref003">3</xref>], and had been iteratively adjusted based on field experience during that project. Additionally, quality controls were applied strictly at each of the project stages to ensure data quality for this study.</p>
+<p>Despite these strengths, this study has some limitations. First, the sample size is relatively small which limited the analysis by sex and age groups. There appears to be underreporting of stillbirths and neonatal and infant deaths which limits interpretation of the findings for the youngest age groups. Second, the issue of recall bias also needs to be considered. This study focused on deaths that occurred in 2014 but data collection was carried out from May to July 2015, which resulted in recall periods ranging from 5 months to 17 months. The literature shows that most previously reported VA studies had a maximum 12 months recall period [<xref ref-type="bibr" rid="pone.0190755.ref033">33</xref>].</p>
+</sec>
+</sec>
+<sec id="sec021" sec-type="conclusions">
+<title>Conclusion</title>
+<p>The study identified that the completeness of deaths recorded in the A6 death registers by commune health stations is relatively high, but still needs to be improved by examining CRVS death registers and other local data sources. The reliability of COD recorded in the A6 death register is low to moderate, and adding VA methods would be effective in enhancing quality. We recommend that the MOH develop a suitable mechanism and process to apply VA methods in combination with COD data collection at CHS in the national routine HMIS in Viet Nam. Further studies on VA validation and operation will guide those implementation activities.</p>
+</sec>
+<sec id="sec022">
+<title>Supporting information</title>
+<supplementary-material id="pone.0190755.s001" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0190755.s001" xlink:type="simple">
+<label>S1 Fig</label>
+<caption>
+<title>The administrative hierarchy in Viet Nam.</title>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0190755.s002" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0190755.s002" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>Completeness of deaths recorded in the A6 death registers by communes.</title>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0190755.s003" mimetype="application/x-spss-sav" position="float" xlink:href="info:doi/10.1371/journal.pone.0190755.s003" xlink:type="simple">
+<label>S1 File</label>
+<caption>
+<title>Data for cases which were re-investigated causes of death.</title>
+<p>(SAV)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>We would like to thank to the Provincial Health Departments of Quang Ninh and Thai Nguyen provinces, Hanoi Medical University and Hanoi University of Public Health for helping to organize data collection activities. Thanks to all respondents who spent time to talk and share information for our research.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0190755.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hill</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Lopez</surname> <given-names>AD</given-names></name>, <name name-style="western"><surname>Shibuya</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Jha</surname> <given-names>P</given-names></name>. <article-title>Interim measures for meeting needs for health sector data: births, deaths, and causes of death</article-title>. <source>Lancet</source>. <year>2007</year>;<volume>370</volume>(<issue>9600</issue>):<fpage>1726</fpage>–<lpage>35</lpage>. <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S0140-6736(07)61309-9" xlink:type="simple">http://dx.doi.org/10.1016/S0140-6736(07)61309-9</ext-link>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/S0140-6736(07)61309-9" xlink:type="simple">10.1016/S0140-6736(07)61309-9</ext-link></comment> <object-id pub-id-type="pmid">18029005</object-id></mixed-citation></ref>
+<ref id="pone.0190755.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>AbouZahr</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Cleland</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Coullare</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Macfarlane</surname> <given-names>SB</given-names></name>, <name name-style="western"><surname>Notzon</surname> <given-names>FC</given-names></name>, <name name-style="western"><surname>Setel</surname> <given-names>P</given-names></name>, <etal>et al</etal>. <article-title>The way forward</article-title>. <source>The Lancet</source>. <year>2007</year>;<volume>370</volume>(<issue>9601</issue>):<fpage>1791</fpage>–<lpage>9</lpage>. <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S0140-6736(07)61310-5" xlink:type="simple">http://dx.doi.org/10.1016/S0140-6736(07)61310-5</ext-link>.</mixed-citation></ref>
+<ref id="pone.0190755.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hoa</surname> <given-names>NP</given-names></name>, <name name-style="western"><surname>Rao</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Hoy</surname> <given-names>DG</given-names></name>, <name name-style="western"><surname>Hinh</surname> <given-names>ND</given-names></name>, <name name-style="western"><surname>Chuc</surname> <given-names>NT</given-names></name>, <name name-style="western"><surname>Ngo</surname> <given-names>DA</given-names></name>. <article-title>Mortality measures from sample-based surveillance: evidence of the epidemiological transition in Viet Nam</article-title>. <source>Bull World Health Organ</source>. <year>2012</year>;<volume>90</volume>(<issue>10</issue>):<fpage>764</fpage>–<lpage>72</lpage>. Epub 2012/10/31. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.2471/BLT.11.100750" xlink:type="simple">10.2471/BLT.11.100750</ext-link></comment> <object-id pub-id-type="pmid">23109744</object-id>; PubMed Central PMCID: PMCPMC3471050.</mixed-citation></ref>
+<ref id="pone.0190755.ref004"><label>4</label><mixed-citation publication-type="other" xlink:type="simple">World Population Review. Vietnam Population 2017 [cited 2017 April 16]. Available from: <ext-link ext-link-type="uri" xlink:href="http://worldpopulationreview.com/countries/vietnam-population/" xlink:type="simple">http://worldpopulationreview.com/countries/vietnam-population/</ext-link>.</mixed-citation></ref>
+<ref id="pone.0190755.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rao</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Osterberger</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Anh</surname> <given-names>TD</given-names></name>, <name name-style="western"><surname>MacDonald</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Chuc</surname> <given-names>NT</given-names></name>, <name name-style="western"><surname>Hill</surname> <given-names>PS</given-names></name>. <article-title>Compiling mortality statistics from civil registration systems in Viet Nam: the long road ahead</article-title>. <source>Bull World Health Organ</source>. <year>2010</year>;<volume>88</volume>(<issue>1</issue>):<fpage>58</fpage>–<lpage>65</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.2471/BLT.08.061630" xlink:type="simple">10.2471/BLT.08.061630</ext-link></comment> <object-id pub-id-type="pmid">20428354</object-id>; PubMed Central PMCID: PMC2802436.</mixed-citation></ref>
+<ref id="pone.0190755.ref006"><label>6</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Piotti</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Tham</surname> <given-names>PV</given-names></name>. <source>HIS Development Strategic Plan 2014–2020 and vison to 2030: The third draft (Kế hoạch tổng thế phát triển hệ thống thông tin y tế 2014–2020 và tầm nhìn đến 2030: Bản thảo lần 3)</source>. <publisher-loc>Vietnam</publisher-loc> <publisher-name>Ministry of Health</publisher-name> <year>2014</year>.</mixed-citation></ref>
+<ref id="pone.0190755.ref007"><label>7</label><mixed-citation publication-type="other" xlink:type="simple">WHO. Global Health Observatory Map Gallery: Civil registration coverage of cause of death (%), 2005–2011. [cited 2017 December 16]. Available from: <ext-link ext-link-type="uri" xlink:href="http://gamapserver.who.int/mapLibrary/Files/Maps/Global_CivilRegistrationDeaths_2005_2011.png" xlink:type="simple">http://gamapserver.who.int/mapLibrary/Files/Maps/Global_CivilRegistrationDeaths_2005_2011.png</ext-link>.</mixed-citation></ref>
+<ref id="pone.0190755.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ngo</surname> <given-names>AD</given-names></name>, <name name-style="western"><surname>Rao</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Hoa</surname> <given-names>NP</given-names></name>, <name name-style="western"><surname>Adair</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Chuc</surname> <given-names>NT</given-names></name>. <article-title>Mortality patterns in Vietnam, 2006: Findings from a national verbal autopsy survey</article-title>. <source>BMC Res Notes</source>. <year>2010</year>;<volume>3</volume>:<fpage>78</fpage>. Epub 2010/03/20. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/1756-0500-3-78" xlink:type="simple">10.1186/1756-0500-3-78</ext-link></comment> <object-id pub-id-type="pmid">20236551</object-id>; PubMed Central PMCID: PMCPMC2851717.</mixed-citation></ref>
+<ref id="pone.0190755.ref009"><label>9</label><mixed-citation publication-type="book" xlink:type="simple"><collab>Vietnam General Statistics Office</collab>. <chapter-title>The 2009 Vietnam Population and Housing Census</chapter-title>. <source>Fertility and Mortality in Vietnam: Patterns, Trends and Differentials Hanoi</source>: <publisher-name>The Statistics Publishing House</publisher-name>; <year>2011</year> [cited 2017 December 16]. Available from: <ext-link ext-link-type="uri" xlink:href="http://portal.thongke.gov.vn/khodulieudanso2009/Tailieu/AnPham/Chuyenkhaosinhchet/sinhchetEgfinal.pdf" xlink:type="simple">http://portal.thongke.gov.vn/khodulieudanso2009/Tailieu/AnPham/Chuyenkhaosinhchet/sinhchetEgfinal.pdf</ext-link>.</mixed-citation></ref>
+<ref id="pone.0190755.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tran</surname> <given-names>BH</given-names></name>, <name name-style="western"><surname>Nguyen</surname> <given-names>HT</given-names></name>, <name name-style="western"><surname>Ho</surname> <given-names>HT</given-names></name>, <name name-style="western"><surname>Pham</surname> <given-names>CV</given-names></name>, <name name-style="western"><surname>Le</surname> <given-names>VT</given-names></name>, <name name-style="western"><surname>Le</surname> <given-names>AV</given-names></name>. <article-title>The Chi Linh Health and Demographic Surveillance System (CHILILAB HDSS)</article-title>. <source>Int J Epidemiol</source>. <year>2013</year>;<volume>42</volume>(<issue>3</issue>):<fpage>750</fpage>–<lpage>7</lpage>. Epub 2013/04/24. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/ije/dyt053" xlink:type="simple">10.1093/ije/dyt053</ext-link></comment> <object-id pub-id-type="pmid">23608769</object-id>.</mixed-citation></ref>
+<ref id="pone.0190755.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tran</surname> <given-names>TK</given-names></name>, <name name-style="western"><surname>Eriksson</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Nguyen</surname> <given-names>CT</given-names></name>, <name name-style="western"><surname>Horby</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Bondjers</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Petzold</surname> <given-names>M</given-names></name>. <article-title>DodaLab: an urban health and demographic surveillance site, the first three years in Hanoi, Vietnam</article-title>. <source>Scand J Public Health</source>. <year>2012</year>;<volume>40</volume>(<issue>8</issue>):<fpage>765</fpage>–<lpage>72</lpage>. Epub 2012/11/03. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1177/1403494812464444" xlink:type="simple">10.1177/1403494812464444</ext-link></comment> <object-id pub-id-type="pmid">23117211</object-id>.</mixed-citation></ref>
+<ref id="pone.0190755.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huong</surname> <given-names>DL</given-names></name>, <name name-style="western"><surname>Minh</surname> <given-names>HV</given-names></name>, <name name-style="western"><surname>Byass</surname> <given-names>P</given-names></name>. <article-title>Applying verbal autopsy to determine cause of death in rural Vietnam</article-title>. <source>Scand J Public Health Suppl</source>. <year>2003</year>;<volume>62</volume>:<fpage>19</fpage>–<lpage>25</lpage>. Epub 2003/12/03. <object-id pub-id-type="pmid">14649633</object-id>.</mixed-citation></ref>
+<ref id="pone.0190755.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rao</surname> <given-names>C</given-names></name>. <article-title>Mortality estimates for South East Asia, and INDEPTH mortality surveillance: necessary but not sufficient?</article-title> <year>2013</year>. p. <fpage>1196</fpage>–<lpage>9</lpage>.</mixed-citation></ref>
+<ref id="pone.0190755.ref014"><label>14</label><mixed-citation publication-type="other" xlink:type="simple">Lanh LT, editor The current situation of birth and death reporting system by Ministry of Justice. National Conference on Health Management Information System; 2012; Hanoi, Vietnam.</mixed-citation></ref>
+<ref id="pone.0190755.ref015"><label>15</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Tung</surname> <given-names>DT</given-names></name>. <source>Báo cáo tổng kết công tác đăng ký, quản lý hộ tịch và việc thực hiện các văn bản quy phạm pháp luật về hộ tịch—Report on curent situation of civil registration and how legal documents on civil registration management were implemented</source>. <publisher-loc>Hanoi</publisher-loc>: <publisher-name>Vietnam Ministry of Justice</publisher-name>, <year>2012</year>.</mixed-citation></ref>
+<ref id="pone.0190755.ref016"><label>16</label><mixed-citation publication-type="other" xlink:type="simple">Vietnam Ministry of Health. Thông tư qui định hệ thống biểu mẫu tuyến Tỉnh, Huyện và Xã (Circular on Data collection and Reporting Form for Provincial, District and Commune level) 2014 [cited 2017 December 16]. Available from: <ext-link ext-link-type="uri" xlink:href="http://www.moh.gov.vn/legaldoc/pages/LegalDocument.aspx?ItemID=468" xlink:type="simple">http://www.moh.gov.vn/legaldoc/pages/LegalDocument.aspx?ItemID=468</ext-link>.</mixed-citation></ref>
+<ref id="pone.0190755.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ngoan le</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Lua</surname> <given-names>NT</given-names></name>, <name name-style="western"><surname>Hang</surname> <given-names>LT</given-names></name>. <article-title>Cancer mortality pattern in Viet Nam</article-title>. <source>Asian Pac J Cancer Prev</source>. <year>2007</year>;<volume>8</volume>(<issue>4</issue>):<fpage>535</fpage>–<lpage>8</lpage>. Epub 2008/02/12. <object-id pub-id-type="pmid">18260724</object-id>.</mixed-citation></ref>
+<ref id="pone.0190755.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ngoan</surname> <given-names>LT</given-names></name>, <name name-style="western"><surname>Truong</surname> <given-names>LD</given-names></name>, <name name-style="western"><surname>Linh</surname> <given-names>LT</given-names></name>, <name name-style="western"><surname>Chuong</surname> <given-names>LH</given-names></name>, <name name-style="western"><surname>Tuan</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Thuong</surname> <given-names>NV</given-names></name>, <etal>et al</etal>. <article-title>Maternal and child mortality in Hanoi, Vietnam</article-title>. <source>Southeast-Asian J of Sciences</source>. <year>2012</year>;<volume>1</volume>(<issue>2</issue>):<fpage>9</fpage>. Epub 243.</mixed-citation></ref>
+<ref id="pone.0190755.ref019"><label>19</label><mixed-citation publication-type="other" xlink:type="simple">Vietnamese Prime Minister. Quyết định 101/QĐ-Ttg về Phê duyệt chương trình hành động Quốc gia của Việt Nam về đăng ký thống kê hộ tịch giai đoạn 2007–2024 (Decision number 101/QĐ-Ttg on Approval of "The National Action Plan on Civil Registration and Vital Statistics period 2017–2024") Hanoi, Vietnam2017 [cited 2017 December 16]. Available from: <ext-link ext-link-type="uri" xlink:href="http://vanban.chinhphu.vn/portal/page/portal/chinhphu/hethongvanban?class_id=2&amp;_page=1&amp;mode=detail&amp;document_id=188102" xlink:type="simple">http://vanban.chinhphu.vn/portal/page/portal/chinhphu/hethongvanban?class_id=2&amp;_page=1&amp;mode=detail&amp;document_id=188102</ext-link>.</mixed-citation></ref>
+<ref id="pone.0190755.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rao</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Hu</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Ma</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Xia</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Lopez</surname> <given-names>AD</given-names></name>. <article-title>Validation of cause-of-death statistics in urban China</article-title>. <source>Int J Epidemiol</source>. <year>2007</year>;<volume>36</volume>(<issue>3</issue>):<fpage>642</fpage>–<lpage>51</lpage>. Epub 2007/03/03. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/ije/dym003" xlink:type="simple">10.1093/ije/dym003</ext-link></comment> <object-id pub-id-type="pmid">17329316</object-id>.</mixed-citation></ref>
+<ref id="pone.0190755.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Jiemin</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Rao</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Wan</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Dubrovsky</surname> <given-names>G</given-names></name>, <etal>et al</etal>. <article-title>Evaluation of the quality of cause of death statistics in rural China using verbal autopsies</article-title>. <source>J Epidemiol Community Health</source>. <year>2007</year>;<volume>61</volume>(<issue>6</issue>):<fpage>519</fpage>–<lpage>26</lpage>. Epub 2007/05/15. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1136/jech.2005.043927" xlink:type="simple">10.1136/jech.2005.043927</ext-link></comment> <object-id pub-id-type="pmid">17496261</object-id>; PubMed Central PMCID: PMCPMC2465713.</mixed-citation></ref>
+<ref id="pone.0190755.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rao</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Porapakkham</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Pattaraarchachai</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Polprasert</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Swampunyalert</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Lopez</surname> <given-names>AD</given-names></name>. <article-title>Verifying causes of death in Thailand: rationale and methods for empirical investigation</article-title>. <source>Popul Health Metr</source>. <year>2010</year>;<volume>8</volume>:<fpage>11</fpage>. Epub 2010/05/21. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/1478-7954-8-11" xlink:type="simple">10.1186/1478-7954-8-11</ext-link></comment> <object-id pub-id-type="pmid">20482758</object-id>; PubMed Central PMCID: PMCPmc2880956.</mixed-citation></ref>
+<ref id="pone.0190755.ref023"><label>23</label><mixed-citation publication-type="other" xlink:type="simple">Omar A, Yi K, Fuad M, Ganapathy S, Jeevananthan C, Yusoff AF, et al. A study on determination of causes of death in Malaysia. A report published by the Institute of Public Health, Ministry of Health, Malaysia. ISBN: 978-983-2387-32-9. 2017. Pgs. 1–167. 2017.</mixed-citation></ref>
+<ref id="pone.0190755.ref024"><label>24</label><mixed-citation publication-type="book" xlink:type="simple"><collab>Vietnam Administration of HIV/AIDS Control (VAAC)</collab>. <source>National HIV case reporting</source>. <publisher-loc>Hanoi</publisher-loc>: <publisher-name>Ministry of Health</publisher-name>; <year>2014</year>.</mixed-citation></ref>
+<ref id="pone.0190755.ref025"><label>25</label><mixed-citation publication-type="other" xlink:type="simple">Chuc NTK, Hoa NP, Rao C, Anh ND. Xác định nguyên nhân tử vong qua phỏng vấn: Tài liệu tập huấn dành cho điều tra viên (Identification of cause of death using interview: Training document for interviewers). Hanoi: 2011.</mixed-citation></ref>
+<ref id="pone.0190755.ref026"><label>26</label><mixed-citation publication-type="other" xlink:type="simple">WHO. International Statistical Classification of Diseases and Related Health Problems 10th Revision. Volume 1. Online version 2016 [cited 2017 December 16]. Available from: <ext-link ext-link-type="uri" xlink:href="http://apps.who.int/classifications/icd10/browse/2016/en" xlink:type="simple">http://apps.who.int/classifications/icd10/browse/2016/en</ext-link>.</mixed-citation></ref>
+<ref id="pone.0190755.ref027"><label>27</label><mixed-citation publication-type="other" xlink:type="simple">WHO. International statistical classification of diseases and related health problems. 10th revision. Volume 2—Instruction manual. Fifth edition 2016 [cited 2017 June 28]. Available from: <ext-link ext-link-type="uri" xlink:href="http://apps.who.int/classifications/icd10/browse/Content/statichtml/ICD10Volume2_en_2016.pdf" xlink:type="simple">http://apps.who.int/classifications/icd10/browse/Content/statichtml/ICD10Volume2_en_2016.pdf</ext-link>.</mixed-citation></ref>
+<ref id="pone.0190755.ref028"><label>28</label><mixed-citation publication-type="book" xlink:type="simple"><collab>WHO</collab>. <source>International Statistical Classification of Diseases and Related Health Problems 10th Revision. Volume 1- Tabular list</source>. <edition>Fifth edition</edition>. <publisher-loc>Geneva</publisher-loc>: <publisher-name>WHO Press</publisher-name>; <year>2016</year>.</mixed-citation></ref>
+<ref id="pone.0190755.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>ChandraSekar</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Deming</surname> <given-names>WE</given-names></name>. <article-title>On a Method of Estimating Birth and Death Rates and the Extent of Registration</article-title>. <source>Journal of the American Statistical Association</source>. <year>1949</year>;<volume>44</volume>(<issue>245</issue>):<fpage>101</fpage>–<lpage>15</lpage>.</mixed-citation></ref>
+<ref id="pone.0190755.ref030"><label>30</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Betty</surname> <given-names>R</given-names></name>. <name name-style="western"><surname>Kirkwood</surname> <given-names>A.C</given-names></name>.<name name-style="western"><surname>Sterne</surname> <given-names>J</given-names></name>. <source>Essential Medical Statistics</source>. <publisher-loc>Australia</publisher-loc>: <publisher-name>Blackwell Science</publisher-name>; <year>2003</year>.</mixed-citation></ref>
+<ref id="pone.0190755.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Viera</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Garrett</surname> <given-names>JM</given-names></name>. <article-title>Understanding interobserver agreement: the kappa statistic</article-title>. <source>Fam Med</source>. <year>2005</year>;<volume>37</volume>(<issue>5</issue>):<fpage>360</fpage>–<lpage>3</lpage>. Epub 2005/05/11. <object-id pub-id-type="pmid">15883903</object-id>.</mixed-citation></ref>
+<ref id="pone.0190755.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hong</surname> <given-names>TT</given-names></name>, <name name-style="western"><surname>Walker</surname> <given-names>SM</given-names></name>, <name name-style="western"><surname>McKenzie</surname> <given-names>K</given-names></name>. <article-title>The Quality of Injury Data from Hospital Records in Vietnam</article-title>. <source>Health Information Management Journal</source>. <year>2009</year>;<volume>38</volume>(<issue>1</issue>):<fpage>15</fpage>–<lpage>21</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1177/183335830903800103" xlink:type="simple">10.1177/183335830903800103</ext-link></comment> <object-id pub-id-type="pmid">19293432</object-id></mixed-citation></ref>
+<ref id="pone.0190755.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Landis</surname> <given-names>JR</given-names></name>, <name name-style="western"><surname>Koch</surname> <given-names>GG</given-names></name>. <article-title>The measurement of observer agreement for categorical data</article-title>. <source>Biometrics</source>. <year>1977</year>;<volume>33</volume>(<issue>1</issue>):<fpage>159</fpage>–<lpage>74</lpage>. Epub 1977/03/01. <object-id pub-id-type="pmid">843571</object-id>.</mixed-citation></ref>
+<ref id="pone.0190755.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yang</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Rao</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Ma</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Wan</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Dubrovsky</surname> <given-names>G</given-names></name>, <etal>et al</etal>. <article-title>Validation of verbal autopsy procedures for adult deaths in China</article-title>. <source>Int J Epidemiol</source>. <year>2006</year>;<volume>35</volume>(<issue>3</issue>):<fpage>741</fpage>–<lpage>8</lpage>. Epub 2005/09/08. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/ije/dyi181" xlink:type="simple">10.1093/ije/dyi181</ext-link></comment> <object-id pub-id-type="pmid">16144861</object-id>.</mixed-citation></ref>
+<ref id="pone.0190755.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huy</surname> <given-names>TQ</given-names></name>, <name name-style="western"><surname>Long</surname> <given-names>NH</given-names></name>, <name name-style="western"><surname>Hoa</surname> <given-names>DP</given-names></name>, <name name-style="western"><surname>Byass</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Ericksson</surname> <given-names>B</given-names></name>. <article-title>Validity and completeness of death reporting and registration in a rural district of Vietnam</article-title>. <source>Scand J Public Health Suppl</source>. <year>2003</year>;<volume>62</volume>:<fpage>12</fpage>–<lpage>8</lpage>. Epub 2003/12/03. <object-id pub-id-type="pmid">14640146</object-id>.</mixed-citation></ref>
+<ref id="pone.0190755.ref036"><label>36</label><mixed-citation publication-type="other" xlink:type="simple">WHO. International Statistical Classification of Diseases and Related Health Problems: 10th Revision. 2008 ed2008.</mixed-citation></ref>
+<ref id="pone.0190755.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Stevenson</surname> <given-names>MR</given-names></name>, <name name-style="western"><surname>Ngoan le</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Hung</surname> <given-names>DV</given-names></name>, <name name-style="western"><surname>Huong Tu</surname> <given-names>NT</given-names></name>, <name name-style="western"><surname>Mai</surname> <given-names>AL</given-names></name>, <name name-style="western"><surname>Ivers</surname> <given-names>RQ</given-names></name>, <etal>et al</etal>. <article-title>Evaluation of the Vietnamese A6 mortality reporting system: injury as a cause of death</article-title>. <source>Inj Prev</source>. <year>2012</year>;<volume>18</volume>(<issue>6</issue>):<fpage>360</fpage>–<lpage>4</lpage>. Epub 2012/03/01. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1136/injuryprev-2011-040261" xlink:type="simple">10.1136/injuryprev-2011-040261</ext-link></comment> <object-id pub-id-type="pmid">22361245</object-id>.</mixed-citation></ref>
+<ref id="pone.0190755.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gupta</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Khieu</surname> <given-names>TQ</given-names></name>, <name name-style="western"><surname>Rao</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Anh</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Hoa</surname> <given-names>NP</given-names></name>. <article-title>Assessing the quality of evidence for verbal autopsy diagnosis of stroke in Vietnam</article-title>. <source>J Neurosci Rural Pract</source>. <year>2012</year>;<volume>3</volume>(<issue>3</issue>):<fpage>267</fpage>–<lpage>75</lpage>. Epub 2012/11/29. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.4103/0976-3147.102603" xlink:type="simple">10.4103/0976-3147.102603</ext-link></comment> <object-id pub-id-type="pmid">23188975</object-id>; PubMed Central PMCID: PMCPMC3505314.</mixed-citation></ref>
+<ref id="pone.0190755.ref039"><label>39</label><mixed-citation publication-type="other" xlink:type="simple">Nguyen Cong Luat. Evaluating Completeness of Antenatal, Delivery and Immunization Registers to measure Mortality in Children under one year in Central region of Vietnam Brisbane: University of Queensland; 2011.</mixed-citation></ref>
+<ref id="pone.0190755.ref040"><label>40</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Diep Thi Thu</surname> <given-names>Trang</given-names></name>. <source>The completeness of the infant mortality recording system in rural Northern Vietnam: Potential for improvement</source>. <publisher-loc>Brisbane</publisher-loc>: <publisher-name>University of Queensland</publisher-name>; <year>2011</year>.</mixed-citation></ref>
+<ref id="pone.0190755.ref041"><label>41</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fottrell</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Byass</surname> <given-names>P</given-names></name>. <article-title>Verbal autopsy: methods in transition</article-title>. <source>Epidemiol Rev</source>. <year>2010</year>;<volume>32</volume>:<fpage>38</fpage>–<lpage>55</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/epirev/mxq003" xlink:type="simple">10.1093/epirev/mxq003</ext-link></comment> <object-id pub-id-type="pmid">20203105</object-id></mixed-citation></ref>
+<ref id="pone.0190755.ref042"><label>42</label><mixed-citation publication-type="other" xlink:type="simple">WHO. Verbal Autopsy Standard: The 2014 WHO verbal autopsy instrument 2015 [cited 2016 August 3]. Available from: <ext-link ext-link-type="uri" xlink:href="http://www.who.int/healthinfo/statistics/verbalautopsystandards/en/" xlink:type="simple">http://www.who.int/healthinfo/statistics/verbalautopsystandards/en/</ext-link>.</mixed-citation></ref>
+<ref id="pone.0190755.ref043"><label>43</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mayanja</surname> <given-names>BN</given-names></name>, <name name-style="western"><surname>Baisley</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Nalweyiso</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Kibengo</surname> <given-names>FM</given-names></name>, <name name-style="western"><surname>Mugisha</surname> <given-names>JO</given-names></name>, <name name-style="western"><surname>Van der Paal</surname> <given-names>L</given-names></name>, <etal>et al</etal>. <article-title>Using verbal autopsy to assess the prevalence of HIV infection among deaths in the ART period in rural Uganda: a prospective cohort study, 2006–2008</article-title>. <source>Popul Health Metr</source>. <year>2011</year>;<volume>9</volume>:<fpage>36</fpage>. Epub 2011/08/06. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/1478-7954-9-36" xlink:type="simple">10.1186/1478-7954-9-36</ext-link></comment> <object-id pub-id-type="pmid">21816100</object-id>; PubMed Central PMCID: PMCPMC3160929.</mixed-citation></ref>
+<ref id="pone.0190755.ref044"><label>44</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lim</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Frangakis</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Latkin</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Ha</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Minh</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Zelaya</surname> <given-names>C</given-names></name>, <etal>et al</etal>. <article-title>Community-Level Income Inequality and HIV Prevalence among Persons Who Inject Drugs in Thai Nguyen, Vietnam</article-title>. <source>PLoS One</source>. <year>2014</year>;<volume>9</volume>(<issue>3</issue>). <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0090723" xlink:type="simple">10.1371/journal.pone.0090723</ext-link></comment> <object-id pub-id-type="pmid">24618892</object-id></mixed-citation></ref>
+<ref id="pone.0190755.ref045"><label>45</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Maraba</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Karat</surname> <given-names>AS</given-names></name>, <name name-style="western"><surname>McCarthy</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Churchyard</surname> <given-names>GJ</given-names></name>, <name name-style="western"><surname>Charalambous</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Kahn</surname> <given-names>K</given-names></name>, <etal>et al</etal>. <article-title>Verbal autopsy-assigned causes of death among adults being investigated for TB in South Africa</article-title>. <source>Trans R Soc Trop Med Hyg</source>. <year>2016</year>;<volume>110</volume>(<issue>9</issue>):<fpage>510</fpage>–<lpage>6</lpage>. Epub 2016/10/30. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/trstmh/trw058" xlink:type="simple">10.1093/trstmh/trw058</ext-link></comment> <object-id pub-id-type="pmid">27794093</object-id>; PubMed Central PMCID: PMCPmc5091329.</mixed-citation></ref>
+<ref id="pone.0190755.ref046"><label>46</label><mixed-citation publication-type="other" xlink:type="simple">Curtis S, Mswia RG, Weaver EH, editors. Applications for measuring maternal mortality: Three case studies using verbal autopsy methodology. The 2013 XXVII IUSSP International Population Conference; 2013; Busan, Korea.</mixed-citation></ref>
+<ref id="pone.0190755.ref047"><label>47</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nausheen</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Soofi</surname> <given-names>SB</given-names></name>, <name name-style="western"><surname>Sadiq</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Habib</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Turab</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Memon</surname> <given-names>Z</given-names></name>, <etal>et al</etal>. <article-title>Validation of Verbal Autopsy Tool for Ascertaining the Causes of Stillbirth</article-title>. <source>PLoS One</source>. <year>2013</year>;<volume>8</volume>(<issue>10</issue>):<fpage>e76933</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0076933" xlink:type="simple">10.1371/journal.pone.0076933</ext-link></comment> <object-id pub-id-type="pmid">24130814</object-id></mixed-citation></ref>
+<ref id="pone.0190755.ref048"><label>48</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hansen</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Åsberg</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Kumlien</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Zelano</surname> <given-names>J</given-names></name>. <article-title>Cause of death in patients with poststroke epilepsy: Results from a nationwide cohort study</article-title>. <source>PLoS One</source>. <year>2017</year>;<volume>12</volume>(<issue>4</issue>):<fpage>e0174659</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0174659" xlink:type="simple">10.1371/journal.pone.0174659</ext-link></comment> <object-id pub-id-type="pmid">28380003</object-id></mixed-citation></ref>
+<ref id="pone.0190755.ref049"><label>49</label><mixed-citation publication-type="other" xlink:type="simple">Dao Lan Huong. Mortality in transitional Vietnam. [PhD thesis]. Sweden: Umeå University; 2006.</mixed-citation></ref>
+<ref id="pone.0190755.ref050"><label>50</label><mixed-citation publication-type="other" xlink:type="simple">VINE Project. Evidence Base for Health Policy in Vietnam Project: Report on the mortality component. Hanoi: 2012.</mixed-citation></ref>
+<ref id="pone.0190755.ref051"><label>51</label><mixed-citation publication-type="other" xlink:type="simple">Hanoi University of Public Health. Vietnam National Injury Survey 2011. Hanoi: 2012.</mixed-citation></ref>
+</ref-list>
+</back>
+</article>

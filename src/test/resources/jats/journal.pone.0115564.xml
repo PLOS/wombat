@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id><journal-title-group>
+<journal-title>PLoS ONE</journal-title></journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="publisher-id">PONE-D-14-37924</article-id>
+<article-id pub-id-type="doi">10.1371/journal.pone.0115564</article-id>
+<article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Biology and life sciences</subject><subj-group><subject>Nutrition</subject><subj-group><subject>Malnutrition</subject></subj-group></subj-group><subj-group><subject>Physiology</subject><subj-group><subject>Endocrine physiology</subject><subj-group><subject>Reproductive endocrinology</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Medicine and health sciences</subject><subj-group><subject>Dermatology</subject></subj-group><subj-group><subject>Endocrinology</subject></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>The Effect of 17β-Estradiol on Cutaneous Wound Healing in Protein-Malnourished Ovariectomized Female Mouse Model</article-title>
+<alt-title alt-title-type="running-head">Effect of 17β-Estradiol on Wound Healing in PM OVX Female Mice</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Mukai</surname><given-names>Kanae</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Komatsu</surname><given-names>Emi</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Nakajima</surname><given-names>Yukari</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Urai</surname><given-names>Tamae</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Nasruddin</surname></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Sugama</surname><given-names>Junko</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Nakatani</surname><given-names>Toshio</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+</contrib-group>
+<aff id="aff1"><label>1</label><addr-line>Department of Clinical Nursing, Graduate Course of Nursing Science, Division of Health Sciences, Graduate School of Medical Sciences, Kanazawa University, Kanazawa, Japan</addr-line></aff>
+<aff id="aff2"><label>2</label><addr-line>Faculty of Health Sciences, Institute of Medical, Pharmaceutical and Health Sciences, Kanazawa University, Kanazawa, Japan</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Oberyszyn</surname><given-names>Tatiana M.</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Ohio State University, United States of America</addr-line></aff>
+<author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">nakatosi@staff.kanazawa-u.ac.jp</email></corresp>
+<fn fn-type="conflict"><p>The authors have declared that no competing interests exist.</p></fn>
+<fn fn-type="con"><p>Conceived and designed the experiments: KM. Performed the experiments: KM EK YN TU N. Analyzed the data: KM EK YN TU N. Contributed reagents/materials/analysis tools: TN. Wrote the paper: KM. Contributed to interpretation of the data: JS TN. Revised the paper critically: TN.</p></fn>
+</author-notes>
+<pub-date pub-type="collection"><year>2014</year></pub-date>
+<pub-date pub-type="epub"><day>17</day><month>12</month><year>2014</year></pub-date>
+<volume>9</volume>
+<issue>12</issue>
+<elocation-id>e115564</elocation-id>
+<history>
+<date date-type="received"><day>23</day><month>8</month><year>2014</year></date>
+<date date-type="accepted"><day>25</day><month>11</month><year>2014</year></date>
+</history>
+<permissions>
+<copyright-year>2014</copyright-year>
+<copyright-holder>Mukai et al</copyright-holder><license xlink:type="simple"><license-p>This is an open-access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions>
+<abstract>
+<p>Cutaneous wound healing is delayed by protein malnutrition (PM). On the other hand, estrogen promotes cutaneous wound healing by its anti-inflammatory and cell proliferation effects. Therefore, we hypothesized that estrogen administration in protein-malnourished ovariectomized (OVX) female mice might improve the inflammatory response and promote cutaneous wound healing as well as normal nutrition. To test this hypothesis, we used full-thickness excisional wounds in Control SHAM, PM SHAM, PM OVX and PM OVX+17β-estradiol mice. The Control diet included 200 g/kg protein and the PM diet included 30 g/kg protein. The ratio of wound area in the Control SHAM group was significantly smaller than those in the three PM groups. In addition, microscopic findings also showed that the ratio of collagen fibers, the ratio of myofibroblasts and the number of new blood vessels in the Control SHAM group were significantly greater than those in the three PM groups. However, the number of Ym1-positive cells as an anti-inflammatory M2-like macrophage marker in the PM OVX+17β-estradiol group was significantly higher than those in the other three groups. These results indicate that the appearance of anti-inflammatory M2-like macrophages was promoted by estrogen administration; however, it could not promote cutaneous wound healing upon a low-protein diet. Therefore, it may be confirmed that nutrition is more important for promoting cutaneous wound healing than estrogen administration.</p>
+</abstract>
+<funding-group><funding-statement>All of this work was supported by JSPS KAKENHI (Grant Number 25293430 to T. Nakatani) and research funding from Kanazawa University. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts><page-count count="20"/></counts><custom-meta-group><custom-meta id="data-availability" xlink:type="simple"><meta-name>Data Availability</meta-name><meta-value>The authors confirm that all data underlying the findings are fully available without restriction. All relevant data are within the paper.</meta-value></custom-meta></custom-meta-group></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p>Cutaneous wound healing is a complex tightly orchestrated response to injury, carefully regulated at temporal and spatial levels <xref ref-type="bibr" rid="pone.0115564-Shaw1">[1]</xref>. There are three major stages: inflammation, proliferation and remodeling. In particular, the inflammation phase is regarded as a critical period of cutaneous wound healing, essential for clearing away contaminating bacteria and creating an environment conducive to subsequent events such as tissue repair and regeneration <xref ref-type="bibr" rid="pone.0115564-Abbott1">[2]</xref>–<xref ref-type="bibr" rid="pone.0115564-Mercado1">[4]</xref>.</p>
+<p>However, various factors are related to cutaneous wound healing <xref ref-type="bibr" rid="pone.0115564-Sgonc1">[5]</xref>. Among these, malnutrition is a major health issue affecting people in developed countries: more than 50% of the elderly in hospitals and institutions were found to be malnourished or at risk of malnutrition <xref ref-type="bibr" rid="pone.0115564-Langemo1">[6]</xref>, <xref ref-type="bibr" rid="pone.0115564-Izawa1">[7]</xref>. Protein plays a major role throughout the cutaneous wound healing process. Tsuda et al. reported that wound area was larger throughout wound healing in mice fed a protein-free (0 g/kg) rather than a control diet (200 g/kg) <xref ref-type="bibr" rid="pone.0115564-Tsuda1">[8]</xref>. Lim et al. reported that wound size was larger throughout the wound healing period and inflammatory response was delayed with decreased expression of TNF-α and IL-1β and decreased neutrophil infiltration in mice fed a protein malnutrition (PM) diet (5 g/kg) compared with those of mice fed a control diet (150 g/kg) <xref ref-type="bibr" rid="pone.0115564-Lim1">[9]</xref>. Otranto et al. reported that inflammatory cells were present at a higher level and wound contraction, collagen deposition and neovascularization were impaired in a protein-restricted group (0 g/kg) compared with those in a control group (230 g/kg) <xref ref-type="bibr" rid="pone.0115564-Otranto1">[10]</xref>. Moreover, Otranto et al. also reported that inflammatory cells, collagen deposition and neovascularization were disturbed in a slight-protein-restriction group (120 g/kg) compared with those in a control group <xref ref-type="bibr" rid="pone.0115564-Otranto1">[10]</xref>. These lines of research indicate that the entire process of cutaneous wound healing is delayed under malnutrition due to protein-free or low-protein conditions, and cutaneous wound healing is disturbed by slight protein malnutrition.</p>
+<p>On the other hand, female sex hormones also affect cutaneous wound healing. In menopausal women, cutaneous wound healing was shown to be delayed and inflammatory response was prolonged by a dramatic reduction of estrogen, which induces an increase of inflammatory cells; however, it was reversed by the topical replacement of estrogen, which induces a decrease of inflammatory cells <xref ref-type="bibr" rid="pone.0115564-Ashcroft1">[11]</xref>. In addition, in young ovariectomized (OVX) female rodents under normal nutrition, cutaneous wound healing was delayed compared with that in SHAM mice by increasing inflammatory cells and TNF-α expression <xref ref-type="bibr" rid="pone.0115564-Ashcroft2">[12]</xref>–<xref ref-type="bibr" rid="pone.0115564-Emmerson2">[18]</xref>; however, estrogen administration reversed this delay by reducing neutrophils, macrophages and the expression of TNF-α <xref ref-type="bibr" rid="pone.0115564-Ashcroft3">[13]</xref>–<xref ref-type="bibr" rid="pone.0115564-Emmerson2">[18]</xref>. Moreover, estrogen was shown to promote cutaneous wound healing by increasing Ym1-positive cells <xref ref-type="bibr" rid="pone.0115564-Routley1">[16]</xref>, which are thought of as anti-inflammatory M2-like macrophages, being involved in tissue repair rather than classical tissue inflammation by producing anti-inflammatory cytokines, growth factors and ECM <xref ref-type="bibr" rid="pone.0115564-Mantovani1">[19]</xref>–<xref ref-type="bibr" rid="pone.0115564-Gordon2">[22]</xref> and the expression of TGF-β1 <xref ref-type="bibr" rid="pone.0115564-Ashcroft2">[12]</xref>, <xref ref-type="bibr" rid="pone.0115564-Brufani1">[17]</xref>, and promoting collagen deposition <xref ref-type="bibr" rid="pone.0115564-Ashcroft2">[12]</xref>, <xref ref-type="bibr" rid="pone.0115564-Emmerson1">[14]</xref>. In addition, from our previous research, it was also reported that estrogen administration promoted cutaneous wound healing in OVX mice under normal nutrition by reducing neutrophils and macrophages <xref ref-type="bibr" rid="pone.0115564-Mukai1">[23]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai2">[24]</xref> and promoting collagen deposition <xref ref-type="bibr" rid="pone.0115564-Mukai1">[23]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai2">[24]</xref> and wound contraction <xref ref-type="bibr" rid="pone.0115564-Mukai2">[24]</xref> at 24 weeks and 40 weeks.</p>
+<p>Therefore, we thought that the anti-inflammatory effect and cell proliferation action due to estrogen would be shown upon low-protein malnutrition, such as having a small amount of endogenous protein. Specifically, we hypothesized that estrogen administration in low-protein-malnourished OVX female mice might improve the inflammatory response and promote cutaneous wound healing as well as in normal nutrition. To test this hypothesis, we used full-thickness excisional wounds in OVX mice fed a 3% protein diet (30 g/kg) with estrogen administration to examine the wound area, numbers of neutrophils, macrophages and Ym1-positive cells, expression of plasma TNF-α, expression of plasma CD163 as an marker of anti-inflammatory M2-like macrophages <xref ref-type="bibr" rid="pone.0115564-Sindrilaru2">[25]</xref>, <xref ref-type="bibr" rid="pone.0115564-Sulahian1">[26]</xref>, collagen deposition, angiogenesis and wound contraction. The aim of this study was to evaluate whether inflammatory response is improved and cutaneous wound healing is promoted by 17β-estradiol administration in OVX female mice fed a 3% protein diet.</p>
+</sec><sec id="s2" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="s2a">
+<title>Animals and diets</title>
+<p>Ninety C57BL/6 female mice aged 7 weeks (Sankyo Lab Service Co., Tokyo, Japan) were used in the experiments. They were caged individually in an air-conditioned room at 25.0±2.0°C with light from 08:45 to 20:45 hours, and water and chow were given freely. All animal experiments conducted in this study were reviewed and approved by Kanazawa University Animal Experiment Committee, and carried out in accordance with the Guidelines for the Care and Use of Laboratory Animals of Kanazawa University, Japan (AP-132740). We used three different diets, which were CRF-1 rodent diet (normal diet, 22.6% protein), AIN-93G purified rodent diet (control diet, 20% protein) and 3% modified AIN-93G purified rodent diet (protein malnutrition (PM) diet, 3% protein) (Oriental Yeast Co. Ltd., Tokyo, Japan). Purified rodent diets of AIN-93G and 3% modified AIN-93G were made by Oriental Yeast Co. Ltd. The diet compositions are shown in <xref ref-type="table" rid="pone-0115564-t001">Tables 1</xref> and <xref ref-type="table" rid="pone-0115564-t002">2</xref>.</p>
+<table-wrap id="pone-0115564-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.t001</object-id><label>Table 1</label><caption>
+<title>Diet composition.</title>
+</caption><alternatives><graphic id="pone-0115564-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.t001" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">CRF-1</td>
+<td align="left" rowspan="1" colspan="1">AIN-93G</td>
+<td align="left" rowspan="1" colspan="1">3% modified AIN-93G</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">(Normal diet)</td>
+<td align="left" rowspan="1" colspan="1">(Control diet)</td>
+<td align="left" rowspan="1" colspan="1">(PM diet)</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Protein (%)</td>
+<td align="left" rowspan="1" colspan="1">22.6</td>
+<td align="left" rowspan="1" colspan="1">20.0</td>
+<td align="left" rowspan="1" colspan="1">3.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Kcal (per 100 g)</td>
+<td align="left" rowspan="1" colspan="1">356.0</td>
+<td align="left" rowspan="1" colspan="1">377.2</td>
+<td align="left" rowspan="1" colspan="1">377.2</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt101"><label/><p>Oriental Yeast Co. Ltd.</p></fn></table-wrap-foot></table-wrap><table-wrap id="pone-0115564-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.t002</object-id><label>Table 2</label><caption>
+<title>The ingredients of the AIN-93G and 3% modified AIN-93G rodent diets.</title>
+</caption><alternatives><graphic id="pone-0115564-t002-2" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.t002" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">AIN-93G</td>
+<td align="left" rowspan="1" colspan="1">3% modified AIN-93G</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">(Control diet)</td>
+<td align="left" rowspan="1" colspan="1">(PM diet)</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Casein (%)</td>
+<td align="left" rowspan="1" colspan="1">20.0</td>
+<td align="left" rowspan="1" colspan="1">3.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">L-Cystine (%)</td>
+<td align="left" rowspan="1" colspan="1">0.3</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Cornstarch (%)</td>
+<td align="left" rowspan="1" colspan="1">39.7486</td>
+<td align="left" rowspan="1" colspan="1">49.2486</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Chemical cornstarch A (%)</td>
+<td align="left" rowspan="1" colspan="1">13.2</td>
+<td align="left" rowspan="1" colspan="1">21.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Sucrose (%)</td>
+<td align="left" rowspan="1" colspan="1">10.0</td>
+<td align="left" rowspan="1" colspan="1">10.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Soya bean oil (%)</td>
+<td align="left" rowspan="1" colspan="1">7.0</td>
+<td align="left" rowspan="1" colspan="1">7.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Cellulose powder (%)</td>
+<td align="left" rowspan="1" colspan="1">5.0</td>
+<td align="left" rowspan="1" colspan="1">5.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">AIN-93G containing minerals (%)</td>
+<td align="left" rowspan="1" colspan="1">3.5</td>
+<td align="left" rowspan="1" colspan="1">3.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">AIN-93G containing vitamins (%)</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Choline bitartrate (%)</td>
+<td align="left" rowspan="1" colspan="1">0.25</td>
+<td align="left" rowspan="1" colspan="1">0.25</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">T-butylhydroquinone (%)</td>
+<td align="left" rowspan="1" colspan="1">0.0014</td>
+<td align="left" rowspan="1" colspan="1">0.0014</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt102"><label/><p>Oriental Yeast Co. Ltd.</p></fn></table-wrap-foot></table-wrap>
+<p>The mice were acclimated for 7 days before initiation of surgery. At 8 weeks old, the mice were anesthetized by intraperitoneal (IP) injection of pentobarbital sodium (0.05 mg/g weight) and the dorsum was shaved. Then, they were subjected to sham surgery (SHAM) or ovariectomy (OVX) according to OECD guidelines <xref ref-type="bibr" rid="pone.0115564-OECD1">[27]</xref>. They were divided into four groups: Control SHAM group (n = 25), PM SHAM group (n = 24), PM OVX group (n = 20) and PM OVX+17β-estradiol group (n = 21). After surgery, all groups were fed a normal diet for 2 weeks as a period of recovery after the surgery. Then, the Control SHAM group was fed a control diet for 3 weeks, but the other 3 groups were fed a PM diet for 3 weeks, on the basis of previous research <xref ref-type="bibr" rid="pone.0115564-Lim1">[9]</xref> (<xref ref-type="fig" rid="pone-0115564-g001">Fig. 1</xref>). Body weight and amount of diet intake were measured every week. Rodent diet consumption and protein consumption were calculated from the data for 3 weeks after feeding on Control diet or PM diet. The body weight variation was calculated using the initial (upon starting feeding on Control diet or PM diet) and final weights (day of wound preparation) of the animals in each group. At 13 weeks old (5 weeks after surgery), the mice (n = 10 in Control SHAM, 9 in PM SHAM and 6 in PM OVX and PM OVX+17β-estradiol groups) for assaying of total protein (TP) and albumin (Alb) were euthanized by a massive pentobarbital sodium IP injection. Plasma was prepared from each mouse's blood isolated through cardiac puncture and frozen until the time of assaying of TP and Alb. This was outsourced to the assay manufacturer (Mitsubishi Chemical Medience Co., Tokyo, Japan).</p>
+<fig id="pone-0115564-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.g001</object-id><label>Figure 1</label><caption>
+<title>Research schedule.</title>
+<p>Mice were subjected to sham surgery (SHAM) or ovariectomy (OVX) and divided into four groups: Control SHAM group, protein malnutrition (PM) SHAM group, PM OVX group and PM OVX+17β-estradiol group. Three different colors show different diets. After surgery, all groups were fed a normal diet for 2 weeks (blue box) as a period of recovery from the surgery. Then, the Control SHAM group was fed on a control diet (orange box) for 3 weeks, but the other 3 groups were fed on a PM diet (purple box) for 3 weeks. At 5 weeks after surgery, two circular full-thickness skin wounds (4 mm in diameter) including the panniculus carnosus muscle on both sides of the dorsum of the mouse were made with a Kai sterile disposable biopsy punch. The process of wound healing was observed every day for 15 days, and wounds were harvested on days 3, 7 and 14 after wounding (circled numbers).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.g001" position="float" xlink:type="simple"/></fig></sec><sec id="s2b">
+<title>Wounding</title>
+<p>At 13 weeks old (5 weeks after surgery), under anesthesia with shaving, two circular full-thickness skin wounds (4 mm in diameter) including the panniculus carnosus muscle on both sides of the dorsum of the mouse were made with a Kai sterile disposable biopsy punch (Kai Industries Co. Ltd., Gifu, Japan). In the Control SHAM, PM SHAM and PM OVX groups, the wounds were covered with hydrocolloid dressing (Tegaderm; 3 M Health Care, Tokyo, Japan) to maintain a moist environment, and then the mouse was wrapped with sticky bandages (Meshpore Tape; Nichiban, Tokyo, Japan), which were changed every day. In the PM OVX+17β-estradiol group, wounds received the same treatment. However, after wound treatment, they were also treated with 0.01 g of 17β-estradiol gel (L'estrogel 0.06%; Bayer Yakuhin, Osaka, Japan). It was placed on clean gauze using a 1-mL syringe and applied to the skin on the back avoiding the wounds every day, and the gauze was covered with sticky bandages. The dose of 17β-estradiol was chosen with successful estrogen replacement confirmed by enzyme immunoassay on plasma samples and a gain of the uterine weight, as used in previous wound healing studies <xref ref-type="bibr" rid="pone.0115564-Mukai1">[23]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai2">[24]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai3">[28]</xref>.</p>
+</sec><sec id="s2c">
+<title>Macroscopic observation</title>
+<p>The day when wounds were made was designated as day 0, and the process of wound healing was observed from then until day 14 after wounding. Wound edges were traced on polypropylene sheets and photographs were taken every day. The traces on the sheets were captured with a scanner onto a personal computer using Adobe Photoshop Elements 7.0 (Adobe System Inc., Tokyo, Japan), and the areas of wounds were calculated using image analysis software Image J (National Institutes of Health, Bethesda, Maryland, USA). Wound area is shown as the ratio of wound area every day to the initial wound area on day 0 when the wound was made, according to our previous studies <xref ref-type="bibr" rid="pone.0115564-Mukai1">[23]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai2">[24]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai3">[28]</xref>.</p>
+</sec><sec id="s2d">
+<title>Uterus assay</title>
+<p>The mice were euthanized on days 3, 7 and 14 after wounding. The uterus was harvested according to OECD guidelines <xref ref-type="bibr" rid="pone.0115564-OECD1">[27]</xref> and its wet weight was measured.</p>
+</sec><sec id="s2e">
+<title>Histological procedure and immunohistological staining</title>
+<p>The mice were euthanized on days 3, 7 and 14 after wounding. The wound and the surrounding intact skin were harvested and each sample of wound and surrounding intact skin was bisected at the wound center. Each wound was stapled onto polypropylene sheets to prevent over-contraction of the sample and fixed in 4% paraformaldehyde for 17 hours. These samples were dehydrated in an alcohol series, cleaned in xylene and embedded in paraffin to prepare 5-µm serial paraffin sections. At least 6 serial sections near the center of the wound were obtained from one wound and stained according to the following methods. Sections of 5-µm thickness were subjected to hematoxylin and eosin (H&amp;E) staining or Azan staining and immunohistologically stained with anti-neutrophil antibody at a concentration of 1∶100 (ab2557, Abcam Japan, Tokyo, Japan) for detecting neutrophils, anti-Mac-3 antibody at a concentration of 1∶100 (550292, BD Pharmingen, Tokyo, Japan) for detecting macrophages, anti-Ym1 antibody at a concentration of 1∶300 (#01404, StemCell Technologies, Tokyo, Japan) for detecting anti-inflammatory M2-like macrophages and anti-α smooth muscle actin (α-SMA) antibody at a concentration of 1∶300 (ab5694, Abcam Japan, Tokyo, Japan) for detecting myofibroblasts. Negative control slides were obtained by omitting each primary antibody.</p>
+</sec><sec id="s2f">
+<title>Microscopic observations</title>
+<p>In normal cutaneous wound healing, the inflammatory phase is equivalent to day 3, the proliferation phase to day 7 and the remodeling phase to day 14. Therefore, we compared the four groups on days 3 and 7 in order to evaluate the inflammatory response and on days 7 and 14 to evaluate healing. Images were imported onto a computer using a digital microscopic camera (DP2-BSW Olympus, Japan). Measurements for the histological wound width and wound area were performed using DP2-BSW Olympus software with a ×4 objective upon HE staining: the histological wound width was determined by measuring the distance between wound edges and the histological wound area was calculated from wound edges below the necrotic tissue or new epithelium, extending to the level of the panniculus carnosus <xref ref-type="bibr" rid="pone.0115564-Ansell1">[29]</xref>. To analyze the numbers of neutrophils, macrophages and Ym1-positive cells in the wound area, each positive cell was counted using image analysis software Image J using a ×40 objective at five sites of the wound: two sites near the two wound edges and three sites around the center of the wound. The areas of these five sites were calculated on the monitor of the DP2-BSW and the total numbers of neutrophils, macrophages and Ym1-positive cells at the five sites were divided by the whole area of these five sites. Ym1-positive cell count/macrophage count (%) was calculated using the number of Ym1-positive cells per mm<sup>2</sup> and the number of macrophages per mm<sup>2</sup>. To analyze the numbers of new blood vessels in granulation tissue, each new blood vessel was counted using image analysis software Image J with a ×40 objective upon HE staining at five sites of granulation tissue: two sites near the two wound edges and three sites around the center of the granulation tissue. The total number of new blood vessels at the five sites was divided by the total area of these five sites. Measurements for collagen fibers colored blue (collagen fiber pixels/total wound pixels) and myofibroblasts colored brown (myofibroblast pixels/total wound pixels) were performed using Adobe Photoshop Elements 7.0, according to our previous research <xref ref-type="bibr" rid="pone.0115564-Mukai1">[23]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai2">[24]</xref>.</p>
+</sec><sec id="s2g">
+<title>Plasma TNF-α and CD163</title>
+<p>The mice were euthanized on days 3 and 7 after wounding. Plasma was prepared from each mouse's blood isolated through cardiac puncture and frozen until the time of assays. Plasma TNF-α levels were determined by ELISA (R&amp;D Systems, Tokyo, Japan) and plasma CD163 levels were also determined by ELISA (USCN Life Science Inc., Wuhan, China) according to the manufacturers' guidelines.</p>
+</sec><sec id="s2h">
+<title>Statistical analysis</title>
+<p>Data are expressed as mean ±SD, analyzed using JMP 8.0.1 (SAS Institute Inc., Cary, NC, USA). Comparisons of means among multiple groups were performed with one-way ANOVA followed by post hoc pairwise comparisons using Tukey-Kramer multiple comparison test. And comparisons of means between day 3 and day 7 or day 7 and day 14 were performed with Student's t-test. A two-tailed p&lt;0.05 was considered statistically significant.</p>
+</sec></sec><sec id="s3">
+<title>Results</title>
+<sec id="s3a">
+<title>Body weight</title>
+<p>At the time of surgery, the body weight showed no significant differences among the four groups (17.6±0.83 g in the Control SHAM, 17.5±0.56 g in the PM SHAM, 17.8±1.13 g in the PM OVX and 17.7±1.19 g in the PM OVX+17β-estradiol groups). Then, for 2 weeks after surgery, upon feeding on a normal diet, the body weights in the PM OVX and PM OVX+17β-estradiol groups were significantly increased compared with those in the Control SHAM and PM SHAM groups (p&lt;0.05). However, after feeding on Control diet (for Control SHAM) or PM diet (for PM SHAM, PM OVX and PM OVX+17β-estradiol groups), the mice fed a PM diet exhibited a drastic reduction in body weight on the day of wound preparation (body weight variation: −8.88±5.89% in the PM SHAM, −14.6±6.07% in the PM OVX and −13.0±6.33% in the PM OVX+17β-estradiol groups) (<xref ref-type="table" rid="pone-0115564-t003">Table 3</xref>), and the body weights in the PM SHAM, PM OVX and PM OVX+17β-estradiol groups were significantly decreased compared with that in the Control SHAM group on the day of wound preparation (5 weeks after surgery) (p&lt;0.05) (<xref ref-type="fig" rid="pone-0115564-g002">Fig. 2</xref>).</p>
+<fig id="pone-0115564-g002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.g002</object-id><label>Figure 2</label><caption>
+<title>Body weight.</title>
+<p>The body weights of each group are shown on line graphs for each week. Values are expressed as mean ±SD, n = 15, in Control SHAM, PM SHAM and PM OVX+17β-estradiol groups (before treatment with 17β-estradiol) and 14 in the PM OVX group, ANOVA, Tukey-Kramer <sup>*</sup>p&lt;0.05, <sup>**</sup>p&lt;0.01 (in black): Control SHAM versus PM SHAM, <sup>*</sup>p&lt;0.05, <sup>**</sup>p&lt;0.01 (in red): Control SHAM versus PM OVX, <sup>†</sup>p&lt;0.1, <sup>*</sup>p&lt;0.05, <sup>**</sup>p&lt;0.01 (in green): Control SHAM versus PM OVX+17β-estradiol, <sup>¶¶</sup>p&lt;0.01 (in red): PM OVX versus PM SHAM and <sup>¶</sup>p&lt;0.05 (in green): PM OVX+17β-estradiol versus PM SHAM.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.g002" position="float" xlink:type="simple"/></fig><table-wrap id="pone-0115564-t003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.t003</object-id><label>Table 3</label><caption>
+<title>Rodent diet consumption, protein consumption, body weight variation, TP and Alb among the four groups.</title>
+</caption><alternatives><graphic id="pone-0115564-t003-3" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.t003" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Control</td>
+<td align="left" rowspan="1" colspan="1">PM</td>
+<td align="left" rowspan="1" colspan="1">PM</td>
+<td align="left" rowspan="1" colspan="1">PM OVX+</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">SHAM</td>
+<td align="left" rowspan="1" colspan="1">SHAM</td>
+<td align="left" rowspan="1" colspan="1">OVX</td>
+<td align="left" rowspan="1" colspan="1">17β-estradiol</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Rodent diet consumption (g/week/animal)</td>
+<td align="left" rowspan="1" colspan="1">19.6±1.43</td>
+<td align="left" rowspan="1" colspan="1">22.9±1.84</td>
+<td align="left" rowspan="1" colspan="1">20.6±2.65</td>
+<td align="left" rowspan="1" colspan="1">19.7±2.98</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Protein consumption (g/week/animal)</td>
+<td align="left" rowspan="1" colspan="1">3.92±0.28</td>
+<td align="left" rowspan="1" colspan="1">0.69±0.06<xref ref-type="table-fn" rid="nt105">**</xref></td>
+<td align="left" rowspan="1" colspan="1">0.62±0.08<xref ref-type="table-fn" rid="nt105">**</xref></td>
+<td align="left" rowspan="1" colspan="1">0.59±0.09<xref ref-type="table-fn" rid="nt105">**</xref></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Body weight variation (%)</td>
+<td align="left" rowspan="1" colspan="1">+2.72±1.87</td>
+<td align="left" rowspan="1" colspan="1">−8.88±5.89<xref ref-type="table-fn" rid="nt105">**</xref></td>
+<td align="left" rowspan="1" colspan="1">−14.6±6.07<xref ref-type="table-fn" rid="nt105">**</xref></td>
+<td align="left" rowspan="1" colspan="1">−13.0±6.33<xref ref-type="table-fn" rid="nt105">**</xref></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">TP (g/dL)</td>
+<td align="left" rowspan="1" colspan="1">4.25±0.15</td>
+<td align="left" rowspan="1" colspan="1">3.84±0.38<xref ref-type="table-fn" rid="nt104">*</xref></td>
+<td align="left" rowspan="1" colspan="1">3.80±0.28<xref ref-type="table-fn" rid="nt104">*</xref></td>
+<td align="left" rowspan="1" colspan="1">3.75±0.34<xref ref-type="table-fn" rid="nt104">*</xref></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Alb (g/dL)</td>
+<td align="left" rowspan="1" colspan="1">3.46±0.13</td>
+<td align="left" rowspan="1" colspan="1">3.08±0.31<xref ref-type="table-fn" rid="nt104">*</xref></td>
+<td align="left" rowspan="1" colspan="1">2.90±0.29<xref ref-type="table-fn" rid="nt105">**</xref></td>
+<td align="left" rowspan="1" colspan="1">2.92±0.29<xref ref-type="table-fn" rid="nt105">**</xref></td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt103"><label/><p>Data are expressed as mean ±SD. Rodent diet consumption and protein consumption were calculated from the data for 3 weeks after feeding on Control diet or PM diet. The body weight variation was calculated using the initial (upon starting feeding on Control diet or PM diet) and final weights (day of wound preparation) of the animals in each group. n = 15 in Control SHAM, PM SHAM and PM OVX+17β-estradiol groups and 14 in PM OVX group (rodent diet consumption, protein consumption and body weight variation) and n = 10 in Control SHAM, 9 in PM SHAM and 6 in PM OVX and PM OVX+17β-estradiol groups (TP and Alb). ANOVA, Tukey-Kramer.</p></fn><fn id="nt104"><label/><p>*p&lt;0.05,</p></fn><fn id="nt105"><label/><p>**p&lt;0.01versus Control SHAM.</p></fn></table-wrap-foot></table-wrap></sec><sec id="s3b">
+<title>Food consumption, TP and Alb</title>
+<p>Rodent diet consumption (g/week/animal) was 19.6±1.43 g in the Control SHAM, 22.9±1.84 g in the PM SHAM, 20.6±2.65 g in the PM OVX and 19.7±2.98 g in the PM OVX+17β-estradiol groups, with no significant differences among these four groups (<xref ref-type="table" rid="pone-0115564-t003">Table 3</xref>). Protein consumption (g/week/animal) was 3.92±0.28 g in the Control SHAM, 0.69±0.06 g in the PM SHAM, 0.62±0.08 g in the PM OVX and 0.59±0.09 g in the PM OVX+17β-estradiol groups; that in the Control SHAM group was significantly higher than those in the other three groups (<xref ref-type="table" rid="pone-0115564-t003">Table 3</xref>). Moreover, TP and Alb in the Control SHAM group were also significantly greater than those in the other three groups on the day of wound preparation (5 weeks after surgery) (p&lt;0.05).</p>
+<p>Malnutrition is defined as a state of deficient energy/protein intake or absorption, which is characterized by weight loss and changes in body composition <xref ref-type="bibr" rid="pone.0115564-Lochs1">[30]</xref>. Several previous studies compared body weight or TP and Alb to evaluate a protein malnutrition (PM) model, and reported that they were significantly decreased in mice fed a PM diet <xref ref-type="bibr" rid="pone.0115564-Tsuda1">[8]</xref>, <xref ref-type="bibr" rid="pone.0115564-Lim1">[9]</xref>, <xref ref-type="bibr" rid="pone.0115564-Li1">[31]</xref>, <xref ref-type="bibr" rid="pone.0115564-daSilvaLima1">[32]</xref>. Our results were the same. Therefore, it is indicated that our setting was appropriate and we could establish a protein malnutrition model.</p>
+</sec><sec id="s3c">
+<title>Uterine weight</title>
+<p>We confirmed that the ovaries had been removed successfully in the PM OVX and PM OVX+17β-estradiol groups. The uterine weight in the PM OVX+17β-estradiol group was significantly greater than those in the other three groups (p&lt;0.01) (<xref ref-type="table" rid="pone-0115564-t004">Table 4</xref>). Moreover, the uterine weight in the Control SHAM group was also significantly greater than that in the PM OVX group (p&lt;0.05) (<xref ref-type="table" rid="pone-0115564-t004">Table 4</xref>). These results are almost the same as in our previous studies <xref ref-type="bibr" rid="pone.0115564-Mukai1">[23]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai2">[24]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai3">[28]</xref>. In addition, all of the gel that we applied on the skin on the back of the mouse was absorbed by the next day because the band covering the gel was not detached and the gel could not be felt. Therefore, it is thought that exogenous 17β-estradiol administration in OVX female mice led to its sufficient absorption.</p>
+<table-wrap id="pone-0115564-t004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.t004</object-id><label>Table 4</label><caption>
+<title>Uterine weight among the four groups.</title>
+</caption><alternatives><graphic id="pone-0115564-t004-4" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.t004" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Control</td>
+<td align="left" rowspan="1" colspan="1">PM</td>
+<td align="left" rowspan="1" colspan="1">PM</td>
+<td align="left" rowspan="1" colspan="1">PM OVX+</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">SHAM</td>
+<td align="left" rowspan="1" colspan="1">SHAM</td>
+<td align="left" rowspan="1" colspan="1">OVX</td>
+<td align="left" rowspan="1" colspan="1">17β-estradiol</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Uterine weight (g)</td>
+<td align="left" rowspan="1" colspan="1">0.044±0.008<xref ref-type="table-fn" rid="nt108">¶¶</xref></td>
+<td align="left" rowspan="1" colspan="1">0.038±0.009<xref ref-type="table-fn" rid="nt108">¶¶</xref></td>
+<td align="left" rowspan="1" colspan="1">0.022±0.006<xref ref-type="table-fn" rid="nt108">¶¶</xref> <xref ref-type="table-fn" rid="nt107">*</xref></td>
+<td align="left" rowspan="1" colspan="1">0.100±0.038</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt106"><label/><p>Data are expressed as mean ±SD. n = 15 in Control SHAM, PM SHAM and PM OVX+17β-estradiol groups and 14 in PM OVX group. ANOVA, Tukey-Kramer.</p></fn><fn id="nt107"><label/><p>*p&lt;0.05: versus Control SHAM,</p></fn><fn id="nt108"><label>¶¶</label><p>p&lt;0.01 versus PM OVX+17β-estradiol.</p></fn></table-wrap-foot></table-wrap></sec><sec id="s3d">
+<title>Wound area</title>
+<p>In the Control SHAM group, wound areas increased for 4 days and then decreased rapidly until day 9, after which they decreased slowly until day 14 and scars were formed. On the other hand, in the other three groups, wound areas increased for 8 days, and then those in the PM SHAM and PM OVX groups decreased gradually until day 14, but those in the PM OVX+17β-estradiol group decreased rapidly until day 13, after which they decreased slowly until day 14 and scars were formed (<xref ref-type="fig" rid="pone-0115564-g003">Fig. 3A and 3B</xref>). The ratio of wound area in the Control SHAM group was significantly smaller than that in the PM SHAM group on days 3 and 6–8 (p&lt;0.05), and tended to be smaller than that on days 2, 5 and 9 (p&lt;0.1). That in the Control SHAM group was also significantly smaller than that in the PM OVX group on days 4 and 7–9 (p&lt;0.05), and tended to be smaller than that on days 3, 5 and 10 (p&lt;0.1). Moreover, That in the Control SHAM group was significantly smaller than that in the PM OVX+17β-estradiol group on days 6–9 (p&lt;0.05) and tended to be smaller than that on days 4 and 5 (p&lt;0.1). There were no significant differences between the PM SHAM and PM OVX groups, or PM OVX and PM OVX+17β-estradiol groups throughout the entire period. On the other hand, the ratio of wound area in the PM OVX+17β-estradiol group was significantly smaller than that in the PM SHAM group on day 13 (p&lt;0.05) (<xref ref-type="fig" rid="pone-0115564-g003">Fig. 3B</xref>).</p>
+<fig id="pone-0115564-g003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.g003</object-id><label>Figure 3</label><caption>
+<title>Macroscopic wound healing and histological wound width and wound area.</title>
+<p>(A) Four-mm-diameter wounds were inflicted and healing was recorded by photography. Bar, 5 mm. (B) Ratios of wound areas to initial area on day 0 are shown on line graphs for each day. (C) Histological wound width (µm) and (D) histological wound area (µm<sup>2</sup>) are shown on box graphs. Values are expressed as mean ±SD, n = 4–6 for each group, ANOVA, Tukey-Kramer <sup>†</sup>p&lt;0.1, <sup>*</sup>p&lt;0.05, <sup>**</sup>p&lt;0.01 (in black): Control SHAM versus PM SHAM, <sup>†</sup>p&lt;0.1, <sup>*</sup>p&lt;0.05, <sup>**</sup>p&lt;0.01 (in red): Control SHAM versus PM OVX, <sup>†</sup>p&lt;0.1,<sup>*</sup>p&lt;0.05 (in green): Control SHAM versus PM OVX+17β-estradiol and <sup>¶</sup>p&lt;0.05 (in green): PM OVX+17β-estradiol versus PM SHAM, and t-test<sup> a</sup>p&lt;0.05, <sup>aa</sup>p&lt;0.01: day 3 versus day 7.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.g003" position="float" xlink:type="simple"/></fig>
+<p>Histological wound width in the Control SHAM group was significantly smaller than those in the PM SHAM (p&lt;0.01), PM OVX (p&lt;0.01) and PM OVX+17β-estradiol (p&lt;0.05) groups on day 7 (<xref ref-type="fig" rid="pone-0115564-g003">Fig. 3C</xref>). On day 3, satisfactory establishment of granulation tissue had not occurred (data not shown). Histological wound area in the Control SHAM group was also significantly smaller than those in the PM SHAM and PM OVX groups (p&lt;0.05) and tended to be smaller than that in the PM OVX+17β-estradiol group (p&lt;0.1) on day 7 (<xref ref-type="fig" rid="pone-0115564-g003">Fig. 3D</xref>).</p>
+</sec><sec id="s3e">
+<title>Neutrophils, macrophages and Ym1-positive cell count/macrophage count (%)</title>
+<p>The numbers of neutrophils in the Control SHAM (p&lt;0.01) and PM OVX+17β-estradiol (p&lt;0.05) groups were significantly decreased from days 3 to 7. In addition, that in the Control SHAM group was significantly larger than those in the PM SHAM and PM OVX groups on day 3 and significantly smaller than those on day 7 (p&lt;0.01). In addition, that in the Control SHAM group was also significantly larger than that in the PM OVX+17β-estradiol group on day 3 (p&lt;0.05), and tended to be smaller than that on day 7 (P&lt;0.1) (<xref ref-type="fig" rid="pone-0115564-g004">Fig. 4A</xref> and <xref ref-type="fig" rid="pone-0115564-g005">5A</xref>).</p>
+<fig id="pone-0115564-g004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.g004</object-id><label>Figure 4</label><caption>
+<title>Neutrophils, macrophages, Ym1-positive cell count/macrophage count (%), plasma TNF-α and plasma CD163.</title>
+<p>(A) The number of neutrophils per mm<sup>2</sup>, (B) the number of macrophages per mm<sup>2</sup>, (C) Ym1-positive cell count/macrophage count (%), (D) systemic TNF-α level and (E) systemic CD163 level are shown on box graphs. Values are expressed as mean ±SD, n = 4–6 for each group, ANOVA, Tukey-Kramer <sup>†</sup>p&lt;0.1, <sup>*</sup>p&lt;0.05, <sup>**</sup>p&lt;0.01 (in black): Control SHAM versus PM SHAM, <sup>†</sup>p&lt;0.1, <sup>*</sup>p&lt;0.05, <sup>**</sup>p&lt;0.01 (in red): Control SHAM versus PM OVX, <sup>†</sup>p&lt;0.1, <sup>*</sup>p&lt;0.05 (in green): Control SHAM versus PM OVX+17β-estradiol, <sup>¶¶</sup>p&lt;0.01 (in black): PM OVX+17β-estradiol versus PM SHAM,<sup>¶¶</sup>p&lt;0.01 (in red): PM OVX+17β-estradiol versus PM OVX, and t-test<sup> a</sup>p&lt;0.05, <sup>aa</sup>p&lt;0.01: day 3 versus day 7.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.g004" position="float" xlink:type="simple"/></fig><fig id="pone-0115564-g005" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.g005</object-id><label>Figure 5</label><caption>
+<title>Immunohistological staining for neutrophils, macrophages and Ym1-positive cells on days 3 and 7.</title>
+<p>(A) Neutrophils (arrows) stained with anti-neutrophil antibody, (B) macrophages (arrows) stained with anti-Mac-3 antibody and (C) Ym1-positive cells (arrows) stained with anti-Ym1 antibody were observed in wound tissue on days 3 and 7.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.g005" position="float" xlink:type="simple"/></fig>
+<p>The number of macrophages in the Control SHAM group was significantly decreased from days 3 to 7 (p&lt;0.05). In addition, there were no significant differences between Control SHAM and PM SHAM groups or Control SHAM and PM OVX groups on day 3, but this number in the Control SHAM group was significantly smaller than those in the PM SHAM (p&lt;0.05) and PM OVX (p&lt;0.01) groups on day 7. On the other hand, there were no significant differences in this variable between Control SHAM and PM OVX+17β-estradiol groups on days 3 and 7. Moreover, the number of macrophages in the PM OVX+17β-estradiol group was significantly smaller than that in the PM OVX group on day 7 (p&lt;0.01) (<xref ref-type="fig" rid="pone-0115564-g004">Fig. 4B</xref> and <xref ref-type="fig" rid="pone-0115564-g005">5B</xref>).</p>
+<p>The Ym1-positive cell count/macrophage count (%) was significantly increased in the Control SHAM (p&lt;0.05) and PM OVX+17β-estradiol (p&lt;0.01) groups from days 3 to 7. This ratio in the Control SHAM group was significantly larger than those in the PM SHAM and PM OVX groups on day 7 (p&lt;0.05). Moreover, this ratio in the PM OVX+17β-estradiol group was significantly larger than those in the PM SHAM and PM OVX groups (p&lt;0.01) and the Control SHAM group (p&lt;0.05) on day 7 (<xref ref-type="fig" rid="pone-0115564-g004">Fig. 4C</xref> and <xref ref-type="fig" rid="pone-0115564-g005">5C</xref>).</p>
+</sec><sec id="s3f">
+<title>Plasma TNF-α and CD163 levels</title>
+<p>Plasma TNF-α level in the Control SHAM group was significantly decreased from days 3 to 7 (p&lt;0.01). It showed no significant differences among the four groups on day 3, but the level in the Control SHAM group was significantly lower than that in the PM OVX+17β-estradiol group (p&lt;0.05), and tended to be lower than those in the PM SHAM and PM OVX groups (p&lt;0.1) on day 7 (<xref ref-type="fig" rid="pone-0115564-g004">Fig. 4D</xref>). There were no significant differences among PM SHAM, PM OVX and PM OVX+17β-estradiol groups on day 7.</p>
+<p>Plasma CD163 level in the PM OVX+17β-estradiol group was significantly higher than those in the Control SHAM and PM SHAM groups on day 3 (p&lt;0.01). There were no significant differences among the four groups on day 7, but the value of CD163 in the PM OVX+17β-estradiol group was almost double those in the other three groups (<xref ref-type="fig" rid="pone-0115564-g004">Fig. 4E</xref>).</p>
+</sec><sec id="s3g">
+<title>Angiogenesis, collagen deposition and wound contraction</title>
+<p>The number of new blood vessels in the Control SHAM group was significantly decreased from days 7 to 14 (p&lt;0.01). That in the Control SHAM group was significantly larger than those in the other three groups on day 7 (p&lt;0.01). On the other hand, there were no significant differences among PM SHAM, PM OVX and PM OVX+17β-estradiol groups on days 7 and 14 (<xref ref-type="fig" rid="pone-0115564-g006">Fig. 6A</xref> and <xref ref-type="fig" rid="pone-0115564-g007">7A</xref>).</p>
+<fig id="pone-0115564-g006" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.g006</object-id><label>Figure 6</label><caption>
+<title>New blood vessels, collagen fibers and wound contraction.</title>
+<p>(A) The number of new blood vessels per mm<sup>2</sup>, (B) the ratio of collagen fibers (%) and (C) the ratio of myofibroblasts (%) are shown on box graphs. Values are expressed as mean ±SD, n = 3–5 for each group, ANOVA, Tukey-Kramer <sup>†</sup>p&lt;0.1, <sup>*</sup>p&lt;0.05, <sup>**</sup>p&lt;0.01 (in black): Control SHAM versus PM SHAM, <sup>*</sup>p&lt;0.05, <sup>**</sup>p&lt;0.01 (in red): Control SHAM versus PM OVX, <sup>†</sup>p&lt;0.1, <sup>*</sup>p&lt;0.05, <sup>**</sup>p&lt;0.01 (in green): Control SHAM versus PM OVX+17β-estradiol, and t-test<sup> a</sup>p&lt;0.05, <sup>aa</sup>p&lt;0.01: day 7 versus day 14.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.g006" position="float" xlink:type="simple"/></fig><fig id="pone-0115564-g007" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0115564.g007</object-id><label>Figure 7</label><caption>
+<title>HE staining for new blood vessels, Azan staining for collagen fibers and immunohistological staining for myofibroblasts on day 7.</title>
+<p>(A) HE staining on day 7. Note that arrows indicate new blood vessels that show circular structures or include red blood cells. (B) Azan staining on day 7. Collagens stained blue were observed in the granulation tissue. Insets highlight regions of granulation tissue at higher magnification. (C) Myofibroblasts (arrows) stained with anti-α-SMA antibody on day 7. The myofibroblasts appeared at the wound edges on granulation tissue. Insets highlight regions of the wound edge on granulation tissue at higher magnification.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0115564.g007" position="float" xlink:type="simple"/></fig>
+<p>The ratios of collagen fibers were significantly increased from days 7 to 14 in the four groups (p&lt;0.01). The ratio of collagen fibers in the Control SHAM group was significantly larger than those in the other three groups on day 7 (p&lt;0.01), and significantly larger than that in the PM OVX group (p&lt;0.05) and tended to be larger than those in the PM SHAM and PM OVX+17β-estradiol groups on day 14 (p&lt;0.1). On the other hand, there were no significant differences in this variable among PM SHAM, PM OVX and PM OVX+17β-estradiol groups on days 7 and 14 (<xref ref-type="fig" rid="pone-0115564-g006">Fig. 6B</xref> and <xref ref-type="fig" rid="pone-0115564-g007">7B</xref>).</p>
+<p>The ratio of myofibroblasts in the Control SHAM group was significantly decreased from days 7 to 14 (p&lt;0.05). On the other hand, those in the PM SHAM and PM OVX groups were significantly increased from days 7 to 14 (p&lt;0.01), but that in the PM OVX+17β-estradiol group was decreased until day 14. The ratio of myofibroblasts in the Control SHAM group was significantly larger than those in the other three groups on day 7 (p&lt;0.05). In addition, the ratio of myofibroblasts in the Control SHAM group was significantly smaller than that in the PM OVX group (p&lt;0.05) and tended to be smaller than that in the PM SHAM group (p&lt;0.1) on day 14, but it showed no significant difference between Control SHAM and PM OVX+17β-estradiol groups on day 14. On the other hand, there were no significant differences among PM SHAM, PM OVX and PM OVX+17β-estradiol groups on days 7 and 14 (<xref ref-type="fig" rid="pone-0115564-g006">Fig. 6C</xref> and <xref ref-type="fig" rid="pone-0115564-g007">7C</xref>).</p>
+</sec></sec><sec id="s4">
+<title>Discussion</title>
+<p>PM was previously shown to be characterized by prolonged and poor wound healing <xref ref-type="bibr" rid="pone.0115564-Chandra1">[33]</xref>, <xref ref-type="bibr" rid="pone.0115564-Chandra2">[34]</xref>. Tsuda et al. reported that wound area was increased in mice fed a protein-free diet <xref ref-type="bibr" rid="pone.0115564-Tsuda1">[8]</xref>. Lim et al. reported that wound size was increased and inflammatory response was delayed with decreased expression of TNF-α and neutrophil infiltration in mice fed a 5 g/kg protein diet in an early inflammatory phase <xref ref-type="bibr" rid="pone.0115564-Lim1">[9]</xref>. Otranto et al. reported that inflammatory cells were present at a higher level and wound contraction, collagen deposition and neovascularization were impaired in a protein-restricted group <xref ref-type="bibr" rid="pone.0115564-Otranto1">[10]</xref>. Our findings, comparing Control SHAM and PM SHAM fed 30 g/kg PM diet groups, reflected these results. The ratio of wound area in the PM SHAM group was significantly larger than that in the Control SHAM group on days 3 and 6–8 in the inflammatory and proliferation phases. Histological wound width and wound area in the PM SHAM group were also significantly larger than those in the Control SHAM group on day 7. The numbers of neutrophils and macrophages and plasma TNF-α level in the Control SHAM group were significantly decreased from days 3 to 7, but those in the PM SHAM group were unchanged or increased. In addition, those in the PM SHAM group were significantly or tended to be larger than those in the Control SHAM group on day 7. Moreover, Ym1-positive cell count as an anti-inflammatory M2-like macrophage marker <xref ref-type="bibr" rid="pone.0115564-Mantovani1">[19]</xref>–<xref ref-type="bibr" rid="pone.0115564-Gordon2">[22]</xref>/macrophage count in the Control SHAM group was significantly increased from days 3 to 7, but this ratio in the PM SHAM group was unchanged. Furthermore, this ratio in the Control SHAM group was significantly larger than that in the PM SHAM group on day 7. In addition, the number of new blood vessels and the ratio of myofibroblasts in the Control SHAM group were significantly larger than those in the PM SHAM group on day 7 and the ratio of collagen fibers in the Control SHAM group was significantly or tended to be larger than that in the PM SHAM group on days 7 and 14. These results show that cutaneous wound healing was delayed with protein malnutrition by increasing wound area, and delayed inflammatory response, angiogenesis, collagen deposition and wound contraction. Therefore, these results indicate the importance of protein for promoting cutaneous wound healing.</p>
+<p>It was reported that cutaneous wound healing in young OVX female rodents under normal nutrition was delayed compared with that in SHAM mice by increasing inflammatory cells and the expression of TNF-α <xref ref-type="bibr" rid="pone.0115564-Ashcroft2">[12]</xref>–<xref ref-type="bibr" rid="pone.0115564-Emmerson2">[18]</xref>. In addition, as mentioned above, cutaneous wound healing was delayed with protein malnutrition <xref ref-type="bibr" rid="pone.0115564-Tsuda1">[8]</xref>–<xref ref-type="bibr" rid="pone.0115564-Otranto1">[10]</xref>. Therefore, it is thought that cutaneous wound healing in PM OVX mice was delayed compared with that in PM SHAM mice. However, no parameter for evaluating cutaneous wound healing, such as ratio of wound area, histological wound width and wound area, the numbers of neutrophils, macrophages and new blood vessels, Ym1-positive cell count/macrophage count, plasma TNF-α and CD163 levels, and the ratios of collagen fibers and myofibroblasts, showed a significant difference between the PM SHAM and PM OVX groups. Therefore, it is indicated that protein malnutrition had more influence than estrogen deprivation on cutaneous wound healing.</p>
+<p>In normal nutrition, it has been reported that estrogen administration in OVX mice promoted cutaneous wound healing by reducing neutrophils, macrophages and the expression of TNF-α <xref ref-type="bibr" rid="pone.0115564-Ashcroft3">[13]</xref>–<xref ref-type="bibr" rid="pone.0115564-Emmerson2">[18]</xref>, and increasing Ym1-positive cells <xref ref-type="bibr" rid="pone.0115564-Routley1">[16]</xref> and promoting collagen deposition <xref ref-type="bibr" rid="pone.0115564-Ashcroft2">[12]</xref>, <xref ref-type="bibr" rid="pone.0115564-Emmerson1">[14]</xref>. In addition, our previous research also reported that estrogen administration promoted cutaneous wound healing in OVX mice under normal nutrition by reducing neutrophils and macrophages <xref ref-type="bibr" rid="pone.0115564-Mukai1">[23]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai2">[24]</xref> and promoting collagen deposition <xref ref-type="bibr" rid="pone.0115564-Mukai1">[23]</xref>, <xref ref-type="bibr" rid="pone.0115564-Mukai2">[24]</xref> and wound contraction <xref ref-type="bibr" rid="pone.0115564-Mukai2">[24]</xref> at 24 weeks and 40 weeks. Therefore, it is thought that the anti-inflammatory effect and cell proliferation action due to estrogen administration would be exhibited upon low-protein malnutrition, such as having a small amount of endogenous protein; cutaneous wound healing in the PM OVX+17β-estradiol group was promoted compared with that in PM OVX mice. However, the ratio of wound area, histological wound width and wound area, the number of new blood vessels and the ratios of collagen fibers and myofibroblasts showed no significant differences between the PM OVX and PM OVX+17β-estradiol groups. These findings indicate that estrogen administration alone could not accelerate the cutaneous wound healing like normal protein by improving the delay of wound healing in protein malnutrition. However, the following results from this research might show that estrogen administration minimizes the influence of protein malnutrition to induce normal wound healing: the number of neutrophils in the PM OVX+17β-estradiol group was significantly decreased from days 3 to 7 the same as that in the Control SHAM group; the number of macrophages in the PM OVX+17β-estradiol group was significantly smaller than that in the PM OVX group on day 7; Ym1-positive cell count/macrophage count in the PM OVX+17β-estradiol group was significantly increased from days 3 to 7 the same as that in the Control SHAM group; Ym1-positive cell count/macrophage count in the PM OVX+17β-estradiol group was significantly larger than that of not only the PM OVX group but also the Control SHAM group on day 7; plasma CD163 level as an anti-inflammatory M2-like macrophage marker <xref ref-type="bibr" rid="pone.0115564-Sindrilaru2">[25]</xref>, <xref ref-type="bibr" rid="pone.0115564-Sulahian1">[26]</xref> in the PM OVX+17β-estradiol group was also higher than that in the Control SHAM group; and the ratio of myofibroblasts, which were shifted from fibroblasts by the effect of TGF-β1 <xref ref-type="bibr" rid="pone.0115564-Hinz1">[35]</xref>, in the PM OVX+17β-estradiol group was decreased from days 7 to 14 (not significant), the same as that in the Control SHAM group, although that in the PM OVX group was significantly increased from days 7 to 14. Therefore, since anti-inflammatory M2-like macrophages that promoted tissue remodeling by producing anti-inflammatory cytokines and growth factors (TGF-β1, VEGF and PDGF) <xref ref-type="bibr" rid="pone.0115564-Gordon1">[21]</xref>, <xref ref-type="bibr" rid="pone.0115564-Gordon2">[22]</xref> increased in the PM OVX+17β-estradiol group, wound areas in the PM OVX+17β-estradiol group were decreased rapidly from day 9 until day 13 and scars were formed like those in the Control SHAM group on day 14.</p>
+<p>In summary, we found that protein malnutrition had more influence than estrogen deprivation on cutaneous wound healing. On the other hand, we also found that the appearance of anti-inflammatory M2-like macrophages was promoted by estrogen administration; however, it could not promote cutaneous wound healing upon feeding on the low-protein diet. Therefore, it may be confirmed that nutrition is more important for promoting cutaneous wound healing than estrogen administration.</p>
+<p>However, cutaneous wound healing becomes disrupted and healing is delayed with advancing age <xref ref-type="bibr" rid="pone.0115564-Ashcroft4">[36]</xref>–<xref ref-type="bibr" rid="pone.0115564-Ashcroft5">[38]</xref>. Actually, more than 50% of the elderly in hospitals and institutions were found to be malnourished or at risk of malnutrition in developed countries <xref ref-type="bibr" rid="pone.0115564-Langemo1">[6]</xref>, <xref ref-type="bibr" rid="pone.0115564-Izawa1">[7]</xref>, and in Japan malnutrition was shown to be increased as the level of required care became high <xref ref-type="bibr" rid="pone.0115564-Izawa1">[7]</xref>. Therefore, we will conduct further research examining whether 17β-estradiol administration has effects to promote cutaneous wound healing in protein-malnourished older OVX female mice.</p>
+</sec></body>
+<back><ref-list>
+<title>References</title>
+<ref id="pone.0115564-Shaw1"><label>1</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shaw</surname><given-names>TJ</given-names></name>, <name name-style="western"><surname>Martin</surname><given-names>P</given-names></name> (<year>2009</year>) <article-title>Wound repair at a glance</article-title>. <source>J Cell Sci</source> <volume>122</volume>:<fpage>3209</fpage>–<lpage>3213</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Abbott1"><label>2</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Abbott</surname><given-names>RE</given-names></name>, <name name-style="western"><surname>Corral</surname><given-names>CJ</given-names></name>, <name name-style="western"><surname>MacIvor</surname><given-names>DM</given-names></name>, <name name-style="western"><surname>Lin</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Ley</surname><given-names>TJ</given-names></name>, <etal>et al</etal>. (<year>1998</year>) <article-title>Augmented inflammatory responses and altered wound healing in cathepsin G-deficient mice</article-title>. <source>Arch Surg</source> <volume>133</volume>:<fpage>1002</fpage>–<lpage>1006</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Hbner1"><label>3</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hübner</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Brauchle</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Smola</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Madlener</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Fässler</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>1996</year>) <article-title>Differential regulation of pro-inflammatory cytokines during wound healing in normal and glucocorticoid-treated mice</article-title>. <source>Cytokine</source> <volume>8</volume>:<fpage>548</fpage>–<lpage>556</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Mercado1"><label>4</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mercado</surname><given-names>AM</given-names></name>, <name name-style="western"><surname>Quan</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Padgett</surname><given-names>DA</given-names></name>, <name name-style="western"><surname>Sheridan</surname><given-names>JF</given-names></name>, <name name-style="western"><surname>Marucha</surname><given-names>PT</given-names></name> (<year>2002</year>) <article-title>Restraint stress alters the expression of interleukin-1 and keratinocyte growth factor at the wound site: an in situ hybridization study</article-title>. <source>J Neuroimmunol</source> <volume>129</volume>:<fpage>74</fpage>–<lpage>83</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Sgonc1"><label>5</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sgonc</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Gruber</surname><given-names>J</given-names></name> (<year>2013</year>) <article-title>Age-related aspects of cutaneous wound healing: a mini-review</article-title>. <source>Gerontology</source> <volume>59</volume>:<fpage>159</fpage>–<lpage>164</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Langemo1"><label>6</label>
+<mixed-citation publication-type="other" xlink:type="simple">Langemo D, Anderson J, Hanson D, Hunter S, Thompson P, <etal>et al</etal>.<bold>.</bold> (2006) Nutritional considerations in wound care. Adv Skin Wound Care <volume>19</volume>:: 297–298, 300, 303.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Izawa1"><label>7</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Izawa</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Kuzuya</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Okada</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Enoki</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Koike</surname><given-names>T</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>The nutritional status of frail elderly with care needs according to the mini-nutritional assessment</article-title>. <source>Clin Nutr</source> <volume>25</volume>:<fpage>962</fpage>–<lpage>967</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Tsuda1"><label>8</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tsuda</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Nakatani</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Sugama</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Okuwa</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Sanada</surname><given-names>H</given-names></name> (<year>2010</year>) <article-title>Influence of the timing of switching a protein-free to a protein-containing diet on the wound healing process in a rat all-layer skin defect</article-title>. <source>Int Wound J</source> <volume>7</volume>:<fpage>135</fpage>–<lpage>146</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Lim1"><label>9</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lim</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Levy</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Bray</surname><given-names>TM</given-names></name> (<year>2006</year>) <article-title>Dietary supplementation of N-acetylcysteine enhances early inflammatory responses during cutaneous wound healing in protein malnourished mice</article-title>. <source>J Nutr Biochem</source> <volume>17</volume>:<fpage>328</fpage>–<lpage>336</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Otranto1"><label>10</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Otranto</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Souza-Netto</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Aguila</surname><given-names>MB</given-names></name>, <name name-style="western"><surname>Monte-Alto-Costa</surname><given-names>A</given-names></name> (<year>2009</year>) <article-title>Male and female rats with severe protein restriction present delayed wound healing</article-title>. <source>Appl Physiol Nutr Metab</source> <volume>34</volume>:<fpage>1023</fpage>–<lpage>1031</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Ashcroft1"><label>11</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ashcroft</surname><given-names>GS</given-names></name>, <name name-style="western"><surname>Greenwell-Wild</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Horan</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Wahl</surname><given-names>SM</given-names></name>, <name name-style="western"><surname>Ferguson</surname><given-names>MW</given-names></name> (<year>1999</year>) <article-title>Topical estrogen accelerates cutaneous wound healing in aged humans associated with an altered inflammatory response</article-title>. <source>Am J Pathol</source> <volume>155</volume>:<fpage>1137</fpage>–<lpage>1146</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Ashcroft2"><label>12</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ashcroft</surname><given-names>GS</given-names></name>, <name name-style="western"><surname>Dodsworth</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Van Boxtel</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Tarnuzzer</surname><given-names>RW</given-names></name>, <name name-style="western"><surname>Horan</surname><given-names>MA</given-names></name>, <etal>et al</etal>. (<year>1997</year>) <article-title>Estrogen accelerates cutaneous wound healing associated with an increase in TGF-beta1 levels</article-title>. <source>Nat Med</source> <volume>3</volume>:<fpage>1209</fpage>–<lpage>1215</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Ashcroft3"><label>13</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ashcroft</surname><given-names>GS</given-names></name>, <name name-style="western"><surname>Mills</surname><given-names>SJ</given-names></name>, <name name-style="western"><surname>Lei</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Gibbons</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Jeong</surname><given-names>MJ</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>Estrogen modulates cutaneous wound healing by downregulating macrophage migration inhibitory factor</article-title>. <source>J Clin Invest</source> <volume>111</volume>:<fpage>1309</fpage>–<lpage>1318</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Emmerson1"><label>14</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Emmerson</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Campbell</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Ashcroft</surname><given-names>GS</given-names></name>, <name name-style="western"><surname>Hardman</surname><given-names>MJ</given-names></name> (<year>2010</year>) <article-title>The phytoestrogen genistein promotes wound healing by multiple independent mechanisms</article-title>. <source>Mol Cell Endocrinol</source> <volume>321</volume>:<fpage>184</fpage>–<lpage>193</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Hardman1"><label>15</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hardman</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Emmerson</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Campbell</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Ashcroft</surname><given-names>GS</given-names></name> (<year>2008</year>) <article-title>Selective estrogen receptor modulators accelerate cutaneous wound healing in ovariectomized female mice</article-title>. <source>Endocrinology</source> <volume>149</volume>:<fpage>551</fpage>–<lpage>557</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Routley1"><label>16</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Routley</surname><given-names>CE</given-names></name>, <name name-style="western"><surname>Ashcroft</surname><given-names>GS</given-names></name> (<year>2009</year>) <article-title>Effect of estrogen and progesterone on macrophage activation during wound healing</article-title>. <source>Wound Repair Regen</source> <volume>17</volume>:<fpage>42</fpage>–<lpage>50</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Brufani1"><label>17</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brufani</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Ceccacci</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Filocamo</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Garofalo</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Joudioux</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Novel locally active estrogens accelerate cutaneous wound healing. A preliminary study</article-title>. <source>Mol Pharm</source> <volume>6</volume>:<fpage>543</fpage>–<lpage>556</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Emmerson2"><label>18</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Emmerson</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Campbell</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Ashcroft</surname><given-names>GS</given-names></name>, <name name-style="western"><surname>Hardman</surname><given-names>MJ</given-names></name> (<year>2009</year>) <article-title>Unique and synergistic roles for 17beta-estradiol and macrophage migration inhibitory factor during cutaneous wound closure are cell type specific</article-title>. <source>Endocrinology</source> <volume>150</volume>:<fpage>2749</fpage>–<lpage>2757</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Mantovani1"><label>19</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mantovani</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Sozzani</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Locati</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Allavena</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Sica</surname><given-names>A</given-names></name> (<year>2002</year>) <article-title>Macrophage polarization: tumor-associated macrophages as a paradigm for polarized M2 mononuclear phagocytes</article-title>. <source>Trends Immunol</source> <volume>23</volume>:<fpage>549</fpage>–<lpage>555</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Sindrilaru1"><label>20</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sindrilaru</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Scharffetter-Kochanek</surname><given-names>K</given-names></name> (<year>2013</year>) <article-title>Disclosure of the culprits. Macrophages-versatile regulators of wound healing</article-title>. <source>Adv wound care</source> <volume>2</volume>:<fpage>357</fpage>–<lpage>368</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Gordon1"><label>21</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gordon</surname><given-names>S</given-names></name> (<year>2003</year>) <article-title>Alternative activation of macrophages</article-title>. <source>Nat Rev Immunol</source> <volume>3</volume>:<fpage>23</fpage>–<lpage>35</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Gordon2"><label>22</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gordon</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Martinez</surname><given-names>FO</given-names></name> (<year>2010</year>) <article-title>Alternative activation of macrophages: mechanism and functions</article-title>. <source>Immunity</source> <volume>32</volume>:<fpage>593</fpage>–<lpage>604</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Mukai1"><label>23</label>
+<mixed-citation publication-type="other" xlink:type="simple">Mukai K, Nakajima Y, Urai T, Komatsu E, Takata K, <etal>et al</etal>.<bold>.</bold> (2014) The effect of 17β-estradiol administration on cutaneous wound healing in 24-week ovariectomized female mice. J Horm Volume 2014, Article ID 234632, 8 pages.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Mukai2"><label>24</label>
+<mixed-citation publication-type="other" xlink:type="simple">Mukai K, Nakajima Y, Urai T, Komatsu E, Nasruddin, et al<bold>.</bold> (2014) 17β-estradiol administration promotes delayed cutaneous wound healing in 40-week ovariectomized female mice. Int wound J, 2014 Aug 6. doi: doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/iwj.12336" xlink:type="simple">10.1111/iwj.12336</ext-link>. [Epub ahead of print].</mixed-citation>
+</ref>
+<ref id="pone.0115564-Sindrilaru2"><label>25</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sindrilaru</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Peters</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Wieschalka</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Baican</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Baican</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>An unrestrained proinflammatory M1 macrophage population induced by iron impairs wound healing in humans and mice</article-title>. <source>J Clin Invest</source> <volume>121</volume>:<fpage>985</fpage>–<lpage>997</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Sulahian1"><label>26</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sulahian</surname><given-names>TH</given-names></name>, <name name-style="western"><surname>Högger</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Wahner</surname><given-names>AE</given-names></name>, <name name-style="western"><surname>Wardwell</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Goulding</surname><given-names>NJ</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Human monocytes express CD163, which is upregulated by IL-10 and identical to p155</article-title>. <source>Cytokine</source> <volume>12</volume>:<fpage>1312</fpage>–<lpage>1321</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-OECD1"><label>27</label>
+<mixed-citation publication-type="other" xlink:type="simple">OECD (2007) OECD guideline for the testing of chemicals.440.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Mukai3"><label>28</label>
+<mixed-citation publication-type="other" xlink:type="simple">Mukai K, Miyasaka Y, Takata K, Urai T, Nakajima Y, <etal>et al</etal>.<bold>.</bold> (2014) Comparison of the cutaneous wound healing of ovariectomized mouse at 12 weeks with those of SHAM and estrogen-administered mice. J Horm vol. 2014, Article ID 484258, 6 pages.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Ansell1"><label>29</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ansell</surname><given-names>DM</given-names></name>, <name name-style="western"><surname>Campbell</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Thomason</surname><given-names>HA</given-names></name>, <name name-style="western"><surname>Brass</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Hardman</surname><given-names>MJ</given-names></name> (<year>2014</year>) <article-title>A statistical analysis of murine incisional and excisional acute wound models</article-title>. <source>Wound Repair Regen</source> <volume>22</volume>:<fpage>281</fpage>–<lpage>287</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Lochs1"><label>30</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lochs</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Allison</surname><given-names>SP</given-names></name>, <name name-style="western"><surname>Meier</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Pirlich</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Kondrup</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Introductory to the ESPEN Guidelines on enteral nutrition: terminology, definitions and general topics</article-title>. <source>Clin Nutr</source> <volume>25</volume>:<fpage>180</fpage>–<lpage>186</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Li1"><label>31</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Li</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Quan</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Bray</surname><given-names>TM</given-names></name> (<year>2002</year>) <article-title>Supplementation of N-acetylcysteine normalizes lipopolysaccharide-induced nuclear factor kappaB activation and proinflammatory cytokine production during early rehabilitation of protein malnourished mice</article-title>. <source>J Nutr</source> <volume>132</volume>:<fpage>3286</fpage>–<lpage>3292</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-daSilvaLima1"><label>32</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>da Silva Lima</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Rogero</surname><given-names>MM</given-names></name>, <name name-style="western"><surname>Ramos</surname><given-names>MC</given-names></name>, <name name-style="western"><surname>Borelli</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Fock</surname><given-names>RA</given-names></name> (<year>2013</year>) <article-title>Modulation of the nuclear factor-kappa B (NF-κB) signaling pathway by glutamine in peritoneal macrophages of a murine model of protein malnutrition</article-title>. <source>Eur J Nutr</source> <volume>52</volume>:<fpage>1343</fpage>–<lpage>1351</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Chandra1"><label>33</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chandra</surname><given-names>RK</given-names></name> (<year>1992</year>) <article-title>Protein-energy malnutrition and immunological responses</article-title>. <source>J Nutr</source> <volume>122</volume>:<fpage>597</fpage>–<lpage>600</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Chandra2"><label>34</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chandra</surname><given-names>RK</given-names></name> (<year>1997</year>) <article-title>Nutrition and the immune system: an introduction</article-title>. <source>Am J Clin Nutr</source> <volume>66</volume>:<fpage>460S</fpage>–<lpage>463S</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Hinz1"><label>35</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hinz</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Phan</surname><given-names>SH</given-names></name>, <name name-style="western"><surname>Thannickal</surname><given-names>VJ</given-names></name>, <name name-style="western"><surname>Galli</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Bochaton-Piallat</surname><given-names>ML</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>The myofibroblast: one function, multiple origins</article-title>. <source>Am J Phathol</source> <volume>170</volume>:<fpage>1807</fpage>–<lpage>1816</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Ashcroft4"><label>36</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ashcroft</surname><given-names>GS</given-names></name>, <name name-style="western"><surname>Horan</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Ferguson</surname><given-names>MW</given-names></name> (<year>1998</year>) <article-title>Aging alters the inflammatory and endothelial cell adhesion molecule profiles during human cutaneous wound healing</article-title>. <source>Lab invest</source> <volume>78</volume>:<fpage>47</fpage>–<lpage>58</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Herrick1"><label>37</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Herrick</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Ashcroft</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Ireland</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Horan</surname><given-names>M</given-names></name>, <name name-style="western"><surname>McCollum</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>1997</year>) <article-title>Up-regulation of elastase in acute wounds of healthy aged humans and chronic venous leg ulcers are associated with matrix degradation</article-title>. <source>Lab Invest</source> <volume>77</volume>:<fpage>281</fpage>–<lpage>288</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0115564-Ashcroft5"><label>38</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ashcroft</surname><given-names>GS</given-names></name>, <name name-style="western"><surname>Horan</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Herrick</surname><given-names>SE</given-names></name>, <name name-style="western"><surname>Tarnuzzer</surname><given-names>RW</given-names></name>, <name name-style="western"><surname>Schultz</surname><given-names>GS</given-names></name>, <etal>et al</etal>. (<year>1997</year>) <article-title>Age-related differences in the temporal and spatial regulation of matrix metalloproteinases (MMPs) in normal skin and acute cutaneous wounds of healthy humans</article-title>. <source>Cell Tissue Res</source> <volume>290</volume>:<fpage>581</fpage>–<lpage>591</lpage>.</mixed-citation>
+</ref>
+</ref-list></back>
+</article>

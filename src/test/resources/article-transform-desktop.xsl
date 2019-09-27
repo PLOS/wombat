@@ -1,0 +1,1 @@
+../../../src/main/webapp/WEB-INF/themes/desktop/xform/article-transform.xsl

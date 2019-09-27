@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-12-02595</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0038943</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Biotechnology</subject>
+            <subj-group>
+              <subject>Bioengineering</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Immunology</subject>
+            <subj-group>
+              <subject>Immune cells</subject>
+              <subj-group>
+                <subject>B cells</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Immunity</subject>
+              <subj-group>
+                <subject>Humoral immunity</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Immune response</subject>
+              <subject>Immunoglobulins</subject>
+              <subject>Immunologic techniques</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Microbiology</subject>
+            <subj-group>
+              <subject>Immunity</subject>
+              <subj-group>
+                <subject>Humoral immunity</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Virology</subject>
+              <subj-group>
+                <subject>Viral structure</subject>
+                <subj-group>
+                  <subject>Viral envelope</subject>
+                </subj-group>
+              </subj-group>
+              <subj-group>
+                <subject>Immunodeficiency viruses</subject>
+                <subject>Mechanisms of resistance and susceptibility</subject>
+                <subject>Viral vaccines</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Infectious diseases</subject>
+            <subj-group>
+              <subject>Sexually transmitted diseases</subject>
+              <subj-group>
+                <subject>AIDS</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Viral diseases</subject>
+              <subj-group>
+                <subject>HIV</subject>
+                <subj-group>
+                  <subject>Retrovirology and HIV immunopathogenesis</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Immunology</subject>
+          <subject>Virology</subject>
+          <subject>Infectious Diseases</subject>
+          <subject>Microbiology</subject>
+          <subject>Biotechnology</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Isolation of Monoclonal Antibodies with Predetermined Conformational Epitope Specificity</article-title><alt-title alt-title-type="running-head">Isolation of Epitope-Specific Antibodies</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+          <name name-style="western">
+            <surname>Sholukh</surname>
+            <given-names>Anton M.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+          <name name-style="western">
+            <surname>Mukhtar</surname>
+            <given-names>Muhammad M.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Humbert</surname>
+            <given-names>Michael</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Essono</surname>
+            <given-names>Sosthène S.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Watkins</surname>
+            <given-names>Jennifer D.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Vyas</surname>
+            <given-names>Hemant K.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Shanmuganathan</surname>
+            <given-names>Vivekanandan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hemashettar</surname>
+            <given-names>Girish</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Kahn</surname>
+            <given-names>Maria</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hu</surname>
+            <given-names>Shiu-Lok</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff4">
+            <sup>4</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Montefiori</surname>
+            <given-names>David C.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff5">
+            <sup>5</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Polonis</surname>
+            <given-names>Victoria R.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff6">
+            <sup>6</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Schur</surname>
+            <given-names>Peter H.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff7">
+            <sup>7</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Ruprecht</surname>
+            <given-names>Ruth M.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1"><label>1</label><addr-line>Department of Cancer Immunology and AIDS, Dana-Farber Cancer Institute, Boston, Massachusetts, United States of America</addr-line>       </aff><aff id="aff2"><label>2</label><addr-line>Harvard Medical School, Boston, Massachusetts, United States of America</addr-line>       </aff><aff id="aff3"><label>3</label><addr-line>Department of Pharmaceutics, University of Washington, Seattle, Washington, United States of America</addr-line>       </aff><aff id="aff4"><label>4</label><addr-line>Department of Microbiology, University of Washington, Seattle, Washington, United States of America</addr-line>       </aff><aff id="aff5"><label>5</label><addr-line>Department of Surgery, Duke University School of Medicine, Durham, North Carolina, United States of America</addr-line>       </aff><aff id="aff6"><label>6</label><addr-line>The Military HIV Research Program, Walter Reed Army Institute of Research, Silver Spring, Maryland, United States of America</addr-line>       </aff><aff id="aff7"><label>7</label><addr-line>Department of Rheumatology, Immunology and Allergy, Brigham and Women’s Hospital, Boston Massachusetts, United States of America</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Lu</surname>
+            <given-names>Shan</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">University of Massachusetts Medical Center, United States of America</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">ruth_ruprecht@dfci.harvard.edu</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: AMS MH RMR. Performed the experiments: AMS MMM MH SSE JDW HKV VS GH DCM VRP PHS. Analyzed the data: AMS MMM MH RMR. Contributed reagents/materials/analysis tools: AMS SSE MK SLH. Wrote the paper: AMS MMM RMR. Performed differential biopanning and isolated conformation-dependent mimotopes: MH. Performed virion-binding assays and molecular modeling: JDW. Performed neutralization assays: VP DMM. Tested for autoreactivity: PS.</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>The authors have read the journal’s policy and have the following conflicts. The Dana-Farber Cancer Institute has applied for patent coverage of the new technology: US Patent Application number PCT/US2010/046353 for “Mimotopes of HIV and Uses Thereof” was filed on 8/23/2010 in which AMS, MH and RMR are listed as co-inventors; a patent application for “Two Sets of Primers Suitable for Amplification of Rhesus Monkey Immunoglobulin’s Light and Heavy Chain Variable Domains and Constant Regions” listing RMR, AMS, MMM and SSE will be filed shortly. Dana-Farber Cancer Institute requires its employees to assign patent and other intellectual property rights to the Institute; therefore the co-inventors have no competing financial interests to declare, and the authors affirm that their adherence to all the PLoS ONE policies on sharing data and materials is unaffected.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2012</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>21</day>
+        <month>6</month>
+        <year>2012</year>
+      </pub-date><volume>7</volume><issue>6</issue><elocation-id>e38943</elocation-id><history>
+        <date date-type="received">
+          <day>20</day>
+          <month>1</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>14</day>
+          <month>5</month>
+          <year>2012</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2012</copyright-year><copyright-holder>Sholukh et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <p>Existing technologies allow isolating antigen-specific monoclonal antibodies (mAbs) from B cells. We devised a direct approach to isolate mAbs with predetermined conformational epitope specificity, using epitope mimetics (mimotopes) that reflect the three-dimensional structure of given antigen subdomains. We performed differential biopanning using bacteriophages encoding random peptide libraries and polyclonal antibodies (Abs) that had been affinity-purified with either native or denatured antigen. This strategy yielded conformational mimotopes. We then generated mimotope-fluorescent protein fusions, which were used as baits to isolate single memory B cells from rhesus monkeys (RMs). To amplify RM immunoglobulin variable regions, we developed RM-specific PCR primers and generated chimeric simian-human mAbs with predicted epitope specificity. We established proof-of-concept of our strategy by isolating mAbs targeting the conformational V3 loop crown of HIV Env; the new mAbs cross-neutralized viruses of different clades. The novel technology allows isolating mAbs from RMs or other hosts given experimental immunogens or infectious agents.</p>
+      </abstract><funding-group><funding-statement>This work was supported by NIH grants P01 AI048240, P01 AI048240-08s1, R37 AI034266, and P30 AI060354. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="11"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>Isolation of naturally induced and matured antibodies (Abs) is of prime importance for analytical vaccinology <xref ref-type="bibr" rid="pone.0038943-Zielinski1">[1]</xref>, <xref ref-type="bibr" rid="pone.0038943-Corti1">[2]</xref>. Three major strategies have been used to interrogate the B-cell repertoire: traditional phage display, high-throughput screening of immortalized B cell or plasma cell cultures, and isolation of antigen-specific B cells to PCR amplify the variable heavy (V<sub>H</sub>) and variable light (V<sub>L</sub>) immunoglobulin (Ig) genes <xref ref-type="bibr" rid="pone.0038943-Corti1">[2]</xref>, <xref ref-type="bibr" rid="pone.0038943-Kwong1">[3]</xref>. Development and refinement of high-throughput screening methods, flow cytometric capabilities and single-cell cloning techniques led to substitution of the traditional phage display techniques by approaches that allow the isolation of naturally selected Igs. Phage display is constrained by the diversity of the library used, by physical-chemical properties of the Ig fragments displayed and involves random combination of V<sub>H</sub>/V<sub>L</sub> pairs. Consequently, it is not known whether Abs isolated by phage display represent natural molecules generated by the host in response to immunization or infection by a pathogen of interest. Even the recently published technique based upon high-throughput DNA sequencing of the plasma cell Ig repertoire with subsequent comprehensive analysis of V<sub>H</sub> and V<sub>L</sub> representation resulting in the assembly of V<sub>H</sub>/V<sub>L</sub> pairs left the possibility that the recovered pair may be artificial <xref ref-type="bibr" rid="pone.0038943-Reddy1">[4]</xref>.</p>
+      <p>Naturally occurring Abs can be isolated via high-throughput screening of immortalized memory B or plasma cell cultures. This approach yielded broad and potent neutralizing monoclonal Abs (nmAbs) against HIV, dengue and influenza viruses that significantly improved our understanding of the specificity and mechanisms of humoral immunity <xref ref-type="bibr" rid="pone.0038943-Robinson1">[5]</xref>–<xref ref-type="bibr" rid="pone.0038943-Beltramello1">[8]</xref>. Isolation of antigen-specific B cells by sorting with a fluorescence-activated flow cytometer (FACSorting), first reported in 1972 <xref ref-type="bibr" rid="pone.0038943-Julius1">[9]</xref>, has led to the recovery of a number of naturally induced and matured Abs against rotavirus and HIV <xref ref-type="bibr" rid="pone.0038943-Weitkamp1">[10]</xref>–<xref ref-type="bibr" rid="pone.0038943-Wu1">[12]</xref>. However, using the whole antigen for B-cell sorting implies a need for extensive screening of newly isolated mAbs, followed by epitope mapping. A more sophisticated approach consists of directly isolating B cells specific for individual epitopes. The success of this approach depends on the identification of epitope mimetics (mimotopes) that correctly reflect the three-dimensional structure of a given antigen subdomain/epitope. Here we report the development of a novel methodology using fluorescently labeled mimotopes as baits to isolate rhesus monkey (RM) memory B cells for subsequent cloning of Ab genes.</p>
+    </sec>
+    <sec id="s2">
+      <title>Results</title>
+      <sec id="s2a">
+        <title>Overview of Strategy</title>
+        <p>The overall strategy is depicted in <xref ref-type="fig" rid="pone-0038943-g001">Figure 1</xref>. Mimotopes were isolated by biopanning using recombinant bacteriophages encoding random peptide libraries. To enrich for conformational mimotopes, we devised a new strategy of differential biopanning that involved positive selection with Abs pre-purified on native antigen followed by negative selection with Abs eluted from denatured antigen (<xref ref-type="fig" rid="pone-0038943-g002">Figure 2</xref>). After a total of three rounds of positive/negative selections with these Ab preparations, the resulting mimotopes are expected to show preferential conformation dependence. Next, mimotope sequences are cloned into a vector encoding a fluorescent reporter gene, giving rise to a fluorescent fusion protein (<xref ref-type="fig" rid="pone-0038943-g001">Figure 1</xref>). The latter is used for mimotope-specific isolation of single memory B cells by flow cytometry. Single-cell RT-PCR is then used to amplify the V<sub>H</sub> and V<sub>L</sub> Ig genes using newly designed, RM-specific primers. Next, the V<sub>H</sub> and V<sub>L</sub> sequences are cloned into expression vectors encoding the backbone of human IgG1 heavy or light chains, respectively. Cotransfection into eukaryotic cells grown in serum-free medium, will yield recombinant, chimeric simian-human monoclonal Abs (mAbs). Such mAbs will specifically recognize not only the fluorescently labeled mimotope fusion protein used for the selection procedure, but also the corresponding antigen, with the epitope specificity determined by the nature of the mimotope used for the selection.</p>
+        <fig id="pone-0038943-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0038943.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>Strategy of isolation of epitope-specific Abs.</title>
+            <p>After differential biopanning of phage display peptide library, mimotopes representing conformational epitopes are sequenced, and the inserts plus M13 flanking sequences are cloned into a bacterial expression vector encoding fluorescent protein. After purification of the resulting mimotope fusion proteins, binding assays to assure maintenance of the correct three-dimensional structure of mimotope insert are conducted. This is followed by single-cell sorting for specific IgG-positive memory B cells, single-cell RT-PCR and cloning of RM V<sub>L</sub> and V<sub>H</sub> regions into pFUSE2-type vectors encoding the backbone of human IgG1.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.g001" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2b">
+        <title>Isolation of Conformational Mimotopes</title>
+        <p>To validate our new strategy, we sought to isolate mAbs specific for the V3 loop of the HIV envelope glycoprotein, using conformation-dependent mimotopes. The V3 loop is a prime target for nAbs and has conserved structural features in the crown, although the entire loop structure is known for its remarkable sequence variability <xref ref-type="bibr" rid="pone.0038943-Jiang1">[13]</xref>. Anti-V3 mAbs isolated and characterized by others <xref ref-type="bibr" rid="pone.0038943-Gorny1">[14]</xref>–<xref ref-type="bibr" rid="pone.0038943-Hioe1">[17]</xref> allowed us to compare and validate the technology presented here.</p>
+        <p>We used RMs that had developed high-titer, broadly neutralizing Abs (nAbs) during chronic infection with simian-human immunodeficiency virus (SHIV) (<xref ref-type="supplementary-material" rid="pone.0038943.s007">Table S1</xref> and <xref ref-type="supplementary-material" rid="pone.0038943.s008">Table S2</xref>) for B-cell isolation. First, we affinity-purified polyclonal Abs that contained paratopes specific for conformational epitopes on the original antigen molecule. In parallel, we also affinity-purified polyclonal Abs recognizing the same antigen in denatured form. Towards this end (<xref ref-type="fig" rid="pone-0038943-g002">Figure 2</xref>), wells of 96-well plates were coated with HIV gp160 under native or denaturing conditions and incubated with serum of monkey RKl-8. Bound Abs were eluted by pH shift, identical fractions were combined, concentrated and used for biopanning of random peptide phage libraries. “Conformational” Abs (eluted from native, multimeric gp160, shown in blue, <xref ref-type="fig" rid="pone-0038943-g002">Figure 2</xref>) were used for positive selection; “linear” Abs (eluted from denatured gp160, shown in green, <xref ref-type="fig" rid="pone-0038943-g002">Figure 2</xref>) for negative selection. Three positive/two negative rounds yielded mimotopes that were tested for gp160 specificity and conformational dependence with RM sera. Interestingly, only 12 mimotopes resembling the V3 loop crown of HIV gp120 (<xref ref-type="fig" rid="pone-0038943-g003">Figure 3A</xref>) were selected using this method of differential biopanning with Abs specific for either native or denatured gp160. Some of these conformational V3 mimotopes were chosen to test the feasibility of our overall strategy. Notably, our differential biopanning strategy resulted in the selection of mimotopes with strong conformational dependence as shown by ELISA performed with native or denatured phages and probed with serum from RM RKl-8 (<xref ref-type="fig" rid="pone-0038943-g003">Figure 3B</xref>). The fact that only V3-like mimotopes were found may be ascribed to the stringent selection conditions. It should be noted that mimotopes positively selected by the “conformational” Abs (shown in blue, <xref ref-type="fig" rid="pone-0038943-g002">Figure 2</xref>) are discarded in the subsequent negative selection step if they are also bound to “linear” Abs (shown in green, <xref ref-type="fig" rid="pone-0038943-g002">Figure 2</xref>). As a consequence, the only mimotopes that remain are those with high specificity and selective binding to the “conformational” Abs, a condition fulfilled by the sterically constrained V3 loop.</p>
+        <fig id="pone-0038943-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0038943.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Differential biopanning strategy to select conformational mimotopes of desired specificity.</title>
+            <p>HIV gp160 was bound to ELISA plates under native or denaturing conditions. After incubation with serum of monkey RKl-8 (which was chronically infected with a clade C simian-human immunodeficiency virus (SHIV) <xref ref-type="bibr" rid="pone.0038943-Humbert1">[25]</xref> and had high titers of anti-HIV nAbs) followed by washing, Abs were eluted. Abs eluted from the native protein antigen (“conformational” Abs) were used for the positive selection rounds; Abs eluted from the denatured protein (“linear” Abs) were used for the negative rounds. A total of three biopanning rounds were performed and mimotopes selected by this strategy were tested for specificity and conformation dependence with rhesus monkey sera.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.g002" xlink:type="simple"/>
+        </fig>
+        <p>Next, we cloned, bacterially expressed and purified mWasabi-mimotope fusion proteins (termed mWasabi-mimes, <xref ref-type="supplementary-material" rid="pone.0038943.s001">Figure S1</xref>). We analyzed the latter by ELISA with sera from animals with high-titer nAbs to confirm specificity and cross-recognition. Mimotope Tc.2 was recognized by serum of different RMs and serum of monkey RJa-9 demonstrated the highest binding (<xref ref-type="fig" rid="pone-0038943-g003">Figure 3C</xref>). This mimotope closely resembles the V3 loop crown in amino acid sequence (<xref ref-type="fig" rid="pone-0038943-g003">Figure 3A</xref>). Conformational similarity of mimotope and V3 loop is demonstrated by molecular modeling and structural superimposition shown on <xref ref-type="fig" rid="pone-0038943-g003">Figure 3D</xref>. Noteworthy, Tc.2 was isolated from cyclic 7mer peptide library and is flanked by two cysteines forming disulfide bridge thus stabilizing the mimotope structure.</p>
+        <fig id="pone-0038943-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0038943.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>Properties of V3 loop mimotopes.</title>
+            <p>(A) Binding of rhesus monkey RKl-8 serum Abs to native and denatured mimotopes. Wild-type phages (WT) were used as negative control, an anti-phage Ab (anti-M13 pIII) as positive control to show correct phage immobilization. Each data point represents the mean ± s.e.m. (n  = 3). *Mimotope selected for B-cell sorting. (B) Sequence alignment of V3 loop region of gp160 and mimotopes isolated by differential biopanning. Amino acid colors indicate: blue, basic; green, non-polar (hydrophobic); orange, polar (uncharged); magenta (acidic). (C) Binding of RM sera to different V3 mimotopes. Plates were coated with mWasabi-mimotope fusion proteins and parental mWasabi as control and then probed with sera of rhesus monkeys with high nAb titers. Serum from monkey RKl-8 served as positive control; serum from a naïve animal was used as negative control in all experiments. Each data point represents the mean ± s.e.m. (n  = 3). (D) Structural superimposition of Tc.2 mimotope and V3 peptide obtained by <italic>in silico</italic> molecular modeling. Tc.2 mimotope was modeled using the published V3 peptide structure in complex with Fab2557 <xref ref-type="bibr" rid="pone.0038943-Jiang1">[13]</xref>. The original V3 loop is shown in blue, the Tc.2 mimotope in orange. The cysteine residues and disulfide bridge are in green.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.g003" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2c">
+        <title>Isolation of Single Memory B Cells</title>
+        <p>The cross-reactivity of mimotope Tc.2 with sera from different RMs implied mimicry of a conserved HIV Env epitope by Tc.2. Consequently, we selected the corresponding mWasabi-Tc.2 fusion protein as bait to isolate cognate memory B cells from PBMC of monkey RJa-9 by flow cytometry. Mimotope-specific single memory B cells were sorted into a PCR plate as follows: CD3<sup>−</sup>/CD19<sup>+</sup>/CD27<sup>+</sup>/IgG<sup>+</sup>/mWasabi-mime<sup>+</sup> (<xref ref-type="fig" rid="pone-0038943-g004">Figure 4</xref>). For the experiment 5×10<sup>7</sup> PBMC were used and the cytometer was programmed to collect 90 individual CD3<sup>−</sup>/CD19<sup>+</sup>/CD27<sup>+</sup>/IgG<sup>+</sup>/mWasabi-mime<sup>+</sup> cells at one cell per well in the plate. Mimotope-specific cells represented approximately 0.1% of the memory B cells and as many as 8 mimotope-specific IgG-positive memory B cells were observed per million lymphocytes sorted. Control staining with mWasabi yielded only one non-specific cell per million lymphocytes, possibly due to autofluorescence.</p>
+        <fig id="pone-0038943-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0038943.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Isolation of single V3 loop-specific memory B cells by FACSorting.</title>
+            <p>Mimotope-specific memory B cells were selected by the following phenotype: CD3<sup>−</sup>/CD19<sup>+</sup>/CD27<sup>+</sup>/IgG<sup>+</sup>/mWasabi-mimotope<sup>+</sup> and were sorted into individual wells of a 96-well PCR plate. The consecutive number of gates is shown in the left upper corner of each gate.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.g004" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2d">
+        <title>Single-cell PCR and mAb Cloning</title>
+        <p>After cDNA synthesis, light and heavy chain variable Ig genes were amplified by semi-nested PCR with a set of newly developed primers specific to RM Ig genes (<xref ref-type="supplementary-material" rid="pone.0038943.s009">Table S3</xref>). RM IgG-specific primers published to date do not result in the amplification of V<sub>H</sub> and V<sub>L</sub> genes of all RM subfamilies <xref ref-type="bibr" rid="pone.0038943-Margolin1">[18]</xref>, whereas our new primer set led to the amplification of all RM V<sub>H</sub> and V<sub>L</sub> genes and yielded frequencies similar to their natural usage rate (<xref ref-type="supplementary-material" rid="pone.0038943.s010">Table S4</xref>). This procedure allowed us to derive V<sub>H</sub> gene fragments in 31 wells and V<sub>L</sub> gene fragments in 19 wells, respectively. In 12 wells, both V<sub>H</sub> and V<sub>L</sub> genes were amplified.</p>
+        <p>Next, we sequenced matching pairs of V<sub>H</sub> and V<sub>L</sub> genes obtained after two rounds of PCR to assess productivity and gene rearrangement as well as to obtain sequence information for the beginning of framework region 1 (FR1). After amplification of V<sub>H</sub>/V<sub>L</sub> pairs with cloning primers, we inserted the PCR fragments into vectors of the pFUSE2-family that contain constant region sequences of human Ig light (Igκ or Igλ2) or heavy (Igγ1) chains. This cloning strategy yielded chimeric simian-human IgG1 mAbs.</p>
+      </sec>
+      <sec id="s2e">
+        <title>Functional Characterization of mAbs</title>
+        <p>Out of 12 isolated V<sub>H</sub>/V<sub>L</sub> pairs, 11 chimeric mAbs were expressed and purified. Two of them, 33B2 and 33C6, exhibited specific binding to the Tc.2 mimotope and HIV-1<sub>CN54</sub> gp120 (<xref ref-type="supplementary-material" rid="pone.0038943.s002">Figure S2</xref>) as well as HIV envelopes of different clades by ELISA (<xref ref-type="fig" rid="pone-0038943-g005">Figure 5A</xref>, <xref ref-type="supplementary-material" rid="pone.0038943.s003">Figure S3</xref>). The weaker binding of mAbs to Tc.2 compare to gp120 (<xref ref-type="supplementary-material" rid="pone.0038943.s002">Figure S2</xref>), especially 33B2, can be explained by the fact that the mimotope represents only part of entire epitope due to the relatively short length.</p>
+        <fig id="pone-0038943-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0038943.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title>Properties of mAbs 33B2 and 33C6.</title>
+            <p>(A) Binding to envelope proteins of different HIV clades. Plates were coated with Env proteins and probed with newly isolated mAbs along with isotype controls (positive control, HGN194 <xref ref-type="bibr" rid="pone.0038943-Corti2">[16]</xref>; negative control, Fm-6 <xref ref-type="bibr" rid="pone.0038943-Sui1">[37]</xref>) and cognate rhesus monkey (RJa-9) serum. HIV Env proteins were derived from the following strains: clade A, UG37; B, BaL and IIIB; C, CN54 and 1157ip (the latter is a simian-human immunodeficiency virus (SHIV) strain encoding an HIV clade C envelope <xref ref-type="bibr" rid="pone.0038943-Humbert1">[25]</xref>; D, UG21. SIVmne gp160 was used as negative control. (B) Epitope mapping. Bars show Ab binding by ELISA to consensus HIV clade C peptides representing the V3 loop region. The control peptide represents the scrambled C-terminal sequence of SHIV-1157ip gp120. (C) Virion binding assay. MAbs 33B2 and 33C6 along with negative control (Fm-6) and positive control (HGN194) were captured on the plate coated with goat anti-human IgG Fc-specific Ab and then exposed to SHIV-1157ipEL-p <xref ref-type="bibr" rid="pone.0038943-Siddappa1">[19]</xref> virions. The amount of virus bound to mAbs was assessed by p27 Gag ELISA. (D) Binding of mAbs 33B2 and 33C6 with native and denatured HIV<sub>CN54</sub> gp120. Plates were coated with native, reduced or reduced/denatured HIV Env protein and probed with 33B2 and 33C6 along with Fm-6 (negative control mAb) as well as serum of HIV-positive individual (positive control), and serum of HIV-negative individual (negative control). We used <italic>tris</italic>(2-carboxyethyl)phosphine (TCEP) to reduce gp120 and TCEP + SDS to reduce and denature, respectively (<xref ref-type="sec" rid="s4">Methods</xref>). Each data point represents the mean ± s.e.m. (n  = 3). Experiments were repeated 3 times.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.g005" xlink:type="simple"/>
+        </fig>
+        <p>To confirm the expected V3 loop epitope specificity of mAbs 33B2 and 33C6, peptides representing the V3 loop of consensus HIV clade C gp120 were used for epitope mapping. Peptide binding analysis revealed a common epitope recognized by both mAbs (<xref ref-type="fig" rid="pone-0038943-g005">Figure 5B</xref>, <xref ref-type="supplementary-material" rid="pone.0038943.s004">Figure S4A</xref>): the sequence RKSIRIG, which is located in the V3 loop crown and resembles the epitope of the known anti-V3 mAb, HGN194 <xref ref-type="bibr" rid="pone.0038943-Corti2">[16]</xref>. Interestingly, mAb 33B2 interacted only with peptides 9259 and 9261 bearing the epitope either at the N- or C-termini but did not bind to peptide 9260, where the epitope is in the middle, presumably due to improper conformation of the linear peptide. Peptide 9261 showed the highest degree of inhibition of mAbs binding to gp120 (<xref ref-type="supplementary-material" rid="pone.0038943.s004">Figure S4B and S4C</xref>). Lower binding of mAb 33B2 compared to binding of 33C6 to linear peptides 9260 and 9261 implies that epitope of 33B2 is more conformation-dependent.</p>
+        <p>Since the mimotope used as B-cell bait was selected to be strongly conformational, we postulated that 33B2 and 33C6 would preferentially bind to native as opposed to denatured envelope proteins. To confirm binding to native Env in trimeric form, we performed a virion binding assay, in which both mAbs successfully captured virions of the chimeric simian-human immunodeficiency virus (SHIV) encoding <italic>env</italic> of a recently transmitted HIV clade C, SHIV-1157ipEL-p <xref ref-type="bibr" rid="pone.0038943-Siddappa1">[19]</xref> (<xref ref-type="fig" rid="pone-0038943-g005">Figure 5C</xref>). Upon Env denaturation, binding of both mAbs was strongly diminished by ELISA (<xref ref-type="fig" rid="pone-0038943-g005">Figure 5D</xref>); denaturation greatly abrogated binding of both mAbs to gp120, whereas reduction of disulfide bridges did not affect binding.</p>
+        <p>Next, we assessed potency/breadth of virus neutralization of the two mAbs with a panel of neutralization-sensitive (tier 1) and more difficult-to-neutralize (tier 2) viruses. Overall, 33B2 and 33C6 neutralized 75% or 91% of the tier 1 HIV strains of different clades tested (<xref ref-type="table" rid="pone-0038943-t001">Table 1</xref>), respectively. In contrast, few of the tier 2 strains tested were neutralized by the two new mAbs (7% and 15%, respectively). These results are similar to the neutralization profiles of other anti-V3 Abs <xref ref-type="bibr" rid="pone.0038943-Gorny2">[15]</xref>–<xref ref-type="bibr" rid="pone.0038943-Hioe1">[17]</xref>. The fact that we preselected conformation-dependent mimotopes increased our chances of finding neutralizing mAbs since most virus-neutralizing Abs are conformation dependent.</p>
+        <table-wrap id="pone-0038943-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0038943.t001</object-id><label>Table 1</label><caption>
+            <title>Neutralization activity of mAbs 33B2 and 33C6.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0038943-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.t001" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">33B2</td>
+                <td align="left" colspan="1" rowspan="1">33C6</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Virus</td>
+                <td align="left" colspan="1" rowspan="1">Clade</td>
+                <td align="left" colspan="1" rowspan="1">Tier</td>
+                <td align="left" colspan="1" rowspan="1">IC<sub>50</sub> (µg/ml)</td>
+                <td align="left" colspan="1" rowspan="1">IC<sub>50</sub> (µg/ml)</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="5" rowspan="1">
+                  <italic>SHIV strains (M7-Luc assay)</italic>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SHIV-KNH1144p</td>
+                <td align="left" colspan="1" rowspan="1">A</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SHIV<sub>SF162.P4</sub></td>
+                <td align="left" colspan="1" rowspan="1">B</td>
+                <td align="left" colspan="1" rowspan="1">1</td>
+                <td align="left" colspan="1" rowspan="1">3.98</td>
+                <td align="left" colspan="1" rowspan="1">0.02</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SHIV-1157ipEL-p</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">1</td>
+                <td align="left" colspan="1" rowspan="1">0.05</td>
+                <td align="left" colspan="1" rowspan="1">0.06</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SHIV-1157ipd3N4</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SHIV-2873Nip</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="5" rowspan="1">
+                  <italic>HIV strains (TZM-bl assay)</italic>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Q23.17</td>
+                <td align="left" colspan="1" rowspan="1">A</td>
+                <td align="left" colspan="1" rowspan="1">1</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+                <td align="left" colspan="1" rowspan="1">&gt;25</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Q259.d2.17</td>
+                <td align="left" colspan="1" rowspan="1">A</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+                <td align="left" colspan="1" rowspan="1">&gt;25</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Q769.d22</td>
+                <td align="left" colspan="1" rowspan="1">A</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+                <td align="left" colspan="1" rowspan="1">&gt;25</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">92UG029</td>
+                <td align="left" colspan="1" rowspan="1">A/X4</td>
+                <td align="left" colspan="1" rowspan="1">1/2</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">0.02</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SF162.LS</td>
+                <td align="left" colspan="1" rowspan="1">B</td>
+                <td align="left" colspan="1" rowspan="1">1</td>
+                <td align="left" colspan="1" rowspan="1">0.3</td>
+                <td align="left" colspan="1" rowspan="1">0.05</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">BaL</td>
+                <td align="left" colspan="1" rowspan="1">B</td>
+                <td align="left" colspan="1" rowspan="1">1</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20*</td>
+                <td align="left" colspan="1" rowspan="1">0.06*</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">MN.3</td>
+                <td align="left" colspan="1" rowspan="1">B</td>
+                <td align="left" colspan="1" rowspan="1">1</td>
+                <td align="left" colspan="1" rowspan="1">0.02</td>
+                <td align="left" colspan="1" rowspan="1">&lt;0.01</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">BX08</td>
+                <td align="left" colspan="1" rowspan="1">B</td>
+                <td align="left" colspan="1" rowspan="1">1</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">0.76</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">6535.3</td>
+                <td align="left" colspan="1" rowspan="1">B</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+                <td align="left" colspan="1" rowspan="1">&gt;25</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">RHPA</td>
+                <td align="left" colspan="1" rowspan="1">B</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">(&gt;20)</td>
+                <td align="left" colspan="1" rowspan="1">(1.2)</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SC22.3C2</td>
+                <td align="left" colspan="1" rowspan="1">B</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">(&gt;20)</td>
+                <td align="left" colspan="1" rowspan="1">(&gt;25)</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">QH0692.42</td>
+                <td align="left" colspan="1" rowspan="1">B</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+                <td align="left" colspan="1" rowspan="1">&gt;25</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">MW965.26</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">1</td>
+                <td align="left" colspan="1" rowspan="1">&lt;0.01</td>
+                <td align="left" colspan="1" rowspan="1">&lt;0.01</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">92BR025.9</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">1</td>
+                <td align="left" colspan="1" rowspan="1">0.9</td>
+                <td align="left" colspan="1" rowspan="1">0.6</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">GS015</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">1</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">0.05</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Ce1086_B2</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">(17.9)</td>
+                <td align="left" colspan="1" rowspan="1">(&gt;25)</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Du151.2</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">(&gt;20)</td>
+                <td align="left" colspan="1" rowspan="1">(&gt;25)</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Du156.12</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+                <td align="left" colspan="1" rowspan="1">&gt;25</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">CAP45.2.00.G3</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20</td>
+                <td align="left" colspan="1" rowspan="1">&gt;25</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Indie-C1</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">&gt;20*</td>
+                <td align="left" colspan="1" rowspan="1">&gt;25*</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">20635-4</td>
+                <td align="left" colspan="1" rowspan="1">C</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">13.0</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">E0836M4</td>
+                <td align="left" colspan="1" rowspan="1">D</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">&gt;50</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">R2184.c04</td>
+                <td align="left" colspan="1" rowspan="1">AE</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">(&gt;20)</td>
+                <td align="left" colspan="1" rowspan="1">(&gt;25)</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">CM235-2</td>
+                <td align="left" colspan="1" rowspan="1">AE</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">(&gt;20)</td>
+                <td align="left" colspan="1" rowspan="1">(&gt;25)</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">CM235</td>
+                <td align="left" colspan="1" rowspan="1">AE</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">27.26</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">55815</td>
+                <td align="left" colspan="1" rowspan="1">AG</td>
+                <td align="left" colspan="1" rowspan="1">2</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">&gt;50</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">overall tier 1 neutralization</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">75%</td>
+                <td align="left" colspan="1" rowspan="1">91%</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">overall tier 2 neutralization</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">7%</td>
+                <td align="left" colspan="1" rowspan="1">15%</td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt101">
+              <label/>
+              <p>Neutralization assays were performed in M7-Luc cells (for SHIVs) or TZM-bl cells (for HIVs) <xref ref-type="bibr" rid="pone.0038943-Montefiori1">[33]</xref> unless otherwise mentioned; values in brackets show neutralization assays with A3R5.7 cells <xref ref-type="bibr" rid="pone.0038943-Edmonds1">[36]</xref>. *Indicates HIV neutralization in M7-Luc assay. SHIV, simian-human immunodeficiency virus. ND, not determined.</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+      </sec>
+      <sec id="s2f">
+        <title>Genetic Analysis of mAbs</title>
+        <p>Genetic analysis of 33B2 and 33C6 V<sub>H</sub> and V<sub>L</sub> genes revealed that these mAbs likely originated from the same parental B cell clone, because they share the same V<sub>H</sub> and J<sub>H</sub> genes, IGHV5-51*01 and IGHJ4*2, respectively (<xref ref-type="table" rid="pone-0038943-t002">Table 2</xref>). Although 33B2 and 33C6 used different D genes, the complementarity-determining region 3 (CDR3) of both mAbs are 16 amino acids long and have very similar amino acid sequences (<xref ref-type="fig" rid="pone-0038943-g006">Figure 6</xref>). In contrast, the light chains recruited different genes, IGLV1-50 and IGLV1-47, from the same subfamily (<xref ref-type="table" rid="pone-0038943-t002">Table 2</xref>). The CDR sequence homology indicates convergence of the molecular evolution of both mAbs (<xref ref-type="fig" rid="pone-0038943-g006">Figure 6</xref>). Our results are in good agreement with data about Ig gene usage by other anti-V3 Abs <xref ref-type="bibr" rid="pone.0038943-Gorny1">[14]</xref>. Compared to the RM germline, the frequency of amino acid mutations observed in VH was 15% for mAb 33B2 and 18% for 33C6, whereas for VL, the mutation frequencies were 10% and 15%, respectively (<xref ref-type="supplementary-material" rid="pone.0038943.s005">Figure S5</xref> and <xref ref-type="supplementary-material" rid="pone.0038943.s006">Figure S6</xref>). These values are significantly lower compared to the recently identified anti-CD4 binding site neutralizing mAbs, but comparable to the parameters of other anti-V3 mAbs and of mAb b12 <xref ref-type="bibr" rid="pone.0038943-Scheid1">[11]</xref>, <xref ref-type="bibr" rid="pone.0038943-Wu1">[12]</xref>, <xref ref-type="bibr" rid="pone.0038943-Corti2">[16]</xref>, <xref ref-type="bibr" rid="pone.0038943-Parren1">[20]</xref>–<xref ref-type="bibr" rid="pone.0038943-Zhang1">[23]</xref>. Neither mAb exhibited autoreactivity in assays involving double-stranded (ds) DNA, Sm, ribonucleoprotein (RNP), SS-A/Ro and SS-B/La antigens, cardiolipin and nuclear antigens (data not shown).</p>
+        <fig id="pone-0038943-g006" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0038943.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title>VH and VL CDR sequences of V3-specific mAbs.</title>
+            <p>(A) 33B2 and 33C6 VH CDR amino acid sequences. (B) 33B2 and 33C6 VL CDR amino acid sequences.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.g006" xlink:type="simple"/>
+        </fig>
+        <table-wrap id="pone-0038943-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0038943.t002</object-id><label>Table 2</label><caption>
+            <title>Genetic characteristics of V3-specific mAbs.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0038943-t002-2" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.t002" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="3" rowspan="1">Heavy chain genes</td>
+                <td align="left" colspan="3" rowspan="1">Light chain genes</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">mAb</td>
+                <td align="left" colspan="1" rowspan="1">V<sub>H</sub></td>
+                <td align="left" colspan="1" rowspan="1">D<sub>H</sub></td>
+                <td align="left" colspan="1" rowspan="1">J<sub>H</sub></td>
+                <td align="left" colspan="1" rowspan="1">V<sub>κ</sub>/V<sub>λ</sub></td>
+                <td align="left" colspan="1" rowspan="1">J<sub>κ</sub>/J<sub>λ</sub></td>
+                <td align="left" colspan="1" rowspan="1">κ/λ</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">33B2</td>
+                <td align="left" colspan="1" rowspan="1">IGHV5-51*01</td>
+                <td align="left" colspan="1" rowspan="1">IGHD3-22*01</td>
+                <td align="left" colspan="1" rowspan="1">IGHJ4*02</td>
+                <td align="left" colspan="1" rowspan="1">IGLV1-50*01</td>
+                <td align="left" colspan="1" rowspan="1">IGLJ3*01</td>
+                <td align="left" colspan="1" rowspan="1">λ</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">33C6</td>
+                <td align="left" colspan="1" rowspan="1">IGHV5-51*01</td>
+                <td align="left" colspan="1" rowspan="1">IGHD5-12*01</td>
+                <td align="left" colspan="1" rowspan="1">IGHJ4*02</td>
+                <td align="left" colspan="1" rowspan="1">IGLV1-47*02</td>
+                <td align="left" colspan="1" rowspan="1">IGLJ3*02</td>
+                <td align="left" colspan="1" rowspan="1">λ</td>
+              </tr>
+            </tbody>
+          </table></alternatives></table-wrap>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Discussion</title>
+      <p>Our data give proof-of-concept that the novel mAb isolation strategy, together with the newly developed set of primers specific to RM Ig genes, yielded mAbs with the epitope specificity as predicted by the fluorescently labeled mimotope. Our methodology represents a direct approach to isolate naturally occurring, matured Abs as mAbs without the need of extensive screening and provides a practical tool for analytical vaccinology. In contrast to other methods of mAb generation using phage display with Ig fragments that yield randomly recombined Ig chains, isolating single memory B cells will allow probing of natural Ab repertoires. Our focus on isolating peripheral blood memory B cells as preferred source of matured V<sub>H</sub>/V<sub>L</sub> genes has an advantage compared to plasma cells. The latter lack B-cell receptors (BCR), whereas memory B cells bear antigen receptors recognizing only one epitope; these receptors serve as targets that are specifically recognized by fluorescently labeled mimotopes.</p>
+      <p>An important aspect of our new technology is the use of conformational mimotopes, which we selected with affinity-purified polyclonal RM Abs specific for either native or denatured antigen. We used the power of differential biopanning to select mimotopes representing conformational epitopes and thus increased the chances of isolating biologically relevant V<sub>H</sub>/V<sub>L</sub> genes, since most Ab paratopes are directed against conformational targets on the antigen.</p>
+      <p>Our new approach to isolate conformation-specific mAbs with predetermined epitope specificity is applicable to any antigen. General strategies depicted in <xref ref-type="fig" rid="pone-0038943-g001">Figures 1</xref> and <xref ref-type="fig" rid="pone-0038943-g002">2</xref> are not restricted to isolating HIV envelope-related mAbs. We chose a V3 mimotope to illustrate the power and practicality of our new approach. By opting to isolate mAbs with a narrow, well defined epitope specificity, we expect to observe far fewer “hits” when isolating memory B cells compared to standard technologies using entire antigens as baits. The benefits of our targeted approach will be that the epitope specificity will be known, thereby obviating a labor-intensive mapping effort. Another approach to zero in on a specific antigen region involved an HIV gp120 that had been redesigned to diminish undesirable antigenic determinants to facilitate the isolation of B cells specific for the CD4-binding site <xref ref-type="bibr" rid="pone.0038943-Wu1">[12]</xref>. The latter is known to encompass a number of different epitopes. This approach required resolving of spatial structure of the antigen as well as sophisticated protein modeling. In contrast, empirical selection of epitope mimetics by differential biopanning of phage display peptide libraries using polyclonal Abs provides a fast and easy technique to generate mimotopes resembling conformational epitopes from infected or immunized hosts.</p>
+      <p>It should be pointed out that our single cell-based mAb isolation does not depend on using mimotopes with stringent conformation dependence as baits. In fact, we have performed a number of RM B-cell isolations with mimotopes that had some but not exclusive conformation dependence (unpublished data). In fact, we have performed biopannings with more than 20 RM sera from vaccinated and/or SHIV-infected animals using standard rather than differential biopanning. In such cases, we are generally able to assign the resulting mimotopes to the corresponding entire antigen of interest in approximately 90% of the cases based upon partial amino acid similarity. However, in exceptional cases, as many as 40% to 50% of the mimotopes could not be assigned and are likely representing quaternary conformational regions.</p>
+      <p>Our choice of RMs as source for V<sub>H</sub>/V<sub>L</sub> genes will potentially yield mAbs with clinical applicability as prophylactic or therapeutic agents. Of note, RMs and humans have a closely related repertoire of Ig genes, much more so than mice, rabbits or other species used routinely for mAb isolation. Our findings of V<sub>H</sub> gene usage, length of CDR3 and frequency of mutations are similar to anti-V3 Abs derived from HIV-infected individuals, thus confirming this notion.</p>
+      <p>Although we demonstrated the ability to generate mAbs with predetermined epitope specificity using the RM model of immunodeficiency virus infection, our approach can be readily extended to any target of choice, such as experimental or natural infection with potential pathogens, autoimmune diseases and cancer.</p>
+    </sec>
+    <sec id="s4" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s4a">
+        <title>Animals</title>
+        <p>The current in vitro study only used blood samples from animals listed in <xref ref-type="supplementary-material" rid="pone.0038943.s007">Table S1</xref>. These RMs, chronically infected with clade C SHIV, were part of our ongoing study to establish and optimize a model to test experimental vaccine approaches against the most frequent clade of HIV worldwide, and data from each of these animals have been published previously <xref ref-type="bibr" rid="pone.0038943-Siddappa1">[19]</xref>, <xref ref-type="bibr" rid="pone.0038943-AyashRashkovsky1">[24]</xref>–<xref ref-type="bibr" rid="pone.0038943-Song1">[27]</xref>. Animal experiments were carried out in strict accordance with the recommendations in the Guide for the Care and Use of Laboratory Animals of the U.S. Public Health Services/National Institutes of Health, as well as according to the recommendations in the Weatherall report on ‘‘The Use of Non-human Primates in Research’’ (<ext-link ext-link-type="uri" xlink:href="http://www.acmedsci.ac.uk/images/project/nhpdownl.pdf" xlink:type="simple">http://www.acmedsci.ac.uk/images/project/nhpdownl.pdf</ext-link>). The protocol was approved by the Committee on the Ethics of Animal Experiments of Emory University (IACUC ID: YER-2001401-111814; Emory University Animal Welfare Assurance Number A3180-01). The rhesus monkeys were housed at the Yerkes National Primate Research Center (YNPRC, Emory University, Atlanta, GA). The animals were housed indoors with a 12 hour light/dark cycle, in individual cages but in visual and auditory contact with other RMs, were fed monkey chow (Purina) ad libitum supplemented daily with fresh fruit. Standard enrichment was provided by the YNPRC enrichment staff including perches, rubber toys and varied treats such as peanuts and cereals. Blood was collected under ketamine or Telazol anesthesia from the femoral vein. YNPRC facilities are fully accredited by the Association for Assessment and Accreditation of Laboratory Animal Care International. Animal experiments were approved by the Institutional Animal Care and Use Committees at Emory and the Dana-Farber Cancer Institute via a Collaborating Institution Animal Use Agreement. Because the experiments described here involved a virus that may cause an incurable disease, such as AIDS, discomfort, stress and pain may occur. Animals were closely monitored and observed for development of disease at least twice daily. Animals determined to be under stress or in discomfort, were administered appropriate anesthetics and/or analgesics as directed by the clinical veterinary staff. If stress cannot be alleviated, the animals are euthanized.</p>
+      </sec>
+      <sec id="s4b">
+        <title>Collection of Human PBMC</title>
+        <p>This study made use of anonymous human blood donor samples for in vitro neutralization tests. These cells were derived from the blood bank at Brigham and Women’s Hospital (Boston, MA), where leukocytes were collected in Trima collars during platelet pheresis. The donors were prescreened and found to be negative for blood-borne pathogens, including HIV-1, hepatitis, and others. The use of Trima-collar derived PBMC for in vitro neutralization assays was reviewed by the IRB; this use of human PBMC was considered to be exempt.</p>
+      </sec>
+      <sec id="s4c">
+        <title>Envelope Proteins and Peptides</title>
+        <p>HIV envelope proteins of strains UG37, BaL, IIIB, CN54 and UG21 along with consensus clade C peptides were kindly provided by the NIH AIDS Research and Reference Reagent Program (ARRRP). SHIV-1157ip and SIVmne envelope proteins were generated by recombinant vaccinia virus technology <xref ref-type="bibr" rid="pone.0038943-Klaniecki1">[28]</xref>.</p>
+      </sec>
+      <sec id="s4d">
+        <title>Differential Biopanning</title>
+        <sec id="s4d1">
+          <title>Affinity purification of polyclonal Abs specific for native vs. denatured antigens</title>
+          <p>Affinity purification was performed in 96-well plates coated overnight with HIV gp160<sub>SHIV-1157ip</sub> under native or denaturing conditions. On the next day, plates were washed, blocked and incubated overnight with plasma of monkey RKl-8. The following day, plates were extensively washed, and bound Abs were eluted by pH shift. Identical fractions were combined, concentrated and used for biopanning of random peptide phage libraries.</p>
+        </sec>
+        <sec id="s4d2">
+          <title>Biopanning</title>
+          <p>Biopanning of random peptide phage display libraries with polyclonal clade C SHIV-infected RM serum is described elsewhere <xref ref-type="bibr" rid="pone.0038943-Humbert2">[29]</xref>. Briefly, paramagnetic beads (Dynabeads M-280 tosyl-activated; Invitrogen) were coated with rabbit anti-monkey IgG (Sigma-Aldrich) and pre-incubated with serum Abs affinity-purified using native gp160<sub>SHIV-1157ip</sub> (positive selection). After an overnight incubation with 10 µl of the original phage display peptide libraries (7mer, cyclic 7mer, 12mer; New England Biolabs), beads were intensively washed and bound phages were eluted by a 10 min pH shift using 0.2 M glycine-HCl pH 2.2 supplemented with 1 mg/ml BSA (Sigma-Aldrich) and subsequently neutralized with 1 M Tris-HCl pH 9.1 (Sigma-Aldrich). Eluted phages were used for negative selection with serum Abs that had been affinity-purified with denatured gp160<sub>SHIV-1157ip</sub> (boiled for 3 min in carbonate buffer (pH 9.6) containing 0.05 M TCEP, <italic>tris</italic>(2-carboxyethyl)phosphine (Pierce) and 2% SDS (Sigma-Aldrich). Phages remaining in the supernatant after negative selection were amplified for 4.5 h in <italic>E. coli</italic> (ER2738, New England Biolabs), precipitated overnight at 4°C (20% PEG-8000/2.5 M NaCl; Fisher Scientific), collected, precipitated a second time and subjected to two more positive/one more negative selection rounds. Eluted phages from the third positive selection were titered on LB plates and single clones were picked and tested by phage ELISA for specific binding. Single-stranded DNA of positive clones was isolated and sequenced to deduce the sequences of the peptide inserts, which were grouped into motifs and assigned to sequences of the Env-C protein, where possible.</p>
+        </sec>
+      </sec>
+      <sec id="s4e">
+        <title>Molecular Modeling and Structure Images</title>
+        <p>Protein modeling and energy calculations were performed using Discovery Studio (Accelrys Software, Inc.) based on a sequence alignment of the V3-mimotope with the core structure corresponding to the X-ray structure of ZAM18 V3 peptide in complex with Fab2557 <xref ref-type="bibr" rid="pone.0038943-Jiang1">[13]</xref> (pdb code 3MLU). Energies were calculated using CHARMM (Chemistry at Harvard Macromolecular Mechanics). We introduced solvent factors using the implicit of distance-dependent dielectrics model and performed energy minimization of the mimotope (Steepest Descent following by Conjugate Gradient).</p>
+        <p>Molecular graphics image for antibody <xref ref-type="bibr" rid="pone.0038943-Harris1">[30]</xref> (pdb code 1IGT) was produced using the UCSF Chimera package from the Resource for Biocomputing, Visualization, and Informatics at the University of California, San Francisco (supported by NIH P41 RR001081). Model for mWasabi was generated by Swiss-Model Workspace <xref ref-type="bibr" rid="pone.0038943-Kiefer1">[31]</xref> (Swiss Institute of Bioinformatics &amp; the Biozentrum University of Basel) and the image was produced with UCSF Chimera package.</p>
+      </sec>
+      <sec id="s4f">
+        <title>Generation of pET-mWasabi.II-mime Vector and mWasabi-mimotope Fusion Expression (<xref ref-type="supplementary-material" rid="pone.0038943.s001">Figure S1</xref>)</title>
+        <p>First, sequences encoding mWasabi with a N-terminal His<sub>6</sub>-tag were amplified from the parental plasmid pNCS-mWasabi (Allele Biotechnology) with primers to introduce NdeI and EcoRI restriction sites (<xref ref-type="supplementary-material" rid="pone.0038943.s011">Table S5</xref>) and cloned into the pET-22b(+) vector (Novagen). The resulting plasmid was termed pET-mWasabi.II. Next, mimotopes plus flanking regions were amplified from phage DNA with primers to introduce EcoRI and HindIII restriction sites (<xref ref-type="supplementary-material" rid="pone.0038943.s011">Table S5</xref>) followed by cloning into pET-mWasabi.II at the C-terminus of the fluorescent protein. The mWasabi-mimotope fusion proteins were expressed in BL21 <italic>E.coli</italic> and purified on the Ni<sup>2+</sup>-agarose according to the manufacturer instruction.</p>
+      </sec>
+      <sec id="s4g">
+        <title>ELISAs</title>
+        <p>Phage binding ELISA and mimotope fusion protein ELISA were performed as published <xref ref-type="bibr" rid="pone.0038943-Humbert2">[29]</xref>.</p>
+        <sec id="s4g1">
+          <title>ELISAs with cell culture supernatants and purified mAbs</title>
+          <p>ELISA plates were coated with 50–100 ng/well of antigens (mimotope fusion proteins, HIV proteins or V3 loop consensus peptides) in carbonate buffer, pH 9.6. After washing, plates were blocked with 2% bovine serum albumin (BSA) (Sigma-Aldrich), 0.05% Tween-PBS (blocking buffer). Plates were then incubated with cell supernatants diluted with blocking buffer or purified mAbs diluted at 1 µg/ml with several consecutive 1∶4 dilutions in blocking buffer. After washing, the plates were developed by incubation for 1 h with goat HRP-conjugated anti-human IgG (Jackson ImmunoResearch) and by adding 100 µl of <italic>o</italic>-phenylenediamine or TMB solution. Optical densities were measured at the appropriate wavelength using an ELISA microplate reader (Mithras LB 940, Berthold Technologies).</p>
+        </sec>
+        <sec id="s4g2">
+          <title>“Denatured” ELISA</title>
+          <p>Wells of 96-well plates were coated with gp160<sub>SHIV-1157ip</sub> under native or denaturing conditions. For denaturation, antigen was diluted to at 0.5 µg/ml into carbonate buffer (pH 9.6) containing 0.05 M TCEP and 2% SDS and boiled for 3 min. Antigen in coating buffer served as “native”. Subsequent ELISAs were performed similarly as described above.</p>
+        </sec>
+        <sec id="s4g3">
+          <title>Competitive ELISA</title>
+          <p>The interaction of anti-V3 loop mAbs with solid-phase HIV<sub>CN54</sub> gp120 was inhibited by peptides corresponding to the V3 loop of consensus clade C gp120 sequence (<xref ref-type="supplementary-material" rid="pone.0038943.s004">Figure S4A</xref>). A negative peptide control consisted of a scrambled C-terminal gp120 peptide (24 amino acids long; synthesized by the Molecular Biology Core Facilities, DFCI).</p>
+        </sec>
+      </sec>
+      <sec id="s4h">
+        <title>Primer Design</title>
+        <p>To design primers specific for RM Ig genes (<xref ref-type="supplementary-material" rid="pone.0038943.s009">Table S3</xref>), we analyzed RM Ig V gene sequences obtained in our group as well as sequences available through public databases, IMGT, the international ImMunoGeneTics information system® (IMGT/LIGM-DB) and NCBI, The National Center for Biotechnology Information. Sequence analysis and germline gene identification were performed using the IMGT-V-Quest software; sequence alignment was done with DNAStar Lasergene software package (DNAStar Inc). In addition, using known sequences of rare human V genes, the RM genome was blasted to identify potential counterparts. To validate newly designed primers, V<sub>H</sub> and V<sub>L</sub> genes were amplified using cDNA derived from mRNA isolated from the mixture of bone marrow B cells of 10 RMs. The resulting PCR products were cloned into the sequencing plasmid vector, pCR4-TOPO (Invitrogen), and sequenced. Sequences of 300 randomly chosen clones were analyzed.</p>
+      </sec>
+      <sec id="s4i">
+        <title>Mimotope-specific Memory B-cell Isolation</title>
+        <p>RM PBMC were obtained from YNPRC by overnight shipping in BD Vacutainer® CPT™ Cell Preparation Tubes (Beckton Dickinson, BD). Upon arrival, cells were washed with RPMI 1640 (Invitrogen) supplemented with 15% fetal calf serum (FCS) (Sigma-Aldrich) followed by PBS containing 0.2% BSA (Sigma-Aldrich). Then, cells were incubated with APC-Cy™7 mouse anti-human CD3 (BD Pharmingen), APC mouse anti-human CD27 (BD Pharmingen), PE-Cy™7 mouse anti-human IgG (BD Pharmingen), anti-CD19-R-Phycoerythrin (Beckman Coulter) and mWasabi-mimotope fusion protein for 30 min on ice in PBS-BSA. Controls were performed with isotype controls and mWasabi. Cells were then washed twice with ice cold PBS-BSA and single-cell sorted (FACSAria II (BD Biosciences)) into 96-well PCR plates as described <xref ref-type="bibr" rid="pone.0038943-Tiller1">[32]</xref>. Live single-cell sorting of RM mimotope-specific memory B cells under appropriate biocontainment was available through the Harvard CFAR Core facility. Plates were snap frozen on dry ice immediately after the completion of sorting.</p>
+      </sec>
+      <sec id="s4j">
+        <title>Single B-cell RT-PCR and Expression Vector Cloning</title>
+        <p>cDNA synthesis and Ig amplification were performed as previously described <xref ref-type="bibr" rid="pone.0038943-Tiller1">[32]</xref>, with following modifications. The frozen plates with single memory B cells were thawed, and reverse transcription was performed by adding 3 µl of random hexamer primers (Applied Biosystems) at 50 µM, 1 µl of 10 mM dNTP mix (Invitrogen), 0.0625 µl of Igepal CA-630 (Sigma), 40 units of RNaseOUT™ (Invitrogen), 1.25 µl of 0.1 DTT (Invitrogen) and 0.25 µl of SuperScript III (Invitrogen) into each well. Reaction conditions for reverse transcription were as follows: 42°C for 10 min, 25°C for 10 min, 50°C for 60 min and 94°C for 5 min. The cDNA plates were stored at −20°C until further use. The IgH, Igλ and Igκ V genes were amplified independently by semi-nested PCR starting from 3 µl of cDNA as a template. All PCRs were performed in 96-well PCR plates in a total volume of 50 µl containing water, 5 µl of 10× buffer, 1 µl of dNTP mix, each at 10 mM, 1 µl of MgCl<sub>2</sub> at 25 mM (Qiagen), by 1 µl of forward primer mix and reverse primer (<xref ref-type="supplementary-material" rid="pone.0038943.s009">Table S3</xref>) at 10 µM, and 0.4 µl of HotStart Taq DNA polymerase (Qiagen). The PCR thermocycler program was: 95°C for 15 min; 50 cycles (95°C for 30 sec, 50°C for Igκ and Igλ or 54°C for IgH for 30 sec and 72°C for 1 min); 72°C for 10 min. For PCR2, 3 µl of PCR1 product were used as a template. Forward primers were as in PCR1 and reverse primer specific for PCR2 (<xref ref-type="supplementary-material" rid="pone.0038943.s009">Table S3</xref>). Fifty cycles were used with the same parameters as those for the first round, with annealing temperature of 52°C for Igκ and Igλ and 57°C for IgH for 30 sec. After PCR2, the fragments for matching heavy/light chain pairs were isolated and subjected to direct sequencing with the reverse PCR2 primer. PCR products that represented productive IgH, Igλ or Igκ rearranged sequences were reamplified from PCR1 using “cloning” primers. These primers contained unique restriction digest sites, a Kozak motif, leader peptide coding region and sequences complementary to FR1. After amplification, DNA fragments were gel purified, digested and cloned into pFUSE2-CLIg-hk, pFUSE2-CLIg-hl2 and pFUSE2-CHIg-hG1 (all from Invivogen) containing the backbones of human Igγ1, Igκ and Igλ, respectively, thus giving rise to chimeric simian-human mAbs.</p>
+      </sec>
+      <sec id="s4k">
+        <title>Ab Production and Purification</title>
+        <p>Full-length IgG1 mAbs were produced by transient cotransfection of the paired heavy and light chain pFUSE plasmids into 293-F cells (Invitrogen) grown in serum-free FreeStyle™ 293 Expression Medium (Gibco® Invitrogen) using the <italic>Trans</italic>IT-PRO™ Transfection Kit (Mirus Bio). Cells were cultivated for 3 days at 37°C/8% CO<sub>2</sub> with continuous shaking at 135 rpm. Supernatants were collected, filtered through 0.22 µm filters and supplemented with Halt Protease Inhibitor Cocktail (Thermo Fisher) and 100× penicillin-streptomycin solution (Gibco® Invitrogen). Next, supernatants were tested for binding to HIV Env and mimotopes, and positive mAbs were affinity-purified using Protein A agarose (GE Healthcare) according to manufacturer’s instructions. IgG concentrations were determined by measuring absorbance at 280 nm on Nanodrop 1000 (Thermo Scientific) using the IgG default protocol.</p>
+      </sec>
+      <sec id="s4l">
+        <title>Virion Binding Assay</title>
+        <p>ELISA plates (Nunc) were coated with 5 µg/ml of goat anti-human IgG Fc specific Ab (Jackson ImmunoResearch) overnight at 4°C. After blocking and washing, mAbs were added at 5 µg/ml and incubated for 2 h. The plates were washed, SHIV-1157ipEL-p was added to the mAbs and incubated for 20 h, after which the plates were washed again and incubated with 0.5% Triton X-100 for 1 h to release p27 from the virus bound to the various mAbs. The amount of p27 released was determined using a p27 SIV capture kit (ABL, Inc).</p>
+      </sec>
+      <sec id="s4m">
+        <title>Neutralization Assays</title>
+        <p>The TZM-bl and M7-Luc assays were performed as described elsewhere <xref ref-type="bibr" rid="pone.0038943-Montefiori1">[33]</xref> and the human PBMC assay was performed as reported <xref ref-type="bibr" rid="pone.0038943-Watkins1">[34]</xref>.</p>
+        <sec id="s4m1">
+          <title>A3R5 cell assay</title>
+          <p>A3R5 (A3.01/R5.6) cells are derived from the CEM human lymphoblastoid cell line A3.01 <xref ref-type="bibr" rid="pone.0038943-Folks1">[35]</xref> and engineered to express CCR5 (McLinden RJ, Chenine AL, LaBranche C, Perfetto S, Ochsenbauer C, Kappes J, Montefiori, DC, Kim JH. “Novel CD4+/CCR5+/CXCR4+ human T-cell line shows enhanced sensitivity of HIV-1 to neutralization by sCD4, mAbs and HIV-1-positive sera”, manuscript in preparation); cells were obtained from Drs. Jerome Kim and Robert McLinden at the US Medical HIV Research Program. The A3R5 assay was performed with Env.IMC.LucR viruses <xref ref-type="bibr" rid="pone.0038943-Edmonds1">[36]</xref>. Neutralization titers reflect the sample concentration at which relative luminescence units (RLU) were reduced by 50% compared to RLU in virus control wells after subtraction of background activity in cell control wells.</p>
+        </sec>
+      </sec>
+      <sec id="s4n">
+        <title>Reactivity with Autoantigens</title>
+        <p>Autoreactivity was tested with an anti-dsDNA EIA kit, anti-Sm/RNP EIA kit, anti-Sm EIA kit, autoimmune EIA anti-SS-A/Ro Test, autoimmune EIA anti-SS-B/La test, Bio-Rad Kallestad ANA screen (all Bio-Rad) and QUANTA Lite® ACA IgG III (INOVA Diagnostics). Assays were performed on automated PhD System (Bio-Rad) and DSX™ System (Dynex Technologies).</p>
+      </sec>
+    </sec>
+    <sec id="s5">
+      <title>Supporting Information</title>
+      <supplementary-material id="pone.0038943.s001" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s001" xlink:type="simple">
+        <label>Figure S1</label>
+        <caption>
+          <p><bold>Cloning of mimotopes into the mWasabi backbone.</bold> mWasabi and mimotope fragments were amplified using specific primers to introduce appropriate restriction sites to insert both sequences (boxed) into the pET-22b(+) vector. mWasabi was cloned first and the resulting vector pET-mWasabi.II served as an acceptor of different mimotopes. After transformation of <italic>E.coli</italic> with the resulting plasmids, mWasabi-mimotope fusion proteins were expressed under IPTG induction and purified from bacterial cell lysates by metal-affinity chromatography. pNCS-mWasabi was obtained from Allele Biotech.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038943.s002" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s002" xlink:type="simple">
+        <label>Figure S2</label>
+        <caption>
+          <p><bold>Binding analysis of 12 293F cell supernatants to mimotope fusion proteins, mWasabi-Tc.2 and HIV Env.</bold> Supernatants of 293F cells transfected with plasmids encoding cognate heavy and light immunoglobulin chains were collected 72 h post-transfection, diluted with blocking buffer (<xref ref-type="sec" rid="s4">Material and Methods</xref>) and incubated with mWasabi-Tc.2, mWasabi or HIV<sub>CN54</sub> gp120. The anti-V3 loop mAb HGN194 <xref ref-type="bibr" rid="pone.0038943-Corti2">[16]</xref> and monkey RJa-9 serum were used as positive controls. Supernatant from non-transfected 293F cells (0 sup.) served as negative control. Each data point represents the mean ± s.e.m. (n  = 3).</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038943.s003" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s003" xlink:type="simple">
+        <label>Figure S3</label>
+        <caption>
+          <p><bold>Binding of mAbs 33B2 and 33C6 to HIV Env of different clades.</bold> Plates were coated with envelope proteins and probed with different dilutions of mAbs 33B2 and 33C6. HIV Env proteins were derived from the following strains: clade A, UG37; B, BaL and IIIB; C, CN54 and 1157ip; D, UG21. SIVmne gp160 was used as negative control. MAb HGN194 served as positive and Fm-6 <xref ref-type="bibr" rid="pone.0038943-Sui1">[37]</xref> as negative isotype controls, respectively. Each data point represents the mean ± s.e.m. (n  = 3).</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038943.s004" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s004" xlink:type="simple">
+        <label>Figure S4</label>
+        <caption>
+          <p><bold>Inhibition of binding of mAbs to HIV<sub>CN54</sub> gp120 by consensus clade C peptides representing the V3 loop region.</bold> ELISA plates were coated with gp120 and exposed to mAbs mixed with V3 loop peptides (9258, 9259, 9260, 9261, 9262, and 9263) or control peptide representing the scrambled C-terminus of HIV gp120. Each data point represents the mean ± s.e.m. (n  = 3). (A) Amino acid sequences of linear consensus clade C peptide representing the V3 loop of gp120; (B) inhibition of binding of mAb 33B2; and (C) inhibition of binding of mAb 33C6.</p>
+          <p>(TIFF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038943.s005" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s005" xlink:type="simple">
+        <label>Figure S5</label>
+        <caption>
+          <p><bold>Alignment of 33B2 and 33C6 VH with human (HU-IGHV5-51) and rhesus monkey (RM-IGHV-5-51) germline amino acid sequences and calculation of mutation frequency versus rhesus monkey germline.</bold> Red amino acids, divergence from the rhesus monkey germline; green, divergence from the human germline.</p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038943.s006" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s006" xlink:type="simple">
+        <label>Figure S6</label>
+        <caption>
+          <p><bold>Alignment of 33B2 and 33C6 VL with human (HU-IGLV1-50 and HU-IGLV1-47) and rhesus monkey (RM-IGLV1-50 and RM-IGLV1-47) germline amino acid sequences and calculation of mutation frequency versus rhesus monkey germline.</bold> Red amino acids, divergence from the rhesus monkey germline; green, divergence from the human germline.</p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038943.s007" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s007" xlink:type="simple">
+        <label>Table S1</label>
+        <caption>
+          <p>
+            <bold>Treatment history and clinical parameters for cohort of RMs used for the study.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038943.s008" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s008" xlink:type="simple">
+        <label>Table S2</label>
+        <caption>
+          <p>
+            <bold>IC<sub>50</sub> neutralization titers of RM sera.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038943.s009" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s009" xlink:type="simple">
+        <label>Table S3</label>
+        <caption>
+          <p>
+            <bold>Primers for amplification of rhesus monkey immunoglobulin V heavy and light chain genes.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038943.s010" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s010" xlink:type="simple">
+        <label>Table S4</label>
+        <caption>
+          <p>
+            <bold>Frequency of RM V gene usage.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038943.s011" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0038943.s011" xlink:type="simple">
+        <label>Table S5</label>
+        <caption>
+          <p>
+            <bold>Primers for amplification of mWasabi and mimotopes.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>We thank Dr. Julie Johnson-McGrath for editorial assistance, Dr. Patricia Polacino for assistance in the preparation of gp160, Dr. Wayne Marasco (Dana-Farber Cancer Institute) for providing the human IgG1 isotype control mAb Fm-6 and Maggie Wesberry, Sebastian Molnar and Brittani Barrows for technical assistance with neutralization assays.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0038943-Zielinski1">
+        <label>1</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zielinski</surname><given-names>CE</given-names></name><name name-style="western"><surname>Corti</surname><given-names>D</given-names></name><name name-style="western"><surname>Mele</surname><given-names>F</given-names></name><name name-style="western"><surname>Pinto</surname><given-names>D</given-names></name><name name-style="western"><surname>Lanzavecchia</surname><given-names>A</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Dissecting the human immunologic memory for pathogens.</article-title>             <source>Immunological Reviews</source>             <volume>240</volume>             <fpage>40</fpage>             <lpage>51</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Corti1">
+        <label>2</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Corti</surname><given-names>D</given-names></name><name name-style="western"><surname>Sallusto</surname><given-names>F</given-names></name><name name-style="western"><surname>Lanzavecchia</surname><given-names>A</given-names></name></person-group>             <year>2011</year>             <article-title>High throughput cellular screens to interrogate the human T and B cell repertoires.</article-title>             <source>Curr Opin Immunol</source>             <volume>23</volume>             <fpage>430</fpage>             <lpage>435</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Kwong1">
+        <label>3</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kwong</surname><given-names>PD</given-names></name><name name-style="western"><surname>Mascola</surname><given-names>JR</given-names></name><name name-style="western"><surname>Nabel</surname><given-names>GJ</given-names></name></person-group>             <year>2009</year>             <article-title>Mining the B cell repertoire for broadly neutralizing monoclonal antibodies to HIV-1.</article-title>             <source>Cell Host Microbe</source>             <volume>6</volume>             <fpage>292</fpage>             <lpage>294</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Reddy1">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Reddy</surname><given-names>ST</given-names></name><name name-style="western"><surname>Ge</surname><given-names>X</given-names></name><name name-style="western"><surname>Miklos</surname><given-names>AE</given-names></name><name name-style="western"><surname>Hughes</surname><given-names>RA</given-names></name><name name-style="western"><surname>Kang</surname><given-names>SH</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Monoclonal antibodies isolated without screening by analyzing the variable-gene repertoire of plasma cells.</article-title>             <source>Nat Biotech</source>             <volume>28</volume>             <fpage>965</fpage>             <lpage>969</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Robinson1">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Robinson</surname><given-names>JE</given-names></name><name name-style="western"><surname>Franco</surname><given-names>K</given-names></name><name name-style="western"><surname>Elliott</surname><given-names>DH</given-names></name><name name-style="western"><surname>Maher</surname><given-names>MJ</given-names></name><name name-style="western"><surname>Reyna</surname><given-names>A</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Quaternary epitope specificities of anti-HIV-1 neutralizing antibodies generated in rhesus macaques infected by the simian/human immunodeficiency virus SHIVSF162P4.</article-title>             <source>J Virol</source>             <volume>84</volume>             <fpage>3443</fpage>             <lpage>3453</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Walker1">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Walker</surname><given-names>LM</given-names></name><name name-style="western"><surname>Phogat</surname><given-names>SK</given-names></name><name name-style="western"><surname>Chan-Hui</surname><given-names>PY</given-names></name><name name-style="western"><surname>Wagner</surname><given-names>D</given-names></name><name name-style="western"><surname>Phung</surname><given-names>P</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Broad and potent neutralizing antibodies from an African donor reveal a new HIV-1 vaccine target.</article-title>             <source>Science</source>             <volume>326</volume>             <fpage>285</fpage>             <lpage>289</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Wrammert1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wrammert</surname><given-names>J</given-names></name><name name-style="western"><surname>Smith</surname><given-names>K</given-names></name><name name-style="western"><surname>Miller</surname><given-names>J</given-names></name><name name-style="western"><surname>Langley</surname><given-names>WA</given-names></name><name name-style="western"><surname>Kokko</surname><given-names>K</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Rapid cloning of high-affinity human monoclonal antibodies against influenza virus.</article-title>             <source>Nature</source>             <volume>453</volume>             <fpage>667</fpage>             <lpage>671</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Beltramello1">
+        <label>8</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Beltramello</surname><given-names>M</given-names></name><name name-style="western"><surname>Williams</surname><given-names>KL</given-names></name><name name-style="western"><surname>Simmons</surname><given-names>CP</given-names></name><name name-style="western"><surname>Macagno</surname><given-names>A</given-names></name><name name-style="western"><surname>Simonelli</surname><given-names>L</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>The human immune response to Dengue virus is dominated by highly cross-reactive antibodies endowed with neutralizing and enhancing activity.</article-title>             <source>Cell Host Microbe</source>             <volume>8</volume>             <fpage>271</fpage>             <lpage>283</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Julius1">
+        <label>9</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Julius</surname><given-names>MH</given-names></name><name name-style="western"><surname>Masuda</surname><given-names>T</given-names></name><name name-style="western"><surname>Herzenberg</surname><given-names>LA</given-names></name></person-group>             <year>1972</year>             <article-title>Demonstration that antigen-binding cells are precursors of antibody-producing cells after purification with a fluorescence-activated cell sorter.</article-title>             <source>Proc Natl Acad Sci</source>             <volume>69</volume>             <fpage>1934</fpage>             <lpage>1938</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Weitkamp1">
+        <label>10</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Weitkamp</surname><given-names>JH</given-names></name><name name-style="western"><surname>Kallewaard</surname><given-names>N</given-names></name><name name-style="western"><surname>Kusuhara</surname><given-names>K</given-names></name><name name-style="western"><surname>Feigelstock</surname><given-names>D</given-names></name><name name-style="western"><surname>Feng</surname><given-names>N</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>Generation of recombinant human monoclonal antibodies to rotavirus from single antigen-specific B cells selected with fluorescent virus-like particles.</article-title>             <source>J Immunol Methods</source>             <volume>275</volume>             <fpage>223</fpage>             <lpage>237</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Scheid1">
+        <label>11</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Scheid</surname><given-names>JF</given-names></name><name name-style="western"><surname>Mouquet</surname><given-names>H</given-names></name><name name-style="western"><surname>Ueberheide</surname><given-names>B</given-names></name><name name-style="western"><surname>Diskin</surname><given-names>R</given-names></name><name name-style="western"><surname>Klein</surname><given-names>F</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Sequence and structural convergence of broad and potent HIV antibodies that mimic CD4 binding.</article-title>             <source>Science</source>             <volume>333</volume>             <fpage>1633</fpage>             <lpage>1637</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Wu1">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wu</surname><given-names>X</given-names></name><name name-style="western"><surname>Yang</surname><given-names>ZY</given-names></name><name name-style="western"><surname>Li</surname><given-names>Y</given-names></name><name name-style="western"><surname>Hogerkorp</surname><given-names>CM</given-names></name></person-group>             <collab xlink:type="simple">Schief WR, et al</collab>             <year>2010</year>             <article-title>Rational design of envelope identifies broadly neutralizing human monoclonal antibodies to HIV-1.</article-title>             <source>Science</source>             <volume>329</volume>             <fpage>856</fpage>             <lpage>861</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Jiang1">
+        <label>13</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Jiang</surname><given-names>X</given-names></name><name name-style="western"><surname>Burke</surname><given-names>V</given-names></name><name name-style="western"><surname>Totrov</surname><given-names>M</given-names></name><name name-style="western"><surname>Williams</surname><given-names>C</given-names></name><name name-style="western"><surname>Cardozo</surname><given-names>T</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Conserved structural elements in the V3 crown of HIV-1 gp120.</article-title>             <source>Nat Struct Mol Biol</source>             <volume>17</volume>             <fpage>955</fpage>             <lpage>961</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Gorny1">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Gorny</surname><given-names>MK</given-names></name><name name-style="western"><surname>Wang</surname><given-names>X-H</given-names></name><name name-style="western"><surname>Williams</surname><given-names>C</given-names></name><name name-style="western"><surname>Volsky</surname><given-names>B</given-names></name><name name-style="western"><surname>Revesz</surname><given-names>K</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Preferential use of the VH5–51 gene segment by the human immune response to code for antibodies against the V3 domain of HIV-1.</article-title>             <source>Molecular Immunology</source>             <volume>46</volume>             <fpage>917</fpage>             <lpage>926</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Gorny2">
+        <label>15</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Gorny</surname><given-names>MK</given-names></name><name name-style="western"><surname>Williams</surname><given-names>C</given-names></name><name name-style="western"><surname>Volsky</surname><given-names>B</given-names></name><name name-style="western"><surname>Revesz</surname><given-names>K</given-names></name><name name-style="western"><surname>Cohen</surname><given-names>S</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>Human monoclonal antibodies specific for conformation-sensitive epitopes of V3 neutralize human immunodeficiency virus type 1 primary isolates from various clades.</article-title>             <source>J Virol</source>             <volume>76</volume>             <fpage>9035</fpage>             <lpage>9045</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Corti2">
+        <label>16</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Corti</surname><given-names>D</given-names></name><name name-style="western"><surname>Langedijk</surname><given-names>JP</given-names></name><name name-style="western"><surname>Hinz</surname><given-names>A</given-names></name><name name-style="western"><surname>Seaman</surname><given-names>MS</given-names></name><name name-style="western"><surname>Vanzetta</surname><given-names>F</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Analysis of memory B cell responses and isolation of novel monoclonal antibodies with neutralizing breadth from HIV-1-infected individuals.</article-title>             <source>PLoS One</source>             <volume>5</volume>             <fpage>e8805</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Hioe1">
+        <label>17</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hioe</surname><given-names>CE</given-names></name><name name-style="western"><surname>Wrin</surname><given-names>T</given-names></name><name name-style="western"><surname>Seaman</surname><given-names>MS</given-names></name><name name-style="western"><surname>Yu</surname><given-names>X</given-names></name><name name-style="western"><surname>Wood</surname><given-names>B</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Anti-V3 monoclonal antibodies display broad neutralizing activities against multiple HIV-1 subtypes.</article-title>             <source>PLoS ONE</source>             <volume>5</volume>             <fpage>e10254</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Margolin1">
+        <label>18</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Margolin</surname><given-names>DH</given-names></name><name name-style="western"><surname>Saunders</surname><given-names>EH</given-names></name><name name-style="western"><surname>Bronfin</surname><given-names>B</given-names></name><name name-style="western"><surname>de Rosa</surname><given-names>N</given-names></name><name name-style="western"><surname>Axthelm</surname><given-names>MK</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Germinal center function in the spleen during simian HIV infection in rhesus monkeys.</article-title>             <source>J Immunol</source>             <volume>177</volume>             <fpage>1108</fpage>             <lpage>1119</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Siddappa1">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Siddappa</surname><given-names>NB</given-names></name><name name-style="western"><surname>Watkins</surname><given-names>JD</given-names></name><name name-style="western"><surname>Wassermann</surname><given-names>KJ</given-names></name><name name-style="western"><surname>Song</surname><given-names>R</given-names></name><name name-style="western"><surname>Wang</surname><given-names>W</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>R5 clade C SHIV strains with tier 1 or 2 neutralization sensitivity: tools to dissect env evolution and to develop AIDS vaccines in primate models.</article-title>             <source>PLoS One</source>             <volume>5</volume>             <fpage>e11689</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Parren1">
+        <label>20</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Parren</surname><given-names>PW</given-names></name><name name-style="western"><surname>Fisicaro</surname><given-names>P</given-names></name><name name-style="western"><surname>Labrijn</surname><given-names>AF</given-names></name><name name-style="western"><surname>Binley</surname><given-names>JM</given-names></name><name name-style="western"><surname>Yang</surname><given-names>WP</given-names></name><etal/></person-group>             <year>1996</year>             <article-title>In vitro antigen challenge of human antibody libraries for vaccine evaluation: the human immunodeficiency virus type 1 envelope.</article-title>             <source>J Virol</source>             <volume>70</volume>             <fpage>9046</fpage>             <lpage>9050</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Posner1">
+        <label>21</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Posner</surname><given-names>MR</given-names></name><name name-style="western"><surname>Hideshima</surname><given-names>T</given-names></name><name name-style="western"><surname>Cannon</surname><given-names>T</given-names></name><name name-style="western"><surname>Mukherjee</surname><given-names>M</given-names></name><name name-style="western"><surname>Mayer</surname><given-names>KH</given-names></name><etal/></person-group>             <year>1991</year>             <article-title>An IgG human monoclonal antibody that reacts with HIV-1/GP120, inhibits virus binding to cells, and neutralizes infection.</article-title>             <source>J Immunol</source>             <volume>146</volume>             <fpage>4325</fpage>             <lpage>4332</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Roben1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <collab xlink:type="simple">Roben P, Moore JP, Thali M, Sodroski J, Barbas CF, 3rd, et al</collab>             <year>1994</year>             <article-title>Recognition properties of a panel of human recombinant Fab fragments to the CD4 binding site of gp120 that show differing abilities to neutralize human immunodeficiency virus type 1.</article-title>             <source>J Virol</source>             <volume>68</volume>             <fpage>4821</fpage>             <lpage>4828</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Zhang1">
+        <label>23</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zhang</surname><given-names>MY</given-names></name><name name-style="western"><surname>Xiao</surname><given-names>X</given-names></name><name name-style="western"><surname>Sidorov</surname><given-names>IA</given-names></name><name name-style="western"><surname>Choudhry</surname><given-names>V</given-names></name><name name-style="western"><surname>Cham</surname><given-names>F</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>Identification and characterization of a new cross-reactive human immunodeficiency virus type 1-neutralizing human monoclonal antibody.</article-title>             <source>J Virol</source>             <volume>78</volume>             <fpage>9233</fpage>             <lpage>9242</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-AyashRashkovsky1">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ayash-Rashkovsky</surname><given-names>M</given-names></name><name name-style="western"><surname>Chenine</surname><given-names>AL</given-names></name><name name-style="western"><surname>Steele</surname><given-names>LN</given-names></name><name name-style="western"><surname>Lee</surname><given-names>SJ</given-names></name><name name-style="western"><surname>Song</surname><given-names>R</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Coinfection with <italic>Schistosoma mansoni</italic> reactivates viremia in rhesus macaques with chronic simian-human immunodeficiency virus clade C infection.</article-title>             <source>Infect Immun</source>             <volume>75</volume>             <fpage>1751</fpage>             <lpage>1756</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Humbert1">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Humbert</surname><given-names>M</given-names></name><name name-style="western"><surname>Rasmussen</surname><given-names>RA</given-names></name><name name-style="western"><surname>Song</surname><given-names>R</given-names></name><name name-style="western"><surname>Ong</surname><given-names>H</given-names></name><name name-style="western"><surname>Sharma</surname><given-names>P</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>SHIV-1157i and passaged progeny viruses encoding R5 HIV-1 clade C env cause AIDS in rhesus monkeys.</article-title>             <source>Retrovirology</source>             <volume>5</volume>             <fpage>94</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Rasmussen1">
+        <label>26</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rasmussen</surname><given-names>RA</given-names></name><name name-style="western"><surname>Ong</surname><given-names>H</given-names></name><name name-style="western"><surname>Song</surname><given-names>R</given-names></name><name name-style="western"><surname>Chenine</surname><given-names>AL</given-names></name><name name-style="western"><surname>Ayash-Rashkovsky</surname><given-names>M</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Efficacy of a multigenic protein vaccine containing multimeric HIV gp160 against heterologous SHIV clade C challenges.</article-title>             <source>AIDS</source>             <volume>21</volume>             <fpage>1841</fpage>             <lpage>1848</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Song1">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Song</surname><given-names>RJ</given-names></name><name name-style="western"><surname>Chenine</surname><given-names>AL</given-names></name><name name-style="western"><surname>Rasmussen</surname><given-names>RA</given-names></name><name name-style="western"><surname>Ruprecht</surname><given-names>CR</given-names></name><name name-style="western"><surname>Mirshahidi</surname><given-names>S</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Molecularly cloned SHIV-1157ipd3N4: a highly replication- competent, mucosally transmissible R5 simian-human immunodeficiency virus encoding HIV clade C Env.</article-title>             <source>J Virol</source>             <volume>80</volume>             <fpage>8729</fpage>             <lpage>8738</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Klaniecki1">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Klaniecki</surname><given-names>J</given-names></name><name name-style="western"><surname>Dykers</surname><given-names>T</given-names></name><name name-style="western"><surname>Travis</surname><given-names>B</given-names></name><name name-style="western"><surname>Schmitt</surname><given-names>R</given-names></name><name name-style="western"><surname>Wain</surname><given-names>M</given-names></name><etal/></person-group>             <year>1991</year>             <article-title>Cross-neutralizing antibodies in rabbits immunized with HIV-1 gp160 purified from simian cells infected with a recombinant vaccinia virus.</article-title>             <source>AIDS Res Hum Retroviruses</source>             <volume>7</volume>             <fpage>791</fpage>             <lpage>798</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Humbert2">
+        <label>29</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Humbert</surname><given-names>M</given-names></name><name name-style="western"><surname>Rasmussen</surname><given-names>RA</given-names></name><name name-style="western"><surname>Ong</surname><given-names>H</given-names></name><name name-style="western"><surname>Kaiser</surname><given-names>FM</given-names></name><name name-style="western"><surname>Hu</surname><given-names>SL</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Inducing cross-clade neutralizing antibodies against HIV-1 by immunofocusing.</article-title>             <source>PLoS One</source>             <volume>3</volume>             <fpage>e3937</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Harris1">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Harris</surname><given-names>LJ</given-names></name><name name-style="western"><surname>Larson</surname><given-names>SB</given-names></name><name name-style="western"><surname>Hasel</surname><given-names>KW</given-names></name><name name-style="western"><surname>McPherson</surname><given-names>A</given-names></name></person-group>             <year>1997</year>             <article-title>Refined structure of an intact IgG2a monoclonal antibody.</article-title>             <source>Biochemistry</source>             <volume>36</volume>             <fpage>1581</fpage>             <lpage>1597</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Kiefer1">
+        <label>31</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kiefer</surname><given-names>F</given-names></name><name name-style="western"><surname>Arnold</surname><given-names>K</given-names></name><name name-style="western"><surname>Kunzli</surname><given-names>M</given-names></name><name name-style="western"><surname>Bordoli</surname><given-names>L</given-names></name><name name-style="western"><surname>Schwede</surname><given-names>T</given-names></name></person-group>             <year>2009</year>             <article-title>The SWISS-MODEL Repository and associated resources.</article-title>             <source>Nucleic Acids Res</source>             <volume>37</volume>             <fpage>D387</fpage>             <lpage>392</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Tiller1">
+        <label>32</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Tiller</surname><given-names>T</given-names></name><name name-style="western"><surname>Meffre</surname><given-names>E</given-names></name><name name-style="western"><surname>Yurasov</surname><given-names>S</given-names></name><name name-style="western"><surname>Tsuiji</surname><given-names>M</given-names></name><name name-style="western"><surname>Nussenzweig</surname><given-names>MC</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Efficient generation of monoclonal antibodies from single human B cells by single cell RT-PCR and expression vector cloning.</article-title>             <source>J Immunol Methods</source>             <volume>329</volume>             <fpage>112</fpage>             <lpage>124</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Montefiori1">
+        <label>33</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Montefiori</surname><given-names>DC</given-names></name></person-group>             <year>2005</year>             <article-title>Evaluating neutralizing antibodies against HIV, SIV, and SHIV in luciferase reporter gene assays.</article-title>             <source>Curr Protoc Immunol Chapter 12: Unit 12 11</source>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Watkins1">
+        <label>34</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Watkins</surname><given-names>JD</given-names></name><name name-style="western"><surname>Siddappa</surname><given-names>NB</given-names></name><name name-style="western"><surname>Lakhashe</surname><given-names>SK</given-names></name><name name-style="western"><surname>Humbert</surname><given-names>M</given-names></name><name name-style="western"><surname>Sholukh</surname><given-names>A</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>An anti-HIV-1 V3 loop antibody fully protects cross-clade and elicits T-cell immunity in macaques mucosally challenged with an R5 clade C SHIV.</article-title>             <source>PLoS One</source>             <volume>6</volume>             <fpage>e18207</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Folks1">
+        <label>35</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Folks</surname><given-names>T</given-names></name><name name-style="western"><surname>Benn</surname><given-names>S</given-names></name><name name-style="western"><surname>Rabson</surname><given-names>A</given-names></name><name name-style="western"><surname>Theodore</surname><given-names>T</given-names></name><name name-style="western"><surname>Hoggan</surname><given-names>MD</given-names></name><etal/></person-group>             <year>1985</year>             <article-title>Characterization of a continuous T-cell line susceptible to the cytopathic effects of the acquired immunodeficiency syndrome (AIDS)-associated retrovirus.</article-title>             <source>Proc Natl Acad Sci</source>             <volume>82</volume>             <fpage>4539</fpage>             <lpage>4543</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Edmonds1">
+        <label>36</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Edmonds</surname><given-names>TG</given-names></name><name name-style="western"><surname>Ding</surname><given-names>H</given-names></name><name name-style="western"><surname>Yuan</surname><given-names>X</given-names></name><name name-style="western"><surname>Wei</surname><given-names>Q</given-names></name><name name-style="western"><surname>Smith</surname><given-names>KS</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Replication competent molecular clones of HIV-1 expressing Renilla luciferase facilitate the analysis of antibody inhibition in PBMC.</article-title>             <source>Virology</source>             <volume>408</volume>             <fpage>1</fpage>             <lpage>13</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038943-Sui1">
+        <label>37</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Sui</surname><given-names>J</given-names></name><name name-style="western"><surname>Hwang</surname><given-names>WC</given-names></name><name name-style="western"><surname>Perez</surname><given-names>S</given-names></name><name name-style="western"><surname>Wei</surname><given-names>G</given-names></name><name name-style="western"><surname>Aird</surname><given-names>D</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Structural and functional bases for broad-spectrum neutralization of avian and human influenza A viruses.</article-title>             <source>Nat Struct Mol Biol</source>             <volume>16</volume>             <fpage>265</fpage>             <lpage>273</lpage>          </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

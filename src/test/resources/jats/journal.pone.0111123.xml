@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id><journal-title-group>
+<journal-title>PLoS ONE</journal-title></journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="publisher-id">PONE-D-14-26643</article-id>
+<article-id pub-id-type="doi">10.1371/journal.pone.0111123</article-id>
+<article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Medicine and health sciences</subject><subj-group><subject>Medical humanities</subject><subj-group><subject>Evidence-based medicine</subject></subj-group></subj-group><subj-group><subject>Mental health and psychiatry</subject><subj-group><subject>Eating disorders</subject><subj-group><subject>Anorexia nervosa</subject><subject>Bulimia nervosa</subject><subject>Overeating</subject></subj-group></subj-group></subj-group><subj-group><subject>Oral medicine</subject><subj-group><subject>Dentistry</subject><subject>Oral health</subject></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Tooth Erosion and Eating Disorders: A Systematic Review and Meta-Analysis</article-title>
+<alt-title alt-title-type="running-head">Tooth Erosion and Eating Disorders: Systematic Review</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Hermont</surname><given-names>Ana Paula</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Oliveira</surname><given-names>Patrícia A. D.</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Martins</surname><given-names>Carolina C.</given-names></name><xref ref-type="aff" rid="aff1"/><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Paiva</surname><given-names>Saul M.</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Pordeus</surname><given-names>Isabela A.</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Auad</surname><given-names>Sheyla M.</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+</contrib-group>
+<aff id="aff1"><addr-line>Department of Pediatric Dentistry and Orthodontics, Faculty of Dentistry, Universidade Federal de Minas Gerais, Belo Horizonte, Minas Gerais, Brazil</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Bencharit</surname><given-names>Sompop</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>University of North Carolina at Chapel Hill, United States of America</addr-line></aff>
+<author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">carolcm10@hotmail.com</email></corresp>
+<fn fn-type="conflict"><p>The authors have declared that no competing interests exist.</p></fn>
+<fn fn-type="con"><p>Conceived and designed the experiments: APH PADO CCM IAP SMP SMA. Performed the experiments: APH PADO CCM. Analyzed the data: APH PADO CCM. Contributed reagents/materials/analysis tools: APH PADO CCM. Wrote the paper: APH PADO CCM SMA. Concieved the study, developed the study design and protocols, study design, PICO question: APH PADO CCM IAP SMP SMA. Manuscript revision: IAP SMP SMA.</p></fn>
+</author-notes>
+<pub-date pub-type="collection"><year>2014</year></pub-date>
+<pub-date pub-type="epub"><day>7</day><month>11</month><year>2014</year></pub-date>
+<volume>9</volume>
+<issue>11</issue>
+<elocation-id>e111123</elocation-id>
+<history>
+<date date-type="received"><day>18</day><month>6</month><year>2014</year></date>
+<date date-type="accepted"><day>19</day><month>9</month><year>2014</year></date>
+</history>
+<permissions>
+<copyright-year>2014</copyright-year>
+<copyright-holder>Hermont et al</copyright-holder><license xlink:type="simple"><license-p>This is an open-access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions>
+<abstract><sec>
+<title>Background</title>
+<p>Eating disorders are associated with the highest rates of morbidity and mortality of any mental disorders among adolescents. The failure to recognize their early signs can compromise a patient's recovery and long-term prognosis. Tooth erosion has been reported as an oral manifestation that might help in the early detection of eating disorders.</p>
+</sec><sec>
+<title>Objectives</title>
+<p>The aim of this systematic review and meta-analysis was to search for scientific evidence regarding the following clinical question: Do eating disorders increase the risk of tooth erosion?</p>
+</sec><sec>
+<title>Methods</title>
+<p>An electronic search addressing eating disorders and tooth erosion was conducted in eight databases. Two independent reviewers selected studies, abstracted information and assessed its quality. Data were abstracted for meta-analysis comparing tooth erosion in control patients (without eating disorders) vs. patients with eating disorders; and patients with eating disorder risk behavior vs. patients without such risk behavior. Combined odds ratios (ORs) and a 95% confidence interval (CI) were obtained.</p>
+</sec><sec>
+<title>Results</title>
+<p>Twenty-three papers were included in the qualitative synthesis and assessed by a modified version of the Newcastle-Ottawa Scale. Fourteen papers were included in the meta-analysis. Patients with eating disorders had more risk of tooth erosion (OR = 12.4, 95%CI = 4.1–37.5). Patients with eating disorders who self-induced vomiting had more risk of tooth erosion than those patients who did not self-induce vomiting (OR = 19.6, 95%CI = 5.6–68.8). Patients with risk behavior of eating disorder had more risk of tooth erosion than patients without such risk behavior (Summary OR = 11.6, 95%CI = 3.2–41.7).</p>
+</sec><sec>
+<title>Conclusion</title>
+<p>The scientific evidence suggests a causal relationship between tooth erosion and eating disorders and purging practices. Nevertheless, there is a lack of scientific evidence to fulfill the basic criteria of causation between the risk behavior for eating disorders and tooth erosion.</p>
+</sec></abstract>
+<funding-group><funding-statement>This study was supported by the Brazilian Coordination of Higher Education (CAPES), State of Minas Gerais Research Foundation (FAPEMIG), the National Council for Scientific and Technological Development (CNPq) and Pró-Reitoria de Pesquisa da UFMG (PRPq/UFMG). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts><page-count count="10"/></counts><custom-meta-group><custom-meta id="data-availability" xlink:type="simple"><meta-name>Data Availability</meta-name><meta-value>The authors confirm that all data underlying the findings are fully available without restriction. All relevant data are within the paper and its Supporting Information files.</meta-value></custom-meta></custom-meta-group></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p>The incidence of eating disorders (EDs) has increased over the past decade, both in males and females <xref ref-type="bibr" rid="pone.0111123-Micali1">[1]</xref>. These conditions are associated with significant functional impairment and serious physical and psychological consequences due to an excessive preoccupation with body weight or shape. The mortality and morbidity rates associated with EDs are among the highest of any mental disorders <xref ref-type="bibr" rid="pone.0111123-HerpertzDahlmann1">[2]</xref>.</p>
+<p>Medical complications from EDs may affect any organ and be life-threatening <xref ref-type="bibr" rid="pone.0111123-Rosen1">[3]</xref>. Tooth erosion (TE) has been considered an oral manifestation of EDs associated with vomiting practices <xref ref-type="bibr" rid="pone.0111123-Rosen1">[3]</xref>–<xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref>. TE is a complex and multifactorial condition characterized by a progressive and irreversible loss of tooth structure due to a chemical process without bacterial involvement. It is clinically detectable as thinner enamel with chamfered ridges, cupped cusp tips and grooved incisal edges, sometimes with dentine exposure <xref ref-type="bibr" rid="pone.0111123-OSullivan1">[7]</xref>, <xref ref-type="bibr" rid="pone.0111123-Ganss1">[8]</xref>.</p>
+<p>Dentists usually monitor their patients on a regular basis, sometimes throughout their childhood and adolescence. Therefore, they may be the first health professionals to suspect EDs, due to their oral implications, contributing to the patient's early referral to specific treatment <xref ref-type="bibr" rid="pone.0111123-Rosen1">[3]</xref>, <xref ref-type="bibr" rid="pone.0111123-Shaughnessy1">[9]</xref>. Nevertheless, even with the increasing prevalence of EDs, the causal effect between these EDs and TE has not been thoroughly discussed in literature.</p>
+<p>Hill's criteria of causation <xref ref-type="bibr" rid="pone.0111123-Hill1">[10]</xref> must be considered in contemporary epidemiology and consist of nine items: strength of association, consistency, specificity, temporality, dose response, experimental evidence, biological plausibility, coherence, and analogy <xref ref-type="bibr" rid="pone.0111123-Mirtz1">[11]</xref>.</p>
+<p>An evaluation of Hill's criteria of causation applied to the possible causal relationship between EDs and TE suggests specificity between both conditions (patients who suffer from EDs may present TE), temporality (the cause – EDs – occur before the consequence – TE), biological plausibility (vomiting practices related to the EDs causes an acid attack to tooth enamel), coherence (one cause is specific to one effect), and analogy (other diseases or exposures, such as acidic food or gastroesophageal reflux can cause TE).</p>
+<p>Nevertheless, all the points raised before have to be systematically discussed and analyzed before drawing inferential causal conclusions. Furthermore, it is important to evaluate the strength of evidence of such an association and of the dose-response relationship, and search for experimental evidence. The aim of the present systematic review and meta-analysis was to search for scientific evidence of the following clinical question: Do EDs increase the risk of TE?</p>
+</sec><sec id="s2" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="s2a">
+<title>Search Strategy</title>
+<p>The inclusion criteria for this systematic review were: epidemiological studies (cross-sectional, case-control, cohort and clinical trials) concerning etiological factors and/or the prevalence of TE and its association to any type of EDs (bulimia, anorexia, binge-eating, dysmorphic body disorder, vomiting, hyperphagia) in humans (<xref ref-type="supplementary-material" rid="pone.0111123.s002">Checklist S1</xref> presents the PRISMA checklist for systematic reviews).</p>
+<p>The exclusion criteria were: unrelated epidemiological studies (other outcome rather than TE), reviews, studies reporting vomiting habits not related to eating disorders, case reports/case series/letters to the editor, laboratorial studies (in vitro studies, extracted teeth, fossils), studies reporting dental treatment, dental materials, knowledge concerning TE, epidemiological studies that did not associate EDs with TE, studies with self-report of TE and infeasibility of extracting data.</p>
+<p>The search was conducted in May 2011 and updated in June 2014 by three reviewers (APH, PADO and CCM) in eight different databases: MEDLINE through Pubmed (<ext-link ext-link-type="uri" xlink:href="http://www/pubmed.gov" xlink:type="simple">http://www/pubmed.gov</ext-link>), Web of Science (<ext-link ext-link-type="uri" xlink:href="http://www.isiknowledge.com" xlink:type="simple">http://www.isiknowledge.com</ext-link>), Cochrane Library (<ext-link ext-link-type="uri" xlink:href="http://www.cochrane.org/index.htm" xlink:type="simple">http://www.cochrane.org/index.htm</ext-link>), Clinical Trials (<ext-link ext-link-type="uri" xlink:href="http://www.clinicaltrials.gov" xlink:type="simple">http://www.clinicaltrials.gov</ext-link>), Current Controlled Trials (<ext-link ext-link-type="uri" xlink:href="http://www.controlled-trials.com" xlink:type="simple">http://www.controlled-trials.com</ext-link>), The National Institute for Health and Clinical Excellence (<ext-link ext-link-type="uri" xlink:href="http://www.nice.org.uk" xlink:type="simple">http://www.nice.org.uk</ext-link>), and Lilacs and the Brazilian Library of Dentistry (BBO) through Virtual Health Library (Bireme, Latin America) (<ext-link ext-link-type="uri" xlink:href="http://www.bireme.br" xlink:type="simple">www.bireme.br</ext-link>). No restrictions were placed on language or year of publication.</p>
+<p>The following search strategy was used in the MEDLINE, Web of Science and Cochrane: ((non-carious cervical lesions OR non-carious cervical lesions OR non-carious cervical lesions OR tooth wear [Mesh] OR dental wear OR tooth erosion [Mesh] OR tooth erosion* OR dental erosion OR dental enamel [Mesh] OR dental enamel OR enamel erosion) AND (anorexia [Mesh] OR anorexia OR anorexia nervosa [Mesh] OR anorexia nervosa OR bulimia [Mesh] OR bulimia OR bulimic eating disorder* OR bulimia nervosa [Mesh] OR eating disorders [Mesh] OR eating disorder* OR binge-eating disorder [Mesh] OR body dysmorphic disorders [Mesh] OR hyperphagia [Mesh] OR binge-eating/vomiting OR vomiting [Mesh] OR vomiting OR risk factors [Mesh] OR pathology [Mesh] OR eating habits) NOT (“animals”[Mesh] NOT “humans”[Mesh])). In MEDLINE, the search was limited to “humans”.</p>
+<p>In Lilacs, BBO, Clinical Trials, Current Controlled Trials and The National Institute for Health and Clinical Excellence the search was conducted using combined keywords: “tooth erosion”, “dental erosion”, “enamel erosion”, “anorexia”, “bulimia”, “eating disorder”.</p>
+<p>The electronic search retrieved 1094 abstracts and titles (<xref ref-type="fig" rid="pone-0111123-g001">Figure 1</xref>). Reference Manager Software (Reference Manager, Thomson Reuters, version 12.0.3) was used to organize the studies. After the duplicate references were removed, a total of 822 abstracts and titles were read and analyzed by two independent and calibrated reviewers (APH and PADO). As a calibration exercise, the reviewers thoroughly discussed the criteria and applied them to a sample of 20% of the retrieved studies to determine inter-examiner agreement. After adequate agreement was achieved (Kappa: 0.72 to 0.77) all the studies were read by the reviewers independently. Disagreements were resolved by consensus and by the supervision of the gold standard (CCM). If relevant data was missing or if the paper was not available, the primary authors were contacted for additional information/article request.</p>
+<fig id="pone-0111123-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111123.g001</object-id><label>Figure 1</label><caption>
+<title>Screening of articles.</title>
+<p>Four-phase PRISMA flow-diagram for study collection <xref ref-type="bibr" rid="pone.0111123-Moher1">[38]</xref>, showing the number of studies identified, screened, eligible, and included in the review and meta-analysis.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111123.g001" position="float" xlink:type="simple"/></fig>
+<p>Systematic reviews, theoretical reviews and additional articles of potential relevance were also manually searched. Grey literature was searched from BBO, which retrieved thesis and monographies, and from MEDLINE, which retrieved abstracts recently presented in congress. During the abstracts' analysis all studies addressing risk factors for TE were selected, even when EDs were not mentioned, in order to search for relevant data not reported in the abstract. The exclusion criteria for abstract and title selection are detailed in <xref ref-type="fig" rid="pone-0111123-g001">Figure 1</xref>. Among the 822 records screened, 159 were selected for full text analysis (<xref ref-type="supplementary-material" rid="pone.0111123.s001">Table S1</xref> presents excluded studies from full text analysis).</p>
+</sec><sec id="s2b">
+<title>Data Extraction</title>
+<p>Data extraction was conducted by two independent reviewers (APH and PADO) and supervised by the gold standard (CCM). The data analysis is described in <xref ref-type="table" rid="pone-0111123-t001">Tables 1</xref> and <xref ref-type="table" rid="pone-0111123-t002">2</xref>. The main analyzed outcome was that TE and EDs were extracted as categorical variables based on authors' descriptions. Extraction was based on non-exposure to risk factor vs. exposure, as follows:</p>
+<table-wrap id="pone-0111123-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111123.t001</object-id><label>Table 1</label><caption>
+<title>Quality assessment criteria used for cross-sectional studies through a modified version of Newcastle-Ottawa Scale for case-control studies.</title>
+</caption><alternatives><graphic id="pone-0111123-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111123.t001" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="12" align="left" rowspan="1">CASE-CONTROL STUDIES AND THEIR ASSESSMENT RATINGS</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Dynesen et al., 2008 <xref ref-type="bibr" rid="pone.0111123-Dynesen1">[21]</xref></td>
+<td align="left" rowspan="1" colspan="1">Ohrn et al., 1999 <xref ref-type="bibr" rid="pone.0111123-Ohrn1">[35]</xref></td>
+<td align="left" rowspan="1" colspan="1">Järvinen et al., 1991 <xref ref-type="bibr" rid="pone.0111123-Jarvinen1">[28]</xref></td>
+<td align="left" rowspan="1" colspan="1">Johansson et al., 2012 <xref ref-type="bibr" rid="pone.0111123-Johansson1">[4]</xref></td>
+<td align="left" rowspan="1" colspan="1">Emodi-Perlman et al., 2008 <xref ref-type="bibr" rid="pone.0111123-EmodiPerlman1">[22]</xref></td>
+<td align="left" rowspan="1" colspan="1">Rytömaa et al., 1998 <xref ref-type="bibr" rid="pone.0111123-Rytomaa1">[20]</xref></td>
+<td align="left" rowspan="1" colspan="1">Robb et al., 1995 <xref ref-type="bibr" rid="pone.0111123-Robb1">[19]</xref></td>
+<td align="left" rowspan="1" colspan="1">Milosevic &amp; Slade, 1989 <xref ref-type="bibr" rid="pone.0111123-Milosevic1">[32]</xref></td>
+<td align="left" rowspan="1" colspan="1">Jones &amp; Cleaton- Jones, 1989 <xref ref-type="bibr" rid="pone.0111123-Jones1">[31]</xref></td>
+<td align="left" rowspan="1" colspan="1">Howat et al., 1990 <xref ref-type="bibr" rid="pone.0111123-Howat1">[18]</xref></td>
+<td align="left" rowspan="1" colspan="1">Sivolella et al., 2000 <xref ref-type="bibr" rid="pone.0111123-Sivolella1">[33]</xref></td>
+<td align="left" rowspan="1" colspan="1">Greenwood et al., 1988 <xref ref-type="bibr" rid="pone.0111123-Greenwood1">[30]</xref></td>
+<td align="left" rowspan="1" colspan="1">Touyz et al., 1993 <xref ref-type="bibr" rid="pone.0111123-Touyz1">[34]</xref></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>SAMPLE SELECTION CRITERIA</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>1) Diagnosis of eating disorders</bold> a) Clinical examination or medical record with validated instrument, or referred from a hospital ★ b)Without clinical examination, or based on self-reports c) No description</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>2) Representativeness and selection of the patients suffering from eating disorders (cases)</bold> a) Patients with eating disorders selected from a defined catchment area, in a defined hospital or clinic, health maintenance organization, communities or random sample, sample calculation ★ b) Potential for selection biases or not satisfying requirements in part (a) c) No description</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>3) Selection of participants without eating disorders (controls)</bold> a) Participants selected from a defined catchment area, communities or random sample, sample calculation ★ b) Not satisfying requirements in part (a) c) No description</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>4) Definition of controls</bold> a) no history of disease (eating disorder) ★ b) no description of source/ not stated if the patient was healthy/ self-report of eating disorders</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">b</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">b</td>
+<td align="left" rowspan="1" colspan="1">b</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>COMPARABILITY OF CASES/ CONTROLS ON THE BASIS OF THE DESIGN OR ANALYSIS</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>1) Control for confounders</bold> a) The exposure of interest (tooth erosion) is adjusted for the one confounder ★ b) The exposure of interest (tooth erosion) is adjusted for two or more confounders ★★ c) No description related to the adjustment analysis for confounding factors</td>
+<td align="left" rowspan="1" colspan="1">★★</td>
+<td align="left" rowspan="1" colspan="1">★★</td>
+<td align="left" rowspan="1" colspan="1">★★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>EVALUATION OF TOOTH EROSION</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>1) Diagnosis of tooth erosion</bold> a) Clinical examination reporting the use of a tooth erosion index/ report of observer agreement – kappa ★ b) Satisfied requirements in part (a) and the examiner was blinded to case/ control status ★★ c) Based on self-reports or not satisfying requirements in part (a/b) d) No description</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★★</td>
+<td align="left" rowspan="1" colspan="1">★★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>2) Same method of evaluation for cases and controls</bold> a) Yes ★ b) No</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>3) Response rate</bold> a) Rate of sample loss ≤20% ★ b) Rate of sample loss &gt;20% c) Not stated</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>SUMMARY SCORE (Stars)</bold></td>
+<td align="left" rowspan="1" colspan="1">9/10 (high)</td>
+<td align="left" rowspan="1" colspan="1">9/10 (high)</td>
+<td align="left" rowspan="1" colspan="1">9/10 (high)</td>
+<td align="left" rowspan="1" colspan="1">8/10 (high)</td>
+<td align="left" rowspan="1" colspan="1">8/10 (high)</td>
+<td align="left" rowspan="1" colspan="1">8/10 (high)</td>
+<td align="left" rowspan="1" colspan="1">7/10 (high)</td>
+<td align="left" rowspan="1" colspan="1">7/10 (high)</td>
+<td align="left" rowspan="1" colspan="1">8/10 (high)</td>
+<td align="left" rowspan="1" colspan="1">6/10 (high)</td>
+<td align="left" rowspan="1" colspan="1">5/10 (low)</td>
+<td align="left" rowspan="1" colspan="1">5/10 (low)</td>
+<td align="left" rowspan="1" colspan="1">3/10 (low)</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt101"><label/><p>Not all studies described all variables. Confounders were extracted and described as if they were evaluated in multivariate analysis.</p></fn></table-wrap-foot></table-wrap><table-wrap id="pone-0111123-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111123.t002</object-id><label>Table 2</label><caption>
+<title>Quality assessment criteria used for cross-sectional studies through a modified version of Newcastle-Ottawa Scale for observational studies.</title>
+</caption><alternatives><graphic id="pone-0111123-t002-2" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111123.t002" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="10" align="left" rowspan="1">CROSS-SECTIONAL STUDIES AND THEIR ASSESSMENT RATINGS</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Hermont et al., 2013 <xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref></td>
+<td align="left" rowspan="1" colspan="1">Hellström, 1977 <xref ref-type="bibr" rid="pone.0111123-Hellstrom1">[25]</xref></td>
+<td align="left" rowspan="1" colspan="1">Shaughnessy et al., 2008 <xref ref-type="bibr" rid="pone.0111123-Shaughnessy1">[9]</xref></td>
+<td align="left" rowspan="1" colspan="1">Simmons et al, 1986 <xref ref-type="bibr" rid="pone.0111123-Simmons1">[36]</xref></td>
+<td align="left" rowspan="1" colspan="1">Ximenes et al., 2010 <xref ref-type="bibr" rid="pone.0111123-Ximenes1">[5]</xref></td>
+<td align="left" rowspan="1" colspan="1">Lifante-Olivaet al., 2008 <xref ref-type="bibr" rid="pone.0111123-LifanteOliva1">[24]</xref></td>
+<td align="left" rowspan="1" colspan="1">Ximenes et al., 2004 29]</td>
+<td align="left" rowspan="1" colspan="1">Alonso et al., 2001 <xref ref-type="bibr" rid="pone.0111123-Alonso1">[27]</xref></td>
+<td align="left" rowspan="1" colspan="1">Hurstet al., 1977 <xref ref-type="bibr" rid="pone.0111123-Hurst1">[26]</xref></td>
+<td align="left" rowspan="1" colspan="1">Roberts &amp; Li,1987 <xref ref-type="bibr" rid="pone.0111123-Roberts1">[23]</xref></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>SAMPLE SELECTION CRITERIA</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>1) Diagnosis of eating disorders</bold> a) Clinical examination or medical record with validated instrument, or referred from a hospital ★ b)Without clinical examination, or based on self-reports c) No description</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">b</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>2) Representativeness and selection of the patients suffering from eating disorders</bold> a) Patients with eating disorders in a defined catchment area, in a defined hospital or clinic, health maintenance organization, communities or random sample, sample calculation ★ b) Not satisfying requirements in part (a) c) Not stated</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>COMPARABILITY ON THE BASIS OF THE DESIGN OR ANALYSIS</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>1) Control for confounders</bold> a) The exposure of interest (tooth erosion) is adjusted for the one confounder ★ b) The exposure of interest (tooth erosion) is adjusted for two or more confounders ★★ c) No description related to the adjustment analysis for confounding factors</td>
+<td align="left" rowspan="1" colspan="1">★★</td>
+<td align="left" rowspan="1" colspan="1">★★</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>EVALUATION OF TOOTH EROSION</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>1) Diagnosis of tooth erosion</bold> a) Clinical examination reporting the use of a tooth erosion index or report of observer agreement (kappa) ★ b) Based on self-reports or not satisfying requirements in part (a) c) No description</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">b</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">b</td>
+<td align="left" rowspan="1" colspan="1">b</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>2) Response rat</bold>e a) Rate of sample loss ≤20% ★ b) Rate of sample loss &gt;20% c) Not stated</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">★</td>
+<td align="left" rowspan="1" colspan="1">c</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>SUMMARY SCORE (Stars)</bold></td>
+<td align="left" rowspan="1" colspan="1">6/6 (high)</td>
+<td align="left" rowspan="1" colspan="1">5/6 (high)</td>
+<td align="left" rowspan="1" colspan="1">4/6 (high)</td>
+<td align="left" rowspan="1" colspan="1">4/6 (high)</td>
+<td align="left" rowspan="1" colspan="1">3/6 (low)</td>
+<td align="left" rowspan="1" colspan="1">3/6 (low)</td>
+<td align="left" rowspan="1" colspan="1">3/6 (low)</td>
+<td align="left" rowspan="1" colspan="1">3/6 (low)</td>
+<td align="left" rowspan="1" colspan="1">3/6 (low)</td>
+<td align="left" rowspan="1" colspan="1">2/6 (low)</td>
+</tr>
+</tbody>
+</table>
+</alternatives></table-wrap>
+<list list-type="simple"><list-item>
+<p>-. Control (no EDs) vs. anorexia</p>
+</list-item><list-item>
+<p>-. Control (no EDs) vs. bulimia</p>
+</list-item><list-item>
+<p>-. Control (no EDs) vs. bulimia with self-induced vomiting (SIV)</p>
+</list-item><list-item>
+<p>-. Control (no EDs) vs. bulimia without SIV</p>
+</list-item><list-item>
+<p>-. Control (no EDs) vs. any type of EDs</p>
+</list-item><list-item>
+<p>-. EDs without SIV vs. EDs with SIV</p>
+</list-item><list-item>
+<p>-. Control (no ED risk behavior) vs. ED risk behavior</p>
+</list-item></list>
+</sec><sec id="s2c">
+<title>Methodological Quality Assessment</title>
+<p>The quality of the studies was peer-reviewed by APH and PADO using a modified version of the Newcastle-Ottawa Scale for observational studies. Disagreements were resolved by consensus. No cohort study was selected during the analyses as they did not fit the inclusion criteria. No clinical trials were found by electronic and manual search.</p>
+<p>A system of points (stars) was given to the eligible categories: sequence generation entries, allocation concealment, blinding, incomplete outcome data, and sample losses. The scale scores varied depending on the study design: for cross-sectional studies it ranged from 0 (lowest grade) to 6 (highest grade) and for case-control studies it ranged from 0 to 10. Studies with scores above the median were classified as high quality studies <xref ref-type="bibr" rid="pone.0111123-Juni1">[12]</xref> : &gt;3 for cross-sectional studies and &gt;5 for case-control studies.</p>
+<p>Each cross-sectional study could be awarded a maximum of one point for each numbered item, except for the ‘Comparability’ criteria, in which a maximum of two stars could be scored. When referring to the case-control studies, one star could be awarded for each numbered item, except for the items ‘control for confounders’ and ‘diagnosis of tooth erosion’, in which a maximum of two stars could be scored (<xref ref-type="table" rid="pone-0111123-t003">Tables 3</xref> and <xref ref-type="table" rid="pone-0111123-t004">4</xref>).</p>
+<table-wrap id="pone-0111123-t003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111123.t003</object-id><label>Table 3</label><caption>
+<title>Case-control studies included in this systematic review presented according to their quality score.</title>
+</caption><alternatives><graphic id="pone-0111123-t003-3" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111123.t003" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1">Study</td>
+<td align="left" rowspan="1" colspan="1">Country (Publication language)</td>
+<td align="left" rowspan="1" colspan="1">Local setting</td>
+<td align="left" rowspan="1" colspan="1">Initial sample (final sample)</td>
+<td align="left" rowspan="1" colspan="1">Gender of the sample</td>
+<td align="left" rowspan="1" colspan="1">Patients' mean age at dental examination (range in years)</td>
+<td align="left" rowspan="1" colspan="1">Tooth erosion index (calibration/Kappa)</td>
+<td align="left" rowspan="1" colspan="1">Type of eating disorder (diagnostic criteria)</td>
+<td align="left" rowspan="1" colspan="1">Statistics (adjusted for confounders)</td>
+<td align="left" rowspan="1" colspan="1">Outcomes (OR; 95% CI) or (p-value)</td>
+<td align="left" rowspan="1" colspan="1">Quality score</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Dynesen et al., 2008 <xref ref-type="bibr" rid="pone.0111123-Dynesen1">[21]</xref></td>
+<td align="left" rowspan="1" colspan="1">Denmark (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases: Psychiatric clinic and University Controls: University</td>
+<td align="left" rowspan="1" colspan="1">40: 20 cases and 20 controls</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">Cases: 23.8±4 (18–33) Controls: 23.1±2 (20–30)</td>
+<td align="left" rowspan="1" colspan="1">Larsen et al. modified (K = 0.64)</td>
+<td align="left" rowspan="1" colspan="1">BN<sup>‡‡</sup> (DSM IV<sup>‡‡‡‡</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Multiple regression (age, salivary flow rate and acidic drinks)</td>
+<td align="left" rowspan="1" colspan="1">TE<sup>††</sup> score was significantly higher in BN<sup>‡‡</sup> group compared with the control- group (<italic>p</italic> = 0.019)</td>
+<td align="left" rowspan="1" colspan="1">9(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Ohrn et al., 1999 <xref ref-type="bibr" rid="pone.0111123-Ohrn1">[35]</xref></td>
+<td align="left" rowspan="1" colspan="1">Sweden (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases: Psychiatric clinic Controls: College of nursing</td>
+<td align="left" rowspan="1" colspan="1">152: 100 cases and 52 controls (133: 81 cases and 52 controls)</td>
+<td align="left" rowspan="1" colspan="1">Male and female</td>
+<td align="left" rowspan="1" colspan="1">Cases: 25 (17–47) Controls: 24 (19–41)</td>
+<td align="left" rowspan="1" colspan="1">Eccles modified by Lussi et al. (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>, BN<sup>‡‡</sup>, EDNOS (DSM III-R<sup>‡‡‡</sup>)</td>
+<td align="left" rowspan="1" colspan="1"><italic>t</italic>-test, Mann-Whitney test and logistic regression (age, number of years suffering from eating disorders)</td>
+<td align="left" rowspan="1" colspan="1">The eating disorders were associated with TE<sup>††</sup> severity (&lt;0.001) The period suffering from binge-eating was associated with TE<sup>††</sup> (<italic>p</italic>&lt;0.01)</td>
+<td align="left" rowspan="1" colspan="1">9(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Järvinen et al., 1991 <xref ref-type="bibr" rid="pone.0111123-Jarvinen1">[28]</xref></td>
+<td align="left" rowspan="1" colspan="1">Finland (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases and controls: Metropolitan Helsinki area</td>
+<td align="left" rowspan="1" colspan="1">206: 106 cases (with TE) and 100 controls (without TE)</td>
+<td align="left" rowspan="1" colspan="1">Male and female</td>
+<td align="left" rowspan="1" colspan="1">Cases: 33.1 (13–73) Controls: 36.3 (17–83)</td>
+<td align="left" rowspan="1" colspan="1">Eccles and Jenkins (1974) (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">---</td>
+<td align="left" rowspan="1" colspan="1">Logistic regression (age, gender)</td>
+<td align="left" rowspan="1" colspan="1">Prevalence of ED: 7% of the patients from the case-group were suffering from AN<sup>‡</sup>. In the logistic model the practice of vomiting was associated with TE<sup>††</sup> (OR = 31; 95%CI = 3–300)</td>
+<td align="left" rowspan="1" colspan="1">9(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Johansson et al., 2012 <xref ref-type="bibr" rid="pone.0111123-Johansson1">[4]</xref></td>
+<td align="left" rowspan="1" colspan="1">Sweden (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases: Eating Disorder Clinic Controls: Public Dental Health Clinic</td>
+<td align="left" rowspan="1" colspan="1">108: 54 cases and 54 controls</td>
+<td align="left" rowspan="1" colspan="1">Male and female</td>
+<td align="left" rowspan="1" colspan="1">Cases:21.5(10–50) Controls: NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">Eccles (1979) modified (training and calibration was performed)</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>, BN<sup>‡‡</sup>, EDNOS (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Bivariate tests, conditional logistic regression (age)</td>
+<td align="left" rowspan="1" colspan="1">Eating disorders associated with TE<sup>††</sup> (OR:8.5; 95%CI: 2.1 – 34.4) Vomiting/binge eating behaviors associated with TE<sup>††</sup> (OR = 5.5; 95%CI = 1.3–22.9)</td>
+<td align="left" rowspan="1" colspan="1">8(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Emodi-Perlman et al., 2008 <xref ref-type="bibr" rid="pone.0111123-EmodiPerlman1">[22]</xref></td>
+<td align="left" rowspan="1" colspan="1">Israel (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases: Weight and Eating Disorders Center Controls: School of Dental Medicine</td>
+<td align="left" rowspan="1" colspan="1">136: 86 cases and 50 controls (127: 79 cases and 48 controls)</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">Cases: 23.46 ± 3.54 (18–35) Controls: 24.58 ±3.01 (18–36)</td>
+<td align="left" rowspan="1" colspan="1">Johansson et al. (1993) (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>, BN<sup>‡‡</sup>, EDNOS (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Chi-square, ANOVA and Tukey's test (no)</td>
+<td align="left" rowspan="1" colspan="1">Vomiting and non-vomiting groups had higher degree of TE<sup>††</sup> than controls <italic>(p</italic>&lt;0.001) There was no difference between TE<sup>††</sup> degree among vomiting and non-vomiting groups (p&gt;0.05)</td>
+<td align="left" rowspan="1" colspan="1">8(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Rytömaa et al., 1998 <xref ref-type="bibr" rid="pone.0111123-Rytomaa1">[20]</xref></td>
+<td align="left" rowspan="1" colspan="1">Finland (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases: University Hospital Controls: Universities Dental Services and Colleges</td>
+<td align="left" rowspan="1" colspan="1">140: 35 cases and 105 controls</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">Cases: 25.3 ± 6.8 Controls: 25.7 ±7.0</td>
+<td align="left" rowspan="1" colspan="1">Eccles and Jenkins &amp; Järvinen et al. (K = 0.74–0.94)</td>
+<td align="left" rowspan="1" colspan="1">BN<sup>‡‡</sup> (DSM III-R<sup>‡‡‡</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Chi-square and <italic>t</italic>-test (no)</td>
+<td align="left" rowspan="1" colspan="1">BN<sup>‡‡</sup> were associated with TE<sup>††</sup> (<italic>p</italic>&lt;0.01) Prevalence of TE<sup>††</sup>: 11% among controls; 63% among BN group</td>
+<td align="left" rowspan="1" colspan="1">8(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Robb et al., 1995 <xref ref-type="bibr" rid="pone.0111123-Robb1">[19]</xref></td>
+<td align="left" rowspan="1" colspan="1">England (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases: Psychiatric institutions Controls: dental attenders</td>
+<td align="left" rowspan="1" colspan="1">244: 122 cases and 122 controls</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">TWI developed by Smith and Knight (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup> (purging and restrictive type) and BN<sup>‡‡</sup> (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Student's <italic>t</italic>-test (no)</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup> (both types) and BN<sup>‡‡</sup> were associated with TE<sup>††</sup> (<italic>p</italic>&lt;0.005)</td>
+<td align="left" rowspan="1" colspan="1">7(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Milosevic &amp; Slade, 1989 <xref ref-type="bibr" rid="pone.0111123-Milosevic1">[32]</xref></td>
+<td align="left" rowspan="1" colspan="1">England (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases and controls: Medical School and School of Dentistry</td>
+<td align="left" rowspan="1" colspan="1">108: 58 cases and 50 controls</td>
+<td align="left" rowspan="1" colspan="1">Male and female</td>
+<td align="left" rowspan="1" colspan="1">Cases:(16–43) Controls: (15–39)</td>
+<td align="left" rowspan="1" colspan="1">TWI developed by Smith and Knight (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>, BN<sup>‡‡</sup> without SIV<sup>†††</sup>, BN<sup>‡‡</sup> with SIV<sup>†††</sup> (DSM III-R<sup>‡‡‡</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Chi-square, ANOVA (no)</td>
+<td align="left" rowspan="1" colspan="1">Prevalence of TE<sup>††</sup>: 6% among controls 33% among AN<sup>‡</sup> patients 28% among BN<sup>‡‡</sup> without SIV<sup>†††</sup> patients42% among BN<sup>‡‡</sup>with SIV<sup>†††</sup> The EDs were associated with TE<sup>††</sup> (<italic>p</italic>&lt;0.001)</td>
+<td align="left" rowspan="1" colspan="1">7(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Jones &amp; Cleaton-Jones, 1989 <xref ref-type="bibr" rid="pone.0111123-Jones1">[31]</xref></td>
+<td align="left" rowspan="1" colspan="1">South Africa (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases and controls: Private dental office</td>
+<td align="left" rowspan="1" colspan="1">33: 11 cases and 22 controls</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">Cases:29.8±8.4 Controls: 28.9 ± 9</td>
+<td align="left" rowspan="1" colspan="1">Own criteria (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">BN<sup>‡‡</sup>(NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Chi-square (no)</td>
+<td align="left" rowspan="1" colspan="1">Prevalence of TE<sup>††</sup>: 7% among controls 69% among BN<sup>‡‡</sup> patients BN<sup>‡‡</sup> was associated with TE<sup>††</sup>(<italic>p</italic>&lt;0.001)</td>
+<td align="left" rowspan="1" colspan="1">7(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Howat et al., 1990 <xref ref-type="bibr" rid="pone.0111123-Howat1">[18]</xref></td>
+<td align="left" rowspan="1" colspan="1">USA (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases: University Eating Disorder Clinic Controls: University (other departments)</td>
+<td align="left" rowspan="1" colspan="1">20: 10 cases and 10 controls (18: 8 cases and 10 controls)</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">Cases:24.6 Controls: 22.2</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">BN<sup>‡‡</sup> (DSM III-R<sup>‡‡‡</sup>)</td>
+<td align="left" rowspan="1" colspan="1"><italic>T</italic>-test, Fisher's exact test, ANOVA and Pearson Correlation (no)</td>
+<td align="left" rowspan="1" colspan="1">No difference between the presence of TE<sup>††</sup> between the groups (<italic>p</italic>&gt;0.05)</td>
+<td align="left" rowspan="1" colspan="1">6(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Sivolella et al., 2000 <xref ref-type="bibr" rid="pone.0111123-Sivolella1">[33]</xref></td>
+<td align="left" rowspan="1" colspan="1">Italy (Italian)</td>
+<td align="left" rowspan="1" colspan="1">Cases: Eating Disorder Hospital Controls: NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">26: 14 cases and 12 controls</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">Cases: 23.28 ± 4.9 Controls: 22.58 ± 1.8</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>, BN<sup>‡‡</sup> (DSM IV<sup>‡‡‡‡</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Fisher's exact test (no)</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup> and BN<sup>‡‡</sup> were associated with TE<sup>††</sup> (<italic>p</italic> = 0.009) Prevalence of TE<sup>††</sup>: 41.6% among controls 92.8% among BN<sup>‡‡</sup> group</td>
+<td align="left" rowspan="1" colspan="1">5(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Greenwood et al., 1988 <xref ref-type="bibr" rid="pone.0111123-Greenwood1">[30]</xref></td>
+<td align="left" rowspan="1" colspan="1">Ireland (English)</td>
+<td align="left" rowspan="1" colspan="1">Cases: University Hospital patients Controls: University Hospital staff</td>
+<td align="left" rowspan="1" colspan="1">48: 24 cases and 24 controls</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup> group: (15–24) BN<sup>‡‡</sup> group: (19–35) Controls: NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>, BN<sup>‡‡</sup> (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">Prevalence of TE<sup>††</sup>: 9% among AN<sup>‡</sup> patients 30% among BN<sup>‡‡</sup> patients All patients who SIV<sup>†††</sup> had TE<sup>††</sup></td>
+<td align="left" rowspan="1" colspan="1">5(10)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Touyz et al., 1993 <xref ref-type="bibr" rid="pone.0111123-Touyz1">[34]</xref></td>
+<td align="left" rowspan="1" colspan="1">Australia (English)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">45: 30 cases and 15 controls</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup> group: 20.1 ± 8.3 BN<sup>‡‡</sup> group: 19.1 ± 3.8 Controls: 22.1 ±3.3</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>, BN<sup>‡‡</sup> (DSM III-R<sup>‡‡‡</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Chi-square and <italic>t</italic>-test (no)</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup> and BN<sup>‡‡</sup> were associated with TE<sup>††</sup> (<italic>p</italic>-value was not reported)</td>
+<td align="left" rowspan="1" colspan="1">3(10)</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt102"><label/><p>AN<sup>‡</sup>  =  anorexia nervosa; BN<sup>‡‡</sup>  =  bulimia nervosa; DSM III- R<sup>‡‡‡</sup>  =  Diagnostic and Statistical Manual of Mental Disorders, 3rd Edition, Revised; DSM IV<sup>‡‡‡‡</sup>  =  Diagnostic and Statistical Manual of Mental Disorders, 4th Edition; NR<sup>†</sup>  =  not reported; TE<sup>††</sup>  =  tooth erosion; SIV<sup>†††</sup>  =  self-induced vomiting.</p></fn></table-wrap-foot></table-wrap><table-wrap id="pone-0111123-t004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111123.t004</object-id><label>Table 4</label><caption>
+<title>Cross-sectional studies included in this systematic review presented according to their quality score.</title>
+</caption><alternatives><graphic id="pone-0111123-t004-4" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111123.t004" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1">Study</td>
+<td align="left" rowspan="1" colspan="1">Country (Publication language)</td>
+<td align="left" rowspan="1" colspan="1">Local setting</td>
+<td align="left" rowspan="1" colspan="1">Initial sample (final sample)</td>
+<td align="left" rowspan="1" colspan="1">Gender of the sample</td>
+<td align="left" rowspan="1" colspan="1">Patients' mean age at dental examination (range in years)</td>
+<td align="left" rowspan="1" colspan="1">Tooth erosion index (calibration/Kappa)</td>
+<td align="left" rowspan="1" colspan="1">Type of eating disorder (diagnostic criteria)</td>
+<td align="left" rowspan="1" colspan="1">Statistics (adjusted for confounders)</td>
+<td align="left" rowspan="1" colspan="1">Outcomes (OR; 95% CI) or (p-value)</td>
+<td align="left" rowspan="1" colspan="1">Quality score</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Hermont et al., 2013 <xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref></td>
+<td align="left" rowspan="1" colspan="1">Brazil (English)</td>
+<td align="left" rowspan="1" colspan="1">Public and private schools</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">(15–18)</td>
+<td align="left" rowspan="1" colspan="1">O′Sullivan (Kappa  = 0.88–0.9)</td>
+<td align="left" rowspan="1" colspan="1">BITE screening instrument</td>
+<td align="left" rowspan="1" colspan="1">Chi-square, Fisher's exact test, conditional logistic regression (diet, oral hygiene)</td>
+<td align="left" rowspan="1" colspan="1">TE<sup>††</sup> was associated with risk behavior for eating disorder (<italic>p</italic>&lt;0.001) TE<sup>††</sup> was associated with severe risk behavior for eating disorder(OR = 10.0; 95%CI = 2.5–39.9)</td>
+<td align="left" rowspan="1" colspan="1">6(6)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Hellström, 1977 <xref ref-type="bibr" rid="pone.0111123-Hellstrom1">[25]</xref></td>
+<td align="left" rowspan="1" colspan="1">Sweden (English)</td>
+<td align="left" rowspan="1" colspan="1">Department of Cariology, Karolinska Institute</td>
+<td align="left" rowspan="1" colspan="1">39</td>
+<td align="left" rowspan="1" colspan="1">Male and female</td>
+<td align="left" rowspan="1" colspan="1">Total sample: (14–42) Vomiting group: 26.2±1.2 Non-vomiting group:24.5±1.3</td>
+<td align="left" rowspan="1" colspan="1">Pindborg (1970) and Eccles &amp; Jenkins(1974) (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup> (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Chi-square modified by Fisher (dental caries, gingivitis, salivary factors)</td>
+<td align="left" rowspan="1" colspan="1">TE<sup>††</sup> associated with vomiting practices/period suffering from AN<sup>‡</sup> (<italic>p</italic> = 0.02) Prevalence of TE<sup>††</sup>: 85% among the vomiting group 25% among the non-vomiting group</td>
+<td align="left" rowspan="1" colspan="1">5(6)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Shaughnessy et al., 2008 <xref ref-type="bibr" rid="pone.0111123-Shaughnessy1">[9]</xref></td>
+<td align="left" rowspan="1" colspan="1">USA (English)</td>
+<td align="left" rowspan="1" colspan="1">Hospital (Eating Disorder Program)</td>
+<td align="left" rowspan="1" colspan="1">23</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">17.6 (14.4–27.2)</td>
+<td align="left" rowspan="1" colspan="1">Own criteria (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup> (DSM IV<sup>‡‡‡‡</sup>)</td>
+<td align="left" rowspan="1" colspan="1">ANOVA, Student's <italic>t</italic>-test, Pearson correlation (no)</td>
+<td align="left" rowspan="1" colspan="1">TE<sup>††</sup> was not detected in any participant</td>
+<td align="left" rowspan="1" colspan="1">4(6)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Simmons et al, 1986 <xref ref-type="bibr" rid="pone.0111123-Simmons1">[36]</xref></td>
+<td align="left" rowspan="1" colspan="1">USA (English)</td>
+<td align="left" rowspan="1" colspan="1">University's Eating Disorder Clinic</td>
+<td align="left" rowspan="1" colspan="1">66</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">26 (18–34)</td>
+<td align="left" rowspan="1" colspan="1">Own criteria</td>
+<td align="left" rowspan="1" colspan="1">BN<sup>‡‡</sup>(DSM III<sup>ψ</sup>)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">Prevalence of TE<sup>††</sup>: 37.9% TE<sup>††</sup> was directly associated with the duration of vomiting practices (p&lt;0.05)</td>
+<td align="left" rowspan="1" colspan="1">4(6)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Ximenes et al., 2010 <xref ref-type="bibr" rid="pone.0111123-Ximenes1">[5]</xref></td>
+<td align="left" rowspan="1" colspan="1">Brazil (English)</td>
+<td align="left" rowspan="1" colspan="1">Public schools</td>
+<td align="left" rowspan="1" colspan="1">650</td>
+<td align="left" rowspan="1" colspan="1">Male and female</td>
+<td align="left" rowspan="1" colspan="1">(12–16)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">EAT-26, BITE screening instruments</td>
+<td align="left" rowspan="1" colspan="1">Descriptive analysis, chi-square, Student's <italic>t</italic>-test, Levene's <italic>F</italic>-test (no)</td>
+<td align="left" rowspan="1" colspan="1">TE<sup>††</sup> was associated with symptoms of eating disorders (<italic>p</italic>&lt;0.001) measured through EAT-26: (OR = 2.52; 95%CI = 1.80–3.52) measured through BITE: (OR = 3.26; 95%CI = 2.35–4.54)</td>
+<td align="left" rowspan="1" colspan="1">3(6)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Lifante-Oliva et al., 2008 <xref ref-type="bibr" rid="pone.0111123-LifanteOliva1">[24]</xref></td>
+<td align="left" rowspan="1" colspan="1">Spain (English)</td>
+<td align="left" rowspan="1" colspan="1">Hospital (Eating Disorders Unit)</td>
+<td align="left" rowspan="1" colspan="1">18 (17)</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">20.1±5.6 (13–32)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>, BN<sup>‡‡</sup> (DSM IV-R<sup>ψψ</sup>)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">Prevalence of TE<sup>††</sup>from vomiting practices: 14.3% among patients with AN<sup>‡</sup> 70% among patients with BN<sup>‡‡</sup></td>
+<td align="left" rowspan="1" colspan="1">3(6)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Ximenes et al., 2004 <xref ref-type="bibr" rid="pone.0111123-Ximenes2">[29]</xref></td>
+<td align="left" rowspan="1" colspan="1">Brazil (Portuguese)</td>
+<td align="left" rowspan="1" colspan="1">Public and private schools</td>
+<td align="left" rowspan="1" colspan="1">75</td>
+<td align="left" rowspan="1" colspan="1">Male and female</td>
+<td align="left" rowspan="1" colspan="1">14 (all sample was 14)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">EAT-26 screening instrument</td>
+<td align="left" rowspan="1" colspan="1">Descriptive analysis (no)</td>
+<td align="left" rowspan="1" colspan="1">Prevalence of eating disorder risk behavior (cases): 12% Prevalence of TE<sup>††</sup> in anterior teeth: 100% among cases 28.8% among controls (sample without eating disorder risk behavior)</td>
+<td align="left" rowspan="1" colspan="1">3(6)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Alonso et al., 2001 <xref ref-type="bibr" rid="pone.0111123-Alonso1">[27]</xref></td>
+<td align="left" rowspan="1" colspan="1">Argentina (Spanish)</td>
+<td align="left" rowspan="1" colspan="1">Hospital</td>
+<td align="left" rowspan="1" colspan="1">26</td>
+<td align="left" rowspan="1" colspan="1">Male and female</td>
+<td align="left" rowspan="1" colspan="1">15 (12–22)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>, BN<sup>‡‡</sup>(DSM IV<sup>‡‡‡‡</sup>)</td>
+<td align="left" rowspan="1" colspan="1">Fisher's test (no)</td>
+<td align="left" rowspan="1" colspan="1">TE<sup>††</sup> was associated with vomiting practices (p = 0.005) Prevalence of TE<sup>††</sup>: 60% among vomiting patients 6% among non-vomiting patients</td>
+<td align="left" rowspan="1" colspan="1">3(6)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Hurst et al., 1977 <xref ref-type="bibr" rid="pone.0111123-Hurst1">[26]</xref></td>
+<td align="left" rowspan="1" colspan="1">England (English)</td>
+<td align="left" rowspan="1" colspan="1">Hospital's Psychiatric Department</td>
+<td align="left" rowspan="1" colspan="1">17</td>
+<td align="left" rowspan="1" colspan="1">Male and female</td>
+<td align="left" rowspan="1" colspan="1">Total sample (13–33) Vomiters 24.4 (17–33) Regurgitators 21.4 (13–33) Non-vomiters 21.9 (16–33)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup> (NR<sup>†</sup>)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">Prevalence of TE<sup>††</sup>: 41% TE<sup>††</sup> was associated with vomiting and regurgitation (p&lt;0.04)</td>
+<td align="left" rowspan="1" colspan="1">3(6)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Roberts &amp; Li, 1987 <xref ref-type="bibr" rid="pone.0111123-Roberts1">[23]</xref></td>
+<td align="left" rowspan="1" colspan="1">USA (English)</td>
+<td align="left" rowspan="1" colspan="1">National Institute of Dental Research</td>
+<td align="left" rowspan="1" colspan="1">47</td>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>: 28 (18–36) BN<sup>‡‡</sup>: 23 (17–34)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">AN<sup>‡</sup>, BN<sup>‡‡</sup> (Feighner, 1972)</td>
+<td align="left" rowspan="1" colspan="1">NR<sup>†</sup></td>
+<td align="left" rowspan="1" colspan="1">Prevalence of TE<sup>††</sup>: 35% among patients with AN<sup>‡</sup> 33% among patients with BN<sup>‡‡</sup></td>
+<td align="left" rowspan="1" colspan="1">2(6)</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt103"><label/><p>AN<sup>‡</sup>  =  anorexia nervosa; BN<sup>‡‡</sup>  =  bulimia nervosa; DSM IV<sup>‡‡‡‡</sup>  =  Diagnostic and Statistical Manual of Mental Disorders, 4th Edition; DSM III<sup>ψ</sup>  =  Diagnostic and Statistical Manual of Mental Disorders, 3rd Edition; DSM IV-R<sup>ψψ</sup>  =  Diagnostic and Statistical Manual of Mental Disorders, 4th Edition, Revised; NR<sup>†</sup>  =  not reported; TE<sup>††</sup>  =  tooth erosion; SIV<sup>†††</sup>  =  self-induced vomiting.</p></fn></table-wrap-foot></table-wrap></sec><sec id="s2d">
+<title>Statistical Methods and Data Synthesis</title>
+<p>The Comprehensive Meta-Analysis program, Version 2 <xref ref-type="bibr" rid="pone.0111123-Borenstein1">[13]</xref> was used for meta-analysis. Heterogeneity between studies was evaluated using I<sup>2</sup> statistics <xref ref-type="bibr" rid="pone.0111123-Higgins1">[14]</xref>. Meta-analysis was conducted when I<sup>2</sup> was below 50% and the sensitivity test was conducted when heterogeneity ranged from moderate to high, in order to exclude studies that would increase the heterogeneity. Random effect model was used when heterogeneity was high and fixed effect model for low heterogeneity (0.0%) <xref ref-type="bibr" rid="pone.0111123-Higgins1">[14]</xref>, <xref ref-type="bibr" rid="pone.0111123-Borenstein2">[15]</xref>. Risk measures, 95% confidence interval (CI) and p-value were described in forest plots, and summary risk measures were calculated. Publication bias was not evaluated as there were not enough studies to be grouped in a funnel plot <xref ref-type="bibr" rid="pone.0111123-Biljana1">[16]</xref>, <xref ref-type="bibr" rid="pone.0111123-Egger1">[17]</xref>.</p>
+</sec></sec><sec id="s3">
+<title>Results</title>
+<sec id="s3a">
+<title>Studies Characteristics</title>
+<p>The study selection process is presented in <xref ref-type="fig" rid="pone-0111123-g001">Figure 1</xref>. After full text analysis, 23 studies were included in the qualitative synthesis of this systematic review (13 case-control and 10 cross-sectional) and 14 were included in the quantitative synthesis (meta-analysis). A summary of included studies with details including the studies' outcomes as reported and quality appraisal scores is shown in <xref ref-type="table" rid="pone-0111123-t001">Table 1</xref> and <xref ref-type="table" rid="pone-0111123-t002">2</xref>.</p>
+<p>In general, for case-control studies, cases were recruited from reference centers of EDs and controls were recruited from universities and dental services <xref ref-type="bibr" rid="pone.0111123-Johansson1">[4]</xref>, <xref ref-type="bibr" rid="pone.0111123-Howat1">[18]</xref>–<xref ref-type="bibr" rid="pone.0111123-LifanteOliva1">[24]</xref>. Data for comparison of TE experience among patients suffering from bulimia and anorexia patients was provided by 2 studies <xref ref-type="bibr" rid="pone.0111123-Roberts1">[23]</xref>, <xref ref-type="bibr" rid="pone.0111123-LifanteOliva1">[24]</xref>.</p>
+<p>Other studies <xref ref-type="bibr" rid="pone.0111123-Hellstrom1">[25]</xref>–<xref ref-type="bibr" rid="pone.0111123-Alonso1">[27]</xref> compared TE in bulimics with self-induced vomiting and non-vomiting groups. There was only one case-control study <xref ref-type="bibr" rid="pone.0111123-Jarvinen1">[28]</xref> that selected patients based on outcome (with TE vs. patients without TE). Three cross-sectional studies <xref ref-type="bibr" rid="pone.0111123-Ximenes1">[5]</xref>, <xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref>, <xref ref-type="bibr" rid="pone.0111123-Ximenes2">[29]</xref> evaluated TE in adolescents with ED risk behavior, and the others evaluated adolescents already diagnosed with EDs.</p>
+<sec id="s3a1">
+<title>Quality assessment</title>
+<p>The quality of cross-sectional studies ranged from 2 to 6 (maximum: 6) and 3 to 9 (maximum: 10) for case-control studies (<xref ref-type="table" rid="pone-0111123-t001">Tables 1</xref>, <xref ref-type="table" rid="pone-0111123-t002">2</xref>, <xref ref-type="table" rid="pone-0111123-t003">3</xref> and <xref ref-type="table" rid="pone-0111123-t004">4</xref>).</p>
+</sec></sec><sec id="s3b">
+<title>Data Synthesis</title>
+<sec id="s3b1">
+<title>Comparison of vomiting practices</title>
+<p><xref ref-type="fig" rid="pone-0111123-g002">Figure 2</xref> shows meta-analysis of three cross-sectional studies <xref ref-type="bibr" rid="pone.0111123-Hellstrom1">[25]</xref>–<xref ref-type="bibr" rid="pone.0111123-Alonso1">[27]</xref> of patients with EDs who SIV vs. patients with EDs that did not SIV and its association with TE. There is a significant association between patients who SIV and increased risk of TE (Summary OR = 19.6, 95%CI = 5.6–68.8).</p>
+<fig id="pone-0111123-g002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111123.g002</object-id><label>Figure 2</label><caption>
+<title>Meta-analysis of three cross-sectional studies associating tooth erosion with patients with eating disorders without self-induced vomiting (SIV) vs. eating disorders with SIV, with statistical significance; I<sup>2</sup> = 0.0%, fixed effect model used.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111123.g002" position="float" xlink:type="simple"/></fig></sec><sec id="s3b2">
+<title>Comparison between types of EDs vs. control (without EDs)</title>
+<p>A total of 9 case-control studies <xref ref-type="bibr" rid="pone.0111123-Johansson1">[4]</xref>, <xref ref-type="bibr" rid="pone.0111123-Howat1">[18]</xref>, <xref ref-type="bibr" rid="pone.0111123-Rytomaa1">[20]</xref>–<xref ref-type="bibr" rid="pone.0111123-EmodiPerlman1">[22]</xref>, <xref ref-type="bibr" rid="pone.0111123-Greenwood1">[30]</xref>–<xref ref-type="bibr" rid="pone.0111123-Sivolella1">[33]</xref> were included in this meta-analysis (<xref ref-type="fig" rid="pone-0111123-g003">Figure 3</xref>). The analysis was performed in subgroups; twelve outcomes are presented. A sensitivity analysis was performed to decrease heterogeneity. In some studies <xref ref-type="bibr" rid="pone.0111123-Johansson1">[4]</xref>, <xref ref-type="bibr" rid="pone.0111123-EmodiPerlman1">[22]</xref>, <xref ref-type="bibr" rid="pone.0111123-Sivolella1">[33]</xref> the types of EDs were not specified, therefore they were grouped in a category called ‘EDs’, according to authors' definitions. The EDs subgroup presented a significant association with TE (Summary OR = 12.4, 95%CI = 4.1–37.5). Also, anorexia (Summary OR = 7.7, 95%CI = 1.9–30.6), bulimia (Summary OR = 8.7, 95%CI = 3.4–22.0), and bulimia with SIV (Summary OR = 13.0, 95%CI = 3.8–44.7) were significantly associated with TE; but not bulimia without SIV (Summary OR = 6.3, 95%CI = 0.8–46.9).</p>
+<fig id="pone-0111123-g003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111123.g003</object-id><label>Figure 3</label><caption>
+<title>Meta-analysis of nine case-control studies showing twelve different outcomes associating tooth erosion with types of eating disorders (EDs) with or without self-induced vomiting (SIV) vs. controls.</title>
+<p>Eating disorders were analyzed in subgroups according to each type of ED. Heterogeneity: I<sup>2</sup> = 0.0% (Anorexia subgroup), I<sup>2</sup> = 44.0% (Bulimia subgroup), I<sup>2</sup> = 0.0% (Bulimia with SIV subgroup), I<sup>2</sup> = 0.0% (Bulimia without SIV subgroup), I<sup>2</sup> = 0.0% (EDs subgroup), random effect model used.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111123.g003" position="float" xlink:type="simple"/></fig></sec><sec id="s3b3">
+<title>ED risk behavior and its association with TE</title>
+<p>The meta-analysis and sensitivity analysis of two cross-sectional studies <xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref>, <xref ref-type="bibr" rid="pone.0111123-Ximenes2">[29]</xref> showed a significant association between adolescents with ED risk behavior and TE (Summary OR = 11.6, 95% CI = 3.2–41.7) (<xref ref-type="fig" rid="pone-0111123-g004">Figure 4</xref>).</p>
+<fig id="pone-0111123-g004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0111123.g004</object-id><label>Figure 4</label><caption>
+<title>Meta-analysis of two cross-sectional studies associating tooth erosion with eating disorder risk behavior (EDs) vs. control groups (patients without eating disorder risk behavior), with statistical significance; I<sup>2</sup> = 11.3%, random effect model used.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0111123.g004" position="float" xlink:type="simple"/></fig></sec></sec></sec><sec id="s4">
+<title>Discussion</title>
+<sec id="s4a">
+<title>Assessment of Bias in Included Studies</title>
+<p>In the present paper no bias occurred due to language or year of publication, as there was no exclusion related to these reasons. Twenty papers were published in English <xref ref-type="bibr" rid="pone.0111123-Johansson1">[4]</xref>–<xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref>, <xref ref-type="bibr" rid="pone.0111123-Shaughnessy1">[9]</xref>, <xref ref-type="bibr" rid="pone.0111123-Howat1">[18]</xref>–<xref ref-type="bibr" rid="pone.0111123-Hurst1">[26]</xref>, <xref ref-type="bibr" rid="pone.0111123-Jarvinen1">[28]</xref>, <xref ref-type="bibr" rid="pone.0111123-Greenwood1">[30]</xref>–<xref ref-type="bibr" rid="pone.0111123-Milosevic1">[32]</xref>, <xref ref-type="bibr" rid="pone.0111123-Touyz1">[34]</xref>–<xref ref-type="bibr" rid="pone.0111123-Simmons1">[36]</xref>, and there were also publications in Portuguese <xref ref-type="bibr" rid="pone.0111123-Ximenes2">[29]</xref>, Spanish <xref ref-type="bibr" rid="pone.0111123-Alonso1">[27]</xref> and Italian <xref ref-type="bibr" rid="pone.0111123-Sivolella1">[33]</xref>. The search presented papers published from 1977 <xref ref-type="bibr" rid="pone.0111123-Hellstrom1">[25]</xref>, <xref ref-type="bibr" rid="pone.0111123-Hurst1">[26]</xref> to 2013 <xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref>. A manual search was conducted on reference lists of the studies screened and literature reviews.</p>
+</sec><sec id="s4b">
+<title>Assessment of Methodological Quality</title>
+<p>Among the cross-sectional studies, the major shortcomings involved the data collection process and comparability issues on the basis of the study design or analysis. One study did not mention whether the patients suffering from EDs were diagnosed by clinicians or if validated criteria were used to evaluate the EDs. It also did not mention if the patients were referred from hospitals <xref ref-type="bibr" rid="pone.0111123-Hellstrom1">[25]</xref>. Only a few studies reported the criteria used to identify TE or if the examiners had been trained and calibrated <xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref>, <xref ref-type="bibr" rid="pone.0111123-Shaughnessy1">[9]</xref>, <xref ref-type="bibr" rid="pone.0111123-Hellstrom1">[25]</xref>, <xref ref-type="bibr" rid="pone.0111123-Simmons1">[36]</xref>.</p>
+<p>Another shortcoming refers to the external validity of the studies analyzed. During the analysis it was observed that the majority of the studies were conducted among female samples; from the 23 studies included in the meta-analysis, nine included male participants <xref ref-type="bibr" rid="pone.0111123-Johansson1">[4]</xref>, <xref ref-type="bibr" rid="pone.0111123-Ximenes1">[5]</xref>, <xref ref-type="bibr" rid="pone.0111123-Hellstrom1">[25]</xref>–<xref ref-type="bibr" rid="pone.0111123-Ximenes2">[29]</xref>, <xref ref-type="bibr" rid="pone.0111123-Milosevic1">[32]</xref>, <xref ref-type="bibr" rid="pone.0111123-Ohrn1">[35]</xref>. Also, the studies had a broad age range, varying from 12 <xref ref-type="bibr" rid="pone.0111123-Ximenes1">[5]</xref> to 83 <xref ref-type="bibr" rid="pone.0111123-Jarvinen1">[28]</xref> years.</p>
+<p>The absence of controlling for confounders was also observed. Only two studies reported adjusted analysis for confounders, and one controlled the association between TE and EDs for dietary habits and oral hygiene <xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref>. The other study controlled salivary factors and the duration of oral manifestations and EDs <xref ref-type="bibr" rid="pone.0111123-Hellstrom1">[25]</xref>. The studies did not clearly report whether there were sample losses, with only one study including a written description of this aspect <xref ref-type="bibr" rid="pone.0111123-LifanteOliva1">[24]</xref>.</p>
+<p>With respect to the case-control studies, one study <xref ref-type="bibr" rid="pone.0111123-Jarvinen1">[28]</xref> selected the cases by the presence of TE instead of the manifestation of EDs. Only two studies did not report whether a baseline examination was conducted to ensure that the controls were not suffering from EDs at the beginning of the study <xref ref-type="bibr" rid="pone.0111123-Sivolella1">[33]</xref>, <xref ref-type="bibr" rid="pone.0111123-Touyz1">[34]</xref>. Regarding the oral examinations, four studies did not mention the criteria used for TE diagnosis <xref ref-type="bibr" rid="pone.0111123-Howat1">[18]</xref>, <xref ref-type="bibr" rid="pone.0111123-Greenwood1">[30]</xref>, <xref ref-type="bibr" rid="pone.0111123-Sivolella1">[33]</xref>, <xref ref-type="bibr" rid="pone.0111123-Touyz1">[34]</xref>. Details on the blinding process were also fairly reported as only four studies reported that the examiners were blinded concerning the ED status of the participants during the oral examinations <xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref>, <xref ref-type="bibr" rid="pone.0111123-Rytomaa1">[20]</xref>, <xref ref-type="bibr" rid="pone.0111123-EmodiPerlman1">[22]</xref>, <xref ref-type="bibr" rid="pone.0111123-Milosevic1">[32]</xref>.</p>
+</sec><sec id="s4c">
+<title>Strength of Evidence</title>
+<p>The evidence found in the meta-analysis of the case-control studies indicates that patients suffering from different types of EDs, anorexia, bulimia and bulimia with SIV have a greater risk of exhibiting TE in comparison to individuals without such exposure (<xref ref-type="fig" rid="pone-0111123-g003">Figure 3</xref>). It was also observed that EDs were significantly associated with the severity of TE (p&lt;0.01) <xref ref-type="bibr" rid="pone.0111123-Ohrn1">[35]</xref>. Only one study did not show this association as TE was not detected in any patient <xref ref-type="bibr" rid="pone.0111123-Shaughnessy1">[9]</xref>. However, the study pointed out some limitations, such as the small number of participants, which limited the statistical power of the analysis performed <xref ref-type="bibr" rid="pone.0111123-Shaughnessy1">[9]</xref>. Bulimia and anorexia were significantly associated with TE (<xref ref-type="fig" rid="pone-0111123-g003">Figure 3</xref>). However, the authors did not specify whether the disorders involved vomiting practices. The association of bulimia, anorexia and TE was also highlighted by other studies <xref ref-type="bibr" rid="pone.0111123-Robb1">[19]</xref>, <xref ref-type="bibr" rid="pone.0111123-Touyz1">[34]</xref>.</p>
+<p>There was a statistical association of bulimia with SIV and TE, but not for bulimia without SIV (<xref ref-type="fig" rid="pone-0111123-g003">Figure 3</xref>). This reinforces the hypothesis that purging techniques are crucial cofactors for the occurrence of TE, which results from a chronically acidic oral environment <xref ref-type="bibr" rid="pone.0111123-Johansson1">[4]</xref>. This can be reinforced by <xref ref-type="fig" rid="pone-0111123-g002">Figure 2</xref>, which shows that patients suffering from EDs who SIV had a significant greater risk of TE when compared to patients who did not SIV. In this case, EDs were not specified by the authors. Such an association was also observed in other studies <xref ref-type="bibr" rid="pone.0111123-Jarvinen1">[28]</xref>, <xref ref-type="bibr" rid="pone.0111123-Simmons1">[36]</xref>.</p>
+<p>Nevertheless, analysis from <xref ref-type="fig" rid="pone-0111123-g002">Figures 2</xref> and <xref ref-type="fig" rid="pone-0111123-g003">3</xref> involved a small number of studies. For example, in <xref ref-type="fig" rid="pone-0111123-g003">Figure 3</xref>, the subgroup of bulimia presented four studies and all other subgroups were composed of fewer studies. Also, <xref ref-type="fig" rid="pone-0111123-g002">Figure 2</xref> included only three studies. The small number of studies analyzed can decrease the statistical power of the tests. In this research it can be observed that some results (<xref ref-type="fig" rid="pone-0111123-g002">Figures 2</xref>, <xref ref-type="fig" rid="pone-0111123-g003">3</xref> and <xref ref-type="fig" rid="pone-0111123-g004">4</xref>) present large confidence intervals, decreasing the statistical power and the precision of the estimated population effect size <xref ref-type="bibr" rid="pone.0111123-Cohn1">[37]</xref>. One possible explanation for the low statistical power resulting from such intervals may rely on the small sample of some studies.</p>
+<p>Furthermore, the methodological quality can influence the meta-analysis interpretation <xref ref-type="bibr" rid="pone.0111123-Juni1">[12]</xref>. The studies included in <xref ref-type="fig" rid="pone-0111123-g002">Figures 2</xref> and <xref ref-type="fig" rid="pone-0111123-g003">3</xref> were very heterogeneous. <xref ref-type="fig" rid="pone-0111123-g003">Figure 3</xref> included studies with quality ranging from 5 to 9 points; <xref ref-type="fig" rid="pone-0111123-g002">Figure 2</xref> included two studies that scored 3 points <xref ref-type="bibr" rid="pone.0111123-Hurst1">[26]</xref>, <xref ref-type="bibr" rid="pone.0111123-Alonso1">[27]</xref> and one that scored 5 points <xref ref-type="bibr" rid="pone.0111123-Hellstrom1">[25]</xref> (<xref ref-type="table" rid="pone-0111123-t002">Tables 2</xref> and <xref ref-type="table" rid="pone-0111123-t004">4</xref>). It is well known that the type of quality assessment scale used affects the analysis and the conclusions of meta-analytic studies, therefore the use of other quality scales could have resulted in different outcomes <xref ref-type="bibr" rid="pone.0111123-Juni1">[12]</xref>.</p>
+<p>Several studies <xref ref-type="bibr" rid="pone.0111123-Johansson1">[4]</xref>, <xref ref-type="bibr" rid="pone.0111123-Robb1">[19]</xref>–<xref ref-type="bibr" rid="pone.0111123-Dynesen1">[21]</xref>, <xref ref-type="bibr" rid="pone.0111123-Jones1">[31]</xref>–<xref ref-type="bibr" rid="pone.0111123-Ohrn1">[35]</xref> which were conducted in different settings and using different methods showed similar findings related to the possible causal relationship between EDs and TE. Specificity, temporality, and dose-response relationships were also observed. Some studies observed that the years of exposure to EDs and vomiting practices influenced the risk of TE <xref ref-type="bibr" rid="pone.0111123-Ohrn1">[35]</xref>, <xref ref-type="bibr" rid="pone.0111123-Simmons1">[36]</xref>. Nevertheless, only cross-sectional and case-control studies were included in this systematic review. No cohort study was found. This highlights the need of prospective cohort studies, which could provide the highest strength of association to confirm this scientific evidence.</p>
+<p>The association between the ED risk behavior and the presence of TE was investigated by three studies <xref ref-type="bibr" rid="pone.0111123-Ximenes1">[5]</xref>, <xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref>, <xref ref-type="bibr" rid="pone.0111123-Ximenes2">[29]</xref>. One of the studies <xref ref-type="bibr" rid="pone.0111123-Ximenes1">[5]</xref> did not enter the meta-analysis, as it was excluded during the sensitivity analysis. When analyzing the forest plot it can be observed that although the studies' meta-analysis showed a significant association between these variables, the confidence intervals were large, decreasing the statistical power <xref ref-type="bibr" rid="pone.0111123-Cohn1">[37]</xref>. Moreover, the studies' quality assessment revealed a high degree of heterogeneity; one study scored 3 points <xref ref-type="bibr" rid="pone.0111123-Ximenes2">[29]</xref> and the other scored 6 points <xref ref-type="bibr" rid="pone.0111123-Hermont1">[6]</xref> (<xref ref-type="table" rid="pone-0111123-t002">Tables 2</xref> and <xref ref-type="table" rid="pone-0111123-t004">4</xref>). The methodological heterogeneity evaluated by the quality assessment scale can influence the meta-analysis interpretation <xref ref-type="bibr" rid="pone.0111123-Juni1">[12]</xref> and the strength of evidence.</p>
+<p>Inferential causal conclusions associating the ED risk behavior and TE cannot be drawn due to the studies' cross-sectional design and the limited number of studies which were evaluated in the meta-analysis (<xref ref-type="fig" rid="pone-0111123-g004">Figure 4</xref>).</p>
+<p>The consistency related to the possible causal relationship between ED risk behavior and TE is weak. There are only 3 studies analyzing this issue and two of them were conducted in the same place <xref ref-type="bibr" rid="pone.0111123-Ximenes1">[5]</xref>, <xref ref-type="bibr" rid="pone.0111123-Ximenes2">[29]</xref>. Furthermore, by analyzing the literature it is still not possible to draw any conclusion related to the specificity, temporality, dose-response, experimental evidence, biological plausibility, coherence or analogy between both conditions considering only three cross-sectional studies. Up to the present time, there is still a lack of solid evidence for an increased TE risk due to EDs, once there is no low risk of bias reporting a large effect.</p>
+<p>In the present systematic review it was not possible to evaluate the publication bias as there were not enough studies to be grouped in a funnel plot <xref ref-type="bibr" rid="pone.0111123-Egger1">[17]</xref>. However, there seems to be a tendency to report a positive association between EDs and TE.</p>
+</sec></sec><sec id="s5">
+<title>Conclusions</title>
+<p>Purging practices seem to increase the risk of TE. Nevertheless, there is a significant lack of scientific evidence to fulfill the basic criteria of causation between both conditions. Moreover, the present systematic review does reveal that to date there is no solid evidence in support of the postulated causal role of EDs in the occurrence of TE.</p>
+<p>It is important to conduct prospective cohort studies in this area in order to investigate such evidence. Special attention should be given to studies on ED risk behavior, as the main goal should be to detect subclinical cases and avoid the onset of EDs and further comorbidities.</p>
+</sec><sec id="s6">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0111123.s001" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0111123.s001" position="float" xlink:type="simple"><label>Table S1</label><caption>
+<p><bold>List of titles selected for full text analysis and the reasons for exclusion.</bold></p>
+<p>(DOC)</p>
+</caption></supplementary-material><supplementary-material id="pone.0111123.s002" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0111123.s002" position="float" xlink:type="simple"><label>Checklist S1</label><caption>
+<p><bold>PRISMA 2009 Checklist.</bold></p>
+<p>(DOC)</p>
+</caption></supplementary-material></sec></body>
+<back><ref-list>
+<title>References</title>
+<ref id="pone.0111123-Micali1"><label>1</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Micali</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Hagberg</surname><given-names>KW</given-names></name>, <name name-style="western"><surname>Petersen</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Treasure</surname><given-names>JL</given-names></name> (<year>2013</year>) <article-title>The incidence of eating disorders in the UK in 2000–2009: findings from the General Practice Research Database</article-title>. <source>BMJ Open</source> <volume>3</volume>: <fpage>1</fpage>–<lpage>8</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-HerpertzDahlmann1"><label>2</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Herpertz-Dahlmann</surname><given-names>B</given-names></name> (<year>2009</year>) <article-title>Adolescent eating disorders: definitions, symptomatology, epidemiology and comorbidity</article-title>. <source>Child Adolesc Psychiatr Clin N Am</source> <volume>18</volume>: <fpage>31</fpage>–<lpage>47</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Rosen1"><label>3</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rosen</surname><given-names>DS</given-names></name> (<year>2010</year>) <article-title>Identification and management of eating disorders in children and adolescents</article-title>. <source>Pediatrics</source> <volume>126</volume>: <fpage>1240</fpage>–<lpage>1253</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Johansson1"><label>4</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Johansson</surname><given-names>AK</given-names></name>, <name name-style="western"><surname>Norring</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Unell</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Johansson</surname><given-names>A</given-names></name> (<year>2012</year>) <article-title>Eating disorders and oral health: a matched case-control study</article-title>. <source>Eur J Oral Sci</source> <volume>120</volume>: <fpage>61</fpage>–<lpage>68</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Ximenes1"><label>5</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ximenes</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Couto</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Sougey</surname><given-names>E</given-names></name> (<year>2010</year>) <article-title>Eating disorders in adolescents and their repercussions in oral health</article-title>. <source>Int J Eat Disord</source> <volume>43</volume>: <fpage>59</fpage>–<lpage>64</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Hermont1"><label>6</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hermont</surname><given-names>AP</given-names></name>, <name name-style="western"><surname>Pordeus</surname><given-names>IA</given-names></name>, <name name-style="western"><surname>Paiva</surname><given-names>SM</given-names></name>, <name name-style="western"><surname>Abreu</surname><given-names>MH</given-names></name>, <name name-style="western"><surname>Auad</surname><given-names>SM</given-names></name> (<year>2013</year>) <article-title>Eating disorder risk behavior and dental implications among adolescents</article-title>. <source>Int J Eat Disord</source> <volume>46</volume>: <fpage>677</fpage>–<lpage>683</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-OSullivan1"><label>7</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>O'Sullivan</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Milosevic</surname><given-names>A</given-names></name> (<year>2008</year>) <article-title>UK National Clinical Guidelines in Paediatric Dentistry: diagnosis, prevention and management of dental erosion</article-title>. <source>Int J Paediatr Dent</source> <volume>18</volume>: <fpage>29</fpage>–<lpage>38</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Ganss1"><label>8</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ganss</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Lussi</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Schlueter</surname><given-names>N</given-names></name> (<year>2012</year>) <article-title>Dental erosion as oral disease. Insights in etiological factors and pathomechanisms, and current strategies for prevention and therapy</article-title>. <source>Am J Dent</source> <volume>25</volume>: <fpage>351</fpage>–<lpage>64</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Shaughnessy1"><label>9</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shaughnessy</surname><given-names>BF</given-names></name>, <name name-style="western"><surname>Feldman</surname><given-names>HA</given-names></name>, <name name-style="western"><surname>Cleveland</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Sonis</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Brown</surname><given-names>JN</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Oral health and bone density in adolescents and young women with anorexia nervosa</article-title>. <source>J Clin Pediatr Dent</source> <volume>33</volume>: <fpage>87</fpage>–<lpage>92</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Hill1"><label>10</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hill</surname><given-names>AB</given-names></name> (<year>1965</year>) <article-title>The environment and disease: association or causation?</article-title> <source>Proc R Soc Med</source> <volume>58</volume>: <fpage>295</fpage>–<lpage>300</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Mirtz1"><label>11</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mirtz</surname><given-names>TA</given-names></name>, <name name-style="western"><surname>Morgan</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Wyatt</surname><given-names>LH</given-names></name>, <name name-style="western"><surname>Greene</surname><given-names>L</given-names></name> (<year>2009</year>) <article-title>An epidemiological examination of the subluxation construct using Hill's criteria of causation</article-title>. <source>Chiropr Osteopat</source> <volume>17</volume>: <fpage>13</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Juni1"><label>12</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Juni</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Witschi</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Bloch</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Egger</surname><given-names>M</given-names></name> (<year>1999</year>) <article-title>The hazards of scoring the quality of clinical trials for meta-analysis</article-title>. <source>JAMA</source> <volume>282</volume>: <fpage>1054</fpage>–<lpage>1060</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Borenstein1"><label>13</label>
+<mixed-citation publication-type="other" xlink:type="simple">Borenstein M, Hedges LV, Higgins J, Rothstein H (2005) Comprehensive meta-analysis version 2. Englewood: Biostat</mixed-citation>
+</ref>
+<ref id="pone.0111123-Higgins1"><label>14</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Higgins</surname><given-names>JP</given-names></name>, <name name-style="western"><surname>Thompson</surname><given-names>SG</given-names></name> (<year>2002</year>) <article-title>Quantifying heterogeneity in a meta-analysis</article-title>. <source>Stat Med</source> <volume>21</volume>: <fpage>1539</fpage>–<lpage>1558</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Borenstein2"><label>15</label>
+<mixed-citation publication-type="book" xlink:type="simple">Borenstein M, Hedges LV, Higgins J, Rothstein H (2009) Introduction to meta-analysis. Chichester: John Wiley &amp; Sons.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Biljana1"><label>16</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Biljana</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Jelena</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Branislav</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Milorad</surname><given-names>R</given-names></name> (<year>1999</year>) <article-title>Bias in meta-analysis and funnel plot asymmetry</article-title>. <source>Stud Health Technol Inform</source> <volume>68</volume>: <fpage>323</fpage>–<lpage>328</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Egger1"><label>17</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Egger</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Davey</surname><given-names>SG</given-names></name>, <name name-style="western"><surname>Schneider</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Minder</surname><given-names>C</given-names></name> (<year>1997</year>) <article-title>Bias in meta-analysis detected by a simple, graphical test</article-title>. <source>BMJ</source> <volume>315</volume>: <fpage>629</fpage>–<lpage>34</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Howat1"><label>18</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Howat</surname><given-names>PM</given-names></name>, <name name-style="western"><surname>Varner</surname><given-names>LM</given-names></name>, <name name-style="western"><surname>Wampold</surname><given-names>RL</given-names></name> (<year>1990</year>) <article-title>The effectiveness of a dental/dietitian team in the assessment of bulimic dental health</article-title>. <source>J Am Diet Assoc</source> <volume>90</volume>: <fpage>1099</fpage>–<lpage>102</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Robb1"><label>19</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Robb</surname><given-names>ND</given-names></name>, <name name-style="western"><surname>Smith</surname><given-names>BG</given-names></name>, <name name-style="western"><surname>Geidrys-Leeper</surname><given-names>E</given-names></name> (<year>1995</year>) <article-title>The distribution of erosion in the dentitions of patients with eating disorders</article-title>. <source>Br Dent J</source> <volume>178</volume>: <fpage>171</fpage>–<lpage>5</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Rytomaa1"><label>20</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rytomaa</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Jarvinen</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Kanerva</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Heinonen</surname><given-names>OP</given-names></name> (<year>1998</year>) <article-title>Bulimia and tooth erosion</article-title>. <source>Acta Odontol Scand</source> <volume>56</volume>: <fpage>36</fpage>–<lpage>40</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Dynesen1"><label>21</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dynesen</surname><given-names>AW</given-names></name>, <name name-style="western"><surname>Bardow</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Petersson</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Nielsen</surname><given-names>LR</given-names></name>, <name name-style="western"><surname>Nauntofte</surname><given-names>B</given-names></name> (<year>2008</year>) <article-title>Salivary changes and dental erosion in bulimia nervosa</article-title>. <source>Oral Surg Oral Med Oral Pathol Oral Radiol Endod</source> <volume>106</volume>: <fpage>696</fpage>–<lpage>707</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-EmodiPerlman1"><label>22</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Emodi-Perlman</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Yoffe</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Rosenberg</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Eli</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Alter</surname><given-names>Z</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Prevalence of psychologic, dental, and temporomandibular signs and symptoms among chronic eating disorders patients: a comparative control study</article-title>. <source>J Orofac Pain</source> <volume>22</volume>: <fpage>201</fpage>–<lpage>208</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Roberts1"><label>23</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Roberts</surname><given-names>MW</given-names></name>, <name name-style="western"><surname>Li</surname><given-names>SH</given-names></name> (<year>1987</year>) <article-title>Oral findings in anorexia nervosa and bulimia nervosa: a study of 47 cases</article-title>. <source>J Am Dent Assoc</source> <volume>115</volume>: <fpage>407</fpage>–<lpage>10</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-LifanteOliva1"><label>24</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lifante-Oliva</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Lopez-Jornet</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Camacho-Alonso</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Esteve-Salinas</surname><given-names>J</given-names></name> (<year>2008</year>) <article-title>Study of oral changes in patients with eating disorders</article-title>. <source>Int J Dent Hyg</source> <volume>6</volume>: <fpage>119</fpage>–<lpage>22</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Hellstrom1"><label>25</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hellstrom</surname><given-names>I</given-names></name> (<year>1977</year>) <article-title>Oral complications in anorexia nervosa</article-title>. <source>Scand J Dent Res</source> <volume>85</volume>: <fpage>71</fpage>–<lpage>86</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Hurst1"><label>26</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hurst</surname><given-names>PS</given-names></name>, <name name-style="western"><surname>Lacey</surname><given-names>LH</given-names></name>, <name name-style="western"><surname>Crisp</surname><given-names>AH</given-names></name> (<year>1977</year>) <article-title>Teeth, vomiting and diet: a study of the dental characteristics of seventeen anorexia nervosa patients</article-title>. <source>Postgrad Med J</source> <volume>53</volume>: <fpage>298</fpage>–<lpage>305</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Alonso1"><label>27</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Alonso</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Sabás</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Castillo</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Weisstaub</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Pascual</surname><given-names>DM</given-names></name> (<year>2001</year>) <article-title>Transtornos de la conducta alimentaria: repercussiones a nivel oral</article-title>. <source>Rev Asoc Odontol</source> <volume>89</volume>: <fpage>390</fpage>–<lpage>395</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Jarvinen1"><label>28</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jarvinen</surname><given-names>VK</given-names></name>, <name name-style="western"><surname>Rytomaa</surname><given-names>II</given-names></name>, <name name-style="western"><surname>Heinonen</surname><given-names>OP</given-names></name> (<year>1991</year>) <article-title>Risk factors in dental erosion</article-title>. <source>J Dent Res</source> <volume>70</volume>: <fpage>942</fpage>–<lpage>947</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Ximenes2"><label>29</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ximenes</surname><given-names>RCC</given-names></name>, <name name-style="western"><surname>Colares</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Couto</surname><given-names>GBL</given-names></name>, <name name-style="western"><surname>Ximenes</surname><given-names>JDC</given-names></name> (<year>2004</year>) <article-title>O impacto de transtornos alimentares na saúde bucal de adolescentes aos 14 anos. JBP rev. Ibero-am. odontopediatr</article-title>. <source>odontol bebê</source> <volume>7</volume>: <fpage>543</fpage>–<lpage>550</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Greenwood1"><label>30</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Greenwood</surname><given-names>AM</given-names></name>, <name name-style="western"><surname>O'Reilly</surname><given-names>R</given-names></name>, <name name-style="western"><surname>O'Riordan</surname><given-names>WJ</given-names></name>, <name name-style="western"><surname>Linden</surname><given-names>GJ</given-names></name> (<year>1988</year>) <article-title>The oral and dental manifestations of bulimia nervosa compared with those of anorexia nervosa</article-title>. <source>J Ir Dent Assoc</source> <volume>34</volume>: <fpage>26</fpage>–<lpage>28</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Jones1"><label>31</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jones</surname><given-names>RR</given-names></name>, <name name-style="western"><surname>Cleaton-Jones</surname><given-names>P</given-names></name> (<year>1989</year>) <article-title>Depth and area of dental erosions, and dental caries, in bulimic women</article-title>. <source>J Dent Res</source> <volume>68</volume>: <fpage>1275</fpage>–<lpage>8</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Milosevic1"><label>32</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Milosevic</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Slade</surname><given-names>PD</given-names></name> (<year>1989</year>) <article-title>The orodental status of anorexics and bulimics</article-title>. <source>Br Dent J</source> <volume>167</volume>: <fpage>66</fpage>–<lpage>70</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Sivolella1"><label>33</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sivolella</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Cordioli</surname><given-names>GP</given-names></name>, <name name-style="western"><surname>Consolati</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Favaro</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Santonastaso</surname><given-names>P</given-names></name> (<year>2000</year>) <article-title>Odontostomatologic symptomatology in eating disorders. A controlled study</article-title>. <source>Minerva Stomatol</source> <volume>49</volume>: <fpage>119</fpage>–<lpage>127</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Touyz1"><label>34</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Touyz</surname><given-names>SW</given-names></name>, <name name-style="western"><surname>Liew</surname><given-names>VP</given-names></name>, <name name-style="western"><surname>Tseng</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Frisken</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Williams</surname><given-names>H</given-names></name>, <etal>et al</etal>. (<year>1993</year>) <article-title>Oral and dental complications in dieting disorders</article-title>. <source>Int J Eat Disord</source> <volume>14</volume>: <fpage>341</fpage>–<lpage>347</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Ohrn1"><label>35</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ohrn</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Enzell</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Angmar-Mansson</surname><given-names>B</given-names></name> (<year>1999</year>) <article-title>Oral status of 81 subjects with eating disorders</article-title>. <source>Eur J Oral Sci</source> <volume>107</volume>: <fpage>157</fpage>–<lpage>163</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Simmons1"><label>36</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Simmons</surname><given-names>MS</given-names></name>, <name name-style="western"><surname>Grayden</surname><given-names>SK</given-names></name>, <name name-style="western"><surname>Mitchell</surname><given-names>JE</given-names></name> (<year>1986</year>) <article-title>The need for psychiatric-dental liaison in the treatment of bulimia</article-title>. <source>Am J Psychiatry</source> <volume>143</volume>: <fpage>783</fpage>–<lpage>784</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Cohn1"><label>37</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cohn</surname><given-names>LD</given-names></name>, <name name-style="western"><surname>Becker</surname><given-names>BJ</given-names></name> (<year>2003</year>) <article-title>How meta-analysis increases statistical power</article-title>. <source>Psychol Methods</source> <volume>8</volume>: <fpage>243</fpage>–<lpage>253</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0111123-Moher1"><label>38</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Moher</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Liberati</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Tetzlaff</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Altman</surname><given-names>DG</given-names></name> (<year>2010</year>) <article-title>Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement</article-title>. <source>Int J Surg</source> <volume>8</volume>: <fpage>336</fpage>–<lpage>341</lpage>.</mixed-citation>
+</ref>
+</ref-list></back>
+</article>

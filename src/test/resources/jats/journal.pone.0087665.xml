@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id><journal-title-group>
+<journal-title>PLoS ONE</journal-title></journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="publisher-id">PONE-D-13-34709</article-id>
+<article-id pub-id-type="doi">10.1371/journal.pone.0087665</article-id>
+<article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Biology</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Nucleic acids</subject><subj-group><subject>RNA</subject></subj-group></subj-group></subj-group><subj-group><subject>Computational biology</subject><subj-group><subject>Microarrays</subject></subj-group></subj-group><subj-group><subject>Genetics</subject><subj-group><subject>Human genetics</subject><subj-group><subject>Genome-wide association studies</subject></subj-group></subj-group></subj-group><subj-group><subject>Genomics</subject><subj-group><subject>Genome analysis tools</subject></subj-group></subj-group><subj-group><subject>Model organisms</subject><subj-group><subject>Animal models</subject><subj-group><subject>Mouse</subject></subj-group></subj-group></subj-group><subj-group><subject>Molecular cell biology</subject><subj-group><subject>Cell adhesion</subject><subj-group><subject>Integrins</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Medicine</subject><subj-group><subject>Oncology</subject><subj-group><subject>Basic cancer research</subject><subj-group><subject>Metastasis</subject></subj-group></subj-group><subj-group><subject>Cancers and neoplasms</subject><subj-group><subject>Gastrointestinal tumors</subject><subj-group><subject>Hepatocellular carcinoma</subject></subj-group></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Genome-Wide Screening Identified That miR-134 Acts as a Metastasis Suppressor by Targeting Integrin β1 in Hepatocellular Carcinoma</article-title>
+<alt-title alt-title-type="running-head">miR-134 Suppresses Metastasis in HCC</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Zha</surname><given-names>Ruopeng</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Guo</surname><given-names>Weijie</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Zhang</surname><given-names>Zhenfeng</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Qiu</surname><given-names>Zhaoping</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Wang</surname><given-names>Qifeng</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Ding</surname><given-names>Jie</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Huang</surname><given-names>Shenglin</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Chen</surname><given-names>Taoyang</given-names></name><xref ref-type="aff" rid="aff4"><sup>4</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Gu</surname><given-names>Jianren</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Yao</surname><given-names>Ming</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>He</surname><given-names>Xianghuo</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+</contrib-group>
+<aff id="aff1"><label>1</label><addr-line>Shanghai Medical College, Fudan University, Shanghai, China</addr-line></aff>
+<aff id="aff2"><label>2</label><addr-line>State Key Laboratory of Oncogenes and Related Genes, Shanghai Cancer Institute, Renji Hospital, Shanghai Jiao Tong University School of Medicine, Shanghai, China</addr-line></aff>
+<aff id="aff3"><label>3</label><addr-line>Shanghai Cancer Hospital, Fudan University, Shanghai, China</addr-line></aff>
+<aff id="aff4"><label>4</label><addr-line>Qi Dong Liver Cancer Institute, Qi Dong, Jiangsu, China</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Coleman</surname><given-names>William B.</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>University of North Carolina School of Medicine, United States of America</addr-line></aff>
+<author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">xhhe@shsci.org</email></corresp>
+<fn fn-type="conflict"><p>The authors have declared that no competing interests exist.</p></fn>
+<fn fn-type="con"><p>Conceived and designed the experiments: XH RZ. Performed the experiments: RZ. Analyzed the data: RZ WG ZZ. Contributed reagents/materials/analysis tools: ZQ QW JD SH TC JG MY. Wrote the paper: RZ.</p></fn>
+</author-notes>
+<pub-date pub-type="collection"><year>2014</year></pub-date>
+<pub-date pub-type="epub"><day>3</day><month>2</month><year>2014</year></pub-date>
+<volume>9</volume>
+<issue>2</issue>
+<elocation-id>e87665</elocation-id>
+<history>
+<date date-type="received"><day>22</day><month>8</month><year>2013</year></date>
+<date date-type="accepted"><day>28</day><month>12</month><year>2013</year></date>
+</history>
+<permissions>
+<copyright-year>2014</copyright-year>
+<copyright-holder>Zha et al</copyright-holder><license xlink:type="simple"><license-p>This is an open-access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions>
+<abstract>
+<p>MicroRNAs (miRNAs) are small, single-stranded, non-coding RNAs that play pivotal roles in human cancer development and progression, such as tumor metastasis. Here, we identified the miRNAs that regulate hepatocellular carcinoma (HCC) cell migration by a high-throughput screening method using the classical wound-healing assay with time-lapse video microscopy and validation with a transwell migration assay. Eleven miRNAs (miR-134, -146b-3p, -188-3p, -525-3p, -661, -767-5p, -891a, -891b, -1244, -1247 and miR-1471) were found to promote or inhibit HCC cell migration. Further investigation revealed that miR-134 suppressed the invasion and metastasis of HCC cells <italic>in vitro</italic> and <italic>in vivo</italic>, and integrin beta 1 (ITGB1) was a direct and functional target gene of miR-134. Moreover, miR-134 inhibited the phosphorylation of focal adhesion kinase (FAK) and the activation of RhoA downstream of the ITGB1 pathway, thereby decreasing stress fiber formation and cell adhesion in HCC cells. In conclusion, we demonstrated that miR-134 is a novel metastasis suppressor in HCC and could be a potential therapeutic target for the treatment of HCC.</p>
+</abstract>
+<funding-group><funding-statement>This work was supported by grants from the National 973 Key Basic Research Program (2013CB910500); the National Natural Science Foundation of China (81125016, 81071637, and 91029728); The Key Specialized Project for the Infectious Diseases (2012ZX10002-009013); Shanghai Science and Technology Commission (11XD1404500); Shanghai Municipal Education Commission and Shanghai Municipal Health Bureau (11SG18, XBR2011039, and 20114Y159). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts><page-count count="11"/></counts></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p>Worldwide, hepatocellular carcinoma (HCC) is the fifth most common malignancy in men, the seventh most common malignancy in women, and the third leading cause of cancer deaths, affecting over 500,000 people <xref ref-type="bibr" rid="pone.0087665-ElSerag1">[1]</xref>. HCC usually develops as a consequence of underlying liver disease and is most often associated with cirrhosis. Additionally, metastasis or recurrence commonly causes mortality in patients <xref ref-type="bibr" rid="pone.0087665-Aravalli1">[2]</xref>. Metastasis is a complex and multistep biological process that includes local invasion, intravasation, survival in the circulation, extravasation, arrest at a distant organ site, micrometastasis formation and metastatic colonization <xref ref-type="bibr" rid="pone.0087665-Valastyan1">[3]</xref>, <xref ref-type="bibr" rid="pone.0087665-Steeg1">[4]</xref>. Each step requires the coordinated spatial and temporal expression of genes and proteins. Many molecules contribute to this process, and some of these molecules are involved in the mechanical aspects, whereas others modulate regulatory pathways <xref ref-type="bibr" rid="pone.0087665-Valastyan1">[3]</xref>. However, the molecular mechanism of metastasis has not been comprehensively elucidated.</p>
+<p>MicroRNAs (miRNAs) are small, single-stranded, non-coding RNAs that post- transcriptionally regulate the expression of target genes, usually by binding to the 3′-UTR of the respective mRNAs <xref ref-type="bibr" rid="pone.0087665-Ebert1">[5]</xref>. They are involved in many physiological and pathological processes, such as embryonic development, cell differentiation, tumorigenesis and cancer metastasis <xref ref-type="bibr" rid="pone.0087665-Pauli1">[6]</xref>, <xref ref-type="bibr" rid="pone.0087665-Garofalo1">[7]</xref>, <xref ref-type="bibr" rid="pone.0087665-Li1">[8]</xref>, <xref ref-type="bibr" rid="pone.0087665-Huang1">[9]</xref>. Many previous studies have demonstrated that miRNAs play important roles in cell migration and the metastasis of several tumor types, such as breast cancer, glioblastoma, colon cancer and hepatocellular carcinoma <xref ref-type="bibr" rid="pone.0087665-Baranwal1">[10]</xref>, <xref ref-type="bibr" rid="pone.0087665-Le1">[11]</xref>, <xref ref-type="bibr" rid="pone.0087665-Huang2">[12]</xref>, <xref ref-type="bibr" rid="pone.0087665-Ding1">[13]</xref>, <xref ref-type="bibr" rid="pone.0087665-Ying1">[14]</xref>, <xref ref-type="bibr" rid="pone.0087665-Yao1">[15]</xref>, <xref ref-type="bibr" rid="pone.0087665-Tian1">[16]</xref>. However, the function and mechanisms of miRNA-mediated regulation of HCC metastasis are largely unknown.</p>
+<p>Here, we performed a large-scale screening to identify the miRNAs involved in HCC cell migration by classical wound-healing assays with time-lapse video microscopy. After independent validation with transwell migration assays, we found that 11 miRNAs regulated the migration of HCC cells <italic>in vitro</italic>. MicroRNA-134, the candidate tumor metastasis suppressor, is often downregulated in HCC <xref ref-type="bibr" rid="pone.0087665-Li2">[17]</xref> and significantly inhibited invasion and metastasis by targeting the ITGB1 pathway in HCC.</p>
+</sec><sec id="s2" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="s2a">
+<title>Ethics statement</title>
+<p>All human materials were obtained with written informed consent, and the protocols were approved by the Ethical Review Committee of the World Health Organization of the Collaborating Center for Research in Human Production and authorized by the Shanghai Municipal Government. The samples used in this study also have been described in a previous study <xref ref-type="bibr" rid="pone.0087665-Ding2">[18]</xref>.</p>
+<p>All experiments involving animals were performed in accordance with protocols approved by the Shanghai Medical Experimental Animal Care Commission.</p>
+</sec><sec id="s2b">
+<title>Oligonucleotides</title>
+<p>All human miRNA mimics were obtained from GenePharma (Shanghai, China), and detailed information is listed in <xref ref-type="supplementary-material" rid="pone.0087665.s001">Table S1</xref>. The inhibitor (2′-<italic>O</italic>-methyl modification) of miR-134 was synthesized by Ribobio (Guangzhou, China).</p>
+</sec><sec id="s2c">
+<title>Cell culture and transfection</title>
+<p>SK-HEP-1 and Huh-7 cells were purchased from ATCC, and the MHCC-LM3 cell line was a gift from Zhongshan Hospital, Shanghai, China. SK-HEP-1, Huh-7, and MHCC-LM3 cells were cultured in DMEM supplemented with 10% fetal bovine serum (Life Technologies, CA, USA), 100 IU/ml penicillin and 100 µg/ml streptomycin under a 5% CO<sub>2</sub> atmosphere at 37°C. MicroRNA mimics were transfected using Lipofectamine RNAiMAX (Life Technologies) at a final concentration of 50 nM, and plasmid transfection was performed using Lipofectamine 2000 according to the manufacturer's instructions.</p>
+</sec><sec id="s2d">
+<title>Wound-healing assay combined with time-lapse video microscopy</title>
+<p>For wound-healing assays, SK-HEP-1 cells were transfected with miRNA mimics for 48 hours and then plated at 2×10<sup>5</sup> cells per well in 24-well plates with CytoSelect™ inserts (Cell Biolabs, INC. CA, USA). After 24 hours of incubation, the inserts were carefully removed from the wells, and the cells were washed once with growth medium and then imaged using a 10× objective on an Olympus IX81 motorized inverted microscope at 37°C under 5% CO<sub>2</sub>. Images of the wound-healing assays were acquired at 30-minute intervals for 24 hours. The percent closure of the cells into the wound field was measured using Image-Plus Pro software. The index of the inhibition of cell movement was calculated using the following equation: cell migration length in test miRNA condition/cell migration length in negative control condition×100%.</p>
+</sec><sec id="s2e">
+<title><italic>In vitro</italic> migration and invasion assays</title>
+<p>For the migration assay, 3×10<sup>4</sup> SK-HEP-1 cells or 5×10<sup>4</sup> Huh-7 cells were seeded in the top chamber of the insert (BD Biosciences, NJ, USA). For the invasion assay, 3×10<sup>4</sup> SK-HEP-1 cells or 1×10<sup>5</sup> Huh-7 cells were added to the upper chamber of the insert, which had previously been coated with 40 µl of Matrigel (BD Biosciences). After several hours of incubation at 37°C, cells that had migrated or invaded through the insert were fixed and stained in a dye solution containing 0.2% crystal violet and 20% methanol. The cells that had migrated or invaded through the insert were counted and imaged using an IX71 inverted microscope (Olympus Corp., Tokyo, Japan).</p>
+</sec><sec id="s2f">
+<title>Plasmid construction and lentiviral production</title>
+<p>The sequence of pre-miR-134 and the open reading frame sequence of ITGB1 were amplified and cloned into the pWPXL lentiviral vector (a gift from Dr. Didier Trono) and the pLVX lentiviral vector (TaKaRa, Tokyo, Japan), respectively. The wild-type or mutant 3′-UTR of ITGB1 was inserted (Xho I+Not I) downstream of the stop codon of Renilla luciferase in the psiCHECK2 vector (Promega). Lentiviral production was performed according to instructions supplied by Addgene (<ext-link ext-link-type="uri" xlink:href="http://www.addgene.org" xlink:type="simple">www.addgene.org</ext-link>). SK-HEP-1, Huh-7 and LM3 cells were infected with recombinant lentivirus transducing units in the presence of 6 µg/ml polybrene (Sigma, MA, USA). The sequences of the primers used for PCR are listed in <xref ref-type="supplementary-material" rid="pone.0087665.s002">Table S2</xref>.</p>
+</sec><sec id="s2g">
+<title>RNA extraction and quantitative real-time PCR</title>
+<p>Total RNA was extracted using TRIzol reagent (Invitrogen, CA, USA). Reverse-transcribed complementary DNA was synthesized using the PrimeScript RT reagent kit (TaKaRa). Real-time polymerase chain reaction (PCR) was performed using SYBR Premix ExTaq (TaKaRa). For miRNA detection, mature miR-134 was reverse-transcribed with specific stem-loop primers and quantified using a TaqMan probe. Normalization was performed with U6 or RNU6B small nuclear (Life Technologies). The sequences of the primers used for PCR are listed in <xref ref-type="supplementary-material" rid="pone.0087665.s002">Table S2</xref>.</p>
+</sec><sec id="s2h">
+<title>Human tissues</title>
+<p>HCC liver tissues were collected from the surgical specimen cohort of the Qidong Liver Cancer Institute of Jiangsu Province and the first hospital of Zhejiang Province in China. HCC clinical information was collected from patient records, and the details are listed in <xref ref-type="supplementary-material" rid="pone.0087665.s003">Table S3</xref>.</p>
+</sec><sec id="s2i">
+<title>Cell proliferation and colony formation assays</title>
+<p>Cell proliferation was measured by the Cell Counting Kit-8 (CCK-8) assay (Dojindo Corp., Kumamoto, Japan) according to the manufacturer's protocol. For colony formation assays, 5×10<sup>2</sup> cells were plated into each well of a six-well plate and incubated at 37°C for 1 week. The cells were fixed and stained with 0.05% crystal violet in 20% methanol. Colonies were imaged and counted using an IX71 inverted microscope (Olympus Corp.). All samples were measured in triplicate, and three independent experiments were performed.</p>
+</sec><sec id="s2j">
+<title>Animal study and histology</title>
+<p>For the <italic>in vivo</italic> orthotopic transplantation assay, 2×10<sup>6</sup> MHCC-LM3 cells stably expressing miR-134 or infected with the control vector were suspended in 40 µl of DMEM/Matrigel (1∶1) for each mouse. Through an 8-mm transverse incision in the upper abdomen, each nude mouse (10 per group, male BALB/c-nude mice) was inoculated orthotopically in the left hepatic lobe using a microsyringe. After 8 weeks, mice were euthanized, and the livers were dissected and fixed in 10% formalin solution for standard histological examination.</p>
+</sec><sec id="s2k">
+<title>Microarray analysis</title>
+<p>SK-HEP-1 cells were transfected with the miR-134 mimic or negative control for 48 hours. RNA was extracted for gene expression profiling on an Affymetrix Human U133 Plus 2.0 chip. Microarray analysis of mRNA expression profile was performed as previously described <xref ref-type="bibr" rid="pone.0087665-Wu1">[19]</xref>. Genes with 0.5-fold change were designated as downregulated in miR-134-overexpressing cells compared with the negative control cells. The data were submitted into ArrayExpress (accession: E-MTAB-2018).</p>
+</sec><sec id="s2l">
+<title>Luciferase assay</title>
+<p>SK-HEP-1 and Huh-7 cells were cultured in 96-well plates and cotransfected with 20 ng of psiCHECK2 reporter and 5 pmol miR-134 mimic or negative control. After 48 hours, Renilla luciferase activity was measured using the dual luciferase reporter assay system (Promega). Renilla luminescence units were normalized to <italic>Firefly</italic> luciferase luminescence units,</p>
+</sec><sec id="s2m">
+<title>Immunoblotting and Rho GTPase activation assays</title>
+<p>Proteins were separated by SDS-PAGE and transferred to a nitrocellulose membrane (Bio-Rad, CA, USA). The membrane was blocked with 5% non-fat milk and incubated with a rabbit anti-ITGB1 antibody (mAb) (Cell Signaling Technology, MA, USA) (1∶1,000), rabbit anti-FAK antibody (mAb) (1∶1,000), rabbit anti-phospho-FAK antibody (Tyr397) (1∶1,000) or mouse anti-GAPDH antibody (mAb) (1∶2,000) (Thermo Fisher Scientific, MA, USA). The proteins were detected using enhanced chemiluminescence reagents (Thermo Fisher Scientific). Activation of Rho-family GTPase was detected using the Rho and Rac1/Cdc42 activation assay kit (Millipore Corp., MA, USA) according to the manufacturer's instructions.</p>
+</sec><sec id="s2n">
+<title>Immunofluorescence assay</title>
+<p>SK-HEP-1 and Huh-7 cells were plated on glass slides and cultured for 48 hours. Cells were then fixed with 4% paraformaldehyde and permeabilized with 0.1% Triton-X 100, blocked in PBS containing 10% FBS for 1 hour at room temperature and incubated with a mouse monoclonal anti-α-tubulin (Sigma-Aldrich, MA, USA) or anti-vimentin (Dako, Glostrup, Denmark) antibodies overnight at 4°C. After three PBS washes, the slides were exposed to an Alexa Fluor® 488-conjugated secondary antibody (Life Technologies). F-actin and nuclei were stained with Alexa Fluor® 594 phalloidin and 4′, 6-diamidino-2-phenylindole dihydrochloride (DAPI), respectively. Cytoskeletal alterations were observed and documented using an Olympus FV1000 confocal microscope.</p>
+</sec><sec id="s2o">
+<title>Cell-matrix adhesion assay</title>
+<p>Ninety-six-well plates were precoated with 20 mg/ml fibronectin (Sigma-Aldrich). SK-HEP-1 and Huh-7 cells were trypsinized and incubated in DMEM without serum for 45 or 30 minutes, respectively. The unattached cells were washed, and the attached cells were fixed with 70% ethanol and stained with 0.1% crystal violet in 20% ethanol. Then, the stained crystal violet was dissolved in 10% acetic acid, and the absorbance value (OD) was measured at 597 nm. Wells coated with bovine serum albumin served as a negative control, whereas cells that were incubated in complete culture medium for 8 hours served as a positive control. The cell matrix adhesion (CMA) index was calculated as the OD value (test-negative control)/OD value (positive control-negative control). All adhesion experiments were performed in triplicate wells and repeated at least three times.</p>
+</sec><sec id="s2p">
+<title>Statistical analysis</title>
+<p>All results are presented as the mean ± SEM. The grouped data were analyzed by one-way ANOVA tests, and the differences between groups were assessed by the Bonferroni post-test following one-way ANOVA. The Mann-Whitney test was used for testing the difference between two group values. For tissue samples, differences between variables were assessed by the chi-square test or Fisher's exact test. P&lt;0.05 was considered statistically significant.</p>
+</sec></sec><sec id="s3">
+<title>Results</title>
+<sec id="s3a">
+<title>Large-scale screening for miRNAs that regulate cancer cell migration</title>
+<p>To screen for the miRNAs regulating cell motility, we utilized time-lapse video microscopy in the wound-healing assay (<xref ref-type="fig" rid="pone-0087665-g001">Figure 1A</xref>). Representative videos of the wound region and cell morphology are shown in the Supplementary Videos (<xref ref-type="supplementary-material" rid="pone.0087665.s006">Video S1</xref>, <xref ref-type="supplementary-material" rid="pone.0087665.s007">Video S2</xref> and <xref ref-type="supplementary-material" rid="pone.0087665.s008">Video S3</xref>). Cells transfected with miR-891a migrated more quickly into the wound region than the negative control cells. In total, 646 miRNAs (miRBase 15.0, <xref ref-type="supplementary-material" rid="pone.0087665.s001">Table S1</xref>) were investigated. The primary screening indicated that 48 miRNAs regulated cell migration with an index value under −50% or over 40% (<xref ref-type="fig" rid="pone-0087665-g001">Figure 1B</xref> and <xref ref-type="supplementary-material" rid="pone.0087665.s004">Table S4</xref>).</p>
+<fig id="pone-0087665-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0087665.g001</object-id><label>Figure 1</label><caption>
+<title>Large-scale screening for miRNAs that regulate cancer cell migration.</title>
+<p><bold>A.</bold> Schematic diagram of the screening strategy. <bold>B.</bold> The results of the primary wound-healing screening. Each dot represents the inhibition index of an individual miRNA. The cutoff value was &gt;40% (inhibition) or &lt;−50% (promotion). <bold>C.</bold> The results of the second round of screening with administration of the proliferation inhibitor 2′, 3′- dideoxythymidine (DDT). <bold>D.</bold> Transwell migration assays for selected miRNAs (*p&lt;0.05). SK-HEP-1 cells were plated into each well of a 12-well plate and transfected with individual miRNA mimics. The number of cells per field was counted after cells were placed into the top chamber of each insert for 5.5 hours. The results were normalized against data from cells transfected with the negative control. Differences between two groups were analyzed by the Mann-Whitney test.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0087665.g001" position="float" xlink:type="simple"/></fig>
+<p>To eliminate the impact of cell multiplication, we repeated the wound-healing assay with the selected 48 miRNAs in the presence of the proliferation inhibitor 2′, 3′- dideoxythymidine (DDT); the movement induced by transfection with 22 miRNAs in the presence of DDT was similar to that in the primary screening (<xref ref-type="fig" rid="pone-0087665-g001">Figure 1C</xref> and <xref ref-type="supplementary-material" rid="pone.0087665.s004">Table S4</xref>).</p>
+<p>To further confirm this result, we performed transwell migration assays in SK-HEP-1 cells transfected with the 22 miRNAs for 48 hours. Finally, 11 miRNAs (miR-134, -146b-3p, -188-3p, -525-3p, -661, -767-5p, -891a, -891b, -1244, -1247 and miR-1471) of the 22 miRNAs demonstrated consistent regulatory behavior. (<xref ref-type="fig" rid="pone-0087665-g001">Figure 1D</xref> and <xref ref-type="supplementary-material" rid="pone.0087665.s004">Table S4</xref>).</p>
+</sec><sec id="s3b">
+<title>miR-134 is inversely correlated with HCC lymphatic invasion and vascular invasion</title>
+<p>Our previous work revealed that miR-134 is often downregulated in HCC tissues <xref ref-type="bibr" rid="pone.0087665-Li2">[17]</xref>. Furthermore, we investigated the correlation between the miR-134 expression level and the clinical or pathological variables in two groups (cutoff value of median), and found that miR-134 expression is inversely correlated with lymphatic invasion (p = 0.04) and vascular invasion (p = 0.04) in HCC (<xref ref-type="table" rid="pone-0087665-t001">Table 1</xref>). However, no relationship was found between miR-134 expression and tumor size or multinodularity.</p>
+<table-wrap id="pone-0087665-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0087665.t001</object-id><label>Table 1</label><caption>
+<title>Correlation of clinicopathological features with tumor miR-134 expression in HCC.</title>
+</caption><alternatives><graphic id="pone-0087665-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0087665.t001" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Case(n)</td>
+<td colspan="2" align="left" rowspan="1">miR-134 level</td>
+<td align="left" rowspan="1" colspan="1"><italic>P value</italic></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Low (&lt;Median)</td>
+<td align="left" rowspan="1" colspan="1">High (&gt;Median)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Sex</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Male</td>
+<td align="left" rowspan="1" colspan="1">95</td>
+<td align="left" rowspan="1" colspan="1">50</td>
+<td align="left" rowspan="1" colspan="1">45</td>
+<td align="left" rowspan="1" colspan="1">0.29</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Female</td>
+<td align="left" rowspan="1" colspan="1">18</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">11</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Age (years)</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">≤50</td>
+<td align="left" rowspan="1" colspan="1">71</td>
+<td align="left" rowspan="1" colspan="1">33</td>
+<td align="left" rowspan="1" colspan="1">38</td>
+<td align="left" rowspan="1" colspan="1">0.27</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">&gt;50</td>
+<td align="left" rowspan="1" colspan="1">42</td>
+<td align="left" rowspan="1" colspan="1">24</td>
+<td align="left" rowspan="1" colspan="1">18</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td colspan="2" align="left" rowspan="1"><bold>Edmondson Grading</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">I+II</td>
+<td align="left" rowspan="1" colspan="1">33</td>
+<td align="left" rowspan="1" colspan="1">17</td>
+<td align="left" rowspan="1" colspan="1">16</td>
+<td align="left" rowspan="1" colspan="1">0.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">III+IV</td>
+<td align="left" rowspan="1" colspan="1">46</td>
+<td align="left" rowspan="1" colspan="1">25</td>
+<td align="left" rowspan="1" colspan="1">21</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Tumor Size (cm)</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">&lt;5</td>
+<td align="left" rowspan="1" colspan="1">33</td>
+<td align="left" rowspan="1" colspan="1">17</td>
+<td align="left" rowspan="1" colspan="1">16</td>
+<td align="left" rowspan="1" colspan="1">0.67</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">≥5</td>
+<td align="left" rowspan="1" colspan="1">66</td>
+<td align="left" rowspan="1" colspan="1">31</td>
+<td align="left" rowspan="1" colspan="1">35</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td colspan="2" align="left" rowspan="1"><bold>Serum AFP (ng/ml)</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">≤20</td>
+<td align="left" rowspan="1" colspan="1">35</td>
+<td align="left" rowspan="1" colspan="1">15</td>
+<td align="left" rowspan="1" colspan="1">20</td>
+<td align="left" rowspan="1" colspan="1">0.26</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">&gt;20</td>
+<td align="left" rowspan="1" colspan="1">66</td>
+<td align="left" rowspan="1" colspan="1">36</td>
+<td align="left" rowspan="1" colspan="1">30</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Serum HBsAg</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Positive</td>
+<td align="left" rowspan="1" colspan="1">83</td>
+<td align="left" rowspan="1" colspan="1">41</td>
+<td align="left" rowspan="1" colspan="1">42</td>
+<td align="left" rowspan="1" colspan="1">0.48</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Negative</td>
+<td align="left" rowspan="1" colspan="1">28</td>
+<td align="left" rowspan="1" colspan="1">16</td>
+<td align="left" rowspan="1" colspan="1">12</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Liver Cirrhosis</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Positive</td>
+<td align="left" rowspan="1" colspan="1">52</td>
+<td align="left" rowspan="1" colspan="1">24</td>
+<td align="left" rowspan="1" colspan="1">28</td>
+<td align="left" rowspan="1" colspan="1">0.45</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Negative</td>
+<td align="left" rowspan="1" colspan="1">60</td>
+<td align="left" rowspan="1" colspan="1">32</td>
+<td align="left" rowspan="1" colspan="1">28</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td colspan="2" align="left" rowspan="1"><bold>Lymphatic Invasion</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Positive</td>
+<td align="left" rowspan="1" colspan="1">16</td>
+<td align="left" rowspan="1" colspan="1">12</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+<td align="left" rowspan="1" colspan="1"><bold><italic>0.04</italic></bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Negative</td>
+<td align="left" rowspan="1" colspan="1">96</td>
+<td align="left" rowspan="1" colspan="1">45</td>
+<td align="left" rowspan="1" colspan="1">51</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td colspan="2" align="left" rowspan="1"><bold>Distant Metastasis</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Positive</td>
+<td align="left" rowspan="1" colspan="1">13</td>
+<td align="left" rowspan="1" colspan="1">8</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">0.4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Negative</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">49</td>
+<td align="left" rowspan="1" colspan="1">51</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td colspan="2" align="left" rowspan="1"><bold>Vascular Invasion</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Positive</td>
+<td align="left" rowspan="1" colspan="1">13</td>
+<td align="left" rowspan="1" colspan="1">10</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1"><bold><italic>0.04</italic></bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Negative</td>
+<td align="left" rowspan="1" colspan="1">83</td>
+<td align="left" rowspan="1" colspan="1">38</td>
+<td align="left" rowspan="1" colspan="1">45</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td colspan="2" align="left" rowspan="1"><bold>Multinodular Liver</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Positive</td>
+<td align="left" rowspan="1" colspan="1">43</td>
+<td align="left" rowspan="1" colspan="1">24</td>
+<td align="left" rowspan="1" colspan="1">19</td>
+<td align="left" rowspan="1" colspan="1">0.19</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Negative</td>
+<td align="left" rowspan="1" colspan="1">52</td>
+<td align="left" rowspan="1" colspan="1">22</td>
+<td align="left" rowspan="1" colspan="1">30</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt101"><label/><p>Note: The expression level of mature miR-134 was normalized against that of RNU6B small nuclear RNA. The P-value represents the probability from a chi-square test for expression of miR-134 between variable subgroups. AFP, alpha-fetoprotein; HBsAg, hepatitis B virus surface antigen.</p></fn></table-wrap-foot></table-wrap></sec><sec id="s3c">
+<title>miR-134 inhibits HCC cell invasion and metastasis <italic>in vitro</italic> and <italic>in vivo</italic></title>
+<p>To determine whether the enhanced expression of miR-134 inhibits HCC cell invasion and metastasis, we first measured the expression of miR-134 in various HCC cell lines and constructed three miR-134-overexpressing stable cell lines by lentiviral transduction (Figure S1A in <xref ref-type="supplementary-material" rid="pone.0087665.s005">File S1</xref>). Cell proliferation and colony formation assays revealed that the ectopic expression of miR-134 had no obvious effects on HCC cell proliferation <italic>in vitro</italic> (Figure S1B–D in <xref ref-type="supplementary-material" rid="pone.0087665.s005">File S1</xref>), while transwell experiments showed that the cells with stable miR-134-overexpression, which were derived from SK-HEP-1, MHCC-LM3 and Huh-7 cells, exhibited a lower migratory and invasive potential than the control cells (<xref ref-type="fig" rid="pone-0087665-g002">Figure 2A, 2B</xref> and Figure S2 in <xref ref-type="supplementary-material" rid="pone.0087665.s005">File S1</xref>). In contrast, the suppression of endogenous miR-134 by its specific inhibitor enhanced the migratory and invasive abilities in Huh-7 cells (<xref ref-type="fig" rid="pone-0087665-g002">Figure 2C</xref>). To further explore the role of miR-134 in tumor invasion and metastasis <italic>in vivo</italic>, MHCC-LM3 cells, which possess a relatively strong <italic>in vivo</italic> metastatic capacity, were orthotopically transplanted into the livers of nude mice. The number of intrahepatic nodules in the liver was dramatically decreased in the miR-134 groups compared to the vector controls after <italic>in situ</italic> growth for 8 weeks (<xref ref-type="fig" rid="pone-0087665-g002">Figure 2D</xref>). Together, these findings suggest that miR-134 is a negative regulator of metastasis in HCC.</p>
+<fig id="pone-0087665-g002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0087665.g002</object-id><label>Figure 2</label><caption>
+<title>miR-134 inhibits HCC cell migration and invasion <italic>in vitro</italic> and <italic>in vivo</italic>.</title>
+<p><bold>A</bold> and <bold>B.</bold> Transwell migration (<bold>A</bold>) and invasion (<bold>B</bold>) assays for SK-HEP-1 and Huh-7 cells stably overexpressing miR-134 or negative control (lenti-vector). Representative images are shown with the quantification of five randomly selected fields. <bold>C.</bold> Transwell migration and invasion assays of Huh-7 cells were performed after transfection with the miR-134 inhibitor or negative control. Differences between two groups were analyzed by the Mann-Whitney test. <bold>D.</bold> H &amp; E staining of liver isolated from mice that received orthotopic injections of miR-134-transduced or vector-infected LM3 cells at 8 weeks after transplantation. Intrahepatic nodules were counted and analyzed using the Mann-Whitney test (n = 10 mice per group).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0087665.g002" position="float" xlink:type="simple"/></fig></sec><sec id="s3d">
+<title>miR-134 impacts ITGB1 expression by directly binding to its 3′-UTR</title>
+<p>Generally, miRNAs exert their function by binding to the 3′-UTR of their target genes, blocking subsequent protein expression. Integrin beta 1 (ITGB1) and cadherin 9 (CDH9) were predicted to be the target genes of miR-134 by combining three target-predicting algorithms (PicTar, <ext-link ext-link-type="uri" xlink:href="http://www.pictar.org" xlink:type="simple">www.pictar.org</ext-link>, TargetScan, <ext-link ext-link-type="uri" xlink:href="http://www.targetscan.org" xlink:type="simple">www.targetscan.org</ext-link> and miRanda, <ext-link ext-link-type="uri" xlink:href="http://www.microrna.org" xlink:type="simple">www.microrna.org</ext-link>). In addition, we performed an RNA microarray assay in SK-HEP-1 cells, and the results showed that the ITGB1 mRNA expression level decreased by 66% in miR-134 overexpressing cells compared with control cells (the expression ratio was 0.341524), whereas CDH9 mRNA expression levels remained relatively stable. These results indicate that ITGB1 is a putative target gene of miR-134 (<xref ref-type="fig" rid="pone-0087665-g003">Figure 3A</xref>).</p>
+<fig id="pone-0087665-g003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0087665.g003</object-id><label>Figure 3</label><caption>
+<title>miR-134 downregulates ITGB1 by directly targeting its 3′UTR.</title>
+<p><bold>A.</bold> Schema of the candidate genes identified by four independent approaches. <bold>B.</bold> Putative binding sequences of ITGB1 for miR-134 in the human (Hsa), chimpanzee (Ptr), rhesus (Mml) and mouse (Mmu). The ITGB1 seed sequences are highlighted by ruby italic letters. <bold>C.</bold> Putative miR-134-binding sites in the wild-type ITGB1 3′-UTR (highlighted by ruby letters) or 3′-UTR segments containing mutant (highlighted by blue letters) binding sites are shown. <bold>D.</bold> Relative luciferase activity assays for constructs containing luciferase and wild-type or mutant ITGB1 3′-UTRs were performed after cotransfection with a miR-134 mimic or negative control. The <italic>Renilla</italic> luciferase vector was cotransfected as an internal control. Data were analyzed by one-way ANOVA (p&lt;0.01), and differences between two groups were assessed by the Bonferroni post-test. <bold>E.</bold> The mRNA expression levels of ITGB1 in SK-HEP-1 and Huh-7 cells overexpressing miR-134 or negative control. Differences between two groups were analyzed by the Mann-Whitney test. <bold>F.</bold> The protein levels of ITGB1 in SK-HEP-1 and Huh-7 cells infected with miR-134 or control lentivirus. GAPDH served as an internal control. <bold>G.</bold> Protein levels of ITGB1 in Huh-7 cells after transfection with the miR-134 inhibitor or inhibitor control. GAPDH served as an internal control.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0087665.g003" position="float" xlink:type="simple"/></fig>
+<p>Next, analysis of the 3′-UTR sequence of ITGB1 using TargetScan revealed two possible binding sites of miR-134, both of which are highly conserved in humans, chimpanzees, rhesus monkeys and mice (<xref ref-type="fig" rid="pone-0087665-g003">Figure 3B</xref>). To further determine the direct binding of miR-134 to the 3′-UTR, the fragments of the ITPG1 3′-UTR (either wild-type or mutant, <xref ref-type="fig" rid="pone-0087665-g003">Figure 3C</xref>) were constructed and inserted downstream of the stop codon of Renilla luciferase in the psiCHECK2 vector. MiR-134 was cotransfected with different 3′-UTR constructs into SK-HEP-1 cells. Compared to the control, the relative luciferase activity of wild-type 3′-UTR of ITGB1 was sharply decreased by miR-134, whereas the relative luciferase activity of the 3′-UTR construct containing two mutant binding sites was not altered. In addition, our results indicate that the two binding sites act synergically in miR-134 regulation because single mutation of these two binding sites only partially restored the luciferase activity (<xref ref-type="fig" rid="pone-0087665-g003">Figure 3D</xref>). Similar results were observed when different 3′-UTRs constructed with psiCHECK2 were transfected into Huh-7 cells with the miR-134 mimic (Figure S3 in <xref ref-type="supplementary-material" rid="pone.0087665.s005">File S1</xref>). Furthermore, overexpression of miR-134 remarkably decreased the endogenous mRNA and protein levels of ITGB1 (<xref ref-type="fig" rid="pone-0087665-g003">Figure 3E, 3F</xref>). Conversely, inhibition of miR-134 increased the expression of ITGB1 in Huh-7 cells (<xref ref-type="fig" rid="pone-0087665-g003">Figure 3G</xref>). Collectively, these data provide further evidence that ITGB1 is a direct target of miR-134.</p>
+</sec><sec id="s3e">
+<title>Restoration of ITGB1 abrogates miR-134-repressed HCC cell migration and invasion</title>
+<p>Previous studies showed that the mRNA level of ITGB1 was upregulated in HCC samples compared to the adjacent normal liver tissue <xref ref-type="bibr" rid="pone.0087665-Liu1">[20]</xref>. To explore whether ITGB1 contributes to the suppressive effect of miR-134, the complete ORF of ITGB1 without its 3′-UTR, which resulted in the constitutive expression of ITGB1 resistant to miR-134 inhibition, was introduced into SK-HEP-1 and Huh-7 cells via lentiviral transduction. Remarkably, overexpression of ITGB1 strongly increased SK-HEP-1 and Huh-7 cell migration and invasion (<xref ref-type="fig" rid="pone-0087665-g004">Figure 4A and 4B</xref>). We further observed that ectopic ITGB1-ORF without 3′UTR in miR-134-transduced SK-HEP-1 and Hun-7 cells abrogated the inhibitory effect of miR-134 on HCC migration and invasion (<xref ref-type="fig" rid="pone-0087665-g004">Figure 4C and 4D</xref>). Together, these findings provide evidence that miR-134 suppresses HCC cell invasion and metastasis by directly targeting ITGB1.</p>
+<fig id="pone-0087665-g004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0087665.g004</object-id><label>Figure 4</label><caption>
+<title>Restoration of ITGB1 expression rescues miR-134-induced suppression of HCC migration and invasion.</title>
+<p><bold>A</bold> and <bold>B.</bold> Transwell migration assays of (A) SK-HEP-1 and (B) Huh-7 cells stably overexpressing ITGB1. Representative images are shown with the quantification of five randomly selected fields. The bars represent the SEM of three independent experiments. Differences between two groups were analyzed by the Mann-Whitney test. Western blot analysis revealed that the protein expression of ITGB1 increased after infection with the PLVX-ITGB1 (ORF) virus. <bold>C.</bold> Transwell migration and invasion assays for SK-HEP-1-vector or SK-HEP-1- miR-134 cells were performed after infection with ITGB1 (ORF) or the vector control lentivirus. Transwell migration and invasion data were analyzed by a one-way ANOVA (p&lt;0.01, p&lt;0.01 respectively); differences between two groups were assessed by the Bonferroni post-test. ITGB1 protein levels were determined by Western blot analysis. <bold>D.</bold> Transwell migration and invasion assays for Huh-7-vector or Huh-7-miR-134 cells were performed after infection with ITGB1 (ORF) or vector control lentivirus. ITGB1 protein levels were determined by Western blot analysis. Transwell migration and invasion data were analyzed by a one-way ANOVA (p&lt;0.01, p&lt;0.01 respectively); differences between two groups were assessed by the Bonferroni post-test.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0087665.g004" position="float" xlink:type="simple"/></fig></sec><sec id="s3f">
+<title>Overexpression of miR-134 represses HCC cell stress fiber formation and cell adhesion</title>
+<p>To further study the role of miR-134 in cell motility, we examined the status of stress fiber formation and polymerized actin in SK-HEP-1 and Huh-7 cells with miR-134 overexpression. Using phalloidin staining, we found that the maturation of stress fibers was suppressed in cells transfected with the miR-134 mimic (<xref ref-type="fig" rid="pone-0087665-g005">Figure 5A and 5C</xref>). However, miR-134 did not affect the consistency of vimentin or tubulin, which implies that miR-134 does not interfere the formation of intermediate filaments (Figure S4 in <xref ref-type="supplementary-material" rid="pone.0087665.s005">File S1</xref>). Previous work has shown that phosphorylated focal adhesion kinase (FAK) activates RhoA and drives the formation of stress fibers and the maturation of cell adhesion <xref ref-type="bibr" rid="pone.0087665-Huveneers1">[21]</xref>; thus, we determined the status of the FAK signaling pathway, including the phosphorylation of FAK and downstream activation of Rho, Rac1 and Cdc42. Western blotting showed that miR-134 attenuated FAK phosphorylation and suppressed the activation of RhoA in SK-HEP-1 and Huh-7 cells (<xref ref-type="fig" rid="pone-0087665-g005">Figure 5B and 5D</xref>). Moreover, cell adhesion assays also revealed that miR-134 inhibited cell-matrix adhesion in SK-HEP-1 and Huh-7 cells (<xref ref-type="fig" rid="pone-0087665-g005">Figure 5E</xref>).</p>
+<fig id="pone-0087665-g005" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0087665.g005</object-id><label>Figure 5</label><caption>
+<title>Ectopic expression of miR-134 impairs the stress fiber network in HCC cells.</title>
+<p><bold>A.</bold> and <bold>C.</bold> Ectopic expression of miR-134 disrupted the stress fiber network in SK-HEP-1 (<bold>A</bold>) and Huh-7 cells (<bold>C</bold>). Stress fibers (polymerized actin) and actin filaments were detected by phalloidin staining. DAPI staining was used to detect nuclei. Scale bar: 20 µm. <bold>B.</bold> and <bold>D.</bold> The protein levels of FAK phosphorylation and activity of Rho/Rac1/Cdc42 GTPases in SK-HEP-1 (<bold>B</bold>) and Huh-7 (<bold>D</bold>) cells. Samples for the Western blot were analyzed on a single gel. <bold>E.</bold> Cellular adhesion assays were performed in SK-HEP-1 and Huh-7 cells. The results are representative of at least three independent experiments. Differences between two groups were analyzed by the Mann-Whitney test. NC: negative control, FN: fibronectin.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0087665.g005" position="float" xlink:type="simple"/></fig>
+<p>In addition, ectopic ITGB1 abrogated miR-134-suppressed cell stress fiber formation. Nevertheless, this abrogation was reversed by siRNA knockdown of RhoA (<xref ref-type="fig" rid="pone-0087665-g006">Figure 6A, 6B</xref>, Figure S5A and S5B in <xref ref-type="supplementary-material" rid="pone.0087665.s005">File S1</xref>). Similarly, reintroduction of ITGB1 rescued miR-134-suppressed cell adhesion, and this effect was abrogated by knockdown of RhoA (<xref ref-type="fig" rid="pone-0087665-g006">Figure 6C</xref> and Figure S5C in <xref ref-type="supplementary-material" rid="pone.0087665.s005">File S1</xref>). Taken together, these data suggest that ITGB1 plays a pivotal role in miR-134-mediated cell stress fiber formation and cell adhesion.</p>
+<fig id="pone-0087665-g006" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0087665.g006</object-id><label>Figure 6</label><caption>
+<title>ITGB1 is involved in the miR-134-induced inhibition of cell stress fiber formation and cell adhesion.</title>
+<p><bold>A.</bold> Ectopic expression of miR-134 disrupted the stress fiber network in SK-HEP-1 cells, and this effect was reversed by ITGB1 transfection. Stress fiber formation was repressed by transfecting siRhoA into SK-HEP-1-ITGB1 cells. F-actin was used as the stress fiber marker. DAPI staining was used to detect nuclei. Scale bar: 20 µm. <bold>B.</bold> FAK protein phosphorylation and the protein levels of the Rho GTPases in SK-HEP-1-ITGB1 cells were analyzed after transfection with miR-134 and siRhoA. <bold>C.</bold> The cellular adhesion assay was performed in SK-HEP-1 cells. The results are representative of at least three independent experiments, and data were analyzed by a one-way ANOVA (p&lt;0.05); differences between two groups were assessed by the Bonferroni post-test. NC: negative control, FN: fibronectin.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0087665.g006" position="float" xlink:type="simple"/></fig></sec></sec><sec id="s4">
+<title>Discussion</title>
+<p>Previous studies have shown that time-lapse imaging of living cells is versatile for investigating cell mobility. This technique allowed us to investigate many phenotypes and morphologies associated with cell movement and mobility <xref ref-type="bibr" rid="pone.0087665-Simpson1">[22]</xref>, <xref ref-type="bibr" rid="pone.0087665-Fotos1">[23]</xref>. In this study, we used time-lapse video microscopy to observe cell movement in the scratch-wound assay, validated the results using the transwell migration assay, and identified the migration-suppressing miRNA (miR-134) and migration-facilitating miRNAs (miR-1247, miR-1244, miR-146b-3p, miR-1471, miR-188-3p, miR-661, miR-891a, miR-891b and miR-767-5P) in SK-HEP-1 cells.</p>
+<p>miR-134 is located on chromosome 14q32.31, which is frequently lost in gastrointestinal stromal tumors (GISTs) <xref ref-type="bibr" rid="pone.0087665-Haller1">[24]</xref>, and its expression is often decreased in GIST, osteosarcoma, glioma and HCC <xref ref-type="bibr" rid="pone.0087665-Li2">[17]</xref>, <xref ref-type="bibr" rid="pone.0087665-Haller1">[24]</xref>, <xref ref-type="bibr" rid="pone.0087665-Sarver1">[25]</xref>, <xref ref-type="bibr" rid="pone.0087665-Lages1">[26]</xref>. Boominathan reported that TA-p73 may regulate the post-transcriptional processing of miR-134 by increasing Ago1/2 activity, thereby repressing cancer stem cell proliferation <xref ref-type="bibr" rid="pone.0087665-Boominathan1">[27]</xref>. However, the regulation of miR-134 expression in HCC remains to be elucidated. Moreover, low expression of miR-134 is significantly associated with shorter disease-free survival or tumor progression in GIST. Additionally, miR-134 inhibits cell migration and EMT in A549 cells <xref ref-type="bibr" rid="pone.0087665-Zhang1">[28]</xref>, <xref ref-type="bibr" rid="pone.0087665-Li3">[29]</xref>. Our previous work also demonstrated that miR-134 is often downregulated in HCC tissues, and its expression level is reversely correlated with HCC lymphatic invasion and vascular invasion. We also verified that ectopic expression of miR-134 suppresses HCC cell invasion and metastasis both <italic>in vitro</italic> and <italic>in vivo</italic>.</p>
+<p>The present work shows that miR-134 participates in the integrin-signaling pathway by directly regulating ITGB1 expression. ITGB1, which is a subunit of a family of heterodimeric transmembrane receptors, can combine with different integrin α subunits to form heterodimers and bind a large number of extracellular ligands. For example, α1β1, α2β1, α10β1 and α11β1 are collagen-binding integrins; α3β1, α6β1 and α7β1 bind to laminin and α4β1, α5β1, α8β1 and αvβ1 bind to fibronectin <xref ref-type="bibr" rid="pone.0087665-Brakebusch1">[30]</xref>. In many cancer types, integrin beta 1 promotes cancer cell proliferation and survival and regulates cell focal adhesion and tumor metastasis <xref ref-type="bibr" rid="pone.0087665-FeldingHabermann1">[31]</xref>, <xref ref-type="bibr" rid="pone.0087665-Caccavari1">[32]</xref>, <xref ref-type="bibr" rid="pone.0087665-Allen1">[33]</xref>, <xref ref-type="bibr" rid="pone.0087665-Grzesiak1">[34]</xref>. Masumoto reported that a monoclonal antibody against ITGB1 blocked HCC cell invasion <xref ref-type="bibr" rid="pone.0087665-Masumoto1">[35]</xref>, and Mizuno found that overexpression of α3β1 integrins enhanced HepG2 cell migration and invasion <xref ref-type="bibr" rid="pone.0087665-Mizuno1">[36]</xref>, while inhibition of α3β1 integrins suppressed SMMC-7721 cell migration <xref ref-type="bibr" rid="pone.0087665-Fu1">[37]</xref>. Our study showed that ITGB1 promotes HCC cell migration and invasion and rescues miR-134-induced repression of cell migration and invasion. In addition, ITGB1 mRNA was upregulated in HCC tissues compared with the adjacent normal liver tissue <xref ref-type="bibr" rid="pone.0087665-Liu1">[20]</xref>.</p>
+<p>When extracellular ligands bind to integrins, their cytoplasmic domains connect to intracellular signaling molecules to activate an immediate signal transduction pathway or crosstalk with growth factor receptors. Then, FAK, the key molecule of the integrin-signaling pathway, is recruited to the integrin C-terminal domain and autophosphorylated at tyrosine397, thereby creating a binding site for the Src-homology 2 (SH2) domain of Src. The active FAK-Src complex then promotes the activation of the small Rho family members, Rac1, Cdc42 and RhoA <xref ref-type="bibr" rid="pone.0087665-Huveneers1">[21]</xref>. RhoA is a crucial molecule in cell cytoskeleton remodeling and actin reorganization because it activates myosin II through Rho-kinase (ROCK) and contributes to actin polymerization in the formation of stress fibers <xref ref-type="bibr" rid="pone.0087665-Rottner1">[38]</xref>. In addition to the inhibitory effect of miR-134 on ITGB1 expression, our data demonstrated that miR-134 affects FAK phosphorylation and RhoA activation in HCC cells. GTP-Rho is decreased and the formation of stress fibers is inhibited by overexpression of miR-134. Overexpression of ITGB1 could reverse the inhibitory effect of miR-134 by increasing of GTP-Rho. When we knockdown RhoA, GTP-Rho decreases and the formation of stress fibers is suppressed.</p>
+<p>Cell migration is frequently composed of the cycles consisting of protrusion at the front, the formation and stabilization of adhesions at the front and then the retraction and destabilization of adhesions at the rear <xref ref-type="bibr" rid="pone.0087665-Rottner1">[38]</xref>. Protrusion may be mediated by a variety of distinct structures, including lamellipodia, filopodia and stress fibers. Rac1 stimulates lamellipodium formation, Cdc42 induces filopodium formation and RhoA induces the formation of stress fibers <xref ref-type="bibr" rid="pone.0087665-Kaibuchi1">[39]</xref>. As miR-134 could reduce ITGB1 expression and the consequent FAK phosphorylation and RhoA activation, it is not surprising to find that miR-134 inhibits cell adhesion and migration in HCC.</p>
+<p>In conclusion, we identified potential tumor metastasis-regulating miRNAs through a cell migration assay. Our results show that miR-134 significantly inhibits HCC cell invasion and metastasis <italic>in vitro</italic> and <italic>in vivo</italic> and further highlights the critical role of ITGB1 and its downstream pathway in miR-134-mediated inhibition of metastasis in HCC. This work suggests that miR-134 could be a novel therapeutic target for the treatment of HCC.</p>
+</sec><sec id="s5">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0087665.s001" mimetype="application/vnd.ms-excel" xlink:href="info:doi/10.1371/journal.pone.0087665.s001" position="float" xlink:type="simple"><label>Table S1</label><caption>
+<p><bold>List of human miRNAs tested in the study.</bold></p>
+<p>(XLS)</p>
+</caption></supplementary-material><supplementary-material id="pone.0087665.s002" mimetype="application/vnd.ms-excel" xlink:href="info:doi/10.1371/journal.pone.0087665.s002" position="float" xlink:type="simple"><label>Table S2</label><caption>
+<p><bold>Primer sequences for real time PCR and constructs.</bold></p>
+<p>(XLS)</p>
+</caption></supplementary-material><supplementary-material id="pone.0087665.s003" mimetype="application/vnd.ms-excel" xlink:href="info:doi/10.1371/journal.pone.0087665.s003" position="float" xlink:type="simple"><label>Table S3</label><caption>
+<p><bold>Clinical information of human hepatocellular carcinoma samples used in the study.</bold></p>
+<p>(XLS)</p>
+</caption></supplementary-material><supplementary-material id="pone.0087665.s004" mimetype="application/vnd.ms-excel" xlink:href="info:doi/10.1371/journal.pone.0087665.s004" position="float" xlink:type="simple"><label>Table S4</label><caption>
+<p><bold>List of miRNAs capable of regulating HCC cell migration.</bold></p>
+<p>(XLS)</p>
+</caption></supplementary-material><supplementary-material id="pone.0087665.s005" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0087665.s005" position="float" xlink:type="simple"><label>File S1</label><caption>
+<p><bold>Supporting information on results obtained, containing Figure S1, S2, S3, S4 and S5.</bold> Figure S1, Overexpression of miR-134 has no effect on HCC cell growth. <bold>A.</bold> the relative expression levels of miR-134 in HCC cells. The expression levels of mature miR-134 are normalized by U6 small nuclear RNA. The CCK-8 assays of SK-HEP-1 (<bold>B</bold>) and Huh-7 (<bold>C</bold>) cells were performed after infected with lentivirus expressing miR-134 or the control vector. <bold>D.</bold> The colony formation assay for SK-HEP-1 cells infected with lentivirus expressing miR-134 or the control vector. A total of 500 cells per well were seeded and cultivated for 2 weeks. The colonies were fixed and stained in a dye solution containing 0.1% crystal violet and 20% methanol. Figure S2, Overexpression of miR-134 inhibits MHCC-LM3 cell migration and invasion. Transwell migration assays of MHCC-LM3 cells were performed after infection with lentivirus expressing miR-134 or the control vector. For the migration assay, 10<sup>5</sup> cells were placed into the top chamber of the insert and cultured for 28 hours. For the invasion assay, 2*10<sup>5</sup> cells were added to the upper chamber of the insert which had previously been coated with 40 µl of Matrigel and cultured for 48 hours. Cells that had migrated through the pore were fixed and stained with a mixture of 20% methanol and 0.1% crystal violet for 0.5 hour. Differences between two groups were analyzed by the Mann-Whitney test. Figure S3, miR-134 directly targets 3′-UTR of ITGB1 The psiCHECK2 vector, psiCHECK2-wild-ITGB1-3′UTR or psiCHECK2-mutant- ITGB1-3′UTR was transfected into Huh-7 cells with miR-134 mimic or negative control. Data were analyzed by one-way ANOVA (p&lt;0.01), and differences between two groups were assessed by the Bonferroni post-test. Figure S4, Overexpression of miR-134 has no effect on microtubule and intermediate filament in HCC cells. Microtubules were demonstrated by α-tubulin staining using α-tubulin mAb in SK-HEP-1 (<bold>A</bold>) and Huh-7 (<bold>B</bold>) cells. DAPI staining is used to detect nuclei. Scale bar: 20 µm. Intermediate filaments were demonstrated by Vimentin using Vimentin mAb in SK-HEP-1 (<bold>C</bold>) and Huh-7 (<bold>D</bold>) cells. DAPI staining is used to detect nuclei. Scale bar: 20 µm. Figure S5, ITGB1 contribute to the inhibition of cell stress fiber formation and cell adhesion by miR-134. <bold>A.</bold> Ectopic expression of miR-134 disrupted the stress fiber network in Huh-7 cells, and this effect was reversed by ITGB1 transfection. Stress fiber formation was repressed by transfecting siRhoA into Huh-7-ITGB1 cells. F-actin was used as the stress fiber marker. DAPI staining was used to detect nuclei. <bold>B.</bold> FAK protein phosphorylation and the protein levels of the Rho GTPases in Huh-7-ITGB1 cells were analyzed after transfection with miR-134 and siRhoA. <bold>C.</bold> The cellular adhesion assay was performed in Huh-7 cells. The results were representative of at least three independent experiments, and data were analyzed by a one-way ANOVA (p&lt;0.01); differences between two groups were assessed by the Bonferroni post-test.</p>
+<p>(DOC)</p>
+</caption></supplementary-material><supplementary-material id="pone.0087665.s006" mimetype="video/mp4" xlink:href="info:doi/10.1371/journal.pone.0087665.s006" position="float" xlink:type="simple"><label>Video S1</label><caption>
+<p><bold>Cell migration after treatment with negative control.</bold></p>
+<p>(MP4)</p>
+</caption></supplementary-material><supplementary-material id="pone.0087665.s007" mimetype="video/mp4" xlink:href="info:doi/10.1371/journal.pone.0087665.s007" position="float" xlink:type="simple"><label>Video S2</label><caption>
+<p><bold>Cell migration after treatment with miR-891a.</bold></p>
+<p>(MP4)</p>
+</caption></supplementary-material><supplementary-material id="pone.0087665.s008" mimetype="video/mp4" xlink:href="info:doi/10.1371/journal.pone.0087665.s008" position="float" xlink:type="simple"><label>Video S3</label><caption>
+<p><bold>Cell migration after treatment with miR-134.</bold></p>
+<p>(MP4)</p>
+</caption></supplementary-material></sec></body>
+<back>
+<ack>
+<p>We thank Professor Didier Trono for kindly providing the pWPXL, psPAX2 and pMD2.G lentivirus plasmids.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0087665-ElSerag1"><label>1</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>El-Serag</surname><given-names>HB</given-names></name> (<year>2011</year>) <article-title>Hepatocellular Carcinoma</article-title>. <source>New England Journal of Medicine</source> <volume>365</volume>: <fpage>1118</fpage>–<lpage>1127</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Aravalli1"><label>2</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Aravalli</surname><given-names>RN</given-names></name>, <name name-style="western"><surname>Steer</surname><given-names>CJ</given-names></name>, <name name-style="western"><surname>Cressman</surname><given-names>EN</given-names></name> (<year>2008</year>) <article-title>Molecular mechanisms of hepatocellular carcinoma</article-title>. <source>Hepatology</source> <volume>48</volume>: <fpage>2047</fpage>–<lpage>2063</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Valastyan1"><label>3</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Valastyan</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Weinberg</surname><given-names>RA</given-names></name> (<year>2011</year>) <article-title>Tumor metastasis: molecular insights and evolving paradigms</article-title>. <source>Cell</source> <volume>147</volume>: <fpage>275</fpage>–<lpage>292</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Steeg1"><label>4</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Steeg</surname><given-names>PS</given-names></name> (<year>2006</year>) <article-title>Tumor metastasis: mechanistic insights and clinical challenges</article-title>. <source>Nat Med</source> <volume>12</volume>: <fpage>895</fpage>–<lpage>904</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Ebert1"><label>5</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ebert</surname><given-names>MS</given-names></name>, <name name-style="western"><surname>Sharp</surname><given-names>PA</given-names></name> (<year>2012</year>) <article-title>Roles for microRNAs in conferring robustness to biological processes</article-title>. <source>Cell</source> <volume>149</volume>: <fpage>515</fpage>–<lpage>524</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Pauli1"><label>6</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pauli</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Rinn</surname><given-names>JL</given-names></name>, <name name-style="western"><surname>Schier</surname><given-names>AF</given-names></name> (<year>2011</year>) <article-title>Non-coding RNAs as regulators of embryogenesis</article-title>. <source>Nat Rev Genet</source> <volume>12</volume>: <fpage>136</fpage>–<lpage>149</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Garofalo1"><label>7</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Garofalo</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Romano</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Di Leva</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Nuovo</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Jeon</surname><given-names>YJ</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>EGFR and MET receptor tyrosine kinase-altered microRNA expression induces tumorigenesis and gefitinib resistance in lung cancers</article-title>. <source>Nat Med</source> <volume>18</volume>: <fpage>74</fpage>–<lpage>82</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Li1"><label>8</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Li</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Kowdley</surname><given-names>KV</given-names></name> (<year>2012</year>) <article-title>Cellular microRNA and the tumorigenesis of hepatocellular carcinoma</article-title>. <source>Ann Hepatol</source> <volume>11</volume>: <fpage>272</fpage>–<lpage>274</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Huang1"><label>9</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huang</surname><given-names>S</given-names></name>, <name name-style="western"><surname>He</surname><given-names>X</given-names></name> (<year>2010</year>) <article-title>microRNAs: tiny RNA molecules, huge driving forces to move the cell</article-title>. <source>Protein Cell</source> <volume>1</volume>: <fpage>916</fpage>–<lpage>926</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Baranwal1"><label>10</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Baranwal</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Alahari</surname><given-names>SK</given-names></name> (<year>2010</year>) <article-title>miRNA control of tumor cell invasion and metastasis</article-title>. <source>Int J Cancer</source> <volume>126</volume>: <fpage>1283</fpage>–<lpage>1290</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Le1"><label>11</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Le</surname><given-names>XF</given-names></name>, <name name-style="western"><surname>Merchant</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Bast</surname><given-names>RC</given-names></name>, <name name-style="western"><surname>Calin</surname><given-names>GA</given-names></name> (<year>2010</year>) <article-title>The Roles of MicroRNAs in the Cancer Invasion-Metastasis Cascade</article-title>. <source>Cancer Microenviron</source> <volume>3</volume>: <fpage>137</fpage>–<lpage>147</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Huang2"><label>12</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huang</surname><given-names>S</given-names></name>, <name name-style="western"><surname>He</surname><given-names>X</given-names></name> (<year>2011</year>) <article-title>The role of microRNAs in liver cancer progression</article-title>. <source>Br J Cancer</source> <volume>104</volume>: <fpage>235</fpage>–<lpage>240</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Ding1"><label>13</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ding</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Huang</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Wu</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Zhao</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Liang</surname><given-names>L</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Gain of miR-151 on chromosome 8q24.3 facilitates tumour cell migration and spreading through downregulating RhoGDIA</article-title>. <source>Nat Cell Biol</source> <volume>12</volume>: <fpage>390</fpage>–<lpage>399</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Ying1"><label>14</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ying</surname><given-names>Q</given-names></name>, <name name-style="western"><surname>Liang</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Guo</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Zha</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Tian</surname><given-names>Q</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Hypoxia-inducible microRNA-210 augments the metastatic potential of tumor cells by targeting vacuole membrane protein 1 in hepatocellular carcinoma</article-title>. <source>Hepatology</source> <volume>54</volume>: <fpage>2064</fpage>–<lpage>2075</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Yao1"><label>15</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yao</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Liang</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Huang</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Ding</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Tan</surname><given-names>N</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>MicroRNA-30d promotes tumor invasion and metastasis by targeting Galphai2 in hepatocellular carcinoma</article-title>. <source>Hepatology</source> <volume>51</volume>: <fpage>846</fpage>–<lpage>856</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Tian1"><label>16</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tian</surname><given-names>Q</given-names></name>, <name name-style="western"><surname>Liang</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Ding</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Zha</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Shi</surname><given-names>H</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>MicroRNA-550a acts as a pro-metastatic gene and directly targets cytoplasmic polyadenylation element-binding protein 4 in hepatocellular carcinoma</article-title>. <source>PLoS One</source> <volume>7</volume>: <fpage>e48958</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Li2"><label>17</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Li</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Xie</surname><given-names>L</given-names></name>, <name name-style="western"><surname>He</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Li</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Tu</surname><given-names>K</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Diagnostic and prognostic implications of microRNAs in human hepatocellular carcinoma</article-title>. <source>Int J Cancer</source> <volume>123</volume>: <fpage>1616</fpage>–<lpage>1622</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Ding2"><label>18</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ding</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Huang</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Tian</surname><given-names>Q</given-names></name>, <name name-style="western"><surname>Zha</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>Genome-wide screening reveals that miR-195 targets the TNF-alpha/NF-kappaB pathway by down-regulating IkappaB kinase alpha and TAB3 in hepatocellular carcinoma</article-title>. <source>Hepatology</source> <volume>58</volume>: <fpage>654</fpage>–<lpage>666</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Wu1"><label>19</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wu</surname><given-names>XM</given-names></name>, <name name-style="western"><surname>Shao</surname><given-names>XQ</given-names></name>, <name name-style="western"><surname>Meng</surname><given-names>XX</given-names></name>, <name name-style="western"><surname>Zhang</surname><given-names>XN</given-names></name>, <name name-style="western"><surname>Zhu</surname><given-names>L</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Genome-wide analysis of microRNA and mRNA expression signatures in hydroxycamptothecin-resistant gastric cancer cells</article-title>. <source>Acta Pharmacol Sin</source> <volume>32</volume>: <fpage>259</fpage>–<lpage>269</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Liu1"><label>20</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Liu</surname><given-names>LX</given-names></name>, <name name-style="western"><surname>Jiang</surname><given-names>HC</given-names></name>, <name name-style="western"><surname>Liu</surname><given-names>ZH</given-names></name>, <name name-style="western"><surname>Zhou</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Zhang</surname><given-names>WH</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>Integrin gene expression profiles of human hepatocellular carcinoma</article-title>. <source>World J Gastroenterol</source> <volume>8</volume>: <fpage>631</fpage>–<lpage>637</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Huveneers1"><label>21</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huveneers</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Danen</surname><given-names>EH</given-names></name> (<year>2009</year>) <article-title>Adhesion signaling - crosstalk between integrins, Src and Rho</article-title>. <source>J Cell Sci</source> <volume>122</volume>: <fpage>1059</fpage>–<lpage>1069</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Simpson1"><label>22</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Simpson</surname><given-names>KJ</given-names></name>, <name name-style="western"><surname>Selfors</surname><given-names>LM</given-names></name>, <name name-style="western"><surname>Bui</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Reynolds</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Leake</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Identification of genes that regulate epithelial cell migration using an siRNA screening approach</article-title>. <source>Nat Cell Biol</source> <volume>10</volume>: <fpage>1027</fpage>–<lpage>1038</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Fotos1"><label>23</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fotos</surname><given-names>JS</given-names></name>, <name name-style="western"><surname>Patel</surname><given-names>VP</given-names></name>, <name name-style="western"><surname>Karin</surname><given-names>NJ</given-names></name>, <name name-style="western"><surname>Temburni</surname><given-names>MK</given-names></name>, <name name-style="western"><surname>Koh</surname><given-names>JT</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Automated time-lapse microscopy and high-resolution tracking of cell migration</article-title>. <source>Cytotechnology</source> <volume>51</volume>: <fpage>7</fpage>–<lpage>19</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Haller1"><label>24</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Haller</surname><given-names>F</given-names></name>, <name name-style="western"><surname>von Heydebreck</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Zhang</surname><given-names>JD</given-names></name>, <name name-style="western"><surname>Gunawan</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Langer</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Localization- and mutation-dependent microRNA (miRNA) expression signatures in gastrointestinal stromal tumours (GISTs), with a cluster of co-expressed miRNAs located at 14q32.31</article-title>. <source>J Pathol</source> <volume>220</volume>: <fpage>71</fpage>–<lpage>86</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Sarver1"><label>25</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sarver</surname><given-names>AL</given-names></name>, <name name-style="western"><surname>Thayanithy</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Scott</surname><given-names>MC</given-names></name>, <name name-style="western"><surname>Cleton-Jansen</surname><given-names>AM</given-names></name>, <name name-style="western"><surname>Hogendoorn</surname><given-names>PC</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>MicroRNAs at the human 14q32 locus have prognostic significance in osteosarcoma</article-title>. <source>Orphanet J Rare Dis</source> <volume>8</volume>: <fpage>7</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Lages1"><label>26</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lages</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Guttin</surname><given-names>A</given-names></name>, <name name-style="western"><surname>El Atifi</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Ramus</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Ipas</surname><given-names>H</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>MicroRNA and target protein patterns reveal physiopathological features of glioma subtypes</article-title>. <source>PLoS One</source> <volume>6</volume>: <fpage>e20600</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Boominathan1"><label>27</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Boominathan</surname><given-names>L</given-names></name> (<year>2010</year>) <article-title>The tumor suppressors p53, p63, and p73 are regulators of microRNA processing complex</article-title>. <source>PLoS One</source> <volume>5</volume>: <fpage>e10615</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Zhang1"><label>28</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhang</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Zhang</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Song</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Zhang</surname><given-names>Y</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>MiR-134 functions as a regulator of cell proliferation, apoptosis, and migration involving lung septation</article-title>. <source><italic>In Vitro</italic> Cell Dev Biol Anim</source> <volume>48</volume>: <fpage>131</fpage>–<lpage>136</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Li3"><label>29</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Li</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Luo</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Fu</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Ying</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>miR-134 inhibits epithelial to mesenchymal transition by targeting FOXM1 in non-small cell lung cancer cells</article-title>. <source>FEBS Lett</source> <volume>586</volume>: <fpage>3761</fpage>–<lpage>3765</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Brakebusch1"><label>30</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brakebusch</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Fassler</surname><given-names>R</given-names></name> (<year>2005</year>) <article-title>beta 1 integrin function <italic>in vivo</italic>: adhesion, migration and more</article-title>. <source>Cancer Metastasis Rev</source> <volume>24</volume>: <fpage>403</fpage>–<lpage>411</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-FeldingHabermann1"><label>31</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Felding-Habermann</surname><given-names>B</given-names></name> (<year>2003</year>) <article-title>Integrin adhesion receptors in tumor metastasis</article-title>. <source>Clin Exp Metastasis</source> <volume>20</volume>: <fpage>203</fpage>–<lpage>213</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Caccavari1"><label>32</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Caccavari</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Valdembri</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Sandri</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Bussolino</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Serini</surname><given-names>G</given-names></name> (<year>2010</year>) <article-title>Integrin signaling and lung cancer</article-title>. <source>Cell Adh Migr</source> <volume>4</volume>: <fpage>124</fpage>–<lpage>129</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Allen1"><label>33</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Allen</surname><given-names>MD</given-names></name>, <name name-style="western"><surname>Vaziri</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Green</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Chelala</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Brentnall</surname><given-names>AR</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Clinical and functional significance of alpha9beta1 integrin expression in breast cancer: a novel cell-surface marker of the basal phenotype that promotes tumour cell invasion</article-title>. <source>J Pathol</source> <volume>223</volume>: <fpage>646</fpage>–<lpage>658</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Grzesiak1"><label>34</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Grzesiak</surname><given-names>JJ</given-names></name>, <name name-style="western"><surname>Tran Cao</surname><given-names>HS</given-names></name>, <name name-style="western"><surname>Burton</surname><given-names>DW</given-names></name>, <name name-style="western"><surname>Kaushal</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Vargas</surname><given-names>F</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Knockdown of the beta(1) integrin subunit reduces primary tumor growth and inhibits pancreatic cancer metastasis</article-title>. <source>Int J Cancer</source> <volume>129</volume>: <fpage>2905</fpage>–<lpage>2915</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Masumoto1"><label>35</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Masumoto</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Arao</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Otsuki</surname><given-names>M</given-names></name> (<year>1999</year>) <article-title>Role of beta1 integrins in adhesion and invasion of hepatocellular carcinoma cells</article-title>. <source>Hepatology</source> <volume>29</volume>: <fpage>68</fpage>–<lpage>74</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Mizuno1"><label>36</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mizuno</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Ogura</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Saito</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Sekine</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Sano</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Changes in adhesive and migratory characteristics of hepatocellular carcinoma (HCC) cells induced by expression of alpha3beta1 integrin</article-title>. <source>Biochim Biophys Acta</source> <volume>1780</volume>: <fpage>564</fpage>–<lpage>570</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Fu1"><label>37</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fu</surname><given-names>BH</given-names></name>, <name name-style="western"><surname>Wu</surname><given-names>ZZ</given-names></name>, <name name-style="western"><surname>Qin</surname><given-names>J</given-names></name> (<year>2011</year>) <article-title>Effects of integrin alpha6beta1 on migration of hepatocellular carcinoma cells</article-title>. <source>Mol Biol Rep</source> <volume>38</volume>: <fpage>3271</fpage>–<lpage>3276</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Rottner1"><label>38</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rottner</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Stradal</surname><given-names>TE</given-names></name> (<year>2011</year>) <article-title>Actin dynamics and turnover in cell motility</article-title>. <source>Curr Opin Cell Biol</source> <volume>23</volume>: <fpage>569</fpage>–<lpage>578</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0087665-Kaibuchi1"><label>39</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kaibuchi</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Kuroda</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Amano</surname><given-names>M</given-names></name> (<year>1999</year>) <article-title>Regulation of the cytoskeleton and cell adhesion by the Rho family GTPases in mammalian cells</article-title>. <source>Annu Rev Biochem</source> <volume>68</volume>: <fpage>459</fpage>–<lpage>486</lpage>.</mixed-citation>
+</ref>
+</ref-list></back>
+</article>

@@ -1,0 +1,1466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0124316</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-14-54682</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+</article-categories>
+<title-group>
+<article-title>Comparative Transcriptome Analysis Reveals Different Molecular Mechanisms of <italic>Bacillus coagulans</italic> 2-6 Response to Sodium Lactate and Calcium Lactate during Lactic Acid Production</article-title>
+<alt-title alt-title-type="running-head">Transcriptome Analysis of <italic>Bacillus coagulans</italic> Response to Lactate</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Qin</surname>
+<given-names>Jiayang</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+<xref rid="cor001" ref-type="corresp">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Wang</surname>
+<given-names>Xiuwen</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Wang</surname>
+<given-names>Landong</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Zhu</surname>
+<given-names>Beibei</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Zhang</surname>
+<given-names>Xiaohua</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Yao</surname>
+<given-names>Qingshou</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Xu</surname>
+<given-names>Ping</given-names>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>College of Pharmacy, Binzhou Medical University, Yantai, People's Republic of China</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>State Key Laboratory of Microbial Metabolism, and School of Life Sciences &amp; Biotechnology, Shanghai Jiao Tong University, Shanghai, People’s Republic of China</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Subbian</surname>
+<given-names>Selvakumar</given-names>
+</name>
+<role>Academic Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Public Health Research Institute at RBHS, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: JQ. Performed the experiments: JQ XW LW BZ. Analyzed the data: JQ XZ QY. Contributed reagents/materials/analysis tools: JQ. Wrote the paper: JQ PX.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">qinjy@bzmc.edu.cn</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>15</day>
+<month>4</month>
+<year>2015</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2015</year>
+</pub-date>
+<volume>10</volume>
+<issue>4</issue>
+<elocation-id>e0124316</elocation-id>
+<history>
+<date date-type="received">
+<day>5</day>
+<month>12</month>
+<year>2014</year>
+</date>
+<date date-type="accepted">
+<day>27</day>
+<month>2</month>
+<year>2015</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2015</copyright-year>
+<copyright-holder>Qin et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0124316" xlink:type="simple"/>
+<abstract>
+<p>Lactate production is enhanced by adding calcium carbonate or sodium hydroxide during fermentation. However, <italic>Bacillus coagulans</italic> 2-6 can produce more than 180 g/L L-lactic acid when calcium lactate is accumulated, but less than 120 g/L L-lactic acid when sodium lactate is formed. The molecular mechanisms by which <italic>B</italic>. <italic>coagulans</italic> responds to calcium lactate and sodium lactate remain unclear. In this study, comparative transcriptomic methods based on high-throughput RNA sequencing were applied to study gene expression changes in <italic>B</italic>. <italic>coagulans</italic> 2-6 cultured in non-stress, sodium lactate stress and calcium lactate stress conditions. Gene expression profiling identified 712 and 1213 significantly regulated genes in response to calcium lactate stress and sodium lactate stress, respectively. Gene ontology assignments of the differentially expressed genes were performed. KEGG pathway enrichment analysis revealed that ‘ATP-binding cassette transporters’ were significantly affected by calcium lactate stress, and ‘amino sugar and nucleotide sugar metabolism’ was significantly affected by sodium lactate stress. It was also found that lactate fermentation was less affected by calcium lactate stress than by sodium lactate stress. Sodium lactate stress had negative effect on the expression of ‘glycolysis/gluconeogenesis’ genes but positive effect on the expression of ‘citrate cycle (TCA cycle)’ genes. However, calcium lactate stress had positive influence on the expression of ‘glycolysis/gluconeogenesis’ genes and had minor influence on ‘citrate cycle (TCA cycle)’ genes. Thus, our findings offer new insights into the responses of <italic>B</italic>. <italic>coagulans</italic> to different lactate stresses. Notably, our RNA-seq dataset constitute a robust database for investigating the functions of genes induced by lactate stress in the future and identify potential targets for genetic engineering to further improve L-lactic acid production by <italic>B</italic>. <italic>coagulans</italic>.</p>
+</abstract>
+<funding-group>
+<funding-statement>This work was supported by the National Natural Science Foundation of China (31200078), the Shandong Provincial Natural Science Foundation, China (ZR2001CQ025), and the CAS Key Laboratory of Microbial Physiological and Metabolic Engineering, Institute of Microbiology, Chinese Academy of Sciences (KLIM-201302). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="2"/>
+<table-count count="8"/>
+<page-count count="16"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability" xlink:type="simple">
+<meta-name>Data Availability</meta-name>
+<meta-value>Relevant data are within the paper and its Supporting Information files. All sequencing data have been deposited in the NCBI Sequence Read Archive under accession numbers SRX700697 (GY), SRX700698 (CA) and SRX 700710 (NA).</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Lactic acid has wide applications in the industries of food, medicine, brewing, leather, textiles, environmental protection and agriculture [<xref rid="pone.0124316.ref001" ref-type="bibr">1</xref>–<xref rid="pone.0124316.ref003" ref-type="bibr">3</xref>]. The major industrial application of lactic acid is the production of polylactic acid, a biodegradable polymer. Given the biocompatibility, biodegradability and excellent mechanical properties of polylactic acid, it is considered the most promising novel packaging material of this century. It can replace non-degradable petrochemical materials such as polyethylene, polypropylene and polystyrene. Importantly, widespread use of polylactic acid has the potential to solve ‘white pollution’ and mitigate the current energy crisis [<xref rid="pone.0124316.ref002" ref-type="bibr">2</xref>, <xref rid="pone.0124316.ref004" ref-type="bibr">4</xref>].</p>
+<p>During fermentative production of lactic acid, a neutraliser such as calcium carbonate or sodium hydroxide is required to maintain neutral or mildly acidic conditions for the fermentation liquid. Sodium lactate, calcium lactate or another lactate can accumulate in the fermentation broth depending on the type of neutraliser selected. High concentrations of lactate result in stress effects on lactic acid producers, and are among the key factors limiting the enhancement of lactic acid yields [<xref rid="pone.0124316.ref005" ref-type="bibr">5</xref>]. Previous studies indicated that the maximum yield of lactic acid can exceed 200 g/L when calcium lactate accumulates in the fermentation broth [<xref rid="pone.0124316.ref006" ref-type="bibr">6</xref>, <xref rid="pone.0124316.ref007" ref-type="bibr">7</xref>]; however, the lactic acid yield is generally less than 125 g/L when sodium lactate is formed [<xref rid="pone.0124316.ref005" ref-type="bibr">5</xref>, <xref rid="pone.0124316.ref008" ref-type="bibr">8</xref>]. Therefore, the influences of lactate on lactic acid production may be different depending on the type of lactic acid formed.</p>
+<p><italic>Bacillus coagulans</italic> strains are L-lactic acid producers with industrial potential because they can tolerate high fermentation temperatures, their culture media do not need sterilisation and their products exhibit high optical purity [<xref rid="pone.0124316.ref009" ref-type="bibr">9</xref>, <xref rid="pone.0124316.ref010" ref-type="bibr">10</xref>]. <italic>B</italic>. <italic>coagulans</italic> 2–6 can produce more than 180 g/L L-lactic acid with high optical purity when calcium lactate is accumulated, but less than 120 g/L L-lactic acid when sodium lactate is formed [<xref rid="pone.0124316.ref005" ref-type="bibr">5</xref>, <xref rid="pone.0124316.ref011" ref-type="bibr">11</xref>]. Under the same concentration of lactates, sodium lactate results in stronger stress on <italic>B</italic>. <italic>coagulans</italic> 2–6 compared with calcium lactate [<xref rid="pone.0124316.ref012" ref-type="bibr">12</xref>]. However, the mechanisms by which <italic>B</italic>. <italic>coagulans</italic> strains respond to different lactates remain unclear.</p>
+<p>Omics tools are effective for studying the response mechanisms of bacteria to stress conditions. Wang et al. [<xref rid="pone.0124316.ref012" ref-type="bibr">12</xref>] reported a comparative proteomic analysis of <italic>B</italic>. <italic>coagulans</italic> 2–6 in response to lactate stress and identified four highly expressed proteins under calcium lactate stress. In the present study, we conducted comparative transcriptomics to study differential expression of genes among <italic>B</italic>. <italic>coagulans</italic> 2–6 cultured in normal, sodium lactate stress and calcium lactate stress conditions. Similarities and differences in the response of <italic>B</italic>. <italic>coagulans</italic> 2–6 to sodium lactate and calcium lactate were also investigated.</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="sec003">
+<title>Bacterial strains and cultivation conditions</title>
+<p>The <italic>B</italic>. <italic>coagulans</italic> wild-type strain 2–6 [<xref rid="pone.0124316.ref011" ref-type="bibr">11</xref>, <xref rid="pone.0124316.ref013" ref-type="bibr">13</xref>] was used in this study. It was cultivated at 50°C with shaking at 150 rpm in non-stress medium (GY medium: 40 g/L glucose, 10 g/L yeast extract, 1 g/L CaCl<sub>2</sub>, pH 6.7) until the cell dry weight (CDW) reached 2.0. Then 5 ml bacterial liquid was inoculated into 100 ml fresh non-stress medium and lactate stress medium (GY medium with 0.5 M sodium lactate or 0.25 M calcium lactate), and incubated at 50°C with shaking at 150 rpm until CDW reached 0.4 g/L at late exponential stage of the cell growth as reported before [<xref rid="pone.0124316.ref012" ref-type="bibr">12</xref>]. Cells were harvested for preparation of total RNA.</p>
+</sec>
+<sec id="sec004">
+<title>Library preparation and RNA sequencing (RNA-seq)</title>
+<p>Total RNA of <italic>B</italic>. <italic>coagulans</italic> 2–6 was isolated using TRIzol reagent according to the manufacturer’s protocol (Invitrogen, Carlsbad, CA, USA) and then treated with DNase I. The quality and quantity of purified RNA were determined by measuring the absorbance at 260 nm/280 nm (A260/A280) using a Nanodrop ND-1000 spectrophotometer (LabTech, Wilmington, MA, USA). RNA integrity was further verified by electrophoresis through 1.5% (w/v) agarose gel. mRNA was enriched from total RNA using a Ribo-Zero Magnetic Kit (Gram-Positive Bacteria) (EpiCentre, Madison, WY, USA). Synthesis of double-stranded cDNA from the extracted mRNA was done using the Truseq RNA sample prep kit (Illumina, San Diego, CA, USA), followed by 15 cycles of enrichment PCR. Sequencing was carried out on the Illumina HiSeq 2000 platform (Majorbio Bio-Pharm Technology Co., Ltd., Shanghai, China). All sequencing data have been deposited in the NCBI Sequence Read Archive under accession numbers SRX700697 (GY), SRX700698 (CA) and SRX 700710 (NA).</p>
+</sec>
+<sec id="sec005">
+<title>Transcriptome analysis</title>
+<p>The raw data were initially processed to obtain clean reads by removing the adapter sequences and low quality bases. The clean reads were then aligned to the reference genome sequence of <italic>B</italic>. <italic>coagulans</italic> 2–6 (accession number: NC_015634) using the short sequence alignment software Bowtie 2 [<xref rid="pone.0124316.ref014" ref-type="bibr">14</xref>]. To identify differentially expressed genes (DEGs) between the two different treatment conditions, the expression level for each transcript was calculated by RSEM (<ext-link ext-link-type="uri" xlink:href="http://deweylab.biostat.wisc.edu/rsem/" xlink:type="simple">http://deweylab.biostat.wisc.edu/rsem/</ext-link>) using the fragments per kilobase of exon per million mapped reads method [<xref rid="pone.0124316.ref015" ref-type="bibr">15</xref>]. The R statistical package software EdgeR (<ext-link ext-link-type="uri" xlink:href="http://www.bioconductor.org/packages/2.12/bioc/html/edgeR.html" xlink:type="simple">http://www.bioconductor.org/packages/2.12/bioc/html/edgeR.html</ext-link>) was employed to quantify differential gene expression [<xref rid="pone.0124316.ref016" ref-type="bibr">16</xref>]. Genes were defined as differentially expressed if they exhibited two-fold or greater change between the samples under a false discovery rate (FDR) of 5% or less. In addition, functional enrichment analyses, including gene ontology (GO) and Kyoto Encyclopaedia of Genes and Genomes (KEGG), were performed to identify which DEGs were significantly enriched in GO terms and metabolic pathways compared with the whole-transcriptome background using the formula described in previous studies [<xref rid="pone.0124316.ref017" ref-type="bibr">17</xref>, <xref rid="pone.0124316.ref018" ref-type="bibr">18</xref>]. A Bonferroni-corrected P-value ≤ 0.05 was considered statistically significant.</p>
+</sec>
+<sec id="sec006">
+<title>Quantitative real-time PCR (qRT-PCR) verification</title>
+<p>Five genes belonging to 5 different operons were chosen for confirmation of RNA-seq data by qRT-PCR. Total RNA was extracted using the EasyPure RNA Purification Kit (TRANSGEN BIOTECH, Beijing, China). Then, the total RNA sample was treated with DNase and qRT-PCR was performed on RNA samples to confirm the absence of DNA contamination using 16S primers [<xref rid="pone.0124316.ref019" ref-type="bibr">19</xref>]. qRT-PCR was performed using the TransScript II Green One-Step qRT-PCR SuperMix (TRANSGEN BIOTECH, Beijing, China) and the Corbett Rotor Gene 3000 (Corbett Robotics, Sydney, Australia) according to the manufacturer’s instructions. The genes and primers used for qRT-PCR are shown in <xref rid="pone.0124316.s001" ref-type="supplementary-material">S1 Table</xref>. The relative gene expression data were analyzed using the 2<sup>-ΔΔCt</sup> method as described by Tan et al. [<xref rid="pone.0124316.ref019" ref-type="bibr">19</xref>]. Rotor-Gene Real-Time Analysis Software 6.0 was used for data analysis (Corbett Robotics, Sydney, Australia). All qRT-PCR runs were conducted with three biological and three technical replicates.</p>
+</sec>
+</sec>
+<sec id="sec007" sec-type="results">
+<title>Results</title>
+<sec id="sec008">
+<title>Illumina draft reads</title>
+<p>Large volumes of data were generated with Illumina HiSeq 2000 sequencing of the three <italic>B</italic>. <italic>coagulans</italic> cDNA samples, namely, GY (untreated control), CA, (calcium lactate-stressed sample) and NA (sodium lactate-stressed sample). Each cDNA fragment yielded two 101 base pair long paired-end (PE) reads. After removing low quality reads and trimming off adapter sequences, 13,747,126 (GY), 13,464,898 (CA) and 14,974,752 (NA) high-quality, clean PE sequencing reads with a total of 1,334,784,442 (GY), 1,306,406,094 (CA) and 1,456,148,628 (NA) nucleotides were obtained for the three samples. Clean reads were aligned to the reference genome. The mapping rates were 97.9% (GY), 95.9% (CA) and 95.6% (NA).</p>
+</sec>
+<sec id="sec009">
+<title>Gene ontology (GO) functional annotation of transcripts</title>
+<p>GO assignments were used to classify the functions of the <italic>B</italic>. <italic>coagulans</italic> genes under lactate stress. Based on sequence homology, 2053 transcript sequences were assigned at least one GO term, including 43 functional groups at the second level (<xref rid="pone.0124316.g001" ref-type="fig">Fig 1</xref>). Among these groups, ‘catalytic activity’ (1359 sequences, 66.2%), ‘binding’ (1091 sequences, 53.1%) and ‘single-organism process’ (587 sequences, 28.6%) were the most abundant subcategories for ‘molecular function’. ‘Cell’ (739 sequences, 36.0%), ‘cell part’ (739 sequences, 36.0%) and ‘membrane’ (431 sequences, 21.0%) terms were dominant in ‘cellular component’. ‘Metabolic process’ (1472 sequences, 71.7%), ‘cellular process’ (1396 sequences, 68.0%) and ‘single-organism process’ (587 sequences, 28.6%) were represented the highest under ‘biological process’.</p>
+<fig id="pone.0124316.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0124316.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Gene Ontology (GO) functional annotation of transcripts.</title>
+<p>All 2,053 transcripts were assigned to at least one GO term and were grouped into three main GO categories and 43 groups, 19 groups in biological process, 12 in cellular component, and 12 in molecular function. The right-hand Y-axis represents the number of genes in a sub-category. The left-hand Y-axis indicates the percentage of a specific sub-category of genes in each main category.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0124316.g001" position="float" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec010">
+<title>Differentially expressed genes (DEGs) involved in response to lactate stress in <italic>B</italic>. <italic>coagulans</italic></title>
+<p>Comparison of gene expression showed that a total of 1577 unigenes were differentially expressed between any two-way comparison of GY, CA and NA (fold changes ≥2 or ≤−2; FDR&lt;0.05), including 712 isogenes between GY and CA (GY vs CA), 702 isogenes between NA and CA (NA vs CA) and 1213 isogenes between NA and GY (NA vs GY). The amounts of significantly up- and down-regulated genes in NA were 543 and 670, respectively, compared with those in GY. The amounts of significantly up- and down-regulated genes in CA were 398 and 314, respectively, compared with those in GY. Moreover, 364 unigenes were significantly differentially expressed in both CA vs GY and NA vs GY; 121 unigenes were significantly differentially expressed in both CA vs GY and NA vs CA; and 381 unigenes were significantly differentially expressed in both NA vs GY and NA vs CA. Only 92 unigenes were significantly differentially expressed in CA vs GY, NA vs GY and NA vs CA. The numbers of all differentially expressed genes among the three groups of GY, CA and NA are illustrated in <xref rid="pone.0124316.g002" ref-type="fig">Fig 2</xref>.</p>
+<fig id="pone.0124316.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0124316.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Differentially expressed genes that are unique or shared among three groups of GY, NA and CA.</title>
+<p>NA vs GY refers to the comparison between sodium lactate stressed (NA) and untreated (GY) groups. CA vs GY refers to the comparison between calcium lactate stressed (CA) and GY groups. NA vs CA refers to the comparison between NA and CA groups. Numbers in each section of the figure indicate the numbers of differently expressed genes in the indicated comparison.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0124316.g002" position="float" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec011">
+<title>GO assignments of DEGs</title>
+<p>GO assignments of DEGs in response to calcium lactate stress and sodium lactate stress were performed. The results are shown in <xref rid="pone.0124316.t001" ref-type="table">Table 1</xref>. The 398 significantly upregulated genes in CA compared with those in GY were assigned 34 GO terms, namely, 14 subcategories of biological process, 9 subcategories of cellular component and 11 subcategories of molecular function. The 314 significantly down-regulated genes in CA compared with those in GY were assigned 34 GO terms, namely, 15 subcategories of biological process, 10 subcategories of cellular component and 9 subcategories of molecular function. The 543 significantly upregulated genes in NA compared with those in GY were assigned 39 GO terms, namely, 17 subcategories of biological process, 12 subcategories of cellular component and 10 subcategories of molecular function. The 670 significantly down-regulated genes in NA compared with those in GY were assigned 40 GO terms, namely, 18 subcategories of biological process, 10 subcategories of cellular component and 12 subcategories of molecular function. The significantly up- or down-regulated genes in the corresponding GO terms are listed in <xref rid="pone.0124316.t001" ref-type="table">Table 1</xref>, <xref rid="pone.0124316.s010" ref-type="supplementary-material">S1 Data</xref> and <xref rid="pone.0124316.s011" ref-type="supplementary-material">S2 Data</xref>. Taken together, the results indicate differences in gene expression changes in response to calcium lactate stress and sodium lactate stress in <italic>B</italic>. <italic>coagulans</italic> 2–6.</p>
+<table-wrap id="pone.0124316.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0124316.t001</object-id>
+<label>Table 1</label> <caption><title>Gene ontology (GO) assignments of differentially expressed genes.</title></caption>
+<alternatives>
+<graphic id="pone.0124316.t001g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0124316.t001" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th rowspan="2" align="left" colspan="1">GO type</th>
+<th rowspan="2" align="left" colspan="1">GO term</th>
+<th rowspan="2" align="left" colspan="1">GO id</th>
+<th colspan="2" align="center" rowspan="1">CA vs GY</th>
+<th colspan="2" align="center" rowspan="1">NA vs GY</th>
+</tr>
+<tr>
+<th align="left" rowspan="1" colspan="1">up</th>
+<th align="left" rowspan="1" colspan="1">down</th>
+<th align="left" rowspan="1" colspan="1">up</th>
+<th align="left" rowspan="1" colspan="1">down</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="18" align="left" colspan="1">Biological process</td>
+<td align="left" rowspan="1" colspan="1">biological regulation</td>
+<td align="left" rowspan="1" colspan="1">0065007</td>
+<td align="left" rowspan="1" colspan="1">39<xref rid="t001fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">24</td>
+<td align="left" rowspan="1" colspan="1">63</td>
+<td align="left" rowspan="1" colspan="1">61</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">cellular component organization or biogenesis</td>
+<td align="left" rowspan="1" colspan="1">0071840</td>
+<td align="left" rowspan="1" colspan="1">8</td>
+<td align="left" rowspan="1" colspan="1">8</td>
+<td align="left" rowspan="1" colspan="1">25</td>
+<td align="left" rowspan="1" colspan="1">40</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">cellular process</td>
+<td align="left" rowspan="1" colspan="1">0009987</td>
+<td align="left" rowspan="1" colspan="1">161</td>
+<td align="left" rowspan="1" colspan="1">145</td>
+<td align="left" rowspan="1" colspan="1">237</td>
+<td align="left" rowspan="1" colspan="1">359</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">developmental process</td>
+<td align="left" rowspan="1" colspan="1">0032502</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">14</td>
+<td align="left" rowspan="1" colspan="1">18</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">establishment of localization</td>
+<td align="left" rowspan="1" colspan="1">0051234</td>
+<td align="left" rowspan="1" colspan="1">30</td>
+<td align="left" rowspan="1" colspan="1">69</td>
+<td align="left" rowspan="1" colspan="1">52</td>
+<td align="left" rowspan="1" colspan="1">105</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">immune system process</td>
+<td align="left" rowspan="1" colspan="1">0002376</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">localization</td>
+<td align="left" rowspan="1" colspan="1">0051179</td>
+<td align="left" rowspan="1" colspan="1">30</td>
+<td align="left" rowspan="1" colspan="1">71</td>
+<td align="left" rowspan="1" colspan="1">52</td>
+<td align="left" rowspan="1" colspan="1">117</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">locomotion</td>
+<td align="left" rowspan="1" colspan="1">0040011</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">19</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">metabolic process</td>
+<td align="left" rowspan="1" colspan="1">0008152</td>
+<td align="left" rowspan="1" colspan="1">195</td>
+<td align="left" rowspan="1" colspan="1">149</td>
+<td align="left" rowspan="1" colspan="1">258</td>
+<td align="left" rowspan="1" colspan="1">368</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">multi-organism process</td>
+<td align="left" rowspan="1" colspan="1">0051704</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">negative regulation of biological process</td>
+<td align="left" rowspan="1" colspan="1">0048519</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">positive regulation of biological process</td>
+<td align="left" rowspan="1" colspan="1">0048518</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">regulation of biological process</td>
+<td align="left" rowspan="1" colspan="1">0050789</td>
+<td align="left" rowspan="1" colspan="1">37</td>
+<td align="left" rowspan="1" colspan="1">23</td>
+<td align="left" rowspan="1" colspan="1">62</td>
+<td align="left" rowspan="1" colspan="1">60</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">response to stimulus</td>
+<td align="left" rowspan="1" colspan="1">0050896</td>
+<td align="left" rowspan="1" colspan="1">34</td>
+<td align="left" rowspan="1" colspan="1">23</td>
+<td align="left" rowspan="1" colspan="1">35</td>
+<td align="left" rowspan="1" colspan="1">50</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Signaling</td>
+<td align="left" rowspan="1" colspan="1">0023052</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">16</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">single-organism process</td>
+<td align="left" rowspan="1" colspan="1">0044699</td>
+<td align="left" rowspan="1" colspan="1">153</td>
+<td align="left" rowspan="1" colspan="1">133</td>
+<td align="left" rowspan="1" colspan="1">201</td>
+<td align="left" rowspan="1" colspan="1">311</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">biological adhesion</td>
+<td align="left" rowspan="1" colspan="1">0022610</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">reproduction</td>
+<td align="left" rowspan="1" colspan="1">0000003</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td rowspan="13" align="left" colspan="1">Cellular component</td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">0005623</td>
+<td align="left" rowspan="1" colspan="1">79</td>
+<td align="left" rowspan="1" colspan="1">83</td>
+<td align="left" rowspan="1" colspan="1">129</td>
+<td align="left" rowspan="1" colspan="1">201</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">cell part</td>
+<td align="left" rowspan="1" colspan="1">0044464</td>
+<td align="left" rowspan="1" colspan="1">79</td>
+<td align="left" rowspan="1" colspan="1">83</td>
+<td align="left" rowspan="1" colspan="1">129</td>
+<td align="left" rowspan="1" colspan="1">201</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">extracellular region</td>
+<td align="left" rowspan="1" colspan="1">0005576</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">extracellular region part</td>
+<td align="left" rowspan="1" colspan="1">0044421</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">macromolecular complex</td>
+<td align="left" rowspan="1" colspan="1">0032991</td>
+<td align="left" rowspan="1" colspan="1">34</td>
+<td align="left" rowspan="1" colspan="1">29</td>
+<td align="left" rowspan="1" colspan="1">58</td>
+<td align="left" rowspan="1" colspan="1">89</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Membrane</td>
+<td align="left" rowspan="1" colspan="1">0016020</td>
+<td align="left" rowspan="1" colspan="1">36</td>
+<td align="left" rowspan="1" colspan="1">78</td>
+<td align="left" rowspan="1" colspan="1">65</td>
+<td align="left" rowspan="1" colspan="1">131</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">membrane-enclosed lumen</td>
+<td align="left" rowspan="1" colspan="1">0031974</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">membrane part</td>
+<td align="left" rowspan="1" colspan="1">0044425</td>
+<td align="left" rowspan="1" colspan="1">22</td>
+<td align="left" rowspan="1" colspan="1">56</td>
+<td align="left" rowspan="1" colspan="1">46</td>
+<td align="left" rowspan="1" colspan="1">89</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Nucleoid</td>
+<td align="left" rowspan="1" colspan="1">0009295</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Organelle</td>
+<td align="left" rowspan="1" colspan="1">0043226</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">10</td>
+<td align="left" rowspan="1" colspan="1">13</td>
+<td align="left" rowspan="1" colspan="1">51</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">organelle part</td>
+<td align="left" rowspan="1" colspan="1">0044422</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">26</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Virion</td>
+<td align="left" rowspan="1" colspan="1">0019012</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">virion part</td>
+<td align="left" rowspan="1" colspan="1">0044423</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td rowspan="12" align="left" colspan="1">Molecular function</td>
+<td align="left" rowspan="1" colspan="1">Binding</td>
+<td align="left" rowspan="1" colspan="1">0005488</td>
+<td align="left" rowspan="1" colspan="1">145</td>
+<td align="left" rowspan="1" colspan="1">123</td>
+<td align="left" rowspan="1" colspan="1">213</td>
+<td align="left" rowspan="1" colspan="1">266</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">catalytic activity</td>
+<td align="left" rowspan="1" colspan="1">0003824</td>
+<td align="left" rowspan="1" colspan="1">185</td>
+<td align="left" rowspan="1" colspan="1">143</td>
+<td align="left" rowspan="1" colspan="1">236</td>
+<td align="left" rowspan="1" colspan="1">340</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">electron carrier activity</td>
+<td align="left" rowspan="1" colspan="1">0009055</td>
+<td align="left" rowspan="1" colspan="1">8</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">metallochaperone activity</td>
+<td align="left" rowspan="1" colspan="1">0016530</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">molecular transducer activity</td>
+<td align="left" rowspan="1" colspan="1">0060089</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">14</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">nucleic acid binding transcription factor activity</td>
+<td align="left" rowspan="1" colspan="1">0001071</td>
+<td align="left" rowspan="1" colspan="1">12</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">26</td>
+<td align="left" rowspan="1" colspan="1">15</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">receptor activity</td>
+<td align="left" rowspan="1" colspan="1">0004872</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">structural molecule activity</td>
+<td align="left" rowspan="1" colspan="1">0005198</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">31</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">transporter activity</td>
+<td align="left" rowspan="1" colspan="1">0005215</td>
+<td align="left" rowspan="1" colspan="1">20</td>
+<td align="left" rowspan="1" colspan="1">55</td>
+<td align="left" rowspan="1" colspan="1">35</td>
+<td align="left" rowspan="1" colspan="1">83</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">antioxidant activity</td>
+<td align="left" rowspan="1" colspan="1">0016209</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">enzyme regulator activity</td>
+<td align="left" rowspan="1" colspan="1">0030234</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">protein binding transcription factor activity</td>
+<td align="left" rowspan="1" colspan="1">0000988</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>*These are numbers of significantly up- or down-regulated genes in the corresponding GO term</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec012">
+<title>GO and pathway functional enrichment analysis of DEGs</title>
+<p>GO function and pathway enrichment analyses were performed on all DEGs. According to GO functional enrichment analysis between CA and GY, the GO term ‘response to stress’ was represented the most and included 96 unigenes and 41 significantly differentially expressed unigenes. Analysis between NA and GY revealed one significantly enriched GO term. This GO term was ‘biological process’ (GO: 0008150), which involved 1813 unigenes and 793 significantly differentially expressed unigenes. No significantly enriched GO term was found between NA and CA.</p>
+<p>Kyoto Encyclopaedia of Genes and Genomes (KEGG) enrichment analysis showed that the DEGs between the CA and GY groups were significantly involved in the ‘ATP-binding cassette (ABC) transporters’ (KEGG: ko02010) pathway, which included 96 unigenes and 37 significantly differentially expressed unigenes. The DEGs between the NA and GY groups were significantly involved in the ‘amino sugar and nucleotide sugar metabolism’ pathway, which included 35 unigenes and 26 significantly differentially expressed unigenes. The DEGs between the NA and CA groups were significantly involved in the ‘amino sugar and nucleotide sugar metabolism’ (KEGG: ko00520) pathway, which included 35 unigenes and 22 significantly differentially expressed unigenes.</p>
+</sec>
+<sec id="sec013">
+<title>Identification and comparison of DEGs involved in ‘ABC transporters’</title>
+<p>‘ABC transporters’, which are also called traffic ATPases, use the binding and hydrolysis of ATP to power the translocation of a diverse assortment of substrates across biological membranes, ranging from ions to macromolecules [<xref rid="pone.0124316.ref020" ref-type="bibr">20</xref>]. ‘ABC transporters’ either import or export substrates with relative specificity for a given substrate. Dozens of ABC transporters were identified by genome analysis in <italic>Escherichia coli</italic> [<xref rid="pone.0124316.ref021" ref-type="bibr">21</xref>] and <italic>Bacillus subtilis</italic> [<xref rid="pone.0124316.ref022" ref-type="bibr">22</xref>].</p>
+<p>KEGG pathway enrichment analysis revealed that ‘ABC transporters’ was significantly affected by calcium lactate stress. A total of 10 significantly upregulated genes (<xref rid="pone.0124316.t002" ref-type="table">Table 2</xref>) and 27 significantly down-regulated genes (<xref rid="pone.0124316.s002" ref-type="supplementary-material">S2 Table</xref>) were involved in ‘ABC transporters’ under calcium lactate stress condition (CA group), compared with those under non-stress condition (GY group). Fourteen significantly upregulated genes (<xref rid="pone.0124316.t003" ref-type="table">Table 3</xref>) and 35 significantly down-regulated genes (<xref rid="pone.0124316.s003" ref-type="supplementary-material">S3 Table</xref>) were involved in ‘ABC transporters’ under sodium lactate stress condition (NA group) compared with those under non-stress condition (GY group). Six genes, namely, glycine betaine/L-proline ABC transporter ATPase (BCO26_0425), binding-protein-dependent transport system inner membrane protein (BCO26_0553), NMT1/THI5 like domain-containing protein (BCO26_0554), ABC transporter-like protein (BCO26_0555), periplasmic solute binding protein (BCO26_2084) and ABC transporter (BCO26_2523), were significantly upregulated in both the CA and NA groups compared with those in the GY group. Four genes, namely, phosphate binding protein (BCO26_0705), phosphate ABC transporter permease (BCO26_0706, BCO26_0707) and ABC transporter-like protein (BCO26_0743), were significantly up-regulated in CA but not in NA compared with GY. Eight genes, namely binding-protein-dependent transport system inner membrane protein (BCO26_0422), glycine betaine ABC transporter substrate-binding protein (BCO26_0423), binding-protein-dependent transport system inner membrane protein (BCO26_0424), transport system permease (BCO26_0685, BCO26_0686), ABC transporter-like protein (BCO26_0687), periplasmic binding protein (BCO26_0688) and ABC transporter-like protein (BCO26_2588), were significantly upregulated in NA but not in CA compared with GY. The significantly down-regulated genes involved in ‘ABC transporters’ under the two kinds of lactate stress were mostly the same (<xref rid="pone.0124316.s002" ref-type="supplementary-material">S2 Table</xref> and <xref rid="pone.0124316.s003" ref-type="supplementary-material">S3 Table</xref>). However, sodium lactate induced more significantly down-regulated genes than calcium lactate (35 to 27) and higher average down-regulation (fold change ranging from 3.72 to 3.06).</p>
+<table-wrap id="pone.0124316.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0124316.t002</object-id>
+<label>Table 2</label> <caption><title>Significantly upregulated genes involved in ‘ABC transporters’ under calcium lactate stress.</title></caption>
+<alternatives>
+<graphic id="pone.0124316.t002g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0124316.t002" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Gene ID</th>
+<th align="left" rowspan="1" colspan="1">Description</th>
+<th align="left" rowspan="1" colspan="1">FDR</th>
+<th align="left" rowspan="1" colspan="1">Fold change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0425</td>
+<td align="left" rowspan="1" colspan="1">glycine betaine/L-proline ABC transporter ATPase</td>
+<td align="left" rowspan="1" colspan="1">6.01E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.30</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0553</td>
+<td align="left" rowspan="1" colspan="1">binding-protein-dependent transport system inner membrane protein</td>
+<td align="left" rowspan="1" colspan="1">3.04E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.55</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0554</td>
+<td align="left" rowspan="1" colspan="1">NMT1/THI5 like domain-containing protein</td>
+<td align="left" rowspan="1" colspan="1">1.80E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">2.03</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0555</td>
+<td align="left" rowspan="1" colspan="1">ABC transporter-like protein</td>
+<td align="left" rowspan="1" colspan="1">2.38E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.94</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0705</td>
+<td align="left" rowspan="1" colspan="1">phosphate binding protein</td>
+<td align="left" rowspan="1" colspan="1">2.62E-06</td>
+<td align="char" char="." rowspan="1" colspan="1">4.16</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0706</td>
+<td align="left" rowspan="1" colspan="1">phosphate ABC transporter permease</td>
+<td align="left" rowspan="1" colspan="1">8.04E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.98</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0707</td>
+<td align="left" rowspan="1" colspan="1">phosphate ABC transporter permease</td>
+<td align="left" rowspan="1" colspan="1">6.70E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.40</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0743</td>
+<td align="left" rowspan="1" colspan="1">ABC transporter-like protein</td>
+<td align="left" rowspan="1" colspan="1">5.19E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.36</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2084</td>
+<td align="left" rowspan="1" colspan="1">periplasmic solute binding protein</td>
+<td align="left" rowspan="1" colspan="1">1.52E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">2.05</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2523</td>
+<td align="left" rowspan="1" colspan="1">ABC transporter</td>
+<td align="left" rowspan="1" colspan="1">9.44E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.25</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<table-wrap id="pone.0124316.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0124316.t003</object-id>
+<label>Table 3</label> <caption><title>Significantly upregulated genes involved in ‘ABC transporters’ under sodium lactate stress.</title></caption>
+<alternatives>
+<graphic id="pone.0124316.t003g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0124316.t003" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Gene ID</th>
+<th align="left" rowspan="1" colspan="1">Description</th>
+<th align="left" rowspan="1" colspan="1">FDR</th>
+<th align="left" rowspan="1" colspan="1">Fold change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0422</td>
+<td align="left" rowspan="1" colspan="1">binding-protein-dependent transport system inner membrane protein</td>
+<td align="left" rowspan="1" colspan="1">1.00E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">2.02</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0423</td>
+<td align="left" rowspan="1" colspan="1">glycine betaine ABC transporter substrate-binding protein</td>
+<td align="left" rowspan="1" colspan="1">4.04E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.60</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0424</td>
+<td align="left" rowspan="1" colspan="1">binding-protein-dependent transport system inner membrane protein</td>
+<td align="left" rowspan="1" colspan="1">4.16E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.60</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0425</td>
+<td align="left" rowspan="1" colspan="1">glycine betaine/L-proline ABC transporter ATPase</td>
+<td align="left" rowspan="1" colspan="1">1.12E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.98</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0553</td>
+<td align="left" rowspan="1" colspan="1">binding-protein-dependent transport system inner membrane protein</td>
+<td align="left" rowspan="1" colspan="1">1.15E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">2.04</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0554</td>
+<td align="left" rowspan="1" colspan="1">NMT1/THI5 like domain-containing protein</td>
+<td align="left" rowspan="1" colspan="1">5.03E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.22</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0555</td>
+<td align="left" rowspan="1" colspan="1">ABC transporter-like protein</td>
+<td align="left" rowspan="1" colspan="1">3.86E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.82</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0685</td>
+<td align="left" rowspan="1" colspan="1">transport system permease</td>
+<td align="left" rowspan="1" colspan="1">5.90E-05</td>
+<td align="char" char="." rowspan="1" colspan="1">3.20</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0686</td>
+<td align="left" rowspan="1" colspan="1">transport system permease</td>
+<td align="left" rowspan="1" colspan="1">3.95E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.81</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0687</td>
+<td align="left" rowspan="1" colspan="1">ABC transporter-like protein</td>
+<td align="left" rowspan="1" colspan="1">2.20E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.42</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0688</td>
+<td align="left" rowspan="1" colspan="1">periplasmic binding protein</td>
+<td align="left" rowspan="1" colspan="1">1.03E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.59</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2084</td>
+<td align="left" rowspan="1" colspan="1">periplasmic solute binding protein</td>
+<td align="left" rowspan="1" colspan="1">4.48E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.57</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2523</td>
+<td align="left" rowspan="1" colspan="1">ABC transporter</td>
+<td align="left" rowspan="1" colspan="1">6.40E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.21</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2588</td>
+<td align="left" rowspan="1" colspan="1">ABC transporter-like protein</td>
+<td align="left" rowspan="1" colspan="1">4.57E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.94</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec014">
+<title>Identification and comparison of DEGs involved in ‘amino sugar and nucleotide sugar metabolism’</title>
+<p>In nucleotide sugar metabolism, nucleotide sugars act as donors for sugar residues in the glycosylation reactions that produce polysaccharides, which are important constituents of the cell wall [<xref rid="pone.0124316.ref023" ref-type="bibr">23</xref>]. Nucleotide sugars are also intermediates in nucleotide sugar interconversions, which produce some of the activated sugars necessary for glycosylation reactions [<xref rid="pone.0124316.ref024" ref-type="bibr">24</xref>]. KEGG pathway enrichment analysis revealed that ‘amino sugar and nucleotide sugar metabolism’ was significantly affected by sodium lactate stress but not by calcium lactate stress. Fifteen significantly upregulated genes (<xref rid="pone.0124316.t004" ref-type="table">Table 4</xref>) and 11 significantly down-regulated genes (<xref rid="pone.0124316.s004" ref-type="supplementary-material">S4 Table</xref>) were involved in ‘amino sugar and nucleotide sugar metabolism’ under sodium lactate stress condition (NA group) compared with those under non-stress condition (GY group). Eight significantly upregulated genes and one significantly down-regulated gene were involved in ‘amino sugar and nucleotide sugar metabolism’ under calcium lactate stress condition (CA group) compared with those under non-stress condition (GY group) (<xref rid="pone.0124316.t005" ref-type="table">Table 5</xref>). Seven significantly regulated genes were found to exhibit the same trend under the two types of lactate stress conditions, namely, NAD(P)(+)-protein-arginine ADP-ribosyltransferase (BCO26_0186), glucosamine/fructose-6-phosphate aminotransferase (BCO26_0255), galactokinase (BCO26_0622), UDP-glucose 4-epimerase (BCO26_0623), N-acetylglucosamine-6-phosphate deacetylase (BCO26_0635), glucosamine-6-phosphate isomerise (BCO26_0636) and N-acylglucosamine-6-phosphate 2-epimerase (BCO26_2463). Eight genes were significantly upregulated specifically under sodium lactate stress, namely, UDP-N-acetylglucosamine pyrophosphorylase (BCO26_0036), phosphoglucosamine mutase (BCO26_0177), PTS system glucose subfamily transporter subunit IIA (BCO26_0204), phosphoglucomutase/phosphomannomutase alpha/beta/alpha domain I (BCO26_0507), galactose-1-phosphate uridylyltransferase (BCO26_0624), UDP-N-acetylenolpyruvoylglucosamine reductase (BCO26_1444), ROK family glucokinase (BCO26_1699) and UDP-N-acetylglucosamine 1-carboxyvinyltransferase (BCO26_2818). More genes were significantly down-regulated under sodium lactate stress than under calcium lactate stress (11 to 1). The four subunits of phosphoenolpyruvate-dependent sugar phosphotransferase system (PTS) mannose/fructose/sorbose family transporter (i.e., BCO26_0540, BCO26_0541, BCO26_0542 and BCO26_0543) were significantly down-regulated under sodium lactate stress (<xref rid="pone.0124316.s004" ref-type="supplementary-material">S4 Table</xref>), whereas the PTS system glucose subfamily transporter subunit IIA (BCO26_0204) was significantly upregulated (<xref rid="pone.0124316.t004" ref-type="table">Table 4</xref>).</p>
+<table-wrap id="pone.0124316.t004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0124316.t004</object-id>
+<label>Table 4</label> <caption><title>Significantly upregulated genes involved in ‘amino sugar and nucleotide sugar metabolism’ under sodium lactate stress.</title></caption>
+<alternatives>
+<graphic id="pone.0124316.t004g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0124316.t004" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Gene ID</th>
+<th align="left" rowspan="1" colspan="1">Description</th>
+<th align="left" rowspan="1" colspan="1">FDR</th>
+<th align="left" rowspan="1" colspan="1">Fold change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0036</td>
+<td align="left" rowspan="1" colspan="1">UDP-N-acetylglucosamine pyrophosphorylase</td>
+<td align="left" rowspan="1" colspan="1">3.31E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.29</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0177</td>
+<td align="left" rowspan="1" colspan="1">phosphoglucosamine mutase</td>
+<td align="left" rowspan="1" colspan="1">8.52E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.04</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0186</td>
+<td align="left" rowspan="1" colspan="1">NAD(P)(+)-protein-arginine ADP-ribosyltransferase</td>
+<td align="left" rowspan="1" colspan="1">9.44E-07</td>
+<td align="char" char="." rowspan="1" colspan="1">4.03</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0204</td>
+<td align="left" rowspan="1" colspan="1">PTS system glucose subfamily transporter subunit IIA</td>
+<td align="left" rowspan="1" colspan="1">9.03E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.16</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0255</td>
+<td align="left" rowspan="1" colspan="1">glucosamine/fructose-6-phosphate aminotransferase</td>
+<td align="left" rowspan="1" colspan="1">2.00E-09</td>
+<td align="char" char="." rowspan="1" colspan="1">5.17</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0507</td>
+<td align="left" rowspan="1" colspan="1">phosphoglucomutase/phosphomannomutase alpha/beta/alpha domain I</td>
+<td align="left" rowspan="1" colspan="1">3.58E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.63</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0622</td>
+<td align="left" rowspan="1" colspan="1">Galactokinase</td>
+<td align="left" rowspan="1" colspan="1">1.44E-06</td>
+<td align="char" char="." rowspan="1" colspan="1">3.94</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0623</td>
+<td align="left" rowspan="1" colspan="1">UDP-glucose 4-epimerase</td>
+<td align="left" rowspan="1" colspan="1">3.77E-05</td>
+<td align="char" char="." rowspan="1" colspan="1">3.28</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0624</td>
+<td align="left" rowspan="1" colspan="1">galactose-1-phosphate uridylyltransferase</td>
+<td align="left" rowspan="1" colspan="1">1.80E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.96</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0635</td>
+<td align="left" rowspan="1" colspan="1">N-acetylglucosamine-6-phosphate deacetylase</td>
+<td align="left" rowspan="1" colspan="1">1.84E-07</td>
+<td align="char" char="." rowspan="1" colspan="1">4.35</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0636</td>
+<td align="left" rowspan="1" colspan="1">glucosamine-6-phosphate isomerase</td>
+<td align="left" rowspan="1" colspan="1">5.23E-08</td>
+<td align="char" char="." rowspan="1" colspan="1">4.61</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1444</td>
+<td align="left" rowspan="1" colspan="1">UDP-N-acetylenolpyruvoylglucosamine reductase</td>
+<td align="left" rowspan="1" colspan="1">4.85E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.54</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1699</td>
+<td align="left" rowspan="1" colspan="1">ROK family glucokinase</td>
+<td align="left" rowspan="1" colspan="1">4.25E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.77</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2463</td>
+<td align="left" rowspan="1" colspan="1">N-acylglucosamine-6-phosphate 2-epimerase</td>
+<td align="left" rowspan="1" colspan="1">3.29E-09</td>
+<td align="char" char="." rowspan="1" colspan="1">5.08</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2818</td>
+<td align="left" rowspan="1" colspan="1">UDP-N-acetylglucosamine 1-carboxyvinyltransferase</td>
+<td align="left" rowspan="1" colspan="1">1.28E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.51</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<table-wrap id="pone.0124316.t005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0124316.t005</object-id>
+<label>Table 5</label> <caption><title>Significantly regulated genes involved in ‘amino sugar and nucleotide sugar metabolism’ under calcium lactate stress.</title></caption>
+<alternatives>
+<graphic id="pone.0124316.t005g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0124316.t005" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Gene ID</th>
+<th align="left" rowspan="1" colspan="1">Description</th>
+<th align="left" rowspan="1" colspan="1">FDR</th>
+<th align="left" rowspan="1" colspan="1">Fold change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0186</td>
+<td align="left" rowspan="1" colspan="1">NAD(P)(+)-protein-arginine ADP-ribosyltransferase</td>
+<td align="left" rowspan="1" colspan="1">3.19E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.82</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0255</td>
+<td align="left" rowspan="1" colspan="1">glucosamine/fructose-6-phosphate aminotransferase</td>
+<td align="left" rowspan="1" colspan="1">2.02E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.96</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0622</td>
+<td align="left" rowspan="1" colspan="1">Galactokinase</td>
+<td align="left" rowspan="1" colspan="1">1.68E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.64</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0623</td>
+<td align="left" rowspan="1" colspan="1">UDP-glucose 4-epimerase</td>
+<td align="left" rowspan="1" colspan="1">4.24E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.72</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0635</td>
+<td align="left" rowspan="1" colspan="1">N-acetylglucosamine-6-phosphate deacetylase</td>
+<td align="left" rowspan="1" colspan="1">5.19E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.36</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0636</td>
+<td align="left" rowspan="1" colspan="1">glucosamine-6-phosphate isomerase</td>
+<td align="left" rowspan="1" colspan="1">4.01E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.78</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2126</td>
+<td align="left" rowspan="1" colspan="1">PTS system glucose subfamily transporter subunit IIA</td>
+<td align="left" rowspan="1" colspan="1">7.25E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.27</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2463</td>
+<td align="left" rowspan="1" colspan="1">N-acylglucosamine-6-phosphate 2-epimerase</td>
+<td align="left" rowspan="1" colspan="1">1.51E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">2.06</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0354</td>
+<td align="left" rowspan="1" colspan="1">nucleotide sugar dehydrogenase</td>
+<td align="left" rowspan="1" colspan="1">2.71E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">-1.87</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec015">
+<title>Identification and comparison of DEGs involved in ‘glycolysis/gluconeogenesis’</title>
+<p>‘Glycolysis/gluconeogenesis’ is the key pathway for lactic acid production in <italic>B</italic>. <italic>coagulans</italic> 2–6. Therefore, we compared DEGs involved in ‘glycolysis/gluconeogenesis’ under lactate stress and non-stress conditions. Thirteen significantly upregulated genes (<xref rid="pone.0124316.t006" ref-type="table">Table 6</xref>) and eight significantly down-regulated genes (<xref rid="pone.0124316.s005" ref-type="supplementary-material">S5 Table</xref>) were involved in ‘glycolysis/gluconeogenesis’ under sodium lactate stress condition (NA group) compared with those under non-stress condition (GY group). The pyruvate dehydrogenase complex, which mediates the conversion of pyruvic acid to acetyl-CoA, was significantly upregulated under sodium lactate stress compared with non-stress condition. The complex consists of pyruvate dehydrogenase components (BCO26_0962 and BCO26_0963), dihydrolipoamide transacetylase (BCO26_0964) and dihydrolipoamide dehydrogenase (BCO26_0965 and BCO26_1409).</p>
+<table-wrap id="pone.0124316.t006" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0124316.t006</object-id>
+<label>Table 6</label> <caption><title>Significantly upregulated genes involved in ‘glycolysis/gluconeogenesis’ under sodium lactate stress.</title></caption>
+<alternatives>
+<graphic id="pone.0124316.t006g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0124316.t006" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Gene ID</th>
+<th align="left" rowspan="1" colspan="1">Description</th>
+<th align="left" rowspan="1" colspan="1">FDR</th>
+<th align="left" rowspan="1" colspan="1">Fold change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0204</td>
+<td align="left" rowspan="1" colspan="1">PTS system glucose subfamily transporter subunit IIA</td>
+<td align="left" rowspan="1" colspan="1">1.73E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.90</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0492</td>
+<td align="left" rowspan="1" colspan="1">glycoside hydrolase</td>
+<td align="left" rowspan="1" colspan="1">1.22E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">2.09</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0507</td>
+<td align="left" rowspan="1" colspan="1">phosphoglucomutase/phosphomannomutase alpha/beta/alpha domain I</td>
+<td align="left" rowspan="1" colspan="1">3.58E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.63</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0625</td>
+<td align="left" rowspan="1" colspan="1">aldose 1-epimerase</td>
+<td align="left" rowspan="1" colspan="1">8.69E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.19</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0962</td>
+<td align="left" rowspan="1" colspan="1">pyruvate dehydrogenase E1 component subunit alpha</td>
+<td align="left" rowspan="1" colspan="1">9.62E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.76</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0963</td>
+<td align="left" rowspan="1" colspan="1">transketolase central region</td>
+<td align="left" rowspan="1" colspan="1">7.31E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.85</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0964</td>
+<td align="left" rowspan="1" colspan="1">hypothetical protein BCO26_0964</td>
+<td align="left" rowspan="1" colspan="1">1.21E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.70</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0965</td>
+<td align="left" rowspan="1" colspan="1">dihydrolipoamide dehydrogenase</td>
+<td align="left" rowspan="1" colspan="1">9.46E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.76</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1409</td>
+<td align="left" rowspan="1" colspan="1">dihydrolipoamide dehydrogenase</td>
+<td align="left" rowspan="1" colspan="1">1.52E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">2.30</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1699</td>
+<td align="left" rowspan="1" colspan="1">ROK family glucokinase</td>
+<td align="left" rowspan="1" colspan="1">4.72E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.68</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1901</td>
+<td align="left" rowspan="1" colspan="1">alcohol dehydrogenase GroES domain-containing protein</td>
+<td align="left" rowspan="1" colspan="1">5.33E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.95</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2235</td>
+<td align="left" rowspan="1" colspan="1">enolase</td>
+<td align="left" rowspan="1" colspan="1">1.68E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.86</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2817</td>
+<td align="left" rowspan="1" colspan="1">fructose-1,6-bisphosphatase</td>
+<td align="left" rowspan="1" colspan="1">3.96E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.24</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>Eleven significantly upregulated genes (<xref rid="pone.0124316.t007" ref-type="table">Table 7</xref>) and five significantly down-regulated genes (<xref rid="pone.0124316.s006" ref-type="supplementary-material">S6 Table</xref>) were involved in ‘glycolysis/gluconeogenesis’ under calcium lactate stress condition (CA group) compared with those under non-stress condition (GY group) (<xref rid="pone.0124316.t007" ref-type="table">Table 7</xref>). The key genes of the glycolysis pathway, including L-lactate dehydrogenase (BCO26_0531), pyruvate kinase (BCO26_1967), 6-phosphofructokinase (BCO26_1968), enolase (BCO26_2235), phosphoglycerate mutase (BCO26_2237), phosphoglycerate kinase (BCO26_2239) and fructose-bisphosphate aldolase (BCO26_2530), were all significantly upregulated (<xref rid="pone.0124316.t007" ref-type="table">Table 7</xref>).</p>
+<table-wrap id="pone.0124316.t007" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0124316.t007</object-id>
+<label>Table 7</label> <caption><title>Significantly upregulated genes involved in ‘glycolysis/gluconeogenesis’ under calcium lactate stress.</title></caption>
+<alternatives>
+<graphic id="pone.0124316.t007g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0124316.t007" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Gene ID</th>
+<th align="left" rowspan="1" colspan="1">Description</th>
+<th align="left" rowspan="1" colspan="1">FDR</th>
+<th align="left" rowspan="1" colspan="1">Fold change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0531</td>
+<td align="left" rowspan="1" colspan="1">L-lactate dehydrogenase</td>
+<td align="left" rowspan="1" colspan="1">3.35E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.79</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1901</td>
+<td align="left" rowspan="1" colspan="1">alcohol dehydrogenase GroES domain-containing protein</td>
+<td align="left" rowspan="1" colspan="1">5.52E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.41</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1967</td>
+<td align="left" rowspan="1" colspan="1">pyruvate kinase</td>
+<td align="left" rowspan="1" colspan="1">5.20E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1968</td>
+<td align="left" rowspan="1" colspan="1">6-phosphofructokinase</td>
+<td align="left" rowspan="1" colspan="1">4.09E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.96</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2126</td>
+<td align="left" rowspan="1" colspan="1">PTS system glucose subfamily transporter subunit IIA</td>
+<td align="left" rowspan="1" colspan="1">7.25E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.27</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2235</td>
+<td align="left" rowspan="1" colspan="1">enolase</td>
+<td align="left" rowspan="1" colspan="1">1.80E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.99</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2237</td>
+<td align="left" rowspan="1" colspan="1">phosphoglycerate mutase</td>
+<td align="left" rowspan="1" colspan="1">1.33E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">2.08</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2238</td>
+<td align="left" rowspan="1" colspan="1">triosephosphate isomerase</td>
+<td align="left" rowspan="1" colspan="1">2.45E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.89</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2239</td>
+<td align="left" rowspan="1" colspan="1">phosphoglycerate kinase</td>
+<td align="left" rowspan="1" colspan="1">1.75E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">2.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2240</td>
+<td align="left" rowspan="1" colspan="1">glyceraldehyde-3-phosphate dehydrogenase, type I</td>
+<td align="left" rowspan="1" colspan="1">1.37E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">2.07</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_2530</td>
+<td align="left" rowspan="1" colspan="1">fructose-bisphosphate aldolase</td>
+<td align="left" rowspan="1" colspan="1">7.53E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">2.83</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>Under the two types of lactate stress conditions, two significantly upregulated genes involved in ‘glycolysis/gluconeogenesis’ were found, namely, alcohol dehydrogenase GroES domain-containing protein (BCO26_1901) and enolase (BCO26_2235). Four key genes of glycolysis (i.e., iron-containing alcohol dehydrogenase, lactate/malate dehydrogenase, AMP-dependent synthetase and ligase and hypothetical protein BCO26_2297) were significantly down-regulated both in CA and NA compared with those in GY. Pyruvate kinase (BCO26_1967) was significantly down-regulated in NA but upregulated in CA compared with that in GY.</p>
+</sec>
+<sec id="sec016">
+<title>Identification and comparison of DEGs involved in ‘citrate cycle (TCA cycle)’</title>
+<p>Analysis of the genome of <italic>B</italic>. <italic>coagulans</italic> 2–6 revealed that the strain possessed all components of the TCA cycle. The TCA cycle is an important aerobic pathway in the final steps of the oxidation of carbohydrates and fatty acids. As a critical pathway for energy production in cells, it may be beneficial for <italic>B</italic>. <italic>coagulans</italic> strains to resist lactate stress conditions. Our previous study indicated that trace amounts of aeration enhance the resistance of <italic>B</italic>. <italic>coagulans</italic> to sodium lactate [<xref rid="pone.0124316.ref005" ref-type="bibr">5</xref>]. Therefore, we compared DEGs involved in ‘citrate cycle (TCA cycle)’ under lactate stress and non-stress conditions.</p>
+<p>Seven significantly upregulated genes and seven significantly down-regulated genes were involved in ‘citrate cycle (TCA cycle)’ under sodium lactate stress condition (NA group) compared with those under non-stress condition (GY group) (<xref rid="pone.0124316.t008" ref-type="table">Table 8</xref>). The pyruvate dehydrogenase complex (BCO26_0962, BCO26_0963, BCO26_0964, BCO26_0965 and BCO26_1409) was significantly upregulated as described above. Aconitate hydratase 1 (BCO26_1352), which responds to the conversion of citrate to isocitrate, and class II fumarate hydratase (BCO26_0741), which responds to the conversion of fumarate to L-malate, were also significantly upregulated. Succinyl-CoA synthetase (BCO26_1117 and BCO26_1118), 2-oxoglutarate dehydrogenase (BCO26_1275 and BCO26_1276), dihydrolipoamide dehydrogenase (BCO26_1640), succinate dehydrogenase (or fumarate reductase) cytochrome b subunit, b558 family (BCO26_1913) and isocitrate dehydrogenase (BCO26_1963) were all significantly down-regulated under sodium lactate stress.</p>
+<table-wrap id="pone.0124316.t008" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0124316.t008</object-id>
+<label>Table 8</label> <caption><title>Significantly regulated genes involved in ‘citrate cycle (TCA cycle)’ under lactate stress.</title></caption>
+<alternatives>
+<graphic id="pone.0124316.t008g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0124316.t008" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Gene ID</th>
+<th align="left" rowspan="1" colspan="1">Description</th>
+<th align="left" rowspan="1" colspan="1">FDR</th>
+<th align="left" rowspan="1" colspan="1">Fold change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0741</td>
+<td align="left" rowspan="1" colspan="1">class II fumarate hydratase</td>
+<td align="left" rowspan="1" colspan="1">4.90E-06</td>
+<td align="char" char="." rowspan="1" colspan="1">3.69</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0962</td>
+<td align="left" rowspan="1" colspan="1">pyruvate dehydrogenase E1 component subunit alpha</td>
+<td align="left" rowspan="1" colspan="1">7.36E-05</td>
+<td align="char" char="." rowspan="1" colspan="1">3.15</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0963</td>
+<td align="left" rowspan="1" colspan="1">transketolase central region</td>
+<td align="left" rowspan="1" colspan="1">1.52E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.48</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0964</td>
+<td align="left" rowspan="1" colspan="1">hypothetical protein BCO26_0964</td>
+<td align="left" rowspan="1" colspan="1">6.32E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.13</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0965</td>
+<td align="left" rowspan="1" colspan="1">dihydrolipoamide dehydrogenase</td>
+<td align="left" rowspan="1" colspan="1">1.36E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.92</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1352</td>
+<td align="left" rowspan="1" colspan="1">aconitate hydratase 1</td>
+<td align="left" rowspan="1" colspan="1">8.97E-05</td>
+<td align="char" char="." rowspan="1" colspan="1">3.10</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1409</td>
+<td align="left" rowspan="1" colspan="1">dihydrolipoamide dehydrogenase</td>
+<td align="left" rowspan="1" colspan="1">9.60E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">2.17</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1117</td>
+<td align="left" rowspan="1" colspan="1">succinyl-CoA synthetase subunit beta</td>
+<td align="left" rowspan="1" colspan="1">1.58E-05</td>
+<td align="char" char="." rowspan="1" colspan="1">-3.51</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1118</td>
+<td align="left" rowspan="1" colspan="1">succinyl-CoA synthetase subunit beta</td>
+<td align="left" rowspan="1" colspan="1">1.58E-05</td>
+<td align="char" char="." rowspan="1" colspan="1">-3.51</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1275</td>
+<td align="left" rowspan="1" colspan="1">succinyl-CoA synthetase subunit alpha</td>
+<td align="left" rowspan="1" colspan="1">3.80E-04</td>
+<td align="char" char="." rowspan="1" colspan="1">-2.83</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1276</td>
+<td align="left" rowspan="1" colspan="1">2-oxoglutarate dehydrogenase, E1 subunit</td>
+<td align="left" rowspan="1" colspan="1">4.90E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">-1.54</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1640</td>
+<td align="left" rowspan="1" colspan="1">2-oxoglutarate dehydrogenase, E2 subunit, dihydrolipoamide succinyltransferase</td>
+<td align="left" rowspan="1" colspan="1">4.19E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">-1.59</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1913</td>
+<td align="left" rowspan="1" colspan="1">dihydrolipoamide dehydrogenase</td>
+<td align="left" rowspan="1" colspan="1">3.82E-03</td>
+<td align="char" char="." rowspan="1" colspan="1">-2.27</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_1963</td>
+<td align="left" rowspan="1" colspan="1">succinate dehydrogenase (or fumarate reductase) cytochrome b subunit, b558 family</td>
+<td align="left" rowspan="1" colspan="1">1.29E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">-2.09</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BCO26_0741<xref rid="t008fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">class II fumarate hydratase</td>
+<td align="left" rowspan="1" colspan="1">2.00E-02</td>
+<td align="char" char="." rowspan="1" colspan="1">1.96</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t008fn001"><p>*Significantly regulated gene under calcium lactate stress, others are significantly regulated genes under sodium lactate stress</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Only one ‘citrate cycle (TCA cycle)’ gene was found to be significantly upregulated under calcium lactate stress condition (CA group) compared with non-stress condition (GY group) (<xref rid="pone.0124316.t008" ref-type="table">Table 8</xref>). This gene was class II fumarate hydratase (BCO26_0741), which was also expressed at higher level under sodium lactate stress compared to non-stress condition. Therefore, the TCA cycle of <italic>B</italic>. <italic>coagulans</italic> 2–6 was less affected by calcium lactate stress compared to sodium lactate stress.</p>
+</sec>
+<sec id="sec017">
+<title>Identification of genes with at least five-fold up-regulation under lactate stress</title>
+<p>The genes with at least five-fold up-regulation under lactate stress were identified because they are potential targets for genetic engineering to further improve <italic>B</italic>. <italic>coagulans</italic> as a producer of L-lactic acid. Under sodium lactate stress condition (NA group), 28 genes were upregulated greater than fivefold (<xref rid="pone.0124316.s007" ref-type="supplementary-material">S7 Table</xref>).</p>
+<p>Only three genes were upregulated by greater than fivefold under calcium lactate stress condition (CA group) (<xref rid="pone.0124316.s008" ref-type="supplementary-material">S8 Table</xref>). Lambda repressor-like DNA-binding domain-containing protein (BCO26_0364) and heat shock protein Hsp20 (BCO26_1778) were both upregulated under the two types of lactate stress. The function of small heat shock proteins is to mediate correct protein folding and coping with stress-induced cell damage (Guzzo 2012). Two of the three small heat shock proteins Hsp20 in <italic>B</italic>. <italic>coagulans</italic> 2–6 were significantly upregualted under the two types of lactate stress. Major facilitator superfamily permease (BCO26_0524) was specifically upregulated greater than fivefold under calcium lactate stress (<xref rid="pone.0124316.s008" ref-type="supplementary-material">S8 Table</xref>). Five genes were specifically upregulated greater than six-fold under sodium lactate stress, namely, hypothetical protein (BCO26_0739), ATPase AAA-2 domain-containing protein (BCO26_0934), hypothetical protein (BCO26_0740), copper ion binding protein (BCO26_2102) and hypothetical protein (BCO26_2103) (<xref rid="pone.0124316.s007" ref-type="supplementary-material">S7 Table</xref>).</p>
+</sec>
+<sec id="sec018">
+<title>Verification of RNA-seq data</title>
+<p>Reliability of the RNA-seq data was assessed by qRT-PCR analysis. In total, 5 genes were selected for validation. Although the magnitude of fold-change in gene expression varied between the two data sets, similar trends were observed in qRT-PCR and RNA-seq results, which supported the validity of the RNA-seq data (<xref rid="pone.0124316.s009" ref-type="supplementary-material">S9 Table</xref>).</p>
+</sec>
+</sec>
+<sec id="sec019" sec-type="conclusions">
+<title>Discussion</title>
+<p><italic>B</italic>. <italic>coagulans</italic> strains have attracted significant attention for L-lactic acid production in the past few years [<xref rid="pone.0124316.ref005" ref-type="bibr">5</xref>, <xref rid="pone.0124316.ref011" ref-type="bibr">11</xref>, <xref rid="pone.0124316.ref025" ref-type="bibr">25</xref>–<xref rid="pone.0124316.ref028" ref-type="bibr">28</xref>]. Most of the research on this strain has focused on fermentation process. Qin et al. [<xref rid="pone.0124316.ref011" ref-type="bibr">11</xref>] and Ye et al. [<xref rid="pone.0124316.ref028" ref-type="bibr">28</xref>] reported that Ca(OH)<sub>2</sub> and CaCO<sub>3</sub> are more suitable neutralizing agents than NaOH for getting higher lactic acid titer. They presumed that it was attributable to lower product inhibition by calcium lactate compared to sodium lactate. However, little is known about the molecular mechanisms by which <italic>B</italic>. <italic>coagulans</italic> responds to different lactates.</p>
+<p>In this study, the gene expression patterns of <italic>B</italic>. <italic>coagulans</italic> 2–6 responding to sodium lactate and calcium lactate were investigated by RNA-seq and comparative transcriptome analysis. Gene ontology assignments and KEGG pathway enrichment analysis of the DEGs were performed. It was found that the influence of sodium lactate on gene expression in <italic>B</italic>. <italic>coagulans</italic> 2–6 was greater than that of calcium lactate. Sodium lactate induced significant upregulation of 543 genes and down-regulation of 670 genes, while calcium lactate induced significant upregulation of 398 genes and down-regulation of 314 genes. It was also found that lactate fermentation was less affected by calcium lactate stress than by sodium lactate stress. Key genes of the glycolysis pathway were most significantly upregulated under calcium lactate stress, while L-lactate dehydrogenase (–1.52-fold), pyruvate kinase (–3.98-fold) and 6-phosphofructokinase (–1.41-fold) were down-regulated under sodium lactate stress. Pyruvate dehydrogenase complex, which converts pyruvic acid to acetyl-CoA, was significantly upregulated (2.8-fold) under sodium lactate stress. These changes are expected to have significant influence on the formation of lactic acid from pyruvic acid. Taken together, our findings provide new mechanistic insights into higher lactic acid titer obtained using CaCO<sub>3</sub> as neutralizing agent compared to that obtained using NaOH [<xref rid="pone.0124316.ref005" ref-type="bibr">5</xref>, <xref rid="pone.0124316.ref011" ref-type="bibr">11</xref>].</p>
+<p>Our results also provide potential targets for genetic engineering to further improve <italic>B</italic>. <italic>coagulans</italic> as an L-lactic acid producer. ABC transporters play important roles in response to lactate stress. A large number of the ABC transporters in <italic>B</italic>. <italic>coagulans</italic> 2–6 were found to be significantly down-regulated under the two types of lactate stress. We also identified ABC transporters that were significantly upregulated under the two types of lactates stress or specifically upregulated by one lactate. High expression of ABC transporter genes may be of benefit to <italic>B</italic>. <italic>coagulans</italic> 2–6 to maintain intercellular homeostasis; as such, these genes are good potential targets for genetic engineering. Furthermore, we identified genes with at least five-fold upregulation under lactate stress. Some of them were well-known stress-induced proteins, such as heat shock protein Hsp20 [<xref rid="pone.0124316.ref029" ref-type="bibr">29</xref>] and major facilitator superfamily protein [<xref rid="pone.0124316.ref030" ref-type="bibr">30</xref>], while others were previously unknown proteins, whose functions could be characterized in future studies.</p>
+<p>Wang et al. [<xref rid="pone.0124316.ref012" ref-type="bibr">12</xref>] carried out a comparative proteomic analysis of <italic>B</italic>. <italic>coagulans</italic> in response to lactate stress. Using two-dimensional electrophoresis coupled with mass spectrometric identification, they identified four highly expressed proteins under calcium lactate stress. The same four proteins were also identified in this study, which indicates that our results are consistent with previous findings on this topic. In addition, we found that expressions of lactate dehydrogenase (ACR02673), cysteine synthase A (AEH52120) and ribosomal protein L7/L12 (AEH52167) were upregulated under calcium lactate stress but down-regulated under sodium lactate stress. Gene expression of aldo/keto reductase (AEH52329) was upregulated under calcium lactate stress and sodium lactate stress. Thus, our RNA-seq dataset provides a rich account of gene expression changes in <italic>B</italic>. <italic>coagulans</italic> in response to lactate stress, which could be highly useful for future efforts to improve lactic acid production by genetic engineering.</p>
+</sec>
+<sec id="sec020" sec-type="conclusions">
+<title>Conclusions</title>
+<p>In summary, RNA-seq technology was employed in this study to characterise the transcriptome of <italic>B</italic>. <italic>coagulans</italic> under non-stress, sodium lactate stress and calcium lactate stress conditions. The responses of <italic>B</italic>. <italic>coagulans</italic> 2–6 to sodium lactate stress include: more genes changed expression than that in response to calcium lactate stress, significant regulation of ‘amino sugar and nucleotide sugar metabolism’ genes and negative influence on ‘glycolysis/gluconeogenesis’ and ‘citrate cycle (TCA cycle)’ genes. The responses of <italic>B</italic>. <italic>coagulans</italic> 2–6 to calcium lactate stress include: less genes changed expression than that in response to sodium lactate stress, significant regulation of ‘ABC transporters’ genes and positive influence on ‘glycolysis/gluconeogenesis’ genes. These results provide new insights into the responses of <italic>B</italic>. <italic>coagulans</italic> to different lactate stresses. Notably, our findings not only provide a robust database for investigating the functions of genes induced by lactate stress but also identify potential targets for genetic engineering to further improve L-lactic acid production by <italic>B</italic>. <italic>coagulans</italic>.</p>
+</sec>
+<sec id="sec021">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0124316.s001" xlink:href="info:doi/10.1371/journal.pone.0124316.s001" mimetype="application/msword" position="float" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>The primers for qRT-PCR analysis with target gene information.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0124316.s002" xlink:href="info:doi/10.1371/journal.pone.0124316.s002" mimetype="application/msword" position="float" xlink:type="simple">
+<label>S2 Table</label>
+<caption>
+<title>Significantly down-regulated genes involved in ‘ABC transporters’ under calcium lactate stress.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0124316.s003" xlink:href="info:doi/10.1371/journal.pone.0124316.s003" mimetype="application/msword" position="float" xlink:type="simple">
+<label>S3 Table</label>
+<caption>
+<title>Significantly down-regulated genes involved in ‘ABC transporters’ under sodium lactate stress.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0124316.s004" xlink:href="info:doi/10.1371/journal.pone.0124316.s004" mimetype="application/msword" position="float" xlink:type="simple">
+<label>S4 Table</label>
+<caption>
+<title>Significantly down-regulated genes involved in ‘amino sugar and nucleotide sugar metabolism’ under sodium lactate stress.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0124316.s005" xlink:href="info:doi/10.1371/journal.pone.0124316.s005" mimetype="application/msword" position="float" xlink:type="simple">
+<label>S5 Table</label>
+<caption>
+<title>Significantly down-regulated genes involved in ‘glycolysis/gluconeogenesis’ under sodium lactate stress.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0124316.s006" xlink:href="info:doi/10.1371/journal.pone.0124316.s006" mimetype="application/msword" position="float" xlink:type="simple">
+<label>S6 Table</label>
+<caption>
+<title>Significantly down-regulated genes involved in ‘glycolysis/gluconeogenesis’ under calcium lactate stress.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0124316.s007" xlink:href="info:doi/10.1371/journal.pone.0124316.s007" mimetype="application/msword" position="float" xlink:type="simple">
+<label>S7 Table</label>
+<caption>
+<title>Genes with at least fivefold upregulation under sodium lactate stress.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0124316.s008" xlink:href="info:doi/10.1371/journal.pone.0124316.s008" mimetype="application/msword" position="float" xlink:type="simple">
+<label>S8 Table</label>
+<caption>
+<title>Genes with at least fivefold upregulation under calcium lactate stress.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0124316.s009" xlink:href="info:doi/10.1371/journal.pone.0124316.s009" mimetype="application/msword" position="float" xlink:type="simple">
+<label>S9 Table</label>
+<caption>
+<title>The expression information of selected genes for qRT-PCR under lactate stress condition.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0124316.s010" xlink:href="info:doi/10.1371/journal.pone.0124316.s010" mimetype="application/vnd.ms-excel" position="float" xlink:type="simple">
+<label>S1 Data</label>
+<caption>
+<title>GO assignments of differentially expressed genes (CA vs GY).</title>
+<p>(XLS)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0124316.s011" xlink:href="info:doi/10.1371/journal.pone.0124316.s011" mimetype="application/vnd.ms-excel" position="float" xlink:type="simple">
+<label>S2 Data</label>
+<caption>
+<title>GO assignments of differentially expressed genes (NA vs GY).</title>
+<p>(XLS)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ref-list>
+<title>References</title>
+<ref id="pone.0124316.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Datta</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Henry</surname> <given-names>M</given-names></name>. <article-title>Lactic acid: recent advances in products, processes and technologies—a review</article-title>. <source>J Chem Technol Biotechnol</source>. <year>2006</year>;<volume>81</volume>: <fpage>1119</fpage>–<lpage>1129</lpage>.</mixed-citation></ref>
+<ref id="pone.0124316.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>John</surname> <given-names>RP</given-names></name>, <name name-style="western"><surname>Nampoothiri</surname> <given-names>KM</given-names></name>, <name name-style="western"><surname>Pandey</surname> <given-names>A</given-names></name>. <article-title>Fermentative production of lactic acid from biomass: an overview on process developments and future perspectives</article-title>. <source>Appl Microbiol Biotechnol</source>. <year>2007</year>;<volume>74</volume>: <fpage>524</fpage>–<lpage>534</lpage>. <object-id pub-id-type="pmid">17225102</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Okano</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Tanaka</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Ogino</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Fukuda</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Kondo</surname> <given-names>A</given-names></name>. <article-title>Biotechnological production of enantiomeric pure lactic acid from renewable resources—recent achievements, perspectives, and limits</article-title>. <source>Appl Microbiol Biotechnol</source>. <year>2010</year>;<volume>85</volume>: <fpage>413</fpage>–<lpage>423</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00253-009-2280-5" xlink:type="simple">10.1007/s00253-009-2280-5</ext-link></comment> <object-id pub-id-type="pmid">19826806</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Corma</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Iborra</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Velty</surname> <given-names>A</given-names></name>. <article-title>Chemical routes for the transformation of biomass into chemicals</article-title>. <source>Chem Rev</source>. <year>2007</year>;<volume>107</volume>: <fpage>2411</fpage>–<lpage>2502</lpage>. <object-id pub-id-type="pmid">17535020</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Qin</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Zheng</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Ma</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Tang</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Xu</surname> <given-names>P</given-names></name>. <article-title>Production of L-lactic acid by a thermophilic <italic>Bacillus</italic> mutant using sodium hydroxide as neutralizing agent</article-title>. <source>Bioresour Technol</source>. <year>2010</year>;<volume>101</volume>: <fpage>7570</fpage>–<lpage>7576</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.biortech.2010.04.037" xlink:type="simple">10.1016/j.biortech.2010.04.037</ext-link></comment> <object-id pub-id-type="pmid">20488697</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bai</surname> <given-names>DM</given-names></name>, <name name-style="western"><surname>Wei</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Yan</surname> <given-names>ZH</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>XM</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>XG</given-names></name>, <name name-style="western"><surname>Xu</surname> <given-names>SM</given-names></name>. <article-title>Fed-batch fermentation of <italic>Lactobacillus lactis</italic> for hyper-production of L-lactic acid</article-title>. <source>Biotechnol Lett</source>. <year>2003</year>;<volume>25</volume>: <fpage>1833</fpage>–<lpage>1835</lpage>. <object-id pub-id-type="pmid">14677707</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ding</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Tan</surname> <given-names>T</given-names></name>. <article-title>L-Lactic acid production by <italic>Lactobacillus casei</italic> fermentation using different fed-batch feeding strategies</article-title>. <source>Proc Biochem</source>. <year>2006</year>;<volume>41</volume>: <fpage>1451</fpage>–<lpage>1454</lpage>.</mixed-citation></ref>
+<ref id="pone.0124316.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Saitoh</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Ishida</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Onishi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Tokuhiro</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Nagamori</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Kitamoto</surname> <given-names>K</given-names></name>, <etal>et al</etal>. <article-title>Genetically engineered wine yeast produces a high concentration of L-lactic acid of extremely high optical purity</article-title>. <source>Appl Environ Microbiol</source>. <year>2005</year>;<volume>71</volume>: <fpage>2789</fpage>–<lpage>2792</lpage>. <object-id pub-id-type="pmid">15870375</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Budhavaram</surname> <given-names>NK</given-names></name>, <name name-style="western"><surname>Fan</surname> <given-names>Z</given-names></name>. <article-title>Production of lactic acid from paper sludge using acid-tolerant, thermophilic <italic>Bacillus coagulan</italic> strains</article-title>. <source>Bioresour Technol</source>. <year>2009</year>;<volume>100</volume>: <fpage>5966</fpage>–<lpage>5972</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.biortech.2009.01.080" xlink:type="simple">10.1016/j.biortech.2009.01.080</ext-link></comment> <object-id pub-id-type="pmid">19577925</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Michelson</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Kask</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Jõgi</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Talpsep</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Suitso</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Nurk</surname> <given-names>A</given-names></name>. <article-title>L(+)-Lactic acid producer <italic>Bacillus coagulans</italic> SIM-7 DSM 14043 and its comparison with <italic>Lactobacillus delbrueckii</italic> ssp. <italic>lactis</italic> DSM 20073</article-title>. <source>Enzyme Microb Technol</source>. <year>2006</year>;<volume>39</volume>: <fpage>861</fpage>–<lpage>867</lpage>.</mixed-citation></ref>
+<ref id="pone.0124316.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Qin</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Yu</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Ma</surname> <given-names>Y</given-names></name>, <etal>et al</etal>. <article-title>Non-sterilized fermentative production of polymer-grade L-lactic acid by a newly isolated thermophilic strain <italic>Bacillus</italic> sp. 2–6</article-title>. <source>PloS ONE</source>. <year>2009</year>;<volume>4</volume>: <fpage>e4359</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0004359" xlink:type="simple">10.1371/journal.pone.0004359</ext-link></comment> <object-id pub-id-type="pmid">19194504</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Qin</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Xu</surname> <given-names>P</given-names></name>. <article-title>A comparative proteomic analysis of <italic>Bacillus coagulans</italic> in response to lactate stress during the production of L-lactic acid</article-title>. <source>Biotechnol Lett</source>. <year>2014</year>;<volume>36</volume>: <fpage>2545</fpage>–<lpage>2549</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10529-014-1639-6" xlink:type="simple">10.1007/s10529-014-1639-6</ext-link></comment> <object-id pub-id-type="pmid">25214213</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Su</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Yu</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Sun</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Ou</surname> <given-names>HY</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>L</given-names></name>, <etal>et al</etal>. <article-title>Genome sequence of the thermophilic strain <italic>Bacillus coagulans</italic> 2–6, an efficient producer of high-optical-purity L-lactic acid</article-title>. <source>J Bacteriol</source>. <year>2011</year>;<volume>193</volume>: <fpage>4563</fpage>–<lpage>4564</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1128/JB.05378-11" xlink:type="simple">10.1128/JB.05378-11</ext-link></comment> <object-id pub-id-type="pmid">21705584</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Langmead</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Salzberg</surname> <given-names>SL</given-names></name>. <article-title>Fast gapped-read alignment with Bowtie 2</article-title>. <source>Nat Methods</source>. <year>2010</year>;<volume>9</volume>: <fpage>357</fpage>–<lpage>359</lpage>.</mixed-citation></ref>
+<ref id="pone.0124316.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Li</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Dewey</surname> <given-names>CN</given-names></name>. <article-title>RSEM: accurate transcript quantification from RNA-Seq data with or without a reference genome</article-title>. <source>BMC Bioinformatics</source>. <year>2011</year>;<volume>12</volume>: <fpage>323</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1186/1471-2105-12-323" xlink:type="simple">10.1186/1471-2105-12-323</ext-link></comment> <object-id pub-id-type="pmid">21816040</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Robinson</surname> <given-names>MD</given-names></name>, <name name-style="western"><surname>McCarthy</surname> <given-names>DJ</given-names></name>, <name name-style="western"><surname>Smyth</surname> <given-names>GK</given-names></name>. <article-title>edgeR: a Bioconductor package for differential expression analysis of digital gene expression data</article-title>. <source>Bioinformatics</source>. <year>2010</year>;<volume>26</volume>: <fpage>139</fpage>–<lpage>140</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1093/bioinformatics/btp616" xlink:type="simple">10.1093/bioinformatics/btp616</ext-link></comment> <object-id pub-id-type="pmid">19910308</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shen</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Lin</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Peng</surname> <given-names>H</given-names></name>, <etal>et al</etal>. <article-title>Genome expression profile analysis reveals important transcripts in maize roots responding to the stress of heavy metal Pb</article-title>. <source>Physiol Plant</source>. <year>2013</year>;<volume>147</volume>: <fpage>270</fpage>–<lpage>282</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/j.1399-3054.2012.01670.x" xlink:type="simple">10.1111/j.1399-3054.2012.01670.x</ext-link></comment> <object-id pub-id-type="pmid">22747913</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Gao</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Zhuang</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Sun</surname> <given-names>H</given-names></name>, <etal>et al</etal>. <article-title>Identification of differentially-expressed genes associated with pistil abortion in Japanese apricot by genome-wide transcriptional analysis</article-title>. <source>PloS ONE</source>. <year>2012</year>;<volume>7</volume>: <fpage>e47810</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0047810" xlink:type="simple">10.1371/journal.pone.0047810</ext-link></comment> <object-id pub-id-type="pmid">23091648</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tan</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Zheng</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>F</given-names></name>. <article-title>RNA-seq-based comparative transcriptome analysis of the syngas-utilizing bacterium <italic>Clostridium ljungdahlii</italic> DSM 13528 grown autotrophically and heterotrophically</article-title>. <source>Mol BioSyst</source>. <year>2013</year>;<volume>9</volume>: <fpage>2775</fpage>–<lpage>2784</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1039/c3mb70232d" xlink:type="simple">10.1039/c3mb70232d</ext-link></comment> <object-id pub-id-type="pmid">24056499</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rees</surname> <given-names>DC</given-names></name>, <name name-style="western"><surname>Johnson</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Lewinson</surname> <given-names>O</given-names></name>. <article-title>ABC transporters: the power to change</article-title>. <source>Nat Rev Mol Cell Biol</source>. <year>2009</year>;<volume>10</volume>: <fpage>218</fpage>–<lpage>227</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1038/nrm2646" xlink:type="simple">10.1038/nrm2646</ext-link></comment> <object-id pub-id-type="pmid">19234479</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Linton</surname> <given-names>KJ</given-names></name>, <name name-style="western"><surname>Higgins</surname> <given-names>CF</given-names></name>. <article-title>The <italic>Escherichia coli</italic> ATP-binding cassette (ABC) proteins</article-title>. <source>Mol Microbiol</source>. <year>1998</year>;<volume>28</volume>: <fpage>5</fpage>–<lpage>13</lpage>. <object-id pub-id-type="pmid">9593292</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Quentin</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Fichant</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Denizot</surname> <given-names>F</given-names></name>. <article-title>Inventory, assembly and analysis of <italic>Bacillus subtilis</italic> ABC transport systems</article-title>. <source>J Mol Biol</source>. <year>1999</year>;<volume>287</volume>: <fpage>467</fpage>–<lpage>484</lpage>. <object-id pub-id-type="pmid">10092453</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Reiter</surname> <given-names>WD</given-names></name>. <article-title>Biochemical genetics of nucleotide sugar interconversion reactions</article-title>. <source>Curr Opin Plant Biol</source>. <year>2008</year>;<volume>11</volume>: <fpage>236</fpage>–<lpage>243</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.pbi.2008.03.009" xlink:type="simple">10.1016/j.pbi.2008.03.009</ext-link></comment> <object-id pub-id-type="pmid">18486535</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kilstrup</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Hammer</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Ruhdal Jensen</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Martinussen</surname> <given-names>J</given-names></name>. <article-title>Nucleotide metabolism and its control in lactic acid bacteria</article-title>. <source>FEMS Microbiol Rev</source>. <year>2005</year>;<volume>29</volume>: <fpage>555</fpage>–<lpage>590</lpage>. <object-id pub-id-type="pmid">15935511</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xu</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Xu</surname> <given-names>P</given-names></name>. <article-title>Betaine and beet molasses enhance L-lactic acid production by <italic>Bacillus coagulans</italic></article-title>. <source>PLoS ONE</source>. <year>2014</year>;<volume>9</volume>: <fpage>e100731</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0100731" xlink:type="simple">10.1371/journal.pone.0100731</ext-link></comment> <object-id pub-id-type="pmid">24956474</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xu</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Xu</surname> <given-names>P</given-names></name>. <article-title>Efficient production of L-lactic acid using co-feeding strategy based on cane molasses/glucose carbon sources</article-title>. <source>Bioresour Technol</source>. <year>2014</year>;<volume>153</volume>: <fpage>23</fpage>–<lpage>29</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.biortech.2013.11.057" xlink:type="simple">10.1016/j.biortech.2013.11.057</ext-link></comment> <object-id pub-id-type="pmid">24333698</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Xue</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Yu</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Xu</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Ma</surname> <given-names>Y</given-names></name>. <article-title>Jerusalem artichoke powder: A useful material in producing high-optical-purity L-lactate using an efficient sugar-utilizing thermophilic <italic>Bacillus coagulans</italic> strain</article-title>. <source>Bioresour Technol</source>. <year>2013</year>;<volume>130</volume>: <fpage>174</fpage>–<lpage>180</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.biortech.2012.11.144" xlink:type="simple">10.1016/j.biortech.2012.11.144</ext-link></comment> <object-id pub-id-type="pmid">23306126</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ye</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Zhou</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Hudari</surname> <given-names>MSB</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>JC</given-names></name>. <article-title>Highly efficient production of L-lactic acid from xylose by newly isolated <italic>Bacillus coagulans</italic> C106</article-title>. <source>Bioresour Technol</source>. <year>2013</year>;<volume>132</volume>: <fpage>38</fpage>–<lpage>44</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.biortech.2013.01.011" xlink:type="simple">10.1016/j.biortech.2013.01.011</ext-link></comment> <object-id pub-id-type="pmid">23399496</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Guzzo</surname> <given-names>J</given-names></name>. <article-title>Biotechnical applications of small heat shock proteins from bacteria</article-title>. <source>Int J Biochem Cell Biol</source>. <year>2012</year>;<volume>44</volume>: <fpage>1698</fpage>–<lpage>1705</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.biocel.2012.06.007" xlink:type="simple">10.1016/j.biocel.2012.06.007</ext-link></comment> <object-id pub-id-type="pmid">22706478</object-id></mixed-citation></ref>
+<ref id="pone.0124316.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Law</surname> <given-names>CJ</given-names></name>, <name name-style="western"><surname>Maloney</surname> <given-names>PC</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>DN</given-names></name>. <article-title>Ins and outs of major facilitator superfamily antiporters</article-title>. <source>Annu Rev Microbiol</source>. <year>2008</year>;<volume>62</volume>: <fpage>289</fpage>–<lpage>305</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1146/annurev.micro.61.080706.093329" xlink:type="simple">10.1146/annurev.micro.61.080706.093329</ext-link></comment> <object-id pub-id-type="pmid">18537473</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

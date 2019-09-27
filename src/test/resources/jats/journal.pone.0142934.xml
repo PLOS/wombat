@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0142934</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-15-38583</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+</article-categories>
+<title-group>
+<article-title>Comparative Proteome Analysis of hAT-MSCs Isolated from Chronic Renal Failure Patients with Differences in Their Bone Turnover Status</article-title>
+<alt-title alt-title-type="running-head">hAT-MSCs from Chronic Renal Failure Patients</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Kasap</surname>
+<given-names>Murat</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Yeğenağa</surname>
+<given-names>Itır</given-names>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+<xref rid="cor001" ref-type="corresp">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Akpinar</surname>
+<given-names>Gurler</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Tuncay</surname>
+<given-names>Mehmet</given-names>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Aksoy</surname>
+<given-names>Ayça</given-names>
+</name>
+<xref rid="aff003" ref-type="aff"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Karaoz</surname>
+<given-names>Erdal</given-names>
+</name>
+<xref rid="aff004" ref-type="aff"><sup>4</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Department of Medical Biology/DEKART Proteomics Laboratory, Kocaeli University Medical School, Kocaeli, Turkey</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Department of Internal Medicine, Nephrology, Kocaeli University Medical School, Kocaeli, Turkey</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Department of Stem Cell, Center for Stem Cell and Gene Therapies Research and Practice, Institute of Health Sciences, Kocaeli University, Kocaeli, Turkey</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Liv Hospital Center for Regenerative Medicine and Stem Cell Research and Manufacturing, İstanbul, Turkey</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Papaccio</surname>
+<given-names>Gianpaolo</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Second University of Naples, ITALY</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: IY MK GA. Performed the experiments: IY MK GA AA EK. Analyzed the data: IY MK GA EK. Contributed reagents/materials/analysis tools: MK GA EK MT. Wrote the paper: IY MK.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">itiryegenaga@hotmail.com</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>17</day>
+<month>11</month>
+<year>2015</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2015</year>
+</pub-date>
+<volume>10</volume>
+<issue>11</issue>
+<elocation-id>e0142934</elocation-id>
+<history>
+<date date-type="received">
+<day>2</day>
+<month>9</month>
+<year>2015</year>
+</date>
+<date date-type="accepted">
+<day>28</day>
+<month>10</month>
+<year>2015</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2015</copyright-year>
+<copyright-holder>Kasap et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0142934" xlink:type="simple"/>
+<abstract>
+<p>The relationship between the stem cells and the bone turnover in uremic bone disease due to chronic renal failure (CRF) is not described. The aim of this study was to investigate the effect of bone turnover status on stem cell properties. To search for the presence of such link and shed some light on stem-cell relevant mechanisms of bone turnover, we carried out a study with mesenchymal stem cells. Tissue biopsies were taken from the abdominal subcutaneous adipose tissue of a CRF patient with secondary hyperparathyroidism with the high turnover bone disease. This patient underwent parathyroidectomy operation (PTX) and another sample was taken from this patient after PTX. A CRF patient with adynamic bone disease with low turnover and a healthy control were also included. Mesenchymal stem cells isolated from the subjects were analyzed using proteomic and molecular approaches. Except ALP activity, the bone turnover status did not affect common stem cell properties. However, detailed proteome analysis revealed the presence of regulated protein spots. A total of 32 protein spots were identified following 2D gel electrophoresis and MALDI-TOF/TOF analyzes. The identified proteins were classified into seven distinct groups and their potential relationship to bone turnover were discussed. Distinct protein expression patterns emerged in relation to the bone turnover status indicate a possible link between the stem cells and bone turnover in uremic bone disease due to CRF.</p>
+</abstract>
+<funding-group>
+<funding-statement>The author(s) received specific funding for this work from Kocaeli University BAP.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="5"/>
+<table-count count="3"/>
+<page-count count="16"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability" xlink:type="simple">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Uremic bone disease (UBD) is a destructive complication of CRF. UBD has recently been redefined as the bone and mineral disease in CRF [<xref rid="pone.0142934.ref001" ref-type="bibr">1</xref>]. Severity of UBD affects the rate of morbidity, mortality and quality of life in CRF patients. UBD appears mostly in complicated clinical presentations. While some patients suffer from secondary hyperthyroidism (SHPT) (<underline>H</underline>igh <underline>T</underline>urnover <underline>B</underline>one <underline>D</underline>isease, HTBD) and associated bone abnormalities, others might have adynamic bone disease (ADBD) (<underline>L</underline>ow <underline>T</underline>urnover <underline>B</underline>one <underline>D</underline>isease-LTBD) and osteoporosis [<xref rid="pone.0142934.ref001" ref-type="bibr">1</xref>–<xref rid="pone.0142934.ref003" ref-type="bibr">3</xref>]. Furthermore, extra osseous calcification occurs often in CRF patients with LTBD [<xref rid="pone.0142934.ref004" ref-type="bibr">4</xref>–<xref rid="pone.0142934.ref006" ref-type="bibr">6</xref>]. Some etiologic factors affecting the type of bone disorder development in CRF were reported recently, but there are some contradictions in this field [<xref rid="pone.0142934.ref002" ref-type="bibr">2</xref>]. There's still a need for understanding the molecular basis that will help understanding of the etiology of the type of bone disorders in CRF.</p>
+<p>Stem cells are undifferentiated cells that can divide, differentiate and self-renew to produce new stem cells in multicellular organisms [<xref rid="pone.0142934.ref007" ref-type="bibr">7</xref>]. They can be used in biomedical research, drug discovery, and toxicity testing, as a model in understanding diseases and most importantly for therapeutic purposes in regenerative medicine [<xref rid="pone.0142934.ref008" ref-type="bibr">8</xref>, <xref rid="pone.0142934.ref009" ref-type="bibr">9</xref>]. It was demonstrated that systemic application of adipose-tissue-derived stem cells induced expression of the proteins to stimulate osteoblastic and osteoclastic functions in C57BL/6J mice and treated osteoporosis [<xref rid="pone.0142934.ref010" ref-type="bibr">10</xref>]. Adipose tissue derived stem cells (hAT-MSCs) is one of the most practical postnatal stem cells to use in research because of the ease to obtain without any ethical concern. In addition to these aspects, hAT- MSCs may be preferred in bone disease research due to several other reasons; 1) In hypercalcemic status, adipose tissue may get calcified [<xref rid="pone.0142934.ref011" ref-type="bibr">11</xref>–<xref rid="pone.0142934.ref014" ref-type="bibr">14</xref>], 2) During the follow up of CRF patients, soft tissue calcifications occur [<xref rid="pone.0142934.ref004" ref-type="bibr">4</xref>], 3) Adipose tissue is an easily accessible tissue and may be used to study molecular mechanisms of bone diseases [<xref rid="pone.0142934.ref011" ref-type="bibr">11</xref>].</p>
+<p>The hypothesis of this study was based on the possibility that adipose tissue calcification in CRF patients might originate from differentiation of the stem cells present in the adipose tissue. If the stem cells isolated from adipose tissue of different degrees of parathormon function were studied by proteomic analysis; then some important clues about the molecular mechanisms behind the soft tissue calcification may be obtained. Therefore, we performed a study in which hAT-MSCs isolated from two patients with different types of bone status, namely HTBD with CRF and LTBD with CRF were compared both at the cellular and molecular levels. Furthermore, the patient with HTBD underwent PTX surgery, which allowed us to make further comparisons of hAT-MSCs isolated before and after operation. hAT-MSCs from a healthy control were also included for comparisons.</p>
+<p>The method of choice in this study was 2DE-based proteomics, because investigation of changes in global proteome level may provide significant information about changes at the protein level, post translational modifications (PTMs) and molecular pathways [<xref rid="pone.0142934.ref015" ref-type="bibr">15</xref>]. Comparison of the protein expression profiles of stem cells isolated from hAT revealed the presence of a conserved protein pattern that included 70 spots, of which 32 were reliably identified by MALDI-TOF/TOF and shown to be regulated. In addition, the cells were compared on the basis of cellular morphology, expression of common stem cell markers and osteoblastic differentiation potentials as well as their ALP and telomerase activities. This is the first study presenting a list of proteins that may have importance in understanding of the differences between HTBD and LTBD in CRF.</p>
+</sec>
+<sec id="sec002">
+<title>Material and Methods</title>
+<p>This study was approved by Ethical Committee of Kocaeli University. Written informed consent from the donor or the next of kin was obtained to use these samples in research.</p>
+<sec id="sec003">
+<title>Isolation and culture of hAT-MSCs</title>
+<p>Tissue biopsies were taken from the abdominal subcutaneous adipose tissue of the following individuals: (1) a CRF patient with HTBD. This patient underwent PTX and one week later another sample was taken from this patient after PTX (2) a CRF patient with LTBD (3) a healthy control (<xref rid="pone.0142934.t001" ref-type="table">Table 1</xref>).</p>
+<table-wrap id="pone.0142934.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142934.t001</object-id>
+<label>Table 1</label> <caption><title>Clinical and main laboratory findings of the patients.</title></caption>
+<alternatives>
+<graphic id="pone.0142934.t001g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142934.t001" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" rowspan="1" colspan="1">Name/age/gender</th>
+<th align="center" rowspan="1" colspan="1">Clinical condition</th>
+<th align="center" rowspan="1" colspan="1">Bone status</th>
+<th align="center" rowspan="1" colspan="1">PTH<xref rid="t001fn001" ref-type="table-fn">*</xref>(pg/mL)</th>
+<th align="center" rowspan="1" colspan="1">Ca(mg/dL)</th>
+<th align="center" rowspan="1" colspan="1">P(mg/dL)</th>
+<th align="center" rowspan="1" colspan="1">ALP<xref rid="t001fn002" ref-type="table-fn">**</xref>(U/L)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>MY/50/M</bold></td>
+<td align="left" rowspan="1" colspan="1">CRF<xref rid="t001fn003" ref-type="table-fn">***</xref>-Pre-PTX<xref rid="t001fn004" ref-type="table-fn">****</xref></td>
+<td align="left" rowspan="1" colspan="1">High turnover</td>
+<td align="center" rowspan="1" colspan="1">648</td>
+<td align="char" char="." rowspan="1" colspan="1">10.6</td>
+<td align="char" char="." rowspan="1" colspan="1">2.1</td>
+<td align="center" rowspan="1" colspan="1">186.1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>MY</bold></td>
+<td align="left" rowspan="1" colspan="1">CRF-Post-PTX</td>
+<td align="left" rowspan="1" colspan="1">Low-PTH turnover</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="char" char="." rowspan="1" colspan="1">7.7</td>
+<td align="char" char="." rowspan="1" colspan="1">4.2</td>
+<td align="center" rowspan="1" colspan="1">86</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>SO/70/M</bold></td>
+<td align="left" rowspan="1" colspan="1">CRF-ADBD</td>
+<td align="left" rowspan="1" colspan="1">Low-turnover</td>
+<td align="center" rowspan="1" colspan="1">70.2</td>
+<td align="char" char="." rowspan="1" colspan="1">8.6</td>
+<td align="char" char="." rowspan="1" colspan="1">2.6</td>
+<td align="center" rowspan="1" colspan="1">103</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>*Parathormon.</p></fn>
+<fn id="t001fn002"><p>**Alkaline phosphatase.</p></fn>
+<fn id="t001fn003"><p>***Chronic renal failure.</p></fn>
+<fn id="t001fn004"><p>****Parathyroidectomi operation.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Tissue samples were washed several times with Hanks’ balanced salt solution (HBSS) with 5% antibiocantimycotic solution without calcium and magnesium to remove blood (LifeTech, USA). A single cell suspension of adipose tissue cells was obtained by using enzymatic digestion and mechanical means. Hat-MSCs were then isolated as described by Ertas, G. et al. [<xref rid="pone.0142934.ref016" ref-type="bibr">16</xref>]. After cells reached 80–90% confluency, they were treated with 0.025% trypsin-EDTA for 3 min. The released cells were collected, centrifuged, and replaced at a rate of 1:3 and 1:4 for subculture.</p>
+</sec>
+<sec id="sec004">
+<title>Characterization of MSCs by Flow Cytometry</title>
+<p>A FACS Calibur (BD Biosciences, San Diego, USA) flow cytometry instrument was used in characterization experiments. The forward and side scatter profiles gated out debris and dead cells were analyzed using Cell Quest software (BD Biosciences). Antibodies (Becton Dickinson) against CD3, CD4, CD5, CD7, CD8, CD10, CD11b, CD13, CD14, CD15, CD17, CD19, CD29, CD33, CD34, CD44, CD45, CD71, CD73, CD90, CD106, CD123, CD133, CD138, CD146, CD166, HLA-ABC, HLA-G and HLA-DR were used for immunophenotyping of MSCs [<xref rid="pone.0142934.ref017" ref-type="bibr">17</xref>].</p>
+</sec>
+<sec id="sec005">
+<title>In vitro adipogenic differentiation</title>
+<p>Cells from passage three (0,35x10<sup>5</sup> cells/cm<sup>2</sup>) were seeded onto coated type I collagen coverslips in 6-well plates for adipogenic differentiation. The adipogenic medium, LG-DMEM, contained 10% FBS, 0.5 mM isobutyl-methylxanthine (IBMX-Sigma-Aldrich), 10<sup>−6</sup> M dexamethasone (Sigma-Aldrich, Fluka Chemie AG, Buchs, Switzerland), 10μg/ml insulin (Invitrogen/GIBCO), 200M indomethacin (Sigma-Aldrich), and 1% penicilin/streptomycin (Invitrogen/GIBCO). The differentiation lasted for four weeks and the medium was replaced twice a week. Intracellular lipid droplets, an indicator of the adipogenic differentiation were confirmed by Oil Red O staining.</p>
+</sec>
+<sec id="sec006">
+<title>In vitro osteoblastic differentiation</title>
+<p>For osteoblastic differentiation, cells from passage three (0,3x10<sup>5</sup> cells/cm<sup>2</sup>) was grown in LG-DMEM supplemented with 100 nM dexamethasone (Sigma-Aldrich), 0.05M ascorbate-2-phosphate (Wako Chemicals), 10 mM β-glycerophosphate (Sigma-Aldrich), 1% penicilin/streptomycin and 10% FBS. The differentiation was accomplished within four weeks and the medium was replaced twice a week during the incubation. Alizarin Red staining was performed to demonstrate that osteoblastic differentiation was achieved.</p>
+</sec>
+<sec id="sec007">
+<title>Alizarin red S staining</title>
+<p>For staining, the cells were fixed for 5 min in ice-cold 70% ethanol and then allowed to dry. Cells were stained with 2% alizarin red S (pH 4.1–4.3) solution for 30 s to 1 min, then washed with distilled water (20 dips). The stained cells were dehydrated in acetone (20 dips), fixed in acetone-xylene (1:1) solution (20 dips), cleared with xylene (20 dips), dried and mounted in mounting medium.</p>
+</sec>
+<sec id="sec008">
+<title>ALP activity</title>
+<p>ALP activity assay was performed at days 1, 4, 7, 14, and 21. Cells were washed with PBS for three times and protein extraction was performed using Mammalian Protein Extract Reagent (M-PER) (Thermo Scientific). p-Nitrophenyl Phosphate (Sigma Aldrich, N7653) was used as the liquid substrate to detect ALP activity and the incubation of the cells with the liquid substrate lasted for 30 min. A VersaMax Microplate Reader (Molecular Devices) was used to measure the optical density at 405 nm. Bicinchoninic Acid Protein Determination method (SigmaAldrich) was used to measure total protein concentration of the cell lysate. ALP activity was expressed as OD 405 nm/mg of protein. Three technical replicates of each sample were performed.</p>
+</sec>
+<sec id="sec009">
+<title>Telomerase activity</title>
+<p>Telomerase activity was determined by the conventional telomeric repeat amplification protocol (TRAP). TRAP TeloTAGGG PCR enzyme-linked immunosorbent assay (ELISA) kit (Roche, Mannheim, Germany) was used and the relative telomerase activity was calculated as the ratio of the absorbance value of the sample to that of the control.</p>
+</sec>
+<sec id="sec010">
+<title>Statistical analysis</title>
+<p>Flow cytometry, stem cell differentiation and telomerase activity measurements were performed on passage three cells. Three experimental replications, both technical and biological were performed. Statistical analysis of the data was carried out using one-way analysis of variance (ANOVA), followed by Tukey's test for multiple comparisons to determine the values that were significantly different (SPSS Version 10, IL, Chicago). Differences were considered statistically significant at p &lt; 0.05.</p>
+</sec>
+<sec id="sec011">
+<title>Protein extraction and 2D-gel electrophoresis</title>
+<p>For analysis of proteome profiles, the cells were grown in defined media (Stem Cell Technologies, USA). Equal number of cells (3x10<sup>5</sup>) was seeded into T-75 flasks in triplicates. When 70% confluency was reached, the cells were washed with ample amount of ice-cold PBS for three times and removed from the plates by scraping. After 10 min centrifugation at 4°C at 2000xg, excess PBS was decanted and 250 μl of cell lysis buffer (2D-rehydration buffer: 8M urea, 2M thiourea, 4% CHAPS, 30 mM Tris pH 8.5, 1x protease inhibitor cocktail) was added onto each cell pellet. To achieve complete lysis, the cells were vigorously vortexed for 1 min in lysis buffer and the supernatant containing the soluble protein fraction was obtained by centrifugation at 20000xg for 30 min at 4°C and stored in Lo-bind tubes (Eppendorf, USA) at -80°C after snap-frozen in liquid nitrogen. Protein concentration was determined by using modified Lowry assay with the BSA standard (BioRad, USA). 80μg of protein was loaded onto immobilized pH gradient strips (IPG) (11cm, pH 5–8) (BioRad, USA) via passive rehydration. Separation based on isoelectric points was performed by using Protean isoelectric focusing cell (BioRad, USA). The strips were run through a stepwise incremental voltage program (250V for 20 min (linear), 4000 V for 2hr (linear) and 10000 V/hr (rapid)). The strips were then subjected to a two-step equilibration in equilibration buffers containing 6M urea, 2% SDS, 0.375M Tris-HCl pH 8.8, 20% glycerol and 2% DTT for the first step and the same buffer without DTT but with iodoacetamide (2.5%) for the second step. Following isoelectric focusing, the strips were subjected to SDS-PAGE using 12% in-house made gels. The gels were stained with Colloidal Coomassie stain (KeraFast, USA) and visualized with VersaDoc4000 MP (BioRad, USA). PDQuest Advance (BioRad, USA) 2DE-analysis software was used for comparison of protein spot profiles. For automated spot detection, parameters used were sensitivity (13.8), spot size scale (3) and minimum peak intensity (258).</p>
+</sec>
+<sec id="sec012">
+<title>Image analysis and spot cutting</title>
+<p>An automated crop tool was used to prepare the images for analysis using PDQuest Advance (BioRad, USA). Automated analyses were performed to detect total spot numbers and volumes within the normalized area. A manual editing tool was used to inspect the determined protein spots detected by the software. Spots that were prone to variation were excluded if they were hard to identify by visual inspection. Spots were cut by using automated spot cutting tool, ExQuest spot cutter (BioRad,USA), and disposed into 96 well plates for protein identification.</p>
+</sec>
+<sec id="sec013">
+<title>Identification of proteins</title>
+<p>Protein identification experiments were performed at Kocaeli University DEKART proteomics laboratory (<ext-link ext-link-type="uri" xlink:href="http://kabiproteomics.kocaeli.edu.tr/" xlink:type="simple">http://kabiproteomics.kocaeli.edu.tr/</ext-link>) by using ABSCIEX MALDI-TOF/TOF 5800 system. In-gel tryptic digestion of the proteins was performed by using an in-gel digestion kit following the recommended protocol of the manufacturer (Pierce, USA). Zip-Tip cleaning was performed for each digested sample following the recommended protocol (Millipore, USA) before deposition onto a MALDI plate. Peak data were analyzed with MASCOT by using a streamline software, Protein Pilot (ABSCIEX,USA). The parameters for searching were; enzyme of trypsin, 1 missed cleavage, fixed modifications of carbamidomethyl (C), variable modifications of oxidation (M), peptide mass tolerance: 50ppm, fragment mass tolerance: ±0.4 Da, peptide charge of 1+ and monoisotopic. Only significant hits, as defined by the MASCOT probability analysis (<italic>p</italic> &lt; 0.05) were accepted. Classification of the proteins was performed by using a freely available classification system, PANTHER (<ext-link ext-link-type="uri" xlink:href="http://www.pantherdb.org/" xlink:type="simple">http://www.pantherdb.org/</ext-link>) [<xref rid="pone.0142934.ref018" ref-type="bibr">18</xref>].</p>
+</sec>
+</sec>
+<sec id="sec014" sec-type="results">
+<title>Results</title>
+<p>Adipose tissues were obtained from the abdominal subcutaneous layer of CRF patients with HTBD before and a week after PTX (50 year-old male) and also from a LTBD) patient (70 year-old male) and from a healthy control (40 year-old male). MSCs were isolated from these adipose tissues and characterized to some extent. The stem cells displayed similar morphological properties, which were large, flattened and had fibroblast like shape. No significant morphological changes were detected throughout the study and they displayed similar growth characteristics. Some MSC specific cell surface markers were used to define the cultured cells. The data indicated that the cells expressed some commonly accepted MSCs markers (CD13, CD44, CD90, CD166, CD73, HLA ABC ve CD29) (<xref rid="pone.0142934.t002" ref-type="table">Table 2</xref> and <xref rid="pone.0142934.s001" ref-type="supplementary-material">S1 Fig</xref>). These findings were similar to the immunophenotypic MSC characteristics of undifferentiated states of hAT-MSCs reported earlier [<xref rid="pone.0142934.ref019" ref-type="bibr">19</xref>].</p>
+<table-wrap id="pone.0142934.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142934.t002</object-id>
+<label>Table 2</label> <caption><title>Percentages determined by flow cytometry analysis for markers used to identify hAT-MSCs.</title></caption>
+<alternatives>
+<graphic id="pone.0142934.t002g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142934.t002" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1"/>
+<th align="center" rowspan="1" colspan="1">ADBD LTBD(%)</th>
+<th align="center" rowspan="1" colspan="1">SHPT HTBD(%)</th>
+<th align="center" rowspan="1" colspan="1">SHPT After PTX(%)</th>
+<th align="center" rowspan="1" colspan="1">Control (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD45</bold></td>
+<td align="center" rowspan="1" colspan="1">0.88</td>
+<td align="center" rowspan="1" colspan="1">0.49</td>
+<td align="center" rowspan="1" colspan="1">1.07</td>
+<td align="center" rowspan="1" colspan="1">0.39</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>HLA-DR</bold></td>
+<td align="center" rowspan="1" colspan="1">0.90</td>
+<td align="center" rowspan="1" colspan="1">0.10</td>
+<td align="center" rowspan="1" colspan="1">1.28</td>
+<td align="center" rowspan="1" colspan="1">0.68</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD15</bold></td>
+<td align="center" rowspan="1" colspan="1">0.63</td>
+<td align="center" rowspan="1" colspan="1">0.17</td>
+<td align="center" rowspan="1" colspan="1">1.09</td>
+<td align="center" rowspan="1" colspan="1">0.29</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD5</bold></td>
+<td align="center" rowspan="1" colspan="1">0.89</td>
+<td align="center" rowspan="1" colspan="1">0.09</td>
+<td align="center" rowspan="1" colspan="1">0.98</td>
+<td align="center" rowspan="1" colspan="1">0.05</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD4</bold></td>
+<td align="center" rowspan="1" colspan="1">0.57</td>
+<td align="center" rowspan="1" colspan="1">0.09</td>
+<td align="center" rowspan="1" colspan="1">1.2</td>
+<td align="center" rowspan="1" colspan="1">0.07</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD7</bold></td>
+<td align="center" rowspan="1" colspan="1">0.68</td>
+<td align="center" rowspan="1" colspan="1">0.23</td>
+<td align="center" rowspan="1" colspan="1">1.08</td>
+<td align="center" rowspan="1" colspan="1">0.03</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD14</bold></td>
+<td align="center" rowspan="1" colspan="1">1.17</td>
+<td align="center" rowspan="1" colspan="1">0.27</td>
+<td align="center" rowspan="1" colspan="1">1.92</td>
+<td align="center" rowspan="1" colspan="1">1.36</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD17</bold></td>
+<td align="center" rowspan="1" colspan="1">1.81</td>
+<td align="center" rowspan="1" colspan="1">0.49</td>
+<td align="center" rowspan="1" colspan="1">2.02</td>
+<td align="center" rowspan="1" colspan="1">1.95</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD11b</bold></td>
+<td align="center" rowspan="1" colspan="1">2.2</td>
+<td align="center" rowspan="1" colspan="1">0.83</td>
+<td align="center" rowspan="1" colspan="1">1.75</td>
+<td align="center" rowspan="1" colspan="1">1.74</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD13</bold></td>
+<td align="center" rowspan="1" colspan="1">97.98</td>
+<td align="center" rowspan="1" colspan="1">76.6</td>
+<td align="center" rowspan="1" colspan="1">81.17</td>
+<td align="center" rowspan="1" colspan="1">72.96</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD34</bold></td>
+<td align="center" rowspan="1" colspan="1">6.8</td>
+<td align="center" rowspan="1" colspan="1">4.45</td>
+<td align="center" rowspan="1" colspan="1">0.04</td>
+<td align="center" rowspan="1" colspan="1">3.92</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD106</bold></td>
+<td align="center" rowspan="1" colspan="1">1.40</td>
+<td align="center" rowspan="1" colspan="1">0.15</td>
+<td align="center" rowspan="1" colspan="1">1.06</td>
+<td align="center" rowspan="1" colspan="1">0.04</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD44</bold></td>
+<td align="center" rowspan="1" colspan="1">99.49</td>
+<td align="center" rowspan="1" colspan="1">59.08</td>
+<td align="center" rowspan="1" colspan="1">94.94</td>
+<td align="center" rowspan="1" colspan="1">75.73</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD90</bold></td>
+<td align="center" rowspan="1" colspan="1">92.33</td>
+<td align="center" rowspan="1" colspan="1">74.6</td>
+<td align="center" rowspan="1" colspan="1">71.82</td>
+<td align="center" rowspan="1" colspan="1">77.60</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD166</bold></td>
+<td align="center" rowspan="1" colspan="1">89.37</td>
+<td align="center" rowspan="1" colspan="1">73.1</td>
+<td align="center" rowspan="1" colspan="1">43.92</td>
+<td align="center" rowspan="1" colspan="1">76.48</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD10</bold></td>
+<td align="center" rowspan="1" colspan="1">0.12</td>
+<td align="center" rowspan="1" colspan="1">0.93</td>
+<td align="center" rowspan="1" colspan="1">0.03</td>
+<td align="center" rowspan="1" colspan="1">0.08</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD8</bold></td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0.35</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0.06</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD33</bold></td>
+<td align="center" rowspan="1" colspan="1">0.27</td>
+<td align="center" rowspan="1" colspan="1">2.0</td>
+<td align="center" rowspan="1" colspan="1">0.03</td>
+<td align="center" rowspan="1" colspan="1">0.05</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD71</bold></td>
+<td align="center" rowspan="1" colspan="1">1.66</td>
+<td align="center" rowspan="1" colspan="1">20.2</td>
+<td align="center" rowspan="1" colspan="1">2.07</td>
+<td align="center" rowspan="1" colspan="1">0.07</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD146</bold></td>
+<td align="center" rowspan="1" colspan="1">47.77</td>
+<td align="center" rowspan="1" colspan="1">1.96</td>
+<td align="center" rowspan="1" colspan="1">55.62</td>
+<td align="center" rowspan="1" colspan="1">1.95</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD73</bold></td>
+<td align="center" rowspan="1" colspan="1">99.52</td>
+<td align="center" rowspan="1" colspan="1">70.92</td>
+<td align="center" rowspan="1" colspan="1">99.21</td>
+<td align="center" rowspan="1" colspan="1">79.52</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>HLA-ABC</bold></td>
+<td align="center" rowspan="1" colspan="1">87.90</td>
+<td align="center" rowspan="1" colspan="1">49.03</td>
+<td align="center" rowspan="1" colspan="1">81.01</td>
+<td align="center" rowspan="1" colspan="1">77.17</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD29</bold></td>
+<td align="center" rowspan="1" colspan="1">99.53</td>
+<td align="center" rowspan="1" colspan="1">74.72</td>
+<td align="center" rowspan="1" colspan="1">99.63</td>
+<td align="center" rowspan="1" colspan="1">80.67</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD123</bold></td>
+<td align="center" rowspan="1" colspan="1">0.07</td>
+<td align="center" rowspan="1" colspan="1">1.76</td>
+<td align="center" rowspan="1" colspan="1">0.22</td>
+<td align="center" rowspan="1" colspan="1">0.01</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD138</bold></td>
+<td align="center" rowspan="1" colspan="1">0.01</td>
+<td align="center" rowspan="1" colspan="1">5.75</td>
+<td align="center" rowspan="1" colspan="1">0.46</td>
+<td align="center" rowspan="1" colspan="1">0.04</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD19</bold></td>
+<td align="center" rowspan="1" colspan="1">1.74</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0.67</td>
+<td align="center" rowspan="1" colspan="1">0.28</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD3</bold></td>
+<td align="center" rowspan="1" colspan="1">1.46</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0.78</td>
+<td align="center" rowspan="1" colspan="1">0.4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>HLA- G</bold></td>
+<td align="center" rowspan="1" colspan="1">2.33</td>
+<td align="center" rowspan="1" colspan="1">0.17</td>
+<td align="center" rowspan="1" colspan="1">0.69</td>
+<td align="center" rowspan="1" colspan="1">7.15</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>CD133</bold></td>
+<td align="center" rowspan="1" colspan="1">0.06</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0.65</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>To assess multipotential characteristics of the stem cells, measurement of differentiation potential is required. Each cell line was subjected to adipogenic and osteoblastic differentiation and differentiations were characterized by using immunohistochemical and fluorescence techniques. At the beginning of adipogenic differentiation, the presence of lipid droplets was evident and towards the end of differentiation, the lipid droplets enlarged and invaded the entire cytoplasm (<xref rid="pone.0142934.g001" ref-type="fig">Fig 1A</xref>). During osteoblastic differentiation, cellular aggregates were observed in the culture plates and were gradually increased until the end of the experiment. These aggregates were characterized by the presence of amorphous material deposits (<xref rid="pone.0142934.g001" ref-type="fig">Fig 1B</xref>). Alizarin red S stained these nodular aggregates in osteoblastic cultures, demonstrating that the amorphous deposits observed under the microscope were in fact calcium deposits (<xref rid="pone.0142934.g001" ref-type="fig">Fig 1C</xref>). At day 30, positive alizarin red aggregates were larger and stained intensively indicating the presence of a more extensive calcium deposition. Control cultures showed only minimal background staining.</p>
+<fig id="pone.0142934.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142934.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Differentiation of hAT-MSCs from PTX-hAT-MSCs, HTBD-hAT-MSCs and LTBD-hAT-MSCs.</title>
+<p>The cells were subjected to (A and B) adipogenic and (C) osteogenic differentiations as described in material and methods section. (A) Inverted microscope image of the cells subjected to adipogenic differentiation. (B) Oil Red-O staining of adipogenic cells differentiated from hAT-MSCs. (C) Alizarin Red staining of osteogenic cells differentiated from hAT-MSCs.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142934.g001" position="float" xlink:type="simple"/>
+</fig>
+<p>ALP activity, another osteoblastic differentiation marker, gradually decreased in all cell lines except HTBD-hAT-MSCs, which reached to its peak activity at day 4 (<xref rid="pone.0142934.g002" ref-type="fig">Fig 2</xref>). In overall, the ALP activity was higher in cell cultures generated from the stem cells isolated from the patient tissue with HTBD than from the stem cells of the same patient after PTX operation (PTX-hAT-MSCs). ALP activity in the cell cultures generated from the stem cells isolated from the patient with LTBD was almost undetectable.</p>
+<fig id="pone.0142934.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142934.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Alkaline phosphatase activity of hAT-MSCs.</title>
+<p>PTX: Stem cells isolated from human adipose tissue after parathyroidectomy operation. HTBD: Stem cells isolated from human adipose tissue obtained from a patient with secondary hyperparathyroidism (High turnover bone disease). LTBD: Stem cells isolated from human adipose tissue obtained from a patient with adynamic bone disease (Low turnover bone disease).</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142934.g002" position="float" xlink:type="simple"/>
+</fig>
+<p>Telomere shortening is an indicator of stem cell aging and can be monitored by measuring the telomerase activity. Telomerase activities of PTX-hAT-MSCs, HTBD-hAT-MSCs and LTBD-hAT-MSCs were measured at P3. The telomerase activity of HTBD-hAT-MSCs was 6.47±2.69 amol/μg total protein, PTX-hAT-MSCs was 4.09±1.18 amol/μg total protein and LTBD-hAT-MSCs was 0.03±0.02 amol/μg total protein (<xref rid="pone.0142934.g003" ref-type="fig">Fig 3</xref>).</p>
+<fig id="pone.0142934.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142934.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Telomerase activities of hAT-MSCs obtained from HTBD-hAT-MSCs, PTX-hAT-MSCs and LTBD-hAT-MSCs.</title>
+<p>HTBD: Stem cells isolated from human adipose tissue obtained from a patient with secondary hyperparathyroidism (High turnover bone disease). LTBD: Stem cells isolated from human adipose tissue obtained from a patient with adynamic bone disease (Low turnover bone disease). The activities were measured by conventional telomeric repeat amplification protocol (TRAP) and relative telomerase activities (RTA) were calculated with respect to the control template equivalent to 0.001 mol/<italic>μ</italic>L DNA.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142934.g003" position="float" xlink:type="simple"/>
+</fig>
+<p>To understand the complexity observed in these cells at the molecular level, a comparative 2DE-based proteomic study was performed. Well-resolved and reproducible 2DE gel maps were produced as shown in <xref rid="pone.0142934.g004" ref-type="fig">Fig 4</xref>. An average of 410±30 spots per analytical gel was detected when the gels were subjected to automated spot detection and analysis. However, the number of spots that reliably matched to every member was 71 with an overall mean coefficient of 89.55 percent. The rest of the spots were either not matched or were not expressed by all three stem cell lines. By using PDQuest advance gel analysis software, changes in spot intensities among these 71 matching spots were compared. Spots that were up or down regulated more than 2-fold was considered to be subject to regulation. Ratios for up and down regulated protein spots were given in <xref rid="pone.0142934.t003" ref-type="table">Table 3</xref>. To identify the conserved protein spots, the spots were cut from a preparative gel with an automated spot cutting instrument and subjected to in-gel tryptic digestion followed by MALDI-TOF/TOF analysis. A total of 32 protein spots were identified. The identified proteins were subjected analysis based on their molecular function and their involvement in biological processes (<xref rid="pone.0142934.g005" ref-type="fig">Fig 5</xref>). Proteins were classified into seven distinct groups, namely (1) structural proteins, (2) proteins involved in protein folding and stress, (3) redox metabolism, (4) protein biosynthesis and degradation, (5) proteins involved in transcription, (6) energy and (7) amino acid metabolisms. There were five proteins which could not be classified with the others and were evaluated separately.</p>
+<fig id="pone.0142934.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142934.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Comparative proteome analysis of hAT-MSCs obtained from HTBD-hAT-MSCs, PTX-hAT-MSCs and LTBD-hAT-MSCs.</title>
+<p>HTBD: Stem cells isolated from human adipose tissue obtained from a patient with secondary hyperparathyroidism (High turnover bone disease). LTBD: Stem cells isolated from human adipose tissue obtained from a patient with adynamic bone disease (Low turnover bone disease). (A) MSCs were subjected to protein isolation and proteins were loaded onto pH 5 to pH 8 IPG strips for the first dimension and precast SDS-PAGE gels for the second dimension separation and stained with Colloidal Coomassie Blue for 24 hr after 24 hours of fixation. The gels are representative of three gels from each MSC type. (B) The 2DE gel showing the protein spots that were cut from the gels and were subjected to MALDI-TOF/TOF analysis for identification.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142934.g004" position="float" xlink:type="simple"/>
+</fig>
+<fig id="pone.0142934.g005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142934.g005</object-id>
+<label>Fig 5</label>
+<caption>
+<title>Classification of identified proteins based on their molecular function and their involvement in biological processes.</title>
+<p>Pie chart representing the distribution of the identified proteins based on their molecular function and biological processes. Assignments were made on the basis of information from PANTHER analysis (<ext-link ext-link-type="uri" xlink:href="http://www.pantherdb.org/" xlink:type="simple">http://www.pantherdb.org/</ext-link>) as well as NCBI (<ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/pubmed" xlink:type="simple">http://www.ncbi.nlm.nih.gov/pubmed</ext-link>) and Swiss-Prot/TrEMBL annotations (<ext-link ext-link-type="uri" xlink:href="http://www.expasy.org/" xlink:type="simple">http://www.expasy.org/</ext-link>).</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142934.g005" position="float" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0142934.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142934.t003</object-id>
+<label>Table 3</label> <caption><title>Proteins identified by MALDI-TOF/TOF analysis and classification according to their function.</title> <p>The last three columns represent the values for the regulation rations of the proteins in comparison to the control.</p></caption>
+<alternatives>
+<graphic id="pone.0142934.t003g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142934.t003" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Function of the proteins</th>
+<th align="left" rowspan="1" colspan="1">Gene Name-Protein name</th>
+<th align="left" rowspan="1" colspan="1">HTBD/ control</th>
+<th align="left" rowspan="1" colspan="1">After PTX OP/control</th>
+<th align="left" rowspan="1" colspan="1">LTBD/control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Structural</bold></td>
+<td align="left" rowspan="1" colspan="1">VIM -Vimentin</td>
+<td align="left" rowspan="1" colspan="1">0,03</td>
+<td align="left" rowspan="1" colspan="1">0,06</td>
+<td align="left" rowspan="1" colspan="1">0,05</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">ACTG1-Actin Cytoplasmic 1</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">CAPZB -F-acting-capping protein subunit beta-alfa-1</td>
+<td align="left" rowspan="1" colspan="1">28491</td>
+<td align="left" rowspan="1" colspan="1">0,12</td>
+<td align="left" rowspan="1" colspan="1">0,56</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">WDR1-WD repeat-containing protein 1</td>
+<td align="left" rowspan="1" colspan="1">0,59</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0,43</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">LMNA -Prelamin A/C</td>
+<td align="left" rowspan="1" colspan="1">0,4</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0,29</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">KRT1 -Keratin,type1 cytoskeleton 10</td>
+<td align="left" rowspan="1" colspan="1">18994</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0,48</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">ACTR3 -Actin related protein</td>
+<td align="left" rowspan="1" colspan="1">43101</td>
+<td align="left" rowspan="1" colspan="1">0,04</td>
+<td align="left" rowspan="1" colspan="1">41883</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Protein folding/stress</bold></td>
+<td align="left" rowspan="1" colspan="1">DNAJB11-DnaJ homolog subfamily B member 11</td>
+<td align="left" rowspan="1" colspan="1">0,67</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0,42</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">HSPA5-78kDa glucose-regulated protein</td>
+<td align="left" rowspan="1" colspan="1">0,3</td>
+<td align="left" rowspan="1" colspan="1">0,47</td>
+<td align="left" rowspan="1" colspan="1">0,3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">HSP90B1-Endoplasmin</td>
+<td align="left" rowspan="1" colspan="1">42005</td>
+<td align="left" rowspan="1" colspan="1">41852</td>
+<td align="left" rowspan="1" colspan="1">0,77</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">HSPA9-Stress-70 protein, mitochondrial</td>
+<td align="left" rowspan="1" colspan="1">0,5</td>
+<td align="left" rowspan="1" colspan="1">0,99</td>
+<td align="left" rowspan="1" colspan="1">0,55</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">HSPD1-60kDa heat shock protein, mitochondrial</td>
+<td align="left" rowspan="1" colspan="1">0,25</td>
+<td align="left" rowspan="1" colspan="1">0,18</td>
+<td align="left" rowspan="1" colspan="1">0,35</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">HSPA8-Heat shock cognate 71kDa protein</td>
+<td align="left" rowspan="1" colspan="1">0,28</td>
+<td align="left" rowspan="1" colspan="1">0,48</td>
+<td align="left" rowspan="1" colspan="1">0,41</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Redox metabolism</bold></td>
+<td align="left" rowspan="1" colspan="1">PDIA4-Protein disulphide-isomerase A</td>
+<td align="left" rowspan="1" colspan="1">0,52</td>
+<td align="left" rowspan="1" colspan="1">0,01</td>
+<td align="left" rowspan="1" colspan="1">0,75</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">PRDX6-Peroxiredoxin</td>
+<td align="left" rowspan="1" colspan="1">34335</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0,27</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">TXNDC5-Thioredoxin domain-containing protein 5</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">4,36</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Protein biosynthesis/degradation</bold></td>
+<td align="left" rowspan="1" colspan="1">EIF4AI-Eukaryotic initiation factor 4A-I</td>
+<td align="left" rowspan="1" colspan="1">0,19</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0,26</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">TUFM-Elongation factor TU</td>
+<td align="left" rowspan="1" colspan="1">0,41</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0,21</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">EIF3I-Eukaryotic translation initiation factor 3 subunit I</td>
+<td align="left" rowspan="1" colspan="1">0,55</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">EEF1G-Elongation factor I gamma</td>
+<td align="left" rowspan="1" colspan="1">41760</td>
+<td align="left" rowspan="1" colspan="1">0,02</td>
+<td align="left" rowspan="1" colspan="1">41699</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">RPSA-40S ribosomal protein SA</td>
+<td align="left" rowspan="1" colspan="1">42736</td>
+<td align="left" rowspan="1" colspan="1">33604</td>
+<td align="left" rowspan="1" colspan="1">0,38</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Transcription</bold></td>
+<td align="left" rowspan="1" colspan="1">DDX39B-RNA helicase DDX39B</td>
+<td align="left" rowspan="1" colspan="1">0,82</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0,44</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">HNRNPH1-Heterogeneous nuclear ribonucleoprotein H</td>
+<td align="left" rowspan="1" colspan="1">14246</td>
+<td align="left" rowspan="1" colspan="1">0,07</td>
+<td align="left" rowspan="1" colspan="1">0,73</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Energy metabolism</bold></td>
+<td align="left" rowspan="1" colspan="1">ENO1-Alpha enolase</td>
+<td align="left" rowspan="1" colspan="1">0,98</td>
+<td align="left" rowspan="1" colspan="1">0,72</td>
+<td align="left" rowspan="1" colspan="1">0,37</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">ATP5B-ATP synthase subunit beta, mitochondrial</td>
+<td align="left" rowspan="1" colspan="1">0,62</td>
+<td align="left" rowspan="1" colspan="1">0,83</td>
+<td align="left" rowspan="1" colspan="1">0,6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">PKM -Pyruvate kinase</td>
+<td align="left" rowspan="1" colspan="1">14,6</td>
+<td align="left" rowspan="1" colspan="1">18,1</td>
+<td align="left" rowspan="1" colspan="1">44,27</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Amino acid metabolism</bold></td>
+<td align="left" rowspan="1" colspan="1">SDS-Serine dehydratase</td>
+<td align="left" rowspan="1" colspan="1">16438</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0,71</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">P4HA2-Prolyl 4-hydroxylase subunit alpha-2</td>
+<td align="left" rowspan="1" colspan="1">0,24</td>
+<td align="left" rowspan="1" colspan="1">0,01</td>
+<td align="left" rowspan="1" colspan="1">41671</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Others</bold></td>
+<td align="left" rowspan="1" colspan="1">VCP-Transitional endoplasmic reticulum ATPase</td>
+<td align="left" rowspan="1" colspan="1">0,8</td>
+<td align="left" rowspan="1" colspan="1">0,02</td>
+<td align="left" rowspan="1" colspan="1">0,75</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">ANXA5-Annexin A5</td>
+<td align="left" rowspan="1" colspan="1">41883</td>
+<td align="left" rowspan="1" colspan="1">17899</td>
+<td align="left" rowspan="1" colspan="1">41699</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">GLS-Glutaminase kidney isoform, mitochondria</td>
+<td align="left" rowspan="1" colspan="1">18994</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0,48</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">ANXA2-Annexin A2</td>
+<td align="left" rowspan="1" colspan="1">0,26</td>
+<td align="left" rowspan="1" colspan="1">0,48</td>
+<td align="left" rowspan="1" colspan="1">0,1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">GNB2-Guanine nucleotide-binding protein G(I)/G(S)/G(T)subunit beta-2</td>
+<td align="left" rowspan="1" colspan="1">42036</td>
+<td align="left" rowspan="1" colspan="1">0,66</td>
+<td align="left" rowspan="1" colspan="1">41275</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec015" sec-type="conclusions">
+<title>Discussion</title>
+<p>There is a possibility that stem cells will be used to cure some of the incurable human diseases. However, for this to happen in the near future, novel stem cell therapies which rely upon an understanding of the biology of these interesting cells have to be developed. Stem cells exist in a specialized environment in the body known as “the niche”. The niche is known to control the behavior of the stem cells and ensures their survival. Most human stem cell niches are deep in the body and so difficult to study. Therefore, the question of how changes in stem cell niches of the host affect the stem cell properties is among the most challenging questions to be answered [<xref rid="pone.0142934.ref020" ref-type="bibr">20</xref>, <xref rid="pone.0142934.ref021" ref-type="bibr">21</xref>]. One approach to answer this type of question is perhaps to isolate stem cells from the same niche of the same individual under two different conditions for comparison such as before and after the treatment of a disease that may affect both the niche and the stem cell properties. In this study, the stem cells from an easily accessible stem cell niche, subcutaneous adipose tissue, were isolated from an individual with CRF with HTBD who underwent PTX operation were used. This allowed us to compare the same type of stem cells isolated from the same type of niche under two different host conditions to answer the question of how changes in the stem cell environment of the host affected stem cell properties. Furthermore, we studied stem cells from an aged-match healthy individual as the control and the stem cells from a patient with CRF accompanied by LTBD. Comparisons were made among the stem cells by measuring ALP activities, telomerase activities, adipogenic and osteoblastic differentiation potentials and changes at the proteome level.</p>
+<sec id="sec016">
+<title>Comparison of ALP activities revealed the presence of predefined molecular mechanisms in stem cells</title>
+<p>ALP activity is known to reflect the rate of bone turnover in adult individuals [<xref rid="pone.0142934.ref022" ref-type="bibr">22</xref>]. However, to the best of our knowledge, in most studies, although ALP activity during the osteoblastic differentiation was measured in MSCs, the results were not evaluated in terms of their relevance to the rate of bone turnover. In this study, hAT-MSCs of the patient with HTBD displayed significantly higher ALP activity during osteoblastic differentiation, then the hAT-MSCs of the same patient after PTX operation. In addition, hAT-MSCs of the CRF patient with LTBD had the lowest ALP activity (<xref rid="pone.0142934.g002" ref-type="fig">Fig 2</xref>). These observations implied that ALP activity of hAT-MSCs during osteoblastic differentiation may be correlated with the bone turnover status. The stem cells should be expected not to have predefined molecular mechanisms leading them to differentiation. However, our findings indicated and supported, that there are predefined molecular mechanisms to underline the features of the observed host diseases in stem cells.</p>
+</sec>
+<sec id="sec017">
+<title>Telomerase activity in stem cells was not affected by bone turnover status of the host</title>
+<p>Age-related telomerase shortening due to loss of telomerase activity in AT-MSCs might be an indicator of host aging from whom the stem cells were obtained [<xref rid="pone.0142934.ref023" ref-type="bibr">23</xref>]. We observed a donor-age associated decrease in telomerase activities. The least telomerase activity was observed in the elderly patient with LTBD (<xref rid="pone.0142934.g003" ref-type="fig">Fig 3</xref>). The patient who underwent PTX displayed low bone turnover in a week after the operation, although the stem cells isolated from this patient after PTX still had relatively high telomerase activity indicating that the turnover status of the bone might not really affect the level of telomerase activity.</p>
+</sec>
+<sec id="sec018">
+<title>Changes in the host status cause changes in global protein expression profile in the hAT-MSCs</title>
+<p>Most of the identified proteins were classified into seven categories (<xref rid="pone.0142934.t002" ref-type="table">Table 2</xref> and <xref rid="pone.0142934.g005" ref-type="fig">Fig 5</xref>). Some of these play critical roles in cellular architecture. Also, proteins that were part of the protein folding machinery were described. Some of those were inducible chaperons that were expressed under stress conditions. Transcription, protein biosynthesis and degradation related proteins that we detected indicated the presence of active cell growth. Redox metabolism-related scavenger proteins that were detected may be an indicator of active cell growth as well. The presence of apoptosis, transcription, protein biosynthesis/degradation and energy metabolism-related proteins indicated cellular self-renewal and proliferation. Some of the proteins identified in this study were similar to the proteins reported by the earlier studies [<xref rid="pone.0142934.ref024" ref-type="bibr">24</xref>, <xref rid="pone.0142934.ref025" ref-type="bibr">25</xref>].</p>
+</sec>
+<sec id="sec019">
+<title>The abundant proteins present in the high turnover state, but absent in the low turnover state require attention</title>
+<p>There were two structural proteins that required our attention since their abundances were high before PTX in comparison to the control. These proteins were F-acting-capping protein and keratin, type 1cytosceleton 10. These two proteins were not regulated in AT-MSCs of the patient with LTBD in comparison to the control, although there was a high level of regulation in AT-MSCs of the patient with HTBD in comparison to the control. This finding indicated that these proteins may play pivotal roles in determining the status of the bone turnover. This interpretation might make sense since the actin cytoskeleton controls cell shape, mobility, division and intracellular transports. Although the functions of these two proteins in stem cells are not well established, their roles in cancer cells are known in detail [<xref rid="pone.0142934.ref026" ref-type="bibr">26</xref>]. They are involved in cell growth, proliferation, stiffness, movement of invasiveness in cancer cells [<xref rid="pone.0142934.ref027" ref-type="bibr">27</xref>]. The F-acting capping protein which is an actin regulator and constructed as a heterodimer consists of alpha and beta subunits and functions as a tumor suppressor protein. F-actin-capping protein subunit β plays a role for actin binding and regulates cell morphology and cytoskeleton organization under normal circumstances [<xref rid="pone.0142934.ref026" ref-type="bibr">26</xref>–<xref rid="pone.0142934.ref028" ref-type="bibr">28</xref>].</p>
+<p>There is no study establishing a relationship between Keratin type 1 cytoskeleton 10 protein and bone turnover. However, the protein content of blood in 25 patients with bone fracture was reported [<xref rid="pone.0142934.ref029" ref-type="bibr">29</xref>]. Twelve of the 213 identified proteins were found to be related to the bone and cartilage metabolism. Keratin, type 1cytoskeloton 10 were present among them, and it was claimed that this protein should have a connection with the bone formation [<xref rid="pone.0142934.ref029" ref-type="bibr">29</xref>]. Our study is the first study showing a change in expression of keratin type 1 cytoskeleton 10 protein in response to changes in bone turnover. However,a study reported a correlation between organization of MSCs cytoskeleton elements and, changes in cell morphology and expression of some markers [<xref rid="pone.0142934.ref030" ref-type="bibr">30</xref>]. In that study, the researchers found out that cell shape of MSCs and their cytoskeleton organization have changed during osteoblastic differentiation [<xref rid="pone.0142934.ref030" ref-type="bibr">30</xref>]. This reorganization of the cytoskeleton may occur as an early response to changes in some hormones such as dexamethosone, growth hormone, parathyroid hormone. This early report supported our findings about changing the expression of some structural proteins in response to bone turnover, which is affected by the PTH level [<xref rid="pone.0142934.ref031" ref-type="bibr">31</xref>].</p>
+<p>Redox regulation is an essential physiological process in the survival of all cell types [<xref rid="pone.0142934.ref032" ref-type="bibr">32</xref>]. Imbalance in a redox system creates oxidative stress in the cells, resulting in an impairment of cellular function, lipid peroxidation, protein degradation and nucleic acid breakage. There was a high level of peroxiredoxin expression in AT-MSCs of the patient with HTBD but not after the PTX operation and not with the patients with LTBD.</p>
+<p>Peroxiredoxin is proposed to play a role in cell signaling by regulating radical oxygen species [<xref rid="pone.0142934.ref033" ref-type="bibr">33</xref>]. In general, the increase in peroxiredoxin levels can be interpreted as an indicator of active cell growth, which produces radical oxygen species (ROS). However, there is a report about the relationship between osteoclastogenesis and peroxiredoxin-2 through the pathway induced by RANKL (receptor activator of NF-κB ligand), which is a well known osteoclastic biomarker. RANKL induces multiple signaling pathways causing long lasting ROS increase and Ca<sup>2+</sup> oscillations in bone morrow-derived monocytes, which result in differentiation into osteoclasts [<xref rid="pone.0142934.ref034" ref-type="bibr">34</xref>]. The physiological consequence of RANKL signaling activation pathway is imitated in peroxiredoxin-2 knocked out mice and the results demonstrated a clear relationship among ROS, ROS scavenger proteins and the decrease in bone density. This study indirectly support our findings about the relation between the increases in peroxiredoxin levels and HTBD. In addition, there is a report about the usefulness of peroxiredoxin-2 as a biomarker to predict chemotherapy response in osteosarcome treatment, although the molecular mechanism behind the increase in peroxiredoxin-2 levels in osteosarcomes with poor response is not explained [<xref rid="pone.0142934.ref035" ref-type="bibr">35</xref>].</p>
+<p>Heterogeneous nuclear ribonucleoproteins (hnRNPs) constitute a set of polypeptides that bind heterogeneous nuclear RNA, the transcripts produced by RNA polymerase II [<xref rid="pone.0142934.ref036" ref-type="bibr">36</xref>]. There is no report about the effect of hnRNP expression on bone turnover. However, hnRNP is a multifunctional protein that is involved not only in processing heterogeneous nuclear RNAs (hnRNAs) into mature mRNAs, but also acting as <italic>trans</italic>-factors in regulating gene expression [<xref rid="pone.0142934.ref037" ref-type="bibr">37</xref>]. It is our prediction that the change in abundance of hnRNP might be the consequence of its trans-acting function.</p>
+<p>Two proteins were identified in stem cells isolated from high bone turnover state related to the metabolic acidosis. This is a relevant finding because the patient we studied suffered from CRF and chronic metabolic acidosis. The first one was serine dehydratase protein (SDH), which catalyzes pyridoxal phosphate (PLP) dependent deamination of serine and threonine to produce pyruvate and α-ketobutyrate, respectively. This is one of the few enzymes that directly release ammonia from amino acids. This enzyme is reported to play an important role in adaptation to metabolic acidosis [<xref rid="pone.0142934.ref038" ref-type="bibr">38</xref>].</p>
+<p>Glutaminase (GA) kidney isoform-1 is a well studied enzyme with well-defined catalytic properties. This enzyme is known to catalyze the reaction that produces ammonium from glutamine (GLN) in renal tubular cells; so it plays an important role in maintaining acid-base homeostasis [<xref rid="pone.0142934.ref039" ref-type="bibr">39</xref>]. Surprisingly, in this study, GA was also detected in AT-MSCs of the patient with SHPT (HTBD) before the PTX operation. GA has three different isoforms: GA Isoforms 1, 2 and 3. Isoform 1 is highly expressed in the brain and the kidney. There is no report stating expression of GA isoform-1, 2 or 3 in adipose tissue. However, since the stem cells isolated from the hAT displayed a higher abundance of this enzyme, the enzyme should either be expressed in AT at a low level or the AT has the potential to express GA isoform 1, when it is necessary. The reason why we observed such a high level GA isoform-1 expression in stem cells in HTBD patient might be due the fact that hyperparathyroidism is a possible cause for metabolic acidosis [<xref rid="pone.0142934.ref040" ref-type="bibr">40</xref>].</p>
+</sec>
+</sec>
+<sec id="sec020" sec-type="conclusions">
+<title>Conclusion</title>
+<p>This is the first study providing proteomic details of hAT-MSCs isolated from the same host under different conditions. Some of the identified and regulated proteins may be linked to the disease status of the host. However, some proteins that were identified did not reveal any association between the host’s disease status and the metabolic changes of the stem cells. We are aware of the fact that the study was undertaken <italic>in vitro</italic> and changes that reflect <italic>in vivo</italic> conditions may be missing or may not reflect the reality. However, any observation <italic>in vitro</italic> is worthy of investigation in <italic>in vivo</italic> and may provide valuable clues about the metabolic events. The list of the candidate proteins generated in this study needs further attention to establish firm, conclusive connections between disease-associated changes in stem cell metabolism.</p>
+</sec>
+<sec id="sec021">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0142934.s001" xlink:href="info:doi/10.1371/journal.pone.0142934.s001" mimetype="image/tiff" position="float" xlink:type="simple">
+<label>S1 Fig</label>
+<caption>
+<title>Flow cytometry analysis of of hAT-MSCs obtained from HTBD-hAT-MSCs, PTX-hAT-MSCs, LTBD-hAT-MSCs and the control.</title>
+<p>HTBD: Stem cells isolated from human adipose tissue obtained from a patient with secondary hyperparathyroidism (High turnover bone disease). LTBD: Stem cells isolated from human adipose tissue obtained from a patient with adynamic bone disease (Low turnover bone disease).</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>The authors would like to thank Dr. Gulcin Gacar for her technical assistance during flow cytometry analysis. The authors received specific funding for this work from Kocaeli University BAP Project number: 2011/041.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0142934.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ott</surname> <given-names>SM</given-names></name>. <article-title>Bone disease in CKD</article-title>. <source>Curr Opin Nephrol Hypertens</source>. <volume>21</volume>(<issue>4</issue>):<fpage>376</fpage>–<lpage>81</lpage>. Epub <year>2012</year>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1097/MNH.0b013e32835421f6" xlink:type="simple">10.1097/MNH.0b013e32835421f6</ext-link></comment> <object-id pub-id-type="pmid">22531161</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Komaba</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Kakuta</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Fukagawa</surname> <given-names>M</given-names></name>. <article-title>Diseases of the parathyroid gland in chronic kidney disease</article-title>. <source>Clin Exp Nephrol</source>. <volume>15</volume>(<issue>6</issue>):<fpage>797</fpage>–<lpage>809</lpage>. Epub 2011/08/06. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10157-011-0502-5" xlink:type="simple">10.1007/s10157-011-0502-5</ext-link></comment> <object-id pub-id-type="pmid">21818548</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Moorthi</surname> <given-names>RN</given-names></name>, <name name-style="western"><surname>Moe</surname> <given-names>SM</given-names></name>. <article-title>Recent advances in the noninvasive diagnosis of renal osteodystrophy</article-title>. <source>Kidney Int</source>. <volume>84</volume>(<issue>5</issue>):<fpage>886</fpage>–<lpage>94</lpage>. Epub 2013/06/27. ki2013254 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1038/ki.2013.254" xlink:type="simple">10.1038/ki.2013.254</ext-link></comment> <object-id pub-id-type="pmid">23802194</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cozzolino</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Brancaccio</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Gallieni</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Slatopolsky</surname> <given-names>E</given-names></name>. <article-title>Pathogenesis of vascular calcification in chronic kidney disease</article-title>. <source>Kidney Int</source>. <year>2005</year>;<volume>68</volume>(<issue>2</issue>):<fpage>429</fpage>–<lpage>36</lpage>. Epub 2005/07/15. KID421 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/j.1523-1755.2005.00421.x" xlink:type="simple">10.1111/j.1523-1755.2005.00421.x</ext-link></comment> <object-id pub-id-type="pmid">16014020</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bover</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Urena</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Brandenburg</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Goldsmith</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Ruiz</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>DaSilva</surname> <given-names>I</given-names></name>, <etal>et al</etal>. <article-title>Adynamic bone disease: from bone to vessels in chronic kidney disease</article-title>. <source>Semin Nephrol</source>. <volume>34</volume>(<issue>6</issue>):<fpage>626</fpage>–<lpage>40</lpage>. Epub 2014/12/17. S0270-9295(14)00148-X [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.semnephrol.2014.09.008" xlink:type="simple">10.1016/j.semnephrol.2014.09.008</ext-link></comment> <object-id pub-id-type="pmid">25498381</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Drueke</surname> <given-names>TB</given-names></name>. <article-title>Foreword: extraskeletal calcifications in patients with chronic renal failure</article-title>. <source>Nephrol Dial Transplant</source>. <year>2002</year>;<volume>17</volume>(<issue>2</issue>):<fpage>330</fpage>–<lpage>1</lpage>. Epub 2002/01/29. <object-id pub-id-type="pmid">11812900</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cookson</surname> <given-names>C</given-names></name>. <article-title>Mother of all cells. Scientists hope for huge benefits from the surge of research on embryonic stem cells</article-title>. <source>Sci Am</source>. <year>2005</year>;<volume>293</volume>(<issue>1</issue>):<fpage>A6</fpage>–<lpage>11</lpage>. Epub 2005/07/13. <object-id pub-id-type="pmid">16008293</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mimeault</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Hauke</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Batra</surname> <given-names>SK</given-names></name>. <article-title>Recent advances on the molecular mechanisms involved in the drug resistance of cancer cells and novel targeting therapies</article-title>. <source>Clin Pharmacol Ther</source>. <year>2008</year>;<volume>83</volume>(<issue>5</issue>):<fpage>673</fpage>–<lpage>91</lpage>. Epub 2007/09/06. 6100296 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1038/sj.clpt.6100296" xlink:type="simple">10.1038/sj.clpt.6100296</ext-link></comment> <object-id pub-id-type="pmid">17786164</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gimble</surname> <given-names>JM</given-names></name>. <article-title>Adipose tissue-derived therapeutics</article-title>. <source>Expert Opin Biol Ther</source>. <year>2003</year>;<volume>3</volume>(<issue>5</issue>):<fpage>705</fpage>–<lpage>13</lpage>. Epub 2003/07/26. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1517/14712598.3.5.705" xlink:type="simple">10.1517/14712598.3.5.705</ext-link></comment> <object-id pub-id-type="pmid">12880371</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lee</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>JM</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>JR</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>KJ</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>YJ</given-names></name>, <etal>et al</etal>. <article-title>Systemic transplantation of human adipose-derived stem cells stimulates bone repair by promoting osteoblast and osteoclast function</article-title>. <source>J Cell Mol Med</source>. <volume>15</volume>(<issue>10</issue>):<fpage>2082</fpage>–<lpage>94</lpage>. Epub 2010/12/17. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/j.1582-4934.2010.01230.x" xlink:type="simple">10.1111/j.1582-4934.2010.01230.x</ext-link></comment> <object-id pub-id-type="pmid">21159123</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zuk</surname> <given-names>PA</given-names></name>, <name name-style="western"><surname>Zhu</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Ashjian</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>De Ugarte</surname> <given-names>DA</given-names></name>, <name name-style="western"><surname>Huang</surname> <given-names>JI</given-names></name>, <name name-style="western"><surname>Mizuno</surname> <given-names>H</given-names></name>, <etal>et al</etal>. <article-title>Human adipose tissue is a source of multipotent stem cells</article-title>. <source>Mol Biol Cell</source>. <year>2002</year>;<volume>13</volume>(<issue>12</issue>):<fpage>4279</fpage>–<lpage>95</lpage>. Epub 2002/12/12. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1091/mbc.E02-02-0105" xlink:type="simple">10.1091/mbc.E02-02-0105</ext-link></comment> <object-id pub-id-type="pmid">12475952</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Clarke</surname> <given-names>PR</given-names></name>, <name name-style="western"><surname>Williams</surname> <given-names>HI</given-names></name>. <article-title>Ossification in extradural fat in Paget's disease of the spine</article-title>. <source>Br J Surg</source>. <year>1975</year>;<volume>62</volume>(<issue>7</issue>):<fpage>571</fpage>–<lpage>2</lpage>. Epub 1975/07/01. <object-id pub-id-type="pmid">809080</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shackelfold</surname> <given-names>GDBL</given-names></name>, <name name-style="western"><surname>McAlister</surname> <given-names>WH</given-names></name>. <article-title>Calcified subcutaneous fat necrosis in infancy</article-title>. <source>J Can Assoc Radio</source>. <year>1975</year>;<volume>26</volume>(<issue>3</issue>):<fpage>1107</fpage>–<lpage>10</lpage>.</mixed-citation></ref>
+<ref id="pone.0142934.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mitra</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Dove</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Somisetty</surname> <given-names>SK</given-names></name>. <article-title>Subcutaneous fat necrosis in newborn-an unusual case and review of literature</article-title>. <source>Eur J Pediatr</source>. <volume>170</volume>(<issue>9</issue>):<fpage>1107</fpage>–<lpage>10</lpage>. Epub 2011/02/15. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00431-011-1405-x" xlink:type="simple">10.1007/s00431-011-1405-x</ext-link></comment> <object-id pub-id-type="pmid">21318229</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>van Hoof</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Krijgsveld</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Mummery</surname> <given-names>C</given-names></name>. <article-title>Proteomic analysis of stem cell differentiation and early development</article-title>. <source>Cold Spring Harb Perspect Biol</source>. <volume>4</volume>(<issue>3</issue>). Epub 2012/02/10. cshperspect.a008177 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1101/cshperspect.a008177" xlink:type="simple">10.1101/cshperspect.a008177</ext-link></comment> <object-id pub-id-type="pmid">22317846</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ertas</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Ural</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Ural</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Aksoy</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Kozdag</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Gacar</surname> <given-names>G</given-names></name>, <etal>et al</etal>. <article-title>Comparative analysis of apoptotic resistance of mesenchymal stem cells isolated from human bone marrow and adipose tissue</article-title>. <source>ScientificWorldJournal</source>. <year>2012</year>:<fpage>105698</fpage>. Epub 2012/05/24. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1100/2012/105698" xlink:type="simple">10.1100/2012/105698</ext-link></comment> <object-id pub-id-type="pmid">22619573</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Karaoz</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Aksoy</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Ayhan</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Sariboyaci</surname> <given-names>AE</given-names></name>, <name name-style="western"><surname>Kaymaz</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Kasap</surname> <given-names>M</given-names></name>. <article-title>Characterization of mesenchymal stem cells from rat bone marrow: ultrastructural properties, differentiation potential and immunophenotypic markers</article-title>. <source>Histochem Cell Biol</source>. <year>2009</year>;<volume>132</volume>(<issue>5</issue>):<fpage>533</fpage>–<lpage>46</lpage>. Epub 2009/08/19. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00418-009-0629-6" xlink:type="simple">10.1007/s00418-009-0629-6</ext-link></comment> <object-id pub-id-type="pmid">19688349</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mi</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Muruganujan</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Casagrande</surname> <given-names>JT</given-names></name>, <name name-style="western"><surname>Thomas</surname> <given-names>PD</given-names></name>. <article-title>Large-scale gene function analysis with the PANTHER classification system</article-title>. <source>Nat Protoc</source>. <volume>8</volume>(<issue>8</issue>):<fpage>1551</fpage>–<lpage>66</lpage>. Epub 2013/07/23. nprot.2013.092 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1038/nprot.2013.092" xlink:type="simple">10.1038/nprot.2013.092</ext-link></comment> <object-id pub-id-type="pmid">23868073</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Akpinar</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Kasap</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Aksoy</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Duruksu</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Gacar</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Karaoz</surname> <given-names>E</given-names></name>. <article-title>Phenotypic and proteomic characteristics of human dental pulp derived mesenchymal stem cells from a natal, an exfoliated deciduous, and an impacted third molar tooth</article-title>. <source>Stem Cells Int</source>. <year>2014</year>:<fpage>457059</fpage>. Epub 2014/11/08. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1155/2014/457059" xlink:type="simple">10.1155/2014/457059</ext-link></comment> <object-id pub-id-type="pmid">25379041</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rojas-Rios</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Gonzalez-Reyes</surname> <given-names>A</given-names></name>. <article-title>Concise review: The plasticity of stem cell niches: a general property behind tissue homeostasis and repair</article-title>. <source>Stem Cells</source>. <volume>32</volume>(<issue>4</issue>):<fpage>852</fpage>–<lpage>9</lpage>. Epub 2013/12/21. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1002/stem.1621" xlink:type="simple">10.1002/stem.1621</ext-link></comment> <object-id pub-id-type="pmid">24356972</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yamashita</surname> <given-names>YM</given-names></name>, <name name-style="western"><surname>Fuller</surname> <given-names>MT</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>DL</given-names></name>. <article-title>Signaling in stem cell niches: lessons from the Drosophila germline</article-title>. <source>J Cell Sci</source>. <year>2005</year>;<volume>118</volume>(<issue>Pt 4</issue>):<fpage>665</fpage>–<lpage>72</lpage>. Epub 2005/02/11. 118/4/665 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1242/jcs.01680" xlink:type="simple">10.1242/jcs.01680</ext-link></comment> <object-id pub-id-type="pmid">15701923</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ferreira</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Drueke</surname> <given-names>TB</given-names></name>. <article-title>Biological markers in the diagnosis of the different forms of renal osteodystrophy</article-title>. <source>Am J Med Sci</source>. <year>2000</year>;<volume>320</volume>(<issue>2</issue>):<fpage>85</fpage>–<lpage>9</lpage>. Epub 2000/09/12. <object-id pub-id-type="pmid">10981481</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Passos</surname> <given-names>JF</given-names></name>, <name name-style="western"><surname>von Zglinicki</surname> <given-names>T</given-names></name>. <article-title>Mitochondria, telomeres and cell senescence</article-title>. <source>Exp Gerontol</source>. <year>2005</year>;<volume>40</volume>(<issue>6</issue>):<fpage>466</fpage>–<lpage>72</lpage>. Epub 2005/06/21. S0531-5565(05)00081-1 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.exger.2005.04.006" xlink:type="simple">10.1016/j.exger.2005.04.006</ext-link></comment> <object-id pub-id-type="pmid">15963673</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>DeLany</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Floyd</surname> <given-names>ZE</given-names></name>, <name name-style="western"><surname>Zvonic</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Smith</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Gravois</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Reiners</surname> <given-names>E</given-names></name>, <etal>et al</etal>. <article-title>Proteomic analysis of primary cultures of human adipose-derived stem cells: modulation by Adipogenesis</article-title>. <source>Mol Cell Proteomics</source>. <year>2005</year>;<volume>4</volume>(<issue>6</issue>):<fpage>731</fpage>–<lpage>40</lpage>. Epub 2005/03/09. M400198-MCP200 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1074/mcp.M400198-MCP200" xlink:type="simple">10.1074/mcp.M400198-MCP200</ext-link></comment> <object-id pub-id-type="pmid">15753122</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Park</surname> <given-names>HW</given-names></name>, <name name-style="western"><surname>Shin</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>CW</given-names></name>. <article-title>Proteome of mesenchymal stem cells</article-title>. <source>Proteomics</source>. <year>2007</year>;<volume>7</volume>(<issue>16</issue>):<fpage>2881</fpage>–<lpage>94</lpage>. Epub 2007/07/27. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1002/pmic.200700089" xlink:type="simple">10.1002/pmic.200700089</ext-link></comment> <object-id pub-id-type="pmid">17654458</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Amandio</surname> <given-names>AR</given-names></name>, <name name-style="western"><surname>Gaspar</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Whited</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Janody</surname> <given-names>F</given-names></name>. <article-title>Subunits of the Drosophila actin-capping protein heterodimer regulate each other at multiple levels</article-title>. <source>PLoS One</source>. <volume>9</volume>(<issue>5</issue>):<fpage>e96326</fpage>. Epub 2014/05/03. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0096326" xlink:type="simple">10.1371/journal.pone.0096326</ext-link></comment> PONE-D-14-03157 [pii]. <object-id pub-id-type="pmid">24788460</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Stevenson</surname> <given-names>RP</given-names></name>, <name name-style="western"><surname>Veltman</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Machesky</surname> <given-names>LM</given-names></name>. <article-title>Actin-bundling proteins in cancer progression at a glance</article-title>. <source>J Cell Sci</source>. <volume>125</volume>(<issue>Pt 5</issue>):<fpage>1073</fpage>–<lpage>9</lpage>. Epub 2012/04/12. 125/5/1073 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1242/jcs.093799" xlink:type="simple">10.1242/jcs.093799</ext-link></comment> <object-id pub-id-type="pmid">22492983</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fernandez</surname> <given-names>BG</given-names></name>, <name name-style="western"><surname>Gaspar</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Bras-Pereira</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Jezowska</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Rebelo</surname> <given-names>SR</given-names></name>, <name name-style="western"><surname>Janody</surname> <given-names>F</given-names></name>. <article-title>Actin-Capping Protein and the Hippo pathway regulate F-actin and tissue growth in Drosophila</article-title>. <source>Development</source>. <volume>138</volume>(<issue>11</issue>):<fpage>2337</fpage>–<lpage>46</lpage>. Epub 2011/04/29. dev.063545 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1242/dev.063545" xlink:type="simple">10.1242/dev.063545</ext-link></comment> <object-id pub-id-type="pmid">21525075</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Grgurevic</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Macek</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Durdevic</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Vukicevic</surname> <given-names>S</given-names></name>. <article-title>Detection of bone and cartilage-related proteins in plasma of patients with a bone fracture using liquid chromatography-mass spectrometry</article-title>. <source>Int Orthop</source>. <year>2007</year>;<volume>31</volume>(<issue>6</issue>):<fpage>743</fpage>–<lpage>51</lpage>. Epub 2007/07/03. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00264-007-0404-z" xlink:type="simple">10.1007/s00264-007-0404-z</ext-link></comment> <object-id pub-id-type="pmid">17602227</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rodriguez</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Gonzalez</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Rios</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Cambiazo</surname> <given-names>V</given-names></name>. <article-title>Cytoskeletal organization of human mesenchymal stem cells (MSC) changes during their osteogenic differentiation</article-title>. <source>J Cell Biochem</source>. <year>2004</year>;<volume>93</volume>(<issue>4</issue>):<fpage>721</fpage>–<lpage>31</lpage>. Epub 2005/01/22. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1002/jcb.20234" xlink:type="simple">10.1002/jcb.20234</ext-link></comment> <object-id pub-id-type="pmid">15660416</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rodriguez</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Garat</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Gajardo</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Pino</surname> <given-names>AM</given-names></name>, <name name-style="western"><surname>Seitz</surname> <given-names>G</given-names></name>. <article-title>Abnormal osteogenesis in osteoporotic patients is reflected by altered mesenchymal stem cells dynamics</article-title>. <source>J Cell Biochem</source>. <year>1999</year>;<volume>75</volume>(<issue>3</issue>):<fpage>414</fpage>–<lpage>23</lpage>. Epub 1999/10/28. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1002/(SICI)1097-4644(19991201)75:3&lt;414::AID-JCB7&gt;3.0.CO;2-C" xlink:type="simple">10.1002/(SICI)1097-4644(19991201)75:3&lt;414::AID-JCB7&gt;3.0.CO;2-C</ext-link></comment> [pii]. <object-id pub-id-type="pmid">10536365</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ahsan</surname> <given-names>MK</given-names></name>, <name name-style="western"><surname>Lekli</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Ray</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Yodoi</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Das</surname> <given-names>DK</given-names></name>. <article-title>Redox regulation of cell survival by the thioredoxin superfamily: an implication of redox gene therapy in the heart</article-title>. <source>Antioxid Redox Signal</source>. <year>2009</year>;<volume>11</volume>(<issue>11</issue>):<fpage>2741</fpage>–<lpage>58</lpage>. Epub 2009/07/09. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1089/ARS.2009.2683" xlink:type="simple">10.1089/ARS.2009.2683</ext-link></comment> <object-id pub-id-type="pmid">19583492</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rhee</surname> <given-names>SG</given-names></name>, <name name-style="western"><surname>Chae</surname> <given-names>HZ</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>K</given-names></name>. <article-title>Peroxiredoxins: a historical overview and speculative preview of novel mechanisms and emerging concepts in cell signaling</article-title>. <source>Free Radic Biol Med</source>. <year>2005</year>;<volume>38</volume>(<issue>12</issue>):<fpage>1543</fpage>–<lpage>52</lpage>. Epub 2005/05/27. S0891-5849(05)00098-5 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.freeradbiomed.2005.02.026" xlink:type="simple">10.1016/j.freeradbiomed.2005.02.026</ext-link></comment> <object-id pub-id-type="pmid">15917183</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kim</surname> <given-names>MS</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>YM</given-names></name>, <name name-style="western"><surname>Son</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Tian</surname> <given-names>YS</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>SI</given-names></name>, <name name-style="western"><surname>Kang</surname> <given-names>SW</given-names></name>, <etal>et al</etal>. <article-title>RANKL-mediated reactive oxygen species pathway that induces long lasting Ca2+ oscillations essential for osteoclastogenesis</article-title>. <source>J Biol Chem</source>. <volume>285</volume>(<issue>10</issue>):<fpage>6913</fpage>–<lpage>21</lpage>. Epub 2010/01/06. M109.051557 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1074/jbc.M109.051557" xlink:type="simple">10.1074/jbc.M109.051557</ext-link></comment> <object-id pub-id-type="pmid">20048168</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kikuta</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Tochigi</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Saito</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Shimoda</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Morioka</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Toyama</surname> <given-names>Y</given-names></name>, <etal>et al</etal>. <article-title>Peroxiredoxin 2 as a chemotherapy responsiveness biomarker candidate in osteosarcoma revealed by proteomics</article-title>. <source>Proteomics Clin Appl</source>. <volume>4</volume>(<issue>5</issue>):<fpage>560</fpage>–<lpage>7</lpage>. Epub 2010/12/08. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1002/prca.200900172" xlink:type="simple">10.1002/prca.200900172</ext-link></comment> <object-id pub-id-type="pmid">21137073</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Honore</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Rasmussen</surname> <given-names>HH</given-names></name>, <name name-style="western"><surname>Vorum</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Dejgaard</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Gromov</surname> <given-names>P</given-names></name>, <etal>et al</etal>. <article-title>Heterogeneous nuclear ribonucleoproteins H, H', and F are members of a ubiquitously expressed subfamily of related but distinct proteins encoded by genes mapping to different chromosomes</article-title>. <source>J Biol Chem</source>. <year>1995</year>;<volume>270</volume>(<issue>48</issue>):<fpage>28780</fpage>–<lpage>9</lpage>. Epub 1995/12/01. <object-id pub-id-type="pmid">7499401</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chaudhury</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Chander</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Howe</surname> <given-names>PH</given-names></name>. <article-title>Heterogeneous nuclear ribonucleoproteins (hnRNPs) in cellular processes: Focus on hnRNP E1's multifunctional regulatory roles</article-title>. <source>RNA</source>. <volume>16</volume>(<issue>8</issue>):<fpage>1449</fpage>–<lpage>62</lpage>. Epub 2010/06/30. rna.2254110 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1261/rna.2254110" xlink:type="simple">10.1261/rna.2254110</ext-link></comment> <object-id pub-id-type="pmid">20584894</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lopez-Flores</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Peragon</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Valderrama</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Esteban</surname> <given-names>FJ</given-names></name>, <name name-style="western"><surname>Luque</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Peinado</surname> <given-names>MA</given-names></name>, <etal>et al</etal>. <article-title>Downregulation in the expression of the serine dehydratase in the rat liver during chronic metabolic acidosis</article-title>. <source>Am J Physiol Regul Integr Comp Physiol</source>. <year>2006</year>;<volume>291</volume>(<issue>5</issue>):<fpage>R1295</fpage>–<lpage>302</lpage>. Epub 2006/06/24. 00095.2006 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1152/ajpregu.00095.2006" xlink:type="simple">10.1152/ajpregu.00095.2006</ext-link></comment> <object-id pub-id-type="pmid">16793941</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Curthoys</surname> <given-names>NP</given-names></name>, <name name-style="western"><surname>Lowry</surname> <given-names>OH</given-names></name>. <article-title>The distribution of glutaminase isoenzymes in the various structures of the nephron in normal, acidotic, and alkalotic rat kidney</article-title>. <source>J Biol Chem</source>. <year>1973</year>;<volume>248</volume>(<issue>1</issue>):<fpage>162</fpage>–<lpage>8</lpage>. Epub 1973/01/10. <object-id pub-id-type="pmid">4692829</object-id>.</mixed-citation></ref>
+<ref id="pone.0142934.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ibrahim</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>YJ</given-names></name>, <name name-style="western"><surname>Curthoys</surname> <given-names>NP</given-names></name>. <article-title>Renal response to metabolic acidosis: role of mRNA stabilization</article-title>. <source>Kidney Int</source>. <year>2008</year>;<volume>73</volume>(<issue>1</issue>):<fpage>11</fpage>–<lpage>8</lpage>. Epub 2007/10/05. 5002581 [pii] <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1038/sj.ki.5002581" xlink:type="simple">10.1038/sj.ki.5002581</ext-link></comment> <object-id pub-id-type="pmid">17914349</object-id>.</mixed-citation></ref>
+</ref-list>
+</back>
+</article>

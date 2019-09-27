@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+<front>
+<journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher></journal-meta>
+<article-meta><article-id pub-id-type="publisher-id">09-PONE-RA-14701R1</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0009556</article-id><article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline"><subject>Genetics and Genomics/Comparative Genomics</subject><subject>Genetics and Genomics/Genome Projects</subject><subject>Genetics and Genomics/Microbial Evolution and Genomics</subject></subj-group></article-categories><title-group><article-title>Genome Sequence of <italic>Cronobacter sakazakii</italic> BAA-894 and Comparative Genomic Hybridization Analysis with Other <italic>Cronobacter</italic> Species</article-title><alt-title alt-title-type="running-head"><italic>Cronobacter</italic> Genome Comparisons</alt-title></title-group><contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Kucerova</surname><given-names>Eva</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Clifton</surname><given-names>Sandra W.</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Xia</surname><given-names>Xiao-Qin</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Long</surname><given-names>Fred</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Porwollik</surname><given-names>Steffen</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Fulton</surname><given-names>Lucinda</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Fronick</surname><given-names>Catrina</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Minx</surname><given-names>Patrick</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Kyung</surname><given-names>Kim</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Warren</surname><given-names>Wesley</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Fulton</surname><given-names>Robert</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Feng</surname><given-names>Dongyan</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Wollam</surname><given-names>Aye</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Shah</surname><given-names>Neha</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Bhonagiri</surname><given-names>Veena</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Nash</surname><given-names>William E.</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Hallsworth-Pepin</surname><given-names>Kymberlie</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Wilson</surname><given-names>Richard K.</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple"><name name-style="western"><surname>McClelland</surname><given-names>Michael</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple"><name name-style="western"><surname>Forsythe</surname><given-names>Stephen J.</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+</contrib-group><aff id="aff1"><label>1</label><addr-line>School of Science and Technology, Nottingham Trent University, Nottingham, United Kingdom</addr-line>       </aff><aff id="aff2"><label>2</label><addr-line>Vaccine Research Institute of San Diego, San Diego, California, United States of America</addr-line>       </aff><aff id="aff3"><label>3</label><addr-line>Genome Center at Washington University, Washington University School of Medicine, St. Louis, Missouri, United States of America</addr-line>       </aff><contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Ahmed</surname><given-names>Niyaz</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group><aff id="edit1">University of Hyderabad, India</aff><author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">mcclelland.michael@gmail.com</email></corresp>
+<fn fn-type="con"><p>Conceived and designed the experiments: SWC RKW MM. Performed the experiments: EK LAF CF PJM KK WW RSF DF NS VB WEN. Analyzed the data: EK SWC XQX AW MM SF. Contributed reagents/materials/analysis tools: SWC XQX FL SP KHP MM. Wrote the paper: EK MM SF.</p></fn>
+<fn fn-type="conflict"><p>The authors have declared that no competing interests exist.</p></fn></author-notes><pub-date pub-type="collection"><year>2010</year></pub-date><pub-date pub-type="epub"><day>8</day><month>3</month><year>2010</year></pub-date><volume>5</volume><issue>3</issue><elocation-id>e9556</elocation-id><history>
+<date date-type="received"><day>6</day><month>12</month><year>2009</year></date>
+<date date-type="accepted"><day>14</day><month>2</month><year>2010</year></date>
+</history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2010</copyright-year><copyright-holder>Kucerova et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract><sec>
+<title>Background</title>
+<p>The genus <italic>Cronobacter</italic> (formerly called <italic>Enterobacter sakazakii</italic>) is composed of five species; <italic>C. sakazakii</italic>, <italic>C. malonaticus</italic>, <italic>C. turicensis</italic>, <italic>C. muytjensii</italic>, and <italic>C. dublinensis</italic>. The genus includes opportunistic human pathogens, and the first three species have been associated with neonatal infections. The most severe diseases are caused in neonates and include fatal necrotizing enterocolitis and meningitis. The genetic basis of the diversity within the genus is unknown, and few virulence traits have been identified.</p>
+</sec><sec>
+<title>Methodology/Principal Findings</title>
+<p>We report here the first sequence of a member of this genus, <italic>C. sakazakii</italic> strain BAA-894. The genome of <italic>Cronobacter sakazakii</italic> strain BAA-894 comprises a 4.4 Mb chromosome (57% GC content) and two plasmids; 31 kb (51% GC) and 131 kb (56% GC). The genome was used to construct a 387,000 probe oligonucleotide tiling DNA microarray covering the whole genome. Comparative genomic hybridization (CGH) was undertaken on five other <italic>C. sakazakii</italic> strains, and representatives of the four other <italic>Cronobacter</italic> species. Among 4,382 annotated genes inspected in this study, about 55% of genes were common to all <italic>C. sakazakii</italic> strains and 43% were common to all <italic>Cronobacter</italic> strains, with 10–17% absence of genes.</p>
+</sec><sec>
+<title>Conclusions/Significance</title>
+<p>CGH highlighted 15 clusters of genes in <italic>C. sakazakii</italic> BAA-894 that were divergent or absent in more than half of the tested strains; six of these are of probable prophage origin. Putative virulence factors were identified in these prophage and in other variable regions. A number of genes unique to <italic>Cronobacter</italic> species associated with neonatal infections (<italic>C. sakazakii</italic>, <italic>C. malonaticus</italic> and <italic>C. turicensis</italic>) were identified. These included a copper and silver resistance system known to be linked to invasion of the blood-brain barrier by neonatal meningitic strains of <italic>Escherichia coli</italic>. In addition, genes encoding for multidrug efflux pumps and adhesins were identified that were unique to <italic>C. sakazakii</italic> strains from outbreaks in neonatal intensive care units.</p>
+</sec></abstract><funding-group><funding-statement>This work was supported by National Institutes of Health (NIH) grants R01AI52237, R01AI075093, and R01AI073971, and by a grant from Nottingham Trent University. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts><page-count count="10"/></counts></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p><italic>Cronobacter</italic> spp. (formerly <italic>Enterobacter sakazakii</italic>) are Gram-negative, motile, non-sporeforming, peritrichous rods of the <italic>Enterobacteriaceae</italic> family. <italic>Cronobacter</italic> is a ubiquitous organism present in a wide range of environments, including water, soil, and a variety of processed foods and fresh produce <xref ref-type="bibr" rid="pone.0009556-Friedemann1">[1]</xref>. The bacterium has been isolated from factory production lines including powdered infant formula factories and households <xref ref-type="bibr" rid="pone.0009556-Kandhai1">[2]</xref> as well as from a wide range of clinical samples including cerebrospinal fluid, blood, bone marrow, sputum, urine and faeces <xref ref-type="bibr" rid="pone.0009556-Gurtler1">[3]</xref>. The organism is an opportunistic pathogen of humans that can cause infections in all age groups. However, low birth weight neonates are most at risk. In this host group <italic>Cronobacter</italic> has been associated with outbreaks of necrotizing enterocolitis, meningitis and septicaemia. Infections with these presentations result in exceptionally high mortality rates ranging from 40 to 80 percent <xref ref-type="bibr" rid="pone.0009556-Lai1">[4]</xref>. In recent years, some outbreaks of bacterial infection in neonatal intensive care units (NICU) have been traced to powdered formula contaminated with <italic>Cronobacter</italic> <xref ref-type="bibr" rid="pone.0009556-Biering1">[5]</xref>–<xref ref-type="bibr" rid="pone.0009556-vanAcker1">[8]</xref>.</p>
+<p><italic>Cronobacter</italic> was defined as ‘yellow-pigmented <italic>Enterobacter cloacae</italic>’ until 1980, when it was designated a new species, <italic>Enterobacter sakazakii</italic>, by Farmer <italic>et al</italic> <xref ref-type="bibr" rid="pone.0009556-Farmer1">[9]</xref>. Analysis of both partial 16S rDNA and <italic>hsp60</italic> sequences showed that <italic>E. sakazakii</italic> isolates formed at least four distinct clusters, and it was proposed that clusters 2, 3, and 4 could be unique species <xref ref-type="bibr" rid="pone.0009556-Iversen1">[10]</xref>. Based on DNA-DNA hybridization and phenotyping, <italic>Enterobacter sakazakii</italic> was subsequently proposed to be re-classified into a new genus <italic>Cronobacter</italic>, composed of five distinct species: <italic>Cronobacter sakazakii</italic>, <italic>C. malonaticus, C. turicensis</italic>, <italic>C. muytjensii</italic> and <italic>C. dublinensis</italic> <xref ref-type="bibr" rid="pone.0009556-Iversen2">[11]</xref>. Due to their close relatedness <italic>C. sakazakii</italic> and <italic>C. malonaticus</italic> are difficult to distinguish by 16S rDNA sequence analysis. However, multilocus sequence typing (MLST) differentiates between the two species, and also reveals a strong clonal nature of the organism <xref ref-type="bibr" rid="pone.0009556-Baldwin1">[12]</xref>. Previous studies on ‘<italic>E. sakazakii</italic>’ will therefore be difficult to interpret unless the strains are re-examined and re-classified according to the current taxonomic structure.</p>
+<p><italic>Cronobacter</italic> strains vary in their virulence, as determined by epidemiological studies and in-house mammalian tissue culture <xref ref-type="bibr" rid="pone.0009556-CaubillaBarron1">[6]</xref>, <xref ref-type="bibr" rid="pone.0009556-Townsend1">[13]</xref>, <xref ref-type="bibr" rid="pone.0009556-Townsend2">[14]</xref>, but their virulence mechanisms are unknown. The bacteria can attach to intestinal cells and survive in macrophages <xref ref-type="bibr" rid="pone.0009556-Townsend1">[13]</xref>, but the specific receptors involved remain to be determined. To date, only strains from <italic>C. sakazakii</italic>, <italic>C. malonaticus</italic> and <italic>C. turicensis</italic> have been associated with neonatal infections. Recently it was shown that the disruption of tight junctions significantly enhances association of <italic>C. sakazakii</italic> with Caco2 cells <xref ref-type="bibr" rid="pone.0009556-Kim1">[15]</xref>. Some reports suggest a similarity between the tropism of <italic>Cronobacter</italic> and <italic>Citrobacter koseri</italic> for invasion and infection of the central nervous system <xref ref-type="bibr" rid="pone.0009556-Burdette1">[16]</xref>, <xref ref-type="bibr" rid="pone.0009556-Willis1">[17]</xref>. It was noted that brain abscesses due to <italic>Cronobacter</italic> and <italic>Citrobacter koseri</italic> were morphologically similar and may be due to similar virulence mechanisms <xref ref-type="bibr" rid="pone.0009556-Kline1">[18]</xref>. The first putative <italic>Cronobacter</italic> virulence factors were enterotoxin-like compounds produced by four of eighteen strains <xref ref-type="bibr" rid="pone.0009556-Pagotto1">[19]</xref>. The genes encoding the putative toxin have yet to be identified, however.</p>
+<p>Here, we present the genome sequence of <italic>C. sakazakii</italic> strain BAA-894, isolated from powdered formula associated with a NICU outbreak <xref ref-type="bibr" rid="pone.0009556-Himelright1">[7]</xref>, and use that sequence for comparative genomic hybridization (CGH) analysis of physiological and virulence related traits across the <italic>Cronobacter</italic> genus. Due to the severity of infant infection, a better understanding of the genomic variation between <italic>Cronobacter</italic> spp. is needed, and will be of interest to manufacturers of powdered infant formula, regulatory bodies, as well as those studying the evolution and diversity of pathogenicity.</p>
+</sec><sec id="s2">
+<title>Results and Discussion</title>
+<sec id="s2a">
+<title><italic>Cronobacter sakazakii</italic> BAA-894 Genome</title>
+<p>The complete sequencing of the genome of <italic>C. sakazakii</italic> BAA-894 revealed that it was composed of 1 chromosome (4.36837 Mb, 57% GC) and 2 plasmids (pESAK2 31 kb, 51% GC, pESAK3 131 kb, 56% GC); (Genbank accessions CP000783-5). A largely automated annotation of the genome resulted in the identification of 4,392 genes, covering 87% of the chromosome, 38 genes covering 83% of pESAK2 and 127 genes, covering 87% of pESAK3. The genome is aligned to many other enterobacterial genomes in the Enterix <xref ref-type="bibr" rid="pone.0009556-Florea1">[20]</xref>, <xref ref-type="bibr" rid="pone.0009556-Florea2">[21]</xref> server (<ext-link ext-link-type="uri" xlink:href="http://enterix.cbcb.umd.edu/enteric/enteric.html" xlink:type="simple">http://enterix.cbcb.umd.edu/enteric/enteric.html</ext-link>).</p>
+</sec><sec id="s2b">
+<title>Genome Cluster Analysis</title>
+<p>In order to compare closely related genomes to the sequence of <italic>C. sakazakii</italic> BAA-894, we designed a set of 384,030 50-mer oligonucleotides that tiled the whole genome in both strands at an average density of about one oligonucleotide every 12 bases. An array was then manufactured by Roche NimbleGen (<ext-link ext-link-type="uri" xlink:href="http://www.nimblegen.com" xlink:type="simple">www.nimblegen.com</ext-link>).</p>
+<p>Genomic diversity of 10 strains of <italic>Cronobacter</italic> representing the five different recognized species of this genus (<xref ref-type="table" rid="pone-0009556-t001">Table 1</xref>) was analyzed by CGH on this tiled DNA microarray against the sequenced strain <italic>C. sakazakii</italic> BAA-894. <italic>Cronobacter</italic> genes were classified as present, absent or of intermediate status, as defined in the <xref ref-type="sec" rid="s3">Materials and Methods</xref> section. The raw data is deposited in GenBank GEO, accession number GSE19308.</p>
+<table-wrap id="pone-0009556-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0009556.t001</object-id><label>Table 1</label><caption>
+<title>Bacterial strains used in this study.</title>
+</caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0009556-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.t001" xlink:type="simple"/><table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" colspan="1" rowspan="1">Organism</td>
+<td align="left" colspan="1" rowspan="1">Organism ID</td>
+<td align="left" colspan="1" rowspan="1">Comment</td>
+<td align="left" colspan="1" rowspan="1">Source</td>
+<td align="left" colspan="1" rowspan="1">% 16S rDNA sequence difference from <italic>C. sakazakii</italic> BAA-894</td>
+<td align="left" colspan="1" rowspan="1">MLST sequence type</td>
+<td align="left" colspan="1" rowspan="1">Reference</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii strain</italic> BAA-894</td>
+<td align="left" colspan="1" rowspan="1">Csak658</td>
+<td align="left" colspan="1" rowspan="1">Genome sequenced strain.</td>
+<td align="left" colspan="1" rowspan="1">Powdered formula</td>
+<td align="left" colspan="1" rowspan="1">-</td>
+<td align="left" colspan="1" rowspan="1">1</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-Himelright1">[7]</xref>, <xref ref-type="bibr" rid="pone.0009556-Baldwin1">[12]</xref></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> ATCC 29544<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">Csak1</td>
+<td align="left" colspan="1" rowspan="1">Species type strain.</td>
+<td align="left" colspan="1" rowspan="1">Child's throat</td>
+<td align="left" colspan="1" rowspan="1">0.38</td>
+<td align="left" colspan="1" rowspan="1">8</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-Iversen2">[11]</xref>, <xref ref-type="bibr" rid="pone.0009556-Baldwin1">[12]</xref></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> ATCC 12868</td>
+<td align="left" colspan="1" rowspan="1">Csak2</td>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1">Unknown</td>
+<td align="left" colspan="1" rowspan="1">0.57</td>
+<td align="left" colspan="1" rowspan="1">3</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-Baldwin1">[12]</xref></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> strain 20</td>
+<td align="left" colspan="1" rowspan="1">Csak20</td>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1">Clinical</td>
+<td align="left" colspan="1" rowspan="1">0.57</td>
+<td align="left" colspan="1" rowspan="1">4</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-Baldwin1">[12]</xref></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> strain 701</td>
+<td align="left" colspan="1" rowspan="1">Csak701</td>
+<td align="left" colspan="1" rowspan="1">Fatal NEC III case</td>
+<td align="left" colspan="1" rowspan="1">Peritoneal fluid</td>
+<td align="left" colspan="1" rowspan="1">0.47</td>
+<td align="left" colspan="1" rowspan="1">4</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-CaubillaBarron1">[6]</xref>, <xref ref-type="bibr" rid="pone.0009556-Baldwin1">[12]</xref></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> strain 767</td>
+<td align="left" colspan="1" rowspan="1">Csak767</td>
+<td align="left" colspan="1" rowspan="1">Fatal meningitis case</td>
+<td align="left" colspan="1" rowspan="1">Trachea</td>
+<td align="left" colspan="1" rowspan="1">0.47</td>
+<td align="left" colspan="1" rowspan="1">4</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-CaubillaBarron1">[6]</xref>, <xref ref-type="bibr" rid="pone.0009556-Baldwin1">[12]</xref></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> strain 696</td>
+<td align="left" colspan="1" rowspan="1">Csak696</td>
+<td align="left" colspan="1" rowspan="1">NEC II case</td>
+<td align="left" colspan="1" rowspan="1">Stools</td>
+<td align="left" colspan="1" rowspan="1">0.57</td>
+<td align="left" colspan="1" rowspan="1">12</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-CaubillaBarron1">[6]</xref>, <xref ref-type="bibr" rid="pone.0009556-Baldwin1">[12]</xref></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. malonaticus</italic> LMG 23826<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">Cmal1212</td>
+<td align="left" colspan="1" rowspan="1">Species type strain.</td>
+<td align="left" colspan="1" rowspan="1">Breast abscess isolate</td>
+<td align="left" colspan="1" rowspan="1">0.57</td>
+<td align="left" colspan="1" rowspan="1">NA</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-Iversen2">[11]</xref></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. turicensis</italic> LMG 23827<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">Ctur1211</td>
+<td align="left" colspan="1" rowspan="1">Species type strain. Meningitis case</td>
+<td align="left" colspan="1" rowspan="1">Blood isolate</td>
+<td align="left" colspan="1" rowspan="1">1.80</td>
+<td align="left" colspan="1" rowspan="1">NA</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-Iversen2">[11]</xref></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. muytjensiii</italic> ATCC 51329<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">Cmuy3</td>
+<td align="left" colspan="1" rowspan="1">Species type strain.</td>
+<td align="left" colspan="1" rowspan="1">Unknown</td>
+<td align="left" colspan="1" rowspan="1">2.94</td>
+<td align="left" colspan="1" rowspan="1">NA</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-Iversen2">[11]</xref></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. dublinensis</italic> LMG 23823<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">Cdub1210</td>
+<td align="left" colspan="1" rowspan="1">Species type strain.</td>
+<td align="left" colspan="1" rowspan="1">Environmental. Milk powder production plant</td>
+<td align="left" colspan="1" rowspan="1">3.69</td>
+<td align="left" colspan="1" rowspan="1">NA</td>
+<td align="left" colspan="1" rowspan="1"><xref ref-type="bibr" rid="pone.0009556-Iversen2">[11]</xref></td>
+</tr>
+</tbody>
+</table></alternatives></table-wrap>
+<p>To determine the presence or absence of genes, the median log<sub>2</sub> ratio of the genome relative to the reference strain for all the oligonucleotides in that gene was calculated. Then GACK analysis <xref ref-type="bibr" rid="pone.0009556-Kim2">[22]</xref> was used, which sets a floating threshold for presence and absence of genes for every hybridization (see below). Using Cluster and Treeview softwares <xref ref-type="bibr" rid="pone.0009556-Eisen1">[23]</xref>, <italic>Cronobacter</italic> strains formed two distinct phylogenetic clusters. All <italic>C. sakazakii</italic> strains formed one cluster (<xref ref-type="fig" rid="pone-0009556-g001">Figure 1</xref>). <italic>C. malonaticus, C. turicensis, C. dublinensis</italic> and <italic>C. malonaticus</italic> formed a second, separate cluster. Within <italic>C. sakazakii</italic>, strains 701 and 767 were the most closely related and clustered together with strain 20. Previously, strains 701 and 767 were shown to belong to the same pulse field gel electrophoresis restriction digestion type <xref ref-type="bibr" rid="pone.0009556-CaubillaBarron1">[6]</xref>. Although the clinical details of the source of <italic>C. sakazakii</italic> strain 20 are unknown, the strain belongs to MLST sequence type 4 (as do 701 and 767), which is a stable clone of <italic>C. sakazakii</italic> isolated from both powdered infant formula and clinical sources <xref ref-type="bibr" rid="pone.0009556-Baldwin1">[12]</xref>. <italic>C. sakazakii</italic> strain ATCC 29544<sup>T</sup> (species type strain) formed a separate branch within the <italic>C. sakazakii</italic> cluster. The remaining <italic>Cronobacter</italic> species formed sub-clusters: <italic>C. malonaticus</italic> clustered with <italic>C. turicensis</italic> and <italic>C. dublinensis</italic> grouped with <italic>C. muytjensii</italic>. The tree remained identical when adjacent genes were collapsed into a single phylogenetic character if they had the same pattern of presence and absence.</p>
+<fig id="pone-0009556-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0009556.g001</object-id><label>Figure 1</label><caption>
+<title>Whole genome clustering analysis showing the relationship between 10 <italic>Cronobacter</italic> isolates.</title>
+<p>Genomic regions GR1–GR15 are marked. Clustering analysis was performed using Gene Cluster (EisenSoftware). Hierarchical clustering was performed using the average linkage method on the trinary matrix based on the CGH analysis (1 for presence, 0 for uncertain and −1 for absence/divergence of a gene). For description of strains refer to <xref ref-type="table" rid="pone-0009556-t001">Table 1</xref>.</p>
+</caption><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.g001" xlink:type="simple"/></fig></sec><sec id="s2c">
+<title>Core Genome</title>
+<p>Of the 4,382 unique annotated gene sequences represented on the microarray, 54.9% (2404) were common to all <italic>C. sakazakii</italic> strains and 43.3% (1899) were common to all five <italic>Cronobacter</italic> species. The vast majority of these shared genes are predicted to encode cellular essential functions such as energy metabolism, biosynthesis, DNA, RNA and protein synthesis, cell division and membrane transport. The proportion of genes absent from test strains compared with <italic>C. sakazakii</italic> BAA-894 ranged from 10.3% (453) in <italic>C. sakazakii</italic> strain 20 to 17.1% (751) in <italic>C. muytjensii</italic> (<xref ref-type="table" rid="pone-0009556-t002">Table 2</xref>). In total, 5.1% (224) of BAA-894 genes were absent in all <italic>C. sakazakii</italic> strains, and 3.1% (137) genes were absent in all <italic>Cronobacter</italic> strains (<xref ref-type="table" rid="pone-0009556-t002">Table 2</xref>). Even though <italic>C. muytjensii</italic> and <italic>C. malonaticus</italic> are classified as separate species, the proportion of absent genes was only 11.3% and 11.9%, respectively, when compared to <italic>C. sakazakii</italic> BAA-894. This is in concordance with the previous 16S sequence comparison studies which showed that all <italic>Cronobacter</italic> strains are closely related (<xref ref-type="table" rid="pone-0009556-t001">Table 1</xref>).</p>
+<table-wrap id="pone-0009556-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0009556.t002</object-id><label>Table 2</label><caption>
+<title>Number of absent or divergent and intermediate genes in <italic>Cronobacter</italic> strains when compared to the sequenced <italic>C. sakazakii</italic> BAA-894.</title>
+</caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0009556-t002-2" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.t002" xlink:type="simple"/><table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" colspan="1" rowspan="1">Strain</td>
+<td align="left" colspan="1" rowspan="1">Absent genes (%)<xref ref-type="table-fn" rid="nt101">1</xref></td>
+<td align="left" colspan="1" rowspan="1">Intermediate genes (%)<xref ref-type="table-fn" rid="nt101">1</xref></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> ATCC 29544<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">582 (13.3)</td>
+<td align="left" colspan="1" rowspan="1">449 (10.2)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> ATCC 12868</td>
+<td align="left" colspan="1" rowspan="1">461 (10.5)</td>
+<td align="left" colspan="1" rowspan="1">314 (7.2)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> strain 20</td>
+<td align="left" colspan="1" rowspan="1">453 (10.3)</td>
+<td align="left" colspan="1" rowspan="1">580 (13.2)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> strain 701</td>
+<td align="left" colspan="1" rowspan="1">521 (11.9)</td>
+<td align="left" colspan="1" rowspan="1">569 (13.0)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> strain 767</td>
+<td align="left" colspan="1" rowspan="1">546 (12.5)</td>
+<td align="left" colspan="1" rowspan="1">649 (14.8)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> strain 696</td>
+<td align="left" colspan="1" rowspan="1">497 (11.3)</td>
+<td align="left" colspan="1" rowspan="1">593 (13.5)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. malonaticus</italic> LMG 23826<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">522 (11.9)</td>
+<td align="left" colspan="1" rowspan="1">608 (13.9)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. turicensis</italic> LMG 23827<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">495 (11.3)</td>
+<td align="left" colspan="1" rowspan="1">591 (13.5)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. muytjensii</italic> ATCC 51329<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">751 (17.1)</td>
+<td align="left" colspan="1" rowspan="1">522 (11.9)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. dublinensis</italic> LMG 23823<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">682 (15.6)</td>
+<td align="left" colspan="1" rowspan="1">549 (12.5)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Absent in at least one <italic>C. sakazakii</italic></td>
+<td align="left" colspan="1" rowspan="1">835 (19.1)</td>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Absent in at least one <italic>Cronobacter</italic></td>
+<td align="left" colspan="1" rowspan="1">1081 (24.7)</td>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+</tbody>
+</table></alternatives><table-wrap-foot><fn id="nt101"><label>1</label><p>The numbers in brackets indicate the percentage of absent genes out of 4,382 annotated genes analyzed by comparative genomic hybridization.</p></fn></table-wrap-foot></table-wrap></sec><sec id="s2d">
+<title><italic>C. sakazakii</italic> Unique Genes</title>
+<p>CGH analysis showed there were 21 genes present in all five <italic>C. sakazakii</italic> strains which were absent in <italic>C. malonaticus, C. muytjensii, C. turicensis</italic> and <italic>C. dublinensis</italic>. The genes unique to <italic>C. sakazakii</italic> strains were in two separate clusters of proteins involved in pilus assembly (ESA_02540–ESA_02542 and ESA_02796–ESA_02799), pilin FimA proteins (ESA_02541, ESA_02542, ESA_02796 and ESA_02799), porin PapC (ESA_02797) and the chaperone PapD (ESA_02798). The genes unique to <italic>C. sakazakii</italic> also included proteins for the phosphotransferase system (ESA_03303 and ESA_03305), a putative sialic acid transporter (ESA_03611), N-acetylneuraminate lyase (ESA_03612) and RelB from a toxin/antitoxin system (ESA_00257).</p>
+</sec><sec id="s2e">
+<title>Invasion of Brain Microvascular Endothelial Cells</title>
+<p>Because <italic>Cronobacter</italic> is associated with often fatal cases of neonatal meningitis, the status of genes identified in other organisms as associated with invasion of brain microvascular endothelial cells (BMEC) (<italic>ibeA, ibeB, yijP</italic> and <italic>ompA</italic>) in the sequenced isolate was of particular interest <xref ref-type="bibr" rid="pone.0009556-Huang1">[24]</xref>–<xref ref-type="bibr" rid="pone.0009556-Wang1">[27]</xref>. The gene encoding OmpA was present in all tested strains. This protein is associated with the invasive ability of neonatal meningitic <italic>E. coli</italic>. While genes <italic>ibeA</italic> and <italic>yijP</italic> produced no match in the reference strain <italic>C. sakazakii</italic> BAA-894, <italic>ibeB</italic> (synonymous to <italic>cusC</italic>) was found. <italic>CusC</italic> belongs to a cluster of genes encoding a copper and silver resistance cation efflux system which allows bacteria to invade BMEC <xref ref-type="bibr" rid="pone.0009556-Franke1">[28]</xref>. The complete cation efflux system c<italic>usA</italic> (ESA_04242), <italic>cusB</italic> (ESA_04241), <italic>cusC</italic> (ESA_04239), <italic>cusF</italic> (ESA_04240) and its regulatory gene <italic>cusR</italic> (ESA_04238) was present in strains associated with neonatal infections (<italic>C. sakazakii</italic> ATCC 29544<sup>T</sup>, 701, 767, 696, <italic>C. turicensis</italic> and <italic>C. malonaticus</italic>), and absent in the other tested strains.</p>
+</sec><sec id="s2f">
+<title>Other Physiological Traits</title>
+<p>The presence of genes conferring physiological traits commonly associated with <italic>Cronobacter</italic> spp. was examined. Seventy genes involved in desiccation resistance <xref ref-type="bibr" rid="pone.0009556-Osaili1">[29]</xref>, the metalloprotease <italic>zpx</italic> which causes rounding of Chinese hamster ovary (CHO) cells <xref ref-type="bibr" rid="pone.0009556-Kothary1">[30]</xref> and yellow pigment production genes <xref ref-type="bibr" rid="pone.0009556-Lehner1">[31]</xref> were present on the arrays. All these genes were present in all 10 <italic>Cronobacter</italic> strains tested.</p>
+</sec><sec id="s2g">
+<title>Comparison of <italic>C. sakazakii</italic> Neonatal Intensive Care Unit (NICU) Outbreak Strains with <italic>C. sakazakii</italic> Type Strain ATCC 29544<sup>T</sup></title>
+<p>The genes that were shared by the three strains associated with <italic>C. sakazakii</italic> outbreaks in NICUs (BAA-894, 701 &amp; 767) were compared with the <italic>C. sakazakii</italic> species type strain ATCC 29544<sup>T</sup>, which showed decreased virulence properties compared to strains 701 and 767 in tissue culture studies <xref ref-type="bibr" rid="pone.0009556-Townsend2">[14]</xref>. One hundred and forty-four genes present in the three NICU strains were absent in the type strain, 66 (46%) in clusters of consecutive genes based on the annotation of BAA-894. In most of these clusters, genes encoding proteins associated with resistance to different forms of stress were identified, including multidrug efflux systems, genes involved in resistance to oxidative stress, and those with a putative function in resistance to metals. The complete list of genes present in NICU outbreak strains <italic>C. sakazakii</italic> BAA-894, 707 and 767 and absent in the <italic>C. sakazakii</italic> type strain ATCC 29544<sup>T</sup> is in <xref ref-type="supplementary-material" rid="pone.0009556.s002">Table S1</xref>; genes of interest are listed below.</p>
+<sec id="s2g1">
+<title>Category I</title>
+<p>Genes encoding proteins associated with resistance to different forms of antibiotics: (i), a transcriptional regulator (ESA_01938) from the TetR family of protein repressors that control the level of susceptibility to hydrophobic antibiotics and detergents; (ii), a homologue of the CpmG protein involved in carbapenem resistance (ESA_pESA3p05435); (iii), a protein conferring resistance to antimicrobial peptides Mig-14 (ESA_pESA3p05439); and (iv), a transcriptional regulator (ESA_pESA3p05448) involved in tetracycline resistance.</p>
+</sec><sec id="s2g2">
+<title>Category II</title>
+<p>Genes encoding multidrug efflux systems: (i), a cationic drug transporter (ESA_01940) from the family of proteins that confer resistance to a wide range of toxic compounds; (ii), genes for complete bacterial ABC-transport systems involved in active transport across the cytoplasmic membrane (ESA_01944–ESA_01946); and (iii), a variety of genes encoding multidrug efflux components located on the plasmid pESA3 in BAA-894 (<xref ref-type="supplementary-material" rid="pone.0009556.s002">Table S1</xref>).</p>
+</sec><sec id="s2g3">
+<title>Category III</title>
+<p>Genes involved in resistance to oxidative stress and genes with a putative function in resistance to metals: (i), a redox-sensitive transcriptional activator SoxR (ESA_00115); (ii), a glutathione S-transferase (ESA_00116); (iii), ADP-ribose pyrophosphatase involved in oxidative stress protection (ESA_pESA3p05446); (iv), an arsenate reductase (ESA_pESA3p05485); and (v), a predicted transcriptional regulator involved in mercurium resistance ESA_pESA3p05463.</p>
+</sec><sec id="s2g4">
+<title>Category IV</title>
+<p>Other genes of interest include: (i), putative adhesins which are recognized as virulence factors in enteric bacteria <xref ref-type="bibr" rid="pone.0009556-Campellone1">[32]</xref> (ESA_00983–ESA_00986); (ii), the universal stress protein UspA (ESA_01955) which can enhance the rate of cell survival during prolonged exposure to stress conditions <xref ref-type="bibr" rid="pone.0009556-Nystrom1">[33]</xref>; (iii), a gene encoding a Type VI secretion lysozyme-related protein (ESA_02735); (iv), a gene for a predicted virulence SciE-type protein (ESA_02736) which affects the ability of bacteria to enter eukaryotic cells <xref ref-type="bibr" rid="pone.0009556-Folkesson1">[34]</xref>; and (v), genes involved in pilus assembly (ESA_03515 and ESA_03516).</p>
+</sec></sec><sec id="s2h">
+<title><italic>C. sakazakii</italic> Plasmids</title>
+<p>The sequenced strain <italic>C. sakazakii</italic> BAA-894 contains two plasmids; pESA2 (31 kb) and pESA3 (131 kb). Thirty-eight genes were annotated on pESA2 and 127 genes on pESA3.</p>
+<p>The copy number of the plasmids was estimated from the median hybridization signals of oligonucleotides representing the plasmid compared to the sequenced genome. The ratio was (1∶1.1∶8.6) for the chromosome versus pESA2 versus pESA3. Thus, pESA2 exists as low copy, and pESA3 appears to be a moderate copy number plasmid.</p>
+<p>The genes on pESA2 were absent in all other strains tested except <italic>C. turicensis</italic>, which had 19 (61.3%) genes present, and <italic>C. sakazakii</italic> 696, which had 4 (12.9%) genes present. The results for genes on pESA3 are summarized in <xref ref-type="table" rid="pone-0009556-t003">Table 3</xref>.</p>
+<table-wrap id="pone-0009556-t003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0009556.t003</object-id><label>Table 3</label><caption>
+<title>pESA3 genes present in <italic>Cronobacter</italic> strains when compared to the sequenced strain of <italic>C. sakazakii</italic> BAA-894.</title>
+</caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0009556-t003-3" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.t003" xlink:type="simple"/><table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" colspan="1" rowspan="1">Strain</td>
+<td align="left" colspan="1" rowspan="1">Present genes (%) <xref ref-type="table-fn" rid="nt102">1</xref></td>
+<td align="left" colspan="1" rowspan="1">Plasmid profile <xref ref-type="table-fn" rid="nt103">2</xref></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> ATCC 12868</td>
+<td align="left" colspan="1" rowspan="1">103 (88.8)</td>
+<td align="left" colspan="1" rowspan="1">+</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> 696</td>
+<td align="left" colspan="1" rowspan="1">81 (69.8)</td>
+<td align="left" colspan="1" rowspan="1">+</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> 767</td>
+<td align="left" colspan="1" rowspan="1">77 (66.4)</td>
+<td align="left" colspan="1" rowspan="1">+</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> 20</td>
+<td align="left" colspan="1" rowspan="1">73 (62.9)</td>
+<td align="left" colspan="1" rowspan="1">+</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> 701</td>
+<td align="left" colspan="1" rowspan="1">61 (52.6)</td>
+<td align="left" colspan="1" rowspan="1">+</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. malonaticus</italic> LMG 23826<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">57 (49.1)</td>
+<td align="left" colspan="1" rowspan="1">+ (3)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. sakazakii</italic> ATCC 29544<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">51 (44.0)</td>
+<td align="left" colspan="1" rowspan="1">+ (3)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. turicensis</italic> LMG 23827<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">35 (30.2)</td>
+<td align="left" colspan="1" rowspan="1">−</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. dublinensis</italic> LMG 23823<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">19 (16.4)</td>
+<td align="left" colspan="1" rowspan="1">−</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1"><italic>C. muytjensii</italic> ATCC 51329<sup>T</sup></td>
+<td align="left" colspan="1" rowspan="1">0 (0.0)</td>
+<td align="left" colspan="1" rowspan="1">−</td>
+</tr>
+</tbody>
+</table></alternatives><table-wrap-foot><fn id="nt102"><label>1</label><p>Of the 127 annotated genes on pESA3, 116 were analyzed by comparative genomic hybridization. The other genes did not have a sufficient number of probes that passed the filters for manufacture on the array.</p></fn><fn id="nt103"><label>2</label><p>Plasmid of a size similar to pESA3 (131 kb) was detected by gel electophoresis of plasmid isolations.</p></fn><fn id="nt104"><label>3</label><p>The detected plasmid was smaller in size than pESA3 (110 kb).</p></fn></table-wrap-foot></table-wrap>
+<p>Note that it is possible that some or all of the detected genes are on the chromosome in other strains. In addition, genes on a multicopy or medium copy plasmid may require a different degree of divergence to be identified as absent or divergent by comparative hybridizations. Plasmid profiling was performed on the Cronobacter strains analyzed by comparative hybridization,. A plasmid of a size similar to pESA2 (31 kb) was detected in <italic>C. sakazakii</italic> 696 and in <italic>C. turicensis</italic>, which is in accordance with our CGH results. A large plasmid similar in size to pESA3 (131 kb) was visible in <italic>C. sakazakii</italic> strains ATCC 29544<sup>T</sup>, ATCC 2868, 20, 696, 701, 767 and <italic>C. malonaticus</italic> (<xref ref-type="table" rid="pone-0009556-t003">Table 3</xref>).</p>
+</sec><sec id="s2i">
+<title>Genomic Regions Absent in Some Strains of <italic>Cronobacter</italic></title>
+<p>Genes that were absent in more than half of the <italic>Cronobacter</italic> strains relative to the sequenced strain <italic>C. sakazakii</italic> BAA-894 were selected for further analysis. These genes form 15 clusters of contiguous genes (based on the annotation of the reference genome). These are shown on <xref ref-type="fig" rid="pone-0009556-g002">Figure 2</xref>, where the number of strains in which a particular gene was classified as absent is plotted against the gene locus. The clusters were designated as regions GR1–GR15.</p>
+<fig id="pone-0009556-g002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0009556.g002</object-id><label>Figure 2</label><caption>
+<title>Distribution of the 15 variable regions across the <italic>C. sakazakii</italic> BAA-894 genome.</title>
+<p>Each column represents a gene classified as absent by CGH analysis in at least one strain. The height of the columns indicate the number of strains (out of 10) in which the gene was found to be absent. The major variable regions (blue) and prophages (red) are indicated in order of their appearance in the genome of <italic>C. sakazakii</italic> BAA-894.</p>
+</caption><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.g002" xlink:type="simple"/></fig></sec><sec id="s2j">
+<title>Prophages</title>
+<p>Of the 15 clusters, three putative prophage genomes and one prophage fragment were identified by Prophinder <xref ref-type="bibr" rid="pone.0009556-LimaMendez1">[35]</xref>, and two additional regions are probable prophage fragments based on the presence of phage protein homologues identified by BLASTX (<xref ref-type="table" rid="pone-0009556-t003">Table 3</xref>).</p>
+<p>In the three prophage gene clusters (prophages 1, 2 and 3), genes encoding close homologues of known phage genes involved in integration, lysis and termination as well as head and tail structure were identified based on amino acid identity searches in IMG-JGI (<ext-link ext-link-type="uri" xlink:href="http://img.jgi.doe.gov/cgi-bin/pub/main.cgi" xlink:type="simple">http://img.jgi.doe.gov/cgi-bin/pub/main.cgi</ext-link>). The average GC content of the sequenced <italic>C. sakazakii</italic> BAA-894 genome is 56%, the GC content of prophages 1, 2 and 3 was 53, 49 and 51%, respectively. The complete list of annotated putative prophage genes is available <xref ref-type="supplementary-material" rid="pone.0009556.s003">Table S2</xref>. In addition, <xref ref-type="supplementary-material" rid="pone.0009556.s001">Figure S1</xref>. shows the status of all putative prophage genes in the 10 <italic>Cronobacter</italic> strains.</p>
+<p><bold>Prophage 1</bold> (<bold>GR4</bold>; ESA_00990–ESA_01052). In the 46-kb putative prophage 1 (<xref ref-type="fig" rid="pone-0009556-g003">Figure 3A</xref>), 30/63 (48%) hypothetical proteins were similar to known phage proteins. Homologues of phage genes involved in integration, lysis, head morphogenesis, tail assembly and phage regulation were identified. Prophage 1 also contains a gene (ESA_00997) encoding a protein homologous to the <italic>eae</italic>-like adhesion protein associated with the attaching and effacing phenotype. The <italic>eae</italic> gene is carried by some other bacteriophages of enteric pathogens: <italic>Salmonella</italic> phage epsilon34, <italic>E. coli</italic> O157∶H7 bacteriophage PhiV10, enterobacterial phage P22 and enterobacterial phage epsilon15.</p>
+<fig id="pone-0009556-g003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0009556.g003</object-id><label>Figure 3</label><caption>
+<title>Gene maps of putative prophages.</title>
+<p>A. Gene map of putative prophage 1. B. Gene map of putative prophage 2. C. Gene map of putative prophage 3. Annotation of the putative prophage genes is available in <xref ref-type="supplementary-material" rid="pone.0009556.s003">Table S2</xref>.</p>
+</caption><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.g003" xlink:type="simple"/></fig>
+<p><bold>Prophage 2</bold> (<bold>GR6</bold>; ESA_01608–ESA_01644). Putative prophage 2 (<xref ref-type="fig" rid="pone-0009556-g003">Figure 3B</xref>) contains 37 genes, out of which 25 (68%) were homologous to known phage proteins. Prophage 2 contains several lambdoid phage genes encoding the following proteins: repressor CII (ESA_01613), replication proteins O and P (ESA_01614 and ESA_01615), the antitermination protein Q (ESA_01622), small and large subunits of the phage terminase (ESA_01632 and ESA_01633) as well as head and tail morphogenesis proteins. Head morphogenesis genes (ESA_01635–ESA_01637) were similar to head proteins of bacteriophage HK97 from the family of lambda phages. Two gene clusters have very low average GC content; 33% (ESA_01616–ESA_01620) and 44% (ESA_01627–ESA_01631). Both these clusters contain hypothetical proteins that showed no similarity with known phage proteins or functions.</p>
+<p><bold>Prophage 3</bold> (<bold>GR12</bold>; ESA_03025–ESA_03102) was the largest (47 kb) putative prophage identified (<xref ref-type="fig" rid="pone-0009556-g003">Figure 3C</xref>). Thirty-four genes (39%) genes had close homology to known phage proteins or functions. The rest of the annotated genes are conserved proteins of unknown functions or hypothetical proteins. Similarly to prophage 2, several regulatory genes characteristic for lambdoid phages were identified: repressor proteins CI, CII and CIII, early gene regulator protein, replication proteins O and P as well as N independence proteins NinBFGZ. A cluster of three O-antigen conversion genes (ESA_03026–ESA_03028) was found in putative prophage 3 between phage integrase and tail morphogenesis genes (<xref ref-type="fig" rid="pone-0009556-g003">Figure 3C</xref>). The putative colicin uptake protein TolA (ESA_03048) may be involved in the internalization of the bacteriophage, as the Tol pathway can be also used for the translocation of phages into the bacterial cell <xref ref-type="bibr" rid="pone.0009556-Lazdunski1">[36]</xref>. CGH showed that the entire genome of prophage 3 or its close relatives are absent from the genomes of all other <italic>Cronobacter</italic> strains tested except <italic>C. turicensis</italic>. In this species, 18 prophage genes (mostly annotated as hypothetical proteins) were classified as present (<xref ref-type="supplementary-material" rid="pone.0009556.s001">Figure S1</xref>). Interestingly, the CIII regulator protein (ESA_03094), the Kil protein (ESA_03095), and both large and small terminase subunits (ESA_03052 and ESA_03053) were present in two <italic>C. sakazakii</italic> strains (701 and 767), possibly as a part of different bacteriophages. These two strains were isolated from two fatal neonate cases of <italic>C. sakazakii</italic> infection <xref ref-type="bibr" rid="pone.0009556-CaubillaBarron1">[6]</xref>. A cluster of putative phage tail proteins (ESA_03029–ESA_03034) and a cluster containing phage head morphogenesis genes and a putative colicin uptake gene (ESA_03039–ESA_03051) were homologous to genes of the <italic>S. enterica</italic> serovar Typhi Vi type II phage E1 which may use virulence-associated capsular antigen as entry. This antigen was present on the surface of clinical Typhi isolates <xref ref-type="bibr" rid="pone.0009556-Pickard1">[37]</xref>. Although most genes of the putative prophage 3 were absent in all 10 <italic>Cronobacter</italic> strains tested by CGH, the region corresponding to the phage Vi genes (ESA_03041–ESA_03048) was present in <italic>C. turicensis</italic> and partially present in <italic>C. sakazakii</italic> strains 20, 701 and 767 (<xref ref-type="supplementary-material" rid="pone.0009556.s001">Figure S1</xref>). Strains 701 and 767 were both associated with fatal outbreaks, and are in MLST sequence type 4 with strain 20 <xref ref-type="bibr" rid="pone.0009556-Baldwin1">[12]</xref>.</p>
+<p><bold>Prophage fragment 1</bold> (<bold>GR3</bold>; ESA_00604–ESA_00630). Eight of 19 genes in this region encode proteins associated with phages: plasmid and phage DNA primase (ESA_00620), a protein from Ash phage family (ESA_00624), the phage transcriptional regulator AlpA (ESA_00625), a putative phage capsid protein (ESA_00626), the phage transcriptional activator Ogr/Delta (ESA_00627) and phage integrase (ESA_00630). ESA_00618 was homologous to ea59 of lambda bacteriophage and ESA_00622 was homologous to a P4 phage protein. This cluster is most probably a phage remnant and may not encode a functional phage due to the absence of homologues of known structural tail proteins. The phage cluster was absent in all other strains. However, a short region, ESA_00609–ESA_00617, was present in <italic>C. sakazakii</italic> strains 701 and 767. A group of restriction endonucleases belonging to this cluster encoding a restriction-modification methyltransferase subunit (ESA_00614), a restriction endonuclease S subunit (ESA_00615), a hypothetical protein (ESA_00616) and a type I site-specific deoxyribonuclease (ESA_00617) were homologous to genes api49, api50, api51 and api52, respectively, from the <italic>Yersinia pseudotuberculosis</italic> adhesion pathogenicity island <xref ref-type="bibr" rid="pone.0009556-Collyn1">[38]</xref>.</p>
+<p><bold>Prophage fragment 2</bold> (<bold>GR10</bold>). The region ESA_02304–ESA_02339 is likely to represent another prophage remnant. The region mostly contains hypothetical proteins with unknown functions. However, eight genes showed some degree of homology to proteins of phage origin. The cluster is flanked by a gene homologous to phage methyltransferase (ESA_02304) and a gene containing a site-specific recombinase domain that is found in putative integrases/recombinases of mobile genetic elements of diverse bacteria and phages (ESA_02339). It also includes genes homologous to phage lysozyme (ESA_02309), a phage tail component (ESA_02311), a putative phage tape measure protein (ESA_02313), another unspecified phage protein (ESA_02316), a major capsid protein (ESA_02319) and a phage portal protein (ESA_02320). GR10 might be another remnant of a prophage that has previously integrated into <italic>C. sakazakii</italic> BAA-894 genome. The presence of putative integrase flanking the cluster suggests introduction of this cluster into the genome by horizontal gene transfer. This cluster was absent in all <italic>Cronobacter</italic> strains except the genes encoding phage lysozyme (ESA_02309) and a hypothetical protein (ESA_02310), present in <italic>C. sakazakii</italic> strains 2 and 20, probably as a part of different prophages.</p>
+<p><bold>Prophage fragment 3</bold> (<bold>GR11</bold>; ESA_02740–ESA_02755). The gene cluster of the 8 kb putative prophage fragment 3 comprises 16 hypothetical proteins, 10 of which (63%) may be associated with phage functions. As it lacks genes for head and tail morphogenesis as well as phage regulatory genes, it is likely to be a non-functional phage remnant.</p>
+<p>Two thirds of all gamma-proteobacteria and low GC Gram-negative bacteria harbor prophages <xref ref-type="bibr" rid="pone.0009556-Brussow1">[39]</xref>. There is an increasing body of evidence that phages play a pivotal role in the diversification of bacterial species. Some phages can carry additional cargo genes, which are not required for the phage cycle and are suspected or proven virulence factors <xref ref-type="bibr" rid="pone.0009556-Brussow1">[39]</xref>. Such genes are typically located near prophage ends, downstream of phage tail genes or next to Q or N-like antiterminator genes <xref ref-type="bibr" rid="pone.0009556-Boyd1">[40]</xref>. Putative prophages identified in this study contain genes which are not similar to any other known prophage genes. Moreover, prophage 1 contains a gene encoding a protein homologous to the <italic>eae</italic>-like adhesion protein, which is a recognized virulence factor in enteropathogenic <italic>E</italic>. <italic>coli</italic> associated with the attaching and effacing phenotype <xref ref-type="bibr" rid="pone.0009556-Kaper1">[41]</xref>. It is hypothesized that most prophages are lost from bacterial genomes shortly after their acquisition <xref ref-type="bibr" rid="pone.0009556-Brussow1">[39]</xref>. Hence, some of the cargo genes carried by the prophages remaining in the chromosome of <italic>Cronobacter</italic> are possible virulence factors or fitness factors that increase the survival of the bacterium in its host. Further research into these putative virulence factors is warranted.</p>
+</sec><sec id="s2k">
+<title>Non-Phage Regions That Differ among the Strains</title>
+<p>The complete list of genes belonging to the variable non-phage regions and their presence in tested strains is available in <xref ref-type="supplementary-material" rid="pone.0009556.s003">Table S2</xref>.</p>
+<p><bold>GR1</bold> (ESA_00140–ESA_00145) is a small cluster of type VI secretion system genes. ESA_00142 shares a conserved region with a family of IcmF-related proteins proposed to be involved in increased <italic>Vibrio cholerae</italic> adherence to epithelial cells <xref ref-type="bibr" rid="pone.0009556-Das1">[42]</xref>. ESA_00143 is a secretion protein belonging to the VC_A0110 family; mutations in proteins of this family are associated with impaired virulence <xref ref-type="bibr" rid="pone.0009556-Pukatzki1">[43]</xref>. ESA_00145, a secretion lipoprotein from a VC _A0113 family was present in <italic>C. sakazakii</italic> strains 701 and 767 associated with fatal outbreaks. The rest of GR1 was absent in all tested strains except <italic>C. sakazakii</italic> 696.</p>
+<p><bold>GR2</bold> (ESA_00292–ESA_00310) mostly contains uncharacterized conserved proteins. It also contains the gene encoding a protein from a family of beta-lactamases (ESA_00299).</p>
+<p><bold>GR5</bold> (ESA_01179–ESA_01189) contains a cluster of proteins involved in cell wall biogenesis and nucleotide sugar metabolism. GR5 corresponds to the <italic>C. sakazakii</italic> O-antigen gene locus used to distinguish the two <italic>Cronobacter</italic> serotypes O∶1 and O∶2 <xref ref-type="bibr" rid="pone.0009556-Mullane1">[44]</xref>. DNA microarray analysis revealed that GR5 is highly divergent; its genes were not sufficiently similar to be detected by microarray hybridization in any other <italic>Cronobacter</italic> strains. The O-antigen locus contains two more genes (homologues of ESA_01177 and ESA_01178) which were present in all strains except <italic>C. sakazakii</italic> 696.</p>
+<p><bold>GR7</bold> (ESA_01775–ESA_01804). Most genes in GR7 were predicted to be involved in tellurite and stress resistance. It contains homologues of tellurite resistance proteins TerA, TerC, TerD, TerY and TerZ. The cluster contains two putative transposase genes, which suggests that the cluster was acquired by horizontal transfer. GR7 was found to be carried on plasmid pK29 of <italic>Klebsiella pneumoniae</italic> strain NK29, plasmid pEC-IMPQ of <italic>Enterobacter cloacae</italic>, plasmid R478 of <italic>Serratia marcescens</italic> and plasmid pAPEC-O1-R of <italic>Escherichia coli</italic> APEC O1, which is further evidence of horizontal gene transfer. As the gene cluster was entirely absent from all other <italic>Cronobacter</italic> strains in our study, the reference strain BAA-894 probably acquired the tellurite resistance cluster recently.</p>
+<p><bold>GR8</bold> (ESA_01970–ESA_01976) contains seven genes encoding pilus assembly proteins. Fimbriae (or pili) enable bacteria to colonize the epithelium of specific host organs and are therefore considered major virulence factors <xref ref-type="bibr" rid="pone.0009556-Abraham1">[45]</xref>. This cluster of genes was absent in all <italic>Cronobacter</italic> strains except <italic>C. sakazakii</italic> strain 20.</p>
+<p><bold>GR9</bold> (ESA_02032–ESA_02041) contains genes encoding hypothetical proteins and four proteins involved in Type VI secretion system (ESA_02037–ESA_02040). These four genes were present in <italic>C. sakazakii</italic> strains 1 and 20 and absent in all other strains.</p>
+<p><bold>GR13</bold> (ESA_03887–ESA_03912) is a cluster of 16 hypothetical proteins without homology to known proteins or functions. This cluster was absent in all other <italic>Cronobacter</italic> strains.</p>
+<p><bold>GR14</bold> (ESA_04248–ESA_04255) is a cluster of genes involved in copper resistance (<xref ref-type="table" rid="pone-0009556-t004">Table 4</xref>). This cluster was found in <italic>C. sakazakii</italic> strain 1 and 696, as well as <italic>C. turicensis</italic> and <italic>C. malonaticus</italic>.</p>
+<table-wrap id="pone-0009556-t004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0009556.t004</object-id><label>Table 4</label><caption>
+<title>Putative prophages identified in the genome of <italic>C. sakazakii</italic> BAA-894 by Prophinder <xref ref-type="bibr" rid="pone.0009556-LimaMendez1">[35]</xref> or BlastX.</title>
+</caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0009556-t004-4" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.t004" xlink:type="simple"/><table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" colspan="1" rowspan="1">Designation</td>
+<td align="left" colspan="1" rowspan="1">Prophinder ID</td>
+<td align="left" colspan="1" rowspan="1">Size (kb)</td>
+<td align="left" colspan="1" rowspan="1">Coordinates</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" colspan="1" rowspan="1">Prophage 1 (GR4)</td>
+<td align="left" colspan="1" rowspan="1">48917</td>
+<td align="left" colspan="1" rowspan="1">45.7</td>
+<td align="left" colspan="1" rowspan="1">969835–1015482</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Prophage 2 (GR6)</td>
+<td align="left" colspan="1" rowspan="1">48912</td>
+<td align="left" colspan="1" rowspan="1">26.7</td>
+<td align="left" colspan="1" rowspan="1">1561010–1587672</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Prophage 3 (GR12)</td>
+<td align="left" colspan="1" rowspan="1">48916</td>
+<td align="left" colspan="1" rowspan="1">46.9</td>
+<td align="left" colspan="1" rowspan="1">2974743–3021625</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Prophage fragment 1 (GR3)</td>
+<td align="left" colspan="1" rowspan="1">48908</td>
+<td align="left" colspan="1" rowspan="1">8.1</td>
+<td align="left" colspan="1" rowspan="1">2693304–2701447</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Prophage fragment 2 (GR10)</td>
+<td align="left" colspan="1" rowspan="1">BlastX</td>
+<td align="left" colspan="1" rowspan="1">33.4</td>
+<td align="left" colspan="1" rowspan="1">2237406–2270858</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Prophage fragment 3 (GR11)</td>
+<td align="left" colspan="1" rowspan="1">BlastX</td>
+<td align="left" colspan="1" rowspan="1">8.2</td>
+<td align="left" colspan="1" rowspan="1">2693304–2701466</td>
+</tr>
+</tbody>
+</table></alternatives></table-wrap>
+<p><bold>GR15</bold> (ESA_pESA3p05493–ESA_pESA3p05505) involves genes located on <italic>C. sakazakii</italic> plasmid pESA3 and includes components of type IV and type VI secretion pathways (<xref ref-type="supplementary-material" rid="pone.0009556.s003">Table S2</xref>) as well as a gene encoding an outer membrane protein from the OmpA family (ESA_pESA3p05495). GR15 was absent from all strains except <italic>C. sakazakii</italic> strains 1 and 696.</p>
+<p>Most of the described regions contain suspected or proven virulence factors. The genes in GR1, GR9 and GR15 are involved in a type VI secretion system, a newly described mechanism for protein transport across the cell envelope of Gram-negative bacteria that can increase adherence to epithelial cells <xref ref-type="bibr" rid="pone.0009556-Mougous1">[46]</xref>, <xref ref-type="bibr" rid="pone.0009556-Schlieker1">[47]</xref>. GR3 contains four genes (ESA_00614–ESA_00617) that are homologous to a restriction-modification gene cluster (api49–api52) in the <italic>Yersinia pseudotuberculosis</italic> pathogenicity island (YAPI) <xref ref-type="bibr" rid="pone.0009556-Collyn1">[38]</xref>. As these genes were present in strains 701 and 767 isolated from two neonates that died as a result of infection by <italic>Cronobacter</italic> during an outbreak in France <xref ref-type="bibr" rid="pone.0009556-vanAcker1">[8]</xref>, <xref ref-type="bibr" rid="pone.0009556-Willis1">[17]</xref>, and are absent in all other strains tested by CGH, these genes may be important virulence factors contributing to the pathogenicity of <italic>Cronobacter</italic>.</p>
+<p><italic>Cronobacter</italic> virulence factors have not been extensively studied, although it is known that <italic>Cronobacter</italic> species vary in their virulence with respect to invasion of intestinal cells, survival in macrophages and serum resistance <xref ref-type="bibr" rid="pone.0009556-Townsend1">[13]</xref>, <xref ref-type="bibr" rid="pone.0009556-Townsend2">[14]</xref>. GR 5 (ESA_01179–ESA_01189) encodes the lipopolysaccharide (LPS) genes. Characterisation of LPS structure and consequently O-antigen can be important in developing identification schemes based on serotyping, and has a role in virulence and serum resistance of the organism. The LPS is one of the few structural features of <italic>Cronobacter</italic> which has been investigated and it is known that it varies across the <italic>Cronobacter</italic> spp. In <italic>C. sakazakii</italic> and <italic>C. malonaticus</italic>, the LPS are composed of various branched polymers, whereas they are unbranched in <italic>C. muytjensii</italic>. In <italic>C. sakazakii</italic> BAA-894 <xref ref-type="bibr" rid="pone.0009556-MacLean1">[48]</xref> it is a branched polymer of pentasaccharide units composed of 2-acetamido-2-deoxy-D-galactose, 3-(N-acetyl-L-alanylamido)-3-deoxy-D-quinovose, D-glucuronic acid, and D-glucose. <italic>C. sakazakii</italic> strain 767 is also a branched polymer but of a repeating heptasaccharides composed of 2-acetamido-2-deoxy-D-glucose, and D-galacturonic acid, L-rhamnose, and D-glucose <xref ref-type="bibr" rid="pone.0009556-Czerwicka1">[49]</xref>. <italic>C. malonaticus</italic> LPS <xref ref-type="bibr" rid="pone.0009556-MacLean2">[50]</xref> is also a branched pentasaccharide unit of 2-amino-2-deoxy-D-glucose, 2-amino-2-deoxy-D-galactose, 3-deoxy-D-manno-oct-2-ulosonic acid, D-galactose and D-glucose residues. Whereas, <italic>C. muytjensii</italic> LPS <xref ref-type="bibr" rid="pone.0009556-MacLean3">[51]</xref> is a linear unbranched pentasccharide polymer of 2-acetamido-2-deoxy-D-galactose, 2-acetamido-2-deoxy-D-glucose, 2-acetamido-3-deoxy-D-quinovose, L-rhamnose and D-glucuronic acid. These considerable differences correspond with the lack of sequence conservation in GR5 as revealed in the microarray analysis. The individual genes encoding these differences in enyzmology have yet to be assigned.</p>
+</sec><sec id="s2l">
+<title>Comparison to Other Enterobacterial Genera</title>
+<p>The sequenced genome <italic>C. sakazakii</italic> BAA-894 was compared to the genomes of <italic>Citrobacter koseri</italic> BAA-895, <italic>Klebsiella oxytoca</italic> VJSK009, <italic>E. coli</italic> K12 MG1655 and <italic>Salmonella enterica</italic> Typhimurium strain LT2, representing some of the most closely related genera to <italic>Cronobacter.</italic> Using a threshold of identity of &gt;85% in a 100 base window, 334 genes were present in all <italic>Cronobacter</italic> but absent or diverged in the four members of other genera (manuscript in preparation). These genes included a cluster of type VI secretion genes (ESA_03943 - ESA_03948) which might be involved in virulence, and a putative palatinose operon (ESA_02709 - ESA_02715). Alpha-glucosidase activity, which has been linked to palatinose metabolism, is considered as one of the major biochemical traits that distinguish <italic>Cronobacter</italic> from other related <italic>Enterobacteriaceae</italic>.</p>
+</sec><sec id="s2m">
+<title>Summary and Conclusions</title>
+<p>Using a whole-genome ∼384,000 oligonucleotide tiling microarray, we analyzed the genomic content of isolates representing all five <italic>Cronobacter</italic> species by CGH. A dynamic determination of cut-offs GACK <xref ref-type="bibr" rid="pone.0009556-Kim2">[22]</xref> was used to minimize the number of incorrectly categorized genes. Among 6 strains of <italic>C. sakazakii</italic> 2,404 genes (54.9%) represented a core shared genome. Of these genes 1,899 (43.3%) were also in the core genome when compared to four other <italic>Cronobacter</italic> species. CGH highlighted a copper/silver resistance cluster associated with invasion of BMEC, which were unique to the three <italic>Cronobacter</italic> species associated with neonatal infections, as well as efflux pumps and adhesins unique to <italic>C. sakazakii</italic> strains from NICU outbreaks.</p>
+<p>The main genetic features that distinguished the <italic>Cronobacter</italic> strains were putative prophages and several other gene clusters, a pattern of divergence typical among bacteria <xref ref-type="bibr" rid="pone.0009556-Porwollik1">[52]</xref>. A few of the regions present in the sequenced strain and absent in some other <italic>Cronobacter</italic> strains are found in only a few other <italic>Enterobacteriaceae</italic>. For example, GR 7 is found in four of the hundreds of <italic>Enterobacteriaceae</italic> genomes that have been sequenced, which indicates that this region may have been horizontally acquired, possibly from a source outside of the <italic>Enterobateriaeciae</italic>. We have shown that gene acquisition via integration of phages and other mobile elements and specific gene-loss play a major role in <italic>Cronobacter</italic> evolution and diversity. Fifteen clusters of genes including three putative prophages and three putative prophage fragments that were absent in more than half tested strains were identified. In most of them, putative virulence genes were identified.</p>
+<p>Future studies will focus on the expression of virulence related genes and their role in the pathogenicity of <italic>Cronobacter</italic> species, particularly the mechanisms of neonatal infection.</p>
+</sec></sec><sec id="s3" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="s3a">
+<title>Strains and Culture Conditions</title>
+<p><italic>Cronobacter</italic> strains were selected which represented the five recognized species, and included those from reported clinical cases (<xref ref-type="table" rid="pone-0009556-t001">Table 1</xref>). All <italic>Cronobacter</italic> strains were stored at −80°C in Nutrient Broth (Oxoid, UK) with 10% glycerol, subcultured on Trypticase Soy Agar (Oxoid, UK) and checked for purity. Overnight Trypticase Soy Broth (Oxoid, UK) cultures were used for DNA extraction.</p>
+</sec><sec id="s3b">
+<title>DNA Extraction</title>
+<p>Total genomic DNA was isolated using the QIAGEN Genomic-tip 100/G and Genomic DNA Buffer Set (<ext-link ext-link-type="uri" xlink:href="http://www.1.qiagen.com" xlink:type="simple">www.1.qiagen.com</ext-link>) with extended cell lysis (1 h) and two additional washes of the precipitated DNA. The DNA samples were checked for fragmentation on 0.8% agarose gels and checked for protein and RNA content by spectrophotometry.</p>
+</sec><sec id="s3c">
+<title>Sequencing of <italic>C. sakazakii</italic> ATCC BAA-894 and Assembly</title>
+<p>The complete genome of <italic>C. sakazakii</italic> BAA-894, a strain isolated from a powdered formula used during an NICU outbreak <xref ref-type="bibr" rid="pone.0009556-Himelright1">[7]</xref>, was sequenced using the whole genome shotgun method, supplemented with end sequencing of a fosmid library. Sonicated and size-fractionated DNA was cloned into plasmid vectors (pOTw13). Subclones and fosmids were sequenced using dye-primer and dye-terminator chemistry on ABI 3730 sequencing robots. Using the PCAP assembly software program <xref ref-type="bibr" rid="pone.0009556-Huang3">[53]</xref>, 51,289 sequence reads, representing 6.2 fold coverage, were assembled. Part of the 6.2X coverage included 1.19X fosmids.Under-represented areas, gaps, and ambiguities were then addressed by performing automated sequence improvement <xref ref-type="bibr" rid="pone.0009556-Gordon1">[54]</xref> using directed sequencing from the subclones (plasmids and fosmids). Following the auto-finish process, correcting misassembled regions, resolving ambiguous bases, and filling the remaining gaps by additional directed sequencing and PCR, completed the finishing process. This yielded a product with a final estimated accuracy of 99.99%.</p>
+</sec><sec id="s3d">
+<title>Annotation</title>
+<p>AceDB was the primary annotation database. The identification of protein-coding genes used a combination of GeneMark, Glimmer 2.0 and Glimmer 3.0; an evidence-based approach was used to prioritize genes for inclusion into a final gene set. Genes missed by the two <italic>ab initio</italic> gene predictors were identified using BlastX.</p>
+</sec><sec id="s3e">
+<title><italic>C. sakazakii</italic> ATCC BAA-894 Microarray Design and Comparative Genome Hybridization Analysis (CGH)</title>
+<p>A 384,030 probe oligonucleotide tiling DNA microarray was designed which comprised the complete genomic sequence of <italic>C. sakazakii</italic> ATCC BAA-894. Probes were designed at an average of less than 12 base spacing on alternating strands, leading to an average of over 100 50-mer oligonucleotide probes per annotated gene.</p>
+<p>Every possible 50-base probe from both strands of the ESA genome and two plasmids was tested for the ability to be manufactured by NimbleGen. Those that required too many NimbleGen cycles were shortened. Resulting candidate probes that were less than 35 bases long were thrown out. The remaining 9,061,350 potential probes had an average melting temperature (Tm) of 74 degrees Celcius. Probes that had Tm above the average were shorted, down to a minimum of 35 bases. The probes were selected from the pool of 9,061,350 potential probes by selecting the best probe at 11.375-base increments, alternating between strands each time. The resulting 386,802 candidate probe sequences where analyzed to remove any probes that covered the same region as another probe due to duplications in the genome and the resulting 384,030 unique sequences were chosen for the array. Mappings between the unique probe sequences and their genome/plasmid/gene positions were stored in a separate file.</p>
+<p>Sample labeling, CGH and data normalization were performed according to the method described at <ext-link ext-link-type="uri" xlink:href="http://www.nimblegen.com/products/lit/cgh_userguide_v5p1.pdf" xlink:type="simple">http://www.nimblegen.com/products/lit/cgh_userguide_v5p1.pdf</ext-link>.</p>
+<p>DNA from the sequenced strain, <italic>C. sakazakii</italic> BAA-894, was used as the internal array control. For within-array normalization, a LOWESS method <xref ref-type="bibr" rid="pone.0009556-Cleveland1">[55]</xref> was used as spatial correction and QSPline <xref ref-type="bibr" rid="pone.0009556-Workman1">[56]</xref> was used to correct for dye bias. The raw data is deposited in GenBank GEO (accession number GSE19308).</p>
+</sec><sec id="s3f">
+<title>Data Visualization by WebArrayDB</title>
+<p>The CGH plotter available at WebArray (<ext-link ext-link-type="uri" xlink:href="http://www.webarraydb.org/webarray/index.html" xlink:type="simple">www.webarraydb.org/webarray/index.html</ext-link>) was used to create CGH plots. This used the log<sub>2</sub> intensity ratio microarray data to calculate the median log<sub>2</sub> intensity ratios for each <italic>C. sakazakii</italic> BAA-894 gene. WebArrayDB is a database system and online cross-platform analysis suite for analysis of microarray data, which allows storage of the data in the repository and their online analysis <xref ref-type="bibr" rid="pone.0009556-Xia1">[57]</xref>.</p>
+</sec><sec id="s3g">
+<title>Dynamic Cut-Off Determination by GACK</title>
+<p>Each gene was represented by tens or hundreds of separate oligonucleotides. These measurmements were condensed into a single median ratio for each gene. The data were further analyzed using the dynamic cut-off determination tool GACK <xref ref-type="bibr" rid="pone.0009556-Kim2">[22]</xref>. The normal probability density function was calculated from the characteristics of the main peak of the data distribution. This was used to calculate the estimated probability of presence that gives a statistical validation of the gene assignment. Each CGH experiment was attributed a specific set of cut-offs to minimize the number of falsely assigned genes.</p>
+<p><italic>Cronobacter</italic> genes were classified according to the most stringent settings of the trinary output of GACK as present, intermediate or absent. Genes classified as ‘present’ had a log<sub>2</sub> intensity ratio (test/reference) greater than the cut-off value corresponding to the 100% estimated probability of presence (EPP) calculated by GACK. The ‘absent’ genes had a log<sub>2</sub> ratio inferior to the cut-off value corresponding to 0% EPP, and can include genes with sufficient sequence divergence. The ‘intermediate’ category included genes whose status could not be assigned with certainty. The EPP function and cut-offs were determined separately for hybridization data of each strain (<xref ref-type="supplementary-material" rid="pone.0009556.s004">Table S3</xref>).</p>
+</sec><sec id="s3h">
+<title>Prophage Identification</title>
+<p>ACLAME Prophinder was used for prophage identification <xref ref-type="bibr" rid="pone.0009556-LimaMendez1">[35]</xref>. This was accessed at <ext-link ext-link-type="uri" xlink:href="http://aclame.ulb.ac.be/Tools/Prophinder/" xlink:type="simple">http://aclame.ulb.ac.be/Tools/Prophinder/</ext-link></p>
+</sec><sec id="s3i">
+<title>16S rDNA Sequence Analysis</title>
+<p>Partial 16S rDNA sequence analysis was done as previously described <xref ref-type="bibr" rid="pone.0009556-Iversen1">[10]</xref>.</p>
+</sec><sec id="s3j">
+<title>Plasmid Profiling</title>
+<p>Plasmid DNA was isolated according to the method described in <xref ref-type="bibr" rid="pone.0009556-Kado1">[58]</xref>.</p>
+</sec></sec><sec id="s4">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0009556.s001" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.s001" xlink:type="simple"><label>Figure S1</label><caption>
+<p>Absence/presence status of prophage genes in <italic>Cronobacter</italic> strains. Red indicates absence/divergence of a particular gene, orange indicates uncertain status and green indicates presence of a gene.</p>
+<p>(0.15 MB TIF)</p>
+</caption></supplementary-material><supplementary-material id="pone.0009556.s002" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.s002" xlink:type="simple"><label>Table S1</label><caption>
+<p>Selected genomic regions present in NICU outbreak strains <italic>C. sakazakii</italic> 707 and 767 and absent in <italic>C. sakazakii</italic> type strain ATCC 29544T.</p>
+<p>(0.16 MB DOC)</p>
+</caption></supplementary-material><supplementary-material id="pone.0009556.s003" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.s003" xlink:type="simple"><label>Table S2</label><caption>
+<p>Non-phage genomic regions absent in more than half of the tested strains.</p>
+<p>(0.40 MB DOC)</p>
+</caption></supplementary-material><supplementary-material id="pone.0009556.s004" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0009556.s004" xlink:type="simple"><label>Table S3</label><caption>
+<p>Cut-off values used for the assignment of absent, intermediate or present gene status.</p>
+<p>(0.04 MB DOC)</p>
+</caption></supplementary-material></sec></body>
+<back>
+<ack>
+<p>We thank Yollande Pui Cheng for technical assistance and Liliana Florea of Bioinformatics advise.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0009556-Friedemann1"><label>1</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Friedemann</surname><given-names>M</given-names></name>
+</person-group>             <year>2007</year>             <article-title><italic>Enterobacter sakazakii</italic> in food and beverages (other than infant formula and milk powder).</article-title>             <source>Int J Food Microbiol</source>             <volume>116</volume>             <fpage>1</fpage>             <lpage>10</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Kandhai1"><label>2</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Kandhai</surname><given-names>MC</given-names></name>
+<name name-style="western"><surname>Reij</surname><given-names>MW</given-names></name>
+<name name-style="western"><surname>Gorris</surname><given-names>LG</given-names></name>
+<name name-style="western"><surname>Guillaume-Gentil</surname><given-names>O</given-names></name>
+<name name-style="western"><surname>van Schothorst</surname><given-names>M</given-names></name>
+</person-group>             <year>2004</year>             <article-title>Occurrence of <italic>Enterobacter sakazakii</italic> in food production environments and households.</article-title>             <source>Lancet</source>             <volume>363(9402)</volume>             <fpage>39</fpage>             <lpage>40</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Gurtler1"><label>3</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Gurtler</surname><given-names>JB</given-names></name>
+<name name-style="western"><surname>Kornacki</surname><given-names>JL</given-names></name>
+<name name-style="western"><surname>Beuchat</surname><given-names>LR</given-names></name>
+</person-group>             <year>2005</year>             <article-title><italic>Enterobacter sakazakii</italic>: a coliform of increased concern to infant health.</article-title>             <source>Int J Food Microbiol</source>             <volume>104</volume>             <fpage>1</fpage>             <lpage>34</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Lai1"><label>4</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Lai</surname><given-names>KK</given-names></name>
+</person-group>             <year>2001</year>             <article-title><italic>Enterobacter sakazakii</italic> infections among neonates, infants, children, and adults.</article-title>             <source>Medicine</source>             <volume>80</volume>             <fpage>113</fpage>             <lpage>122</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Biering1"><label>5</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Biering</surname><given-names>G</given-names></name>
+<name name-style="western"><surname>Karlsson</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Clark</surname><given-names>NC</given-names></name>
+<name name-style="western"><surname>Jonsdottir</surname><given-names>KE</given-names></name>
+<name name-style="western"><surname>Ludvigsson</surname><given-names>P</given-names></name>
+<etal/></person-group>             <year>1989</year>             <article-title>Three cases of neonatal meningitis caused by <italic>Enterobacter sakazakii</italic> in powdered milk.</article-title>             <source>J Clin Microbiol</source>             <volume>27</volume>             <fpage>2054</fpage>             <lpage>6</lpage>          </element-citation></ref>
+<ref id="pone.0009556-CaubillaBarron1"><label>6</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Caubilla-Barron</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Hurrell</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Townsend</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Cheetham</surname><given-names>P</given-names></name>
+<name name-style="western"><surname>Loc-Carrillo</surname><given-names>C</given-names></name>
+<etal/></person-group>             <year>2007</year>             <article-title>Genotypic and phenotypic analysis of <italic>Enterobacter sakazakii</italic> strains from an outbreak resulting in fatalities in a neonatal intensive care unit in France.</article-title>             <source>J Clin Microbiol</source>             <volume>45</volume>             <fpage>3979</fpage>             <lpage>85</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Himelright1"><label>7</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Himelright</surname><given-names>I</given-names></name>
+<name name-style="western"><surname>Harris</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Lorch</surname><given-names>V</given-names></name>
+<name name-style="western"><surname>Anderson</surname><given-names>M</given-names></name>
+</person-group>             <year>2002</year>             <article-title><italic>Enterobacter sakazakii</italic> infections associated with the use of powdered infant formula—Tennessee, 2001.</article-title>             <source>J Am Med Assoc</source>             <volume>287</volume>             <fpage>2204</fpage>             <lpage>2205</lpage>          </element-citation></ref>
+<ref id="pone.0009556-vanAcker1"><label>8</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>van Acker</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>de Smet</surname><given-names>F</given-names></name>
+<name name-style="western"><surname>Muyldermans</surname><given-names>G</given-names></name>
+<name name-style="western"><surname>Bougatef</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Naessens</surname><given-names>A</given-names></name>
+<etal/></person-group>             <year>2001</year>             <article-title>Outbreak of necrotizing enterocolitis associated with <italic>Enterobacter sakazakii</italic> in powdered milk formula.</article-title>             <source>J Clin Microbiol</source>             <volume>39</volume>             <fpage>293</fpage>             <lpage>7</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Farmer1"><label>9</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Farmer</surname><given-names>JJ</given-names></name>
+<name name-style="western"><surname>Asbury</surname><given-names>MA</given-names></name>
+<name name-style="western"><surname>Hickman</surname><given-names>FW</given-names></name>
+<name name-style="western"><surname>Brenner</surname><given-names>DJ</given-names></name>
+</person-group>             <collab xlink:type="simple">the Enterobacteriaceae Study Group (USA)</collab>             <year>1980</year>             <article-title>“<italic>Enterobacter sakazakii</italic>: a new species of <italic>“Enterobacteriaceae”</italic> isolated from clinical specimens”.</article-title>             <source>Int J Syst Bacteriol</source>             <volume>30</volume>             <fpage>569</fpage>             <lpage>84</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Iversen1"><label>10</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Iversen</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Waddington</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>On</surname><given-names>SL</given-names></name>
+<name name-style="western"><surname>Forsythe</surname><given-names>S</given-names></name>
+</person-group>             <year>2004</year>             <article-title>Identification and phylogeny of <italic>Enterobacter sakazakii</italic> relative to <italic>Enterobacter</italic> and <italic>Citrobacter</italic> Species.</article-title>             <source>J Clin Microbiol</source>             <volume>42</volume>             <fpage>5368</fpage>             <lpage>70</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Iversen2"><label>11</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Iversen</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Mullane</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>McCardell</surname><given-names>B</given-names></name>
+<name name-style="western"><surname>Tall</surname><given-names>BD</given-names></name>
+<name name-style="western"><surname>Lehner</surname><given-names>A</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title><italic>Cronobacter</italic> gen. nov., a new genus to accommodate the biogroups of <italic>Enterobacter sakazakii</italic>, and proposal of <italic>Cronobacter sakazakii</italic> gen. nov., comb. nov., <italic>Cronobacter malonaticus</italic> sp. nov., <italic>Cronobacter turicensis</italic> sp. nov., <italic>Cronobacter muytjensii sp.</italic> nov., <italic>Cronobacter dublinensis</italic> sp. nov., <italic>Cronobacter</italic> genomospecies 1, and of three subspecies, <italic>Cronobacter</italic> dublinensis subsp. <italic>dublinensis</italic> subsp. nov., <italic>Cronobacter dublinensis</italic> subsp. <italic>lausannensis</italic> subsp. nov. and <italic>Cronobacter dublinensis</italic> subsp. <italic>lactaridi</italic> subsp. nov.</article-title>             <source>Int J Syst Evol Microbiol</source>             <volume>58(Pt 6)</volume>             <fpage>1442</fpage>             <lpage>7</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Baldwin1"><label>12</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Baldwin</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Loughlin</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Caubilla-Barron</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Kucerova</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Manning</surname><given-names>G</given-names></name>
+<etal/></person-group>             <year>2009</year>             <article-title>Multilocus sequence typing of <italic>Cronobacter sakazakii</italic> and <italic>Cronobacter malonaticus</italic> reveals stable clonal structures with clinical significance which do not correlate with biotypes.</article-title>             <source>BMC Microbiol</source>             <volume>9</volume>             <fpage>223</fpage>          </element-citation></ref>
+<ref id="pone.0009556-Townsend1"><label>13</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Townsend</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Hurrell</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Forsythe</surname><given-names>S</given-names></name>
+</person-group>             <year>2008</year>             <article-title>Virulence studies of <italic>Enterobacter sakazakii</italic> isolates associated with a neonatal intensive care unit outbreak.</article-title>             <source>BMC Microbiol</source>             <volume>8</volume>             <fpage>64</fpage>          </element-citation></ref>
+<ref id="pone.0009556-Townsend2"><label>14</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Townsend</surname><given-names>SM</given-names></name>
+<name name-style="western"><surname>Hurrell</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Gonzalez-Gomez</surname><given-names>I</given-names></name>
+<name name-style="western"><surname>Lowe</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Frye</surname><given-names>JG</given-names></name>
+<etal/></person-group>             <year>2007</year>             <article-title><italic>Enterobacter sakazakii</italic> invades brain capillary endothelial cells, persists in human macrophages influencing cytokine secretion and induces severe brain pathology in the neonatal rat.</article-title>             <source>Microbiology</source>             <volume>153(Pt 10)</volume>             <fpage>3538</fpage>             <lpage>47</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Kim1"><label>15</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Kim</surname><given-names>KP</given-names></name>
+<name name-style="western"><surname>Loessner</surname><given-names>MJ</given-names></name>
+</person-group>             <year>2008</year>             <article-title><italic>Enterobacter sakazakii</italic> invasion in human intestinal Caco-2 cells requires the host cell cytoskeleton and is enhanced by disruption of tight junction.</article-title>             <source>Infect Immun</source>             <volume>76</volume>             <fpage>562</fpage>             <lpage>70</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Burdette1"><label>16</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Burdette</surname><given-names>JH</given-names></name>
+<name name-style="western"><surname>Santos</surname><given-names>C</given-names></name>
+</person-group>             <year>2000</year>             <article-title><italic>Enterobacter sakazakii</italic> brain abscess in the neonate: the importance of neuroradiologic imaging.</article-title>             <source>Pediatr Radiol</source>             <volume>30</volume>             <fpage>33</fpage>             <lpage>4</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Willis1"><label>17</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Willis</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Robinson</surname><given-names>JE</given-names></name>
+</person-group>             <year>1988</year>             <article-title><italic>Enterobacter sakazakii</italic> meningitis in neonates.</article-title>             <source>Pediatr Infect Dis J</source>             <volume>7</volume>             <fpage>196</fpage>             <lpage>9</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Kline1"><label>18</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Kline</surname><given-names>MW</given-names></name>
+</person-group>             <year>1988</year>             <article-title><italic>Citrobacter</italic> meningitis and brain abscess in infancy: Epidemiology, pathogenesis, and treatment.</article-title>             <source>The Journal of Pediatrics</source>             <volume>113</volume>             <fpage>430</fpage>             <lpage>434</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Pagotto1"><label>19</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Pagotto</surname><given-names>FJ</given-names></name>
+<name name-style="western"><surname>Nazarowec-White</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Bidawid</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Farber</surname><given-names>JM</given-names></name>
+</person-group>             <year>2003</year>             <article-title><italic>Enterobacter sakazakii</italic>: infectivity and enterotoxin production in vitro and in vivo.</article-title>             <source>J Food Prot</source>             <volume>66</volume>             <fpage>370</fpage>             <lpage>5</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Florea1"><label>20</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Florea</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>McClelland</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Riemer</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Schwartz</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Miller</surname><given-names>W</given-names></name>
+</person-group>             <year>2003</year>             <article-title>EnteriX 2003: Visualization tools for genome alignments of <italic>Enterobacteriaceae</italic>.</article-title>             <source>Nucleic Acids Res</source>             <volume>31</volume>             <fpage>3527</fpage>             <lpage>32</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Florea2"><label>21</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Florea</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>Riemer</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Schwartz</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Zhang</surname><given-names>Z</given-names></name>
+<name name-style="western"><surname>Stojanovic</surname><given-names>N</given-names></name>
+<etal/></person-group>             <year>2000</year>             <article-title>Web-based visualization tools for bacterial genome alignments.</article-title>             <source>Nucleic Acids Res</source>             <volume>28</volume>             <fpage>3486</fpage>             <lpage>96</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Kim2"><label>22</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Kim</surname><given-names>CC</given-names></name>
+<name name-style="western"><surname>Joyce</surname><given-names>EA</given-names></name>
+<name name-style="western"><surname>Chan</surname><given-names>K</given-names></name>
+<name name-style="western"><surname>Falkow</surname><given-names>S</given-names></name>
+</person-group>             <year>2002</year>             <article-title>Improved analytical methods for microarray-based genome-composition analysis.</article-title>             <source>Genome Biol</source>             <volume>3</volume>             <fpage>RESEARCH0065</fpage>          </element-citation></ref>
+<ref id="pone.0009556-Eisen1"><label>23</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Eisen</surname><given-names>MB</given-names></name>
+<name name-style="western"><surname>Spellman</surname><given-names>PT</given-names></name>
+<name name-style="western"><surname>Brown</surname><given-names>PO</given-names></name>
+<name name-style="western"><surname>Botstein</surname><given-names>D</given-names></name>
+</person-group>             <year>1998</year>             <article-title>Cluster analysis and display of genome-wide expression patterns.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>95</volume>             <fpage>14863</fpage>             <lpage>8</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Huang1"><label>24</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Huang</surname><given-names>SH</given-names></name>
+<name name-style="western"><surname>Wan</surname><given-names>ZS</given-names></name>
+<name name-style="western"><surname>Chen</surname><given-names>YH</given-names></name>
+<name name-style="western"><surname>Jong</surname><given-names>AY</given-names></name>
+<name name-style="western"><surname>Kim</surname><given-names>KS</given-names></name>
+</person-group>             <year>2001</year>             <article-title>Further characterization of <italic>Escherichia coli</italic> brain microvascular endothelial cell invasion gene ibeA by deletion, complementation, and protein expression.</article-title>             <source>J Infect Dis</source>             <volume>183</volume>             <fpage>1071</fpage>             <lpage>8</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Huang2"><label>25</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Huang</surname><given-names>SH</given-names></name>
+<name name-style="western"><surname>Chen</surname><given-names>YH</given-names></name>
+<name name-style="western"><surname>Fu</surname><given-names>Q</given-names></name>
+<name name-style="western"><surname>Stins</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Wang</surname><given-names>Y</given-names></name>
+<etal/></person-group>             <year>1999</year>             <article-title>Identification and characterization of an <italic>Escherichia coli</italic> invasion gene locus, ibeB, required for penetration of brain microvascular endothelial cells.</article-title>             <source>Infect Immun</source>             <volume>67</volume>             <fpage>2103</fpage>             <lpage>9</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Prasadarao1"><label>26</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Prasadarao</surname><given-names>NV</given-names></name>
+<name name-style="western"><surname>Wass</surname><given-names>CA</given-names></name>
+<name name-style="western"><surname>Weiser</surname><given-names>JN</given-names></name>
+<name name-style="western"><surname>Stins</surname><given-names>MF</given-names></name>
+<name name-style="western"><surname>Huang</surname><given-names>SH</given-names></name>
+<etal/></person-group>             <year>1996</year>             <article-title>Outer membrane protein A of <italic>Escherichia coli</italic> contributes to invasion of brain microvascular endothelial cells.</article-title>             <source>Infect Immun</source>             <volume>64</volume>             <fpage>146</fpage>             <lpage>53</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Wang1"><label>27</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Wang</surname><given-names>Y</given-names></name>
+<name name-style="western"><surname>Huang</surname><given-names>SH</given-names></name>
+<name name-style="western"><surname>Wass</surname><given-names>CA</given-names></name>
+<name name-style="western"><surname>Stins</surname><given-names>MF</given-names></name>
+<name name-style="western"><surname>Kim</surname><given-names>KS</given-names></name>
+</person-group>             <year>1999</year>             <article-title>The gene locus yijP contributes to <italic>Escherichia coli</italic> K1 invasion of brain microvascular endothelial cells.</article-title>             <source>Infect Immun</source>             <volume>67</volume>             <fpage>4751</fpage>             <lpage>6</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Franke1"><label>28</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Franke</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Grass</surname><given-names>G</given-names></name>
+<name name-style="western"><surname>Rensing</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Nies</surname><given-names>DH</given-names></name>
+</person-group>             <year>2003</year>             <article-title>Molecular analysis of the copper-transporting efflux system CusCFBA of <italic>Escherichia coli</italic>.</article-title>             <source>J Bacteriol</source>             <volume>185</volume>             <fpage>3804</fpage>             <lpage>12</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Osaili1"><label>29</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Osaili</surname><given-names>T</given-names></name>
+<name name-style="western"><surname>Forsythe</surname><given-names>S</given-names></name>
+</person-group>             <year>2009</year>             <article-title>Desiccation resistance and persistence of <italic>Cronobacter</italic> species in infant formula.</article-title>             <source>Int J Food Microbiol</source>             <volume>136</volume>             <fpage>214</fpage>             <lpage>220</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Kothary1"><label>30</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Kothary</surname><given-names>MH</given-names></name>
+<name name-style="western"><surname>McCardell</surname><given-names>BA</given-names></name>
+<name name-style="western"><surname>Frazar</surname><given-names>CD</given-names></name>
+<name name-style="western"><surname>Deer</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Tall</surname><given-names>BD</given-names></name>
+</person-group>             <year>2007</year>             <article-title>Characterization of the zinc-containing metalloprotease encoded by zpx and development of a species-specific detection method for <italic>Enterobacter sakazakii</italic>.</article-title>             <source>Appl Environ Microbiol</source>             <volume>73</volume>             <fpage>4142</fpage>             <lpage>51</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Lehner1"><label>31</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Lehner</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Grimm</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Rattei</surname><given-names>T</given-names></name>
+<name name-style="western"><surname>Ruepp</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Frishman</surname><given-names>D</given-names></name>
+<etal/></person-group>             <year>2006</year>             <article-title>Cloning and characterization of <italic>Enterobacter sakazakii</italic> pigment genes and in situ spectroscopic analysis of the pigment.</article-title>             <source>FEMS Microbiol Lett</source>             <volume>265</volume>             <fpage>244</fpage>             <lpage>8</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Campellone1"><label>32</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Campellone</surname><given-names>KG</given-names></name>
+<name name-style="western"><surname>Leong</surname><given-names>JM</given-names></name>
+</person-group>             <year>2003</year>             <article-title>Tails of two Tirs: actin pedestal formation by enteropathogenic <italic>E. coli</italic> and enterohemorrhagic <italic>E. coli</italic> O157:H7.</article-title>             <source>Curr Opin Microbiol</source>             <volume>6</volume>             <fpage>82</fpage>             <lpage>90</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Nystrom1"><label>33</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Nystrom</surname><given-names>T</given-names></name>
+<name name-style="western"><surname>Neidhardt</surname><given-names>FC</given-names></name>
+</person-group>             <year>1994</year>             <article-title>Expression and role of the universal stress protein, UspA, of <italic>Escherichia coli</italic> during growth arrest.</article-title>             <source>Mol Microbiol</source>             <volume>11</volume>             <fpage>537</fpage>             <lpage>44</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Folkesson1"><label>34</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Folkesson</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Lofdahl</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Normark</surname><given-names>S</given-names></name>
+</person-group>             <year>2002</year>             <article-title>The <italic>Salmonella enterica</italic> subspecies I specific centisome 7 genomic island encodes novel protein families present in bacteria living in close contact with eukaryotic cells.</article-title>             <source>Res Microbiol</source>             <volume>153</volume>             <fpage>537</fpage>             <lpage>45</lpage>          </element-citation></ref>
+<ref id="pone.0009556-LimaMendez1"><label>35</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Lima-Mendez</surname><given-names>G</given-names></name>
+<name name-style="western"><surname>Van Helden</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Toussaint</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Leplae</surname><given-names>R</given-names></name>
+</person-group>             <year>2008</year>             <article-title>Prophinder: a computational tool for prophage prediction in prokaryotic genomes.</article-title>             <source>Bioinformatics</source>             <volume>24</volume>             <fpage>863</fpage>             <lpage>5</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Lazdunski1"><label>36</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Lazdunski</surname><given-names>CJ</given-names></name>
+</person-group>             <year>1988</year>             <article-title>Pore-forming colicins: synthesis, extracellular release, mode of action, immunity.</article-title>             <source>Biochimie</source>             <volume>70</volume>             <fpage>1291</fpage>             <lpage>6</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Pickard1"><label>37</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Pickard</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Thomson</surname><given-names>NR</given-names></name>
+<name name-style="western"><surname>Baker</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Wain</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Pardo</surname><given-names>M</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>Molecular characterization of the <italic>Salmonella enterica</italic> serovar <italic>Typhi</italic> Vi-typing bacteriophage E1.</article-title>             <source>J Bacteriol</source>             <volume>190</volume>             <fpage>2580</fpage>             <lpage>7</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Collyn1"><label>38</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Collyn</surname><given-names>F</given-names></name>
+<name name-style="western"><surname>Billault</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Mullet</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Simonet</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Marceau</surname><given-names>M</given-names></name>
+</person-group>             <year>2004</year>             <article-title>YAPI, a new <italic>Yersinia pseudotuberculosis</italic> pathogenicity island.</article-title>             <source>Infect Immun</source>             <volume>72</volume>             <fpage>4784</fpage>             <lpage>90</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Brussow1"><label>39</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Brussow</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Canchaya</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Hardt</surname><given-names>WD</given-names></name>
+</person-group>             <year>2004</year>             <article-title>Phages and the evolution of bacterial pathogens: from genomic rearrangements to lysogenic conversion.</article-title>             <source>Microbiol Mol Biol Rev</source>             <volume>68</volume>             <fpage>560</fpage>             <lpage>602</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Boyd1"><label>40</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Boyd</surname><given-names>EF</given-names></name>
+<name name-style="western"><surname>Brussow</surname><given-names>H</given-names></name>
+</person-group>             <year>2002</year>             <article-title>Common themes among bacteriophage-encoded virulence factors and diversity among the bacteriophages involved.</article-title>             <source>Trends Microbiol</source>             <volume>10</volume>             <fpage>521</fpage>             <lpage>9</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Kaper1"><label>41</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Kaper</surname><given-names>JB</given-names></name>
+</person-group>             <year>1998</year>             <article-title>The locus of enterocyte effacement pathogenicity island of Shiga toxin-producing <italic>Escherichia coli</italic> O157:H7 and other attaching and effacing <italic>E. coli</italic>.</article-title>             <source>Jpn J Med Sci Biol</source>             <volume>51</volume>             <supplement>Suppl</supplement>             <fpage>S101</fpage>             <lpage>7</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Das1"><label>42</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Das</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Chakrabortty</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Banerjee</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Chaudhuri</surname><given-names>K</given-names></name>
+</person-group>             <year>2002</year>             <article-title>Involvement of in vivo induced icmF gene of <italic>Vibrio cholerae</italic> in motility, adherence to epithelial cells, and conjugation frequency.</article-title>             <source>Biochem Biophys Res Commun</source>             <volume>295</volume>             <fpage>922</fpage>             <lpage>8</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Pukatzki1"><label>43</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Pukatzki</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Ma</surname><given-names>AT</given-names></name>
+<name name-style="western"><surname>Sturtevant</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Krastins</surname><given-names>B</given-names></name>
+<name name-style="western"><surname>Sarracino</surname><given-names>D</given-names></name>
+<etal/></person-group>             <year>2006</year>             <article-title>Identification of a conserved bacterial protein secretion system in <italic>Vibrio cholerae</italic> using the Dictyostelium host model system.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>103</volume>             <fpage>1528</fpage>             <lpage>33</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Mullane1"><label>44</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Mullane</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>O'Gaora</surname><given-names>P</given-names></name>
+<name name-style="western"><surname>Nally</surname><given-names>JE</given-names></name>
+<name name-style="western"><surname>Iversen</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Whyte</surname><given-names>P</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>Molecular analysis of the <italic>Enterobacter sakazakii</italic> O-antigen gene locus.</article-title>             <source>Appl Environ Microbiol</source>             <volume>74</volume>             <fpage>3783</fpage>             <lpage>94</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Abraham1"><label>45</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Abraham</surname><given-names>SN</given-names></name>
+<name name-style="western"><surname>Jonsson</surname><given-names>AB</given-names></name>
+<name name-style="western"><surname>Normark</surname><given-names>S</given-names></name>
+</person-group>             <year>1998</year>             <article-title>Fimbriae-mediated host-pathogen cross-talk.</article-title>             <source>Curr Opin Microbiol</source>             <volume>1</volume>             <fpage>75</fpage>             <lpage>81</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Mougous1"><label>46</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Mougous</surname><given-names>JD</given-names></name>
+<name name-style="western"><surname>Senaratne</surname><given-names>RH</given-names></name>
+<name name-style="western"><surname>Petzold</surname><given-names>CJ</given-names></name>
+<name name-style="western"><surname>Jain</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Lee</surname><given-names>DH</given-names></name>
+<etal/></person-group>             <year>2006</year>             <article-title>A sulfated metabolite produced by stf3 negatively regulates the virulence of <italic>Mycobacterium tuberculosis</italic>.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>103</volume>             <fpage>4258</fpage>             <lpage>63</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Schlieker1"><label>47</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Schlieker</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Zentgraf</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Dersch</surname><given-names>P</given-names></name>
+<name name-style="western"><surname>Mogk</surname><given-names>A</given-names></name>
+</person-group>             <year>2005</year>             <article-title>ClpV, a unique Hsp100/Clp member of pathogenic proteobacteria.</article-title>             <source>Biol Chem</source>             <volume>386</volume>             <fpage>1115</fpage>             <lpage>27</lpage>          </element-citation></ref>
+<ref id="pone.0009556-MacLean1"><label>48</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>MacLean</surname><given-names>LL</given-names></name>
+<name name-style="western"><surname>Pagotto</surname><given-names>F</given-names></name>
+<name name-style="western"><surname>Farber</surname><given-names>JM</given-names></name>
+<name name-style="western"><surname>Perry</surname><given-names>MB</given-names></name>
+</person-group>             <year>2009</year>             <article-title>Structure of the antigenic repeating pentasaccharide unit of the LPS O-polysaccharide of <italic>Cronobacter sakazakii</italic> implicated in the Tennessee outbreak.</article-title>             <source>Biochem Cell Biol</source>             <volume>87</volume>             <fpage>459</fpage>             <lpage>465</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Czerwicka1"><label>49</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Czerwicka</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Forsythe</surname><given-names>SJ</given-names></name>
+<name name-style="western"><surname>Bychowska</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Dziadziuszko</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Kunikowska</surname><given-names>D</given-names></name>
+<etal/></person-group>             <year>2010</year>             <article-title>Chemical structure of the O-polysaccharide isolated from <italic>Cronobacter sakazakii</italic> 767.</article-title>             <source>Carbohydrate Research. In Press</source>          </element-citation></ref>
+<ref id="pone.0009556-MacLean2"><label>50</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>MacLean</surname><given-names>LL</given-names></name>
+<name name-style="western"><surname>Vinogradov</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Pagotto</surname><given-names>F</given-names></name>
+<name name-style="western"><surname>Farber</surname><given-names>JM</given-names></name>
+<name name-style="western"><surname>Perry</surname><given-names>MB</given-names></name>
+</person-group>             <year>2009</year>             <article-title>Characterization of the O-antigen in the lipopolysaccharide of <italic>Cronobacter (Enterobacter) malonaticus</italic> 3267.</article-title>             <source>Biochem Cell Biol</source>             <volume>87</volume>             <fpage>927</fpage>             <lpage>932</lpage>          </element-citation></ref>
+<ref id="pone.0009556-MacLean3"><label>51</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>MacLean</surname><given-names>LL</given-names></name>
+<name name-style="western"><surname>Pagotto</surname><given-names>F</given-names></name>
+<name name-style="western"><surname>Farber J</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Perry</surname><given-names>MB</given-names></name>
+</person-group>             <year>2009</year>             <article-title>The structure of the O-antigen in the endotoxin of the emerging food pathogen <italic>Cronobacter</italic> (<italic>Enterobacter</italic>) <italic>muytjensii</italic> strain 3270.</article-title>             <source>Carbohydr Res</source>             <volume>344</volume>             <fpage>667</fpage>             <lpage>671</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Porwollik1"><label>52</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Porwollik</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Wong</surname><given-names>RM</given-names></name>
+<name name-style="western"><surname>McClelland</surname><given-names>M</given-names></name>
+</person-group>             <year>2002</year>             <article-title>Evolutionary genomics of <italic>Salmonella</italic>: gene acquisitions revealed by microarray analysis.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>99</volume>             <fpage>8956</fpage>             <lpage>61</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Huang3"><label>53</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Huang</surname><given-names>X</given-names></name>
+<name name-style="western"><surname>Wang</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Aluru</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Yang</surname><given-names>SP</given-names></name>
+<name name-style="western"><surname>Hillier</surname><given-names>L</given-names></name>
+</person-group>             <year>2003</year>             <article-title>PCAP: a whole-genome assembly program.</article-title>             <source>Genome Res</source>             <volume>13</volume>             <fpage>2164</fpage>             <lpage>70</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Gordon1"><label>54</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Gordon</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Desmarais</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Green</surname><given-names>P</given-names></name>
+</person-group>             <year>2001</year>             <article-title>Automated finishing with autofinish.</article-title>             <source>Genome Res</source>             <volume>11</volume>             <fpage>614</fpage>             <lpage>25</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Cleveland1"><label>55</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Cleveland</surname><given-names>WS</given-names></name>
+</person-group>             <year>1979</year>             <article-title>Robust locally weighted regression and smoothing scatterplots.</article-title>             <source>Journal of the American Statistical Association</source>             <volume>74</volume>             <fpage>829</fpage>             <lpage>836</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Workman1"><label>56</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Workman</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Jensen</surname><given-names>LJ</given-names></name>
+<name name-style="western"><surname>Jarmer</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Berka</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Gautier</surname><given-names>L</given-names></name>
+<etal/></person-group>             <year>2002</year>             <article-title>A new non-linear normalization method for reducing variability in DNA microarray experiments.</article-title>             <source>Genome Biol vol</source>             <volume>3</volume>             <fpage>research0048.1</fpage>             <lpage>0048.16</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Xia1"><label>57</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Xia</surname><given-names>XQ</given-names></name>
+<name name-style="western"><surname>McClelland</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Porwollik</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Song</surname><given-names>W</given-names></name>
+<name name-style="western"><surname>Cong</surname><given-names>X</given-names></name>
+<etal/></person-group>             <year>2009</year>             <article-title>WebArrayDB: cross-platform microarray data analysis and public data repository.</article-title>             <source>Bioinformatics</source>             <volume>25</volume>             <fpage>2425</fpage>             <lpage>9</lpage>          </element-citation></ref>
+<ref id="pone.0009556-Kado1"><label>58</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Kado</surname><given-names>CI</given-names></name>
+<name name-style="western"><surname>Liu</surname><given-names>ST</given-names></name>
+</person-group>             <year>1981</year>             <article-title>Rapid procedure for detection and isolation of large and small plasmids.</article-title>             <source>J Bacteriol</source>             <volume>145</volume>             <fpage>1365</fpage>             <lpage>1373</lpage>          </element-citation></ref>
+</ref-list>
+
+</back>
+</article>

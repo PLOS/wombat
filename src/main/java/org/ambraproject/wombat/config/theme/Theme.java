@@ -110,7 +110,7 @@ public abstract class Theme {
    * @return the stream to a static resource
    * @throws IOException if an error occurs accessing the resource
    */
-  public final InputStream getStaticResource(String path) throws IOException {
+  public InputStream getStaticResource(String path) throws IOException {
     Preconditions.checkNotNull(path);
     for (Theme theme : getInheritanceChain()) {
       InputStream stream = theme.fetchStaticResource(path);

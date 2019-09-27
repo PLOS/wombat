@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-11-25021</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0032400</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Immunology</subject>
+          </subj-group>
+          <subj-group>
+            <subject>Microbiology</subject>
+            <subj-group>
+              <subject>Virology</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Clinical immunology</subject>
+            <subj-group>
+              <subject>Immunity</subject>
+              <subj-group>
+                <subject>Vaccination</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Infectious diseases</subject>
+            <subj-group>
+              <subject>Viral diseases</subject>
+            </subj-group>
+            <subj-group>
+              <subject>Zoonoses</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Veterinary science</subject>
+          <subj-group>
+            <subject>Animal types</subject>
+          </subj-group>
+          <subj-group>
+            <subject>Veterinary diseases</subject>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Immunology</subject>
+          <subject>Virology</subject>
+          <subject>Infectious Diseases</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Immune Responses in Pigs Vaccinated with Adjuvanted and Non-Adjuvanted A(H1N1)pdm/09 Influenza Vaccines Used in Human Immunization Programmes</article-title><alt-title alt-title-type="running-head">Immune Responses to A(H1N1)pdm/09 Vaccines in Pigs</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Lefevre</surname>
+            <given-names>Eric A.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Carr</surname>
+            <given-names>B. Veronica</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Inman</surname>
+            <given-names>Charlotte F.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Prentice</surname>
+            <given-names>Helen</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Brown</surname>
+            <given-names>Ian H.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Brookes</surname>
+            <given-names>Sharon M.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Garcon</surname>
+            <given-names>Fanny</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hill</surname>
+            <given-names>Michelle L.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Iqbal</surname>
+            <given-names>Munir</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Elderfield</surname>
+            <given-names>Ruth A.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff4">
+            <sup>4</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Barclay</surname>
+            <given-names>Wendy S.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff4">
+            <sup>4</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Gubbins</surname>
+            <given-names>Simon</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff5">
+            <sup>5</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Bailey</surname>
+            <given-names>Mick</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Charleston</surname>
+            <given-names>Bryan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <collab xlink:type="simple">COSI</collab>
+          <xref ref-type="fn" rid="fn1">
+            <sup>¶</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1"><label>1</label><addr-line>Institute for Animal Health, Compton near Newbury, United Kingdom</addr-line>       </aff><aff id="aff2"><label>2</label><addr-line>Division of Veterinary Pathology, School of Clinical Veterinary Science, University of Bristol, Langford, Bristol, United Kingdom</addr-line>       </aff><aff id="aff3"><label>3</label><addr-line>Animal Health and Veterinary Laboratories Agency - Weybridge, EU/OIE/FAO Reference Laboratory for Avian Influenza and Newcastle Disease, Addlestone, United Kingdom</addr-line>       </aff><aff id="aff4"><label>4</label><addr-line>Department of Virology, Imperial College London, London, United Kingdom</addr-line>       </aff><aff id="aff5"><label>5</label><addr-line>Institute for Animal Health, Pirbright, United Kingdom</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Guan</surname>
+            <given-names>Yi</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">The University of Hong Kong, China</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">eric.lefevre@iah.ac.uk</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: EAL CHF IHB SMB WSB MB BC. Performed the experiments: EAL BVC CFI HP FG MLH MI RAE. Analyzed the data: EAL BVC CFI IHB SMB WSB SG MB BC. Contributed reagents/materials/analysis tools: EAL BVC CFI IHB SMB MLH MI RAE WSB SG MB BC. Wrote the paper: EAL BC. Revised the draft for important intelectual content: BVC CFI HP IHB SMB MLH SG.</p>
+        </fn>
+        <fn fn-type="other" id="fn1">
+          <p>¶ Membership of COSI is provided in the Acknowledgments.</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>The authors have declared that no competing interests exist.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2012</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>9</day>
+        <month>3</month>
+        <year>2012</year>
+      </pub-date><volume>7</volume><issue>3</issue><elocation-id>e32400</elocation-id><history>
+        <date date-type="received">
+          <day>8</day>
+          <month>12</month>
+          <year>2011</year>
+        </date>
+        <date date-type="accepted">
+          <day>30</day>
+          <month>1</month>
+          <year>2012</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2012</copyright-year><copyright-holder>Lefevre et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <p>Following the emergence and global spread of a novel H1N1 influenza virus in 2009, two A(H1N1)pdm/09 influenza vaccines produced from the A/California/07/09 H1N1 strain were selected and used for the national immunisation programme in the United Kingdom: an adjuvanted split virion vaccine and a non-adjuvanted whole virion vaccine. In this study, we assessed the immune responses generated in inbred large white pigs (Babraham line) following vaccination with these vaccines and after challenge with A(H1N1)pdm/09 virus three months post-vaccination. Both vaccines elicited strong antibody responses, which included high levels of influenza-specific IgG1 and haemagglutination inhibition titres to H1 virus. Immunisation with the adjuvanted split vaccine induced significantly higher interferon gamma production, increased frequency of interferon gamma-producing cells and proliferation of CD4<sup>−</sup>CD8<sup>+</sup> (cytotoxic) and CD4<sup>+</sup>CD8<sup>+</sup> (helper) T cells, after <italic>in vitro</italic> re-stimulation. Despite significant differences in the magnitude and breadth of immune responses in the two vaccinated and mock treated groups, similar quantities of viral RNA were detected from the nasal cavity in all pigs after live virus challenge. The present study provides support for the use of the pig as a valid experimental model for influenza infections in humans, including the assessment of protective efficacy of therapeutic interventions.</p>
+      </abstract><funding-group><funding-statement>The present study was conducted within the remit of the COmbating Swine Influenza (COSI) consortium, funded by the Biotechnology and Biological Sciences Research Council (BBSRC), Medical Research Council (MRC), Department for Environment, Food and Rural Affairs (Defra) and Wellcome Trust (BB/H014292/1). Additional financial support for this research was also provided by the Institute for Animal Health. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="10"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>In June 2009, the World Health Organization (WHO) declared an H1N1 influenza pandemic in response to the emergence and global spread of a novel H1N1 influenza A virus - A(H1N1)pdm/09 (<ext-link ext-link-type="uri" xlink:href="http://www.who.int/mediacentre/news/statements/2009/h1n1_pandemic_phase6_20090611/en/index.html" xlink:type="simple">http://www.who.int/mediacentre/news/statements/2009/h1n1_pandemic_phase6_20090611/en/index.html</ext-link>), which contained a unique combination of gene segments derived from multiple viruses that have been circulating in pigs for decades <xref ref-type="bibr" rid="pone.0032400-Garten1">[1]</xref>. Most A(H1N1)pdm/09 cases in humans resulted in mild illnesses, but in some people, more serious symptoms and fatalities have been reported <xref ref-type="bibr" rid="pone.0032400-Bautista1">[2]</xref>.</p>
+      <p>In the UK, two A(H1N1)pdm/09 influenza vaccines produced from the A/California/07/09 H1N1 strain (Cal07) were used for the national immunisation programme: (i) Pandemrix (GlaxoSmithKline Biologicals S.A., GSK), an AS03b-adjuvanted split virion vaccine derived from embryonated chicken eggs, administered once in healthy adults, and (ii) Celvapan (Baxter AG), a non-adjuvanted whole virion vaccine derived from Vero cell culture, administered twice with a minimum of 3 weeks between injections. These A(H1N1)pdm/09 vaccines were authorized under “Exceptional Circumstances” on the basis of limited to very limited safety and immunogenicity data obtained with these A(H1N1)pdm/09 influenza vaccines and also utilised more complete safety and immunogenicity data obtained with H5N1 “mock-up” vaccines - e.g. similar versions of the A(H1N1)pdm/09 vaccines that contain the whole H5N1 A/Vietnam/1203/2004 influenza virus for the non-adjuvanted whole vaccine or the viral surface protein haemagglutinin (HA) derived from H5N1 A/Vietnam/1194/2004 for the adjuvanted split vaccine (product characteristics described in <ext-link ext-link-type="uri" xlink:href="http://www.ema.europa.eu/docs/en_GB/document_library/Other/2010/01/WC500059182.pdf" xlink:type="simple">http://www.ema.europa.eu/docs/en_GB/document_library/Other/2010/01/WC500059182.pdf</ext-link> and <ext-link ext-link-type="uri" xlink:href="http://www.dossiers-sos-justice.com/media/00/01/1744671157.pdf" xlink:type="simple">http://www.dossiers-sos-justice.com/media/00/01/1744671157.pdf</ext-link>, respectively). For both vaccines, the immunogenicity data at the time of authorization was based on the generation of anti-HA antibodies following vaccination with either the A(H1N1)pdm/09 and/or “mock-up” vaccines, and included some antigenic cross-reactivity data. For the adjuvanted split vaccine, non-clinical studies were solely based on results obtained following the vaccination and challenge of ferrets with the “mock-up” vaccine. For the non-adjuvanted whole vaccine, two non-clinical studies were performed in ferrets vaccinated with the “mock-up” vaccine and one study was performed in mice using the A(H1N1)pdm/09 vaccine. Regarding the latter study, Kistner et al. recently reported that the non-adjuvanted whole vaccine provided protection against challenge with Cal07 with respect to undetectable virus titers in the lung tissue of vaccinated CD1 mice <xref ref-type="bibr" rid="pone.0032400-Kistner1">[3]</xref>. Since these A(H1N1)pdm/09 vaccines were made available, several authors have reported that both were strongly immunogenic in adults and/or children <xref ref-type="bibr" rid="pone.0032400-Madhun1">[4]</xref>, <xref ref-type="bibr" rid="pone.0032400-Waddington1">[5]</xref>.</p>
+      <p>The generation of neutralising antibodies against antigenic sites on the HA glycoprotein of the influenza virus (as assessed by HA inhibition assay or microneutralisation assay) is regarded as the criterion for evaluating immunity to influenza viruses and is believed to constitute the main correlate of protection <xref ref-type="bibr" rid="pone.0032400-Waddington1">[5]</xref>, <xref ref-type="bibr" rid="pone.0032400-Hobson1">[6]</xref>, <xref ref-type="bibr" rid="pone.0032400-deJong1">[7]</xref>. Although cell-mediated immunity also correlates with the rate of viral clearance and protection of the respiratory tract after challenge with infectious influenza viruses <xref ref-type="bibr" rid="pone.0032400-Thomas1">[8]</xref>, cellular-mediated immune responses have not been assessed following vaccination with the A(H1N1)pdm/09 vaccines and only limited data is available on the cellular-mediated immune responses elicited by influenza vaccines in general <xref ref-type="bibr" rid="pone.0032400-Platt1">[9]</xref>.</p>
+      <p>Mice and ferrets are the most routinely used animal models for the study of influenza infections and in particular for the evaluation of human influenza vaccines <xref ref-type="bibr" rid="pone.0032400-Waffarn1">[10]</xref>, <xref ref-type="bibr" rid="pone.0032400-Haga1">[11]</xref>. In contrast, the pig is not currently considered as a major experimental model for influenza viruses, despite the fact that influenza viruses are enzootic in pigs <xref ref-type="bibr" rid="pone.0032400-Brown1">[12]</xref> and several studies show the pig as a valuable model to study human influenza viruses: human influenza viruses do replicate to a similar level in both the upper and lower respiratory tract explants of pigs, which exhibit a similar sialic acid receptor distribution and pattern of virus attachment to humans <xref ref-type="bibr" rid="pone.0032400-VanPoucke1">[13]</xref>, <xref ref-type="bibr" rid="pone.0032400-vanRiel1">[14]</xref>, and infections of pigs with human influenza viruses under natural conditions occur regularly <xref ref-type="bibr" rid="pone.0032400-Brown1">[12]</xref>. Moreover, several studies have now demonstrated in pigs the pathogenesis and transmission of A(H1N1)pdm/09 influenza virus that emerged in 2009 <xref ref-type="bibr" rid="pone.0032400-Lange1">[15]</xref>, <xref ref-type="bibr" rid="pone.0032400-Brookes1">[16]</xref>, <xref ref-type="bibr" rid="pone.0032400-Busquets1">[17]</xref>. In the present study, we assessed the immune responses generated to intramuscular immunisation with two commercial human influenza vaccines and challenge in inbred large white pigs (Babraham line).</p>
+    </sec>
+    <sec id="s2" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s2a">
+        <title>Ethics Statement</title>
+        <p>All experiments were approved by the ethical review processes at the Institute for Animal Health (IAH) and Animal Health and Veterinary Laboratories Agency (AHVLA), were in accordance with national guidelines on animal use, and all efforts were made to minimise suffering of animals.</p>
+      </sec>
+      <sec id="s2b">
+        <title>Vaccines</title>
+        <p>Two commercial A(H1N1)pdm/09 influenza vaccines produced from Cal07 were used in this study: an AS03b-adjuvanted split virion vaccine (Pandemrix, GlaxoSmithKline Biologicals S.A., GSK, Rixensart, Belgium) and a non-adjuvanted whole virion vaccine (Celvapan, Baxter AG, Vienna, Austria).</p>
+        <p>The adjuvanted split virion vaccine was manufactured from a reassortant strain combining the HA, neuraminidase (NA) and viral polymerase subunit (PB1) genes of Cal07 and the PR8 strain backbone, generated by classical reassortment in embryonated chicken eggs. This vaccine was supplied as a suspension (antigen) and emulsion (adjuvant) multidose vial, and the volume after mixing one vial of suspension (2.5 ml) with one vial of emulsion (2.5 ml) corresponded to ten doses of vaccine. One dose (0.5 ml) contained: (i) 3.75 µg HA antigen; (ii) the oil-in-water AS03 adjuvant composed of squalene (10.69 mg), DL-α-tocopherol (11.86 mg) and polysorbate 80 (4.86 mg); and (iii) the excipient thiomersal (5 mg). The vaccine vials were stored at 2–8°C and used within 24 hours following mixing.</p>
+        <p>The non-adjuvanted whole virion vaccine was manufactured from Cal07, grown in Vero cells and inactivated (formaldehyde and UV irradiation). This vaccine was supplied as a 5 ml multidose vial, corresponding to ten vaccine doses. One dose (0.5 ml) contained 7.5 µg HA antigen. The vaccine vials were stored at 2–8°C and used within 3 hours following opening of the vial.</p>
+      </sec>
+      <sec id="s2c">
+        <title>Study design</title>
+        <p>Inbred large white pigs (Babraham line) were conventionally reared at the Institute for Animal Health (Compton, UK), with ages ranging from three to four months and weighing 15–29 kg at the initiation of the study. Prior to the study, all pigs were bled and shown by ELISA to be negative for anti-influenza A virus antibodies in the serum (i.e. not previously exposed to influenza A viruses). The pigs (three animals per group) were intramuscularly injected in the neck with one of the two commercial A(H1N1)pdm/09 influenza vaccines mentioned above (0.5 ml per pig). The vaccination regime was similar to that recommended for adult humans: the adjuvanted split virion vaccine was administered only once, whereas the whole virion vaccine was administered twice (two doses three weeks apart). Another two pigs were mock-vaccinated, i.e. received a single intramuscular injection in the neck with 2.5 µl uninfected allantoic fluid (corresponding to approximately 7.5 µg total egg protein) diluted in a mixture of 0.25 ml PBS and 0.25 ml adjuvant (emulsion vial from the adjuvanted split virion vaccine) per pig. Blood samples were collected by anterior vena cava venepuncture at various time-points following vaccination.</p>
+        <p>Three months after the initial vaccination, all pigs were intranasally inoculated with 10<sup>6</sup> pfu of infectious A/England/195/09 H1N1 (Eng195 - 10<sup>6</sup> pfu/4 ml – 2 ml per nostril), using a mucosal atomisation device (MAD® Nasal, Wolfe Tory Medical Inc., Salt Lake City, UT) to mimic aerogenous infection that results in the infection of both the upper and lower respiratory tract <xref ref-type="bibr" rid="pone.0032400-Brookes1">[16]</xref>. This infectious virus strain was propagated in MDCK cells. Clinical parameters (demeanour, respiratory signs, faeces consistency and rectal temperature) were assessed and nasal swab samples were collected one day before and every day after challenge for 9 days. The swabs were stored in 1 ml RNAlater (Applied Biosystems/Ambion, Austin, TX) and stored frozen at −80°C until tested by a modified influenza A M gene real-time RT-PCR assay (RRT-PCR, as described below).</p>
+      </sec>
+      <sec id="s2d">
+        <title>Culture medium</title>
+        <p>The culture medium was RPMI-1640 medium with glutamax-I and 25 mM Hepes (Invitrogen Ltd., Paisley, UK) supplemented with penicillin (100units/ml), streptomycin (100 µg/ml), 1× non-essential amino acids, 1 mM sodium pyruvate and 10% heat-inactivated pig serum (Invitrogen Ltd.), and was subsequently termed complete medium. The commercial pig serum used in the culture medium was checked to be negative for antibodies against four swine influenza viruses mostly endemic in UK pigs (avian-like H1N1[195852], classical H1N1, H1N2 and H3N2) and the pandemic Eng195 (data not shown).</p>
+      </sec>
+      <sec id="s2e">
+        <title>Isolation and stimulation of pig peripheral blood mononuclear cells (PBMC)</title>
+        <p>Blood (25–40 ml per pig) was collected in heparinised tubes at various time-points post vaccination (i.e. day 0, 7, 12, 21, 28, 33, 93 and 100), and PBMC were obtained by density gradient centrifugation (1200×g for 30 min over Histopaque® 1.083 g/ml, Sigma-Aldrich, Poole, UK). 2×10<sup>5</sup> PBMC per well were cultured (10 replicates per condition) in U-shape 96-well microtiter plates in 200 µl complete medium alone or with the following stimuli: 10<sup>5</sup>EID<sub>50</sub>/ml LBP-inactivated Cal07 (grown in embryonated chicken eggs, corresponding to a 1/1000 dilution of virus stock), 10<sup>5</sup> pfu/ml UV-inactivated Eng195 (grown in MDCK cells, corresponding to a 1/20 dilution of virus stock), mock antigen (uninfected allantoic fluid diluted at 1/1000 or MDCK lysate diluted at 1/20) or 1 µg/ml pokeweed mitogen (PWM, Sigma-Aldrich). PBMCs were then incubated for 3 days at 37°C in a 5% CO<sub>2</sub> incubator, before harvesting cell supernatants to assess interferon gamma (IFNγ) production by ELISA or harvesting cells to quantify IFNγ-producing cells by ELISPOT.</p>
+        <p>For the assessment of cell proliferation, a number of PBMC were labelled with carboxyfluorescein diacetate succinimydyl ester (CFSE) cell tracer (Invitrogen Ltd) immediately after their isolation. Briefly, PBMC (5×10<sup>6</sup>/ml in pre-warmed PBS) were incubated with 0.5 µg/ml CFSE in a water bath for 15 min at 37°C. Cells were recovered by centrifugation, suspended at 5×10<sup>6</sup>cells/ml in pre-warmed complete medium and incubated in a water bath for a further 30 min at 37°C. Subsequently, cells were washed twice, suspended at the appropriate concentration (2×10<sup>6</sup>cells/ml) in complete medium and stimulated for five days as described above for unlabelled PBMC.</p>
+      </sec>
+      <sec id="s2f">
+        <title>Swine IFNγ ELISA</title>
+        <p>Swine IFNγ was measured in cell supernatants of PBMC cultured for 3 days (as described above) by using a commercial ELISA kit (Thermo Scientific, Rockford, IL), according to the manufacturer's instructions. Concentrations of swine IFNγ in test samples were determined by extrapolation to the linear part of the standard curve and taking into account any extra dilution factor applied to the samples. <xref ref-type="sec" rid="s3">Results</xref> were expressed as pg swine IFNγ/ml and the lower detection limit for the assay was 2 pg/ml.</p>
+      </sec>
+      <sec id="s2g">
+        <title>Swine IFNγ ELISPOT</title>
+        <p>MultiScreen™-HA ELISPOT plates (Millipore, Watford, UK) were coated for two hours at room temperature with 1 µg/ml mouse anti-pig IFNγ (BD Biosciences, San Jose, CA) in carbonate buffer (0.1 M Na<sub>2</sub>CO<sub>3</sub>/NaHCO<sub>3</sub>, pH 9.6). Plates were washed five times with PBS and subsequently incubated for two hours at 37°C with 100 µl per well of blocking buffer (PBS containing 4% dried skimmed milk). Plates were then washed five times with PBS and stored at 4°C until use.</p>
+        <p>For each culture condition, ten wells of 3 day-stimulated PBMC (as described above) were pooled and resuspended in 200 µl complete media (equivalent to 10<sup>7</sup> initial cells/ml) and 2-fold serial dilutions were performed in complete medium down to 3.1×10<sup>5</sup> cells/ml. 100 µl/well of each cell suspension was added to the coated ELISPOT plates and cultured overnight at 37°C in a 5% CO<sub>2</sub> incubator. Cells were washed off the plates using PBS containing 0.05% Tween20, then 100 µl per well biotinylated mouse anti-pig IFNγ (0.5 µg/ml, BD Biosciences) was added to the plates for 2 hours at room temperature. Plates were washed five times with PBS containing 0.05% Tween20 and 100 µl per well streptavidin conjugated to alkaline phosphatase (1/1000, Invitrogen Ltd.) was added to the plates for 1 hour at room temperature. Plates were washed five times with PBS containing 0.05% Tween20 and 100 µl per well alkaline phosphatase substrate solution (Biorad laboratories, Hercules, CA) was added for 20 min at room temperature. Plates were then rinsed with tap water and allowed to dry overnight at room temperature before counting the dark blue-coloured immunospots using the AID ELISPOT reader (AID Autoimmun Diagnostika GmbH, Strassberg, Germany). <xref ref-type="sec" rid="s3">Results</xref> were expressed as IFNγ-producing cell number per 10<sup>6</sup> stimulated PBMC.</p>
+      </sec>
+      <sec id="s2h">
+        <title>Assessment of cell proliferation in T cell subsets</title>
+        <p>For each culture condition, ten wells of 5 day-stimulated CFSE-labelled PBMC (equivalent to 2×10<sup>6</sup> initial cells) were pooled, resuspended in 100 µl FACS buffer (PBS containing 1% bovine serum albumin and 0.1% sodium azide) and analyzed by immunofluorescence using the following reagents: biotinylated mouse anti-porcine CD4 (clone MIL17, 1/300 of a monoclonal antibody purified from hybridoma culture supernatant and biotinylated at the IAH) and PE-conjugated mouse anti-porcine CD8α (clone 76-2-11, BD Biosciences) monoclonal antibodies, followed by incubation with APC-conjugated streptavidin (1/200, Southern Biotechnology Associates, Birmingham, AL). 50,000 viable cells per sample were analyzed using a FACScan flow cytometer (BD Biosciences).</p>
+      </sec>
+      <sec id="s2i">
+        <title>Detection of influenza-specific antibodies by ELISA</title>
+        <p>Serum was collected at various time-points post vaccination (i.e. day 0, 7, 12, 21, 28, 33, 93 and 100) for the assessment of influenza-specific antibodies by ELISA. 96-well ELISA plates were coated overnight at 4°C with pre-optimized concentrations of Eng195 grown in embryonated chicken eggs (1 mg/ml). Threefold dilutions of test sera and reference serum starting from 1/3 in PBS-Tween plus egg powder (1 mg/ml, to competitively inhibit any anti-egg antibody) were applied. Binding of antibodies was detected with monoclonal antibodies specific for porcine IgG1 (K139.3C8, AbD Serotec, Kidlington, UK) and IgG2 (K68.1G2, AbD Serotec), followed by goat anti-mouse IgG (Fc-specific) conjugated to horseradish peroxidase (Sigma-Aldrich), all used at optimal dilutions. Finally, ortho-phenylenediamine (OPD, Sigma-Aldrich) in carbonate buffer was added and the optical density values were read for each well at dual wavelengths (405 nm and 492 nm) using a Labsystems Multiskan plate reader (Fisher Scientific, Loughborough, UK). The reference serum (obtained at day 14 post-infection from a pig experimentally challenged with 10<sup>6</sup>EID<sub>50</sub> of infectious Eng195) was assigned arbitrary antibody units (log 3) and serial dilutions were used to construct a standard curve. The quantities of antibody in test sera were determined by the interpolation of optical density values from all dilutions falling within the reference range. All antibody values were expressed relative to the standard as Log ELISA units (EU).</p>
+      </sec>
+      <sec id="s2j">
+        <title>Detection of haemagglutination inhibition (HI) titres</title>
+        <p>Antibody titres were measured by use of a HI assay following the protocol detailed thereafter. In brief, 100 µl serum samples were pre-treated with 400 µl receptor destroying enzyme (RDE, 1/20 dilution in calcium saline solution, Sigma-Aldrich) at 37°C overnight. 300 µl sodium citrate (3%) was added per sample and incubated for a further 30 minutes at 56°C for enzyme inactivation. The strain of influenza virus (Eng195) used in this assay was grown in embryonated chicken eggs and inactivated by treatment with beta-propiolactone. 25 µl (4 haemagglutination units) of influenza virus was incubated at 37°C for one hour with an equal volume of 2-fold serial dilutions of RDE-treated serum starting from 1/8 in V-shape 96-well microtiter plates. 50 µl of 1% (vol/vol in PBS) chicken red blood cells was then added to each well and incubated for 45 min at room temperature after gentle mixing. Haemagglutination inhibition was read immediately after the last incubation, and HI titers were expressed as the reciprocal of the highest dilution of serum where haemagglutination was prevented.</p>
+      </sec>
+      <sec id="s2k">
+        <title>Matrix (M) gene RRT-PCR</title>
+        <p>Total RNA was extracted with the RNeasy® mini kit (Qiagen, Crawley, UK) according to the manufacturer's instructions with minor modifications as described thereafter. Briefly, nasal swabs were thawed, vortexed and 600 µl of the swab storage medium (RNAlater) was clarified by centrifugation at 12,000×g for 10 min. 500 µl of the clarified supernatant was mixed with 1.5 ml RLT buffer (containing ß-mercaptoethanol) and 2 ml 75% ethanol, and applied to the RNeasy spin column. Subsequently, the kit protocol for purification of total RNA from animal cells was followed and total RNA was eluted in 30 µl RNase-free water.</p>
+        <p>The modified M gene RRT-PCR utilised the forward primer and probe originally described by Spackman et al <xref ref-type="bibr" rid="pone.0032400-Spackman1">[18]</xref>, with a reverse primer modified to provide a perfect sequence match with the novel pandemic H1N1 virus, typified by Cal07 (accession number: FJ966975) <xref ref-type="bibr" rid="pone.0032400-Brookes1">[16]</xref>. The four altered nucleotides in the modified reverse primer are indicated in upper case: <named-content content-type="gene" xlink:type="simple">5′-tgc aaa Gac aCT ttc Cag tct ctg-3′</named-content>. The superscript III platinum one-step quantitative RT-PCR kit (Invitrogen Ltd.) was used with a 25 µl reaction mixture containing 0.5 µl of kit-supplied enzyme mixture (including RT and hot-start <italic>Taq</italic> polymerase), 0.9 µM of each primer, 0.4 µM probe, 12.5 µl 2× reaction mix (including MgSO<sub>4</sub> and dNTPs), 0.5 µl of 25 nM ROX reference dye and 3 µl total RNA. RRT-PCR was performed with the 7500 Fast Real-Time PCR system thermocycler and sequence detection software (Applied Biosystems, Foster City, CA) as follows: (i) the RT step conditions were 5 min at 50°C and 2 min at 95°C; and (ii) the two-step PCR cycling protocol was 40 cycles of 95°C for 3 sec and 60°C for 30 sec. Fluorescence data were acquired at the end of each annealing step.</p>
+        <p>RNA from 500 µl RNAlater containing ten-fold dilutions of a titrated sample of MDCK-grown Eng195 (10<sup>6</sup> to 10<sup>1</sup> pfu) was extracted in a similar manner as RNA from nasal swabs. This served to calibrate the Ct values derived from testing extracted clinical specimens by the modified M gene RRT-PCR with an equivalent viral infectivity titre that is expressed in relative equivalent units (REU) <xref ref-type="bibr" rid="pone.0032400-Londt1">[19]</xref>.</p>
+      </sec>
+      <sec id="s2l">
+        <title>Statistical analysis</title>
+        <p>Time-course data (IFNγ ELISA/ELISPOT, IgG1/IgG2/HI titres, virus shedding and body temperature) were analysed using linear mixed models with animal as a random effect and an autoregressive, AR(1), correlation structure <xref ref-type="bibr" rid="pone.0032400-Diggle1">[20]</xref>. Where appropriate, data were log transformed. Model selection proceeded by stepwise deletion of non-significant terms (as judged by changes in the Akaike information criterion), starting from an initial model including day and vaccination as fixed effects and an interaction between these factors. However, exploratory analyses indicated substantial departures from normality when using linear mixed models for both IFNγ ELISA and HI titres, even after transformation. Accordingly, these data were analysed using Kruskal-Wallis tests to investigate the impact of vaccination at individual time-points.</p>
+        <p>Proliferation data for each T cell subset (CD4<sup>+</sup>CD8<sup>−</sup>, CD4<sup>+</sup>CD8<sup>+</sup> or CD4<sup>−</sup>CD8<sup>+</sup>) were analysed using linear mixed models. Model selection proceeded by stepwise deletion of non-significant terms (as judged by changes in the Akaike information criterion), starting from an initial model including treatment and vaccination as fixed effects and an interaction between these factors and animal as a random effect.</p>
+        <p>As a measure of the total amount of viral RNA detected, the area-under-the-curve (AUC) was computed for each animal by applying the trapezium rule to the viral RNA data. AUC was compared between animals using a Kruskal-Wallis test.</p>
+        <p>All statistical modelling was carried out using the nlme package in R (<ext-link ext-link-type="uri" xlink:href="http://www.R-project.org/" xlink:type="simple">http://www.R-project.org/</ext-link>). P values equal to or below 0.05 were considered statistically significant.</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Results</title>
+      <sec id="s3a">
+        <title>High Ab titres were generated following vaccination with both the non-adjuvanted whole or adjuvanted split A(H1N1)pdm/09 influenza vaccines</title>
+        <p>Influenza-specific IgG1 and IgG2 Ab titres were quantified by ELISA using serum samples collected from each pig at various time points post-vaccination (pv). Both vaccines induced a significant systemic Ab response, which was predominantly of the IgG1 isotype (<xref ref-type="fig" rid="pone-0032400-g001"><bold>Figure 1A and 1B</bold></xref>). Indeed, IgG1 titres were increased from −2.88±0.04LogEU at day 0pv to −0.53±0.15LogEU at day 33pv in pigs vaccinated with the adjuvanted split vaccine, whereas IgG2 titres only rose from −3.34±0.03LogEU at day 0pv to −1.75±0.21LogEU at day 33pv (n = 3). Similar results were obtained in pigs vaccinated with the non-adjuvanted whole vaccine. Moreover, pigs vaccinated with the adjuvanted split vaccine produced significantly more specific IgG1 antibodies after one vaccination, compared to those vaccinated with the non-adjuvanted whole vaccine (−0.61±0.14LogEU versus −2.33±0.09LogEU at day 21pv, respectively, P&lt;0.05, n = 3). IgG1 Ab titres in pigs vaccinated with the non-adjuvanted whole vaccine were however boosted after the second vaccination, and finally reached high titres by day 33pv (−1.34±0.16LogEU, n = 3). Nevertheless, IgG1 titres were significantly higher for animals vaccinated with the adjuvanted split vaccine compared to those vaccinated with the non-adjuvanted whole vaccine from day 12pv to day 93pv (P&lt;0.05, n = 3). Noticeably, both IgG1 and IgG2 Ab titres were significantly increased following intranasal challenge with infectious Eng195 influenza virus in all pigs vaccinated with the A(H1N1)pdm/09 influenza vaccines. At day 100pv (i.e. day 7 post-challenge), IgG1 and IgG2 Ab titres respectively reached −0.29±0.11LogEU and −0.33±0.12LogEU for pigs vaccinated with the non-adjuvanted whole vaccine, and 0.20±0.23LogEU and 0.14±0.18LogEU for pigs vaccinated with the adjuvanted split vaccine (n = 3). In contrast, influenza-specific IgG1 and IgG2 Ab titres were not increased in mock-vaccinated pigs at day 100pv, and it is likely this time-point was too early for their detection as high levels of Ab would only be expected from day 12–14 post-challenge in these naïve animals.</p>
+        <fig id="pone-0032400-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0032400.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>Antibody titre after vaccination and challenge.</title>
+            <p>Pigs were vaccinated with the adjuvanted split (solide line), non-adjuvanted whole (dashed line) or mock (dotted line) vaccine. The non-adjuvanted whole vaccine was administered twice (at day 0 and day 21pv). At day 93pv, all pigs were challenged with Eng195. Serum samples were taken at various time-points post-vaccination and challenge, and IgG1 (<bold>A</bold>) and IgG2 (<bold>B</bold>) Ab titres were quantified by ELISA. <xref ref-type="sec" rid="s3">Results</xref> are expressed as the mean Log EU value ± SEM. <bold>*</bold>, P&lt;0.05.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0032400.g001" xlink:type="simple"/>
+        </fig>
+        <p>Since HI titres are considered correlates of protection against a subsequent challenge with infectious influenza virus, we also determined HI titres in the serum samples collected from each pig during the course of our study (<xref ref-type="table" rid="pone-0032400-t001"><bold>Table 1</bold></xref>). Similarly to the IgG1 titres, HI titres were significantly increased in pigs vaccinated with the adjuvanted split vaccine after only one injection (reaching 107±21 at day 28pv, P = 0.04, n = 3). Although undetectable in pigs vaccinated with the non-adjuvanted whole vaccine after the first injection, HI titres were also significantly increased after the second vaccine injection (reaching 53±11 at day 28pv, P = 0.05, n = 3). Following challenge, HI titres were significantly higher in pigs vaccinated with the non-adjuvanted whole vaccine or adjuvanted split vaccine as compared to mock-vaccinated pigs, reaching 1,365±341, 2,730±682 and 192±64, respectively, at day 100pv (P = 0.05, n = 3).</p>
+        <table-wrap id="pone-0032400-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0032400.t001</object-id><label>Table 1</label><caption>
+            <title>HI titres after vaccination and challenge.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0032400-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0032400.t001" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="8" rowspan="1">
+                  <underline>HI titres</underline>
+                  <xref ref-type="table-fn" rid="nt101">a</xref>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="2" rowspan="1">
+                  <underline>Mock</underline>
+                </td>
+                <td align="left" colspan="3" rowspan="1">
+                  <underline>Non-adjuv. whole</underline>
+                </td>
+                <td align="left" colspan="3" rowspan="1">
+                  <underline>Adjuv. split</underline>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Days post-vaccination</td>
+                <td align="left" colspan="1" rowspan="1">Pig #4</td>
+                <td align="left" colspan="1" rowspan="1">Pig #8</td>
+                <td align="left" colspan="1" rowspan="1">Pig #5</td>
+                <td align="left" colspan="1" rowspan="1">Pig #6</td>
+                <td align="left" colspan="1" rowspan="1">Pig #7</td>
+                <td align="left" colspan="1" rowspan="1">Pig #1</td>
+                <td align="left" colspan="1" rowspan="1">Pig #2</td>
+                <td align="left" colspan="1" rowspan="1">Pig #3</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">0<xref ref-type="table-fn" rid="nt102">b</xref></td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">7</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>8</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>8</bold>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">12</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>32</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>16</bold>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">21<xref ref-type="table-fn" rid="nt103">c</xref></td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>64</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>128</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>128</bold>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">28</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>64</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>32</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>64</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>64</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>128</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>128</bold>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">33</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>64</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>32</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>32</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>64</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>128</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>128</bold>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">93<xref ref-type="table-fn" rid="nt104">d</xref></td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>16</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">&lt;8</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>32</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>128</bold>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">100</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>256</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>128</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>1024</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>2048</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>1024</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>4096</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>2048</bold>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <bold>2048</bold>
+                </td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt101">
+              <label>a</label>
+              <p>: HI titres were determined using 4 HA unit per well of inactivated A/England/195/09 H1N1 influenza virus.</p>
+            </fn>
+            <fn id="nt102">
+              <label>b</label>
+              <p>: Day of vaccination (all pigs).</p>
+            </fn>
+            <fn id="nt103">
+              <label>c</label>
+              <p>: Day of boost vaccination (only pigs vaccinated with the non-adjuvanted whole vaccine).</p>
+            </fn>
+            <fn id="nt104">
+              <label>d</label>
+              <p>: Day of challenge (all pigs).</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+      </sec>
+      <sec id="s3b">
+        <title>IFNγ response was elevated only following vaccination with the adjuvanted split vaccine</title>
+        <p>A small but significant amount of IFNγ was detected only in PBMC isolated from pigs vaccinated with the adjuvanted split vaccine at day 7pv cultured <italic>in vitro</italic> in the presence of inactivated Cal07 for 3 days (12±3 pg/ml, P = 0.05, n = 3) (<xref ref-type="fig" rid="pone-0032400-g002"><bold>Figure 2A</bold></xref>). Indeed, no influenza-driven IFNγ was detected in the supernatants of PBMC from pigs vaccinated with the adjuvanted split vaccine isolated at any other day following the vaccination, or at any time-point from pigs vaccinated with either the non-adjuvanted whole vaccine or mock-vaccine (P&gt;0.1, n = 3). Moreover, IFNγ production was not detected in the supernatant of PBMC isolated from any of the pigs, when cultured in the presence of mock antigen (egg allantoic fluid) or media only (data not shown).</p>
+        <fig id="pone-0032400-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0032400.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Interferon gamma response after vaccination and challenge.</title>
+            <p>Pigs were vaccinated with the adjuvanted split (solid line), non-adjuvanted whole (dashed line) or mock (dotted line) vaccine. The non-adjuvanted whole vaccine was administered twice (at day 0 and day 21pv). At day 93pv, all pigs were challenged with Eng195. Blood samples were taken at various time-points post-vaccination and challenge. 2×10<sup>5</sup> PBMC per well were cultured <italic>in vitro</italic> for 3 days in the presence of 10<sup>5</sup>EID<sub>50</sub>/ml inactivated Cal07, and interferon gamma (IFNγ) production was quantified in the supernatants by ELISA (<bold>A</bold>) and IFNγ-producing cells were quantified in the cellular fraction by ELISPOT (<bold>B</bold>). <xref ref-type="sec" rid="s3">Results</xref> are expressed as the mean pg/ml (<bold>A</bold>) and IFNγ-producing cells per 10<sup>6</sup> stimulated PBMC (<bold>B</bold>) ± SEM. <bold>*</bold>, P = 0.05. <bold>**</bold>, P equal to or below 0.01.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0032400.g002" xlink:type="simple"/>
+        </fig>
+        <p>Using <italic>in vitro</italic> culture conditions similar to those described above for the IFNγ ELISA, we also quantified the number of IFNγ-producing cells in pig PBMC stimulated for three days with inactivated Cal07 by ELISPOT. We detected a significant amount of influenza-driven IFNγ-producing cells in PBMC isolated from pigs vaccinated with the adjuvanted split vaccine, which peaked at day 7pv (46±20 pg/ml, adjusted P&lt;0.01, n = 3) and subsequently remained at a low level until day 28pv (<xref ref-type="fig" rid="pone-0032400-g002"><bold>Figure 2B</bold></xref>). In contrast, no influenza-driven IFNγ-producing cells were detected in PBMC from pigs vaccinated with the non-adjuvanted whole vaccine or mock-vaccine at any time-point (adjusted P = 0.99, n = 3). Similarly, IFNγ-producing cells were not detected in PBMC isolated from any of the pigs, when cultured in the presence of mock antigen (egg allantoic fluid) or media only (data not shown).</p>
+      </sec>
+      <sec id="s3c">
+        <title>Influenza-specific recall proliferative responses were detected in various T cell sub-populations of vaccinated pigs</title>
+        <p>Several T cell subsets in pigs have been identified on the basis of CD4 and CD8 cell surface expression, and are generally defined as follows: naïve/non-activated CD4<sup>+</sup>CD8<sup>−</sup> T cells, cytotoxic CD4<sup>−</sup>CD8<sup>+</sup> T cells (CTL) and memory/activated CD4<sup>+</sup>CD8<sup>+</sup> T cells (T<sub>helper</sub>) <xref ref-type="bibr" rid="pone.0032400-Ober1">[21]</xref>, <xref ref-type="bibr" rid="pone.0032400-Sinkora1">[22]</xref>. Here, we assessed the level of proliferation (determined as the percentage of CFSE<sup>low</sup> cells) in each of these T cell subsets within pig PBMC following their <italic>in vitro</italic> culture in the presence of inactivated Eng195 for 5 days (<xref ref-type="fig" rid="pone-0032400-g003"><bold>Figure 3A</bold></xref>). A significant influenza-driven recall response was generated in pigs vaccinated with the adjuvanted split vaccine in the CD4<sup>+</sup>CD8<sup>−</sup>, CD4<sup>+</sup>CD8<sup>+</sup> and CD4<sup>−</sup>CD8<sup>+</sup> subsets (4±1%, 16±4% and 12±1% CFSE<sup>low</sup> cells, respectively, P&lt;0.05, n = 3, <xref ref-type="fig" rid="pone-0032400-g003"><bold>Figure 3B–D</bold></xref>). In contrast, a significant influenza-driven recall response was only generated in the CD4<sup>+</sup>CD8<sup>+</sup> subset (6±1% CFSE<sup>low</sup> cells, P&lt;0.01, n = 3), but not in the CD4<sup>+</sup>CD8<sup>−</sup> and CD4<sup>−</sup>CD8<sup>+</sup> subsets (1±0% and 2±0.3% CFSE<sup>low</sup> cells, P&gt;0.94, n = 3), in pigs vaccinated with the non-adjuvanted whole vaccine (<xref ref-type="fig" rid="pone-0032400-g003"><bold>Figure 3B–D</bold></xref>). For each T cell subset, PWM was used as a positive control and induced comparable levels of proliferation in all groups of pigs, irrespective of their vaccination regime (<xref ref-type="fig" rid="pone-0032400-g003"><bold>Figure 3B–D</bold></xref>). Similar results were obtained when using PBMC isolated on the day of challenge (day 93pv, data not shown). This suggests the non-adjuvanted whole vaccine only generated a T<sub>helper</sub> cell response, whereas the adjuvanted split vaccine elicited a T<sub>helper</sub> cell response associated with a CTL response.</p>
+        <fig id="pone-0032400-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0032400.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>T cell sub-population proliferation monitored by CFSE labelling in response to <italic>in vitro</italic> re-stimulation with H1N1 influenza.</title>
+            <p>CFSE-labelled PBMC were cultured <italic>in vitro</italic> in the presence of 10<sup>5</sup>EID<sub>50</sub>/ml inactivated Eng195, uninfected allantoic fluid (mock antigen), PWM or in media only. After 5 days, cells were stained with anti-CD4 and anti-CD8 monoclonal antibodies and analysed by flow cytometry for CFSE intensity. Three T cell subsets were identified on the basis of their CD4 and CD8 expression, and an example of the CFSE pattern at day 7pv in response to inactivated Eng195 in these various subsets in a pig vaccinated with the adjuvanted split vaccine is shown (<bold>A</bold>). At day 28pv, the percentage of cells proliferating (CFSE<sub>Low</sub> cells) in response to media alone, mock antigen or inactivated Eng195 was determined after gating on CD4<sup>+</sup>CD8<sup>−</sup> (<bold>B</bold>), CD4<sup>+</sup>CD8<sup>+</sup> (<bold>C</bold>) or CD4<sup>−</sup>CD8<sup>+</sup> (<bold>D</bold>) cells. <xref ref-type="sec" rid="s3">Results</xref> are expressed as the mean percentage of proliferating (CFSE<sub>Low</sub>) cells ± SEM. n.s = Not statistically significant.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0032400.g003" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3d">
+        <title>Similar levels of viral RNA were detected from the nasal cavity of pandemic- and mock-vaccinated pigs after challenge with Eng195 influenza virus</title>
+        <p>Three months after the initial vaccination (day 93pv), all pigs were challenged intra-nasally with 10<sup>6</sup> pfu of infectious Eng195 influenza virus. No or very mild clinical signs were observed in all pigs following this infectious challenge. Indeed, these clinical signs were: one animal in the group vaccinated with the adjuvanted split vaccine exhibited sneezing at day 2 post-challenge (pc) and one animal in the mock-vaccinated group showed some nasal discharge at days 6pc and 7pc (data not shown). Rectal temperatures were slightly elevated only at day 2pc in all pigs as follows: pigs vaccinated with the non-adjuvanted whole vaccine (from 38.7±0.2°C before challenge to 39.8±0.5°C at day 2pc, adjusted P&lt;0.01, n = 3), pigs vaccinated with the adjuvanted split vaccine (from 38.3±0.2°C before challenge to 39.5±0.2°C at day 2pc, adjusted P&lt;0.01, n = 3) and mock-vaccinated pigs (from 38.9±0.2°C before challenge to 39.9±0.6°C at day 2pc, adjusted P&lt;0.01, n = 2) (<xref ref-type="fig" rid="pone-0032400-g004"><bold>Figure 4A</bold></xref>).</p>
+        <fig id="pone-0032400-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0032400.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Body temperature and detection of viral RNA in the nasal cavity after infectious challenge.</title>
+            <p>Pigs were vaccinated with the adjuvanted split (solid line), non-adjuvanted whole (dashed line) or mock (dotted line) vaccine, and all pigs were subsequently challenged with infectious Eng195 influenza virus. (<bold>A</bold>) Rectal temperature (in °C) was monitored one day prior and everyday following challenge. <xref ref-type="sec" rid="s3">Results</xref> are expressed as the mean value ± SEM for each vaccination group. <bold>*</bold>, P&lt;0.01. (<bold>B</bold>) Nasal swabs were collected one day prior and everyday following challenge. Shedding was measured in all samples through the detection of viral RNA by a modified influenza A M gene real-time RT-PCR (RRT-PCR) assay. By the use of a standard curve (on each test plate) generated from a dilution series of infectious Eng195 virus, the relative equivalent unit (REU) of viral RNA was determined based upon the cycle threshold (Ct) value obtained for each sample. <xref ref-type="sec" rid="s3">Results</xref> are expressed as the mean REU ± SEM for each vaccination group.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0032400.g004" xlink:type="simple"/>
+        </fig>
+        <p>Levels of viral RNA (indicative of shed virus) in nasal swabs taken at various time-points post-challenge were determined using a modified influenza A matrix gene RRT-PCR assay and were expressed in REU as described in <xref ref-type="sec" rid="s2">materials and methods</xref>. Our results showed that similar patterns of viral RNA detected in the upper respiratory tract were observed in all pandemic- and mock-vaccinated pigs (<xref ref-type="fig" rid="pone-0032400-g004"><bold>Figure 4B</bold></xref>). Indeed, all shedding curves were biphasic with a first peak of nasal shedding occurring at day 2pc (32,240±4,180 REU, 33,622±969 REU and 205,233±154,813 REU for pigs vaccinated with the mock vaccine, the non-adjuvanted whole vaccine and the adjuvanted split vaccine, respectively) and a second peak at day 4pc (10,792±1,561 REU, 9,627±8,703 REU and 1,271±882 REU for pigs vaccinated with the mock vaccine, the non-adjuvanted whole vaccine and the adjuvanted split vaccine, respectively), followed by a gradual decrease thereafter. Overall, there were no significant differences (P&gt;0.25) in the levels of viral RNA detected between animals receiving different vaccines at any time point post challenge. Furthermore, there were no significant differences between animals in the total amount of viral RNA detected (i.e. area-under-the-curve, AUC) regardless of the vaccine received (P = 0.76).</p>
+      </sec>
+    </sec>
+    <sec id="s4">
+      <title>Discussion</title>
+      <p>In this study, we assessed the cellular and humoral immune responses generated following the vaccination of Babraham pigs with two human A(H1N1)pdm/09 influenza vaccines that were used for the national human immunisation programme in the UK.</p>
+      <p>The choice of using the pig as a model in the present study was based on the following: (i) Swine influenza viruses are enzootic in pigs, with classical swine H1N1, “avian-like” H1N1, “human-like” H1N2 and “human-” and “avian-like” H3N2 subtypes of influenza A being reported world-wide in pig populations <xref ref-type="bibr" rid="pone.0032400-Brown1">[12]</xref>; (ii) Human and swine influenza viruses replicate to similar levels in the upper and lower respiratory tract of pigs with a similar viral shedding pattern <xref ref-type="bibr" rid="pone.0032400-VanPoucke1">[13]</xref>, <xref ref-type="bibr" rid="pone.0032400-Brookes1">[16]</xref>, <xref ref-type="bibr" rid="pone.0032400-Busquets1">[17]</xref>, <xref ref-type="bibr" rid="pone.0032400-Vijaykrishna1">[23]</xref> and (iii) The pig respiratory tract exhibits a distribution of sialic acid (Sia) with α2-6 (Siaα2-6Gal, preferred receptor for human influenza virus) and α2,3 (Siaα2-3Gal, preferred receptor for avian influenza virus) linkages to galactose and a pattern of virus attachment similar to humans <xref ref-type="bibr" rid="pone.0032400-VanPoucke1">[13]</xref>, <xref ref-type="bibr" rid="pone.0032400-vanRiel1">[14]</xref>. Moreover, the Babraham inbred pigs are particularly valuable for performing immunological studies since these pigs are 85% identical as assessed by genome-wide SNP analysis (Alan Archibald, personal communication) and are matched for MHC type I and type II molecules <xref ref-type="bibr" rid="pone.0032400-Binns1">[24]</xref>. Therefore, the genetic similarity between individual Babraham pigs also justifies the use of a lower number of animals per group (as compared to studies using outbred pigs), while allowing the assessment and dissection of the immune response in greater detail.</p>
+      <p>The influenza-specific Ab responses in the serum of vaccinated pigs were dominated by the IgG1 isotype. Such a bias towards an IgG1-dominated response has previously been demonstrated in pigs immunised with other antigens, e.g. ovalbumin or foot-and-mouth disease virus subunit <xref ref-type="bibr" rid="pone.0032400-deAvilaBotton1">[25]</xref>, <xref ref-type="bibr" rid="pone.0032400-Tachedjian1">[26]</xref>. Pigs vaccinated with the adjuvanted split vaccine exhibited a significantly higher IgG1 response after one vaccination as compared to pigs vaccinated with the non-adjuvanted whole vaccine. However, IgG1 titres in the latter pigs were boosted after the second vaccination, and finally reached high titres (although significantly lower than those in pigs vaccinated with the adjuvanted split vaccine). Interestingly, both influenza-specific IgG1 and IgG2 titres increased following challenge with Eng195 influenza virus. This suggests that the A(H1N1)pdm/09 vaccines assessed in this study mostly generated influenza-specific IgG1 antibodies, in contrast to infection with live virus that generated a more balanced and broader immune response. Pigs vaccinated with the adjuvanted split vaccine also generated significantly higher HI titres after one vaccination, and pigs vaccinated with the non-adjuvanted whole vaccine showed a good HI response only after the boost vaccination (although lower than that observed in pigs vaccinated with the adjuvanted split vaccine). Very little data is available on the duration of neutralising antibody responses in human subjects vaccinated with these two commercial A(H1N1)pdm/09 vaccines. Recently, Madhun et al. <xref ref-type="bibr" rid="pone.0032400-Madhun1">[4]</xref> reported that health care workers vaccinated with the adjuvanted split vaccine exhibited high HI titres 21 days after the vaccination (geometric mean titre = 473.5) that were decreased three months later (geometric mean titre = 232.2). Based on this report, HI titres in human subjects were slightly higher than in pigs vaccinated with the adjuvanted split vaccine, and were slightly decreased in both species two to three months later. In another report, Waddington et al. <xref ref-type="bibr" rid="pone.0032400-Waddington1">[5]</xref> showed that HI titres in children vaccinated with the non-adjuvanted whole vaccine ranged from 60.3 to 79.6 at day 21 after the second vaccination, which is comparable to the HI values observed in pigs at day 12 after the second vaccination in our study (range 32–64). Nevertheless, duration of neutralising antibody responses could not be compared between pigs and humans from this report since the authors did not assess HI titres in these children at later time-points. HI values in children vaccinated with the adjuvanted split vaccine could not be compared since these children did not receive one but two injections of the vaccine.</p>
+      <p>In response to <italic>in vitro</italic> stimulation of PBMC with inactivated H1N1 influenza virus, we detected a peak of IFNγ-producing cells and IFNγ production at day 7pv, but only in pigs vaccinated with the adjuvanted split vaccine. Such an anamnestic response in the number of influenza-specific IFNγ-producing cells in the blood has similarly been detected only at day 7 after the challenge of pigs with A/Sw/Indiana/1726/88 H1N1 swine influenza virus <xref ref-type="bibr" rid="pone.0032400-Larsen1">[27]</xref>. The authors of this study further showed this response was enhanced and detectable for a longer period of time (up to day 21 post-challenge) in the spleen, tracheobronchial lymph nodes and nasal mucosa <xref ref-type="bibr" rid="pone.0032400-Larsen1">[27]</xref>. Using CFSE labelling and flow cytometry, we determined the identity of the T cell subsets with the capacity to proliferate in response to an <italic>in vitro</italic> re-stimulation with inactivated H1N1 influenza virus. In addition to the classical CD4<sup>+</sup>CD8<sup>−</sup> and CD4<sup>−</sup>CD8<sup>+</sup> T cell subsets, pig PBMCs are also known to contain a substantial number of CD4<sup>+</sup>CD8<sup>+</sup> T lymphocytes. Importantly, these CD4<sup>+</sup>CD8<sup>+</sup> T cells express CD8αα (not CD8αβ) molecule, are major histocompatibility complex (MHC) class II-restricted and are generally considered as memory/activated T<sub>helper</sub> cells <xref ref-type="bibr" rid="pone.0032400-Ober1">[21]</xref>, <xref ref-type="bibr" rid="pone.0032400-Sinkora1">[22]</xref>. Our results demonstrated an influenza-specific recall response in the CD4<sup>+</sup>CD8<sup>−</sup> (naïve), the CD4<sup>−</sup>CD8<sup>+</sup> (CTL) and the CD4<sup>+</sup>CD8<sup>+</sup> (T<sub>helper</sub>) cells of pigs vaccinated with the adjuvanted split vaccine, but only in the CD4<sup>+</sup>CD8<sup>+</sup> (T<sub>helper</sub>) cells of pigs vaccinated with the non-adjuvanted whole vaccine. It is tempting to speculate that the lack of IFNγ response observed in pigs vaccinated with the non-adjuvanted whole vaccine (even following the boost vaccination) may reflect the incapacity or at least the low efficiency of the non-adjuvanted whole vaccine to elicit an influenza-specific CTL response in these pigs. These killed vaccines are likely to stimulate CTL responses by cross-priming. It has been previously shown that some adjuvants have the ability to strongly enhance antigen cross-presentation (including that of peptide or protein antigen) <xref ref-type="bibr" rid="pone.0032400-Jelinek1">[28]</xref>, <xref ref-type="bibr" rid="pone.0032400-Zaks1">[29]</xref>, <xref ref-type="bibr" rid="pone.0032400-LeBon1">[30]</xref>. AS03 adjuvant contained in the adjuvanted split vaccine is known to induce local inflammation and recruitment of various innate immune cells <xref ref-type="bibr" rid="pone.0032400-Coffman1">[31]</xref>, and may similarly enhance antigen cross-presentation.</p>
+      <p>Despite the fact that both vaccines elicited systemic humoral responses and one of these (adjuvanted split vaccine) also elicited an enhanced cell-mediated immune response, none of the pigs were protected from a subsequent virus challenge at 3 months post-vaccination as viral RNA continued to be detected in the nasal cavity. Interestingly, although it has previously been shown that pigs with an HI titre equal to or above 20 were generally protected from a subsequent influenza challenge <xref ref-type="bibr" rid="pone.0032400-Kyriakis1">[32]</xref>, two out of the three pigs vaccinated with the adjuvanted split vaccine still exhibited HI titres equal to or above 32 at the time of challenge but were nevertheless not protected. It is still unclear how the systemic responses generated after vaccination correlate with local mucosal responses in the respiratory tract <xref ref-type="bibr" rid="pone.0032400-Waffarn1">[10]</xref> that may also contribute to reduction in virus shedding. Interestingly, a similar study was conducted in ferrets, challenged six weeks after the initial vaccination, by the pandemic influenza vaccine evaluation consortium (PIVEC) that generated results consistent with our own findings. This study showed the A(H1N1)pdm/09 vaccines reduced (adjuvanted split vaccine) or had no effect on (non-adjuvanted whole vaccine) the viral shedding from the upper respiratory tract, although the adjuvanted split vaccine did prevent viral replication in the lower respiratory tract of ferrets <xref ref-type="bibr" rid="pone.0032400-Brookes2">[33]</xref>.</p>
+      <p>In conclusion, the present study provides support for the use of the pig as a valid experimental model for influenza infections in humans, including the assessment of protective efficacy of therapeutic interventions. This animal model offers improvements over that of mice and ferrets with clinical, pathological and immune responses similar to those induced in humans, and therefore has potential wide utility. The growing number of reagents to study the cell surface phenotype and function of immune cells in the pig will help dissect local and systemic responses. Moreover, the use of the inbred pig line will facilitate these investigations by allowing cell transfer studies and MHC I and II tetramer analysis.</p>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>The authors would like to thank the pandemic influenza vaccine evaluation consortium (PIVEC; “This is an independent report commissioned and funded by the Policy Research Programme in the Department of Health. The views expressed are not necessarily those of the Department”) for sharing their data with us, and the staff involved in the care of the experimental animals at IAH. We also thank Pr. A.J. Pollard (Oxford, UK) and the UK Department of Health for providing us with the non-adjuvanted whole vaccine and the adjuvanted split vaccine, respectively. The present study was conducted within the remit of the COmbating Swine Influenza (COSI) consortium.</p>
+      <p>COSI, COmbating Swine Influenza, Wellcome Trust-MRC-BBSRC-Defra UK consortium: <bold>(i) Animal Health and Veterinary Laboratories Agency, Addlestone, UK</bold>: Ian H. Brown, Sharon M. Brookes, Alasdair J.C. Cook, Susanna Williamson; <bold>(ii) Cambridge Infectious Diseases Consortium, Department of Veterinary Medicine, Cambridge, UK:</bold> James L.N. Wood, Alexander W. Tucker, Julia R. Gog, Roberto A. Saenz, Pablo Murcia; <bold>(iii) Imperial College London, London, UK:</bold> Wendy S. Barclay, Christl A. Donnelly; <bold>(iv) Wellcome Trust Sanger Institute, Cambridge, UK:</bold> Paul Kellam; <bold>Royal Veterinary College, Hatfield, UK:</bold> Barbara Wieland; <bold>(v) National Institute for Medical Research, London, UK:</bold> John McCauley; <bold>(vi) Scottish Agricultural College, Edinburgh, UK:</bold> George Gunn; <bold>(vii) Centre for Infectious Disease, University of Edinburgh, Edinburgh, UK:</bold> Andrew Leigh Brown, Samantha J. Lycett, Mark Woolhouse; <bold>(viii) Department of Zoology, Oxford University, Oxford, UK:</bold> Oliver Pybus; <bold>(ix) University College London/Flu Watch, London, UK:</bold> Andrew C. Hayward; <bold>(x) The Roslin Institute and R(D)SVS, University of Edinburgh, Edinburgh, UK:</bold> Alan L. Archibald; <bold>(xi) Institute for Animal Health, Compton near Newbury, UK:</bold> Bryan Charleston, Eric A. Lefevre; <bold>(xii) Division of Veterinary Pathology, University of Bristol, Bristol, UK:</bold> Mick Bailey, Charlotte F. Inman; <bold>(xiii) School of Veterinary Medicine and Science, University of Nottingham, Nottingham, UK:</bold> Kin Chow Chang, Stephen P. Dunham.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0032400-Garten1">
+        <label>1</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Garten</surname><given-names>RJ</given-names></name><name name-style="western"><surname>Davis</surname><given-names>CT</given-names></name><name name-style="western"><surname>Russell</surname><given-names>CA</given-names></name><name name-style="western"><surname>Shu</surname><given-names>B</given-names></name><name name-style="western"><surname>Lindstrom</surname><given-names>S</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Antigenic and genetic characteristics of swine-origin 2009 A(H1N1) influenza viruses circulating in humans.</article-title>             <source>Science</source>             <volume>325</volume>             <fpage>197</fpage>             <lpage>201</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Bautista1">
+        <label>2</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bautista</surname><given-names>E</given-names></name><name name-style="western"><surname>Chotpitayasunondh</surname><given-names>T</given-names></name><name name-style="western"><surname>Gao</surname><given-names>Z</given-names></name><name name-style="western"><surname>Harper</surname><given-names>SA</given-names></name><name name-style="western"><surname>Shaw</surname><given-names>M</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Clinical aspects of pandemic 2009 influenza A (H1N1) virus infection.</article-title>             <source>N Engl J Med</source>             <volume>362</volume>             <fpage>1708</fpage>             <lpage>1719</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Kistner1">
+        <label>3</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kistner</surname><given-names>O</given-names></name><name name-style="western"><surname>Crowe</surname><given-names>BA</given-names></name><name name-style="western"><surname>Wodal</surname><given-names>W</given-names></name><name name-style="western"><surname>Kerschbaum</surname><given-names>A</given-names></name><name name-style="western"><surname>Savidis-Dacho</surname><given-names>H</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>A whole virus pandemic influenza H1N1 vaccine is highly immunogenic and protective in active immunization and passive protection mouse models.</article-title>             <source>PLoS One</source>             <volume>5</volume>             <fpage>e9349</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Madhun1">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Madhun</surname><given-names>AS</given-names></name><name name-style="western"><surname>Akselsen</surname><given-names>PE</given-names></name><name name-style="western"><surname>Sjursen</surname><given-names>H</given-names></name><name name-style="western"><surname>Pedersen</surname><given-names>G</given-names></name><name name-style="western"><surname>Svindland</surname><given-names>S</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>An adjuvanted pandemic influenza H1N1 vaccine provides early and long term protection in health care workers.</article-title>             <source>Vaccine</source>             <volume>29</volume>             <fpage>266</fpage>             <lpage>273</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Waddington1">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Waddington</surname><given-names>CS</given-names></name><name name-style="western"><surname>Walker</surname><given-names>WT</given-names></name><name name-style="western"><surname>Oeser</surname><given-names>C</given-names></name><name name-style="western"><surname>Reiner</surname><given-names>A</given-names></name><name name-style="western"><surname>John</surname><given-names>T</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Safety and immunogenicity of AS03B adjuvanted split virion versus non-adjuvanted whole virion H1N1 influenza vaccine in UK children aged 6 months-12 years: open label, randomised, parallel group, multicentre study.</article-title>             <source>BMJ</source>             <volume>340</volume>             <fpage>c2649</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Hobson1">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hobson</surname><given-names>D</given-names></name><name name-style="western"><surname>Curry</surname><given-names>RL</given-names></name><name name-style="western"><surname>Beare</surname><given-names>AS</given-names></name><name name-style="western"><surname>Ward-Gardner</surname><given-names>A</given-names></name></person-group>             <year>1972</year>             <article-title>The role of serum haemagglutination-inhibiting antibody in protection against challenge infection with influenza A2 and B viruses.</article-title>             <source>J Hyg (Lond)</source>             <volume>70</volume>             <fpage>767</fpage>             <lpage>777</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-deJong1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>de Jong</surname><given-names>JC</given-names></name><name name-style="western"><surname>Palache</surname><given-names>AM</given-names></name><name name-style="western"><surname>Beyer</surname><given-names>WE</given-names></name><name name-style="western"><surname>Rimmelzwaan</surname><given-names>GF</given-names></name><name name-style="western"><surname>Boon</surname><given-names>AC</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>Haemagglutination-inhibiting antibody to influenza virus.</article-title>             <source>Dev Biol (Basel)</source>             <volume>115</volume>             <fpage>63</fpage>             <lpage>73</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Thomas1">
+        <label>8</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Thomas</surname><given-names>PG</given-names></name><name name-style="western"><surname>Keating</surname><given-names>R</given-names></name><name name-style="western"><surname>Hulse-Post</surname><given-names>DJ</given-names></name><name name-style="western"><surname>Doherty</surname><given-names>PC</given-names></name></person-group>             <year>2006</year>             <article-title>Cell-mediated protection in influenza infection.</article-title>             <source>Emerg Infect Dis</source>             <volume>12</volume>             <fpage>48</fpage>             <lpage>54</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Platt1">
+        <label>9</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Platt</surname><given-names>R</given-names></name><name name-style="western"><surname>Vincent</surname><given-names>AL</given-names></name><name name-style="western"><surname>Gauger</surname><given-names>PC</given-names></name><name name-style="western"><surname>Loving</surname><given-names>CL</given-names></name><name name-style="western"><surname>Zanella</surname><given-names>EL</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Comparison of humoral and cellular immune responses to inactivated swine influenza virus vaccine in weaned pigs.</article-title>             <source>Vet Immunol Immunopathol</source>             <volume>142</volume>             <fpage>252</fpage>             <lpage>257</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Waffarn1">
+        <label>10</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Waffarn</surname><given-names>EE</given-names></name><name name-style="western"><surname>Baumgarth</surname><given-names>N</given-names></name></person-group>             <year>2011</year>             <article-title>Protective B cell responses to flu–no fluke!</article-title>             <source>J Immunol</source>             <volume>186</volume>             <fpage>3823</fpage>             <lpage>3829</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Haga1">
+        <label>11</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Haga</surname><given-names>T</given-names></name><name name-style="western"><surname>Horimoto</surname><given-names>T</given-names></name></person-group>             <year>2010</year>             <article-title>Animal models to study influenza virus pathogenesis and control.</article-title>             <source>The open antimicrobial agents journal</source>             <volume>2</volume>             <fpage>15</fpage>             <lpage>21</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Brown1">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Brown</surname><given-names>IH</given-names></name></person-group>             <year>2000</year>             <article-title>The epidemiology and evolution of influenza viruses in pigs.</article-title>             <source>Vet Microbiol</source>             <volume>74</volume>             <fpage>29</fpage>             <lpage>46</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-VanPoucke1">
+        <label>13</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Van Poucke</surname><given-names>SG</given-names></name><name name-style="western"><surname>Nicholls</surname><given-names>JM</given-names></name><name name-style="western"><surname>Nauwynck</surname><given-names>HJ</given-names></name><name name-style="western"><surname>Van Reeth</surname><given-names>K</given-names></name></person-group>             <year>2010</year>             <article-title>Replication of avian, human and swine influenza viruses in porcine respiratory explants and association with sialic acid distribution.</article-title>             <source>Virol J</source>             <volume>7</volume>             <fpage>38</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-vanRiel1">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>van Riel</surname><given-names>D</given-names></name><name name-style="western"><surname>Munster</surname><given-names>VJ</given-names></name><name name-style="western"><surname>de Wit</surname><given-names>E</given-names></name><name name-style="western"><surname>Rimmelzwaan</surname><given-names>GF</given-names></name><name name-style="western"><surname>Fouchier</surname><given-names>RA</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Human and avian influenza viruses target different cells in the lower respiratory tract of humans and other mammals.</article-title>             <source>Am J Pathol</source>             <volume>171</volume>             <fpage>1215</fpage>             <lpage>1223</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Lange1">
+        <label>15</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Lange</surname><given-names>E</given-names></name><name name-style="western"><surname>Kalthoff</surname><given-names>D</given-names></name><name name-style="western"><surname>Blohm</surname><given-names>U</given-names></name><name name-style="western"><surname>Teifke</surname><given-names>JP</given-names></name><name name-style="western"><surname>Breithaupt</surname><given-names>A</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Pathogenesis and transmission of the novel swine-origin influenza virus A/H1N1 after experimental infection of pigs.</article-title>             <source>J Gen Virol</source>             <volume>90</volume>             <fpage>2119</fpage>             <lpage>2123</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Brookes1">
+        <label>16</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Brookes</surname><given-names>SM</given-names></name><name name-style="western"><surname>Nunez</surname><given-names>A</given-names></name><name name-style="western"><surname>Choudhury</surname><given-names>B</given-names></name><name name-style="western"><surname>Matrosovich</surname><given-names>M</given-names></name><name name-style="western"><surname>Essen</surname><given-names>SC</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Replication, pathogenesis and transmission of pandemic (H1N1) 2009 virus in non-immune pigs.</article-title>             <source>PLoS One</source>             <volume>5</volume>             <fpage>e9068</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Busquets1">
+        <label>17</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Busquets</surname><given-names>N</given-names></name><name name-style="western"><surname>Segales</surname><given-names>J</given-names></name><name name-style="western"><surname>Cordoba</surname><given-names>L</given-names></name><name name-style="western"><surname>Mussa</surname><given-names>T</given-names></name><name name-style="western"><surname>Crisci</surname><given-names>E</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Experimental infection with H1N1 European swine influenza virus protects pigs from an infection with the 2009 pandemic H1N1 human influenza virus.</article-title>             <source>Vet Res</source>             <volume>41</volume>             <fpage>74</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Spackman1">
+        <label>18</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Spackman</surname><given-names>E</given-names></name><name name-style="western"><surname>Senne</surname><given-names>DA</given-names></name><name name-style="western"><surname>Myers</surname><given-names>TJ</given-names></name><name name-style="western"><surname>Bulaga</surname><given-names>LL</given-names></name><name name-style="western"><surname>Garber</surname><given-names>LP</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>Development of a real-time reverse transcriptase PCR assay for type A influenza virus and the avian H5 and H7 hemagglutinin subtypes.</article-title>             <source>J Clin Microbiol</source>             <volume>40</volume>             <fpage>3256</fpage>             <lpage>3260</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Londt1">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Londt</surname><given-names>BZ</given-names></name><name name-style="western"><surname>Nunez</surname><given-names>A</given-names></name><name name-style="western"><surname>Banks</surname><given-names>J</given-names></name><name name-style="western"><surname>Nili</surname><given-names>H</given-names></name><name name-style="western"><surname>Johnson</surname><given-names>LK</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Pathogenesis of highly pathogenic avian influenza A/turkey/Turkey/1/2005 H5N1 in Pekin ducks (Anas platyrhynchos) infected experimentally.</article-title>             <source>Avian Pathol</source>             <volume>37</volume>             <fpage>619</fpage>             <lpage>627</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Diggle1">
+        <label>20</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Diggle</surname><given-names>PJ</given-names></name><name name-style="western"><surname>Heagerty</surname><given-names>P</given-names></name><name name-style="western"><surname>Liang</surname><given-names>K-Y</given-names></name><name name-style="western"><surname>Zeger</surname><given-names>SL</given-names></name></person-group>             <year>2002</year>             <source>Analysis of longitudinal data - Second edition</source>             <publisher-loc>New York</publisher-loc>             <publisher-name>Oxford University Press Inc</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Ober1">
+        <label>21</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ober</surname><given-names>BT</given-names></name><name name-style="western"><surname>Summerfield</surname><given-names>A</given-names></name><name name-style="western"><surname>Mattlinger</surname><given-names>C</given-names></name><name name-style="western"><surname>Wiesmuller</surname><given-names>KH</given-names></name><name name-style="western"><surname>Jung</surname><given-names>G</given-names></name><etal/></person-group>             <year>1998</year>             <article-title>Vaccine-induced, pseudorabies virus-specific, extrathymic CD4+CD8+ memory T-helper cells in swine.</article-title>             <source>J Virol</source>             <volume>72</volume>             <fpage>4866</fpage>             <lpage>4873</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Sinkora1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Sinkora</surname><given-names>M</given-names></name><name name-style="western"><surname>Butler</surname><given-names>JE</given-names></name><name name-style="western"><surname>Holtmeier</surname><given-names>W</given-names></name><name name-style="western"><surname>Sinkorova</surname><given-names>J</given-names></name></person-group>             <year>2005</year>             <article-title>Lymphocyte development in fetal piglets: facts and surprises.</article-title>             <source>Vet Immunol Immunopathol</source>             <volume>108</volume>             <fpage>177</fpage>             <lpage>184</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Vijaykrishna1">
+        <label>23</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Vijaykrishna</surname><given-names>D</given-names></name><name name-style="western"><surname>Smith</surname><given-names>GJD</given-names></name><name name-style="western"><surname>Pybus</surname><given-names>OG</given-names></name><name name-style="western"><surname>Zhu</surname><given-names>H</given-names></name><name name-style="western"><surname>Bhatt</surname><given-names>S</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Long-term evolution and transmission dynamics of swine influenza A virus.</article-title>             <source>Nature</source>             <volume>473</volume>             <fpage>519</fpage>             <lpage>523</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Binns1">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Binns</surname><given-names>RM</given-names></name><name name-style="western"><surname>Licence</surname><given-names>ST</given-names></name><name name-style="western"><surname>Whyte</surname><given-names>A</given-names></name><name name-style="western"><surname>Wilby</surname><given-names>M</given-names></name><name name-style="western"><surname>Rothkotter</surname><given-names>HJ</given-names></name><etal/></person-group>             <year>1995</year>             <article-title>Genetically determined CD45 variant of value in leucocyte tracing in vivo in the pig.</article-title>             <source>Immunology</source>             <volume>86</volume>             <fpage>25</fpage>             <lpage>33</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-deAvilaBotton1">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>de Avila Botton</surname><given-names>S</given-names></name><name name-style="western"><surname>Brum</surname><given-names>MC</given-names></name><name name-style="western"><surname>Bautista</surname><given-names>E</given-names></name><name name-style="western"><surname>Koster</surname><given-names>M</given-names></name><name name-style="western"><surname>Weiblen</surname><given-names>R</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Immunopotentiation of a foot-and-mouth disease virus subunit vaccine by interferon alpha.</article-title>             <source>Vaccine</source>             <volume>24</volume>             <fpage>3446</fpage>             <lpage>3456</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Tachedjian1">
+        <label>26</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Tachedjian</surname><given-names>M</given-names></name><name name-style="western"><surname>Boyle</surname><given-names>JS</given-names></name><name name-style="western"><surname>Lew</surname><given-names>AM</given-names></name><name name-style="western"><surname>Horvatic</surname><given-names>B</given-names></name><name name-style="western"><surname>Scheerlinck</surname><given-names>JP</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>Gene gun immunization in a preclinical model is enhanced by B7 targeting.</article-title>             <source>Vaccine</source>             <volume>21</volume>             <fpage>2900</fpage>             <lpage>2905</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Larsen1">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Larsen</surname><given-names>DL</given-names></name><name name-style="western"><surname>Karasin</surname><given-names>A</given-names></name><name name-style="western"><surname>Zuckermann</surname><given-names>F</given-names></name><name name-style="western"><surname>Olsen</surname><given-names>CW</given-names></name></person-group>             <year>2000</year>             <article-title>Systemic and mucosal immune responses to H1N1 influenza virus infection in pigs.</article-title>             <source>Vet Microbiol</source>             <volume>74</volume>             <fpage>117</fpage>             <lpage>131</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Jelinek1">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Jelinek</surname><given-names>I</given-names></name><name name-style="western"><surname>Leonard</surname><given-names>JN</given-names></name><name name-style="western"><surname>Price</surname><given-names>GE</given-names></name><name name-style="western"><surname>Brown</surname><given-names>KN</given-names></name><name name-style="western"><surname>Meyer-Manlapat</surname><given-names>A</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>TLR3-specific double-stranded RNA oligonucleotide adjuvants induce dendritic cell cross-presentation, CTL responses, and antiviral protection.</article-title>             <source>J Immunol</source>             <volume>186</volume>             <fpage>2422</fpage>             <lpage>2429</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Zaks1">
+        <label>29</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zaks</surname><given-names>K</given-names></name><name name-style="western"><surname>Jordan</surname><given-names>M</given-names></name><name name-style="western"><surname>Guth</surname><given-names>A</given-names></name><name name-style="western"><surname>Sellins</surname><given-names>K</given-names></name><name name-style="western"><surname>Kedl</surname><given-names>R</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Efficient immunization and cross-priming by vaccine adjuvants containing TLR3 or TLR9 agonists complexed to cationic liposomes.</article-title>             <source>J Immunol</source>             <volume>176</volume>             <fpage>7335</fpage>             <lpage>7345</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-LeBon1">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Le Bon</surname><given-names>A</given-names></name><name name-style="western"><surname>Tough</surname><given-names>DF</given-names></name></person-group>             <year>2008</year>             <article-title>Type I interferon as a stimulus for cross-priming.</article-title>             <source>Cytokine Growth Factor Rev</source>             <volume>19</volume>             <fpage>33</fpage>             <lpage>40</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Coffman1">
+        <label>31</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Coffman</surname><given-names>RL</given-names></name><name name-style="western"><surname>Sher</surname><given-names>A</given-names></name><name name-style="western"><surname>Seder</surname><given-names>RA</given-names></name></person-group>             <year>2010</year>             <article-title>Vaccine adjuvants: putting innate immunity to work.</article-title>             <source>Immunity</source>             <volume>33</volume>             <fpage>492</fpage>             <lpage>503</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Kyriakis1">
+        <label>32</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kyriakis</surname><given-names>CS</given-names></name><name name-style="western"><surname>Gramer</surname><given-names>MR</given-names></name><name name-style="western"><surname>Barbe</surname><given-names>F</given-names></name><name name-style="western"><surname>Van Doorsselaere</surname><given-names>J</given-names></name><name name-style="western"><surname>Van Reeth</surname><given-names>K</given-names></name></person-group>             <year>2010</year>             <article-title>Efficacy of commercial swine influenza vaccines against challenge with a recent European H1N1 field isolate.</article-title>             <source>Vet Microbiol</source>             <volume>144</volume>             <fpage>67</fpage>             <lpage>74</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0032400-Brookes2">
+        <label>33</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Brookes</surname><given-names>SM</given-names></name><name name-style="western"><surname>Garcon</surname><given-names>F</given-names></name><name name-style="western"><surname>Major</surname><given-names>D</given-names></name><name name-style="western"><surname>Hoschler</surname><given-names>K</given-names></name><name name-style="western"><surname>Rapisarda</surname><given-names>L</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Abstr. P-605: Immunogenicity and protective efficacy of candidate pandemic H1N1 vaccines in the ferret model. Options for the control of influenza VII.</article-title>             <comment>Hong Kong SAR, China</comment> <!--===== Restructure page-count as size[@units="page"] =====--><size units="page">409</size>           </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-12-04524</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0042076</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Biochemistry</subject>
+            <subj-group>
+              <subject>Neurochemistry</subject>
+              <subj-group>
+                <subject>Neurochemicals</subject>
+                <subj-group>
+                  <subject>Nitric oxide</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Molecular cell biology</subject>
+            <subj-group>
+              <subject>Cellular types</subject>
+              <subj-group>
+                <subject>Endothelial cells</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Signal transduction</subject>
+              <subj-group>
+                <subject>Signaling cascades</subject>
+                <subj-group>
+                  <subject>ERK signaling cascade</subject>
+                </subj-group>
+              </subj-group>
+              <subj-group>
+                <subject>Signaling pathways</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Cellular stress responses</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Neuroscience</subject>
+            <subj-group>
+              <subject>Neurochemistry</subject>
+              <subj-group>
+                <subject>Neurochemicals</subject>
+                <subj-group>
+                  <subject>Nitric oxide</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Cardiovascular</subject>
+            <subj-group>
+              <subject>Vascular biology</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Molecular Biology</subject>
+          <subject>Cell Biology</subject>
+          <subject>Neuroscience</subject>
+          <subject>Biochemistry</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Ischemia/Reperfusion-Induced MKP-3 Impairs Endothelial NO Formation via Inactivation of ERK1/2 Pathway</article-title><alt-title alt-title-type="running-head">MKP-3 Modulates Endothelial NO Formation</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+          <name name-style="western">
+            <surname>Yang</surname>
+            <given-names>Dan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+          <name name-style="western">
+            <surname>Xie</surname>
+            <given-names>Ping</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Liu</surname>
+            <given-names>Zhihua</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1">          <addr-line>Institute of Medicinal Plant Development, Chinese Academy of Medical Sciences &amp; Peking Union Medical College, Beijing, China</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Gaetano</surname>
+            <given-names>Carlo</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">Goethe University, Germany</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">zhliu.liulab@foxmail.com</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: ZL. Performed the experiments: DY PX. Analyzed the data: ZL. Contributed reagents/materials/analysis tools: ZL. Wrote the paper: ZL DY.</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>The authors have declared that no competing interests exist.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2012</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>27</day>
+        <month>7</month>
+        <year>2012</year>
+      </pub-date><volume>7</volume><issue>7</issue><elocation-id>e42076</elocation-id><history>
+        <date date-type="received">
+          <day>7</day>
+          <month>2</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>2</day>
+          <month>7</month>
+          <year>2012</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2012</copyright-year><copyright-holder>Yang et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <p>Mitogen-activated protein kinase phosphatases (MKPs) are a family of dual-specificity phosphatases. Endothelial cells express multiple MKP family members, such as MKP-3. However, the effects of MKP-3 on endothelial biological processes have not yet been fully elucidated. Here, we address the association between MKP-3 and endothelial Nitric oxide (NO) formation under ischemia/reperfusion (IS/RP) condition. Human umbilical vein endothelial cells (HUVECs) were subjected to IS/RP treatment. The MKP-3 expression and NO formation were examined. IS/RP induced endothelial MKP-3 expression and inhibited eNOS expression and NO formation, accompanied by an increase of endothelial apoptosis. The siRNA experiments showed that MKP-3 was an important mediator in impairing eNOS expression and NO production in endothelial cells. Transfection of HUVECs with constitutively active ERK plasmids suggested that the above mentioned effect of MKP-3 was via inactivation of ERK1/2 pathway. Furthermore, impairment of eNOS expression was restored by treatment of histone deacetylase (HDAC) inhibitor and related to histone deacetylation and recruitment of HDAC1 to the eNOS promoter. Finally, Salvianolic acid A (SalA) markedly attenuated induction of MKP-3 and inhibition of eNOS expression and NO formation under endothelial IS/RP condition. Overall, these results for the first time demonstrated that IS/RP inhibited eNOS expression by inactivation of ERK1/2 and recruitment of HDAC1 to the gene promoter, leading to decreased NO formation through a MKP-3-dependent mechanism in endothelial cells, and SalA has therapeutic significance in protecting endothelial cells from impaired NO formation in response to IS/RP.</p>
+      </abstract><funding-group><funding-statement>This work was supported by National Natural Science Foundation of China (81102746), Beijing Natural Science Foundation (5113033), Scientific Research Foundation of the State Human Resource Ministry and the Education Ministry for Returned Chinese Scholars, New Star Project of Peking Union Medical College, Youth Foundation of Peking Union Medical College, the Research Fund for the Doctoral Program of Higher Education (20111106120028), “Major Drug Discovery” major science and technology research “12nd Five-Year Plan” (2012ZX09301-002-001), and China Medical Board of New York (A2009001) granted to Zhihua Liu. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="14"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>Nitric oxide (NO) is a diatomic free-radical gas which is crucial for a variety of biological processes <xref ref-type="bibr" rid="pone.0042076-Moncada1">[1]</xref>, <xref ref-type="bibr" rid="pone.0042076-Moncada2">[2]</xref>. NO is synthesized by a family of enzymes called NO synthases (NOS). There are three NOS isoforms in mammals: neuronal NOS (nNOS), endothelial NOS (eNOS), and inducible NOS (iNOS) <xref ref-type="bibr" rid="pone.0042076-Small1">[3]</xref>. Under physiological conditions, the dominant NOS isoform in the vasculature is eNOS, which catalyzes the formation of basal level NO to conduct physiological actions including effects on vascular smooth muscle cells, inhibition of adhesion of neutrophils and platelets to the endothelium, and maintenance of an anti-apoptotic environment in the vessel wall <xref ref-type="bibr" rid="pone.0042076-Sessa1">[4]</xref>. Rather than being a constitutive enzyme as was first suggested, eNOS is dynamically regulated at the transcriptional, posttranscriptional, and posttranslational levels <xref ref-type="bibr" rid="pone.0042076-Rafikov1">[5]</xref>. Many physiopathological events, such as ischemia/reperfusion (IS/RP) injury, alter eNOS expression level or its activity, resulting in a change of NO formation <xref ref-type="bibr" rid="pone.0042076-Rafikov1">[5]</xref>. Previous studies suggested that pleotropic signaling pathways were involved in regulation of eNOS activity, such as PI3K/AKT, MAPKs, and Rho-kinase <xref ref-type="bibr" rid="pone.0042076-Rafikov1">[5]</xref>. However, the mechanisms by which IS/RP influence the eNOS activity are not clearly elucidated in endothelial cells.</p>
+      <p>Mitogen-activated protein kinase phosphatases (MKPs) are a family of dual-specificity phosphatases and play important roles in the regulation of p38, ERK1/2, and JNK signaling pathways which are induced by growth factors, cellular stress, and inflammatory cytokines <xref ref-type="bibr" rid="pone.0042076-Medhora1">[6]</xref>, <xref ref-type="bibr" rid="pone.0042076-Kiemer1">[7]</xref>, <xref ref-type="bibr" rid="pone.0042076-Yang1">[8]</xref>, <xref ref-type="bibr" rid="pone.0042076-Rossig1">[9]</xref>. Endothelial cells express several MKPs, such as MKP-3 <xref ref-type="bibr" rid="pone.0042076-Rossig1">[9]</xref>. As a cytosolic phosphatase, MKP-3 prefers to target ERK1/2. To date, several studies demonstrated important roles of MKP-3 in endothelial apoptosis and leukocyte-endothelial adhesion <xref ref-type="bibr" rid="pone.0042076-Rossig1">[9]</xref>, <xref ref-type="bibr" rid="pone.0042076-Whetzel1">[10]</xref>, <xref ref-type="bibr" rid="pone.0042076-Rossig2">[11]</xref>. However, no further investigations are provided concerning the effects of MKP-3 on other endothelial physiological and pathophysiological processes.</p>
+      <p><italic>S. miltiorrhiza</italic>, commonly named “Danshen” in China, is a valuable medicinal plant <xref ref-type="bibr" rid="pone.0042076-Wang1">[12]</xref>, and can be used to promote blood flow and to resolve blood stasis. It is also an important part in compound danshen dripping pills which have been passed phase II human clinical trial of Food and Drug Administration (FDA). Salvianolic acid A, also known as SalA, is one of the main active, water-soluble components in <italic>S. miltiorrhiza</italic>. Previous studies have indicated the beneficial effects of SalA on preventing oxidative stress, platelet aggregation, ischemia, and hepatocirrhosis <xref ref-type="bibr" rid="pone.0042076-Ho1">[13]</xref>.</p>
+      <p>In our preliminary microarray data, we found that IS/RP upregulated MKP-3 expression, which was inhibited significantly by SalA pretreatment. Further, eNOS expression level showed opposite results after the same treatment method. Thus, in the present study, we firstly address the correlation between MKP-3 and eNOS expression under IS/RP condition in endothelial cells. Moreover, we detected whether SalA exhibits beneficial effects in these processes.</p>
+    </sec>
+    <sec id="s2">
+      <title>Results</title>
+      <sec id="s2a">
+        <title>The Expression Level of MKP Family Members and eNOS in Microarray Data</title>
+        <p>In our preliminary study, HUVECs were subjected to IS/RP injury with or without SalA pretreatment, and then the expression profile was obtained through microarray technique. The data demonstrated that IS/RP resulted in enhanced expression of MKP family members, such as MKP-3, MKP-5, and MKP-7, and interestingly, SalA merely inhibited IS/RP-upregulated MKP-3 expression. Furthermore, eNOS expression was also changed after IS/RP with or without SalA pretreatment, and presented an opposite results in contrast to MKP-3 (<xref ref-type="table" rid="pone-0042076-t001"><italic>Table 1</italic></xref>). These data indicated that maybe a negative correlation existed between MKP-3 and eNOS under IS/RP condition.</p>
+        <table-wrap id="pone-0042076-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0042076.t001</object-id><label>Table 1</label><caption>
+            <title>The changed expression levels of MKP family members and eNOS after IS/RP and SalA treatment.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0042076-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0042076.t001" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Gene</td>
+                <td align="left" colspan="1" rowspan="1">Synonym</td>
+                <td align="left" colspan="2" rowspan="1">Fold change</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">IS/RP vs. Control</td>
+                <td align="left" colspan="1" rowspan="1">(IS/RP+SalA) vs. IS/RP</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">DUSP1</td>
+                <td align="left" colspan="1" rowspan="1">MKP-1</td>
+                <td align="left" colspan="1" rowspan="1">1.51</td>
+                <td align="left" colspan="1" rowspan="1">0.98</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">DUSP4</td>
+                <td align="left" colspan="1" rowspan="1">MKP-2</td>
+                <td align="left" colspan="1" rowspan="1">2.3<xref ref-type="table-fn" rid="nt101">*</xref></td>
+                <td align="left" colspan="1" rowspan="1">1.11</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">DUSP5</td>
+                <td align="left" colspan="1" rowspan="1">B23, hVH3</td>
+                <td align="left" colspan="1" rowspan="1">2.46<xref ref-type="table-fn" rid="nt101">*</xref></td>
+                <td align="left" colspan="1" rowspan="1">1.24</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">DUSP6</td>
+                <td align="left" colspan="1" rowspan="1">MKP-3</td>
+                <td align="left" colspan="1" rowspan="1">4.11<xref ref-type="table-fn" rid="nt101">*</xref></td>
+                <td align="left" colspan="1" rowspan="1">0.32<xref ref-type="table-fn" rid="nt102">#</xref></td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">DUSP10</td>
+                <td align="left" colspan="1" rowspan="1">MKP-5</td>
+                <td align="left" colspan="1" rowspan="1">1.6<xref ref-type="table-fn" rid="nt101">*</xref></td>
+                <td align="left" colspan="1" rowspan="1">0.97</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">DUSP16</td>
+                <td align="left" colspan="1" rowspan="1">MKP-7</td>
+                <td align="left" colspan="1" rowspan="1">1.54</td>
+                <td align="left" colspan="1" rowspan="1">1.01</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">NOS3</td>
+                <td align="left" colspan="1" rowspan="1">eNOS</td>
+                <td align="left" colspan="1" rowspan="1">0.41<xref ref-type="table-fn" rid="nt101">*</xref></td>
+                <td align="left" colspan="1" rowspan="1">1.98<xref ref-type="table-fn" rid="nt102">#</xref></td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt101">
+              <label>*</label>
+              <p><italic>P</italic>&lt;0.05, IS/RP group vs. untreated control group;</p>
+            </fn>
+            <fn id="nt102">
+              <label>#</label>
+              <p><italic>P</italic>&lt;0.05, SalA-treated IS/RP group vs. IS/RP group.</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+      </sec>
+      <sec id="s2b">
+        <title>IS/RP Induces Endothelial MKP-3 Expression</title>
+        <p>Firstly, we investigated whether IS/RP induced endothelial MKP-3 expression. Cells were treated with ischemia for 5 hours and reperfusion for indicated time points, and then MKP-3 expression level was detected. As shown in <xref ref-type="fig" rid="pone-0042076-g001">Figure 1a</xref>, IS/RP led to a significant increase in MKP-3 mRNA level, which reached a peak about four-fold increase at 1 hour reperfusion and declined to near basal level at 3 hours. Additionally, the expression pattern of MKP-3 protein was similar to that of mRNA (<xref ref-type="fig" rid="pone-0042076-g001">Fig. 1b</xref>).</p>
+        <fig id="pone-0042076-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0042076.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>IS/RP induces endothelial MKP-3 expression.</title>
+            <p>HUVECs were subjected to 5 hours ischemia followed by reperfusion for indicated time points. (a) The MKP-3 mRNA levels in each group were detected by quantitative RT-PCR (n = 5, means±SEM). *<italic>P</italic>&lt;0.05 vs. untreated group (control). (b) The protein levels of MKP-3 and GAPDH were detected by immunoblot analysis using indicated antibodies. A representative blot (top) was shown (n = 4). Quantitative analysis of MKP-3 (bottom) was expressed as fold increase above control group (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. control group.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0042076.g001" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2c">
+        <title>IS/RP Inhibits eNOS Expression and Endothelial NO Formation</title>
+        <p>It is reported that NO production is altered after IS/RP injury in cardiovascular system <xref ref-type="bibr" rid="pone.0042076-Schulz1">[14]</xref>, <xref ref-type="bibr" rid="pone.0042076-Csonka1">[15]</xref>. We next investigated whether IS/RP influenced eNOS expression and NO formation in endothelial cells. After treatment of cells with IS/RP, we observed significant decrease in eNOS mRNA level and protein level (<xref ref-type="fig" rid="pone-0042076-g002">Fig. 2a, b</xref>). It is known that eNOS expression does not always correlate with eNOS activity, so we further detected eNOS activity and endothelial NO production. As shown in <xref ref-type="fig" rid="pone-0042076-g002">Figure 2c and d</xref>, eNOS activity and NO formation reduced markedly in response to IS/RP, correlating well with alteration of eNOS expression pattern. The eNOS-derived NO maintains an anti-apoptotic environment in vessel wall. We observed increased endothelial apoptosis accompanying inhibited NO formation (<xref ref-type="fig" rid="pone-0042076-g002">Fig. 2e</xref>). Thus, these results suggested that IS/RP impaired eNOS expression, leading to decreased NO production as well as enhanced apoptosis in endothelial cells.</p>
+        <fig id="pone-0042076-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0042076.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>IS/RP inhibits eNOS expression and NO formation.</title>
+            <p>HUVECs were subjected to IS/RP treatment. (a) The eNOS mRNA levels in each group were detected by quantitative RT-PCR (n = 5, means±SEM). *<italic>P</italic>&lt;0.05 vs. untreated group (control). (b) The protein levels of eNOS and GAPDH were detected by immunoblot analysis using indicated antibodies. A representative blot (top) was shown (n = 4). Quantitative analysis of eNOS (bottom) was expressed as fold increase above control group (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. control group. (c) The NOS activity in the cell lysates was determined via examining the efficiency in conversion of [3H]L-arginine to [3H]L-citrulline (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. untreated control group. (d) NO formation was detected as nitrite released into supernatant of confluent cultures of HUVECs (see Methods) (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. untreated control group. (e) Cell apoptosis was determined by TUNEL assay. A representative field (left) was shown for each condition (magnification, ×200). The number of TUNEL-positive cells was quantified, and at least 120 cells per dish were counted (n = 3, means ± SEM.). *<italic>P</italic>&lt;0.05 vs. control group.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0042076.g002" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2d">
+        <title>IS/RP-induced MKP-3 Impairs eNOS Expression and Endothelial NO Formation</title>
+        <p>To further determine whether there is a relationship between IS/RP-induced MKP-3 and impaired eNOS expression and NO formation, we used the siRNA technique to suppress MKP-3 expression in HUVECs. We first optimized the conditions for cell transfection and tested MKP-3 expression. A significant reduction of MKP-3 expression was observed in cells transfected with MKP-3 siRNA compared with nontargeting siRNA (data not shown). MKP-3 siRNA markedly attenuated IS/RP-mediated reduction of eNOS expression level (<xref ref-type="fig" rid="pone-0042076-g003">Fig. 3a, b</xref>). and activity (<xref ref-type="fig" rid="pone-0042076-g003">Fig. 3c</xref>) as well as NO production (<xref ref-type="fig" rid="pone-0042076-g003">Fig. 3d</xref>). Furthermore, endothelial apoptosis were partially reversed by MKP-3 siRNA treatment (<xref ref-type="fig" rid="pone-0042076-g003">Fig. 3e</xref>). Additionally, nontargeting siRNA had no effect on these processes (<xref ref-type="fig" rid="pone-0042076-g003">Fig. 3c–e</xref>). Thus, these results provided a causal relationship between IS/RP-mediated induction of MKP-3 and inhibition of eNOS expression and NO formation in endothelial cells.</p>
+        <fig id="pone-0042076-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0042076.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>IS/RP-induced MKP-3 impairs eNOS expression and NO formation.</title>
+            <p>HUVECs were transfected with MKP-3 siRNA (50 nmol/L) or nontargeting siRNA (50 nmol/L). After 48 h, cells were normally cultured or subjected to IS/RP treatment. (a) The eNOS mRNA levels in each group were detected by quantitative RT-PCR (n = 5, means±SEM). *<italic>P</italic>&lt;0.05 vs. parallel normally cultured cells. (b) The protein levels of MKP-3, eNOS, and GAPDH were detected by immunoblot analysis using indicated antibodies. A representative blot (top) was shown (n = 4). Quantitative analysis of eNOS (bottom) was expressed as fold increase above control group (nontransfected and normally cultured cells) (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. parallel normally cultured cells. (c) The NOS activity in the cell lysates was determined via examining the efficiency in conversion of [3H]L-arginine to [3H]L-citrulline (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. parallel normally cultured cells. (d) NO formation was detected as nitrite released into supernatant of confluent cultures of HUVECs (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. parallel normally cultured cells. (e) Cell apoptosis was determined by TUNEL assay. The number of TUNEL-positive cells was quantified (n = 3, means ± SEM.). *<italic>P</italic>&lt;0.05 vs. control group; <sup>#</sup><italic>P</italic>&lt;0.05 vs. nontargeting siRNA-transfected IS/RP group.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0042076.g003" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2e">
+        <title>IS/RP-induced MKP-3 Leads to Dephophorylation of ERK1/2</title>
+        <p>To determine the precise mechanism by which MKP-3 inhibits eNOS expression and NO production, the action of MKP-3 on its potential downstream kinases p38, JNK1/2, and ERK1/2 was examined. Firstly, we detected whether IS/RP altered endothelial p38, JNK1/2, and ERK1/2 pathways. IS/RP caused a marked dephosphorylation of ERK1/2 (<xref ref-type="fig" rid="pone-0042076-g004">Fig. 4a</xref>). Moreover, reperfusion for 30 minutes resulted in activation of p38 and JNK1/2 (<xref ref-type="fig" rid="pone-0042076-g004">Fig. 4a</xref>), which was in accordance with previous study <xref ref-type="bibr" rid="pone.0042076-Yang2">[16]</xref>. Secondly, we used the siRNA technique to suppress MKP-3 expression to detect whether MKP-3 influences the phosphorylation levels of p38, JNK1/2, and ERK1/2. As shown in <xref ref-type="fig" rid="pone-0042076-g004">Figure 4b</xref>, MKP-3 siRNA markedly abolished IS/RP-mediated inhibition of ERK1/2 activation, whereas no effect was observed of MKP-3 on phosphorylation levels of p38 and JNK1/2. Additionally, the early activation of p38 and JNK1/2 induced by IS/RP was not affected by MKP-3 siRNA as well (data not shown). Together, these results indicated that IS/RP-induced MKP-3 led to dephophorylation of ERK1/2 in endothelial cells, without effect on p38 and JNK1/2 activation.</p>
+        <fig id="pone-0042076-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0042076.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>IS/RP-induced MKP-3 leads to dephophorylation of ERK1/2.</title>
+            <p>(a) HUVECs were subjected to IS/RP treatment. The protein levels of ERK1/2, p38, JNK1/2, and GAPDH were detected by immunoblot analysis using indicated antibodies. A representative blot (top) was shown (n = 4). Quantitative analysis of ERK1/2, p38, and JNK1/2 (bottom) was expressed as fold increase above control group (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. control group. (b) HUVECs were transfected with MKP-3 siRNA (50 nmol/L) or nontargeting siRNA (50 nmol/L). After 48 h, cells were normally cultured or subjected to IS/RP treatment. The protein levels of ERK1/2, p38, JNK1/2, and GAPDH were detected by immunoblot analysis using indicated antibodies. A representative blot was shown (n = 4).</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0042076.g004" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2f">
+        <title>IS/RP-induced MKP-3 Impairs eNOS Expression and Endothelial NO Formation via Inactivation of ERK1/2 Pathway</title>
+        <p>We next examined whether the inhibitory effect of MKP-3 on ERK1/2 activation led to impaired eNOS expression and NO production. We transfected HUVECs with constitutively active ERK1/2 expression plasmids (caERK), and noticed a transfection efficiency up to 70% as determined using green fluorescent protein. The results showed that caERK transfection significantly attenuated the impairment of eNOS expression (<xref ref-type="fig" rid="pone-0042076-g005">Fig. 5a, b</xref>) and activity (<xref ref-type="fig" rid="pone-0042076-g005">Fig. 5c</xref>), as well as NO formation (<xref ref-type="fig" rid="pone-0042076-g005">Fig. 5d</xref>). Moreover, endothelial apoptosis were partially reversed by caERK transfection as well (<xref ref-type="fig" rid="pone-0042076-g005">Fig. 5e</xref>). However, MKP-3 expression level was not altered (<xref ref-type="fig" rid="pone-0042076-g005">Fig. 5a, b</xref>). Additionally, we studied the roles of p38 and JNK1/2 in eNOS expression as well, and detected no obvious changes after treatment of specific inhibitors of p38 and JNK1/2 (SB203580 and SP600125) (data not shown). Taken together, these results demonstrated that IS/RP-mediated inhibition of eNOS expression and NO formation by MKP-3 was through inactivation of ERK1/2 pathway.</p>
+        <fig id="pone-0042076-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0042076.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title>IS/RP-induced MKP-3 impairs eNOS expression and NO formation via inactivation of ERK1/2 pathway.</title>
+            <p>HUVECs were not transfected (−) or transfected with control plasmids (control) or constitutively active HA-ERK1 and c-myc-ERK2 expression plasmids (caERK). After 48 h, cells were normally cultured or subjected to IS/RP treatment. (a) The MKP-3 and eNOS mRNA levels in each group were detected by quantitative RT-PCR (n = 5, means±SEM). *<italic>P</italic>&lt;0.05 vs. parallel normally cultured cells. (b) The protein levels of MKP-3, eNOS, and GAPDH were detected by immunoblot analysis. A representative blot was shown (n = 4). (c) The NOS activity in the cell lysates was determined via examining the efficiency in conversion of [3H]L-arginine to [3H]L-citrulline (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. parallel normally cultured cells. (d) NO formation was detected as nitrite released into supernatant of confluent cultures of HUVECs (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. parallel normally cultured cells. (e) Cell apoptosis was determined by TUNEL assay. The number of TUNEL-positive cells was quantified (n = 3, means ± SEM.). *<italic>P</italic>&lt;0.05 vs. control group; <sup>#</sup><italic>P</italic>&lt;0.05 vs. IS/RP group of transfection control.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0042076.g005" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2g">
+        <title>The Impaired eNOS Expression is Mediated by HDAC1 Binding to the Gene Promoter</title>
+        <p>Histone acetylation modification participates in transcriptional regulation of genes by affecting the status of chromatin remodeling. Histone deacetylases (HDACs) catalyze the removal of acetyl groups from histones and contribute to transcriptional repression. Here, we studied whether the down-regulation of eNOS expression by MKP-3 was concerned in histone deacetylation and recruitment of HDACs to the eNOS promoter. Firstly, we noticed that global HDAC activity was increased in endothelial cells by IS/RP treatment (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6a</xref>). HDAC inhibitor Trichostatin (TSA) significantly inhibited IS/RP-impaired eNOS expression in a dose-dependent manner (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6b, c</xref>), and attenuation of impaired NO formation was also observed (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6d</xref>). These results suggested that HDACs maybe played roles in IS/RP-mediated down-regulation of eNOS expression. Thus, we further detected whether the binding of HDACs to eNOS promoter was changed. ChIP assays showed that IS/RP increased the recruitment of HDAC1 to the promoter of eNOS, and this process was hampered significantly by transfection of MKP-3 siRNA or caERK (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6e, f</xref>). However, we detected slight alteration concerning the binding of HDAC2 to eNOS promoter (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6e, f</xref>). Additionally, acetylated histone H3 (Ac-H3) was regulated in an opposing manner compared with HDAC1 (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6e, f</xref>). Overall, these studies implicated that the down-regulation of eNOS expression via MKP-3/ERK1/2 signaling was associated with histone deacetylation and recruitment of HDAC1 to the eNOS promoter.</p>
+        <fig id="pone-0042076-g006" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0042076.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title>The impaired eNOS expression is mediated by histone deacetylation at gene promoter.</title>
+            <p>(a) HUVECs were subjected to IS/RP treatment and 10µg of nuclear extract in each group was assayed for HDAC enzyme activity (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. untreated group (control). (b) HUVECs were pretreated with TSA in various concentrations, and then subjected to IS/RP treatment. The mRNA levels of MKP-3 and eNOS in each group were detected by quantitative RT-PCR (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. control group; <sup>#</sup><italic>P</italic>&lt;0.05 vs. non-TSA-treated IS/RP group. (c) The protein levels of MKP-3, ERK1/2, eNOS, and GAPDH were detected by immunoblot analysis. A representative blot was shown (n = 3). (d) NO formation was detected (n = 3, means±SEM). *<italic>P</italic>&lt;0.05 vs. control group; <sup>#</sup><italic>P</italic>&lt;0.05 vs. non-TSA-treated IS/RP group. (e) HUVECs were transfected with MKP-3 siRNA (50 nmol/L) or nontargeting siRNA (50 nmol/L). After 48 h, cells were normally cultured or subjected to IS/RP treatment. Cells were then analyzed using the ChIP assay with antibodies Ac-H3 or HDAC1 or HDAC2 (see Method). Figure is representative of three separate experiments. (f) HUVECs were transfected with control plasmids (control) or constitutively active HA-ERK1 and c-myc-ERK2 expression plasmids (caERK). After 48 h, cells were normally cultured or subjected to IS/RP treatment. Cells were then analyzed using the ChIP assay. Figure is representative of three separate experiments.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0042076.g006" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2h">
+        <title>SalA Alleviates Impairment of Endothelial NO Formation in Response to IS/RP</title>
+        <p>SalA is one of the main active, water-soluble components in <italic>S. miltiorrhiza</italic>, a valuable medicinal plant. Previous study has indicated the beneficial effects of SalA on preventing oxidative stress, platelet aggregation, ischemia, and hepatocirrhosis <xref ref-type="bibr" rid="pone.0042076-Ho1">[13]</xref>. In our preliminary microarray data, we found that SalA abolished IS/RP-mediated induction of MKP-3 and inhibition of eNOS expression. Thus, we addressed the event that whether SalA exhibited beneficial effects on restoring IS/RP-impaired eNOS expression and NO formation. As shown in <xref ref-type="fig" rid="pone-0042076-g007">Figure 7a and b</xref>, SalA markedly abolished IS/RP-altered MKP-3 and eNOS expression level. Furthermore, SalA reversed IS/RP-impaired eNOS activity and NO formation (<xref ref-type="fig" rid="pone-0042076-g007">Fig. 7c, d</xref>), which was accompanied by attenuated endothelial apoptosis (<xref ref-type="fig" rid="pone-0042076-g007">Fig. 7e</xref>). In addition, all these actions of SalA were in a dose-dependent manner. Taken these results together, SalA was beneficial to inhibition of MKP-3 expression and restoration of impaired eNOS expression and NO production in endothelial IS/RP injury.</p>
+        <fig id="pone-0042076-g007" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0042076.g007</object-id>
+          <label>Figure 7</label>
+          <caption>
+            <title>SalA alleviates impairment of endothelial NO formation in response to IS/RP.</title>
+            <p>HUVECs were pretreated with SalA for 30 min in various concentrations, and then subjected to IS/RP treatment. (a) The MKP-3 and eNOS mRNA levels in each group were detected by quantitative RT-PCR (n = 5, means±SEM). *<italic>P</italic>&lt;0.05 vs. control group; <sup>#</sup><italic>P</italic>&lt;0.05 vs. non-SalA-treated IS/RP group. (b) The protein levels of MKP-3, ERK1/2, eNOS, and GAPDH were detected by immunoblot analysis. A representative blot was shown (n = 4). (c) The NOS activity in the cell lysates was determined via examining the efficiency in conversion of [3H]L-arginine to [3H]L-citrulline (n = 4, means±SEM). *<italic>P</italic>&lt;0.05 vs. control group; <sup>#</sup><italic>P</italic>&lt;0.05 vs. non-SalA-treated IS/RP group. (d) NO formation was detected as nitrite released into supernatant of confluent cultures of HUVECs (n = 3, means±SEM). *<italic>P</italic>&lt;0.05 vs. control group; <sup>#</sup><italic>P</italic>&lt;0.05 vs. non-SalA-treated IS/RP group. (e) Cell apoptosis was determined by TUNEL assay. The number of TUNEL-positive cells was quantified, and at least 120 cells per dish were counted (n = 3, means ± SEM.). *<italic>P</italic>&lt;0.05 vs. control group; <sup>#</sup><italic>P</italic>&lt;0.05 vs. non-SalA-treated IS/RP group.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0042076.g007" xlink:type="simple"/>
+        </fig>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Discussion</title>
+      <p>In the present study, we provided evidence for the first time that IS/RP-induced MKP-3 impaired eNOS expression and NO formation in endothelial cells, and the actions of MKP-3 were mediated through inactivation of ERK1/2 pathway and recruitment of HDAC1 to the eNOS promoter. Moreover, we found a potential drug component from a medicinal plant, SalA, which effectively attenuated IS/RP-mediated induction of MKP-3 and inhibition of eNOS expression and NO formation.</p>
+      <p>NO is a critical effective molecule in the cardiovascular system. Under physiological conditions, endothelial basal NO formation catalyzed by eNOS plays an important role in vascular homeostasis affecting vasomotor tone as well as vascular smooth muscle proliferation, platelet aggregation, expression of adhesion molecules, inhibition of lipid oxidation, and regulation of apoptosis <xref ref-type="bibr" rid="pone.0042076-Stuehr1">[17]</xref>, <xref ref-type="bibr" rid="pone.0042076-Dudzinski1">[18]</xref>. Numerous physiological and pathophysiological stimuli such as shear stress, hypoxia, and inflammatory mediators influence eNOS activity <xref ref-type="bibr" rid="pone.0042076-Searles1">[19]</xref>, <xref ref-type="bibr" rid="pone.0042076-Tai1">[20]</xref>. Many studies have shown that IS/RP injury impairs eNOS activity leading to a decreased basal NO production <xref ref-type="bibr" rid="pone.0042076-Schulz1">[14]</xref>, <xref ref-type="bibr" rid="pone.0042076-Xia1">[21]</xref>. In our study, we found that eNOS expression level was markedly decreased after IS/RP with reduction of eNOS activity and NO formation as well as increase in endothelial apoptosis (<xref ref-type="fig" rid="pone-0042076-g002">Fig. 2</xref>). However, it should be taken into mind that decreased NO formation was not always due to inhibited eNOS expression. Other than at transcriptional level, eNOS activity can also be regulated at posttranscriptional levels via phosphorylation, S-nitrosylation, and interaction of eNOS with other proteins, such as caveolins <xref ref-type="bibr" rid="pone.0042076-Bauer1">[22]</xref>, <xref ref-type="bibr" rid="pone.0042076-Erwin1">[23]</xref>, <xref ref-type="bibr" rid="pone.0042076-Fleming1">[24]</xref>. Our results showed that decreased eNOS expression correlated well with inhibited eNOS activity and NO formation in the first hours of reperfusion (<xref ref-type="fig" rid="pone-0042076-g002">Fig. 2</xref>). Taken together, these results suggested that IS/RP mediated reduction in eNOS activity at transcriptional level leading to an inhibition of NO production in endothelial cells.</p>
+      <p>MKPs are a family of dual-specificity phosphatases and play important roles in the regulation of p38, ERK1/2, and JNK signaling pathways <xref ref-type="bibr" rid="pone.0042076-Medhora1">[6]</xref>, <xref ref-type="bibr" rid="pone.0042076-Kiemer1">[7]</xref>, <xref ref-type="bibr" rid="pone.0042076-Yang1">[8]</xref>, <xref ref-type="bibr" rid="pone.0042076-Rossig1">[9]</xref>. However, not much is known currently about the normal physiological functions of many of the MKP family members. To date, the biological demonstration of MKPs are mainly focused on cancer disease <xref ref-type="bibr" rid="pone.0042076-Haagenson1">[25]</xref>, <xref ref-type="bibr" rid="pone.0042076-NunesXavier1">[26]</xref>. Endothelial cells express multiple MKP family members. In our preliminary microarray results, we observed altered expression levels of several MKP family members in response to IS/RP treatment, including MKP-1, -2, -3, -5, and -7. However, about the biological effect in IS/RP, all the MKPs have not yet been investigated except MKP-1. MKP-1 could suppress IS/RP-induced cell death possibly through regulating JNK signaling <xref ref-type="bibr" rid="pone.0042076-Yang2">[16]</xref>, <xref ref-type="bibr" rid="pone.0042076-Koga1">[27]</xref>. Moreover, the mechanisms responsible for IS/RP-mediated induction of MKP-1 as well as other MKP members remain to be determined. MKP-3 is unique within the MKP family, because it is exclusively located in the cytosol, indicating a specific regulatory role in inactivating Mitogen-activated protein kinases by targeting cytoplasmic substrates or by blocking nuclear localization <xref ref-type="bibr" rid="pone.0042076-Muda1">[28]</xref>. At present, several studies demonstrated important roles of MKP-3 in endothelial apoptosis and leukocyte-endothelial adhesion <xref ref-type="bibr" rid="pone.0042076-Rossig1">[9]</xref>, <xref ref-type="bibr" rid="pone.0042076-Whetzel1">[10]</xref>, <xref ref-type="bibr" rid="pone.0042076-Rossig2">[11]</xref>. However, no further evidence is presented addressing the actions of MKP-3 on other endothelial physiological and pathophysiological events. Our current study showed that MKP-3 was induced under IS/RP condition (<xref ref-type="fig" rid="pone-0042076-g001">Fig. 1</xref>). Some study showed that MKP-3 expression has been linked to Ras activity in cancer cells <xref ref-type="bibr" rid="pone.0042076-Furukawa1">[29]</xref>, <xref ref-type="bibr" rid="pone.0042076-Furukawa2">[30]</xref>. However, little is known presently about the mechanism involved in endothelial MKP-3 induction. Maybe the oxidative stress, increase in cytosolic Ca<sup>2+</sup>, or other IS/RP-related events responsible for this process.</p>
+      <p>It was noteworthy in our study that, after MKP-3 expression was suppressed effectively by siRNA technique, IS/RP-impaired eNOS expression, eNOS activity, and NO formation were largely abolished (<xref ref-type="fig" rid="pone-0042076-g003">Fig. 3a–d</xref>). Thus, these results indicated that there was a causal relationship between IS/RP-mediated induction of MKP-3 and inhibition of eNOS expression and NO formation, which, more or less, provided us a better understanding of the biological actions of MKP-3 in endothelial cells. Of the MKP family members, it is MKP-3 that specifically inactivates ERK1/2. In our study, we observed significant up-regulation of phosphorylated ERK1/2 after transfection of HUVECs with MKP-3 siRNA, while phosphorylated p38 and JNK1/2 levels were unchanged (<xref ref-type="fig" rid="pone-0042076-g004">Fig. 4b</xref>). Furthermore, after transfection of HUVECs with caERK plasmids, no obvious reduction of eNOS expression and NO formation was detected under IS/RP condition (<xref ref-type="fig" rid="pone-0042076-g005">Fig. 5a–d</xref>), indicating that inactivation of ERK1/2 contributed to decrease in endothelial NO production. Taken these results together, we speculated that IS/RP-induced MKP-3 dephosphorylated ERK1/2, leading to impaired basal levels of eNOS expression, and NO formation in endothelial cells.</p>
+      <p>The acetylation of core histones correlates with transcriptional activity in many genes, allowing DNA to unfold and providing access for transcription factors to bind to their targeted promoters. The turnover of acetylated histones is regulated by the opposing activities of histone acetyltransferases (HATs) and histone deacetylases (HDACs), where HATs generally allow transcription and HDACs repress transcription. HDACs were shown to be involved originally in cancer and neurological disease, and recent reports implicated their crucial roles in cardiovascular disease <xref ref-type="bibr" rid="pone.0042076-Zhou1">[31]</xref>. The broad inhibitor of HDACs, TSA, has been shown to influence eNOS expression in HUVECs <xref ref-type="bibr" rid="pone.0042076-Searles1">[19]</xref>, <xref ref-type="bibr" rid="pone.0042076-Gan1">[32]</xref>. In line with this, we noticed that IS/RP enhanced global HDAC activity (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6a</xref>) and inhibition of HDACs by TSA alleviated IS/RP-impaired eNOS expression dose-dependently (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6b, c</xref>), suggesting crucial roles of HDACs in down-regulation of eNOS expression. Current studies reported that HDAC1 and 2 were related to cardiovascular system, which were widely expressed and resided nearly exclusively in the cell nucleus <xref ref-type="bibr" rid="pone.0042076-Searles1">[19]</xref>, <xref ref-type="bibr" rid="pone.0042076-Zhou1">[31]</xref>. HDAC1 was shown to be involved in regulaton of eNOS promoter activity <xref ref-type="bibr" rid="pone.0042076-Gan1">[32]</xref>, <xref ref-type="bibr" rid="pone.0042076-Gan2">[33]</xref>. In our result, IS/RP increased the binding of HDAC1 to the promoter of eNOS, which was hampered significantly by transfection of MKP-3 siRNA or caERK (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6e, f</xref>). Accordingly, Ac-H3 was regulated in an opposing manner as compared with HDAC1 (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6e, f</xref>). However, it seemed that the alteration was not much obviously concerning the binding of HDAC2 to eNOS promoter (<xref ref-type="fig" rid="pone-0042076-g006">Fig. 6e, f</xref>). Thus, our findings indicated that histone deacetylation and recruitment of HDAC1 to the eNOS promoter might be implicated in the down-regulation of eNOS gene expression via MKP-3/ERK1/2 signaling.</p>
+      <p>SalA is one of the main active, water-soluble components in <italic>S. miltiorrhiza</italic>, which is commonly named “Danshen” in China, and has been widely used as a medicinal plant for more than two thousand years <xref ref-type="bibr" rid="pone.0042076-Wang1">[12]</xref>. <italic>S. miltiorrhiza</italic> is an important part in compound danshen dripping pills which have a therapeutic potential on cardiac arrest treatment and have been passed phase II human clinical trial of FDA. In the past few years, many beneficial effects of SalA on cardiovascular system have been proposed <xref ref-type="bibr" rid="pone.0042076-Ho1">[13]</xref>. Furthermore, mechanisms of how SalA regulate biological processes in endothelial cells, vascular smooth muscle cells, and cardiomyocytes have been investigated <xref ref-type="bibr" rid="pone.0042076-Yang3">[34]</xref>, <xref ref-type="bibr" rid="pone.0042076-Zhang1">[35]</xref>, <xref ref-type="bibr" rid="pone.0042076-Oh1">[36]</xref>. During IS/RP injury, SalA has been reported to be a cardiovascular protective agent, mainly through its anti-apoptosis activity via induction of Bcl-2 and inhibition of Bax <xref ref-type="bibr" rid="pone.0042076-Pan1">[37]</xref>, <xref ref-type="bibr" rid="pone.0042076-Fan1">[38]</xref>. Further, anti-inflammatory property was suggested as well which was correlated with the inhibition of granulocyte adherence <xref ref-type="bibr" rid="pone.0042076-Jiang1">[39]</xref>. In the presented study, SalA was firstly provided as a potential protectant against IS/RP-impaired endothelial NO formation. We found that SalA blocked IS/RP-incuced MKP-3 expression dose-dependently (<xref ref-type="fig" rid="pone-0042076-g007">Fig. 7a, b</xref>), and interestingly, decreased phosphor-ERK1/2, eNOS expression, eNOS activity, and NO formation as well as endothelial apoptosis in response to IS/RP were also markedly attenuated by SalA treatment (<xref ref-type="fig" rid="pone-0042076-g007">Fig. 7a–e</xref>). Thus, SalA demonstrated effective protection against IS/RP-impaired NO production maybe through its inhibition of MKP-3 leading to restoration of hampered ERK1/2 activation and eNOS expression, which has therapeutic significance in the states of IS/RP-induced vasculature injuries.</p>
+      <p>In conclusion, our study demonstrated that IS/RP-induced MKP-3 impaired eNOS expression and NO formation via inactivation of ERK1/2 pathway and recruitment of HDAC1 to the eNOS promoter, which provided us not only a better understanding of the biological actions of MKP-3 in endothelial cells, but also a novel mechanism to explain impaired basal endothelial NO production in response to IS/RP. Moreover, we presented SalA as a potential drug component to effectively alleviate IS/RP-mediated induction of MKP-3 and inhibition of NO production (<xref ref-type="fig" rid="pone-0042076-g008">Fig. 8</xref>). Thus, these findings may have significance for the therapeutic application in IS/RP-related diseases.</p>
+      <fig id="pone-0042076-g008" position="float">
+        <object-id pub-id-type="doi">10.1371/journal.pone.0042076.g008</object-id>
+        <label>Figure 8</label>
+        <caption>
+          <title>Proposed model of MKP-3/eNOS signaling.</title>
+          <p>Ischemia/reperfusion (IS/RP) induces MKP-3 expression, leading to inactivation of ERK1/2 and recruitment of HDAC1 to the eNOS promoter, thus attenuation of eNOS expression and NO formation. Furthermore, SalA inhibits induced MKP-3 expression, protecting endothelial cells against impaired eNOS expression and NO formation in response to IS/RP injury.</p>
+        </caption>
+        <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0042076.g008" xlink:type="simple"/>
+      </fig>
+    </sec>
+    <sec id="s4" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <p>The study was reviewed and approved by the institutional ethics review board of the Peking Union Medical College (Beijing, China) and also conforms with the principles outlined in the Declaration of Helsinki (Cardiovasc Res 1997;35∶2–4). This work was supported by National Natural Science Foundation of China (81102746, 81100077), Beijing Natural Science Foundation (5113033), Scientific Research Foundation of the State Human Resource Ministry and the Education Ministry for Returned Chinese Scholars, New Star Project of Peking Union Medical College, Youth Foundation of Peking Union Medical College, the Research Fund for the Doctoral Program of Higher Education (20111106120028), “Major Drug Discovery” major science and technology research “12nd Five-Year Plan” (2012ZX09301-002-001), China Medical Board of New York (A2009001).</p>
+      <sec id="s4a">
+        <title>Chemicals and Reagents</title>
+        <p>Antibodies used were as follows: anti-MKP-3, anti-eNOS, anti-phospho-ERK1/2, anti-ERK1/2, anti-phospho-JNK1/2, anti-JNK1/2, anti-phospho-p38, anti-p38, anti-acetyl-H3, anti-GAPDH, and HRP-conjugated secondary antibodies (Cell Signaling Technology); anti-HDAC1, anti-HDAC2 (Affinity BioReagents). All other chemicals were purchased from Sigma.</p>
+      </sec>
+      <sec id="s4b">
+        <title>Cell Culture</title>
+        <p>Human umbilical endothelial cells (HUVECs) (Sciencell) were cultured in endothelial cell medium (ECM) supplemented with endothelial cell growth supplement (ECGS), 5% fetal bovine serum (FBS), and penicillin/streptomycin (P/S) solution (Sciencell) in an incubator with 37°C, 5% CO<sub>2</sub>. For experiments, cells of passage no. 4–6 were grown until confluence. In some experiments, HUVECs were pretreated with SalA for 30 min and then subjected to the IS/RP protocol.</p>
+      </sec>
+      <sec id="s4c">
+        <title>Stimulated Ischemia/reperfusion (IS/RP) Experimental Protocol</title>
+        <p>HUVECs were subjected to oxygen–glucose deprivation (OGD) injury <xref ref-type="bibr" rid="pone.0042076-Hempel1">[40]</xref>, <xref ref-type="bibr" rid="pone.0042076-Xie1">[41]</xref>. The OGD injury was initiated by placing cells in a tri-gas incubator with an atmosphere of 37°C, 5% CO<sub>2</sub>, 94% N2, and 1% O2, and in the presence of OGD media for 5 h. After that, the exposure medium was replaced with oxygenated ECM, and the cells were placed in an incubator at 37°C, 5% CO<sub>2</sub>, to mimic the reperfusion conditions at different time points as indicated.</p>
+      </sec>
+      <sec id="s4d">
+        <title>siRNA Experiments</title>
+        <p>HUVECs were transfected with 50 nmol/L MKP-3 siRNA or nontargeting siRNA obtained from Dharmacon as described previously <xref ref-type="bibr" rid="pone.0042076-Yang2">[16]</xref>. The nontargeting siRNA was used as transfection control for non-sequence-specific effects of the transfected siRNAs.</p>
+      </sec>
+      <sec id="s4e">
+        <title>Plasmids and Transfection</title>
+        <p>The HA-tagged constitutively active ERK1 and c-Myc-tagged constitutively active ERK2 for expression in mammalian cells were constructed by polymerase chain reaction (PCR), followed by cloning into the pcDNA3.1 plasmid (Invitrogen). HUVECs (60% confluence) were transfected using the lipofectamine 2000 (Invitrogen). Cells were incubated with the DNA-lipofectamine complexes at 37°C for 4 h followed by recovery in the presence of 0.5% FBS. Transfection efficiency was about 70% as determined using green fluorescent protein and maximal levels of protein expression were observed between 24 and 48 hours.</p>
+      </sec>
+      <sec id="s4f">
+        <title>Quantitative Real-time RT-PCR Analysis</title>
+        <p>Total RNA was purified from HUVECs with Trizol (Invitrogen). Real-time PCR was performed using Bio-RAD iQ5 Multicolor Real-Time PCR Detection System with SYBR Green as fluorescent and ROX (Takara) as reference dyes as described previously <xref ref-type="bibr" rid="pone.0042076-Fan2">[42]</xref>. The specific primers used were as follows: human MKP-3∶5′-CTTGGTACATTGCTTGGCTGGCAT-3′ (forward), <named-content content-type="gene" xlink:type="simple">5′-AAGAGAAACTGCTGAAGGGCCAGA-3′</named-content> (reverse); human eNOS: <named-content content-type="gene" xlink:type="simple">5′-GCGGCTGCATGACATTGAG-3′</named-content> (forward), <named-content content-type="gene" xlink:type="simple">5′-TCGCGGTAGAGATGGTCAAGTCA-3′</named-content> (reverse); human GAPDH: <named-content content-type="gene" xlink:type="simple">5′-GACCCCTTCATTGACCTC-3′</named-content> (forward), <named-content content-type="gene" xlink:type="simple">5′-GCTAAGCAGTTGGTGGTG-3′</named-content> (reverse).</p>
+      </sec>
+      <sec id="s4g">
+        <title>Immunoblot Analysis</title>
+        <p>Immunoblotting was performed according to the previous protocols <xref ref-type="bibr" rid="pone.0042076-Li1">[43]</xref>. Total proteins were extracted from HUVECs using cell lysis buffer (50 mM Tris-Hcl [PH 7.5], 150 mM NaCL, 0.5% NP40, 0.5% Triton-X100, 2 mM EDTA, 1 mM NaF, 1 mM PMSF, 1 mM Na<sub>3</sub>VO<sub>4</sub>, and Protease inhibitor cocktail (Roche)). Protein (40–60 µg) from each sample were separated by SDS-PAGE, transferred to nitrocellulose membranes, and probed with primary antibodies and then with horseradish peroxidase-conjugated secondary antibodies. The enhanced chemiluminescence signal was quantified using a densitometry program (Gel-pro 4.5 Analyzer, Media Cybernetics). To quantify the protein signal, we subtracted background, normalized the value to GAPDH. As for the phospho-specific protein, we normalized the signal to the amount of total target protein and GAPDH.</p>
+      </sec>
+      <sec id="s4h">
+        <title>Measurement of NOS Activity</title>
+        <p>The conversion of [3H]L-arginine to [3H]L-citrulline was used to assess eNOS activity in cultured endothelial cells using the NOS Activity Assay Kit (Cayman Chemicals, Inc. USA) as described previously <xref ref-type="bibr" rid="pone.0042076-Li2">[44]</xref>. Briefly, cultured HUVECs were suspended by brief treatment with trypsin–EDTA and washed with PBS. To prepare total cell lysates, cells were then suspended in cold lysis buffer at 4°C for 1 hour and centrifuged at 10 000 g for 20 minutes. Protein concentrations were determined using the BCA Protein Assay (Pierce, USA). To analyze eNOS activity, cell lysates (150 mg) were incubated with 1 mM NADPH, 0.6 mM CaCl2, 100 nM calmodulin, [3H]L-arginine (58 Ci/mmol, 1 mCi/mL), 1 mM flavin adenine dinucleotide, 1 mM flavin adenine mononucleotide, and 3 mM BH4 for 15 minutes at 37°C. In all experiments, replicate incubations were performed in the presence of the NOS inhibitor 1 mM L-NNA. Incubations were terminated by adding 0.4 mL of ice-cold stop buffer. [3H]L-arginine was separated from [3H]L-citrulline by passing the entire reaction mixture over 0.1 mL of equilibrated Dowex AG 50 WX-8 cation exchange resin (Bio-Rad Laboratories,USA). The effluent containing [3H]L-citrulline was collected and quantified by liquid scintillation counting. The activities were expressed as pmol citrulline/mg protein/min.</p>
+      </sec>
+      <sec id="s4i">
+        <title>Quantification of NO Formation in Cells</title>
+        <p>NO formation was detected as nitrite released into supernatant of confluent cultures of cells. Released nitrite was measured using the Griess colorimetric reaction <xref ref-type="bibr" rid="pone.0042076-Reher1">[45]</xref>. This reagent reacts with nitrite in the medium to yield an Azo compound which has an absorption band at 540 nm. Triplicate samples of supernatant from endothelial cells were transferred to a 96-well ELISA plate, and an equal volume of the Griess reagent was added to each well. After 10 minutes of incubation at 37°C, the absorption at 540 nm was measured using an ELISA reader. A standard curve was constructed using known concentrations of sodium nitrite over the linear range of the assay.</p>
+      </sec>
+      <sec id="s4j">
+        <title>Evaluation of Apoptosis</title>
+        <p>Apoptosis was analysed by In situ Cell Death Detection Kit (Roche) according to manufacturer’s instructions <xref ref-type="bibr" rid="pone.0042076-Liu1">[46]</xref>. Cells were observed by a Nikon microscope (ECLIPSE TE2000-U) with a 20X/0.45 NA air objective lens, and images were captured using a Nikon digital camera DXM1200 F and ACT-1 software (Nikon). The number of TUNEL-positive cells was quantified, and at least 120 cells per dish were counted.</p>
+      </sec>
+      <sec id="s4k">
+        <title>HDAC Activity Assay</title>
+        <p>HDAC activity was determined using the fluorometric HDAC activity assay kit (BioVision Inc.). Nuclear extracts (10 µg) was obtained from the cells, and the t-butoxycarbonyl-Lys(AC)-amido-4-methylcoumarin substrate (Boc-Lys(AC)AMC) was added, then, the incubation was performed at 37°C for 30 min. After incubation, the lysine developer was added, and the mixture was incubated again for 30 min at 37°C. Fluorescence was detected using a Spectra Max M5 fluorescent plate reader (Molecular Devices), with excitation at 360 nm and emission at 460 nm. All reactions were conducted in duplicate.</p>
+      </sec>
+      <sec id="s4l">
+        <title>Chromatin Immunoprecipitation Assay</title>
+        <p>The chromatin immunoprecipitation assay (ChIP) was performed as described previously <xref ref-type="bibr" rid="pone.0042076-Gan2">[33]</xref>, <xref ref-type="bibr" rid="pone.0042076-Liu2">[47]</xref>. In brief, HUVECs were cross-linked with 1% formaldehyde at 37°C for 10 min at room temperature. The cell lysate was sonicated at 30% output on ice four times with 15-s intervals and pre-cleared with protein A-Sepharose 4B (Amersham Biosciences). The lysate was precipitated with the primary antibodies to acetylated histone 3 (Ac-H3, 3 µg) or HDAC1 (4 µg) or HDAC2 (4 µg) overnight at 4°C. The DNA was purified using the QIA-AMP DNA purification system (Qiagen). PCR products were detected, using primers specific for human eNOS eNOS (−238/−13), forward primer: 5′-AGC CCT GGC CTT TTC CTT AG-3′, reverse primer: 5′-GCT CCC ACT TAT CAG CCT CA-3′. Equal input DNA control was assessed and anti-Flag antibody (Sigma) was served as the negative control.</p>
+      </sec>
+      <sec id="s4m">
+        <title>Statistical Analysis</title>
+        <p>Each experiment was performed at least in triplicate. Data are presented as means±SEM. Differences between groups were evaluated for statistical significance using Student’s <italic>t</italic>-or ANOVA test <xref ref-type="bibr" rid="pone.0042076-Liu3">[48]</xref>–<xref ref-type="bibr" rid="pone.0042076-Yuan1">[51]</xref>. In each case, significance was defined as <italic>P</italic>&lt;0.05.</p>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0042076-Moncada1">
+        <label>1</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Moncada</surname><given-names>S</given-names></name><name name-style="western"><surname>Palmer</surname><given-names>RM</given-names></name></person-group>             <year>1991</year>             <article-title>Biosynthesis and actions of nitric oxide.</article-title>             <source>Semin Perinatol</source>             <volume>15</volume>             <fpage>16</fpage>             <lpage>19</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Moncada2">
+        <label>2</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Moncada</surname><given-names>S</given-names></name><name name-style="western"><surname>Palmer</surname><given-names>RM</given-names></name><name name-style="western"><surname>Higgs</surname><given-names>EA</given-names></name></person-group>             <year>1991</year>             <article-title>Nitric oxide: physiology, pathophysiology, and pharmacology.</article-title>             <source>Pharmacol Rev</source>             <volume>43</volume>             <fpage>109</fpage>             <lpage>142</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Small1">
+        <label>3</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Small</surname><given-names>EM</given-names></name><name name-style="western"><surname>Thatcher</surname><given-names>JE</given-names></name><name name-style="western"><surname>Sutherland</surname><given-names>LB</given-names></name><name name-style="western"><surname>Kinoshita</surname><given-names>H</given-names></name><name name-style="western"><surname>Gerard</surname><given-names>RD</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Myocardin-related transcription factor-a controls myofibroblast activation and fibrosis in response to myocardial infarction.</article-title>             <source>Circ Res</source>             <volume>107</volume>             <fpage>294</fpage>             <lpage>304</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Sessa1">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Sessa</surname><given-names>WC</given-names></name></person-group>             <year>2004</year>             <article-title>eNOS at a glance.</article-title>             <source>J Cell Sci</source>             <volume>117</volume>             <fpage>2427</fpage>             <lpage>2429</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Rafikov1">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rafikov</surname><given-names>R</given-names></name><name name-style="western"><surname>Fonseca</surname><given-names>FV</given-names></name><name name-style="western"><surname>Kumar</surname><given-names>S</given-names></name><name name-style="western"><surname>Pardo</surname><given-names>D</given-names></name><name name-style="western"><surname>Darragh</surname><given-names>C</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>eNOS activation and NO function: structural motifs responsible for the posttranslational control of endothelial nitric oxide synthase activity.</article-title>             <source>J Endocrinol</source>             <volume>210</volume>             <fpage>271</fpage>             <lpage>284</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Medhora1">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Medhora</surname><given-names>M</given-names></name><name name-style="western"><surname>Dhanasekaran</surname><given-names>A</given-names></name><name name-style="western"><surname>Pratt</surname><given-names>PF</given-names><suffix>Jr</suffix></name><name name-style="western"><surname>Cook</surname><given-names>CR</given-names></name><name name-style="western"><surname>Dunn</surname><given-names>LK</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Role of JNK in network formation of human lung microvascular endothelial cells.</article-title>             <source>Am J Physiol Lung Cell Mol Physiol</source>             <volume>294</volume>             <fpage>L676</fpage>             <lpage>685</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Kiemer1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kiemer</surname><given-names>AK</given-names></name><name name-style="western"><surname>Weber</surname><given-names>NC</given-names></name><name name-style="western"><surname>Furst</surname><given-names>R</given-names></name><name name-style="western"><surname>Bildner</surname><given-names>N</given-names></name><name name-style="western"><surname>Kulhanek-Heinze</surname><given-names>S</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>Inhibition of p38 MAPK activation via induction of MKP-1: atrial natriuretic peptide reduces TNF-alpha-induced actin polymerization and endothelial permeability.</article-title>             <source>Circ Res</source>             <volume>90</volume>             <fpage>874</fpage>             <lpage>881</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Yang1">
+        <label>8</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yang</surname><given-names>D</given-names></name><name name-style="western"><surname>Xie</surname><given-names>P</given-names></name><name name-style="western"><surname>Guo</surname><given-names>S</given-names></name><name name-style="western"><surname>Li</surname><given-names>H</given-names></name></person-group>             <year>2010</year>             <article-title>Induction of MAPK phosphatase-1 by hypothermia inhibits TNF-alpha-induced endothelial barrier dysfunction and apoptosis.</article-title>             <source>Cardiovasc Res</source>             <volume>85</volume>             <fpage>520</fpage>             <lpage>529</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Rossig1">
+        <label>9</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rossig</surname><given-names>L</given-names></name><name name-style="western"><surname>Hermann</surname><given-names>C</given-names></name><name name-style="western"><surname>Haendeler</surname><given-names>J</given-names></name><name name-style="western"><surname>Assmus</surname><given-names>B</given-names></name><name name-style="western"><surname>Zeiher</surname><given-names>AM</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>Angiotensin II-induced upregulation of MAP kinase phosphatase-3 mRNA levels mediates endothelial cell apoptosis.</article-title>             <source>Basic Res Cardiol</source>             <volume>97</volume>             <fpage>1</fpage>             <lpage>8</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Whetzel1">
+        <label>10</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Whetzel</surname><given-names>AM</given-names></name><name name-style="western"><surname>Bolick</surname><given-names>DT</given-names></name><name name-style="western"><surname>Hedrick</surname><given-names>CC</given-names></name></person-group>             <year>2009</year>             <article-title>Sphingosine-1-phosphate inhibits high glucose-mediated ERK1/2 action in endothelium through induction of MAP kinase phosphatase-3.</article-title>             <source>Am J Physiol Cell Physiol</source>             <volume>296</volume>             <fpage>C339</fpage>             <lpage>345</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Rossig2">
+        <label>11</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rossig</surname><given-names>L</given-names></name><name name-style="western"><surname>Haendeler</surname><given-names>J</given-names></name><name name-style="western"><surname>Hermann</surname><given-names>C</given-names></name><name name-style="western"><surname>Malchow</surname><given-names>P</given-names></name><name name-style="western"><surname>Urbich</surname><given-names>C</given-names></name><etal/></person-group>             <year>2000</year>             <article-title>Nitric oxide down-regulates MKP-3 mRNA levels: involvement in endothelial cell protection from apoptosis.</article-title>             <source>J Biol Chem</source>             <volume>275</volume>             <fpage>25502</fpage>             <lpage>25507</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Wang1">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wang</surname><given-names>L</given-names></name><name name-style="western"><surname>Zhou</surname><given-names>GB</given-names></name><name name-style="western"><surname>Liu</surname><given-names>P</given-names></name><name name-style="western"><surname>Song</surname><given-names>JH</given-names></name><name name-style="western"><surname>Liang</surname><given-names>Y</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Dissection of mechanisms of Chinese medicinal formula Realgar-Indigo naturalis as an effective treatment for promyelocytic leukemia.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>105</volume>             <fpage>4826</fpage>             <lpage>4831</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Ho1">
+        <label>13</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ho</surname><given-names>JH</given-names></name><name name-style="western"><surname>Hong</surname><given-names>CY</given-names></name></person-group>             <year>2011</year>             <article-title>Salvianolic acids: small compounds with multiple mechanisms for cardiovascular protection.</article-title>             <source>J Biomed Sci</source>             <volume>18</volume>             <fpage>30</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Schulz1">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Schulz</surname><given-names>R</given-names></name><name name-style="western"><surname>Kelm</surname><given-names>M</given-names></name><name name-style="western"><surname>Heusch</surname><given-names>G</given-names></name></person-group>             <year>2004</year>             <article-title>Nitric oxide in myocardial ischemia/reperfusion injury.</article-title>             <source>Cardiovasc Res</source>             <volume>61</volume>             <fpage>402</fpage>             <lpage>413</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Csonka1">
+        <label>15</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Csonka</surname><given-names>C</given-names></name><name name-style="western"><surname>Szilvassy</surname><given-names>Z</given-names></name><name name-style="western"><surname>Fulop</surname><given-names>F</given-names></name><name name-style="western"><surname>Pali</surname><given-names>T</given-names></name><name name-style="western"><surname>Blasig</surname><given-names>IE</given-names></name><etal/></person-group>             <year>1999</year>             <article-title>Classic preconditioning decreases the harmful accumulation of nitric oxide during ischemia and reperfusion in rat hearts.</article-title>             <source>Circulation</source>             <volume>100</volume>             <fpage>2260</fpage>             <lpage>2266</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Yang2">
+        <label>16</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yang</surname><given-names>D</given-names></name><name name-style="western"><surname>Guo</surname><given-names>S</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>T</given-names></name><name name-style="western"><surname>Li</surname><given-names>H</given-names></name></person-group>             <year>2009</year>             <article-title>Hypothermia attenuates ischemia/reperfusion-induced endothelial cell apoptosis via alterations in apoptotic pathways and JNK signaling.</article-title>             <source>FEBS Lett</source>             <volume>583</volume>             <fpage>2500</fpage>             <lpage>2506</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Stuehr1">
+        <label>17</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Stuehr</surname><given-names>DJ</given-names></name></person-group>             <year>1997</year>             <article-title>Structure-function aspects in the nitric oxide synthases.</article-title>             <source>Annu Rev Pharmacol Toxicol</source>             <volume>37</volume>             <fpage>339</fpage>             <lpage>359</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Dudzinski1">
+        <label>18</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Dudzinski</surname><given-names>DM</given-names></name><name name-style="western"><surname>Igarashi</surname><given-names>J</given-names></name><name name-style="western"><surname>Greif</surname><given-names>D</given-names></name><name name-style="western"><surname>Michel</surname><given-names>T</given-names></name></person-group>             <year>2006</year>             <article-title>The regulation and pharmacology of endothelial nitric oxide synthase.</article-title>             <source>Annu Rev Pharmacol Toxicol</source>             <volume>46</volume>             <fpage>235</fpage>             <lpage>276</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Searles1">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Searles</surname><given-names>CD</given-names></name></person-group>             <year>2006</year>             <article-title>Transcriptional and posttranscriptional regulation of endothelial nitric oxide synthase expression.</article-title>             <source>Am J Physiol Cell Physiol</source>             <volume>291</volume>             <fpage>C803</fpage>             <lpage>816</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Tai1">
+        <label>20</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Tai</surname><given-names>SC</given-names></name><name name-style="western"><surname>Robb</surname><given-names>GB</given-names></name><name name-style="western"><surname>Marsden</surname><given-names>PA</given-names></name></person-group>             <year>2004</year>             <article-title>Endothelial nitric oxide synthase: a new paradigm for gene regulation in the injured blood vessel.</article-title>             <source>Arterioscler Thromb Vasc Biol</source>             <volume>24</volume>             <fpage>405</fpage>             <lpage>412</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Xia1">
+        <label>21</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Xia</surname><given-names>R</given-names></name><name name-style="western"><surname>Zhao</surname><given-names>B</given-names></name><name name-style="western"><surname>Wu</surname><given-names>Y</given-names></name><name name-style="western"><surname>Hou</surname><given-names>JB</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>L</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Ginsenoside rb1 preconditioning enhances eNOS expression and attenuates myocardial ischemia/reperfusion injury in diabetic rats.</article-title>             <source>J Biomed Biotechnol</source>             <volume>2011</volume>             <fpage>767930</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Bauer1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bauer</surname><given-names>PM</given-names></name><name name-style="western"><surname>Fulton</surname><given-names>D</given-names></name><name name-style="western"><surname>Boo</surname><given-names>YC</given-names></name><name name-style="western"><surname>Sorescu</surname><given-names>GP</given-names></name><name name-style="western"><surname>Kemp</surname><given-names>BE</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>Compensatory phosphorylation and protein-protein interactions revealed by loss of function and gain of function mutants of multiple serine phosphorylation sites in endothelial nitric-oxide synthase.</article-title>             <source>J Biol Chem</source>             <volume>278</volume>             <fpage>14841</fpage>             <lpage>14849</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Erwin1">
+        <label>23</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Erwin</surname><given-names>PA</given-names></name><name name-style="western"><surname>Lin</surname><given-names>AJ</given-names></name><name name-style="western"><surname>Golan</surname><given-names>DE</given-names></name><name name-style="western"><surname>Michel</surname><given-names>T</given-names></name></person-group>             <year>2005</year>             <article-title>Receptor-regulated dynamic S-nitrosylation of endothelial nitric-oxide synthase in vascular endothelial cells.</article-title>             <source>J Biol Chem</source>             <volume>280</volume>             <fpage>19888</fpage>             <lpage>19894</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Fleming1">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Fleming</surname><given-names>I</given-names></name></person-group>             <year>2010</year>             <article-title>Molecular mechanisms underlying the activation of eNOS.</article-title>             <source>Pflugers Arch</source>             <volume>459</volume>             <fpage>793</fpage>             <lpage>806</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Haagenson1">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Haagenson</surname><given-names>KK</given-names></name><name name-style="western"><surname>Wu</surname><given-names>GS</given-names></name></person-group>             <year>2010</year>             <article-title>Mitogen activated protein kinase phosphatases and cancer.</article-title>             <source>Cancer Biol Ther</source>             <volume>9</volume>             <fpage>337</fpage>             <lpage>340</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-NunesXavier1">
+        <label>26</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nunes-Xavier</surname><given-names>C</given-names></name><name name-style="western"><surname>Roma-Mateo</surname><given-names>C</given-names></name><name name-style="western"><surname>Rios</surname><given-names>P</given-names></name><name name-style="western"><surname>Tarrega</surname><given-names>C</given-names></name><name name-style="western"><surname>Cejudo-Marin</surname><given-names>R</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Dual-specificity MAP kinase phosphatases as targets of cancer treatment.</article-title>             <source>Anticancer Agents Med Chem</source>             <volume>11</volume>             <fpage>109</fpage>             <lpage>132</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Koga1">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Koga</surname><given-names>S</given-names></name><name name-style="western"><surname>Kojima</surname><given-names>S</given-names></name><name name-style="western"><surname>Kishimoto</surname><given-names>T</given-names></name><name name-style="western"><surname>Kuwabara</surname><given-names>S</given-names></name><name name-style="western"><surname>Yamaguchi</surname><given-names>A</given-names></name></person-group>             <year>2012</year>             <article-title>Over-expression of map kinase phosphatase-1 (MKP-1) suppresses neuronal death through regulating JNK signaling in hypoxia/re-oxygenation.</article-title>             <source>Brain Res</source>             <volume>1436</volume>             <fpage>137</fpage>             <lpage>146</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Muda1">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Muda</surname><given-names>M</given-names></name><name name-style="western"><surname>Theodosiou</surname><given-names>A</given-names></name><name name-style="western"><surname>Rodrigues</surname><given-names>N</given-names></name><name name-style="western"><surname>Boschert</surname><given-names>U</given-names></name><name name-style="western"><surname>Camps</surname><given-names>M</given-names></name><etal/></person-group>             <year>1996</year>             <article-title>The dual specificity phosphatases M3/6 and MKP-3 are highly selective for inactivation of distinct mitogen-activated protein kinases.</article-title>             <source>J Biol Chem</source>             <volume>271</volume>             <fpage>27205</fpage>             <lpage>27208</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Furukawa1">
+        <label>29</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Furukawa</surname><given-names>T</given-names></name><name name-style="western"><surname>Sunamura</surname><given-names>M</given-names></name><name name-style="western"><surname>Motoi</surname><given-names>F</given-names></name><name name-style="western"><surname>Matsuno</surname><given-names>S</given-names></name><name name-style="western"><surname>Horii</surname><given-names>A</given-names></name></person-group>             <year>2003</year>             <article-title>Potential tumor suppressive pathway involving DUSP6/MKP-3 in pancreatic cancer.</article-title>             <source>Am J Pathol</source>             <volume>162</volume>             <fpage>1807</fpage>             <lpage>1815</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Furukawa2">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Furukawa</surname><given-names>T</given-names></name><name name-style="western"><surname>Fujisaki</surname><given-names>R</given-names></name><name name-style="western"><surname>Yoshida</surname><given-names>Y</given-names></name><name name-style="western"><surname>Kanai</surname><given-names>N</given-names></name><name name-style="western"><surname>Sunamura</surname><given-names>M</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Distinct progression pathways involving the dysfunction of DUSP6/MKP-3 in pancreatic intraepithelial neoplasia and intraductal papillary-mucinous neoplasms of the pancreas.</article-title>             <source>Mod Pathol</source>             <volume>18</volume>             <fpage>1034</fpage>             <lpage>1042</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Zhou1">
+        <label>31</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zhou</surname><given-names>B</given-names></name><name name-style="western"><surname>Margariti</surname><given-names>A</given-names></name><name name-style="western"><surname>Zeng</surname><given-names>L</given-names></name><name name-style="western"><surname>Xu</surname><given-names>Q</given-names></name></person-group>             <year>2011</year>             <article-title>Role of histone deacetylases in vascular cell homeostasis and arteriosclerosis.</article-title>             <source>Cardiovasc Res</source>             <volume>90</volume>             <fpage>413</fpage>             <lpage>420</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Gan1">
+        <label>32</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Gan</surname><given-names>Y</given-names></name><name name-style="western"><surname>Shen</surname><given-names>YH</given-names></name><name name-style="western"><surname>Utama</surname><given-names>B</given-names></name><name name-style="western"><surname>Wang</surname><given-names>J</given-names></name><name name-style="western"><surname>Coselli</surname><given-names>J</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Dual effects of histone deacetylase inhibition by trichostatin A on endothelial nitric oxide synthase expression in endothelial cells.</article-title>             <source>Biochem Biophys Res Commun</source>             <volume>340</volume>             <fpage>29</fpage>             <lpage>34</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Gan2">
+        <label>33</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Gan</surname><given-names>Y</given-names></name><name name-style="western"><surname>Shen</surname><given-names>YH</given-names></name><name name-style="western"><surname>Wang</surname><given-names>J</given-names></name><name name-style="western"><surname>Wang</surname><given-names>X</given-names></name><name name-style="western"><surname>Utama</surname><given-names>B</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Role of histone deacetylation in cell-specific expression of endothelial nitric-oxide synthase.</article-title>             <source>J Biol Chem</source>             <volume>280</volume>             <fpage>16467</fpage>             <lpage>16475</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Yang3">
+        <label>34</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yang</surname><given-names>XY</given-names></name><name name-style="western"><surname>Qiang</surname><given-names>GF</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>L</given-names></name><name name-style="western"><surname>Zhu</surname><given-names>XM</given-names></name><name name-style="western"><surname>Wang</surname><given-names>SB</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Salvianolic acid A protects against vascular endothelial dysfunction in high-fat diet fed and streptozotocin-induced diabetic rats.</article-title>             <source>J Asian Nat Prod Res</source>             <volume>13</volume>             <fpage>884</fpage>             <lpage>894</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Zhang1">
+        <label>35</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zhang</surname><given-names>YQ</given-names></name><name name-style="western"><surname>Tang</surname><given-names>Y</given-names></name><name name-style="western"><surname>Wu</surname><given-names>AL</given-names></name><name name-style="western"><surname>Zhu</surname><given-names>HB</given-names></name></person-group>             <year>2010</year>             <article-title>Salvianolic acid A displays cardioprotective effects in in vitro models of heart hypoxia/reoxygenation injury.</article-title>             <source>J Asian Nat Prod Res</source>             <volume>12</volume>             <fpage>899</fpage>             <lpage>915</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Oh1">
+        <label>36</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Oh</surname><given-names>KS</given-names></name><name name-style="western"><surname>Oh</surname><given-names>BK</given-names></name><name name-style="western"><surname>Mun</surname><given-names>J</given-names></name><name name-style="western"><surname>Seo</surname><given-names>HW</given-names></name><name name-style="western"><surname>Lee</surname><given-names>BH</given-names></name></person-group>             <year>2011</year>             <article-title>Salvianolic acid A suppress lipopolysaccharide-induced NF-kappaB signaling pathway by targeting IKKbeta.</article-title>             <source>Int Immunopharmacol</source>             <volume>11</volume>             <fpage>1901</fpage>             <lpage>1906</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Pan1">
+        <label>37</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Pan</surname><given-names>H</given-names></name><name name-style="western"><surname>Li</surname><given-names>D</given-names></name><name name-style="western"><surname>Fang</surname><given-names>F</given-names></name><name name-style="western"><surname>Chen</surname><given-names>D</given-names></name><name name-style="western"><surname>Qi</surname><given-names>L</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Salvianolic acid A demonstrates cardioprotective effects in rat hearts and cardiomyocytes after ischemia/reperfusion injury.</article-title>             <source>J Cardiovasc Pharmacol</source>             <volume>58</volume>             <fpage>535</fpage>             <lpage>542</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Fan1">
+        <label>38</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Fan</surname><given-names>H</given-names></name><name name-style="western"><surname>Yang</surname><given-names>L</given-names></name><name name-style="western"><surname>Fu</surname><given-names>F</given-names></name><name name-style="western"><surname>Xu</surname><given-names>H</given-names></name><name name-style="western"><surname>Meng</surname><given-names>Q</given-names></name><etal/></person-group>             <year>2012</year>             <article-title>Cardioprotective effects of salvianolic Acid a on myocardial ischemia-reperfusion injury in vivo and in vitro.</article-title>             <source>Evid Based Complement Alternat Med</source>             <volume>2012</volume>             <fpage>508938</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Jiang1">
+        <label>39</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Jiang</surname><given-names>M</given-names></name><name name-style="western"><surname>Wang</surname><given-names>XY</given-names></name><name name-style="western"><surname>Zhou</surname><given-names>WY</given-names></name><name name-style="western"><surname>Li</surname><given-names>J</given-names></name><name name-style="western"><surname>Wang</surname><given-names>J</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Cerebral protection of salvianolic acid A by the inhibition of granulocyte adherence.</article-title>             <source>Am J Chin Med</source>             <volume>39</volume>             <fpage>111</fpage>             <lpage>120</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Hempel1">
+        <label>40</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hempel</surname><given-names>SL</given-names></name><name name-style="western"><surname>Haycraft</surname><given-names>DL</given-names></name><name name-style="western"><surname>Hoak</surname><given-names>JC</given-names></name><name name-style="western"><surname>Spector</surname><given-names>AA</given-names></name></person-group>             <year>1990</year>             <article-title>Reduced prostacyclin formation after reoxygenation of anoxic endothelium.</article-title>             <source>Am J Physiol</source>             <volume>259</volume>             <fpage>C738</fpage>             <lpage>745</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Xie1">
+        <label>41</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Xie</surname><given-names>P</given-names></name><name name-style="western"><surname>Guo</surname><given-names>S</given-names></name><name name-style="western"><surname>Fan</surname><given-names>Y</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>H</given-names></name><name name-style="western"><surname>Gu</surname><given-names>D</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Atrogin-1/MAFbx enhances simulated ischemia/reperfusion-induced apoptosis in cardiomyocytes through degradation of MAPK phosphatase-1 and sustained JNK activation.</article-title>             <source>J Biol Chem</source>             <volume>284</volume>             <fpage>5488</fpage>             <lpage>5496</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Fan2">
+        <label>42</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Fan</surname><given-names>Y</given-names></name><name name-style="western"><surname>Xie</surname><given-names>P</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>T</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>H</given-names></name><name name-style="western"><surname>Gu</surname><given-names>D</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Regulation of the stability and transcriptional activity of NFATc4 by ubiquitination.</article-title>             <source>FEBS Lett</source>             <volume>582</volume>             <fpage>4008</fpage>             <lpage>4014</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Li1">
+        <label>43</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Li</surname><given-names>HH</given-names></name><name name-style="western"><surname>Kedar</surname><given-names>V</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>C</given-names></name><name name-style="western"><surname>McDonough</surname><given-names>H</given-names></name><name name-style="western"><surname>Arya</surname><given-names>R</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>Atrogin-1/muscle atrophy F-box inhibits calcineurin-dependent cardiac hypertrophy by participating in an SCF ubiquitin ligase complex.</article-title>             <source>J Clin Invest</source>             <volume>114</volume>             <fpage>1058</fpage>             <lpage>1071</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Li2">
+        <label>44</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Li</surname><given-names>J</given-names></name><name name-style="western"><surname>Wilson</surname><given-names>A</given-names></name><name name-style="western"><surname>Kuruba</surname><given-names>R</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>Q</given-names></name><name name-style="western"><surname>Gao</surname><given-names>X</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>FXR-mediated regulation of eNOS expression in vascular endothelial cells.</article-title>             <source>Cardiovasc Res</source>             <volume>77</volume>             <fpage>169</fpage>             <lpage>177</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Reher1">
+        <label>45</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Reher</surname><given-names>VG</given-names></name><name name-style="western"><surname>Zenobio</surname><given-names>EG</given-names></name><name name-style="western"><surname>Costa</surname><given-names>FO</given-names></name><name name-style="western"><surname>Reher</surname><given-names>P</given-names></name><name name-style="western"><surname>Soares</surname><given-names>RV</given-names></name></person-group>             <year>2007</year>             <article-title>Nitric oxide levels in saliva increase with severity of chronic periodontitis.</article-title>             <source>J Oral Sci</source>             <volume>49</volume>             <fpage>271</fpage>             <lpage>276</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Liu1">
+        <label>46</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Liu</surname><given-names>ZH</given-names></name><name name-style="western"><surname>Yang</surname><given-names>D</given-names></name><name name-style="western"><surname>Xie</surname><given-names>P</given-names></name><name name-style="western"><surname>Ren</surname><given-names>GM</given-names></name><name name-style="western"><surname>Sun</surname><given-names>GB</given-names></name><etal/></person-group>             <year>2012</year>             <article-title>MiR-106b and MiR-15b Modulate Apoptosis and Angiogenesis in Myocardial Infarction.</article-title>             <source>Cell Physiol and Biochem</source>             <volume>29</volume>             <fpage>851</fpage>             <lpage>862</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Liu2">
+        <label>47</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Liu</surname><given-names>ZH</given-names></name><name name-style="western"><surname>Chen</surname><given-names>SL</given-names></name></person-group>             <year>2010</year>             <article-title>ER regulates an evolutionarily conserved apoptosis pathway.</article-title>             <source>Biochem Biophys Res Commun</source>             <volume>400(1)</volume>             <fpage>34</fpage>             <lpage>38</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Liu3">
+        <label>48</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Liu</surname><given-names>ZH</given-names></name><name name-style="western"><surname>Zeng</surname><given-names>X</given-names></name><name name-style="western"><surname>Yang</surname><given-names>D</given-names></name><name name-style="western"><surname>Ren</surname><given-names>GM</given-names></name><name name-style="western"><surname>Chu</surname><given-names>GY</given-names></name><etal/></person-group>             <year>2012</year>             <article-title>Identification of medicinal vines by ITS2 using complementary discrimination methods.</article-title>             <source>J Ethnopharmacol</source>             <volume>141</volume>             <fpage>242</fpage>             <lpage>249</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Liu4">
+        <label>49</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Liu</surname><given-names>ZH</given-names></name><name name-style="western"><surname>Zeng</surname><given-names>X</given-names></name><name name-style="western"><surname>Yang</surname><given-names>D</given-names></name><name name-style="western"><surname>Chu</surname><given-names>GY</given-names></name><name name-style="western"><surname>Yuan</surname><given-names>ZR</given-names></name><etal/></person-group>             <year>2012</year>             <article-title>Applying DNA barcodes for identification of plant species in the family Araliaceae.</article-title>             <source>Gene</source>             <volume>499</volume>             <fpage>76</fpage>             <lpage>80</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Zeng1">
+        <label>50</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zeng</surname><given-names>X</given-names></name><name name-style="western"><surname>Yuan</surname><given-names>ZR</given-names></name><name name-style="western"><surname>Tong</surname><given-names>X</given-names></name><name name-style="western"><surname>Li</surname><given-names>QS</given-names></name><name name-style="western"><surname>Gao</surname><given-names>WW</given-names></name><etal/></person-group>             <year>2012</year>             <article-title>Phylogenetic study of Oryzoideae species and related taxa of the Poaceae based on atpB-rbcL and ndhF DNA sequences.</article-title>             <source>Mol Biol Rep</source>             <volume>39(5)</volume>             <fpage>5737</fpage>             <lpage>5744</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0042076-Yuan1">
+        <label>51</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yuan</surname><given-names>ZR</given-names></name><name name-style="western"><surname>Chu</surname><given-names>GY</given-names></name><name name-style="western"><surname>Dan</surname><given-names>Y</given-names></name><name name-style="western"><surname>Li</surname><given-names>J</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>LP</given-names></name><etal/></person-group>             <year>2012</year>             <article-title>RCA1: a new candidate gene for bovine mastitis and its association analysis between single nucleotide polymorphisms and milk somatic cell score.</article-title>             <source>Mol Biol Rep</source>             <volume>39(6)</volume>             <fpage>6625</fpage>             <lpage>6631</lpage>          </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0142354</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-15-34217</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+</article-categories>
+<title-group>
+<article-title>Pituitary Stalk Interruption Syndrome from Infancy to Adulthood: Clinical, Hormonal, and Radiological Assessment According to the Initial Presentation</article-title>
+<alt-title alt-title-type="running-head">Pituitary Stalk Interruption Syndrome</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Bar</surname>
+<given-names>Céline</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Zadro</surname>
+<given-names>Charline</given-names>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Diene</surname>
+<given-names>Gwenaelle</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Oliver</surname>
+<given-names>Isabelle</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Pienkowski</surname>
+<given-names>Catherine</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Jouret</surname>
+<given-names>Béatrice</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Cartault</surname>
+<given-names>Audrey</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Ajaltouni</surname>
+<given-names>Zeina</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Salles</surname>
+<given-names>Jean-Pierre</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+<xref rid="aff003" ref-type="aff"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Sevely</surname>
+<given-names>Annick</given-names>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Tauber</surname>
+<given-names>Maithé</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+<xref rid="aff003" ref-type="aff"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Edouard</surname>
+<given-names>Thomas</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+<xref rid="aff003" ref-type="aff"><sup>3</sup></xref>
+<xref rid="cor001" ref-type="corresp">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Endocrine, Bone Diseases, Genetics, Obesity, and Gynecology Unit, Children’s Hospital, University Hospital, Toulouse, France</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Neuroradiology Unit, Purpan University Hospital, Toulouse, France</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>INSERM UMR 1043, Center of Pathophysiology of Toulouse Purpan (CPTP), University of Toulouse Paul Sabatier, Toulouse, France</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>de Herder</surname>
+<given-names>Wouter</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Erasmus MC, NETHERLANDS</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: CB TE. Performed the experiments: CB CZ TE. Analyzed the data: CB TE MT. Wrote the paper: CB TE MT. Revising manuscript content: CB CZ GD IO CP BJ AC ZA JPS AS MT TE.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">edouard.t@chu-toulouse.fr</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>12</day>
+<month>11</month>
+<year>2015</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2015</year>
+</pub-date>
+<volume>10</volume>
+<issue>11</issue>
+<elocation-id>e0142354</elocation-id>
+<history>
+<date date-type="received">
+<day>5</day>
+<month>8</month>
+<year>2015</year>
+</date>
+<date date-type="accepted">
+<day>14</day>
+<month>9</month>
+<year>2015</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2015</copyright-year>
+<copyright-holder>Bar et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0142354" xlink:type="simple"/>
+<abstract>
+<sec id="sec001">
+<title>Background</title>
+<p>Patients with pituitary stalk interruption syndrome (PSIS) are initially referred for hypoglycemia during the neonatal period or growth retardation during childhood. PSIS is either isolated (nonsyndromic) or associated with extra-pituitary malformations (syndromic).</p>
+</sec>
+<sec id="sec002">
+<title>Objective</title>
+<p>To compare baseline characteristics and long-term evolution in patients with PSIS according to the initial presentation.</p>
+</sec>
+<sec id="sec003">
+<title>Study Design</title>
+<p>Sixty-seven patients with PSIS were included. Data from subgroups were compared: neonates (n = 10) versus growth retardation patients (n = 47), and syndromic (n = 32) versus nonsyndromic patients (n = 35).</p>
+</sec>
+<sec id="sec004">
+<title>Results</title>
+<p>Neonates displayed a more severe hormonal and radiological phenotype than children referred for growth retardation, with a higher incidence of multiple hormonal deficiencies (100% versus 34%; P = 0.0005) and a nonvisible anterior pituitary lobe (33% versus 2%; P = 0.0017). Regular follow-up of growth might have allowed earlier diagnosis in the children with growth retardation, as decreased growth velocity and growth retardation were present respectively 3 and 2 years before referral. We documented a progressive worsening of endocrine impairment throughout childhood in these patients. Presence of extra-pituitary malformations (found in 48%) was not associated with more severe hormonal and radiological characteristics. Growth under GH treatment was similar in the patient groups and did not vary according to the pituitary MRI findings.</p>
+</sec>
+<sec id="sec005">
+<title>Conclusions</title>
+<p>PSIS diagnosed in the neonatal period has a particularly severe hormonal and radiological phenotype. The progressive worsening of endocrine impairment throughout childhood justifies periodic follow-up to check for additional hormonal deficiencies.</p>
+</sec>
+</abstract>
+<funding-group>
+<funding-statement>The authors have no support or funding to report.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="2"/>
+<table-count count="2"/>
+<page-count count="12"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability" xlink:type="simple">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec006" sec-type="intro">
+<title>Introduction</title>
+<p>Pituitary stalk interruption syndrome (PSIS) is characterized by the association of an absent or thin pituitary stalk, an absent or hypoplastic anterior pituitary lobe and/or an ectopic posterior pituitary lobe [<xref rid="pone.0142354.ref001" ref-type="bibr">1</xref>]. This syndrome belongs to the spectrum of midline abnormalities and is often associated with other midline extra-pituitary malformations [<xref rid="pone.0142354.ref002" ref-type="bibr">2</xref>–<xref rid="pone.0142354.ref006" ref-type="bibr">6</xref>]. PSIS is a frequent cause of congenital hypopituitarism and, although the exact prevalence is unknown, abnormal pituitary development has been reported in about half of the patients with congenital hypopituitarism [<xref rid="pone.0142354.ref007" ref-type="bibr">7</xref>]. It is a marker of severe and permanent hormonal impairment [<xref rid="pone.0142354.ref008" ref-type="bibr">8</xref>–<xref rid="pone.0142354.ref011" ref-type="bibr">11</xref>].</p>
+<p>To date, the underlying mechanisms involved in PSIS ontogenesis have remained unclear. Perinatal injury was first suspected owing to the high frequency of breech delivery, cesarean section, and neonatal asphyxia in patients with PSIS [<xref rid="pone.0142354.ref012" ref-type="bibr">12</xref>,<xref rid="pone.0142354.ref013" ref-type="bibr">13</xref>]. However, the findings of two thirds of patients without perinatal trauma, familial cases, and the frequent association with extra-pituitary malformations do not fit this hypothesis [<xref rid="pone.0142354.ref005" ref-type="bibr">5</xref>,<xref rid="pone.0142354.ref006" ref-type="bibr">6</xref>,<xref rid="pone.0142354.ref014" ref-type="bibr">14</xref>,<xref rid="pone.0142354.ref015" ref-type="bibr">15</xref>]. The hypothesis of abnormal pituitary development during the embryonic period has more recently been proposed, and mutations of the genes involved in early development (the <italic>HESX1</italic>, <italic>LHX4</italic>, <italic>OTX2</italic>, <italic>SOX3</italic>, and <italic>PROKR2</italic> genes) have indeed been found in patients with congenital hypopituitarism and PSIS. Although this genetic hypothesis is attractive, these gene mutations are nevertheless reported in less than 5% of patients with PSIS, suggesting that most of the genes involved have yet to be discovered [<xref rid="pone.0142354.ref004" ref-type="bibr">4</xref>,<xref rid="pone.0142354.ref014" ref-type="bibr">14</xref>,<xref rid="pone.0142354.ref016" ref-type="bibr">16</xref>].</p>
+<p>Patients with PSIS are most frequently referred for the evaluation of growth retardation in childhood. However, the diagnosis can also be made in neonates presenting with hypoglycemia and also in adults [<xref rid="pone.0142354.ref017" ref-type="bibr">17</xref>]. To our knowledge, no study has focused on the neonatal form of PSIS and only a few studies have performed long-term follow-up of the endocrine impairment [<xref rid="pone.0142354.ref018" ref-type="bibr">18</xref>]. In the present study, we report the baseline characteristics, growth hormone response, and long-term evolution of patients with PSIS according to the initial presentation.</p>
+</sec>
+<sec id="sec007">
+<title>Subjects and Methods</title>
+<sec id="sec008">
+<title>Patient population</title>
+<p>This retrospective longitudinal study comprised all 67 patients (25 females and 42 males) with diagnosed PSIS who were regularly followed in our Endocrinology Unit at the Children’s Hospital in Toulouse, France, between 1984 and 2014.</p>
+<p>The diagnosis of PSIS was based on pituitary magnetic resonance imaging (MRI) findings of an absent or thin pituitary stalk associated with at least one of the following radiological features: 1) a nonvisible or hypoplastic anterior pituitary lobe and 2) a nonvisible or ectopic posterior pituitary lobe. The data of these patients were obtained by retrospective chart review.</p>
+<p>In line with our study objective, the following patient groups were distinguished. The “neonatal group” consisted of 10 children with PSIS diagnosis stemming from neonatal hypoglycemia, whereas the “growth retardation group” consisted of 47 children with diagnosis stemming from growth retardation. The “syndromic group” consisted of 32 children with PSIS associated with extra-pituitary malformations (in cerebral, ocular, dental, craniofacial, cardiac, or digestive systems), whereas the “nonsyndromic group” consisted of 35 children without an associated malformation.</p>
+<p>The study protocol was approved by the Research Ethics Committees of the Purpan University Hospital in Toulouse, France. Written informed consent of the children or their parents was not judged necessary for this kind of retrospective study. Patient information was anonymized and de-identified prior to analysis.</p>
+</sec>
+<sec id="sec009">
+<title>Personal history and anthropometric measurements</title>
+<p>Family history, perinatal characteristics of the patients (including delivery conditions, gestational age, birth measurements, neonatal hypoxemia, hypoglycemia, jaundice, micropenis, and/or cryptorchidism) and associated malformations (including midline abnormalities) were collected.</p>
+<p>Birth length, weight, and head circumference were expressed as standard deviation score (SDS) according to Usher and MacLean’s tables [<xref rid="pone.0142354.ref019" ref-type="bibr">19</xref>]. Small for gestational age (SGA) was defined as a birth length and/or weight for gestational age below -2 SDS. An Apgar score below 7 was considered as neonatal distress.</p>
+<p>Height, weight, and body mass index (BMI) measurements were converted to age- and sex-specific SDS on the basis of published reference data [<xref rid="pone.0142354.ref020" ref-type="bibr">20</xref>,<xref rid="pone.0142354.ref021" ref-type="bibr">21</xref>].</p>
+</sec>
+<sec id="sec010">
+<title>Biochemical measurements</title>
+<p>Hormones were measured using standard procedures and serum insulin-like growth factor 1 (IGF1) levels were converted to age- and sex-specific SDS, as previously described [<xref rid="pone.0142354.ref022" ref-type="bibr">22</xref>].</p>
+<p>Growth hormone deficiency (GHD) was defined as a GH peak of less than 10 μg/L after two stimulation tests. TSH deficiency was defined as a low serum T4 level (&lt; 9 pg/ml) associated with an inappropriate low or normal serum TSH level (&lt; 5 mU/L). ACTH deficiency was defined as a serum cortisol level at 08.00 h less than 70 mg/L associated with an inappropriate low or normal ACTH level (&lt; 60 pg/ml). The gonadotropic axis was tested in patients before 6 months of age (“mini-puberty”) or at postpubertal age (i.e., over 13 years for females and 15 years for males). Gonadotropic deficiency was defined as delayed or absent pubertal development with low serum testosterone or estradiol levels associated with blunted LH/FSH response to a GnRH stimulation test. Prolactin (PRL) deficiency and hyperprolactinemia were defined as basal serum PRL levels less than 5 ng/mL and above 25 ng/mL, respectively. Combined pituitary hormone deficiency (CPHD) was defined as the presence of hormone deficits affecting at least two anterior pituitary hormone lineages, as opposed to isolated GHD (IGHD). When there were clinical findings such as polyuriapolydipsia, a water restriction test was also performed to rule out diabetes insipidus (n = 3).</p>
+</sec>
+<sec id="sec011">
+<title>Pituitary and brain MRI</title>
+<p>MRI was performed with sagittal and coronal T1-weighted sequences and axial T2-weighted sequences. All MRI results were reviewed by the same investigator (CZ) who was not aware of the clinical or endocrine data. Anterior pituitary height was measured and compared with normal values for age [<xref rid="pone.0142354.ref023" ref-type="bibr">23</xref>]. The pituitary stalk was considered to be interrupted when not visible over its entire length, thin when its size was below 1 mm with a very spindly appearance, and absent when not visible at all. Spontaneous hypersignal of the posterior pituitary determined its presence and location. Associated cerebral malformations and midline abnormalities were also sought.</p>
+</sec>
+<sec id="sec012">
+<title>Follow-up</title>
+<p>After starting growth hormone (GH) treatment, children were seen every 6 months for as long as growth continued. Height and weight measurements were obtained at each visit, whereas biochemical measurements were performed every year. Evaluation of the other anterior pituitary functions was performed at diagnosis and repeated during follow-up visits. Twenty-one patients reached their final height and were reevaluated at completion of growth.</p>
+</sec>
+<sec id="sec013">
+<title>Statistical analyses</title>
+<p>Differences between the groups were tested for significance using Mann-Whitney's U-test. Group differences in dichotomous variables were tested for significance using the chi square test. Associations are given as Pearson correlations or Spearman rank correlations, as appropriate.</p>
+<p>Multiple regression analysis was used to assess potential predictors of hormonal impairment (coding: IGHD = 1; IGHD and TSH or ACTH deficiency = 2; IGHD and TSH and ACTH deficiency = 3). Gender (coding: male = 1; female = 2), associated extra-pituitary malformations (coding: absence of malformation = 1; presence of malformation = 2), and anterior pituitary abnormality on MRI (coding: anterior pituitary present = 1; anterior pituitary not visible = 2) were introduced as independent variables.</p>
+<p>Multiple regression analysis was also used to assess potential predictors of height gain under GH treatment. Age, gender (coding: male = 1; female = 2), height (SDS), hormonal impairment severity (coding: IGHD = 1; IGHD and TSH or ACTH deficiency = 2; IGHD and TSH and ACTH deficiency = 3), and anterior pituitary abnormality on MRI (coding: anterior pituitary present = 1; anterior pituitary not visible = 2) were introduced as independent variables.</p>
+<p>The effect of potential predictor variables was assessed in the stepwise mode. All tests were two-tailed and throughout the study P &lt; 0.05 was considered significant. These calculations were performed using SPSS software, version 11.5 for Windows (SPSS Inc., Chicago, IL, USA).</p>
+</sec>
+</sec>
+<sec id="sec014" sec-type="results">
+<title>Results</title>
+<sec id="sec015">
+<title>General data</title>
+<p>Patients were referred for neonatal hypoglycemia (n = 10, 15%), growth retardation (n = 47, 70%), or malformation (n = 10, 15%). All cases were sporadic. There was no documentation of consanguineous parents and no family history of PSIS or CPHD.</p>
+<p>As previously described, there was a male predominance with a sex ratio of 1.7 (42 males / 25 females) without difference between groups. Clinical, biochemical, and radiological characteristics were similar in girls and boys and therefore the results of the patients were analyzed as a single group; these features are summarized in <xref rid="pone.0142354.t001" ref-type="table">Table 1</xref>. Median age at diagnosis was 2.5 years (range: from birth to 16.3 years of age) but varied significantly according to the initial presentation, with neonatal and syndromic patients being diagnosed earlier as expected (<xref rid="pone.0142354.t001" ref-type="table">Table 1</xref>). Median height was -2.8 SDS (range: -5.8 to 1.1 SDS) with a bone age retardation of 2.1 years (range: -1.8 to 5.1 years). Evaluation of pretreatment growth curves, available in 33 of 47 children with growth retardation, revealed that growth trajectories started to cross the SDS curves in a downward direction at a median age of 1.0 year (range: 0.3 to 6.0 years), reaching -2 SDS at a median age of 2.0 years (range: 0.5 to 10.2 years), that being two years before the diagnosis was made.</p>
+<table-wrap id="pone.0142354.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142354.t001</object-id>
+<label>Table 1</label> <caption><title>Clinical and radiological characteristics at baseline of the 67 patients with PSIS and the subgroups.</title></caption>
+<alternatives>
+<graphic id="pone.0142354.t001g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142354.t001" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1"/>
+<th align="center" rowspan="1" colspan="1">PSIS patients</th>
+<th align="center" rowspan="1" colspan="1">Neonatal</th>
+<th align="center" rowspan="1" colspan="1">Growth retardation</th>
+<th align="center" rowspan="1" colspan="1">P</th>
+<th align="center" rowspan="1" colspan="1">Syndromic</th>
+<th align="center" rowspan="1" colspan="1">Non-syndromic</th>
+<th align="center" rowspan="1" colspan="1">P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Number of patients</td>
+<td align="center" rowspan="1" colspan="1">67</td>
+<td align="center" rowspan="1" colspan="1">10</td>
+<td align="center" rowspan="1" colspan="1">47</td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">32</td>
+<td align="center" rowspan="1" colspan="1">35</td>
+<td align="center" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>History</bold></td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Hypoglycemia (%)</td>
+<td align="center" rowspan="1" colspan="1">25%</td>
+<td align="center" rowspan="1" colspan="1">100%</td>
+<td align="center" rowspan="1" colspan="1">14%</td>
+<td align="char" char="." rowspan="1" colspan="1">&lt; 0.0001</td>
+<td align="center" rowspan="1" colspan="1">34%</td>
+<td align="center" rowspan="1" colspan="1">17%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1054</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Jaundice (%)</td>
+<td align="center" rowspan="1" colspan="1">22%</td>
+<td align="center" rowspan="1" colspan="1">30%</td>
+<td align="center" rowspan="1" colspan="1">16%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.3005</td>
+<td align="center" rowspan="1" colspan="1">25%</td>
+<td align="center" rowspan="1" colspan="1">20%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.6238</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Micropenis (%)</td>
+<td align="center" rowspan="1" colspan="1">31%</td>
+<td align="center" rowspan="1" colspan="1">57%</td>
+<td align="center" rowspan="1" colspan="1">9%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0390</td>
+<td align="center" rowspan="1" colspan="1">42%</td>
+<td align="center" rowspan="1" colspan="1">22%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1553</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Cryptorchidism (%)</td>
+<td align="center" rowspan="1" colspan="1">24%</td>
+<td align="center" rowspan="1" colspan="1">14%</td>
+<td align="center" rowspan="1" colspan="1">26%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.5176</td>
+<td align="center" rowspan="1" colspan="1">21%</td>
+<td align="center" rowspan="1" colspan="1">26%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.7030</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Clinic</bold></td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Age at diagnosis (years)</td>
+<td align="center" rowspan="1" colspan="1">2.5 (0.0; 16.3)</td>
+<td align="center" rowspan="1" colspan="1">0 (0; 0.9)</td>
+<td align="center" rowspan="1" colspan="1">4.1 (0.7; 16.3)</td>
+<td align="char" char="." rowspan="1" colspan="1">&lt; 0.0001</td>
+<td align="center" rowspan="1" colspan="1">1.4 (0; 16.3)</td>
+<td align="center" rowspan="1" colspan="1">4.1 (0; 13.3)</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0004</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gender (%M/%F)</td>
+<td align="center" rowspan="1" colspan="1">63% / 37%</td>
+<td align="center" rowspan="1" colspan="1">70% / 30%</td>
+<td align="center" rowspan="1" colspan="1">61% / 39%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.6097</td>
+<td align="center" rowspan="1" colspan="1">59% / 41%</td>
+<td align="center" rowspan="1" colspan="1">66% / 34%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.5920</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Height (SDS)</td>
+<td align="center" rowspan="1" colspan="1">-2.8 (-5.8; 1.1)</td>
+<td align="center" rowspan="1" colspan="1">-2.2 (-5.2; 1.1)</td>
+<td align="center" rowspan="1" colspan="1">-2.9 (-5.3; -1.6)</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1518</td>
+<td align="center" rowspan="1" colspan="1">-2.9 (-5.8; 0.6)</td>
+<td align="center" rowspan="1" colspan="1">-2.8 (-5.2; 1.1)</td>
+<td align="char" char="." rowspan="1" colspan="1">0.7627</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Height—TH (SDS)</td>
+<td align="center" rowspan="1" colspan="1">-2.8 (-6.1; 1.6)</td>
+<td align="center" rowspan="1" colspan="1">-3 (-6.1; 1.6)</td>
+<td align="center" rowspan="1" colspan="1">-2.8 (-5.5; -0.9)</td>
+<td align="char" char="." rowspan="1" colspan="1">0.9057</td>
+<td align="center" rowspan="1" colspan="1">-2.7 (-5.5; 0.5)</td>
+<td align="center" rowspan="1" colspan="1">-2.8 (-6.1; 1.6)</td>
+<td align="char" char="." rowspan="1" colspan="1">0.5082</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BMI (SDS)</td>
+<td align="center" rowspan="1" colspan="1">-0.4 (-3.2; 5.7)</td>
+<td align="center" rowspan="1" colspan="1">0.2 (-1.2; 2.4)</td>
+<td align="center" rowspan="1" colspan="1">-0.5 (-3.2; 3.3)</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0881</td>
+<td align="center" rowspan="1" colspan="1">-0.3 (-3.2; 5.7)</td>
+<td align="center" rowspan="1" colspan="1">-0.4 (-3.1; 2.6)</td>
+<td align="char" char="." rowspan="1" colspan="1">0.5762</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>MRI</bold></td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Pituitary stalk</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">not visible</td>
+<td align="center" rowspan="1" colspan="1">6%</td>
+<td align="center" rowspan="1" colspan="1">10%</td>
+<td align="center" rowspan="1" colspan="1">2%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.2428</td>
+<td align="center" rowspan="1" colspan="1">13%</td>
+<td align="center" rowspan="1" colspan="1">0%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0310</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">interrupted</td>
+<td align="center" rowspan="1" colspan="1">81%</td>
+<td align="center" rowspan="1" colspan="1">90%</td>
+<td align="center" rowspan="1" colspan="1">82%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.5309</td>
+<td align="center" rowspan="1" colspan="1">72%</td>
+<td align="center" rowspan="1" colspan="1">89%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0843</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">thin</td>
+<td align="center" rowspan="1" colspan="1">13%</td>
+<td align="center" rowspan="1" colspan="1">0%</td>
+<td align="center" rowspan="1" colspan="1">16%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1764</td>
+<td align="center" rowspan="1" colspan="1">16%</td>
+<td align="center" rowspan="1" colspan="1">11%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.6149</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Anterior pituitary</bold></td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">not visible</td>
+<td align="center" rowspan="1" colspan="1">11%</td>
+<td align="center" rowspan="1" colspan="1">33%</td>
+<td align="center" rowspan="1" colspan="1">2%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0017</td>
+<td align="center" rowspan="1" colspan="1">13%</td>
+<td align="center" rowspan="1" colspan="1">9%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.5640</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">hypoplastic</td>
+<td align="center" rowspan="1" colspan="1">86%</td>
+<td align="center" rowspan="1" colspan="1">67%</td>
+<td align="center" rowspan="1" colspan="1">96%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0089</td>
+<td align="center" rowspan="1" colspan="1">83%</td>
+<td align="center" rowspan="1" colspan="1">88%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.5735</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">normal</td>
+<td align="center" rowspan="1" colspan="1">3%</td>
+<td align="center" rowspan="1" colspan="1">0%</td>
+<td align="center" rowspan="1" colspan="1">2%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.6401</td>
+<td align="center" rowspan="1" colspan="1">3%</td>
+<td align="center" rowspan="1" colspan="1">3%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.9283</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Posterior pituitary</bold></td>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">not visible</td>
+<td align="center" rowspan="1" colspan="1">12%</td>
+<td align="center" rowspan="1" colspan="1">20%</td>
+<td align="center" rowspan="1" colspan="1">7%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1942</td>
+<td align="center" rowspan="1" colspan="1">19%</td>
+<td align="center" rowspan="1" colspan="1">6%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1002</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">ectopic</td>
+<td align="center" rowspan="1" colspan="1">83%</td>
+<td align="center" rowspan="1" colspan="1">70%</td>
+<td align="center" rowspan="1" colspan="1">88%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1343</td>
+<td align="center" rowspan="1" colspan="1">81%</td>
+<td align="center" rowspan="1" colspan="1">86%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.6222</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">normal</td>
+<td align="center" rowspan="1" colspan="1">5%</td>
+<td align="center" rowspan="1" colspan="1">10%</td>
+<td align="center" rowspan="1" colspan="1">5%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.4967</td>
+<td align="center" rowspan="1" colspan="1">0%</td>
+<td align="center" rowspan="1" colspan="1">9%</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0902</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>Values are medians (range) or percentages as indicated. P values were calculated using the Mann-Whitney test</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Concerning neonatal findings, most patients were born full-term (median: 39.7 weeks of gestational age; range: 27 to 42), with only 7 patients born prematurely (&lt; 37 weeks of gestational age). Birth weight was in the normal range (median: -0.2 SDS; range: -2.8 to 2.6 SDS) and birth length was in the lower normal range (median SDS of -0.9; range -3.8 to 2.7) without difference between groups; SGA was found in about 10% of patients. The incidences of breech delivery, cesarean section, and neonatal distress were high (respectively 19, 34, and 26%) without difference between groups.</p>
+<p>Features suggestive of neonatal hormonal deficiency (hypoglycemia, jaundice, and/or micropenis/cryptorchidism in males) were found in 28 of 67 patients (42%) among which 14 of the growth retardation group (30%). As expected, male patients with LH/FSH deficiency had a higher incidence of micropenis (60% versus 5%; P = 0.0004) and cryptorchidism (45% versus 5%; P = 0.0067) than patients with a normal gonadotropic axis.</p>
+<p>As all patients had GHD, it was not possible to investigate the respective roles of GH and gonadotropic hormones in the origin of genital abnormalities. All patients with hypoglycemia had GHD and ACTH deficiencies.</p>
+<p>Although malformation was the presenting symptom in 10 patients, extra-pituitary malformations were found in 32 patients (48%) after initial evaluation, especially in the central nervous system (n = 16, 50%) and the craniofacial structures (n = 11, 34%) (<xref rid="pone.0142354.t002" ref-type="table">Table 2</xref>).</p>
+<table-wrap id="pone.0142354.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142354.t002</object-id>
+<label>Table 2</label> <caption><title>Characteristics of patients with extra-pituitary malformations (syndromic group).</title></caption>
+<alternatives>
+<graphic id="pone.0142354.t002g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142354.t002" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" rowspan="1" colspan="1">Gender</th>
+<th align="center" rowspan="1" colspan="1">Age at diagnosis (years)</th>
+<th align="center" rowspan="1" colspan="1">Associated malformations</th>
+<th align="center" rowspan="1" colspan="1">Molecular analysis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0</td>
+<td align="left" rowspan="1" colspan="1">Agenesis of corpus callosum</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0</td>
+<td align="left" rowspan="1" colspan="1">ASD</td>
+<td align="left" rowspan="1" colspan="1">OTX2, LHX4 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1</td>
+<td align="left" rowspan="1" colspan="1">Incisor agenesis, nasal pyriform aperture stenosis</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1</td>
+<td align="left" rowspan="1" colspan="1">ASD</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1</td>
+<td align="left" rowspan="1" colspan="1">Incisor agenesis, nasal pyriform aperture stenosis, bicuspidia, iris coloboma, VSD</td>
+<td align="left" rowspan="1" colspan="1">LHX4, HESX1, PROKR2 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">0.2</td>
+<td align="left" rowspan="1" colspan="1">Agenesis of corpus callosum, frontal encephalomeningocele, iris coloboma</td>
+<td align="left" rowspan="1" colspan="1">SOX3, HESX1, LHX4 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">0.4</td>
+<td align="left" rowspan="1" colspan="1">Right frontal cortical dysplasia, VSD</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">0.5</td>
+<td align="left" rowspan="1" colspan="1">Mega cisterna magna</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">0.5</td>
+<td align="left" rowspan="1" colspan="1">White matter heterotopia, Chiari I malformation</td>
+<td align="left" rowspan="1" colspan="1">LHX4 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">0.7</td>
+<td align="left" rowspan="1" colspan="1">Ventricular dilatation, bifid tongue, frontal angioma</td>
+<td align="left" rowspan="1" colspan="1">SOX3 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">0.7</td>
+<td align="left" rowspan="1" colspan="1">Incisor agenesis</td>
+<td align="left" rowspan="1" colspan="1">LHX4 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">0.8</td>
+<td align="left" rowspan="1" colspan="1">Lobar holoprosencephaly, absent septum pellucidum, hydrocephalus</td>
+<td align="left" rowspan="1" colspan="1">HESX1 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">0.8</td>
+<td align="left" rowspan="1" colspan="1">Optic nerve and chiasm hypoplasia, nodular gray matter heterotopia</td>
+<td align="left" rowspan="1" colspan="1">HESX1, LHX4, OTX2, SOX2 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">1.2</td>
+<td align="left" rowspan="1" colspan="1">Optic nerve and chiasm hypoplasia, SOD, gray matter heterotopia, VSD</td>
+<td align="left" rowspan="1" colspan="1">HESX1 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">1.2</td>
+<td align="left" rowspan="1" colspan="1">Right optic nerve hypoplasia</td>
+<td align="left" rowspan="1" colspan="1">HESX1, LHX4, OTX2 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">1.3</td>
+<td align="left" rowspan="1" colspan="1">Left optic nerve hypoplasia</td>
+<td align="left" rowspan="1" colspan="1">HESX1 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">1.3</td>
+<td align="left" rowspan="1" colspan="1">Optic nerve and chiasm hypoplasia</td>
+<td align="left" rowspan="1" colspan="1">HESX1, SOX2 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">1.4</td>
+<td align="left" rowspan="1" colspan="1">Ogival palate, ocular hypertelorism</td>
+<td align="left" rowspan="1" colspan="1">RSK2, SOX3, CGH array negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">1.6</td>
+<td align="left" rowspan="1" colspan="1">Chiari I malformation, incisor agenesis, nasal pyriform aperture stenosis</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">1.9</td>
+<td align="left" rowspan="1" colspan="1">Optic nerve and chiasm hypoplasia, arachnoid cyst</td>
+<td align="left" rowspan="1" colspan="1">HESX1, PIT1, OTX2, FMR1 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">1.9</td>
+<td align="left" rowspan="1" colspan="1">Chiari I malformation</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">2.3</td>
+<td align="left" rowspan="1" colspan="1">Fusion of right lateral semi-circular canal with vestibule</td>
+<td align="left" rowspan="1" colspan="1">15q24 microdeletion</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">2.4</td>
+<td align="left" rowspan="1" colspan="1">Rectal duplication</td>
+<td align="left" rowspan="1" colspan="1">TW1, LHX4, SOX3, HESX1 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">2.5</td>
+<td align="left" rowspan="1" colspan="1">Transsphenoidal encephalocele, cleft palate</td>
+<td align="left" rowspan="1" colspan="1">HESX1 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">3.5</td>
+<td align="left" rowspan="1" colspan="1">VSD, anal stenosis</td>
+<td align="left" rowspan="1" colspan="1">Tetrasomy 22pter-q11.1</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">3.8</td>
+<td align="left" rowspan="1" colspan="1">Blepharophimosis ptosis epicanthus inversus syndrome</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">3.8</td>
+<td align="left" rowspan="1" colspan="1">Retrocerebellar arachnoid cyst, mammillary tubercle hyperplasia</td>
+<td align="left" rowspan="1" colspan="1">SOX3, HESX1, LHX4 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">7.8</td>
+<td align="left" rowspan="1" colspan="1">Incisor agenesia</td>
+<td align="left" rowspan="1" colspan="1">HESX1, LHX4, OTX2, PIT1 negative</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">F</td>
+<td align="char" char="." rowspan="1" colspan="1">8.8</td>
+<td align="left" rowspan="1" colspan="1">Mega cisterna magna, cerebellar vermian atrophy, atrial septal defect</td>
+<td align="left" rowspan="1" colspan="1">Trisomy 12 mosaicism</td>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">11.4</td>
+<td align="left" rowspan="1" colspan="1">Cleft lip palate, nasal hypoplasia</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">13.7</td>
+<td align="left" rowspan="1" colspan="1">Cleft lip palate</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="center" rowspan="1" colspan="1">M</td>
+<td align="char" char="." rowspan="1" colspan="1">16.3</td>
+<td align="left" rowspan="1" colspan="1">Agenesis of corpus callosum, cortical dysplasia, retrocerebellar arachnoid cyst</td>
+<td align="left" rowspan="1" colspan="1">CGH array, LHX4, HESX1 negative</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>SOD: septo-optic dysplasia, ASD: atrial septal defect, VSD: ventricular septal defect</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Genetic screening was performed in 25 syndromic patients (78%) and revealed three chromosomal abnormalities but no genetic abnormalities (<xref rid="pone.0142354.t002" ref-type="table">Table 2</xref>); it was also performed in 10 nonsyndromic patients (29%) and was normal in all cases.</p>
+</sec>
+<sec id="sec016">
+<title>Imaging evaluation</title>
+<p>The MRI findings showed that neonatal patients more often had no visible (33% versus 2%; P = 0.0017) or a smaller (1.5 versus 2.8 mm; P = 0.0026) anterior pituitary lobe than patients with growth retardation (<xref rid="pone.0142354.t001" ref-type="table">Table 1</xref>). Anterior pituitary height SDS was positively correlated with IGF1 SDS (R = 0.151; P = 0.0143).</p>
+</sec>
+<sec id="sec017">
+<title>Hormonal status</title>
+<p>All patients had GHD at diagnosis. Seventy seven percent of patients had complete GHD and the median GH peak during hypoglycemia or under stimulation test was 1.4 μg/L. At diagnosis, GHD was isolated (i.e., IGHD) in 35 patients (52%) and associated with other hormonal deficiency (i.e., CPHD) in 32 patients (48%).</p>
+<p>The frequency of IGHD versus CPHD and the number of hormone deficits did not differ between the syndromic and nonsyndromic patients. In contrast, patients diagnosed in the neonatal period had greater hormonal impairment than growth retardation patients at diagnosis (<xref rid="pone.0142354.g001" ref-type="fig">Fig 1A</xref>). Thus, CPHD was found in all patients of the neonatal group and 34% of the patients with growth retardation (P = 0.0005). Interestingly, we were able to document a progressive worsening of the endocrine impairment in 21 patients of the growth retardation group followed until final height attainment, with a total follow-up duration ranging from 7.3 years to 16.6 years (median: 11.8 years) (<xref rid="pone.0142354.g001" ref-type="fig">Fig 1B</xref>). Reevaluation at completion of growth of these 21 patients showed that 17 patients (81%) presented with CPHD (<xref rid="pone.0142354.g001" ref-type="fig">Fig 1A</xref>); this frequency was no longer different from that of neonatal patients (P = 0.2043).</p>
+<fig id="pone.0142354.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142354.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Evolution of the hormonal impairment according to the initial presentation.</title>
+<p>(A) Frequency of GH, ACTH and/or TSH deficiencies in neonates (n = 10) and patients with growth retardation, at baseline (n = 47) and at final height (n = 21). Significant statistical difference in the number of cases of combined pituitary hormone deficiency between groups of neonates and patients with growth retardation: ** P &lt; 0.001 (chi square test). The gonadotropic axis was evaluated in neonates (during “mini-puberty”) and in patients of postpubertal age. LH/FSH deficiency was found in 9 of 10 neonates (90%) and 12 of 21 patients with growth retardation at final height (57%); this was not statistically different (P = 0.1522). (B) Evolution of ACTH, and TSH deficiencies throughout childhood in patients with growth retardation who reached their final height (n = 21). All patients had GHD at diagnosis.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142354.g001" position="float" xlink:type="simple"/>
+</fig>
+<p>The gonadotropic axis was evaluated in neonates (during “mini-puberty”) and in patients of postpubertal age. LH/FSH deficiency was found in 9 of 10 neonates (90%) and 12 of 21 patients with growth retardation (57%); this was not statistically different (P = 0.1522).</p>
+<p>Serum prolactin levels were available in 32 patients. They were low in 4 patients (12%) and increased in 14 patients (44%), suggesting a hypothalamic-pituitary disconnection (i.e., loss of normal dopaminergic inhibition of the PRL secretion). Only 3 patients (4%) presented with diabetes insipidus.</p>
+<p>Multivariate studies showed that nonvisible anterior pituitary was an independent risk factor in terms of severity of hormonal impairment (P = 0.0342), but not gender or associated extra-pituitary malformations.</p>
+</sec>
+<sec id="sec018">
+<title>Response to growth hormone treatment</title>
+<p>Growth under GH treatment was similar in the groups with a median height gain SDS of 1.2 (range: -1.4 to 4.4 SDS) after one year and 1.7 (range: -0.4 to 3.0) after 2 years (<xref rid="pone.0142354.g002" ref-type="fig">Fig 2</xref>). For the 21 patients who reached their adult height, median height gain SDS was 2.3 (range: 0.7 to 5.4 SDS) with an adult height SDS of -0.3 (range: -2.0 to 1.7 SDS) and a difference from target height SDS of 0.2 (range: -2.7 to 1.4 SDS).</p>
+<fig id="pone.0142354.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0142354.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Height SDS during the first 2 years of GH treatment and at final height.</title>
+<p>Error bars are medians with interquartile ranges. Significant statistical differences between height SDS at baseline and others time points: *** P &lt; 0.0001 (2-way repeated-measures ANOVA plus Bonferroni post-test).</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0142354.g002" position="float" xlink:type="simple"/>
+</fig>
+<p>Multivariate studies showed that height SDS at baseline was negatively associated with height gain after 2 years of GH treatment. (R = -0.590; P = 0.0001), but not other determinants (age, gender, presence of malformation, nonvisible anterior pituitary lobe, and severity of hormonal impairment).</p>
+<p>The adult height SDS was positively correlated with the target height (R = 0.516; P = 0.0184) and the height gain between diagnosis and adult height was negatively correlated with the height at baseline (R = -0.472; P = 0.0998).</p>
+</sec>
+</sec>
+<sec id="sec019" sec-type="conclusions">
+<title>Discussion</title>
+<p>In the present study, we described the clinical, hormonal and radiological characteristics at baseline and during long-term follow-up in a large cohort of patients with PSIS according to the initial presentation.</p>
+<p>Only a few patients (15%) were referred for hypoglycemia during the neonatal period but interestingly they all presented with a particularly severe form of PSIS. Indeed, CPHD was found in all patients of the neonatal group and it was complete (i.e., associating GH, ACTH, TSH and LH/FSH deficiencies) in 9 of 10 patients. This severe phenotype was related to more severely abnormal pituitary development (i.e., anterior pituitary lobe not visible or smaller) than in patients diagnosed later on the basis of growth retardation. Abnormalities of the hypothalamic—pituitary region have been reported to be related to the severity of anterior pituitary dysfunction [<xref rid="pone.0142354.ref002" ref-type="bibr">2</xref>,<xref rid="pone.0142354.ref003" ref-type="bibr">3</xref>,<xref rid="pone.0142354.ref013" ref-type="bibr">13</xref>,<xref rid="pone.0142354.ref014" ref-type="bibr">14</xref>]. Similarly, we demonstrated that anterior pituitary lobe size was correlated with the IGF1 level and that a nonvisible lobe was an independent risk factor in terms of severity of hormonal status. In contrast, we found no correlation between anterior pituitary hormone deficiencies and the abnormality of the pituitary stalk.</p>
+<p>As previously reported, most patients (70%) were initially brought to medical attention as children with growth retardation [<xref rid="pone.0142354.ref024" ref-type="bibr">24</xref>,<xref rid="pone.0142354.ref025" ref-type="bibr">25</xref>]. The median age at diagnosis of these patients was about 4 years, which is in accordance with published data [<xref rid="pone.0142354.ref006" ref-type="bibr">6</xref>,<xref rid="pone.0142354.ref014" ref-type="bibr">14</xref>,<xref rid="pone.0142354.ref018" ref-type="bibr">18</xref>,<xref rid="pone.0142354.ref025" ref-type="bibr">25</xref>–<xref rid="pone.0142354.ref027" ref-type="bibr">27</xref>]. Regular follow-up of growth might have allowed earlier diagnosis, as decreased growth velocity and growth retardation (i.e., height below -2 SDS) were present respectively 3 and 2 years before the referral. Moreover, features suggestive of neonatal hormonal deficiency (hypoglycemia, jaundice, and micropenis/cryptorchidism in males) were found in about one third of the patients in our study and others [<xref rid="pone.0142354.ref014" ref-type="bibr">14</xref>,<xref rid="pone.0142354.ref018" ref-type="bibr">18</xref>,<xref rid="pone.0142354.ref024" ref-type="bibr">24</xref>,<xref rid="pone.0142354.ref027" ref-type="bibr">27</xref>], and should therefore prompt earlier evaluation of pituitary function and morphology. The later diagnosis could be explained, at least in part, by less severe endocrine impairment. Thus, most patients diagnosed on growth retardation (66%) had isolated GHD at diagnosis. This might have caused moderate and spontaneously reversible hypoglycemia during the neonatal period (found in 14% of patients with growth retardation); however, we could not document the characteristics of hypoglycemia (i.e., severity, duration, and need for a treatment) in these patients.</p>
+<p>The frequency of CPHD in PSIS patients varies among reports, ranging from half to all patients [<xref rid="pone.0142354.ref018" ref-type="bibr">18</xref>,<xref rid="pone.0142354.ref027" ref-type="bibr">27</xref>,<xref rid="pone.0142354.ref028" ref-type="bibr">28</xref>]. These discrepancies may be explained by differences in the age of patients at evaluation. Indeed, in contrast to patients diagnosed in the neonatal period, who present with complete hypopituitarism at diagnosis, most of the patients diagnosed after investigation for growth retardation presented a progressive impairment of the residual pituitary function throughout childhood. One patient in our cohort was diagnosed at the age of 16.3 years owing to moderately short stature (height SDS at -1.9) and delayed puberty. Similarly, Ioachimescu et al. reported the case of a 14-year-old girl diagnosed with PSIS on the basis of delayed puberty with normal height [<xref rid="pone.0142354.ref017" ref-type="bibr">17</xref>]. These findings underline the need for periodic follow-up assessment for potential additional hormonal deficiencies in patients with PSIS until adulthood.</p>
+<p>Although malformation was the reason for referral in only 15% of patients, we found a high frequency of extra-pituitary malformations, especially in the central nervous system and the craniofacial structures, in accordance with previous reports [<xref rid="pone.0142354.ref002" ref-type="bibr">2</xref>,<xref rid="pone.0142354.ref025" ref-type="bibr">25</xref>,<xref rid="pone.0142354.ref029" ref-type="bibr">29</xref>,<xref rid="pone.0142354.ref030" ref-type="bibr">30</xref>]. This finding is in line with the hypothesis of abnormal pituitary development during the embryonic period and underlines the need for systematic screening for associated malformations. As expected, the presence of extra-pituitary malformations was associated with earlier diagnosis (4.1 years). Contrary to other studies [<xref rid="pone.0142354.ref004" ref-type="bibr">4</xref>,<xref rid="pone.0142354.ref006" ref-type="bibr">6</xref>], we did not find that the presence of these malformations was associated with more severe hormonal and radiological characteristics. Conversely, the diagnosis of PSIS should be considered in cases of malformation syndrome with short stature.</p>
+<p>The male preponderance and the higher occurrence of breech delivery and cesarean section observed in our study are in keeping with other studies [<xref rid="pone.0142354.ref002" ref-type="bibr">2</xref>,<xref rid="pone.0142354.ref004" ref-type="bibr">4</xref>,<xref rid="pone.0142354.ref014" ref-type="bibr">14</xref>,<xref rid="pone.0142354.ref016" ref-type="bibr">16</xref>,<xref rid="pone.0142354.ref018" ref-type="bibr">18</xref>] and did not differ with the initial presentation.</p>
+<p>Interestingly, growth under GH treatment was similar in the patient groups (neonates versus patients with growth retardation, and syndromic versus nonsyndromic patients) and did not vary according to the pituitary MRI findings. The long-term results for adult height were satisfactory with a total height gain SDS of 2.3 and a normalized adult height, which is comparable to the results of other studies [<xref rid="pone.0142354.ref018" ref-type="bibr">18</xref>,<xref rid="pone.0142354.ref027" ref-type="bibr">27</xref>,<xref rid="pone.0142354.ref028" ref-type="bibr">28</xref>]. As previously described, height SDS at baseline was a significant independent predictive factor of short- and long-term GH response, with short height at baseline showing a better response to treatment [<xref rid="pone.0142354.ref030" ref-type="bibr">30</xref>].</p>
+</sec>
+<sec id="sec020" sec-type="conclusions">
+<title>Conclusion</title>
+<p>The present study suggests that patients with PSIS diagnosed in the neonatal period have a particularly severe form of PSIS with greater hormonal impairment related to more severely abnormal pituitary development, and they require early diagnosis and treatment.</p>
+<p>The high frequency of associated extra-pituitary malformations in patients with PSIS underlines the need for systematic screening for associated malformations. However, the presence of these malformations does not seem to be associated with more severe hormonal and radiological characteristics. Last, we documented a progressive worsening of endocrine impairment throughout childhood, justifying periodic follow-up to check for additional hormonal deficiencies in patients with PSIS.</p>
+</sec>
+</body>
+<back>
+<ack>
+<p>We thank Mrs C. Stott for the review of the manuscript.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0142354.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fujisawa</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Kikuchi</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Nishimura</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Togashi</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Itoh</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Noma</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>Transection of the pituitary stalk: development of an ectopic posterior lobe assessed with MR imaging</article-title>. <source>Radiology</source>. <year>1987</year> <month>Nov</month>;<volume>165</volume>(<issue>2</issue>):<fpage>487</fpage>–<lpage>9</lpage>. <object-id pub-id-type="pmid">3659371</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chen</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Leger</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Garel</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Hassan</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Czernichow</surname> <given-names>P</given-names></name>. <article-title>Growth hormone deficiency with ectopic neurohypophysis: anatomical variations and relationship between the visibility of the pituitary stalk asserted by magnetic resonance imaging and anterior pituitary function</article-title>. <source>J Clin Endocrinol Metab</source>. <year>1999</year> <month>Jul</month>;<volume>84</volume>(<issue>7</issue>):<fpage>2408</fpage>–<lpage>13</lpage>. <object-id pub-id-type="pmid">10404812</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hamilton</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Blaser</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Daneman</surname> <given-names>D</given-names></name>. <article-title>MR imaging in idiopathic growth hormone deficiency</article-title>. <source>AJNR American journal of neuroradiology</source>. <year>1998</year> <month>Oct</month>;<volume>19</volume>(<issue>9</issue>):<fpage>1609</fpage>–<lpage>15</lpage>. <object-id pub-id-type="pmid">9802480</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Reynaud</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Albarel</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Saveanu</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Kaffel</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Castinetti</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Lecomte</surname> <given-names>P</given-names></name>, <etal>et al</etal>. <article-title>Pituitary stalk interruption syndrome in 83 patients: novel HESX1 mutation and severe hormonal prognosis in malformative forms</article-title>. <source>Eur J Endocrinol</source>. <year>2011</year> <month>Apr</month>;<volume>164</volume>(<issue>4</issue>):<fpage>457</fpage>–<lpage>65</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1530/EJE-10-0892" xlink:type="simple">10.1530/EJE-10-0892</ext-link></comment> <object-id pub-id-type="pmid">21270112</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hellstrom</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Wiklund</surname> <given-names>LM</given-names></name>, <name name-style="western"><surname>Svensson</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Stromland</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Albertsson-Wikland</surname> <given-names>K</given-names></name>. <article-title>Midline brain lesions in children with hormone insufficiency indicate early prenatal damage</article-title>. <source>Acta Paediatr</source>. <year>1998</year> <month>May</month>;<volume>87</volume>(<issue>5</issue>):<fpage>528</fpage>–<lpage>36</lpage>. <object-id pub-id-type="pmid">9641734</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Simon</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Hadjiathanasiou</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Garel</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Czernichow</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Leger</surname> <given-names>J</given-names></name>. <article-title>Phenotypic variability in children with growth hormone deficiency associated with posterior pituitary ectopia</article-title>. <source>Clin Endocrinol (Oxf)</source>. <year>2006</year> <month>Apr</month>;<volume>64</volume>(<issue>4</issue>):<fpage>416</fpage>–<lpage>22</lpage>.</mixed-citation></ref>
+<ref id="pone.0142354.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Deal</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Hasselmann</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Pfaffle</surname> <given-names>RW</given-names></name>, <name name-style="western"><surname>Zimmermann</surname> <given-names>AG</given-names></name>, <name name-style="western"><surname>Quigley</surname> <given-names>CA</given-names></name>, <name name-style="western"><surname>Child</surname> <given-names>CJ</given-names></name>, <etal>et al</etal>. <article-title>Associations between pituitary imaging abnormalities and clinical and biochemical phenotypes in children with congenital growth hormone deficiency: data from an international observational study</article-title>. <source>Hormone research in paediatrics</source>. <year>2013</year>;<volume>79</volume>(<issue>5</issue>):<fpage>283</fpage>–<lpage>92</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1159/000350829" xlink:type="simple">10.1159/000350829</ext-link></comment> <object-id pub-id-type="pmid">23689058</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bozzola</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Mengarda</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Sartirana</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Tato</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Chaussain</surname> <given-names>JL</given-names></name>. <article-title>Long-term follow-up evaluation of magnetic resonance imaging in the prognosis of permanent GH deficiency</article-title>. <source>Eur J Endocrinol</source>. <year>2000</year> <month>Oct</month>;<volume>143</volume>(<issue>4</issue>):<fpage>493</fpage>–<lpage>6</lpage>. <object-id pub-id-type="pmid">11022195</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jagtap</surname> <given-names>VS</given-names></name>, <name name-style="western"><surname>Acharya</surname> <given-names>SV</given-names></name>, <name name-style="western"><surname>Sarathi</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Lila</surname> <given-names>AR</given-names></name>, <name name-style="western"><surname>Budyal</surname> <given-names>SR</given-names></name>, <name name-style="western"><surname>Kasaliwal</surname> <given-names>R</given-names></name>, <etal>et al</etal>. <article-title>Ectopic posterior pituitary and stalk abnormality predicts severity and coexisting hormone deficiencies in patients with congenital growth hormone deficiency</article-title>. <source>Pituitary</source>. <year>2012</year> <month>Jun</month>;<volume>15</volume>(<issue>2</issue>):<fpage>243</fpage>–<lpage>50</lpage>. <object-id pub-id-type="pmid">21667124</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s11102-011-0321-4" xlink:type="simple">10.1007/s11102-011-0321-4</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0142354.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Maghnie</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Strigazzi</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Tinelli</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Autelli</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Cisternino</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Loche</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>Growth hormone (GH) deficiency (GHD) of childhood onset: reassessment of GH status and evaluation of the predictive criteria for permanent GHD in young adults</article-title>. <source>J Clin Endocrinol Metab</source>. <year>1999</year> <month>Apr</month>;<volume>84</volume>(<issue>4</issue>):<fpage>1324</fpage>–<lpage>8</lpage>. <object-id pub-id-type="pmid">10199773</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Murray</surname> <given-names>PG</given-names></name>, <name name-style="western"><surname>Hague</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Fafoula</surname> <given-names>O</given-names></name>, <name name-style="western"><surname>Gleeson</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Patel</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Banerjee</surname> <given-names>I</given-names></name>, <etal>et al</etal>. <article-title>Likelihood of persistent GH deficiency into late adolescence: relationship to the presence of an ectopic or normally sited posterior pituitary gland</article-title>. <source>Clin Endocrinol (Oxf)</source>. <year>2009</year> <month>Aug</month>;<volume>71</volume>(<issue>2</issue>):<fpage>215</fpage>–<lpage>9</lpage>.</mixed-citation></ref>
+<ref id="pone.0142354.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kikuchi</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Fujisawa</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Momoi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Yamanaka</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Kaji</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Nakano</surname> <given-names>Y</given-names></name>, <etal>et al</etal>. <article-title>Hypothalamic-pituitary function in growth hormone-deficient patients with pituitary stalk transection</article-title>. <source>J Clin Endocrinol Metab</source>. <year>1988</year> <month>Oct</month>;<volume>67</volume>(<issue>4</issue>):<fpage>817</fpage>–<lpage>23</lpage>. <object-id pub-id-type="pmid">3138279</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Maghnie</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Larizza</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Triulzi</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Sampaolo</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Scotti</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Severi</surname> <given-names>F</given-names></name>. <article-title>Hypopituitarism and stalk agenesis: a congenital syndrome worsened by breech delivery?</article-title> <source>Horm Res</source>. <year>1991</year>;<volume>35</volume>(<issue>3–4</issue>):<fpage>104</fpage>–<lpage>8</lpage>. <object-id pub-id-type="pmid">1806462</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pinto</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Netchine</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Sobrier</surname> <given-names>ML</given-names></name>, <name name-style="western"><surname>Brunelle</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Souberbielle</surname> <given-names>JC</given-names></name>, <name name-style="western"><surname>Brauner</surname> <given-names>R</given-names></name>. <article-title>Pituitary stalk interruption syndrome: a clinical-biological-genetic assessment of its pathogenesis</article-title>. <source>J Clin Endocrinol Metab</source>. <year>1997</year> <month>Oct</month>;<volume>82</volume>(<issue>10</issue>):<fpage>3450</fpage>–<lpage>4</lpage>. <object-id pub-id-type="pmid">9329385</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Triulzi</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Scotti</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>di Natale</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Pellini</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Lukezic</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Scognamiglio</surname> <given-names>M</given-names></name>, <etal>et al</etal>. <article-title>Evidence of a congenital midline brain anomaly in pituitary dwarfs: a magnetic resonance imaging study in 101 patients</article-title>. <source>Pediatrics</source>. <year>1994</year> <month>Mar</month>;<volume>93</volume>(<issue>3</issue>):<fpage>409</fpage>–<lpage>16</lpage>. <object-id pub-id-type="pmid">8115199</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Melo</surname> <given-names>ME</given-names></name>, <name name-style="western"><surname>Marui</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Carvalho</surname> <given-names>LR</given-names></name>, <name name-style="western"><surname>Arnhold</surname> <given-names>IJ</given-names></name>, <name name-style="western"><surname>Leite</surname> <given-names>CC</given-names></name>, <name name-style="western"><surname>Mendonca</surname> <given-names>BB</given-names></name>, <etal>et al</etal>. <article-title>Hormonal, pituitary magnetic resonance, LHX4 and HESX1 evaluation in patients with hypopituitarism and ectopic posterior pituitary lobe</article-title>. <source>Clin Endocrinol (Oxf)</source>. <year>2007</year> <month>Jan</month>;<volume>66</volume>(<issue>1</issue>):<fpage>95</fpage>–<lpage>102</lpage>.</mixed-citation></ref>
+<ref id="pone.0142354.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ioachimescu</surname> <given-names>AG</given-names></name>, <name name-style="western"><surname>Hamrahian</surname> <given-names>AH</given-names></name>, <name name-style="western"><surname>Stevens</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Zimmerman</surname> <given-names>RS</given-names></name>. <article-title>The pituitary stalk transection syndrome: multifaceted presentation in adulthood</article-title>. <source>Pituitary</source>. <year>2012</year> <month>Sep</month>;<volume>15</volume>(<issue>3</issue>):<fpage>405</fpage>–<lpage>11</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s11102-011-0337-9" xlink:type="simple">10.1007/s11102-011-0337-9</ext-link></comment> <object-id pub-id-type="pmid">21826468</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tauber</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Chevrel</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Diene</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Moulin</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Jouret</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Oliver</surname> <given-names>I</given-names></name>, <etal>et al</etal>. <article-title>Long-term evolution of endocrine disorders and effect of GH therapy in 35 patients with pituitary stalk interruption syndrome</article-title>. <source>Horm Res</source>. <year>2005</year>;<volume>64</volume>(<issue>6</issue>):<fpage>266</fpage>–<lpage>73</lpage>. <object-id pub-id-type="pmid">16260897</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Usher</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>McLean</surname> <given-names>F</given-names></name>. <article-title>Intrauterine growth of live-born Caucasian infants at sea level: standards obtained from measurements in 7 dimensions of infants born between 25 and 44 weeks of gestation</article-title>. <source>J Pediatr</source>. <year>1969</year> <month>Jun</month>;<volume>74</volume>(<issue>6</issue>):<fpage>901</fpage>–<lpage>10</lpage>. <object-id pub-id-type="pmid">5781799</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Masse</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Sempe</surname> <given-names>M</given-names></name>. <article-title>Somatic growth and development of French children and adolescents. Summary of our knowledge and suggestions for surveys</article-title>. <source>Pediatrie</source>. <year>1967</year> <month>Jul-Aug</month>;<volume>22</volume>(<issue>5</issue>):<fpage>593</fpage>–<lpage>607</lpage>. <object-id pub-id-type="pmid">5611130</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rolland-Cachera</surname> <given-names>MF</given-names></name>, <name name-style="western"><surname>Cole</surname> <given-names>TJ</given-names></name>, <name name-style="western"><surname>Sempe</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Tichet</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Rossignol</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Charraud</surname> <given-names>A</given-names></name>. <article-title>Body Mass Index variations: centiles from birth to 87 years</article-title>. <source>Eur J Clin Nutr</source>. <year>1991</year> <month>Jan</month>;<volume>45</volume>(<issue>1</issue>):<fpage>13</fpage>–<lpage>21</lpage>. <object-id pub-id-type="pmid">1855495</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Feigerlova</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Diene</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Oliver</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Gennero</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Salles</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Arnaud</surname> <given-names>C</given-names></name>, <etal>et al</etal>. <article-title>Elevated insulin-like growth factor-I values in children with Prader-Willi syndrome compared with growth hormone (GH) deficiency children over two years of GH treatment</article-title>. <source>J Clin Endocrinol Metab</source>. <year>2010</year> <month>Oct</month>;<volume>95</volume>(<issue>10</issue>):<fpage>4600</fpage>–<lpage>8</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1210/jc.2009-1831" xlink:type="simple">10.1210/jc.2009-1831</ext-link></comment> <object-id pub-id-type="pmid">20926543</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Argyropoulou</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Perignon</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Brauner</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Brunelle</surname> <given-names>F</given-names></name>. <article-title>Magnetic resonance imaging in the diagnosis of growth hormone deficiency</article-title>. <source>J Pediatr</source>. <year>1992</year> <month>Jun</month>;<volume>120</volume>(<issue>6</issue>):<fpage>886</fpage>–<lpage>91</lpage>. <object-id pub-id-type="pmid">1593348</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Guo</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Mu</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Lu</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Pan</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Dou</surname> <given-names>J</given-names></name>, <etal>et al</etal>. <article-title>Pituitary stalk interruption syndrome in Chinese people: clinical characteristic analysis of 55 cases</article-title>. <source>PloS one</source>. <year>2013</year>;<volume>8</volume>(<issue>1</issue>):<fpage>e53579</fpage>. <object-id pub-id-type="pmid">23341953</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0053579" xlink:type="simple">10.1371/journal.pone.0053579</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0142354.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rottembourg</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Linglart</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Adamsbaum</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Lahlou</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Teinturier</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Bougneres</surname> <given-names>P</given-names></name>, <etal>et al</etal>. <article-title>Gonadotrophic status in adolescents with pituitary stalk interruption syndrome</article-title>. <source>Clin Endocrinol (Oxf)</source>. <year>2008</year> <month>Jul</month>;<volume>69</volume>(<issue>1</issue>):<fpage>105</fpage>–<lpage>11</lpage>.</mixed-citation></ref>
+<ref id="pone.0142354.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gascoin-Lachambre</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Brauner</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Duche</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Chalumeau</surname> <given-names>M</given-names></name>. <article-title>Pituitary stalk interruption syndrome: diagnostic delay and sensitivity of the auxological criteria of the growth hormone research society</article-title>. <source>PloS one</source>. <year>2011</year>;<volume>6</volume>(<issue>1</issue>):<fpage>e16367</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0016367" xlink:type="simple">10.1371/journal.pone.0016367</ext-link></comment> <object-id pub-id-type="pmid">21298012</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Louvel</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Marcu</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Trivin</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Souberbielle</surname> <given-names>JC</given-names></name>, <name name-style="western"><surname>Brauner</surname> <given-names>R</given-names></name>. <article-title>Diagnosis of growth hormone (GH) deficiency: comparison of pituitary stalk interruption syndrome and transient GH deficiency</article-title>. <source>BMC pediatrics</source>. <year>2009</year>;<volume>9</volume>:<fpage>29</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1186/1471-2431-9-29" xlink:type="simple">10.1186/1471-2431-9-29</ext-link></comment> <object-id pub-id-type="pmid">19419564</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Coutant</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Rouleau</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Despert</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Magontier</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Loisel</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Limal</surname> <given-names>JM</given-names></name>. <article-title>Growth and adult height in GH-treated children with nonacquired GH deficiency and idiopathic short stature: the influence of pituitary magnetic resonance imaging findings</article-title>. <source>J Clin Endocrinol Metab</source>. <year>2001</year> <month>Oct</month>;<volume>86</volume>(<issue>10</issue>):<fpage>4649</fpage>–<lpage>54</lpage>. <object-id pub-id-type="pmid">11600520</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Arrigo</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Wasniewska</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>De Luca</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Valenzise</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Lombardo</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Vivenza</surname> <given-names>D</given-names></name>, <etal>et al</etal>. <article-title>Congenital adenohypophysis aplasia: clinical features and analysis of the transcriptional factors for embryonic pituitary development</article-title>. <source>J Endocrinol Invest</source>. <year>2006</year> <month>Mar</month>;<volume>29</volume>(<issue>3</issue>):<fpage>208</fpage>–<lpage>13</lpage>. <object-id pub-id-type="pmid">16682832</object-id></mixed-citation></ref>
+<ref id="pone.0142354.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zenaty</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Garel</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Limoni</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Czernichow</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Leger</surname> <given-names>J</given-names></name>. <article-title>Presence of magnetic resonance imaging abnormalities of the hypothalamic-pituitary axis is a significant determinant of the first 3 years growth response to human growth hormone treatment in prepubertal children with nonacquired growth hormone deficiency</article-title>. <source>Clin Endocrinol (Oxf)</source>. <year>2003</year> <month>May</month>;<volume>58</volume>(<issue>5</issue>):<fpage>647</fpage>–<lpage>52</lpage>.</mixed-citation></ref>
+</ref-list>
+</back>
+</article>

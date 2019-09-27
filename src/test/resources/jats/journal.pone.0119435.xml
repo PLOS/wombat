@@ -1,0 +1,1918 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0119435</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-14-43003</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+</article-categories>
+<title-group>
+<article-title>Socioeconomic Determinants of Bullying in the Workplace: A National Representative Sample in Japan</article-title>
+<alt-title alt-title-type="running-head">Socioeconomic Determinants of Bullying in the Workplace</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Tsuno</surname>
+<given-names>Kanami</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+<xref rid="cor001" ref-type="corresp">*</xref>
+</contrib>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Kawakami</surname>
+<given-names>Norito</given-names>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Tsutsumi</surname>
+<given-names>Akizumi</given-names>
+</name>
+<xref rid="aff003" ref-type="aff"><sup>3</sup></xref>
+<xref rid="econtrib001" ref-type="fn"><sup>‡</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Shimazu</surname>
+<given-names>Akihito</given-names>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+<xref rid="econtrib001" ref-type="fn"><sup>‡</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Inoue</surname>
+<given-names>Akiomi</given-names>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+<xref rid="aff004" ref-type="aff"><sup>4</sup></xref>
+<xref rid="econtrib001" ref-type="fn"><sup>‡</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Odagiri</surname>
+<given-names>Yuko</given-names>
+</name>
+<xref rid="aff005" ref-type="aff"><sup>5</sup></xref>
+<xref rid="econtrib001" ref-type="fn"><sup>‡</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Yoshikawa</surname>
+<given-names>Toru</given-names>
+</name>
+<xref rid="aff006" ref-type="aff"><sup>6</sup></xref>
+<xref rid="econtrib001" ref-type="fn"><sup>‡</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Haratani</surname>
+<given-names>Takashi</given-names>
+</name>
+<xref rid="aff007" ref-type="aff"><sup>7</sup></xref>
+<xref rid="econtrib001" ref-type="fn"><sup>‡</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Shimomitsu</surname>
+<given-names>Teruichi</given-names>
+</name>
+<xref rid="aff005" ref-type="aff"><sup>5</sup></xref>
+<xref rid="econtrib001" ref-type="fn"><sup>‡</sup></xref>
+<xref rid="currentaff001" ref-type="fn"><sup>¤</sup></xref>
+</contrib>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Kawachi</surname>
+<given-names>Ichiro</given-names>
+</name>
+<xref rid="aff008" ref-type="aff"><sup>8</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Department of Hygiene, Wakayama Medical University, Wakayama, Japan</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Department of Mental Health, Graduate School of Medicine, The University of Tokyo, Tokyo, Japan</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Department of Public Health, Kitasato University School of Medicine, Kanagawa, Japan</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Department of Mental Health, University of Occupational and Environmental Health, Fukuoka, Japan</addr-line></aff>
+<aff id="aff005"><label>5</label> <addr-line>Department of Preventive Medicine and Public Health, Tokyo Medical University, Tokyo, Japan</addr-line></aff>
+<aff id="aff006"><label>6</label> <addr-line>Department of Research, The Institute for Science of Labour, Kawasaki, Japan</addr-line></aff>
+<aff id="aff007"><label>7</label> <addr-line>Health Administration and Psychosocial Factor Research Group, National Institute of Occupational Safety and Health, Kanagawa, Japan</addr-line></aff>
+<aff id="aff008"><label>8</label> <addr-line>Department of Social and Behavioral Sciences, Harvard School of Public Health, Boston, United States of America</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Zhang</surname>
+<given-names>Harry</given-names>
+</name>
+<role>Academic Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Old Dominion University, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: KT NK AT AS AI YO TY TH TS. Performed the experiments: KT NK AT AS AI YO TY TH TS. Analyzed the data: KT NK. Contributed reagents/materials/analysis tools: KT NK AT AS AI YO TY TH TS. Wrote the paper: KT NK IK.</p>
+</fn>
+<fn fn-type="current-aff" id="currentaff001">
+<label>¤</label><p>Current address: Japan Health Promotion &amp; Fitness Foundation, Tokyo, Japan</p>
+</fn>
+<fn fn-type="other" id="econtrib001">
+<p>‡ These authors also contributed equally to this work.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">tsuno@wakayama-med.ac.jp</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>9</day>
+<month>3</month>
+<year>2015</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2015</year>
+</pub-date>
+<volume>10</volume>
+<issue>3</issue>
+<elocation-id>e0119435</elocation-id>
+<history>
+<date date-type="received">
+<day>24</day>
+<month>9</month>
+<year>2014</year>
+</date>
+<date date-type="accepted">
+<day>13</day>
+<month>1</month>
+<year>2015</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2015</copyright-year>
+<copyright-holder>Tsuno et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0119435" xlink:type="simple"/>
+<abstract>
+<p>Bullying in the workplace is an increasingly recognized threat to employee health. We sought to test three hypotheses related to the determinants of workplace bullying: power distance at work; safety climate; and frustration related to perceived social inequality. A questionnaire survey was administered to a nationally representative community-based sample of 5,000 residents in Japan aged 20–60 years. The questionnaire included questions about employment, occupation, company size, education, household income, and subjective social status (SSS). We inquired about both the witnessing and personal experience of workplace bullying during the past 30 days. Among 2,384 respondents, data were analyzed from 1,546 workers. Multiple logistic regression analyses were used to examine the social determinants of workplace bullying. Six percent and 15 percent of the total sample reported experiencing or witnessing workplace bullying, respectively. After adjusting for gender and age, temporary employees (Odds Ratio [OR]: 2.45 [95% Confidence Interval (CI) = 1.03–5.85]), junior high school graduates (OR: 2.62 [95%CI: 1.01–6.79]), workers with lowest household income (OR: 4.13 [95%CI:1.58–10.8]), and workers in the lowest SSS stratum (OR: 4.21 [95%CI:1.66–10.7]) were at increased risk of experiencing workplace bullying. When all variables were entered simultaneously in the model, a significant inverse association was observed between higher SSS and experiencing bullying (p = 0.002). Similarly in terms of witnessing bullying; SSS was significantly inversely associated (p = 0.017) while temporary employees reported a significantly higher risk of witnessing bullying compared to permanent workers (OR: 2.25 [95%CI:1.04 to 4.87]). The significant association between SSS and experiencing/witnessing workplace bullying supports the frustration hypothesis. The power distance hypothesis was also partly supported by the finding that temporary employees experienced a higher prevalence of workplace bullying.</p>
+</abstract>
+<funding-group>
+<funding-statement>This study was supported by the Health and Labor Sciences Research Grant 2009–2011 (H21-Rodo-Ippan-001) and the Work-related Diseases Clinical Research Grant 2014 (14070101-01) from the Ministry of Health, Labour and Welfare, Japan. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="0"/>
+<table-count count="5"/>
+<page-count count="15"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability" xlink:type="simple">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Workplace bullying is increasingly recognized as a serious public health issue in the workplace, due to both its high prevalence as well as its adverse impact on employee health [<xref rid="pone.0119435.ref001" ref-type="bibr">1</xref>]. The prevalence of workplace bullying has been reported to be as high as 15.7% on average in European countries, except Scandinavia [<xref rid="pone.0119435.ref002" ref-type="bibr">2</xref>]. A similarly high prevalence (9.0–15.5%) has been found in Asian countries including Japan [<xref rid="pone.0119435.ref003" ref-type="bibr">3</xref>–<xref rid="pone.0119435.ref005" ref-type="bibr">5</xref>]. Workplace bullying is associated with serious health problems for the victims, including psychological distress [<xref rid="pone.0119435.ref006" ref-type="bibr">6</xref>], depression [<xref rid="pone.0119435.ref007" ref-type="bibr">7</xref>,<xref rid="pone.0119435.ref008" ref-type="bibr">8</xref>], cardiovascular disease [<xref rid="pone.0119435.ref007" ref-type="bibr">7</xref>], and sickness absences [<xref rid="pone.0119435.ref009" ref-type="bibr">9</xref>].</p>
+<p>Socially disadvantaged groups in the working population are at heightened risk of being victimized by workplace bullying. Three separate theoretical reasons have been put forward to explain this phenomenon. First, workplace bullying is an expression of the power distance between the perpetrator and the victim [<xref rid="pone.0119435.ref010" ref-type="bibr">10</xref>,<xref rid="pone.0119435.ref011" ref-type="bibr">11</xref>]. People with less authority in an organization are vulnerable to becoming to the target of bullying by a person with higher authority who chooses to abuse their power. Workplace bullying is thus expected to be more prevalent among occupations with lower authority (such as manual workers) compared to occupations with higher authority (such as managers and professionals). Previous studies reported a higher prevalence of workplace bullying among unskilled workers who tend to be located in the lowest rungs of organizational hierarchies; conversely, the prevalence has been reported to be lowest among managers or supervisors [<xref rid="pone.0119435.ref012" ref-type="bibr">12</xref>–<xref rid="pone.0119435.ref014" ref-type="bibr">14</xref>]. However the results are not entirely consistent; the study by Hoel et al. [<xref rid="pone.0119435.ref015" ref-type="bibr">15</xref>] reported that the prevalence of bullying was similar across all occupational status groups.</p>
+<p>A different kind of power distance is expressed by the distinction between permanent workers and non-regular workers. The globalization of trade and its attendant demand for “labor flexibility” has resulted in an increase in the demand for non-regular (sometimes referred to as “precarious”) employment throughout industrialized economies. Non-regular employees are in a lower position in an organization, and often work for less pay, lack benefits (such as pensions or protection by labor laws), and they experience greater job insecurity than permanent employees [<xref rid="pone.0119435.ref016" ref-type="bibr">16</xref>,<xref rid="pone.0119435.ref017" ref-type="bibr">17</xref>]. Temporary workers ("Haken shain") represent one category of non-regular work. They consist of workers who are dispatched from agencies to work in organizations on a temporary basis. In addition to their lower position in an organization, dispatched workers are often seen as “someone from the outside”. Particularly in the context of Japanese culture—which is strongly group-oriented—the temporary worker is at risk of being doubly distanced from his peers, both in terms of the inferiority of his social status within the organization, but also in terms of the distinction between outsiders versus insiders [<xref rid="pone.0119435.ref018" ref-type="bibr">18</xref>].</p>
+<p>A second determinant of workplace bullying is the safety climate within the organization. According to Leymann, organizational factors are the major causes of bullying [<xref rid="pone.0119435.ref011" ref-type="bibr">11</xref>,<xref rid="pone.0119435.ref019" ref-type="bibr">19</xref>,<xref rid="pone.0119435.ref020" ref-type="bibr">20</xref>], and a number of studies confirmed that workplace bullying tends to be more prevalent in workplaces with poor work environment [<xref rid="pone.0119435.ref020" ref-type="bibr">20</xref>–<xref rid="pone.0119435.ref022" ref-type="bibr">22</xref>]. Psychosocial safety climate, which is defined as the “organizational policies, practices, and procedures for the protection of worker psychosocial health and safety” [<xref rid="pone.0119435.ref023" ref-type="bibr">23</xref>] is a predictor of workplace bullying [<xref rid="pone.0119435.ref024" ref-type="bibr">24</xref>]. In Japan, larger companies are more likely to have in place formal policies, practices, and procedures for the protection of worker psychosocial health, and hence company size has been used as a proxy for safety climate [<xref rid="pone.0119435.ref025" ref-type="bibr">25</xref>,<xref rid="pone.0119435.ref026" ref-type="bibr">26</xref>]. Due to their larger budgets, bigger companies are more likely to take thorough countermeasures against workplace bullying or harassment, and they more likely to enforce compliance [<xref rid="pone.0119435.ref027" ref-type="bibr">27</xref>]. Based on the foregoing, we hypothesize that the prevalence of workplace bullying will tend to be lower among larger companies.</p>
+<p>The third explanation for workplace bullying is based on the “frustration hypothesis”, viz. those who occupy a lower social position in social hierarchies are apt to experience more frustration as a result of being “pushed around” by those at the top, and/or possibly as the result of psychological feelings of insecurity stemming from invidious upward social comparisons. Additionally, people who are lower in social status may appraise an event differently compared to those who occupy more prestigious positions, i.e. they are more likely to perceive something happening to them as unfair or as the result of an injustice [<xref rid="pone.0119435.ref028" ref-type="bibr">28</xref>–<xref rid="pone.0119435.ref030" ref-type="bibr">30</xref>]. In turn, frustration may give rise to aggression, expressed in the form of bullying behavior towards those who are lower down on the hierarchy [<xref rid="pone.0119435.ref031" ref-type="bibr">31</xref>]. Subjective social status (SSS), defined as “the individual’s perception of his/her own position in the social hierarchy” [<xref rid="pone.0119435.ref032" ref-type="bibr">32</xref>], has been found to predict health status independently of objective indicators of socioeconomic position such as educational attainment and income [<xref rid="pone.0119435.ref033" ref-type="bibr">33</xref>]. The extent to which SSS predicts health net of objective socioeconomic indicators is hypothesized to capture the impact of psychosocial frustration associated with being lower in the social hierarchy. We therefore sought to test the relationship between SSS and workplace bullying, conditional on each worker’s objective socioeconomic status.</p>
+<p>To the best of our knowledge, no previous study has attempted to systematically or simultaneously examine the foregoing hypotheses about the social determinants of workplace bullying. To know the risk groups of being bullied would contribute to the prevention of workplace bullying. The aim of the present study was therefore to test whether: (1) characteristics related to workplace power distance (i.e., occupational status and employment type), (2) organizational characteristics related to safety climate (proxied by company/establishment size), and (3) SSS as an indicator of perceived social inequality or disadvantage, were related to the witnessing or personal experience of workplace bullying. We analyzed data from a nationally representative survey of the working population in Japan [<xref rid="pone.0119435.ref034" ref-type="bibr">34</xref>].</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Methods</title>
+<sec id="sec003">
+<title>Participants</title>
+<p>A questionnaire survey was administered to a nationally representative community-based sample of 5,000 residents in Japan aged 20–60 years from November 2010 to February 2011. A two-step random sampling procedure was adopted. First, all forty seven prefectures in Japan were grouped into 11 strata. The municipalities within each stratum were further grouped into 100 survey sites according to their population size (e.g., city with a population of more than 200,000, or city with a population of less than 200,000). A total of 5,000 individuals were randomly selected from the official residential registry at each survey site, and an invitation letter, questionnaire, and return envelope were mailed to each individual in November 2010. Those individuals who agreed to complete the survey did so anonymously. A total of 2,384 agreed to participate and completed the questionnaire (response rate, 47.7%). After excluding 751 respondents who were not active in the labor force at the time of the survey and 87 respondents who had missing responses on gender, age, education, household income, SSS, occupation, employment contract, company size, establishment size, or industry, the data from 1,546 respondents (809 men and 737 women) were analyzed.</p>
+</sec>
+<sec id="sec004">
+<title>Ethics Statement</title>
+<p>The Ethical Committee of the Graduate School of Medicine/Faculty of Medicine, the University of Tokyo reviewed and approved aims, and procedures of this study before conducting the survey (No. 2953).</p>
+</sec>
+<sec id="sec005">
+<title>Measures</title>
+<sec id="sec006">
+<title>Workplace bullying</title>
+<p>Workplace bullying was assessed by self-report, and we inquired about both the personal experience of bullying victimization as well as witnessing it in others [<xref rid="pone.0119435.ref002" ref-type="bibr">2</xref>,<xref rid="pone.0119435.ref035" ref-type="bibr">35</xref>]. Respondents were asked whether they personally experienced bullying during the past 30 days, using a single-item “Have you been bullied in your workplace?” The respondents who chose “yes” were defined as “victims”. In the survey, we did not present a definition of bullying to respondents due to limitations of space. In addition to this question, respondents were also asked whether they had witnessed bullying in their workplace during the past 30 days.</p>
+</sec>
+<sec id="sec007">
+<title>Social class indicators</title>
+<p>Occupational status of respondents was grouped into the following five categories: managers (e.g., vice-president, division manager, or section chief, etc.), non-manual (e.g., engineer, technicians, teachers, physician, nurses, clerks, accountants, data-entry operators, salesclerks, merchandise selling profession, real-estate salespersons, etc.), service (e.g., service workers, hairdressers, waiters/waitresses, home helpers), manual (e.g., drivers, transporters, telephone operators, tool makers, assembly-line operators, carpenters, construction assistants, etc.), and others.</p>
+<p>Employment type was grouped into the five categories: permanent, temporary employees, contract employees, part-time workers, and owner/executive officer/others.</p>
+<p>The industrial group classification was based on the Japan Standard Industry Classification (JSIC) but the number of participants within each classification was too small so that primary, secondary, and tertiary sector categories were used for analysis purpose [<xref rid="pone.0119435.ref036" ref-type="bibr">36</xref>]. Company size and establishment size was categorized based on the Industrial Safety and Health Law in Japan.</p>
+<p>Education was measured using a single-item question; “What level of educational attainment have you completed?” The respondents were asked to choose the following options: primary/junior high school, high school, vocational school, junior college, university, and graduate school. In our analysis, the levels of education were combined into four categories: junior high school graduate, high school graduate, vocational school/college graduate, and university graduate or higher.</p>
+<p>Annual household income over the preceding year was also measured using a single-item question; “What was the sum of earnings for your whole household over the past one year?” The respondents were asked to choose one of the following options: less than one million yen (US$11,000, if $1 = 110 yen), 1.00–2.49 million yen (US$11,000–27,390), 2.50–4.99 million yen (US$27,390–54,890), 5.00–7.49 million yen (US$54,890–82,390), 7.50–9.99 million yen (US$82,390–109,890), over 10.0 million yen (US$110,000), or unknown. Since the number of respondents in the “less than one million yen” stratum category was small (n = 18), “less than one million yen” and “1.00–2.49 million yen” categories were combined into “less than 2.5 million yen” category for analysis purpose. The average household income in Japan was 5,345,000 yen (US$58,795) and the median was 4,270,000 yen (US$46,970) in 2009 [<xref rid="pone.0119435.ref037" ref-type="bibr">37</xref>] so that respondents who reported less than 2.5 million yen (US$27,500) income represent a level of income that is below approximately half of the median household income (the conventional definition of poverty in the OECD).</p>
+<p>SSS was measured using a single-item question developed by Sakurai et al. [<xref rid="pone.0119435.ref038" ref-type="bibr">38</xref>]. The respondents were asked, “If Japanese society was divided into 10 social strata, which stratum do you suppose your household would belong to?” Although the SSS scale used in this study was not the one that is used most widely for research on SSS, i.e., the MacArther Scale of Subjective Social Status in a ladder format with 10 steps [<xref rid="pone.0119435.ref033" ref-type="bibr">33</xref>], the scale used in this study avoided the use of terms such as “class,” “income,” or “education” when asking respondents to rate their SSS. Since the number of respondents in the extreme categories was small, the respondents who chose the lowest (n = 36) and the second lowest (n = 89) strata were combined into the “lower” category, while the third (n = 212) and the fourth (n = 249) were combined into “lower middle”, the fifth (n = 420) and the sixth (n = 313) were combined into “middle”, and the seventh (n = 176), eighth (n = 40), ninth (n = 8), and top strata (n = 3) were combined into “upper/upper middle”.</p>
+</sec>
+</sec>
+<sec id="sec008">
+<title>Statistical analysis</title>
+<p>We used multiple logistic regression analysis to examine the relationship between each SES indicator and workplace bullying. Odds ratios (ORs) and 95% Confidence Intervals (CIs) were calculated adjusting for demographic variables (gender and age) (Model 1), work-related characteristics (occupational status, employment type, industrial grouping, company size, and establishment size) and non-work related SES (education, household income) (Model 2), and SSS (Model 3). The 2-tailed <italic>p</italic> value for statistical significance to see the differences among each social indicator was set at 0.05. All analyses were conducted using SPSS 21.0 for Windows.</p>
+</sec>
+</sec>
+<sec id="sec009" sec-type="results">
+<title>Results</title>
+<sec id="sec010">
+<title>Participant characteristics</title>
+<p>Approximately half of the respondents were non-manual workers, and 20% and 10% of respondents were manual and service workers, respectively. Over 60% of respondents were permanent workers, while 20% were part-time workers. About 30% of respondents worked at companies with fewer than 50 employees, while another 30% worked for in the civil service. Seventy percent of respondents worked in the tertiary sector, while less than one percent was engaged in the primary sector. Although the limited information on demographic characteristics of general working population in Japan, ratios of gender, employment contract, company size, and industrial groups in our data were are broadly comparable to general working population reported on Annual Report on the Labor Force Survey [<xref rid="pone.0119435.ref039" ref-type="bibr">39</xref>].</p>
+<p>Three out of ten respondents were university graduates or higher, while a further 30% were vocational school/junior college graduates, and the rest were high school graduates (<xref rid="pone.0119435.t001" ref-type="table">Table 1</xref>). Among 10% of respondents annual household income was more than 9.99 million yen (US$109,890), while 8% of respondents reported incomes lower than 2.5 million yen (US$27,500). About half of the respondents placed themselves in the middle stratum of SSS, and one third in the lower middle.</p>
+<table-wrap id="pone.0119435.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0119435.t001</object-id>
+<label>Table 1</label> <caption><title>Characteristics of respondents (<italic>N</italic> = 1,546).</title></caption>
+<alternatives>
+<graphic id="pone.0119435.t001g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0119435.t001" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1"/>
+<th align="left" rowspan="1" colspan="1">n</th>
+<th align="left" rowspan="1" colspan="1">%</th>
+<th align="left" rowspan="1" colspan="1"/>
+<th align="left" rowspan="1" colspan="1">n</th>
+<th align="left" rowspan="1" colspan="1">%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gender</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Company size</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Male</td>
+<td align="left" rowspan="1" colspan="1">809</td>
+<td align="char" char="." rowspan="1" colspan="1">52.3</td>
+<td align="left" rowspan="1" colspan="1"> &lt;50</td>
+<td align="left" rowspan="1" colspan="1">419</td>
+<td align="char" char="." rowspan="1" colspan="1">27.1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Female</td>
+<td align="left" rowspan="1" colspan="1">737</td>
+<td align="char" char="." rowspan="1" colspan="1">47.7</td>
+<td align="left" rowspan="1" colspan="1"> 50–299</td>
+<td align="left" rowspan="1" colspan="1">367</td>
+<td align="char" char="." rowspan="1" colspan="1">23.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Age group</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"> 300–999</td>
+<td align="left" rowspan="1" colspan="1">225</td>
+<td align="char" char="." rowspan="1" colspan="1">14.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &gt;50</td>
+<td align="left" rowspan="1" colspan="1">425</td>
+<td align="char" char="." rowspan="1" colspan="1">27.5</td>
+<td align="left" rowspan="1" colspan="1"> &gt;999</td>
+<td align="left" rowspan="1" colspan="1">427</td>
+<td align="char" char="." rowspan="1" colspan="1">27.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 40–49</td>
+<td align="left" rowspan="1" colspan="1">441</td>
+<td align="char" char="." rowspan="1" colspan="1">28.5</td>
+<td align="left" rowspan="1" colspan="1"> Civil service</td>
+<td align="left" rowspan="1" colspan="1">108</td>
+<td align="char" char="." rowspan="1" colspan="1">7.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 30–39</td>
+<td align="left" rowspan="1" colspan="1">435</td>
+<td align="char" char="." rowspan="1" colspan="1">28.1</td>
+<td align="left" rowspan="1" colspan="1">Establishment size</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &lt;30</td>
+<td align="left" rowspan="1" colspan="1">245</td>
+<td align="char" char="." rowspan="1" colspan="1">15.8</td>
+<td align="left" rowspan="1" colspan="1"> &lt;50</td>
+<td align="left" rowspan="1" colspan="1">840</td>
+<td align="char" char="." rowspan="1" colspan="1">54.3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Education</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"> 50–299</td>
+<td align="left" rowspan="1" colspan="1">457</td>
+<td align="char" char="." rowspan="1" colspan="1">29.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> University/graduate school graduate</td>
+<td align="left" rowspan="1" colspan="1">431</td>
+<td align="char" char="." rowspan="1" colspan="1">27.9</td>
+<td align="left" rowspan="1" colspan="1"> 300–999</td>
+<td align="left" rowspan="1" colspan="1">139</td>
+<td align="char" char="." rowspan="1" colspan="1">9.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Vocational school/college graduate</td>
+<td align="left" rowspan="1" colspan="1">424</td>
+<td align="char" char="." rowspan="1" colspan="1">27.4</td>
+<td align="left" rowspan="1" colspan="1"> &gt;999</td>
+<td align="left" rowspan="1" colspan="1">110</td>
+<td align="char" char="." rowspan="1" colspan="1">7.1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> High school graduate</td>
+<td align="left" rowspan="1" colspan="1">611</td>
+<td align="char" char="." rowspan="1" colspan="1">39.5</td>
+<td align="left" rowspan="1" colspan="1">Industrial groups</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Junior high school graduate</td>
+<td align="left" rowspan="1" colspan="1">80</td>
+<td align="char" char="." rowspan="1" colspan="1">5.2</td>
+<td align="left" rowspan="1" colspan="1"> Tertiary sector <xref rid="t001fn001" ref-type="table-fn">†</xref></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Household income (yen per year)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"> Telecommunication</td>
+<td align="left" rowspan="1" colspan="1">55</td>
+<td align="char" char="." rowspan="1" colspan="1">3.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &gt;9.99 million</td>
+<td align="left" rowspan="1" colspan="1">157</td>
+<td align="char" char="." rowspan="1" colspan="1">10.2</td>
+<td align="left" rowspan="1" colspan="1"> Transport</td>
+<td align="left" rowspan="1" colspan="1">76</td>
+<td align="char" char="." rowspan="1" colspan="1">8.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 7.5–9.99 million</td>
+<td align="left" rowspan="1" colspan="1">250</td>
+<td align="char" char="." rowspan="1" colspan="1">16.2</td>
+<td align="left" rowspan="1" colspan="1"> Wholesale and retail trade</td>
+<td align="left" rowspan="1" colspan="1">164</td>
+<td align="char" char="." rowspan="1" colspan="1">10.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 5.0–7.49 million</td>
+<td align="left" rowspan="1" colspan="1">416</td>
+<td align="char" char="." rowspan="1" colspan="1">26.9</td>
+<td align="left" rowspan="1" colspan="1"> Finance and insurance</td>
+<td align="left" rowspan="1" colspan="1">74</td>
+<td align="char" char="." rowspan="1" colspan="1">4.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 2.5–4.99 million</td>
+<td align="left" rowspan="1" colspan="1">469</td>
+<td align="char" char="." rowspan="1" colspan="1">30.3</td>
+<td align="left" rowspan="1" colspan="1"> Letting and sale of real estate</td>
+<td align="left" rowspan="1" colspan="1">10</td>
+<td align="char" char="." rowspan="1" colspan="1">0.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &lt;2.5 million</td>
+<td align="left" rowspan="1" colspan="1">126</td>
+<td align="char" char="." rowspan="1" colspan="1">8.2</td>
+<td align="left" rowspan="1" colspan="1"> Research study and consulting business</td>
+<td align="left" rowspan="1" colspan="1">18</td>
+<td align="char" char="." rowspan="1" colspan="1">1.2</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Unknown</td>
+<td align="left" rowspan="1" colspan="1">128</td>
+<td align="char" char="." rowspan="1" colspan="1">8.3</td>
+<td align="left" rowspan="1" colspan="1"> Hotels, restaurants and entertainment</td>
+<td align="left" rowspan="1" colspan="1">64</td>
+<td align="char" char="." rowspan="1" colspan="1">4.1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Subjective socioeconomic status (SSS)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"> Education and learning assistance</td>
+<td align="left" rowspan="1" colspan="1">66</td>
+<td align="char" char="." rowspan="1" colspan="1">4.3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Upper/upper middle (7–10)</td>
+<td align="left" rowspan="1" colspan="1">227</td>
+<td align="char" char="." rowspan="1" colspan="1">14.7</td>
+<td align="left" rowspan="1" colspan="1"> Healthcare and welfare</td>
+<td align="left" rowspan="1" colspan="1">212</td>
+<td align="char" char="." rowspan="1" colspan="1">13.7</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Middle (5–6)</td>
+<td align="left" rowspan="1" colspan="1">733</td>
+<td align="char" char="." rowspan="1" colspan="1">47.4</td>
+<td align="left" rowspan="1" colspan="1"> Other service industries</td>
+<td align="left" rowspan="1" colspan="1">151</td>
+<td align="char" char="." rowspan="1" colspan="1">9.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Lower middle (3–4)</td>
+<td align="left" rowspan="1" colspan="1">461</td>
+<td align="char" char="." rowspan="1" colspan="1">29.8</td>
+<td align="left" rowspan="1" colspan="1"> Public administration</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="char" char="." rowspan="1" colspan="1">6.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Lower (1–2)</td>
+<td align="left" rowspan="1" colspan="1">125</td>
+<td align="char" char="." rowspan="1" colspan="1">8.1</td>
+<td align="left" rowspan="1" colspan="1"> Others</td>
+<td align="left" rowspan="1" colspan="1">102</td>
+<td align="char" char="." rowspan="1" colspan="1">6.6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Occupations</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"> Secondary sector</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Managers</td>
+<td align="left" rowspan="1" colspan="1">151</td>
+<td align="char" char="." rowspan="1" colspan="1">9.8</td>
+<td align="left" rowspan="1" colspan="1"> Construction</td>
+<td align="left" rowspan="1" colspan="1">99</td>
+<td align="char" char="." rowspan="1" colspan="1">6.4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Non-manual workers</td>
+<td align="left" rowspan="1" colspan="1">803</td>
+<td align="char" char="." rowspan="1" colspan="1">51.9</td>
+<td align="left" rowspan="1" colspan="1"> Manufacturing</td>
+<td align="left" rowspan="1" colspan="1">313</td>
+<td align="char" char="." rowspan="1" colspan="1">20.2</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Service workers</td>
+<td align="left" rowspan="1" colspan="1">155</td>
+<td align="char" char="." rowspan="1" colspan="1">10.0</td>
+<td align="left" rowspan="1" colspan="1"> Electricity, gas and water supply</td>
+<td align="left" rowspan="1" colspan="1">32</td>
+<td align="char" char="." rowspan="1" colspan="1">2.1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Manual workers</td>
+<td align="left" rowspan="1" colspan="1">302</td>
+<td align="char" char="." rowspan="1" colspan="1">19.5</td>
+<td align="left" rowspan="1" colspan="1"> Primary sector</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Others</td>
+<td align="left" rowspan="1" colspan="1">135</td>
+<td align="char" char="." rowspan="1" colspan="1">8.7</td>
+<td align="left" rowspan="1" colspan="1"> Agriculture, forestry and fishing</td>
+<td align="left" rowspan="1" colspan="1">8</td>
+<td align="char" char="." rowspan="1" colspan="1">0.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Employment contract</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"> Mining and quarrying</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="char" char="." rowspan="1" colspan="1">0.1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Permanent</td>
+<td align="left" rowspan="1" colspan="1">1,014</td>
+<td align="char" char="." rowspan="1" colspan="1">65.6</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Temporary employees</td>
+<td align="left" rowspan="1" colspan="1">36</td>
+<td align="char" char="." rowspan="1" colspan="1">2.3</td>
+<td align="left" rowspan="1" colspan="1">Workplace bullying</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Contract employees</td>
+<td align="left" rowspan="1" colspan="1">94</td>
+<td align="char" char="." rowspan="1" colspan="1">6.1</td>
+<td align="left" rowspan="1" colspan="1"> Victims</td>
+<td align="left" rowspan="1" colspan="1">94</td>
+<td align="char" char="." rowspan="1" colspan="1">6.1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Part-time workers</td>
+<td align="left" rowspan="1" colspan="1">350</td>
+<td align="char" char="." rowspan="1" colspan="1">22.6</td>
+<td align="left" rowspan="1" colspan="1"> Bystanders</td>
+<td align="left" rowspan="1" colspan="1">229</td>
+<td align="char" char="." rowspan="1" colspan="1">14.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Owner/executive officer/others</td>
+<td align="left" rowspan="1" colspan="1">52</td>
+<td align="char" char="." rowspan="1" colspan="1">3.4</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>† Primary, secondary and tertiary sector were categorized according to Clark, 1940.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>A total of 94 (6.1%) respondents reported personally experiencing workplace bullying and 229 (14.8%) respondents witnessed workplace bullying.</p>
+</sec>
+<sec id="sec011">
+<title>Association of social class indicators with experiencing workplace bullying</title>
+<p>There was no significant association between gender and experiencing bullying, while the prevalence among those who were younger than thirty years old was higher than among older workers (<italic>p</italic> = 0.021, see <xref rid="pone.0119435.t002" ref-type="table">Table 2</xref>). After adjusting for gender and age, temporary employees were more likely to report workplace bullying compared to permanent employees (OR = 2.62, 95%CI = 1.01–6.79, see <xref rid="pone.0119435.t003" ref-type="table">Table 3</xref>). The odds ratio of experiencing bullying was also significantly elevated for junior high school graduates compared to university/graduate school graduates (OR = 2.45, 95%CI = 1.03–5.85). The prevalence of workplace bullying was significantly elevated in the lower household income groups and in the lower SSS stratum. After additionally adjusting for work-related characteristics (occupational status, employment type, industrial grouping, company size, and establishment size) and non-work related SES (education, household income), we found higher odds of experiencing bullying among respondents with less than 2.5 million yen (US$27,500) annual household income (OR = 4.24, 95%CI = 1.48–12.1, Model 2). After all variables were simultaneously entered in the model, household income and SSS remained significantly associated with workplace bullying (<italic>p</italic> = 0.017 and 0.002, respectively, Model 3). The associations of occupational status, company size, establishment size, and industry were not significant in any model (<italic>p</italic> &gt; 0.05).</p>
+<table-wrap id="pone.0119435.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0119435.t002</object-id>
+<label>Table 2</label> <caption><title>The prevalence and odds ratio for experience of workplace bulling by social class indicators among representative samples of Japanese workers (N = 1,546).</title></caption>
+<alternatives>
+<graphic id="pone.0119435.t002g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0119435.t002" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1"/>
+<th align="left" rowspan="1" colspan="1">n (Victims)</th>
+<th align="left" rowspan="1" colspan="1">n (All)</th>
+<th align="left" rowspan="1" colspan="1">Prevalence (%)</th>
+<th align="left" rowspan="1" colspan="1">Model 1 (95%Cl)</th>
+<th align="left" rowspan="1" colspan="1">Model 2 (95%Cl)</th>
+<th align="left" rowspan="1" colspan="1">Model 3 (95%Cl)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gender</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Male</td>
+<td align="left" rowspan="1" colspan="1">47</td>
+<td align="left" rowspan="1" colspan="1">809</td>
+<td align="left" rowspan="1" colspan="1">5.8</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Female</td>
+<td align="left" rowspan="1" colspan="1">47</td>
+<td align="left" rowspan="1" colspan="1">737</td>
+<td align="left" rowspan="1" colspan="1">6.4</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.02 (0.59 to 1.76)</td>
+<td align="left" rowspan="1" colspan="1">1.13 (0.65 to 1.95)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.641</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">p = 0.947</td>
+<td align="left" rowspan="1" colspan="1">p = 0.669</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Age group</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &gt;50</td>
+<td align="left" rowspan="1" colspan="1">19</td>
+<td align="left" rowspan="1" colspan="1">425</td>
+<td align="left" rowspan="1" colspan="1">4.5</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 40–49</td>
+<td align="left" rowspan="1" colspan="1">28</td>
+<td align="left" rowspan="1" colspan="1">441</td>
+<td align="left" rowspan="1" colspan="1">6.3</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.49 (0.79 to 2.81)</td>
+<td align="left" rowspan="1" colspan="1">1.44 (0.76 to 2.72)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 30–39</td>
+<td align="left" rowspan="1" colspan="1">22</td>
+<td align="left" rowspan="1" colspan="1">435</td>
+<td align="left" rowspan="1" colspan="1">5.1</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.17 (0.58 to 2.35)</td>
+<td align="left" rowspan="1" colspan="1">1.09 (0.54 to 2.19)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &lt;30</td>
+<td align="left" rowspan="1" colspan="1">25</td>
+<td align="left" rowspan="1" colspan="1">245</td>
+<td align="left" rowspan="1" colspan="1">10.2</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">2.12 (1.03 to 4.34)<xref rid="t002fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">1.83 (0.89 to 3.75)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.021</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">p = 0.144</td>
+<td align="left" rowspan="1" colspan="1">p = 0.265</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Education</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> University/graduate school graduate</td>
+<td align="left" rowspan="1" colspan="1">23</td>
+<td align="left" rowspan="1" colspan="1">431</td>
+<td align="left" rowspan="1" colspan="1">5.3</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Vocational school/college graduate</td>
+<td align="left" rowspan="1" colspan="1">33</td>
+<td align="left" rowspan="1" colspan="1">424</td>
+<td align="left" rowspan="1" colspan="1">7.8</td>
+<td align="left" rowspan="1" colspan="1">1.55 (0.87 to 2.76)</td>
+<td align="left" rowspan="1" colspan="1">1.45 (0.80 to 2.65)</td>
+<td align="left" rowspan="1" colspan="1">1.40 (0.77 to 2.56)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> High school graduate</td>
+<td align="left" rowspan="1" colspan="1">30</td>
+<td align="left" rowspan="1" colspan="1">611</td>
+<td align="left" rowspan="1" colspan="1">4.9</td>
+<td align="left" rowspan="1" colspan="1">1.02 (0.58 to 1.81)</td>
+<td align="left" rowspan="1" colspan="1">0.98 (0.52 to 1.84)</td>
+<td align="left" rowspan="1" colspan="1">0.90 (0.48 to 1.69)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Junior high school graduate</td>
+<td align="left" rowspan="1" colspan="1">8</td>
+<td align="left" rowspan="1" colspan="1">80</td>
+<td align="left" rowspan="1" colspan="1">10.0</td>
+<td align="left" rowspan="1" colspan="1">2.45 (1.03 to 5.85) <xref rid="t002fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">2.13 (0.79 to 5.76)</td>
+<td align="left" rowspan="1" colspan="1">1.88 (0.70 to 5.08)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.109</td>
+<td align="left" rowspan="1" colspan="1">p = 0.081</td>
+<td align="left" rowspan="1" colspan="1">p = 0.191</td>
+<td align="left" rowspan="1" colspan="1">p = 0.208</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Household income (yen per year)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &gt;9.99 million</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">157</td>
+<td align="left" rowspan="1" colspan="1">3.8</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 7.5–9.99 million</td>
+<td align="left" rowspan="1" colspan="1">18</td>
+<td align="left" rowspan="1" colspan="1">250</td>
+<td align="left" rowspan="1" colspan="1">7.2</td>
+<td align="left" rowspan="1" colspan="1">1.91 (0.74 to 4.95)</td>
+<td align="left" rowspan="1" colspan="1">1.90 (0.71 to 5.03)</td>
+<td align="left" rowspan="1" colspan="1">1.74 (0.64 to 4.73)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 5.0–7.49 million</td>
+<td align="left" rowspan="1" colspan="1">13</td>
+<td align="left" rowspan="1" colspan="1">416</td>
+<td align="left" rowspan="1" colspan="1">3.1</td>
+<td align="left" rowspan="1" colspan="1">0.84 (0.31 to 2.27)</td>
+<td align="left" rowspan="1" colspan="1">0.91 (0.33 to 2.52)</td>
+<td align="left" rowspan="1" colspan="1">0.70 (0.24 to 2.02)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 2.5–4.99 million</td>
+<td align="left" rowspan="1" colspan="1">27</td>
+<td align="left" rowspan="1" colspan="1">469</td>
+<td align="left" rowspan="1" colspan="1">5.8</td>
+<td align="left" rowspan="1" colspan="1">1.49 (0.60 to 3.70)</td>
+<td align="left" rowspan="1" colspan="1">1.52 (0.57 to 4.04)</td>
+<td align="left" rowspan="1" colspan="1">0.91 (0.33 to 2.54)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &lt;2.5 million</td>
+<td align="left" rowspan="1" colspan="1">18</td>
+<td align="left" rowspan="1" colspan="1">126</td>
+<td align="left" rowspan="1" colspan="1">14.3</td>
+<td align="left" rowspan="1" colspan="1">4.13 (1.58 to 10.8) <xref rid="t002fn002" ref-type="table-fn">**</xref></td>
+<td align="left" rowspan="1" colspan="1">4.24 (1.48 to 12.1) <xref rid="t002fn002" ref-type="table-fn">**</xref></td>
+<td align="left" rowspan="1" colspan="1">2.34 (0.78 to 7.01)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Unknown</td>
+<td align="left" rowspan="1" colspan="1">12</td>
+<td align="left" rowspan="1" colspan="1">128</td>
+<td align="left" rowspan="1" colspan="1">9.4</td>
+<td align="left" rowspan="1" colspan="1">2.22 (0.79 to 6.24)</td>
+<td align="left" rowspan="1" colspan="1">2.02 (0.68 to 5.96)</td>
+<td align="left" rowspan="1" colspan="1">1.44 (0.48 to 4.37)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p &lt; 0.001</td>
+<td align="left" rowspan="1" colspan="1">p = 0.001</td>
+<td align="left" rowspan="1" colspan="1">p = 0.004</td>
+<td align="left" rowspan="1" colspan="1">p = 0.017</td>
+</tr>
+<tr>
+<td colspan="2" align="left" rowspan="1">Subjective socioeconomic status (SSS)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Upper/upper middle (7–10)</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">227</td>
+<td align="left" rowspan="1" colspan="1">3.1</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Middle (5–6)</td>
+<td align="left" rowspan="1" colspan="1">30</td>
+<td align="left" rowspan="1" colspan="1">733</td>
+<td align="left" rowspan="1" colspan="1">4.1</td>
+<td align="left" rowspan="1" colspan="1">1.30 (0.56 to 3.02)</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.49 (0.61 to 3.64)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Lower middle (3–4)</td>
+<td align="left" rowspan="1" colspan="1">41</td>
+<td align="left" rowspan="1" colspan="1">461</td>
+<td align="left" rowspan="1" colspan="1">8.9</td>
+<td align="left" rowspan="1" colspan="1">2.92 (1.28 to 6.67) <xref rid="t002fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">3.43 (1.34 to 8.75) <xref rid="t002fn001" ref-type="table-fn">*</xref></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Lower (1–2)</td>
+<td align="left" rowspan="1" colspan="1">16</td>
+<td align="left" rowspan="1" colspan="1">125</td>
+<td align="left" rowspan="1" colspan="1">12.8</td>
+<td align="left" rowspan="1" colspan="1">4.21 (1.66 to 10.7)<xref rid="t002fn002" ref-type="table-fn">**</xref></td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">4.57 (1.59 to 13.1) <xref rid="t002fn002" ref-type="table-fn">**</xref></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p &lt; 0.001</td>
+<td align="left" rowspan="1" colspan="1">p &lt; 0.001</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">p = 0.002</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>* p&lt;0.05</p></fn>
+<fn id="t002fn002"><p>** p&lt;0.01</p></fn>
+<fn id="t002fn003"><p>Model 1: gender and age adjusted.</p></fn>
+<fn id="t002fn004"><p>Model 2: all variables except SSS were simultaneously entered in the model.</p></fn>
+<fn id="t002fn005"><p>Model 3: all variables were simultaneously entered in the model.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<table-wrap id="pone.0119435.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0119435.t003</object-id>
+<label>Table 3</label> <caption><title>The prevalence and odds ratio for experience of workplace bulling by social class indicators among representative samples of Japanese workers (cont.) (N = 1,546).</title></caption>
+<alternatives>
+<graphic id="pone.0119435.t003g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0119435.t003" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1"/>
+<th align="left" rowspan="1" colspan="1">n (victims)</th>
+<th align="left" rowspan="1" colspan="1">n (all)</th>
+<th align="left" rowspan="1" colspan="1">Prevalence (%)</th>
+<th align="left" rowspan="1" colspan="1">Model 1 (95%Cl)</th>
+<th align="left" rowspan="1" colspan="1">Model 2 (95%Cl)</th>
+<th align="left" rowspan="1" colspan="1">Model 3 (95%Cl)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Occupational status</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Non-manual workers</td>
+<td align="left" rowspan="1" colspan="1">47</td>
+<td align="left" rowspan="1" colspan="1">803</td>
+<td align="left" rowspan="1" colspan="1">5.9</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Service workers</td>
+<td align="left" rowspan="1" colspan="1">8</td>
+<td align="left" rowspan="1" colspan="1">155</td>
+<td align="left" rowspan="1" colspan="1">5.2</td>
+<td align="left" rowspan="1" colspan="1">0.88 (0.40 to 1.92)</td>
+<td align="left" rowspan="1" colspan="1">0.86 (0.38 to 1.95)</td>
+<td align="left" rowspan="1" colspan="1">0.82 (0.36 to 1.87)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Manual workers</td>
+<td align="left" rowspan="1" colspan="1">20</td>
+<td align="left" rowspan="1" colspan="1">302</td>
+<td align="left" rowspan="1" colspan="1">6.6</td>
+<td align="left" rowspan="1" colspan="1">1.32 (0.77 to 2.35)</td>
+<td align="left" rowspan="1" colspan="1">1.40 (0.69 to 2.85)</td>
+<td align="left" rowspan="1" colspan="1">1.32 (0.65 to 2.69)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Managers</td>
+<td align="left" rowspan="1" colspan="1">8</td>
+<td align="left" rowspan="1" colspan="1">151</td>
+<td align="left" rowspan="1" colspan="1">5.3</td>
+<td align="left" rowspan="1" colspan="1">1.22 (0.52 to 2.84)</td>
+<td align="left" rowspan="1" colspan="1">1.57 (0.63 to 3.91)</td>
+<td align="left" rowspan="1" colspan="1">1.88 (0.75 to 4.41)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Others</td>
+<td align="left" rowspan="1" colspan="1">11</td>
+<td align="left" rowspan="1" colspan="1">135</td>
+<td align="left" rowspan="1" colspan="1">8.1</td>
+<td align="left" rowspan="1" colspan="1">1.58 (0.79 to 3.16)</td>
+<td align="left" rowspan="1" colspan="1">1.57 (0.75 to 3.30)</td>
+<td align="left" rowspan="1" colspan="1">1.54 (0.73 to 3.25)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.803</td>
+<td align="left" rowspan="1" colspan="1">p = 0.642</td>
+<td align="left" rowspan="1" colspan="1">p = 0.583</td>
+<td align="left" rowspan="1" colspan="1">p = 0.501</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Employment status</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Permanent</td>
+<td align="left" rowspan="1" colspan="1">61</td>
+<td align="left" rowspan="1" colspan="1">1,014</td>
+<td align="left" rowspan="1" colspan="1">6.0</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Temporary employees</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">36</td>
+<td align="left" rowspan="1" colspan="1">16.7</td>
+<td align="left" rowspan="1" colspan="1">2.62 (1.01 to 6.79)<xref rid="t003fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">1.84 (0.68 to 5.00)</td>
+<td align="left" rowspan="1" colspan="1">1.67 (0.61 to 4.56)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Contract employees</td>
+<td align="left" rowspan="1" colspan="1">8</td>
+<td align="left" rowspan="1" colspan="1">94</td>
+<td align="left" rowspan="1" colspan="1">8.5</td>
+<td align="left" rowspan="1" colspan="1">1.54 (0.70 to 3.39)</td>
+<td align="left" rowspan="1" colspan="1">1.24 (0.54 to 2.83)</td>
+<td align="left" rowspan="1" colspan="1">1.13 (0.50 to 2.59)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Part-time workers</td>
+<td align="left" rowspan="1" colspan="1">17</td>
+<td align="left" rowspan="1" colspan="1">350</td>
+<td align="left" rowspan="1" colspan="1">4.9</td>
+<td align="left" rowspan="1" colspan="1">0.82 (0.44 to 1.53)</td>
+<td align="left" rowspan="1" colspan="1">0.61 (0.31 to 1.22)</td>
+<td align="left" rowspan="1" colspan="1">0.57 (0.28 to 1.12)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Owner/executive officer/others</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">52</td>
+<td align="left" rowspan="1" colspan="1">3.8</td>
+<td align="left" rowspan="1" colspan="1">0.69 (0.16 to 2.91)</td>
+<td align="left" rowspan="1" colspan="1">0.51 (0.11 to 2.49)</td>
+<td align="left" rowspan="1" colspan="1">0.55 (0.11 to 2.67)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.072</td>
+<td align="left" rowspan="1" colspan="1">p = 0.165</td>
+<td align="left" rowspan="1" colspan="1">p = 0.253</td>
+<td align="left" rowspan="1" colspan="1">p = 0.268</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Company size</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &lt;50</td>
+<td align="left" rowspan="1" colspan="1">26</td>
+<td align="left" rowspan="1" colspan="1">419</td>
+<td align="left" rowspan="1" colspan="1">6.2</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 50–299</td>
+<td align="left" rowspan="1" colspan="1">20</td>
+<td align="left" rowspan="1" colspan="1">367</td>
+<td align="left" rowspan="1" colspan="1">5.4</td>
+<td align="left" rowspan="1" colspan="1">0.86 (0.47 to 1.57)</td>
+<td align="left" rowspan="1" colspan="1">0.90 (0.46 to 1.77)</td>
+<td align="left" rowspan="1" colspan="1">0.85 (0.43 to 1.69)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 300–999</td>
+<td align="left" rowspan="1" colspan="1">13</td>
+<td align="left" rowspan="1" colspan="1">225</td>
+<td align="left" rowspan="1" colspan="1">5.8</td>
+<td align="left" rowspan="1" colspan="1">0.87 (0.43 to 1.73)</td>
+<td align="left" rowspan="1" colspan="1">0.96 (0.45 to 2.04)</td>
+<td align="left" rowspan="1" colspan="1">0.91 (0.42 to 1.96)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &gt;999</td>
+<td align="left" rowspan="1" colspan="1">31</td>
+<td align="left" rowspan="1" colspan="1">427</td>
+<td align="left" rowspan="1" colspan="1">7.3</td>
+<td align="left" rowspan="1" colspan="1">1.12 (0.65 to 1.94)</td>
+<td align="left" rowspan="1" colspan="1">1.41 (0.71 to 2.80)</td>
+<td align="left" rowspan="1" colspan="1">1.36 (0.68 to 2.72)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Civil service</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+<td align="left" rowspan="1" colspan="1">108</td>
+<td align="left" rowspan="1" colspan="1">3.7</td>
+<td align="left" rowspan="1" colspan="1">0.61 (0.21 to 1.78)</td>
+<td align="left" rowspan="1" colspan="1">0.72 (0.22 to 2.36)</td>
+<td align="left" rowspan="1" colspan="1">0.80 (0.24 to 2.65)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.668</td>
+<td align="left" rowspan="1" colspan="1">p = 0.750</td>
+<td align="left" rowspan="1" colspan="1">p = 0.561</td>
+<td align="left" rowspan="1" colspan="1">p = 0.618</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Establishment size</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &lt;50</td>
+<td align="left" rowspan="1" colspan="1">54</td>
+<td align="left" rowspan="1" colspan="1">840</td>
+<td align="left" rowspan="1" colspan="1">6.4</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 50–299</td>
+<td align="left" rowspan="1" colspan="1">24</td>
+<td align="left" rowspan="1" colspan="1">457</td>
+<td align="left" rowspan="1" colspan="1">5.3</td>
+<td align="left" rowspan="1" colspan="1">0.83 (0.51 to 1.37)</td>
+<td align="left" rowspan="1" colspan="1">0.86 (0.48 to 1.53)</td>
+<td align="left" rowspan="1" colspan="1">0.90 (0.51 to 1.62)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 300–999</td>
+<td align="left" rowspan="1" colspan="1">10</td>
+<td align="left" rowspan="1" colspan="1">139</td>
+<td align="left" rowspan="1" colspan="1">7.2</td>
+<td align="left" rowspan="1" colspan="1">1.08 (0.53 to 2.19)</td>
+<td align="left" rowspan="1" colspan="1">1.54 (0.47 to 2.35)</td>
+<td align="left" rowspan="1" colspan="1">1.13 (0.50 to 2.54)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &gt;999</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">110</td>
+<td align="left" rowspan="1" colspan="1">5.5</td>
+<td align="left" rowspan="1" colspan="1">0.80 (0.33 to 1.91)</td>
+<td align="left" rowspan="1" colspan="1">0.73 (0.28 to 1.94)</td>
+<td align="left" rowspan="1" colspan="1">0.80 (0.30 to 2.14)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.777</td>
+<td align="left" rowspan="1" colspan="1">p = 0.838</td>
+<td align="left" rowspan="1" colspan="1">p = 0.879</td>
+<td align="left" rowspan="1" colspan="1">p = 0.911</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Industrial groups</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Tertiary sector</td>
+<td align="left" rowspan="1" colspan="1">71</td>
+<td align="left" rowspan="1" colspan="1">1,092</td>
+<td align="left" rowspan="1" colspan="1">6.5</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Secondary sector</td>
+<td align="left" rowspan="1" colspan="1">22</td>
+<td align="left" rowspan="1" colspan="1">444</td>
+<td align="left" rowspan="1" colspan="1">5.0</td>
+<td align="left" rowspan="1" colspan="1">0.79 (0.47 to 1.32)</td>
+<td align="left" rowspan="1" colspan="1">0.67 (0.36 to 1.24)</td>
+<td align="left" rowspan="1" colspan="1">0.66 (0.35 to 1.22)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Primary sector</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">10</td>
+<td align="left" rowspan="1" colspan="1">10.0</td>
+<td align="left" rowspan="1" colspan="1">1.68 (0.21 to 13.6)</td>
+<td align="left" rowspan="1" colspan="1">1.24 (0.13 to 11.9)</td>
+<td align="left" rowspan="1" colspan="1">1.57 (0.17 to 14.9)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.454</td>
+<td align="left" rowspan="1" colspan="1">p = 0.574</td>
+<td align="left" rowspan="1" colspan="1">p = 0.425</td>
+<td align="left" rowspan="1" colspan="1">p = 0.360</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t003fn001"><p>* p&lt;0.05 ** p&lt;0.01</p></fn>
+<fn id="t003fn002"><p>Model 1: gender and age adjusted.</p></fn>
+<fn id="t003fn003"><p>Model 2: all variables except SSS were simultaneously entered in the model.</p></fn>
+<fn id="t003fn004"><p>Model 3: all variables were simultaneously entered in the model.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec012">
+<title>Association of social class indicators with witnessing workplace bullying</title>
+<p>We found no significant association between gender, age, and witnessing bullying (<xref rid="pone.0119435.t004" ref-type="table">Table 4</xref>). After adjusting for gender and age, employment contract type was significantly associated with witnessing bullying at work, with temporary employees having a high odds ratio (OR = 2.70, 95%CI = 1.27–5.73, see <xref rid="pone.0119435.t005" ref-type="table">Table 5</xref>). For occupational status, managers reported the lowest odds of witnessing bullying (OR = 0.52, 95%CI = 0.28–0.99) compared to non-manual workers. In terms of non-work related SES, the prevalence of witnessing workplace bullying varied significantly among groups classified according to education, household income, and SSS (<italic>p</italic> = 0.017, 0.030, and 0.000, respectively, Model 1 in <xref rid="pone.0119435.t004" ref-type="table">Table 4</xref>). Junior high school graduates had the highest odds (OR = 2.26, 95%CI = 1.26–4.03) compared to university/graduate school graduates. The lower household income groups (OR = 3.25, 95%CI = 1.60–6.62) and lower SSS groups (OR = 3.67, 95%CI = 1.91–7.07) also had higher odds ratios of witnessing bullying at work. After additionally adjusting for work-related characteristics (occupational status, employment type, industrial grouping, company size, and establishment size) and non-work related SES (education, household income) (Model 2), ORs were significantly elevated for witnessing bullying among temporary employees (OR = 2.32, 95% CI = 1.08–5.03) and those reporting less than 2.5 million yen (US$27,500) annual household income (OR = 2.62, 95%CI = 1.22–5.63). After all variables were simultaneously entered in the model (Model 3), only SSS remained significantly associated with witnessing workplace bullying (<italic>p</italic> = 0.017). Education and industry were marginally significantly associated with witnessing bullying in a nonlinear manner, with the vocational school or college graduates and primary sector group at a higher risk (<italic>p</italic> = 0.051 and <italic>p</italic> = 0.052, respectively). Company size and establishment size were not associated with witnessing bullying in any model (<italic>p</italic> &gt; 0.05). When we repeated the same analyses restricted only to workers who did not personally experience workplace bullying (n = 1,452), the results obtained were essentially unchanged.</p>
+<table-wrap id="pone.0119435.t004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0119435.t004</object-id>
+<label>Table 4</label> <caption><title>The prevalence and odds ratio for witnessing workplace bullying by social class indicators among representative samples of Japanese workers (N = 1,546).</title></caption>
+<alternatives>
+<graphic id="pone.0119435.t004g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0119435.t004" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1"/>
+<th align="left" rowspan="1" colspan="1">n (victims)</th>
+<th align="left" rowspan="1" colspan="1">n (all)</th>
+<th align="left" rowspan="1" colspan="1">Prevalence (%)</th>
+<th align="left" rowspan="1" colspan="1">Model 1 (95%Cl)</th>
+<th align="left" rowspan="1" colspan="1">Model 2 (95%Cl)</th>
+<th align="left" rowspan="1" colspan="1">Model 3 (95%Cl)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gender</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Male</td>
+<td align="left" rowspan="1" colspan="1">125</td>
+<td align="left" rowspan="1" colspan="1">809</td>
+<td align="left" rowspan="1" colspan="1">15.5</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Female</td>
+<td align="left" rowspan="1" colspan="1">104</td>
+<td align="left" rowspan="1" colspan="1">737</td>
+<td align="left" rowspan="1" colspan="1">14.1</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">0.90 (0.61 to 1.31)</td>
+<td align="left" rowspan="1" colspan="1">0.94 (0.64 to 1.37)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.899</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">p = 0.572</td>
+<td align="left" rowspan="1" colspan="1">p = 0.732</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Age group</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &gt;50</td>
+<td align="left" rowspan="1" colspan="1">57</td>
+<td align="left" rowspan="1" colspan="1">425</td>
+<td align="left" rowspan="1" colspan="1">13.4</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 40–49</td>
+<td align="left" rowspan="1" colspan="1">69</td>
+<td align="left" rowspan="1" colspan="1">441</td>
+<td align="left" rowspan="1" colspan="1">15.6</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.15 (0.77 to 1.71)</td>
+<td align="left" rowspan="1" colspan="1">1.13 (0.76 to 1.69)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 30–39</td>
+<td align="left" rowspan="1" colspan="1">65</td>
+<td align="left" rowspan="1" colspan="1">435</td>
+<td align="left" rowspan="1" colspan="1">14.9</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.00 (0.66 to 1.52)</td>
+<td align="left" rowspan="1" colspan="1">0.97 (0.64 to 1.47)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &lt;30</td>
+<td align="left" rowspan="1" colspan="1">38</td>
+<td align="left" rowspan="1" colspan="1">245</td>
+<td align="left" rowspan="1" colspan="1">15.5</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.01 (0.62 to 1.67)</td>
+<td align="left" rowspan="1" colspan="1">0.93 (0.56 to 1.53)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.801</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">p = 0.872</td>
+<td align="left" rowspan="1" colspan="1">p = 0.810</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Education</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> University/graduate school graduate</td>
+<td align="left" rowspan="1" colspan="1">63</td>
+<td align="left" rowspan="1" colspan="1">431</td>
+<td align="left" rowspan="1" colspan="1">14.6</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Vocational school/college graduate</td>
+<td align="left" rowspan="1" colspan="1">65</td>
+<td align="left" rowspan="1" colspan="1">424</td>
+<td align="left" rowspan="1" colspan="1">15.3</td>
+<td align="left" rowspan="1" colspan="1">1.04 (0.74 to 1.64)</td>
+<td align="left" rowspan="1" colspan="1">0.97 (0.64 to 1.46)</td>
+<td align="left" rowspan="1" colspan="1">1.50 (0.78 to 2.88)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> High school graduate</td>
+<td align="left" rowspan="1" colspan="1">80</td>
+<td align="left" rowspan="1" colspan="1">611</td>
+<td align="left" rowspan="1" colspan="1">13.1</td>
+<td align="left" rowspan="1" colspan="1">0.93 (0.64 to 4.03)</td>
+<td align="left" rowspan="1" colspan="1">0.75 (0.50 to 1.12)</td>
+<td align="left" rowspan="1" colspan="1">0.72 (0.48 to 1.07)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Junior high school graduate</td>
+<td align="left" rowspan="1" colspan="1">21</td>
+<td align="left" rowspan="1" colspan="1">80</td>
+<td align="left" rowspan="1" colspan="1">26.3</td>
+<td align="left" rowspan="1" colspan="1">2.26 (1.26 to 4.03) <xref rid="t004fn002" ref-type="table-fn">**</xref></td>
+<td align="left" rowspan="1" colspan="1">1.62 (0.84 to 3.11)</td>
+<td align="left" rowspan="1" colspan="1">0.94 (0.62 to 1.42)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.024</td>
+<td align="left" rowspan="1" colspan="1">p = 0.017</td>
+<td align="left" rowspan="1" colspan="1">p = 0.050</td>
+<td align="left" rowspan="1" colspan="1">p = 0.051</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Household income (yen per year)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &gt;9.99 million</td>
+<td align="left" rowspan="1" colspan="1">13</td>
+<td align="left" rowspan="1" colspan="1">157</td>
+<td align="left" rowspan="1" colspan="1">8.3</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 7.5–9.99 million</td>
+<td align="left" rowspan="1" colspan="1">33</td>
+<td align="left" rowspan="1" colspan="1">250</td>
+<td align="left" rowspan="1" colspan="1">13.2</td>
+<td align="left" rowspan="1" colspan="1">1.65 (0.84 to 3.24)</td>
+<td align="left" rowspan="1" colspan="1">1.48 (0.74 to 2.97)</td>
+<td align="left" rowspan="1" colspan="1">1.32 (0.65 to 2.66)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 5.0–7.49 million</td>
+<td align="left" rowspan="1" colspan="1">59</td>
+<td align="left" rowspan="1" colspan="1">416</td>
+<td align="left" rowspan="1" colspan="1">14.2</td>
+<td align="left" rowspan="1" colspan="1">1.80 (0.96 to 3.40)</td>
+<td align="left" rowspan="1" colspan="1">1.63 (0.84 to 3.15)</td>
+<td align="left" rowspan="1" colspan="1">1.31 (0.66 to 2.58)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 2.5–4.99 million</td>
+<td align="left" rowspan="1" colspan="1">76</td>
+<td align="left" rowspan="1" colspan="1">469</td>
+<td align="left" rowspan="1" colspan="1">16.2</td>
+<td align="left" rowspan="1" colspan="1">2.13 (1.14 to 3.97) <xref rid="t004fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">1.72 (0.89 to 3.35)</td>
+<td align="left" rowspan="1" colspan="1">1.22 (0.61 to 2.45)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &lt;2.5 million</td>
+<td align="left" rowspan="1" colspan="1">28</td>
+<td align="left" rowspan="1" colspan="1">126</td>
+<td align="left" rowspan="1" colspan="1">22.2</td>
+<td align="left" rowspan="1" colspan="1">3.25 (1.60 to 6.62) <xref rid="t004fn002" ref-type="table-fn">**</xref></td>
+<td align="left" rowspan="1" colspan="1">2.62 (1.22 to 5.63) <xref rid="t004fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">1.74 (0.78 to 3.88)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Unknown</td>
+<td align="left" rowspan="1" colspan="1">20</td>
+<td align="left" rowspan="1" colspan="1">128</td>
+<td align="left" rowspan="1" colspan="1">15.6</td>
+<td align="left" rowspan="1" colspan="1">2.12 (0.66 to 4.53)</td>
+<td align="left" rowspan="1" colspan="1">1.66 (0.76 to 3.66)</td>
+<td align="left" rowspan="1" colspan="1">1.30 (0.58 to 2.90)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.037</td>
+<td align="left" rowspan="1" colspan="1">p = 0.030</td>
+<td align="left" rowspan="1" colspan="1">p = 0.249</td>
+<td align="left" rowspan="1" colspan="1">p = 0.772</td>
+</tr>
+<tr>
+<td colspan="2" align="left" rowspan="1">Subjective socioeconomic status (SSS)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Upper/upper middle (7–10)</td>
+<td align="left" rowspan="1" colspan="1">17</td>
+<td align="left" rowspan="1" colspan="1">227</td>
+<td align="left" rowspan="1" colspan="1">7.5</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Middle (5–6)</td>
+<td align="left" rowspan="1" colspan="1">99</td>
+<td align="left" rowspan="1" colspan="1">733</td>
+<td align="left" rowspan="1" colspan="1">13.5</td>
+<td align="left" rowspan="1" colspan="1">1.96 (1.14 to 3.36)<xref rid="t004fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">1.72 (0.97 to 3.06)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Lower middle (3–4)</td>
+<td align="left" rowspan="1" colspan="1">85</td>
+<td align="left" rowspan="1" colspan="1">461</td>
+<td align="left" rowspan="1" colspan="1">18.4</td>
+<td align="left" rowspan="1" colspan="1">2.82 (1.62 to 4.90) <xref rid="t004fn002" ref-type="table-fn">**</xref></td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">2.30 (1.24 to 4.23) <xref rid="t004fn002" ref-type="table-fn">**</xref></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Lower (1–2)</td>
+<td align="left" rowspan="1" colspan="1">28</td>
+<td align="left" rowspan="1" colspan="1">125</td>
+<td align="left" rowspan="1" colspan="1">22.4</td>
+<td align="left" rowspan="1" colspan="1">3.67 (1.91 to 7.07)<xref rid="t004fn002" ref-type="table-fn">**</xref></td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">2.98 (1.44 to 6.17) <xref rid="t004fn002" ref-type="table-fn">**</xref></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p &lt; 0.001</td>
+<td align="left" rowspan="1" colspan="1">p &lt; 0.001</td>
+<td align="left" rowspan="1" colspan="1">―</td>
+<td align="left" rowspan="1" colspan="1">p = 0.017</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t004fn001"><p>* p&lt;0.05</p></fn>
+<fn id="t004fn002"><p>** p&lt;0.01</p></fn>
+<fn id="t004fn003"><p>Model 1: gender and age adjusted.</p></fn>
+<fn id="t004fn004"><p>Model 2: all variables except SSS were simultaneously entered in the model.</p></fn>
+<fn id="t004fn005"><p>Model 3: all variables were simultaneously entered in the model.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<table-wrap id="pone.0119435.t005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0119435.t005</object-id>
+<label>Table 5</label> <caption><title>The prevalence and odds ratio for witnessing workplace bullying by social class indicators among representative samples of Japanese workers (cont.) (N = 1,546).</title></caption>
+<alternatives>
+<graphic id="pone.0119435.t005g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0119435.t005" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1"/>
+<th align="left" rowspan="1" colspan="1">n (victims)</th>
+<th align="left" rowspan="1" colspan="1">n (all)</th>
+<th align="left" rowspan="1" colspan="1">Prevalence (%)</th>
+<th align="left" rowspan="1" colspan="1">Model 1 (95%Cl)</th>
+<th align="left" rowspan="1" colspan="1">Model 2 (95%Cl)</th>
+<th align="left" rowspan="1" colspan="1">Model 3 (95%Cl)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Occupational status</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Non-manual workers</td>
+<td align="left" rowspan="1" colspan="1">119</td>
+<td align="left" rowspan="1" colspan="1">803</td>
+<td align="left" rowspan="1" colspan="1">14.8</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Service workers</td>
+<td align="left" rowspan="1" colspan="1">22</td>
+<td align="left" rowspan="1" colspan="1">155</td>
+<td align="left" rowspan="1" colspan="1">14.2</td>
+<td align="left" rowspan="1" colspan="1">0.98 (0.60 to 1.62)</td>
+<td align="left" rowspan="1" colspan="1">1.00 (0.59 to 1.69)</td>
+<td align="left" rowspan="1" colspan="1">0.97 (0.57 to 1.64)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Manual workers</td>
+<td align="left" rowspan="1" colspan="1">58</td>
+<td align="left" rowspan="1" colspan="1">302</td>
+<td align="left" rowspan="1" colspan="1">19.2</td>
+<td align="left" rowspan="1" colspan="1">1.33 (0.92 to 1.92)</td>
+<td align="left" rowspan="1" colspan="1">1.37 (0.88 to 2.14)</td>
+<td align="left" rowspan="1" colspan="1">0.33 (0.85 to 2.09)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Managers</td>
+<td align="left" rowspan="1" colspan="1">13</td>
+<td align="left" rowspan="1" colspan="1">151</td>
+<td align="left" rowspan="1" colspan="1">8.6</td>
+<td align="left" rowspan="1" colspan="1">0.52 (0.28 to 0.99) <xref rid="t005fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">0.66 (0.34 to 1.27)</td>
+<td align="left" rowspan="1" colspan="1">0.70 (0.36 to 1.37)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Others</td>
+<td align="left" rowspan="1" colspan="1">17</td>
+<td align="left" rowspan="1" colspan="1">135</td>
+<td align="left" rowspan="1" colspan="1">12.6</td>
+<td align="left" rowspan="1" colspan="1">0.84 (0.48 to 1.44)</td>
+<td align="left" rowspan="1" colspan="1">0.82 (0.46 to 1.46)</td>
+<td align="left" rowspan="1" colspan="1">0.79 (0.44 to 1.40)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.044</td>
+<td align="left" rowspan="1" colspan="1">p = 0.058</td>
+<td align="left" rowspan="1" colspan="1">p = 0.265</td>
+<td align="left" rowspan="1" colspan="1">p = 0.351</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Employment status</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Permanent</td>
+<td align="left" rowspan="1" colspan="1">151</td>
+<td align="left" rowspan="1" colspan="1">1,014</td>
+<td align="left" rowspan="1" colspan="1">14.9</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Temporary employees</td>
+<td align="left" rowspan="1" colspan="1">11</td>
+<td align="left" rowspan="1" colspan="1">36</td>
+<td align="left" rowspan="1" colspan="1">30.6</td>
+<td align="left" rowspan="1" colspan="1">2.70 (1.27 to 5.73) <xref rid="t005fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">2.32 (1.08 to 5.03) <xref rid="t005fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">2.20 (1.02 to 4.79) <xref rid="t005fn001" ref-type="table-fn">*</xref></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Contract employees</td>
+<td align="left" rowspan="1" colspan="1">16</td>
+<td align="left" rowspan="1" colspan="1">94</td>
+<td align="left" rowspan="1" colspan="1">17.0</td>
+<td align="left" rowspan="1" colspan="1">1.24 (0.70 to 2.21)</td>
+<td align="left" rowspan="1" colspan="1">1.09 (0.60 to 1.98)</td>
+<td align="left" rowspan="1" colspan="1">1.06 (0.58 to 1.92)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Part-time workers</td>
+<td align="left" rowspan="1" colspan="1">48</td>
+<td align="left" rowspan="1" colspan="1">350</td>
+<td align="left" rowspan="1" colspan="1">13.7</td>
+<td align="left" rowspan="1" colspan="1">1.03 (0.68 to 1.55)</td>
+<td align="left" rowspan="1" colspan="1">0.90 (0.57 to 1.41)</td>
+<td align="left" rowspan="1" colspan="1">0.87 (0.56 to 1.37)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Owner/executive officer/others</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">52</td>
+<td align="left" rowspan="1" colspan="1">5.8</td>
+<td align="left" rowspan="1" colspan="1">0.36 (0.11 to 1.17)</td>
+<td align="left" rowspan="1" colspan="1">0.41 (0.12 to 1.45)</td>
+<td align="left" rowspan="1" colspan="1">0.46 (0.13 to 1.62)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.036</td>
+<td align="left" rowspan="1" colspan="1">p = 0.035</td>
+<td align="left" rowspan="1" colspan="1">p = 0.119</td>
+<td align="left" rowspan="1" colspan="1">p = 0.172</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Company size</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &lt;50</td>
+<td align="left" rowspan="1" colspan="1">57</td>
+<td align="left" rowspan="1" colspan="1">419</td>
+<td align="left" rowspan="1" colspan="1">13.6</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 50–299</td>
+<td align="left" rowspan="1" colspan="1">60</td>
+<td align="left" rowspan="1" colspan="1">367</td>
+<td align="left" rowspan="1" colspan="1">16.3</td>
+<td align="left" rowspan="1" colspan="1">1.23 (0.83 to 1.83)</td>
+<td align="left" rowspan="1" colspan="1">1.28 (0.82 to 2.01)</td>
+<td align="left" rowspan="1" colspan="1">1.27 (0.81 to 2.00)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 300–999</td>
+<td align="left" rowspan="1" colspan="1">33</td>
+<td align="left" rowspan="1" colspan="1">225</td>
+<td align="left" rowspan="1" colspan="1">14.7</td>
+<td align="left" rowspan="1" colspan="1">1.07 (0.67 to 1.83)</td>
+<td align="left" rowspan="1" colspan="1">1.28 (0.76 to 2.14)</td>
+<td align="left" rowspan="1" colspan="1">1.27 (0.76 to 2.13)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &gt;999</td>
+<td align="left" rowspan="1" colspan="1">65</td>
+<td align="left" rowspan="1" colspan="1">427</td>
+<td align="left" rowspan="1" colspan="1">15.2</td>
+<td align="left" rowspan="1" colspan="1">1.13 (0.78 to 1.66)</td>
+<td align="left" rowspan="1" colspan="1">1.39 (0.85 to 2.25)</td>
+<td align="left" rowspan="1" colspan="1">1.36 (0.84 to 2.21)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Civil service</td>
+<td align="left" rowspan="1" colspan="1">14</td>
+<td align="left" rowspan="1" colspan="1">108</td>
+<td align="left" rowspan="1" colspan="1">13.0</td>
+<td align="left" rowspan="1" colspan="1">0.94 (0.50 to 1.77)</td>
+<td align="left" rowspan="1" colspan="1">1.21 (0.59 to 2.50)</td>
+<td align="left" rowspan="1" colspan="1">1.30 (0.63 to 2.68)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.823</td>
+<td align="left" rowspan="1" colspan="1">p = 0.837</td>
+<td align="left" rowspan="1" colspan="1">p = 0.745</td>
+<td align="left" rowspan="1" colspan="1">p = 0.787</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Establishment size</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &lt;50</td>
+<td align="left" rowspan="1" colspan="1">124</td>
+<td align="left" rowspan="1" colspan="1">840</td>
+<td align="left" rowspan="1" colspan="1">14.8</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 50–299</td>
+<td align="left" rowspan="1" colspan="1">72</td>
+<td align="left" rowspan="1" colspan="1">457</td>
+<td align="left" rowspan="1" colspan="1">15.8</td>
+<td align="left" rowspan="1" colspan="1">1.07 (0.78 to 1.47)</td>
+<td align="left" rowspan="1" colspan="1">0.99 (0.68 to 1.44)</td>
+<td align="left" rowspan="1" colspan="1">0.99 (0.68 to 1.45)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> 300–999</td>
+<td align="left" rowspan="1" colspan="1">15</td>
+<td align="left" rowspan="1" colspan="1">139</td>
+<td align="left" rowspan="1" colspan="1">10.8</td>
+<td align="left" rowspan="1" colspan="1">0.68 (0.38 to 1.20)</td>
+<td align="left" rowspan="1" colspan="1">0.67 (0.36 to 1.26)</td>
+<td align="left" rowspan="1" colspan="1">0.67 (0.35 to 1.25)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> &gt;999</td>
+<td align="left" rowspan="1" colspan="1">18</td>
+<td align="left" rowspan="1" colspan="1">110</td>
+<td align="left" rowspan="1" colspan="1">16.4</td>
+<td align="left" rowspan="1" colspan="1">1.09 (0.64 to 1.88)</td>
+<td align="left" rowspan="1" colspan="1">1.05 (0.56 to 1.98)</td>
+<td align="left" rowspan="1" colspan="1">1.08 (0.58 to 2.04)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.514</td>
+<td align="left" rowspan="1" colspan="1">p = 0.500</td>
+<td align="left" rowspan="1" colspan="1">p = 0.596</td>
+<td align="left" rowspan="1" colspan="1">p = 0.572</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Industrial groups</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Tertiary sector</td>
+<td align="left" rowspan="1" colspan="1">71</td>
+<td align="left" rowspan="1" colspan="1">1,092</td>
+<td align="left" rowspan="1" colspan="1">6.5</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+<td align="left" rowspan="1" colspan="1">1.00</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Secondary sector</td>
+<td align="left" rowspan="1" colspan="1">22</td>
+<td align="left" rowspan="1" colspan="1">444</td>
+<td align="left" rowspan="1" colspan="1">5.0</td>
+<td align="left" rowspan="1" colspan="1">1.03 (0.74 to 1.42)</td>
+<td align="left" rowspan="1" colspan="1">0.90 (0.61 to 1.33)</td>
+<td align="left" rowspan="1" colspan="1">0.90 (0.61 to 1.33)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"> Primary sector</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">10</td>
+<td align="left" rowspan="1" colspan="1">10.0</td>
+<td align="left" rowspan="1" colspan="1">3.90 (1.09 to 14.0)<xref rid="t005fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">4.48 (1.16 to 17.3) <xref rid="t005fn001" ref-type="table-fn">*</xref></td>
+<td align="left" rowspan="1" colspan="1">5.10 (1.29 to 20.1) <xref rid="t005fn001" ref-type="table-fn">*</xref></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">p = 0.454</td>
+<td align="left" rowspan="1" colspan="1">p = 0.114</td>
+<td align="left" rowspan="1" colspan="1">p = 0.074</td>
+<td align="left" rowspan="1" colspan="1">p = 0.052</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t005fn001"><p>* p&lt;0.05</p></fn>
+<fn id="t005fn002"><p>**p&lt;0.01</p></fn>
+<fn id="t005fn003"><p>Model 1: gender and age adjusted.</p></fn>
+<fn id="t005fn004"><p>Model 2: all variables except SSS were simultaneously entered in the model.</p></fn>
+<fn id="t005fn005"><p>Model 3: all variables were simultaneously entered in the model.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+</sec>
+<sec id="sec013" sec-type="conclusions">
+<title>Discussion</title>
+<p>The present study found that low SSS was significantly and positively associated with experiencing and witnessing workplace bullying, independently of other work characteristics and non-work related SES indicators, supporting a frustration hypothesis. Temporary employees reported significantly higher prevalence of witnessing workplace bullying compared to permanent employees, while other non-regular employees did not report an increase. This finding partially supports the power-distance hypothesis. While educational status and household income was significantly and inversely associated with workplace bullying prior to adjusting for SSS, they became non-significant after adjusting for SSS. Our results do not support the organizational safety culture hypothesis, although we hasten to add that we did not directly assess safety climate but instead used a proxy indicator (company size). Taken together, SSS showed the strongest association with both the personal experience of and witnessing bullying.</p>
+<p>One possible explanation for this finding is that SSS is better at capturing—over and above education, occupational status and income—the psychological sense of insecurity or shame associated with being lower in the societal hierarchy. SSS is inherently relational, i.e. it describes an individual’s position as being higher to lower <italic>relative</italic> to other people around them. Hence, even in a relatively homogeneous context—for example, in a workplace where everyone has a similar degree of educational attainment or earns a similar income—there can develop a social hierarchy based upon perceived status. Lower status in this sense seems to be a stronger predictor of bullying victimization compared to traditional (and objective) indicators of socioeconomic status.</p>
+<p>An alternative explanation for our finding is that individuals who perceived themselves to be lower in the social hierarchy are more likely to perceive an event occurring to them as stemming from injustice or unfair treatment [<xref rid="pone.0119435.ref028" ref-type="bibr">28</xref>–<xref rid="pone.0119435.ref030" ref-type="bibr">30</xref>]. In the present study, we did not attempt to provide a definition of bullying in the questionnaire, and thus all reports of experiencing or witnessing bullying are via self-report. It is possible that individuals with low SSS are more likely to experience or witness workplace bullying. Because SSS is also self-perceived, this may have contributed to common source bias.</p>
+<p>Temporary employees ("haken shain") were more likely to experience and observe workplace bullying compared to permanent workers in this study, whereas occupational status was not associated with workplace bullying. One of the possible explanations is that temporary employment is the strongest predictor of being in a lower position in an organization because they lack decision-making authority [<xref rid="pone.0119435.ref016" ref-type="bibr">16</xref>,<xref rid="pone.0119435.ref017" ref-type="bibr">17</xref>]. This is compatible with studies that reported high prevalence among workers occupying the lowest position in the organization such as unskilled workers [<xref rid="pone.0119435.ref012" ref-type="bibr">12</xref>,<xref rid="pone.0119435.ref013" ref-type="bibr">13</xref>]. Another possible explanation is job insecurity. Temporary employment is characterized by lack of protection from labor laws (such as anti-discrimination legislation) and hence temporary employees may be especially vulnerable to social exclusion in the workplace [<xref rid="pone.0119435.ref016" ref-type="bibr">16</xref>,<xref rid="pone.0119435.ref017" ref-type="bibr">17</xref>,<xref rid="pone.0119435.ref040" ref-type="bibr">40</xref>]. Especially in a group-oriented culture such as Japanese society, not being received into the group may make people feel insecure [<xref rid="pone.0119435.ref018" ref-type="bibr">18</xref>]. A typical illustration of this social exclusion is the practice (by permanent workers) of calling a temporary employee “haken-san” (“haken” means a temporary employee and “san” means Mr. or Ms. in Japanese), not using his/her name. We also found that temporary employees were significantly more likely to witness bullying even when we restricted and re-ran the analyses only among workers who did not experience workplace bullying. This indicates temporary employees work in poor working environments that create and sustain conditions that are conducive to bullying [<xref rid="pone.0119435.ref024" ref-type="bibr">24</xref>]. The present findings partly support our power distance hypothesis and expanded this evidence to the working population in Japan.</p>
+<p>The present study found that employees who received no high school education and had the lowest annual household incomes (&lt; 2.5 million yen or US$27,500) were at highest risk not only for experiencing but also witnessing bullying. Although few reports are available on the relation between non-work related SES indicators and workplace bullying, the results in this study are in line with previous research suggesting an association between socioeconomic disadvantage and bullying in childhood [<xref rid="pone.0119435.ref041" ref-type="bibr">41</xref>], and among school-aged adolescents [<xref rid="pone.0119435.ref042" ref-type="bibr">42</xref>] as well as lifetime bullying behavior toward others [<xref rid="pone.0119435.ref043" ref-type="bibr">43</xref>]. As SES is reported as an indicator of psychosocial work environment [<xref rid="pone.0119435.ref044" ref-type="bibr">44</xref>], the findings in this study also suggests that non-work SES could be an indicator of working at poor working environments which leads to bullying.</p>
+<p>In the present study, company and establishment size were not associated with experiencing and witnessing workplace bullying. Although this result tends not to support our hypothesis about safety climate, we hasten to add that company size is an imperfect proxy of organizational culture, i.e. not every large company makes the same degree of investment or commitment towards maintaining a safe workplace climate [<xref rid="pone.0119435.ref023" ref-type="bibr">23</xref>].</p>
+<p>The overall reported prevalence of workplace bullying in the current study was six percent. Fifteen percent had witnessed colleagues being bullied. These figures are lower compared to other studies in Japan (9.0% to 15.4%) [<xref rid="pone.0119435.ref003" ref-type="bibr">3</xref>–<xref rid="pone.0119435.ref005" ref-type="bibr">5</xref>] as well as the average prevalence rate reported in a meta-analysis [<xref rid="pone.0119435.ref002" ref-type="bibr">2</xref>]. It is well known that prevalence of bullying is highly dependent on the measurement method. For example, in the previous study when using a self-labeling method with a definition of bullying the prevalence was lower (5.9%) than when using a behavioral experience method, which asked respondents whether they had experienced various negative acts during the past six months (9.0%) using the same dataset [<xref rid="pone.0119435.ref005" ref-type="bibr">5</xref>]. The prevalence rates mentioned above [<xref rid="pone.0119435.ref002" ref-type="bibr">2</xref>–<xref rid="pone.0119435.ref007" ref-type="bibr">7</xref>] were assessed by a behavioral experience method, while the measurement used in this study was a self-labeling method without a definition of bullying and asked about current experience at the time of the survey, which may have contributed to the low prevalence found.</p>
+<sec id="sec014">
+<title>Limitations</title>
+<p>Several limitations of the present study should be noted. First, the study is cross-sectional, so we cannot draw causal influences regarding whether social class indicators leads to experiencing workplace bullying, or experiencing bullying determine his/her social class. However, in this study bullying was also correlated with other objective indicators of socioeconomic position, such as temporary work status, educational attainment, and household income, which are unlikely to have been affected by reverse causation. Thus, we assume that SES/SSS is an indicator of bullying but longitudinal studies are needed to clarify this causality. Secondly, we used self-report measures and there may have been issues with self-reporting bias, especially in terms of experiencing workplace bullying. Although we used two methods to measure bullying in this study to capture a more accurate picture of workplace bullying, there is a possibility that individuals with different SSS may have different definition and understanding of bullying. In addition, measuring the thirty-day prevalence of workplace bullying may contribute to underestimation. We also did not inquire about perpetration of bullying so that we could not identify whether bullying occurred among workers from similar SES backgrounds, or whether it was directed by higher SES workers toward lower SES workers. Lastly, some psychological states such as negative affectivity may have affected both perceptions of being bullied and self-perception of social status [<xref rid="pone.0119435.ref038" ref-type="bibr">38</xref>,<xref rid="pone.0119435.ref045" ref-type="bibr">45</xref>].</p>
+</sec>
+</sec>
+<sec id="sec015" sec-type="conclusions">
+<title>Conclusions</title>
+<p>The prevalence of workplace bullying varies by not only employment type but also by non-work related socioeconomic indicators such as education, household income, and SSS. Specifically, the current investigation found that younger employees who received no high school education, worked as a temporary employee, had low annual household incomes, and lower subjective social status were at highest risk for experiencing workplace bullying. Future prevention of workplace bullying should focus on workers with low SES or SSS.</p>
+</sec>
+</body>
+<back>
+<ref-list>
+<title>References</title>
+<ref id="pone.0119435.ref001"><label>1</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Zapf</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Escartín</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Einarsen</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Hoel</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Vartia</surname> <given-names>M</given-names></name>. <chapter-title>Empirical findings on prevalence and risk groups of bullying in the workplace</chapter-title>. In: <name name-style="western"><surname>Einarsen</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Hoel</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Zapf</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Cooper</surname> <given-names>CL</given-names></name>, editors. <source>Bullying and harassment in the workplace: developments in theory, research, and practice</source>. <publisher-loc>Boca Raton</publisher-loc>: <publisher-name>CRC Press</publisher-name>; <year>2011</year>. pp. <fpage>75</fpage>–<lpage>105</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nielsen</surname> <given-names>MB</given-names></name>, <name name-style="western"><surname>Matthiesen</surname> <given-names>SB</given-names></name>, <name name-style="western"><surname>Einarsen</surname> <given-names>S</given-names></name>. <article-title>The impact of methodological moderators on prevalence rates of workplace bullying. A meta-analysis</article-title>. <source>J Occup Organ Psychol</source>. <year>2010</year>; <volume>83</volume>: <fpage>955</fpage>–<lpage>979</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Asakura</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Ando</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Giorgi</surname> <given-names>G</given-names></name>. <article-title>Workplace bullying in Japan: an epidemiological study</article-title>. <source>Risorsa Uomo</source>. <year>2008</year>; <volume>14</volume>: <fpage>1</fpage>–<lpage>15</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Takaki</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Taniguchi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Fukuoka</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Fujii</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Tsutsumi</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Nakajima</surname> <given-names>K</given-names></name>, <etal>et al</etal>. <article-title>Workplace bullying could play important roles in the relationships between job strain and symptoms of depression and sleep disturbance</article-title>. <source>J Occup Health</source>. <year>2010</year>; <volume>52</volume>: <fpage>367</fpage>–<lpage>374</lpage>. <object-id pub-id-type="pmid">20944438</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tsuno</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Kawakami</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Inoue</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Abe</surname> <given-names>K</given-names></name>. <article-title>Measuring workplace bullying: reliability and validity of the Japanese version of the Negative Acts Questionnaire</article-title>. <source>J Occup Health</source>. <year>2010</year>; <volume>52</volume>: <fpage>216</fpage>–<lpage>226</lpage>. <object-id pub-id-type="pmid">20571253</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nielsen</surname> <given-names>MB</given-names></name>, <name name-style="western"><surname>Tvedt</surname> <given-names>SD</given-names></name>, <name name-style="western"><surname>Matthiesen</surname> <given-names>SB</given-names></name>. <article-title>Prevalence and occupational predictors of psychological distress in the offshore petroleum industry: a prospective study</article-title>. <source>Int Arch Occup Environ Health</source>. <year>2013</year>; <volume>86</volume>: <fpage>875</fpage>–<lpage>885</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00420-012-0825-x" xlink:type="simple">10.1007/s00420-012-0825-x</ext-link></comment> <object-id pub-id-type="pmid">23099441</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kivimäki</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Virtanen</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Vartia</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Elovainio</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Vahtera</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Keltikangas-Järvinen</surname> <given-names>L</given-names></name>. <article-title>Workplace bullying and the risk of cardiovascular disease and depression</article-title>. <source>Occup Environ Med</source>. <year>2003</year>; <volume>60</volume>: <fpage>779</fpage>–<lpage>783</lpage>. <object-id pub-id-type="pmid">14504368</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rugulies</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Madsen</surname> <given-names>IE</given-names></name>, <name name-style="western"><surname>Hjarsbech</surname> <given-names>PU</given-names></name>, <name name-style="western"><surname>Hogh</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Borg</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Carneiro</surname> <given-names>IG</given-names></name>, <etal>et al</etal>. <article-title>Bullying at work and onset of a major depressive episode among Danish female eldercare workers</article-title>. <source>Scand J Work Environ Health</source>. <year>2012</year>; <volume>38</volume>: <fpage>218</fpage>–<lpage>227</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.5271/sjweh.3278" xlink:type="simple">10.5271/sjweh.3278</ext-link></comment> <object-id pub-id-type="pmid">22298126</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vingård</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Lindberg</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Josephson</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Voss</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Heijbel</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Alfredsson</surname> <given-names>L</given-names></name>, <etal>et al</etal>. <article-title>Long-term sick-listing among women in the public sector and its associations with age, social situation, lifestyle, and work factors: a three-year follow-up study</article-title>. <source>Scand J Public Health</source>. <year>2005</year>; <volume>33</volume>: <fpage>370</fpage>–<lpage>375</lpage>. <object-id pub-id-type="pmid">16265806</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref010"><label>10</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Einarsen</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Hoel</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Zapf</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Cooper</surname> <given-names>CL</given-names></name>. <chapter-title>The concept of bullying at work: the European tradition</chapter-title>. In <name name-style="western"><surname>Einarsen</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Hoel</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Zapf</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Cooper</surname> <given-names>CL</given-names></name>, editors. <source>Bullying and emotional abuse in the workplace: international perspectives in research and practice</source>. <publisher-loc>London</publisher-loc>: <publisher-name>Taylor &amp; Francis Inc</publisher-name>; <year>2003</year>. pp. <fpage>3</fpage>–<lpage>30</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Leymann</surname> <given-names>H</given-names></name>. <article-title>The content and development of mobbing at work</article-title>. <source>Eur J Work Organ Psychol</source>. <year>1996</year>; <volume>5</volume>: <fpage>165</fpage>–<lpage>184</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Niedhammer</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>David</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Degioanni</surname> <given-names>S</given-names></name>. <article-title>Economic activities and occupations at high risk for workplace bullying: results from a large-scale cross-sectional survey in the general working population in France</article-title>. <source>Int Arch Occup Environ Health</source>. <year>2007</year>; <volume>80</volume>: <fpage>346</fpage>–<lpage>353</lpage>. <object-id pub-id-type="pmid">16944191</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ortega</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Høgh</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Pejtersen</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Olsen</surname> <given-names>O</given-names></name>. <article-title>Prevalence of workplace bullying and risk groups: a representative population study</article-title>. <source>Int Arch Occup Environ Health</source>. <year>2009</year>; <volume>82</volume>: <fpage>417</fpage>–<lpage>426</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00420-008-0339-8" xlink:type="simple">10.1007/s00420-008-0339-8</ext-link></comment> <object-id pub-id-type="pmid">18584195</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Salin</surname> <given-names>D</given-names></name>. <article-title>Prevalence and forms of bullying among business professionals: a comparison of two different strategies for measuring bullying</article-title>. <source>Eur J Work Organ Psychol</source>. <year>2001</year>; <volume>10</volume>: <fpage>425</fpage>–<lpage>441</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hoel</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Cooper</surname> <given-names>CL</given-names></name>, <name name-style="western"><surname>Faragher</surname> <given-names>B</given-names></name>. <article-title>The experience of bullying in Great Britain: the impact of organizational status</article-title>. <source>Eur J Work Organ Psychol</source>. <year>2001</year>; <volume>10</volume>: <fpage>443</fpage>–<lpage>465</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Quinlan</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Mayhew</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Bohle</surname> <given-names>P</given-names></name>. <article-title>The global expansion of precarious employment, work disorganization, and consequences for occupational health: a review of recent research</article-title>. <source>Int J Health Serv</source>. <year>2001</year>; <volume>31</volume>: <fpage>335</fpage>–<lpage>414</lpage>. <object-id pub-id-type="pmid">11407174</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Virtanen</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Vahtera</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Kivimäki</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Pentti</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Ferrie</surname> <given-names>J</given-names></name>. <article-title>Employment security and health</article-title>. <source>J Epidemiol Community Health</source>. <year>2002</year>; <volume>56</volume>: <fpage>569</fpage>–<lpage>574</lpage>. <object-id pub-id-type="pmid">12118045</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Markus</surname> <given-names>HR</given-names></name>, <name name-style="western"><surname>Kitayama</surname> <given-names>S</given-names></name>. <article-title>Culture and the self: Implications for cognition, emotion, and motivation</article-title>. <source>Psychol Rev</source>. <year>1991</year>; <volume>98</volume>: <fpage>224</fpage>–<lpage>253</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Agervold</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Mikkelsen</surname> <given-names>EG</given-names></name>. <article-title>Relationships between bullying, psychosocial work environment and individual stress reactions</article-title>. <source>Work Stress</source>. <year>2004</year>; <volume>18</volume>: <fpage>336</fpage>–<lpage>351</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref020"><label>20</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Salin</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Hoel</surname> <given-names>H</given-names></name>. <chapter-title>Organisational causes of workplace bullying</chapter-title>. In <name name-style="western"><surname>Einarsen</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Hoel</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Zapf</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Cooper</surname> <given-names>CL</given-names></name>, editors. <source>Bullying and harassment in the workplace: developments in theory, research, and practice</source>. <publisher-loc>Boca Raton</publisher-loc>: <publisher-name>CRC Press</publisher-name>; <year>2011</year>. pp. <fpage>227</fpage>–<lpage>243</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hauge</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Skogstad</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Einarsen</surname> <given-names>S</given-names></name>. <article-title>Relationships between stressful work environments and bullying: results of a large representative study</article-title>. <source>Work Stress</source>. <year>2007</year>; <volume>21</volume>: <fpage>220</fpage>–<lpage>242</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vartia</surname> <given-names>M</given-names></name>. <article-title>The sources of bullying—psychological work environment and organizational climate</article-title>. <source>Eur J Work Organ Psychol</source>. <year>1996</year>; <volume>5</volume>: <fpage>203</fpage>–<lpage>214</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dollard</surname> <given-names>MF</given-names></name>, <name name-style="western"><surname>Bakker</surname> <given-names>AB</given-names></name>. <article-title>Psychosocial safety climate as a precursor to conducive work environments, psychological health problems, and employee engagement</article-title>. <source>J Occup Organ Psychol</source>. <year>2010</year>; <volume>83</volume>: <fpage>579</fpage>–<lpage>599</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Law</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Dollard</surname> <given-names>MF</given-names></name>, <name name-style="western"><surname>Tuckey</surname> <given-names>MR</given-names></name>, <name name-style="western"><surname>Dormann</surname> <given-names>C</given-names></name>. <article-title>Psychosocial safety climate as a lead indicator of workplace bullying and harassment, job resources, psychological health and employee engagement</article-title>. <source>Accid Anal Prev</source>. <year>2011</year>; <volume>43</volume>: <fpage>1782</fpage>–<lpage>1793</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.aap.2011.04.010" xlink:type="simple">10.1016/j.aap.2011.04.010</ext-link></comment> <object-id pub-id-type="pmid">21658506</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hoshuyama</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Hino</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Kayashima</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Morita</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Goto</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Minami</surname> <given-names>M</given-names></name>, <etal>et al</etal>. <article-title>Inequality in the health status of workers in small-scale enterprises</article-title>. <source>Occup Med</source>. <year>2007</year>; <volume>57</volume>: <fpage>126</fpage>–<lpage>130</lpage>. <object-id pub-id-type="pmid">17229721</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref026"><label>26</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Takigawa</surname> <given-names>Y</given-names></name>. <chapter-title>Inequality in the income in the current Japanese society</chapter-title>. In. <name name-style="western"><surname>Sato</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Kimura</surname> <given-names>T</given-names></name>, editors. <source>Clarification of the mechanism for forming inequality</source>. <publisher-loc>Tokyo</publisher-loc>: <publisher-name>Minervashobo</publisher-name>; <year>2013</year>.</mixed-citation></ref>
+<ref id="pone.0119435.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tsuno</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Inao</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Okada</surname> <given-names>Y</given-names></name>. <article-title>Current status of the prevalence, the deal, and the approach to prevent workplace bullying at companies in Japan: a comparison by company size</article-title>. <source>Japanese J Occup Ment Health</source>. <year>2012</year>; <volume>20</volume>: <fpage>221</fpage>–<lpage>236</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref028"><label>28</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Scheler</surname> <given-names>M</given-names></name>. <source>Ressentiment</source>. <publisher-loc>New York</publisher-loc>: <publisher-name>Noonday</publisher-name>; <year>1973</year>.</mixed-citation></ref>
+<ref id="pone.0119435.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Van den Bos</surname> <given-names>K</given-names></name>. <article-title>Uncertainty management: the influence of uncertainty salience on reactions to perceived procedural fairness</article-title>. <source>J Personal Social Psychol</source>. <year>2001</year>; <volume>80</volume>: <fpage>931</fpage>–<lpage>941</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Van den Bos</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Lind</surname> <given-names>EA</given-names></name>. <article-title>Uncertainty management by means of fairness judgments</article-title>. <source>Adv Exp Social Psychol</source>. <year>2002</year>; <volume>34</volume>: <fpage>1</fpage>–<lpage>60</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref031"><label>31</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Dollard</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Miller</surname> <given-names>NE</given-names></name>, <name name-style="western"><surname>Doob</surname> <given-names>LW</given-names></name>, <name name-style="western"><surname>Mowrer</surname> <given-names>OH</given-names></name>, <name name-style="western"><surname>Sears</surname> <given-names>RR</given-names></name>. <source>Frustration and aggression</source>. <publisher-loc>New Haven, CT</publisher-loc>: <publisher-name>Yale University Press</publisher-name>; <year>1939</year>.</mixed-citation></ref>
+<ref id="pone.0119435.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jackman</surname> <given-names>MR</given-names></name>, <name name-style="western"><surname>Jackman</surname> <given-names>RW</given-names></name>. <article-title>An interpretation of the relation between objective and subjective social status</article-title>. <source>Am Sociol Rev</source>. <year>1973</year>; <volume>38</volume>: <fpage>569</fpage>–<lpage>582</lpage>. <object-id pub-id-type="pmid">4745630</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Adler</surname> <given-names>NE</given-names></name>, <name name-style="western"><surname>Epel</surname> <given-names>ES</given-names></name>, <name name-style="western"><surname>Castellazzo</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Ickovics</surname> <given-names>JR</given-names></name>. <article-title>Relationship of subjective and objective social status with psychological and physiological functioning: preliminary data in healthy, white women</article-title>. <source>Health Psychol</source>. <year>2000</year>; <volume>19</volume>: <fpage>586</fpage>–<lpage>592</lpage>. <object-id pub-id-type="pmid">11129362</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Inoue</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Kawakami</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Shimomitsu</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Tsutsumi</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Haratani</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Yoshikawa</surname> <given-names>T</given-names></name>, <etal>et al</etal>. <article-title>Development of a short questionnaire to measure an extended set of job demands, job resources, and positive health outcomes: the New Brief Job Stress Questionnaire</article-title>. <source>Ind Health</source>. <year>2014</year>; <volume>52</volume>: <fpage>175</fpage>–<lpage>189</lpage>. <object-id pub-id-type="pmid">24492763</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref035"><label>35</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Nielsen</surname> <given-names>MB</given-names></name>, <name name-style="western"><surname>Notelaers</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Einarsen</surname> <given-names>S</given-names></name>. <chapter-title>Measuring exposure to workplace bullying</chapter-title>. In <name name-style="western"><surname>Einarsen</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Hoel</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Zapf</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Cooper</surname> <given-names>CL</given-names></name>, editors. <source>Bullying and harassment in the workplace: developments in theory, research, and practice</source>. <publisher-loc>Boca Raton</publisher-loc>: <publisher-name>CRC Press</publisher-name>; <year>2011</year>. pp. <fpage>149</fpage>–<lpage>174</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref036"><label>36</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Clark</surname> <given-names>C</given-names></name>. <chapter-title>The morphology of economic growth</chapter-title>. <source>The Conditions of Economic Progress</source>. <publisher-loc>London</publisher-loc>: <publisher-name>Macmillan</publisher-name>; <year>1940</year>. pp. <fpage>337</fpage>–<lpage>373</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref037"><label>37</label><mixed-citation publication-type="other" xlink:type="simple">Ministry of Health, Labour and Welfare. Summary Report of Comprehensive Survey of Living Conditions 2009. Available: <ext-link ext-link-type="uri" xlink:href="http://www.mhlw.go.jp/english/database/db-hss/cslc-report2009.html" xlink:type="simple">http://www.mhlw.go.jp/english/database/db-hss/cslc-report2009.html</ext-link>. Accessed 2 September 2014.</mixed-citation></ref>
+<ref id="pone.0119435.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sakurai</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Kawakami</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Yamaoka</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Ishikawa</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Hashimoto</surname> <given-names>H</given-names></name>. <article-title>The impact of subjective and objective social status on psychological distress among men and women in Japan</article-title>. <source>Soc Sci Med</source>. <year>2010</year>; <volume>70</volume>: <fpage>1832</fpage>–<lpage>1839</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.socscimed.2010.01.019" xlink:type="simple">10.1016/j.socscimed.2010.01.019</ext-link></comment> <object-id pub-id-type="pmid">20303205</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref039"><label>39</label><mixed-citation publication-type="other" xlink:type="simple">Ministry of Internal Affairs and Communications. Annual Report on the Labor Force Survey 2010. Available: <ext-link ext-link-type="uri" xlink:href="http://www.stat.go.jp/english/data/roudou/report/2010/index.htm" xlink:type="simple">http://www.stat.go.jp/english/data/roudou/report/2010/index.htm</ext-link>. Accessed 26 November 2014.</mixed-citation></ref>
+<ref id="pone.0119435.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kausto</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Elo</surname> <given-names>AL</given-names></name>, <name name-style="western"><surname>Lipponen</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Elovainio</surname> <given-names>M</given-names></name>. <article-title>Moderating effects of job insecurity in the relationships between procedural justice and employee well-being: gender differences</article-title>. <source>Eur J Work Organ Psychol</source>. <year>2005</year>; <volume>14</volume>: <fpage>431</fpage>–<lpage>452</lpage>.</mixed-citation></ref>
+<ref id="pone.0119435.ref041"><label>41</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dodge</surname> <given-names>KA</given-names></name>, <name name-style="western"><surname>Pettit</surname> <given-names>GS</given-names></name>, <name name-style="western"><surname>Bates</surname> <given-names>JE</given-names></name>. <article-title>Socialization mediators of the relation between socioeconomic status and child conduct problems</article-title>. <source>Child Devel</source>. <year>1994</year>; <volume>65</volume>: <fpage>649</fpage>–<lpage>665</lpage>. <object-id pub-id-type="pmid">8013245</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref042"><label>42</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Due</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Lynch</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Holstein</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Modvig</surname> <given-names>J</given-names></name>. <article-title>Socioeconomic health inequalities among a nationally representative sample of Danish adolescents: the role of different types of social relations</article-title>. <source>J Epidemiol Community Health</source>. <year>2003</year>; <volume>57</volume>: <fpage>692</fpage>–<lpage>698</lpage>. <object-id pub-id-type="pmid">12933775</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref043"><label>43</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vaughn</surname> <given-names>MG</given-names></name>, <name name-style="western"><surname>Fu</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Bender</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>DeLisi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Beaver</surname> <given-names>KM</given-names></name>, <name name-style="western"><surname>Perron</surname> <given-names>BE</given-names></name>, <etal>et al</etal>. <article-title>Psychiatric correlates of bullying in the United States: findings from a national sample</article-title>. <source>Psychiatric Q</source>. <year>2010</year>; <volume>81</volume>: <fpage>183</fpage>–<lpage>195</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s11126-010-9128-0" xlink:type="simple">10.1007/s11126-010-9128-0</ext-link></comment> <object-id pub-id-type="pmid">20177967</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref044"><label>44</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kristensen</surname> <given-names>TS</given-names></name>, <name name-style="western"><surname>Borg</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Hannerz</surname> <given-names>H</given-names></name>. <article-title>Socioeconomic status and psychosocial work environment: results from a Danish national study</article-title>. <source>Scand J Public Health</source>. <year>2002</year>; <volume>30</volume>: <fpage>41</fpage>–<lpage>48</lpage>. <object-id pub-id-type="pmid">11928832</object-id></mixed-citation></ref>
+<ref id="pone.0119435.ref045"><label>45</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Operario</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Adler</surname> <given-names>NE</given-names></name>, <name name-style="western"><surname>Williams</surname> <given-names>DR</given-names></name>. <article-title>Subjective social status: reliability and predictive utility for global health</article-title>. <source>Psychol Health</source>. <year>2004</year>; <volume>19</volume>: <fpage>237</fpage>–<lpage>246</lpage>.</mixed-citation></ref>
+</ref-list>
+</back>
+</article>

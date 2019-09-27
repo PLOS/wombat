@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-11-12819</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0027182</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Immunology</subject>
+            <subj-group>
+              <subject>Immune cells</subject>
+              <subj-group>
+                <subject>T cells</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Clinical immunology</subject>
+            <subj-group>
+              <subject>Immune cells</subject>
+              <subj-group>
+                <subject>T cells</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Rheumatology</subject>
+            <subj-group>
+              <subject>Rheumatoid arthritis</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Immunology</subject>
+          <subject>Rheumatology</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Differential Expression of NK Receptors CD94 and NKG2A by T Cells in Rheumatoid Arthritis Patients in Remission Compared to Active Disease</article-title><alt-title alt-title-type="running-head">CD94 and NKG2A and Remission</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Walsh</surname>
+            <given-names>Ceara E.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Ryan</surname>
+            <given-names>Elizabeth J.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>O’Farrelly</surname>
+            <given-names>Cliona</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Golden-Mason</surname>
+            <given-names>Lucy</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>FitzGerald</surname>
+            <given-names>Oliver</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Veale</surname>
+            <given-names>Douglas J.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Bresnihan</surname>
+            <given-names>Barry</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Fearon</surname>
+            <given-names>Ursula</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1"><label>1</label><addr-line>Translation Rheumatology Research Group, Dublin Academic Medical Centre, St. Vincent's University Hospital, Elm Park, Dublin, Ireland</addr-line>       </aff><aff id="aff2"><label>2</label><addr-line>School of Biochemistry &amp; Immunology, Trinity College, Dublin, Ireland</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Sandberg</surname>
+            <given-names>Johan K.</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">Karolinska Institutet, Sweden</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">cearaesmondewalsh@physicians.ie</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: UF BB CW DV LG-M CO ER. Performed the experiments: CW UF. Analyzed the data: CW UF DV ER. Contributed reagents/materials/analysis tools: UF LG-M BB DV CO. Wrote the paper: CW ER CO DV OF BB UF.</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>The authors have declared that no competing interests exist.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2011</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>15</day>
+        <month>11</month>
+        <year>2011</year>
+      </pub-date><volume>6</volume><issue>11</issue><elocation-id>e27182</elocation-id><history>
+        <date date-type="received">
+          <day>6</day>
+          <month>7</month>
+          <year>2011</year>
+        </date>
+        <date date-type="accepted">
+          <day>11</day>
+          <month>10</month>
+          <year>2011</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2011</copyright-year><copyright-holder>Walsh et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <sec>
+          <title>Objective</title>
+          <p>TNF inhibitors (TNFi) have revolutionised the treatment of rheumatoid arthritis (RA). Natural killer (NK) cells and Natural Killer Cell Receptor<sup>+</sup> T (NKT) cells comprise important effector lymphocytes whose activity is tightly regulated through surface NK receptors (NKRs). Dysregulation of NKRs in patients with autoimmune diseases has been shown, however little is known regarding NKRs expression in patients with TNFi-induced remission and in those who maintain remission vs disease flare following TNFi withdrawal.</p>
+        </sec>
+        <sec>
+          <title>Methods</title>
+          <p>Patients with RA were recruited for this study, (i) RA patients in clinical remission following a minimum of one year of TNFi therapy (n = −15); (2) Active RA patients, not currently or ever receiving TNFi (n = 18); and healthy control volunteers (n = 15). Patients in remission were divided into two groups: those who were maintained on TNFi and those who withdrew from TNFi and maintained on DMARDS. All patients underwent full clinical assessment. Peripheral blood mononuclear cells were isolated and NKR (CD94, NKG2A, CD161, CD69, CD57, CD158a, CD158b) expression on T-(CD3<sup>+</sup>CD56<sup>−</sup>), NK-(CD3<sup>−</sup>CD56<sup>+</sup>) and NKT-(CD3<sup>+</sup>CD56<sup>+</sup>) cells was determined by flow cytometry.</p>
+        </sec>
+        <sec>
+          <title>Results</title>
+          <p>Following TNFi withdrawal, percentages and numbers of circulating T cells, NK cells or NKT cell populations were unchanged in patients in remission versus active RA or HCs. Expression of the NKRs CD161, CD57, CD94 and NKG2A was significantly increased on CD3<sup>+</sup>CD56-T cells from patients in remission compared to active RA (p&lt;0.05). CD3<sup>+</sup>CD56-T cell expression of CD94 and NKG2A was significantly increased in patients who remained in remission compared with patients whose disease flared (p&lt;0.05), with no differences observed for CD161 and CD57. CD3<sup>+</sup>CD56<sup>−</sup> cell expression of NKG2A was inversely related to DAS28 (r = −0.612, p&lt;0.005).</p>
+        </sec>
+        <sec>
+          <title>Conclusion</title>
+          <p>High CD94/NKG2A expression by T cells was demonstrated in remission patients following TNFi therapy compared to active RA, while low CD94/NKG2A were associated with disease flare following withdrawal of therapy.</p>
+        </sec>
+      </abstract><funding-group><funding-statement>This study was funded by the Health Research Board of Ireland. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="9"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>Rheumatoid arthritis (RA) is the most common form of inflammatory arthritis affecting 1% of the population. Left untreated RA leads to joint deformity and disability <xref ref-type="bibr" rid="pone.0027182-Pincus1">[1]</xref>. RA is characterised by symmetrical erosive polyarthritis, with extra-articular manifestations in some patients. Activated T cells and innate cells such as macrophages contribute to the development of synovial inflammation by secreting TNFα, a potent pro-inflammatory cytokine <xref ref-type="bibr" rid="pone.0027182-dmann1">[2]</xref>. TNFα inhibits both bone formation and proteoglycan synthesis while inducing bone and proteoglycan resorption. It also stimulates metalloproteinase and collagenase production, triggers inflammatory cytokine cascades and increases adhesion molecule expression by infiltrating immune cells. TNF inhibitors (TNFi) improve disease activity indices (clinical and laboratory) and inhibit radiographic progression <xref ref-type="bibr" rid="pone.0027182-Breedveld1">[3]</xref>−<xref ref-type="bibr" rid="pone.0027182-Taylor1">[6]</xref>. The use of TNFi has revolutionised the treatment of RA patients, particularly in patients with moderate to severe RA <xref ref-type="bibr" rid="pone.0027182-Breedveld1">[3]</xref>−<xref ref-type="bibr" rid="pone.0027182-Bansback1">[7]</xref>.</p>
+      <p>However, TNFi are expensive and have potential for serious side-effects. Prior to routine use of biologic therapies, the average annual medical cost for a patient with RA was $8500 <xref ref-type="bibr" rid="pone.0027182-Yelin1">[8]</xref>. Studies have demonstrated mean annual costs of TNFi between $12,146 and $15,617 depending on the agent prescribed. When other expenses are taken into account, e.g. administration in an OPD setting and concomitant disease modifying anti-rheumatic drug (DMARD) use, the cost may rise to $18,046 <xref ref-type="bibr" rid="pone.0027182-Ollendorf1">[9]</xref>, <xref ref-type="bibr" rid="pone.0027182-Nuijten1">[10]</xref>. An important goal for rheumatologists treating RA patients is to identify markers that can (1) predict response to TNFi, (2) predict remission rates and (3) predict those patients who can maintain remission following withdrawal of TNFi <xref ref-type="bibr" rid="pone.0027182-Hyrich1">[11]</xref>, <xref ref-type="bibr" rid="pone.0027182-Nam1">[12]</xref>.</p>
+      <p>Natural killer cells (NK), T cells and natural killer T (NKT) cells participate in aetiology and regulation of RA pathogenesis <xref ref-type="bibr" rid="pone.0027182-Mitsuo1">[13]</xref>−<xref ref-type="bibr" rid="pone.0027182-Armstrong1">[16]</xref>. NK cells are key players in innate immunity, their primary function killing of virally infected or transformed cells. They can also regulate the adaptive immune response through their ability to produce cytokines. The activity of NK cells is tightly controlled through a variety of stimulatory, co-stimulatory and inhibitory receptors (NKRs) <xref ref-type="bibr" rid="pone.0027182-Seaman1">[17]</xref>. Dysregulated expression of NKRs and impairment of NK function have been demonstrated in RA. For example, increased expression of the CD94 receptor with concomitant reduction in the expression of inhibitory Killer Ig-Like Receptors (KIR) has been demonstrated in patients with RA <xref ref-type="bibr" rid="pone.0027182-Mitsuo1">[13]</xref>. In addition, Richter et al. have recently demonstrated that the NK receptor CD161 contributes to impairment of NK cell cytotoxicity and responsiveness to specific ligands in patients with RA <xref ref-type="bibr" rid="pone.0027182-Richter1">[14]</xref>.</p>
+      <p>T cells that co-express NKRs comprise approximately 5−15% of the peripheral T cell pool and have the ability to mediate functions of both T and NK cells. These cells may also express activatory or inhibitory NKRs e.g. CD94/NKG2A (inhibitory) or NKG2D (activatory) and are known as NK receptor<sup>+</sup> T cells (NKT cells) <xref ref-type="bibr" rid="pone.0027182-Kronenberg1">[18]</xref>. Levels of NKR+ T cells are increased in the peripheral blood and synovial tissue of patients with active RA <xref ref-type="bibr" rid="pone.0027182-Groh1">[15]</xref>, <xref ref-type="bibr" rid="pone.0027182-Yamada1">[19]</xref>. High levels of IL-15 and TNFα in RA patients contribute to the expansion of the NKG2D<sup>+</sup> T cell population, cells that may have greater autoreactive potential due to their high expression of activatory receptors <xref ref-type="bibr" rid="pone.0027182-Groh1">[15]</xref>. A significant proportion of T cells (CD4<sup>+</sup>CD28<sup>−</sup>) expressing NKG2D display autoreactive responses against RA synovial fibroblasts <xref ref-type="bibr" rid="pone.0027182-Groh1">[15]</xref>, <xref ref-type="bibr" rid="pone.0027182-Goronzy1">[20]</xref>. Furthermore increased expression of activatory KIR receptor KIR2DS2 on CD4<sup>+</sup>CD28<sup>−</sup> cells have been shown to correlate with RA disease activity <xref ref-type="bibr" rid="pone.0027182-Yen1">[21]</xref>.</p>
+      <p>The aim of this study was to examine NK receptor expression on lymphoid phenotypes in patients in TNFi-induced remission compared to active disease, and to investigate their expression in patients with continued remission compared to disease flare following TNFi withdrawal.</p>
+    </sec>
+    <sec id="s2" sec-type="methods">
+      <title>Methods</title>
+      <sec id="s2a">
+        <title>Patient Cohorts</title>
+        <p>All research was carried out in accordance with the Declaration of Helsinki and approval for this study was granted by the St. Vincent's University Hospital medical research and ethics committee. Rheumatoid arthritis (RA) patients diagnosed according to the criteria of the American College of Rheumatology <xref ref-type="bibr" rid="pone.0027182-Arnett1">[22]</xref> were recruited from the rheumatology outpatient clinics at St. Vincent's University Hospital (SVUH). This study was approved by the SVUH Medical Research and Ethics Committee; all patients provided fully-informed written consent. Two cohorts of patients with RA were recruited from the Rheumatology clinics, St. Vincent's University Hospital; (1) RA patients in clinical remission 28 joint disease activity score (DAS28) &lt;2.6 for 6 months] (n = 15) following a minimum of one year of TNFi therapy; and (2) Active RA patients, not currently or ever receiving TNFi (n = 18). All patients fulfilled the American College of Rheumatology criteria for RA. Healthy control volunteers were also recruited (n = 15).</p>
+        <p>The RA remission group were subsequently divided into two groups, those that continued on TNFi therapy or those that were withdrawn from biologic therapy and maintained on substituted optimal DMARD therapy.</p>
+        <p>Clinical and laboratory assessments were performed in remission patients at baseline, 1, 3 and 6 months. After 6 months, patients who continued TNFi were given the further option of withdrawing and substituting optimal DMARD therapy. Full clinical and laboratory assessments were also performed in the active RA group. Clinical assessment included physical examination and joint counts. Erythrocyte Sedimentation Rate (ESR) and C-reactive protein (CRP) were measured and the DAS28 calculated at each visit. Functional assessment using the health assessment questionnaire-disability index (HAQ-DI) was performed. Short-form−36 (SF-36) data was collected at baseline and 6 months (or study termination, if earlier). RA patients experiencing a disease flare were treated according to best clinical practise with corticosteroids ≤20 mg/day reducing over 2 weeks plus recommencement of TNFi if appropriate.</p>
+      </sec>
+      <sec id="s2b">
+        <title>Peripheral blood mononuclear cell separation</title>
+        <p>Fifteen ml of heparinised blood was collected at baseline from each participant and at each clinic visit thereafter from patients in the remission cohort. PBMCs were isolated by density gradient centrifugation (Lymphoprep; Nycomed, West Midlands, UK). Cells were washed in Roswell Park Memorial Institute (RPMI)-1640 (Gibco-BRL, Paisley, UK) supplemented with penicillin (100units/mL; Biosciences), streptomycin (100units/mL; Biosciences) and fungizone (0.25µg/mL; Biosciences) (sRPMI) and cryopreserved (20% Dimethyl Sulphoxide in fetal bovine serum,) for subsequent analysis. It has previously been demonstrated that cryopreservation does not alter immunological characteristics of NK cells <xref ref-type="bibr" rid="pone.0027182-Fujiwara1">[23]</xref>.</p>
+      </sec>
+      <sec id="s2c">
+        <title>Flow cytometric analysis of cell surface antigens</title>
+        <p>Fluorochrome-labelled (fluorescein isothiocyanate (FITC)/phycoerythrin [PE]/peridinin-chlorophyll-protein complex (PerCP)) monoclonal Abs (MAbs) specific for CD3, CD4, CD8, CD56, CD161, CD94, CD158a, CD158b, HLA-DR and CD57 were obtained from BD Biosciences (Oxford, UK). Anti-NKG2A-PE was obtained from Immunotech (Beckman Coulter, Fullerton, CA). PBMCs were defrosted in warmed sRPMI and resuspended at a concentration of 1 million cells per millilitre of sRPMI. PBMCs (2.5×10<sup>5</sup> cells) were stained for cell surface antigen expression at 4°C in the dark for 30 min. Cells were then washed twice in phosphate buffered saline (PBS) and fixed in 1% paraformaldehyde (PFA) until analysis. Cells were acquired using a BD FACSCalibur instrument (BD Biosciences) and analysed using CellQuest software (BD Biosciences).</p>
+      </sec>
+      <sec id="s2d">
+        <title>Statistical analysis</title>
+        <p>Statistical analysis was performed using SPSS version 12.1.0 for Windows. Non-parametric Mann Whitney U-test was used to compare differences between study cohorts and non-parametric Wilcoxon Signed Rank for related samples. Significance was defined as a <italic>p</italic> value &lt;0.05. Correlation coefficients were determined using Spearman's test.</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Results</title>
+      <sec id="s3a">
+        <title>Patient demographics</title>
+        <p>Baseline characteristics of remission and active RA patients cohorts are shown in (<xref ref-type="table" rid="pone-0027182-t001">Table 1</xref>). Fifteen patients in remission were recruited, ten (66%) patients were female with a mean (SEM) age of 50.27 (4.08) years, disease duration of 9.63 (1.96) years, ESR 8.73 (1.38) mm/hr, CRP 6.00 (1.02) mg/L and 12 (80%) patients were rheumatoid factor positive (RF+). Patients were divided into those who were maintained on therapy compared with those withdrawing therapy (<xref ref-type="table" rid="pone-0027182-t002">Table 2</xref>), No demographic differences were demonstrated between the two groups. Nine of fifteen (60%) patients: (female, n (%), 6 (66.67); age, mean years (SEM), 50.0 (5.6); RF+, n (%), 9 (81.81)) continued on TNFi therapy (<xref ref-type="table" rid="pone-0027182-t002">Table 2</xref>). After 6 months, five of these patients consented to withdraw TNFi therapy. Six patients withdrew TNFi therapy initially and five at 6 months, giving a total of 11 TNFi withdrawal patients (female, n (%), 7 (63.64%); age, mean years (SEM), 52.6 (4.1); RF+, n (%), 6 (66.67)). One patient had a flare in disease activity two weeks after TNFi withdrawal, did not respond to corticosteroids and recommenced their TNFi. No significant difference was seen in clinical, functional assessment (HAQ, SF-36) and laboratory markers of inflammation (ESR CRP) at six months in both groups (<xref ref-type="table" rid="pone-0027182-t002">Table 2</xref>).</p>
+        <table-wrap id="pone-0027182-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0027182.t001</object-id><label>Table 1</label><caption>
+            <title>Baseline characteristics of patients in remission following TNF inhibitor therapy and in patients with active rheumatoid arthritis.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0027182-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0027182.t001" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">Remission Cohort</td>
+                <td align="left" colspan="1" rowspan="1">Active RA Cohort</td>
+                <td align="left" colspan="1" rowspan="1">p value</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Female, n (%)</td>
+                <td align="left" colspan="1" rowspan="1">10(66)</td>
+                <td align="left" colspan="1" rowspan="1">12(66.67)</td>
+                <td align="left" colspan="1" rowspan="1">p = ns</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Age, mean(sem)</td>
+                <td align="left" colspan="1" rowspan="1">50.27(4.08)</td>
+                <td align="left" colspan="1" rowspan="1">57.00(3.04)</td>
+                <td align="left" colspan="1" rowspan="1">p = ns</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Disease duration, mean (sem)</td>
+                <td align="left" colspan="1" rowspan="1">9.63(1.96)</td>
+                <td align="left" colspan="1" rowspan="1">3.72(0.55)</td>
+                <td align="left" colspan="1" rowspan="1">p = (0.004)</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Rheumatoid factor +, n (%)</td>
+                <td align="left" colspan="1" rowspan="1">12(80)</td>
+                <td align="left" colspan="1" rowspan="1">16(88.89)</td>
+                <td align="left" colspan="1" rowspan="1">p = ns</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">ESR(mm/hr), mean(sem)</td>
+                <td align="left" colspan="1" rowspan="1">8.73(1.38)</td>
+                <td align="left" colspan="1" rowspan="1">35.24(4.87)</td>
+                <td align="left" colspan="1" rowspan="1">p = 0.00003</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">CRP(mg/L), mean (sem)</td>
+                <td align="left" colspan="1" rowspan="1">6.00(1.02)</td>
+                <td align="left" colspan="1" rowspan="1">26.29(6.32)</td>
+                <td align="left" colspan="1" rowspan="1">p = 0.004</td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt101">
+              <label/>
+              <p>*p&lt;0.05 remission cohort significantly different from active RA cohort.</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+        <table-wrap id="pone-0027182-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0027182.t002</object-id><label>Table 2</label><caption>
+            <title>Clinical, laboratory and functional assessments in patients cohorts maintaining and withdrawing TNF inhibitor therapy.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0027182-t002-2" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0027182.t002" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="3" rowspan="1">Withdrawal of anti-TNF Therapy</td>
+                <td align="left" colspan="3" rowspan="1">Maintain anti-TNF therapy</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">Baseline</td>
+                <td align="left" colspan="1" rowspan="1">3 months</td>
+                <td align="left" colspan="1" rowspan="1">6 months</td>
+                <td align="left" colspan="1" rowspan="1">Baseline</td>
+                <td align="left" colspan="1" rowspan="1">3months</td>
+                <td align="left" colspan="1" rowspan="1">6months</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">TJC(0–28) mean±sem</td>
+                <td align="left" colspan="1" rowspan="1">0.36±0.15</td>
+                <td align="left" colspan="1" rowspan="1">0.82±0.54</td>
+                <td align="left" colspan="1" rowspan="1">0.91±0.56</td>
+                <td align="left" colspan="1" rowspan="1">0.56±0.00</td>
+                <td align="left" colspan="1" rowspan="1">0.11±0.22</td>
+                <td align="left" colspan="1" rowspan="1">0.44±0.24</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SJC (0-28) mean±sem</td>
+                <td align="left" colspan="1" rowspan="1">0.36±0.28</td>
+                <td align="left" colspan="1" rowspan="1">0.64±0.59</td>
+                <td align="left" colspan="1" rowspan="1">0.91±0.58</td>
+                <td align="left" colspan="1" rowspan="1">0.00±0.38</td>
+                <td align="left" colspan="1" rowspan="1">0.22±0.11</td>
+                <td align="left" colspan="1" rowspan="1">0.33±0.24</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">ESR (mm Hg) mean±sem</td>
+                <td align="left" colspan="1" rowspan="1">9.20±1.83</td>
+                <td align="left" colspan="1" rowspan="1">9.20±1.91</td>
+                <td align="left" colspan="1" rowspan="1">9.20±2.11</td>
+                <td align="left" colspan="1" rowspan="1">8.56±1.84</td>
+                <td align="left" colspan="1" rowspan="1">8.57±2.20</td>
+                <td align="left" colspan="1" rowspan="1">7.89±1.93</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">CRP (mg/dl) mean±sem</td>
+                <td align="left" colspan="1" rowspan="1">7.36±1.68</td>
+                <td align="left" colspan="1" rowspan="1">8.18±3.02</td>
+                <td align="left" colspan="1" rowspan="1">8.55±3.28</td>
+                <td align="left" colspan="1" rowspan="1">4.33±0.33</td>
+                <td align="left" colspan="1" rowspan="1">4.50±0.47</td>
+                <td align="left" colspan="1" rowspan="1">4.22±0.22</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">VAS(0-100 mm) mean±sem</td>
+                <td align="left" colspan="1" rowspan="1">13.82±3.56</td>
+                <td align="left" colspan="1" rowspan="1">14.27±5.75</td>
+                <td align="left" colspan="1" rowspan="1">18.91±5.25</td>
+                <td align="left" colspan="1" rowspan="1">15.22±5.30</td>
+                <td align="left" colspan="1" rowspan="1">28.25±7.70<xref ref-type="table-fn" rid="nt102">*</xref></td>
+                <td align="left" colspan="1" rowspan="1">21.86±5.22</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">DAS28 mean±sem</td>
+                <td align="left" colspan="1" rowspan="1">1.88±0.18</td>
+                <td align="left" colspan="1" rowspan="1">1.88±0.43</td>
+                <td align="left" colspan="1" rowspan="1">2.02±0.42</td>
+                <td align="left" colspan="1" rowspan="1">1.82±0.27</td>
+                <td align="left" colspan="1" rowspan="1">1.80±0.25</td>
+                <td align="left" colspan="1" rowspan="1">1.94±0.20</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">HAQ (0–3) mean±sem</td>
+                <td align="left" colspan="1" rowspan="1">0.216±0.000</td>
+                <td align="left" colspan="1" rowspan="1">0.333±0.047</td>
+                <td align="left" colspan="1" rowspan="1">0.296±0.125</td>
+                <td align="left" colspan="1" rowspan="1">0.278±0.062</td>
+                <td align="left" colspan="1" rowspan="1">0.422±0.077</td>
+                <td align="left" colspan="1" rowspan="1">0.393±0.070</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SF-36 PCS mean±sem</td>
+                <td align="left" colspan="1" rowspan="1">45.43±2.73</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">46.14±2.93</td>
+                <td align="left" colspan="1" rowspan="1">45.50±3.34</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">41.22±3.06</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SF-36 MCS mean±sem</td>
+                <td align="left" colspan="1" rowspan="1">56.43±2.3</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">53.05±3.13</td>
+                <td align="left" colspan="1" rowspan="1">53.50±3.16</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">50.47±3.46</td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt102">
+              <label/>
+              <p>*p&lt;0.05 vs baseline.</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+        <p>Active RA patients (n = 18; female, n (%) (12 (63.16)) and fifteen healthy controls (12 (80%)) were recruited (<xref ref-type="table" rid="pone-0027182-t001">Table 1</xref>). The mean (SEM) age of the active RA group was 57.00 (3.04) years and healthy controls 41.67 (2.63) years. Clinical characteristics for the RA patients included mean ESR of 35.24±4.87 mm/hr, CRP of 26.29±6.32 mg/L, and disease duration of 3.72±0.55 years. Thirteen (86.67%) were RF+.</p>
+      </sec>
+      <sec id="s3b">
+        <title>T cell populations in remission patients, active RA and controls</title>
+        <p>No difference was demonstrated in percentages of totals of classic T cells or NK cells, (expressed as a percentage of the lymphogates) between patients in remission, patients with active RA or controls (<xref ref-type="fig" rid="pone-0027182-g001">Figure 1A</xref>). Furthermore, no significant difference was observed for percentages of NKT(CD3+CD56−), NK (CD3-D56+) or T (CD3+CD56+) cell populations (<xref ref-type="fig" rid="pone-0027182-g001">Figure 1B</xref>).</p>
+        <fig id="pone-0027182-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0027182.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>T cell, NK and NKT cell populations in active RA, Remission RA and healthy controls.</title>
+            <p>Graph illustrating T cell, NK and NKT cell populations in healthy controls (N = 15) (▴), patients with active RA (n = 18) (○) and patients in remission following TNF inhibitor (n = 15)(▪). *p&lt;0.05 significantly different.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0027182.g001" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3c">
+        <title>Expression of NK surface receptors CD161, CD57 and HLA-DR by T cells</title>
+        <p>Expression of CD161 by T cells was significantly increased in remission patients (4.11±0.78%) compared to active RA (1.39±0.27%) (p = 0.005) (<xref ref-type="fig" rid="pone-0027182-g002">Figure 2A,B</xref>). CD161 expression in remission was not significantly different to levels expressed by the CD3+CD56− cells of the control group (2.28±0.45%) (p = 0.155). Furthermore, an increased proportion of CD3<sup>+</sup>CD56<sup>−</sup> T cells were CD57<sup>bright</sup> in both the remission and control groups (5.17±0.88% and 6.71±2.01%) compared to the active RA group (2.57±0.50%) (p = 0.019 and 0.033 respectively) (<xref ref-type="fig" rid="pone-0027182-g002">Figure 2</xref>). Expression of HLA-DR on CD3+CD56− cells was similar in remission (6.48±1.24%), active RA (4.49±0.53% (p = 0.406)) and controls (7.40±1.77% (p = 0.873)). Furthermore, no difference was observed for CD161, CD57 and HLA-DR expression on CD56+CD3− or CD56+CD3+ cells between the 3 groups (data not shown). No significant difference was observed for CD57 expression in remission compared to controls (p = 0.986). No significant difference was seen in the expression of HLA-DR on CD3+CD56− cells in remission (6.48±1.24%) compared to active RA (4.49±0.53% (p = 0.406)) or controls (7.40±1.77% (p = 0.873)). Furthermore, no difference was observed for CD161, CD57 and HLA-DR expression on CD56+CD3− or CD56+CD3+ cells between the 3 cohorts.</p>
+        <fig id="pone-0027182-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0027182.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Expression of CD161, HLA-DR and CD57 in active RA, Remission RA and healthy controls.</title>
+            <p>(A) Representative dot plots of CD161, HLA-DR and CD57 expression on healthy control, patient with active RA and patient in remission following TNF inhibitor therapy. (B) CD161, HLA-DR and CD57 expression on CD3+CD56− cells in healthy controls (▴), patients with active RA (○) and patients in remission following TNF inhibitor therapy (▪). *p&lt;0.05 significantly different.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0027182.g002" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3d">
+        <title>CD94 and NKG2A expression on CD3+CD56− cells</title>
+        <p>A significant increase in CD94 expression was found in remission (2.16±0.31%) compared to active RA (1.33±0.29%) (p = 0.017). This was accompanied by a significant increase in the expression of the inhibitory receptor, NKG2A, in remission (2.67±0.37%) compared to active RA (1.76±0.48%) (p = 0.031) (<xref ref-type="fig" rid="pone-0027182-g003">Figure 3A,B</xref>). Furthermore, NKG2A and CD94 expression was similar in remission compared to controls (2.61±0.39%) (p = 0.957) (<xref ref-type="fig" rid="pone-0027182-g003">Figure 3</xref>). No significant differences were observed for expression of the inhibitory KIR, CD158a and CD158b, in remission (0.09±0.02% and 0.93±0.32% respectively), active RA (0.05±0.01% and 0.66±0.14%) or controls (0.14±0.05% and 1.12±0.64%). Finally, we observed no difference in CD94 and NKG2A expression on CD56+CD3− or CD56+CD3+ populations between the 3 cohorts (data not shown).</p>
+        <fig id="pone-0027182-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0027182.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>Expression of NKRs CD94 and NKG2A in active RA, Remission RA and healthy controls.</title>
+            <p>(A) Representative dot plots of CD94 and NKG2A expression on healthy control, patient with active RA and patient in remission following TNF inhibitor therapy. (B) CD94 and NKG2A expression on CD3+CD56− cells in healthy controls (▴), patients with active RA (○) and patients in remission following TNF inhibitor therapy (▪). *p&lt;0.05 significantly different.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0027182.g003" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3e">
+        <title>T cell populations in patients maintaining or withdrawing TNFi</title>
+        <p>Total numbers of CD3+ cells significantly decreased from 58.05±4.98% to 44.16±5.75% in patients maintained on therapy (p = 0.06) (<xref ref-type="fig" rid="pone-0027182-g004">Figure 4A</xref>), in contrast to total CD56+ NK cells where no difference was observed (<xref ref-type="fig" rid="pone-0027182-g004">Figure 4A</xref>). CD3+CD56− T cells also decreased from 51.20±4.11% to 37.53±5.24% (p = 0.04)) in patients maintaining therapy (<xref ref-type="fig" rid="pone-0027182-g004">Figure 4B</xref>). No significant difference was observed between the frequency of the CD3+ population of lymphocytes at baseline (54.33±4.36%) compared to the three month time-point (56.06±3.57%) in the patient cohort withdrawing therapy (p = 0.78).</p>
+        <fig id="pone-0027182-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0027182.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Total CD3+, Total CD56+ and CD3+CD56− T cell populations in patients maintaining or withdrawing therapy.</title>
+            <p>Graphs illustrate total CD3+, Total CD56+ and CD3+CD56− T cell populations (expressed as a percentage of the lymphogate) in patients maintaining or withdrawing therapy at baseline (▴) and three months (○). *p&lt;0.05 significantly different.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0027182.g004" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3f">
+        <title>CD94 and NKG2A expression in patients maintaining or withdrawing TNFi</title>
+        <p>A significant increase in CD94 expression on CD3+CD56− T cells at three months (5.59±1.34%) compared to baseline (2.33±0.48%) was demonstrated in patients maintaining TNFi (p = 0.03). This was accompanied by a significant increase in CD3+CD56− expression of inhibitory receptor NKG2A (2.74±0.49% at baseline compared to 5.59±1.34% at 3 months (p = 0.02)) (<xref ref-type="fig" rid="pone-0027182-g005">Figure 5A</xref>). No difference was observed in expression of the inhibitory KIR, CD158a or CD158b, in either cohort between baseline and three months (data not shown). <xref ref-type="fig" rid="pone-0027182-g005">Figure 5C</xref> shows representative flow cytometry dot plots from 2 patients who withdrew TNFi. Patient 1 maintained remission throughout the study period. No change was observed in CD94 or NKG2A expression between baseline and three months in this patient; whereas Patient 2 had a flare in disease activity (DAS28&gt;2.6) at six months. A reduction in the expression of CD94 and NKG2A on CD3+CD56− cells was demonstrated at the three month follow-up prior to clinical evidence of a flare in disease activity, suggesting reduced expression of CD94/NKG2A may be associated with RA flare.</p>
+        <fig id="pone-0027182-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0027182.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title>Expression of NKRs CD94, NKG2A, CD161 and CD57 in patients maintaining or withdrawing therapy.</title>
+            <p>Graphs illustrate (<bold>A</bold>) CD94 and NKG2A expression and (<bold>B</bold>) CD161 and CD57 expression at baseline (▴) and three months (○) in patients maintaining or withdrawing TNF inhibitor therapy. (C) Representative dot plots of two patients withdrawing TNF inhibitor therapy. Patient (I) remained in clinical remission for the study duration and maintained expansion of CD94 and NKG2A; Patient (II) had a flare in disease activity 6 months after withdrawal of therapy with loss of expansion of CD94 and NKG2A at 3 months (i.e. prior to clinical relapse). *p&lt;0.05 significantly different.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0027182.g005" xlink:type="simple"/>
+        </fig>
+        <p>CD161 expression was significantly higher in the group maintaining therapy at 3 months (6.08±1.39%) compared to baseline (3.97±1.24%) (p = 0.04). CD57 expression was also higher at 3 months (8.39±3.98%) compared to baseline (4.83±1.40%) but this did not reach statistical significance. (<xref ref-type="fig" rid="pone-0027182-g005">Figure 5B</xref>). We did not observe changes in the expression of CD161 or CD57 by the CD3+CD56− population of lymphocytes at three months in the patient cohort withdrawing TNFi (<xref ref-type="fig" rid="pone-0027182-g005">Figure 5B</xref>).</p>
+      </sec>
+      <sec id="s3g">
+        <title>Loss of CD94/ NKG2A expression is associated with flare in disease activity after withdrawal of TNFi</title>
+        <p><xref ref-type="fig" rid="pone-0027182-g006">Figure 6A</xref> demonstrates DAS28 and NKG2A expression by T cells in patients who withdrew from or remained on TNFi. Open boxes represents patients who flared and grey boxes represents patients who stayed in remission. DAS28 is significantly higher in patients who flared which is associated with a parallel reduction in expression of NKG2A. <xref ref-type="fig" rid="pone-0027182-g006">Figure 6B</xref> demonstrates a negative correlation between DAS28 at six months follow-up and baseline NKG2A expression (r  = −0.612; p = 0.005).</p>
+        <fig id="pone-0027182-g006" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0027182.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title>Associations between clinical disease activity and NKG2A expression.</title>
+            <p>(A) Flare in disease activity (Increased DAS28) is associated with reduction in NKG2A expression on CD3+CD56− cells. (B) Negative correlation between DAS28 and T cell expression of *p&lt;0.05 significantly different.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0027182.g006" xlink:type="simple"/>
+        </fig>
+      </sec>
+    </sec>
+    <sec id="s4">
+      <title>Discussion</title>
+      <p>The development of TNFi has revolutionised the treatment of inflammatory arthritis including RA leading to clinical, laboratory and functional improvement <xref ref-type="bibr" rid="pone.0027182-Breedveld1">[3]</xref>–<xref ref-type="bibr" rid="pone.0027182-Maini1">[5]</xref>. Initially prescribing TNFi was limited to patients who had failed a number of DMARDs, however recent data has shown that early initiation of therapy may reduce disability and future disease burden <xref ref-type="bibr" rid="pone.0027182-Breedveld1">[3]</xref>, <xref ref-type="bibr" rid="pone.0027182-Emery1">[24]</xref>, <xref ref-type="bibr" rid="pone.0027182-Smolen1">[25]</xref>. Recent guidelines suggest treatment of RA to a target of remission (or low disease activity in patients with established disease) with regular review to allow escalation of therapy as necessary to reach these targets. Therefore, potentially more patients will be prescribed biologic therapies at an earlier stage in the disease process <xref ref-type="bibr" rid="pone.0027182-Smolen2">[26]</xref>. Limitations of early treatment include the costs involved in treating patients with expensive medication for long time-periods, increasing the financial burden on already over-stretched healthcare systems. Furthermore, up to 30% of patients fail to respond to TNFi, therefore prediction of response is an important focus of research.</p>
+      <p>In this study, we identified markers in peripheral blood that differentiate active RA patients from patients in remission. While no difference was observed in the frequency of the CD3+CD56− populations between the three cohorts, expression of CD161, CD57 and CD94/NKG2A by T cells was significantly increased in the remission cohort versus active disease. Although CD4<sup>+</sup>CD28<sup>−</sup> cells are contained within this cell subset they were not specifically assessed in the study. Following withdrawal of TNFi, the expression of CD94 and NKG2A by T cells was significantly increased in patients who remained in remission versus patients whose disease flared. Finally, an inverse relationship between the expression of NKG2A by T cells and DAS28 was demonstrated. Therefore, specific populations of NKR+ lymphocytes in the circulation of RA patients is associated with response to therapy and remission, and may be linked to disease flare following withdrawal of TNFi, prior to clinical symptoms of disease.</p>
+      <p>Approximately 30% of patients commencing on TNFi will enter clinical remission (defined as DAS28&lt;2.6). In our cohort of patients, 45.45% flared within 6 months of stopping therapy despite commencing optimal DMARDs at the time of cessation of TNFi. Only one patient required recommencement of therapy after flare with the other patients reaching the 6-month endpoint off biologic therapy. Optimal DMARD therapy was commenced at TNFi withdrawal as it has previously been demonstrated that patients with established RA ceasing TNFi will flare following cessation of therapy with median time to flare between 13.5 and 15 weeks <xref ref-type="bibr" rid="pone.0027182-Buch1">[27]</xref>.</p>
+      <p>Commencing TNFi at the time of diagnosis of RA may allow for remission induction with 70% of patients maintaining response two years after withdrawal of infliximab therapy <xref ref-type="bibr" rid="pone.0027182-Quinn1">[28]</xref>. The BeST study also demonstrated that early intervention with TNFi could allow for withdrawal after a defined period, however a proportion of patients in the infliximab/DMARD group required continuation of biologic therapy <xref ref-type="bibr" rid="pone.0027182-GoekoopRuiterman1">[29]</xref>, <xref ref-type="bibr" rid="pone.0027182-GoekoopRuiterman2">[30]</xref>. Similar remission rates have been demonstrated in the early commencement of other commercially available TNFi. In clinical practice patients commencing on therapy are maintained indefinitely on treatment once a clinical response is achieved and the treatment is well tolerated. Patients in clinical remission are also treated indefinitely and it is not clear if increasing time between infusion or injection or institution of ‘drug holidays’ will be tolerated. The duration of potential drug holidays is also unclear. RA is a heterogeneous disease and it is logical that some patients would tolerate longer drug holidays than others.</p>
+      <p>The effect of TNFi on NK receptor expression on T cells in RA has not been systematically studied. A significant increase in T cells expressing the NK receptors CD161, CD57, CD94/NKG2A was observed in remission compared to active RA. The expansion of CD161 was maintained in patients following withdrawal of therapy however there was significant reduction in CD94/NKG2A in patients who flared.</p>
+      <p>CD94 in association with NKG2A delivers inhibitory signals to T cells recognising HLA-E. CD94/NKG2A expression which was elevated in patients in remission compared to those patients with active disease, suggests this molecule plays a key role in the regulation of inflammation in RA. Supporting this hypothesis, it has been shown that CD94/NKG2A plays a key role in the regulation of pro-inflammatory events in RA <xref ref-type="bibr" rid="pone.0027182-deMatos1">[31]</xref>. IFNγ and TNFα production were markedly enhanced by antibody masking of the CD94/NKG2A receptor <italic>in vitro</italic>, suggesting that CD94/NKG2A is a key regulator of pro-inflammatory cytokine production <xref ref-type="bibr" rid="pone.0027182-deMatos1">[31]</xref><bold>.</bold> A significant reduction in circulating lymphocytes expressing CD94/NKG2A was demonstrated in patients with new onset of psoriasis <xref ref-type="bibr" rid="pone.0027182-Son1">[32]</xref>. In addition, other studies have examined the effect of targeting NKG2A+ NK cells in a mouse model of autoimmune encephalomyelitis. Treatment of mice with a CD94/NKG2A/C/E specific F(ab’)2 fragment enhanced NK cell mediated elimination of activated autoreactive T cells resulting in inhibition of inflammatory damage to spinal cord which was associated with decreased infiltration of T cells <xref ref-type="bibr" rid="pone.0027182-Leavenworth1">[33]</xref>. Together these suggest that CD94/NKG2A maybe an important molecule involved in regulation of inflammation in a number of different autoimmune diseases by different mechanisms.</p>
+      <p>We observed a significant increase in the expression of CD161 by T cells in patients in remission. CD161 is a C-type lectin receptor, but little is known about its function in autoimmune diseases. CD161 and CD57 can both be expressed by NKT cells and are associated with sub-population of CD4+ T cells <xref ref-type="bibr" rid="pone.0027182-Godfrey1">[34]</xref>, <xref ref-type="bibr" rid="pone.0027182-Maeda1">[35]</xref>. Increased frequencies of CD4+CD28− expressing CD161 and CD57 in patients with active RA have been demonstrated <xref ref-type="bibr" rid="pone.0027182-Yen1">[21]</xref>, <xref ref-type="bibr" rid="pone.0027182-Martens1">[36]</xref>–<xref ref-type="bibr" rid="pone.0027182-Warrington1">[38]</xref>, and CD4+CD161+ T cells preferentially accumulated at the outer edge of lymphoid aggregates <xref ref-type="bibr" rid="pone.0027182-Warrington1">[38]</xref>, while CD57 expression may render cells more susceptible to activation-induced cell death by apoptosis <xref ref-type="bibr" rid="pone.0027182-Brenchley1">[39]</xref>.</p>
+      <p>Recent studies have shown that sub-populations of CD4+ T-cells that co-express CD161 and CCR6 are potent producers of IL-17 suggesting CD161 is an important marker for human T-helper cells producing IL-17 (Th17) <xref ref-type="bibr" rid="pone.0027182-Cosmi1">[40]</xref>. While its precise role is unclear, studies suggest that CD161 may regulate T cell adhesion, transendothelial cell migration and invasion <xref ref-type="bibr" rid="pone.0027182-Nakajima1">[41]</xref>–<xref ref-type="bibr" rid="pone.0027182-Spreu1">[43]</xref>. Consistent with our results, studies have also shown a reduction in CD161+ T cells in the inflamed mucosa of ulcerative colitis compared normal control colon <xref ref-type="bibr" rid="pone.0027182-Shimamoto1">[44]</xref>, and in psoriasis patients persistence of CD161 expression was demonstrated in plaques while lesional T-cell subset were reduced following 16 weeks of therapy <xref ref-type="bibr" rid="pone.0027182-Bovenschen1">[45]</xref>. Furthermore, CD161 can partially inhibit TNFα production by CD8+ T cells and therefore it may play a role in maintaining remission in patients following withdrawal of TNFi <xref ref-type="bibr" rid="pone.0027182-Rosen2">[46]</xref>. CD57+ cells have also been implicated in the pathogenesis of RA through secretion of pro-inflammatory cytokines <xref ref-type="bibr" rid="pone.0027182-Goronzy1">[20]</xref>, <xref ref-type="bibr" rid="pone.0027182-Maeda1">[35]</xref>, however some studies have shown that CD57+ T cells from healthy subjects suppress neutrophil development <italic>in vitro</italic> an effect that is impaired in RA patients with Felty's Disease and large granular lymphocyte syndromes <xref ref-type="bibr" rid="pone.0027182-Coakley1">[47]</xref>. We also demonstrated a significantly higher frequency of CD57<sup>bright</sup> T cells in patients in remission compared to active RA, however expression did not change when disease flares following TNFi withdrawal. CD57<sup>bright</sup> T cell express high levels of cytolytic enzymes, have reduced proliferative rates, are thought to be susceptible to activation-induced cell death and may represent a functional ‘exhausted’ subset of T cells <xref ref-type="bibr" rid="pone.0027182-Chattopadhyay1">[48]</xref>–<xref ref-type="bibr" rid="pone.0027182-Gayoso1">[50]</xref>. Although we observed a consistent increase of CD161 and CD57 expression by the T cells of the RA patients in remission, the exact role CD161 and CD57 play in the pathogenesis and regulation of inflammation in RA remains to be determined.</p>
+      <p>In conclusion, we present a small, but comprehensive dataset demonstrating differences in CD94/NKG2A expression by T cells in patients' circulation measured at regular intervals following therapy withdrawal and thus may precede disease flares in disease activity, allowing the timely reinstitution of therapy. This may allow for drug holidays in patients with RA in clinical remission decreasing the economic burden of biologic therapies and allowing reassurance to patients of a reduced likelihood of clinical flare in disease activity.</p>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0027182-Pincus1">
+        <label>1</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Pincus</surname><given-names>T</given-names></name><name name-style="western"><surname>O'Dell</surname><given-names>JR</given-names></name><name name-style="western"><surname>Kremer</surname><given-names>JM</given-names></name></person-group>             <year>1999</year>             <article-title>Combination therapy with multiple disease-modifying antirheumatic drugs in rheumatoid arthritis: a preventive strategy.</article-title>             <source>Ann of Intern Med</source>             <volume>131</volume>             <fpage>768</fpage>             <lpage>74</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-dmann1">
+        <label>2</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>dmann</surname><given-names>M</given-names></name><name name-style="western"><surname>Brennan</surname><given-names>FM</given-names></name><name name-style="western"><surname>Maini</surname><given-names>RN</given-names></name></person-group>             <year>1996</year>             <article-title>Role of cytokines in rheumatoid arthritis.</article-title>             <source>Annu Rev Immunol</source>             <volume>14</volume>             <fpage>397</fpage>             <lpage>440</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Breedveld1">
+        <label>3</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Breedveld</surname><given-names>FC</given-names></name><name name-style="western"><surname>Weisman</surname><given-names>MH</given-names></name><name name-style="western"><surname>Kavanaugh</surname><given-names>AF</given-names></name><name name-style="western"><surname>Cohen</surname><given-names>SB</given-names></name><name name-style="western"><surname>Pavelka</surname><given-names>K</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>The PREMIER study: A multicenter, randomized, double-blind clinical trial of combination therapy with adalimumab plus methotrexate versus methotrexate alone or adalimumab alone in patients with early, aggressive rheumatoid arthritis who had not had previous methotrexate treatment.</article-title>             <source>Arth Rheum</source>             <volume>54</volume>             <fpage>26</fpage>             <lpage>37</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Klareskog1">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Klareskog</surname><given-names>L</given-names></name><name name-style="western"><surname>van der Heijde</surname><given-names>D</given-names></name><name name-style="western"><surname>de Jager</surname><given-names>JP</given-names></name><name name-style="western"><surname>Gough</surname><given-names>A</given-names></name><name name-style="western"><surname>Kalden</surname><given-names>J</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>Therapeutic effect of the combination of etanercept and methotrexate compared with each treatment alone in patients with rheumatoid arthritis: double-blind randomised controlled trial.</article-title>             <source>Lancet</source>             <volume>363</volume>             <fpage>675</fpage>             <lpage>81</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Maini1">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Maini</surname><given-names>R</given-names></name><name name-style="western"><surname>St Clair</surname><given-names>EW</given-names></name><name name-style="western"><surname>Breedveld</surname><given-names>F</given-names></name><name name-style="western"><surname>Furst</surname><given-names>D</given-names></name><name name-style="western"><surname>Kalden</surname><given-names>J</given-names></name><etal/></person-group>             <year>1999</year>             <article-title>Infliximab (chimeric anti-tumour necrosis factor alpha monoclonal antibody) versus placebo in rheumatoid arthritis patients receiving concomitant methotrexate: a randomised phase III trial. ATTRACT Study Group.</article-title>             <source>Lancet</source>             <volume>354</volume>             <fpage>1932</fpage>             <lpage>9</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Taylor1">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Taylor</surname><given-names>PC</given-names></name></person-group>             <year>2003</year>             <article-title>Anti-TNFalpha therapy for rheumatoid arthritis: an update.</article-title>             <source>Intern Med</source>             <volume>42</volume>             <fpage>15</fpage>             <lpage>20</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Bansback1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bansback</surname><given-names>NJ</given-names></name><name name-style="western"><surname>Young</surname><given-names>A</given-names></name><name name-style="western"><surname>Brennan</surname><given-names>A</given-names></name></person-group>             <year>2005</year>             <article-title>The NICE reappraisal of biologics in 2005: what rheumatologists need to know.</article-title>             <source>Rheumatology</source>             <volume>44</volume>             <fpage>3</fpage>             <lpage>4</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Yelin1">
+        <label>8</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yelin</surname><given-names>E</given-names></name><name name-style="western"><surname>Wanke</surname><given-names>LA</given-names></name></person-group>             <year>1999</year>             <article-title>An assessment of the annual and long-term direct costs of rheumatoid arthritis: the impact of poor function and functional decline.</article-title>             <source>Arth Rheum</source>             <volume>42</volume>             <fpage>1209</fpage>             <lpage>18</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Ollendorf1">
+        <label>9</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ollendorf</surname><given-names>DA</given-names></name><name name-style="western"><surname>Klingman</surname><given-names>D</given-names></name><name name-style="western"><surname>Hazard</surname><given-names>E</given-names></name><name name-style="western"><surname>Ray</surname><given-names>S</given-names></name></person-group>             <year>2009</year>             <article-title>Differences in annual medication costs and rates of dosage increase between tumor necrosis factor-antagonist therapies for rheumatoid arthritis in a managed care population.</article-title>             <source>Clin Ther</source>             <volume>31</volume>             <fpage>825</fpage>             <lpage>35</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Nuijten1">
+        <label>10</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nuijten</surname><given-names>MJ</given-names></name><name name-style="western"><surname>Engelfriet</surname><given-names>P</given-names></name><name name-style="western"><surname>Duijn</surname><given-names>K</given-names></name><name name-style="western"><surname>Bruijn</surname><given-names>G</given-names></name><name name-style="western"><surname>Wierz</surname><given-names>D</given-names></name><etal/></person-group>             <year>2001</year>             <article-title>A cost-cost study comparing etanercept with infliximab in rheumatoid arthritis.</article-title>             <source>Pharmacoeconomics</source>             <volume>19</volume>             <fpage>1051</fpage>             <lpage>64</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Hyrich1">
+        <label>11</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hyrich</surname><given-names>KL</given-names></name><name name-style="western"><surname>Watson</surname><given-names>KD</given-names></name><name name-style="western"><surname>Silman</surname><given-names>AJ</given-names></name><name name-style="western"><surname>Symmons</surname><given-names>DP</given-names></name></person-group>             <collab xlink:type="simple">British Society for Rheumatology Biologics Register</collab>             <year>2006</year>             <article-title>Predictors of response to anti-TNF-alpha therapy among patients with rheumatoid arthritis: results from the British Society for Rheumatology Biologics Register.</article-title>             <source>Rheumatology</source>             <volume>45</volume>             <fpage>1558</fpage>             <lpage>65</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Nam1">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nam</surname><given-names>J</given-names></name><name name-style="western"><surname>Villeneuve</surname><given-names>E</given-names></name><name name-style="western"><surname>Emery</surname><given-names>P</given-names></name></person-group>             <year>2009</year>             <article-title>The role of biomarkers in the management of patients with rheumatoid arthritis.</article-title>             <source>Curr Rheumatol Rep</source>             <volume>11</volume>             <fpage>371</fpage>             <lpage>377</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Mitsuo1">
+        <label>13</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Mitsuo</surname><given-names>A</given-names></name><name name-style="western"><surname>Morimoto</surname><given-names>S</given-names></name><name name-style="western"><surname>Nakiri</surname><given-names>Y</given-names></name><name name-style="western"><surname>Suzuki</surname><given-names>J</given-names></name><name name-style="western"><surname>Kaneko</surname><given-names>H</given-names></name></person-group>             <year>2006</year>             <article-title>Decreased CD161+CD8+ T cells in the peripheral blood of patients suffering from rheumatic diseases.</article-title>             <source>Rheumatology</source>             <volume>45</volume>             <fpage>1477</fpage>             <lpage>84</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Richter1">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Richter</surname><given-names>J</given-names></name><name name-style="western"><surname>Benson</surname><given-names>V</given-names></name><name name-style="western"><surname>Grobarova</surname><given-names>V</given-names></name><name name-style="western"><surname>Svoboda</surname><given-names>J</given-names></name><name name-style="western"><surname>Vencovsky</surname><given-names>J</given-names></name></person-group>             <year>2010</year>             <article-title>CD161 receptor participates in both impairing NK cell cytotoxicity and the response to glycans and vimentin in patients with rheumatoid arthritis.</article-title>             <source>Clin Immunol</source>             <volume>136</volume>             <fpage>139</fpage>             <lpage>47</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Groh1">
+        <label>15</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Groh</surname><given-names>V</given-names></name><name name-style="western"><surname>Bruhl</surname><given-names>A</given-names></name><name name-style="western"><surname>El-Gabalawy</surname><given-names>H</given-names></name><name name-style="western"><surname>Nelson</surname><given-names>JL</given-names></name><name name-style="western"><surname>Spies</surname><given-names>T</given-names></name></person-group>             <year>2003</year>             <article-title>Stimulation of T cell autoreactivity by anomalous expression of NKG2D and its MIC ligands in rheumatoid arthritis.</article-title>             <source>Proc Natl Acad Sci USA</source>             <volume>100</volume>             <fpage>9452</fpage>             <lpage>7</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Armstrong1">
+        <label>16</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Armstrong</surname><given-names>RD</given-names></name><name name-style="western"><surname>Panayi</surname><given-names>GS</given-names></name></person-group>             <year>1983</year>             <article-title>Natural killer cell activity in inflammatory joint disease.</article-title>             <source>Clin Rheum</source>             <volume>2</volume>             <fpage>243</fpage>             <lpage>9</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Seaman1">
+        <label>17</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Seaman</surname><given-names>WE</given-names></name></person-group>             <year>2000</year>             <article-title>Natural killer cells and natural killer T cells.</article-title>             <source>Arth Rheum</source>             <volume>43</volume>             <fpage>1204</fpage>             <lpage>17</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Kronenberg1">
+        <label>18</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kronenberg</surname><given-names>M</given-names></name></person-group>             <year>2005</year>             <article-title>Toward an understanding of NKT cell biology: progress and paradoxes.</article-title>             <source>Annu Rev Immunol</source>             <volume>23</volume>             <fpage>877</fpage>             <lpage>900</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Yamada1">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yamada</surname><given-names>H</given-names></name><name name-style="western"><surname>Kaibara</surname><given-names>N</given-names></name><name name-style="western"><surname>Okano</surname><given-names>S</given-names></name><name name-style="western"><surname>Maeda</surname><given-names>T</given-names></name><name name-style="western"><surname>Shuto</surname><given-names>T</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Interleukin-15 selectively expands CD57+ CD28- CD4+ T cells, which are increased in active rheumatoid arthritis.</article-title>             <source>Clin Immunol</source>             <volume>124</volume>             <fpage>328</fpage>             <lpage>35</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Goronzy1">
+        <label>20</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Goronzy</surname><given-names>J</given-names></name><name name-style="western"><surname>Henel</surname><given-names>G</given-names></name><name name-style="western"><surname>Sawai</surname><given-names>H</given-names></name><name name-style="western"><surname>Singh</surname><given-names>K</given-names></name><name name-style="western"><surname>Lee</surname><given-names>EB</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Costimulatory pathways in rheumatoid synovitis and T-cell senescence.</article-title>             <source>Ann NY Acad Sci</source>             <volume>1062</volume>             <fpage>182</fpage>             <lpage>194</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Yen1">
+        <label>21</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yen</surname><given-names>JH</given-names></name><name name-style="western"><surname>Moore</surname><given-names>BE</given-names></name><name name-style="western"><surname>Nakajima</surname><given-names>T</given-names></name><name name-style="western"><surname>Scholl</surname><given-names>D</given-names></name><name name-style="western"><surname>Schaid</surname><given-names>DJ</given-names></name><etal/></person-group>             <year>2001</year>             <article-title>Major histocompatibility complex class I-recognizing receptors are disease risk genes in rheumatoid arthritis.</article-title>             <source>J Exp Med</source>             <volume>193</volume>             <fpage>1159</fpage>             <lpage>1167</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Arnett1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Arnett</surname><given-names>FC</given-names></name><name name-style="western"><surname>Edworthy</surname><given-names>SM</given-names></name><name name-style="western"><surname>Bloch</surname><given-names>DA</given-names></name><name name-style="western"><surname>McShane</surname><given-names>DJ</given-names></name><name name-style="western"><surname>Fries</surname><given-names>JF</given-names></name></person-group>             <year>1988</year>             <article-title>The American Rheumatism Association 1987 revised criteria for the classification of rheumatoid arthritis.</article-title>             <source>Arth Rheum</source>             <volume>31</volume>             <fpage>315</fpage>             <lpage>24</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Fujiwara1">
+        <label>23</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Fujiwara</surname><given-names>S</given-names></name><name name-style="western"><surname>Akiyama</surname><given-names>M</given-names></name><name name-style="western"><surname>Yamakido</surname><given-names>M</given-names></name><name name-style="western"><surname>Seyama</surname><given-names>T</given-names></name><name name-style="western"><surname>Kobuke</surname><given-names>K</given-names></name><etal/></person-group>             <year>1986</year>             <article-title>Cryopreservation of human lymphocytes for assessment of lymphocyte subsets and natural killer cytotoxicity.</article-title>             <source>J Immunol Methods</source>             <volume>90</volume>             <fpage>265</fpage>             <lpage>73</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Emery1">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Emery</surname><given-names>P</given-names></name><name name-style="western"><surname>Breeveld</surname><given-names>FC</given-names></name><name name-style="western"><surname>Hall</surname><given-names>S</given-names></name><name name-style="western"><surname>Durez</surname><given-names>P</given-names></name><name name-style="western"><surname>Chang</surname><given-names>DJ</given-names></name></person-group>             <year>2008</year>             <article-title>Comparison of methotrexate monotherapy with a combination of methotrexate and etanercept in active, early, moderate to severe rheumatoid arthritis (COMET): a randomised, double-blind, parallel treatment trial.</article-title>             <source>Lancet</source>             <volume>372</volume>             <fpage>375</fpage>             <lpage>82</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Smolen1">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Smolen</surname><given-names>JS</given-names></name><name name-style="western"><surname>Van der</surname><given-names>Heijde</given-names></name><name name-style="western"><surname>St Clair</surname><given-names>EW</given-names></name><name name-style="western"><surname>Emery</surname><given-names>P</given-names></name><name name-style="western"><surname>Bathon</surname><given-names>JM</given-names></name></person-group>             <year>2006</year>             <article-title>Predictors of joint damage in patients with early rheumatoid arthritis treated with high-dose methotrexate with or without concomitant infliximab: results from the ASPIRE trial.</article-title>             <source>Arth Rheum</source>             <volume>54</volume>             <fpage>702</fpage>             <lpage>10</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Smolen2">
+        <label>26</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Smolen</surname><given-names>JS</given-names></name><name name-style="western"><surname>Aletaha</surname><given-names>D</given-names></name><name name-style="western"><surname>Bijlsma</surname><given-names>JW</given-names></name><name name-style="western"><surname>Breedveld</surname><given-names>FC</given-names></name><name name-style="western"><surname>Boumpas</surname><given-names>D</given-names></name></person-group>             <year>2010</year>             <article-title>Treating rheumatoid arthritis to target: recommendations of an international task force.</article-title>             <source>Ann Rheum Dis</source>             <volume>69</volume>             <fpage>631</fpage>             <lpage>7</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Buch1">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Buch</surname><given-names>MH</given-names></name><name name-style="western"><surname>Marzo-Ortega</surname><given-names>H</given-names></name><name name-style="western"><surname>Bingham</surname><given-names>SJ</given-names></name><name name-style="western"><surname>Emery</surname><given-names>P</given-names></name></person-group>             <year>2004</year>             <article-title>Long-term treatment of rheumatoid arthritis with tumour necrosis factor alpha blockade: outcome of ceasing and restarting biologicals.</article-title>             <source>Rheumatol</source>             <volume>43</volume>             <fpage>243</fpage>             <lpage>4</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Quinn1">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Quinn</surname><given-names>MA</given-names></name><name name-style="western"><surname>Conaghan</surname><given-names>PG</given-names></name><name name-style="western"><surname>O'Connor</surname><given-names>PJ</given-names></name><name name-style="western"><surname>Karim</surname><given-names>Z</given-names></name><name name-style="western"><surname>Greenstein</surname><given-names>A</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Very early treatment with infliximab in addition to methotrexate in early, poor-prognosis rheumatoid arthritis reduces magnetic resonance imaging evidence of synovitis and damage, with sustained benefit after infliximab withdrawal: results from a twelve-month randomized, double-blind, placebo-controlled trial.</article-title>             <source>Arth Rheum</source>             <volume>52</volume>             <fpage>27</fpage>             <lpage>35</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-GoekoopRuiterman1">
+        <label>29</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Goekoop-Ruiterman</surname><given-names>YP</given-names></name><name name-style="western"><surname>de Vries-Bouwstra</surname><given-names>JK</given-names></name><name name-style="western"><surname>Allaart</surname><given-names>CF</given-names></name><name name-style="western"><surname>van Zeben</surname><given-names>D</given-names></name><name name-style="western"><surname>Kerstens</surname><given-names>PJ</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Comparison of treatment strategies in early rheumatoid arthritis: a randomized trial.</article-title>             <source>Ann Intern Med</source>             <volume>146</volume>             <fpage>406</fpage>             <lpage>15</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-GoekoopRuiterman2">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Goekoop-Ruiterman</surname><given-names>YP</given-names></name><name name-style="western"><surname>de Vries-Bouwstra</surname><given-names>JK</given-names></name><name name-style="western"><surname>Allaart</surname><given-names>CF</given-names></name><name name-style="western"><surname>van Zeben</surname><given-names>D</given-names></name><name name-style="western"><surname>Kerstens</surname><given-names>PJ</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Clinical and radiographic outcomes of four different treatment strategies in patients with early rheumatoid arthritis (the BeSt study): a randomized, controlled trial.</article-title>             <source>Arth Rheum</source>             <volume>52</volume>             <fpage>3381</fpage>             <lpage>90</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-deMatos1">
+        <label>31</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>de Matos</surname><given-names>CT</given-names></name><name name-style="western"><surname>Berg</surname><given-names>L</given-names></name><name name-style="western"><surname>Michaelsson</surname><given-names>J</given-names></name><name name-style="western"><surname>Fellander-Tsai</surname><given-names>L</given-names></name><name name-style="western"><surname>Karre</surname><given-names>K</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Activating and inhibitory receptors on synovial fluid natural killer cells of arthritis patients: role of CD94/NKG2A in control of cytokine secretion.</article-title>             <source>Immunol</source>             <volume>122</volume>             <fpage>291</fpage>             <lpage>301</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Son1">
+        <label>32</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Son</surname><given-names>SW</given-names></name><name name-style="western"><surname>Kim</surname><given-names>EO</given-names></name><name name-style="western"><surname>Ryu</surname><given-names>ES</given-names></name><name name-style="western"><surname>Kim</surname><given-names>TJ</given-names></name><name name-style="western"><surname>Kim</surname><given-names>JN</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Upregulation of Fas and downregulation of CD94/NKG2A inhibitory receptors on circulating natural killer cells in patients with new-onset psoriasis.</article-title>             <source>Br J Dermatol</source>             <volume>161</volume>             <fpage>281</fpage>             <lpage>8</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Leavenworth1">
+        <label>33</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Leavenworth</surname><given-names>JW</given-names></name><name name-style="western"><surname>Schellack</surname><given-names>C</given-names></name><name name-style="western"><surname>Kim</surname><given-names>HJ</given-names></name><name name-style="western"><surname>Lu</surname><given-names>L</given-names></name><name name-style="western"><surname>Spee</surname><given-names>P</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Analysis of the cellular mechanism underlying inhibition of EAE after treatment with anti-NKG2A F(ab')2.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>107</volume>             <fpage>2562</fpage>             <lpage>7</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Godfrey1">
+        <label>34</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Godfrey</surname><given-names>DI</given-names></name><name name-style="western"><surname>Kronenberg</surname><given-names>M</given-names></name></person-group>             <year>2004</year>             <article-title>Going both ways: immune regulation via CD1d-dependent NKT cells.</article-title>             <source>J Clin Invest</source>             <volume>114</volume>             <fpage>1379</fpage>             <lpage>88</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Maeda1">
+        <label>35</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Maeda</surname><given-names>T</given-names></name><name name-style="western"><surname>Yamada</surname><given-names>H</given-names></name><name name-style="western"><surname>Nagamine</surname><given-names>R</given-names></name><name name-style="western"><surname>Shuto</surname><given-names>T</given-names></name><name name-style="western"><surname>Nakashima</surname><given-names>Y</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>Involvement of CD4+,CD57+ T cells in the disease activity of rheumatoid arthritis.</article-title>             <source>Arth Rheum</source>             <volume>46</volume>             <fpage>379</fpage>             <lpage>84</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Martens1">
+        <label>36</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Martens</surname><given-names>PB</given-names></name><name name-style="western"><surname>Goronzy</surname><given-names>JJ</given-names></name><name name-style="western"><surname>Schaid</surname><given-names>D</given-names></name><name name-style="western"><surname>Weyand</surname><given-names>CM</given-names></name></person-group>             <year>1997</year>             <article-title>Expansion of unusual CD4+ T cells in severe rheumatoid arthritis.</article-title>             <source>Arth Rheum</source>             <volume>40</volume>             <fpage>1106</fpage>             <lpage>1114</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Pawlik1">
+        <label>37</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Pawlik</surname><given-names>A</given-names></name><name name-style="western"><surname>Ostanek</surname><given-names>L</given-names></name><name name-style="western"><surname>Brzosko</surname><given-names>I</given-names></name><name name-style="western"><surname>Brzosko</surname><given-names>M</given-names></name><name name-style="western"><surname>Masiuk</surname><given-names>M</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>The expansion of CD4+CD28- T cells in patients with rheumatoid arthritis.</article-title>             <source>Arthritis Res Ther</source>             <volume>5</volume>             <fpage>210</fpage>             <lpage>213</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Warrington1">
+        <label>38</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Warrington</surname><given-names>KJ</given-names></name><name name-style="western"><surname>Takemura</surname><given-names>S</given-names></name><name name-style="western"><surname>Gorinzy</surname><given-names>JJ</given-names></name><name name-style="western"><surname>Weyand</surname><given-names>CM</given-names></name></person-group>             <year>2001</year>             <article-title>CD4+CD28- T cells in rheumatoid arthritis patients combine features of the innate and adaptive immune systems.</article-title>             <source>Arth Rheum</source>             <volume>44</volume>             <fpage>13</fpage>             <lpage>20</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Brenchley1">
+        <label>39</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Brenchley</surname><given-names>JM</given-names></name><name name-style="western"><surname>Karandikar</surname><given-names>NJ</given-names></name><name name-style="western"><surname>Betts</surname><given-names>MR</given-names></name><name name-style="western"><surname>Ambrozak</surname><given-names>DR</given-names></name><name name-style="western"><surname>Hill</surname><given-names>BJ</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>Expression of CD57 defines replicative senescence and antigen-induced apoptotic death of CD8+ T cells.</article-title>             <source>Blood</source>             <volume>101</volume>             <fpage>2711</fpage>             <lpage>2720</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Cosmi1">
+        <label>40</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cosmi</surname><given-names>L</given-names></name><name name-style="western"><surname>De Palma</surname><given-names>R</given-names></name><name name-style="western"><surname>Santarlasci</surname><given-names>V</given-names></name><name name-style="western"><surname>Maggi</surname><given-names>L</given-names></name><name name-style="western"><surname>Capone</surname><given-names>M</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Human interleukin 17-producing cells originate from a CD161+CD4+ T cell precursor.</article-title>             <source>J Exp Med</source>             <volume>205</volume>             <fpage>1903</fpage>             <lpage>1916</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Nakajima1">
+        <label>41</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nakajima</surname><given-names>T</given-names></name><name name-style="western"><surname>Schulte</surname><given-names>S</given-names></name><name name-style="western"><surname>Warrington</surname><given-names>KJ</given-names></name><name name-style="western"><surname>Kopecky</surname><given-names>SL</given-names></name><name name-style="western"><surname>Frye</surname><given-names>RL</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>T-cell-mediated lysis of endothelial cells in acute coronary syndromes.</article-title>             <source>Circulation</source>             <volume>105</volume>             <fpage>570</fpage>             <lpage>575</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Rosen1">
+        <label>42</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rosen</surname><given-names>DB</given-names></name><name name-style="western"><surname>Bettadapura</surname><given-names>J</given-names></name><name name-style="western"><surname>Alsharifi</surname><given-names>M</given-names></name><name name-style="western"><surname>Mathew</surname><given-names>PA</given-names></name><name name-style="western"><surname>Warren</surname><given-names>HS</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Cutting edge: lectin-like transcript-1 is a ligand for the inhibitory human NKR-P1A receptor.</article-title>             <source>J Immunol</source>             <volume>175</volume>             <fpage>7796</fpage>             <lpage>7799</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Spreu1">
+        <label>43</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Spreu</surname><given-names>J</given-names></name><name name-style="western"><surname>Kienie</surname><given-names>EC</given-names></name><name name-style="western"><surname>Schrage</surname><given-names>B</given-names></name><name name-style="western"><surname>Steinie</surname><given-names>A</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>CLEC2A: a novel, alternatively spliced and skin-associated member of the NKC-encoded AICL-CD69-LLT1 family.</article-title>             <source>Immunogenetics</source>             <volume>59</volume>             <fpage>903</fpage>             <lpage>912</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Shimamoto1">
+        <label>44</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Shimamoto</surname><given-names>M</given-names></name><name name-style="western"><surname>Ueno</surname><given-names>Y</given-names></name><name name-style="western"><surname>Tanaka</surname><given-names>S</given-names></name><name name-style="western"><surname>Onitake</surname><given-names>T</given-names></name><name name-style="western"><surname>Hanaoka</surname><given-names>R</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Selective decrease in colonic CD56(+) T and CD161(+) T cells in the inflamed mucosa of patients with ulcerative colitis.</article-title>             <source>World J Gastroenterol</source>             <volume>13</volume>             <fpage>5995</fpage>             <lpage>6002</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Bovenschen1">
+        <label>45</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bovenschen</surname><given-names>HJ</given-names></name><name name-style="western"><surname>Langewouters</surname><given-names>AM</given-names></name><name name-style="western"><surname>van de Kerkhof</surname><given-names>PC</given-names></name></person-group>             <year>2010</year>             <article-title>Dimethylfumarate for Psoriasis: Pronounced Effects on Lesional T-Cell Subsets, Epidermal Proliferation and Differentiation, but not on Natural Killer T Cells in Immunohistochemical Study.</article-title>             <source>Am J Clin Dermatol</source>             <volume>11</volume>             <fpage>342</fpage>             <lpage>350</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Rosen2">
+        <label>46</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rosen</surname><given-names>DB</given-names></name><name name-style="western"><surname>Cao</surname><given-names>W</given-names></name><name name-style="western"><surname>Avery</surname><given-names>DT</given-names></name><name name-style="western"><surname>Tangye</surname><given-names>SG</given-names></name><name name-style="western"><surname>Liu</surname><given-names>YJ</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Functional consequences of interactions between human NKR-P1A and its ligand LLT1 expressed on activated dendritic cells and B cells.</article-title>             <source>J Immunol</source>             <volume>180</volume>             <fpage>6508</fpage>             <lpage>17</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Coakley1">
+        <label>47</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Coakley</surname><given-names>G</given-names></name><name name-style="western"><surname>Iqbal</surname><given-names>M</given-names></name><name name-style="western"><surname>Brooks</surname><given-names>D</given-names></name><name name-style="western"><surname>Panayi</surname><given-names>GS</given-names></name><name name-style="western"><surname>Lanchbury</surname><given-names>JS</given-names></name><etal/></person-group>             <year>2000</year>             <article-title>CD8+, CD57+ T cells from healthy elderly subjects suppress neutrophil development in vitro: implications for the neutropenia of Felty's and large granular lymphocyte syndromes.</article-title>             <source>Arth Rheum</source>             <volume>43</volume>             <fpage>834</fpage>             <lpage>843</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Chattopadhyay1">
+        <label>48</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Chattopadhyay</surname><given-names>PK</given-names></name><name name-style="western"><surname>Betts</surname><given-names>MR</given-names></name><name name-style="western"><surname>Price</surname><given-names>DA</given-names></name><name name-style="western"><surname>Gostick</surname><given-names>E</given-names></name><name name-style="western"><surname>Horton</surname><given-names>H</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>The cytolytic enzymes granyzme A, granzyme B, and perforin: expression patterns, cell distribution, and their relationship to cell maturity and bright CD57 expression.</article-title>             <source>J Leukoc Biol</source>             <volume>85</volume>             <fpage>88</fpage>             <lpage>97</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Focosi1">
+        <label>49</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Focosi</surname><given-names>D</given-names></name><name name-style="western"><surname>Bestagno</surname><given-names>M</given-names></name><name name-style="western"><surname>Burrone</surname><given-names>O</given-names></name><name name-style="western"><surname>Petrini</surname><given-names>M</given-names></name></person-group>             <year>2010</year>             <article-title>CD57+ T lymphocytes and functional immune deficiency.</article-title>             <source>J Leukoc Biol</source>             <volume>87</volume>             <fpage>107</fpage>             <lpage>16</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0027182-Gayoso1">
+        <label>50</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Gayoso</surname><given-names>I</given-names></name><name name-style="western"><surname>Sanchez-Correa</surname><given-names>B</given-names></name><name name-style="western"><surname>Campos</surname><given-names>C</given-names></name><name name-style="western"><surname>Alonso</surname><given-names>C</given-names></name><name name-style="western"><surname>Pera</surname><given-names>A</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Immunosenescence of human natural killer cell.</article-title>             <source>J Innate Immun</source>             <volume>3</volume>             <fpage>337</fpage>             <lpage>343</lpage>          </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

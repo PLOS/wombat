@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+      <journal-id journal-id-type="publisher-id">plos</journal-id>
+      <journal-id journal-id-type="pmc">plosone</journal-id>
+      <journal-title-group>
+        <journal-title>PLoS ONE</journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">1932-6203</issn>
+      <publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">PONE-D-12-20477</article-id>
+      <article-id pub-id-type="doi">10.1371/journal.pone.0050883</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Computational biology</subject>
+            <subj-group>
+              <subject>Biophysic al simulations</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Molecular cell biology</subject>
+            <subj-group>
+              <subject>Cellular types</subject>
+              <subj-group>
+                <subject>Muscle fibers</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Computer science</subject>
+          <subj-group>
+            <subject>Computer modeling</subject>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Engineering</subject>
+          <subj-group>
+            <subject>Bioengineering</subject>
+            <subj-group>
+              <subject>Biomedical engineering</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Anatomy and physiology</subject>
+            <subj-group>
+              <subject>Cardiovascular system</subject>
+              <subj-group>
+                <subject>Cardiovascular anatomy</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Cardiovascular</subject>
+            <subj-group>
+              <subject>Arrhythmias</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Computational Biology</subject>
+          <subject>Cell Biology</subject>
+          <subject>Biotechnology</subject>
+          <subject>Physiology</subject>
+          <subject>Computer Science</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>A Three-Dimensional Human Atrial Model with Fiber Orientation. Electrograms and Arrhythmic Activation Patterns Relationship</article-title>
+        <alt-title alt-title-type="running-head">Activation Patterns and EGM in a 3D Atrial Model</alt-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Tobón</surname>
+            <given-names>Catalina</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Ruiz-Villa</surname>
+            <given-names>Carlos A.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff5">
+            <sup>5</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Heidenreich</surname>
+            <given-names>Elvio</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Romero</surname>
+            <given-names>Lucia</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hornero</surname>
+            <given-names>Fernando</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff4">
+            <sup>4</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Saiz</surname>
+            <given-names>Javier</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <label>1</label>
+        <addr-line>Instituto Interuniversitario de Investigación en Bioingeniería y Tecnología Orientada al Ser Humano (I3BH), Universitat Politècnica de València, Valencia, Spain</addr-line>
+      </aff>
+      <aff id="aff2">
+        <label>2</label>
+        <addr-line>Departamento de Sistemas, Universidad de Caldas, Manizales, Caldas, Colombia</addr-line>
+      </aff>
+      <aff id="aff3">
+        <label>3</label>
+        <addr-line>Universidad Nacional de Lomas de Zamora, Buenos Aires, Argentina</addr-line>
+      </aff>
+      <aff id="aff4">
+        <label>4</label>
+        <addr-line>Servicio Cirugía Cardiaca, Hospital General de Valencia, Valencia, Spain</addr-line>
+      </aff>
+      <aff id="aff5">
+        <label>5</label>
+        <addr-line>Departamento de Informática y Computación, Universidad Nacional de Colombia Sede Manizales, Manizales, Caldas, Colombia</addr-line>
+      </aff>
+      <contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Kabla</surname>
+            <given-names>Alexandre J.</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group>
+      <aff id="edit1">
+        <addr-line>University of Cambridge, United Kingdom</addr-line>
+      </aff>
+      <author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">jsaiz@gbio.i3bh.es</email></corresp>
+        <fn fn-type="conflict">
+          <p>The authors have declared that no competing interests exist.</p>
+        </fn>
+        <fn fn-type="con">
+          <p>Conceived and developed the model: CT CR JS. Wrote the paper: CT JS. Performed the experiments: CT EH. Analyzed the data: CT LR FH JS.</p>
+        </fn>
+      </author-notes>
+      <pub-date pub-type="collection">
+        <year>2013</year>
+      </pub-date>
+      <pub-date pub-type="epub">
+        <day>11</day>
+        <month>2</month>
+        <year>2013</year>
+      </pub-date>
+      <volume>8</volume>
+      <issue>2</issue>
+      <elocation-id>e50883</elocation-id>
+      <history>
+        <date date-type="received">
+          <day>6</day>
+          <month>7</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>25</day>
+          <month>10</month>
+          <year>2012</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-year>2013</copyright-year>
+        <copyright-holder>Tobón et al</copyright-holder>
+        <license xlink:type="simple">
+          <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>The most common sustained cardiac arrhythmias in humans are atrial tachyarrhythmias, mainly atrial fibrillation. Areas of complex fractionated atrial electrograms and high dominant frequency have been proposed as critical regions for maintaining atrial fibrillation; however, there is a paucity of data on the relationship between the characteristics of electrograms and the propagation pattern underlying them. In this study, a realistic 3D computer model of the human atria has been developed to investigate this relationship. The model includes a realistic geometry with fiber orientation, anisotropic conductivity and electrophysiological heterogeneity. We simulated different tachyarrhythmic episodes applying both transient and continuous ectopic activity. Electrograms and their dominant frequency and organization index values were calculated over the entire atrial surface. Our simulations show electrograms with simple potentials, with little or no cycle length variations, narrow frequency peaks and high organization index values during stable and regular activity as the observed in atrial flutter, atrial tachycardia (except in areas of conduction block) and in areas closer to ectopic activity during focal atrial fibrillation. By contrast, cycle length variations and polymorphic electrograms with single, double and fragmented potentials were observed in areas of irregular and unstable activity during atrial fibrillation episodes. Our results also show: 1) electrograms with potentials without negative deflection related to spiral or curved wavefronts that pass over the recording point and move away, 2) potentials with a much greater proportion of positive deflection than negative in areas of wave collisions, 3) double potentials related with wave fragmentations or blocking lines and 4) fragmented electrograms associated with pivot points. Our model is the first human atrial model with realistic fiber orientation used to investigate the relationship between different atrial arrhythmic propagation patterns and the electrograms observed at more than 43000 points on the atrial surface.</p>
+      </abstract>
+      <funding-group>
+        <funding-statement>This work was partially supported by the Plan Nacional de Investigación Científica, Desarrollo e Innovación Tecnológica, Ministerio de Ciencia e Innovación of Spain (TEC2008-02090), by the Plan Avanza (Acción Estratégica de Telecomunicaciones y Sociedad de la Información), Ministerio de Industria Turismo y Comercio of Spain (TSI-020100-2010-469), by the Programa Prometeo 2012 of the Generalitat Valenciana and by the Programa de Apoyo a la Investigación y Desarrollo de la Universitàt Politècnica de Valencia (PAID-06-11-2002). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+      </funding-group>
+      <counts>
+        <page-count count="13"/>
+      </counts>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>The most common sustained cardiac arrhythmias in humans are related to the atria. Different atrial arrhythmias, mainly atrial fibrillation (AF), often provoke disabling symptoms and severe complications such as heart failure and stroke <xref ref-type="bibr" rid="pone.0050883-Wolf1">[1]</xref>. There are several experimental observations regarding the important role of the anatomical structure and electrophysiological heterogeneity on atrial electrical activity both in physiological and pathological conditions <xref ref-type="bibr" rid="pone.0050883-Ho1">[2]</xref>–<xref ref-type="bibr" rid="pone.0050883-Wilders1">[4]</xref>. Additionally, it has been shown that atrial tachyarrhythmias produce a set of changes in atrial properties that lead to their perpetuation. These changes, denoted atrial remodeling, include alterations in the electrical cellular activity and in the anatomical structure. They have been described in several animal models <xref ref-type="bibr" rid="pone.0050883-Nattel1">[5]</xref> and in humans <xref ref-type="bibr" rid="pone.0050883-Workman1">[6]</xref>, <xref ref-type="bibr" rid="pone.0050883-Bosch1">[7]</xref>. Changes in electrical activity cause a decrease in refractoriness subsequent to a significant action potential duration (APD) shortening <xref ref-type="bibr" rid="pone.0050883-Workman1">[6]</xref>–<xref ref-type="bibr" rid="pone.0050883-Wijffels1">[8]</xref>, which may help the initiation and maintenance of multiple reentrant waves, as suggested by experimental studies <xref ref-type="bibr" rid="pone.0050883-Nattel1">[5]</xref>, <xref ref-type="bibr" rid="pone.0050883-Workman1">[6]</xref>.</p>
+      <p>It is well known that atrial tachyarrhythmias can be caused by various mechanisms, including rapid local ectopic activity, single-circuit reentry and multiple-circuit reentry <xref ref-type="bibr" rid="pone.0050883-Haissaguerre1">[9]</xref>–<xref ref-type="bibr" rid="pone.0050883-Moe1">[12]</xref>. It is important to know the fundamental mechanisms underlying atrial arrhythmias since they have implications in antiarrhythmic therapy. It is thought that different mechanisms lead to changes in the characteristics of spatiotemporal organization of atrial tachyarrhythmias. For the study of the spatiotemporal organization of atrial tachyarrhythmias, different signal analysis techniques are currently being used to analyze the electrograms (EGM) recorded at different points of the atrial surface. These include the analysis of EGM morphology <xref ref-type="bibr" rid="pone.0050883-Jacquemet1">[13]</xref>–<xref ref-type="bibr" rid="pone.0050883-Konings1">[15]</xref>, dominant frequency (DF) <xref ref-type="bibr" rid="pone.0050883-Lin1">[16]</xref>–<xref ref-type="bibr" rid="pone.0050883-Sanders2">[21]</xref> and regularity <xref ref-type="bibr" rid="pone.0050883-Sanders1">[19]</xref> or organization index (OI) <xref ref-type="bibr" rid="pone.0050883-Everett1">[22]</xref>, <xref ref-type="bibr" rid="pone.0050883-Everett2">[23]</xref>.</p>
+      <p>Experimental and clinical studies have shown various degrees of spatiotemporal organization during sustained AF <xref ref-type="bibr" rid="pone.0050883-Mandapati1">[10]</xref>, <xref ref-type="bibr" rid="pone.0050883-Berenfeld1">[18]</xref>, <xref ref-type="bibr" rid="pone.0050883-Skanes1">[24]</xref>. Recent evidence from high-density mapping and spectral analysis has shown that AF is associated with rotors and regular repetitive activation in a portion of the atrium. In addition, areas of complex fractionated atrial electrograms (CFAE) and high DF have been proposed as critical regions for maintaining AF <xref ref-type="bibr" rid="pone.0050883-Mandapati1">[10]</xref>, <xref ref-type="bibr" rid="pone.0050883-Skanes1">[24]</xref>, <xref ref-type="bibr" rid="pone.0050883-Mansour1">[25]</xref>. Thus, identification of areas with these features may allow targeted ablation procedures to improve success rates. The OI, defined by Everett <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Everett1">[22]</xref> for the quantification of the organization of atrial activity from spectral analysis of EGM is another parameter that is used to identify critical areas for maintaining atrial arrhythmias. However, there is a paucity of data on the relationship between CFAE, DF and OI. Even more, despite the important experimental and clinical evidence obtained in recent years, the relationship between the different characteristics of EGM and the propagation pattern that underlies them are still far from being completely understood.</p>
+      <p>In this study, a realistic three-dimensional (3D) computer model of the human atria is used to investigate the relationship between different atrial arrhythmic propagation patterns and the EGM observed at different points on the atrial surface. Firstly, an anatomically accurate 3D model of human atria was developed. Our model includes a realistic geometry with fiber orientation, anisotropic conductivity and electrophysiological heterogeneity for different atrial tissues. Then, different tachyarrhythmic episodes in the electrically remodeled model of human atria were simulated and the EGM were analyzed to characterize the arrhythmic patterns. This model is one of the most complete 3D human atrial models ever developed and it provides a useful tool for investigating the complex phenomena involved in atrial tachyarrhythmias by simulating experimental and clinical situations difficult to perform <italic>in vitro</italic> or <italic>in vivo</italic>.</p>
+    </sec>
+    <sec id="s2" sec-type="methods">
+      <title>Methods</title>
+      <sec id="s2a">
+        <title>3D model of human atria</title>
+        <p>An anatomically realistic 3D model of human atria that includes fiber orientation was developed. Our model comprises the following main anatomical structures: left atrium (LA) and right atrium (RA), twenty pectinate muscles (PM) in the RA free wall, the fossa ovalis (FO) in the septum with its limbus, Bachmann's bundle (BB), the crista terminalis (CT), left and right appendages (LAPG and RAPG), left and right pulmonary veins (LPV and RPV), superior and inferior caval veins (SCV and ICV), the isthmus of RA, atrioventricular rings (AVR) and the coronary sinus (CS). The sinoatrial node (SAN) is situated near the ostium of the SCV. The CT layer originates next to the SAN and crosses the RA towards the ICV while the BB starts in a region next to the SCV and extends through the LA. The CS starts in the RA and extends along the posterior atrioventricular sulcus. The model also includes three different pathways for the inter-atrial conduction of electrical propagation: the BB, the limbus of the FO and discrete sites of the CS. <xref ref-type="fig" rid="pone-0050883-g001">Figure 1</xref> shows the frontal (<xref ref-type="fig" rid="pone-0050883-g001">Figure 1A</xref>) and dorsal (<xref ref-type="fig" rid="pone-0050883-g001">Figure 1B</xref>) views of the model.</p>
+        <fig id="pone-0050883-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0050883.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>3D model of human atria.</title>
+            <p>Frontal (A) and dorsal (B) views of the 3D model of human atria. Colored areas show regions with different conductivity and/or electrophysiological heterogeneity.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0050883.g001" position="float" xlink:type="simple"/>
+        </fig>
+        <p>The original set of surfaces of the model was obtained from Harrild and Henriquez <xref ref-type="bibr" rid="pone.0050883-Harrild1">[26]</xref>. These surfaces were compared with data from the literature of normal human atrial structures and histological observations <xref ref-type="bibr" rid="pone.0050883-Ho1">[2]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho2">[27]</xref>, <xref ref-type="bibr" rid="pone.0050883-Cohen1">[28]</xref>, and were modified. The dimensions of the different structures of the model are near the experimentally recorded average in human atria (see <xref ref-type="table" rid="pone-0050883-t001">Table 1</xref>). The atrial wall is a monolayer surface, except the BB and the PM, which are solid structures.</p>
+        <table-wrap id="pone-0050883-t001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0050883.t001</object-id>
+          <label>Table 1</label>
+          <caption>
+            <title>Dimensions of the structures in the model.</title>
+          </caption>
+          <alternatives>
+            <graphic id="pone-0050883-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0050883.t001" xlink:type="simple"/>
+            <table>
+              <colgroup span="1">
+                <col align="left" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+              </colgroup>
+              <thead>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">Structure [axes]</td>
+                  <td align="left" rowspan="1" colspan="1">Model size (cm)</td>
+                  <td align="left" rowspan="1" colspan="1">Reference</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">RA diameter [A-P/M-L/S-I]</td>
+                  <td align="left" rowspan="1" colspan="1">4.5/4.3/4.2</td>
+                  <td align="left" rowspan="1" colspan="1">28</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">LA diameter [A-P/M-L/S-I]</td>
+                  <td align="left" rowspan="1" colspan="1">4.3/3.7/3.7</td>
+                  <td align="left" rowspan="1" colspan="1">28</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">VP diameter [M-L/S-I]</td>
+                  <td align="left" rowspan="1" colspan="1">0.9/1.1</td>
+                  <td align="left" rowspan="1" colspan="1">27,28</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">ICV diameter [M-L/S-I]</td>
+                  <td align="left" rowspan="1" colspan="1">2.2/2.0</td>
+                  <td align="left" rowspan="1" colspan="1">55</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">SCV diameter [M-L/S-I]</td>
+                  <td align="left" rowspan="1" colspan="1">1.9/2.1</td>
+                  <td align="left" rowspan="1" colspan="1">28,55</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">MV diameter [M-L/S-I]</td>
+                  <td align="left" rowspan="1" colspan="1">2.1/2.8</td>
+                  <td align="left" rowspan="1" colspan="1">28</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">TV diameter [M-L/S-I]</td>
+                  <td align="left" rowspan="1" colspan="1">2.9/2.8</td>
+                  <td align="left" rowspan="1" colspan="1">28</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">CS orifice diameter</td>
+                  <td align="left" rowspan="1" colspan="1">0.73</td>
+                  <td align="left" rowspan="1" colspan="1">28,56</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">Isthmus [A-P/M-L]</td>
+                  <td align="left" rowspan="1" colspan="1">2.4/1.9</td>
+                  <td align="left" rowspan="1" colspan="1">56</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">LAPG [A-P]</td>
+                  <td align="left" rowspan="1" colspan="1">5.5</td>
+                  <td align="left" rowspan="1" colspan="1">57</td>
+                </tr>
+              </tbody>
+            </table>
+          </alternatives>
+          <table-wrap-foot>
+            <fn id="nt101">
+              <label/>
+              <p>A-P: ateroposterior; S-I: superorinferior; M-L: mediolateral; MV: mitral valve; TV: tricuspid valve.</p>
+            </fn>
+          </table-wrap-foot>
+        </table-wrap>
+      </sec>
+      <sec id="s2b">
+        <title>Fibers orientation and anisotropy</title>
+        <p>One of the key characteristics of the atrial model is the incorporation of realistic fiber orientation based on histological observations <xref ref-type="bibr" rid="pone.0050883-Ho1">[2]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho2">[27]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho3">[29]</xref>–<xref ref-type="bibr" rid="pone.0050883-Ho4">[31]</xref>. Our model was divided into 42 areas according to the orientation of the main muscle bundles (circular, longitudinal, transverse or oblique) in order to assign a realistic fiber direction to each region. In <xref ref-type="fig" rid="pone-0050883-g002">Figure 2</xref>, the main areas of the model and their fiber orientation can be seen. It shows circulating muscle bundles <xref ref-type="bibr" rid="pone.0050883-Ho1">[2]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho2">[27]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho4">[31]</xref> around the CS and orifices of the pulmonary veins (PV), the SCV and ICV, the AVR, and both appendages (LAPG and RAPG). Fibers of BB, CT and PM have a longitudinal orientation. The free walls of both atria (RA and LA) are smooth and primarily have vertical fibers. The right free wall includes the CT, a fibrous bundle that runs vertically between both caval veins. The fibers between the superior and inferior PV are horizontally positioned, whereas the ostium of the PV contains a complex arrangement of vertical, horizontal and circular fibers <xref ref-type="bibr" rid="pone.0050883-Nathan1">[30]</xref>. This model is an improved version of the atrial models previously developed by our group <xref ref-type="bibr" rid="pone.0050883-Tobn1">[32]</xref>–<xref ref-type="bibr" rid="pone.0050883-Tobn2">[34]</xref>.</p>
+        <fig id="pone-0050883-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0050883.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Fiber orientation in the model.</title>
+            <p>Frontal (A) and dorsal (B) views of the model. The model was divided into 42 areas (represented with different colors) according to the orientation of the muscle bundles (left) and fiber orientation (see black arrows) assigned to the main areas (right).</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0050883.g002" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2c">
+        <title>Electrophysiological model</title>
+        <p>Nygren's model <xref ref-type="bibr" rid="pone.0050883-Nygren1">[35]</xref> of the human atrial action potential (AP) was implemented to reproduce the cellular electrical activity. In this study, the electrophysiological heterogeneity was introduced to reproduce APs in different parts of the atria <xref ref-type="bibr" rid="pone.0050883-Feng1">[36]</xref>: CT, PM, APG, AVR and AWM (atrial working myocardium), which includes the remaining atrial structures. The maximum conductance values of I<sub>t</sub>, I<sub>Kr</sub> and I<sub>CaL</sub> were modified in Nygren's cellular model to obtain different AP models (see control values in <xref ref-type="table" rid="pone-0050883-t002">Table 2</xref>).</p>
+        <table-wrap id="pone-0050883-t002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0050883.t002</object-id>
+          <label>Table 2</label>
+          <caption>
+            <title>Conductances and APD<sub>90</sub> of isolated cells in the regions of the model.</title>
+          </caption>
+          <alternatives>
+            <graphic id="pone-0050883-t002-2" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0050883.t002" xlink:type="simple"/>
+            <table>
+              <colgroup span="1">
+                <col align="left" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+              </colgroup>
+              <thead>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Condition</td>
+                  <td align="left" rowspan="1" colspan="1">CT</td>
+                  <td align="left" rowspan="1" colspan="1">PM</td>
+                  <td align="left" rowspan="1" colspan="1">APG</td>
+                  <td align="left" rowspan="1" colspan="1">AVR</td>
+                  <td align="left" rowspan="1" colspan="1">AWM</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>
+                      <italic>g</italic>
+                    </bold>
+                    <bold>
+                      <sub>t,max</sub>
+                    </bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">Control</td>
+                  <td align="left" rowspan="1" colspan="1">10.6</td>
+                  <td align="left" rowspan="1" colspan="1">8.3</td>
+                  <td align="left" rowspan="1" colspan="1">4.2</td>
+                  <td align="left" rowspan="1" colspan="1">8.3</td>
+                  <td align="left" rowspan="1" colspan="1">7.5</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Remodeled</td>
+                  <td align="left" rowspan="1" colspan="1">1.6</td>
+                  <td align="left" rowspan="1" colspan="1">1.2</td>
+                  <td align="left" rowspan="1" colspan="1">0.6</td>
+                  <td align="left" rowspan="1" colspan="1">1.2</td>
+                  <td align="left" rowspan="1" colspan="1">1.1</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>
+                      <italic>g</italic>
+                    </bold>
+                    <bold>
+                      <sub>CaL,max</sub>
+                    </bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">Control</td>
+                  <td align="left" rowspan="1" colspan="1">10.3</td>
+                  <td align="left" rowspan="1" colspan="1">6.2</td>
+                  <td align="left" rowspan="1" colspan="1">6.7</td>
+                  <td align="left" rowspan="1" colspan="1">4.2</td>
+                  <td align="left" rowspan="1" colspan="1">6.7</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Remodeled</td>
+                  <td align="left" rowspan="1" colspan="1">2.7</td>
+                  <td align="left" rowspan="1" colspan="1">1.6</td>
+                  <td align="left" rowspan="1" colspan="1">1.7</td>
+                  <td align="left" rowspan="1" colspan="1">1.1</td>
+                  <td align="left" rowspan="1" colspan="1">1.7</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>
+                      <italic>g</italic>
+                    </bold>
+                    <bold>
+                      <sub>Kr,max</sub>
+                    </bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">Control</td>
+                  <td align="left" rowspan="1" colspan="1">0.4</td>
+                  <td align="left" rowspan="1" colspan="1">0.4</td>
+                  <td align="left" rowspan="1" colspan="1">2.3</td>
+                  <td align="left" rowspan="1" colspan="1">2.3</td>
+                  <td align="left" rowspan="1" colspan="1">0.5</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Remodeled</td>
+                  <td align="left" rowspan="1" colspan="1">0.4</td>
+                  <td align="left" rowspan="1" colspan="1">0.4</td>
+                  <td align="left" rowspan="1" colspan="1">2.3</td>
+                  <td align="left" rowspan="1" colspan="1">2.3</td>
+                  <td align="left" rowspan="1" colspan="1">0.5</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>
+                      <italic>g</italic>
+                    </bold>
+                    <bold>
+                      <sub>K1,max</sub>
+                    </bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">Control</td>
+                  <td align="left" rowspan="1" colspan="1">4.2</td>
+                  <td align="left" rowspan="1" colspan="1">4.2</td>
+                  <td align="left" rowspan="1" colspan="1">4.2</td>
+                  <td align="left" rowspan="1" colspan="1">4.2</td>
+                  <td align="left" rowspan="1" colspan="1">4.2</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Remodeled</td>
+                  <td align="left" rowspan="1" colspan="1">10.5</td>
+                  <td align="left" rowspan="1" colspan="1">10.5</td>
+                  <td align="left" rowspan="1" colspan="1">10.5</td>
+                  <td align="left" rowspan="1" colspan="1">10.5</td>
+                  <td align="left" rowspan="1" colspan="1">10.5</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>APD<sub>90</sub> (ms)</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">Control</td>
+                  <td align="left" rowspan="1" colspan="1">307</td>
+                  <td align="left" rowspan="1" colspan="1">237</td>
+                  <td align="left" rowspan="1" colspan="1">245</td>
+                  <td align="left" rowspan="1" colspan="1">180</td>
+                  <td align="left" rowspan="1" colspan="1">282</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">Remodeled</td>
+                  <td align="left" rowspan="1" colspan="1">92</td>
+                  <td align="left" rowspan="1" colspan="1">73</td>
+                  <td align="left" rowspan="1" colspan="1">78</td>
+                  <td align="left" rowspan="1" colspan="1">56</td>
+                  <td align="left" rowspan="1" colspan="1">80</td>
+                </tr>
+              </tbody>
+            </table>
+          </alternatives>
+          <table-wrap-foot>
+            <fn id="nt102">
+              <label/>
+              <p><italic>g</italic><sub>t,max</sub>, <italic>g</italic><sub>CaL,max</sub>, <italic>g</italic><sub>Kr,max</sub>, <italic>g</italic><sub>K1,max</sub><italic>:</italic> the maximum conductance of I<sub>t</sub>, I<sub>CaL</sub>, I<sub>Kr</sub> and I<sub>K1</sub> currents, respectively.</p>
+            </fn>
+          </table-wrap-foot>
+        </table-wrap>
+        <p>The basic equation to calculate transmembrane voltage V<sub>m</sub> is:<disp-formula id="pone.0050883.e001"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0050883.e001" xlink:type="simple"/><label>(1)</label></disp-formula>where C<sub>m</sub> is the specific membrane capacitance (50 pF), I<sub>ion</sub> is the total membrane ionic current, V<sub>m</sub> is the membrane potential and I<sub>stim</sub> is the stimulus current.</p>
+        <p>To reproduce atrial electrical remodeling, changes in the maximum conductance and kinetics of different ionic channels of human atrial cells observed in experimental studies of chronic AF <xref ref-type="bibr" rid="pone.0050883-Bosch1">[7]</xref> have been incorporated into the AP models. The following parameters were altered <xref ref-type="bibr" rid="pone.0050883-Zhang1">[37]</xref>: maximum conductance of I<sub>K1</sub> was increased by 250% while the maximum conductance values of I<sub>CaL</sub> and I<sub>t</sub> were decreased by 74% and by 85%, respectively (see remodeled values in <xref ref-type="table" rid="pone-0050883-t002">Table 2</xref>), the time constant of the fast inactivation of I<sub>CaL</sub> was increased by 62%, the activation curve of I<sub>t</sub> was shifted by +16 mV, and the inactivation curve of I<sub>Na</sub> was shifted by +1.6 mV.</p>
+        <p><xref ref-type="fig" rid="pone-0050883-g003">Figure 3</xref> depicts the APs for the different atrial cellular models considered, under both physiological (control) and remodeling conditions (<xref ref-type="fig" rid="pone-0050883-g003">Figure 3A and 3B</xref>, respectively). In these figures, we present the last AP obtained when a train of 10 stimuli at a basic cycle length of 1000 ms was applied. The corresponding APD<sub>90</sub> (APD to 90% of repolarization) values for the different atrial cells (both for control and remodeling conditions) are shown in <xref ref-type="table" rid="pone-0050883-t002">Table 2</xref>. Under control conditions, APD<sub>90</sub> showed high values (ranged from 180 ms to 307 ms) in agreement with experimental data <xref ref-type="bibr" rid="pone.0050883-Bosch1">[7]</xref>, <xref ref-type="bibr" rid="pone.0050883-Feng1">[36]</xref> and a great APD dispersion was observed (APD<sub>90</sub>max – APD<sub>90</sub>min  = 127 ms). By contrast, under remodeling conditions, the APD decreased (ranged from 56 ms to 92 ms) and a smaller APD dispersion was observed (APD<sub>90</sub>max – APD<sub>90</sub>min  = 36 ms). <xref ref-type="fig" rid="pone-0050883-g003">Figure 3C</xref> shows the APD<sub>90</sub> restitution curve for control and remodeled cells when the coupling interval (CI) between pulses is increased. Remodeling conditions not only induce a shortening in the APD<sub>90</sub> but also reduce the frequency dependent adaptation of APD<sub>90</sub>.</p>
+        <fig id="pone-0050883-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0050883.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>AP for different atrial areas and APD<sub>90</sub> restitution curve for AWM under physiological and remodeling conditions.</title>
+            <p>AP time courses for the considered atrial cellular models (CT, PM, APG, AVR and AWM) under physiological (A) and remodeling conditions (B). APD<sub>90</sub> restitution curve for AWM under physiological (control) and remodeling conditions (C).</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0050883.g003" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2d">
+        <title>Action potential propagation and electrograms</title>
+        <p>In this study, the monodomain model of the electrical propagation of AP along the tissue model is described by the following reaction-diffusion equation <xref ref-type="bibr" rid="pone.0050883-Jacquemet1">[13]</xref>, <xref ref-type="bibr" rid="pone.0050883-Clayton1">[38]</xref>, <xref ref-type="bibr" rid="pone.0050883-Henriquez1">[39]</xref>:<disp-formula id="pone.0050883.e002"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0050883.e002" xlink:type="simple"/><label>(2)</label></disp-formula>where <italic>S<sub>v</sub></italic> corresponds to the surface-to-volume ratio and <italic>D</italic> is the conductivity tensor. The monodomain equation was solved using a finite element method <xref ref-type="bibr" rid="pone.0050883-Rogers1">[40]</xref>.</p>
+        <p>Our model includes regions with very high (CT), high (BB, limbus of the FO and PM), low (PV and isthmus of the RA) and very low conductivity (SAN). The AWM has mid-range conductivity (see areas with different colors in <xref ref-type="fig" rid="pone-0050883-g001">Figure 1</xref>).</p>
+        <p>A simplified two-dimensional model of 150×150 cells was used in order to select the values of tissue conductivity in the longitudinal and transversal direction of the fibers for the different regions. The conductivity values were fixed in order to obtain conduction velocities within the ranges reported in the literature <xref ref-type="bibr" rid="pone.0050883-Dolber1">[41]</xref>–<xref ref-type="bibr" rid="pone.0050883-Arora1">[45]</xref>, from 25 cm/s in very slow regions (SAN) to 143 cm/s in very fast regions (CT bundles) in normal (without remodeling) atria (see <xref ref-type="table" rid="pone-0050883-t003">Table 3</xref>). <xref ref-type="table" rid="pone-0050883-t003">Table 3</xref> also shows that atrial remodeling provokes a reduction in the conduction velocities, between 9% and 24%. Anisotropic conduction was also assumed with a transversal to longitudinal ratio of conductivity of 1∶9 for CT, which is in accordance with experimental studies <xref ref-type="bibr" rid="pone.0050883-Hansson1">[44]</xref> that have reported an anisotropy ratio in CT of 1∶10. The isthmus of the RA and the SAN were set as isotropic, while an anisotropic ratio of 1∶2 was used for BB, limbus of FO, PV and AWM <xref ref-type="bibr" rid="pone.0050883-Kleber1">[46]</xref>.</p>
+        <table-wrap id="pone-0050883-t003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0050883.t003</object-id>
+          <label>Table 3</label>
+          <caption>
+            <title>Conductivities and conduction velocities in the regions of the model.</title>
+          </caption>
+          <alternatives>
+            <graphic id="pone-0050883-t003-3" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0050883.t003" xlink:type="simple"/>
+            <table>
+              <colgroup span="1">
+                <col align="left" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+                <col align="center" span="1"/>
+              </colgroup>
+              <thead>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1"/>
+                  <td align="left" rowspan="1" colspan="1">CT</td>
+                  <td align="left" rowspan="1" colspan="1">BB, PM, and FO rim</td>
+                  <td align="left" rowspan="1" colspan="1">PV</td>
+                  <td align="left" rowspan="1" colspan="1">Isthmus</td>
+                  <td align="left" rowspan="1" colspan="1">SAN</td>
+                  <td align="left" rowspan="1" colspan="1">AWM</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>Longitudinal conductivity (S/m)</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">0.7</td>
+                  <td align="left" rowspan="1" colspan="1">0.5</td>
+                  <td align="left" rowspan="1" colspan="1">0.15</td>
+                  <td align="left" rowspan="1" colspan="1">0.1</td>
+                  <td align="left" rowspan="1" colspan="1">0.05</td>
+                  <td align="left" rowspan="1" colspan="1">0.2</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>CV in control (cm/s)</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">143</td>
+                  <td align="left" rowspan="1" colspan="1">120</td>
+                  <td align="left" rowspan="1" colspan="1">54</td>
+                  <td align="left" rowspan="1" colspan="1">44</td>
+                  <td align="left" rowspan="1" colspan="1">25</td>
+                  <td align="left" rowspan="1" colspan="1">69</td>
+                </tr>
+                <tr>
+                  <td align="left" rowspan="1" colspan="1">
+                    <bold>CV in remodeled (cm/s)</bold>
+                  </td>
+                  <td align="left" rowspan="1" colspan="1">130</td>
+                  <td align="left" rowspan="1" colspan="1">107</td>
+                  <td align="left" rowspan="1" colspan="1">46</td>
+                  <td align="left" rowspan="1" colspan="1">37</td>
+                  <td align="left" rowspan="1" colspan="1">19</td>
+                  <td align="left" rowspan="1" colspan="1">61</td>
+                </tr>
+              </tbody>
+            </table>
+          </alternatives>
+          <table-wrap-foot>
+            <fn id="nt103">
+              <label/>
+              <p>CV: conduction velocity.</p>
+            </fn>
+          </table-wrap-foot>
+        </table-wrap>
+        <p>Unipolar EGM at more than 43000 points of the atria surface (0.2 mm from the surface) were simulated. The extracellular potential (Фe) was computed using the large volume conductor approximation <xref ref-type="bibr" rid="pone.0050883-Clayton1">[38]</xref>, <xref ref-type="bibr" rid="pone.0050883-Gima1">[47]</xref>, <xref ref-type="bibr" rid="pone.0050883-Saiz1">[48]</xref>:<disp-formula id="pone.0050883.e003"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0050883.e003" xlink:type="simple"/><label>(3)</label></disp-formula>where ∇'V<sub>m</sub> is the spatial gradient of transmembrane potential V<sub>m</sub>, K is a constant that includes the ratio of intracellular and extracellular conductivities, r is the distance from the source point (x, y, z) to the measuring point (x', y', z') and dv is the differential volume.</p>
+        <p>Surface pseudo-unipolar EGM at different points were visually inspected in order to seek their morphologies as either single, double or fractionated potentials. Double potentials were defined as EGM with two negative deflections, and CFAE were defined as EGM either exhibiting multiple (more than two) deflections or EGM with continuous (more than 50 ms) electrical activity without an isoelectric line <xref ref-type="bibr" rid="pone.0050883-Nademanee1">[49]</xref>. EGM were digitally processed (every millisecond) with a 40–250 Hz band-pass filter, then rectified and low-pass filtered at 20 Hz <xref ref-type="bibr" rid="pone.0050883-Takahashi1">[50]</xref>. Next, spectral analysis of the signals was performed with a fast Fourier transform obtaining a spectral resolution of 0.12 Hz. The DF defined as the frequency corresponding to the highest peak of the power spectrum was calculated. In addition, to measure the periodicity of the signal and the variability of the frequency in the spectrum, the OI was also calculated. The spectral power of the DF and its three harmonic peaks were calculated by computing the area under their peaks over a 0.75 Hz window. Finally, the OI was obtained as the ratio of this spectral power to the total power of the spectrum <xref ref-type="bibr" rid="pone.0050883-Everett2">[23]</xref>, <xref ref-type="bibr" rid="pone.0050883-Takahashi1">[50]</xref>.</p>
+      </sec>
+      <sec id="s2e">
+        <title>Numerical and computational methods</title>
+        <p>A hexahedral mesh was built from the three-dimensional anatomical model using Femap from Siemens PLM software. This mesh includes 52906 elements and 100554 nodes with a spatial resolution ranging from 300 to 700 μm, the average element size being approximately 530 μm. Similar spatial resolutions have been used in previous computational studies of atrial propagation <xref ref-type="bibr" rid="pone.0050883-Harrild1">[26]</xref>, <xref ref-type="bibr" rid="pone.0050883-Gong1">[51]</xref>. <xref ref-type="disp-formula" rid="pone.0050883.e002">Equation (2</xref>) was numerically solved using the software EMOS <xref ref-type="bibr" rid="pone.0050883-Heidenreich1">[52]</xref>, <xref ref-type="bibr" rid="pone.0050883-Niederer1">[53]</xref>. EMOS is a parallel code (mpi-based) that implements the finite element method (FEM) <xref ref-type="bibr" rid="pone.0050883-Rogers1">[40]</xref> and the Operator Splitting <xref ref-type="bibr" rid="pone.0050883-Strang1">[54]</xref> for solving the monodomain model (Eq. 2). The time step was fixed to 0.02 ms. Simulation of 10 seconds of atrial activity took 14 hours on a computing node with two 6-core Intel Xeon X5650 clocked at 2.66 GHz and 48GB DDR3 RAM.</p>
+      </sec>
+      <sec id="s2f">
+        <title>Simulation protocols</title>
+        <p>SAN and ectopic stimulation were simulated by applying rectangular current pulses of 6 ms in duration and 30 μA in amplitude on an area of approximately 10 mm<sup>2</sup>. Atrial tachyarrhythmias were generated by the S1–S2 protocol, which consisted of a train of stimuli with a basic cycle length of 1000 ms applied during 10 seconds in the SAN area to simulate the sinus rhythm (S1). After the last beat of the SAN stimulation, an ectopic focus (S2) was delivered in six different locations in the atria: CT, SCV, isthmus of RA (near the CS), and ostium of the LPV and of the RPV. Two different ectopic foci S2 were used in our study: 1) a train of six stimuli at cycle length (CL) of 130 ms; and 2) a continuous focus also at CL of 130 ms.</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Results</title>
+      <sec id="s3a">
+        <title>Atrial action potential propagation</title>
+        <p>An atrial propagation pattern in sinus rhythm was simulated in the model by applying a periodic stimulus (10 beats) at a basic cycle length of 1000 ms in the anatomic location of the SAN. <xref ref-type="fig" rid="pone-0050883-g004">Figure 4</xref> shows different snapshots of the propagation of the last beat applied for both physiological (<xref ref-type="fig" rid="pone-0050883-g004">Figure 4A</xref>) and remodeling (<xref ref-type="fig" rid="pone-0050883-g004">Figure 4B</xref>) conditions. A delayed activation front in the remodeled atria can be observed. In <xref ref-type="fig" rid="pone-0050883-g004">Figure 4</xref>, it is possible to note how the stimulus applied in the SAN region caused the initiation of a propagating wavefront that quickly spread to the ICV favored by the high conductivity of the CT arch. The anisotropy of the CT caused an almost triangular wavefront (see snapshots at 36 ms in <xref ref-type="fig" rid="pone-0050883-g004">Figures 4A and 4B</xref>). The depolarizing wave reached the BB after 22 ms and propagated to the anterior septal portion of the LA through interatrial BB, inducing the first activation of the LA at 46 ms (in normal atria) and 54 ms (in remodeled atria) after the SAN activation. Thereafter, at 53 ms and 62 ms from the SAN activation for normal and remodeled atria, respectively, the interatrial connection at the limbus of the FO contributed to left atrial septal activation. The activation wave also propagated to LA through the third interatrial connection, the RA-CS-LA pathway, at 87 ms and 98 ms, respectively, and the first LA inferior wall activation was observed at 117 ms and 132 ms for normal and remodeled atria, respectively.</p>
+        <fig id="pone-0050883-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0050883.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Sinus rhythm propagation under physiological and remodeling conditions.</title>
+            <p>Propagation of the last sinus beat applied for both physiological (A) and remodeling (B) conditions. The color scale represents the range of AP values (mV). The depolarizing fronts can be identified by the red color.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0050883.g004" position="float" xlink:type="simple"/>
+        </fig>
+        <p>In <xref ref-type="fig" rid="pone-0050883-g004">Figure 4</xref> (see snapshots at 70 and 101 ms) the delay in the propagation induced by remodeling conditions can be observed. The entire atrial depolarization occurred at 120 ms in normal conditions and at 138 ms in remodeled atria (see snapshot at 138 ms in <xref ref-type="fig" rid="pone-0050883-g004">Figure 4B</xref>), finishing in the distal left APG. Moreover, the whole atrium repolarized faster in remodeling conditions than under physiological conditions, at 234 ms and 432 ms after SAN activation, respectively.</p>
+        <p>After the 10<sup>th</sup> stimulus was applied in the SAN zone, two different ectopic foci (S2) were applied at six different points of the atria (see methods): 1) a burst of six beats, and 2) a continuous ectopic focus, both with a CL of 130 ms. When we applied the burst of six beats, we observed either atrial flutter (AFL) or reentrant tachycardia in five of the six locations tested (isthmus of RA near the CS, SCV, CT, ostium of the LPV and center of the LA posterior wall), and AF when the ectopic focus was applied in the ostium of the RPV. Different AF patterns were also observed when a continuous ectopic focus was applied in the six locations.</p>
+      </sec>
+      <sec id="s3b">
+        <title>Atrial flutter and reentrant tachycardia</title>
+        <p><xref ref-type="fig" rid="pone-0050883-g005">Figure 5A</xref> depicts an example of AFL obtained by applying the burst of six ectopic beats in the isthmus of RA (near the CS), 231 ms after the last sinus stimulus. When the burst was applied, a conduction block was observed in the CS area which induced a macroreentry rotating counterclockwise around the tricuspid annulus (see the arrow in snapshot at 4100 ms in <xref ref-type="fig" rid="pone-0050883-g005">Figure 5A</xref>), that was maintained during the whole simulation (≈8 seconds). The activation pattern of this macroreentry resembles an AFL (see video S1 in the Supporting Information). The direction of the reentrant circuit can also be observed when comparing the APs of the sites 1, 2 and 3 in <xref ref-type="fig" rid="pone-0050883-g005">Figure 5A</xref> (see dotted arrows). The macrorentrant wavefront depolarized the rest of the atria, including the posterior wall of the LA (see site 4 in <xref ref-type="fig" rid="pone-0050883-g005">Figure 5A</xref>) with a 1∶1 activation pattern. The CL of this arrhythmic pattern was almost constant (≈200 ms) in the whole atria, a characteristic of AFL. The EGM in different points of the atria (see sites 2 and 4 in <xref ref-type="fig" rid="pone-0050883-g005">Figure 5A</xref>) only displayed single potentials, showing a stable and regular atrial activation, which is also characteristic of AFL. This regularity is reflected as a single narrow DF peak of 5.0 Hz and high OI values, close to unity, in sites 2 and 4. Similar DF and OI values were observed in the entire atrial tissue.</p>
+        <fig id="pone-0050883-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0050883.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title>Flutter and reentrant tachycardia episodes. Snapshots, APs, EGM and spectral analysis in selected points.</title>
+            <p>(A) Atrial flutter and (B) reentrant tachycardia episodes. In the snapshots, the color scale represents the range of values of the AP in mV. The depolarizing front is identified by the red color. The black arrow indicates the wavefront direction and the dash line a blocking line. AP time-courses of selected sites (indicated in the snapshots) are showed at the left, the dotted arrows indicate the activation sequence. EGM and their spectral analysis showing DF and OI values are shown (See text for more details).</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0050883.g005" position="float" xlink:type="simple"/>
+        </fig>
+        <p><xref ref-type="fig" rid="pone-0050883-g005">Figure 5B</xref> shows an example of reentrant tachycardia (see snapshots at 3760 ms and 3840 ms) obtained by applying a burst of six ectopic beats approximately in the middle of the CT, 160 ms after the last sinus stimulus. In this case, the ectopic focus initiated a reentry anchored to the RA, that propagated between the center and the top areas of the CT (see video S2 in the Supporting Information). This propagation pattern was favored by the greater anisotropy, fiber orientation and heterogeneity in the CT region. In fact, the CT area acts as a blocking line (see the dashed line in snapshot at 3840 ms in <xref ref-type="fig" rid="pone-0050883-g005">Figure 5B</xref>), maintaining the reentry activity and keeping the rest of the tissue in a reentrant tachycardia pattern. The blocking line is a source of electrotonic APs where functional conduction blocks are observed. The APs during tachycardia at five sites are also shown in <xref ref-type="fig" rid="pone-0050883-g005">Figure 5B</xref>. It is important to note that in the CT region, where the reentry turns, two impulses arrive to site 2 from sites 1 and 3 in each cycle. Site 3 shows electrotonic APs when the reentry passes through the region of site 1 and 2, but it is blocked before arriving to site 3. Likewise, site 1 shows electrotonic APs when the reentry turns and passes through site 3 and 2, but it is blocked before arriving to site 1. This reentrant activity spreads to the rest of the atria (see APs at sites 4 and 5 in <xref ref-type="fig" rid="pone-0050883-g005">Figure 5B</xref>).</p>
+        <p>The EGM observed in areas of conduction-block (see EGM at site 2) are characterized by double potentials, one short negative component associated with the electrotonic APs elicited when the reentry is passing at a close distance, and another larger and steeper negative component generated when the reentry passing through the electrode area. The EGM at site 5 displays single potentials with only negative deflections of short-time when the curved front passes on this site (see EGM at site 5 in <xref ref-type="fig" rid="pone-0050883-g005">Figure 5B</xref>). The EGM observed in the rest of the atria (out of the blocking line area) showed single potentials.</p>
+        <p>Only slight variations in the CL of APs were observed between different points, which suggest a periodic and regular reentrant activity. The entire atrial tissue presents similar DF (around 5.5 Hz) and high OI values (see sites 2 and 5 in <xref ref-type="fig" rid="pone-0050883-g005">Figure 5B</xref>, with values of 0.87 and 0.99, respectively). Reentrant tachycardias were also observed when the ectopic focus was applied in SCV, LPV and the LA posterior wall (data not shown).</p>
+      </sec>
+      <sec id="s3c">
+        <title>Atrial fibrillation</title>
+        <p><xref ref-type="fig" rid="pone-0050883-g006">Figure 6</xref> shows two AF episodes triggered by an ectopic focus placed in the ostium of the RPV. In the first case, a train of six ectopic beats (CL = 130 ms) provoked an AF episode that was maintained by different reentrant mechanisms (see snapshots in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>). Indeed, rotors, figure of eight reentries, macrorreentries, fragmentations and wavefront collisions were observed in both atria (see video S3 in the Supporting Information). This irregular activity caused the appearance of electrotonic APs and irregular APs in different areas and at different times (see APs at sites 2 and 3 in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>).</p>
+        <fig id="pone-0050883-g006" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0050883.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title>AF episodes. Snapshots, APs, EGM and spectral analysis in selected spoints.</title>
+            <p>(A) AF triggered by a transient ectopic focus and (B) AF triggered by a continuous ectopic focus, both in the ostium of the RPV. The color scale represents the range of values of the AP in mV. The depolarizing front is identified by the red color. The black arrows indicate the direction of the wavefronts and the dash line shows a blocking line. AP time-courses of selected sites (indicated in the snapshots) are showed at left, down to the snapshots. The corresponding EGM and their spectral analysis showing DF and OI values are shown at the right. In (A): + indicates AP and single potential with only a long-lasting negative deflection (snapshot at 2160 ms), • indicates AP and single potential with positive deflection greater than negative (snapshot at 2355 ms), ▪ indicates AP and potential with a small additional positive deflection (snapshot at 3220 ms) and * indicates AP and CFAE (snapshot at 8675 ms). In (B): x indicates AP and potential with deviations from the baseline, CFAE, at site 1 (snapshots at 4545 ms and 4650 ms), □ indicates AP and potentials with only negative deflections at site 2 (snapshot at 7625 ms), and ○ indicates AP and double potentials at site 3 (snapshots at 7625 ms and 7670 ms).</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0050883.g006" position="float" xlink:type="simple"/>
+        </fig>
+        <p>The EGM primarily show irregular and polymorphic potentials, but double potentials and CFAE were also observed in minor areas. The first potential of the EGM calculated at site 1 (see + in EGM at site 1 in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>) only shows a long-lasting negative deflection when a spiral wavefront passes over this point and away from it (see the black narrow in snapshot at 2160 ms in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>). At this site, potentials with positive deflection greater than negative ones (see • in EGM at site 1 in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>) were observed when wave collisions occurred on the recording point (see snapshot at 2355 ms in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>).</p>
+        <p>The EGM calculated at site 2 shows potentials with a small additional positive deflection generated when the wavefront is fragmented (see ▪ in EGM at site 2 in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>). Then one of the two fronts is shifted to the top of the CT returning to depolarize the site 2 (see the arrow in snapshot at 3220 ms in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>), which gives rise to potentials with double positive deflections.</p>
+        <p>CFAE at site 3 were observed when the tip of the rotor turned on this point (see the arrow in snapshot at 8675 ms in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>). The wavefront surrounds the pivot point, without depolarizing it completely, which results in multiple low amplitude deflections in the EGM (see * in EGM at site 3 in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>).</p>
+        <p>Variations in the CL of the APs were observed between different points of the atria, which exceeded 20 ms in many cases. This fact is reflected in the appearance of multiple frequency peaks and low OI values in the spectral analysis. Heterogeneity in DF values and low OI values were observed in the entire atrial tissue (see spectral analysis of EGM at sites 1, 2 and 3 in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>).</p>
+        <p><xref ref-type="fig" rid="pone-0050883-g006">Figure 6B</xref> shows an example of a focal AF episode triggered by a continuous ectopic focus applied in the ostium of the RPV. This ectopic activity also induced multiple reentrant waves that collided and fragmented with each other (see snapshots in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6B</xref> and video S4 in the Supporting Information). Rotors with irregular trajectories that collided and fragmented creating new activation fronts were mainly observed in the RA. Although LA also presented fragmentation and collisions in the superior and anterior walls, the posterior wall near RPV was activated at a higher frequency by the wavefront generated by the ectopic focus.</p>
+        <p>In site 1 of <xref ref-type="fig" rid="pone-0050883-g006">Figure 6B</xref>, a reentry turns around a functional block for several milliseconds. Electrotonic APs reflected as deviations from the baseline at the EGM, CFAE, (see x in EGM at site 1 in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6B</xref>) were observed when the reentry turned very close to site 1 (see snapshots at 4545 ms and 4650 ms in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6B</xref>). In other instants, the spiral wavefront moved over the site 1 generating potentials with a single negative deflection in the EGM (snapshots not shown).</p>
+        <p>The APs and the EGM calculated in site 2, near the ectopic focus, show a rapid and regular atrial activation with similar CL values. The EGM has potentials with only negative deflections when the curved wavefront passes through this point (see snapshot at 7625 ms and □ in EGM at site 2 in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6B</xref>). The stable and regular activity in this site is reflected in the spectral analysis as a single narrow DF peak of 7.7 Hz (value of the ectopic focus frequency) and high OI value close to unity.</p>
+        <p>Site 3 in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6B</xref> shows APs and EGM for a point on the blocking line, which induced reentry anchored to the CT in certain instants (see the dashed line in snapshot at 7625 ms in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6B</xref>). The reentry propagates between the center and the top areas of the CT, similarly to that observed during reentrant tachycardia in <xref ref-type="fig" rid="pone-0050883-g005">Figure 5B</xref>. Site 3 is depolarized by the wavefront and it is again activated, before repolarizing, by the front turning on line blocking. This behavior is reflected in EGM with double potentials (see ○ in EGM at site 3 in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6B</xref>).</p>
+        <p>The only zone of the atria that shows a high frequency of activation (similar to the focus) and high OI values is the region of the posterior wall of LA near to the ectopic focus. The remaining tissue is unable to depolarize at this high frequency and it shows irregular CL, which is reflected in the spectral analysis with multiple frequency peaks and lower DF and OI values (DF of 5.6 Hz and OI of 0.36, and DF of 5.2 Hz and OI of 0.48, at sites 1 and 2, respectively, in <xref ref-type="fig" rid="pone-0050883-g006">Figure 6B</xref>). Every AF rhythms simulated when the continuous focus was applied in the other five locations (not shown) displayed stable and regular activity near the area of the ectopic focus and high DF values similar to the focus frequency. In the rest of the tissue, multiple reentrant waves generating irregular activity were observed.</p>
+      </sec>
+    </sec>
+    <sec id="s4">
+      <title>Discussion</title>
+      <sec id="s4a">
+        <title>Validation of 3D model of human atria with complete fiber orientation</title>
+        <p>A 3D model of the human atria with realistic anatomy and fiber orientation was developed. Our model also includes real anisotropy characteristics and electrophysiological heterogeneities in the main atrial structures. To our knowledge, this model is one of the most complete 3D human atrial models ever developed.</p>
+        <p>Our model is based on the surfaces provided by Harrild and Henriquez <xref ref-type="bibr" rid="pone.0050883-Harrild1">[26]</xref> that were improved using detailed anatomical and histological observations <xref ref-type="bibr" rid="pone.0050883-Ho1">[2]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho2">[27]</xref>–<xref ref-type="bibr" rid="pone.0050883-Ho4">[31]</xref>, <xref ref-type="bibr" rid="pone.0050883-Kholova1">[55]</xref>–<xref ref-type="bibr" rid="pone.0050883-Wang1">[58]</xref>. We modified the geometry and dimensions of the PV, APG, PM and AVR rings, and the CS was created, in accordance with human data <xref ref-type="bibr" rid="pone.0050883-Ho2">[27]</xref>, <xref ref-type="bibr" rid="pone.0050883-Cohen1">[28]</xref>, <xref ref-type="bibr" rid="pone.0050883-Kholova1">[55]</xref>–<xref ref-type="bibr" rid="pone.0050883-Wang1">[58]</xref>. Specifically, the diameters antero-posterior and medial-lateral of our model are 4.5 cm and 4.3 cm for the RA, respectively, and 4.3 cm and 3.7 cm for the LA, respectively. These values fall within the ranges reported by Cohen <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Cohen1">[28]</xref> in humans (2.8–5.2 cm and 2.9–5.3 cm for RA; and 2.0–5.2 cm and 2.4–5.2 cm for LA). In addition, the diameters for PV (1.1 cm), CS (0.7 cm), SCV (1.9 cm), mitral valve (2.1 cm) and tricuspid valve (2.9 cm) are also within the ranges reported by Cohen <italic>et</italic> <italic>al</italic> (0.7–1.6 cm for PV, 0.4–1.0 cm for CS, 0.8–2.0 cm for SCV, 2.0–3.8 cm for mitral valve, and 2.0–4.0 cm for tricuspid valve).</p>
+        <p>Our model also includes anisotropy and fiber orientation. It has been observed that atrial anatomy, anisotropy and fiber orientation are critically important in determining the spread and direction of the activating wave front <xref ref-type="bibr" rid="pone.0050883-Ho1">[2]</xref>, <xref ref-type="bibr" rid="pone.0050883-Lesh1">[3]</xref>, <xref ref-type="bibr" rid="pone.0050883-Wilders1">[4]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho3">[29]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho4">[31]</xref>. There are a number of well-defined bundles in the atrial muscle where the AP propagates faster <xref ref-type="bibr" rid="pone.0050883-Ho3">[29]</xref>, <xref ref-type="bibr" rid="pone.0050883-Dolber1">[41]</xref>–<xref ref-type="bibr" rid="pone.0050883-Boineau1">[43]</xref>. These bundles include the CT, BB, the PM and the limbus of the FO. All of them are considered in our model. The atrial model was divided into 42 regions and a detailed fiber orientation was included in each region based on histological observations <xref ref-type="bibr" rid="pone.0050883-Ho1">[2]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho2">[27]</xref>–<xref ref-type="bibr" rid="pone.0050883-Ho4">[31]</xref>, <xref ref-type="bibr" rid="pone.0050883-Lemery1">[59]</xref>, <xref ref-type="bibr" rid="pone.0050883-SanchezQuintana1">[60]</xref>. This model goes beyond previous models, as it not only considers a detailed atrial anatomy, regional heterogeneity and anisotropy, but also accurate fiber orientation for the whole atria. Jacquement <italic>et al</italic> <xref ref-type="bibr" rid="pone.0050883-Jacquemet1">[13]</xref> developed an atrial model of simple geometry with a coarse fiber structure, which was manually introduced. Seeman <italic>et al</italic> <xref ref-type="bibr" rid="pone.0050883-Seemann1">[61]</xref> and recently Aslanidi <italic>et al</italic> <xref ref-type="bibr" rid="pone.0050883-Aslanidi1">[62]</xref> included only the fiber orientation of the main bundles (BB, PM and CT) in their human atrial model. Krogh-Madsen et al implemented the Harrild and Herriquez human atrial model <xref ref-type="bibr" rid="pone.0050883-Harrild1">[26]</xref> without structural modifications, anisotropy and fiber orientation to simulate arrhythmic episodes <xref ref-type="bibr" rid="pone.0050883-KroghMadsen1">[63]</xref>. Ho <italic>et al</italic> <xref ref-type="bibr" rid="pone.0050883-Ho4">[31]</xref> argued that the heterogeneous myoarchitecture of RA and LA and the inter-atrial septum must be considered in computer models that seek to investigate mechanisms of atrial arrhythmias, as our model does. An image-based anatomical model of the sheep atrial fiber orientation has been recently presented <xref ref-type="bibr" rid="pone.0050883-Zhao1">[64]</xref>. The model reproduces the whole atria with highly detailed myofiber architecture while our model simplifies the complex myocardial structure by dividing the whole atria into 42 regions. Fiber orientation in both models has some similarities, for example fibers at the base of SVC and around PV have circumferential orientation or highly organized tracts in the CT and PM. However, it is not clear how similar are fiber architecture in the whole atria between sheets and human.</p>
+        <p>Our model also includes a realistic RA-CS-LA interatrial connection; where the CS connects electrically the RA and the LA through some fiber tracks. Different anatomic studies <xref ref-type="bibr" rid="pone.0050883-Antz1">[65]</xref> have shown that the CS musculature is continuous with LA myocardium in the proximal portion of the CS and with RA myocardium at the CS orifice. Therefore, the CS musculature may form an electrical connection between the RA and the LA.</p>
+        <p>The electrophysiological heterogeneity also plays an important role during atrial conduction. In order to reproduce the AP morphologies in different parts of the atria, the human atrial model developed by Nygren was modified based on the electrophysiological heterogeneity observed in canine atria <xref ref-type="bibr" rid="pone.0050883-Feng1">[36]</xref> as previously suggested <xref ref-type="bibr" rid="pone.0050883-Seemann1">[61]</xref>. The effect of electrical remodeling was introduced by altering different currents (I<sub>K1</sub>, I<sub>CaL</sub>, I<sub>t</sub> and I<sub>Na</sub>) in accordance with experimental studies of chronic AF <xref ref-type="bibr" rid="pone.0050883-Bosch1">[7]</xref>. In this study, under normal conditions, AP showed morphological differences in the different electrophysiological zones, consistent with those reported experimentally <xref ref-type="bibr" rid="pone.0050883-Feng1">[36]</xref>. It is noteworthy that, under electrical remodeling conditions, the APs showed similar morphologies for different atrial zones with only slight APD variations between them.</p>
+        <sec id="s4a1">
+          <title>Atrial action potential propagation</title>
+          <p>Our model reproduces the normal atrial activation originated in the SAN, both under physiological and remodeling conditions. Under physiological conditions, the activation initiated in the SAN region reached the BB after 22 ms, which follows experimental studies that have reported the first activation of BB at approximately 19 ms <xref ref-type="bibr" rid="pone.0050883-Lemery1">[59]</xref>. The propagating wavefront quickly spreads to the ICV, becoming almost triangular, favored by the high conductivity of the longitudinal fiber orientation of the CT. These characteristics of the wavefronts have been reported for normal sinus rhythm in humans <xref ref-type="bibr" rid="pone.0050883-Boineau1">[43]</xref>.</p>
+          <p>In our simulation study, the RA free wall was completely depolarized after 60 ms. This result is in agreement with experimental observations of the complete RA wall activation at 57 ms <xref ref-type="bibr" rid="pone.0050883-Boineau1">[43]</xref>. Interestingly, the LA was also activated through the limbus of FO at 53 ms, and through the RA-CS-LA connection at 117 ms, which is consistent with recent studies that have suggested that the activation of the posterior epicardial LA takes place at 54±10 ms <xref ref-type="bibr" rid="pone.0050883-Lemery2">[66]</xref> and that a third interatrial electrical connection exists in the region of the CS <xref ref-type="bibr" rid="pone.0050883-Antz1">[65]</xref>, <xref ref-type="bibr" rid="pone.0050883-Lemery2">[66]</xref>.</p>
+          <p>The complete LA activation was observed in the distal LAPG at 120 ms, which is also in agreement with experimental results. Canavan <italic>et al</italic> <xref ref-type="bibr" rid="pone.0050883-Canavan1">[67]</xref> showed that the last activation in the atrial tissue occurs just before 120 ms. Lemery <italic>et al</italic> <xref ref-type="bibr" rid="pone.0050883-Lemery2">[66]</xref> reported the latest LA activation at 116±18 ms. In addition, it has also been documented that atrial activation ends at the LAPG <xref ref-type="bibr" rid="pone.0050883-Durrer1">[68]</xref>.</p>
+          <p>Under remodeling conditions, the latest atrial activation also occurs in our model in the distal LAPG, but after 138 ms, showing a conduction delay. The delay is due to an overall reduction of the conduction velocity that changes from 9% to 24% depending on the zone <xref ref-type="bibr" rid="pone.0050883-Bosch1">[7]</xref>, <xref ref-type="bibr" rid="pone.0050883-Franz1">[69]</xref>. Experimental studies in dogs <xref ref-type="bibr" rid="pone.0050883-Gaspo1">[70]</xref> observed a mean reduction of 25% in conduction velocity values measured in remodeling conditions. Even more, under remodeling conditions a faster repolarization of the whole atria was observed due to a reduced APD.</p>
+          <p>Simulated tachyarrhythmic episodes resulted from the application of ectopic foci with both transient and continuous activity. It has been demonstrated that extrastimuli, either both transitory or continuous, can act as triggers and, in some cases, they may be responsible for the initiation and maintenance of AF episodes <xref ref-type="bibr" rid="pone.0050883-Haissaguerre1">[9]</xref>, <xref ref-type="bibr" rid="pone.0050883-Chen1">[71]</xref>. In our study, the foci were applied in six different locations in the atria: CT, SCV, isthmus of RA (near the CS), center of the LA posterior wall and ostium of the LPV and RPV. Although tachyarrhythmic episodes are initiated by focal triggers most commonly localized in areas near the PV <xref ref-type="bibr" rid="pone.0050883-Haissaguerre1">[9]</xref>, <xref ref-type="bibr" rid="pone.0050883-Chen1">[71]</xref>, ectopic foci have also been recorded in other regions. In an extensive cases report <xref ref-type="bibr" rid="pone.0050883-Lin2">[72]</xref> the ectopic foci were located in the posterior wall of the LA including VP (38.3%), in the SCV (37%), in the CT (3.7%) in the ligament of Marshall (8.2%), in the CS (1.4%) and in the interatrial septum (1.4%).</p>
+          <p>In our simulations, one AFL, four reentrant tachycardias and one AF episode were obtained by applying transient ectopic foci, but only AF episodes were observed when a continuous ectopic focus was applied in the same locations.</p>
+        </sec>
+      </sec>
+      <sec id="s4b">
+        <title>Flutter and reentrant tachycardia</title>
+        <p>The application of the train of six ectopic beats in the isthmus of RA (near the CS) triggered an episode of AFL. It was maintained by a macroreentry located in the RA, turning counterclockwise around the tricuspid annulus. In patients, it has been observed that a high percentage (85%) of AFL is due to reentrant excitation travelling around the tricuspid valve ring <xref ref-type="bibr" rid="pone.0050883-Saoudi1">[73]</xref>. Notably, our model can reproduce this kind of AFL episode, where the circular fiber orientation around the tricuspid annulus (as in the real atrial musculature) plays an important role in the AFL reentrant circuit. The macroreentrant circuit activated the rest of the atria with a 1∶1 pattern of activation and functional block was not found in the CT. This supports similar observations reached in a previous analysis of human AFL <xref ref-type="bibr" rid="pone.0050883-Friedman1">[74]</xref>, where the atrial activation in the right lateral wall was uniform, without blocking in the region of the CT. In our simulation of AFL, no variation was observed in the CL (≈200 ms) in the different regions of the atria. This result is also consistent with the mean values of CL (238 ms and 245 ms) obtained in experimental and clinical studies <xref ref-type="bibr" rid="pone.0050883-Derejko1">[75]</xref>, <xref ref-type="bibr" rid="pone.0050883-Grimm1">[76]</xref>.</p>
+        <p>The EGM recorded in different points of the atria presented high organization, with uniform and regular single potentials, which reflected in the spectral analysis as a single narrow DF peak. This is in agreement with EGM recorded <italic>in vivo</italic> <xref ref-type="bibr" rid="pone.0050883-Ryu1">[77]</xref> in both LA and RA which also showed uniform and regular potentials. In our model, the spectral analysis showed DF of 5 Hz during AFL, which falls within the range reported in humans (4.2–5.8 Hz) <xref ref-type="bibr" rid="pone.0050883-Olshansky1">[78]</xref>. Additionally, EGM also showed high OI values according to the high regularity in the atrial activation <xref ref-type="bibr" rid="pone.0050883-Everett2">[23]</xref>.</p>
+        <p>Application of the ectopic focus in the CT, SCV, ostium of LPV and the center of the LA posterior wall triggered reentrant tachycardia episodes. When the ectopic focus was applied in the CT, the reentrant tachycardia was maintained by a reentry anchored to the CT. The reentry moved between the central and the superior part of the CT, showing a block line in this region. Experimental studies have shown a great number of the reentrant tachycardias in absence of structural heart diseases occurring along the CT <xref ref-type="bibr" rid="pone.0050883-SanchezQuintana1">[60]</xref>, <xref ref-type="bibr" rid="pone.0050883-Kalman1">[79]</xref>, due to the anisotropy in this region that favors the role of CT as a natural barrier to the atrial activation. Even more, it has also been demonstrated in experimental and clinical studies that the CT is an anatomical substrate underlying atrial arrhythmias <xref ref-type="bibr" rid="pone.0050883-Friedman1">[74]</xref>, <xref ref-type="bibr" rid="pone.0050883-Becker1">[80]</xref>.</p>
+        <p>The reentrant tachycardia produced EGM with mostly single, uniform and regular potentials, linked to stable and regular atrial activation. This organized activity is reflected in the spectral analysis with a single narrow DF peak (consistent with the CL of atrial tachycardia) and a high OI value in most areas of the atria. A 1∶1 uniform activation pattern across both atria and a high regularity in the atrial activation were observed. Experimental and clinical studies <xref ref-type="bibr" rid="pone.0050883-Ryu1">[77]</xref>, <xref ref-type="bibr" rid="pone.0050883-Kalman1">[79]</xref> have shown stable and regular atrial activation with mostly single and regular EGM during reentrant tachycardias. Everett <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Everett2">[23]</xref> have linked high OI values with high regularity in atrial activation. It is noteworthy that double potentials were observed in the EGM along the CT when it acts as a blocking line. Interestingly, our results also confirm that double potentials (or at least part of them) could be related to electrotonic potentials provoked by sequential activation on both sides of the blocking line. In an experimental study on atrial EGM during AF, Konings <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Konings1">[15]</xref> registered double potentials along the lines of conduction block, similar to the results of our simulations.</p>
+      </sec>
+      <sec id="s4c">
+        <title>Atrial fibrillation</title>
+        <p>When a train of six ectopic beats in the ostium of the RVP was applied, an episode of AF was initiated (<xref ref-type="fig" rid="pone-0050883-g006">Figure 6A</xref>). Multiple reentrant waves, rotors, fragmented fronts and collisions were observed, which are characteristic of fibrillatory activity <xref ref-type="bibr" rid="pone.0050883-Mandapati1">[10]</xref>, <xref ref-type="bibr" rid="pone.0050883-Konings1">[15]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ryu1">[77]</xref>. CL variations and EGM with single potentials double potentials and CFAE were observed. Experimental and clinical studies of AF <xref ref-type="bibr" rid="pone.0050883-Lin1">[16]</xref>, <xref ref-type="bibr" rid="pone.0050883-Kalifa1">[17]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ryu1">[77]</xref> have recorded intracardiac polymorphic EGM, and irregular and disorganized activation patterns in areas with fibrillatory conduction.</p>
+        <p>In our study, EGM showed only a long-lasting negative deflection when a spiral wavefront passed over the recording point, and potentials with positive deflection greater than the negative ones when wave collisions occurred. These results are consistent with previous studies <xref ref-type="bibr" rid="pone.0050883-Jacquemet1">[13]</xref>, <xref ref-type="bibr" rid="pone.0050883-Chorro1">[81]</xref> which have shown that the EGM morphology is related to the shape of the wavefront and to its curvature, suggesting that single potentials may have different morphologies. Our results confirm the results obtained by Jacquemet <italic>et al</italic> <xref ref-type="bibr" rid="pone.0050883-Jacquemet1">[13]</xref> in simulation studies using a model with simplified fiber structure. He observed potentials with a positive deflection much lower than the negative deflection during either curved or spiral fronts. He also obtained potentials with a much larger positive deflection than negative deflection during a collision between two wavefronts. However, Konings <italic>et al</italic> <xref ref-type="bibr" rid="pone.0050883-Konings1">[15]</xref> reported short-double potentials along either side of the line of collision, unlike observations in our study. The differences could be due to the collisions between several wavefronts (&gt;2) observed by Konings <italic>et al</italic>, whereas in our study the collisions occur mainly between two wavefronts.</p>
+        <p>In our study, CFAE were observed when the tip of the rotors turned on the recording point (pivot point). During the last decades experimental and clinical studies have demonstrated that the maintenance of the AF in many cases depends on these rotors <xref ref-type="bibr" rid="pone.0050883-Kalifa1">[17]</xref>, <xref ref-type="bibr" rid="pone.0050883-Berenfeld2">[82]</xref>, <xref ref-type="bibr" rid="pone.0050883-Jalife1">[83]</xref>. Recent observational studies have demonstrated that substrates serving as ‘‘AF perpetuators’’ can be identified by searching for areas that have CFAE, but the underlying etiology of CFAE and their relationship with rotors has not yet been elucidated <xref ref-type="bibr" rid="pone.0050883-Nademanee2">[84]</xref>. Konings <italic>et al</italic> <xref ref-type="bibr" rid="pone.0050883-Konings1">[15]</xref> recorded CFAE during AF in humans, suggesting that CFAE can indicate pivot points, slow conduction and complex reentrant patterns. Zlochiver <italic>et al</italic> <xref ref-type="bibr" rid="pone.0050883-Zlochiver1">[14]</xref> demonstrated that rotor meandering might also underlie, at least in part, the CFAE that they observed close to the driver. Our results reveal a direct relationship between the tip of the rotor (pivot point) and the CFAE.</p>
+        <p>The spectral analyses display multiple frequency peaks around the DF peaks and lower OI values than those observed during either reentrant tachycardia or AFL. These results are in agreement with experimental studies <xref ref-type="bibr" rid="pone.0050883-Konings1">[15]</xref>–<xref ref-type="bibr" rid="pone.0050883-Kalifa1">[17]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ryu1">[77]</xref>, reporting that spectral analysis of the EGM recorded during AF episodes shows multiple frequency peaks in areas with irregular and unstable activation. Indeed, conduction blocks and wave collisions increase the irregularity and variability in the frequency <xref ref-type="bibr" rid="pone.0050883-Konings1">[15]</xref>, <xref ref-type="bibr" rid="pone.0050883-Lin1">[16]</xref>, <xref ref-type="bibr" rid="pone.0050883-Berenfeld2">[82]</xref>, <xref ref-type="bibr" rid="pone.0050883-Sahadevan1">[85]</xref>. Everett <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Everett2">[23]</xref> associated low OI values with the presence of EGM with double and fragmented potentials in canine models of AF.</p>
+        <p>In our study, the focal AF triggered by an ectopic focus with continuous activity between RPV showed substantial differences from the previous AF. Nearby zones and the location of the ectopic focus showed APs and EGM with rapid and regular activation with single potentials and similar CL values between them. This electrical activity gives rise to a single frequency peak with the highest DF value, similar to the frequency of the ectopic focus and with the highest OI values, in accordance with experimental observations. Lin <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Lin1">[16]</xref> have reported that EGM recorded near the ectopic sources show rapid, regular and stable activity. The frequency spectrum obtained from sources maintaining AF usually shows a single frequency peak with a narrow morphological base <xref ref-type="bibr" rid="pone.0050883-Sahadevan1">[85]</xref>. Moreover, Takahashi <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Takahashi1">[50]</xref>, in a study with 25 patients, associated high OI values with sources that maintain the arrhythmia. Due to the high frequency of the ectopic focus, the rest of the atria cannot follow a 1∶1 activation, therefore, the conduction block results in a reduction of DF in remote areas of the focal source, as suggested by different authors <xref ref-type="bibr" rid="pone.0050883-Lin1">[16]</xref>, <xref ref-type="bibr" rid="pone.0050883-Sanders1">[19]</xref>, <xref ref-type="bibr" rid="pone.0050883-Lazar1">[20]</xref>. Additionally, several studies in which AF is maintained by a focal source in the LA have reported higher DF values in the LA than in the RA <xref ref-type="bibr" rid="pone.0050883-Lin1">[16]</xref>, <xref ref-type="bibr" rid="pone.0050883-Berenfeld1">[18]</xref>, <xref ref-type="bibr" rid="pone.0050883-Mansour1">[25]</xref>.</p>
+        <p>Our results show EGM with potentials that display a pronounced negative deflection when the curved front passes on the recorded points. Jacquemet <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Jacquemet1">[13]</xref> also obtained potentials with a negative deflection much larger than the positive deflection in the presence of curved fronts.</p>
+        <p>In areas of the atria away from the ectopic focus, multiple reentrant waves that collided and fragmented were observed, which produced irregular and polymorphic EGM with single, double and CFAE; a hallmark of fibrillatory conduction <xref ref-type="bibr" rid="pone.0050883-Mandapati1">[10]</xref>, <xref ref-type="bibr" rid="pone.0050883-Konings1">[15]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ryu1">[77]</xref>. Indeed, double potentials are related with wave fragmentations and conduction block and CFAE are related with pivot points, as previously mentioned. Finally, CL variations are reflected in the spectrum as multiple frequency peaks and low OI values, indicating an irregular conduction pattern with high frequency variability.</p>
+      </sec>
+      <sec id="s4d">
+        <title>Limitations of the study</title>
+        <p>Some of the limitations of this study include:</p>
+        <p>The Nygren model, despite being a fairly complex and detailed model, has some limitations. It lacks a detailed dynamic intracellular Ca<sup>2+</sup> cycling, which can play a relevant role in some cardiac arrhythmias. Several electrophysiologically detailed human atrial cell models have been developed. Although all of them resemble the AP of human atria, they have different morphologies (see <xref ref-type="bibr" rid="pone.0050883-Dossel1">[86]</xref> for review). We used the modifications on I<sub>K1</sub>, I<sub>CaL</sub> and I<sub>t</sub> reported by Zhang <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Zhang1">[37]</xref> to obtain electrically remodeled atrial cells models. In that work, the authors modified two atrial cellular models (Nygren <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Nygren1">[35]</xref> and Courtemanche <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Courtemanche1">[87]</xref>) and observed that the remodeling conditions (called in this work AF-1) provoked similar APD<sub>90</sub> reductions (62% versus 68%). In another study, Sánchez <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Sanchez1">[88]</xref> compared the results of two atrial cell models (Courtemanche <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Courtemanche1">[87]</xref> and Maleckar <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Maleckar1">[89]</xref>) using slightly different remodeling conditions. They observed that the APD<sub>90</sub> reduction was also similar in both models. Even more, although the restitution curve in control presented some differences between the cellular models, under remodeling conditions both restitution curves flattened and were qualitatively very similar. They concluded that their study of AF dynamics was independent of the model used. The aforementioned results suggest that the main findings of our work are also independent of the cellular model used.</p>
+        <p>The remodeling conditions used in our study are based on the experimental work of Bosh et al <xref ref-type="bibr" rid="pone.0050883-Bosch1">[7]</xref>. However, another experimental study <xref ref-type="bibr" rid="pone.0050883-Workman1">[6]</xref> has reported shorter reductions of APD during AF (around 50%) and several computational studies <xref ref-type="bibr" rid="pone.0050883-Zhang1">[37]</xref>, <xref ref-type="bibr" rid="pone.0050883-Sanchez1">[88]</xref>, <xref ref-type="bibr" rid="pone.0050883-Grandi1">[90]</xref> have introduced the effect of electrical remodeling mainly using quantitatively different modifications in the same channels. These different remodeling conditions may produce different patterns of atrial arrhythmias and requires further investigation. Another limitation is that the heterogeneity of our model is based on canine atria data <xref ref-type="bibr" rid="pone.0050883-Feng1">[36]</xref>. New experimental data about the effect of atrial electrical remodeling on the anatomical structures of human atria would allow more realistic simulations of AF dynamic under chronic AF. Although the used remodeling conditions can reproduce the action potential phenotype observed in patients with permanent AF, electrical remodeling is not the only process accompanying permanent AF. Indeed, many of these patients have significant structural remodeling with fibrosis, which contributes to short APD <xref ref-type="bibr" rid="pone.0050883-Maleckar2">[91]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ashihara1">[92]</xref> and increases the complexity of the arrhythmia <xref ref-type="bibr" rid="pone.0050883-Burstein1">[93]</xref>.</p>
+        <p>Our 3D anatomical model of human atria does not take into account the real thickness of the atrial walls. Several studies have shown very complex fiber structures in areas of human atria <xref ref-type="bibr" rid="pone.0050883-Ho1">[2]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho2">[27]</xref>, <xref ref-type="bibr" rid="pone.0050883-Nathan1">[30]</xref>, <xref ref-type="bibr" rid="pone.0050883-Ho4">[31]</xref>. Our results were obtained using a specific virtual atria model. Although our model includes a great number of anatomical and morphological details, it corresponds to a particular set of parameters (electrophysiology, anatomy, fiber direction, anisotropy and heterogeneity, among others). For example, our model includes four pulmonary veins, which is the most common anatomical structure in humans though other patterns have been observed <xref ref-type="bibr" rid="pone.0050883-Marom1">[94]</xref>. In addition, although there are also inter-subject differences in fiber orientation, we have tried to model the most common fiber orientation observed experimentally for the different parts of the atrial model. The influence of aging on the anatomy of the atria is also relevant <xref ref-type="bibr" rid="pone.0050883-Pan1">[95]</xref>. Therefore, more comprehensive results could be obtained when considering inter-subject variability. Indeed, Romero <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Romero1">[96]</xref> analyzed the impact of the ionic current variability in line with biological inter-subject differences, on the APD<sub>90</sub> in a model of human ventricular cells. Recently, a semi-automatic method to incorporate atrial anisotropy, heterogeneities and fiber orientation into patient specific models has been developed <xref ref-type="bibr" rid="pone.0050883-Krueger1">[97]</xref>. Although the fiber orientation was also based on data from literature and from different human atria preparations, the specific anatomy of patients is reproduced in 3D models using data from CT and MRI. This method could be used to further extend this study for personalized anatomical models.</p>
+        <p>Finally, the mesh used in the present study is relatively coarse. It comprises of 100554 nodes with a spatial resolution ranging from 300 to 700 μm (530 μm in average). Although this discretization is similar to the used in previous simulation studies of AF <xref ref-type="bibr" rid="pone.0050883-Harrild1">[26]</xref>, <xref ref-type="bibr" rid="pone.0050883-Gong1">[51]</xref> recent works have used higher resolutions. Aslanidi <italic>et</italic> <italic>al</italic> <xref ref-type="bibr" rid="pone.0050883-Aslanidi1">[62]</xref> used a spatial resolution of 330×330×300 μm<sup>3</sup> and showed that decreasing the space step form 330 μm to 250 μm resulted in very small (&lt;3%) changes of the conduction velocity of AP. Although a higher spatial resolution could slightly affect to AF dynamics observed in our study, we would expect similar patterns of activation. Moreover, these changes would not affect the relationship between atrial activation patterns and simulated EGMs.</p>
+      </sec>
+    </sec>
+    <sec id="s5">
+      <title>Conclusions</title>
+      <p>We have developed a realistic 3D model of human atria with a very detailed fiber orientation, real anisotropy and electrophysiological properties. Additionally, it includes all main interatrial connections. To our knowledge, this model is one of the most complete human atrial models developed.</p>
+      <p>In our study using an electrically remodeled atria model, a transient focus induced atrial flutter, reentrant tachycardias and AF; whereas a continuous ectopic focus provoked AF in all of the tested sites.</p>
+      <p>Our model can reproduce the stability and regularity that cause arrhythmias as AFL, reentrant tachycardia and areas with focal activity. This electrical activity is reflected in EGM with single potentials and spectra with a narrow frequency peak and high OI values. Our model can also reproduce characteristic patterns of AF, which were maintained by multiple reentrant waves, rotors, fragmentation and wave collision, which are reflected in polymorphic EGM and spectra with multiple frequency peaks and low OI values. Interestingly, EGM potentials with only a negative deflection are related to spiral and curved wavefronts that pass and move away. In addition, potentials with a much greater positive deflection are related with wave collisions. Moreover, double potentials are related with either wave fragmentations or blocking lines, while CFAE are related to pivot points.</p>
+      <p>Finally, this is the first work that uses a 3D human atrial to investigate the relationship between different atrial arrhythmic propagation patterns and the EGM observed at more than 43000 points on the atrial surface.</p>
+    </sec>
+    <sec id="s6">
+      <title>Supporting Information</title>
+      <supplementary-material id="pone.0050883.s001" mimetype="video/x-msvideo" xlink:href="info:doi/10.1371/journal.pone.0050883.s001" position="float" xlink:type="simple">
+        <label>Video S1</label>
+        <caption>
+          <p><bold>Atrial Flutter</bold> (<bold>supplements </bold><xref ref-type="fig" rid="pone-0050883-g005"><bold>Fig. 5A</bold></xref><bold> in the manuscript</bold>)<bold>.</bold> Simulation of an AFL episode, triggered by six ectopic beats applied at the isthmus of the RA (near the CS), and maintained by a macroreentry rotating counterclockwise around the tricuspid annulus.</p>
+          <p>(AVI)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0050883.s002" mimetype="video/x-msvideo" xlink:href="info:doi/10.1371/journal.pone.0050883.s002" position="float" xlink:type="simple">
+        <label>Video S2</label>
+        <caption>
+          <p><bold>Reentrant tachycardia (supplements </bold><xref ref-type="fig" rid="pone-0050883-g005"><bold>Fig. 5B</bold></xref><bold> in the manuscript).</bold> Simulation of reentrant tachycardia episode, triggered by six ectopic beats applied at the middle of the CT, and maintained by a reentry anchored to the RA, moving between the center and the top areas of the CT.</p>
+          <p>(AVI)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0050883.s003" mimetype="video/x-msvideo" xlink:href="info:doi/10.1371/journal.pone.0050883.s003" position="float" xlink:type="simple">
+        <label>Video S3</label>
+        <caption>
+          <p><bold>Atrial fibrillation induced by a transitory focus</bold> (<bold>supplements </bold><xref ref-type="fig" rid="pone-0050883-g006"><bold>Fig. 6A</bold></xref><bold> in the manuscript</bold>). Simulation of AF episode, triggered by six ectopic beats applied in the ostium of the RPV, and maintained by multiple reentrant waves. Rotors, figure of eight reentries, macrorreentries, fragmentations and wavefront collisions can be observed in both atria.</p>
+          <p>(AVI)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0050883.s004" mimetype="video/x-msvideo" xlink:href="info:doi/10.1371/journal.pone.0050883.s004" position="float" xlink:type="simple">
+        <label>Video S4</label>
+        <caption>
+          <p><bold>Atrial fibrillation induced by a continuous focus</bold> (<bold>supplements </bold><xref ref-type="fig" rid="pone-0050883-g006"><bold>Fig.</bold> <bold>6B</bold></xref><bold> in the manuscript</bold>). Simulation of focal AF episode, triggered by a continuous ectopic focus applied in the ostium of the RPV. Multiple reentrant waves are observed in the RA and in the superior and anterior walls of LA. Posterior wall near to RPV show stable activity at high frequency due to the wavefront generated by the ectopic focus.</p>
+          <p>(AVI)</p>
+        </caption>
+      </supplementary-material>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>We would like to thank Felipe Atienza MD, Ph.D, from the Cardiology Department, Hospital General Universitario Gregorio Marañón, Madrid, Spain; for his invaluable comments.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0050883-Wolf1">
+        <label>1</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wolf</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Benjamin</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Belanger</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Kannel</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Levy</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>1996</year>) <article-title>Secular trends in the prevalence of atrial fibrillation: The Framingham study. Am Heart J</article-title>. <volume>113</volume>: <fpage>790</fpage>–<lpage>796</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Ho1">
+        <label>2</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ho</surname><given-names>SY</given-names></name>, <name name-style="western"><surname>Anderson</surname><given-names>RH</given-names></name>, <name name-style="western"><surname>Sanchez-Quintana</surname><given-names>D</given-names></name> (<year>2002</year>) <article-title>Atrial structure and fibres: morphologic bases of atrial conduction. Cardiovasc Res</article-title>. <volume>54(2)</volume>: <fpage>325</fpage>–<lpage>336</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Lesh1">
+        <label>3</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lesh</surname><given-names>MD</given-names></name>, <name name-style="western"><surname>Kalman</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Olgin</surname><given-names>JE</given-names></name>, <name name-style="western"><surname>Ellis</surname><given-names>WS</given-names></name> (<year>1996</year>) <article-title>The role of atrial anatomy in clinical atrial arrhythmias. J Electrocardiol</article-title>. <volume>29(1)</volume>: <fpage>101</fpage>–<lpage>113</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Wilders1">
+        <label>4</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wilders</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Wagner</surname><given-names>MB</given-names></name>, <name name-style="western"><surname>Golod</surname><given-names>DA</given-names></name>, <name name-style="western"><surname>Kumar</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>YG</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Effects of anisotropy on the development of cardiac arrhythmias associated with focal activity. Pflugers Arch</article-title>. <volume>441</volume>: <fpage>301</fpage>–<lpage>312</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Nattel1">
+        <label>5</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nattel</surname><given-names>S</given-names></name> (<year>2002</year>) <article-title>New ideas about atrial fibrillation 50 years on. Nature</article-title>. <volume>415(6868)</volume>: <fpage>219</fpage>–<lpage>226</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Workman1">
+        <label>6</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Workman</surname><given-names>AJ</given-names></name>, <name name-style="western"><surname>Kane</surname><given-names>AK</given-names></name>, <name name-style="western"><surname>Rankin</surname><given-names>AC</given-names></name> (<year>2001</year>) <article-title>The contribution of ionic currents to changes in refractoriness of human atrial myocytes associated with chronic atrial fibrillation. Cardiovasc Res</article-title>. <volume>52(2)</volume>: <fpage>226</fpage>–<lpage>235</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Bosch1">
+        <label>7</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bosch</surname><given-names>RF</given-names></name>, <name name-style="western"><surname>Zeng</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Grammer</surname><given-names>JB</given-names></name>, <name name-style="western"><surname>Popovic</surname><given-names>CM</given-names></name>, <name name-style="western"><surname>Mewis</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>1999</year>) <article-title>Ionic mechanisms of electrical remodeling in human atrial fibrillation. Cardiovasc Res</article-title>. <volume>44</volume>: <fpage>121</fpage>–<lpage>231</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Wijffels1">
+        <label>8</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wijffels</surname><given-names>MCEF</given-names></name>, <name name-style="western"><surname>Kirchhof</surname><given-names>CJHJ</given-names></name>, <name name-style="western"><surname>Dorland</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Allessie</surname><given-names>MA</given-names></name> (<year>1995</year>) <article-title>Atrial-fibrillation begets atrial-fibrillation – a study in awake chronically instrumented goats. Circulation</article-title>. <volume>92(7)</volume>: <fpage>1954</fpage>–<lpage>1968</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Haissaguerre1">
+        <label>9</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Haissaguerre</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Jais</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Shah</surname><given-names>DC</given-names></name>, <name name-style="western"><surname>Takahashi</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Hocini</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>1998</year>) <article-title>Spontaneous initiation of atrial fibrillation by ectopic beats originating in the pulmonary veins. N Engl J Med</article-title>. <volume>339(10)</volume>: <fpage>659</fpage>–<lpage>666</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Mandapati1">
+        <label>10</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mandapati</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Skanes</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Chen</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Berenfeld</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Jalife</surname><given-names>J</given-names></name> (<year>2000</year>) <article-title>Stable microreentrant sources as a mechanism of atrial fibrillation in the isolated sheep heart. Circulation</article-title>. <volume>101(2)</volume>: <fpage>194</fpage>–<lpage>199</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Allessie1">
+        <label>11</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Allessie</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Bonke</surname><given-names>FI</given-names></name>, <name name-style="western"><surname>Schopman</surname><given-names>FJ</given-names></name> (<year>1977</year>) <article-title>Circus movement in rabbit atrial muscle as a mechanism of tachycardia. III. The “leading circle” concept: a new model of circus movement in cardiac tissue without the involvement of an anatomical obstacle. Circ Res</article-title>. <volume>41(1)</volume>: <fpage>9</fpage>–<lpage>18</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Moe1">
+        <label>12</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Moe</surname><given-names>GK</given-names></name> (<year>1962</year>) <article-title>On the multiple wavelet hypothesis of atrial fibrillation. Arch Int Pharmacodyn</article-title>. <volume>140</volume>: <fpage>183</fpage>–<lpage>188</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Jacquemet1">
+        <label>13</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jacquemet</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Virag</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Ihara</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Dang</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Blanc</surname><given-names>O</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>Study of unipolar electrogram morphology in a computer model of atrial fibrillation. J Cardiovasc Electrophysiol</article-title>. <volume>14</volume>: <fpage>S172</fpage>–<lpage>S179</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Zlochiver1">
+        <label>14</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zlochiver</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Yamazaki</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Kalifa</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Berenfeld</surname><given-names>O</given-names></name> (<year>2008</year>) <article-title>Rotor meandering contributes to irregularity in electrograms during atrial fibrillation. Heart Rhythm</article-title>. <volume>5(6)</volume>: <fpage>846</fpage>–<lpage>854</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Konings1">
+        <label>15</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Konings</surname><given-names>KT</given-names></name>, <name name-style="western"><surname>Smeets</surname><given-names>JL</given-names></name>, <name name-style="western"><surname>Penn</surname><given-names>OC</given-names></name>, <name name-style="western"><surname>Wellens</surname><given-names>HJ</given-names></name>, <name name-style="western"><surname>Allessie</surname><given-names>MA</given-names></name> (<year>1997</year>) <article-title>Configuration of unipolar atrial electrograms during electrically induced atrial fibrillation in humans. Circulation</article-title>. <volume>95(5)</volume>: <fpage>1231</fpage>–<lpage>1241</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Lin1">
+        <label>16</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lin</surname><given-names>YJ</given-names></name>, <name name-style="western"><surname>Tai</surname><given-names>CT</given-names></name>, <name name-style="western"><surname>Chen</surname><given-names>SA</given-names></name> (<year>2006</year>) <article-title>Can mapping and ablation of atrial fibrillation be guided by frequency analysis of fibrillatory waves? J Cardiovasc Electrophysiol</article-title>. <volume>17(3)</volume>: <fpage>S44</fpage>–<lpage>S49</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Kalifa1">
+        <label>17</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kalifa</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Tanaka</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Zaitsev</surname><given-names>AV</given-names></name>, <name name-style="western"><surname>Warren</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Vaidyanathan</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Mechanisms of wave fractionation at boundaries of high-frequency excitation in the posterior left atrium of the isolated sheep heart during atrial fibrillation. Circulation</article-title>. <volume>113(5)</volume>: <fpage>626</fpage>–<lpage>633</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Berenfeld1">
+        <label>18</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Berenfeld</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Mandapati</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Dixit</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Skanes</surname><given-names>AC</given-names></name>, <name name-style="western"><surname>Chen</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Spatially distributed dominant excitation frequencies reveal hidden organization in atrial fibrillation in the Langendorff-perfused sheep heart. J Cardiovasc Electrophysiol</article-title>. <volume>11(8)</volume>: <fpage>869</fpage>–<lpage>879</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Sanders1">
+        <label>19</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sanders</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Berenfeld</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Hocini</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Jais</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Vaidyanathan</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>Spectral analysis identifies sites of high-frequency activity maintaining atrial fibrillation in humans. Circulation</article-title>. <volume>112(6)</volume>: <fpage>789</fpage>–<lpage>797</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Lazar1">
+        <label>20</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lazar</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Dixit</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Marchlinski</surname><given-names>FE</given-names></name>, <name name-style="western"><surname>Callans</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Gerstenfeld</surname><given-names>EP</given-names></name> (<year>2004</year>) <article-title>Presence of left-to-right atrial frequency gradient in paroxysmal but not persistent atrial fibrillation in humans. Circulation</article-title>. <volume>110(20)</volume>: <fpage>3181</fpage>–<lpage>3186</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Sanders2">
+        <label>21</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sanders</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Nalliah</surname><given-names>CJ</given-names></name>, <name name-style="western"><surname>Dubois</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Takahashi</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Hocini</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Frequency mapping of the pulmonary veins in paroxysmal versus permanent atrial fibrillation. J Cardiovasc Electrophysiol</article-title>. <volume>17(9)</volume>: <fpage>965</fpage>–<lpage>972</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Everett1">
+        <label>22</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Everett</surname><given-names>TH</given-names></name>, <name name-style="western"><surname>Kok</surname><given-names>LC</given-names></name>, <name name-style="western"><surname>Vaughn</surname><given-names>RH</given-names></name>, <name name-style="western"><surname>Moorman</surname><given-names>JR</given-names></name>, <name name-style="western"><surname>Haines</surname><given-names>DE</given-names></name> (<year>2001</year>) <article-title>Frequency domain algorithm for quantifying atrial fibrillation organization to increase defibrillation efficacy. IEEE Trans Biomed Eng</article-title>. <volume>48(9)</volume>: <fpage>969</fpage>–<lpage>978</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Everett2">
+        <label>23</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Everett</surname><given-names>TH</given-names></name>, <name name-style="western"><surname>Wilson</surname><given-names>EE</given-names></name>, <name name-style="western"><surname>Verheule</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Guerra</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Foreman</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Structural atrial remodeling alters the substrate and spatiotemporal organization of atrial fibrillation: a comparison in canine models of structural and electrical atrial remodeling. Am J Physiol Heart Circ Physiol</article-title>. <volume>291(6)</volume>: <fpage>H2911</fpage>–<lpage>H2923</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Skanes1">
+        <label>24</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Skanes</surname><given-names>AC</given-names></name>, <name name-style="western"><surname>Mandapati</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Berenfeld</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Davidenko</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Jalife</surname><given-names>J</given-names></name> (<year>1998</year>) <article-title>Spatiotemporal periodicity during atrial fibrillation in the isolated sheep heart. Circulation</article-title>. <volume>98(12)</volume>: <fpage>1236</fpage>–<lpage>1248</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Mansour1">
+        <label>25</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mansour</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Mandapati</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Berenfeld</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Chen</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Samie</surname><given-names>FH</given-names></name>, <etal>et al</etal>. (<year>2001</year>) <article-title>Left-to-right gradient of atrial frequencies during acute atrial fibrillation in the isolated sheep heart. Circulation</article-title>. <volume>103(21)</volume>: <fpage>2631</fpage>–<lpage>2636</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Harrild1">
+        <label>26</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Harrild</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Henriquez</surname><given-names>C</given-names></name> (<year>2000</year>) <article-title>A computer model of normal conduction in the human atria. Circ Res</article-title>. <volume>87(7)</volume>: <fpage>E25</fpage>–<lpage>E36</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Ho2">
+        <label>27</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ho</surname><given-names>SY</given-names></name>, <name name-style="western"><surname>Sanchez-Quintana</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Cabrera</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Anderson</surname><given-names>RH</given-names></name> (<year>1999</year>) <article-title>Anatomy of the left atrium: implications for radiofrequency ablation of atrial fibrillation. J Cardiovasc Electrophysiol</article-title>. <volume>10(11)</volume>: <fpage>1525</fpage>–<lpage>1533</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Cohen1">
+        <label>28</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cohen</surname><given-names>GI</given-names></name>, <name name-style="western"><surname>White</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Sochowski</surname><given-names>RA</given-names></name>, <name name-style="western"><surname>Klein</surname><given-names>AL</given-names></name>, <name name-style="western"><surname>Bridge</surname><given-names>PD</given-names></name>, <etal>et al</etal>. (<year>1995</year>) <article-title>Reference values for normal adult transesophageal echocardiographic measurements. J Am Soc Echocardiogr</article-title>. <volume>8(3)</volume>: <fpage>221</fpage>–<lpage>230</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Ho3">
+        <label>29</label>
+        <mixed-citation publication-type="other" xlink:type="simple">Ho SY, Sanchez-Quintana D, Anderson RH (1998) Can anatomy define electric pathways? In: International Workshop on Computer Simulation and Experimental Assessment of Electrical Cardiac Function, Lausanne, Switzerland. 77–86.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Nathan1">
+        <label>30</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nathan</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Eliakim</surname><given-names>M</given-names></name> (<year>1966</year>) <article-title>The Junction Between the Left Atrium and the Pulmonary Veins: An Anatomic Study of Human Hearts. Circulation</article-title>. <volume>34</volume>: <fpage>412</fpage>–<lpage>422</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Ho4">
+        <label>31</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ho</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Sanchez-Quintana</surname><given-names>D</given-names></name> (<year>2009</year>) <article-title>The importance of atrial structure and fibers. Clinical Anatomy</article-title>. <volume>22</volume>: <fpage>52</fpage>–<lpage>63</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Tobn1">
+        <label>32</label>
+        <mixed-citation publication-type="other" xlink:type="simple">Tobón C (2009) Evaluación de factores que provocan fibrilación auricular y de su tratamiento mediante técnicas quirúrgicas. Estudio de simulación. Master Thesis Universitat Politècnica de València.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Ruiz1">
+        <label>33</label>
+        <mixed-citation publication-type="other" xlink:type="simple">Ruiz C (2010) Estudio de la vulnerabilidad a reentradas a través de modelos matemáticos y simulación de la aurícula humana. Doctoral Thesis Universitat Politècnica de València.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Tobn2">
+        <label>34</label>
+        <mixed-citation publication-type="other" xlink:type="simple">Tobón C (2010) Modelización y evaluación de factores que favorecen las arritmias auriculares y su tratamiento mediante técnicas quirúrgicas. Estudio de simulación. Doctoral Thesis Universitat Politècnica de València.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Nygren1">
+        <label>35</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nygren</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Fiset</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Firek</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Clark</surname><given-names>JW</given-names></name>, <name name-style="western"><surname>Lindblad</surname><given-names>DS</given-names></name>, <etal>et al</etal>. (<year>1998</year>) <article-title>Mathematical model of an adult human atrial cell: the role of K+ currents in repolarization. Circ Res</article-title>. <volume>82(1)</volume>: <fpage>63</fpage>–<lpage>81</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Feng1">
+        <label>36</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Feng</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Yue</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Nattel</surname><given-names>S</given-names></name> (<year>1998</year>) <article-title>Ionic mechanisms of regional action potential heterogeneity in the canine right atrium. Circ Res</article-title>. <volume>83(5)</volume>: <fpage>541</fpage>–<lpage>551</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Zhang1">
+        <label>37</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhang</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Garratt</surname><given-names>CJ</given-names></name>, <name name-style="western"><surname>Zhu</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Holden</surname><given-names>AV</given-names></name> (<year>2005</year>) <article-title>Role of up-regulation of IK1 in action potential shortening associated with atrial fibrillation in humans. Cardiovasc Res</article-title>. <volume>66</volume>: <fpage>493</fpage>–<lpage>502</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Clayton1">
+        <label>38</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Clayton</surname><given-names>RH</given-names></name>, <name name-style="western"><surname>Holden</surname><given-names>AV</given-names></name> (<year>2004</year>) <article-title>Propagation of normal beats and re-entry in a computational model of ventricular cardiac tissue with regional differences in action potential shape and duration. Prog Biophys Mol Biol</article-title>. <volume>85</volume>: <fpage>473</fpage>–<lpage>499</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Henriquez1">
+        <label>39</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Henriquez</surname><given-names>CS</given-names></name>, <name name-style="western"><surname>Papazoglou</surname><given-names>AA</given-names></name> (<year>1996</year>) <article-title>Using computer models to understand the roles of tissue structure and membrane dynamics in arrhythmogenesis</article-title>. <source>Proceedings of the IEEE</source> <volume>84(3)</volume>: <fpage>334</fpage>–<lpage>354</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Rogers1">
+        <label>40</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rogers</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>McCulloch</surname><given-names>AD</given-names></name> (<year>1994</year>) <article-title>A collocation-Galerkin finite element model of cardiac action potential propagation. IEEE Trans Biomed Eng</article-title>. <volume>41</volume>: <fpage>743</fpage>–<lpage>757</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Dolber1">
+        <label>41</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dolber</surname><given-names>PC</given-names></name>, <name name-style="western"><surname>Spach</surname><given-names>MS</given-names></name> (<year>1989</year>) <article-title>Structure of canine Bachmann's bundle related to propagation of excitation</article-title>. <source>Am J Physiol. 257(5 Pt</source> <volume>2)</volume>: <fpage>H1446</fpage>–<lpage>H1457</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Hayashi1">
+        <label>42</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hayashi</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Lux</surname><given-names>RL</given-names></name>, <name name-style="western"><surname>Wyatt</surname><given-names>RF</given-names></name>, <name name-style="western"><surname>Burgess</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Abildskov</surname><given-names>JA</given-names></name> (<year>1982</year>) <article-title>Relation of canine atrial activation sequence to anatomic landmarks. Am J Physiol</article-title>. <volume>242(3)</volume>: <fpage>H421</fpage>–<lpage>H428</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Boineau1">
+        <label>43</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Boineau</surname><given-names>JP</given-names></name>, <name name-style="western"><surname>Canavan</surname><given-names>TE</given-names></name>, <name name-style="western"><surname>Schuessler</surname><given-names>RB</given-names></name>, <name name-style="western"><surname>Cain</surname><given-names>ME</given-names></name>, <name name-style="western"><surname>Corr</surname><given-names>PB</given-names></name>, <etal>et al</etal>. (<year>1988</year>) <article-title>Demonstration of a widely distributed atrial pacemaker complex in the human heart. Circulation</article-title>. <volume>77(6)</volume>: <fpage>1221</fpage>–<lpage>1237</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Hansson1">
+        <label>44</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hansson</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Holm</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Blomstrom</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Johansson</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Luhrs</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>1998</year>) <article-title>Right atrial free wall conduction velocity and degree of anisotropy in patients with stable sinus rhythm studied during open heart surgery. Eur Heart J</article-title>. <volume>19(2)</volume>: <fpage>293</fpage>–<lpage>300</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Arora1">
+        <label>45</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Arora</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Verheule</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Scott</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Navarrete</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Katari</surname><given-names>V</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>Arrhythmogenic substrate of the pulmonary veins assessed by high-resolution optical mapping. Circulation</article-title>. <volume>107(13)</volume>: <fpage>1816</fpage>–<lpage>1821</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Kleber1">
+        <label>46</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kleber</surname><given-names>AG</given-names></name>, <name name-style="western"><surname>Rudy</surname><given-names>Y</given-names></name> (<year>2004</year>) <article-title>Basic mechanisms of cardiac impulse propagation and associated arrhythmias. Physiol Rev</article-title>. <volume>84(2)</volume>: <fpage>431</fpage>–<lpage>488</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Gima1">
+        <label>47</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gima</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Rudy</surname><given-names>Y</given-names></name> (<year>2002</year>) <article-title>Ionic current basis of electrocardiographic waveforms: a model study. Circ Res</article-title>. <volume>90</volume>: <fpage>889</fpage>–<lpage>896</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Saiz1">
+        <label>48</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Saiz</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Gomis-Tena</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Monserrat</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Ferrero</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Cardona</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Chorro</surname><given-names>J</given-names></name> (<year>2011</year>) <article-title>Effects of the antiarrhythmic drug dofetilide on transmural dispersion of repolarization in ventriculum. A computer modelling study. IEEE Trans Biomed Eng</article-title>. <volume>58(1)</volume>: <fpage>43</fpage>–<lpage>53</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Nademanee1">
+        <label>49</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nademanee</surname><given-names>K</given-names></name>, <name name-style="western"><surname>McKenzie</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Kosar</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Schwab</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Sunsaneewitayakul</surname><given-names>B</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>A new approach for catheter ablation of atrial fibrillation: mapping of the electrophysiologic substrate. J Am Coll Cardiol</article-title>. <volume>43</volume>: <fpage>2044</fpage>–<lpage>2053</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Takahashi1">
+        <label>50</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Takahashi</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Sanders</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Jais</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Hocini</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Dubois</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Organization of frequency spectra of atrial fibrillation: relevance to radiofrequency catheter ablation. J Cardiovasc Electrophysiol</article-title>. <volume>17(4)</volume>: <fpage>382</fpage>–<lpage>388</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Gong1">
+        <label>51</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gong</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Xie</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Stein</surname><given-names>KM</given-names></name>, <name name-style="western"><surname>Garfinkel</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Culianu</surname><given-names>CA</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Mechanism underlying initiation of paroxysmal atrial flutter/atrial fibrillation by ectopic foci: a simulation study. Circulation</article-title>. <volume>115</volume>: <fpage>2094</fpage>–<lpage>2102</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Heidenreich1">
+        <label>52</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Heidenreich</surname><given-names>EA</given-names></name>, <name name-style="western"><surname>Ferrero</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Doblare</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Rodriguez</surname><given-names>JF</given-names></name> (<year>2010</year>) <article-title>Adaptive macro finite elements for the numerical solution of monodomain equations in cardiac electrophysiology. Ann Biomed Eng</article-title>. <volume>38</volume>: <fpage>2331</fpage>–<lpage>2345</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Niederer1">
+        <label>53</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Niederer</surname><given-names>SA</given-names></name>, <name name-style="western"><surname>Kerfoot</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Benson</surname><given-names>AP</given-names></name>, <name name-style="western"><surname>Bernabeu</surname><given-names>MO</given-names></name>, <name name-style="western"><surname>Bernus</surname><given-names>O</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Verification of cardiac tissue electrophysiology simulators using an N-version benchmark. Philos Transact A Math Phys Eng Sci</article-title>. <volume>369</volume>: <fpage>4331</fpage>–<lpage>4351</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Strang1">
+        <label>54</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Strang</surname><given-names>G</given-names></name> (<year>1968</year>) <article-title>On the construction and comparison of difference schemes. SIAM J. Numer Anal</article-title>. <volume>5(3)</volume>: <fpage>506</fpage>–<lpage>517</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Kholova1">
+        <label>55</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kholova</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Kautzner</surname><given-names>J</given-names></name> (<year>2004</year>) <article-title>Morphology of atrial myocardial extensions into human caval veins: a postmortem study in patients with and without atrial fibrillation. Circulation</article-title>. <volume>110</volume>: <fpage>483</fpage>–<lpage>488</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Cabrera1">
+        <label>56</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cabrera</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Sanchez-Quintana</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Ho</surname><given-names>SY</given-names></name>, <name name-style="western"><surname>Medina</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Anderson</surname><given-names>RH</given-names></name> (<year>1998</year>) <article-title>The architecture of the atrial musculature between the orifice of the inferior caval vein and the tricuspid valve: The anatomy of the isthmus. J Cardiovasc Electrophysiol</article-title>. <volume>9</volume>: <fpage>1186</fpage>–<lpage>1195</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Weigner1">
+        <label>57</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Weigner</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Katz</surname><given-names>SE</given-names></name>, <name name-style="western"><surname>Douglas</surname><given-names>PS</given-names></name>, <name name-style="western"><surname>Manning</surname><given-names>WJ</given-names></name> (<year>1999</year>) <article-title>Left atrial appendage anatomy and function: short term response to sustained atrial fibrillation. Heart</article-title>. <volume>82</volume>: <fpage>555</fpage>–<lpage>558</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Wang1">
+        <label>58</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wang</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Ho</surname><given-names>SY</given-names></name>, <name name-style="western"><surname>Gibson</surname><given-names>DG</given-names></name>, <name name-style="western"><surname>Anderson</surname><given-names>RH</given-names></name> (<year>1995</year>) <article-title>Architecture of Atrial Musculature in Humans. British Heart J</article-title>. <volume>73</volume>: <fpage>559</fpage>–<lpage>565</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Lemery1">
+        <label>59</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lemery</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Guiraudon</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Veinot</surname><given-names>JP</given-names></name> (<year>2003</year>) <article-title>Anatomic description of Bachmann's bundle and its relation to the atrial septum. Am J Cardiol</article-title>. <volume>91(12)</volume>: <fpage>1482</fpage>–<lpage>1485</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-SanchezQuintana1">
+        <label>60</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sanchez-Quintana</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Anderson</surname><given-names>RH</given-names></name>, <name name-style="western"><surname>Cabrera</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Climent</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Martin</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>The terminal crest: morphological features relevant to electrophysiology. Heart</article-title>. <volume>88(4)</volume>: <fpage>406</fpage>–<lpage>411</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Seemann1">
+        <label>61</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Seemann</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Hoper</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Sachse</surname><given-names>FB</given-names></name>, <name name-style="western"><surname>Dossel</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Holden</surname><given-names>AV</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Heterogeneous three-dimensional anatomical and electrophysiological model of human atria. Philos Transact A Math Phys Eng Sci</article-title>. <volume>364(1843)</volume>: <fpage>1465</fpage>–<lpage>1481</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Aslanidi1">
+        <label>62</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Aslanidi</surname><given-names>OV</given-names></name>, <name name-style="western"><surname>Colman</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Stott</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Dobrzynski</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Boyett</surname><given-names>MR</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>3D virtual human atria: A computational platform for studying clinical atrial fibrillation. Prog Biophys Mol Biol</article-title>. <volume>107(1)</volume>: <fpage>156</fpage>–<lpage>168</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-KroghMadsen1">
+        <label>63</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Krogh-Madsen</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Abbott</surname><given-names>GW</given-names></name>, <name name-style="western"><surname>Christini</surname><given-names>DJ</given-names></name> (<year>2012</year>) <article-title>Effects of Electrical and Structural Remodeling on Atrial Fibrillation Maintenance: A Simulation Study. PLoS Comput Biol</article-title>. <volume>8(2)</volume>: <fpage>e1002390</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Zhao1">
+        <label>64</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhao</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Butters</surname><given-names>TD</given-names></name>, <name name-style="western"><surname>Zhang</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Pullan</surname><given-names>AJ</given-names></name>, <name name-style="western"><surname>LeGrice</surname><given-names>IJ</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>An image-based model of atrial muscular architecture: effects of structural anisotropy on electrical activation. Circ Arrhythm Electrophysiol</article-title>. <volume>5</volume>: <fpage>361</fpage>–<lpage>370</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Antz1">
+        <label>65</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Antz</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Otomo</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Arruda</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Scherlag</surname><given-names>BJ</given-names></name>, <name name-style="western"><surname>Pitha</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>1998</year>) <article-title>Electrical conduction between the right atrium and the left atrium via the musculature of the coronary sinus. Circulation</article-title>. <volume>98(17)</volume>: <fpage>1790</fpage>–<lpage>1795</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Lemery2">
+        <label>66</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lemery</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Birnie</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Tang</surname><given-names>AS</given-names></name>, <name name-style="western"><surname>Green</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Gollob</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Normal atrial activation and voltage during sinus rhythm in the human heart: an endocardial and epicardial mapping study in patients with a history of atrial fibrillation. J Cardiovasc Electrophysiol</article-title>. <volume>18(4)</volume>: <fpage>402</fpage>–<lpage>408</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Canavan1">
+        <label>67</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Canavan</surname><given-names>TE</given-names></name>, <name name-style="western"><surname>Schuessler</surname><given-names>RB</given-names></name>, <name name-style="western"><surname>Cain</surname><given-names>ME</given-names></name>, <name name-style="western"><surname>Lindsay</surname><given-names>BD</given-names></name>, <name name-style="western"><surname>Boineau</surname><given-names>JP</given-names></name>, <etal>et al</etal>. (<year>1988</year>) <article-title>Computerized global electrophysiological mapping of the atrium in a patient with multiple supraventricular tachyarrhythmias. Ann Thorac Surg</article-title>. <volume>46(2)</volume>: <fpage>232</fpage>–<lpage>235</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Durrer1">
+        <label>68</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Durrer</surname><given-names>D</given-names></name>, <name name-style="western"><surname>van Dam</surname><given-names>RT</given-names></name>, <name name-style="western"><surname>Freud</surname><given-names>GE</given-names></name>, <name name-style="western"><surname>Janse</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Meijler</surname><given-names>FL</given-names></name>, <etal>et al</etal>. (<year>1970</year>) <article-title>Total excitation of the isolated human heart. Circulation</article-title>. <volume>41(6)</volume>: <fpage>899</fpage>–<lpage>912</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Franz1">
+        <label>69</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Franz</surname><given-names>MR</given-names></name>, <name name-style="western"><surname>Karasik</surname><given-names>PL</given-names></name>, <name name-style="western"><surname>Li</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Moubarak</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Chavez</surname><given-names>M</given-names></name> (<year>1997</year>) <article-title>Electrical remodeling of the human atrium: similar effects in patients with chronic atrial fibrillation and atrial flutter. J Am Coll Cardiol</article-title>. <volume>30(7)</volume>: <fpage>1785</fpage>–<lpage>1792</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Gaspo1">
+        <label>70</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gaspo</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Bosch</surname><given-names>RF</given-names></name>, <name name-style="western"><surname>Talajic</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Nattel</surname><given-names>S</given-names></name> (<year>1997</year>) <article-title>Functional mechanisms underlying tachycardia-induced sustained atrial fibrillation in a chronic dog model. Circulation</article-title>. <volume>96(11)</volume>: <fpage>4027</fpage>–<lpage>4035</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Chen1">
+        <label>71</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chen</surname><given-names>SA</given-names></name>, <name name-style="western"><surname>Hsieh</surname><given-names>MH</given-names></name>, <name name-style="western"><surname>Tai</surname><given-names>CT</given-names></name>, <name name-style="western"><surname>Tsai</surname><given-names>CF</given-names></name>, <name name-style="western"><surname>Prakash</surname><given-names>VS</given-names></name>, <etal>et al</etal>. (<year>1999</year>) <article-title>Initiation of atrial fibrillation by ectopic beats originating from the pulmonary veins: electrophysiological characteristics, pharmacological responses, and effects of radiofrequency ablation. Circulation</article-title>. <volume>100(18)</volume>: <fpage>1879</fpage>–<lpage>1886</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Lin2">
+        <label>72</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lin</surname><given-names>WS</given-names></name>, <name name-style="western"><surname>Tai</surname><given-names>CT</given-names></name>, <name name-style="western"><surname>Hsieh</surname><given-names>MH</given-names></name>, <name name-style="western"><surname>Tsai</surname><given-names>CF</given-names></name>, <name name-style="western"><surname>Lin</surname><given-names>YK</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>Catheter ablation of paroxysmal atrial fibrillation initiated by non-pulmonary vein ectopy. Circulation</article-title>. <volume>107(25)</volume>: <fpage>3176</fpage>–<lpage>3183</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Saoudi1">
+        <label>73</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Saoudi</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Cosío</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Waldo</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Chen</surname><given-names>SA</given-names></name>, <name name-style="western"><surname>Iesaka</surname><given-names>Y</given-names></name>, <etal>et al</etal>. (<year>2001</year>) <article-title>A classification of atrial flutter and regular atrial tachycardia according to electrophysiological mechanisms and anatomical bases. Eur Heart J</article-title>. <volume>22</volume>: <fpage>1162</fpage>–<lpage>1182</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Friedman1">
+        <label>74</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Friedman</surname><given-names>PA</given-names></name>, <name name-style="western"><surname>Luria</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Fenton</surname><given-names>AM</given-names></name>, <name name-style="western"><surname>Munger</surname><given-names>TM</given-names></name>, <name name-style="western"><surname>Jahangir</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Global right atrial mapping of human atrial flutter: the presence of posteromedial (sinus venosa region) functional block and double potentials: a study in biplane fluoroscopy and intracardiac echocardiography. Circulation</article-title>. <volume>101(13)</volume>: <fpage>1568</fpage>–<lpage>1577</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Derejko1">
+        <label>75</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Derejko</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Bodalski</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Szumowski</surname><given-names>LJ</given-names></name>, <name name-style="western"><surname>Kozlowski</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Urbanek</surname><given-names>P</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Relationship between cycle length of typical atrial flutter and double potential interval after achievement of complete isthmus block. Pacing Clin Electrophysiol</article-title>. <volume>33(12)</volume>: <fpage>1518</fpage>–<lpage>1527</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Grimm1">
+        <label>76</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Grimm</surname><given-names>RA</given-names></name>, <name name-style="western"><surname>Chandra</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Klein</surname><given-names>AL</given-names></name>, <name name-style="western"><surname>Stewart</surname><given-names>WJ</given-names></name>, <name name-style="western"><surname>Black</surname><given-names>IW</given-names></name>, <etal>et al</etal>. (<year>1996</year>) <article-title>Characterization of left atrial appendage Doppler flow in atrial fibrillation and flutter by Fourier analysis</article-title>. <source>Am Heart J. 132(2 Pt</source> <volume>1)</volume>: <fpage>286</fpage>–<lpage>296</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Ryu1">
+        <label>77</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ryu</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Sahadevan</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Khrestian</surname><given-names>CM</given-names></name>, <name name-style="western"><surname>Stambler</surname><given-names>BS</given-names></name>, <name name-style="western"><surname>Waldo</surname><given-names>AL</given-names></name> (<year>2006</year>) <article-title>Use of fast fourier transform analysis of atrial electrograms for rapid characterization of atrial activation-implications for delineating possible mechanisms of atrial tachyarrhythmias. J Cardiovasc Electrophysiol</article-title>. <volume>17(2)</volume>: <fpage>198</fpage>–<lpage>206</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Olshansky1">
+        <label>78</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Olshansky</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Wilber</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Hariman</surname><given-names>RJ</given-names></name> (<year>1992</year>) <article-title>Atrial flutter – update on the mechanism and treatment. Pacing Clin Electrophysiol</article-title>. <volume>15(12)</volume>: <fpage>2308</fpage>–<lpage>2335</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Kalman1">
+        <label>79</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kalman</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Olgin</surname><given-names>JE</given-names></name>, <name name-style="western"><surname>Karch</surname><given-names>MR</given-names></name>, <name name-style="western"><surname>Hamdan</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Lee</surname><given-names>RJ</given-names></name>, <etal>et al</etal>. (<year>1998</year>) <article-title>“Cristal tachycardias”: origin of right atrial tachycardias from the crista terminalis identified by intracardiac echocardiography. J Am Coll Cardiol</article-title>. <volume>31(2)</volume>: <fpage>451</fpage>–<lpage>459</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Becker1">
+        <label>80</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Becker</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Bauer</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Metz</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Kinscherf</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Senges</surname><given-names>JC</given-names></name>, <etal>et al</etal>. (<year>2001</year>) <article-title>Intercaval block in normal canine hearts: role of the terminal crest. Circulation</article-title>. <volume>103(20)</volume>: <fpage>2521</fpage>–<lpage>2526</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Chorro1">
+        <label>81</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chorro</surname><given-names>FJ</given-names></name>, <name name-style="western"><surname>Ferrero</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Canoves</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Mainar</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Porres</surname><given-names>JC</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>Significance of the morphological patterns of electrograms recorded during ventricular fibrillation: an experimental study. Pacing Clin Electrophysiol</article-title>. <volume>26(5)</volume>: <fpage>1262</fpage>–<lpage>1269</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Berenfeld2">
+        <label>82</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Berenfeld</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Zaitsev</surname><given-names>AV</given-names></name>, <name name-style="western"><surname>Mironov</surname><given-names>SF</given-names></name>, <name name-style="western"><surname>Pertsov</surname><given-names>AM</given-names></name>, <name name-style="western"><surname>Jalife</surname><given-names>J</given-names></name> (<year>2002</year>) <article-title>Frequency-dependent breakdown of wave propagation into fibrillatory conduction across the pectinate muscle network in the isolated sheep right atrium. Circ Res</article-title>. <volume>90</volume>: <fpage>1173</fpage>–<lpage>1180</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Jalife1">
+        <label>83</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jalife</surname><given-names>J</given-names></name> (<year>2003</year>) <article-title>Rotors and spiral waves in atrial fibrillation. J Cardiovasc Electrophysiol</article-title>. <volume>14(7)</volume>: <fpage>776</fpage>–<lpage>780</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Nademanee2">
+        <label>84</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nademanee</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Lockwood</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Oketani</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Gidney</surname><given-names>B</given-names></name> (<year>2010</year>) <article-title>Catheter ablation of atrial fibrillation guided by complex fractionated atrial electrogram mapping of atrial fibrillation substrate. J Cardiology</article-title>. <volume>55</volume>: <fpage>1</fpage>–<lpage>12</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Sahadevan1">
+        <label>85</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sahadevan</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Ryu</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Peltz</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Khrestian</surname><given-names>CM</given-names></name>, <name name-style="western"><surname>Stewart</surname><given-names>RW</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Epicardial mapping of chronic atrial fibrillation in patients: preliminary observations. Circulation</article-title>. <volume>110(21)</volume>: <fpage>3293</fpage>–<lpage>3299</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Dossel1">
+        <label>86</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dossel</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Krueger</surname><given-names>MW</given-names></name>, <name name-style="western"><surname>Weber</surname><given-names>FM</given-names></name>, <name name-style="western"><surname>Wilhelms</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Seemann</surname><given-names>G</given-names></name> (<year>2012</year>) <article-title>Computational modeling of the human atrial anatomy and electrophysiology. Med Biol Eng Comput</article-title>. <volume>50</volume>: <fpage>773</fpage>–<lpage>799</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Courtemanche1">
+        <label>87</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Courtemanche</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Ramirez</surname><given-names>RJ</given-names></name>, <name name-style="western"><surname>Nattel</surname><given-names>S</given-names></name> (<year>1999</year>) <article-title>Ionic targets for drug therapy and atrial fibrillation-induced electrical remodeling: insights from a mathematical model. Cardiovasc Res</article-title>. <volume>42</volume>: <fpage>477</fpage>–<lpage>489</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Sanchez1">
+        <label>88</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sanchez</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Corrias</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Bueno-Orovio</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Davies</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Swinton</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>The Na+/K+ pump is an important modulator of refractoriness and rotor dynamics in human atrial tissue. Am J Physiol Heart Circ Physiol</article-title>. <volume>302</volume>: <fpage>H1146</fpage>–<lpage>H1159</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Maleckar1">
+        <label>89</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Maleckar</surname><given-names>MM</given-names></name>, <name name-style="western"><surname>Greenstein</surname><given-names>JL</given-names></name>, <name name-style="western"><surname>Giles</surname><given-names>WR</given-names></name>, <name name-style="western"><surname>Trayanova</surname><given-names>NA</given-names></name> (<year>2009</year>) <article-title>K+ current changes account for the rate dependence os the action potential in the human atrial myocyte</article-title>. <source>Am J Physiol Heart Circ Physiol</source> <volume>297</volume>: <fpage>H1398</fpage>–<lpage>H1410</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Grandi1">
+        <label>90</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Grandi</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Pandit</surname><given-names>SV</given-names></name>, <name name-style="western"><surname>Voigt</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Workman</surname><given-names>AJ</given-names></name>, <name name-style="western"><surname>Dobrev</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Human atrial action potential and Ca2+ model: sinus rhythm and chronic atrial fibrillation. Circ Res</article-title>. <volume>109(9)</volume>: <fpage>1055</fpage>–<lpage>1066</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Maleckar2">
+        <label>91</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Maleckar</surname><given-names>MM</given-names></name>, <name name-style="western"><surname>Greenstein</surname><given-names>JL</given-names></name>, <name name-style="western"><surname>Giles</surname><given-names>WR</given-names></name>, <name name-style="western"><surname>Trayanova</surname><given-names>NA</given-names></name> (<year>2009</year>) <article-title>Eletrotonic coupling beteen human atrial myocytes and fibroblasts aters myocyte excitability and repolarization. Biophys J</article-title>. <volume>97</volume>: <fpage>2179</fpage>–<lpage>2190</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Ashihara1">
+        <label>92</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ashihara</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Haraguchi</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Nakazawa</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Namba</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Ikeda</surname><given-names>T</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>The role of fibroblasts in complex fractionated electrograms during persistent/permanent atrial fibrillation: implications for electrogram-based catheter ablation. Circ Res</article-title>. <volume>110</volume>: <fpage>275</fpage>–<lpage>284</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Burstein1">
+        <label>93</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Burstein</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Nattel</surname><given-names>S</given-names></name> (<year>2008</year>) <article-title>Atrial Fibrosis: Mechanisms and Clinical Relevance in Atrial Fibrillation. J Am Coll Cardiol</article-title>. <volume>51</volume>: <fpage>802</fpage>–<lpage>809</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Marom1">
+        <label>94</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Marom</surname><given-names>EM</given-names></name>, <name name-style="western"><surname>Herndon</surname><given-names>JE</given-names></name>, <name name-style="western"><surname>Kim</surname><given-names>YH</given-names></name>, <name name-style="western"><surname>McAdams</surname><given-names>HP</given-names></name> (<year>2004</year>) <article-title>Variations in pulmonary venous drainage to the left atrium: implications for radiofrequency ablation. Radiology</article-title>. <volume>230</volume>: <fpage>824</fpage>–<lpage>829</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Pan1">
+        <label>95</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pan</surname><given-names>NH</given-names></name>, <name name-style="western"><surname>Tsao</surname><given-names>HM</given-names></name>, <name name-style="western"><surname>Chang</surname><given-names>NC</given-names></name>, <name name-style="western"><surname>Chen</surname><given-names>YJ</given-names></name>, <name name-style="western"><surname>Chen</surname><given-names>SA</given-names></name> (<year>2008</year>) <article-title>Aging dilates atrium and pulmonary veins: implications for the genesis of atrial fibrillation. Chest</article-title>. <volume>133</volume>: <fpage>190</fpage>–<lpage>196</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Romero1">
+        <label>96</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Romero</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Pueyo</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Fink</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Rodriguez</surname><given-names>B</given-names></name> (<year>2009</year>) <article-title>Impact of ionic current variability on human ventricular cellular electrophysiology. Am J Physiol Heart Circ Physiol</article-title>. <volume>297</volume>: <fpage>H1436</fpage>–<lpage>1445</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0050883-Krueger1">
+        <label>97</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Krueger</surname><given-names>MW</given-names></name>, <name name-style="western"><surname>Schmidt</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Tobón</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Weber</surname><given-names>FM</given-names></name>, <name name-style="western"><surname>Lorenz</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Modeling Atrial Fiber Orientation in Patient-Specific Geometries: A Semi-automatic Rule-Based Approach. Lecture Notes in Computer Science</article-title>. <volume>6666</volume>: <fpage>223</fpage>–<lpage>232</lpage>.</mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

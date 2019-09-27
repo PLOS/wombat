@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0144015</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-15-25837</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+</article-categories>
+<title-group>
+<article-title>Soluble TRAIL Concentration in Serum Is Elevated in People with Hypercholesterolemia</article-title>
+<alt-title alt-title-type="running-head">Serum TRAIL Level and Hypercholesterolemia</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Cheng</surname>
+<given-names>Wen</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Liu</surname>
+<given-names>Fangfang</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Wang</surname>
+<given-names>Zhe</given-names>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Zhang</surname>
+<given-names>Yun</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Zhao</surname>
+<given-names>Yu-Xia</given-names>
+</name>
+<xref rid="aff003" ref-type="aff"><sup>3</sup></xref>
+<xref rid="cor001" ref-type="corresp">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Zhang</surname>
+<given-names>Qunye</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Jiang</surname>
+<given-names>Fan</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+<xref rid="aff004" ref-type="aff"><sup>4</sup></xref>
+<xref rid="cor001" ref-type="corresp">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Key Laboratory of Cardiovascular Remodeling and Function Research, Qilu Hospital, Shandong University, 107 Wen Hua Xi Road, Jinan, 250012, Shandong Province, China</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Department of Endocrinology, Shandong Provincial Hospital, Shandong University, Shandong Province, China</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Department of Traditional Chinese Medicine, Qilu Hospital, 107 Wen Hua Xi Road, Jinan, 250012, Shandong Province, China</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Department of Pathophysiology, School of Medicine, Shandong University, 44 Wen Hua Xi Road, Jinan, 250012, Shandong Province, China</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Morishita</surname>
+<given-names>Ryuichi</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Osaka University Graduate School of Medicine, JAPAN</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: FJ YZ Y-XZ. Performed the experiments: WC FL. Analyzed the data: WC QZ. Contributed reagents/materials/analysis tools: ZW. Wrote the paper: FJ.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">fjiang@sdu.edu.cn</email> (FJ); <email xlink:type="simple">yxzhao@sdu.edu.cn</email> (Y-XZ)</corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>3</day>
+<month>12</month>
+<year>2015</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2015</year>
+</pub-date>
+<volume>10</volume>
+<issue>12</issue>
+<elocation-id>e0144015</elocation-id>
+<history>
+<date date-type="received">
+<day>18</day>
+<month>6</month>
+<year>2015</year>
+</date>
+<date date-type="accepted">
+<day>12</day>
+<month>10</month>
+<year>2015</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2015</copyright-year>
+<copyright-holder>Cheng et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0144015" xlink:type="simple"/>
+<abstract>
+<p>Tumor necrosis factor-related apoptosis-inducing ligand (TRAIL) is a multi-functional cytokine, which is involved in the pathophysiological processes of cardiovascular and metabolic diseases. Previously, we demonstrated that TRAIL stimulated lipid uptake and foam cell formation in macrophages <italic>in vitro</italic>. Several clinical studies have suggested that the serum concentration of TRAIL may be increased in humans with elevated blood cholesterol; however, the current data appear to be inconclusive in this regard. In the present study, we examined the relationships between the serum TRAIL concentration and cholesterol levels in 352 generally healthy subjects undergoing the routine annual health check. We showed that there were significant correlations between TRAIL concentration and levels of total and low-density lipoprotein cholesterols. The level of TRAIL was significantly elevated in subjects with hypercholesterolemia, although this relationship might be also associated with changes of other metabolic factors. Moreover, we showed that the level of blood cholesterol was significantly higher in subjects in the upper quartile of serum TRAIL. In conclusion, our data demonstrate that the serum TRAIL concentration is elevated in people with hypercholesterolemia.</p>
+</abstract>
+<funding-group>
+<funding-statement>This work was partially supported by the following research grants: the National 973 Basic Research Program of China (2012CB518603); National Natural Science Foundation of China (91539102); State Program of National Natural Science Foundation of China for Innovative Research Group (81021001).</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="4"/>
+<table-count count="3"/>
+<page-count count="10"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability" xlink:type="simple">
+<meta-name>Data Availability</meta-name>
+<meta-value>Due to institutional ethical regulations and to protect participants’ privacy, the authors were only allowed to disclose limited contents of the clinical data used in this study (see <xref rid="pone.0144015.s002" ref-type="supplementary-material">S2 Table</xref>). Any sensitive information, such as name, gender, and anthropometric measures, or non-essential data, were not disclosed. Contact to which requests for the full dataset can be sent: Dr. Fan Jiang, Key Laboratory of Cardiovascular Remodeling and Function Research, Qilu Hospital, 107 Wen Hua Xi Road, Jinan, 250012, Shandong Province, China. Email: <email xlink:type="simple">fjiang@sdu.edu.cn</email>; Tel: +86-531-8216 9267; Fax: +86-531-8616 9356</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Tumor necrosis factor-related apoptosis-inducing ligand (TRAIL) is a multi-functional cytokine, which has potent anti-tumor actions, likely via inducing cell apoptosis [<xref rid="pone.0144015.ref001" ref-type="bibr">1</xref>–<xref rid="pone.0144015.ref003" ref-type="bibr">3</xref>]. In addition, TRAIL is also involved in modulating pathophysiological processes of cardiovascular, metabolic and autoimmune diseases [<xref rid="pone.0144015.ref004" ref-type="bibr">4</xref>–<xref rid="pone.0144015.ref006" ref-type="bibr">6</xref>]. TRAIL is expressed as a transmembrane protein, which can be further cleaved by cysteine proteinases at the cell surface, generating the soluble form of TRAIL (sTRAIL). Soluble TRAIL retains the biological activities of the full length ligand [<xref rid="pone.0144015.ref007" ref-type="bibr">7</xref>]. A major source of sTRAIL in the body is the activated monocytes and neutrophils [<xref rid="pone.0144015.ref002" ref-type="bibr">2</xref>, <xref rid="pone.0144015.ref008" ref-type="bibr">8</xref>]. Several clinical studies have suggested that the serum concentration of sTRAIL may be altered in heart, vascular, kidney and autoimmune diseases [<xref rid="pone.0144015.ref009" ref-type="bibr">9</xref>–<xref rid="pone.0144015.ref012" ref-type="bibr">12</xref>].</p>
+<p>Experimental studies have indicated that TRAIL may have important roles in the pathogenesis of metabolic disorders, including obesity, diabetes and hypercholesterolemia. For example, in apolipoprotein E-deficient mice, compound deletion of the TRAIL gene resulted in increases in body weight, hyperglycemia, insulin resistance and hypercholesterolemia [<xref rid="pone.0144015.ref013" ref-type="bibr">13</xref>]. Also, in models of type 1 diabetes, blocking the TRAIL activity accelerated the development of hyperglycemia [<xref rid="pone.0144015.ref014" ref-type="bibr">14</xref>], whereas systemic overexpression of TRAIL significantly reduced the blood glucose concentration [<xref rid="pone.0144015.ref015" ref-type="bibr">15</xref>]. These results suggest that an elevated TRAIL level may have favorable effects on lipid and glucose metabolism under pathological conditions.</p>
+<p>In contrast to these animal experiments, results from clinical studies on the relationship between circulating sTRAIL and metabolic parameters appear to be inconclusive. It has been shown that the serum concentration of sTRAIL is decreased in patients with diabetes mellitus as compared to healthy controls [<xref rid="pone.0144015.ref016" ref-type="bibr">16</xref>, <xref rid="pone.0144015.ref017" ref-type="bibr">17</xref>]. However, such an association was not found in other studies [<xref rid="pone.0144015.ref018" ref-type="bibr">18</xref>]. Similar to this scenario, some authors reported that a higher concentration of sTRAIL was associated with increased body adiposity [<xref rid="pone.0144015.ref019" ref-type="bibr">19</xref>, <xref rid="pone.0144015.ref020" ref-type="bibr">20</xref>], but others found no significant changes in the sTRAIL level [<xref rid="pone.0144015.ref021" ref-type="bibr">21</xref>]. Moreover, in a study in healthy postmenopausal women, Choi et al. reported that the serum sTRAIL concentration was significantly higher in people in the upper quartile of the blood low density lipoprotein cholesterol (LDL-C) level [<xref rid="pone.0144015.ref019" ref-type="bibr">19</xref>]. In another study in patients with metabolic syndromes, however, the authors did not find significant differences in TC or LDL-C between individuals with lower and higher sTRAIL concentrations [<xref rid="pone.0144015.ref020" ref-type="bibr">20</xref>].</p>
+<p>In our previous study, we found that treatment with exogenous TRAIL stimulated uptake of oxidized LDL and promoted foam cell formation in both murine and human macrophages [<xref rid="pone.0144015.ref022" ref-type="bibr">22</xref>]. Moreover, another recent study revealed that patients with familial hypercholesterolemia were associated with an increased gene expression of TRAIL and a pro-inflammatory phenotype in the peripheral blood mononuclear cells, even on continuous statin treatments [<xref rid="pone.0144015.ref023" ref-type="bibr">23</xref>]. Based on these findings, we propose that it is important to further clarify the relationship between sTRAIL and hypercholesterolemia, in order to precisely define the role of TRAIL in the pathogenesis of human atherosclerosis. Therefore, in the present study, we measured serum sTRAIL concentrations in a cohort of generally healthy adults undergoing their routine annual health check, in order to confirm whether sTRAIL was increased in individuals with elevated blood cholesterol.</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Methods</title>
+<sec id="sec003">
+<title>Ethical statements</title>
+<p>This study was approved by the Institutional Human Ethics Committee of Qilu Hospital (Approval Number: KYLL-2014(KS)-003). Written informed consents were provided by all of the participants before start of the study. The study was conducted according to the principles expressed in the Declaration of Helsinki.</p>
+</sec>
+<sec id="sec004">
+<title>Study subjects</title>
+<p>A total of 352 subjects were recruited sequentially at the hospital’s Health Check Centre. These subjects were generally normal individuals registered to undertake their routine annual health check, but not outpatients consulting for specific disorders. A brief checklist was given to each subject and individuals with a known history of diabetes mellitus, autoimmune disease, inflammatory disease and/or coronary heart disease were excluded. There were no restrictions on other conditions such as age and sex.</p>
+</sec>
+<sec id="sec005">
+<title>Sample processing and measurement of sTRAIL with ELISA</title>
+<p>Venous blood of 0.5 ml of was obtained after overnight fasting from each subject. Serum samples were prepared by centrifugation at 2,000 g for 15 minutes. Samples were stored at -80°C for later use. The serum concentration of sTRAIL was measured with commercial ELISA kits purchased from various suppliers. The following kits were used: Human TRAIL/TNFSF10 Quantikine ELISA Kit (Catalogue No. DTRL00) from R&amp;D Systems (Minneapolis, MN, USA), Human TRAIL ELISA Kit (SEA139Hu) from Uscn Life Science Inc. (Wuhan, China), and Human TRAIL ELISA Kit (EK0532) from ScienCell Research Laboratories (Carlsbad, CA, USA). Assays were carried out following the manufacturer’s protocols.</p>
+</sec>
+<sec id="sec006">
+<title>Measurement of blood biochemical parameters and data collection</title>
+<p>The blood biochemical tests were performed in the Central Clinical Laboratory of the hospital following standardized procedures. The blood samples were tested with an automated Cobas-8000 modular analyzer (Roche Diagnostics, Indianapolis, USA). The reagent kits for triglycerides and total cholesterol were from Roche Diagnostics GmbH (Holzheim, Germany). The reagent kits for LDL-C and high-density lipoprotein cholesterol (HDL-C) were Biosinew (Sichuan, China). Other physiological data were obtained from the participants’ health check reports.</p>
+</sec>
+<sec id="sec007">
+<title>Statistical analysis</title>
+<p>Data are presented as mean ± standard error of the mean (SEM). Data analysis was performed using GraphPad Prism. The mean data between two groups were analyzed with Mann-Whitney test or unpaired <italic>t</italic>-test. Spearman's correlation analysis was used to test the correlation between two parameters. A value of <italic>P</italic> &lt; 0.05 was considered as statistically significant. Categorical data were examined with Chi-square test. All statistical tests were 2-sided.</p>
+</sec>
+</sec>
+<sec id="sec008" sec-type="results">
+<title>Results</title>
+<p>By reviewing the literature, we found that the reported values of the sTRAIL concentration in human blood were highly variable. We identified 17 articles that included healthy control groups and reported the absolute quantification values of sTRAIL [<xref rid="pone.0144015.ref009" ref-type="bibr">9</xref>, <xref rid="pone.0144015.ref011" ref-type="bibr">11</xref>, <xref rid="pone.0144015.ref019" ref-type="bibr">19</xref>, <xref rid="pone.0144015.ref021" ref-type="bibr">21</xref>, <xref rid="pone.0144015.ref024" ref-type="bibr">24</xref>–<xref rid="pone.0144015.ref036" ref-type="bibr">36</xref>]. The mean values of the sTRAIL concentration (in pg/ml) in healthy controls ranged from 47.3 to 1751 (median 71, mean 310.1, SEM 106.5). In these studies, ELISA kits from four different suppliers were used, and it appeared that the variability of the results might be related to the different kits used (<xref rid="pone.0144015.g001" ref-type="fig">Fig 1A</xref>). Therefore, we first tested whether different ELISA kits could generate variable results. We tested a set of 16 samples with three different commercial kits. As shown in <xref rid="pone.0144015.g001" ref-type="fig">Fig 1B</xref>, while two kits produced roughly comparable data, the third kit produced different results. Hence in the following experiments, we chose the kit from R&amp;D Systems, which was more frequently used in previous studies. We tested the variability of the assay, and determined that the intra- and inter-assay coefficient of variation was 5.6% and 9.8% respectively. However, it is noted that the different absolute sTRAIL values as determined by different kits are of little impacts on the conclusions from these studies.</p>
+<fig id="pone.0144015.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0144015.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>The reported values of the sTRAIL concentration in human blood in literature were highly variable, which might be related to the different assay kits used.</title>
+<p>(A) Dot plot showing the distribution of the mean sTRAIL concentrations (in pg/ml) in healthy controls reported in 17 published articles. ELISA assay kits from different suppliers were indicated by different symbol shapes. (B) Results obtained in the present study from the same set of 16 samples using ELISA kits from three different suppliers.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0144015.g001" position="float" xlink:type="simple"/>
+</fig>
+<p>The general demographic characteristics of the 352 subjects were summarized in <xref rid="pone.0144015.t001" ref-type="table">Table 1</xref>. The age of the subjects ranged from 30 to 68 years. In this cohort, ~15% had a blood pressure that exceeded the normal value. In about half of the subjects, the total cholesterol level was higher than the normal value (5.2 mmol/L). According to the standard commonly used within China, &gt; 45% of these subjects were overweight (body mass index, BMI &gt; 24) or obese (BMI &gt; 28). Comparisons of the physiological and blood biochemical parameters between individuals with normal and elevated (&gt; 5.2 mmol/L) TC were given in <xref rid="pone.0144015.t002" ref-type="table">Table 2</xref>. The mean sTRAIL concentration of the 352 subjects was 117.3 ± 3.5 pg/ml. The level of sTRAIL was significantly higher in females (133.2 ± 7.3) than males (108.7 ± 3.6) (<italic>P</italic> &lt; 0.05). Correlation analysis revealed that there were weak but significant correlations between sTRAIL and TC and LDL-C (<xref rid="pone.0144015.t003" ref-type="table">Table 3</xref> and <xref rid="pone.0144015.g002" ref-type="fig">Fig 2</xref>). In contrast to previous studies [<xref rid="pone.0144015.ref020" ref-type="bibr">20</xref>], we detected negative correlations between sTRAIL and BMI or body weight, for which the reason of the discrepancy was unclear. The level of sTRAIL did not correlate with age, blood pressure, or serum levels of triglycerides and HDL-C (<xref rid="pone.0144015.t003" ref-type="table">Table 3</xref>).</p>
+<table-wrap id="pone.0144015.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0144015.t001</object-id>
+<label>Table 1</label> <caption><title>General physiological and biochemical characteristics of 352 subjects.</title></caption>
+<alternatives>
+<graphic id="pone.0144015.t001g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0144015.t001" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<tbody>
+<tr>
+<td align="justify" rowspan="1" colspan="1">Age (mean, SEM, range)</td>
+<td align="justify" rowspan="1" colspan="1">45.7, 0.37, 30–68</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">Sex (% male)</td>
+<td align="justify" rowspan="1" colspan="1">64.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">SBP &gt; 140 and/or DBP &gt; 90 mmHg (%)</td>
+<td align="justify" rowspan="1" colspan="1">15.6</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">TC &gt; 5.2 mmol/L (%)</td>
+<td align="justify" rowspan="1" colspan="1">47.2</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">LDL-C &gt; 3.1 mmol/L (%)</td>
+<td align="justify" rowspan="1" colspan="1">46.6</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">Overweight (BMI &gt; 24) (%)</td>
+<td align="justify" rowspan="1" colspan="1">37.8</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">Obesity (BMI &gt; 28) (%)</td>
+<td align="justify" rowspan="1" colspan="1">9.1</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>SBP, systolic blood pressure; DBP, diastolic blood pressure; TC, total cholesterol; LDL-C, low-density lipoprotein cholesterol; BMI, body mass index.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<table-wrap id="pone.0144015.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0144015.t002</object-id>
+<label>Table 2</label> <caption><title>Comparisons of physiological and biochemical parameters between individuals with normal and elevated TC.</title></caption>
+<alternatives>
+<graphic id="pone.0144015.t002g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0144015.t002" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="justify" rowspan="1" colspan="1"/>
+<th colspan="2" align="center" rowspan="1">TC (mmol/L)</th>
+<th align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<th align="justify" rowspan="1" colspan="1"/>
+<th align="center" rowspan="1" colspan="1">&lt; 5.2 (n = 185)</th>
+<th align="center" rowspan="1" colspan="1">&gt; 5.2 (n = 166)</th>
+<th align="center" rowspan="1" colspan="1"><italic>P</italic></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="justify" rowspan="1" colspan="1">Age (median years)</td>
+<td align="center" rowspan="1" colspan="1">43</td>
+<td align="center" rowspan="1" colspan="1">46</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0041</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">Sex (% male)</td>
+<td align="center" rowspan="1" colspan="1">59.1</td>
+<td align="center" rowspan="1" colspan="1">71.1</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0192</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">SBP (mmHg)</td>
+<td align="center" rowspan="1" colspan="1">120 ± 1.2</td>
+<td align="center" rowspan="1" colspan="1">127 ± 1.3</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0002</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">DBP (mmHg)</td>
+<td align="center" rowspan="1" colspan="1">78.7 ± 0.80</td>
+<td align="center" rowspan="1" colspan="1">82.8 ± 0.91</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0008</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">TC (mmol/L)</td>
+<td align="center" rowspan="1" colspan="1">4.49 ± 0.035</td>
+<td align="center" rowspan="1" colspan="1">5.93 ± 0.044</td>
+<td align="center" rowspan="1" colspan="1">---</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">LDL-C (mmol/L)</td>
+<td align="center" rowspan="1" colspan="1">2.58 ± 0.032</td>
+<td align="center" rowspan="1" colspan="1">3.69 ± 0.045</td>
+<td align="char" char="." rowspan="1" colspan="1">&lt;0.0001</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">HDL-C (mmol/L)</td>
+<td align="center" rowspan="1" colspan="1">1.30 ± 0.023</td>
+<td align="center" rowspan="1" colspan="1">1.36 ± 0.023</td>
+<td align="char" char="." rowspan="1" colspan="1">0.047</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">TG (mmol/L)</td>
+<td align="center" rowspan="1" colspan="1">1.39 ± 0.066</td>
+<td align="center" rowspan="1" colspan="1">1.86 ± 0.098</td>
+<td align="char" char="." rowspan="1" colspan="1">&lt;0.0001</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">BW (kg)</td>
+<td align="center" rowspan="1" colspan="1">70.5 ± 0.97</td>
+<td align="center" rowspan="1" colspan="1">72.2 ± 0.94</td>
+<td align="char" char="." rowspan="1" colspan="1">0.207</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">Overweight (%)</td>
+<td align="center" rowspan="1" colspan="1">56.2</td>
+<td align="center" rowspan="1" colspan="1">62.2</td>
+<td align="char" char="." rowspan="1" colspan="1">0.257</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">Obesity (%)</td>
+<td align="center" rowspan="1" colspan="1">15.7</td>
+<td align="center" rowspan="1" colspan="1">17.1</td>
+<td align="char" char="." rowspan="1" colspan="1">0.725</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">Hyperglycemia (%)</td>
+<td align="center" rowspan="1" colspan="1">0.54</td>
+<td align="center" rowspan="1" colspan="1">1.2</td>
+<td align="char" char="." rowspan="1" colspan="1">0.497</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>SBP, systolic blood pressure; DBP, diastolic blood pressure; TC, total cholesterol; LDL-C, low-density lipoprotein cholesterol; HDL-C, high-density lipoprotein cholesterol; TG, triglycerides; BW, body weight. Hyperglycemia was defined as glucose &gt; 6.1 mmol/L.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<table-wrap id="pone.0144015.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0144015.t003</object-id>
+<label>Table 3</label> <caption><title>Correlations between sTRAIL and total cholesterol with other physiological and biochemical parameters in 352 subjects.</title></caption>
+<alternatives>
+<graphic id="pone.0144015.t003g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0144015.t003" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="justify" rowspan="1" colspan="1"/>
+<th colspan="2" align="center" rowspan="1">sTRAIL</th>
+<th colspan="2" align="center" rowspan="1">TC</th>
+</tr>
+<tr>
+<th align="justify" rowspan="1" colspan="1"/>
+<th align="center" rowspan="1" colspan="1">Spearman r</th>
+<th align="center" rowspan="1" colspan="1"><italic>P</italic></th>
+<th align="center" rowspan="1" colspan="1">Spearman r</th>
+<th align="center" rowspan="1" colspan="1"><italic>P</italic></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="justify" rowspan="1" colspan="1">Age</td>
+<td align="char" char="." rowspan="1" colspan="1">0.020</td>
+<td align="char" char="." rowspan="1" colspan="1">0.716</td>
+<td align="char" char="." rowspan="1" colspan="1">0.164</td>
+<td align="char" char="." rowspan="1" colspan="1">0.002</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">BMI</td>
+<td align="char" char="." rowspan="1" colspan="1">-0.197</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0002</td>
+<td align="char" char="." rowspan="1" colspan="1">0.106</td>
+<td align="char" char="." rowspan="1" colspan="1">0.047</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">TC</td>
+<td align="char" char="." rowspan="1" colspan="1">0.164</td>
+<td align="char" char="." rowspan="1" colspan="1">0.002</td>
+<td align="center" rowspan="1" colspan="1">---</td>
+<td align="center" rowspan="1" colspan="1">---</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">TG</td>
+<td align="char" char="." rowspan="1" colspan="1">-0.010</td>
+<td align="char" char="." rowspan="1" colspan="1">0.852</td>
+<td align="char" char="." rowspan="1" colspan="1">0.320</td>
+<td align="char" char="." rowspan="1" colspan="1">&lt;0.0001</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">HDL-C</td>
+<td align="char" char="." rowspan="1" colspan="1">0.065</td>
+<td align="char" char="." rowspan="1" colspan="1">0.225</td>
+<td align="char" char="." rowspan="1" colspan="1">0.130</td>
+<td align="char" char="." rowspan="1" colspan="1">0.015</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">LDL-C</td>
+<td align="char" char="." rowspan="1" colspan="1">0.133</td>
+<td align="char" char="." rowspan="1" colspan="1">0.013</td>
+<td align="char" char="." rowspan="1" colspan="1">0.901</td>
+<td align="char" char="." rowspan="1" colspan="1">&lt;0.0001</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">SBP</td>
+<td align="char" char="." rowspan="1" colspan="1">-0.0082</td>
+<td align="char" char="." rowspan="1" colspan="1">0.879</td>
+<td align="char" char="." rowspan="1" colspan="1">0.273</td>
+<td align="char" char="." rowspan="1" colspan="1">&lt;0.0001</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">DBP</td>
+<td align="char" char="." rowspan="1" colspan="1">-0.0080</td>
+<td align="char" char="." rowspan="1" colspan="1">0.882</td>
+<td align="char" char="." rowspan="1" colspan="1">0.243</td>
+<td align="char" char="." rowspan="1" colspan="1">&lt;0.0001</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">BW</td>
+<td align="char" char="." rowspan="1" colspan="1">-0.176</td>
+<td align="char" char="." rowspan="1" colspan="1">0.0009</td>
+<td align="char" char="." rowspan="1" colspan="1">0.119</td>
+<td align="char" char="." rowspan="1" colspan="1">0.027</td>
+</tr>
+<tr>
+<td align="justify" rowspan="1" colspan="1">sTRAIL</td>
+<td align="center" rowspan="1" colspan="1">---</td>
+<td align="center" rowspan="1" colspan="1">---</td>
+<td align="char" char="." rowspan="1" colspan="1">0.164</td>
+<td align="char" char="." rowspan="1" colspan="1">0.002</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t003fn001"><p>BMI, body mass index; TC, total cholesterol; TG, triglycerides; HDL-C, high-density lipoprotein cholesterol; LDL-C, low-density lipoprotein cholesterol; SBP, systolic blood pressure; DBP, diastolic blood pressure; BW, body weight.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<fig id="pone.0144015.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0144015.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Dot plots showing correlations between sTRAIL and (A) total cholesterol (TC) or (B) low-density lipoprotein cholesterol (LDL-C) in the entire cohort.</title>
+<p>The sTRAIL values were log10 transformed. Spearman's correlation was used and the statistical results were given in <xref rid="pone.0144015.t003" ref-type="table">Table 3</xref>.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0144015.g002" position="float" xlink:type="simple"/>
+</fig>
+<p>Using TC level of 5.2 mmol/L as a cutting-off value, the subjects were divided into two groups, namely those with normal (TC-Norm group) and elevated (TC-high group) blood total cholesterol levels. We demonstrated that the sTRAIL concentration was significantly higher in the TC-high group (<italic>P</italic> &lt; 0.001) (<xref rid="pone.0144015.g003" ref-type="fig">Fig 3</xref>). We also tested the difference in sTRAIL concentration using TC of 5.7 mmol/L as the cutting-off value. We confirmed that the sTRAIL concentration was still significantly higher in the TC-high group (126.8 ± 6.7) than the TC-Norm group (113.6 ± 4.1) (<italic>P</italic> &lt; 0.005). To verify whether such a relationship between sTRAIL and TC held in different subgroups of the subjects, we first made comparisons in males and females separately. As shown in <xref rid="pone.0144015.g003" ref-type="fig">Fig 3</xref>, the mean sTRAIL concentration in males was significantly higher in TC-high than TC-Norm individuals. A similar difference of sTRAIL concentration was also present in females. Then we divided the subjects into two groups according to their BMI, namely &lt; 24 (normal bodyweight) and ≥ 24 (overweight/obese). In these two subgroups, significant differences in mean sTRAIL concentration between TC-high and TC-Norm individuals were consistently detected (<xref rid="pone.0144015.g003" ref-type="fig">Fig 3</xref>). Moreover, a significantly higher sTRAIL concentration was also observed in TC-high individuals in different age bands. In younger people (&lt; 45 years), sTRAIL concentrations were 116.2 ± 6.6 pg/ml in TC-high versus 109.2 ± 6.1 in TC-Norm individuals (<italic>P</italic> = 0.0293). In older people (≥ 45 years), sTRAIL concentrations were 134.5 ± 8.1 in TC-high versus 109.1 ± 6.7 in TC-Norm individuals (<italic>P</italic> = 0.0036).</p>
+<fig id="pone.0144015.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0144015.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Comparison of sTRAIL concentrations in subjects with normal (Norm) and elevated (High) blood total cholesterol using 5.2 mmol/L as a cutting-off value, in the total 352 subjects and in different subject categories according to gender and body mass index (BMI).</title>
+<p>The <italic>n</italic> numbers included in each (sub)group were shown under the columns. * <italic>P</italic> &lt; 0.05, Mann-Whitney test.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0144015.g003" position="float" xlink:type="simple"/>
+</fig>
+<p>Next we examined whether the sTRAIL concentration was changed with the blood LDL-C level. Using a cutting-off value of 3.1 mmol/L of LDL-C, we did not detect a significant difference between LDL-low versus LDL-high subjects (113.8 ± 4.6 and 121.8 ± 5.5 pg/ml respectively, <italic>P</italic> = 0.073). However, using a cutting-off value of 3.6 mmol/L, we found that the sTRAIL concentration was significantly higher in the LDL-high group (<italic>P</italic> &lt; 0.0005) (<xref rid="pone.0144015.g004" ref-type="fig">Fig 4</xref>). We further confirmed that the mean sTRAIL concentration in males was significantly higher in the LDL-high than LDL-low individuals (<xref rid="pone.0144015.g004" ref-type="fig">Fig 4</xref>). However, the difference in females was not significant (<xref rid="pone.0144015.g004" ref-type="fig">Fig 4</xref>). In relation to the body adiposity, we found that in both of the normal bodyweight group and the overweight/obese group, the mean sTRAIL concentrations were all significantly higher in LDL-high individuals (<xref rid="pone.0144015.g004" ref-type="fig">Fig 4</xref>). In younger people, sTRAIL concentrations were 123.3 ± 7.8 in LDL-high versus 109.2 ± 5.3 in LDL-low individuals (<italic>P</italic> = 0.0013). In older people, sTRAIL concentrations were 132.3 ± 14.3 in LDL-high versus 118.1 ± 6.0 in LDL-low individuals, of which the difference was not significant (<italic>P</italic> = 0.1851). We could not totally exclude the possibility that the lack of significance was due to the relatively small size of these subgroups.</p>
+<fig id="pone.0144015.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0144015.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Comparison of sTRAIL concentrations in subjects with lower and higher blood LDL-cholesterol using 3.6 mmol/L as a cutting-off value, in the total 352 subjects and in different subject categories according to gender and body mass index (BMI).</title>
+<p>The <italic>n</italic> numbers included in each (sub)group were shown under the columns. * <italic>P</italic> &lt; 0.05, Mann-Whitney test.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0144015.g004" position="float" xlink:type="simple"/>
+</fig>
+<p>Finally, we compared various physiological and biochemical parameters between subjects in the lower and upper quartiles of the sTRAIL concentration. The mean age was not different between the two quartiles. TC and LDL-C levels in the upper quartile were significantly higher than those in the lower quartile (4.89 ± 0.08 versus 5.28 ± 0.10 for TC, <italic>P</italic> = 0.0056; 2.89 ± 0.07 versus 3.15 ± 0.09 for LDL-C, <italic>P</italic> = 0.042), whereas there were no significant differences in triglycerides, HDL-C, SBP or DBP. BMI was also different between the two quartiles (<xref rid="pone.0144015.s001" ref-type="supplementary-material">S1 Table</xref>).</p>
+</sec>
+<sec id="sec009" sec-type="conclusions">
+<title>Discussion</title>
+<p>Here we provided data showing that in humans there were significant correlations between the serum sTRAIL concentration and levels of total and LDL cholesterol. The level of sTRAIL was significantly elevated in people whose TC and/or LDL-C were above the normal values. This kind of relationship between sTRAIL and hypercholesterolemia retains in subgroups of subjects with different age, gender and the status of adiposity (except for LDL-C in females and those ≥ 45 years of age). Moreover, we showed that the levels of TC and LDL-C were significantly higher in people in the upper quartile of sTRAIL than those in the lower quartile. Using a more generalized population, we confirmed previous findings in postmenopausal women [<xref rid="pone.0144015.ref019" ref-type="bibr">19</xref>], and further established the positive correlation between sTRAIL and blood cholesterol levels observed in subjects with metabolic anomalies [<xref rid="pone.0144015.ref020" ref-type="bibr">20</xref>]. It should be noted that, however, the increase in sTRAIL concentration in hypercholesterolemia cannot establish that sTRAIL is an independent biomarker for the metabolic disorders. Given that the change in TC is concomitant with changes in various other metabolic parameters, it is likely that the sTRAIL concentration may be also affected directly or indirectly by other metabolic factors.</p>
+<p>The relationship between sTRAIL and hypercholesterolemia in humans seems to be in contrast to the results obtained from animal experiments, which indicate a hypolipidemic action of endogenous TRAIL in vivo [<xref rid="pone.0144015.ref013" ref-type="bibr">13</xref>]. The physiological and/or pathophysiological significance of the elevated sTRAIL concentration in human hypercholesterolemia is currently not understood. On one hand, evidence has shown that there is an inverse relationship between the serum sTRAIL concentration and the severity of coronary arterial disease [<xref rid="pone.0144015.ref012" ref-type="bibr">12</xref>, <xref rid="pone.0144015.ref033" ref-type="bibr">33</xref>, <xref rid="pone.0144015.ref037" ref-type="bibr">37</xref>], indicating that the increased TRAIL production may act as a compensatory mechanism that regulates the disrupted homeostasis of lipid metabolism under pathological conditions, and may prevent the development of resultant vascular lesions. On the other hand, elevated TRAIL may be a pathogenic factor that potentially contributes to hypercholesterolemia-induced vascular injuries. Indeed, there is evidence showing that increased TRAIL may cause apoptosis and inflammatory responses in vascular endothelial and/or smooth muscle cells [<xref rid="pone.0144015.ref038" ref-type="bibr">38</xref>]. Moreover, there is evidence showing that TRAIL may induce lipid uptake and foam cell formation in macrophages [<xref rid="pone.0144015.ref022" ref-type="bibr">22</xref>]. Therefore, our results suggest that further investigations on the precise roles of TRAIL in human hypercholesterolemia and atherosclerosis are warranted.</p>
+<p>Whether males and females have different basal levels of sTRAIL is controversial based on previous results [<xref rid="pone.0144015.ref019" ref-type="bibr">19</xref>, <xref rid="pone.0144015.ref039" ref-type="bibr">39</xref>]. In the present study, we confirmed that the basal sTRAIL concentration was significantly higher in women than men, which was consistent with the results reported by another group [<xref rid="pone.0144015.ref039" ref-type="bibr">39</xref>]. Previous studies also found that the sTRAIL concentration was positively correlated with indices of obesity [<xref rid="pone.0144015.ref019" ref-type="bibr">19</xref>, <xref rid="pone.0144015.ref020" ref-type="bibr">20</xref>]. However, in this study we did not detect a significant correlation between sTRAIL and BMI. A limitation of our study was that, apart from BMI, we did not measure other obesity-related parameters such as waist circumference and fat mass. We could not exclude that BMI did not precisely reflect the status of mass and distribution of the body fat. Indeed, in another study in Caucasians, the authors also did not find a significant difference in sTRAIL levels between normal weight and obese subjects based on BMI [<xref rid="pone.0144015.ref021" ref-type="bibr">21</xref>].</p>
+<p>In summary, our data have confirmed that the serum sTRAIL concentration is elevated in humans with hypercholesterolemia. Generation of sTRAIL bestows this cytokine the ability to act as a paracrine factor. Although data from animal experiments have suggested that TRAIL have beneficial effects on lipid metabolism, additional clinical evidence is required to establish whether an increased sTRAIL concentration in humans confers vascular protection, or represents a potential pathogenic factor that may further facilitate lesion formation in the presence of hypercholesterolemia, which is a most important risk factor for atherosclerosis and coronary arterial disease.</p>
+</sec>
+<sec id="sec010">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0144015.s001" xlink:href="info:doi/10.1371/journal.pone.0144015.s001" mimetype="application/msword" position="float" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>Comparison of various physiological and biochemical parameters between subjects in the lower and upper sTRAIL quartiles</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0144015.s002" xlink:href="info:doi/10.1371/journal.pone.0144015.s002" mimetype="application/pdf" position="float" xlink:type="simple">
+<label>S2 Table</label>
+<caption>
+<title>Data set of concentrations of sTRAIL, total cholesterol and low-density lipoprotein cholesterol</title>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>The authors thank Xiao-Wei Wang for technical assistance in sample collection and processing. This work was partially supported by the following research grants: the National 973 Basic Research Program of China (2012CB518603); National Natural Science Foundation of China (91539102); State Program of National Natural Science Foundation of China for Innovative Research Group (81021001).</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0144015.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Schaefer</surname> <given-names>U</given-names></name>, <name name-style="western"><surname>Voloshanenko</surname> <given-names>O</given-names></name>, <name name-style="western"><surname>Willen</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Walczak</surname> <given-names>H</given-names></name> (<year>2007</year>) <article-title>TRAIL: a multifunctional cytokine</article-title>. <source>Front Biosci</source> <volume>12</volume>: <fpage>3813</fpage>–<lpage>3824</lpage>. <object-id pub-id-type="pmid">17485341</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Corazza</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Kassahn</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Jakob</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Badmann</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Brunner</surname> <given-names>T</given-names></name> (<year>2009</year>) <article-title>TRAIL-induced apoptosis: between tumor therapy and immunopathology</article-title>. <source>Ann N Y Acad Sci</source> <volume>1171</volume>: <fpage>50</fpage>–<lpage>58</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/j.1749-6632.2009.04905.x" xlink:type="simple">10.1111/j.1749-6632.2009.04905.x</ext-link></comment> <object-id pub-id-type="pmid">19723037</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Guicciardi</surname> <given-names>ME</given-names></name>, <name name-style="western"><surname>Gores</surname> <given-names>GJ</given-names></name> (<year>2009</year>) <article-title>Life and death by death receptors</article-title>. <source>FASEB J</source> <volume>23</volume>: <fpage>1625</fpage>–<lpage>1637</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1096/fj.08-111005" xlink:type="simple">10.1096/fj.08-111005</ext-link></comment> <object-id pub-id-type="pmid">19141537</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bernardi</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Milani</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Fabris</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Secchiero</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Zauli</surname> <given-names>G</given-names></name> (<year>2012</year>) <article-title>TRAIL as biomarker and potential therapeutic tool for cardiovascular diseases</article-title>. <source>Curr Drug Targets</source> <volume>13</volume>: <fpage>1215</fpage>–<lpage>1221</lpage>. <object-id pub-id-type="pmid">22676911</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Harith</surname> <given-names>HH</given-names></name>, <name name-style="western"><surname>Morris</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Kavurma</surname> <given-names>MM</given-names></name> (<year>2013</year>) <article-title>On the TRAIL of obesity and diabetes</article-title>. <source>Trends Endocrinol Metab</source> <volume>24</volume>: <fpage>578</fpage>–<lpage>587</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.tem.2013.07.001" xlink:type="simple">10.1016/j.tem.2013.07.001</ext-link></comment> <object-id pub-id-type="pmid">23948591</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Neve</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Corrado</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Cantatore</surname> <given-names>FP</given-names></name> (<year>2014</year>) <article-title>TNF-related apoptosis-inducing ligand (TRAIL) in rheumatoid arthritis: what's new?</article-title> <source>Clin Exp Med</source> <volume>14</volume>: <fpage>115</fpage>–<lpage>120</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10238-012-0226-1" xlink:type="simple">10.1007/s10238-012-0226-1</ext-link></comment> <object-id pub-id-type="pmid">23275079</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mariani</surname> <given-names>SM</given-names></name>, <name name-style="western"><surname>Krammer</surname> <given-names>PH</given-names></name> (<year>1998</year>) <article-title>Differential regulation of TRAIL and CD95 ligand in transformed cells of the T and B lymphocyte lineage</article-title>. <source>Eur J Immunol</source> <volume>28</volume>: <fpage>973</fpage>–<lpage>982</lpage>. <object-id pub-id-type="pmid">9541592</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tecchio</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Huber</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Scapini</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Calzetti</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Margotto</surname> <given-names>D</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>IFNalpha-stimulated neutrophils and monocytes release a soluble form of TNF-related apoptosis-inducing ligand (TRAIL/Apo-2 ligand) displaying apoptotic activity on leukemic cells</article-title>. <source>Blood</source> <volume>103</volume>: <fpage>3837</fpage>–<lpage>3844</lpage>. <object-id pub-id-type="pmid">14726404</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Secchiero</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Corallini</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Ceconi</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Parrinello</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Volpato</surname> <given-names>S</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Potential prognostic significance of decreased serum levels of TRAIL after acute myocardial infarction</article-title>. <source>PLoS One</source> <volume>4</volume>: <fpage>e4442</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0004442" xlink:type="simple">10.1371/journal.pone.0004442</ext-link></comment> <object-id pub-id-type="pmid">19221598</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Liabeuf</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Barreto</surname> <given-names>DV</given-names></name>, <name name-style="western"><surname>Barreto</surname> <given-names>FC</given-names></name>, <name name-style="western"><surname>Chasseraud</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Brazier</surname> <given-names>M</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>The circulating soluble TRAIL is a negative marker for inflammation inversely associated with the mortality risk in chronic kidney disease patients</article-title>. <source>Nephrol Dial Transplant</source> <volume>25</volume>: <fpage>2596</fpage>–<lpage>2602</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1093/ndt/gfq042" xlink:type="simple">10.1093/ndt/gfq042</ext-link></comment> <object-id pub-id-type="pmid">20190248</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Azab</surname> <given-names>NA</given-names></name>, <name name-style="western"><surname>Rady</surname> <given-names>HM</given-names></name>, <name name-style="western"><surname>Marzouk</surname> <given-names>SA</given-names></name> (<year>2012</year>) <article-title>Elevated serum TRAIL levels in scleroderma patients and its possible association with pulmonary involvement</article-title>. <source>Clin Rheumatol</source> <volume>31</volume>: <fpage>1359</fpage>–<lpage>1364</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10067-012-2023-3" xlink:type="simple">10.1007/s10067-012-2023-3</ext-link></comment> <object-id pub-id-type="pmid">22729471</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Deftereos</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Giannopoulos</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Kossyvakis</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Kaoukis</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Raisakis</surname> <given-names>K</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Association of soluble tumour necrosis factor-related apoptosis-inducing ligand levels with coronary plaque burden and composition</article-title>. <source>Heart</source> <volume>98</volume>: <fpage>214</fpage>–<lpage>218</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1136/heartjnl-2011-300339" xlink:type="simple">10.1136/heartjnl-2011-300339</ext-link></comment> <object-id pub-id-type="pmid">21965221</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Di Bartolo</surname> <given-names>BA</given-names></name>, <name name-style="western"><surname>Chan</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Bennett</surname> <given-names>MR</given-names></name>, <name name-style="western"><surname>Cartland</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Bao</surname> <given-names>S</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>TNF-related apoptosis-inducing ligand (TRAIL) protects against diabetes and atherosclerosis in Apoe (-)/(-) mice</article-title>. <source>Diabetologia</source> <volume>54</volume>: <fpage>3157</fpage>–<lpage>3167</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00125-011-2308-0" xlink:type="simple">10.1007/s00125-011-2308-0</ext-link></comment> <object-id pub-id-type="pmid">21965021</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lamhamedi-Cherradi</surname> <given-names>SE</given-names></name>, <name name-style="western"><surname>Zheng</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Tisch</surname> <given-names>RM</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>YH</given-names></name> (<year>2003</year>) <article-title>Critical roles of tumor necrosis factor-related apoptosis-inducing ligand in type 1 diabetes</article-title>. <source>Diabetes</source> <volume>52</volume>: <fpage>2274</fpage>–<lpage>2278</lpage>. <object-id pub-id-type="pmid">12941766</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kang</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Park</surname> <given-names>EJ</given-names></name>, <name name-style="western"><surname>Joe</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Seo</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Park</surname> <given-names>MK</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Systemic delivery of TNF-related apoptosis-inducing ligand (TRAIL) elevates levels of tissue inhibitor of metalloproteinase-1 (TIMP-1) and prevents type 1 diabetes in nonobese diabetic mice</article-title>. <source>Endocrinology</source> <volume>151</volume>: <fpage>5638</fpage>–<lpage>5646</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1210/en.2009-0478" xlink:type="simple">10.1210/en.2009-0478</ext-link></comment> <object-id pub-id-type="pmid">21047948</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tornese</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Iafusco</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Monasta</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Agnoletto</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Tisato</surname> <given-names>V</given-names></name>, <etal>et al</etal>. (<year>2014</year>) <article-title>The levels of circulating TRAIL at the onset of type 1 diabetes are markedly decreased in patients with ketoacidosis and with the highest insulin requirement</article-title>. <source>Acta Diabetol</source> <volume>51</volume>: <fpage>239</fpage>–<lpage>246</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00592-013-0507-5" xlink:type="simple">10.1007/s00592-013-0507-5</ext-link></comment> <object-id pub-id-type="pmid">23925693</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bisgin</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Yalcin</surname> <given-names>AD</given-names></name>, <name name-style="western"><surname>Gorczynski</surname> <given-names>RM</given-names></name> (<year>2012</year>) <article-title>Circulating soluble tumor necrosis factor related apoptosis inducing-ligand (TRAIL) is decreased in type-2 newly diagnosed, non-drug using diabetic patients</article-title>. <source>Diabetes Res Clin Pract</source> <volume>96</volume>: <fpage>e84</fpage>–<lpage>86</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.diabres.2012.02.028" xlink:type="simple">10.1016/j.diabres.2012.02.028</ext-link></comment> <object-id pub-id-type="pmid">22446096</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>O'Sullivan</surname> <given-names>EP</given-names></name>, <name name-style="western"><surname>Ashley</surname> <given-names>DT</given-names></name>, <name name-style="western"><surname>Davenport</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Devlin</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Crowley</surname> <given-names>R</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Osteoprotegerin and biomarkers of vascular inflammation in type 2 diabetes</article-title>. <source>Diabetes Metab Res Rev</source> <volume>26</volume>: <fpage>496</fpage>–<lpage>502</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1002/dmrr.1109" xlink:type="simple">10.1002/dmrr.1109</ext-link></comment> <object-id pub-id-type="pmid">20809534</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Choi</surname> <given-names>JW</given-names></name>, <name name-style="western"><surname>Song</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Pai</surname> <given-names>SH</given-names></name> (<year>2004</year>) <article-title>Associations of serum TRAIL concentrations, anthropometric variables, and serum lipid parameters in healthy adults</article-title>. <source>Ann Clin Lab Sci</source> <volume>34</volume>: <fpage>400</fpage>–<lpage>404</lpage>. <object-id pub-id-type="pmid">15648780</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brombo</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Volpato</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Secchiero</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Passaro</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Bosi</surname> <given-names>C</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>Association of soluble Tumor necrosis factor-Related Apoptosis-Inducing Ligand (TRAIL) with central adiposity and low-density lipoprotein cholesterol</article-title>. <source>PLoS One</source> <volume>8</volume>: <fpage>e58225</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0058225" xlink:type="simple">10.1371/journal.pone.0058225</ext-link></comment> <object-id pub-id-type="pmid">23472162</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ashley</surname> <given-names>DT</given-names></name>, <name name-style="western"><surname>O'Sullivan</surname> <given-names>EP</given-names></name>, <name name-style="western"><surname>Davenport</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Devlin</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Crowley</surname> <given-names>RK</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Similar to adiponectin, serum levels of osteoprotegerin are associated with obesity in healthy subjects</article-title>. <source>Metabolism</source> <volume>60</volume>: <fpage>994</fpage>–<lpage>1000</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.metabol.2010.10.001" xlink:type="simple">10.1016/j.metabol.2010.10.001</ext-link></comment> <object-id pub-id-type="pmid">21087777</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Liu</surname> <given-names>FF</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Jiang</surname> <given-names>F</given-names></name> (<year>2014</year>) <article-title>TRAIL/DR5 Signaling Promotes Macrophage Foam Cell Formation by Modulating Scavenger Receptor Expression</article-title>. <source>PLoS One</source> <volume>9</volume>: <fpage>e87059</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0087059" xlink:type="simple">10.1371/journal.pone.0087059</ext-link></comment> <object-id pub-id-type="pmid">24466325</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Holven</surname> <given-names>KB</given-names></name>, <name name-style="western"><surname>Narverud</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Lindvig</surname> <given-names>HW</given-names></name>, <name name-style="western"><surname>Halvorsen</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Langslet</surname> <given-names>G</given-names></name>, <etal>et al</etal>. (<year>2014</year>) <article-title>Subjects with familial hypercholesterolemia are characterized by an inflammatory phenotype despite long-term intensive cholesterol lowering treatment</article-title>. <source>Atherosclerosis</source> <volume>233</volume>: <fpage>561</fpage>–<lpage>567</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.atherosclerosis.2014.01.022" xlink:type="simple">10.1016/j.atherosclerosis.2014.01.022</ext-link></comment> <object-id pub-id-type="pmid">24530965</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Castellino</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Corallini</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Bortoluzzi</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>La Corte</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Lo Monaco</surname> <given-names>A</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>The tumour necrosis factor-related apoptosis-inducing ligand-osteoprotegerin system in limited systemic sclerosis: a new disease marker?</article-title> <source>Rheumatology (Oxford)</source> <volume>49</volume>: <fpage>1173</fpage>–<lpage>1176</lpage>.</mixed-citation></ref>
+<ref id="pone.0144015.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chaemsaithong</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Romero</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Korzeniewski</surname> <given-names>SJ</given-names></name>, <name name-style="western"><surname>Schwartz</surname> <given-names>AG</given-names></name>, <name name-style="western"><surname>Stampalija</surname> <given-names>T</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>Soluble TRAIL in normal pregnancy and acute pyelonephritis: a potential explanation for the susceptibility of pregnant women to microbial products and infection</article-title>. <source>J Matern Fetal Neonatal Med</source> <volume>26</volume>: <fpage>1568</fpage>–<lpage>1575</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.3109/14767058.2013.783811" xlink:type="simple">10.3109/14767058.2013.783811</ext-link></comment> <object-id pub-id-type="pmid">23480056</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Choi</surname> <given-names>JW</given-names></name> (<year>2005</year>) <article-title>Relationships between tumor necrosis factor (TNF)-related apoptosis-inducing ligand (TRAIL) and hematopoietic activity in healthy adults</article-title>. <source>Ann Hematol</source> <volume>84</volume>: <fpage>728</fpage>–<lpage>733</lpage>. <object-id pub-id-type="pmid">16007425</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Choi</surname> <given-names>JW</given-names></name> (<year>2006</year>) <article-title>Associations of Fas (CD95), tumor necrosis factor (TNF)-related apoptosis-inducing ligand (TRAIL), and biochemical manifestations in elderly persons</article-title>. <source>Clin Chim Acta</source> <volume>365</volume>: <fpage>113</fpage>–<lpage>118</lpage>. <object-id pub-id-type="pmid">16139828</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Davenport</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Kenny</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Ashley</surname> <given-names>DT</given-names></name>, <name name-style="western"><surname>O'Sullivan</surname> <given-names>EP</given-names></name>, <name name-style="western"><surname>Smith</surname> <given-names>D</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>The effect of exercise on osteoprotegerin and TNF-related apoptosis-inducing ligand in obese patients</article-title>. <source>Eur J Clin Invest</source> <volume>42</volume>: <fpage>1173</fpage>–<lpage>1179</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/j.1365-2362.2012.02703.x" xlink:type="simple">10.1111/j.1365-2362.2012.02703.x</ext-link></comment> <object-id pub-id-type="pmid">22803952</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Genc</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Egrilmez</surname> <given-names>MY</given-names></name>, <name name-style="western"><surname>Yaka</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Cavdar</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Iyilikci</surname> <given-names>L</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>TNF-related apoptosis-inducing ligand level in Alzheimer's disease</article-title>. <source>Neurol Sci</source> <volume>30</volume>: <fpage>263</fpage>–<lpage>267</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10072-009-0047-5" xlink:type="simple">10.1007/s10072-009-0047-5</ext-link></comment> <object-id pub-id-type="pmid">19294332</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hofbauer</surname> <given-names>LC</given-names></name>, <name name-style="western"><surname>Schoppet</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Christ</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Teichmann</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Lange</surname> <given-names>U</given-names></name> (<year>2006</year>) <article-title>Tumour necrosis factor-related apoptosis-inducing ligand and osteoprotegerin serum levels in psoriatic arthritis</article-title>. <source>Rheumatology (Oxford)</source> <volume>45</volume>: <fpage>1218</fpage>–<lpage>1222</lpage>.</mixed-citation></ref>
+<ref id="pone.0144015.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lub-de Hooge</surname> <given-names>MN</given-names></name>, <name name-style="western"><surname>de Jong</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Vermot-Desroches</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Tulleken</surname> <given-names>JE</given-names></name>, <name name-style="western"><surname>de Vries</surname> <given-names>EG</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Endotoxin increases plasma soluble tumor necrosis factor-related apoptosis-inducing ligand level mediated by the p38 mitogen-activated protein kinase signaling pathway</article-title>. <source>Shock</source> <volume>22</volume>: <fpage>186</fpage>–<lpage>188</lpage>. <object-id pub-id-type="pmid">15257094</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lub-de Hooge</surname> <given-names>MN</given-names></name>, <name name-style="western"><surname>de Vries</surname> <given-names>EG</given-names></name>, <name name-style="western"><surname>de Jong</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Bijl</surname> <given-names>M</given-names></name> (<year>2005</year>) <article-title>Soluble TRAIL concentrations are raised in patients with systemic lupus erythematosus</article-title>. <source>Ann Rheum Dis</source> <volume>64</volume>: <fpage>854</fpage>–<lpage>858</lpage>. <object-id pub-id-type="pmid">15564310</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Michowitz</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Goldstein</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Roth</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Afek</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Abashidze</surname> <given-names>A</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>The involvement of tumor necrosis factor-related apoptosis-inducing ligand (TRAIL) in atherosclerosis</article-title>. <source>J Am Coll Cardiol</source> <volume>45</volume>: <fpage>1018</fpage>–<lpage>1024</lpage>. <object-id pub-id-type="pmid">15808757</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Perik</surname> <given-names>PJ</given-names></name>, <name name-style="western"><surname>Van der Graaf</surname> <given-names>WT</given-names></name>, <name name-style="western"><surname>De Vries</surname> <given-names>EG</given-names></name>, <name name-style="western"><surname>Boomsma</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Messerschmidt</surname> <given-names>J</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Circulating apoptotic proteins are increased in long-term disease-free breast cancer survivors</article-title>. <source>Acta Oncol</source> <volume>45</volume>: <fpage>175</fpage>–<lpage>183</lpage>. <object-id pub-id-type="pmid">16546863</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yalcin</surname> <given-names>AD</given-names></name>, <name name-style="western"><surname>Bisgin</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Kargi</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Gorczynski</surname> <given-names>RM</given-names></name> (<year>2012</year>) <article-title>Serum-soluble TRAIL levels in patients with severe persistent allergic asthma: its relation to omalizumab treatment</article-title>. <source>Med Sci Monit</source> <volume>18</volume>: <fpage>PI11</fpage>–<lpage>15</lpage>. <object-id pub-id-type="pmid">22367138</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yan</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Xu</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Qi</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Liang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Ma</surname> <given-names>C</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>sTRAIL levels and TRAIL gene polymorphisms in Chinese patients with fatty liver disease</article-title>. <source>Immunogenetics</source> <volume>61</volume>: <fpage>551</fpage>–<lpage>556</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s00251-009-0389-4" xlink:type="simple">10.1007/s00251-009-0389-4</ext-link></comment> <object-id pub-id-type="pmid">19629467</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mori</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Ikari</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Jono</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Shioi</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Ishimura</surname> <given-names>E</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Association of serum TRAIL level with coronary artery disease</article-title>. <source>Thromb Res</source> <volume>125</volume>: <fpage>322</fpage>–<lpage>325</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.thromres.2009.11.024" xlink:type="simple">10.1016/j.thromres.2009.11.024</ext-link></comment> <object-id pub-id-type="pmid">20034655</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cheng</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Jiang</surname> <given-names>F</given-names></name> (<year>2014</year>) <article-title>Tumor necrosis factor-related apoptosis-inducing ligand in vascular inflammation and atherosclerosis: a protector or culprit?</article-title> <source>Vascul Pharmacol</source> <volume>63</volume>: <fpage>135</fpage>–<lpage>144</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.vph.2014.10.004" xlink:type="simple">10.1016/j.vph.2014.10.004</ext-link></comment> <object-id pub-id-type="pmid">25451562</object-id></mixed-citation></ref>
+<ref id="pone.0144015.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kawano</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Mori</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Emoto</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Kobayashi</surname> <given-names>I</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Association of serum TRAIL levels with atherosclerosis in patients with type 2 diabetes mellitus</article-title>. <source>Diabetes Res Clin Pract</source> <volume>91</volume>: <fpage>316</fpage>–<lpage>320</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.diabres.2010.11.034" xlink:type="simple">10.1016/j.diabres.2010.11.034</ext-link></comment> <object-id pub-id-type="pmid">21227528</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

@@ -1,0 +1,804 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.1d3" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0182377</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-17-11939</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Database and informatics methods</subject><subj-group><subject>Bioinformatics</subject><subj-group><subject>Sequence analysis</subject><subj-group><subject>Sequence motif analysis</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Database and informatics methods</subject><subj-group><subject>Bioinformatics</subject><subj-group><subject>Sequence analysis</subject><subj-group><subject>DNA sequence analysis</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Database and informatics methods</subject><subj-group><subject>Biological databases</subject><subj-group><subject>Mutation databases</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Mutation</subject><subj-group><subject>Mutation databases</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Cell biology</subject><subj-group><subject>Chromosome biology</subject><subj-group><subject>Chromatin</subject><subj-group><subject>Chromatin modification</subject><subj-group><subject>DNA methylation</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Epigenetics</subject><subj-group><subject>Chromatin</subject><subj-group><subject>Chromatin modification</subject><subj-group><subject>DNA methylation</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Gene expression</subject><subj-group><subject>Chromatin</subject><subj-group><subject>Chromatin modification</subject><subj-group><subject>DNA methylation</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>DNA</subject><subj-group><subject>DNA modification</subject><subj-group><subject>DNA methylation</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Nucleic acids</subject><subj-group><subject>DNA</subject><subj-group><subject>DNA modification</subject><subj-group><subject>DNA methylation</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Epigenetics</subject><subj-group><subject>DNA modification</subject><subj-group><subject>DNA methylation</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Gene expression</subject><subj-group><subject>DNA modification</subject><subj-group><subject>DNA methylation</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Physical sciences</subject><subj-group><subject>Physics</subject><subj-group><subject>Thermodynamics</subject><subj-group><subject>Free energy</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>DNA</subject><subj-group><subject>DNA structure</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Nucleic acids</subject><subj-group><subject>DNA</subject><subj-group><subject>DNA structure</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Molecular biology</subject><subj-group><subject>Macromolecular structure analysis</subject><subj-group><subject>DNA structure</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Database and informatics methods</subject><subj-group><subject>Biological databases</subject><subj-group><subject>Sequence databases</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Database and informatics methods</subject><subj-group><subject>Bioinformatics</subject><subj-group><subject>Sequence analysis</subject><subj-group><subject>Sequence databases</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Mutation</subject><subj-group><subject>Substitution mutation</subject></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>DNA mutation motifs in the genes associated with inherited diseases</article-title>
+<alt-title alt-title-type="running-head">DNA mutation motifs</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Růžička</surname>
+<given-names>Michal</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kulhánek</surname>
+<given-names>Petr</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Radová</surname>
+<given-names>Lenka</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Čechová</surname>
+<given-names>Andrea</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Špačková</surname>
+<given-names>Naďa</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Fajkusová</surname>
+<given-names>Lenka</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Validation</role>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0002-6453-2386</contrib-id>
+<name name-style="western">
+<surname>Réblová</surname>
+<given-names>Kamila</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Project administration</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Validation</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>CEITEC—Central European Institute of Technology, Masaryk University, Kamenice 5, Brno, Czech Republic</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Department of Condensed Matter Physics, Faculty of Science, Masaryk University, Kotlářská 2, Brno, Czech Republic</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>National Centre for Biomolecular Research, Faculty of Science, Masaryk University, Kamenice 5, Brno, Czech Republic</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Centre of Molecular Biology and Gene Therapy, University Hospital Brno and Masaryk University, Jihlavská 20, Brno, Czech Republic</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Schlick</surname>
+<given-names>Tamar</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>New York University, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">kristina@physics.muni.cz</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>2</day>
+<month>8</month>
+<year>2017</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2017</year>
+</pub-date>
+<volume>12</volume>
+<issue>8</issue>
+<elocation-id>e0182377</elocation-id>
+<history>
+<date date-type="received">
+<day>27</day>
+<month>3</month>
+<year>2017</year>
+</date>
+<date date-type="accepted">
+<day>17</day>
+<month>7</month>
+<year>2017</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2017</copyright-year>
+<copyright-holder>Růžička et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0182377"/>
+<abstract>
+<p>Mutations in human genes can be responsible for inherited genetic disorders and cancer. Mutations can arise due to environmental factors or spontaneously. It has been shown that certain DNA sequences are more prone to mutate. These sites are termed hotspots and exhibit a higher mutation frequency than expected by chance. In contrast, DNA sequences with lower mutation frequencies than expected by chance are termed coldspots. Mutation hotspots are usually derived from a mutation spectrum, which reflects particular population where an effect of a common ancestor plays a role. To detect coldspots/hotspots unaffected by population bias, we analysed the presence of germline mutations obtained from HGMD database in the 5-nucleotide segments repeatedly occurring in genes associated with common inherited disorders, in particular, the <italic>PAH</italic>, <italic>LDLR</italic>, <italic>CFTR</italic>, <italic>F8</italic>, and <italic>F9</italic> genes. Statistically significant sequences (mutational motifs) rarely associated with mutations (coldspots) and frequently associated with mutations (hotspots) exhibited characteristic sequence patterns, e.g. coldspots contained purine tract while hotspots showed alternating purine-pyrimidine bases, often with the presence of <monospace>CpG</monospace> dinucleotide. Using molecular dynamics simulations and free energy calculations, we analysed the global bending properties of two selected coldspots and two hotspots with a <monospace>G/T</monospace> mismatch. We observed that the coldspots were inherently more flexible than the hotspots. We assume that this property might be critical for effective mismatch repair as DNA with a mutation recognized by MutSα protein is noticeably bent.</p>
+</abstract>
+<funding-group>
+<funding-statement>This research was financially supported by Grant Agency of the Czech Republic (GA16-11619S/2016) and by the Ministry of Education, Youth and Sports of the Czech Republic under the project CEITEC 2020 (LQ1601). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript. Computational resources were provided by the CESNET LM2015042 and the CERIT Scientific Cloud LM2015085, provided under the programme "Projects of Large Research, Development, and Innovations Infrastructures". This work was supported by The Ministry of Education, Youth and Sports from the Large Infrastructures for Research, Experimental Development and Innovations project „IT4Innovations National Supercomputing Center – LM2015070“.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="5"/>
+<table-count count="3"/>
+<page-count count="16"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Genomic integrity and stability is important for any living organism. Cells evolved various repair pathways to maintain the correct transmission of genetic information to the next generation, e.g. nucleotide excision repair (NER), base excision repair (BER), mismatch repair (MMR), homologous recombination repair and post-replication repair [<xref ref-type="bibr" rid="pone.0182377.ref001">1</xref>]. Mutations arising in parent’s germ cells are termed <italic>de novo</italic> mutations and can cause various inherited disorders. Errors in DNA can arise due to environmental factors or spontaneously, e.g. during DNA replication or due to deamination of 5-methylcytosine. With a fully functional repair system, the frequency of spontaneous error is ca. 1 per 10<sup>9</sup>–10<sup>10</sup> base pairs per replication [<xref ref-type="bibr" rid="pone.0182377.ref002">2</xref>]. In human genes, a mutational strand asymmetry was observed as a consequence of both transcription [<xref ref-type="bibr" rid="pone.0182377.ref003">3</xref>–<xref ref-type="bibr" rid="pone.0182377.ref005">5</xref>] and replication processes [<xref ref-type="bibr" rid="pone.0182377.ref006">6</xref>–<xref ref-type="bibr" rid="pone.0182377.ref008">8</xref>]. Detecting DNA damage on a transcribed DNA strand by RNA polymerase initiates transcription coupled repair (TCR), a sub-pathway of NER. This leads to strand asymmetry that can be expressed using <monospace>GC</monospace> and <monospace>TA</monospace> skew profiles. Strand asymmetry arising during replication is related to different synthesis and proofreading mechanisms of the leading strand (replicated continuously from the origin) and the lagging strand (replicated in discrete steps towards the origin). Previous studies have shown that certain DNA sequences are more prone to mutate [<xref ref-type="bibr" rid="pone.0182377.ref009">9</xref>,<xref ref-type="bibr" rid="pone.0182377.ref010">10</xref>]. These sites are termed hotspots and exhibit a higher mutation frequency than expected by chance. DNA sequences with lower frequencies than expected by chance are termed coldspots. Perhaps, the most well-known hotspot is the <monospace>CpG</monospace> dinucleotide associated with the <monospace>C&gt;T</monospace> mutation, resulting in <monospace>TpG</monospace> or <monospace>CpA</monospace> (on the other strand) transitions [<xref ref-type="bibr" rid="pone.0182377.ref011">11</xref>]. During this change, cytosine is methylated and subsequently deaminated [<xref ref-type="bibr" rid="pone.0182377.ref012">12</xref>]. In spite of the effective repair pathways, BER and MMR, this mutation is very frequent [<xref ref-type="bibr" rid="pone.0182377.ref013">13</xref>–<xref ref-type="bibr" rid="pone.0182377.ref015">15</xref>]. It was proposed that due to high <monospace>CpG</monospace> site mutability, these dinucleotides occur less frequently in the genome than would be expected by chance [<xref ref-type="bibr" rid="pone.0182377.ref016">16</xref>]. Cytosine methylation is also one of the most frequent DNA modifications used to control gene expression in the cell, hence it represents a naturally occurring base modification [<xref ref-type="bibr" rid="pone.0182377.ref017">17</xref>,<xref ref-type="bibr" rid="pone.0182377.ref018">18</xref>]. Apart from the <monospace>CpG</monospace> sites, there are other sequences with higher mutation rates, e.g. <monospace>CpHpG</monospace> trinucleotide (where <monospace>H</monospace> stands for <monospace>A</monospace>, <monospace>C</monospace> or <monospace>T</monospace>) [<xref ref-type="bibr" rid="pone.0182377.ref019">19</xref>] or <monospace>GTAAGT</monospace> motif [<xref ref-type="bibr" rid="pone.0182377.ref020">20</xref>]. It was observed that a sequence of ±2 nucleotides (nt) around a mismatch has an influence on the relative rates of single nucleotide variations (SNVs) causing human inherited disorders [<xref ref-type="bibr" rid="pone.0182377.ref015">15</xref>,<xref ref-type="bibr" rid="pone.0182377.ref021">21</xref>]. In addition, all mismatch types are not repaired with the same efficiency [<xref ref-type="bibr" rid="pone.0182377.ref022">22</xref>]. In the cell, mismatches and small insertion/deletion loops (IDLs) are primarily targeted by MutSα protein within the MMR pathway [<xref ref-type="bibr" rid="pone.0182377.ref002">2</xref>]. DNA with a mismatch is bent by ca. 60° in the MutSα/DNA complex (so the angle between the arms is 120°) [<xref ref-type="bibr" rid="pone.0182377.ref023">23</xref>–<xref ref-type="bibr" rid="pone.0182377.ref026">26</xref>]. A model where MutSα slides along DNA and scans for flexible regions corresponding to mismatches has been proposed [<xref ref-type="bibr" rid="pone.0182377.ref027">27</xref>]. It seems that DNA flexibility, which play a role in various cell processes [<xref ref-type="bibr" rid="pone.0182377.ref028">28</xref>–<xref ref-type="bibr" rid="pone.0182377.ref030">30</xref>], might also be a critical factor to detect mismatches in DNA. In the MutSα/DNA complex, a mismatch is further recognized by phenylalanine 432 and glutamine 434 from conserved Phe-X-Glu motif [<xref ref-type="bibr" rid="pone.0182377.ref026">26</xref>,<xref ref-type="bibr" rid="pone.0182377.ref031">31</xref>]. The interaction of MutSα with DNA is also coupled with its ATPase activity. There are two ATP non-equivalent hydrolytic sites, each located at MSH2 and MSH6 units of MutSα [<xref ref-type="bibr" rid="pone.0182377.ref026">26</xref>]. The ATP sites are part of the ATPase domains that belong to ABC-transporter superfamily [<xref ref-type="bibr" rid="pone.0182377.ref024">24</xref>,<xref ref-type="bibr" rid="pone.0182377.ref032">32</xref>]. Despite ATP and DNA binding sites being separated by a distance of about 70 Å, allosteric signalling between them exists [<xref ref-type="bibr" rid="pone.0182377.ref033">33</xref>]. The MutSα protein with ADP bound can diffuse freely on DNA and search for mismatches [<xref ref-type="bibr" rid="pone.0182377.ref034">34</xref>]. During this stage, MutSα can bind ATP, which is hydrolysed in one subunit faster than in the second one [<xref ref-type="bibr" rid="pone.0182377.ref035">35</xref>]. The ATP binding initiates the formation of a clamp composed of MSH2 and MSH6 DNA binding domains around the DNA. This clamp is relaxed after ATP hydrolysis so there is an open/close state of MutSα. After MutSα recognizes a mismatch, ATP hydrolysis is suppressed and MSH2 and MSH6 DNA binding domains form a closed clamp. The Phe-X-Glu motif contacts the mismatch and DNA is bent [<xref ref-type="bibr" rid="pone.0182377.ref035">35</xref>]. This event initiates interaction with the MulL protein and the subsequent repair process [<xref ref-type="bibr" rid="pone.0182377.ref036">36</xref>]. These conformational processes are probably associated with the release of energy from ATP hydrolysis, but the precise mechanism is not yet known.</p>
+<p>To better understand the emergence of mutations in DNA genes, we performed a two-step study. Firstly, we analysed DNA sequences of five genes associated with common inherited disorders where large numbers of different SNVs were reported in the Human Gene Mutation Database (HGMD, <ext-link ext-link-type="uri" xlink:href="http://www.hgmd.cf.ac.uk/ac/index.php" xlink:type="simple">http://www.hgmd.cf.ac.uk/ac/index.php</ext-link>). This database contains known gene mutations responsible for human inherited diseases, plus disease-associated functional polymorphisms. Mutation spectra for various populations are not provided there, i.e. each mutation appears just once in the database with its first reference in literature. We focused on mutations in the <italic>PAH</italic> gene (associated with hyperphenylalanineamia), <italic>LDLR</italic> gene (associated with hypercholesterolemia), <italic>CFTR</italic> gene (associated with cystic fibrosis), and <italic>F8</italic> and <italic>F9</italic> genes (associated with hemophilia A and B, respectively). In these genes, we identified repeatedly occurring 5-nucleotide (5-nt) sequences that are: i) rarely associated with mutations (coldspots) and ii) frequently associated with mutations (hotspots). Secondly, we investigated the bending properties of two hotspots and two coldspots using advanced computational techniques. Although the parameters characterizing trinucleotide bending with respect to nucleosome and DNase I have been derived [<xref ref-type="bibr" rid="pone.0182377.ref037">37</xref>,<xref ref-type="bibr" rid="pone.0182377.ref038">38</xref>], their utilization for our purpose is limited as we focus on specific DNA deformation with a mismatch base pair induced by the MutSα protein. As shown in a previous study focused on DNA A-tracts, one sequence can behave differently with respect to different deformations [<xref ref-type="bibr" rid="pone.0182377.ref029">29</xref>]. In particular, we employed Molecular Dynamics (MD) simulations implemented in the AMBER program package [<xref ref-type="bibr" rid="pone.0182377.ref039">39</xref>] and free energy calculations using the adaptive biasing method (ABF) [<xref ref-type="bibr" rid="pone.0182377.ref040">40</xref>] enhanced by the multiple walker approach (MWA) [<xref ref-type="bibr" rid="pone.0182377.ref041">41</xref>]. Based on our calculations, we were able to derive the free energy change needed to bend a straight DNA duplex with a coldspot or hotspot towards the bent geometry of DNA found in the MutSα/DNA complex.</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Materials and methods</title>
+<sec id="sec003">
+<title>Analysis of mutations in DNA sequences</title>
+<p>We analysed germinal mutations in five genes: <italic>PAH</italic>, <italic>LDLR</italic>, <italic>CFTR</italic>, <italic>F8</italic> and <italic>F9</italic> based on the HGMD. We focused primarily on mutations in exons. To increase the number of mutations for our analysis, we also considered the intron sequences between the exons where the mutations occurred. Because genes are sequenced in introns to different extents, number of mutations in these parts differs. We included intron segments of 7 nt long for <italic>PAH</italic>, 4 nt long for <italic>LDLR</italic>, 9 nt long for <italic>CFTR</italic>, 6 nt long for <italic>F8</italic> and 5 nt long for <italic>F9</italic> on both sides of the exons. In addition, 2 nt before the first codon (5’- untranslated region (5’-UTR)) and 2 nt after the last codon (3’- untranslated region (3’-UTR)) were also included for each gene, so that the first and last coding nucleotide occur in the middle of the segments included in the analysis (see below and <bold><xref ref-type="fig" rid="pone.0182377.g001">Fig 1</xref></bold>). The total lengths of analysed DNA sequences including the introns and 5’-UTR/3’-UTR are indicated in <bold><xref ref-type="table" rid="pone.0182377.t001">Table 1</xref></bold>.</p>
+<fig id="pone.0182377.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0182377.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Scheme of the beginning of the <italic>PAH</italic> gene shows segmentation of DNA into 5-nt segments.</title>
+<p>Middle position of each segment is highlighted by a red letter. Coding sequence is in uppercase letters, first two nucleotides (5’-UTR) are in lowercase letters.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.g001" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0182377.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0182377.t001</object-id>
+<label>Table 1</label> <caption><title>Survey of analysed genes, lengths of DNA sequences, number of identified 5-nt segments and number of germline mutations found in HGMD database.</title></caption>
+<alternatives>
+<graphic id="pone.0182377.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Gene</th>
+<th align="center">Total length of analysed DNA sequence (nt)</th>
+<th align="center">Number of unique 5-nt segments</th>
+<th align="center">Number of nucleotide positions with mutation dataset—2014</th>
+<th align="center">Number of nucleotide positions with mutation dataset—2016</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><italic>PAH</italic></td>
+<td align="center">1528</td>
+<td align="center">423</td>
+<td align="center">470</td>
+<td align="center">525</td>
+</tr>
+<tr>
+<td align="center"><italic>LDLR</italic></td>
+<td align="center">2720</td>
+<td align="center">464</td>
+<td align="center">767</td>
+<td align="center">843</td>
+</tr>
+<tr>
+<td align="center"><italic>CFTR</italic></td>
+<td align="center">4912</td>
+<td align="center">487</td>
+<td align="center">862</td>
+<td align="center">921</td>
+</tr>
+<tr>
+<td align="center"><italic>F8</italic></td>
+<td align="center">7357</td>
+<td align="center">486</td>
+<td align="center">1351</td>
+<td align="center">1488</td>
+</tr>
+<tr>
+<td align="center"><italic>F9</italic></td>
+<td align="center">1457</td>
+<td align="center">432</td>
+<td align="center">539</td>
+<td align="center">543</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>The DNA sequence of each gene was divided into 5-nt segments (<bold><xref ref-type="fig" rid="pone.0182377.g001">Fig 1</xref></bold>). Subsequently, we analysed if the middle positions of the obtained segments (or their complement sequences) contained mutations, e.g. in the case of the <monospace>AAAAT</monospace> segment (written from 5’ to 3’ end throughout the text), we also looked for mutations in the complement sequence <monospace>ATTTT</monospace>. We created program in Java for this purpose. Four nucleobases combined in five positions allow 1024 unique 5-nt segments to form. Since we considered the segments together with their complements, the total number of unique 5-nt segments (motifs) is only 512. <bold><xref ref-type="table" rid="pone.0182377.t001">Table 1</xref> </bold>shows the number of different 5-nt motifs detected in the analysed DNA sequences. Missense/nonsense and splicing mutations were taken from the HGMD. We started this analysis in 2014 and used HGMD mutation data from this year. To verify our approach, we repeated the analysis with new HGMD mutation data from 2016, which contains about 8% more mutations than in 2014 in the 5 analysed genes (see <bold><xref ref-type="table" rid="pone.0182377.t001">Table 1</xref></bold>). For the 2014 and 2016 HGMD dataset, we carried out the following analysis. Various substitutions in the middle position (e.g. <monospace>C&gt;T</monospace>, <monospace>A</monospace>, <monospace>G</monospace>) were recorded as one mutation. Our idea was to find out if a particular 5-nt segment is associated with mutations or not. These data were statistically evaluated to select representative 5-nt segments frequently containing mutations in the middle position (hotspots), and segments where the middle position rarely contained mutations (coldspots). Statistical evaluation was performed by R package (<ext-link ext-link-type="uri" xlink:href="http://www.r-project.org/" xlink:type="simple">www.r-project.org</ext-link>). The proportional test was applied with an expected 75% probability for a hotspot or 25% for a coldspot, respectively. Individual p-values for a 5-nt segment and its complement in each gene were further combined into a single p-value by the Fisher method. We considered statistically significant segments with Fisher combined p-value &lt; 0.1. Obtained coldspots and hotspots from the 2014 and 2016 dataset were compared. Further, for the 2016 mutation dataset we performed additional statistical analysis where we considered all detected substitutions in the middle position. Each position in this approach can possess three substitutions and one original nucleotide. We again used a proportional test with an expected 75% probability for a hotspot or 25% for a coldspot, respectively. Individual p-values for a 5-nt segment and its complement were combined into a single p-value by the Fisher method.</p>
+<p>A nucleosome positioning was analyzed using a novel algorithm that combines a statistical mechanics model and knowledge of periodically occurring dinucleotides in histone octamers [<xref ref-type="bibr" rid="pone.0182377.ref042">42</xref>].</p>
+</sec>
+<sec id="sec004">
+<title>MD simulations and free energy calculations</title>
+<p>To determine the bending properties of DNA with a mismatch base pair, we performed a conformational transition between the straight DNA duplex built by the nab module of AMBER 14 [<xref ref-type="bibr" rid="pone.0182377.ref039">39</xref>] as a right handed B-DNA and the bent DNA conformation found in the complex with MutSα [<xref ref-type="bibr" rid="pone.0182377.ref026">26</xref>] (PDB ID: 2O8B). Due to the complexity of the problem, the bending was performed in absence of MutSα. DNA with a mismatch <monospace>G/T</monospace> pair built by the nab module was solvated with TIP3P water molecules [<xref ref-type="bibr" rid="pone.0182377.ref043">43</xref>] in a truncated octahedral periodic box (with minimal distance 10 Å to the walls) and neutralized with sodium counterions [<xref ref-type="bibr" rid="pone.0182377.ref044">44</xref>] using the xleap module of AMBER, a new version of the DNA force field parmbsc1 [<xref ref-type="bibr" rid="pone.0182377.ref045">45</xref>] was used. Firstly, the system was equilibrated in three steps. Minimization of the system was performed in 3000 steps, then the system was heated to 300K during 100 ps at a constant volume and finally, a 500 ps long simulation was run at 300 K and 100 kPa at the NpT conditions. After that we ran production dynamics and the system was simulated for 150 ns at the NpT conditions. During the equilibration and production phases, dynamics of terminal base pairs was limited by the wall distance restraints imposed on hydrogen bonds between terminal bases to avoid the formation of flanking bases that would influence the dynamics of the remaining DNA structure. Five restart files from the production MD simulation (each taken after 30 ns) were used as the starting coordinates for the subsequent parallel ABF method accelerated by the MWA [<xref ref-type="bibr" rid="pone.0182377.ref040">40</xref>,<xref ref-type="bibr" rid="pone.0182377.ref041">41</xref>,<xref ref-type="bibr" rid="pone.0182377.ref046">46</xref>]. This ensured independence of the starting configurations for ABF simulations. All ABF simulations were performed in the modified PMEMD program from AMBER, connected with PMFLib [<xref ref-type="bibr" rid="pone.0182377.ref047">47</xref>] implementing both ABF and MWA methods. The total sampling time of one ABF simulation was 200 ns, which provides converged free energy profiles (we also tested 400 ns long simulations that provided close to identical results, see <bold><xref ref-type="supplementary-material" rid="pone.0182377.s006">S1 Fig</xref></bold> for comparison). The collective variable used in the free energy calculations was the mass weighted root-mean square distance (RMSD) to a target structure, which was derived from the bent X-ray DNA structure. We tested two coldspots and two hotspots that differ in a sequence of the central 5 nt-segment (<bold><xref ref-type="fig" rid="pone.0182377.g002">Fig 2</xref></bold>). Therefore, bases in the central 5-nt long segments of the bent X-ray DNA structure were mutated <italic>in silico</italic>. Possible clashes introduced by changes in the sequence were removed by careful optimization while the overall shape was maintained by positional restraints towards the bent X-ray DNA structure. To avoid possible bias which could be introduced by this <italic>in silico</italic> procedure, three types of RMSD collective variable were tested. They differ in the definition of atoms, which were employed in the structure superimposition and calculation of RMSD. Set A included all of the entire DNA structure’s heavy atoms corresponding to residues 1 to 30. Set B included all of the heavy atoms from terminal 5-nt long segments and the heavy atoms of the backbone from the central 5-nt long segments corresponding to the AMBER mask notation ((:1–5,11–20,26–30) | (:6–10,21–25@P,OP1,OP2,O3',O5',C3',C4',C5')) and, finally, set C included the DNA backbone heavy atoms corresponding to the AMBER mask notation (:1–30@P,OP1,OP2,O3',O5',C3',C4',C5'). In the bent X-ray DNA structure, the central <monospace>G/T</monospace> pair is modestly opened towards minor groove, showing a shear parameter of about 5 Å (this parameter is one of the six helical parameters describing the orientation of bases in a base pair) [<xref ref-type="bibr" rid="pone.0182377.ref048">48</xref>], while in the relaxed DNA conformations where it is positioned inside the duplex this parameter has a value of about -2.2 Å. Therefore, we imposed weak wall restraints to keep the shear parameter in the range from -10 Å to 0 Å so that the <monospace>G/T</monospace> stayed stable inside the DNA duplex without changing the hydrogen pairing during DNA bending. As observed in test simulations, opening of the <monospace>G/T</monospace> pair represents irreversible events which influence the calculated free energy profiles. The free energy profiles were calculated for RMSD in the interval from 1.45 to 5.45 Å. The relaxed DNA is shown as a minimum on the free energy profile, representing a stable thermodynamic state. On the contrary, the bent structure is not thermodynamically stable because of the absence of MutSα in our model. Therefore, we had to select a RMSD value which would represent the bend state and serve to compare coldspots and hotspots. To guess a fair estimate, we have analysed behaviour of the relaxed DNA state observed in the unrestrained production dynamics. RMSD towards an average DNA structure was calculated over the entire production dynamics. Depending on the system and the atom set employed in calculating RMSD, the RMSD value fluctuated from 1 to 4 Å, with maximum occurrence at about 1.55 Å for set A and B (<bold><xref ref-type="supplementary-material" rid="pone.0182377.s007">S2 Fig</xref>)</bold>. Set C exhibits a slightly higher value of about 1.80 Å. We assumed the similar effect of thermal fluctuations on RMSD deviation from the target bent DNA structures and used a value of 1.55 Å as an RMSD threshold representing the bent DNA.</p>
+<fig id="pone.0182377.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0182377.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>2D structures of the studied DNA systems with a central <monospace>G/T</monospace> pair using the ABF method.</title>
+<p>The sequence corresponds to DNA complexed with MutSα except the central 5-nt segment (highlighted by the colored box) which is either a coldspot (yellow box) or hotspot (pink box).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.g002" xlink:type="simple"/>
+</fig>
+<p>We also analyzed bending of DNA duplex with <monospace>G/T</monospace> using another collective variable used in the work of Sharma, et al [<xref ref-type="bibr" rid="pone.0182377.ref049">49</xref>]. This collective variable is represented by the angle between helical arms of the DNA duplex defined by three centers of masses defined by nucleotide residues (2–5, 26–29), (6–10, 21–25), and (11–14, 17–20). This collective variable was tested in a range from 90° to 170°. Bend structures, however, did not resemble X-ray conformation of DNA in complex with MutSα, but rather showed smooth deformations along the helical axis of DNA (see <bold><xref ref-type="supplementary-material" rid="pone.0182377.s008">S3 Fig</xref></bold> for comparison with the bent X-ray DNA and a selected MD structure from the ABF calculation, where the collective variable was RMSD). Therefore, the bending angle was not used as a collective variable in our study. The MD trajectories were processed using the ptraj module of AMBER and visualized using the VMD program [<xref ref-type="bibr" rid="pone.0182377.ref050">50</xref>].</p>
+</sec>
+</sec>
+<sec id="sec005" sec-type="results">
+<title>Results</title>
+<sec id="sec006">
+<title>Selected mutation motifs (coldspots and hotspots) and their signatures</title>
+<p>DNA 5-nt segments with their complements were extracted from five studied genes. The number of identified unique segments in each gene is shown in <bold><xref ref-type="table" rid="pone.0182377.t001">Table 1</xref></bold>. It can be seen that not all combinations (512) were found in these genes. Even <italic>F8</italic> and <italic>CFTR</italic> genes with the longest DNA sequences do not contain all possible combinations. There are several motifs which occur especially rarely, e.g. <monospace>CCGCG/CGCGG, CGACG/CGTCG, ATACG/CGTAT, CGCGA/TCGCG, ACGCG/CGCGT, CGCGC/GCGCG</monospace>. These motifs were detected just in 1 out of 5 genes and are rich in <monospace>CpG</monospace> dinucleotide. Their occurrence is most likely suppressed in DNA sequences due to the reasons discussed in the Introduction. <bold><xref ref-type="supplementary-material" rid="pone.0182377.s001">S1</xref> and <xref ref-type="supplementary-material" rid="pone.0182377.s002">S2</xref> Tables</bold> show all segments detected in <italic>PAH</italic>, <italic>LDLR</italic>, <italic>F8</italic>, <italic>F9</italic> and <italic>CFTR</italic> genes and a number of mutations found in the middle position in the 2014 and 2016 mutation datasets, respectively. With the use of proportional tests and the Fisher method, we calculated the combined p-value for each segment, which indicates its significance to be a coldspot or hotspot. <bold><xref ref-type="table" rid="pone.0182377.t002">Table 2</xref> </bold>shows the top 20 coldspots with the lowest Fisher combined p-values in the 2014 and 2016 datasets and <bold><xref ref-type="table" rid="pone.0182377.t003">Table 3</xref> </bold>shows the top 20 hotspots with the lowest Fisher combined p-values in the 2014 and 2016 datasets.</p>
+<table-wrap id="pone.0182377.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0182377.t002</object-id>
+<label>Table 2</label> <caption><title>Top twenty coldspots in 2014 and 2016 datasets.</title></caption>
+<alternatives>
+<graphic id="pone.0182377.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Mutation coldspot 5’→3’/5’→3’</th>
+<th align="center">Fisher combined p-value for coldspot</th>
+<th align="center">Mutation coldspot 5’→3’/5’→3’</th>
+<th align="center">Fisher combined p-value for coldspot</th>
+</tr>
+<tr>
+<th align="center" colspan="2">Dataset 2014</th>
+<th align="center" colspan="2">Dataset 2016</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>AAAGA/TCTTT</monospace></td>
+<td align="center">3.23E-09</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>AAAGA/TCTTT</monospace></td>
+<td align="right" style="background-color:#FFFFFF">9.36858E-09</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>AAAAA/TTTTT</monospace></td>
+<td align="center">5.80E-09</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>AAAAT/ATTTT</monospace></td>
+<td align="right" style="background-color:#FFFFFF">1.07478E-08</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>AGAAA/TTTCT</monospace></td>
+<td align="center">6.82E-09</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>AAAAA/TTTTT</monospace></td>
+<td align="right" style="background-color:#FFFFFF">1.36135E-08</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>AAAAT/ATTTT</monospace></td>
+<td align="center">1.07E-08</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>AGAAA/TTTCT</monospace></td>
+<td align="right" style="background-color:#FFFFFF">1.77502E-08</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>GAAAA/TTTTC</monospace></td>
+<td align="center">1.68E-08</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>GAAAA/TTTTC</monospace></td>
+<td align="right" style="background-color:#FFFFFF">4.49683E-08</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>AAGAA/TTCTT</monospace></td>
+<td align="center">3.88E-08</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>GAAGA/TCTTC</monospace></td>
+<td align="right" style="background-color:#FFFFFF">6.47074E-07</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>GAAGA/TCTTC</monospace></td>
+<td align="center">6.47E-07</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>GGAGA/TCTCC</monospace></td>
+<td align="right" style="background-color:#FFFFFF">1.21713E-06</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>AGAAG/CTTCT</monospace></td>
+<td align="center">1.08E-06</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>AAGAA/TTCTT</monospace></td>
+<td align="right" style="background-color:#FFFFFF">1.26841E-06</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>GGAGA/TCTCC</monospace></td>
+<td align="center">1.22E-06</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>GGAAA/TTTCC</monospace></td>
+<td align="right" style="background-color:#FFFFFF">3.0346E-06</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>TGAAA/TTTCA</monospace></td>
+<td align="center">1.56E-06</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>TGAAA/TTTCA</monospace></td>
+<td align="right" style="background-color:#FFFFFF">3.83943E-06</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>GGAAA/TTTCC</monospace></td>
+<td align="center">1.70E-06</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>CAAAA/TTTTG</monospace></td>
+<td align="right" style="background-color:#FFFFFF">4.40191E-06</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>TGAAG/CTTCA</monospace></td>
+<td align="center">3.03E-06</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>TGAAG/CTTCA</monospace></td>
+<td align="right" style="background-color:#FFFFFF">8.86768E-06</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>CAAAA/TTTTG</monospace></td>
+<td align="center">4.40E-06</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>AGAAG/CTTCT</monospace></td>
+<td align="right" style="background-color:#FFFFFF">1.34215E-05</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>GAAAT/ATTTC</monospace></td>
+<td align="center">4.48E-06</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>TCAGA/TCTGA</monospace></td>
+<td align="right" style="background-color:#FFFFFF">1.62237E-05</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>GAAAG/CTTTC</monospace></td>
+<td align="center">1.38E-05</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>CAAAG/CTTTG</monospace></td>
+<td align="right" style="background-color:#FFFFFF">2.2854E-05</td>
+</tr>
+<tr>
+<td align="center"><monospace>AAAAC/GTTTT</monospace></td>
+<td align="center">1.40E-05</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>GAAAG/CTTTC</monospace></td>
+<td align="right" style="background-color:#FFFFFF">2.88886E-05</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>TCAGA/TCTGA</monospace></td>
+<td align="center">1.62E-05</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>GAAAT/ATTTC</monospace></td>
+<td align="right" style="background-color:#FFFFFF">2.91218E-05</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>AGAAT/ATTCT</monospace></td>
+<td align="center">1.92E-05</td>
+<td align="left" style="background-color:#D9D9D9"><monospace>AGAAT/ATTCT</monospace></td>
+<td align="right" style="background-color:#FFFFFF">4.88009E-05</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>CAAAG/CTTTG</monospace></td>
+<td align="center">2.29E-05</td>
+<td align="left"><monospace>CAGAA/TTCTG</monospace></td>
+<td align="right" style="background-color:#FFFFFF">5.60054E-05</td>
+</tr>
+<tr>
+<td align="center"><monospace>CAGTG/CACTG</monospace></td>
+<td align="center">2.45E-05</td>
+<td align="left"><monospace>AAACA/TGTTT</monospace></td>
+<td align="right">7.23417E-05</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>Motifs containing four or five purine tracks are in bold. Motifs detected in both datasets are in grey field</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<table-wrap id="pone.0182377.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0182377.t003</object-id>
+<label>Table 3</label> <caption><title>Top twenty hotspots in 2014 and 2016 datasets.</title></caption>
+<alternatives>
+<graphic id="pone.0182377.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Mutation hotspot 5’→3’/5’→3’</th>
+<th align="center">Fisher combined p-value for hotspot</th>
+<th align="center">Mutation hotspot 5’→3’/5’→3’</th>
+<th align="center">Fisher combined p-value for hotspot</th>
+</tr>
+<tr>
+<th align="center" colspan="2">Dataset 2014</th>
+<th align="center" colspan="2">Dataset 2016</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>AGGTA/TACCT</monospace></td>
+<td align="center">3.12E-10</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>AGGTA/TACCT</monospace></td>
+<td align="center">1.24262E-11</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>TCGCA/TGCGA</monospace></italic></td>
+<td align="center">2.69E-08</td>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>TCGCA/TGCGA</monospace></italic></td>
+<td align="center">2.6884E-08</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>ACGGC/GCCGT</monospace></italic></td>
+<td align="center">5.51E-05</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>CACAG/CTGTG</monospace></td>
+<td align="center">2.97136E-06</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>CGCAG/CTGCG</monospace></td>
+<td align="center">7.31E-05</td>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>CCGAG/CTCGG</monospace></italic></td>
+<td align="center">2.11333E-05</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>ACCTG/CAGGT</monospace></td>
+<td align="center">0.000101</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>CCCAG/CTGGG</monospace></td>
+<td align="center">2.24424E-05</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>CACAG/CTGTG</monospace></td>
+<td align="center">0.000158</td>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>ACGGC/GCCGT</monospace></italic></td>
+<td align="center">5.50895E-05</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>CCGAG/CTCGG</monospace></italic></td>
+<td align="center">0.000240</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>CGCAG/CTGCG</monospace></td>
+<td align="center">7.3056E-05</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>CCGGC/GCCGG</monospace></italic></td>
+<td align="center">0.000451</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>ACCTG/CAGGT</monospace></td>
+<td align="center">0.000101</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>TCGAA/TTCGA</monospace></italic></td>
+<td align="center">0.001007</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>CAGTA/TACTG</monospace></td>
+<td align="center">0.000287</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>TGGAA/TTCCA</monospace></td>
+<td align="center">0.002042</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>CTCAG/CTGAG</monospace></td>
+<td align="center">0.000431</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>AGCCA/TGGCT</monospace></td>
+<td align="center">0.002623</td>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>CCGGC/GCCGG</monospace></italic></td>
+<td align="center">0.000451</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>CCGCC/GGCGG</monospace></italic></td>
+<td align="center">0.002625</td>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>CCGCC/GGCGG</monospace></italic></td>
+<td align="center">0.000482</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>CTCAG/CTGAG</monospace></td>
+<td align="center">0.003514</td>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>GCGAA/TTCGC</monospace></italic></td>
+<td align="center">0.000508</td>
+</tr>
+<tr>
+<td align="center"><italic><monospace>CACGA/TCGTG</monospace></italic></td>
+<td align="center">0.003707</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>ACATG/CATGT</monospace></td>
+<td align="center">0.000538</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>ACATG/CATGT</monospace></td>
+<td align="center">0.003755</td>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>CCGAC/GTCGG</monospace></italic></td>
+<td align="center">0.000630</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>CAGTA/TACTG</monospace></td>
+<td align="center">0.004126</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>TGGAA/TTCCA</monospace></td>
+<td align="center">0.000657</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>CCCAG/CTGGG</monospace></td>
+<td align="center">0.004429</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>AGCCA/TGGCT</monospace></td>
+<td align="center">0.000802</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>GCGAA/TTCGC</monospace></italic></td>
+<td align="center">0.005546</td>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>TCGAA/TTCGA</monospace></italic></td>
+<td align="center">0.001007</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><italic><monospace>CCGAC/GTCGG</monospace></italic></td>
+<td align="center">0.006022</td>
+<td align="center" style="background-color:#D9D9D9"><monospace>ACTCA/TGAGT</monospace></td>
+<td align="center">0.001370</td>
+</tr>
+<tr>
+<td align="center" style="background-color:#D9D9D9"><monospace>ACTCA/TGAGT</monospace></td>
+<td align="center">0.007033</td>
+<td align="center"><monospace>AGGTG/CACCT</monospace></td>
+<td align="center">0.002439</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t003fn001"><p>Motifs containing <monospace>CpG</monospace> dinucleotide in the middle are italic</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Coldspots derived from the 2014 dataset are almost identical to coldspots derived from the 2016 dataset. In particular, 18 out of 20 coldspots can be found in both datasets. Similarly, 19 hotspots from the 2014 dataset can be found in the 2016 dataset. Thus, although the number of detected mutations increased in the genes during the two years, it did not significantly affect the final selection of coldspots and hotspots.</p>
+<p>Herein, we discuss features of coldspots/hotspots found with the 2016 dataset. The most apparent feature of the detected coldspots is the presence of consecutive purines (purine tract) (<bold><xref ref-type="table" rid="pone.0182377.t002">Table 2</xref></bold>). In particular, 18 out of 20 coldspots contain four or five purine tracts. Such a pattern is not seen in the hotspot sequences, where just one motif out of 20 contains a four purine tract (<monospace>TGGAA</monospace>). The identified hotspots frequently show <monospace>CpG</monospace> dinucleotide in the middle position (detected in 8 out of 20 motifs). In the top 20 coldspot sequences, this dinucleotide was not detected. Further, we used a sequence logo tool [<xref ref-type="bibr" rid="pone.0182377.ref051">51</xref>] to visualize the sequence pattern for the 20 top coldspots and hotspots. Since each motif consists of forward and reverse part, only sequences (either forward or reverse) containing a purine base in the middle position were analysed. It revealed that adenine is the prevailing middle base in coldspots and it is surrounded by either adenines or guanines (<bold><xref ref-type="fig" rid="pone.0182377.g003">Fig 3</xref></bold>). In the case of hotspots, the prevailing central purine base is guanine and other positions are highly variable (<bold><xref ref-type="fig" rid="pone.0182377.g003">Fig 3</xref></bold>).</p>
+<fig id="pone.0182377.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0182377.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Sequence logo for top 20 coldspots (top) and top 20 hotspots (bottom).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.g003" xlink:type="simple"/>
+</fig>
+<p>We also used another strategy to detect coldspots and hotspots. In particular, we considered all substitutions in the 5-nt motifs' middle position. The top 20 detected coldspots basically agree with our first analysis, where more substitutions in the middle position were counted as one mutation. In particular, 17 out of 20 coldspots with the lowest p-value were also found based on our first analysis (<bold><xref ref-type="table" rid="pone.0182377.t002">Table 2</xref> and <xref ref-type="supplementary-material" rid="pone.0182377.s003">S3 Table</xref></bold>). Considering hotspots, the top 20 motifs show rather high combined p-values (<bold><xref ref-type="supplementary-material" rid="pone.0182377.s003">S3 Table</xref></bold>). Based on this second statistical approach, significant hotspots should contain many different substitutions on all of their occurrences in the genes. We observed that this is a rather rare event. As in our first approach, we considered statistically significant motifs with a combined p-value &lt;0.1. There are only five hotspots which satisfy this criterion (first three motifs out of these five were also found with our previous approach (<bold><xref ref-type="table" rid="pone.0182377.t003">Table 3</xref> and <xref ref-type="supplementary-material" rid="pone.0182377.s003">S3 Table</xref></bold>). Thus, this second statistical approach might be more useful when more data (substitutions) are available in the HGMD.</p>
+<p>In <bold><xref ref-type="fig" rid="pone.0182377.g004">Fig 4</xref></bold>, we show a number of mutations (different substitutions counted as one), the number of all substitutions, and occurrences of the top 20 coldspots/hotspots detected using our first statistical approach (results in <bold>Tables <xref ref-type="table" rid="pone.0182377.t002">2</xref> and <xref ref-type="table" rid="pone.0182377.t003">3</xref></bold>) with the HGMD 2016 dataset. It can be seen that coldspots occur more frequently than hotspots and contain significantly less mutations, particularly, coldspots occur approximately two times more frequently and contain two times less mutations than hotspots. The figure also shows that hotspots more often possess different substitutions than coldspots (see red and blue columns in the <bold><xref ref-type="fig" rid="pone.0182377.g004">Fig 4</xref></bold>). In addition, for the top 20 coldspots/hotspots we extracted the type of base substitutions. In the case of coldspots where adenine occurs predominantly in the middle position, the most frequent substitution is <monospace>A→G</monospace>, while in the hotspots where guanine occurs predominantly in the middle position we observed that <monospace>G→A</monospace> is the most frequent substitution (<bold><xref ref-type="supplementary-material" rid="pone.0182377.s009">S4 Fig</xref></bold>). This corresponds to the general assumption that transitions are more frequent than transversions [<xref ref-type="bibr" rid="pone.0182377.ref052">52</xref>].</p>
+<fig id="pone.0182377.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0182377.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Occurrences of top 20 coldspots (top) and top 20 hotspots (bottom) in the five studied genes visualized with the number of detected mutations and substitutions in middle position.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.g004" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec007">
+<title>Coldspots and hotspots in the <italic>TP53</italic> gene</title>
+<p>We analyzed the behaviour of the top twenty coldspots and hotspots selected based on the 5 genes in the <italic>TP53</italic> gene, which also contains many different germline mutations along the nucleotide sequence. Germline TP53 mutations were taken from the HGMD database (germline TP53 mutations are also presented in the IARC database <ext-link ext-link-type="uri" xlink:href="http://p53.iarc.fr/" xlink:type="simple">http://p53.iarc.fr/</ext-link> together with TP53 somatic mutations). We analyzed mutations in the exons and included 4-nt long intron segments plus 2 nt before the first codon and 2 nt after the last codon as for analysis of the five genes. The total TP53 length was 1255 nt and there were 302 mutations, see <bold><xref ref-type="supplementary-material" rid="pone.0182377.s004">S4 Table</xref></bold>. We observed that only 1% of coldspot sequences are associated with mutations while in the case of hotspots it is 21% (<bold><xref ref-type="supplementary-material" rid="pone.0182377.s005">S5 Table</xref></bold>). Regarding sequences which are neither hotspots nor coldspots (they have a combined p-value &gt; 0.1 in both coldspot and hotspot datasets), 12% of them are associated with mutations. This is higher than for coldspots but lower than for hotspots (if we consider all motifs with a combined p-value &gt; 0.1 in both datasets, we also get that 12% of them are associated with mutations). These findings indicate our motif selection can also be applied to other genes.</p>
+</sec>
+<sec id="sec008">
+<title>Bending analysis of coldspots and hotspots</title>
+<p>We investigated the bending properties of two coldspots, <monospace>AAGAA</monospace> and <monospace>CAGTG</monospace>, and two hotspots, <monospace>AGGTA</monospace> and <monospace>TGGAA</monospace>. The selected coldspots were detected in the statistical analysis of the HGMD 2014 dataset (<bold><xref ref-type="table" rid="pone.0182377.t002">Table 2</xref></bold>). The first coldspot was also identified within the first 20 coldspots in the 2016 dataset, the second one occurs at the 23<sup>rd</sup> position in the HGMD 2016 dataset, but its combined Fisher p-value is still very low (9.22E-05). The selected hotspots were both detected in the 2014 and 2016 datasets within the top 20 hotspots (<bold><xref ref-type="table" rid="pone.0182377.t003">Table 3</xref></bold>). We intentionally selected hotspots that do not contain <monospace>CpG</monospace> dinucleotide in the middle position. The presence of such hotspots among our top 20 hotspots could be due to high <monospace>CpG</monospace> site mutability rather than due to intrinsic flexibility, which was tested in our calculations.</p>
+<p>The bending was quantified by the free energy change (<bold><xref ref-type="fig" rid="pone.0182377.g005">Fig 5</xref></bold>) that is necessary to bring a relaxed straight DNA to a conformation observed in the bent X-ray DNA structure found in the MutSα/DNA complex. As a collective variable describing the necessary geometrical change, we employed RMSD towards the target bent DNA structure. The relaxed DNA, which is thermodynamically stable state, is exhibited as a minimum on the free energy profiles around 4.5 Å, while the bend DNA lies in the region around 1.55 Å, which is a typical deviation of RMSD from the target structure due to thermal atom fluctuations. The free energy profiles show that the two hotspots with <monospace>G/T</monospace> pairs are stiffer than the two coldspots (<bold><xref ref-type="fig" rid="pone.0182377.g005">Fig 5</xref></bold>). For instance, the free energy necessary to bend a straight DNA is 16.3 for <monospace>AGGTA</monospace> and 16.1 for <monospace>TGGAA</monospace> while for <monospace>AAGAA</monospace> and <monospace>CAGTG</monospace> it is only 14.2 and 14.3 kcal mol<sup>-1</sup>, respectively.</p>
+<fig id="pone.0182377.g005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0182377.g005</object-id>
+<label>Fig 5</label>
+<caption>
+<title>Free energy change for two coldspots and two hotspots with <monospace>G/T</monospace> pair with respect to DNA bending described by RMSD calculated over the set A atoms.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.g005" xlink:type="simple"/>
+</fig>
+<p>Due to the different composition of central 5-nt long segments, the target bent DNA structures were derived from the experimental bent X-ray structure by <italic>in silico</italic> mutagenesis. To examine, if this procedure could negatively influence the observed DNA bending properties, we employed three different sets of atoms in the RMSD calculation. The first set (set A) contains all the DNA’s heavy atom (<bold><xref ref-type="fig" rid="pone.0182377.g005">Fig 5</xref></bold>), while the atoms of modified nucleobases in the central regions were excluded in the second set (set B). The free energy profiles calculated for set B show nearly the same results (<bold><xref ref-type="supplementary-material" rid="pone.0182377.s010">S5 Fig</xref></bold>) as observed for set A. It indicates that the preparation of the target structure does not alter the bending properties and observed hotspots and coldspot flexibility, hence the flexibility is indeed an intrinsic property of the nucleotide sequence. We also tested the third set (set C), where only the DNA’s backbone atoms were considered (<bold><xref ref-type="supplementary-material" rid="pone.0182377.s011">S6 Fig</xref></bold>). Even here, where nucleobase sequences cannot alter calculation of RMSD and thus the free energy profiles, the difference between coldspots and hotspots is visible. However, the discrimination of coldspots and hotspots is significantly smaller mainly because the bending of DNA was not as sharp as in the two other atom sets.</p>
+</sec>
+<sec id="sec009">
+<title>Nucleosome positioning</title>
+<p>Repair of DNA sequences in linker regions is more efficient than in the nucleosomes [<xref ref-type="bibr" rid="pone.0182377.ref053">53</xref>], therefore we analyzed the putative positioning of nucleosomes on two coldspots (<monospace>AAGAA</monospace> and <monospace>CAGTG</monospace>), and two hotspots (<monospace>AGGTA</monospace> and <monospace>TGGAA</monospace>) in exons of the <italic>PAH</italic> gene (the same motifs employed in the bending analysis). <bold><xref ref-type="supplementary-material" rid="pone.0182377.s012">S7 Fig</xref></bold> shows the localization of these motifs in the PAH exons mapped onto the predicted nucleosome positions. We observed a roughly equal distribution of both coldspots and hotspots in the nucleosomes and in the linker regions. In particular, the predicted localization of the selected coldspots and hotspots inside/outside the nucleosome is the following: <monospace>AAGAA</monospace> (4/7), <monospace>CAGTG</monospace> (6/5), <monospace>AGGTA</monospace> (1/3), <monospace>TGGAA</monospace> (4/6). These findings indicate no association between the repair process of these motifs and their localization in a chromatin.</p>
+</sec>
+</sec>
+<sec id="sec010" sec-type="conclusions">
+<title>Discussion</title>
+<p>In the five genes (<italic>PAH</italic>, <italic>LDLR</italic>, <italic>CFTR</italic>, <italic>F8</italic>, and <italic>F9</italic>) leading to common inherited disorders we detected sequences (mutational motifs) rarely associated with SNVs (coldspots) and frequently associated with SNVs (hotspots). Our approach is based on the analysis of mutations obtained from the HGMD database in the 5-nt segments which repeatedly occur in DNA sequences. It contrasts with the common strategy, where hotspots are derived from a mutation spectrum, which is a distribution of frequencies of every type of mutation along nucleotide sequences of a target gene [<xref ref-type="bibr" rid="pone.0182377.ref010">10</xref>,<xref ref-type="bibr" rid="pone.0182377.ref054">54</xref>]. The occurrence of mutations in the mutation spectra, however, often reflects the particular population where an effect of a common ancestor plays a role, i.e. frequent mutations originate from a single mutation event (founder effect) and are spread throughout the population as observed in our [<xref ref-type="bibr" rid="pone.0182377.ref055">55</xref>] and other studies [<xref ref-type="bibr" rid="pone.0182377.ref056">56</xref>,<xref ref-type="bibr" rid="pone.0182377.ref057">57</xref>]. Utilizing mutation spectra to detect coldspots is not convenient [<xref ref-type="bibr" rid="pone.0182377.ref010">10</xref>].</p>
+<p>Based on our approach, we observed that the majority of the top 20 coldspots (18 out of 20) contain purine tract, i.e. four to five nt long purine sequence. These sites were associated with a minimum of SNVs. In contrast, the purines tracts were not seen in the top 20 hotspots. These sequences often contain <italic>alternating purine</italic>-pyrimidine bases. Nine out of the top 20 hotspots showed <monospace>CpG</monospace> dinucleotide in the middle position (<bold><xref ref-type="table" rid="pone.0182377.t003">Table 3</xref></bold>), which can explain their higher mutation rate.</p>
+<p>We performed MD simulations and free energy calculations to better understand the bending properties of DNA with mutations. We analyzed <monospace>AAGAA</monospace> and <monospace>CAGTG</monospace> coldspots and <monospace>AGGTA</monospace> and <monospace>TGGAA</monospace> hotspots, which does not contain <monospace>CpG</monospace> (<bold><xref ref-type="fig" rid="pone.0182377.g002">Fig 2</xref></bold>). We hypothesized that higher mutability of hotspots could be due to their higher stiffness. Indeed, we observed that the selected coldspots with mismatch <monospace>G/T</monospace> are about 2 kcal mol<sup>-1</sup> more flexible than the selected hotspots with <monospace>G/T</monospace> (<bold><xref ref-type="fig" rid="pone.0182377.g005">Fig 5</xref></bold>). This supports the idea that flexible sequences could be more effectively repaired by MMR. We did not analyse bending properties of the DNA duplex with a central canonical pair as there is no experimentally bent structure with this pair that could serve as a target conformation for our calculations.</p>
+<p>As mentioned above, the selected coldspots consist of purine tracts where mononucleotide stretches frequently occur, e.g. <monospace>AAAGA</monospace>, <monospace>AAAAA</monospace>, <monospace>AGAAA</monospace>, etc (<bold><xref ref-type="table" rid="pone.0182377.t002">Table 2</xref></bold>). It is known that such sequences tend to cause DNA polymerase slippage during DNA replication, which results in IDLs [<xref ref-type="bibr" rid="pone.0182377.ref058">58</xref>]. With the use of HGMD we can find a number of IDLs in our coldspots. It is known that the mutation rate of IDLs is lower than that of substitutions, however, homonucleotide tracts represent an exception [<xref ref-type="bibr" rid="pone.0182377.ref059">59</xref>]. We assume that associating coldspots with IDLs is due to the increased mutation rate of these sites for this error type, even though mismatches in these sequences might be effectively repaired. The rate of mutations in IDLs can be further modulated by the length of a repetitive tract and base composition [<xref ref-type="bibr" rid="pone.0182377.ref060">60</xref>–<xref ref-type="bibr" rid="pone.0182377.ref062">62</xref>].</p>
+<p>In summary, our study detected DNA mutation motifs rarely associated with germinal SNVs (coldspots) and motifs which are very frequently associated with SNVs (hotspots). For two selected coldspots it was shown that they are inherently more flexible than hotspots. To conclude that coldspots are generally more flexible than hotspots, so they could be more effectively repaired by MMR, the bending properties of more systems with various mismatches have to be investigated. We are going to analyse other sequences in the next study. We would also like to focus on hotspots with <monospace>CpG</monospace> dinucleotide. It is possible that certain sequences with <monospace>CpG</monospace> will be flexible while others can be very stiff, which would make them super-hotspots in combination with the high mutability of <monospace>CpG</monospace>. We assume that knowledge of DNA motifs, which are extremely ineffectively repaired, can help to identify potentially causal mutations in introns. For these mutations, analysis of transcripts or minigene assays could be done to reveal their impact [<xref ref-type="bibr" rid="pone.0182377.ref063">63</xref>,<xref ref-type="bibr" rid="pone.0182377.ref064">64</xref>]. More importantly, this is essential in cases when no mutations for patients with a clear clinical phenotype are detected.</p>
+</sec>
+<sec id="sec011">
+<title>Supporting information</title>
+<supplementary-material id="pone.0182377.s001" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s001" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>DNA motifs (5-nt segments and their complements) detected in 5 genes and a number of mutations associated with middle positions in HGMD 2014 dataset.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s002" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s002" xlink:type="simple">
+<label>S2 Table</label>
+<caption>
+<title>DNA motifs (5-nt segments and their complements) detected in 5 genes and number of mutations associated with middle positions in HGMD 2016 dataset.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s003" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s003" xlink:type="simple">
+<label>S3 Table</label>
+<caption>
+<title>Top twenty coldspots and hotspots in 2016 dataset where all substitutions were taken into account.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s004" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s004" xlink:type="simple">
+<label>S4 Table</label>
+<caption>
+<title>Updated <xref ref-type="table" rid="pone.0182377.t001">Table 1</xref> about <italic>TP53</italic> gene.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s005" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s005" xlink:type="simple">
+<label>S5 Table</label>
+<caption>
+<title>Number of occurrences and mutations of top 20 coldspots and top 20 hotspots in the <italic>TP53</italic> gene.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s006" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s006" xlink:type="simple">
+<label>S1 Fig</label>
+<caption>
+<title>Comparison of free energy profiles of 200 ns and 400 ns long ABF calculations run for two coldspots and two hotspots with <monospace>G/T</monospace> mismatch where we used set A for calculation of RMSD.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s007" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s007" xlink:type="simple">
+<label>S2 Fig</label>
+<caption>
+<title>Distribution of RMSD values observed for a relaxed DNA in the unrestrained production dynamics of tested coldspots and hotspots.</title>
+<p>The distribution is calculated with respect to an average DNA structure. Set A (red) and B (blue) show a maximum at 1.55 Å while set C (green) exhibits a maximum shifted to 1.8 Å.</p>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s008" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s008" xlink:type="simple">
+<label>S3 Fig</label>
+<caption>
+<title/>
+<p>A) X-ray DNA structure from DNA/MutSα complex. B) Snapshot MD structure from ABF simulation where we used set B for calculation of RMSD, actual RMSD value of the snapshot is 1.55 Å. C) Snapshot MD structure from ABF simulation where collective variable was angle among three mass centres, actual angle value of the snapshot is 98°.</p>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s009" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s009" xlink:type="simple">
+<label>S4 Fig</label>
+<caption>
+<title>Nucleotide substitutions detected in the middle position in top 20 coldspots (left) and hotspots (right).</title>
+<p>Each column shows individual substitutions in the motif analyzed in the 5 genes. Nucleotides with percentage indicate total sum of particular base substitution.</p>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s010" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s010" xlink:type="simple">
+<label>S5 Fig</label>
+<caption>
+<title>Free energy profiles for two coldspots and two hotspots with <monospace>G/T</monospace> pair where we used set B for calculation of RMSD.</title>
+<p>At 1.55 Å the free energy change for <monospace>AGGTA</monospace>, <monospace>TGGAA</monospace>, <monospace>AAGAA</monospace> and <monospace>CAGTG</monospace> is 14.1, 14.2, 12.8, and 11.8 kcal mol<sup>-1</sup>, respectively.</p>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s011" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s011" xlink:type="simple">
+<label>S6 Fig</label>
+<caption>
+<title>Free energy profiles for two coldspots and two hotspots with <monospace>G/T</monospace> pair where we used set C for calculation of RMSD.</title>
+<p>At 1.55 Å the free energy for <monospace>AGGTA</monospace>, <monospace>TGGAA</monospace>, <monospace>AAGAA</monospace> and <monospace>CAGTG</monospace> is 19.5, 18.7, 17.9, and 17.5 kcal mol<sup>-1</sup>, respectively.</p>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0182377.s012" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0182377.s012" xlink:type="simple">
+<label>S7 Fig</label>
+<caption>
+<title>Predicted positioning of nucleosomes on two coldspots (C), <monospace>AAGAA</monospace> and <monospace>CAGTG</monospace>, and two hotspots (H), <monospace>AGGTA</monospace> and <monospace>TGGAA</monospace>, in the exons of the <italic>PAH</italic> gene.</title>
+<p>Nucleosome positions are visualized by yellow peaks, exon positions are colored by grey bars. Each plot shows 1000-nt long fragment. Motifs were considered on nucleosome with occupancy &gt; 0.005.</p>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ref-list>
+<title>References</title>
+<ref id="pone.0182377.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Baarends</surname> <given-names>WM</given-names></name>, <name name-style="western"><surname>van der Laan</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Grootegoed</surname> <given-names>JA</given-names></name>, <article-title>DNA repair mechanisms and gametogenesis</article-title>. <source>Reproduction</source>. <year>2001</year>;<volume>121</volume>: <fpage>31</fpage>–<lpage>39</lpage>. <object-id pub-id-type="pmid">11226027</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Iyer</surname> <given-names>RR</given-names></name>, <name name-style="western"><surname>Pluciennik</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>V</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Modrich</surname> <given-names>PL</given-names></name>, <article-title>DNA mismatch repair: Functions and mechanisms</article-title>. <source>Chem Rev</source>. <year>2006</year>;<volume>106</volume>: <fpage>302</fpage>–<lpage>323</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1021/cr0404794" xlink:type="simple">10.1021/cr0404794</ext-link></comment> <object-id pub-id-type="pmid">16464007</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hanawalt</surname> <given-names>PC</given-names></name>, <name name-style="western"><surname>Spivak</surname> <given-names>G</given-names></name>, <article-title>Transcription-coupled DNA repair: two decades of progress and surprises</article-title>. <source>Nat Rev Mol Cell Biol</source>. <year>2008</year>;<volume>9</volume>: <fpage>958</fpage>–<lpage>970</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/nrm2549" xlink:type="simple">10.1038/nrm2549</ext-link></comment> <object-id pub-id-type="pmid">19023283</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Touchon</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Arneodo</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>d'Aubenton-Carafa</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Thermes</surname> <given-names>C</given-names></name>, <article-title>Transcription-coupled and splicing-coupled strand asymmetries in eukaryotic genomes</article-title>. <source>Nucleic Acids Res</source>. <year>2004</year>;<volume>32</volume>: <fpage>4969</fpage>–<lpage>4978</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/nar/gkh823" xlink:type="simple">10.1093/nar/gkh823</ext-link></comment> <object-id pub-id-type="pmid">15388799</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Touchon</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Nicolay</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Arneodo</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>d'Aubenton-Carafa</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Thermes</surname> <given-names>C</given-names></name>, <article-title>Transcription-coupled TA and GC strand asymmetries in the human genome</article-title>. <source>Febs Lett</source>. <year>2003</year>;<volume>555</volume>: <fpage>579</fpage>–<lpage>582</lpage>. <object-id pub-id-type="pmid">14675777</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brodie of Brodie</surname> <given-names>EB</given-names></name>, <name name-style="western"><surname>Nicolay</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Touchon</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Audit</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>d'Aubenton-Carafa</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Thermes</surname> <given-names>C</given-names></name>, <etal>et al</etal>., <article-title>From DNA sequence analysis to modeling replication in the human genome</article-title>. <source>Phys Rev Lett</source>. <year>2005</year>;<volume>94</volume>.</mixed-citation></ref>
+<ref id="pone.0182377.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chen</surname> <given-names>CL</given-names></name>, <name name-style="western"><surname>Duquenne</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Audit</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Guilbaud</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Rappailles</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Baker</surname> <given-names>A</given-names></name>, <etal>et al</etal>., <article-title>Replication-Associated Mutational Asymmetry in the Human Genome</article-title>. <source>Mol Biol Evol</source>. <year>2011</year>;<volume>28</volume>: <fpage>2327</fpage>–<lpage>2337</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/molbev/msr056" xlink:type="simple">10.1093/molbev/msr056</ext-link></comment> <object-id pub-id-type="pmid">21368316</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Touchon</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Nicolay</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Audit</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Brodie Brodie</surname> <given-names>EB</given-names></name>, <name name-style="western"><surname>d'Aubenton-Carafa</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Arneodo</surname> <given-names>A</given-names></name>, <etal>et al</etal>., <article-title>Replication-associated strand asymmetries in mammalian genomes: Toward detection of replication origins</article-title>. <source>Proc Natl Acad Sci U S A</source>. <year>2005</year>;<volume>102</volume>: <fpage>9836</fpage>–<lpage>9841</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1073/pnas.0500577102" xlink:type="simple">10.1073/pnas.0500577102</ext-link></comment> <object-id pub-id-type="pmid">15985556</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cooper</surname> <given-names>DN</given-names></name>, <name name-style="western"><surname>Bacolla</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Ferec</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Vasquez</surname> <given-names>KM</given-names></name>, <name name-style="western"><surname>Kehrer-Sawatzki</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>JM</given-names></name>, <article-title>On the Sequence-Directed Nature of Human Gene Mutation: The Role of Genomic Architecture and the Local DNA Sequence Environment in Mediating Gene Mutations Underlying Human Inherited Disease</article-title>. <source>Human Mut</source>. <year>2011</year>;<volume>32</volume>: <fpage>1075</fpage>–<lpage>1099</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rogozin</surname> <given-names>IB</given-names></name>, <name name-style="western"><surname>Pavlov</surname> <given-names>YI</given-names></name>, <article-title>Theoretical analysis of mutation hotspots and their DNA sequence context specificity</article-title>. <source>Mutat Res-Rev Mutat Res</source>. <year>2003</year>;<volume>544</volume>: <fpage>65</fpage>–<lpage>85</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Youssoufian</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Kazazian</surname> <given-names>HH</given-names></name>, <name name-style="western"><surname>Phillips</surname> <given-names>DG</given-names></name>, <name name-style="western"><surname>Aronis</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Tsiftis</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Brown</surname> <given-names>VA</given-names></name>, <etal>et al</etal>., <article-title>Recurrent Mutations in Hemophilia-a Give Evidence for CpG Mutation Hotspots</article-title>. <source>Nature</source>. <year>1986</year>;<volume>324</volume>: <fpage>380</fpage>–<lpage>382</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/324380a0" xlink:type="simple">10.1038/324380a0</ext-link></comment> <object-id pub-id-type="pmid">3097553</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Coulondre</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Miller</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Farabaugh</surname> <given-names>PJ</given-names></name>, <name name-style="western"><surname>Gilbert</surname> <given-names>W</given-names></name>, <article-title>Molecular-Basis of Base Substitution Hotspots in Escherichia-Coli</article-title>. <source>Nature</source>. <year>1978</year>;<volume>274</volume>: <fpage>775</fpage>–<lpage>780</lpage>. <object-id pub-id-type="pmid">355893</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref013"><label>13</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Cooper</surname> <given-names>DN</given-names></name>, <name name-style="western"><surname>Krawczak</surname> <given-names>M</given-names></name> (<year>1993</year>) <source>Human Gene Mutation</source>. <publisher-loc>Oxford</publisher-loc>: <publisher-name>BIOS Scientific Publishers</publisher-name>.</mixed-citation></ref>
+<ref id="pone.0182377.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Neuberger</surname> <given-names>MS</given-names></name>, <name name-style="western"><surname>Harris</surname> <given-names>RS</given-names></name>, <name name-style="western"><surname>Di Noia</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Petersen-Mahrt</surname> <given-names>SK</given-names></name>, <article-title>Immunity through DNA deamination</article-title>. <source>Trends Biochem Sci</source>. <year>2003</year>;<volume>28</volume>: <fpage>305</fpage>–<lpage>312</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/S0968-0004(03)00111-7" xlink:type="simple">10.1016/S0968-0004(03)00111-7</ext-link></comment> <object-id pub-id-type="pmid">12826402</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ollila</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Lappalainen</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Vihinen</surname> <given-names>M</given-names></name>, <article-title>Sequence specificity in CpG mutation hotspots</article-title>. <source>FEBS Lett</source>. <year>1996</year>;<volume>396</volume>: <fpage>119</fpage>–<lpage>122</lpage>. <object-id pub-id-type="pmid">8914970</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bird AP</surname> <given-names>DNA</given-names></name> <article-title>Methylation and the Frequency of CpG in Animal DNA</article-title>. <source>Nucleic Acids Res</source>. <year>1980</year>;<volume>8</volume>: <fpage>1499</fpage>–<lpage>1504</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bird</surname> <given-names>A</given-names></name>, <article-title>The Essentials of DNA Methylation</article-title>. <source>Cell</source>. <year>1992</year>;<volume>70</volume>: <fpage>5</fpage>–<lpage>8</lpage>. <object-id pub-id-type="pmid">1377983</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kass</surname> <given-names>SU</given-names></name>, <name name-style="western"><surname>Landsberger</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Wolffe</surname> <given-names>AP</given-names></name>, <article-title>DNA methylation directs a time dependent repression of transcription initiation</article-title>. <source>Curr Biol</source>. <year>1997</year>;<volume>7</volume>: <fpage>157</fpage>–<lpage>165</lpage>. <object-id pub-id-type="pmid">9395433</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cooper</surname> <given-names>DN</given-names></name>, <name name-style="western"><surname>Mort</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Stenson</surname> <given-names>PD</given-names></name>, <name name-style="western"><surname>Ball</surname> <given-names>EV</given-names></name>, <name name-style="western"><surname>Chuzhanova</surname> <given-names>NA</given-names></name>, <article-title>Methylation-mediated deamination of 5-methylcytosine appears to give rise to mutations causing human inherited disease in CpNpG trinucleotides, as well as in CpG dinucleotides</article-title>. <source>Hum Genomics</source>. <year>2010</year>;<volume>4</volume>: <fpage>406</fpage>–<lpage>410</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/1479-7364-4-6-406" xlink:type="simple">10.1186/1479-7364-4-6-406</ext-link></comment> <object-id pub-id-type="pmid">20846930</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chuzhanova</surname> <given-names>NA</given-names></name>, <name name-style="western"><surname>Anassis</surname> <given-names>EJ</given-names></name>, <name name-style="western"><surname>Ball</surname> <given-names>EV</given-names></name>, <name name-style="western"><surname>Krawczak</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Cooper</surname> <given-names>DN</given-names></name>, <article-title>Meta-analysis of indels causing human genetic disease: Mechanisms of mutagenesis and the role of local DNA sequence complexity</article-title>. <source>Human Mut</source>. <year>2003</year>;<volume>21</volume>: <fpage>28</fpage>–<lpage>44</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Krawczak</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Ball</surname> <given-names>EV</given-names></name>, <name name-style="western"><surname>Cooper</surname> <given-names>DN</given-names></name>, <article-title>Neighboring-nucleotide effects on the rates of germ-line single-base-pair substitution in human genes</article-title>. <source>Am J Hum Genet</source>. <year>1998</year>;<volume>63</volume>: <fpage>474</fpage>–<lpage>488</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1086/301965" xlink:type="simple">10.1086/301965</ext-link></comment> <object-id pub-id-type="pmid">9683596</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Modrich</surname> <given-names>P</given-names></name>, <article-title>Mechanisms and Biological Effects of Mismatch Repair</article-title>. <source>Annu Rev Genet</source>. <year>1991</year>;<volume>25</volume>: <fpage>229</fpage>–<lpage>253</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1146/annurev.ge.25.120191.001305" xlink:type="simple">10.1146/annurev.ge.25.120191.001305</ext-link></comment> <object-id pub-id-type="pmid">1812808</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lamers</surname> <given-names>MH</given-names></name>, <name name-style="western"><surname>Perrakis</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Enzlin</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Winterwerp</surname> <given-names>HHK</given-names></name>, <name name-style="western"><surname>de Wind</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Sixma</surname> <given-names>TK</given-names></name>, <article-title>The crystal structure of DNA mismatch repair protein MutS binding to a G center dot T mismatch</article-title>. <source>Nature</source>. <year>2000</year>;<volume>407</volume>: <fpage>711</fpage>–<lpage>717</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/35037523" xlink:type="simple">10.1038/35037523</ext-link></comment> <object-id pub-id-type="pmid">11048711</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Obmolova</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Ban</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Hsieh</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>W</given-names></name>, <article-title>Crystal structures of mismatch repair protein MutS and its complex with a substrate DNA</article-title>. <source>Nature</source>. <year>2000</year>;<volume>407</volume>: <fpage>703</fpage>–<lpage>710</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/35037509" xlink:type="simple">10.1038/35037509</ext-link></comment> <object-id pub-id-type="pmid">11048710</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wang</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Schofield</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Du</surname> <given-names>CW</given-names></name>, <name name-style="western"><surname>Fridman</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>SD</given-names></name>, <etal>et al</etal>., <article-title>DNA bending and unbending by MutS govern mismatch recognition and specificity</article-title>. <source>Proc Natl Acad Sci U S A</source>. <year>2003</year>;<volume>100</volume>: <fpage>14822</fpage>–<lpage>14827</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1073/pnas.2433654100" xlink:type="simple">10.1073/pnas.2433654100</ext-link></comment> <object-id pub-id-type="pmid">14634210</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Warren</surname> <given-names>JJ</given-names></name>, <name name-style="western"><surname>Pohlhaus</surname> <given-names>TJ</given-names></name>, <name name-style="western"><surname>Changela</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Iyer</surname> <given-names>RR</given-names></name>, <name name-style="western"><surname>Modrich</surname> <given-names>PL</given-names></name>, <name name-style="western"><surname>Beese</surname> <given-names>LS</given-names></name>, <article-title>Structure of the human MutS alpha DNA lesion recognition complex</article-title>. <source>Mol Cell</source>. <year>2007</year>;<volume>26</volume>: <fpage>579</fpage>–<lpage>592</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.molcel.2007.04.018" xlink:type="simple">10.1016/j.molcel.2007.04.018</ext-link></comment> <object-id pub-id-type="pmid">17531815</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gorman</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Chowdhury</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Surtees</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Shimada</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Reichman</surname> <given-names>DR</given-names></name>, <name name-style="western"><surname>Alani</surname> <given-names>E</given-names></name>, <etal>et al</etal>., <article-title>Dynamic basis for one-dimensional DNA scanning by the mismatch repair complex Msh2-Msh6</article-title>. <source>Mol Cell</source>. <year>2007</year>;<volume>28</volume>: <fpage>359</fpage>–<lpage>370</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.molcel.2007.09.008" xlink:type="simple">10.1016/j.molcel.2007.09.008</ext-link></comment> <object-id pub-id-type="pmid">17996701</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref028"><label>28</label><mixed-citation publication-type="other" xlink:type="simple">Drsata T, Lankas F (2013) Theoretical models of DNA flexibility. Wiley Interdisciplinary Reviews-Computational Molecular Science. pp. 355–363.</mixed-citation></ref>
+<ref id="pone.0182377.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Drsata</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Spackova</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Jurecka</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Zgarbova</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sponer</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Lankas</surname> <given-names>F</given-names></name>, <article-title>Mechanical properties of symmetric and asymmetric DNA A-tracts: implications for looping and nucleosome positioning</article-title>. <source>Nucleic Acids Res</source>. <year>2014</year>;<volume>42</volume>: <fpage>7383</fpage>–<lpage>7394</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/nar/gku338" xlink:type="simple">10.1093/nar/gku338</ext-link></comment> <object-id pub-id-type="pmid">24829460</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ruscio</surname> <given-names>JZ</given-names></name>, <name name-style="western"><surname>Onufriev</surname> <given-names>A</given-names></name>, <article-title>A computational study of nucleosomal DNA flexibility</article-title>. <source>Biophys J</source>. <year>2006</year>;<volume>91</volume>: <fpage>4121</fpage>–<lpage>4132</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1529/biophysj.106.082099" xlink:type="simple">10.1529/biophysj.106.082099</ext-link></comment> <object-id pub-id-type="pmid">16891359</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jiricny</surname> <given-names>J</given-names></name>, <article-title>Postreplicative Mismatch Repair</article-title>. <source>Cold Spring Harbor Perspectives in Biology</source>. <year>2013</year>;<volume>5</volume>.</mixed-citation></ref>
+<ref id="pone.0182377.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Locher</surname> <given-names>KP</given-names></name>, <article-title>Structure and mechanism of ABC transporters</article-title>. <source>Curr Opin Struct Biol</source> <year>2004</year>;<volume>14</volume>: <fpage>426</fpage>–<lpage>431</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.sbi.2004.06.005" xlink:type="simple">10.1016/j.sbi.2004.06.005</ext-link></comment> <object-id pub-id-type="pmid">15313236</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sharma</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Doucette</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Biro</surname> <given-names>FN</given-names></name>, <name name-style="western"><surname>Hingorani</surname> <given-names>MM</given-names></name>, <article-title>Slow Conformational Changes in MutS and DNA Direct Ordered Transitions between Mismatch Search, Recognition and Signaling of DNA Repair</article-title>. <source>J Mol Biol</source>. <year>2013</year>;<volume>425</volume>: <fpage>4192</fpage>–<lpage>4205</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.jmb.2013.08.011" xlink:type="simple">10.1016/j.jmb.2013.08.011</ext-link></comment> <object-id pub-id-type="pmid">23973435</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Qiu</surname> <given-names>RY</given-names></name>, <name name-style="western"><surname>DeRocco</surname> <given-names>VC</given-names></name>, <name name-style="western"><surname>Harris</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Sharma</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Hingorani</surname> <given-names>MM</given-names></name>, <name name-style="western"><surname>Erie</surname> <given-names>DA</given-names></name>, <etal>et al</etal>., <article-title>Large conformational changes in MutS during DNA scanning, mismatch recognition and repair signalling</article-title>. <source>Embo J</source>. <year>2012</year>;<volume>31</volume>: <fpage>2528</fpage>–<lpage>2540</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/emboj.2012.95" xlink:type="simple">10.1038/emboj.2012.95</ext-link></comment> <object-id pub-id-type="pmid">22505031</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hingorani</surname> <given-names>MM</given-names></name>, <article-title>Mismatch binding, ADP-ATP exchange and intramolecular signaling during mismatch repair</article-title>. <source>DNA Repair</source>. <year>2016</year>;<volume>38</volume>: <fpage>24</fpage>–<lpage>31</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.dnarep.2015.11.017" xlink:type="simple">10.1016/j.dnarep.2015.11.017</ext-link></comment> <object-id pub-id-type="pmid">26704427</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Groothuizen</surname> <given-names>FS</given-names></name>, <name name-style="western"><surname>Winkler</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Cristovao</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Fish</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Winterwerp</surname> <given-names>HHK</given-names></name>, <name name-style="western"><surname>Reumer</surname> <given-names>A</given-names></name>, <etal>et al</etal>., <article-title>MutS/MutL crystal structure reveals that the MutS sliding clamp loads MutL onto DNA</article-title>. <source>Elife</source>. <year>2015</year>;<volume>4</volume>.</mixed-citation></ref>
+<ref id="pone.0182377.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brukner</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Sanchez</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Suck</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Pongor</surname> <given-names>S</given-names></name>, <article-title>Sequence-Dependent Bending Propensity of DNA as Revealed by Dnase-I—Parameters for Trinucleotides</article-title>. <source>Embo J</source>. <year>1995</year>;<volume>14</volume>: <fpage>1812</fpage>–<lpage>1818</lpage>. <object-id pub-id-type="pmid">7737131</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gabrielian</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Pongor</surname> <given-names>S</given-names></name>, <article-title>Correlation of intrinsic DNA curvature with DNA property periodicity</article-title>. <source>Febs Lett</source>. <year>1996</year>;<volume>393</volume>: <fpage>65</fpage>–<lpage>68</lpage>. <object-id pub-id-type="pmid">8804425</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref039"><label>39</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Case</surname> <given-names>DA</given-names></name>, <name name-style="western"><surname>Babin</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Berryman</surname> <given-names>JT</given-names></name>, <name name-style="western"><surname>Betz</surname> <given-names>RM</given-names></name>, <name name-style="western"><surname>Cai</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Cerutti</surname> <given-names>DS</given-names></name>, <etal>et al</etal>., <source>AMBER 14</source>. <publisher-name>University of California</publisher-name>: <publisher-loc>San Francisco</publisher-loc>. <year>2014</year>.</mixed-citation></ref>
+<ref id="pone.0182377.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Darve</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Rodríguez-Gómez</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Pohorille</surname> <given-names>A</given-names></name>, <article-title>Adaptive Biasing Force Method for Scalar and Vector Free Energy Calculations</article-title>. <source>J Chem Phys</source>. <year>2008</year>;<volume>128</volume>: <fpage>144120</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1063/1.2829861" xlink:type="simple">10.1063/1.2829861</ext-link></comment> <object-id pub-id-type="pmid">18412436</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref041"><label>41</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Raiteri</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Laio</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Gervasio</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Micheletti</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Parrinello</surname> <given-names>M</given-names></name>, <article-title>Efficient reconstruction of complex free energy landscapes by multiple walkers metadynamics</article-title>. <source>J Phys Chem B</source>. <year>2006</year>;<volume>110</volume>: <fpage>3533</fpage>–<lpage>3539</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1021/jp054359r" xlink:type="simple">10.1021/jp054359r</ext-link></comment> <object-id pub-id-type="pmid">16494409</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref042"><label>42</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>van der Heijden</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>van Vugt</surname> <given-names>JJFA</given-names></name>, <name name-style="western"><surname>Logie</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>van Noort</surname> <given-names>J</given-names></name>, <article-title>Sequence-based prediction of single nucleosome positioning and genome-wide nucleosome occupancy (vol 109, pg E2514, 2012)</article-title>. <source>Proceedings of the National Academy of Sciences of the United States of America</source>. <year>2013</year>;<volume>110</volume>: <fpage>6240</fpage>–<lpage>6240</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref043"><label>43</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jorgensen</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Chandrasekhar</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Madura</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Impey</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Klein</surname> <given-names>M</given-names></name>, <article-title>Comparison of Simple Potential Functions for Simulating Liquid Water</article-title>. <source>J Chem Phys</source>. <year>1983</year>;<volume>79</volume>: <fpage>926</fpage>–<lpage>935</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref044"><label>44</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Joung</surname> <given-names>IS</given-names></name>, <name name-style="western"><surname>Cheatham</surname> <given-names>TE</given-names></name>, <article-title>Determination of alkali and halide monovalent ion parameters for use in explicitly solvated biomolecular simulations</article-title>. <source>J Phys Chem B</source>. <year>2008</year>;<volume>112</volume>: <fpage>9020</fpage>–<lpage>9041</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1021/jp8001614" xlink:type="simple">10.1021/jp8001614</ext-link></comment> <object-id pub-id-type="pmid">18593145</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref045"><label>45</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ivani</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Dans</surname> <given-names>PD</given-names></name>, <name name-style="western"><surname>Noy</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Perez</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Faustino</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Hospital</surname> <given-names>A</given-names></name>, <etal>et al</etal>., <article-title>Parmbsc1: a refined force field for DNA simulations</article-title>. <source>Nat Methods</source>. <year>2016</year>;<volume>13</volume>: <fpage>55</fpage>-+. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/nmeth.3658" xlink:type="simple">10.1038/nmeth.3658</ext-link></comment> <object-id pub-id-type="pmid">26569599</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref046"><label>46</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lelievre</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Rousset</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Stoltz</surname> <given-names>G</given-names></name>, <article-title>Long-Time Convergence of an Adaptive Biasing Force Method</article-title>. <source>Nonlinearity</source>. <year>2008</year>;<volume>21</volume>: <fpage>1155</fpage>–<lpage>1181</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref047"><label>47</label><mixed-citation publication-type="other" xlink:type="simple">Kulhanek P, Stepan J, Fuxreiter M, Mones L, Strelcova Z, Petrek M, PMFLib—A Toolkit for Free Energy Calculations; <ext-link ext-link-type="uri" xlink:href="https://lcc.ncbr.muni.cz/whitezone/development/pmflib/index.html" xlink:type="simple">https://lcc.ncbr.muni.cz/whitezone/development/pmflib/index.html</ext-link>. 2013.</mixed-citation></ref>
+<ref id="pone.0182377.ref048"><label>48</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lu</surname> <given-names>XJ</given-names></name>, <name name-style="western"><surname>Olson</surname> <given-names>WK</given-names></name>, <article-title>3DNA: a software package for the analysis, rebuilding and visualization of three-dimensional nucleic acid structures</article-title>. <source>Nucleic Acids Res</source>. <year>2003</year>;<volume>31</volume>: <fpage>5108</fpage>–<lpage>5121</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/nar/gkg680" xlink:type="simple">10.1093/nar/gkg680</ext-link></comment> <object-id pub-id-type="pmid">12930962</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref049"><label>49</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sharma</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Predeus</surname> <given-names>AV</given-names></name>, <name name-style="western"><surname>Mukherjee</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Feig</surname> <given-names>M</given-names></name>, <article-title>DNA Bending Propensity in the Presence of Base Mismatches: Implications for DNA Repair</article-title>. <source>J Phys Chem B</source>. <year>2013</year>;<volume>117</volume>: <fpage>6194</fpage>–<lpage>6205</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1021/jp403127a" xlink:type="simple">10.1021/jp403127a</ext-link></comment> <object-id pub-id-type="pmid">23621762</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref050"><label>50</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Humphrey</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Dalke</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Schulten</surname> <given-names>K</given-names></name>, <article-title>VMD—Visual Molecular Dynamics</article-title>. <source>J. Mol. Graph. Model</source>. <year>1996</year>;<volume>14</volume>: <fpage>33</fpage>–<lpage>38</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref051"><label>51</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Crooks</surname> <given-names>GE</given-names></name>, <name name-style="western"><surname>Hon</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Chandonia</surname> <given-names>JM</given-names></name>, <name name-style="western"><surname>Brenner</surname> <given-names>SE</given-names></name>, <article-title>WebLogo: A sequence logo generator</article-title>. <source>Genome Res</source>. <year>2004</year>;<volume>14</volume>: <fpage>1188</fpage>–<lpage>1190</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1101/gr.849004" xlink:type="simple">10.1101/gr.849004</ext-link></comment> <object-id pub-id-type="pmid">15173120</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref052"><label>52</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Graur</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>WH</given-names></name> (<year>2000</year>) <chapter-title>Fundamentals of molecular evolution</chapter-title>. <publisher-loc>Sunderland, MA</publisher-loc>: <publisher-name>Sinauer Associates. Sunderland, MA</publisher-name>.</mixed-citation></ref>
+<ref id="pone.0182377.ref053"><label>53</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Thoma</surname> <given-names>F</given-names></name>, <article-title>Light and dark in chromatin repair: repair of UV-induced DNA lesions by photolyase and nucleotide excision repair</article-title>. <source>Embo Journal</source>. <year>1999</year>;<volume>18</volume>: <fpage>6585</fpage>–<lpage>6598</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/emboj/18.23.6585" xlink:type="simple">10.1093/emboj/18.23.6585</ext-link></comment> <object-id pub-id-type="pmid">10581233</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref054"><label>54</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rogozin</surname> <given-names>IB</given-names></name>, <name name-style="western"><surname>Babenko</surname> <given-names>VN</given-names></name>, <name name-style="western"><surname>Milanesi</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>P</surname> <given-names>Y.I.</given-names></name>, <article-title>Computational analysis of mutation spectra</article-title>. <source>Brief Bioinform</source>. <year>2003</year>;<volume>4</volume>: <fpage>210</fpage>–<lpage>227</lpage>. <object-id pub-id-type="pmid">14582516</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref055"><label>55</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Buckova</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Noskova</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Borska</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Reblova</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Pinkova</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Zapletalova</surname> <given-names>E</given-names></name>, <etal>et al</etal>., <article-title>Autosomal recessive congenital ichthyoses in the Czech Republic</article-title>. <source>Brit J Dermatol</source>. <year>2016</year>;<volume>174</volume>: <fpage>405</fpage>–<lpage>407</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref056"><label>56</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chien</surname> <given-names>YH</given-names></name>, <name name-style="western"><surname>Chiang</surname> <given-names>SC</given-names></name>, <name name-style="western"><surname>Huang</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Chou</surname> <given-names>SP</given-names></name>, <name name-style="western"><surname>Tseng</surname> <given-names>SS</given-names></name>, <name name-style="western"><surname>Huang</surname> <given-names>YT</given-names></name>, <etal>et al</etal>., <article-title>Mutation spectrum in Taiwanese patients with phenylalanine hydroxylase deficiency and a founder effect for the R241C mutation</article-title>. <source>Human Mut</source>. <year>2004</year>;<volume>23</volume>: <fpage>206</fpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref057"><label>57</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chiu</surname> <given-names>YH</given-names></name>, <name name-style="western"><surname>Chang</surname> <given-names>YC</given-names></name>, <name name-style="western"><surname>Chang</surname> <given-names>YH</given-names></name>, <name name-style="western"><surname>Niu</surname> <given-names>DM</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>YL</given-names></name>, <name name-style="western"><surname>Ye</surname> <given-names>J</given-names></name>, <etal>et al</etal>., <article-title>Mutation spectrum of and founder effects affecting the PTS gene in East Asian populations</article-title>. <source>J Hum Gen</source>. <year>2012</year>;<volume>57</volume>: <fpage>145</fpage>–<lpage>152</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref058"><label>58</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Streisin</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Okada</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Emrich</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Newton</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Tsugita</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Terzaghi</surname> <given-names>E</given-names></name>, <etal>et al</etal>., <article-title>Frameshift Mutations and Genetic Code</article-title>. <source>Cold Spring Harb Symp Quant Biol</source>. <year>1966</year>;<volume>31</volume>: <fpage>77</fpage>–<lpage>84</lpage>. <object-id pub-id-type="pmid">5237214</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref059"><label>59</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chen</surname> <given-names>JQ</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>HW</given-names></name>, <name name-style="western"><surname>Bergelson</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Kreitman</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Tian</surname> <given-names>DC</given-names></name>, <article-title>Variation in the Ratio of Nucleotide Substitution and Indel Rates across Genomes in Mammals and Bacteria</article-title>. <source>Mol Biol Evol</source>. <year>2009</year>;<volume>26</volume>: <fpage>1523</fpage>–<lpage>1531</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/molbev/msp063" xlink:type="simple">10.1093/molbev/msp063</ext-link></comment> <object-id pub-id-type="pmid">19329651</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref060"><label>60</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gragg</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Harfe</surname> <given-names>BD</given-names></name>, <name name-style="western"><surname>Jinks-Robertson</surname> <given-names>S</given-names></name>, <article-title>Base composition of mononucleotide runs affects DNA polymerase slippage and removal of frameshift intermediates by mismatch repair in Saccharomyces cerevisiae</article-title>. <source>Mol Cell Biol</source>. <year>2002</year>;<volume>22</volume>: <fpage>8756</fpage>–<lpage>8762</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1128/MCB.22.24.8756-8762.2002" xlink:type="simple">10.1128/MCB.22.24.8756-8762.2002</ext-link></comment> <object-id pub-id-type="pmid">12446792</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref061"><label>61</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kroutil</surname> <given-names>LC</given-names></name>, <name name-style="western"><surname>Register</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Bebenek</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Kunkel</surname> <given-names>TA</given-names></name>, <article-title>Exonucleolytic proofreading during replication of repetitive DNA</article-title>. <source>Biochemistry</source>. <year>1996</year>;<volume>35</volume>: <fpage>1046</fpage>–<lpage>1053</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1021/bi952178h" xlink:type="simple">10.1021/bi952178h</ext-link></comment> <object-id pub-id-type="pmid">8547240</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref062"><label>62</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tran</surname> <given-names>HT</given-names></name>, <name name-style="western"><surname>Keen</surname> <given-names>JD</given-names></name>, <name name-style="western"><surname>Kricker</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Resnick</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Gordenin</surname> <given-names>DA</given-names></name>, <article-title>Hypermutability of homonucleotide runs in mismatch repair and DNA polymerase proofreading yeast mutants</article-title>. <source>Mol Cell Biol</source>. <year>1997</year>;<volume>17</volume>: <fpage>2859</fpage>–<lpage>2865</lpage>. <object-id pub-id-type="pmid">9111358</object-id></mixed-citation></ref>
+<ref id="pone.0182377.ref063"><label>63</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Grodecka</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Kramarek</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Lockerova</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Kovacova</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Ravcukova</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Richterova</surname> <given-names>R</given-names></name>, <etal>et al</etal>., <article-title>No Major Effect of the CDH1 c.2440-6C &gt; G Mutation on Splicing Detected in Last Exon-Specific Splicing Minigene Assay</article-title>. <source>Gene Chromosomes Cancer</source>. <year>2014</year>;<volume>53</volume>: <fpage>798</fpage>–<lpage>801</lpage>.</mixed-citation></ref>
+<ref id="pone.0182377.ref064"><label>64</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Grodecka</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Lockerova</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Ravcukova</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Buratti</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Baralle</surname> <given-names>FE</given-names></name>, <name name-style="western"><surname>Dusek</surname> <given-names>L</given-names></name>, <etal>et al</etal>., <article-title>Exon First Nucleotide Mutations in Splicing: Evaluation of In Silico Prediction Tools</article-title>. <source>Plos One</source>. <year>2014</year>;<volume>9</volume>.</mixed-citation></ref>
+</ref-list>
+</back>
+</article>

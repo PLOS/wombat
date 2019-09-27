@@ -1,0 +1,993 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-12-02305</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0038247</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Agriculture</subject>
+          <subj-group>
+            <subject>Forestry</subject>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Ecology</subject>
+            <subj-group>
+              <subject>Biodiversity</subject>
+              <subject>Community ecology</subject>
+              <subject>Plant ecology</subject>
+              <subject>Spatial and landscape ecology</subject>
+              <subject>Terrestrial ecology</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Plant science</subject>
+            <subj-group>
+              <subject>Plant ecology</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Plant Biology</subject>
+          <subject>Ecology</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Strong Neutral Spatial Effects Shape Tree Species Distributions across Life Stages at Multiple Scales</article-title><alt-title alt-title-type="running-head">Spatial Effects Shape Tree Species Distributions</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hu</surname>
+            <given-names>Yue-Hua</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Lan</surname>
+            <given-names>Guo-Yu</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff4">
+            <sup>4</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Sha</surname>
+            <given-names>Li-Qing</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Cao</surname>
+            <given-names>Min</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Tang</surname>
+            <given-names>Yong</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Li</surname>
+            <given-names>Yi-De</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Xu</surname>
+            <given-names>Da-Ping</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1"><label>1</label><addr-line>Key Laboratory of Tropical Forest Ecology, Xishuangbanna Tropical Botanical Garden, Chinese Academy of Sciences, Mengla, Yunnan, China</addr-line>       </aff><aff id="aff2"><label>2</label><addr-line>Research Institute of Tropical Forestry, Chinese Academy of Forestry, Guangzhou, Guangdong, China</addr-line>       </aff><aff id="aff3"><label>3</label><addr-line>Danzhou Key Field Station of Observation and Research for Tropical Agricultural Resources and Environments, Ministry of Agriculture, Danzhou, Hainan, China</addr-line>       </aff><aff id="aff4"><label>4</label><addr-line>Rubber Research Institute, the Chinese Academy of Tropical Agricultural Sciences, Danzhou, Hainan, China</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Bond-Lamberty</surname>
+            <given-names>Ben</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">DOE Pacific Northwest National Laboratory, United States of America</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">caom@xtbg.ac.cn</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: Y-HH MC. Performed the experiments: Y-HH G-YL L-QS. Analyzed the data: Y-HH MC. Contributed reagents/materials/analysis tools: Y-HH MC. Wrote the paper: Y-HH G-YL L-QS MC YT Y-DL D-PX.</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>The authors have declared that no competing interests exist.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2012</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>29</day>
+        <month>5</month>
+        <year>2012</year>
+      </pub-date><volume>7</volume><issue>5</issue><elocation-id>e38247</elocation-id><history>
+        <date date-type="received">
+          <day>16</day>
+          <month>1</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>2</day>
+          <month>5</month>
+          <year>2012</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2012</copyright-year><copyright-holder>Hu et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <p>Traditionally, ecologists use lattice (regional summary) count data to simulate tree species distributions to explore species coexistence. However, no previous study has explicitly compared the difference between using lattice count and basal area data and analyzed species distributions at both individual species and community levels while simultaneously considering the combined scenarios of life stage and scale. In this study, we hypothesized that basal area data are more closely related to environmental variables than are count data because of strong environmental filtering effects. We also address the contribution of niche and the neutral (i.e., solely dependent on distance) factors to species distributions. Specifically, we separately modeled count data and basal area data while considering life stage and scale effects at the two levels with simultaneous autoregressive models and variation partitioning. A principal coordinates of neighbor matrix (PCNM) was used to model neutral spatial effects at the community level. The explained variations of species distribution data did not differ significantly between the two types of data at either the individual species level or the community level, indicating that the two types of data can be used nearly identically to model species distributions. Neutral spatial effects represented by spatial autoregressive parameters and the PCNM eigenfunctions drove species distributions on multiple scales, different life stages and individual species and community levels in this plot. We concluded that strong neutral spatial effects are the principal mechanisms underlying the species distributions and thus shape biodiversity spatial patterns.</p>
+      </abstract><funding-group><funding-statement>This study was supported by a grant from the National Science Foundation of China (31061160188) and a grant from the Queensland-Chinese Academy of Science Joint Biotechnology Projects (GJHZ1130). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="9"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>How large numbers of species coexist at a local scale (&lt;1 km<sup>2</sup>) is a challenging question for ecologists. With the rapid improvement of computer technology and statistical tools, it is now feasible to integrate both niche and neutral processes into models to analyze species distribution data. Analytical methods, such as regression <xref ref-type="bibr" rid="pone.0038247-Beale1">[1]</xref>, ordination and machine learning, can be used to investigate the mechanisms underlying species coexistence <xref ref-type="bibr" rid="pone.0038247-Legendre1">[2]</xref>, <xref ref-type="bibr" rid="pone.0038247-Olden1">[3]</xref>. Traditionally, ecologists have used individual lattice count data to simulate species distributions at the individual species or community levels <xref ref-type="bibr" rid="pone.0038247-Wang1">[4]</xref>, <xref ref-type="bibr" rid="pone.0038247-Legendre2">[5]</xref>. In this method, trees are always counted as individuals regardless of factors such as age, size, branching and whether re-sprouting has occurred. However, the habitat associations of tree species may vary across life stages <xref ref-type="bibr" rid="pone.0038247-Comita1">[6]</xref>, <xref ref-type="bibr" rid="pone.0038247-Lai1">[7]</xref>, and thus, tree intensity variation across lattices may be insufficient to reflect species distribution patterns.</p>
+      <p>Many other traits of tree species can be used to simulate their distributions, such as percent cover, point quadrat frequency, biomass, basal area and energy and resource use <xref ref-type="bibr" rid="pone.0038247-Morlon1">[8]</xref>. These features may provide novel insights for understanding species distributions and their organizing mechanisms. We are unaware of previous work explicitly comparing the results of using these features and the results of using individual count data to model species distributions. Basal area, which represents tree size, plays a key role in determining the functional differences among species <xref ref-type="bibr" rid="pone.0038247-Etienne1">[9]</xref>. Basal area also correlates with biomass accumulation and reflects the ability of trees to compete for soil nutrients <xref ref-type="bibr" rid="pone.0038247-Paoli1">[10]</xref>. A comparative study in which individual count data and basal area data are examined separately will reveal the extent to which different results are generated by the two types of data.</p>
+      <p>Most species tend to be clumped in their dispersion pattern <xref ref-type="bibr" rid="pone.0038247-Condit1">[11]</xref>, which may cause strong spatial autocorrelation, i.e., greater or less similarity in variables located close to each other than would be expected if species were distributed randomly across geographic space <xref ref-type="bibr" rid="pone.0038247-Legendre3">[12]</xref>. This is commonly observed in species spatial distribution data <xref ref-type="bibr" rid="pone.0038247-Beale1">[1]</xref>. To control Type I error rates and obtain good parameter estimates, it is necessary to use spatially explicit models in spatial analyses of species distributions <xref ref-type="bibr" rid="pone.0038247-Beale1">[1]</xref>, <xref ref-type="bibr" rid="pone.0038247-Legendre3">[12]</xref>, <xref ref-type="bibr" rid="pone.0038247-Dormann1">[13]</xref>. In addition, environmental factors, such as topography and soil, are also widely considered in models of species distributions <xref ref-type="bibr" rid="pone.0038247-Harms1">[14]</xref>, <xref ref-type="bibr" rid="pone.0038247-John1">[15]</xref>. Integrating spatial effects and environmental variables in species distribution models is generally accepted by ecologists <xref ref-type="bibr" rid="pone.0038247-Cottenie1">[16]</xref>, <xref ref-type="bibr" rid="pone.0038247-Leibold1">[17]</xref>, <xref ref-type="bibr" rid="pone.0038247-Shen1">[18]</xref>.</p>
+      <p>The effects of life stage and scale are critical for analyzing spatial distributions of tree species. Physiological requirements, selective pressures and distribution patterns can vary across the life stages of plant species, which can lead to a shift in habitat preference throughout its ontogeny <xref ref-type="bibr" rid="pone.0038247-Werner1">[19]</xref>, <xref ref-type="bibr" rid="pone.0038247-Schupp1">[20]</xref>, <xref ref-type="bibr" rid="pone.0038247-He1">[21]</xref>. In fact, numerous empirical studies have identified that the mechanisms underlying tree species distributions do vary across different life stages in some forest dynamics plots <xref ref-type="bibr" rid="pone.0038247-Comita1">[6]</xref>, <xref ref-type="bibr" rid="pone.0038247-Lai1">[7]</xref>, <xref ref-type="bibr" rid="pone.0038247-Kanagaraj1">[22]</xref>, <xref ref-type="bibr" rid="pone.0038247-Hu1">[23]</xref>. Similarly, previous studies point out that analyses results can differ at different scales in ecological studies <xref ref-type="bibr" rid="pone.0038247-Dungan1">[24]</xref>, <xref ref-type="bibr" rid="pone.0038247-He2">[25]</xref>, indicating that the scale effect is important for tree species distributions <xref ref-type="bibr" rid="pone.0038247-Wang1">[4]</xref>, <xref ref-type="bibr" rid="pone.0038247-Legendre2">[5]</xref>.</p>
+      <p>In this study, we modeled lattice count data and basal area data at the individual species level and at the community level while simultaneously considering scale and life stage effects. At the individual species level, a simultaneous autoregressive (SAR) model was used. The spatially autocorrelated variation in the error term of the SAR model is determined by cell connectivity, and the cell connectivity of the lattice basal area data and the count data is exactly the same based on cell positions. Therefore, the spatial structure should be identical for the basal area data and the count data. Under this premise, we hypothesized that basal area data are more closely related to environmental variables and predicted that the R-squared value of the fitted model based on basal area data would be higher than that based on count data because of strong environmental filtering effects. At the community level, we partitioned the variation in community composition between environmental variables and spatial effects for each of the two types of data. At this level, we also predicted that the variation explained by environmental variables would be higher for basal area data than for individual count data, also owing to strong environmental filtering effects.</p>
+    </sec>
+    <sec id="s2" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s2a">
+        <title>Study Site and Data Collection</title>
+        <p>We analyzed tree species distributions within a 20-ha tropical forest dynamics plot (21°37′08″N, 101°35′ 07″E) in Xishuangbanna, Southwest China <xref ref-type="bibr" rid="pone.0038247-Cao1">[26]</xref>. The community was an old-growth natural tropical seasonal rainforest tree community (more than 200 years old), but a small portion of the plot, located on the mountain ridge, was disturbed by humans approximately 40 years ago. The tree community was dominated by <italic>Parashorea chinensis</italic>, an emergent canopy species with a maximum height of approximately 60 m. Detailed descriptions of the climate, geology and flora of Xishuangbanna can be found in Cao et al. <xref ref-type="bibr" rid="pone.0038247-Cao2">[27]</xref> and Zhu et al. <xref ref-type="bibr" rid="pone.0038247-Zhu1">[28]</xref>. The 20-ha plot was established in 2007, and a topographic survey was conducted of each node of a 10-m grid throughout the plot. All stems with a DBH (diameter at breast height) ≥1 cm were tagged, mapped, measured and identified. There were 468 tree and shrub species with individuals of DBH ≥1 cm in this plot <xref ref-type="bibr" rid="pone.0038247-Cao1">[26]</xref>.</p>
+        <p>To examine the mechanisms underlying any differences between the results obtained from the basal area and count data across life stages, we defined trees with DBH ≥1 cm as class 0. This class was itself divided into four DBH classes, representing different life stages of trees. This categorization of DBH classes followed He et al. <xref ref-type="bibr" rid="pone.0038247-He1">[21]</xref>:<disp-formula><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.e001" xlink:type="simple"/></disp-formula></p>
+        <p>For a tree with multiple stems, we computed a proxy DBH and then classified the tree based on this proxy DBH. The calculation of proxy DBH followed Hu et al. <xref ref-type="bibr" rid="pone.0038247-Hu1">[23]</xref>.</p>
+        <p>To evaluate the influence of scale on species distribution, we grouped the trees within each DBH class using cells of 10×10 m, 20×20 m, 25×25 m and 50×50 m in size. This generated 20 combinations of DBH classes and cell sizes. Each DBH-cell size combination contained a group of tree species, and for each DBH-cell size combination, the tree species that occurred in at least 30 cells were chosen for regression analysis and variation partitioning (<xref ref-type="table" rid="pone-0038247-t001">Table 1</xref>).</p>
+        <table-wrap id="pone-0038247-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0038247.t001</object-id><label>Table 1</label><caption>
+            <title>Number of tree species in each of the 20 combinations of DBH and cell size.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0038247-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.t001" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">DBH class</td>
+                <td align="left" colspan="1" rowspan="1">10×10 m</td>
+                <td align="left" colspan="1" rowspan="1">20×20 m</td>
+                <td align="left" colspan="1" rowspan="1">25×25 m</td>
+                <td align="left" colspan="1" rowspan="1">50×50 m</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Class 0</td>
+                <td align="left" colspan="1" rowspan="1">206</td>
+                <td align="left" colspan="1" rowspan="1">192</td>
+                <td align="left" colspan="1" rowspan="1">187</td>
+                <td align="left" colspan="1" rowspan="1">153</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Class 1</td>
+                <td align="left" colspan="1" rowspan="1">163</td>
+                <td align="left" colspan="1" rowspan="1">147</td>
+                <td align="left" colspan="1" rowspan="1">147</td>
+                <td align="left" colspan="1" rowspan="1">111</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Class 2</td>
+                <td align="left" colspan="1" rowspan="1">70</td>
+                <td align="left" colspan="1" rowspan="1">61</td>
+                <td align="left" colspan="1" rowspan="1">56</td>
+                <td align="left" colspan="1" rowspan="1">33</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Class 3</td>
+                <td align="left" colspan="1" rowspan="1">62</td>
+                <td align="left" colspan="1" rowspan="1">58</td>
+                <td align="left" colspan="1" rowspan="1">54</td>
+                <td align="left" colspan="1" rowspan="1">30</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Class 4</td>
+                <td align="left" colspan="1" rowspan="1">25</td>
+                <td align="left" colspan="1" rowspan="1">22</td>
+                <td align="left" colspan="1" rowspan="1">21</td>
+                <td align="left" colspan="1" rowspan="1">10</td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt101">
+              <label/>
+              <p>Note: class 0 (DBH ≥1 cm), class 1 (1 cm ≤ DBH &lt;5 cm), class 2 (5 cm ≤ DBH &lt;10 cm), class 3 (10 cm≤ DBH &lt;25 cm), class 4 (DBH ≥25 cm).</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+        <p>At each scale, the four topographic attributes of altitude, convexity, slope and aspect were calculated for each cell. These calculations followed Legendre et al. <xref ref-type="bibr" rid="pone.0038247-Legendre2">[5]</xref>. Third-degree polynomial equations were constructed with altitude, convexity and slope. The variables sin(aspect) and cos(aspect) were calculated from the aspect and used as explanatory variables. Finally, we obtained 11 expanded topographic variables. For 25×25 m cells, the altitudinal values at all nodes were interpolated by kriging the raw data from the 10×10 m cells.</p>
+        <p>Because soil attributes are crucial to species distributions, we collected 756 soil samples from throughout the 20-ha plot <xref ref-type="bibr" rid="pone.0038247-Hu1">[23]</xref>. Nine soil attributes were analyzed, including available nitrogen, exchangeable potassium, extractable phosphorus, organic matter, soil pH, total potassium, total nitrogen, total phosphorus and soil bulk density, following the methods of Liu et al. <xref ref-type="bibr" rid="pone.0038247-Liu1">[29]</xref>. For the soil attributes at each scale (cell size), the values at the four corners of each cell were interpolated by kriging from the 756 samples. After interpolation, the mean value of each soil attribute at the four corners of each cell was assigned as the value for that cell. This procedure was applied to each of the four scales of cell size. At each scale, we calculated the principal components from the mean values of the nine soil attributes and used only the first three components. Together, these first three components explained 84.5%, 83.5%, 86.9% and 89.1% of the total variation in soil attributes for the four cell sizes from 10×10 m to 50×50 m, respectively.</p>
+      </sec>
+      <sec id="s2b">
+        <title>The Simultaneous Autoregressive (SAR) Model</title>
+        <p>Guisan et al. <xref ref-type="bibr" rid="pone.0038247-Guisan1">[30]</xref> suggested that regression and ordination methods are both suited for species-specific and multiple species models. We chose the SAR model for the regression analyses of individual species because SAR has commonly been used for lattice summary data <xref ref-type="bibr" rid="pone.0038247-Wall1">[31]</xref>. Specifically, the SAR spatial error model was used in this study in the following form:<disp-formula><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.e002" xlink:type="simple"/><label>(1)</label></disp-formula></p>
+        <p>where <italic>Y</italic> is the response variable, in this case, the lattice count or basal area vector of a focal tree species at a particular cell size in a particular DBH class; <italic>X</italic> is the explanatory variable matrix constituted by the first three principal components of the soil variables and the 11 topographic variables at a particular cell size; <italic>β</italic> is a slope vector associated with the explanatory variables; <italic>λ</italic> is the spatial autoregressive coefficient; <italic>μ</italic> is a spatially dependent error term; ε is a random error term; and <italic>W</italic> is the spatial weighting matrix that indicates whether the cells are neighbors or not. The weight is defined as 1 if cells are immediate vertical and horizontal neighbors and 0 otherwise. For each focal cell, the cells sharing a common edge (border) with it were defined as its neighbor cells and were weighted by 1, and all other cells were weighted by 0. To avoid zero-inflated effects on the regression analysis, cells containing no trees were removed for each species. We found that the R-squared values obtained by fitting only the non-zero data were significantly higher than those obtained when the zero data were included.</p>
+        <p>To evaluate the relative importance of all of the explanatory variables in determining species distributions for each of the 20 combinations of DBH class and cell size for each type of data (lattice basal area and count), a principal component analysis (PCA) was used to analyze a transformed p-value matrix. The SAR model yields a p-value for each of the explanatory variables and <italic>λ</italic>, and the p-values for all species can be formatted as a matrix. Two such matrices were generated for each of the 20 DBH-cell size combinations: one that used basal area data and one that used count data. Because the p-values reflected the associations between responsible and explanatory variables in an inverse manner, the p-values themselves could not be used directly for the PCA. As a result, we performed a transformation procedure on the p-values to obtain the transformed p-value matrix, which positively reflected the association between responsible and explanatory variables and were suitable for PCA. The method used to transform the p-values followed Hu et al. <xref ref-type="bibr" rid="pone.0038247-Hu1">[23]</xref>. Some of the p-values were small enough that a value of 0 was returned by the SAR model in the R statistical language <xref ref-type="bibr" rid="pone.0038247-R1">[32]</xref>, and the transformation procedure could not be applied to these p-values. To address this issue, p-values smaller than 10<sup>−16</sup> were assigned a proxy value of 10<sup>−16</sup>. In each analysis, we plotted the scores of all of the explanatory variables on the first two principal component axes as arrows and assessed the relative importance of the explanatory variables based on their vector lengths.</p>
+      </sec>
+      <sec id="s2c">
+        <title>Community Composition Variation Partitioning</title>
+        <p>To quantify the contributions of the spatial and environmental variables to the variation in community composition observed for each of the two types of data, variation partitioning based on canonical redundancy analysis was applied <xref ref-type="bibr" rid="pone.0038247-Borcard1">[33]</xref>. The topographic and soil variables were grouped together as environmental variables for this analysis. To represent spatial variables, the principal coordinate neighbor matrix (PCNM) eigenfunctions were computed across all cells at each scale of cell size <xref ref-type="bibr" rid="pone.0038247-Legendre2">[5]</xref>. PCNMs with positive eigenvalues were retained, and forward selection (using a permutation test with 999 permutations and a 5% significance level) was used to identify the significant PCNMs. These selected PCNMs represented the spatial effects. We then partitioned the contributions of the environmental variables and the PCNMs. This procedure was repeated for each of the 20 DBH-cell size combinations for basal area data and count data.</p>
+        <p>To compare the R-squared values of the fitted regressive models as well as the total explained variation in community composition based on count data and basal area data, a Kruskal-Wallis rank-sum test was performed. We conducted SAR analyses and variation partitioning with the R (version 2.13.0) statistical language with the “errorsarlm” function of the “spdep” package and the “varpart” function of the “vegan” package, respectively <xref ref-type="bibr" rid="pone.0038247-R1">[32]</xref>.</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Results</title>
+      <p>We found no significant differences in the R-squared value between the fitted SAR models based on the two types of data for any of the 20 DBH-cell size combinations, except for class 0 at the scales (cell sizes) of 20×20 m and 50×50 m (p-values of Kruskal-Wallis rank-sum test: 0.0087 and 0.0261, respectively). Among the 20 DBH-cell size combinations, the median R-squared value of the fitted models based on count data were greater than that based on basal area data in 14 cases, but only two of these cases were statistically significant. By contrast, basal area data generated greater R-squared values than count data in only 6 cases, and none of these differences were statistically significant. <xref ref-type="fig" rid="pone-0038247-g001">Fig. 1</xref> illustrates the distributions of the R-squared values generated by the fitted SAR models based on each of the two types of data for the 20 DBH-cell size combinations.</p>
+      <fig id="pone-0038247-g001" position="float">
+        <object-id pub-id-type="doi">10.1371/journal.pone.0038247.g001</object-id>
+        <label>Figure 1</label>
+        <caption>
+          <title>Distributions of the R-squared values of the fitted SAR models based on count data and basal area data for each of the 20 combinations of DBH and cell size.</title>
+          <p>Each row represents a distinct scale of cell size; 0 to 4 in the x-axis labels represent DBH class 0 to 4, sequentially; “-CO” and “-BA” in the x-axis labels represent count data and basal area data, respectively. Classes 0 to 4 are defined as follows: class 0 (DBH ≥1 cm), class 1 (1 cm ≤ DBH &lt;5 cm), class 2 (5 cm≤ DBH &lt;10 cm), class 3 (10 cm ≤ DBH &lt;25 cm) and class 4 (DBH ≥25 cm).</p>
+        </caption>
+        <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.g001" xlink:type="simple"/>
+      </fig>
+      <p>There was a positive trend in the R-squared value with increasing cell size (<xref ref-type="supplementary-material" rid="pone.0038247.s001">Fig. S1</xref>). However, there was no clear relationship between the R-squared value and the DBH class (<xref ref-type="supplementary-material" rid="pone.0038247.s002">Fig. S2</xref>). There was a negative relationship between the R-squared value and the total abundance of the studied species, except at the 50-m scale (<xref ref-type="fig" rid="pone-0038247-g002">Fig. 2</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s003">Figs. S3</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s004">S4</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s005">S5</xref>).</p>
+      <fig id="pone-0038247-g002" position="float">
+        <object-id pub-id-type="doi">10.1371/journal.pone.0038247.g002</object-id>
+        <label>Figure 2</label>
+        <caption>
+          <title>Relationships between the R-squared values of the fitted SAR models and total species abundance for each of the 5 DBH classes at the 20-m scale.</title>
+          <p>Circles and triangles represent count data and basal area data, respectively. Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>.</p>
+        </caption>
+        <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.g002" xlink:type="simple"/>
+      </fig>
+      <p>The spatial autoregressive parameter <italic>λ</italic> of the SAR fitted model had the longest vectors in the 20 DBH-cell size combinations for both count data and basal area data (<xref ref-type="fig" rid="pone-0038247-g003">Figs. 3</xref> and <xref ref-type="fig" rid="pone-0038247-g004">4</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s006">Figs. S6</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s007">S7</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s008">S8</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s009">S9</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s010">S10</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s011">S11</xref>), indicating that spatial effects played a more important role than any of the environmental variables in determining tree species distributions in this forest plot.</p>
+      <fig id="pone-0038247-g003" position="float">
+        <object-id pub-id-type="doi">10.1371/journal.pone.0038247.g003</object-id>
+        <label>Figure 3</label>
+        <caption>
+          <title>Principal component analysis ordinations (based on matrices of transformed p-values from the SAR models) of the 14 explanatory variables and the spatial autoregressive parameter <italic>λ</italic> for each of the 5 DBH classes at the 20-m scale of the count data.</title>
+          <p>Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>. The abbreviations in the third-degree polynomial equations of altitude, convexity and slope are as follows: altitude (AL), altitude<sup>2</sup> (AL2), altitude<sup>3</sup> (AL3), convexity (CO), convexity<sup>2</sup> (CO2), convexity<sup>3</sup> (CO3), slope (SL), slope<sup>2</sup> (SL2) and slope3 (SL3). The abbreviations of the sine-cosine function of aspect and the spatial autoregressive parameter λ are as follows: cos(aspect) (CA), sin(aspect) (SA) and λ (LA). The abbreviations of the first three principal components of the soil variables are as follows: the first principal component (CP1), the second principal component (CP2) and the third principal component (CP3).</p>
+        </caption>
+        <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.g003" xlink:type="simple"/>
+      </fig>
+      <fig id="pone-0038247-g004" position="float">
+        <object-id pub-id-type="doi">10.1371/journal.pone.0038247.g004</object-id>
+        <label>Figure 4</label>
+        <caption>
+          <title>Principal component analysis ordinations (based on matrices of transformed p-values from the SAR models) of the 14 explanatory variables and the spatial autoregressive parameter λ for each of the 5 DBH classes at the 20-m scale, obtained with basal area data.</title>
+          <p>Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>. The abbreviations are defined as in <xref ref-type="fig" rid="pone-0038247-g003">Figure 3</xref>.</p>
+        </caption>
+        <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.g004" xlink:type="simple"/>
+      </fig>
+      <p>The results of the community composition variation partitioning were consistent with the results generated by the regression analysis performed at the individual species level. Both analyses indicated that spatial effects are dominant in determining species distributions (<xref ref-type="table" rid="pone-0038247-t002">Tables 2</xref> and <xref ref-type="table" rid="pone-0038247-t003">3</xref>). There was no significant difference in the fraction of variation explained by the pure environmental variables when either the count data or the basal area data were used. For 10 of the 20 DBH-cell size combinations, the variation explained by the environmental variables was higher when basal area data were used than when count data were used. In addition, the Kruskal-Wallis rank-sum test revealed no significant difference in the total variation explained by the combined effects of spatial and environmental variables when either the basal area data or the count data were used. However, the count data yielded higher total explained variation than did the basal area data for 17 of the 20 DBH-cell size combinations. For both types of data, the total explained variation tended to increase as the scale (cell size) increased (<xref ref-type="fig" rid="pone-0038247-g005">Fig. 5</xref>). By contrast, for both types of data, the total explained variation decreased with an increase in the DBH size class (<xref ref-type="supplementary-material" rid="pone.0038247.s012">Fig. S12</xref>).</p>
+      <fig id="pone-0038247-g005" position="float">
+        <object-id pub-id-type="doi">10.1371/journal.pone.0038247.g005</object-id>
+        <label>Figure 5</label>
+        <caption>
+          <title>Distribution patterns of the total explained variation in community composition for each of the four scales of cell size based on count data and basal area data.</title>
+          <p>The reduplicate data at each scale consisting of the 5 total explained variations of the 5 DBH classes of the variation partitioning results at each of the four scales.</p>
+        </caption>
+        <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.g005" xlink:type="simple"/>
+      </fig>
+      <table-wrap id="pone-0038247-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0038247.t002</object-id><label>Table 2</label><caption>
+          <title>Results of the partitioning variation between environmental variables and spatial effects for each of the 20 combinations of DBH and cell size using basal area data.</title>
+        </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0038247-t002-2" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.t002" xlink:type="simple"/><table>
+          <colgroup span="1">
+            <col align="left" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+          </colgroup>
+          <thead>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">Cell size (m)</td>
+              <td align="left" colspan="1" rowspan="1">DBH class</td>
+              <td align="left" colspan="1" rowspan="1">[a] (%)</td>
+              <td align="left" colspan="1" rowspan="1">[b] (%)</td>
+              <td align="left" colspan="1" rowspan="1">[c] (%)</td>
+              <td align="left" colspan="1" rowspan="1">[d] (%)</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">10×10</td>
+              <td align="left" colspan="1" rowspan="1">Class 0</td>
+              <td align="left" colspan="1" rowspan="1">0.16</td>
+              <td align="left" colspan="1" rowspan="1">1.720</td>
+              <td align="left" colspan="1" rowspan="1">11.80</td>
+              <td align="left" colspan="1" rowspan="1">86.31</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 1</td>
+              <td align="left" colspan="1" rowspan="1">0.44</td>
+              <td align="left" colspan="1" rowspan="1">15.30</td>
+              <td align="left" colspan="1" rowspan="1">30.71</td>
+              <td align="left" colspan="1" rowspan="1">53.55</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 2</td>
+              <td align="left" colspan="1" rowspan="1">0.41</td>
+              <td align="left" colspan="1" rowspan="1">10.80</td>
+              <td align="left" colspan="1" rowspan="1">21.90</td>
+              <td align="left" colspan="1" rowspan="1">66.89</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 3</td>
+              <td align="left" colspan="1" rowspan="1">0.25</td>
+              <td align="left" colspan="1" rowspan="1">4.41</td>
+              <td align="left" colspan="1" rowspan="1">13.58</td>
+              <td align="left" colspan="1" rowspan="1">81.76</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 4</td>
+              <td align="left" colspan="1" rowspan="1">0.16</td>
+              <td align="left" colspan="1" rowspan="1">1.57</td>
+              <td align="left" colspan="1" rowspan="1">14.89</td>
+              <td align="left" colspan="1" rowspan="1">83.38</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">20×20</td>
+              <td align="left" colspan="1" rowspan="1">Class 0</td>
+              <td align="left" colspan="1" rowspan="1">0.98</td>
+              <td align="left" colspan="1" rowspan="1">9.45</td>
+              <td align="left" colspan="1" rowspan="1">19.37</td>
+              <td align="left" colspan="1" rowspan="1">70.20</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 1</td>
+              <td align="left" colspan="1" rowspan="1">0.49</td>
+              <td align="left" colspan="1" rowspan="1">31.57</td>
+              <td align="left" colspan="1" rowspan="1">40.92</td>
+              <td align="left" colspan="1" rowspan="1">27.02</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 2</td>
+              <td align="left" colspan="1" rowspan="1">0.62</td>
+              <td align="left" colspan="1" rowspan="1">27.90</td>
+              <td align="left" colspan="1" rowspan="1">35.55</td>
+              <td align="left" colspan="1" rowspan="1">35.94</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 3</td>
+              <td align="left" colspan="1" rowspan="1">0.60</td>
+              <td align="left" colspan="1" rowspan="1">16.08</td>
+              <td align="left" colspan="1" rowspan="1">29.03</td>
+              <td align="left" colspan="1" rowspan="1">54.29</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 4</td>
+              <td align="left" colspan="1" rowspan="1">0.71</td>
+              <td align="left" colspan="1" rowspan="1">9.18</td>
+              <td align="left" colspan="1" rowspan="1">22.08</td>
+              <td align="left" colspan="1" rowspan="1">68.04</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">25×25</td>
+              <td align="left" colspan="1" rowspan="1">Class 0</td>
+              <td align="left" colspan="1" rowspan="1">0.58</td>
+              <td align="left" colspan="1" rowspan="1">10.07</td>
+              <td align="left" colspan="1" rowspan="1">21.60</td>
+              <td align="left" colspan="1" rowspan="1">67.75</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 1</td>
+              <td align="left" colspan="1" rowspan="1">0.51</td>
+              <td align="left" colspan="1" rowspan="1">25.47</td>
+              <td align="left" colspan="1" rowspan="1">50.94</td>
+              <td align="left" colspan="1" rowspan="1">23.08</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 2</td>
+              <td align="left" colspan="1" rowspan="1">1.02</td>
+              <td align="left" colspan="1" rowspan="1">20.97</td>
+              <td align="left" colspan="1" rowspan="1">45.09</td>
+              <td align="left" colspan="1" rowspan="1">32.92</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 3</td>
+              <td align="left" colspan="1" rowspan="1">0.38</td>
+              <td align="left" colspan="1" rowspan="1">15.28</td>
+              <td align="left" colspan="1" rowspan="1">32.47</td>
+              <td align="left" colspan="1" rowspan="1">51.88</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 4</td>
+              <td align="left" colspan="1" rowspan="1">0.63</td>
+              <td align="left" colspan="1" rowspan="1">9.83</td>
+              <td align="left" colspan="1" rowspan="1">19.42</td>
+              <td align="left" colspan="1" rowspan="1">70.12</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">50×50</td>
+              <td align="left" colspan="1" rowspan="1">Class 0</td>
+              <td align="left" colspan="1" rowspan="1">6.85</td>
+              <td align="left" colspan="1" rowspan="1">19.94</td>
+              <td align="left" colspan="1" rowspan="1">22.94</td>
+              <td align="left" colspan="1" rowspan="1">50.27</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 1</td>
+              <td align="left" colspan="1" rowspan="1">1.79</td>
+              <td align="left" colspan="1" rowspan="1">33.66</td>
+              <td align="left" colspan="1" rowspan="1">40.75</td>
+              <td align="left" colspan="1" rowspan="1">23.80</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 2</td>
+              <td align="left" colspan="1" rowspan="1">2.21</td>
+              <td align="left" colspan="1" rowspan="1">37.14</td>
+              <td align="left" colspan="1" rowspan="1">33.35</td>
+              <td align="left" colspan="1" rowspan="1">27.30</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 3</td>
+              <td align="left" colspan="1" rowspan="1">10.46</td>
+              <td align="left" colspan="1" rowspan="1">21.74</td>
+              <td align="left" colspan="1" rowspan="1">15.97</td>
+              <td align="left" colspan="1" rowspan="1">51.83</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 4</td>
+              <td align="left" colspan="1" rowspan="1">8.35</td>
+              <td align="left" colspan="1" rowspan="1">15.82</td>
+              <td align="left" colspan="1" rowspan="1">37.35</td>
+              <td align="left" colspan="1" rowspan="1">38.48</td>
+            </tr>
+          </tbody>
+        </table></alternatives><table-wrap-foot>
+          <fn id="nt102">
+            <label/>
+            <p>Note: Adjusted R-squared statistics are shown. Fractions [a] – [d] are as follows: [a]  =  variation explained by the environmental variables and not spatially structured; [b]  =  variation explained by the environmental variables and spatially structured; [c]  =  spatially structured variation not explained by the environmental variables; [d]  =  residual variation. Fraction [b] is the intersection of the variation explained by linear models of the two groups of explanatory factors. Topographic and edaphic variables were used to compute fractions [a] and [b]. Principal coordinates of neighbor matrix eigenfunctions were used as explanatory variables to compute fractions [b] and [c]. class 0 (DBH ≥1 cm), class 1 (1 cm ≤ DBH &lt;5 cm), class 2 (5 cm ≤ DBH &lt;10 cm), class 3 (10 cm ≤ DBH &lt;25 cm), class 4 (DBH ≥25 cm).</p>
+          </fn>
+        </table-wrap-foot></table-wrap>
+      <table-wrap id="pone-0038247-t003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0038247.t003</object-id><label>Table 3</label><caption>
+          <title>Results of partitioning variation between environmental variables and spatial effects for each of the 20 combinations of DBH and cell size using count data.</title>
+        </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0038247-t003-3" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.t003" xlink:type="simple"/><table>
+          <colgroup span="1">
+            <col align="left" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+            <col align="center" span="1"/>
+          </colgroup>
+          <thead>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">Cell size (m)</td>
+              <td align="left" colspan="1" rowspan="1">DBH class</td>
+              <td align="left" colspan="1" rowspan="1">[a] (%)</td>
+              <td align="left" colspan="1" rowspan="1">[b] (%)</td>
+              <td align="left" colspan="1" rowspan="1">[c] (%)</td>
+              <td align="left" colspan="1" rowspan="1">[d] (%)</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">10×10</td>
+              <td align="left" colspan="1" rowspan="1">Class 0</td>
+              <td align="left" colspan="1" rowspan="1">0.58</td>
+              <td align="left" colspan="1" rowspan="1">15.83</td>
+              <td align="left" colspan="1" rowspan="1">39.51</td>
+              <td align="left" colspan="1" rowspan="1">44.08</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 1</td>
+              <td align="left" colspan="1" rowspan="1">0.47</td>
+              <td align="left" colspan="1" rowspan="1">13.28</td>
+              <td align="left" colspan="1" rowspan="1">38.65</td>
+              <td align="left" colspan="1" rowspan="1">47.60</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 2</td>
+              <td align="left" colspan="1" rowspan="1">0.54</td>
+              <td align="left" colspan="1" rowspan="1">12.86</td>
+              <td align="left" colspan="1" rowspan="1">23.86</td>
+              <td align="left" colspan="1" rowspan="1">62.74</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 3</td>
+              <td align="left" colspan="1" rowspan="1">0.28</td>
+              <td align="left" colspan="1" rowspan="1">4.95</td>
+              <td align="left" colspan="1" rowspan="1">15.60</td>
+              <td align="left" colspan="1" rowspan="1">79.17</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 4</td>
+              <td align="left" colspan="1" rowspan="1">0.22</td>
+              <td align="left" colspan="1" rowspan="1">3.99</td>
+              <td align="left" colspan="1" rowspan="1">15.68</td>
+              <td align="left" colspan="1" rowspan="1">80.12</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">20×20</td>
+              <td align="left" colspan="1" rowspan="1">Class 0</td>
+              <td align="left" colspan="1" rowspan="1">0.45</td>
+              <td align="left" colspan="1" rowspan="1">31.95</td>
+              <td align="left" colspan="1" rowspan="1">45.30</td>
+              <td align="left" colspan="1" rowspan="1">22.31</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 1</td>
+              <td align="left" colspan="1" rowspan="1">0.29</td>
+              <td align="left" colspan="1" rowspan="1">28.42</td>
+              <td align="left" colspan="1" rowspan="1">47.47</td>
+              <td align="left" colspan="1" rowspan="1">23.82</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 2</td>
+              <td align="left" colspan="1" rowspan="1">0.45</td>
+              <td align="left" colspan="1" rowspan="1">30.91</td>
+              <td align="left" colspan="1" rowspan="1">36.56</td>
+              <td align="left" colspan="1" rowspan="1">32.08</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 3</td>
+              <td align="left" colspan="1" rowspan="1">0.69</td>
+              <td align="left" colspan="1" rowspan="1">16.93</td>
+              <td align="left" colspan="1" rowspan="1">31.79</td>
+              <td align="left" colspan="1" rowspan="1">50.58</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 4</td>
+              <td align="left" colspan="1" rowspan="1">0.53</td>
+              <td align="left" colspan="1" rowspan="1">17.82</td>
+              <td align="left" colspan="1" rowspan="1">28.26</td>
+              <td align="left" colspan="1" rowspan="1">53.39</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">25×25</td>
+              <td align="left" colspan="1" rowspan="1">Class 0</td>
+              <td align="left" colspan="1" rowspan="1">0.49</td>
+              <td align="left" colspan="1" rowspan="1">23.96</td>
+              <td align="left" colspan="1" rowspan="1">56.15</td>
+              <td align="left" colspan="1" rowspan="1">19.40</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 1</td>
+              <td align="left" colspan="1" rowspan="1">−0.04</td>
+              <td align="left" colspan="1" rowspan="1">22.66</td>
+              <td align="left" colspan="1" rowspan="1">57.29</td>
+              <td align="left" colspan="1" rowspan="1">20.08</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 2</td>
+              <td align="left" colspan="1" rowspan="1">0.77</td>
+              <td align="left" colspan="1" rowspan="1">23.26</td>
+              <td align="left" colspan="1" rowspan="1">46.54</td>
+              <td align="left" colspan="1" rowspan="1">29.44</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 3</td>
+              <td align="left" colspan="1" rowspan="1">0.39</td>
+              <td align="left" colspan="1" rowspan="1">16.46</td>
+              <td align="left" colspan="1" rowspan="1">35.49</td>
+              <td align="left" colspan="1" rowspan="1">47.66</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 4</td>
+              <td align="left" colspan="1" rowspan="1">1.28</td>
+              <td align="left" colspan="1" rowspan="1">13.52</td>
+              <td align="left" colspan="1" rowspan="1">30.81</td>
+              <td align="left" colspan="1" rowspan="1">54.39</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1">50×50</td>
+              <td align="left" colspan="1" rowspan="1">Class 0</td>
+              <td align="left" colspan="1" rowspan="1">2.66</td>
+              <td align="left" colspan="1" rowspan="1">31.52</td>
+              <td align="left" colspan="1" rowspan="1">39.54</td>
+              <td align="left" colspan="1" rowspan="1">26.27</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 1</td>
+              <td align="left" colspan="1" rowspan="1">2.26</td>
+              <td align="left" colspan="1" rowspan="1">28.89</td>
+              <td align="left" colspan="1" rowspan="1">40.78</td>
+              <td align="left" colspan="1" rowspan="1">28.07</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 2</td>
+              <td align="left" colspan="1" rowspan="1">5.43</td>
+              <td align="left" colspan="1" rowspan="1">35.39</td>
+              <td align="left" colspan="1" rowspan="1">31.38</td>
+              <td align="left" colspan="1" rowspan="1">27.80</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 3</td>
+              <td align="left" colspan="1" rowspan="1">3.41</td>
+              <td align="left" colspan="1" rowspan="1">29.35</td>
+              <td align="left" colspan="1" rowspan="1">26.47</td>
+              <td align="left" colspan="1" rowspan="1">40.76</td>
+            </tr>
+            <tr>
+              <td align="left" colspan="1" rowspan="1"/>
+              <td align="left" colspan="1" rowspan="1">Class 4</td>
+              <td align="left" colspan="1" rowspan="1">6.60</td>
+              <td align="left" colspan="1" rowspan="1">20.79</td>
+              <td align="left" colspan="1" rowspan="1">18.88</td>
+              <td align="left" colspan="1" rowspan="1">53.73</td>
+            </tr>
+          </tbody>
+        </table></alternatives><table-wrap-foot>
+          <fn id="nt103">
+            <label/>
+            <p>Note: Adjusted R-squared statistics are shown. Fractions [a] – [d] are as follows: [a]  =  variation explained by the environmental variables and not spatially structured; [b]  =  variation explained by the environmental variables and spatially structured; [c]  =  spatially structured variation not explained by the environmental variables; [d]  =  residual variation. Fraction [b] is the intersection of the variation explained by linear models of the two groups of explanatory factors. Topographic and edaphic variables were used to compute fractions [a] and [b]. Principal coordinates of neighbor matrix eigenfunctions were used as explanatory variables to compute fractions [b] and [c]. class 0 (DBH ≥1 cm), class 1 (1 cm ≤ DBH &lt;5 cm), class 2 (5 cm ≤ DBH &lt;10 cm), class 3 (10 cm ≤ DBH &lt;25 cm), class 4 (DBH ≥25 cm).</p>
+          </fn>
+        </table-wrap-foot></table-wrap>
+    </sec>
+    <sec id="s4">
+      <title>Discussion</title>
+      <sec id="s4a">
+        <title>The Contributions of Environmental Variables</title>
+        <p>Although environmental variables constrained a portion of the variations in the species distribution data, the variation partitioning results demonstrate that the environmental variables are strongly structured by PCNM eigenfunctions. In other words, the pure environmental variables play a limited role in determining species distributions, and most of the variations in environmental variables are derived from distance limitation. Among the environmental variables, the nonlinear topographic variables and the first two principal components of soil variables contribute more to species distributions than other environmental variables (<xref ref-type="fig" rid="pone-0038247-g003">Figs. 3</xref> and <xref ref-type="fig" rid="pone-0038247-g004">4</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s006">Figs. S6</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s007">S7</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s008">S8</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s009">S9</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s010">S10</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s011">S11</xref>). This implies that the original topographic variables play little role in regulating species distributions. In turn, this also is consistent with why Harms et al. <xref ref-type="bibr" rid="pone.0038247-Harms1">[14]</xref> suggest that the original topographic variables contribute little to the species distributions. The nonlinear effect has been reported to work well for species habitat associations under the scenarios of habitat loss, patch size and isolation <xref ref-type="bibr" rid="pone.0038247-Ficetola1">[34]</xref>. Because there is no such distinct abrupt change of environmental variables at this study site, the nonlinear effect does not dominantly contribute to species distribution in this study.</p>
+      </sec>
+      <sec id="s4b">
+        <title>Strong Neutral Spatial Effects</title>
+        <p>Our analyses based on both count data and basal area data indicate that neutral spatial effects, which are specifically represented by spatial autoregressive parameters of SAR and PCNM eigenfunctions in this study, predominantly regulate tree species distributions across multiple life stages and scales at either individual species or community levels. The spatial autoregressive parameter and PCNM eigenfunctions are both distance-limited factors, while distance is a key concept of neutral theory <xref ref-type="bibr" rid="pone.0038247-Bell1">[35]</xref>; thus, we conclude that neutral processes are essential to the tree species distributions at the study site. In contrast to previous studies that have focused on the scale at the individual species level <xref ref-type="bibr" rid="pone.0038247-Wang1">[4]</xref> or community level <xref ref-type="bibr" rid="pone.0038247-Legendre2">[5]</xref> or life stages at the individual species level <xref ref-type="bibr" rid="pone.0038247-Lai1">[7]</xref> or community level <xref ref-type="bibr" rid="pone.0038247-Kanagaraj1">[22]</xref>, our study integrates all of the four scales of analysis to conclude that neutral spatial effects play a dominant role in determining species distributions. Furthermore, we verify this conclusion with both count data and basal area data.</p>
+        <p>In the present study, we extend the previously demonstrated crucial role of neutral spatial effects in shaping species distributions to multiple life stages for both basal area data and count data. Without categorizing trees into different DBH classes, many studies have verified that neutral spatial effects are the principal determinants of species distribution patterns <xref ref-type="bibr" rid="pone.0038247-Shen1">[18]</xref>, <xref ref-type="bibr" rid="pone.0038247-Hubbell1">[36]</xref>, <xref ref-type="bibr" rid="pone.0038247-Hubbell2">[37]</xref>. He et al. <xref ref-type="bibr" rid="pone.0038247-He1">[21]</xref> demonstrate that tree species distributions maintain aggregated patterns at all life stages, and we demonstrate here that neutral spatial effects are the dominant driver of tree species distributions throughout life stages. Seidler and Plotkin <xref ref-type="bibr" rid="pone.0038247-Seidler1">[38]</xref> find that seed dispersal modes are strongly correlated with the spatial aggregation of intra-species from saplings to mature trees in a 50-ha plot of Malaysian tropical forest, supporting our findings. However, this seems to vary between different forest dynamics plots. Lai et al. <xref ref-type="bibr" rid="pone.0038247-Lai1">[7]</xref> showed that there are strong tree species habitat associations at different life stages at the individual species level. Kanagaraj et al. <xref ref-type="bibr" rid="pone.0038247-Kanagaraj1">[22]</xref> demonstrated that habitat preference strongly determined species distributions at the juvenile stage, but neutral processes dominated the reproductive stage at the community level. As far as our study is concerned, both basal area and count data demonstrated that neutral processes overwhelmingly regulated species distributions across life stages at multiple scales at the individual species and community levels. We suggest analyzing data from multiple sites with one unified statistical method to produce more comparable results.</p>
+        <p>Legendre <xref ref-type="bibr" rid="pone.0038247-Legendre3">[12]</xref> suggests that either environmental variables or community processes may result in spatial autocorrelation, which represents the neutral spatial effect, of species distribution data. Because the two most-recognized environmental variables (topography and soil) play a limited role in determining species distributions in this study, community processes could be the crucial reasons for the spatial autocorrelation of species distribution data. Among the potential community processes, a distance-limited dispersal process has been identified as a principal process for producing tree species distributions in previous studies <xref ref-type="bibr" rid="pone.0038247-Shen1">[18]</xref>, <xref ref-type="bibr" rid="pone.0038247-Seidler1">[38]</xref>. Because both the spatial autoregressive parameters and PCNM eigenfunctions are distance-limited factors and the dispersal process is also distance-limited <xref ref-type="bibr" rid="pone.0038247-Dbarre1">[39]</xref>, we suggest that dispersal limitation serves as the major community process generating tree species distributions in this plot. In turn, this explains why count data and basal area data yield almost identical outcomes in the two-level analyses and is also consistent with previous studies reporting that tree species distributions are more clumped than random <xref ref-type="bibr" rid="pone.0038247-Condit1">[11]</xref>, <xref ref-type="bibr" rid="pone.0038247-He1">[21]</xref>, <xref ref-type="bibr" rid="pone.0038247-Li1">[40]</xref>.</p>
+        <p>Strong neutral spatial effects are also consistent with the argument that investigating species spatial distributions without considering spatial autocorrelation may bias the analysis results <xref ref-type="bibr" rid="pone.0038247-Beale1">[1]</xref>, <xref ref-type="bibr" rid="pone.0038247-Dormann1">[13]</xref>. Kühn <xref ref-type="bibr" rid="pone.0038247-Khn1">[41]</xref> even suggests that the analysis results may be inverted for the same data between analyses with and without the incorporation of spatial autocorrelation. Our results show that environmental variables do contribute to the tree species distributions to some extent, but both SAR and variation partitioning analyses demonstrate that neutral spatial effects are dominant in this plot.</p>
+      </sec>
+      <sec id="s4c">
+        <title>Count and Basal Area Data</title>
+        <p>Contrary to our expectation that the environmental variables may be more closely related to the basal area data, the pure environmental variables were identically related to basal area and count data in terms of the community composition variation partitioning results. This suggests that count data may be more appropriate for analyzing species distributions than basal area data in this plot. However, count data may not be suitable for regression analyses when species are evenly distributed across all cells in which they are present, as may occur for species with small population sizes. For example, in this study, only one individual of <italic>Canthium simile</italic> in DBH class 0 was counted in each cell at the 10-m spatial scale, and this resulted in an infinite value of R-squared in the SAR models.</p>
+      </sec>
+      <sec id="s4d">
+        <title>Effects of Spatial Scale on Species Distributions</title>
+        <p>The increase in cell connectivity with cell size observed in this study may explain both the increases in the R-squared values and the total explained variation in the results of the SAR models and variation partitioning, repectively. As an example, cell connectivity clearly increased with increasing cell size for trees of <italic>Sloanea tomentosa</italic> in class 4 (<xref ref-type="fig" rid="pone-0038247-g006">Fig. 6</xref>). This results in decreasing p-values of <italic>λ</italic> with increasing cell size, except when basal area data were used at the 10-m scale. The R-squared values of the fitted models for <italic>S. tomentosa</italic> tend to increase with increasing cell size, except when count data are used at the 10-m scale (<xref ref-type="supplementary-material" rid="pone.0038247.s013">Fig. S13</xref>), consistent with previous work demonstrating that the variation explained by auto-Poisson regressive models when count data were used was much smaller at the 10-m scale than at the 20-m and 25-m scales in a 20-ha subtropical forest plot in southern China <xref ref-type="bibr" rid="pone.0038247-Wang1">[4]</xref>. By contrast, in a study of the beta diversity of tree species in a 24-ha subtropical forest plot, Legendre et al. <xref ref-type="bibr" rid="pone.0038247-Legendre2">[5]</xref> found that the total explained variations in species richness and community composition varied little across sampling scales. Here, we found that the R-squared values decreased with increasing total abundance of species (<xref ref-type="fig" rid="pone-0038247-g002">Figs. 2</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s003">Figs. S3</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s004">S4</xref>, <xref ref-type="supplementary-material" rid="pone.0038247.s005">S5</xref>), in contrast to the finding of Wang et al. <xref ref-type="bibr" rid="pone.0038247-Wang1">[4]</xref>. Because we simultaneously considered spatial scale and life stage, our analyses generated more replicates than in previous studies <xref ref-type="bibr" rid="pone.0038247-Wang1">[4]</xref>, <xref ref-type="bibr" rid="pone.0038247-Legendre2">[5]</xref>, and our results may therefore more broadly reflect patterns at the individual species and community levels.</p>
+        <fig id="pone-0038247-g006" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0038247.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title>Cell connectivity at each of the four scales of cell size for <italic>Sloanea tomentosa</italic> in DBH class 4.</title>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.g006" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s4e">
+        <title>Conclusions</title>
+        <p>In conclusion, the present study demonstrates that both lattice count data and basal area data can be reliably used to simulate the spatial distribution of tree species. Neutral spatial effects, which are specifically represented by the spatial autoregressive parameters and PCNM eigenfunctions, adequately explain the variations in both count data and basal area data at the individual species and community levels. The community processes, especially distance-limited dispersal process, may be the crucial mechanism underlying clumped patterns of species distributions. We suggest grouping trees into different DBH classes and analyzing their distributions at multiple spatial scales to enhance the applicability of the results. To achieve a broader understanding of the applicability of lattice count data and basal area data in examining species spatial distributions at both the individual species and community levels, further investigations based on large-scale plot data must be performed at additional tropical, subtropical and temperate forest sites.</p>
+      </sec>
+    </sec>
+    <sec id="s5">
+      <title>Supporting Information</title>
+      <supplementary-material id="pone.0038247.s001" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s001" xlink:type="simple">
+        <label>Figure S1</label>
+        <caption>
+          <p><bold>Patterns of median R-squared values from the fitted SAR models based on count data and basal area data at four scales of cell size, controlling for DBH class.</bold> Circles and triangles connected by solid and dashed lines represent count data and basal area data, respectively. Bars indicate standard deviations. Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s002" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s002" xlink:type="simple">
+        <label>Figure S2</label>
+        <caption>
+          <p><bold>Patterns of median R-squared values from the fitted SAR models based on count data and basal area data for five DBH classes, controlling for scale.</bold> Circles and triangles connected by solid and dashed lines represent count data and basal area data, respectively. Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s003" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s003" xlink:type="simple">
+        <label>Figure S3</label>
+        <caption>
+          <p><bold>Relationships between the R-squared values of the fitted SAR models and species total abundance for each of the 5 DBH classes at the 10-m scale.</bold> Circles and triangles represent count data and basal area data, respectively. Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s004" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s004" xlink:type="simple">
+        <label>Figure S4</label>
+        <caption>
+          <p><bold>Relationships between the R-squared values of the fitted SAR models and species total abundance for each of the 5 DBH classes at the 25-m scale.</bold> Circles and triangles represent count data and basal area data, respectively. Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s005" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s005" xlink:type="simple">
+        <label>Figure S5</label>
+        <caption>
+          <p><bold>Relationships between the R-squared values of the fitted SAR models and species total abundance for each of the 5 DBH classes at the 50-m scale.</bold> Circles and triangles represent count data and basal area data, respectively. Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s006" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s006" xlink:type="simple">
+        <label>Figure S6</label>
+        <caption>
+          <p><bold>Principal component analysis ordinations (based on matrices of transformed p-values from the SAR models) of the 14 explanatory variables and the spatial autoregressive factor λ for each of the 5 DBH classes at the 10-m scale of the count data.</bold> Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>. The abbreviations are defined as in <xref ref-type="fig" rid="pone-0038247-g003">Figure 3</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s007" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s007" xlink:type="simple">
+        <label>Figure S7</label>
+        <caption>
+          <p><bold>Principal component analysis ordinations (based on matrices of transformed p-values from the SAR models) of the 14 explanatory variables and the spatial autoregressive factor λ for each of the 5 DBH classes at the 25-m scale of the count data.</bold> Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>. The abbreviations are defined as in <xref ref-type="fig" rid="pone-0038247-g003">Figure 3</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s008" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s008" xlink:type="simple">
+        <label>Figure S8</label>
+        <caption>
+          <p><bold>Principal component analysis ordinations (based on matrices of transformed p-values from the SAR models) of the 14 explanatory variables and the spatial autoregressive factor λ for each of the 5 DBH classes at the 50-m scale of the count data.</bold> Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>. The abbreviations are defined as in <xref ref-type="fig" rid="pone-0038247-g003">Figure 3</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s009" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s009" xlink:type="simple">
+        <label>Figure S9</label>
+        <caption>
+          <p><bold>Principal component analysis ordinations (based on matrices of transformed p-values from the SAR models) of the 14 explanatory variables and the spatial autoregressive factor λ for each of the 5 DBH classes at the 10-m scale of the basal area data.</bold> Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>. The abbreviations are defined as in <xref ref-type="fig" rid="pone-0038247-g003">Figure 3</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s010" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s010" xlink:type="simple">
+        <label>Figure S10</label>
+        <caption>
+          <p><bold>Principal component analysis ordinations (based on matrices of transformed p-values from the SAR models) of the 14 explanatory variables and the spatial autoregressive factor λ for each of the 5 DBH classes at the 25-m scale of the basal area data.</bold> Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>. The abbreviations are defined as in <xref ref-type="fig" rid="pone-0038247-g003">Figure 3</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s011" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s011" xlink:type="simple">
+        <label>Figure S11</label>
+        <caption>
+          <p><bold>Principal component analysis ordinations (based on matrices of transformed p-values from the SAR models) of the 14 explanatory variables and the spatial autoregressive factor λ for each of the 5 DBH classes at the 50-m scale of the basal area data.</bold> Classes 0 to 4 are defined as in <xref ref-type="fig" rid="pone-0038247-g001">Figure 1</xref>. The abbreviations are defined as in <xref ref-type="fig" rid="pone-0038247-g003">Figure 3</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s012" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s012" xlink:type="simple">
+        <label>Figure S12</label>
+        <caption>
+          <p>
+            <bold>Patterns of total explained variation in community composition across life stages based on count data and basal area data. The reduplicate data at each DBH class consisted of the total explained variations of the 4 scales of the variation partitioning results. Numerals 0 to 4 represent the five DBH classes which are defined as in </bold>
+            <xref ref-type="fig" rid="pone-0038247-g001">
+              <bold>Figure 1</bold>
+            </xref>
+            <bold>.</bold>
+          </p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0038247.s013" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0038247.s013" xlink:type="simple">
+        <label>Figure S13</label>
+        <caption>
+          <p>
+            <bold>The p-values of λ and the R-squared values of the fitted SAR models for </bold>
+            <bold>
+              <italic>Sloanea tomentosa</italic>
+            </bold>
+            <bold> in DBH class 4 at each of the four spatial scales.</bold>
+          </p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>We are grateful to Prof. Fangliang He for his valuable comments on the paper. We also thank the Biogeochemistry Laboratory of the Xishuangbanna Tropical Botanical Garden for the analysis of the soil nutrient concentrations. We are also grateful to all of the field workers who contributed to the tree species census of the 20-ha plot.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0038247-Beale1">
+        <label>1</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Beale</surname><given-names>CM</given-names></name><name name-style="western"><surname>Lennon</surname><given-names>JJ</given-names></name><name name-style="western"><surname>Yearsley</surname><given-names>JM</given-names></name><name name-style="western"><surname>Brewer</surname><given-names>MJ</given-names></name><name name-style="western"><surname>Elston</surname><given-names>DA</given-names></name></person-group>             <year>2010</year>             <article-title>Regression analysis of spatial data.</article-title>             <source>Ecol Lett</source>             <volume>13</volume>             <fpage>246</fpage>             <lpage>264</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Legendre1">
+        <label>2</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Legendre</surname><given-names>P</given-names></name><name name-style="western"><surname>Gallagher</surname><given-names>ED</given-names></name></person-group>             <year>2001</year>             <article-title>Ecologically meaningful transformations for ordination of species data.</article-title>             <source>Oecologia</source>             <volume>129</volume>             <fpage>271</fpage>             <lpage>280</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Olden1">
+        <label>3</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Olden</surname><given-names>JD</given-names></name><name name-style="western"><surname>Lawler</surname><given-names>JJ</given-names></name><name name-style="western"><surname>Poff</surname><given-names>NL</given-names></name></person-group>             <year>2008</year>             <article-title>Machine learning methods without tears: a primer for ecologists.</article-title>             <source>Q Rev Biol</source>             <volume>83</volume>             <fpage>171</fpage>             <lpage>193</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Wang1">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wang</surname><given-names>Z</given-names></name><name name-style="western"><surname>Ye</surname><given-names>W</given-names></name><name name-style="western"><surname>Cao</surname><given-names>H</given-names></name><name name-style="western"><surname>Huang</surname><given-names>Z</given-names></name><name name-style="western"><surname>Lian</surname><given-names>J</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Species-topography association in a species-rich subtropical forest of China.</article-title>             <source>Basic Appl Ecol</source>             <volume>10</volume>             <fpage>648</fpage>             <lpage>655</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Legendre2">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Legendre</surname><given-names>P</given-names></name><name name-style="western"><surname>Mi</surname><given-names>XC</given-names></name><name name-style="western"><surname>Ren</surname><given-names>HB</given-names></name><name name-style="western"><surname>Ma</surname><given-names>KP</given-names></name><name name-style="western"><surname>Yu</surname><given-names>MJ</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Partitioning beta diversity in a subtropical broad-leaved forest of China.</article-title>             <source>Ecology</source>             <volume>90</volume>             <fpage>663</fpage>             <lpage>674</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Comita1">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Comita</surname><given-names>LS</given-names></name><name name-style="western"><surname>Condit</surname><given-names>R</given-names></name><name name-style="western"><surname>Hubbell</surname><given-names>SP</given-names></name></person-group>             <year>2007</year>             <article-title>Developmental changes in habitat associations of tropical trees.</article-title>             <source>J Ecol</source>             <volume>95</volume>             <fpage>482</fpage>             <lpage>492</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Lai1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Lai</surname><given-names>J</given-names></name><name name-style="western"><surname>Mi</surname><given-names>X</given-names></name><name name-style="western"><surname>Ren</surname><given-names>H</given-names></name><name name-style="western"><surname>Ma</surname><given-names>K</given-names></name></person-group>             <year>2009</year>             <article-title>Species-habitat associations change in a subtropical forest of China.</article-title>             <source>J Veg Sci</source>             <volume>20</volume>             <fpage>415</fpage>             <lpage>423</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Morlon1">
+        <label>8</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Morlon</surname><given-names>H</given-names></name><name name-style="western"><surname>White</surname><given-names>EP</given-names></name><name name-style="western"><surname>Etienne</surname><given-names>RS</given-names></name><name name-style="western"><surname>Green</surname><given-names>JL</given-names></name><name name-style="western"><surname>Ostling</surname><given-names>A</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Taking species abundance distributions beyond individuals.</article-title>             <source>Ecol Lett</source>             <volume>12</volume>             <fpage>488</fpage>             <lpage>501</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Etienne1">
+        <label>9</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Etienne</surname><given-names>RS</given-names></name><name name-style="western"><surname>Olff</surname><given-names>H</given-names></name></person-group>             <year>2004</year>             <article-title>How dispersal limitation shapes species-body size distributions in local communities.</article-title>             <source>Am Nat</source>             <volume>163</volume>             <fpage>69</fpage>             <lpage>83</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Paoli1">
+        <label>10</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Paoli</surname><given-names>GD</given-names></name><name name-style="western"><surname>Curran</surname><given-names>LM</given-names></name><name name-style="western"><surname>Slik</surname><given-names>JWF</given-names></name></person-group>             <year>2008</year>             <article-title>Soil nutrients affect spatial patterns of aboveground biomass and emergent tree density in southwestern Borneo.</article-title>             <source>Oecologia</source>             <volume>155</volume>             <fpage>287</fpage>             <lpage>299</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Condit1">
+        <label>11</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Condit</surname><given-names>R</given-names></name><name name-style="western"><surname>Ashton</surname><given-names>PS</given-names></name><name name-style="western"><surname>Baker</surname><given-names>P</given-names></name><name name-style="western"><surname>Bunyavejchewin</surname><given-names>S</given-names></name><name name-style="western"><surname>Gunatilleke</surname><given-names>S</given-names></name><etal/></person-group>             <year>2000</year>             <article-title>Spatial patterns in the distribution of tropical tree species.</article-title>             <source>Science</source>             <volume>288</volume>             <fpage>1414</fpage>             <lpage>1418</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Legendre3">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Legendre</surname><given-names>P</given-names></name></person-group>             <year>1993</year>             <article-title>Spatial autocorrelation: trouble or new paradigm?</article-title>             <source>Ecology</source>             <volume>74</volume>             <fpage>1659</fpage>             <lpage>1673</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Dormann1">
+        <label>13</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Dormann</surname><given-names>CF</given-names></name><name name-style="western"><surname>McPherson</surname><given-names>JM</given-names></name><name name-style="western"><surname>Araujo</surname><given-names>MB</given-names></name><name name-style="western"><surname>Bivand</surname><given-names>R</given-names></name><name name-style="western"><surname>Bolliger</surname><given-names>J</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Methods to account for spatial autocorrelation in the analysis of species distributional data: a review.</article-title>             <source>Ecography</source>             <volume>30</volume>             <fpage>609</fpage>             <lpage>628</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Harms1">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Harms</surname><given-names>KE</given-names></name><name name-style="western"><surname>Condit</surname><given-names>R</given-names></name><name name-style="western"><surname>Hubbell</surname><given-names>SP</given-names></name><name name-style="western"><surname>Foster</surname><given-names>RB</given-names></name></person-group>             <year>2001</year>             <article-title>Habitat associations of trees and shrubs in a 50-ha neotropical forest plot.</article-title>             <source>J Ecol</source>             <volume>89</volume>             <fpage>947</fpage>             <lpage>959</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-John1">
+        <label>15</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>John</surname><given-names>R</given-names></name><name name-style="western"><surname>Dalling</surname><given-names>JW</given-names></name><name name-style="western"><surname>Harms</surname><given-names>KE</given-names></name><name name-style="western"><surname>Yavitt</surname><given-names>JB</given-names></name><name name-style="western"><surname>Stallard</surname><given-names>RF</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Soil nutrients influence spatial distributions of tropical tree species.</article-title>             <source>Proc Natl Acad Sci USA</source>             <volume>104</volume>             <fpage>864</fpage>             <lpage>869</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Cottenie1">
+        <label>16</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cottenie</surname><given-names>K</given-names></name></person-group>             <year>2005</year>             <article-title>Integrating environmental and spatial processes in ecological community dynamics.</article-title>             <source>Ecol Lett</source>             <volume>8</volume>             <fpage>1175</fpage>             <lpage>1182</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Leibold1">
+        <label>17</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Leibold</surname><given-names>MA</given-names></name><name name-style="western"><surname>McPeek</surname><given-names>MA</given-names></name></person-group>             <year>2006</year>             <article-title>Coexistence of the niche and neutral perspectives in community ecology.</article-title>             <source>Ecology</source>             <volume>87</volume>             <fpage>1399</fpage>             <lpage>1410</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Shen1">
+        <label>18</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Shen</surname><given-names>G</given-names></name><name name-style="western"><surname>Yu</surname><given-names>M</given-names></name><name name-style="western"><surname>Hu</surname><given-names>XS</given-names></name><name name-style="western"><surname>Mi</surname><given-names>X</given-names></name><name name-style="western"><surname>Ren</surname><given-names>H</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Species-area relationships explained by the joint effects of dispersal limitation and habitat heterogeneity.</article-title>             <source>Ecology</source>             <volume>90</volume>             <fpage>3033</fpage>             <lpage>3041</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Werner1">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Werner</surname><given-names>E</given-names></name><name name-style="western"><surname>Gilliam</surname><given-names>JF</given-names></name></person-group>             <year>1984</year>             <article-title>The ontogenetic niche and species interactions in size-structured populations.</article-title>             <source>Annu Rev Ecol Syst</source>             <volume>15</volume>             <fpage>393</fpage>             <lpage>425</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Schupp1">
+        <label>20</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Schupp</surname><given-names>EW</given-names></name></person-group>             <year>1995</year>             <article-title>Seed-seedling conflicts, habitat choice, and patterns of plant recruitment.</article-title>             <source>Am J Bot</source>             <volume>82</volume>             <fpage>399</fpage>             <lpage>409</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-He1">
+        <label>21</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>He</surname><given-names>F</given-names></name><name name-style="western"><surname>Legendre</surname><given-names>P</given-names></name><name name-style="western"><surname>LaFrankie</surname><given-names>JV</given-names></name></person-group>             <year>1997</year>             <article-title>Distribution patterns of tree species in a Malaysian tropical rain forest.</article-title>             <source>J Veg Sci</source>             <volume>8</volume>             <fpage>105</fpage>             <lpage>114</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Kanagaraj1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kanagaraj</surname><given-names>R</given-names></name><name name-style="western"><surname>Wiegand</surname><given-names>T</given-names></name><name name-style="western"><surname>Comita</surname><given-names>LS</given-names></name><name name-style="western"><surname>Huth</surname><given-names>A</given-names></name></person-group>             <year>2011</year>             <article-title>Tropical tree species assemblages in topographical habitats change in time and with life stage.</article-title>             <source>J Ecol</source>             <volume>99</volume>             <fpage>1441</fpage>             <lpage>1452</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Hu1">
+        <label>23</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hu</surname><given-names>YH</given-names></name><name name-style="western"><surname>Sha</surname><given-names>LQ</given-names></name><name name-style="western"><surname>Blanchet</surname><given-names>FG</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>JL</given-names></name><name name-style="western"><surname>Tang</surname><given-names>Y</given-names></name><etal/></person-group>             <year>2011</year>             <article-title>Dominant species and dispersal limitation regulate tree species distributions in a 20-ha plot in Xishuangbanna, Southwest China.</article-title>             <publisher-name>Oikos. In press</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Dungan1">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Dungan</surname><given-names>JL</given-names></name><name name-style="western"><surname>Perry</surname><given-names>JN</given-names></name><name name-style="western"><surname>Dale</surname><given-names>MRT</given-names></name><name name-style="western"><surname>Legendre</surname><given-names>P</given-names></name><name name-style="western"><surname>Citron-Pousty</surname><given-names>S</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>A balanced view of scale in spatial statistical analysis.</article-title>             <source>Ecography</source>             <volume>25</volume>             <fpage>626</fpage>             <lpage>640</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-He2">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>He</surname><given-names>F</given-names></name><name name-style="western"><surname>LaFrankie</surname><given-names>JV</given-names></name><name name-style="western"><surname>Song</surname><given-names>B</given-names></name></person-group>             <year>2002</year>             <article-title>Scale dependence of tree abundance and richness in a tropical rain forest, Malaysia.</article-title>             <source>Landscape Ecol</source>             <volume>17</volume>             <fpage>559</fpage>             <lpage>568</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Cao1">
+        <label>26</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cao</surname><given-names>M</given-names></name><name name-style="western"><surname>Zhu</surname><given-names>H</given-names></name><name name-style="western"><surname>Wang</surname><given-names>H</given-names></name><name name-style="western"><surname>Lan</surname><given-names>GY</given-names></name><name name-style="western"><surname>Hu</surname><given-names>YH</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Xishuangbanna tropical seasonal rainforest dynamics plot: tree distribution maps, diameter tables and species documentation.</article-title>             <publisher-loc>Kunming</publisher-loc>             <publisher-name>Yunnan science and technology press</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Cao2">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cao</surname><given-names>M</given-names></name><name name-style="western"><surname>Zou</surname><given-names>XM</given-names></name><name name-style="western"><surname>Warren</surname><given-names>M</given-names></name><name name-style="western"><surname>Zhu</surname><given-names>H</given-names></name></person-group>             <year>2006</year>             <article-title>Tropical forests of Xishuangbanna, China.</article-title>             <source>Biotropica</source>             <volume>38</volume>             <fpage>306</fpage>             <lpage>309</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Zhu1">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zhu</surname><given-names>H</given-names></name><name name-style="western"><surname>Cao</surname><given-names>M</given-names></name><name name-style="western"><surname>Hu</surname><given-names>HB</given-names></name></person-group>             <year>2006</year>             <article-title>Geological history, flora, and vegetation of Xishuangbanna, Southern Yunnan, China.</article-title>             <source>Biotropica</source>             <volume>38</volume>             <fpage>310</fpage>             <lpage>317</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Liu1">
+        <label>29</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Liu</surname><given-names>GS</given-names></name><name name-style="western"><surname>Jiang</surname><given-names>NH</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>LD</given-names></name></person-group>             <year>1996</year>             <article-title>Soil physical and chemical analysis &amp; description of soil profiles; Liu GS, editor.</article-title>             <publisher-loc>Beijing</publisher-loc>             <publisher-name>Standards Press of China, in Chinese</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Guisan1">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Guisan</surname><given-names>A</given-names></name><name name-style="western"><surname>Weiss</surname><given-names>SB</given-names></name><name name-style="western"><surname>Weiss</surname><given-names>AD</given-names></name></person-group>             <year>1999</year>             <article-title>GLM versus CCA spatial modeling of plant species distribution.</article-title>             <source>Plant Ecol</source>             <volume>143</volume>             <fpage>107</fpage>             <lpage>122</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Wall1">
+        <label>31</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wall</surname><given-names>MM</given-names></name></person-group>             <year>2004</year>             <article-title>A close look at the spatial structure implied by the CAR and SAR models.</article-title>             <source>J Stat Plan Infer</source>             <volume>121</volume>             <fpage>311</fpage>             <lpage>324</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-R1">
+        <label>32</label>
+        <element-citation publication-type="other" xlink:type="simple">             <collab xlink:type="simple">R Development Core Team</collab>             <year>2011</year>             <article-title>R: A language and environment for statistical computing.</article-title>             <publisher-name>R Foundation for Statistical Computing, Vienna, Austria</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Borcard1">
+        <label>33</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Borcard</surname><given-names>D</given-names></name><name name-style="western"><surname>Legendre</surname><given-names>P</given-names></name><name name-style="western"><surname>Drapeau</surname><given-names>P</given-names></name></person-group>             <year>1992</year>             <article-title>Partialling out the spatial component of ecological variation.</article-title>             <source>Ecology</source>             <volume>73</volume>             <fpage>1045</fpage>             <lpage>1055</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Ficetola1">
+        <label>34</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ficetola</surname><given-names>GF</given-names></name><name name-style="western"><surname>Denoël</surname><given-names>M</given-names></name></person-group>             <year>2009</year>             <article-title>Ecological thresholds: an assessment of methods to identify abrupt changes in species-habitat relationships.</article-title>             <source>Ecography</source>             <volume>32</volume>             <fpage>1075</fpage>             <lpage>1084</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Bell1">
+        <label>35</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bell</surname><given-names>G</given-names></name></person-group>             <year>2001</year>             <article-title>Neutral macroecology.</article-title>             <source>Science</source>             <volume>293</volume>             <fpage>2413</fpage>             <lpage>2418</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Hubbell1">
+        <label>36</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hubbell</surname><given-names>SP</given-names></name><name name-style="western"><surname>Foster</surname><given-names>RB</given-names></name><name name-style="western"><surname>O'brien</surname><given-names>ST</given-names></name><name name-style="western"><surname>Harms</surname><given-names>KE</given-names></name><name name-style="western"><surname>Condit</surname><given-names>R</given-names></name><etal/></person-group>             <year>1999</year>             <article-title>Light-gap disturbances, recruitment limitation, and tree diversity in a neotropical forest.</article-title>             <source>Science</source>             <volume>283</volume>             <fpage>554</fpage>             <lpage>557</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Hubbell2">
+        <label>37</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hubbell</surname><given-names>SP</given-names></name></person-group>             <year>2001</year>             <article-title>The unified neutral theory of biodiversity and biogeography.</article-title>             <publisher-loc>Princeton</publisher-loc>             <publisher-name>Princeton University Press</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Seidler1">
+        <label>38</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Seidler</surname><given-names>TG</given-names></name><name name-style="western"><surname>Plotkin</surname><given-names>JB</given-names></name></person-group>             <year>2006</year>             <article-title>Seed dispersal and spatial pattern in tropical trees.</article-title>             <source>Plos Biol</source>             <volume>4</volume>             <fpage>2132</fpage>             <lpage>2137</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Dbarre1">
+        <label>39</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Débarre</surname><given-names>F</given-names></name><name name-style="western"><surname>Lenormand</surname><given-names>T</given-names></name></person-group>             <year>2011</year>             <article-title>Distance-limited dispersal promotes coexistence at habitat boundaries: reconsidering the competitive exclusion principle.</article-title>             <source>Ecol Lett</source>             <volume>14</volume>             <fpage>260</fpage>             <lpage>266</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Li1">
+        <label>40</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Li</surname><given-names>L</given-names></name><name name-style="western"><surname>Huang</surname><given-names>Z</given-names></name><name name-style="western"><surname>Ye</surname><given-names>W</given-names></name><name name-style="western"><surname>Cao</surname><given-names>H</given-names></name><name name-style="western"><surname>Wei</surname><given-names>S</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Spatial distributions of tree species in a subtropical forest of China.</article-title>             <source>Oikos</source>             <volume>118</volume>             <fpage>495</fpage>             <lpage>502</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0038247-Khn1">
+        <label>41</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kühn</surname><given-names>I</given-names></name></person-group>             <year>2007</year>             <article-title>Incorporating spatial autocorrelation may invert observed patterns.</article-title>             <source>Divers Distrib</source>             <volume>13</volume>             <fpage>66</fpage>             <lpage>69</lpage>          </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

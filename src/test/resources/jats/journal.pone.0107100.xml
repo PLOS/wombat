@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id><journal-title-group>
+<journal-title>PLoS ONE</journal-title></journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="publisher-id">PONE-D-14-00555</article-id>
+<article-id pub-id-type="doi">10.1371/journal.pone.0107100</article-id>
+<article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Proteins</subject><subj-group><subject>Protein interactions</subject></subj-group></subj-group><subj-group><subject>Proteomics</subject></subj-group></subj-group><subj-group><subject>Computational biology</subject></subj-group><subj-group><subject>Synthetic biology</subject></subj-group><subj-group><subject>Systems biology</subject></subj-group></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Physical sciences</subject><subj-group><subject>Mathematics</subject><subj-group><subject>Applied mathematics</subject><subj-group><subject>Decision theory</subject></subj-group></subj-group><subj-group><subject>Statistics (mathematics)</subject></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Inferring Novel Indications of Approved Drugs via a Learning Method with Local and Global Consistency</article-title>
+<alt-title alt-title-type="running-head">Drug Indications Prediction</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Yan</surname><given-names>Yan</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Shao</surname><given-names>Xinwei</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Jiang</surname><given-names>Zhenran</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+</contrib-group>
+<aff id="aff1"><label>1</label><addr-line>Department of Computer Science &amp; Technology, East China Normal University, Shanghai, China</addr-line></aff>
+<aff id="aff2"><label>2</label><addr-line>Department of Mathematics, East China Normal University, Shanghai, China</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Sotgiu</surname><given-names>Giovanni</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>University of Sassari, Italy</addr-line></aff>
+<author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">zrjiang@cs.ecnu.edu.cn</email></corresp>
+<fn fn-type="conflict"><p>The authors have declared that no competing interests exist.</p></fn>
+<fn fn-type="con"><p>Conceived and designed the experiments: YY XWS ZRJ. Performed the experiments: YY XWS ZRJ. Analyzed the data: YY XWS ZRJ. Contributed reagents/materials/analysis tools: YY XWS ZRJ. Wrote the paper: YY XWS ZRJ.</p></fn>
+</author-notes>
+<pub-date pub-type="collection"><year>2014</year></pub-date>
+<pub-date pub-type="epub"><day>30</day><month>9</month><year>2014</year></pub-date>
+<volume>9</volume>
+<issue>9</issue>
+<elocation-id>e107100</elocation-id>
+<history>
+<date date-type="received"><day>14</day><month>2</month><year>2014</year></date>
+<date date-type="accepted"><day>14</day><month>8</month><year>2014</year></date>
+</history>
+<permissions>
+<copyright-year>2014</copyright-year>
+<copyright-holder>Yan et al</copyright-holder><license xlink:type="simple"><license-p>This is an open-access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions>
+<abstract>
+<p>Inferring new indication of approved drugs is critical not only for the elucidation of the interaction mechanisms between these drugs and their associated diseases, but also for the development of drug therapy for various human diseases. This paper proposes a network-based approach to reveal the association between 52 human diseases and potential therapeutic drugs based on multiple types of data. The advantage of the approach is that it can obtain the global relevance features for each drug-disease pair in the network by the learning local and global consistency method (LLGC). Cross-validation tests results demonstrate the proposed approach can achieve better performance comparing with previous methods. More importantly, it provides a promising strategy to maximize the value of therapeutic drugs and offer safe and effective treatments for different diseases.</p>
+</abstract>
+<funding-group><funding-statement>This work was supported by National Basic Research Program of China (Grants No. 2012CB910400) and the Fundamental Research Funds for the Central Universities (Grants No. 78260026). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts><page-count count="11"/></counts></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p>The traditional mode of drug development is a long and costly process. The investigation shows that it requires an investment of about $1 billion dollars and takes about 10∼15 years to take a compound from discovery to the approved medication <xref ref-type="bibr" rid="pone.0107100-DiMasi1">[1]</xref>. In fact, more than 90% of the drugs have been proved ineffective before being clinically tested <xref ref-type="bibr" rid="pone.0107100-Chong1">[2]</xref>. In order to improve the productivity of drug discovery, there is an urgent need for developing computational methods to address new treatment opportunities by utilizing the available information of known drugs. Undoubtedly, inferring novel indications of approved drugs is an effective way to achieve this important goal.</p>
+<p>Previous studies have demonstrated that genome-wide transcriptional expression data is useful to interpret biological influence of drugs or disease states <xref ref-type="bibr" rid="pone.0107100-Schena1">[3]</xref>, there has been a trend for drug-disease study based solely on the analysis of gene expression data over the past years. The popular methods including Gene Enrichment Analysis method (GSEA) and the Connectivity Map (cMap) have proved effective in discovering new therapeutic drugs for some diseases <xref ref-type="bibr" rid="pone.0107100-Shigemizu1">[4]</xref>. Both of the methods are based on the hypothesis that if two diseases share similar therapies, then the drug used for this disease may also be therapeutic for other diseases <xref ref-type="bibr" rid="pone.0107100-Chiang1">[5]</xref>. For instance, GSEA can be used to determine whether a priori defined set of genes shows statistically significant, concordant differences between two biological states <xref ref-type="bibr" rid="pone.0107100-Subramanian1">[6]</xref>. cMap is often used to seek the functional associations between drug response profiles and diseases through the transitory feature of common gene-expression changes <xref ref-type="bibr" rid="pone.0107100-Lamb1">[7]</xref>. However, the methods are greatly affected by the quality of gene expression data due to the profiles generated under different conditions. Therefore, it is incapability to capture drug-disease associations that are not manifested on the gene expression level.</p>
+<p>Recently, some researchers attempted to incorporate the biological and chemical knowledge to construct effective feature vectors of drug-disease pairs with different learning methods. For instance, Li et al. <xref ref-type="bibr" rid="pone.0107100-Li1">[8]</xref> proposed a literature mining method to build disease-specific drug protein cMaps via protein interaction networks. Gottlieb et al. <xref ref-type="bibr" rid="pone.0107100-Gottlieb1">[9]</xref> attempted to predict new drug indications by different feature information including gene expression profile, chemical structure, side effects and chemical protein interactome. Nevertheless, few researches have attempted to maximize the information flow in the disease network for uncovering new drug-disease pairs. Further, the similarity measure methods they used were limited and did not adjust the algorithm according to the specific situations of the samples.</p>
+<p>Here, we propose a method by learning with local and global consistency (LLGC) to predict new drug-disease associations <xref ref-type="bibr" rid="pone.0107100-Zhou1">[10]</xref>. For each drug-disease pair in a network, we obtain the feature vectors of 609 known drug-disease associations based on different types of data. Compared with the PREDICT method, our method can obtain a higher specificity and sensitivity. Further, we expect the top-scored drug-disease pairs highly enriched in literature can be used for further clinical trial.</p>
+</sec><sec id="s2" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="s2a">
+<title>Data sets</title>
+<p>In this work, we first collect 42 kinds of drugs associated with breast cancer from KEGG database <xref ref-type="bibr" rid="pone.0107100-Kanehisa1">[11]</xref>. Then we obtain other 51 kinds of diseases with which the 42 drugs are associated. These 52 diseases totally have 609 known associations with 203 FDA approved drugs. Since each selected disease has at least one public associated drug with breast cancer, drugs treating one or several of these 51 diseases may also has some effect on treating breast cancer <xref ref-type="bibr" rid="pone.0107100-Lamb1">[7]</xref>. Finally, we got 609 drug-disease pairs and 668 drug-target interaction pairs (192 targets corresponding to these 203 drugs) in the disease network.</p>
+</sec><sec id="s2b">
+<title>Overview of the method</title>
+<p>According to the LLGC method, we first constructed the disease-drug networks based on multiple types of feature information. Then, the feature vectors for all of the possible drug-disease pairs were obtained based on LLGC methods. Finally, new possible drug-disease associations can be predicted based on the analysis of network topology. <xref ref-type="fig" rid="pone-0107100-g001">Figure 1</xref> shows an illustration of the above procedure.</p>
+<fig id="pone-0107100-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.g001</object-id><label>Figure 1</label><caption>
+<title>The flowchart of the prediction method.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.g001" position="float" xlink:type="simple"/></fig></sec><sec id="s2c">
+<title>Similarity measures</title>
+<p>In the paper, four similarity measures were used to obtain results that are more reasonable.</p>
+<list list-type="order"><list-item>
+<p><bold>Chemical structure similarity.</bold> SIMCOMP <xref ref-type="bibr" rid="pone.0107100-Hattori1">[12]</xref> is an online tool provided by the KEGG LIGAND database (<ext-link ext-link-type="uri" xlink:href="http://www.genome.jp/ligand" xlink:type="simple">http://www.genome.jp/ligand</ext-link>), which offers a global similarity score by the ratio between the size of common sub-structures and the size of the union structures of two compounds. The similarity between two compounds c and c′ is usually computed as follows:</p>
+</list-item></list>
+<p><disp-formula id="pone.0107100.e001"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e001" xlink:type="simple"/><label>(1)</label></disp-formula></p>
+<p>SIMCOMP can only calculate the compounds whose similar scores are greater than a certain threshold. Therefore, we used the SIMCOMP2 (<ext-link ext-link-type="uri" xlink:href="http://www.genome.jp/tools/simcomp2/" xlink:type="simple">http://www.genome.jp/tools/simcomp2/</ext-link>) to obtain the chemical structure similarity between any two compounds in order to construct a similarity matrix denoted <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e002" xlink:type="simple"/></inline-formula>(<inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e003" xlink:type="simple"/></inline-formula> is the number of drugs).</p>
+<list list-type="simple"><list-item>
+<p>2. <bold>Phenotypic similarity.</bold> We used the phenotypic similarity constructed by van Driel et al. (2006) <xref ref-type="bibr" rid="pone.0107100-vanDriel1">[13]</xref>. The phenotypic similarity <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e004" xlink:type="simple"/></inline-formula> was constructed by identifying the similarity between MeSH terms <xref ref-type="bibr" rid="pone.0107100-Lipscomb1">[14]</xref> appearing in the medical description of diseases from OMIM database <xref ref-type="bibr" rid="pone.0107100-Hamosh1">[15]</xref> (<inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e005" xlink:type="simple"/></inline-formula> is the number of diseases).</p>
+</list-item><list-item>
+<p>3. <bold>Network topology information.</bold> In our study, we constructed an adjacency matrix to represent all of the known drug-disease associations. The underlying assumption here is that if two drugs (diseases) share more diseases (drugs), they are more similar. If a drug associates with a disease, the corresponding element was set a value 1. Otherwise, it was set a value 0. We defined two sharing degree similarity matrixes <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e006" xlink:type="simple"/></inline-formula> and <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e007" xlink:type="simple"/></inline-formula> based on Xia et al. (2010) <xref ref-type="bibr" rid="pone.0107100-Xia1">[16]</xref>. The element in the <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e008" xlink:type="simple"/></inline-formula> row and <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e009" xlink:type="simple"/></inline-formula> column of <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e010" xlink:type="simple"/></inline-formula> (<inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e011" xlink:type="simple"/></inline-formula>) represents the number of diseases shared by the <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e012" xlink:type="simple"/></inline-formula> drug (disease) and the <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e013" xlink:type="simple"/></inline-formula> drug (disease). Meanwhile, Floyd algorithm was used to seek the shortest paths between any two nodes in the graph M4 (has been described in Network topology features). For the <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e014" xlink:type="simple"/></inline-formula> drug, we obtain a vector <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e015" xlink:type="simple"/></inline-formula> constituted of the lengths between the <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e016" xlink:type="simple"/></inline-formula> drug and all of the diseases. Then we compute the Pearson correlation coefficient between the vectors of any two drugs to construct a similarity matrix <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e017" xlink:type="simple"/></inline-formula> which reflects the topology similarities of drugs. Similarly, we construct a similarity matrix <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e018" xlink:type="simple"/></inline-formula> to reflect the topology similarities of diseases.</p>
+</list-item></list>
+<p>Pearson correlation coefficient is used to measure the degree of correlation between two variables <italic>X</italic> and <italic>Y</italic>, which is described as follows:<disp-formula id="pone.0107100.e019"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e019" xlink:type="simple"/><label>(2)</label></disp-formula></p>
+<p>Obviously, the absolute value of it is bigger, the degree of correlation between <italic>X</italic> and <italic>Y</italic> is higher. For two drugs <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e020" xlink:type="simple"/></inline-formula>, <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e021" xlink:type="simple"/></inline-formula> the shortest path similarity of them is computed as follows:<disp-formula id="pone.0107100.e022"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e022" xlink:type="simple"/><label>(3)</label></disp-formula></p>
+<p>Based on the method of Perlman et al. (2011) <xref ref-type="bibr" rid="pone.0107100-Perlman1">[17]</xref>, we combine two similarities including the sharing degree similarity and the shortest path similarity to a single topology similarity by computing their weighted geometric mean. In this way, we obtain the topology similarity matrix <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e023" xlink:type="simple"/></inline-formula> and <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e024" xlink:type="simple"/></inline-formula>.</p>
+<list list-type="simple"><list-item>
+<p>4. <bold>Combination of the biology similarity and the topology similarity.</bold> The drug similarity matrix can be obtained by the linear combination <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e025" xlink:type="simple"/></inline-formula> based on Chen et al (2012) <xref ref-type="bibr" rid="pone.0107100-Chen1">[18]</xref>. Similarly, the disease similarity matrix can be obtained by <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e026" xlink:type="simple"/></inline-formula>. Here, the parameter <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e027" xlink:type="simple"/></inline-formula> and <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e028" xlink:type="simple"/></inline-formula> represent the weight of biology similarity evaluation in the integrated similarity measure.</p>
+</list-item></list>
+</sec><sec id="s2d">
+<title>Construction of graph relevance vectors</title>
+<p>The relevance between a drug D and a disease node in the disease network depends on whether the drug has an association with the disease. If the drug has an association with the disease, the relevance score is 1, otherwise the relevance score is 0. We can get the relevance score between disease S and a drug node in the disease network. The calculation process of the relevance score between a drug D (or a disease S) with a node in the disease network is introduced as follows:</p>
+<list list-type="alpha-lower"><list-item>
+<p>We used the relevance score between drug D and other drug node to describe the drug similarity. Further, we used the relevance between disease S and a disease node to describe the disease similarity. If drug D and a target has known interaction, the relevance score is 1, otherwise, the relevance score is the maximum value of the similarities between drug D and drugs with known interactions with the target.</p>
+</list-item><list-item>
+<p>We used the relevance score between disease S and a target node in the disease network to describe the maximum value of the relevance scores between the target and all of the drugs with associations with disease S.</p>
+</list-item></list>
+</sec><sec id="s2e">
+<title>Construction of the feature vectors</title>
+<p>The graph relevance vector of the drug-disease pair &lt;<italic>d</italic>, <italic>s</italic>&gt; is 447-dimension vectors. Then we calculate the similarity of the graph relevance vector and obtain 609-dimension feature vectors of each drug-disease pair based on Laarhoven et al. (2011) <xref ref-type="bibr" rid="pone.0107100-vanLaarhoven1">[19]</xref>. The similarity between the graph relevance vector of &lt;<italic>d</italic>, <italic>s</italic>&gt; and the graph relevance of a known drug-disease pair can be computed as follows:<disp-formula id="pone.0107100.e029"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e029" xlink:type="simple"/><label>(4)</label></disp-formula></p>
+<p>Where <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e030" xlink:type="simple"/></inline-formula> is the graph relevance vector of &lt;<italic>d</italic>, <italic>s</italic>&gt;, <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e031" xlink:type="simple"/></inline-formula> is the graph relevance vector of a known drug-disease pair, <italic>r</italic> is the control parameter:<disp-formula id="pone.0107100.e032"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e032" xlink:type="simple"/><label>(5)</label></disp-formula></p>
+<p>Where n is the number of the known drug-disease associations, <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e033" xlink:type="simple"/></inline-formula> is the graph relevance vector of a known drug-disease pair.</p>
+</sec><sec id="s2f">
+<title>Computation of network topology features</title>
+<p>In order to investigate the network topology features of the disease network, we first embedded four kinds of relationship networks (drug-disease network, drug-drug network, drug-target network, target-target network) into one integrated network. Then, seven types of topological features were used to analyze the topological structures <xref ref-type="bibr" rid="pone.0107100-Xu1">[20]</xref>–<xref ref-type="bibr" rid="pone.0107100-Glaab1">[21]</xref>. The topological features are introduced as follows, respectively.</p>
+<sec id="s2f1">
+<title>(1) Network diameter</title>
+<p>The network diameter D refers to the maximum value of the shortest path lengths of between all nodes in the graph G, which is computed as follows:<disp-formula id="pone.0107100.e034"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e034" xlink:type="simple"/><label>(6)</label></disp-formula></p>
+<p><italic>d<sub>i</sub></italic><sub>,<italic>j</italic></sub> refers to the length of the shortest path between <italic>v<sub>i</sub></italic> and <italic>v<sub>j</sub></italic>, <italic>m</italic> is the number of nodes. If the network is an unconnected graph, we use its maximal connected sub-graph replace of using infinity to describe the network diameter.</p>
+</sec><sec id="s2f2">
+<title>(2) The characteristic path length</title>
+<p>The characteristic path length refers to the mean value of the shortest path lengths among all nodes in the graph G, which is computed as follows:<disp-formula id="pone.0107100.e035"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e035" xlink:type="simple"/><label>(7)</label></disp-formula></p>
+<p><italic>F(d)</italic> refers to the frequency that the shortest path length <italic>d</italic> appears. If the network is an unconnected graph, its characteristic path length represents the mean path lengths of the nodes.</p>
+</sec><sec id="s2f3">
+<title>(3) Network connectivity efficiency</title>
+<p>Network connectivity efficiency <italic>E</italic> is an index describing the degree of separation of nodes in the network. <italic>E</italic> is bigger means the connectivity of the network is better. <italic>E</italic> is described as follows:<disp-formula id="pone.0107100.e036"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e036" xlink:type="simple"/><label>(8)</label></disp-formula></p>
+</sec><sec id="s2f4">
+<title>(4) The average degree of network</title>
+<p>The average degree of network <italic>k<sub>v</sub></italic> is the mean value of the degrees of all nodes in the network, which is computed as follows:<disp-formula id="pone.0107100.e037"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e037" xlink:type="simple"/><label>(9)</label></disp-formula></p>
+</sec><sec id="s2f5">
+<title>(5) The coefficient of variation</title>
+<p>The coefficient of variationξdescribes the extent of network heterogeneity, which is computed as follows:<disp-formula id="pone.0107100.e038"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e038" xlink:type="simple"/><label>(10)</label></disp-formula></p>
+<p><italic>k<sub>i</sub></italic> is the degree of node <italic>v<sub>i</sub>, k</italic> is the mean degree of all the nodes.</p>
+</sec><sec id="s2f6">
+<title>(6) Clustering coefficient</title>
+<p><italic>k<sub>v</sub></italic> is the degree of node <italic>v, E<sub>v</sub></italic> is the number of edges among the adjacent <italic>k<sub>v</sub></italic> nodes, then the clustering coefficient of node v is:<disp-formula id="pone.0107100.e039"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e039" xlink:type="simple"/><label>(11)</label></disp-formula></p>
+<p>The clustering coefficient of the network represents the average value of the clustering coefficients of all the nodes, which describes the extent of relationships among the adjacent nodes.</p>
+</sec><sec id="s2f7">
+<title>(7) Network structure entropy</title>
+<p>Entropy is a measure of the uniformity of the energy distribution. Higher entropy means the message contain more information and vice versa. The calculation process of network structure entropy is described as follows:</p>
+<p>For the undirected graph G that has m nodes, <italic>k<sub>i</sub></italic> is the degree of node <italic>v<sub>i</sub></italic>, then the importance of <italic>I<sub>i</sub></italic> is <italic>v<sub>i</sub></italic>:<disp-formula id="pone.0107100.e040"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e040" xlink:type="simple"/><label>(12)</label></disp-formula></p>
+<p>The network structure entropy of the undirected graph is described as:<disp-formula id="pone.0107100.e041"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e041" xlink:type="simple"/><label>(13)</label></disp-formula></p>
+<p>When the network is completely uniform, <italic>I<sub>i</sub></italic> = 1/<italic>m</italic>, the maximal value <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e042" xlink:type="simple"/></inline-formula>; When the network is star-like, the network is more uneven. This moment, the network structure entropy is minimum and has the minimal value <italic>En<sub>min</sub></italic> <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e043" xlink:type="simple"/></inline-formula>.</p>
+<p>In order to eliminate the effect of the number of nodes on the entropy, we attempt to normalize the network structure entropy. The normalized network structure entropy is computed as:<disp-formula id="pone.0107100.e044"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e044" xlink:type="simple"/><label>(14)</label></disp-formula></p>
+</sec></sec></sec><sec id="s3">
+<title>Results and Discussion</title>
+<sec id="s3a">
+<title>Network topology and reliability analysis</title>
+<sec id="s3a1">
+<title>(1) Analysis of network topology features</title>
+<p><italic>B</italic> refers to the number of edges in the network, <italic>D</italic> refers to the network diameter, <italic>L</italic> refers to the characteristic path length, <italic>E</italic> refers to the network connectivity efficiency, <italic>K</italic> refers to the average degree of the network, <italic>C</italic> refers to the clustering coefficient, <italic>NE</italic> refers to the standard network structure entropy,<italic>ξ</italic> refers to the characteristic value of the variation coefficient of degree, <italic>M</italic><sub>1</sub> refers to the drug-disease network, <italic>M</italic><sub>2</sub> refers to a network including <italic>M</italic><sub>1</sub> and the drug-drug network, <italic>M</italic><sub>3</sub> refers to a network including <italic>M</italic><sub>2</sub> and the drug-target network, <italic>M</italic><sub>4</sub> refers to a network including <italic>M</italic><sub>3</sub> and the target-target network. <xref ref-type="table" rid="pone-0107100-t001">Table 1</xref> lists the feature information used in the disease network.</p>
+<table-wrap id="pone-0107100-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.t001</object-id><label>Table 1</label><caption>
+<title>Topology features for each network.</title>
+</caption><alternatives><graphic id="pone-0107100-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.t001" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>B</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>D</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>L</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>E</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>K</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>C</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>NE</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>ξ</italic></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold><italic>M</italic></bold><bold><sub>1</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">609</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">3.828</td>
+<td align="left" rowspan="1" colspan="1">0.208</td>
+<td align="left" rowspan="1" colspan="1">4.776</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">0.275</td>
+<td align="left" rowspan="1" colspan="1">2001.357</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold><italic>M</italic></bold><bold><sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">4772</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">2.303</td>
+<td align="left" rowspan="1" colspan="1">0.305</td>
+<td align="left" rowspan="1" colspan="1">37.235</td>
+<td align="left" rowspan="1" colspan="1">0.352</td>
+<td align="left" rowspan="1" colspan="1">0.245</td>
+<td align="left" rowspan="1" colspan="1">1659.563</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold><italic>M</italic></bold><bold><sub>3</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">5381</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">3.005</td>
+<td align="left" rowspan="1" colspan="1">0.384</td>
+<td align="left" rowspan="1" colspan="1">24.217</td>
+<td align="left" rowspan="1" colspan="1">0.515</td>
+<td align="left" rowspan="1" colspan="1">0.340</td>
+<td align="left" rowspan="1" colspan="1">3041.565</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold><italic>M</italic></bold><bold><sub>4</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">5476</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">2.946</td>
+<td align="left" rowspan="1" colspan="1">0.390</td>
+<td align="left" rowspan="1" colspan="1">24.642</td>
+<td align="left" rowspan="1" colspan="1">0.542</td>
+<td align="left" rowspan="1" colspan="1">0.323</td>
+<td align="left" rowspan="1" colspan="1">2946.382</td>
+</tr>
+</tbody>
+</table>
+</alternatives></table-wrap>
+<p>As we can see from <xref ref-type="table" rid="pone-0107100-t001"><bold>Table 1</bold></xref>, the variation coefficient of degree<italic>ξ</italic>in these networks are high, indicating that the networks are all considerable heterogeneous (meaning that only a few nodes in the network have a large number of connections, most of the nodes only have a few connections). Further, the connectivity efficiency E is relatively low, yet the connectivity efficiency has been greatly improved after adding new relationships in <italic>M</italic><sub>1</sub>. This reflects that there are more reachable paths among the nodes in the network to make the connectivity better.</p>
+</sec><sec id="s3a2">
+<title>(2) Analysis of network connectivity and path</title>
+<p>The path length distribution of four networks is shown in <xref ref-type="fig" rid="pone-0107100-g002"><bold>Figure 2</bold></xref>. The horizontal ordinate represents the path length of four networks and the ordinate represents the proportion of the path of length d.</p>
+<fig id="pone-0107100-g002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.g002</object-id><label>Figure 2</label><caption>
+<title>The path length distribution of four types of networks</title>
+<p>.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.g002" position="float" xlink:type="simple"/></fig></sec><sec id="s3a3">
+<title>(3) The characteristic of network degree distribution</title>
+<p>The proportion of nodes with different degrees in the networks is shown in <xref ref-type="table" rid="pone-0107100-t002"><bold>Table 2</bold></xref>. We can see the number of nodes with high degrees increased after adding new interaction relationships in the disease network (<xref ref-type="table" rid="pone-0107100-t002"><bold>Table 2</bold></xref>).</p>
+<table-wrap id="pone-0107100-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.t002</object-id><label>Table 2</label><caption>
+<title>The proportion of nodes with different degrees in the networks.</title>
+</caption><alternatives><graphic id="pone-0107100-t002-2" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.t002" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>Maximum degree</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>k = 1</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>k&lt; = 5</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>k&lt; = 10</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>k&lt; = 15</italic></td>
+<td align="left" rowspan="1" colspan="1"><italic>k&gt;20</italic></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>M<sub>1</sub></italic></td>
+<td align="left" rowspan="1" colspan="1">43</td>
+<td align="left" rowspan="1" colspan="1">45.10%</td>
+<td align="left" rowspan="1" colspan="1">71.76%</td>
+<td align="left" rowspan="1" colspan="1">85.88%</td>
+<td align="left" rowspan="1" colspan="1">92.55%</td>
+<td align="left" rowspan="1" colspan="1">4.31%</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>M<sub>2</sub></italic></td>
+<td align="left" rowspan="1" colspan="1">136</td>
+<td align="left" rowspan="1" colspan="1">7.06%</td>
+<td align="left" rowspan="1" colspan="1">20.78%</td>
+<td align="left" rowspan="1" colspan="1">36.08%</td>
+<td align="left" rowspan="1" colspan="1">45.10%</td>
+<td align="left" rowspan="1" colspan="1">49.80</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>M<sub>3</sub></italic></td>
+<td align="left" rowspan="1" colspan="1">148</td>
+<td align="left" rowspan="1" colspan="1">15.88%</td>
+<td align="left" rowspan="1" colspan="1">42.73%</td>
+<td align="left" rowspan="1" colspan="1">58.39%</td>
+<td align="left" rowspan="1" colspan="1">66.67%</td>
+<td align="left" rowspan="1" colspan="1">30.65%</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>M<sub>4</sub></italic></td>
+<td align="left" rowspan="1" colspan="1">148</td>
+<td align="left" rowspan="1" colspan="1">10.96%</td>
+<td align="left" rowspan="1" colspan="1">39.82%</td>
+<td align="left" rowspan="1" colspan="1">55.93%</td>
+<td align="left" rowspan="1" colspan="1">65.55%</td>
+<td align="left" rowspan="1" colspan="1">30.65%</td>
+</tr>
+</tbody>
+</table>
+</alternatives></table-wrap></sec><sec id="s3a4">
+<title>(4) Analysis of network reliability</title>
+<p>In the paper, we analyze the effect of nodes removal on network reliability by randomly removing and determinately removing according to two methods. (a) Randomly removing a certain proportion nodes, removal ratio rises from 0% to 10%. (b) Orderly removing a certain proportion nodes of high degree, removal ratio rises from 0% to 10%.</p>
+<p>The effect of these two operations on network connectivity efficiency and standard network structure entropy is shown in <xref ref-type="fig" rid="pone-0107100-g003"><bold>Figure 3</bold></xref> and <xref ref-type="fig" rid="pone-0107100-g004"><bold>Figure 4</bold></xref>. For the random removal, we repeated this operation for 20 times and used their average values in order to avoid the deviation.</p>
+<fig id="pone-0107100-g003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.g003</object-id><label>Figure 3</label><caption>
+<title>The effect by randomly removing the nodes.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.g003" position="float" xlink:type="simple"/></fig><fig id="pone-0107100-g004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.g004</object-id><label>Figure 4</label><caption>
+<title>The effect by orderly removing the nodes with high degree.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.g004" position="float" xlink:type="simple"/></fig>
+<p>It is clear that the random removal of nodes has hardly affected the connectivity efficiency and standard network structure entropy of the networks (<xref ref-type="fig" rid="pone-0107100-g003"><bold>Figure 3</bold></xref>). Similarly, the sequential removal has little effect on the network connectivity efficiency, although the standard network structure entropy decreases slightly (<xref ref-type="fig" rid="pone-0107100-g004"><bold>Figure 4</bold></xref>). In summary, the influence caused by randomly removing and orderly removing on the disease network is very slight, which indicates that the disease network is of great shock resistance and reliability.</p>
+</sec></sec><sec id="s3b">
+<title>Learning with local and global consistency</title>
+<p>The basic idea of LLGC method is to achieve a global stability result through the iteratively outward conductance of local known labels. In the study, all of the drug-disease pairs were first divided into two categories including the pairs with associations and the pairs without associations. Then, we construct a weighted undirected graph using the characteristic values of all the training data based on the manifold and clustering assumption. Nodes in the graph represented all the training examples, and a radial basis function was used to define the weights of edges in the graph.</p>
+<p>In order to maximize the effect of the local label diffusion and emphasize the sparse zone of Euclidean distances, we improved the Gauss kernel function:<disp-formula id="pone.0107100.e045"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e045" xlink:type="simple"/><label>(15)</label></disp-formula>where <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e046" xlink:type="simple"/></inline-formula> are the variable parameter, <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e047" xlink:type="simple"/></inline-formula> and <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e048" xlink:type="simple"/></inline-formula> are the feature vector of a drug-disease pair.</p>
+<p>We calculate the regularization matrix S of the weight matrix W in order to ensure the convergence of the algorithm:<disp-formula id="pone.0107100.e049"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e049" xlink:type="simple"/><label>(16)</label></disp-formula></p>
+<p>We make an iterative calculation through the iteration formula:<disp-formula id="pone.0107100.e050"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e050" xlink:type="simple"/><label>(17)</label></disp-formula></p>
+<p>Where Y is a drug-disease association matrix, the element in the <italic>i<sub>th</sub></italic> row and <italic>j<sub>th</sub></italic> column of Y represents whether the <italic>i<sub>th</sub></italic> disease and the <italic>j<sub>th</sub></italic> drug is a known drug-disease pair.</p>
+<p>This iteration formula adheres to the concept of topological manifold, topologically mapping the neighborhood of points to the high dimensional space. Thus, the diffusion extent of the label of a point in the high dimensional space can be measured by the weights of edges passing through the point in the graph.</p>
+</sec><sec id="s3c">
+<title>Algorithm analysis</title>
+<p>According to the iteration formula, we discovery that <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e051" xlink:type="simple"/></inline-formula> has a limit <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e052" xlink:type="simple"/></inline-formula> only when <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e053" xlink:type="simple"/></inline-formula>. Since S is a regularization matrix, <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e054" xlink:type="simple"/></inline-formula> is inevitable, which means <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e055" xlink:type="simple"/></inline-formula> is existent. We can ignore the constant <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e056" xlink:type="simple"/></inline-formula> in the calculation process, so we use <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e057" xlink:type="simple"/></inline-formula> to replace of the iteration formula in order to ensure that there is only truncation error. The energy function of LLGC learning method is described as:<disp-formula id="pone.0107100.e058"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e058" xlink:type="simple"/><label>(18)</label></disp-formula></p>
+<p>First, we can get the same iteration limit by calculating the derivative of the energy function.</p>
+<p>Then, we set the initial labels of drug-disease pairs:<disp-formula id="pone.0107100.e059"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e059" xlink:type="simple"/><label>(19)</label></disp-formula></p>
+<p>Where F is a n×2 matrix.</p>
+<p>Finally, we analyze the results and label the unknown drug-disease pairs:<disp-formula id="pone.0107100.e060"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0107100.e060" xlink:type="simple"/><label>(20)</label></disp-formula></p>
+<p>We infer a drug-disease pair is highly possible to be an associated drug-disease pair if it is labeled with 1.</p>
+</sec><sec id="s3d">
+<title>Parameter optimization</title>
+<p>In this study, three parameters <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e061" xlink:type="simple"/></inline-formula> and <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e062" xlink:type="simple"/></inline-formula> have a significant impact on the performance of the algorithm.<inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e063" xlink:type="simple"/></inline-formula> controls the relational degree between each iteration and the initial label information, and the relational degree between each iteration and the label information obtained after iteration. <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e064" xlink:type="simple"/></inline-formula> is smaller, the relational degree between each iteration and the initial label information is bigger while the relational degree between each iteration and the label information obtained after iteration is smaller.</p>
+<p>In the classic two crescent-shaped Toy dataset, we set two instances of known labels for two types of labels. As shown in <xref ref-type="fig" rid="pone-0107100-g005"><bold>Figure 5</bold></xref>, there is a significant influence brought by <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e065" xlink:type="simple"/></inline-formula> on the results of classification labels. For a dataset with little known labels, local label propagation is more important, meaning that <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e066" xlink:type="simple"/></inline-formula> is bigger and the classification result is better. There are little known labels in our dataset, so we set <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e067" xlink:type="simple"/></inline-formula> in order to maximize label transfer iteration.</p>
+<fig id="pone-0107100-g005" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.g005</object-id><label>Figure 5</label><caption>
+<title>The effect brought by α on the results of classification.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.g005" position="float" xlink:type="simple"/></fig>
+<p><inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e068" xlink:type="simple"/></inline-formula> are the constructional parameters of the weight matrix. <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e069" xlink:type="simple"/></inline-formula> is a reference value. If the Euclidean distance between feature vectors of two drug-disease pairs is smaller than <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e070" xlink:type="simple"/></inline-formula>, it will be smaller than it is before the transformation. If the Euclidean distance between feature vectors of two drug-disease pairs is bigger than <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e071" xlink:type="simple"/></inline-formula>, it will be bigger than it is before the transformation. <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e072" xlink:type="simple"/></inline-formula> plays a role in amplification and reduction. We take <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e073" xlink:type="simple"/></inline-formula> as an example (<xref ref-type="fig" rid="pone-0107100-g006"><bold>Figure 6</bold></xref>). After the transformation, all the distances except the distance with the value equaled to <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e074" xlink:type="simple"/></inline-formula> (blue circle) have been amplified or lessened. The distance transform can amplify the local effect of the algorithm, thus make the result better.</p>
+<fig id="pone-0107100-g006" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.g006</object-id><label>Figure 6</label><caption>
+<title>The change of the Euclidean distances between feature vectors.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.g006" position="float" xlink:type="simple"/></fig>
+<p>The selection of the value of <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e075" xlink:type="simple"/></inline-formula> is based on the statistics of the Euclidean distances among feature vectors of all the drug-disease pairs. As shown in <xref ref-type="fig" rid="pone-0107100-g007"><bold>Figure 7</bold></xref>, there is a trough for the number of distances in [0.088, 0.152] which is equivalent to a sparse band for the locations of a vertex relative to the other vertexes in the graph. The semi-supervised learning method based on manifold assumption uses the sparse band like this as the classification boundary. We take the mean value 0.12 of the sparse band as the value of <inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0107100.e076" xlink:type="simple"/></inline-formula>, which can make the classification effect more obvious.</p>
+<fig id="pone-0107100-g007" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.g007</object-id><label>Figure 7</label><caption>
+<title>The number of Euclidean distances between feature vectors.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.g007" position="float" xlink:type="simple"/></fig></sec><sec id="s3e">
+<title>Prediction assessment</title>
+<p>PREDICT is a method that can obtain good performance in predicting drug indications by previous references <xref ref-type="bibr" rid="pone.0107100-Gottlieb1">[9]</xref>. In order to compare the performance of our method with it, we executed 10-fold cross-validation procedures for 10 times: the dataset of drug-target pairs was divided into 10 subsets, each subset was then taken in turn as a test set and the remaining 9 folds were performed as training set. In each cross-validation, the 548 drug-disease associations are used for training classifier while the remaining 994 unknown drug-disease pairs and 61 drug-disease associations are designated as the testing dataset. The performances of the two methods are evaluated with two quality measures called AUC (Area under the ROC curve) and AUPR (Area under the precision-recall curve). <xref ref-type="fig" rid="pone-0107100-g008">Fi<bold>gure 8</bold></xref> shows the ROC curves and Precision-Recall curves of different methods. As demonstrated in <xref ref-type="fig" rid="pone-0107100-g008">Figure 8</xref>, the proposed method obtain the best results with the AUC score of 97.2% and AUPR score of 79.1%, which is increased by 4% on the AUC scores, and 11% on the AUPR scores comparing with PREDICT method.</p>
+<fig id="pone-0107100-g008" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.g008</object-id><label>Figure 8</label><caption>
+<title>Performance comparison between LLGC and PREDICT method.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.g008" position="float" xlink:type="simple"/></fig></sec><sec id="s3f">
+<title>Predicted drug-disease associations in the networks</title>
+<p>Breast cancer is the most common cancer in women worldwide. It is estimated that more than 1.6 million new cases of breast cancer occurred among women <xref ref-type="bibr" rid="pone.0107100-Siegel1">[22]</xref>. We focus on the drug-disease network for this important disease in the study. The topological graph of the predicted drug-disease network for breast cancer is demonstrated in <xref ref-type="fig" rid="pone-0107100-g009">Figure 9</xref>. We highlighted the predicted drug-disease associations with thick lines. It is shown that breast cancer may have associations with <italic>CISPLATIN</italic>, <italic>IFOSFAMIDE</italic>, <italic>CARBOPLATIN</italic>, <italic>Nedaplatin</italic> and <italic>Bleomycin hydrochloride</italic> (<xref ref-type="fig" rid="pone-0107100-g009"><bold>Figure 9</bold></xref>). Moreover, Doxorubicin and Ovarian cancer, PACLITAXEL and Cervical cancer should be associated drug-disease pairs.</p>
+<fig id="pone-0107100-g009" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.g009</object-id><label>Figure 9</label><caption>
+<title>The drug-disease network of breast cancer.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.g009" position="float" xlink:type="simple"/></fig>
+<p>As shown in the left of <xref ref-type="fig" rid="pone-0107100-g010">Figure 10</xref>, the drugs like <italic>ETOPOSIDE, Aclacinon, IRINOTECAN HYDROCHLORIDE and EPIRUBICIN HYDROCHLORIDE</italic> have many common targets. So we inferred these drugs may have similar pharmacological functions, thus can be used to treat the same diseases. On the other hand, these drugs have indeed associations with some common diseases in the disease network of breast cancer. Therefore, it is reasonable to encourage further investigation and consider progression to clinical trials for this important disease.</p>
+<fig id="pone-0107100-g010" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0107100.g010</object-id><label>Figure 10</label><caption>
+<title>Some drug-target interactions and drug-disease associations in the disease network of breast cancer.</title>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0107100.g010" position="float" xlink:type="simple"/></fig></sec></sec></body>
+<back><ref-list>
+<title>References</title>
+<ref id="pone.0107100-DiMasi1"><label>1</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>DiMasi</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Hansen</surname><given-names>RW</given-names></name>, <name name-style="western"><surname>Grabowski</surname><given-names>HG</given-names></name> (<year>2003</year>) <article-title>The price of innovation: new estimates of drug development costs</article-title>. <source>J Health Econ</source> <volume>22(2)</volume>: <fpage>151</fpage>–<lpage>185</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Chong1"><label>2</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chong</surname><given-names>CR</given-names></name>, <name name-style="western"><surname>Sullivan</surname><given-names>DJ</given-names></name> (<year>2007</year>) <article-title>New uses for old drugs</article-title>. <source>Nature</source> <volume>448</volume>: <fpage>645</fpage>–<lpage>646</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Schena1"><label>3</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Schena</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Shalon</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Davis</surname><given-names>RW</given-names></name>, <name name-style="western"><surname>Brown</surname><given-names>PO</given-names></name> (<year>1995</year>) <article-title>Quantitative monitoring of gene expression patterns with a complementary DNA microarray</article-title>. <source>Science</source> <volume>270(5235)</volume>: <fpage>467</fpage>–<lpage>470</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Shigemizu1"><label>4</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shigemizu</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Hu</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Hung</surname><given-names>JH</given-names></name>, <name name-style="western"><surname>Huang</surname><given-names>CL</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>Y</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Using functional signatures to identify repositioned drugs for breast, myelogenous leukemia and prostate cancer</article-title>. <source>PLoS Comput Biol</source> <volume>8(2)</volume>: <fpage>e1002347</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Chiang1"><label>5</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chiang</surname><given-names>AP</given-names></name>, <name name-style="western"><surname>Butte</surname><given-names>A</given-names></name> (<year>2009</year>) <article-title>Systematic evaluation of drug-disease relationships to identify leads for novel drug uses</article-title>. <source>Clin Phannacol Ther</source> <volume>86</volume>: <fpage>507</fpage>–<lpage>510</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Subramanian1"><label>6</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Subramanian</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Tamayo</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Mootha</surname><given-names>VK</given-names></name>, <name name-style="western"><surname>Mukherjee</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Ebert</surname><given-names>BL</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles</article-title>. <source>Proc Natl Acad Sci USA</source> <volume>102(43)</volume>: <fpage>15545</fpage>–<lpage>50</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Lamb1"><label>7</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lamb</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Crawford</surname><given-names>ED</given-names></name>, <name name-style="western"><surname>Peck</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Modell</surname><given-names>JW</given-names></name>, <name name-style="western"><surname>Blat</surname><given-names>IC</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>The Connectivity Map: using gene-expression signatures to connect small molecules, genes, and disease</article-title>. <source>Science</source> <volume>313</volume>: <fpage>1929</fpage>–<lpage>35</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Li1"><label>8</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Li</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Zhu</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Chen</surname><given-names>JY</given-names></name> (<year>2009</year>) <article-title>Building disease-specific drug-protein connectivity maps from molecular interaction networks and PubMed abstracts</article-title>. <source>PLoS Comput Biol</source> <volume>5</volume>: <fpage>e1000450</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Gottlieb1"><label>9</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gottlieb</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Stein</surname><given-names>GY</given-names></name>, <name name-style="western"><surname>Ruppin</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Sharan</surname><given-names>R</given-names></name> (<year>2011</year>) <article-title>PREDICT: a method for inferring novel drug indications with application to personalized medicine</article-title>. <source>Mol Syst Biol</source> <volume>7</volume>: <fpage>496</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Zhou1"><label>10</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhou</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Bousquet</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Lal</surname><given-names>TN</given-names></name>, <name name-style="western"><surname>Weston</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Scholkopf</surname><given-names>B</given-names></name> (<year>2004</year>) <article-title>Learning with local and global consistency</article-title>. <source>Advances in Neural Information Processing Systems</source> <volume>16(16)</volume>: <fpage>321</fpage>–<lpage>328</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Kanehisa1"><label>11</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kanehisa</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Goto</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Sato</surname><given-names>Y</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>KEGG for integration and interpretation of large-scale molecular data sets</article-title>. <source>Nucleic Acids Res</source> <volume>40(D1)</volume>: <fpage>D109</fpage>–<lpage>D114</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Hattori1"><label>12</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hattori</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Okuno</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Goto</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Kanehisa</surname><given-names>M</given-names></name> (<year>2003</year>) <article-title>Development of a chemical structure comparison method for integrated analysis of chemical and genomic information in the metabolic pathways</article-title>. <source>J Am Chem Soc</source> <volume>125</volume>: <fpage>11853</fpage>–<lpage>65</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-vanDriel1"><label>13</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>van Driel</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Bruggeman</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Vriend</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Brunner</surname><given-names>HG</given-names></name>, <name name-style="western"><surname>Leunissen</surname><given-names>JA</given-names></name> (<year>2006</year>) <article-title>A text-mining analysis of the human phenome</article-title>. <source>Eur J Hum Genet</source> <volume>14(5)</volume>: <fpage>535</fpage>–<lpage>542</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Lipscomb1"><label>14</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lipscomb</surname><given-names>CE</given-names></name> (<year>2000</year>) <article-title>Medical subject headings (MeSH)</article-title>. <source>Bull Med Libr Assoc</source> <volume>88(3)</volume>: <fpage>265</fpage>–<lpage>6</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Hamosh1"><label>15</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hamosh</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Scott</surname><given-names>AF</given-names></name>, <name name-style="western"><surname>Amberger</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Bocchini</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Valle</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>Online Mendelian Inheritance in Man (OMIM), a knowledgebase of human genes and genetic disorders</article-title>. <source>Nucleic Acids Res</source> <volume>30(1)</volume>: <fpage>52</fpage>–<lpage>55</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Xia1"><label>16</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xia</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Wu</surname><given-names>LY</given-names></name>, <name name-style="western"><surname>Zhou</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Wong</surname><given-names>ST</given-names></name> (<year>2010</year>) <article-title>Semi-supervised drug-protein interaction prediction from heterogeneous biological spaces</article-title>. <source>BMC Syst Biol</source> <volume>2</volume>: <fpage>S6</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Perlman1"><label>17</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Perlman</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Gottlieb</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Atias</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Ruppin</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Sharan</surname><given-names>R</given-names></name> (<year>2011</year>) <article-title>Combining drug and gene similarity measures for drug-target elucidation</article-title>. <source>J Comput Bio</source> <volume>18(2)</volume>: <fpage>133</fpage>–<lpage>145</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Chen1"><label>18</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chen</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Liu</surname><given-names>MX</given-names></name>, <name name-style="western"><surname>Yan</surname><given-names>GY</given-names></name> (<year>2012</year>) <article-title>Drug–target interaction prediction by random walk on the heterogeneous network</article-title>. <source>Mol Biosyst</source> <volume>8(7)</volume>: <fpage>1970</fpage>–<lpage>78</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-vanLaarhoven1"><label>19</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>van Laarhoven</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Nabuurs</surname><given-names>SB</given-names></name>, <name name-style="western"><surname>Marchiori</surname><given-names>E</given-names></name> (<year>2011</year>) <article-title>Gaussian interaction profile kernels for predicting drug–target interaction</article-title>. <source>Bioinformatics</source> <volume>27(21)</volume>: <fpage>3036</fpage>–<lpage>43</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Xu1"><label>20</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xu</surname><given-names>JZ</given-names></name>, <name name-style="western"><surname>Li</surname><given-names>YJ</given-names></name> (<year>2006</year>) <article-title>Discovering disease-genes by topological features in human protein-protein interaction network</article-title>. <source>Bioinformatics</source> <volume>22(22)</volume>: <fpage>2800</fpage>–<lpage>2805</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Glaab1"><label>21</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Glaab</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Baudot</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Krasnogor</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Valencia</surname><given-names>A</given-names></name> (<year>2010</year>) <article-title>TopoGSA: network topological gene set analysis</article-title>. <source>Bioinformatics</source> <volume>26(9)</volume>: <fpage>1271</fpage>–<lpage>2</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0107100-Siegel1"><label>22</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Siegel</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Naishadham</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Jemal</surname><given-names>A</given-names></name> (<year>2013</year>) <article-title>Cancer statistics, 2013</article-title>. <source>CA: a cancer journal for clinicians</source> <volume>63(1)</volume>: <fpage>11</fpage>–<lpage>30</lpage>.</mixed-citation>
+</ref>
+</ref-list></back>
+</article>

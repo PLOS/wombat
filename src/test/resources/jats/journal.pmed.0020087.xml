@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="discussion" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="publisher">pmed</journal-id><journal-id journal-id-type="nlm-ta">PLoS Med</journal-id><journal-id journal-id-type="pmc">plosmed</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS Medicine</journal-title></journal-title-group><issn pub-type="epub">1549-1676</issn><issn pub-type="ppub">1549-1277</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="doi">10.1371/journal.pmed.0020087</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Health in Action</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Dermatology</subject>
+        </subj-group>
+        <subj-group subj-group-type="System Taxonomy">
+          <subject>Dermatology</subject>
+          <subject>Medical Informatics</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>telederm.org: Freely Available Online Consultations in Dermatology</article-title><alt-title alt-title-type="running-head">Health in Action</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Soyer</surname>
+            <given-names>H. Peter</given-names>
+          </name>
+          <xref ref-type="corresp" rid="n2">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hofmann-Wellenhof</surname>
+            <given-names>Rainer</given-names>
+          </name>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Massone</surname>
+            <given-names>Cesare</given-names>
+          </name>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Gabler</surname>
+            <given-names>Gerald</given-names>
+          </name>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Dong</surname>
+            <given-names>Huiting</given-names>
+          </name>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Ozdemir</surname>
+            <given-names>Fezal</given-names>
+          </name>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Argenziano</surname>
+            <given-names>Giuseppe</given-names>
+          </name>
+        </contrib>
+      </contrib-group><author-notes>
+        <fn fn-type="current-aff" id="n1">
+          <p>H. Peter Soyer, Rainer Hofman-Wellenhof, and Cesare Massone are in the Department of Dermatology at the Medical University of Graz in Austria. Gerald Gabler is in the Department of IT and Telecommunications at Graz University Clinics and General Hospital in Austria. Huiting Dong is in the Department of Dermatology at the University of Zhengzhou in China. Fezal Ozdemir is in the Department of Dermatology at Ege University in Izmir, Turkey. Giuseppe Argenziano is in the Department of Dermatology at Second University of Naples in Italy.</p>
+        </fn>
+        <corresp id="n2">*To whom correspondence should be addressed. E-mail: <email xlink:type="simple">peter.soyer@meduni-graz.at</email></corresp>
+      <fn fn-type="conflict" id="n3">
+        <p> HPS is Medical Director of the company E-derm-consult. The Web application on which telederm.org operates has been developed and provided by E-derm-consult. telederm.org is a nonprofit project. The other authors declare that they have no competing interests.</p>
+      </fn></author-notes><pub-date pub-type="ppub">
+        <month>4</month>
+        <year>2005</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>26</day>
+        <month>4</month>
+        <year>2005</year>
+      </pub-date><volume>2</volume><issue>4</issue><elocation-id>e87</elocation-id><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2005</copyright-year><copyright-holder>Soyer et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.</license-p></license></permissions><abstract abstract-type="toc">
+        <p>Studies have shown that skin disorders can be reliably diagnosed by online consultations. These consultations are provided free of charge by a new nonprofit organization of skin doctors worldwide.</p>
+      </abstract></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title/>
+      <p>
+        <italic>“e-Health matters. It can improve access to healthcare and boost the quality and effectiveness of the service offered. e-Health describes the application of information and communications technologies across the whole range of functions that affect the health sector.”</italic>
+      </p>
+      <p>This is the introductory statement of a recent communication from the European Commission that produced the report “e-Health—Making Healthcare Better for European Citizens: An Action Plan for a European e-Health Area” [<xref ref-type="bibr" rid="pmed-0020087-b1">1</xref>]. Easy access to expert medical information and counseling independent of social, economic, ethnic, and regional factors is regarded as a major goal of medical policy today.</p>
+      <p>The visual nature of dermatology makes this discipline an obvious candidate for telemedicine techniques, and the feasibility and reliability of teledermatology is already well-established [<xref ref-type="bibr" rid="pmed-0020087-b2">2</xref>,<xref ref-type="bibr" rid="pmed-0020087-b3">3</xref>]. In recent years the teledermatology group of the Department of Dermatology at the Medical University of Graz, Austria, has been involved in several national and international teledermatology projects, with particular emphasis on clinical dermatology, clinicopathologic correlation, and evaluation of pigmented skin lesions [<xref ref-type="bibr" rid="pmed-0020087-b4">4</xref>,<xref ref-type="bibr" rid="pmed-0020087-b5">5</xref>]. Among the activities of the teledermatology group was the organization of the Third European Symposium on Teledermatology in Graz in November 2002 (<ext-link ext-link-type="uri" xlink:href="http://telederm.uni-graz.at" xlink:type="simple">http://telederm.uni-graz.at</ext-link>). Furthermore, together with colleagues from the Department of Dermatology in Jena, Germany, the Graz teledermatology group founded the International Society of Teledermatology (<ext-link ext-link-type="uri" xlink:href="http://www.teledermatology-society.org" xlink:type="simple">http://www.teledermatology-society.org</ext-link>), whose goal is to promote the worldwide exchange of knowledge and expertise in all aspects of dermatology.</p>
+    </sec>
+    <sec id="s2">
+      <title>telederm.org: The Project and the Application</title>
+      <p>telederm.org was initiated in 2002 by H. Peter Soyer, Rainer Hofmann-Wellenhof, and Gerald Gabler with the vision of providing and sharing user-generated dermatologic knowledge on a worldwide level. The basic goal of the project was to create a user-friendly platform for providing teleconsultation services and for discussing challenging and unusual cases in clinical dermatology, dermatopathology, and dermoscopy, with special emphasis on diagnosis, differential diagnosis, and treatment. This online dermatology community is moderated according to the general rules of online communities. (We have previously published a more detailed description of our first experiences with the telederm.org project [<xref ref-type="bibr" rid="pmed-0020087-b6">6</xref>].)</p>
+      <p>The current program (<ext-link ext-link-type="uri" xlink:href="http://www.telederm.org" xlink:type="simple">http://www.telederm.org</ext-link>) is available in English, German, Italian, Chinese, and Turkish. A secure connection is available and registration is required. Only physicians and health-care providers are able to subscribe; they can register as either clients or experts. Subscriptions are free, and are controlled and subsequently activated by the moderator. Each user is also given a personal username and password.</p>
+      <p>The main way users interact with the program is through submitting and responding to “requests”, in which a user solicits a consultation, either from a particular expert or from an online forum, on a particular patient. A maximum of three JPEG images can be uploaded for each request. Requests are integrated with a form for patient clinical data; patient-identifying data are neither required nor allowed. Requests can be sent directly to a special Web site section called “discussion view” that represents the online discussion forum. In this way, consultations are visible to all users, who can either read the consultations as bystanders (users who do not participate in normal forum discourse, but who watch the posted cases) or actively submit online opinions (active users). All users are free to enter the discussion and give their personal opinions; this forum is moderated, and the official language is English. The moderator of the forum currently is Cesare Massone, a colleague with a special background in dermatopathology and clinicopathologic correlation.</p>
+      <p>Almost 400 health-care professionals from 45 different countries subscribed to the services offered by telederm.org between its start in April 2002 and October 2004. Out of over 900 global consultations, 103 were proposed by users in the online discussion forum (<xref ref-type="fig" rid="pmed-0020087-g001">Figures 1</xref> and <xref ref-type="fig" rid="pmed-0020087-g002">2</xref>). The remaining consultations were direct, free consultations between clients and experts that were not presented to the discussion forum.</p>
+      <fig id="pmed-0020087-g001" position="float">
+        <object-id pub-id-type="doi">10.1371/journal.pmed.0020087.g001</object-id>
+        <label>Figure 1</label>
+        <caption>
+          <title>Discussion Forum: Image Viewer Allows Magnification of an Unusual Elbow Lesion</title>
+        </caption>
+        <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pmed.0020087.g001" xlink:type="simple"/>
+      </fig>
+      <fig id="pmed-0020087-g002" position="float">
+        <object-id pub-id-type="doi">10.1371/journal.pmed.0020087.g002</object-id>
+        <label>Figure 2</label>
+        <caption>
+          <title>Overview of the Online Discussion following a User's Request Sent to the ForumEvery user can read the contribution of other colleagues and participate in the forum</title>
+        </caption>
+        <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pmed.0020087.g002" xlink:type="simple"/>
+      </fig>
+      <p>The telederm.org content is determined by the free-access philosophy, which means that it is free to all users, who create the subject matter themselves. The unique aspect of the telederm.org philosophy is that every colleague can easily seek diagnostic advice for free from a pool of other colleagues willing to share their knowledge, some of whom may have more experience in a particular clinical setting. This structure encourages reciprocal exchange: simply by using the multihub facilities of the Internet, a colleague seeking help may later have the opportunity to provide expert advice. The role of the moderator is crucial to introduce and explain the concept of free-access teleconsultation to the users and to control the content of requests.</p>
+    </sec>
+    <sec id="s3">
+      <title>Are Web Consultations as Good as Face-to-Face Consultations?</title>
+      <p>When dealing with skin diseases the question arises whether a Web consultation is as good as a face-to-face consultation or whether there are some important limitations. Store-and-forward systems (SAFs) have been found to be accurate and effective, both when images are sent by E-mail and when they are sent through a Web-based system [<xref ref-type="bibr" rid="pmed-0020087-b7">7</xref>,<xref ref-type="bibr" rid="pmed-0020087-b8">8</xref>].</p>
+      <p>In 2004, Oztas and colleagues studied the reliability of teledermatology diagnoses made using a Web-based system [<xref ref-type="bibr" rid="pmed-0020087-b7">7</xref>]. Clinical photographs and information relating to 125 patients were placed on a Web server. Three dermatologists made the most likely diagnosis via a Web interface. Their diagnoses were compared with a reference diagnosis made in a face-to-face consultation with a fourth dermatologist; when appropriate the diagnosis was confirmed histopathologically. The teledermatologists were correct in 57% of cases when viewing the images alone, and their diagnostic accuracy improved to 70% when additional clinical information was available. The rate of agreement between the teledermatologists ranged from 44% to 70% (kappa = 0.22-0.32). When clinical information was provided, 77% of patients were correctly diagnosed by at least two dermatologists. The authors concluded that Web-based SAF teledermatology is feasible and is comparable with conventional SAF systems (i.e., E-mail systems) [<xref ref-type="bibr" rid="pmed-0020087-b7">7</xref>].</p>
+      <p>In 1999, Piccolo and colleagues showed that based on a study of 66 pigmented skin lesions the diagnostic concordance between face-to-face diagnosis and telediagnosis using conventional SAF systems was 91% [<xref ref-type="bibr" rid="pmed-0020087-b8">8</xref>]. In 2000, the same team in a second study on pigmented skin lesions showed that the level of experience of teledermatologists represented a major limitation of the SAF approach [<xref ref-type="bibr" rid="pmed-0020087-b5">5</xref>].</p>
+      <p>The well-known technical limitations of teledermatology, such as image quality and resolution, nowadays have been basically solved. More basic drawbacks such as the use of inadequate software and hardware certainly depend on the local situation and may differ markedly from country to country. In our experience, however, the most important factor in the accuracy of a given teleconsultation remains the intellectual human component. The telederm.org approach has been designed to discuss cases frankly in an online discussion forum using the asynchronous SAF system in order to overcome “areas of weakness” of a single observer and to receive different diagnostic and therapeutic thoughts from several expert Web viewers on a given case.</p>
+    </sec>
+    <sec id="s4">
+      <title>The Future of the Service</title>
+      <p>Nearly 800 direct consultations have been answered and more than 100 cases have been posted in the discussion view. Moreover, the worldwide community of users is steadily growing, and is almost at 400 registered colleagues, despite the fact that until now no professional marketing activities have been initiated to promote telederm.org. As a way of evaluating the quality of the teledermatology service that telederm.org provides, an easy-to-use E-mail rating system has been implemented for direct consultations.</p>
+      <p>There are other Web sites offering free dermatology information, at least partially provided by users. For example, dermatlas.org (<ext-link ext-link-type="uri" xlink:href="http://dermatlas.med.jhmi.edu/derm/index.cfm" xlink:type="simple">http://dermatlas.med.jhmi.edu/derm/index.cfm</ext-link>) is one of the largest dermatologic atlases supported by users' images. The Dermconsult Web site (<ext-link ext-link-type="uri" xlink:href="http://www.dermconsult.com.au/" xlink:type="simple">http://www.dermconsult.com.au/</ext-link>) is an Australian, private, discretionary, educational Web site, login and password protected, which includes a virtual clinical meeting where dermatologists can post interesting cases with clinical data and images. The Virtual Grand Rounds in Dermatology (<ext-link ext-link-type="uri" xlink:href="http://www.vgrd.org/index.html" xlink:type="simple">http://www.vgrd.org/index.html</ext-link>) also regularly posts cases in clinical dermatology open to users' opinions.</p>
+    </sec>
+    <sec id="s5">
+      <title>Conclusion</title>
+      <p>We have found that skin disorders can be telediagnosed by various experts worldwide, stimulating an exchange of knowledge and expertise. Building a connected world in dermatology by promoting free-access teleconsulting is one way to harness the opportunities opened up by the Internet, although concerns over security and privacy of health-care information remain.</p>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>We thank Walter H. C. Burgdorf, M.D., for his critical review and editing assistance.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pmed-0020087-b1">
+        <label>1</label>
+        <nlm-citation publication-type="journal" xlink:type="simple">
+          <collab xlink:type="simple">European Commission</collab>
+          <article-title>e-Health—Making healthcare better for European citizens: An action plan for a European e-Health Area.</article-title>
+          <year>2004</year>
+          <comment>Available: <ext-link ext-link-type="uri" xlink:href="http://europa.eu.int/information_society/doc/qualif/health/COM_2004_0356_F_EN_ACTE.pdf" xlink:type="simple">http://europa.eu.int/information_society/doc/qualif/health/COM_2004_0356_F_EN_ACTE.pdf</ext-link>. Accessed 9 February 2005</comment>
+        </nlm-citation>
+      </ref>
+      <ref id="pmed-0020087-b2">
+        <label>2</label>
+        <nlm-citation publication-type="journal" xlink:type="simple">
+          <person-group person-group-type="author">
+            <name name-style="western">
+              <surname>Eedy</surname>
+              <given-names>DJ</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Wootton</surname>
+              <given-names>R</given-names>
+            </name>
+          </person-group>
+          <article-title>Teledermatology: A review.</article-title>
+          <source>Br J Dermatol</source>
+          <year>2001</year>
+          <volume>144</volume>
+          <fpage>696</fpage>
+          <lpage>707</lpage>
+        </nlm-citation>
+      </ref>
+      <ref id="pmed-0020087-b3">
+        <label>3</label>
+        <nlm-citation publication-type="journal" xlink:type="simple">
+          <person-group person-group-type="author">
+            <name name-style="western">
+              <surname>McColl</surname>
+              <given-names>I</given-names>
+            </name>
+          </person-group>
+          <article-title>Dermatology education on the Web.</article-title>
+          <source>J Telemed Telecare</source>
+          <year>2003</year>
+          <volume>9</volume>
+          <supplement>Suppl 2</supplement>
+          <fpage>S33</fpage>
+          <lpage>S35</lpage>
+        </nlm-citation>
+      </ref>
+      <ref id="pmed-0020087-b4">
+        <label>4</label>
+        <nlm-citation publication-type="journal" xlink:type="simple">
+          <person-group person-group-type="author">
+            <name name-style="western">
+              <surname>Argenziano</surname>
+              <given-names>G</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Soyer</surname>
+              <given-names>HP</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Chimenti</surname>
+              <given-names>S</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Talamini</surname>
+              <given-names>R</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Corona</surname>
+              <given-names>R</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Dermoscopy of pigmented skin lesions: Results of a consensus meeting via the Internet.</article-title>
+          <source>J Am Acad Dermatol</source>
+          <year>2003</year>
+          <volume>48</volume>
+          <fpage>679</fpage>
+          <lpage>693</lpage>
+        </nlm-citation>
+      </ref>
+      <ref id="pmed-0020087-b5">
+        <label>5</label>
+        <nlm-citation publication-type="journal" xlink:type="simple">
+          <person-group person-group-type="author">
+            <name name-style="western">
+              <surname>Piccolo</surname>
+              <given-names>D</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Smolle</surname>
+              <given-names>J</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Argenziano</surname>
+              <given-names>G</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Wolf</surname>
+              <given-names>IH</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Braun</surname>
+              <given-names>R</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Teledermoscopy—Results of a multicentric study on 43 pigmented skin lesions.</article-title>
+          <source>J Telemed Telecare</source>
+          <year>2000</year>
+          <volume>6</volume>
+          <fpage>132</fpage>
+          <lpage>137</lpage>
+        </nlm-citation>
+      </ref>
+      <ref id="pmed-0020087-b6">
+        <label>6</label>
+        <nlm-citation publication-type="journal" xlink:type="simple">
+          <person-group person-group-type="author">
+            <name name-style="western">
+              <surname>Massone</surname>
+              <given-names>C</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Hofmann-Wellenhof</surname>
+              <given-names>R</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Gabler</surname>
+              <given-names>G</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Dong</surname>
+              <given-names>H</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Kaddu</surname>
+              <given-names>S</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Global Teledermatology: A specific web application for dermatological consultation.</article-title>
+          <source>Internet Health</source>
+          <year>2004</year>
+          <volume>3</volume>
+          <fpage>e3</fpage>
+          <comment>Available: <ext-link ext-link-type="uri" xlink:href="http://www.internet-health.org/ih200431e03.html" xlink:type="simple">http://www.internet-health.org/ih200431e03.html</ext-link>. Accessed 9 February 2005</comment>
+        </nlm-citation>
+      </ref>
+      <ref id="pmed-0020087-b7">
+        <label>7</label>
+        <nlm-citation publication-type="journal" xlink:type="simple">
+          <person-group person-group-type="author">
+            <name name-style="western">
+              <surname>Oztas</surname>
+              <given-names>MO</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Calikoglu</surname>
+              <given-names>E</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Baz</surname>
+              <given-names>K</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Birol</surname>
+              <given-names>A</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Onder</surname>
+              <given-names>M</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Reliability of Web-based teledermatology consultations.</article-title>
+          <source>J Telemed Telecare</source>
+          <year>2004</year>
+          <volume>10</volume>
+          <fpage>25</fpage>
+          <lpage>28</lpage>
+        </nlm-citation>
+      </ref>
+      <ref id="pmed-0020087-b8">
+        <label>8</label>
+        <nlm-citation publication-type="journal" xlink:type="simple">
+          <person-group person-group-type="author">
+            <name name-style="western">
+              <surname>Piccolo</surname>
+              <given-names>D</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Smolle</surname>
+              <given-names>J</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Wolf</surname>
+              <given-names>IH</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Peris</surname>
+              <given-names>K</given-names>
+            </name>
+            <name name-style="western">
+              <surname>Hofmann-Wellenhof</surname>
+              <given-names>R</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>‘Face-to-face’ versus telediagnosis of pigmented skin tumors—A teledermoscopic study.</article-title>
+          <source>Arch Dermatol</source>
+          <year>1999</year>
+          <volume>135</volume>
+          <fpage>1467</fpage>
+          <lpage>1471</lpage>
+        </nlm-citation>
+      </ref>
+    </ref-list>
+    <glossary>
+      <title>Abbreviation</title>
+      <def-list>
+        <def-item>
+          <term>SAF</term>
+          <def>
+            <p>store-and-forward system</p>
+          </def>
+        </def-item>
+      </def-list>
+    </glossary>
+    
+  </back>
+</article>

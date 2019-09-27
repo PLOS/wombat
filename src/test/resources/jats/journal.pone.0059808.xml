@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+      <journal-id journal-id-type="publisher-id">plos</journal-id>
+      <journal-id journal-id-type="pmc">plosone</journal-id>
+      <journal-title-group>
+        <journal-title>PLoS ONE</journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">1932-6203</issn>
+      <publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">PONE-D-13-01741</article-id>
+      <article-id pub-id-type="doi">10.1371/journal.pone.0059808</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Anatomy and physiology</subject>
+            <subj-group>
+              <subject>Immune physiology</subject>
+              <subj-group>
+                <subject>Cytokines</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Physiological processes</subject>
+              <subj-group>
+                <subject>Chronobiology</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Genetics</subject>
+            <subj-group>
+              <subject>Gene expression</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Immunology</subject>
+            <subj-group>
+              <subject>Immunity</subject>
+              <subj-group>
+                <subject>Inflammation</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Model organisms</subject>
+            <subj-group>
+              <subject>Animal models</subject>
+              <subj-group>
+                <subject>Rat</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Molecular cell biology</subject>
+            <subj-group>
+              <subject>Gene expression</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Anatomy and physiology</subject>
+            <subj-group>
+              <subject>Physiological processes</subject>
+              <subj-group>
+                <subject>Chronobiology</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Genetics and Genomics</subject>
+          <subject>Immunology</subject>
+          <subject>Molecular Biology</subject>
+          <subject>Physiology</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Time-Dependent Effects of Localized Inflammation on Peripheral Clock Gene Expression in Rats</article-title>
+        <alt-title alt-title-type="running-head">Effects of Inflammation on Clock Gene Expression</alt-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Westfall</surname>
+            <given-names>Susan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Aguilar-Valles</surname>
+            <given-names>Argel</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Mongrain</surname>
+            <given-names>Valérie</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+          <xref ref-type="fn" rid="fn1">
+            <sup>¤</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Luheshi</surname>
+            <given-names>Giamal N.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Cermakian</surname>
+            <given-names>Nicolas</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <label>1</label>
+        <addr-line>Douglas Mental Health University Institute, Montreal, QC, Canada</addr-line>
+      </aff>
+      <aff id="aff2">
+        <label>2</label>
+        <addr-line>Department of Neurology and Neurosurgery, McGill University, Montreal, QC, Canada</addr-line>
+      </aff>
+      <aff id="aff3">
+        <label>3</label>
+        <addr-line>Department of Psychiatry, McGill University, Montreal, QC, Canada</addr-line>
+      </aff>
+      <contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Yamazaki</surname>
+            <given-names>Shin</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group>
+      <aff id="edit1">
+        <addr-line>Vanderbilt University, United States of America</addr-line>
+      </aff>
+      <author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">nicolas.cermakian@mcgill.ca</email></corresp>
+        <fn fn-type="conflict">
+          <p>Valérie Mongrain and Nicolas Cermakian are both PLOS ONE Editorial Board members. This does not alter the authors' adherence to all the PLOS ONE policies on sharing data and materials.</p>
+        </fn>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: SW VM GL NC. Performed the experiments: SW AAV VM. Analyzed the data: SW AAV VM GL NC. Wrote the paper: SW AAV VM GL NC.</p>
+        </fn>
+        <fn id="fn1" fn-type="current-aff">
+          <label>¤</label>
+          <p>Current address: Centre for Advanced Research in Sleep Medicine, Hôpital du Sacré-Coeur de Montréal; Department of Psychiatry, University of Montreal, Montreal, QC, Canada</p>
+        </fn>
+      </author-notes>
+      <pub-date pub-type="collection">
+        <year>2013</year>
+      </pub-date>
+      <pub-date pub-type="epub">
+        <day>20</day>
+        <month>3</month>
+        <year>2013</year>
+      </pub-date>
+      <volume>8</volume>
+      <issue>3</issue>
+      <elocation-id>e59808</elocation-id>
+      <history>
+        <date date-type="received">
+          <day>9</day>
+          <month>1</month>
+          <year>2013</year>
+        </date>
+        <date date-type="accepted">
+          <day>18</day>
+          <month>2</month>
+          <year>2013</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-year>2013</copyright-year>
+        <copyright-holder>Westfall et al</copyright-holder>
+        <license xlink:type="simple">
+          <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>Many aspects of the immune system, including circulating cytokine levels as well as counts and function of various immune cell types, present circadian rhythms. Notably, the mortality rate of animals subjected to high doses of lipopolysaccharide is dependent on the time of treatment. In addition, the severity of symptoms of various inflammatory conditions follows a daily rhythmic pattern. The mechanisms behind the crosstalk between the circadian and immune systems remain elusive. Here we demonstrate that localized inflammation induced by turpentine oil (TURP) causes a time-dependent induction of interleukin (IL)-6 and has time-, gene- and tissue-specific effects on clock gene expression. More precisely, TURP blunts the peak of <italic>Per1</italic> and <italic>Per2</italic> expression in the liver while in other tissues, the expression nadir is elevated. In contrast, <italic>Rev-erbα</italic> expression remains relatively unaffected by TURP treatment. Co-treatment with the anti-inflammatory agent IL-1 receptor antagonist (IL-1Ra) did not alter the response of <italic>Per2</italic> to TURP treatment in liver, despite the reduced induction of fever and IL-6 serum levels. This indicates that the TURP-mediated changes of <italic>Per2</italic> in the liver might be due to factors other than systemic IL-6 and fever. Accordingly, IL-6 treatment had no effect on clock gene expression in HepG2 liver carcinoma cells. Altogether, we show that localized inflammation causes significant time-dependent changes in peripheral circadian clock gene expression, via a mechanism likely involving mediators independent from IL-6 and fever.</p>
+      </abstract>
+      <funding-group>
+        <funding-statement>This work was supported by Canadian Institutes for Health Research (CIHR) operating grants (MOP-84441, MOP-119322), Fonds de la Recherche en Santé du Québec (FRSQ) Salary Awards (NC), a McGill University Faculty of Medicine Award (NC), a FRSQ graduate scholarship (SW) and FRSQ and NSERC fellowships (VM). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+      </funding-group>
+      <counts>
+        <page-count count="15"/>
+      </counts>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>Circadian clocks allow living organisms to adapt their internal biology to the 24 h day. Variations in environmental cues (or Zeitgebers) such as the light-dark cycle (LD), feeding times or socialization rhythms coordinate molecular circadian oscillations to daily cycles. Circadian clocks are endogenous to most cells in the body and their coordination is essential for internal homeostasis and health <xref ref-type="bibr" rid="pone.0059808-Dibner1">[1]</xref>. The master pacemaker resides in the suprachiasmatic nucleus (SCN) of the anterior hypothalamus and is necessary for the synchronisation of circadian oscillators located in other brain regions and most peripheral tissues <xref ref-type="bibr" rid="pone.0059808-Dibner1">[1]</xref>. The central SCN clock elicits coordination of peripheral clocks through direct neuronal mechanisms <xref ref-type="bibr" rid="pone.0059808-Buijs1">[2]</xref>, <xref ref-type="bibr" rid="pone.0059808-Vujovic1">[3]</xref> and humoral mechanisms <xref ref-type="bibr" rid="pone.0059808-Balsalobre1">[4]</xref>–<xref ref-type="bibr" rid="pone.0059808-Pando1">[6]</xref>. The molecular clock is composed of clock genes including <italic>Clock, Bmal1, Cryptochromes (Cry)1</italic> and <italic>2</italic>, <italic>Periods (Per)1,</italic> and <italic>2</italic> and the orphan nuclear receptors <italic>Rev-erbα</italic> and <italic>Retinoid acid-related orphan receptor (ROR) α</italic>. These clock genes are involved in self-sustaining transcriptional feedback loops that occur with a period of approximately 24 h <xref ref-type="bibr" rid="pone.0059808-Duguay1">[7]</xref>.</p>
+      <p>As is the case for various other regulatory systems, many aspects of the immune system show 24 h rhythms, including circulating cytokine levels and counts of various immune cell types <xref ref-type="bibr" rid="pone.0059808-Haus1">[8]</xref>, <xref ref-type="bibr" rid="pone.0059808-Born1">[9]</xref>. In general, proinflammatory factors peak during the rest phase, which is the dark period in humans and the light period in nocturnal rodents <xref ref-type="bibr" rid="pone.0059808-Lange1">[10]</xref>. Circadian rhythmicity of symptoms is common in inflammatory diseases <xref ref-type="bibr" rid="pone.0059808-Abad1">[11]</xref>. For example, patients suffering from sepsis have the highest susceptibility to mortality in the early morning <xref ref-type="bibr" rid="pone.0059808-Hrushesky1">[12]</xref>, while patients suffering from rheumatoid arthritis, bronchial asthma or ankylosing spondylitis experience their worse symptoms early in the morning <xref ref-type="bibr" rid="pone.0059808-Cutolo1">[13]</xref>–<xref ref-type="bibr" rid="pone.0059808-Smolensky1">[15]</xref>. In rodent models, treatment with the bacterial cell wall component lipopolysaccharide (LPS) during the rest period (light phase) invokes a substantially higher mortality risk compared to animals treated in the active period (dark phase), paralleling peak cytokine induction <xref ref-type="bibr" rid="pone.0059808-Halberg1">[16]</xref>, <xref ref-type="bibr" rid="pone.0059808-Marpegan1">[17]</xref>.</p>
+      <p>In addition to this circadian control of inflammatory processes, inflammatory stimuli can impose changes in both central and peripheral circadian clocks. In humans, LPS administration suppresses clock gene expression in peripheral blood leukocytes <xref ref-type="bibr" rid="pone.0059808-Haimovich1">[18]</xref> Similarly, rodents treated with LPS show suppressed molecular rhythms in both central and peripheral clocks <xref ref-type="bibr" rid="pone.0059808-Okada1">[19]</xref>, <xref ref-type="bibr" rid="pone.0059808-Yamamura1">[20]</xref> and a phase shift of behavioural circadian rhythms <xref ref-type="bibr" rid="pone.0059808-Marpegan2">[21]</xref>.</p>
+      <p>Different inflammatory mediators were proposed to influence central and peripheral clocks <xref ref-type="bibr" rid="pone.0059808-Cavadini1">[22]</xref>–<xref ref-type="bibr" rid="pone.0059808-Ohdo1">[24]</xref>, which could be responsible for the circadian disruptions following an endotoxin challenge. For instance, IL-6 was shown to stimulate <italic>Per1</italic> promoter activity in cultured cells <xref ref-type="bibr" rid="pone.0059808-Motzkus1">[25]</xref>, but nothing is known on its effect on clock genes <italic>in vivo</italic>. Tumor necrosis factor alpha (TNFα) time-dependently suppresses the expression of many clock genes both in cultured cells and <italic>in vivo</italic> <xref ref-type="bibr" rid="pone.0059808-Cavadini1">[22]</xref> and suppresses melatonin in the pineal gland <xref ref-type="bibr" rid="pone.0059808-CarvalhoSousa1">[26]</xref>. Finally, interferon alpha (IFNα) suppresses <italic>Per1</italic> in mouse liver and adrenal glands, but only with treatment during the active phase <xref ref-type="bibr" rid="pone.0059808-Ohdo1">[24]</xref>.</p>
+      <p>In this study, we address the effects of localized inflammation induced with turpentine oil (TURP) treatment on peripheral clock gene expression. An intramuscular TURP injection creates a sterile abscess and inflammation characterized by local synthesis of IL-1β and TNFα <xref ref-type="bibr" rid="pone.0059808-Luheshi1">[27]</xref>, <xref ref-type="bibr" rid="pone.0059808-Zheng1">[28]</xref>. These cytokines do not enter circulation, but induce the synthesis of IL-6, which then induces cyclooxygenase (COX)-2 gene transcription and prostaglandin (PG)E<sub>2</sub> production in the brain thermoregulatory centres, leading to fever development <xref ref-type="bibr" rid="pone.0059808-Zhang1">[29]</xref>. Compared to LPS, TURP presents clear advantages to decipher the mechanism behind the effects of inflammation on circadian clocks. First, TURP elicits a simpler cytokine response, with IL-6 being the only circulating proinflammatory cytokine. Second, the slower time-course of TURP (6 h–10 h to reach maximal IL-6 levels and fever) compared to LPS (2 h–4 h) allows correlations to be made between inflammatory mediators and changes in clock gene expression. Using this strategy, we show that TURP elicits time-, tissue- and gene-specific effects on peripheral clock gene expression. Further, we investigated the possible mechanisms underlying these effects both <italic>in vivo</italic> and <italic>in vitro</italic> and found that despite the correlative peak changes of IL-6 with <italic>Per</italic> gene expression in the liver and heart, IL-6 does not seem to act directly to mediate these effects.</p>
+    </sec>
+    <sec id="s2" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s2a">
+        <title>Ethics Statement</title>
+        <p>All procedures with animals were approved by Douglas Institute Facility Animal Care Committee and McGill University Animal Care Committee, in line with the guidelines of the Canadian Council on Animal Care.</p>
+      </sec>
+      <sec id="s2b">
+        <title>Animals</title>
+        <p>Adult male Sprague-Dawley rats (2–3 months old, weighing 250–300 g at the time of experiment; Charles River, Saint Constant, QC, Canada) were used in the experiments. The animals were housed individually in a controlled environment with a regular 12 h:12 h LD cycle (∼200 lux in the light periods) in an ambient temperature of 21±2°C. Regular chow and water were available <italic>ad libitum</italic>.</p>
+      </sec>
+      <sec id="s2c">
+        <title>Treatments</title>
+        <p>In all experiments, animals were treated with either 0.1 mL of purified turpentine oil (TURP) (Riedel-deHaen, Sleeze, Germany) or 0.1 mL of sterile physiological saline by intramuscular (I.M.) injection into the right gastrocnemius muscle (hind-limb).</p>
+        <p>In one experiment, animals were treated with human recombinant (hr) IL-1Ra (provided by Dr. Stephen Poole, National Institute for Biological Standards and Control, Hertfordshire, UK). Animals were treated intraperitoneally (I.P.) at a dose of 1 mg/kg at 0, 4, 8, and 12 h after TURP treatment. The hrIL-1Ra was dissolved in physiological saline to a concentration of 1 mg/mL, and control animals were treated similarly with an equal volume of physiological saline.</p>
+        <p>The times of treatment and sacrifice varied depending on the experiment. Animals were sacrificed by decapitation, blood was collected by trunk bleed into sterile tubes and serum was isolated by immediate centrifugation at 4000 rpm and 4°C for 10 min. Aliquots were made and samples frozen at −80°C until use. Livers, hearts, kidneys and spleens were collected upon sacrifice, frozen on dry ice and stored at −80°C until use.</p>
+        <p>Analgesics were not used in our study, primarily because of the potential impact on some of our endpoint measures: Analgesics were shown to alter inflammatory responses and to affect the levels of pro-inflammatory cytokines <xref ref-type="bibr" rid="pone.0059808-Lee1">[30]</xref>, <xref ref-type="bibr" rid="pone.0059808-Spinas1">[31]</xref>. Moreover, analgesic treatment has impacts on circadian rhythms and on clock gene expression <xref ref-type="bibr" rid="pone.0059808-Hood1">[32]</xref>, <xref ref-type="bibr" rid="pone.0059808-Vansteensel1">[33]</xref>. Additionally, the pain experienced by the rats upon injection of the dose of TURP used in our study (0.1 mL) is relatively minor, compared to the effects of the higher dose of 0.6 mL of TURP used in some of our previous studies <xref ref-type="bibr" rid="pone.0059808-Cooper1">[34]</xref>, and the animals did not exhibit any outward signs of distress nor any pain-induced vocalization.</p>
+        <p>All injections during the dark phase (ZT12-ZT0) were performed under dim red light. When animals were to be sacrificed during the dark phase, they were taken out of the room in a lightproof box and were not exposed to light until less than a minute before sacrifice.</p>
+      </sec>
+      <sec id="s2d">
+        <title>Temperature Recordings</title>
+        <p>Temperature was monitored using remote radio-biotelemetry (Data Science International, St Paul, MN, USA) as previously described <xref ref-type="bibr" rid="pone.0059808-Sachot1">[35]</xref>. Briefly, two weeks before the experiment, animals were abdominally implanted with pre-calibrated temperature-sensitive radio transmitters (TA10TA-F40, Data Sciences International) under isoflurane anaesthesia. Two days before the experiment, animals were placed on individual receiver boards containing an antenna to monitor the temperature output frequency (Hz) every 10 min until sacrifice. The temperature frequency was converted into degrees centigrade with Dataquest software (Data Sciences International). The baseline 24 h temperature fluctuation was established two days prior to treatment in each animal to ensure a normal diurnal profile.</p>
+      </sec>
+      <sec id="s2e">
+        <title><italic>In vivo</italic> Experiments</title>
+        <p>Before each of the following three experiments, animals were habituated for 2 weeks in a 12 h:12 h LD cycle with daily handling at least one week before the experiment. This involved taking the animals out of their cages and manipulating them in the same way they would be at the time of injection (i.e., for handling prior to I.M. injection, animals held at the side of the experimenter and their rear gastrocnemious muscle revealed; prior to I.P. injections, animals wrapped in the same towel as for the injections and positioned such as to receive an injection).</p>
+        <sec id="s2e1">
+          <title>Experiment 1: The effect of a morning TURP injection on clock gene expression</title>
+          <p>Animals were treated with either TURP or saline at ZT2 (2 h after lights on given that Zeitgeber Time 0 [ZT0] corresponds to lights on and ZT12 to lights off). Animals were then sacrificed 2, 6, 10, 14, 18, and 22 h after treatment (i.e. ZT4, ZT8, ZT12, ZT16, ZT20 and ZT0 time of sacrifice (TOS), respectively). Each group included 4 animals. All measurements for clock genes and cytokines were performed at the TOS.</p>
+        </sec>
+        <sec id="s2e2">
+          <title>Experiment 2: The effect of injection time on TURP-induced changes of clock gene expression</title>
+          <p>Animals were treated with either TURP or saline at 4 time points over 24 h: ZT2, ZT8, ZT14 and ZT20 time of injection (TOI). Animals were then sacrificed exactly 10 h after the TOI (i.e., ZT12, ZT18, ZT0 and ZT6 TOS, respectively) as this time corresponds with the maximal fever response in response to TURP <xref ref-type="bibr" rid="pone.0059808-Luheshi1">[27]</xref>. There were 5 animals per time point each for TURP and saline. Measurements for clock genes and cytokines were performed at the TOS.</p>
+        </sec>
+        <sec id="s2e3">
+          <title>Experiment 3: The effects of anti-inflammatory IL-1Ra treatment on TURP-induced changes of clock gene expression</title>
+          <p>Animals were treated with either TURP or saline at ZT2 and sacrificed at ZT12 or ZT16 (10 h and 14 h after TOI, respectively). In each of the injection groups, animals were treated with either hrIL-1Ra or saline making a total of 4 groups per time of sacrifice (saline-saline, saline-hrIL-1Ra, TURP-saline, and TURP-IL-1Ra). The ZT12 group had a total of 3 hrIL-1Ra treatments at 0, 4 and 8 h after TOI (i.e., ZT2, ZT6, and ZT10, respectively) and the ZT16 group had 4 hrIL-1Ra treatments at 0, 4, 8 and 12 h after TOI (i.e., ZT2, ZT6, ZT10 and ZT14, respectively). Given the short half-life of IL-1Ra, multiple injections were required for a full effect on fever and IL-6 <xref ref-type="bibr" rid="pone.0059808-Luheshi2">[36]</xref>. Further, IL-1Ra blocks the upregulation of IL-6 and to completely attenuate its response, IL-1Ra must be administered early in the TURP time-course when IL-6 begins to be produced <xref ref-type="bibr" rid="pone.0059808-Luheshi2">[36]</xref>.</p>
+        </sec>
+      </sec>
+      <sec id="s2f">
+        <title>Cell Culture Experiment</title>
+        <p>The human carcinoma HepG2 cells were provided by Dr. Cindy Goodyer (McGill University, Montreal). Cells were seeded in 6-well plates at a density of 0.3×10<sup>6</sup> cells per plate in Dulbecco’s modified Eagle’s medium (DMEM) (Life Technologies, Burlington, ON) supplemented with 10% fetal bovine serum (FBS) (Life Technologies), 2 mM L-glutamine (Life Technologies), and 100 mg/mL penicillin-streptomycin and grown to confluency at 37°C in 5% CO<sub>2</sub>. One day (24 h) before the first time point, growth media was replaced with a starvation media containing 0.5% FBS. On the day of the experiment, cells were transferred to a serum-free media containing the various concentrations of human recombinant IL-6 (CedarLane, Burlington, ON). Cells were then washed with cold PBS, lysed in Trizol (Life Technologies), and frozen at −80°C until use.</p>
+      </sec>
+      <sec id="s2g">
+        <title>Cytokine Assays</title>
+        <p>Serum concentrations of IL-6, IL-1Ra and TNFα were obtained in duplicate using an in-house-developed sandwich enzyme-linked immunosorbent assay (ELISA) (secondary enzymes supplied by NIBSC, Potters Bar, UK) as previously described <xref ref-type="bibr" rid="pone.0059808-Sachot1">[35]</xref>. The detection limit was between 30 and 50 pg/mL for IL-6, TNFα and IL-1Ra, as indicated in figure legends. The inter-assay variability was below 4% and the intra-assay variability was below 9% for all experiments.</p>
+      </sec>
+      <sec id="s2h">
+        <title>Clock Gene Expression</title>
+        <p>RNA was extracted using Trizol (Life Technologies) according to the manufacturer’s protocol. cDNA was synthesized using the MultiScribe reverse-transcription kit (Life Technologies) according to manufacturer’s instructions. In all rat tissues, clock gene expression was assessed using SYBR Green quantitative PCR (qPCR) (Life Technologies, 7500 Real-Time PCR System). Primers for clock genes <italic>Per1, Per2</italic> and <italic>Rev-erbα</italic>, were designed using Primer3 software (sequences in <xref ref-type="supplementary-material" rid="pone.0059808.s004">Table S1</xref>). The control primers tested were <italic>Histone H1, HPRT (hypoxanthine-guanine phosphoribosyl transferase), GAPDH (glyceraldehyde-3-phosphate), Ubi (ubiquitin), and Tbp (TATA box binding protein)</italic> (sequences in <xref ref-type="supplementary-material" rid="pone.0059808.s004">Table S1</xref>) <xref ref-type="bibr" rid="pone.0059808-Cailotto1">[37]</xref>. In order to determine the most stable control genes over time and condition the GeNorm v3.3 software was used <xref ref-type="bibr" rid="pone.0059808-Vandesompele1">[38]</xref>. For each experiment conducted, two control genes were selected (<xref ref-type="supplementary-material" rid="pone.0059808.s005">Table S2</xref>).</p>
+        <p>In the human HepG2 cell line, mRNA expression was assessed with quantitative PCR using TaqMan probes (Life Technologies) as outlined by the manufacturer. From a set of 5 genes (<italic>B2M; beta-2-microglobin, PPiA; peptidylprolyl isomerase A, TBP; TATA-binding protein, RPLPO; large ribosomal protein, GAPDH; glyceraldehyde-3-phosphate dehydrogenase, ACTB; beta-actin</italic>), the most stable control genes over both time and treatment were determined using GeNorm as described above: <italic>B2M</italic> (H200984230_m1) and <italic>PPiA</italic> (Hs04194521_s1). For clock gene expression, the following probe sets were used: <italic>Per1</italic> (H200242988_m1), <italic>Per2</italic> (Hs00256143_m1), <italic>Rev-erbα</italic> (Hs00253876_m1), <italic>Serum amyloid A2</italic> (Hs00605928_g1) and <italic>Haptoglobin</italic> (Hs01667582_m1). The relative mRNA expression of each clock gene was assessed by normalizing to the geometric mean of the two control genes, and then to a reference sample, using the 2<sup>−ΔΔCT</sup> method <xref ref-type="bibr" rid="pone.0059808-Livak1">[39]</xref>.</p>
+      </sec>
+      <sec id="s2i">
+        <title>Statistical Analysis</title>
+        <p>In Experiments 1 and 2, the temperature curve differences, cytokine induction over time and changes in clock gene RNA levels were analyzed by two-way ANOVAs with factors Time and Condition. In Experiment 3, the variation in temperature over time in all the groups was analyzed with a three-way ANOVA with factors Time and Condition for TURP and Condition for IL-1Ra; and group differences in cytokine induction and clock gene expression were analyzed with a one-way ANOVA. Finally, clock gene expression in HepG2 genes was analyzed using two-way ANOVAs with factors Time and Condition. For ANOVAs, significant effects were decomposed using Tukey’s post hoc analysis for pair-wise comparisons when applicable. Induction of <italic>SAA2</italic> and <italic>HP</italic> gene expression in HepG2 cells was analyzed with Student t-tests. Statistical significance was set to <italic>p</italic>&lt;0.05 and results are reported as mean ± SEM.</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Results</title>
+      <sec id="s3a">
+        <title>The Effect of TURP Treatment on Fever, Cytokine Induction and Peripheral Clock Gene Expression <italic>in vivo</italic></title>
+        <p>In Experiment 1, the effect of TURP on the rhythmic expression of clock genes in four peripheral tissues (liver, heart, kidney, spleen) was examined. Animals were treated with either TURP or saline early in the light phase at ZT2 (2 h after lights on) and were sacrificed 2, 6, 10, 14, 18 and 22 h after treatment (ZT4, ZT8, ZT12, ZT16, ZT20 and ZT0, respectively).</p>
+        <p>In Experiment 2, the effect of TURP on fever, cytokine levels and peripheral clock gene expression was compared for different injection times. Animals were treated with TURP at ZT20, ZT2, ZT8 and ZT14 times of injection (TOI) and sacrificed 10 h later at ZT6, ZT12, ZT18 and ZT0 times of sacrifice (TOS), respectively.</p>
+        <sec id="s3a1">
+          <title>TURP induces a characteristic rise in temperature</title>
+          <p>In both Experiments 1 and 2, TURP treatment induced a significant increase of temperature compared to the saline controls (<xref ref-type="fig" rid="pone-0059808-g001">Figs. 1A, B</xref>, <xref ref-type="fig" rid="pone-0059808-g002">2A, B</xref>). The temperature began to rise significantly 5–6 h after injection and reached a plateau at 8–9 h, as expected based on previous studies <xref ref-type="bibr" rid="pone.0059808-Luheshi1">[27]</xref>. In Experiment 1, when the temperature in the last 30 minutes before sacrifice was considered, the magnitude of fever induction at sacrifice showed a significant Time×Condition interaction (<italic>F</italic><sub>5,115</sub> = 19.85, <italic>p</italic>&lt;0.001) (<xref ref-type="fig" rid="pone-0059808-g001">Fig. 1B</xref>). The maximal difference between the saline- and TURP-treated groups occurred 10 h after injection (i.e. ZT12 TOS) (<xref ref-type="fig" rid="pone-0059808-g001">Fig. 1B</xref>). This rise began to subside 14 h after treatment and was back to nearly baseline levels after 22 h (<xref ref-type="fig" rid="pone-0059808-g001">Fig. 1A, B</xref>). This is consistent with previous studies <xref ref-type="bibr" rid="pone.0059808-Luheshi1">[27]</xref>.</p>
+          <fig id="pone-0059808-g001" position="float">
+            <object-id pub-id-type="doi">10.1371/journal.pone.0059808.g001</object-id>
+            <label>Figure 1</label>
+            <caption>
+              <title>Fever and IL-6 induction over time after TURP treatment at ZT2.</title>
+              <p>Animals were treated with either saline or TURP at ZT2 (0 hours) and sacrificed at the 6 different time points, ZT4, ZT8, ZT12, ZT16, ZT20, and ZT0 (time of sacrifice, TOS), which correspond to 2, 6, 10, 14, 18, and 22 h after injection (HAI), respectively. (A) Core body temperature was monitored beginning 1 h before treatment and every 10 min after treatment until sacrifice. Closed boxes represent saline-treated animals and open boxes represent TURP-treated animals. Two-way ANOVA Time×Condition <italic>p</italic>&lt;0.001 at all TOS, except ZT4 (<italic>p</italic>&lt;0.05) and ZT8 (<italic>p</italic>&gt;0.05); Tukey post hoc tests between saline and TURP-treated groups (done for the graphs where there was a Time×Condition interaction) *<italic>p</italic>&lt;0.05; n = 4. (B) The temperature at sacrifice was averaged between all animals in the last 30 min (3 time points). Closed boxes represent saline-treated animals and open boxes represent TURP-treated animals. Two-way ANOVA Time×Condition <italic>p</italic>&lt;0.001; Tukey post hoc tests between the saline- and TURP-treated groups *<italic>p</italic>&lt;0.05; n = 4. (C) Serum IL-6 levels at sacrifice were measured by ELISA. The assay detection limit is 30 pg/mL. Closed boxes represent saline-treated animals and open boxes represent TURP-treated animals. Between the saline- and TURP-treated groups *<italic>p</italic>&lt;0.05; n = 4. Clock gene expression data for this experiment can be found in <xref ref-type="fig" rid="pone-0059808-g003">Fig. 3</xref>.</p>
+            </caption>
+            <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059808.g001" position="float" xlink:type="simple"/>
+          </fig>
+          <fig id="pone-0059808-g002" position="float">
+            <object-id pub-id-type="doi">10.1371/journal.pone.0059808.g002</object-id>
+            <label>Figure 2</label>
+            <caption>
+              <title>Time-dependent effect of TURP treatment on fever induction and IL-6 levels.</title>
+              <p>Animals were treated with either TURP or saline at ZT14, ZT20, ZT2 or ZT18 (time of injection, TOI) and sacrificed 10 h later at ZT0, ZT6, ZT12 and ZT18 (time of sacrifice, TOS), respectively. (A) Core body temperature was monitored beginning 1 h before treatment and every 10 min after treatment until sacrifice. Animals were treated and sacrificed at the indicated time points. Closed boxes represent saline-treated animals and open boxes represent TURP-treated animals. Two-way ANOVA Time×Condition <italic>p</italic>&lt;0.001 at all time points; Tukey post hoc tests between saline- and TURP-treated groups <italic>*p</italic>&lt;0.05; n = 5. (B) The temperature at sacrifice of the last three recordings (30 min before sacrifice) was averaged among all animals in each group. Closed boxes represent saline-treated animals and open boxes represent TURP-treated animals. Two-way ANOVA Time×Condition <italic>p</italic>&lt;0.001; Tukey post hoc tests between saline- and TURP-treated groups <italic>*p</italic>&lt;0.01; between time points, different letters <italic>p</italic>&lt;0.05, share one letter <italic>p</italic>&gt;0.05; n = 5. (C) Serum IL-6 levels at sacrifice were measured by ELISA. The assay detection limit was 50 pg/mL. Closed boxes represent saline-treated animals and open boxes represent TURP-treated animals. Two-way ANOVA Time×Condition <italic>p</italic>&lt;0.001; Tukey post hoc tests between the saline- and TURP-treated groups *<italic>p</italic>&lt;0.05; between time points, only different letters <italic>p</italic>&lt;0.05, share one letter <italic>p</italic>&gt;0.01; n = 5. Clock gene expression data for this experiment can be found in <xref ref-type="fig" rid="pone-0059808-g004">Fig. 4</xref>.</p>
+            </caption>
+            <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059808.g002" position="float" xlink:type="simple"/>
+          </fig>
+          <p>Interestingly, in Experiment 2, while the magnitude of fever induction at sacrifice showed a significant Time×Condition interaction (<italic>F</italic><sub>3,99</sub> = 19.91, <italic>p</italic>&lt;0.001) (<xref ref-type="fig" rid="pone-0059808-g002">Fig. 2B</xref>), post hoc analysis revealed that the temperature at sacrifice was mainly independent of the TOI, except for animals sacrificed at ZT0, where the temperature was slightly lower compared to all other TURP-treated groups (<xref ref-type="fig" rid="pone-0059808-g002">Fig. 2B</xref>).</p>
+          <p>The rapid and transient increase in temperature observed in all experiments right after injection of TURP or saline is due to a stress response consequent to both handling and injection. Since this increase is seen in both the saline and TURP groups and is of lower magnitude than the TURP-induced fever, and given the long time course of cytokines and fever in the TURP model (6–10 h before reaching a peak response), this initial transient increase in temperature did not likely affect our observations and conclusions.</p>
+        </sec>
+        <sec id="s3a2">
+          <title>TURP treatment leads to a time-dependent induction of IL-6</title>
+          <p>It was shown that serum IL-6 begins to rise 4 h and peaks 6 h after TURP treatment, slightly preceding the fever profile <xref ref-type="bibr" rid="pone.0059808-Luheshi1">[27]</xref>. Other cytokines, namely IL-1β and TNFα are not released into the serum, but can be locally synthesized in a tissue-specific manner <xref ref-type="bibr" rid="pone.0059808-Sheikh1">[40]</xref>, <xref ref-type="bibr" rid="pone.0059808-Josephs1">[41]</xref>. In Experiment 1, IL-6 showed a rise in response to TURP starting at ZT8 TOS, 6 h after treatment (main effect of treatment, <italic>F</italic><sub>1,32</sub> = 7.48, <italic>p</italic>&lt;0.05; <xref ref-type="fig" rid="pone-0059808-g001">Fig. 1C</xref>). Although the Time×Condition interaction was not significant (<italic>F</italic><sub>5,32</sub> = 1.05, <italic>p</italic>&gt;0.05), there was a significant variation over time in the TURP group (<italic>F</italic><sub>5,32</sub> = 2.28, <italic>p</italic>&lt;0.01), but not in the saline control (<italic>F</italic><sub>5,32</sub> = 0.649, <italic>p</italic>&gt;0.05). Post hoc analysis revealed a significant TURP-induced increase in IL-6 over the saline controls 6, 10, 14 and 18 h after injection (ZT8, ZT12, ZT16 and ZT20 TOS, respectively; <italic>p</italic>&lt;0.05), and was back to baseline levels after 22 h (ZT0 TOS). This profile parallels the increase in temperature.</p>
+          <p>In Experiment 2, there was a significant Time×Condition interaction of IL-6 levels at sacrifice when TURP was injected 10 h earlier (<italic>F</italic><sub>3,31</sub> = 5.76, <italic>p</italic>&lt;0.001; <xref ref-type="fig" rid="pone-0059808-g002">Fig. 2C</xref>). At TOS ZT0, ZT6 and ZT12, IL-6 was significantly increased compared to saline controls (p&lt;0.05), but not at ZT18. Also, the induced levels of IL-6 varied significantly over time in the TURP-treated group only (<italic>F</italic><sub>3,31</sub> = 11.53, <italic>p</italic>&lt;0.001), with IL-6 levels in the TURP-treated group being significantly higher at TOS ZT12 than at TOS ZT0 or ZT18 (<italic>p</italic>&lt;0.05).</p>
+          <p>Serum levels of IL-1Ra and TNFα were also measured at sacrifice. Previous reports have shown that upon TURP treatment, IL-1Ra is induced while TNFα is unaltered <xref ref-type="bibr" rid="pone.0059808-Luheshi1">[27]</xref>, <xref ref-type="bibr" rid="pone.0059808-Josephs1">[41]</xref>. Accordingly, comparable to IL-6, IL-1Ra rose following TURP injection when the TOS was in the early active phase (ZT12-18) in both Experiments 1 and 2 (<xref ref-type="supplementary-material" rid="pone.0059808.s001">Figs. S1A and S2A</xref>), but a significant Time×Condition interaction was found only in Experiment 2. TNFα levels were significantly elevated above saline controls in Experiment 1 at ZT4, ZT12 and ZT0 (2, 10 and 22h after injection, respectively) (<xref ref-type="supplementary-material" rid="pone.0059808.s001">Fig. S1B</xref>, <italic>p</italic>&lt;0.05) and in Experiment 2 at ZT0 TOS (<xref ref-type="supplementary-material" rid="pone.0059808.s002">Fig. S2B</xref>, <italic>p</italic>&lt;0.05). This induction, although significant, is several times smaller than TNFα induction usually observed in inflammatory models <xref ref-type="bibr" rid="pone.0059808-Perretti1">[42]</xref>.</p>
+        </sec>
+        <sec id="s3a3">
+          <title>In vivo experiment 1: The effect of a morning TURP injection on clock gene expression</title>
+          <p>Time-, tissue-, and gene-specific changes in clock gene expression were noted following TURP treatment in the early light phase (ZT2) (<xref ref-type="fig" rid="pone-0059808-g003">Fig. 3</xref>). In the liver, there was a significant Time×Condition interaction for <italic>Per1</italic> (<italic>F</italic><sub>3,31</sub> = 2.84, <italic>p</italic>&lt;0.05) and <italic>Per2</italic> (<italic>F</italic><sub>3,31</sub> = 15.30, <italic>p</italic>&lt;0.001), but not <italic>Rev-erbα</italic>. <italic>Per1</italic> varied over time in both the saline (<italic>F</italic><sub>3,31</sub> = 3.38, <italic>p</italic>&lt;0.05) and TURP-treated groups (<italic>F</italic><sub>3,31</sub> = 3.72, <italic>p</italic>&lt;0.01). Post hoc tests revealed a significant decrease in the TURP-treated group only at ZT16 TOS, the peak time of <italic>Per1</italic> gene expression (<italic>p</italic>&lt;0.001). Similarly, <italic>Per2</italic> also varied over time in both the saline (<italic>F</italic><sub>3,31</sub> = 12.02, <italic>p</italic>&lt;0.001) and TURP-treated groups (<italic>F</italic><sub>3,31</sub> = 34.12, <italic>p</italic>&lt;0.001), and was suppressed in the TURP-treated group at ZT16, ZT20 and ZT0 TOS (<italic>p</italic>&lt;0.01).</p>
+          <fig id="pone-0059808-g003" position="float">
+            <object-id pub-id-type="doi">10.1371/journal.pone.0059808.g003</object-id>
+            <label>Figure 3</label>
+            <caption>
+              <title>Clock gene expression over time after TURP treatment at ZT2.</title>
+              <p>Animals were treated with either saline or TURP at ZT2 (0 h) and sacrificed at the 6 different time points, ZT4, ZT8, ZT12, ZT16, ZT20, and ZT0 (time of sacrifice, TOS), which correspond to 2, 6, 10, 14, 18, and 22 h after injection (HAI), respectively. Tissues were harvested upon sacrifice and RNA extracted. The relative expression of the clock genes <italic>Per1, Per2</italic> and <italic>Rev-erbα</italic> in the liver, heart, kidney and spleen is represented. Gene expression is relative to one sample in the ZT2 sacrifice group. Closed boxes represent saline-treated animals and open boxes represent TURP-treated animals. Two-way ANOVA Time×Condition <italic>p</italic>&lt;0.05 for <italic>Per1</italic> in liver and heart and <italic>Per2</italic> in liver, <italic>p</italic>&gt;0.05 for all others (p = 0.0532 for <italic>Per1</italic> in the heart); Tukey post hoc tests between saline and TURP-treated groups at each time point (done for graphs where there was a Time×Condition interaction) *<italic>p</italic>&lt;0.05; n = 4. Body temperature and cytokine data for this experiment can be found in <xref ref-type="fig" rid="pone-0059808-g001">Figs 1</xref> and <xref ref-type="supplementary-material" rid="pone.0059808.s001">S1</xref>.</p>
+            </caption>
+            <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059808.g003" position="float" xlink:type="simple"/>
+          </fig>
+          <p>In the heart, there was a significant Time×Condition interaction only for <italic>Per2</italic> (<italic>F</italic><sub>3,31</sub> = 2.82, <italic>p</italic>&lt;0.05). The significant variation over time in the saline controls (<italic>F</italic><sub>3,31</sub> = 6.68, <italic>p</italic>&lt;0.001) remained after TURP treatment (<italic>F</italic><sub>3,31</sub> = 3.35, <italic>p</italic>&lt;0.01). There was a decrease of <italic>Per2</italic> expression at the endogenous peak of expression 14 h after treatment (ZT16 TOS; <italic>p</italic>&lt;0.05) and an increase in expression 10 h after treatment (ZT12; <italic>p</italic>&lt;0.01). There was no significant interaction for either <italic>Per1</italic> or <italic>Rev-erbα</italic>. However, for <italic>Per1</italic> there was a trend for the main effect of Condition (<italic>F</italic><sub>1,31</sub> = 4.03, <italic>p</italic> = 0.0532), and the variation over time in the saline controls (<italic>F</italic><sub>3,31</sub> = 2.17, <italic>p</italic>&lt;0.05) was lost after TURP-treatment (<italic>F</italic><sub>3,31</sub> = 0.86, <italic>p</italic>&gt;0.05). In the kidney and spleen, there were no significant main effects or Time×Condition interactions for any of the clock genes.</p>
+        </sec>
+        <sec id="s3a4">
+          <title>In vivo experiment 2: The effect of injection time on TURP-induced changes of clock gene expression</title>
+          <p>The previous experiment showed a tissue-specific effect of TURP treatment on clock gene expression. However, treatment time may also affect the magnitude of the response. To address this, rats were treated at 4 time points over 24 h and sacrificed 10 h later, corresponding with the time of maximal febrile response <xref ref-type="bibr" rid="pone.0059808-Luheshi1">[27]</xref> (<xref ref-type="fig" rid="pone-0059808-g001">Fig. 1</xref>).</p>
+          <p>Considering the saline-treated controls in all tissues, <italic>Per1</italic> peaked around ZT12, <italic>Per2</italic> between ZT12 and ZT18, and <italic>Rev-erb-alpha</italic> at ZT6 (<xref ref-type="fig" rid="pone-0059808-g004">Fig. 4</xref>). In general, these phases of expression are consistent with previous reports <xref ref-type="bibr" rid="pone.0059808-Oishi1">[43]</xref>–<xref ref-type="bibr" rid="pone.0059808-Shearman1">[45]</xref>.</p>
+          <fig id="pone-0059808-g004" position="float">
+            <object-id pub-id-type="doi">10.1371/journal.pone.0059808.g004</object-id>
+            <label>Figure 4</label>
+            <caption>
+              <title>Time-dependent effect of TURP treatment on peripheral clock gene expression.</title>
+              <p>Animals were treated with either TURP or saline at ZT4, ZT20, ZT2 and ZT8 (time of injection, TOI) and sacrificed 10 h later at ZT0, ZT6, ZT12 and ZT18 (time of sacrifice, TOS), respectively. Tissues were harvested upon sacrifice and RNA extracted. The relative expression of the clock genes <italic>Per1, Per2</italic> and <italic>Rev-erbα</italic> in the liver, heart, kidney and spleen is represented. Gene expression is relative to one arbitrarily chosen sample in the ZT0 TOS group. Closed boxes represent saline-treated animals and open boxes represent TURP-treated animals. Two-way ANOVA Time×Condition <italic>p</italic>&lt;0.05 for <italic>Per1</italic> in liver and spleen, <italic>Per2</italic> in liver, heart and kidney, <italic>Rev-erbα</italic> in liver, kidney and spleen, <italic>p</italic>&gt;0.05 for the others (p = 0.0862 for <italic>Per1</italic> in the kidney); Tukey post hoc tests between saline and TURP-treated groups at each time point (done for graphs where there was a Time×Condition interaction) *<italic>p</italic>&lt;0.05; n = 5. Body temperature and cytokine data for this experiment can be found in <xref ref-type="fig" rid="pone-0059808-g002">Figs 2</xref> and <xref ref-type="supplementary-material" rid="pone.0059808.s002">S2</xref>.</p>
+            </caption>
+            <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059808.g004" position="float" xlink:type="simple"/>
+          </fig>
+          <p>In the liver, there was a significant Time×Condition interaction for <italic>Per1</italic> (<italic>F</italic><sub>3,31</sub> = 3.79, <italic>p</italic>&lt;0.05) and <italic>Per2</italic> (<italic>F</italic><sub>3,31</sub> = 5.63, <italic>p</italic>&lt;0.01) (<xref ref-type="fig" rid="pone-0059808-g004">Fig. 4</xref>). Post hoc analysis showed that TURP treatment significantly downregulated both <italic>Per1</italic> and <italic>Per2</italic> at ZT12 TOS (<italic>p</italic>&lt;0.01). Further, <italic>Per2</italic> was also attenuated at ZT18 TOS (<italic>p</italic>&lt;0.001). Consequently, the effect of time on <italic>Per1</italic> and <italic>Per2</italic> expression was lost in TURP-treated animals (<italic>F</italic><sub>3,31</sub> = 2.53, <italic>p</italic>&gt;0.05; and <italic>F</italic><sub>3,31</sub> = 2.94, <italic>p</italic>&gt;0.05, respectively). <italic>Rev-erbα</italic> expression also showed a significant Time×Condition interaction (<italic>F</italic><sub>3,31</sub> = 3.90, <italic>p</italic>&lt;0.05). Although the variation over time remained significant in the TURP-treated group (<italic>F</italic><sub>3,31</sub> = 23.63, <italic>p</italic>&lt;0.001), post hoc analysis revealed a significant decrease at ZT6 TOS (<italic>p</italic>&lt;0.01).</p>
+          <p>In the heart, there was a significant Time×Condition interaction only for <italic>Per2</italic> (<italic>F</italic><sub>3,31</sub> = 5.96, <italic>p</italic>&lt;0.01). Post hoc tests revealed that TURP treatment increased <italic>Per2</italic> expression at ZT6 TOS compared to saline controls (<italic>p&lt;</italic>0.05, <xref ref-type="fig" rid="pone-0059808-g004">Fig. 4</xref>). Similarly to the liver, <italic>Per2</italic> expression was blunted at ZT12 TOS (<italic>p</italic>&lt;0.05). Again, the significant effect of time in the saline controls of <italic>Per2</italic> (<italic>F</italic><sub>3,31</sub> = 7.93, <italic>p</italic>&lt;0.001) was lost in the TURP-treated group (<italic>F</italic><sub>3,31</sub> = 1.42, <italic>p</italic>&gt;0.05). Although there was no significant interaction for <italic>Per1</italic>, the significant time effect in the saline group (<italic>F</italic><sub>3,31</sub> = 3.26, <italic>p</italic>&lt;0.05) was lost in the TURP group (<italic>F</italic><sub>3,31</sub> = 1.11, <italic>p</italic>&gt;0.05). <italic>Rev-erbα</italic> showed a time effect (F<sub>3,31</sub> = 8.61 p&lt;0.001), but remained unaffected by TURP treatment.</p>
+          <p>In the kidney, there was a significant Time×Condition interaction for <italic>Per2</italic> (<italic>F</italic><sub>3,31</sub> = 5.42, <italic>p</italic>&lt;0.01) and <italic>Rev-erbα</italic> (<italic>F</italic><sub>3,31</sub> = 5.91, <italic>p</italic>&lt;0.01). <italic>Per2</italic> maintained its variation over time in both the saline (<italic>F</italic><sub>3,31</sub> = 21.87, <italic>p</italic>&lt;0.001) and TURP groups (<italic>F</italic><sub>3,31</sub> = 2.99, <italic>p</italic>&lt;0.05), but there was a significant reduction of <italic>Per2</italic> expression at ZT18 TOS (<italic>p</italic>&lt;0.001). Similar to the liver, <italic>Rev-erbα</italic> expression was reduced at ZT6 TOS in the TURP-treated group (<italic>p&lt;</italic>0.001). Although there was no significant interaction for <italic>Per1</italic>, there was a trend for the main effect of Condition (<italic>F</italic><sub>1,31</sub> = 3.14, <italic>p</italic> = 0.0862).</p>
+          <p>In the spleen, there was a significant Time×Condition interaction for <italic>Per1</italic> (<italic>F</italic><sub>3,31</sub> = 4.60, <italic>p</italic>&lt;0.01) and <italic>Rev-erbα</italic> (<italic>F</italic><sub>3,31</sub> = 5.58, <italic>p</italic>&lt;0.01), but not for <italic>Per2</italic>. <italic>Per1</italic> varied significantly over time in both the saline (<italic>F</italic><sub>3,31</sub> = 3.67, <italic>p</italic>&lt;0.05) and TURP groups (<italic>F</italic><sub>3,31</sub> = 3.50, <italic>p</italic>&lt;0.05), and post hoc analyses revealed an increase at ZT6 TOS (<italic>p&lt;</italic>0.01) and a reduction at ZT12 TOS (<italic>p&lt;</italic>0.05) in the TURP group compared to the saline group. Finally, <italic>Rev-erbα</italic> was reduced at ZT6 TOS (<italic>p&lt;</italic>0.001), similar to the kidney and liver.</p>
+        </sec>
+      </sec>
+      <sec id="s3b">
+        <title><italic>In vivo</italic> experiment 3: The Effects of anti-inflammatory IL-1Ra Treatment on TURP-Induced Changes of Clock Gene Expression</title>
+        <p>IL-1Ra is an anti-inflammatory cytokine upregulated following TURP treatment and is necessary to moderate the febrile response <xref ref-type="bibr" rid="pone.0059808-Fischer1">[46]</xref>. IL-1Ra is a competitive antagonist of the IL-1 receptor <xref ref-type="bibr" rid="pone.0059808-Luheshi2">[36]</xref> and consequently, it blocks IL-6 induction and fever in the TURP model by acting on IL-1 receptor at the site of localized inflammation <xref ref-type="bibr" rid="pone.0059808-Luheshi2">[36]</xref>. The co-injection of hrIL-1Ra and TURP was used to assess the contribution of IL-6 to clock gene expression changes. At ZT2, animals were treated with either saline or TURP (I.M.) and in each group, the animals were also injected several times with either saline or hrIL-1Ra (I.P.). Two times of sacrifice were investigated based on the times of greatest change in Experiments 1 and 2: ZT12 and ZT16 TOS (10 h and 14 h after treatment, respectively). Altogether there were 4 groups per time point of sacrifice: saline-saline, saline-hrIL-1Ra, TURP-saline, and TURP-hrIL-1Ra.</p>
+        <sec id="s3b1">
+          <title>IL-1Ra treatment attenuates fever induction</title>
+          <p>At ZT12 (<xref ref-type="fig" rid="pone-0059808-g005">Fig. 5A</xref>) there was a significant Time×Condition interaction (<italic>F</italic><sub>198,670</sub> = 6.891, <italic>p</italic>&lt;0.001). Post hoc tests revealed the expected fever induction upon TURP treatment alone (between the saline-saline and TURP-saline groups, <italic>p</italic>&lt;0.001), starting 3.33 h after treatment. Co-treatment with IL-1Ra led to an attenuated fever induction (between the TURP-saline and TURP-IL-1Ra groups, <italic>p</italic>&lt;0.001), a difference that was significant from 5.33 h after treatment, lasting until sacrifice. Under TURP-IL-1Ra co-treatment, temperature was still significantly elevated compared to the control without TURP (<italic>p</italic>&lt;0.001). Similarly, at ZT16 (<xref ref-type="fig" rid="pone-0059808-g005">Fig. 5B</xref>), there was a significant Time×Condition interaction (<italic>F</italic><sub>267,1237</sub> = 3.259, <italic>p</italic>&lt;0.001). Here also, fever induction upon TURP treatment was significant (between the saline-saline and TURP-saline groups, <italic>p</italic>&lt;0.001), a decrease of fever was observed upon co-treatment with IL-1Ra (between the TURP-saline and TURP-IL-1Ra groups, <italic>p</italic>&lt;0.001), but to levels that were still significantly higher than controls without TURP (<italic>p</italic>&lt;0.001).</p>
+          <fig id="pone-0059808-g005" position="float">
+            <object-id pub-id-type="doi">10.1371/journal.pone.0059808.g005</object-id>
+            <label>Figure 5</label>
+            <caption>
+              <title>Fever and IL-6 induction after TURP treatment with or without IL-1Ra co-treatment.</title>
+              <p>All animals were treated with either saline or TURP at ZT2 and sacrificed at either (A, C) ZT12 or (B, D) ZT16. Animals in each group were further treated with either saline or hrIL-1Ra 0, 4, and 8 h after the initial treatment (for animals sacrificed at ZT12) or 0, 4, 8, and 12 h after the initial treatment (for animals sacrificed at ZT16). (A, B) Core body temperature was monitored beginning 1 h before treatment and every 10 min after treatment until sacrifice. At both the ZT12 and ZT16 points of sacrifice there are 4 groups, depicted in the inset of panel A. Three-way ANOVA Time×Condition for TURP and IL-1Ra: <italic>p</italic>&lt;0.001 for both the ZT12 and the ZT16 groups, simple effects of Condition or Time also <italic>p</italic>&lt;0.001 in both cases, Tukey post hoc tests between conditions all <italic>p</italic>&lt;0.001, except for ZT12, saline-saline vs. saline-IL-1Ra (p<italic>&lt;</italic>0.05) and for ZT16, saline-saline vs. saline-IL-1Ra (p<italic>&gt;</italic>0.05); n = 5. Significance in Tukey post hoc tests between the saline-saline and TURP-saline groups is represented with *, between TURP-saline and TURP-IL-1Ra with †, and between saline-IL-1Ra and TURP-IL-1Ra with ‡. (C, D) Serum IL-6 was assessed by ELISA at sacrifice (ZT12 in C, ZT16 in D). One-way ANOVA for the four groups <italic>p</italic>&lt;0.01; Tukey post hoc tests between groups, different letter <italic>p</italic>&lt;0.05, share one letter <italic>p</italic>&gt;0.05; n = 5. Clock gene expression data for this experiment can be found in <xref ref-type="fig" rid="pone-0059808-g006">Fig. 6</xref>.</p>
+            </caption>
+            <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059808.g005" position="float" xlink:type="simple"/>
+          </fig>
+        </sec>
+        <sec id="s3b2">
+          <title>IL-1Ra treatment blunts IL-6 induction</title>
+          <p>There was a significant effect of Condition on IL-6 levels at both TOS ZT12 (<italic>F</italic><sub>3,32</sub> = 9.27, <italic>p</italic>&lt;0.01) and ZT16 (<italic>F</italic><sub>3,32</sub> = 8.63, <italic>p</italic>&lt;0.01) (<xref ref-type="fig" rid="pone-0059808-g005">Fig. 5C, D</xref>). At both ZT12 and ZT16, there was a significant rise in IL-6 in the TURP-saline group compared to the saline-saline control. While there was no change in IL-6 levels in the saline-IL-1Ra group compared to the saline-saline group, IL-1Ra reduced TURP-mediated IL-6 induction at ZT12 and ZT16 (<italic>p</italic>&lt;0.05) to the level of the saline-saline group (<italic>p</italic>&gt;0.05) (<xref ref-type="fig" rid="pone-0059808-g005">Fig. 5C, D</xref>).</p>
+          <p>There was a significant effect of Condition on IL-1Ra levels at both TOS ZT12 (<italic>F</italic><sub>3,32</sub> = 8.40, <italic>p</italic>&lt;0.001) and ZT16 (<italic>F</italic><sub>3,32</sub> = 8.04, <italic>p</italic>&lt;0.001) (<xref ref-type="supplementary-material" rid="pone.0059808.s003">Fig. S3</xref>). The ELISA assay is specific to rat IL-1Ra and does not cross-react with exogenous hrIL-1Ra. Accordingly, there was no difference in the ZT12 sacrifice group between animals treated with IL-1Ra and the corresponding saline-treated controls. There was also the expected increase of IL-1Ra in the TURP-saline group compared to the saline-saline control (<xref ref-type="supplementary-material" rid="pone.0059808.s003">Fig. S3A</xref>). At ZT16, there was a significant elevation of IL-1Ra at ZT16 upon IL-1Ra administration, and an apparent but insignificant increase in IL-1Ra in the TURP-saline group compared to the saline-saline control (<xref ref-type="supplementary-material" rid="pone.0059808.s003">Fig. S3B</xref>).</p>
+        </sec>
+        <sec id="s3b3">
+          <title>The effects of TURP on liver clock gene expression are not reduced upon IL-1Ra treatment</title>
+          <p>As the animals in this experiment were all treated with either saline or TURP at ZT2, we expected an effect similar to Experiments 1 and 2 of the TURP injection on clock gene expression in the liver at ZT12 and ZT16 (10 h and 14 h after TURP treatment, respectively). In general, we expected a decrease in <italic>Per</italic> gene expression at ZT12 and ZT16 and no change in <italic>Rev-erbα.</italic> Unexpectedly, there was no change among the four conditions for <italic>Per1</italic> at ZT12 (<italic>F</italic><sub>3,32</sub> = 0.41, <italic>p</italic>&gt;0.05; <xref ref-type="fig" rid="pone-0059808-g006">Fig. 6A, left panel</xref>) while at ZT16, even if there was an effect of Condition (<italic>F</italic><sub>3,32</sub> = 3.84, <italic>p</italic>&lt;0.05) there was no significant difference between the saline-saline and saline-TURP conditions (<xref ref-type="fig" rid="pone-0059808-g006">Fig. 6B, left panel</xref>).</p>
+          <fig id="pone-0059808-g006" position="float">
+            <object-id pub-id-type="doi">10.1371/journal.pone.0059808.g006</object-id>
+            <label>Figure 6</label>
+            <caption>
+              <title>Changes in clock gene expression after TURP treatment with or without IL-1Ra co-treatment.</title>
+              <p>All animals were treated with either saline or TURP at ZT2 and sacrificed at either (A) ZT12 or (B) ZT16 with IL-1Ra treatment 0, 4, 8, and 12 h after the TURP treatment (12 h IL-1Ra treatment not done in the group of rats sacrificed at ZT12). At sacrifice, the liver was harvested and relative expression of the clock gene <italic>Per1, Per2</italic> and <italic>Rev-erbα</italic> was determined. One-way ANOVA for the four groups <italic>p</italic>&lt;0.05 for <italic>Per2</italic> and <italic>Rev-erbα</italic> at ZT12 and <italic>Per1</italic> and <italic>Per2</italic> at ZT16, <italic>p</italic>&gt;0.05 for the others; Tukey post hoc tests between groups (when ANOVA shows significant interaction), only different letters between groups <italic>p</italic>&lt;0.05, share one letter <italic>p</italic>&gt;0.05; n = 5. Body temperature and cytokine data for this experiment can be found in <xref ref-type="fig" rid="pone-0059808-g005">Figs 5</xref> and <xref ref-type="supplementary-material" rid="pone.0059808.s003">S3</xref>.</p>
+            </caption>
+            <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059808.g006" position="float" xlink:type="simple"/>
+          </fig>
+          <p>However, as expected, <italic>Per2</italic> showed an effect of Condition at both ZT12 (<italic>F</italic><sub>3,32</sub> = 3.42, <italic>p</italic>&lt;0.05; <xref ref-type="fig" rid="pone-0059808-g006">Fig. 6A</xref>, middle panel) and ZT16 (<italic>F</italic><sub>3,32</sub> = 5.89, <italic>p</italic>&lt;0.01; <xref ref-type="fig" rid="pone-0059808-g006">Fig. 6B</xref>, middle panel), and in both cases significantly reduced mRNA levels in the TURP-saline group compared to the saline-saline group. Based on the suppression of IL-6 levels upon hrIL-1Ra treatment (<xref ref-type="fig" rid="pone-0059808-g005">Fig. 5C, D</xref>), if IL-6 serves as a mediator for the effects of TURP on clock genes, one would predict that these latter effects be blunted upon hrIL-1Ra treatment. Interestingly though, with the addition of hrIL-1Ra treatment, there was no change in <italic>Per2</italic> expression compared to the TURP-saline group (<xref ref-type="fig" rid="pone-0059808-g006">Fig. 6A and B</xref>, middle panels), indicating that neither systemic fever nor systemic IL-6 induction contributes to liver <italic>Per2</italic> expression in this model.</p>
+          <p>For <italic>Rev-erbα,</italic> there was an effect of Condition at ZT12 (<italic>F</italic><sub>3,32</sub> = 3.21, <italic>p</italic>&lt;0.05), with a significant elevation in the TURP-only group compared to the saline controls, and no change upon addition of IL-1Ra at ZT12 (<xref ref-type="fig" rid="pone-0059808-g006">Fig. 6A, right panel</xref>). On the other hand, there was no effect of Condition at ZT16 (<italic>F</italic><sub>3,32</sub> = 0.84, <italic>p</italic>&gt;0.05; <xref ref-type="fig" rid="pone-0059808-g006">Fig. 6B, right panel</xref>).</p>
+        </sec>
+      </sec>
+      <sec id="s3c">
+        <title>Effect of IL-6 on a Liver-derived Cell Line <italic>in vitro</italic></title>
+        <p>To assess the direct effect of IL-6 on clock gene expression in hepatocytes, human hepatoma cells (HepG2) were treated with 0, 25 and 100 ng/mL of IL-6 and clock gene expression was assessed for up to 4 h after treatment. These IL-6 concentrations were previously shown in primary hepatocyte cells to elicit the an upregulation of the acute phase gene <italic>CINC-1</italic> in a similar magnitude as that induced during an inflammatory challenge <italic>in vivo</italic> <xref ref-type="bibr" rid="pone.0059808-Sheikh2">[47]</xref>. As shown in <xref ref-type="fig" rid="pone-0059808-g007">Fig. 7A–C</xref>, there was no Time×Condition interaction for the expression of <italic>Per1</italic> (<italic>F</italic><sub>8,19</sub> = 1.56; <italic>p</italic>&gt;0.05), <italic>Per2</italic> (F<sub>8,19</sub> = 0.89; <italic>p</italic>&gt;0.05) or <italic>Rev-erbα</italic> (F<sub>8,19</sub> = 0.60; <italic>p</italic>&gt;0.05). This is consistent with our <italic>in vivo</italic> data (<xref ref-type="fig" rid="pone-0059808-g005">Figs 5</xref> and <xref ref-type="fig" rid="pone-0059808-g006">6</xref>) pointing to mediators others than IL-6 for the acute effect of TURP treatment on liver clock gene expression. To ensure that IL-6 was able to invoke a response in these cells under our experimental conditions, we confirmed that gene expression for the acute phase proteins serum amyloid A2 (<italic>SAA2</italic>) and haptoglobin (<italic>HP</italic>) was upregulated upon IL-6 treatment (<italic>SAA2,</italic> 0 vs. 25 ng/mL at 1 h, <italic>t</italic><sub>4</sub> = 6.70, <italic>p</italic>&lt;0.01; <italic>HP,</italic> 0 vs. 25 ng/mL at 1 h, <italic>t</italic><sub>4</sub> = 7.65, <italic>p</italic>&lt;0.01; <xref ref-type="fig" rid="pone-0059808-g007">Fig. 7D</xref>), as previously shown <xref ref-type="bibr" rid="pone.0059808-Hagihara1">[48]</xref>, <xref ref-type="bibr" rid="pone.0059808-Brock1">[49]</xref>.</p>
+        <fig id="pone-0059808-g007" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0059808.g007</object-id>
+          <label>Figure 7</label>
+          <caption>
+            <title>The effect of IL-6 on clock gene expression in HepG2 cells.</title>
+            <p>(A, B, C) HepG2 cells were treated with 0, 25, or 100 ng/mL of IL-6 and mRNA was extracted 0.5, 1, 2, and 4 h after the start of the treatment. Relative expression of <italic>Per1</italic> (A), <italic>Per2</italic> (B) and <italic>Rev-erbα</italic> (C) was determined. Dose of IL-6 are depicted in the inset of panel A. Two-way ANOVA Time×Condition <italic>p</italic>&gt;0.05 for all three genes. (D) Expression of <italic>SAA2</italic> (serum amyloid A2) and <italic>HP</italic> (haptoglobin) in selected samples of the same experiment as in (A, B, C). Each data point is the average of 3 culture wells. Student t test between the 1 h-0 ng/mL and 1 h-25 ng/mL groups *<italic>p</italic>&lt;0.05; n = 5.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059808.g007" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+    </sec>
+    <sec id="s4">
+      <title>Discussion</title>
+      <p>We report that TURP-induced inflammation produces time-, gene-, and tissue-specific changes in clock gene expression in rat peripheral tissues. Interestingly, alterations in liver clock gene expression correlate with changes in IL-6 expression. However, by co-treatment with the anti-inflammatory IL-1Ra, we show that systemic IL-6 does not seem to contribute to the suppression of <italic>Per2</italic> in the liver. Accordingly, the <italic>in vitro</italic> cell culture study also suggests that IL-6 does not act directly on liver cells to induce changes in clock gene expression.</p>
+      <p>Studies show that fever parallels IL-6 induction in the TURP model <xref ref-type="bibr" rid="pone.0059808-Luheshi1">[27]</xref>, <xref ref-type="bibr" rid="pone.0059808-Turnbull1">[50]</xref>. This is indeed what we have observed when TURP treatment was done in the morning (<italic>in vivo</italic> experiment 1, <xref ref-type="fig" rid="pone-0059808-g001">Fig. 1</xref>). However, by comparing the outcome of treatment at different times of day (<italic>in vivo</italic> experiment 2, <xref ref-type="fig" rid="pone-0059808-g002">Fig. 2</xref>), we demonstrate that the serum concentration of IL-6 ten hours after TURP treatment is dependent on the time of injection. On the other hand, fever remains largely independent of TURP injection time (except the slight reduction upon sacrifice at ZT0). The magnitude of the systemic fever response was shown by others to be independent of the time of LPS treatment <xref ref-type="bibr" rid="pone.0059808-Severinsen1">[51]</xref>, although the rise in temperature in the brain is dependent on this timing of treatment <xref ref-type="bibr" rid="pone.0059808-Mathias1">[52]</xref>.</p>
+      <p>A possible explanation for the time-dependent induction of IL-6 could lie in the balance of rhythmic humoral factors. One possibility is the balance of melatonin and glucocorticoids, rhythmic hormones that are immune-activating <xref ref-type="bibr" rid="pone.0059808-CarrilloVico1">[53]</xref> and immune-suppressing <xref ref-type="bibr" rid="pone.0059808-Webster1">[54]</xref>, respectively, which might be differentially regulated by the treatment at different times of day. Melatonin was also shown to act on LPS-induced intracellular signalling <xref ref-type="bibr" rid="pone.0059808-Tamura1">[55]</xref>. Another possibility for the time-dependency of IL-6 response to TURP is a circadian regulation of cytokine secretion by immune cells upon stimulation by a pro-inflammatory agent, as was shown for the LPS treatment of macrophages <xref ref-type="bibr" rid="pone.0059808-Gibbs1">[56]</xref>–<xref ref-type="bibr" rid="pone.0059808-Narasimamurthy1">[58]</xref> and the activation of splenocytes through toll-like receptor 9 <xref ref-type="bibr" rid="pone.0059808-Silver1">[59]</xref>.</p>
+      <p>We observed large TURP-mediated changes in clock genes expression that were time-, tissue- and gene-dependent (<xref ref-type="fig" rid="pone-0059808-g003">Figs 3</xref> and <xref ref-type="fig" rid="pone-0059808-g004">4</xref>). <italic>Per1</italic> and <italic>Per2</italic> gene expression in the liver was downregulated at their normal peak (early dark phase) upon morning TURP treatment. In contrast, the effects on <italic>Per</italic> genes in other tissues were stronger when treatment occurred in the night, with an elevation of the expression nadir in the middle of the light phase. Effects on <italic>Rev-erbα</italic> mRNA levels were more subtle, but included a similar decrease of peak mRNA levels in the daytime after night-time treatment in the liver, kidney and spleen.</p>
+      <p>LPS and TURP constitute different models of inflammation: LPS provokes a fast systemic inflammatory response while TURP induces a slower response to a localized inflammation. Despite these differences, clocks respond in a similar manner to both agents. Notably, <italic>Per1</italic>/<italic>Per2</italic> RNA levels at their peak expression in the early dark phase are blunted by LPS <xref ref-type="bibr" rid="pone.0059808-Okada1">[19]</xref>, <xref ref-type="bibr" rid="pone.0059808-Yamamura1">[20]</xref> and by TURP (<xref ref-type="fig" rid="pone-0059808-g003">Figs 3</xref> and <xref ref-type="fig" rid="pone-0059808-g004">4</xref>) in the liver. In addition, both LPS and TURP invoke tissue-specific effects on peripheral clock genes <xref ref-type="bibr" rid="pone.0059808-Yamamura1">[20]</xref> (<xref ref-type="fig" rid="pone-0059808-g003">Figs 3</xref> and <xref ref-type="fig" rid="pone-0059808-g004">4</xref>). However, the limited number of circulating mediators in TURP-induced inflammation and its slower time-course make this model superior to tease apart the mechanisms accounting for the effects. In this respect, in the liver and to a certain extent in the heart, the maximal change in IL-6 corresponds with the reduced peak of <italic>Per</italic> gene expression. This suggests that IL-6 may contribute to the changes in clock gene expression induced by TURP treatment.</p>
+      <p>To test the influence of proinflammatory factors on clock gene expression in the TURP model, animals were treated with the anti-inflammatory cytokine IL-1Ra. IL-1Ra blocks the binding of IL-1β to its receptor, thus effectively eliminating the upregulation of systemic IL-6 as IL-1β is required for the upregulation of IL-6 in the TURP model <xref ref-type="bibr" rid="pone.0059808-Zheng1">[28]</xref>. Using this model, there was an expected attenuation of liver <italic>Per2</italic> expression in the TURP-treated groups sacrificed both 10 and 14 h after treatment (ZT12 and ZT16 TOS); however unexpectedly, <italic>Per1</italic> was not downregulated at either time point (<xref ref-type="fig" rid="pone-0059808-g006">Fig. 6</xref>). Experiment 1 demonstrated that the downregulation of <italic>Per1</italic> is transient (compared to the sustained downregulation of <italic>Per2</italic>), thus it is possible that our sampling missed the expected suppression of <italic>Per1.</italic> Considering <italic>Per2</italic> however, we observed that hrIL-1Ra treatment did not rescue the TURP-induced suppression despite the strong attenuation of IL-6 at sacrifice. This suggested that systemic IL-6 elevation did not induce the changes in liver clock gene expression.</p>
+      <p>Previous studies have shown that TNFα, but not IL-6, suppresses clock gene expression in fibroblasts <xref ref-type="bibr" rid="pone.0059808-Cavadini1">[22]</xref>. In another study, IL-6 used at a higher concentration downregulated <italic>Per1</italic> promoter activity in fibroblasts <xref ref-type="bibr" rid="pone.0059808-Motzkus1">[25]</xref>. We determined that systemic IL-6 does not affect <italic>Per2</italic> expression in the liver, but it remains possible that a tissue-specific regulation of IL-6 could contribute to clock gene regulation. In one study, it was found that <italic>IL-6</italic> mRNA was upregulated in the muscle tissue where TURP was injected, but downregulated in the liver <xref ref-type="bibr" rid="pone.0059808-Sheikh1">[40]</xref>. Also, IL-6 in the interstitial fluid of adipose tissue is 100 times higher than in the serum and acts as a potent paracrine signaling agent <xref ref-type="bibr" rid="pone.0059808-Sopasakis1">[60]</xref>. Finally, it was shown that in response to LPS, IL-6 levels in spleen lymph were enriched compared to those in serum <xref ref-type="bibr" rid="pone.0059808-Semaeva1">[61]</xref>. These local IL-6-enriched microenvironments could uniquely influence clock gene expression in particular tissues.</p>
+      <p>The action of IL-6 could also depend on the differential expression of its receptor. IL-6 can act via IL-6 receptor (IL-6R), which dimerizes with gp130 <xref ref-type="bibr" rid="pone.0059808-Taga1">[62]</xref>, or by binding to the soluble IL-6R (sIL-6R), which then binds to gp130 <xref ref-type="bibr" rid="pone.0059808-Mitsuyama1">[63]</xref>. Both cases initiate the JAK-STAT pathway. While only hepatocytes and some immune cells contain IL-6R <xref ref-type="bibr" rid="pone.0059808-Scheller1">[64]</xref>, gp130 is ubiquitously expressed and can thus bind sIL-6R in various tissues <xref ref-type="bibr" rid="pone.0059808-Mitsuyama1">[63]</xref>. It is possible that any of these proteins (IL-6R, gp130 or sIL-6R) are expressed rhythmically, thereby gating the response to IL-6 to induce different magnitudes of response depending on the time of day. To test whether IL-6 can act directly on the clock in liver cells, we treated liver carcinoma cells (HepG2) with IL-6 (<xref ref-type="fig" rid="pone-0059808-g007">Fig. 7</xref>). The absence of effect on clock genes in this assay suggests that IL-6 does not have a direct effect on clock gene expression in liver cells.</p>
+      <p>Apart from IL-6, other humoral factors may impinge on the clock, as it has been shown that other cytokines can be upregulated in various tissues in the TURP model. Interferon(IFN)-γ and IFN-α treatment at ZT12 (but not ZT0) disturbs <italic>Per</italic> gene expression in both the liver and SCN <xref ref-type="bibr" rid="pone.0059808-Ohdo1">[24]</xref>. TNFα was shown to suppress clock gene expression both in synchronized fibroblasts and in the liver <xref ref-type="bibr" rid="pone.0059808-Cavadini1">[22]</xref>. Another proinflammatory factor, PGE<sub>2</sub>, was shown to have clock gene-modulating effects, inducing transient <italic>Per1</italic> expression in cultured fibroblasts and time-dependent circadian phase shifts in peripheral clocks <xref ref-type="bibr" rid="pone.0059808-Murphy1">[65]</xref>, <xref ref-type="bibr" rid="pone.0059808-Tsuchiya1">[66]</xref>. Finally, leptin is an energy-regulating hormone that can act as a proinflammatory cytokine during a febrile response <xref ref-type="bibr" rid="pone.0059808-Luheshi3">[67]</xref> and rises in response to inflammatory signals <xref ref-type="bibr" rid="pone.0059808-Sarraf1">[68]</xref> including TURP <xref ref-type="bibr" rid="pone.0059808-AguilarValles1">[69]</xref>. Interestingly, leptin treatment can alter the phase of the clock both centrally and peripherally <xref ref-type="bibr" rid="pone.0059808-Mendoza1">[70]</xref>, and mice lacking functional leptin (<italic>ob/ob</italic> mice) exhibit disrupted clock gene expression in both adipose tissue and liver <xref ref-type="bibr" rid="pone.0059808-Ando1">[71]</xref>. Given that leptin serum levels vary over the day and are controlled by the SCN central clock <xref ref-type="bibr" rid="pone.0059808-Kalsbeek1">[72]</xref>, this hormone could possibly gate the response to inflammatory signals, thus imposing a time-dependent regulation on clock gene expression.</p>
+      <p>In addition to humoral factors, neuronal connections and systemic cues such as body temperature or pain might mediate the effects of TURP on clock genes. To our knowledge, there are no reports of an effect of pain on clock genes. Moreover, the levels of pain in our TURP inflammation model is very low compared to established models of pain, which makes it an unlikely mediator for the strong effects we see in clock gene expression. Cycles of temperature changes are thought to participate in circadian gene expression in the periphery <xref ref-type="bibr" rid="pone.0059808-Brown1">[73]</xref>–<xref ref-type="bibr" rid="pone.0059808-Saini1">[75]</xref>, with a mechanism that involves the heat-sensing transcription factor Heat Shock Factor 1 <xref ref-type="bibr" rid="pone.0059808-Buhr1">[74]</xref>–<xref ref-type="bibr" rid="pone.0059808-Tamaru1">[76]</xref> and the cold-sensing factor Cold-Inducible RNA-Binding Protein <xref ref-type="bibr" rid="pone.0059808-Morf1">[77]</xref>. In fact, <italic>Per2</italic> itself has HSF1 binding sites in its promoter <xref ref-type="bibr" rid="pone.0059808-Tamaru1">[76]</xref>, <xref ref-type="bibr" rid="pone.0059808-Kornmann1">[78]</xref>. However, while fever induction is relatively independent of the time of injection, clock gene expression changes are injection time-dependent (<xref ref-type="fig" rid="pone-0059808-g002">Figs 2</xref> and <xref ref-type="fig" rid="pone-0059808-g004">4</xref>). Furthermore, our data showed that <italic>Per2</italic> mRNA repression by TURP treatment was unchanged even when IL-1Ra co-treatment strongly reduced fever (<xref ref-type="fig" rid="pone-0059808-g005">Figs 5A, B</xref> and <xref ref-type="fig" rid="pone-0059808-g006">6</xref>). Therefore, although we cannot exclude that the remaining fever following co-treatment with IL-1Ra might still be sufficient to affect clock genes, we believe that temperature is an unlikely mediator for the clock gene expression changes we have observed in the liver. Regarding a possible neuronal influence, sympathetic and parasympathetic pathways are likely to be involved in the entrainment of peripheral circadian clocks as there are many neuronal connections from the SCN to peripheral tissues including the liver, kidney, heart, muscle and spleen <xref ref-type="bibr" rid="pone.0059808-Buijs1">[2]</xref>, <xref ref-type="bibr" rid="pone.0059808-Maier1">[79]</xref>. For example, <italic>Per1</italic> gene expression is quickly induced in the adrenal glands upon light stimulation, an induction that is lost in animals with adrenal denervation <xref ref-type="bibr" rid="pone.0059808-Ishida1">[80]</xref>.</p>
+      <p>It was found that the clocks in different tissues have different sensitivities to humoral cues and it is likely that balance of neuronal and humoral cues together coordinate tissue-specificity in peripheral clock entrainment <xref ref-type="bibr" rid="pone.0059808-Vujovic1">[3]</xref>, <xref ref-type="bibr" rid="pone.0059808-Guo1">[5]</xref>. In particular, it was previously shown that the liver and kidney seem to be more sensitive to humoral cues, whereas the heart, spleen and muscle require other input – probably neuronal – to fully entrain their clocks <xref ref-type="bibr" rid="pone.0059808-Guo1">[5]</xref>. Such differences in the response of tissues to different types of cues might contribute to the tissue-specific response to TURP that we have observed.</p>
+      <p>Here, we have found that TURP-mediated inflammation induces time-, tissue- and gene-specific effects in peripheral circadian clocks. This localized inflammation model will help to identify the mediators underlying the impact of inflammation on circadian rhythms. Characterizing the changes in peripheral clock gene expression upon inflammation is essential to decipher the mechanisms behind time-dependent susceptibilities to inflammatory responses.</p>
+    </sec>
+    <sec id="s5">
+      <title>Supporting Information</title>
+      <supplementary-material id="pone.0059808.s001" mimetype="image/tiff" xlink:href="info:doi/10.1371/journal.pone.0059808.s001" position="float" xlink:type="simple">
+        <label>Figure S1</label>
+        <caption>
+          <p>Cytokine induction over time after TURP treatment at ZT2. Animals were treated with either saline or TURP at ZT2 (0 hours) and sacrificed at 6 different time points ZT4, ZT8, ZT12, ZT16, ZT20, and ZT0 (time after sacrifice, TOS) corresponding to 2, 6, 10, 14, 18, and 22 h after injection (HAI), respectively. (A) IL-1Ra and (B) TNFα levels in serum at sacrifice were measured by ELISA. The assay detection limit is 30 pg/mL. Closed boxes represent saline-treated animals and open boxes represent TURP-treated animals. Two-way ANOVA Time×Condition, <italic>p</italic>&gt;0.05 for IL-1Ra, <italic>p</italic>&lt;0.001 for TNFα; Tukey post hoc tests between the saline- and TURP-treated groups *<italic>p</italic>&lt;0.05; &amp; <italic>p</italic> = 0.0637; n = 4.</p>
+          <p>(TIFF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0059808.s002" mimetype="image/tiff" xlink:href="info:doi/10.1371/journal.pone.0059808.s002" position="float" xlink:type="simple">
+        <label>Figure S2</label>
+        <caption>
+          <p>Time-dependent effect of TURP injection on cytokine levels. Animals were treated with either TURP or saline at ZT14, ZT20, ZT2, or ZT8 (time of injection, TOI) and sacrificed 10 h later at ZT0, ZT6, ZT12 and ZT18 (time of sacrifice, TOS), respectively. (A) IL-1Ra and (B) TNFα levels in serum at sacrifice were measured by ELISA. Closed boxes represent saline-treated animals and open boxes represent TURP-treated animals. Two-way ANOVA Time×Condition, <italic>p</italic>&lt;0.001 for IL-1Ra, <italic>p</italic>&lt;0.05 for TNFα; Tukey post hoc tests between the saline- and TURP-treated groups *<italic>p</italic>&lt;0.05; n = 5.</p>
+          <p>(TIFF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0059808.s003" mimetype="image/tiff" xlink:href="info:doi/10.1371/journal.pone.0059808.s003" position="float" xlink:type="simple">
+        <label>Figure S3</label>
+        <caption>
+          <p>IL-Ra induction after TURP treatment with or without hrIL-1Ra co-treatment. All animals were treated with either saline or TURP at ZT2 and sacrificed at either ZT12 or ZT16 time of sacrifice (TOS) with additional IL-1Ra treatment at 0, 4, and 8 h (ZT12 TOS) and 0, 4, 8 and 12 h (ZT16 TOS) after the initial treatment. One-way ANOVA for the four groups, <italic>p</italic>&lt;0.001; Tukey post hoc tests between groups, only different letters between groups <italic>p</italic>&lt;0.05, same letter <italic>p</italic>&gt;0.05; n = 5. In all samples, TNFα was not induced above the detection limit (results not shown).</p>
+          <p>(TIFF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0059808.s004" mimetype="application/pdf" xlink:href="info:doi/10.1371/journal.pone.0059808.s004" position="float" xlink:type="simple">
+        <label>Table S1</label>
+        <caption>
+          <p>Primer sequences used in the SYBR Green quantitative PCR assays.</p>
+          <p>(PDF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0059808.s005" mimetype="application/pdf" xlink:href="info:doi/10.1371/journal.pone.0059808.s005" position="float" xlink:type="simple">
+        <label>Table S2</label>
+        <caption>
+          <p>Controls genes selected by GeNorm for each in vivo experiment.</p>
+          <p>(PDF)</p>
+        </caption>
+      </supplementary-material>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>We thank Aude Villemain, Adeline Rachalski, David Duguay, Gokce Somay and Patrick Marcoux for their technical assistance, Dr. Joseph Rochford for advice on statistical analyses, Dr. C. Goodyer for the gift of HepG2 cells, and all members of NC’s lab for continuous support and discussions.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0059808-Dibner1">
+        <label>1</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dibner</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Schibler</surname><given-names>U</given-names></name>, <name name-style="western"><surname>Albrecht</surname><given-names>U</given-names></name> (<year>2010</year>) <article-title>The mammalian circadian timing system: organization and coordination of central and peripheral clocks</article-title>. <source>Annu Rev Physiol</source> <volume>72</volume>: <fpage>517</fpage>–<lpage>549</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Buijs1">
+        <label>2</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Buijs</surname><given-names>RM</given-names></name>, <name name-style="western"><surname>la Fleur</surname><given-names>SE</given-names></name>, <name name-style="western"><surname>Wortel</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Van Heyningen</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Zuiddam</surname><given-names>L</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>The suprachiasmatic nucleus balances sympathetic and parasympathetic output to peripheral organs through separate preautonomic neurons</article-title>. <source>J Comp Neurol</source> <volume>464</volume>: <fpage>36</fpage>–<lpage>48</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Vujovic1">
+        <label>3</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vujovic</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Davidson</surname><given-names>AJ</given-names></name>, <name name-style="western"><surname>Menaker</surname><given-names>M</given-names></name> (<year>2008</year>) <article-title>Sympathetic input modulates, but does not determine, phase of peripheral circadian oscillators</article-title>. <source>Am J Physiol Regul Integr Comp Physiol</source> <volume>295</volume>: <fpage>R355</fpage>–<lpage>360</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Balsalobre1">
+        <label>4</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Balsalobre</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Brown</surname><given-names>SA</given-names></name>, <name name-style="western"><surname>Marcacci</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Tronche</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Kellendonk</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Resetting of circadian time in peripheral tissues by glucocorticoid signaling</article-title>. <source>Science</source> <volume>289</volume>: <fpage>2344</fpage>–<lpage>2347</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Guo1">
+        <label>5</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Guo</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Brewer</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Champhekar</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Harris</surname><given-names>RB</given-names></name>, <name name-style="western"><surname>Bittman</surname><given-names>EL</given-names></name> (<year>2005</year>) <article-title>Differential control of peripheral circadian rhythms by suprachiasmatic-dependent neural signals</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>102</volume>: <fpage>3111</fpage>–<lpage>3116</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Pando1">
+        <label>6</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pando</surname><given-names>MP</given-names></name>, <name name-style="western"><surname>Morse</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Cermakian</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Sassone-Corsi</surname><given-names>P</given-names></name> (<year>2002</year>) <article-title>Phenotypic Rescue of a Peripheral Clock Genetic Defect via SCN Hierarchical Dominance</article-title>. <source>Cell</source> <volume>110</volume>: <fpage>107</fpage>–<lpage>117</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Duguay1">
+        <label>7</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Duguay</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Cermakian</surname><given-names>N</given-names></name> (<year>2009</year>) <article-title>The crosstalk between physiology and circadian clock proteins</article-title>. <source>Chronobiol Int</source> <volume>26</volume>: <fpage>1479</fpage>–<lpage>1513</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Haus1">
+        <label>8</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Haus</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Smolensky</surname><given-names>MH</given-names></name> (<year>1999</year>) <article-title>Biologic rhythms in the immune system</article-title>. <source>Chronobiol Int</source> <volume>16</volume>: <fpage>581</fpage>–<lpage>622</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Born1">
+        <label>9</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Born</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Lange</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Hansen</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Molle</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Fehm</surname><given-names>HL</given-names></name> (<year>1997</year>) <article-title>Effects of sleep and circadian rhythm on human circulating immune cells</article-title>. <source>J Immunol</source> <volume>158</volume>: <fpage>4454</fpage>–<lpage>4464</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Lange1">
+        <label>10</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lange</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Dimitrov</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Born</surname><given-names>J</given-names></name> (<year>2010</year>) <article-title>Effects of sleep and circadian rhythm on the human immune system</article-title>. <source>Ann N Y Acad Sci</source> <volume>1193</volume>: <fpage>48</fpage>–<lpage>59</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Abad1">
+        <label>11</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Abad</surname><given-names>VC</given-names></name>, <name name-style="western"><surname>Sarinas</surname><given-names>PS</given-names></name>, <name name-style="western"><surname>Guilleminault</surname><given-names>C</given-names></name> (<year>2008</year>) <article-title>Sleep and rheumatologic disorders</article-title>. <source>Sleep Med Rev</source> <volume>12</volume>: <fpage>211</fpage>–<lpage>228</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Hrushesky1">
+        <label>12</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hrushesky</surname><given-names>WJ</given-names></name>, <name name-style="western"><surname>Langevin</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Kim</surname><given-names>YJ</given-names></name>, <name name-style="western"><surname>Wood</surname><given-names>PA</given-names></name> (<year>1994</year>) <article-title>Circadian dynamics of tumor necrosis factor alpha (cachectin) lethality</article-title>. <source>J Exp Med</source> <volume>180</volume>: <fpage>1059</fpage>–<lpage>1065</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Cutolo1">
+        <label>13</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cutolo</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Sulli</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Pizzorni</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Secchi</surname><given-names>ME</given-names></name>, <name name-style="western"><surname>Soldano</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Circadian rhythms: glucocorticoids and arthritis</article-title>. <source>Ann N Y Acad Sci</source> <volume>1069</volume>: <fpage>289</fpage>–<lpage>299</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Skloot1">
+        <label>14</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Skloot</surname><given-names>GS</given-names></name> (<year>2002</year>) <article-title>Nocturnal asthma: mechanisms and management</article-title>. <source>Mt Sinai J Med</source> <volume>69</volume>: <fpage>140</fpage>–<lpage>147</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Smolensky1">
+        <label>15</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Smolensky</surname><given-names>MH</given-names></name>, <name name-style="western"><surname>Lemmer</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Reinberg</surname><given-names>AE</given-names></name> (<year>2007</year>) <article-title>Chronobiology and chronotherapy of allergic rhinitis and bronchial asthma</article-title>. <source>Adv Drug Deliv Rev</source> <volume>59</volume>: <fpage>852</fpage>–<lpage>882</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Halberg1">
+        <label>16</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Halberg</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Johnson</surname><given-names>EA</given-names></name>, <name name-style="western"><surname>Brown</surname><given-names>BW</given-names></name>, <name name-style="western"><surname>Bittner</surname><given-names>JJ</given-names></name> (<year>1960</year>) <article-title>Susceptibility rhythm to E. coli endotoxin and bioassay</article-title>. <source>Proc Soc Exp Biol Med</source> <volume>103</volume>: <fpage>142</fpage>–<lpage>144</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Marpegan1">
+        <label>17</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Marpegan</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Leone</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Katz</surname><given-names>ME</given-names></name>, <name name-style="western"><surname>Sobrero</surname><given-names>PM</given-names></name>, <name name-style="western"><surname>Bekinstein</surname><given-names>TA</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Diurnal variation in endotoxin-induced mortality in mice: correlation with proinflammatory factors</article-title>. <source>Chronobiol Int</source> <volume>26</volume>: <fpage>1430</fpage>–<lpage>1442</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Haimovich1">
+        <label>18</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Haimovich</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Calvano</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Haimovich</surname><given-names>AD</given-names></name>, <name name-style="western"><surname>Calvano</surname><given-names>SE</given-names></name>, <name name-style="western"><surname>Coyle</surname><given-names>SM</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>In vivo endotoxin synchronizes and suppresses clock gene expression in human peripheral blood leukocytes</article-title>. <source>Crit Care Med</source> <volume>38</volume>: <fpage>751</fpage>–<lpage>758</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Okada1">
+        <label>19</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Okada</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Yano</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Doki</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Azama</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Iwanaga</surname><given-names>H</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Injection of LPS causes transient suppression of biological clock genes in rats</article-title>. <source>J Surg Res</source> <volume>145</volume>: <fpage>5</fpage>–<lpage>12</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Yamamura1">
+        <label>20</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yamamura</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Yano</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Kudo</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Shibata</surname><given-names>S</given-names></name> (<year>2010</year>) <article-title>Time-dependent inhibitory effect of lipopolysaccharide injection on Per1 and Per2 gene expression in the mouse heart and liver</article-title>. <source>Chronobiol Int</source> <volume>27</volume>: <fpage>213</fpage>–<lpage>232</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Marpegan2">
+        <label>21</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Marpegan</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Bekinschtein</surname><given-names>TA</given-names></name>, <name name-style="western"><surname>Costas</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Golombek</surname><given-names>DA</given-names></name> (<year>2005</year>) <article-title>Circadian responses to endotoxin treatment in mice</article-title>. <source>J Neuroimmunol</source> <volume>160</volume>: <fpage>102</fpage>–<lpage>109</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Cavadini1">
+        <label>22</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cavadini</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Petrzilka</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Kohler</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Jud</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Tobler</surname><given-names>I</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>TNF-alpha suppresses the expression of clock genes by interfering with E-box-mediated transcription</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>104</volume>: <fpage>12843</fpage>–<lpage>12848</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Kwak1">
+        <label>23</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kwak</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Lundkvist</surname><given-names>GB</given-names></name>, <name name-style="western"><surname>Brask</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Davidson</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Menaker</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Interferon-gamma alters electrical activity and clock gene expression in suprachiasmatic nucleus neurons</article-title>. <source>J Biol Rhythms</source> <volume>23</volume>: <fpage>150</fpage>–<lpage>159</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Ohdo1">
+        <label>24</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ohdo</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Koyanagi</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Suyama</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Higuchi</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Aramaki</surname><given-names>H</given-names></name> (<year>2001</year>) <article-title>Changing the dosing schedule minimizes the disruptive effects of interferon on clock function</article-title>. <source>Nat Med</source> <volume>7</volume>: <fpage>356</fpage>–<lpage>360</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Motzkus1">
+        <label>25</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Motzkus</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Maronde</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Grunenberg</surname><given-names>U</given-names></name>, <name name-style="western"><surname>Lee</surname><given-names>CC</given-names></name>, <name name-style="western"><surname>Forssmann</surname><given-names>W</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>The human PER1 gene is transcriptionally regulated by multiple signaling pathways</article-title>. <source>FEBS Lett</source> <volume>486</volume>: <fpage>315</fpage>–<lpage>319</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-CarvalhoSousa1">
+        <label>26</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Carvalho-Sousa</surname><given-names>CE</given-names></name>, <name name-style="western"><surname>da Silveira Cruz-Machado</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Tamura</surname><given-names>EK</given-names></name>, <name name-style="western"><surname>Fernandes</surname><given-names>PA</given-names></name>, <name name-style="western"><surname>Pinato</surname><given-names>L</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Molecular basis for defining the pineal gland and pinealocytes as targets for tumor necrosis factor</article-title>. <source>Front Endocrinol (Lausanne)</source> <volume>2</volume>: <fpage>10</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Luheshi1">
+        <label>27</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Luheshi</surname><given-names>GN</given-names></name>, <name name-style="western"><surname>Stefferl</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Turnbull</surname><given-names>AV</given-names></name>, <name name-style="western"><surname>Dascombe</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Brouwer</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>1997</year>) <article-title>Febrile response to tissue inflammation involves both peripheral and brain IL-1 and TNF-alpha in the rat</article-title>. <source>Am J Physiol</source> <volume>272</volume>: <fpage>R862</fpage>–<lpage>868</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Zheng1">
+        <label>28</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zheng</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Fletcher</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Kozak</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Jiang</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Hofmann</surname><given-names>KJ</given-names></name>, <etal>et al</etal>. (<year>1995</year>) <article-title>Resistance to fever induction and impaired acute-phase response in interleukin-1 beta-deficient mice</article-title>. <source>Immunity</source> <volume>3</volume>: <fpage>9</fpage>–<lpage>19</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Zhang1">
+        <label>29</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhang</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Rivest</surname><given-names>S</given-names></name> (<year>1999</year>) <article-title>Distribution, regulation and colocalization of the genes encoding the EP2- and EP4-PGE2 receptors in the rat brain and neuronal responses to systemic inflammation</article-title>. <source>Eur J Neurosci</source> <volume>11</volume>: <fpage>2651</fpage>–<lpage>2668</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Lee1">
+        <label>30</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lee</surname><given-names>YJ</given-names></name>, <name name-style="western"><surname>Chuang</surname><given-names>YC</given-names></name> (<year>2010</year>) <article-title>Ibuprofen augments pro-inflammatory cytokine release in a mouse model of Vibrio vulnificus infection</article-title>. <source>Microbiol Immunol</source> <volume>54</volume>: <fpage>542</fpage>–<lpage>550</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Spinas1">
+        <label>31</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Spinas</surname><given-names>GA</given-names></name>, <name name-style="western"><surname>Bloesch</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Keller</surname><given-names>U</given-names></name>, <name name-style="western"><surname>Zimmerli</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Cammisuli</surname><given-names>S</given-names></name> (<year>1991</year>) <article-title>Pretreatment with ibuprofen augments circulating tumor necrosis factor-alpha, interleukin-6, and elastase during acute endotoxinemia</article-title>. <source>J Infect Dis</source> <volume>163</volume>: <fpage>89</fpage>–<lpage>95</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Hood1">
+        <label>32</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hood</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Cassidy</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Mathewson</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Stewart</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Amir</surname><given-names>S</given-names></name> (<year>2011</year>) <article-title>Daily morphine injection and withdrawal disrupt 24-h wheel running and PERIOD2 expression patterns in the rat limbic forebrain</article-title>. <source>Neuroscience</source> <volume>186</volume>: <fpage>65</fpage>–<lpage>75</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Vansteensel1">
+        <label>33</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vansteensel</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Magnone</surname><given-names>MC</given-names></name>, <name name-style="western"><surname>van Oosterhout</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Baeriswyl</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Albrecht</surname><given-names>U</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>The opioid fentanyl affects light input, electrical activity and Per gene expression in the hamster suprachiasmatic nuclei</article-title>. <source>Eur J Neurosci</source> <volume>21</volume>: <fpage>2958</fpage>–<lpage>2966</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Cooper1">
+        <label>34</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cooper</surname><given-names>AL</given-names></name>, <name name-style="western"><surname>Brouwer</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Turnbull</surname><given-names>AV</given-names></name>, <name name-style="western"><surname>Luheshi</surname><given-names>GN</given-names></name>, <name name-style="western"><surname>Hopkins</surname><given-names>SJ</given-names></name>, <etal>et al</etal>. (<year>1994</year>) <article-title>Tumor necrosis factor-alpha and fever after peripheral inflammation in the rat</article-title>. <source>Am J Physiol</source> <volume>267</volume>: <fpage>R1431</fpage>–<lpage>1436</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Sachot1">
+        <label>35</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sachot</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Poole</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Luheshi</surname><given-names>GN</given-names></name> (<year>2004</year>) <article-title>Circulating leptin mediates lipopolysaccharide-induced anorexia and fever in rats</article-title>. <source>J Physiol</source> <volume>561</volume>: <fpage>263</fpage>–<lpage>272</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Luheshi2">
+        <label>36</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Luheshi</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Miller</surname><given-names>AJ</given-names></name>, <name name-style="western"><surname>Brouwer</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Dascombe</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Rothwell</surname><given-names>NJ</given-names></name>, <etal>et al</etal>. (<year>1996</year>) <article-title>Interleukin-1 receptor antagonist inhibits endotoxin fever and systemic interleukin-6 induction in the rat</article-title>. <source>Am J Physiol</source> <volume>270</volume>: <fpage>E91</fpage>–<lpage>95</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Cailotto1">
+        <label>37</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cailotto</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Lei</surname><given-names>J</given-names></name>, <name name-style="western"><surname>van der Vliet</surname><given-names>J</given-names></name>, <name name-style="western"><surname>van Heijningen</surname><given-names>C</given-names></name>, <name name-style="western"><surname>van Eden</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Effects of Nocturnal Light on (Clock) Gene Expression in Peripheral Organs: A Role for the Autonomic Innervation of the Liver</article-title>. <source>PLoS one</source> <volume>4</volume>: <fpage>5650</fpage>–<lpage>5662</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Vandesompele1">
+        <label>38</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vandesompele</surname><given-names>J</given-names></name>, <name name-style="western"><surname>De Preter</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Pattyn</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Poppe</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Van Roy</surname><given-names>N</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>Accurate normalization of real-time quantitative RT-PCR data by geometric averaging of multiple internal control genes</article-title>. <source>Genome Biol</source> <volume>3</volume>: <fpage>RESEARCH0034</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Livak1">
+        <label>39</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Livak</surname><given-names>KJ</given-names></name>, <name name-style="western"><surname>Schmittgen</surname><given-names>TD</given-names></name> (<year>2001</year>) <article-title>Analysis of relative gene expression data using real-time quantitative PCR and the 2(-Delta Delta C(T)) Method</article-title>. <source>Methods</source> <volume>25</volume>: <fpage>402</fpage>–<lpage>408</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Sheikh1">
+        <label>40</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sheikh</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Dudas</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Ramadori</surname><given-names>G</given-names></name> (<year>2007</year>) <article-title>Changes of gene expression of iron regulatory proteins during turpentine oil-induced acute-phase response in the rat</article-title>. <source>Lab Invest</source> <volume>87</volume>: <fpage>713</fpage>–<lpage>725</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Josephs1">
+        <label>41</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Josephs</surname><given-names>MD</given-names></name>, <name name-style="western"><surname>Solorzano</surname><given-names>CC</given-names></name>, <name name-style="western"><surname>Taylor</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Rosenberg</surname><given-names>JJ</given-names></name>, <name name-style="western"><surname>Topping</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Modulation of the acute phase response by altered expression of the IL-1 type 1 receptor or IL-1ra</article-title>. <source>Am J Physiol Regul Integr Comp Physiol</source> <volume>278</volume>: <fpage>R824</fpage>–<lpage>830</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Perretti1">
+        <label>42</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Perretti</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Duncan</surname><given-names>GS</given-names></name>, <name name-style="western"><surname>Flower</surname><given-names>RJ</given-names></name>, <name name-style="western"><surname>Peers</surname><given-names>SH</given-names></name> (<year>1993</year>) <article-title>Serum corticosterone, interleukin-1 and tumour necrosis factor in rat experimental endotoxaemia: comparison between Lewis and Wistar strains</article-title>. <source>Br J Pharmacol</source> <volume>110</volume>: <fpage>868</fpage>–<lpage>874</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Oishi1">
+        <label>43</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Oishi</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Sakamoto</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Okada</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Nagase</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Ishida</surname><given-names>N</given-names></name> (<year>1998</year>) <article-title>Antiphase circadian expression between BMAL1 and period homologue mRNA in the suprachiasmatic nucleus and peripheral tissues of rats</article-title>. <source>Biochem Biophys Res Commun</source> <volume>253</volume>: <fpage>199</fpage>–<lpage>203</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Preitner1">
+        <label>44</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Preitner</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Damiola</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Lopez-Molina</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Zakany</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Duboule</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>The orphan nuclear receptor REV-ERBalpha controls circadian transcription within the positive limb of the mammalian circadian oscillator</article-title>. <source>Cell</source> <volume>110</volume>: <fpage>251</fpage>–<lpage>260</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Shearman1">
+        <label>45</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shearman</surname><given-names>LP</given-names></name>, <name name-style="western"><surname>Sriram</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Weaver</surname><given-names>DR</given-names></name>, <name name-style="western"><surname>Maywood</surname><given-names>ES</given-names></name>, <name name-style="western"><surname>Chaves</surname><given-names>I</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Interacting molecular loops in the mammalian circadian clock</article-title>. <source>Science</source> <volume>288</volume>: <fpage>1013</fpage>–<lpage>1019</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Fischer1">
+        <label>46</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fischer</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Marano</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Van Zee</surname><given-names>KJ</given-names></name>, <name name-style="western"><surname>Rock</surname><given-names>CS</given-names></name>, <name name-style="western"><surname>Hawes</surname><given-names>AS</given-names></name>, <etal>et al</etal>. (<year>1992</year>) <article-title>Interleukin-1 receptor blockade improves survival and hemodynamic performance in Escherichia coli septic shock, but fails to alter host responses to sublethal endotoxemia</article-title>. <source>J Clin Invest</source> <volume>89</volume>: <fpage>1551</fpage>–<lpage>1557</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Sheikh2">
+        <label>47</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sheikh</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Tron</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Dudas</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Ramadori</surname><given-names>G</given-names></name> (<year>2006</year>) <article-title>Cytokine-induced neutrophil chemoattractant-1 is released by the noninjured liver in a rat acute-phase model</article-title>. <source>Lab Invest</source> <volume>86</volume>: <fpage>800</fpage>–<lpage>814</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Hagihara1">
+        <label>48</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hagihara</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Nishikawa</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Isobe</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Song</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Sugamata</surname><given-names>Y</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>IL-6 plays a critical role in the synergistic induction of human serum amyloid A (SAA) gene when stimulated with proinflammatory cytokines as analyzed with an SAA isoform real-time quantitative RT-PCR assay system</article-title>. <source>Biochem Biophys Res Commun</source> <volume>314</volume>: <fpage>363</fpage>–<lpage>369</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Brock1">
+        <label>49</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brock</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Trenkmann</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Gay</surname><given-names>RE</given-names></name>, <name name-style="western"><surname>Gay</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Speich</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>MicroRNA-18a enhances the interleukin-6-mediated production of the acute-phase proteins fibrinogen and haptoglobin in human hepatocytes</article-title>. <source>J Biol Chem</source> <volume>286</volume>: <fpage>40142</fpage>–<lpage>40150</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Turnbull1">
+        <label>50</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Turnbull</surname><given-names>AV</given-names></name>, <name name-style="western"><surname>Prehar</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Kennedy</surname><given-names>AR</given-names></name>, <name name-style="western"><surname>Little</surname><given-names>RA</given-names></name>, <name name-style="western"><surname>Hopkins</surname><given-names>SJ</given-names></name> (<year>2003</year>) <article-title>Interleukin-6 is an afferent signal to the hypothalamo-pituitary-adrenal axis during local inflammation in mice</article-title>. <source>Endocrinology</source> <volume>144</volume>: <fpage>1894</fpage>–<lpage>1906</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Severinsen1">
+        <label>51</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Severinsen</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Oritsland</surname><given-names>M</given-names></name> (<year>1991</year>) <article-title>Endotoxin induced prolonged fever in rats</article-title>. <source>J Therm Biol</source> <volume>16</volume>: <fpage>167</fpage>–<lpage>171</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Mathias1">
+        <label>52</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mathias</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Schiffelholz</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Linthorst</surname><given-names>AC</given-names></name>, <name name-style="western"><surname>Pollmacher</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Lancel</surname><given-names>M</given-names></name> (<year>2000</year>) <article-title>Diurnal variations in lipopolysaccharide-induced sleep, sickness behavior and changes in corticosterone levels in the rat</article-title>. <source>Neuroendocrinology</source> <volume>71</volume>: <fpage>375</fpage>–<lpage>385</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-CarrilloVico1">
+        <label>53</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Carrillo-Vico</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Guerrero</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Lardone</surname><given-names>PJ</given-names></name>, <name name-style="western"><surname>Reiter</surname><given-names>RJ</given-names></name> (<year>2005</year>) <article-title>A review of the multiple actions of melatonin on the immune system</article-title>. <source>Endocrine</source> <volume>27</volume>: <fpage>189</fpage>–<lpage>200</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Webster1">
+        <label>54</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Webster</surname><given-names>JI</given-names></name>, <name name-style="western"><surname>Tonelli</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Sternberg</surname><given-names>EM</given-names></name> (<year>2002</year>) <article-title>Neuroendocrine regulation of immunity</article-title>. <source>Annu Rev Immunol</source> <volume>20</volume>: <fpage>125</fpage>–<lpage>163</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Tamura1">
+        <label>55</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tamura</surname><given-names>EK</given-names></name>, <name name-style="western"><surname>Cecon</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Monteiro</surname><given-names>AW</given-names></name>, <name name-style="western"><surname>Silva</surname><given-names>CL</given-names></name>, <name name-style="western"><surname>Markus</surname><given-names>RP</given-names></name> (<year>2009</year>) <article-title>Melatonin inhibits LPS-induced NO production in rat endothelial cells</article-title>. <source>J Pineal Res</source> <volume>46</volume>: <fpage>268</fpage>–<lpage>274</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Gibbs1">
+        <label>56</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gibbs</surname><given-names>JE</given-names></name>, <name name-style="western"><surname>Blaikley</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Beesley</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Matthews</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Simpson</surname><given-names>KD</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>The nuclear receptor REV-ERBalpha mediates circadian regulation of innate immunity through selective regulation of inflammatory cytokines</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>109</volume>: <fpage>582</fpage>–<lpage>587</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Keller1">
+        <label>57</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Keller</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Mazuch</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Abraham</surname><given-names>U</given-names></name>, <name name-style="western"><surname>Eom</surname><given-names>GD</given-names></name>, <name name-style="western"><surname>Herzog</surname><given-names>ED</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>A circadian clock in macrophages controls inflammatory immune responses</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>106</volume>: <fpage>21407</fpage>–<lpage>21412</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Narasimamurthy1">
+        <label>58</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Narasimamurthy</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Hatori</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Nayak</surname><given-names>SK</given-names></name>, <name name-style="western"><surname>Liu</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Panda</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Circadian clock protein cryptochrome regulates the expression of proinflammatory cytokines</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>109</volume>: <fpage>12662</fpage>–<lpage>12667</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Silver1">
+        <label>59</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Silver</surname><given-names>AC</given-names></name>, <name name-style="western"><surname>Arjona</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Walker</surname><given-names>WE</given-names></name>, <name name-style="western"><surname>Fikrig</surname><given-names>E</given-names></name> (<year>2012</year>) <article-title>The Circadian Clock Controls Toll-like Receptor 9-Mediated Innate and Adaptive Immunity</article-title>. <source>Immunity</source> <volume>36</volume>: <fpage>251</fpage>–<lpage>261</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Sopasakis1">
+        <label>60</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sopasakis</surname><given-names>VR</given-names></name>, <name name-style="western"><surname>Sandqvist</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Gustafson</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Hammarstedt</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Schmelz</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>High local concentrations and effects on differentiation implicate interleukin-6 as a paracrine regulator</article-title>. <source>Obes Res</source> <volume>12</volume>: <fpage>454</fpage>–<lpage>460</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Semaeva1">
+        <label>61</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Semaeva</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Tenstad</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Skavland</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Enger</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Iversen</surname><given-names>PO</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Access to the spleen microenvironment through lymph shows local cytokine production, increased cell flux, and altered signaling of immune cells during lipopolysaccharide-induced acute inflammation</article-title>. <source>J Immunol</source> <volume>184</volume>: <fpage>4547</fpage>–<lpage>4556</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Taga1">
+        <label>62</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Taga</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Kishimoto</surname><given-names>T</given-names></name> (<year>1997</year>) <article-title>Gp130 and the interleukin-6 family of cytokines</article-title>. <source>Annu Rev Immunol</source> <volume>15</volume>: <fpage>797</fpage>–<lpage>819</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Mitsuyama1">
+        <label>63</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mitsuyama</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Matsumoto</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Masuda</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Yamasakii</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Kuwaki</surname><given-names>K</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Therapeutic strategies for targeting the IL-6/STAT3 cytokine signaling pathway in inflammatory bowel disease</article-title>. <source>Anticancer Res</source> <volume>27</volume>: <fpage>3749</fpage>–<lpage>3756</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Scheller1">
+        <label>64</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Scheller</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Rose-John</surname><given-names>S</given-names></name> (<year>2006</year>) <article-title>Interleukin-6 and its receptor: from bench to bedside</article-title>. <source>Med Microbiol Immunol</source> <volume>195</volume>: <fpage>173</fpage>–<lpage>183</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Murphy1">
+        <label>65</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Murphy</surname><given-names>BA</given-names></name>, <name name-style="western"><surname>Vick</surname><given-names>MM</given-names></name>, <name name-style="western"><surname>Sessions</surname><given-names>DR</given-names></name>, <name name-style="western"><surname>Cook</surname><given-names>RF</given-names></name>, <name name-style="western"><surname>Fitzgerald</surname><given-names>BP</given-names></name> (<year>2007</year>) <article-title>Acute systemic inflammation transiently synchronizes clock gene expression in equine peripheral blood</article-title>. <source>Brain Behav Immun</source> <volume>21</volume>: <fpage>467</fpage>–<lpage>476</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Tsuchiya1">
+        <label>66</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tsuchiya</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Akashi</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Nishida</surname><given-names>E</given-names></name> (<year>2003</year>) <article-title>Temperature compensation and temperature resetting of circadian rhythms in mammalian cultured fibroblasts</article-title>. <source>Genes Cells</source> <volume>8</volume>: <fpage>713</fpage>–<lpage>720</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Luheshi3">
+        <label>67</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Luheshi</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Gardner</surname><given-names>JD</given-names></name>, <name name-style="western"><surname>Rushforth</surname><given-names>DA</given-names></name>, <name name-style="western"><surname>Loudon</surname><given-names>AS</given-names></name>, <name name-style="western"><surname>Rothwell</surname><given-names>NJ</given-names></name> (<year>1999</year>) <article-title>Leptin actions on food intake and body temperature are mediated by IL-1</article-title>. <source>Proc Natl Acad Sci USA</source> <volume>96</volume>: <fpage>7047</fpage>–<lpage>7052</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Sarraf1">
+        <label>68</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sarraf</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Frederich</surname><given-names>RC</given-names></name>, <name name-style="western"><surname>Turner</surname><given-names>EM</given-names></name>, <name name-style="western"><surname>Ma</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Jaskowiak</surname><given-names>NT</given-names></name>, <etal>et al</etal>. (<year>1997</year>) <article-title>Multiple cytokines and acute inflammation raise mouse leptin levels: potential role in inflammatory anorexia</article-title>. <source>J Exp Med</source> <volume>185</volume>: <fpage>171</fpage>–<lpage>175</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-AguilarValles1">
+        <label>69</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Aguilar-Valles</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Jung</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Poole</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Flores</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Luheshi</surname><given-names>GN</given-names></name> (<year>2012</year>) <article-title>Leptin and interleukin-6 alter the function of mesolimbic dopamine neurons in a rodent model of prenatal inflammation</article-title>. <source>Psychoneuroendocrinology</source> <volume>37</volume>: <fpage>956</fpage>–<lpage>969</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Mendoza1">
+        <label>70</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mendoza</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Lopez-Lopez</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Revel</surname><given-names>FG</given-names></name>, <name name-style="western"><surname>Jeanneau</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Delerue</surname><given-names>F</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Dimorphic effects of leptin on the circadian and hypocretinergic systems of mice</article-title>. <source>J Neuroendocrinol</source> <volume>23</volume>: <fpage>28</fpage>–<lpage>38</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Ando1">
+        <label>71</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ando</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Kumazaki</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Motosugi</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Ushijima</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Maekawa</surname><given-names>T</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Impairment of peripheral circadian clocks precedes metabolic abnormalities in ob/ob mice</article-title>. <source>Endocrinology</source> <volume>152</volume>: <fpage>1347</fpage>–<lpage>1354</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Kalsbeek1">
+        <label>72</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kalsbeek</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Fliers</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Romijn</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>La Fleur</surname><given-names>SE</given-names></name>, <name name-style="western"><surname>Wortel</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2001</year>) <article-title>The suprachiasmatic nucleus generates the diurnal changes in plasma leptin levels</article-title>. <source>Endocrinology</source> <volume>142</volume>: <fpage>2677</fpage>–<lpage>2685</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Brown1">
+        <label>73</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brown</surname><given-names>SA</given-names></name>, <name name-style="western"><surname>Zumbrunn</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Fleury-Olela</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Preitner</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Schibler</surname><given-names>U</given-names></name> (<year>2002</year>) <article-title>Rhythms of mammalian body temperature can sustain peripheral circadian clocks</article-title>. <source>Curr Biol</source> <volume>12</volume>: <fpage>1574</fpage>–<lpage>1583</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Buhr1">
+        <label>74</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Buhr</surname><given-names>ED</given-names></name>, <name name-style="western"><surname>Yoo</surname><given-names>SH</given-names></name>, <name name-style="western"><surname>Takahashi</surname><given-names>JS</given-names></name> (<year>2010</year>) <article-title>Temperature as a universal resetting cue for mammalian circadian oscillators</article-title>. <source>Science</source> <volume>330</volume>: <fpage>379</fpage>–<lpage>385</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Saini1">
+        <label>75</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Saini</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Morf</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Stratmann</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Gos</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Schibler</surname><given-names>U</given-names></name> (<year>2012</year>) <article-title>Simulated body temperature rhythms reveal the phase-shifting behavior and plasticity of mammalian circadian oscillators</article-title>. <source>Genes Dev</source> <volume>26</volume>: <fpage>567</fpage>–<lpage>580</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Tamaru1">
+        <label>76</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tamaru</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Hattori</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Honda</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Benjamin</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Ozawa</surname><given-names>T</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Synchronization of circadian Per2 rhythms and HSF1-BMAL1:CLOCK interaction in mouse fibroblasts after short-term heat shock pulse</article-title>. <source>PLoS one</source> <volume>6</volume>: <fpage>e24521</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Morf1">
+        <label>77</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Morf</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Rey</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Schneider</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Stratmann</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Fujita</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Cold-inducible RNA-binding protein modulates circadian gene expression posttranscriptionally</article-title>. <source>Science</source> <volume>338</volume>: <fpage>379</fpage>–<lpage>383</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Kornmann1">
+        <label>78</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kornmann</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Schaad</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Bujard</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Takahashi</surname><given-names>JS</given-names></name>, <name name-style="western"><surname>Schibler</surname><given-names>U</given-names></name> (<year>2007</year>) <article-title>System-driven and oscillator-dependent circadian transcription in mice with a conditionally active liver clock</article-title>. <source>PLoS Biol</source> <volume>5</volume>: <fpage>e34</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Maier1">
+        <label>79</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Maier</surname><given-names>SF</given-names></name>, <name name-style="western"><surname>Goehler</surname><given-names>LE</given-names></name>, <name name-style="western"><surname>Fleshner</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Watkins</surname><given-names>LR</given-names></name> (<year>1998</year>) <article-title>The role of the vagus nerve in cytokine-to-brain communication</article-title>. <source>Ann N Y Acad Sci</source> <volume>840</volume>: <fpage>289</fpage>–<lpage>300</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059808-Ishida1">
+        <label>80</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ishida</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Mutoh</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Ueyama</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Bando</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Masubuchi</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>Light activates the adrenal gland: timing of gene expression and glucocorticoid release</article-title>. <source>Cell Metab</source> <volume>2</volume>: <fpage>297</fpage>–<lpage>307</lpage>.</mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

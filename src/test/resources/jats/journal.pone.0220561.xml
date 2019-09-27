@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1d3" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0220561</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-19-12265</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Organisms</subject><subj-group><subject>Eukaryota</subject><subj-group><subject>Animals</subject><subj-group><subject>Vertebrates</subject><subj-group><subject>Fish</subject><subj-group><subject>Marine fish</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Marine biology</subject><subj-group><subject>Marine fish</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Earth sciences</subject><subj-group><subject>Marine and aquatic sciences</subject><subj-group><subject>Marine biology</subject><subj-group><subject>Marine fish</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Head</subject><subj-group><subject>Eyes</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Head</subject><subj-group><subject>Eyes</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Ocular system</subject><subj-group><subject>Eyes</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Ocular system</subject><subj-group><subject>Eyes</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Brain</subject><subj-group><subject>Hippocampus</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Brain</subject><subj-group><subject>Hippocampus</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Physical sciences</subject><subj-group><subject>Physics</subject><subj-group><subject>Electromagnetic radiation</subject><subj-group><subject>Luminescence</subject><subj-group><subject>Fluorescence</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Physical sciences</subject><subj-group><subject>Physics</subject><subj-group><subject>Electromagnetic radiation</subject><subj-group><subject>Light</subject><subj-group><subject>Artificial light</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Physical sciences</subject><subj-group><subject>Physics</subject><subj-group><subject>Electromagnetic radiation</subject><subj-group><subject>Light</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Ecology and environmental sciences</subject><subj-group><subject>Aquatic environments</subject><subj-group><subject>Marine environments</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Earth sciences</subject><subj-group><subject>Marine and aquatic sciences</subject><subj-group><subject>Aquatic environments</subject><subj-group><subject>Marine environments</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Earth sciences</subject><subj-group><subject>Marine and aquatic sciences</subject><subj-group><subject>Bodies of water</subject><subj-group><subject>Estuaries</subject></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Shining in the dark: First record of biofluorescence in the seahorse <italic>Hippocampus reidi</italic></article-title>
+<alt-title alt-title-type="running-head">First record of biofluorescence in <italic>Hippocampus reidi</italic></alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0001-7900-575X</contrib-id>
+<name name-style="western">
+<surname>Vaccani</surname>
+<given-names>Amanda C.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Project administration</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="fn" rid="currentaff001"><sup>¤a</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Freret-Meurer</surname>
+<given-names>Natalie V.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="fn" rid="currentaff001"><sup>¤a</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Bertoncini</surname>
+<given-names>Áthila A.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Validation</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="fn" rid="currentaff002"><sup>¤b</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Santos</surname>
+<given-names>Luciano N.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="fn" rid="currentaff002"><sup>¤b</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Departamento de Ecologia e Recursos Marinhos, Universidade Federal do Estado do Rio de Janeiro, Rio de Janeiro, Rio de Janeiro, Brazil</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Instituto de Biologia, Universidade Santa Úrsula, Rio de Janeiro, Rio de Janeiro, Brazil</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Del-Claro</surname>
+<given-names>Kleber</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Universidade Federal de Uberlândia, BRAZIL</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="current-aff" id="currentaff001">
+<label>¤a</label>
+<p>Current address: Laboratório de Comportamento Animal e Conservação, Universidade Santa Úrsula, Rio de Janeiro, RJ, Brazil.</p>
+</fn>
+<fn fn-type="current-aff" id="currentaff002">
+<label>¤b</label>
+<p>Current address: Laboratório de Ictiologia Teórica e Aplicada, Universidade Federal do Estado do Rio de Janeiro, Rio de Janeiro, RJ, Brazil.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">luciano.santos@unirio.br</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>8</day>
+<month>8</month>
+<year>2019</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2019</year>
+</pub-date>
+<volume>14</volume>
+<issue>8</issue>
+<elocation-id>e0220561</elocation-id>
+<history>
+<date date-type="received">
+<day>1</day>
+<month>5</month>
+<year>2019</year>
+</date>
+<date date-type="accepted">
+<day>18</day>
+<month>7</month>
+<year>2019</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2019</copyright-year>
+<copyright-holder>Vaccani et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0220561"/>
+<abstract>
+<p>Marine environments are visual domains restricted regarding light characteristics. Overall, blue monochromatic spectrum prevails in offshore areas especially below 15m depth, since long wavelengths are quickly attenuated. Light intensity is even more constrained in coastal waters, particularly those of tropical estuaries and bays, because further scattering through dissolved and suspended materials. Biofluorescence, which is the ability of organisms to absorb light and reflect it in a different wavelength, has been reported for many marine fish. In this paper, biofluorescence was recorded for the first time for the longsnout seahorse <italic>Hippocampus reidi</italic>, under natural conditions at Ilha Grande bay, Brazil, and both adult, juvenile and fry individuals kept in captivity. Although displaying the same colour emissions, seahorses differed in relation to body lighting, colour patterns, and age wherein fluorescence occurs. Newborn seahorses exhibit green biofluorescence only in the eyes and stomach. Further experiments are necessary to address whether <italic>H</italic>. <italic>reidi</italic> can change the patterns of biofluorescence emission for sensorial and social purposes.</p>
+</abstract>
+<funding-group>
+<funding-statement>This work was funded by Fundação Carlos Chagas Filho de Amparo a Pesquisa do Estado do Rio de Janeiro (Research Grant to LNS, E-26/202.840/2015; E-26/202.755/2018) and Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) (Research Grant to LNS, ref. 314379/2018-5). This work was also supported by CAPES - Coordenação de aperfeiçoamento de pessoal de nível superior (<ext-link ext-link-type="uri" xlink:href="https://www.capes.gov.br/" xlink:type="simple">https://www.capes.gov.br/</ext-link>) to AV. The funder had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="4"/>
+<table-count count="1"/>
+<page-count count="8"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the manuscript.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Marine environment has visually restricted domain when compared to terrestrial environments. Overall, blue monochromatic spectrum prevails in offshore areas, especially below 15m depth, since long wavelengths within the red-orange range are quickly attenuated by saltwater in shallower layers. Light intensity is even more constrained in coastal waters, particularly those of tropical estuaries and bays, because further scattering through dissolved and suspended materials [<xref ref-type="bibr" rid="pone.0220561.ref001">1</xref>]. Consequently, many species living in these systems display particular mechanisms, such as biofluorescence, which might contribute for sensorial and social functions during lighting restrictive conditions [<xref ref-type="bibr" rid="pone.0220561.ref002">2</xref>].</p>
+<p>Biofluorescence is the absorption of electromagnetic radiation at a specific wavelength, followed by their resubmission at a longer or shorter wavelength [<xref ref-type="bibr" rid="pone.0220561.ref003">3</xref>]. Biofluorescence occurrence has been largely reported, both for terrestrial and marine animals, but there is still little information about its functionality, although it is probably related to intraspecific communication [<xref ref-type="bibr" rid="pone.0220561.ref004">4</xref>,<xref ref-type="bibr" rid="pone.0220561.ref005">5</xref>] and camouflage [<xref ref-type="bibr" rid="pone.0220561.ref003">3</xref>]. This phenomenon has been reported for several marine organisms, especially invertebrates and fish [<xref ref-type="bibr" rid="pone.0220561.ref005">5</xref>,<xref ref-type="bibr" rid="pone.0220561.ref006">6</xref>,<xref ref-type="bibr" rid="pone.0220561.ref007">7</xref>,<xref ref-type="bibr" rid="pone.0220561.ref008">8</xref>], but its occurrence for tropical marine fish at natural conditions remains barely known.</p>
+<p>Among reef fishes, seahorses (Syngnathidae family), are widespread in tropical and subtropical waters, and 42 species are currently known [<xref ref-type="bibr" rid="pone.0220561.ref009">9</xref>,<xref ref-type="bibr" rid="pone.0220561.ref010">10</xref>]. Three species are recorded in Brazil, the longsnout seahorse <italic>Hippocampus reidi</italic> Ginsburg, 1933, the shortsnout seahorse <italic>Hippocampus erectus</italic> Perry, 1810, and the most recently described Patagonian seahorse <italic>Hippocampus patagonicus</italic> Piacentino and Luzzatto, 2004. Although <italic>H</italic>. <italic>reidi</italic> is the most common seahorse species in Brazil, it has been regarded as <italic>vulnerable</italic> by the List of Threatened Species of the Brazilian Ministry of the Environment [<xref ref-type="bibr" rid="pone.0220561.ref011">11</xref>] and as <italic>near threatened</italic> by the Red List of the International Union for Conservation of Nature [<xref ref-type="bibr" rid="pone.0220561.ref012">12</xref>].</p>
+<p>Worldwide, biofluorescence was recently reported for the Syngnathidae family, and only to four seahorse species, <italic>H</italic>. <italic>erectus</italic>, <italic>Hippocampus zosterae</italic> Jordan and Gilbert, 1882 [<xref ref-type="bibr" rid="pone.0220561.ref003">3</xref>], <italic>Hippocampus bargibanti</italic> Whitley, 1970 and <italic>Hippocampus denise</italic> Lourie and Randall, 2003 [<xref ref-type="bibr" rid="pone.0220561.ref013">13</xref>]. The present study aimed to check for biofluorescence in the seahorse <italic>H</italic>. <italic>reidi</italic> in both natural and captivity, describing its colour and body location. Potential implications on sensorial and social functions are briefly discussed.</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Materials and methods</title>
+<p>Experiments in captivity were conducted with <italic>H</italic>. <italic>reidi</italic> captured in natural environment. Five <italic>H</italic>. <italic>reidi</italic> were caught (SISBio license code 56695–1) in February 2018 by a snorkeling diver on the rocky shores of Urca beach (22° 56'33 "S—043° 09'27" W), Guanabara bay, Rio de Janeiro, Brazil (<xref ref-type="fig" rid="pone.0220561.g001">Fig 1</xref>). All animals (<italic>n =</italic> 6) used in experiments were returned to the same natural catch area, and there was no death of any individual. They were stored alive in plastic bags with salt water and carried to the Laboratory of Animal Behavior and Conservation, at Santa Ursula University, Rio de Janeiro. They were acclimatized for three days in aquarium at constant water conditions (<xref ref-type="table" rid="pone.0220561.t001">Table 1</xref>). Twenty-for hours before each experiment, the animals were cleaned manually, through softly friction with fingers, and then macroscopically checked to exclude any sign of epiphytes in the animal’s body.</p>
+<fig id="pone.0220561.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0220561.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Place where animals were collected and where animals were observed in the wild.</title>
+<p>Locations where seahorses were collected (circle) and observed in the wild (square).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0220561.g001" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0220561.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0220561.t001</object-id>
+<label>Table 1</label>
+<caption><title>Environmental variables measured during experiments and observations.</title></caption>
+<alternatives>
+<graphic id="pone.0220561.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0220561.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Variables</th>
+<th align="center">Laboratory</th>
+<th align="center">Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Temperature (°C)</td>
+<td align="center">28.0</td>
+<td align="center">29.2</td>
+</tr>
+<tr>
+<td align="left">Salinity</td>
+<td align="center">33.0</td>
+<td align="center">33.8</td>
+</tr>
+<tr>
+<td align="left">pH</td>
+<td align="center">8.1</td>
+<td align="center">9.0</td>
+</tr>
+<tr>
+<td align="left">Ammonium (ppm)</td>
+<td align="center">0</td>
+<td align="center">Not measured</td>
+</tr>
+<tr>
+<td align="left">Nitrite (ppm)</td>
+<td align="center">0</td>
+<td align="center">Not measured</td>
+</tr>
+<tr>
+<td align="left">Nitrate (ppm)</td>
+<td align="center">0</td>
+<td align="center">Not measured</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>Environmental variables measured during exposure of seahorses to 450 nm wavelength in laboratory and field trials.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>This study was approved by the Ethics Committee on the use of Animals (CEUAUSU00004) and followed the ‘Ethical Principles in Animal Research’ guidelines adopted by the National Council of Animal Experimentation Control (CONCEA).</p>
+<p>Experiments were conducted with two females, one male <italic>H</italic>. <italic>reidi</italic>, and two juveniles stocked in 80L-aquarium filled with saltwater. During the experiments seahorses were kept alone in the aquarium in complete darkness, lightened only by the Night Sea excitation (royal blue exposure: ~450 nm), with a yellow barrier filter that completely blocks the reflected excitation of 440–460nm wavelengths. The biofluorescence was recorded by a Canon EOS 5D mark IV camera and a Canon EF 100mm ƒ/2.8LIS USM Macro lens.</p>
+<p>A second experiment was performed using another pregnant male captured in September 2018 in Urca beach, Guanabara bay. The adult <italic>H</italic>. <italic>reidi</italic> was inspected for the occurrence of biofluorescence, and then the newborn seahorses were assessed during two days from their birth. The same aquarium conditions and equipment were used in this experiment, which occurred in October 2018.</p>
+<p>Biofluorescence was registered in the field by two scuba divers between 6:00 and 9:00 pm on the rocky shores of Bananal beach (23°06’28.24” S e 44°14’57.16” W), Ilha Grande bay, in March 2018 (<xref ref-type="fig" rid="pone.0220561.g001">Fig 1</xref>). Three (two female and one male) individuals found in field were photographed with the same equipment used in laboratory.</p>
+<p>The biofluorescence was qualified through the images analysis according to the body parts (head, trunk and tail) and colors displayed. We quantified fluorescence using the PhotoQuad software, where 100 points are randomly cast in each part of the body and classified according to the displayed color.</p>
+</sec>
+<sec id="sec003" sec-type="results">
+<title>Results</title>
+<p>In laboratory, all adults and juveniles (<italic>n</italic> = 6) showed red and green biofluorescence. Light emissions were observed over the trunk, on both eyes, sides and tail (<xref ref-type="fig" rid="pone.0220561.g002">Fig 2A and 2C</xref>). Green biofluorescence was more evident on the eyes and as small dots all over the body, while red color was found covering all over the head, trunk and tail. This pattern was the same for all but intensity varied among them. Pregnant male also showed the same pattern of biofluorescence found for the other seahorses, both in relation to color emission as for body location of lighting. Some individuals had small green dots on the trunk and tail, but it was not a pattern exhibited by all observed individuals.</p>
+<fig id="pone.0220561.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0220561.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Seahorses in laboratory and field displaying biofluorescence.</title>
+<p><italic>Hippocampus reidi</italic> exhibiting biofluorescence in green and red spectrum in laboratory (A) and field (B) conditions. Male seahorses of 101 mm (A) shows dots of green biofluorescence in the trunk and head areas, while male seahorse (B) 123 mm, shows stripes of green biofluorescence in the trunk and head areas. Biofluorescence lighting in green spectrum in the eyes in laboratory (C) and field (D) conditions. Two-day-old seahorses showing no biofluorescence (E,F). A young seahorse, 4.3cm, exhibits mostly red biofluorescence under exciting light (G). The same individual is depicted in orange under natural white light (H). Photos: AAB.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0220561.g002" xlink:type="simple"/>
+</fig>
+<p>Adult individuals had a higher percentage of red fluorescence both on the head (65.5%) and on the trunk (64.5%). The green color was only displayed on the head (2.3%) and the tail was 100% red (<xref ref-type="fig" rid="pone.0220561.g003">Fig 3</xref>). Other parts on the head and trunk presented no biofluorescence with 32.3% and 35.5% cover, respectively.</p>
+<fig id="pone.0220561.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0220561.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Color cover on adult’s body.</title>
+<p>Percentage of color cover on body parts in adult individuals in laboratory.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0220561.g003" xlink:type="simple"/>
+</fig>
+<p>The biofluorescence was not quantified for the individuals observed in the field, because they grasped on the holdfast and hid part of their body becoming impossible to analyze it in the images, therefore we only qualified according to the body part and coloration displayed.</p>
+<p>Two young individuals were analyzed, which presented the major part of the body with red biofluorescence (head– 96,5%; trunk– 96%; tail– 100%) (<xref ref-type="fig" rid="pone.0220561.g004">Fig 4</xref>). Green fluorescence has only been observed on the eyes.</p>
+<fig id="pone.0220561.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0220561.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Color cover on juvenile’s body.</title>
+<p>Percentage of color cover on body parts in juveniles individuals in laboratory.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0220561.g004" xlink:type="simple"/>
+</fig>
+<p>Biofluorescence was recorded for all the 1.830 newborn seahorses, with green biofluorescence on the eyes and the stomach (<xref ref-type="fig" rid="pone.0220561.g002">Fig 2G</xref>). Our results indicate that biofluorescence already is present in the first two days of life in <italic>H</italic>. <italic>reidi</italic> (<xref ref-type="fig" rid="pone.0220561.g002">Fig 2E and 2F</xref>).</p>
+<p>In the field, three individuals were observed presenting green and red fluorescence as displayed in the laboratory. Green biofluorescence was observed on the eyes, also in the way of stripes along the head and on lateral side of the body of some individuals (<xref ref-type="fig" rid="pone.0220561.g002">Fig 2B</xref>). Red biofluorescence was observed throughout the whole <italic>H</italic>. <italic>reidi</italic> body (Figs <xref ref-type="fig" rid="pone.0220561.g002">2B</xref> and <xref ref-type="fig" rid="pone.0220561.g001">1D</xref>), however it changed according to the green biofluorescence exhibition. Water characteristics in field were similar to the conditions maintained in the aquariums (<xref ref-type="table" rid="pone.0220561.t001">Table 1</xref>).</p>
+</sec>
+<sec id="sec004" sec-type="conclusions">
+<title>Discussion</title>
+<p>Our study was the first to report biofluorescence for the longsnout seahorse <italic>H</italic>. <italic>reidi</italic> both in nature and captivity. Although displaying the same colour emissions (green and red), seahorses differed in relation to body lighting, colour patterns, and age at which fluorescence occurs. In laboratory, seahorses showed green biofluorescence in head and some individuals showed dots in the trunk, contrasting with seahorses in nature, which showed stripes of green biofluorescence in the trunk and head areas.</p>
+<p>Our findings agree with those presented for other four seahorse species (<italic>H</italic>. <italic>erectus</italic>, <italic>H</italic>. <italic>zosterae</italic>, <italic>H</italic>. <italic>bargibant</italic> and <italic>H</italic>. <italic>denise</italic>) and also pipefish species of the Syngnathidae family, in relation to the occurrence of green and red biofluorescence [<xref ref-type="bibr" rid="pone.0220561.ref013">13</xref>,<xref ref-type="bibr" rid="pone.0220561.ref014">14</xref>,<xref ref-type="bibr" rid="pone.0220561.ref007">7</xref>,<xref ref-type="bibr" rid="pone.0220561.ref003">3</xref>].</p>
+<p>Red fluorescence was recorded covering the head, trunk and tail of seahorses in our study. Red fluorescence, ~600 nm of light spectrum, was detected for several marine species [<xref ref-type="bibr" rid="pone.0220561.ref014">14</xref>], but it has been recorded only for a few numbers of fish species [<xref ref-type="bibr" rid="pone.0220561.ref007">7</xref>,<xref ref-type="bibr" rid="pone.0220561.ref015">15</xref>,<xref ref-type="bibr" rid="pone.0220561.ref016">16</xref>,<xref ref-type="bibr" rid="pone.0220561.ref017">17</xref>,<xref ref-type="bibr" rid="pone.0220561.ref003">3</xref>,<xref ref-type="bibr" rid="pone.0220561.ref018">18</xref>]. This pattern disagrees partially to Michiels et al.[<xref ref-type="bibr" rid="pone.0220561.ref007">7</xref>], who described red biofluorescence more associated with the head and eyes of several reef fish species, whereas the eyes of <italic>H</italic>. <italic>reidi</italic> were always lighting with green fluorescence. Michiels et al.[<xref ref-type="bibr" rid="pone.0220561.ref007">7</xref>] suggest that biofluorescence, especially the red spectrum, is related to intraspecific communication. Red fluorescence encompasses a wavelength range largely unavailable within the marine environment, being quickly attenuated with depth, especially in turbid systems, such as tropical bays and estuaries. Seahorses are visual animals, which use coloring in different context, such as courtship and camouflage [<xref ref-type="bibr" rid="pone.0220561.ref019">19</xref>].</p>
+<p>According to Sparks et al.[<xref ref-type="bibr" rid="pone.0220561.ref003">3</xref>] in addition to red fluorescence, previously reported in fish associated with shallow reefs, marine fish also exhibit combinations of green, orange and red fluorescence, and some only green coloring, in unique patterns and species specific.</p>
+<p>Green biofluorescence was recorded in a lesser extent for seahorses of both natural and captivity, occurring in the eyes of all individuals and as stripes and small dots spread in the trunk. Sparks et al.[<xref ref-type="bibr" rid="pone.0220561.ref003">3</xref>] reported green fluorescence covering the entire body of fishes of other families, contrasting with the patterns found for seahorses in the present study and for <italic>H</italic>. <italic>bargibant</italic> and <italic>H</italic>. <italic>denise</italic> [<xref ref-type="bibr" rid="pone.0220561.ref013">13</xref>], especially in relation to the eyes. Green fluorescence has been reported to attract preys in hydromedusa and has an effective result during day light [<xref ref-type="bibr" rid="pone.0220561.ref020">20</xref>]. Considering that <italic>H</italic>. <italic>reidi</italic> has green fluorescence mainly concentrated on the head, eyes and upper trunk, and it is a diurnal species, it is possible that green fluorescence is related to prey attraction. Notably, younger individuals showed a very simple color pattern under fluorescence and under natural light conditions.</p>
+<p>Our findings suggest thus that <italic>H</italic>. <italic>reidi</italic> might use biofluorescence as a complementary tool for communication, such as to contrast itself with the sea bottom and interact with other individuals at short distances. However, further studies should be performed to investigate whether this ability is important or not, since biofluorescence has already been detected for newborn seahorses of two-days age.</p>
+</sec>
+</body>
+<back>
+<ack>
+<p>We thank to Dr. Marcelo Prim, for lending the UW Fluorescent equipment, the Santa Ursula University for logistical support, and the staff on Laboratório de Comportamento Animal e Conservação by the support during the experiments, the Laboratório de Ictiologia Teórica e Aplicada (LICTA), and Programa de Pós Graduação em Biodiversidade Neotropical (PPGBIO).</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0220561.ref001"><label>1</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Kirk</surname> <given-names>JTO</given-names></name>. <chapter-title>Light and photosynthesis in aquatic ecosystems</chapter-title>. <publisher-loc>Cambridge</publisher-loc>: <publisher-name>University Press</publisher-name>; <year>2011</year>. 649 p.</mixed-citation></ref>
+<ref id="pone.0220561.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Anthes</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Theobald</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Gerlach</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Meadows</surname> <given-names>MG</given-names></name>, <name name-style="western"><surname>Michiels</surname> <given-names>NK</given-names></name>. <article-title>Diversity and Ecological Correlates of Red Fluorescence in Marine Fishes</article-title>. <source>Front Ecol Evol</source>. <year>2016</year>;<volume>4</volume>:<fpage>126</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.3389/fevo.2016.00126" xlink:type="simple">10.3389/fevo.2016.00126</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0220561.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sparks</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Schelly</surname> <given-names>RC</given-names></name>, <name name-style="western"><surname>Smith</surname> <given-names>WL</given-names></name>, <name name-style="western"><surname>Davis</surname> <given-names>MP</given-names></name>, <name name-style="western"><surname>Tchernov</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Pieribone</surname> <given-names>VA</given-names></name>, <name name-style="western"><surname>Gruber</surname> <given-names>DF</given-names></name>. <article-title>The covert World of fish biofluorescence: a phylogenetically widespread and phenotypically variable phenomenon</article-title>. <source>PLoS One</source>. <year>2014</year>;<volume>9</volume>(<issue>1</issue>):<fpage>e83259</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0083259" xlink:type="simple">10.1371/journal.pone.0083259</ext-link></comment> <object-id pub-id-type="pmid">24421880</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Arnold</surname> <given-names>KE</given-names></name>, <name name-style="western"><surname>Owens</surname> <given-names>IPF</given-names></name>, <name name-style="western"><surname>Marshall</surname> <given-names>NJ</given-names></name>. <article-title>Fluorescent Signaling in Parrots</article-title>. <source>Science</source>. <year>2002</year>;<volume>295</volume>:<fpage>92</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1126/science.295.5552.92" xlink:type="simple">10.1126/science.295.5552.92</ext-link></comment> <object-id pub-id-type="pmid">11778040</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mazel</surname> <given-names>CH</given-names></name>, <name name-style="western"><surname>Cronin</surname> <given-names>TW</given-names></name>, <name name-style="western"><surname>Caldwell</surname> <given-names>RL</given-names></name>, <name name-style="western"><surname>Marshall</surname> <given-names>NJ</given-names></name>. <article-title>Fluorescent enhancement of signaling in a Mantis shrimp</article-title>. <source>Science</source>. <year>2004</year>;<volume>303</volume>:<fpage>51</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1126/science.1089803" xlink:type="simple">10.1126/science.1089803</ext-link></comment> <object-id pub-id-type="pmid">14615546</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref006"><label>6</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Haddock</surname> <given-names>SHD</given-names></name>, <name name-style="western"><surname>Heine</surname> <given-names>JN</given-names></name>. <chapter-title>Scientific blue-water diving</chapter-title>. <publisher-loc>CA</publisher-loc>: <publisher-name>California Sea Grant</publisher-name>. <year>2005</year>.</mixed-citation></ref>
+<ref id="pone.0220561.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Michiels</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Anthes</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Hart</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Herler</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Meixner</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Schleifenbaum</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Schulte</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Siebeck</surname> <given-names>U</given-names></name>, <name name-style="western"><surname>Sprenger</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Wucherer</surname> <given-names>M</given-names></name>. <article-title>Red fluorescence in reef fish: a novel signalling mechanism?</article-title> <source>BMC Ecology</source>. <year>2008</year>;<volume>8</volume>:<fpage>16</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/1472-6785-8-16" xlink:type="simple">10.1186/1472-6785-8-16</ext-link></comment> <object-id pub-id-type="pmid">18796150</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Haddock</surname> <given-names>SH</given-names></name>, <name name-style="western"><surname>Mastroianni</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Christianson</surname> <given-names>LM</given-names></name>. <article-title>A photoactivatable green-fluorescent protein from the phylum Ctenophora</article-title>. <source>Proc Biol Sci</source>. <year>2010</year>;<volume>277</volume>: <fpage>1155</fpage>–<lpage>1160</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1098/rspb.2009.1774" xlink:type="simple">10.1098/rspb.2009.1774</ext-link></comment> <object-id pub-id-type="pmid">20018790</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lourie</surname> <given-names>SA</given-names></name>, <name name-style="western"><surname>Pollom</surname> <given-names>RA</given-names></name>, <name name-style="western"><surname>Foster</surname> <given-names>SJ</given-names></name>. <article-title>A global revision of the Seahorses Hippocampus Rafinesque 1810 (Actinopterygii: Syngnathiformes): Taxonomy and biogeography with recommendations for further research</article-title>. <source>Zootaxa</source>. <year>2016</year>;<volume>4146</volume>(<issue>1</issue>):<fpage>1</fpage>–<lpage>66</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.11646/zootaxa.4146.1.1" xlink:type="simple">10.11646/zootaxa.4146.1.1</ext-link></comment> <object-id pub-id-type="pmid">27515600</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhang</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Qin</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Lin</surname> <given-names>Q</given-names></name>. <article-title>A new species of seahorse (Teleostei: Syngnathidae) from the South China Sea</article-title>. <source>Zootaxa</source>. <year>2016</year>;<volume>4170</volume>(<issue>2</issue>):<fpage>384</fpage>–<lpage>392</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.11646/zootaxa.4170.2.11" xlink:type="simple">10.11646/zootaxa.4170.2.11</ext-link></comment> <object-id pub-id-type="pmid">27701270</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref011"><label>11</label><mixed-citation publication-type="other" xlink:type="simple">List of Threatened Species of the Brazilian Ministry of the Environment, 2016.</mixed-citation></ref>
+<ref id="pone.0220561.ref012"><label>12</label><mixed-citation publication-type="other" xlink:type="simple">IUCN–International Union for Conservation of Nature. Red List of Threatened Species. 2010. <ext-link ext-link-type="uri" xlink:href="http://www.iucnredlist.org/" xlink:type="simple">http://www.iucnredlist.org/</ext-link>. Acessed in 13 de setembro de 2018.</mixed-citation></ref>
+<ref id="pone.0220561.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brauwer</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Hobbs</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Ambo-Rappe</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Jompa</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Harvey</surname> <given-names>ES</given-names></name>, <name name-style="western"><surname>Mcilwain</surname> <given-names>JL</given-names></name>. <article-title>Biofluorescence as a survey tool for cryptic marine species</article-title>. <source>Conservation Biology</source>. <year>2018</year>;<volume>32</volume>:<fpage>706</fpage>–<lpage>715</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/cobi.13033" xlink:type="simple">10.1111/cobi.13033</ext-link></comment> <object-id pub-id-type="pmid">28984998</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kalb</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Schneider</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Sprenger</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Michiels</surname> <given-names>N</given-names></name>. <article-title>Thered-fluorescing marine fish <italic>Tripterygion delaisi</italic> can perceive its own red fluorescent color</article-title>. <source>Ethology</source>. <year>2015</year>;<volume>121</volume>:<fpage>1</fpage>–<lpage>11</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/eth.12367" xlink:type="simple">10.1111/eth.12367</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0220561.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wucherer</surname> <given-names>MF</given-names></name>, <name name-style="western"><surname>Michiels</surname> <given-names>NK</given-names></name>. <article-title>A fluorescent chromatophore changes the level of fluorescence in a reef fish</article-title>. <source>PLoS One</source>. <year>2012</year>;<volume>7</volume>:<fpage>e37913</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0037913" xlink:type="simple">10.1371/journal.pone.0037913</ext-link></comment> <object-id pub-id-type="pmid">22701587</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wucherer</surname> <given-names>MF</given-names></name>, <name name-style="western"><surname>Michiels</surname> <given-names>NK</given-names></name>. <article-title>Regulation of red fluorescent light emission in a cryptic marine fish</article-title>. <source>Front.Zool</source>.<year>2014</year>;<volume>11</volume>:<fpage>1</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/1742-9994-11-1" xlink:type="simple">10.1186/1742-9994-11-1</ext-link></comment> <object-id pub-id-type="pmid">24401080</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Meadows</surname> <given-names>MG</given-names></name>, <name name-style="western"><surname>Anthes</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Dangelmayer</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Alwany</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Gerlach</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Schulte</surname> <given-names>G</given-names></name>. <article-title>Red fluorescence increases with depth in reef fishes, supporting a visual function, not UV protection</article-title>. <source>Proc. R. Soc. Biol. Sci</source>. <year>2014</year>;<volume>281</volume>:<fpage>1211</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1098/rspb.2014.1211" xlink:type="simple">10.1098/rspb.2014.1211</ext-link></comment> <object-id pub-id-type="pmid">25030989</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gerlach</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Theobald</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Hart</surname> <given-names>NS</given-names></name>, <name name-style="western"><surname>Collin</surname> <given-names>SP</given-names></name>, <name name-style="western"><surname>Michiels</surname> <given-names>NK</given-names></name>. <article-title>Fluorescence characterization and visual ecology of pseudocheilinid wrasses</article-title>. <source>Front. Zool</source>. <year>2016</year>;<volume>13</volume>:<fpage>13</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/s12983-016-0145-1" xlink:type="simple">10.1186/s12983-016-0145-1</ext-link></comment> <object-id pub-id-type="pmid">26981144</object-id></mixed-citation></ref>
+<ref id="pone.0220561.ref019"><label>19</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Lourie</surname> <given-names>SA</given-names></name>, <name name-style="western"><surname>Vincent</surname> <given-names>ACJ</given-names></name>, <name name-style="western"><surname>Hall</surname> <given-names>HJ</given-names></name>. <chapter-title>Seahorses: an identification guide to the world’s species and their conservation</chapter-title>. <publisher-name>Project Seahorse</publisher-name>, <publisher-loc>London</publisher-loc>; <year>1999</year>.</mixed-citation></ref>
+<ref id="pone.0220561.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gruber</surname> <given-names>DF</given-names></name>, <name name-style="western"><surname>Loew</surname> <given-names>ER</given-names></name>, <name name-style="western"><surname>Deheyn</surname> <given-names>DD</given-names></name>, <name name-style="western"><surname>Akkaynak</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Gaffney</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Smith</surname> <given-names>WL</given-names></name>, <name name-style="western"><surname>Davis</surname> <given-names>MP</given-names></name>, <name name-style="western"><surname>Stern</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Pieribone</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Sparks</surname> <given-names>JS</given-names></name>. <article-title>Biofluorescence in Catsharks (Scyliorhinidae): Fundamental Description and Relevance for Elasmobranch Visual Ecology</article-title>. <source>Scientific Reports</source>. <year>2016</year>;<volume>6</volume>:<fpage>1</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/s41598-016-0001-8" xlink:type="simple">10.1038/s41598-016-0001-8</ext-link></comment></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

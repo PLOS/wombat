@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-10-03089</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0016259</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Model organisms</subject>
+            <subj-group>
+              <subject>Animal models</subject>
+              <subj-group>
+                <subject>Mouse</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Neuroscience</subject>
+            <subj-group>
+              <subject>Neurochemistry</subject>
+              <subj-group>
+                <subject>Neurochemicals</subject>
+                <subj-group>
+                  <subject>Neuropeptides</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Cognitive neuroscience</subject>
+              <subject>Neurobiology of disease and regeneration</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Clinical research design</subject>
+            <subj-group>
+              <subject>Animal models of disease</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Diagnostic medicine</subject>
+            <subj-group>
+              <subject>Pathology</subject>
+              <subj-group>
+                <subject>Anatomical pathology</subject>
+                <subj-group>
+                  <subject>Neuropathology</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Neurology</subject>
+            <subj-group>
+              <subject>Dementia</subject>
+              <subj-group>
+                <subject>Alzheimer disease</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Neurodegenerative diseases</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Neuroscience</subject>
+          <subject>Pathology</subject>
+          <subject>Neurological Disorders</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>A Humanin Derivative Reduces Amyloid Beta Accumulation and Ameliorates Memory Deficit in Triple Transgenic Mice</article-title><alt-title alt-title-type="running-head">Humanin Reduces Amyloid Burden</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Niikura</surname>
+            <given-names>Takako</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Sidahmed</surname>
+            <given-names>Elkhansa</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hirata-Fukae</surname>
+            <given-names>Chiho</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Aisen</surname>
+            <given-names>Paul S.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Matsuoka</surname>
+            <given-names>Yasuji</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="fn" rid="fn1">
+            <sup>¤</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1"><label>1</label><addr-line>Faculty of Health Sciences, Simon Fraser University, Burnaby, British Columbia, Canada</addr-line>       </aff><aff id="aff2"><label>2</label><addr-line>Department of Neurology, Georgetown University, Washington, D. C., United States of America</addr-line>       </aff><aff id="aff3"><label>3</label><addr-line>Department of Neurosciences, University of California San Diego, La Jolla, California, United States of America</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Ikezu</surname>
+            <given-names>Tsuneya</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">Boston University School of Medicine, United States of America</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">tniikura@sfu.ca</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: TN YM. Performed the experiments: TN ES CH-F. Analyzed the data: TN ES CH-F PSA YM. Contributed reagents/materials/analysis tools: TN PSA YM. Wrote the paper: TN PSA YM.</p>
+        </fn>
+        <fn fn-type="current-aff" id="fn1">
+          <label>¤</label>
+          <p>Current address: Neural Pathway Discovery, GlaxoSmithKline, Shanghai, China</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>YM, a current employee of Glaxo Smith Kline, participated to this study when he was employed by Georgetown University. No materials have been procured or donated by Glaxo Smith Kline. No product is in development at Glaxo Smith Kline related to this study. This does not alter adherence to all the PLoS ONE policies on sharing data and materials.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2011</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>17</day>
+        <month>1</month>
+        <year>2011</year>
+      </pub-date><volume>6</volume><issue>1</issue><elocation-id>e16259</elocation-id><history>
+        <date date-type="received">
+          <day>30</day>
+          <month>9</month>
+          <year>2010</year>
+        </date>
+        <date date-type="accepted">
+          <day>8</day>
+          <month>12</month>
+          <year>2010</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2011</copyright-year><copyright-holder>Niikura et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <p>Humanin (HN), a 24-residue peptide, was identified as a novel neuroprotective factor and shows anti-cell death activity against a wide spectrum of Alzheimer's disease (AD)-related cytotoxicities, including exposure to amyloid beta (Abeta), <italic>in vitro</italic>. We previously demonstrated that the injection of S14G-HN, a highly potent HN derivative, into brain ameliorated memory loss in an Abeta-injection mouse model. To fully understand HN's functions under AD-associated pathological conditions, we examined the effect of S14G-HN on triple transgenic mice harboring APP<sub>swe</sub>, tau<sub>P310L</sub>, and PS-1<sub>M146V</sub> that show the age-dependent development of multiple pathologies relating to AD. After 3 months of intranasal treatment, behavioral analyses showed that S14G-HN ameliorated cognitive impairment in male mice. Moreover, ELISA and immunohistochemical analyses showed that Abeta levels in brains were markedly lower in S14G-HN-treated male and female mice than in vehicle control mice. We also found the expression level of neprilysin, an Abeta degrading enzyme, in the outer molecular layer of hippocampal formation was increased in S14G-HN-treated mouse brains. NEP activity was also elevated by S14G-HN treatment <italic>in vitro</italic>. These findings suggest that decreased Abeta level in these mice is at least partly attributed to S14G-HN-induced increase of neprilysin level. Although HN was identified as an anti-neuronal death factor, these results indicate that HN may also have a therapeutic effect on amyloid accumulation in AD.</p>
+      </abstract><funding-group><funding-statement>This study was partly supported by the National Institutes of Health (grants AG026478 and AG022455 to YM) (<ext-link ext-link-type="uri" xlink:href="http://www.nih.gov" xlink:type="simple">www.nih.gov</ext-link>) and Natural Sciences and Engineering Research Council of Canada (386973-2010 to TN) (<ext-link ext-link-type="uri" xlink:href="http://www.nserc-crsng.gc.ca" xlink:type="simple">www.nserc-crsng.gc.ca</ext-link>). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="12"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>Humanin (HN) is a multi-functional 24-residue peptide (amino acid sequence: MAPRGFSCLLLLTSEIDLPVKRRA) whose cDNA was isolated from an Alzheimer's disease (AD) patient's occipital lobe of brain, a region that remains generally intact in many AD cases <xref ref-type="bibr" rid="pone.0016259-Hashimoto1">[1]</xref> (reviews in <xref ref-type="bibr" rid="pone.0016259-Niikura1">[2]</xref>, <xref ref-type="bibr" rid="pone.0016259-Nishimoto1">[3]</xref>, <xref ref-type="bibr" rid="pone.0016259-Niikura2">[4]</xref>). HN suppresses the neuronal death caused by all AD-related insults so far tested <italic>in vitro</italic> including the key cytotoxic molecule in AD, amyloid beta (Abeta) 1-42 <xref ref-type="bibr" rid="pone.0016259-Hashimoto1">[1]</xref>, <xref ref-type="bibr" rid="pone.0016259-Hashimoto2">[5]</xref>, <xref ref-type="bibr" rid="pone.0016259-Hashimoto3">[6]</xref>. HN suppressed cell death caused by Abeta toxicity not only in primary neurons but also in cerebrovascular smooth muscle cells, a model of amyloid angiopathy <xref ref-type="bibr" rid="pone.0016259-Jung1">[7]</xref>. HN is also effective against cell death caused by non-AD-related insults under different experimental settings, such as serum depriviation, prion peptide118-135, IGFBP3 (insulin-like growth factor binding protein 3), staurosporine etc. <xref ref-type="bibr" rid="pone.0016259-Kariya1">[8]</xref>, <xref ref-type="bibr" rid="pone.0016259-Sponne1">[9]</xref>, <xref ref-type="bibr" rid="pone.0016259-Ikonen1">[10]</xref>, <xref ref-type="bibr" rid="pone.0016259-Guo1">[11]</xref>. However, HN is not effective against some insults such as etoposide, suggesting that HN is not a general anti-apoptotic agent.</p>
+      <p>It has been hypothesized that HN stimulates its receptor(s) and activates signaling cascade(s) to exert its effects <xref ref-type="bibr" rid="pone.0016259-Niikura1">[2]</xref>, <xref ref-type="bibr" rid="pone.0016259-Niikura2">[4]</xref>. Upon HN stimulation, G protein coupled receptors, formyl peptide receptor-like (FPRL) 1 and FPRL2 <xref ref-type="bibr" rid="pone.0016259-Harada1">[12]</xref>, <xref ref-type="bibr" rid="pone.0016259-Ying1">[13]</xref>, induce increase of Ca<sup>2+</sup> flux and activation of extracellular signal-regulated kinase (ERK), while a receptor complex consisting of gp130, CNTFR, and WSX-1 <xref ref-type="bibr" rid="pone.0016259-Hashimoto4">[14]</xref> induces activation of a transcription factor, signal transducer and activator of transcription 3 (STAT3). In addition, three receptor-independent mechanisms have been proposed. (I) Intracellular HN bound to pro-apoptotic Bcl-2 family members, Bax, BimEL, and tBid, and blocked cytochrome c release from mitochondria, leading to inhibition of apoptosis <xref ref-type="bibr" rid="pone.0016259-Guo1">[11]</xref>, <xref ref-type="bibr" rid="pone.0016259-Zhai1">[15]</xref>, <xref ref-type="bibr" rid="pone.0016259-Luciano1">[16]</xref>. (II) HN increased cellular ATP levels in human lymphocytes and a muscular cell line <xref ref-type="bibr" rid="pone.0016259-Kariya1">[8]</xref>, <xref ref-type="bibr" rid="pone.0016259-Kariya2">[17]</xref>, <xref ref-type="bibr" rid="pone.0016259-Kariya3">[18]</xref>, <xref ref-type="bibr" rid="pone.0016259-Kariya4">[19]</xref>, <xref ref-type="bibr" rid="pone.0016259-Kariya5">[20]</xref>. (III) Extracellularly added HN was detected in the cells and suppressed apoptosis induced by IGFBP3 <xref ref-type="bibr" rid="pone.0016259-Ikonen1">[10]</xref>.</p>
+      <p>Through structure-function analyses, we found that a substitution of Gly for 14th Ser (S14G-HN) increased potency 1000-fold <xref ref-type="bibr" rid="pone.0016259-Hashimoto1">[1]</xref>. S14G-HN ameliorated amnesia caused by muscarinic receptor antagonists <xref ref-type="bibr" rid="pone.0016259-Mamiya1">[21]</xref>, <xref ref-type="bibr" rid="pone.0016259-Krejcova1">[22]</xref>, <xref ref-type="bibr" rid="pone.0016259-Tajima1">[23]</xref> and Abeta in mice <xref ref-type="bibr" rid="pone.0016259-Tajima1">[23]</xref>, <xref ref-type="bibr" rid="pone.0016259-Miao1">[24]</xref>. S14G-HN also ameliorated symptoms and/or pathology in rodent stroke model <xref ref-type="bibr" rid="pone.0016259-Xu1">[25]</xref>, <xref ref-type="bibr" rid="pone.0016259-Xu2">[26]</xref> and diabetes models <xref ref-type="bibr" rid="pone.0016259-Muzumdar1">[27]</xref>, <xref ref-type="bibr" rid="pone.0016259-Hoang1">[28]</xref>. These findings suggest the potential of HN for therapeutic application in AD and other diseases.</p>
+      <p>To evaluate the effect of HN derivatives <italic>in vivo</italic>, Abeta injection model was used in the previous studies <xref ref-type="bibr" rid="pone.0016259-Tajima1">[23]</xref>, <xref ref-type="bibr" rid="pone.0016259-Yamada1">[29]</xref>, <xref ref-type="bibr" rid="pone.0016259-Chiba1">[30]</xref>. In this model, Abeta administration induces amnesia in rodents, decreases the number of cholinergic neurons <xref ref-type="bibr" rid="pone.0016259-Frautschy1">[31]</xref>, and reduces choline acetyltransferase activity <xref ref-type="bibr" rid="pone.0016259-Yamaguchi1">[32]</xref>, <xref ref-type="bibr" rid="pone.0016259-Yamada2">[33]</xref>, <xref ref-type="bibr" rid="pone.0016259-Nitta1">[34]</xref>, <xref ref-type="bibr" rid="pone.0016259-Nitta2">[35]</xref> Although the Abeta injection model is a simple and convenient model, the transgenic mouse model has some advantages, for instance production of multiple Abeta species through physiological process and amyloid plaque formation. The triple transgenic mice harboring APP<sub>swe</sub>, tau<sub>P310L</sub>, and PS-1<sub>M146V</sub> (3xTg-AD) <xref ref-type="bibr" rid="pone.0016259-Oddo1">[36]</xref> have the advantage of the age-dependent development of multiple pathological events relating to AD. In these mice, memory impairment was observed by Morris water maze test at 9 months of age. Soluble Abeta was observed from 9 months of age and plaques from 14 months by immunohistochemical analyses. They also develop tau pathology: total tau protein increased age-dependently, correlating with a decrease of soluble tau and an increase of insoluble tau <xref ref-type="bibr" rid="pone.0016259-HirataFukae1">[37]</xref>. Therefore, they are beneficial to examine the effect of therapeutic candidates on pathological changes under the complex physiological conditions.</p>
+      <p>We previously demonstrated that Abeta-induced amnesia was suppressed by intracerebroventricular injection of S14G-HN <xref ref-type="bibr" rid="pone.0016259-Tajima1">[23]</xref>. To fully understand HN's functions on complex AD-relevant pathology, in this study, we used triple transgenic mouse model. We found that S14G-HN ameliorated cognitive function of 3xTg-AD mice and reduced amyloid burden accompanied by an increase in neprilysin level in the hippocampal region.</p>
+    </sec>
+    <sec id="s2" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s2a">
+        <title>Animals and treatment</title>
+        <p>Triple transgenic (3xTg-AD) mice were housed under 12 hour light, 12 hour dark cycles with food and water provided ad libitum. Male and female 3xTg-AD mice (n = 9 in each group) at the age of 13 months (13.2±0.6) were treated intranasally with 10 nmol of S14G-HN (Peptide Institute, Japan) or vehicle (water) for 3 and half months. Treatment was carried out 5 days a week (weekdays) for the initial 2.5 months and everyday during the last 1 month. After 3 months of treatment, 7 male and 9 female mice in the vehicle control group and 9 male and 7 female mice in the S14G-HN treatment group were subjected to behavioral analyses. After 1 week of the last behavioral test (24 hours after the last treatment), mice at 17 months of age were sacrificed by cervical dislocation as described in Planel et al. <xref ref-type="bibr" rid="pone.0016259-Planel1">[38]</xref>. Half hemispheres of the brains were rapidly frozen for immunoblot and ELISA analyses and the other half hemispheres were fixed with 4% paraformaldehyde for histological analyses. To examine the delivery of S14G-HN to brain, 3xTg-AD mice (female, 20 months of age) were treated intranasally with 10 nmol of S14G-HN or vehicle (water). After 1 hour of administration, mice were sacrificed and brains were fixed with 4% paraformaldehyde for histological analyses. All experimental procedures were approved by the Georgetown University Animal Care and Use Committee (Protocol #07-016).</p>
+      </sec>
+      <sec id="s2b">
+        <title>Open Field test</title>
+        <p>The open field test was performed as described in Takahashi et al. <xref ref-type="bibr" rid="pone.0016259-Takahashi1">[39]</xref>. The apparatus was a rectangle container (45 cm ×35 cm and 15 cm height). The peripheral area was designated within 10 cm from the walls. Each mouse was placed at a corner and the activities were recorded for 5 min. Mouse behaviors (walking distance, speed, and duration spent in peripheral area) were analyzed by TopScan software (Cleaver System Inc., VA).</p>
+      </sec>
+      <sec id="s2c">
+        <title>Novel object recognition task</title>
+        <p>The novel object was performed as described in Nagai et al. <xref ref-type="bibr" rid="pone.0016259-Nagai1">[40]</xref>. The apparatus was a rodent cage (43 cm ×27 cm ×22 cm). Two identical objects were presented to a mouse in the apparatus for 5 min and the time spent exploring the objects was recorded. After 30 min, the mouse was returned to the arena where one object was replaced with a novel object and the mouse was allowed to explore for 5 min. The exploring time for each object was recorded. All behavior was recorded and analyzed by TopScan software. The object discrimination of normal rats is greatest in the initial two minutes <xref ref-type="bibr" rid="pone.0016259-Dix1">[41]</xref>, so we focused on the first two minutes of exploring time to determine cognitive function of mice and calculated Discrimination ratio (DR) as described in Winters et al. <xref ref-type="bibr" rid="pone.0016259-Winters1">[42]</xref>: DR  =  (N-F)/T, where N is time spent exploring the novel object, F is time spent exploring the familiar object, and T is total time spent exploring two objects.</p>
+      </sec>
+      <sec id="s2d">
+        <title>Morris water maze</title>
+        <p>The Morris water maze was performed as described by Matsuoka et al. <xref ref-type="bibr" rid="pone.0016259-Matsuoka1">[43]</xref>. The circular pool (diameter 150 cm, height 30 cm, painted white) was filled with water (22±1.0°C). A circular, white escape platform (diameter 10 cm) was submerged 1 cm below the water surface, 30 cm off the rim of the pool. Training trials, 120 sec each, were performed twice a day during 5 consecutive days. The platform location and the animal's starting point were held constant within each pair of daily tests, but the location of the platform and the animal's starting point were rotated by 90° every day. The mice were allowed to stay on the platform for 20 sec before and after each trial. On the fifth day, a probe test was preformed after the second daily trial. The platform was removed from the maze and swimming behavior was recorded for 2 min. Mice were then subjected to a visible platform test. A black escape platform was placed at 1cm above the water in the same place in training trials in the 5th day. Each mouse was released into the water and the time taken to find the platform was recorded (maximum 60 seconds). Animals that did not climb on the platform during this test were excluded from the statistical analysis. All behavior was recorded and analyzed by TopScan software.</p>
+      </sec>
+      <sec id="s2e">
+        <title>Abeta ELISA</title>
+        <p>The method is described in Hirata-Fukae et al. <xref ref-type="bibr" rid="pone.0016259-HirataFukae1">[37]</xref>. Briefly, brains were homogenized in buffer (50 mM Tris-HCl, pH 7.4, 1 mM EDTA) with protease inhibitors (Halt Protease Inhibitor Cocktail, Pierce) and phosphatase inhibitors (Phosphatase inhibitor Cocktail set, Calbiochem). Soluble Abeta was extracted with 0.4% diethylamine as described in Schmidt et al. <xref ref-type="bibr" rid="pone.0016259-Schmidt1">[44]</xref> and subjected to ELISA as described in Horikoshi et al. <xref ref-type="bibr" rid="pone.0016259-Horikoshi1">[45]</xref>.</p>
+      </sec>
+      <sec id="s2f">
+        <title>Immunohistochemical analysis</title>
+        <p>Immunohistochemical staining was described in Hirata-Fukae et al. <xref ref-type="bibr" rid="pone.0016259-HirataFukae1">[37]</xref>. Briefly, 30 µm sagittal sections were subjected to immunostaining using anti-HN (P04) <xref ref-type="bibr" rid="pone.0016259-Tajima2">[46]</xref>, anti-Abeta antibody (82E1, IBL), anti-phosphorylated tau (Ser202) (AT8, Pierce), anti-phosphorylated tau (Thr231) (AT180, Pierce), or anti-insulin degrading enzyme (IDE) (Abcam) and biotin-conjugated secondary antibody followed by visualization with avidin-fluorescein for HN or ABC method (Vector Laboratories) for others. Immunostaining with anti-neprilysin (NEP) antibody (clone 56C6, Abcam) and anti-synaptophysin (SVP-38, Sigma) were performed as described in Iwata et al. <xref ref-type="bibr" rid="pone.0016259-Iwata1">[47]</xref> and Tomiyama et al. <xref ref-type="bibr" rid="pone.0016259-Tomiyama1">[48]</xref>, respectively. Immunostaining with anti-phosphoTyr705-STAT3 antibody (Cell Signaling) was performed according to the manufacturer's instruction using anti-rabbit-DyLight488 secondary antibody (Pierce). For quantitative analysis, staining intensity was measured with ImageJ.</p>
+      </sec>
+      <sec id="s2g">
+        <title>Immunoblot analysis</title>
+        <p>Brain homogenate was subjected to SDS-PAGE (Nu-PAGE, Invitrogen), followed by transfer to polyvinilydendifluoride membrane (Millipore). Membranes were blocked with 5% BSA in TBS-T (20 mM Tris-HCl pH 7.6, 136 mM NaCl, and 0.1% Tween 20), and incubated with primary antibody and secondary antibody (horseradish peroxidase conjugated anti-mouse or rabbit IgG) in 2% BSA in TBS-T, followed by detection with enhanced chemiluminescence reagent (Thermo Scientific). Primary antibodies were anti-APP (IBL), anti-sAPPalpha (IBL), anti-phosphorylated-tau (Ser202) (AT8, Pierce), anti-phosphorylated tau (Thr231) (AT180, Pierce), anti-total tau (Tau46, Sigma), and anti-beta-actin (Sigma). Anti-phosphoTyr705-STAT3, anti-total STAT3, anti-phosphoSer473-Akt, anti-phosphoThr308-Akt, and anti-total Akt were from Cell Signaling.</p>
+      </sec>
+      <sec id="s2h">
+        <title>NEP activity assay</title>
+        <p>F11 neuronal cells were cultured in Ham's F12 medium supplemented with 18% fetal bovine serum, penicillin/streptomycin (Gibco). Cells were treated with 500 nM S14G-HN or vehicle (water) for 2 hours. Cell lysate was subjected to NEP activity assay as described in Hemming et al. <xref ref-type="bibr" rid="pone.0016259-Hemming1">[49]</xref>. Briefly, cell lysate was mixed with 1 mM captopril (MP Biomedicals) and incubated with substrate, 3-dansyl-D-Ala-Gly-p-(nitro)-Phe-Gly (DAGNPG; Bachem) in the presence or absence of 10 mM phosphoramidon (American peptide). Reaction was stopped by heating. After clarifying reaction mix by centrifugation, fluorescent intensity was measured by a plate reader (excitation 340, emission 535, TECAN ULTRA).</p>
+      </sec>
+      <sec id="s2i">
+        <title>Data analysis</title>
+        <p>Data was statistically analyzed by t-test, Mann-Whitney U test, (SPSS) or non-parametric ANOVA (Kruskal-Wallis test) followed by Dunn's post-hoc test (Prism).</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Results</title>
+      <sec id="s3a">
+        <title>S14G-HN does not affect locomotor activity of 3xTg-AD mice</title>
+        <p>Intranasal administration is a method for delivery of therapeutic agents directly and efficiently to the brain <xref ref-type="bibr" rid="pone.0016259-Frey1">[50]</xref>. We treated 3xTg-AD mice with S14G-HN intranasally, and performed immunohistological staining with anti-HN antibody (P04) <xref ref-type="bibr" rid="pone.0016259-Tajima2">[46]</xref>. Based on the study on IGF-I <xref ref-type="bibr" rid="pone.0016259-Thorne1">[51]</xref> we focused on olfactory tract area, and found positive immunostaining in olfactory tubercle region (<xref ref-type="fig" rid="pone-0016259-g001">Fig. 1</xref>). This suggests that S14G-HN is transported into brain through a pathway associated with the peripheral olfactory system as described in <xref ref-type="bibr" rid="pone.0016259-Thorne1">[51]</xref>.</p>
+        <fig id="pone-0016259-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016259.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>Delivery of S14G-HN to brain by intranasal administration.</title>
+            <p>3xTg-AD mice (13 month-old) were intranasally administrated with S14G-HN (B) or vehicle (A), and sacrificed after 1 hour of administration. Brains were fixed with 4% paraformaldehyde and 30 µm sagittal sections of brains were subjected to immunostaining using anti-HN antibody (P04) and biotin-conjugated secondary antibody followed by visualization with avidin-fluorescein. ACB, Nucleus accumbens; AON, Anterior olfactory nucleus; NBD, Diagnal band nucleus; OT, Olfactory tubercle; SI, Substantia innominata. Bar = 500 µm.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016259.g001" xlink:type="simple"/>
+        </fig>
+        <p>To examine the effect of HN, we designed a 3-month treatment study using male and female 3xTg-AD mice (n = 9 in each group) at the early plaque-bearing stage. Since the progression of Abeta pathology in our colony is slower than that in the original colony <xref ref-type="bibr" rid="pone.0016259-HirataFukae1">[37]</xref>, we started the treatment of mice at the age of 13 months (13.2±0.6). S14G-HN showed complete neuroprotective activity at 1nM of concentration <italic>in vitro</italic> <xref ref-type="bibr" rid="pone.0016259-Hashimoto1">[1]</xref>, <xref ref-type="bibr" rid="pone.0016259-Hashimoto3">[6]</xref>. To achieve approximately 1nM of concentration in CNS, we chose a dose of S14G-HN at 10 nmol/day, based on the finding that intranasal administration of 5 nmol [<sup>125</sup>I]-IGF-I resulted in 0.32–1.44 nM of concentration in CNS region <xref ref-type="bibr" rid="pone.0016259-Thorne1">[51]</xref>. We treated male and female 3xTg-AD mice intranasally for three months with 10 nmol S14G-HN. After three months of treatment, we performed behavioral tests. In the Open Field test (<xref ref-type="fig" rid="pone-0016259-g002">Fig. 2A–C</xref>), no significant difference was observed between the vehicle and S14G-HN treated mice in total moving distance (<xref ref-type="fig" rid="pone-0016259-g002">Fig.2A</xref>), walking speed (<xref ref-type="fig" rid="pone-0016259-g002">Fig.2B</xref>), and time spent in peripheral area (<xref ref-type="fig" rid="pone-0016259-g002">Fig.2C</xref>). These results indicate that S14G-HN did not affect anxiety-induced locomotor activity and exploratory behaviors. In the Novel object recognition test (<xref ref-type="fig" rid="pone-0016259-g002">Fig. 2D</xref>), S14G-HN treated mice showed a trend toward improved recognition, though not reaching statistical significance.</p>
+        <fig id="pone-0016259-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016259.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>The effect of S14G-HN on locomotor activity of 3xTg-AD mice.</title>
+            <p>Male and female 3xTg-AD mice were subjected to behavioral analyses, Open field test (<bold>A–C</bold>) and Novel object recognition task (<bold>D</bold>), after 3 months intranasal administration of S14G-HN or vehicle. In Open field test, walking distance (<bold>A</bold>), walking speed (<bold>B</bold>) and duration stayed in the peripheral region (<bold>C</bold>) were measured. No significant difference was observed between S14G-HN and vehicle-treated mice in both genders. In Novel object recognition task, time of sniffing behavior to two objects was measured. In the first trial, no preference was observed in sniffing time of two objects (data not shown). The discrimination ratio in the second trial is shown (<bold>D</bold>). Bars indicate median, and p =  indicates p value of Mann-Whitney U test. Number of animals are male vehicle control: n = 7, S14G-HN: n = 9, female vehicle control: n = 8, S14G-HN: n = 7.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016259.g002" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3b">
+        <title>S14G-HN ameliorates deficit in spatial learning and memory in 3xTg-AD mice</title>
+        <p>In the Morris water maze test, training trials (2 min each) were performed twice a day for 5 days. To assess flexible learning ability, the position of the platform was rotated everyday. The parameter of learning flexibility was analyzed by looking at the block of first trials performed each day (<xref ref-type="fig" rid="pone-0016259-g003">Fig. 3A</xref>). S14G-HN treated male mice showed a trend of shorter latency than control on the second day. In female mice, no significant difference was observed between S14G-HN-treated and control mice. On the fifth day, the probe test was performed after the second daily trial. Time spent in each quadrant of pool was significantly different in S14G-HN treated male mice but not in vehicle control male mice by non-parametric ANOVA (<xref ref-type="fig" rid="pone-0016259-g003">Fig. 3B</xref>). Post-hoc test on values of S14G-HN-treated male mice detected a significant difference between platform quadrant and opposite quadrant (p&lt;0.05). Consistently, time spent in the area within 60 cm from the platform location was significantly longer for S14G-HN treated male mice than for vehicle control mice (<xref ref-type="fig" rid="pone-0016259-g003">Fig. 3C</xref>). These results show that S14G-HN-treated male mice stayed close to the platform location longer than vehicle control mice, suggesting better cognitive and memory function of S14G-HN-treated mice than control. We also measured the duration that mice spent in the platform location (<xref ref-type="fig" rid="pone-0016259-g003">Fig. 3D</xref>). In the first 30 sec of probe test, S14G-HN-treated male mice stayed in the platform area significantly longer than control male mice. S14G-HN treated female mice showed a trend similar to the male mice, though the difference was not significant (<xref ref-type="fig" rid="pone-0016259-g003">Fig. 3B–D</xref>). Swimming speeds of S14G-HN treated and control mice were virtually the same in probe test (data not shown), indicating that locomotion activity was not affected by S14G-HN.</p>
+        <fig id="pone-0016259-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016259.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>The effect of S14G-HN on spatial memory in 3xTg-AD mice.</title>
+            <p>Male and female 3xTg-AD mice were subjected to Morris Water Maze after 3 months of intranasal administration with S14G-HN or vehicle. <bold>A.</bold> Training sessions. Training trials (120 sec each) were performed twice a day for 5 days. Time spent to find platform in first trial in each day is shown as mean±SEM. <bold>B–D.</bold> Probe test. Time spent in each quadrant is shown as mean±SEM (<bold>B</bold>). Mice which did not find the visual platform were considered abnormal mice and data of these mice was excluded from analysis (vehicle male = 3, female = 2, S14G-HN male = 1, female = 2). P values of non-parametric ANOVA test (Kruskal-Wallis test) are shown. Time spent within 60 cm from the platform region during first 60 seconds of probe test is shown as mean±SEM (<bold>C</bold>). Time spent within platform area during first 30 seconds of probe test is shown as mean±SEM (<bold>D</bold>). In C and D, p =  indicates p values of Mann-Whitney U test.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016259.g003" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3c">
+        <title>Abeta level was reduced in brain of S14G-HN-treated 3xTg-AD mice</title>
+        <p>Since Abeta pathology may correlate to cognitive function, we examined the levels of Abeta in brain from 3xTg-AD mice treated with S14G-HN or vehicle by ELISA. Total Abeta40 in vehicle control, both male and female (<xref ref-type="fig" rid="pone-0016259-g004">Fig. 4A</xref> grey columns), showed levels consistent with the expected age-dependent increase of Abeta in naïve mice reported in Hirata-Fukae et al. (2008) (<xref ref-type="fig" rid="pone-0016259-g004">Fig. 4A</xref> dotted lines). Compared with vehicle control, the levels of Abeta40 in S14G-HN mice (<xref ref-type="fig" rid="pone-0016259-g004">Fig. 4A</xref> black columns) were markedly low in both male and female mice, though statistical significance was detected only in females. A similar trend was observed in soluble Abeta40 levels in both genders, though the difference was not significant (data not shown). We also performed ELISA to detect total Abeta42. Since Abeta42 level is still low at this age of 3xTg-AD mice, many samples resulted in undetectable level: 2 out of 7 vehicle male, 6 out of 9 S14G-HN-treated male, none of vehicle female, and 5 out of 7 S14G-HN-treated female mice showed undetectable level of Abeta42. Given zero as a value of these undetectable samples, Abeta42 levels (mean±SE, pmol/g tissue) were vehicle male (n = 7); 6.5±3.9, S14G-HN male (n = 9); 3.8±2.1, vehicle female (n = 9); 46.0±20.4, S14G-HN female (n = 7); 10.4±6.7. P values of t-test were 0.54 and 0.007 for male and female, respectively. These results indicate that Abeta42 level had a trend similar to that of Abeta40 (<xref ref-type="fig" rid="pone-0016259-g004">Fig. 4</xref>), i.e. decreased level of Abeta in S14G-HN-treated mice.</p>
+        <fig id="pone-0016259-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016259.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Brain Abeta level was sustained in S14G-HN-treated 3xTg-AD mice.</title>
+            <p>After behavioral tests, mice were sacrificed at 17 months of age. Abeta was extracted from brain homogenates using formic acid. <bold>A</bold>. Amount of human Abeta40 was measured by ELISA and shown as mean±SEM. P values of Student t-test are shown. Number of animals were vehicle male = 7, female = 9, S14G-HN male = 9, female = 7. Lower level of Abeta was detected in S14G-HN treated mice (black columns). Statistical significance was observed in female but not male compared with vehicle treated mice (dark grey columns). Dotted line plots show Abeta40 levels of naïve 3xTg-AD mice at the indicated age <xref ref-type="bibr" rid="pone.0016259-HirataFukae1">[37]</xref>. <bold>B–G</bold>. Immunohistochemical analysis of amyloid plaques. Brains were fixed with 4% paraformaldehyde and 30 µm sagittal sections were subjected to immunostaining using anti-Abeta antibody (82E1) and biotin-conjugated secondary antibody followed by visualization with ABC method. <bold>B, D, F.</bold> vehicle-treated female mice, <bold>C, E, G.</bold> S14G-HN-treated female mice. <bold>F, G.</bold> magnified view of subculum regions in C and E, respectively. Bar  = 500 µm in B-E,  = 100 µm in F, G.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016259.g004" xlink:type="simple"/>
+        </fig>
+        <p>To confirm the finding obtained by ELISA, we examined the amount of amyloid plaques by immunohistochemical analysis using anti-Abeta antibody 82E1, which specifically recognizes Abeta but not APP. Representative results are shown in <xref ref-type="fig" rid="pone-0016259-g004">Fig. 4B–G</xref>. We stained six sections per mouse at 150 µm intervals and evaluated the number of plaques (count), total area, and integrated density of staining in subiculum region of each section (summarized in <xref ref-type="table" rid="pone-0016259-t001">Table 1</xref>). Both total area and integrated density were significantly lower in S14G-HN-treated 3xTg-AD female mice than the vehicle control. The similar trend was observed in male mice as in female. As observed in the results of ELISA (<xref ref-type="fig" rid="pone-0016259-g004">Fig. 4A</xref>), no statistical significance was detected in males because of large individual variations (data not shown). Combined with the results of ELISA, these results indicate that S14G-HN suppresses the age-related increase of plaque burden in 3xTg-AD mouse brains.</p>
+        <table-wrap id="pone-0016259-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0016259.t001</object-id><label>Table 1</label><caption>
+            <title>Decreased amyloid burden in S14G-HN-treated mice.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0016259-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016259.t001" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">Count</td>
+                <td align="left" colspan="1" rowspan="1">Total Area</td>
+                <td align="left" colspan="1" rowspan="1">Average Size</td>
+                <td align="left" colspan="1" rowspan="1">IntDen</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Vehicle</td>
+                <td align="left" colspan="1" rowspan="1">Mean</td>
+                <td align="left" colspan="1" rowspan="1">259.8</td>
+                <td align="left" colspan="1" rowspan="1">74364</td>
+                <td align="left" colspan="1" rowspan="1">165.1</td>
+                <td align="left" colspan="1" rowspan="1">16048999</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">SD</td>
+                <td align="left" colspan="1" rowspan="1">37.5</td>
+                <td align="left" colspan="1" rowspan="1">14899</td>
+                <td align="left" colspan="1" rowspan="1">19.1</td>
+                <td align="left" colspan="1" rowspan="1">4509234</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">S14G-HN</td>
+                <td align="left" colspan="1" rowspan="1">Mean</td>
+                <td align="left" colspan="1" rowspan="1">208.5</td>
+                <td align="left" colspan="1" rowspan="1">35807</td>
+                <td align="left" colspan="1" rowspan="1">56.6</td>
+                <td align="left" colspan="1" rowspan="1">7610845</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">SD</td>
+                <td align="left" colspan="1" rowspan="1">54.1</td>
+                <td align="left" colspan="1" rowspan="1">13482</td>
+                <td align="left" colspan="1" rowspan="1">0.02</td>
+                <td align="left" colspan="1" rowspan="1">2787706</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">% of veh</td>
+                <td align="left" colspan="1" rowspan="1">Mean</td>
+                <td align="left" colspan="1" rowspan="1">80.3</td>
+                <td align="left" colspan="1" rowspan="1">48.2</td>
+                <td align="left" colspan="1" rowspan="1">34.3</td>
+                <td align="left" colspan="1" rowspan="1">47.4</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">SD</td>
+                <td align="left" colspan="1" rowspan="1">20.8</td>
+                <td align="left" colspan="1" rowspan="1">18.1</td>
+                <td align="left" colspan="1" rowspan="1">0.01</td>
+                <td align="left" colspan="1" rowspan="1">17.4</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">t-test</td>
+                <td align="left" colspan="1" rowspan="1">P = </td>
+                <td align="left" colspan="1" rowspan="1">0.176</td>
+                <td align="left" colspan="1" rowspan="1">0.009</td>
+                <td align="left" colspan="1" rowspan="1">0.016</td>
+                <td align="left" colspan="1" rowspan="1">0.024</td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt101">
+              <label/>
+              <p>Brain sections were prepared as described in <xref ref-type="fig" rid="pone-0016259-g004">Fig. 4</xref>. Subiculum region of each section was subjected to quantitative analysis using ImageJ. Number of plaques (Count), total immunopositive region (Total Area), and integrated density (IntDen) were measured and Average size of particles (plaques) was calculated (Total Area/Count). Value of six sections of each animal at 150 µm intervals were summed. Mean and SD of four female animals per group are shown. The relative ratio of S14G-HN-treated group to vehicle group is indicated as % of vehicle. P =  indicates P value of t-test.</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+      </sec>
+      <sec id="s3d">
+        <title>APP production and processing was not affected by S14G-HN</title>
+        <p>To understand how S14G-HN suppresses Abeta accumulation, we next examined the levels of full-length APP and sAPPalpha, a cleaved product of alpha-secretase. We performed immunoblot analysis of brain homogenate using antibodies that specifically recognize C-terminal regions of APP and sAPPalpha, respectively (<xref ref-type="fig" rid="pone-0016259-g005">Fig. 5</xref>). Quantitative analysis showed no significant difference in levels of full-length APP and sAPPalpha between S14G-HN and vehicle treated mice (number of animals; vehicle male = 7, female = 9, S14G-HN male = 9, female = 7): relative intensity of full-length APP and sAPPalpha bands in S14G-HN-treated brain homogenate (indicated as percentage of corresponding vehicle control, mean±SD) was 98±17 (male), 106±15 (female) and 81±15 (male), 98±16 (female), respectively. In addition, we detected no difference in sAPPbeta level between S14G-HN and vehicle control (data not shown). These results suggest that S14G-HN altered neither APP production nor processing by secretases.</p>
+        <fig id="pone-0016259-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016259.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title>S14G-HN does not affect APP production and processing.</title>
+            <p>Brain homogenate of 3xTg-AD mice treated with S14G-HN (HNG or H) or vehicle (veh or V) was subjected to immunoblot analysis using anti-APP C-terminus (<bold>A</bold>) or anti-sAPPalpha (<bold>B</bold>) (upper panels) and anti-beta-actin (lower panels) antibodies.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016259.g005" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3e">
+        <title>S14G-HN increased neprilysin expression and activity</title>
+        <p>We next examined expression of Abeta-degrading endopeptidase, neprilysin (NEP), in S14G-HN and vehicle treated mouse brains (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6A–F</xref>). NEP level is reduced in the specific regions of brain, such as hippocampus, with AD and aging <xref ref-type="bibr" rid="pone.0016259-Iwata1">[47]</xref>, <xref ref-type="bibr" rid="pone.0016259-Yasojima1">[52]</xref>. In the dentate gyrus, lower NEP expression was observed in the outer molecular layer but not in the middle molecular layer by aging <xref ref-type="bibr" rid="pone.0016259-Iwata1">[47]</xref>. We performed immunohistochemical staining of brain sections using anti-NEP antibody (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6A–F</xref>). To evaluate the staining results quantitatively, we measured staining intensity of the middle and outer molecular layers. The raw values of measured staining intensity of outer molecular layer of vehicle and S14G-HN-treated mice (arbitrary units, mean±SD) were 38.2±12.0 (male), 37.5±6.4 (female) and 40.5±7.0 (male), 38.6±4.8 (female), respectively. To normalize the variation in overall staining intensity of sections, the ratio of staining intensity (outer layer/middle layer) was calculated. The ratio was significantly higher in S14G-HN-treated mice than control in both male (n = 3) and female (n = 4) (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6G</xref>). These results suggest that S14G-HN sustains or increases NEP expression in specific brain regions. We also performed immunohistological staining of brain sections with anti-insulin degrading enzyme (IDE), another major Abeta-degrading enzyme <xref ref-type="bibr" rid="pone.0016259-Kurochkin1">[53]</xref>, <xref ref-type="bibr" rid="pone.0016259-Qiu1">[54]</xref> (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6H–K</xref>). Since levels of IDE in hippocampal CA2 and CA3 regions but not CA1 region are reduced in AD cases <xref ref-type="bibr" rid="pone.0016259-Miners1">[55]</xref>, we measured staining intensity of IDE in these brains. No significant difference was detected in levels of IDE in both CA1 and CA3 regions between S14G-HN and vehicle treated mice: relative intensities of IDE in S14G-HN-treated brain homogenate (indicated as percentage of corresponding vehicle control, mean±SD, n = 3) were 103.5±7.0 (male), 95.0±12.3 (female) in CA1 region and 91.4±6.9 (male), 104.4±3.1 (female) in CA3 region.</p>
+        <fig id="pone-0016259-g006" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016259.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title>Effect of S14G-HN on NEP and IDE.</title>
+            <p><bold>A–F, H–K.</bold> Brain sections were subjected to immunostaining using anti-NEP antibody (<bold>A–F</bold>) or anti-IDE (<bold>H–K</bold>) and biotin-conjugated secondary antibody followed by visualization with ABC method. <bold>A, B, H, I.</bold> vehicle-treated mice, <bold>D, E, J, K.</bold> S14G-HN-treated mice. <bold>C, F.</bold> magnified view of boxed region in A and D, respectively. Bars  = 500 µm. mml: middle molecular layer, oml: outer molecular layer. <bold>G.</bold> Result of quantitative analysis on NEP is shown as mean±SD. P =  indicates p value of t-test. <bold>L</bold>. F11 cells were treated with S14G-HN or vehicle for 2 hours. Specific NEP activity in cell lysate was calculated by subtracting activity cleaving DAGNPG substrate in the presence of NEP inhibitor, phosphoramidon, from the total activity and shown in mean±SD (n = 4) of relative fluorescent units (RFU)/µg protein.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016259.g006" xlink:type="simple"/>
+        </fig>
+        <p>We further examined the effect of S14G-HN on NEP activity using neuronal F11 cell line. After 2 hours of treatment of cells with S14G-HN, we measured NEP activity with Dansyl-D-Ala-Gly-4-nitro-Phe-Gly-OH (DAGPG) in the presence or absence of phosphoramidon, a NEP inhibitor (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6L</xref>). Specific NEP activity in cells treated with S14G-HN was significantly increased, suggesting that S14G-HN can modulate NEP activity in neurons.</p>
+      </sec>
+      <sec id="s3f">
+        <title>S14G-HN did not affect tau phosphorylation in 3xTg-AD mice</title>
+        <p>A major characteristic of 3xTg-AD mice is age-dependent progression of tau pathology. We thus examined the effect of S14G-HN on tau pathology. Phosphorylation of tau protein was assessed by immunoblot using phosphorylation site-specific antibodies (AT8, AT180, and AT270 for Ser208, Thr231, and Thr181, respectively). Total tau was assessed by tau46 antibody. The level of total tau (normalized by actin) was not changed by S14G-HN (<xref ref-type="fig" rid="pone-0016259-g007">Fig. 7A,B</xref>). The relative intensity of bands in S14G-HN-treated mouse brain homogenate (percentage of corresponding vehicle control, mean±SD) was 100±21 (male) and 112±17 (female). The ratio of phosphorylated tau (Ser202) to total tau was not different between S14G-HN treated and control mice: the value of S14G-HN calculated as percentage of corresponding vehicle control (mean±SD) was 101±39 (male) and 95±23 (female). No significant difference between S14G-HN treated and control mice was detected in phosphorylation of Thr231 (<xref ref-type="fig" rid="pone-0016259-g007">Fig. 7B</xref>) and Thr181 (data not shown). Consistently, no difference was observed between vehicle and S14G-HN treated mouse brains by immunohistochemical analysis using anti-phosphorylated tau antibody AT8 (<xref ref-type="fig" rid="pone-0016259-g007">Fig. 7C, D</xref>) and AT180 (<xref ref-type="fig" rid="pone-0016259-g007">Fig.7E, F</xref>). Thus, S14G-HN showed no effect on tau pathology at least at the early plaque-bearing stage.</p>
+        <fig id="pone-0016259-g007" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016259.g007</object-id>
+          <label>Figure 7</label>
+          <caption>
+            <title>Effect of S14G-HN on tau phosphorylation.</title>
+            <p><bold>A, B.</bold> Brain homogenate of 3xTg-AD mice treated with S14G-HN (H) or vehicle (V) was subjected to immunoblot analysis using anti-phosphorylated tau (Ser202) (AT8) (upper panel in A), anti-phosphorylated tau (Thr231) (AT180) (upper panel in B), anti-total tau (tau46) (middle panels) and anti-beta-actin (lower panels) antibodies. <bold>C–F.</bold> Brain sections were subjected to immunostaining using anti-phosphorylated tau (Ser202) (AT8) antibody (<bold>C, D</bold>) or anti-phosphorylated tau (Thr231) (AT180) antibody (<bold>E, F</bold>) and biotin-conjugated secondary antibody followed by visualization with ABC method. Representative images of hippocampal CA1 region of vehicle (<bold>C, E</bold>) and S14G-HN (<bold>D, F</bold>) treated mouse sections are shown. Bar  = 200 µm.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016259.g007" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3g">
+        <title>Neuroprotective effect of S14G-HN in 3xTg-AD mice</title>
+        <p>To evaluate the effect of S14G-HN on neurodegeneration in 3xTg-AD mice, we examined synaptic density by detecting a synaptic marker synaptophysin (<xref ref-type="fig" rid="pone-0016259-g008">Fig. 8A–D</xref>). Compared with the vehicle control, the levels of synaptophysin in hippocampal CA3 region of S14G-HN mice were significantly higher in both male and female mice (<xref ref-type="fig" rid="pone-0016259-g008">Fig. 8E</xref>); average of arbitrary units (mean±SD) were 44.8±3.9 (vehicle), 53.8±0.7 (S14G-HN) in male mice and 23.7±1.0 (vehicle), 26.2±0.8 (S14G-HN) in female mice. There results suggest a protective effect of S14G-HN against synaptic degeneration.</p>
+        <fig id="pone-0016259-g008" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016259.g008</object-id>
+          <label>Figure 8</label>
+          <caption>
+            <title>Effect of S14G-HN on synaptic degeneration.</title>
+            <p><bold>A–D.</bold> Brain sections were subjected to immunostaining using anti-synaptophysin antibody followed by visualization with avidin-fluorescein. Representative images of hippocampal CA3 region of vehicle (<bold>A, C</bold>) and S14G-HN (<bold>B, D</bold>) treated mouse sections are shown. Bar  = 20 µm <bold>E.</bold> Synaptophysin fluorescence intensity in 25 µmX80 µm area of the hippocampal CA3 region was measured. The relative value of S14G-HN-treated group (n = 3) to vehicle group (n = 3) is shown as mean±SD. P =  indicates p value of t-test.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016259.g008" xlink:type="simple"/>
+        </fig>
+        <p>Since STAT3 and Akt have been implicated in neuroprotective activity of HN <xref ref-type="bibr" rid="pone.0016259-Xu2">[26]</xref>, <xref ref-type="bibr" rid="pone.0016259-Hashimoto5">[56]</xref>, we examined activation of STAT3 and Akt in 3xTg-AD mouse brains by immunoblot analysis of total brain homogenate (<xref ref-type="fig" rid="pone-0016259-g009">Fig. 9A,C,E</xref>). The ratio of phosphorylated STAT3 (Tyr705) to total STAT3 showed a weak trend toward increase in STAT3 activity in S14G-HN-treated mice compared with control mice, but no significant difference was detected (<xref ref-type="fig" rid="pone-0016259-g009">Fig. 9B</xref>). In the immunohistochemical analysis using anti-phospho-STAT3 antibody, both overall staining (<xref ref-type="fig" rid="pone-0016259-g009">Fig. 9G–J</xref>) and quantitative measurement of staining intensity in CA3 region (<xref ref-type="fig" rid="pone-0016259-g009">Fig. 9L</xref>) showed no significant difference between S14G-HN-treated and control mouse brains. As for Akt activation, the phosphorylation level of Ser473 showed no difference by the treatment (<xref ref-type="fig" rid="pone-0016259-g009">Fig. 9C,D</xref>), whereas phosphorylation of Thr308 was significantly higher in S14G-HN-trated mouse brains than control (<xref ref-type="fig" rid="pone-0016259-g009">Fig. 9E,F</xref>). These results can be interpreted that S14G-HN might induce transient activation of STAT3 and Akt signaling cascades but may not cause continuous activation of signaling molecules <italic>in vivo</italic>.</p>
+        <fig id="pone-0016259-g009" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016259.g009</object-id>
+          <label>Figure 9</label>
+          <caption>
+            <title>Effect of S14G-HN on activation of signaling molecules.</title>
+            <p><bold>A, C, E.</bold> Immunoblot analysis of phosphorylation of STAT3 (A) and Akt (C,E). Brain homogenate of 3xTg-AD mice treated with S14G-HN (H or HNG) or vehicle (V or veh) was subjected to immunoblot analysis to detect phosphorylated proteins (upper panels) and total proteins (lower panels). <bold>B, D, F.</bold> Quantitative analysis of immunoblots. Intensity of bands represented in A, C, E were measured (number of animals; vehicle male = 7, female = 9, S14G-HN male = 9, female = 7) and the ratio of phosphorylated proten/total protein are shown as mean±SD. P =  indicates p value of t-test. <bold>G–J.</bold> Brain sections were subjected to immunostaining using anti-phospho-Tyr705 STAT3 and anti-rabbit-DyLight488 antibodies. Representative images of hippocampal region of vehicle (<bold>G, I</bold>) and S14G-HN (<bold>H, J</bold>) treated mouse sections are shown. Bar  = 200 µm. <bold>L.</bold> Quantitative analysis of immunohistochemistry. The fluorescence intensity of phosphorylated STAT3 in 75 µmX200 µm area of the hippocampal CA3 region was measured. The relative value of S14G-HN-treated group (n = 3) to vehicle group (n = 3) is shown as mean±SD. P =  indicates p value of t-test.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016259.g009" xlink:type="simple"/>
+        </fig>
+      </sec>
+    </sec>
+    <sec id="s4">
+      <title>Discussion</title>
+      <p>This study demonstrated that 3-month treatment of a highly potent HN derivative S14G-HN suppressed the deterioration of cognitive and memory functions (<xref ref-type="fig" rid="pone-0016259-g003">Fig. 3</xref>), synaptic degeneration (<xref ref-type="fig" rid="pone-0016259-g008">Fig. 8</xref>) and the increase in amyloid burden (<xref ref-type="fig" rid="pone-0016259-g004">Fig. 4</xref>, <xref ref-type="table" rid="pone-0016259-t001">Table 1</xref>) in 3xTg-AD mice. Since Abeta, particularly soluble Abeta oligomers, have been demonstrated to induce synaptic dysfunction and memory impairment <xref ref-type="bibr" rid="pone.0016259-Selkoe1">[57]</xref>, the improved cognitive function by S14G-HN may be at least partly attributed to the reduced Abeta level in S14G-HN-treated mouse brains. The pro-cholinergic effect of HN might also contribute to the S14G-HN-induced cognitive benefit, since HN ameliorates amnesia caused by muscarinic receptor antagonists <xref ref-type="bibr" rid="pone.0016259-Mamiya1">[21]</xref>, <xref ref-type="bibr" rid="pone.0016259-Krejcova1">[22]</xref>, <xref ref-type="bibr" rid="pone.0016259-Tajima1">[23]</xref>. Although reduced Abeta level in brains of S14G-HN-treated mice was confirmed by both ELISA and immunohistological analysis (<xref ref-type="fig" rid="pone-0016259-g004">Fig. 4</xref>, <xref ref-type="table" rid="pone-0016259-t001">Table 1</xref>), no significant change was observed in levels of full-length APP, sAPPalpha, and sAPPbeta in whole brain homogenates of these mice (<xref ref-type="fig" rid="pone-0016259-g005">Fig. 5</xref>). This indicates that S14G-HN does not modulate APP production or secretase activities <italic>in vivo</italic>. On the other hand, we observed higher levels of NEP in the outer molecular layer of hippocampal formation in S14G-HN-treated mice than in control mice (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6A–G</xref>), while IDE levels were not affected by S14G-HN treatment (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6H–K</xref>). NEP activity was also elevated by S14G-HN treatment <italic>in vitro</italic> (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6L</xref>). These observations suggest that the higher level of NEP in some brain regions contributes to the reduced Abeta level in brains of S14G-HN-treated mice. The molecular layer of dentate gyrus comprises the dendrites and axons arising from the entorhinal cortex and the intrinsic systems <xref ref-type="bibr" rid="pone.0016259-Treves1">[58]</xref>, indicating this region is susceptible to Abeta toxicity. In fact, soluble Abeta interfered with long-term potentiation in CA1 and dentate gyrus of the hippocampus <xref ref-type="bibr" rid="pone.0016259-Walsh1">[59]</xref>, <xref ref-type="bibr" rid="pone.0016259-Wang1">[60]</xref> and spine density is decreased in the outer layer of the dentate gyrus of AD mouse models <xref ref-type="bibr" rid="pone.0016259-Irizarry1">[61]</xref>, <xref ref-type="bibr" rid="pone.0016259-Jacobsen1">[62]</xref>. Therefore, the reduction of Abeta level in the molecular layer through increase in local NEP levels may contribute to S14G-HN-dependent amelioration of memory impairment in 3xTg-AD mice.</p>
+      <p>A behavioral test demonstrated that S14G-HN rescued cognitive function in 3xTg-AD male mice, whereas it showed a less clear effect in female mice (<xref ref-type="fig" rid="pone-0016259-g003">Fig. 3</xref>). The difference in HN's effect between genders may be attributed to the difference in the stage of Abeta pathology, because 3xTg-AD female mice showed more aggressive Abeta pathology than male mice in the plaque-bearing stage (<xref ref-type="fig" rid="pone-0016259-g004">Fig. 4</xref>) <xref ref-type="bibr" rid="pone.0016259-HirataFukae1">[37]</xref>. Namely, S14G-HN can induce high enough NEP levels to reduce Abeta level for preserving cognitive function in the early Abeta accumulating stage, while it was not enough in the advanced plaque-bearing stage.</p>
+      <p>HN-like molecule was detected in non-CNS organs <xref ref-type="bibr" rid="pone.0016259-Kariya2">[17]</xref>, <xref ref-type="bibr" rid="pone.0016259-Muzumdar1">[27]</xref>, <xref ref-type="bibr" rid="pone.0016259-Tajima2">[46]</xref>, and the level of HN in serum was decreased age-dependently in human and rodents <xref ref-type="bibr" rid="pone.0016259-Muzumdar1">[27]</xref>. Given that the systemic administration of S14G-HN showed an effect similar to that of intracerebroventricular injection of S14G-HN <xref ref-type="bibr" rid="pone.0016259-Krejcova1">[22]</xref>, <xref ref-type="bibr" rid="pone.0016259-Xu1">[25]</xref>, it is hypothesized that HN circulated in blood stream is transferred into brain by a so far unidentified mechanism <xref ref-type="bibr" rid="pone.0016259-Niikura2">[4]</xref>, and that serum level of HN correlates to the level and effectiveness of HN in brain. It is interesting to note that the NEP level in outer molecular layer is decreased by aging <xref ref-type="bibr" rid="pone.0016259-Iwata1">[47]</xref>. Taken together with our finding of NEP levels in outer molecular layer of hippocampal formation (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6</xref>), age-dependent decrease in endogenous HN levels associated with low NEP expression may be linked to increased risk for progression of AD by aging.</p>
+      <p>This study showed that both total amount and phosphorylation status of tau were unaffected by S14G-HN treatment in 3xTg-AD mice (<xref ref-type="fig" rid="pone-0016259-g007">Fig. 7</xref>), suggesting that HN has no effect on tau pathology. In 3xTg-AD mice, tau pathology becomes apparent between 12 to 15 months of age and staining with PHF1 antibody, a marker of late stage of tau pathology, is evident at 18 months of age <xref ref-type="bibr" rid="pone.0016259-Oddo1">[36]</xref>. No significant gender difference was observed for onset and progression of tau pathology <xref ref-type="bibr" rid="pone.0016259-HirataFukae1">[37]</xref>. The cognitive decline was reversed by Abeta immunotherapy in young 3xTg-AD mice <xref ref-type="bibr" rid="pone.0016259-Billings1">[63]</xref>, indicating that the reduction of soluble Abeta level is sufficient for the prevention of memory impairment in the early stage of Abeta pathology. However, in aged 3xTg-AD mice with advanced Abeta and tau pathologies, reduction of soluble Abeta alone did not improve the cognitive phenotype, while reduction of both soluble Abeta and soluble tau ameliorated cognitive deficit <xref ref-type="bibr" rid="pone.0016259-Oddo2">[64]</xref>. We performed behavioral tests with these mice at 16 to 17 months of age, which corresponds to mid-stage of tau pathology. It is thus possible that progressing tau pathology contributed to cognitive decline in these mice, and that the lack in the effect of S14G-HN on tau pathology may be a reason for the lack in significant effect of S14G-HN on behavioral tests in female mice, which carry advanced Abeta burden <xref ref-type="bibr" rid="pone.0016259-HirataFukae1">[37]</xref>. On the other hand, in the transgenic mice with human P301S mutant tau, synaptic dysfunction and its loss were detected prior to the appearance of fibrillary tau, indicating that soluble tau causes these manifestations <xref ref-type="bibr" rid="pone.0016259-Yoshiyama1">[65]</xref>. In our study, S14G-HN-treated female mice showed potentially better cognitive functions, though not statistically significant, compared to the vehicle-treated male mice despite of the similar levels of Abeta in these two groups of animals (<xref ref-type="fig" rid="pone-0016259-g003">Figs. 3</xref> C,D, 4A). If soluble tau contributes to the cognitive impairment of 3xTg-AD mice at this pathological stage, S14G-HN might have certain antagonistic effects on soluble tau-induced cognitive dysfunction in addition to that induced by Abeta. Alternative interpretation is that systemic effects of S14G-HN may contribute to the improvement of cognitive functions. Halagappa et al. <xref ref-type="bibr" rid="pone.0016259-Halagappa1">[66]</xref> showed that intermittent fasting improved cognitive functions of 3xTg-AD mice without reducing phospho-tau levels and proposed that dietary manipulation increases the resistance of neurons to the adverse effects of tau pathology. HN injected in brains of rats modulates glucose metabolism by improving hepatic and peripheral insulin sensitivity <xref ref-type="bibr" rid="pone.0016259-Muzumdar1">[27]</xref>. It is, thus, possible that S14G-HN might have similar systemic effects as dietary manipulation. Moreover, several studies suggest that insulin resistance may increase the risk of AD through multiple mechanisms including increases in Abeta and inflammation <xref ref-type="bibr" rid="pone.0016259-Citron1">[67]</xref>, <xref ref-type="bibr" rid="pone.0016259-Craft1">[68]</xref>. Therefore, an action mechanism of HN that ameliorates insulin resistance and hyperglycemia <xref ref-type="bibr" rid="pone.0016259-Muzumdar1">[27]</xref> may contribute to beneficial effects of HN on AD-related pathologies.</p>
+      <p>Previous studies demonstrated that several signaling molecules are involved in HN's activities <italic>in vivo</italic> and <italic>in vitro</italic>. STAT3 and related kinase(s) are involved in the anti-neuronal death activities of HN <italic>in vitro</italic> <xref ref-type="bibr" rid="pone.0016259-Hashimoto4">[14]</xref>, <xref ref-type="bibr" rid="pone.0016259-Hashimoto5">[56]</xref> and activated <italic>in vivo</italic> <xref ref-type="bibr" rid="pone.0016259-Muzumdar1">[27]</xref>, <xref ref-type="bibr" rid="pone.0016259-Yamada3">[69]</xref>. In addition to anti-cell death effects, these kinases are also involved in the antagonizing effect of HN against amnesia caused by muscarinic receptor blockade <italic>in vivo</italic> <xref ref-type="bibr" rid="pone.0016259-Tajima1">[23]</xref>. STAT3 contributes to the effect of HN on peripheral insulin action <xref ref-type="bibr" rid="pone.0016259-Muzumdar1">[27]</xref>, <xref ref-type="bibr" rid="pone.0016259-Hoang1">[28]</xref>. ERK and PI3K-Akt pathways are implicated in neuroprotection of HN against cerebral ischemia/reperfusion injury <italic>in vivo</italic> <xref ref-type="bibr" rid="pone.0016259-Xu1">[25]</xref>, <xref ref-type="bibr" rid="pone.0016259-Xu2">[26]</xref>. p38 and STAT3 are involved in apoptosis induced by trophic factor withdrawal in human leukemia cell line and pancreatic beta-cell line, respectively <xref ref-type="bibr" rid="pone.0016259-Hoang1">[28]</xref>, <xref ref-type="bibr" rid="pone.0016259-Wang2">[70]</xref>. In this study, we did not detect significant changes in phosphorylation of Tyr705 in STAT3 and Ser473 in Akt, while phosphorylation of Thr308 in Akt was significantly increased in S14G-HN-treaed 3xTg-AD mouse brains compared with control (<xref ref-type="fig" rid="pone-0016259-g009">Fig. 9</xref>). Since full activation of Akt requires dual phosphorylation on both Ser473 and Thr308 <xref ref-type="bibr" rid="pone.0016259-Franke1">[71]</xref>, these findings are insufficient to prove the involvement of PI3K-Akt pathway in HN-mediated neuroprotection in 3xTg-AD mice. Considering that PDK1 (phosphoinositide-dependent protein kinase-1), a major kinase for phosphorylation of Thr308 in Akt, plays an indispensable role in Akt-independent cell survival signaling pathway induced by brain-derived neurotrophic factor <xref ref-type="bibr" rid="pone.0016259-Kharebava1">[72]</xref>, it is speculated that S14G-HN may activate the PDK1-mediated neuroprotective mechanism. In contrast, lack of increased STAT3 activation in S14G-HN-treated mouse brains (<xref ref-type="fig" rid="pone-0016259-g009">Fig. 9</xref>) is inconsistent with previous findings that STAT3 has an essential role in the neuroprotecitve effect of HN <xref ref-type="bibr" rid="pone.0016259-Hashimoto5">[56]</xref>. A possible reason for this discrepancy is that S14G-HN-induced activation of STAT3 (and Akt) was transient and thus we could not detect them, since we sacrificed mice 24 hours after the last treatment.</p>
+      <p>In this study, we observed that S14G-HN increased region-specific NEP levels (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6</xref>). NEP expression is regulated by APP C-terminal fragment, AICD <xref ref-type="bibr" rid="pone.0016259-PardossiPiquard1">[73]</xref>. Since S14G-HN did not change APP production and processing (<xref ref-type="fig" rid="pone-0016259-g005">Fig. 5</xref>), S14G-HN may not affect this mechanism, unless region/cell-specific effect exists. Rather, HN may evoke other unidentified mechanisms to modulate NEP expression. In fact, since NEP levels are substantially reduced but not diminished in presenilin-deficient mice, it is hypothesized that there is an AICD-independent mechanism <xref ref-type="bibr" rid="pone.0016259-PardossiPiquard1">[73]</xref>. On the other hand, we also observed that S14G-HN increased NEP activity <italic>in vitro</italic> (<xref ref-type="fig" rid="pone-0016259-g006">Fig. 6L</xref>). NEP activity in primary neurons was unaffected by treatment with MAPK inhibitor as well as stimulation with insulin and IL-6, which are related to Akt and STAT3 pathways, respectively <xref ref-type="bibr" rid="pone.0016259-Saito1">[74]</xref>, suggesting that these signaling pathways do not play essential roles in modulation of NEP activity. Somatostatin is a NEP modulator and enhances NEP activity via activation of somatostatin receptor coupled with G-protein, Gi/o <xref ref-type="bibr" rid="pone.0016259-Saito1">[74]</xref>. Since HN receptor FPRL1 is coupled with Gi/o, downstream signaling cascade(s) of this receptor may play an important role in NEP regulation. Further detailed studies will be necessary to understand signaling events evoked by S14G-HN in 3xTg-AD mice, especially pathways/molecules involved in the Abeta-lowering effect.</p>
+      <p>Regarding AD-linked pathological features, previous studies revealed that HN suppresses Abeta-induced neuronal death <italic>in vitro</italic> and ameliorated amnesia caused by Abeta and muscarinic receptor antagonists <italic>in vivo</italic>. In addition to these functions, this study showed S14G-HN decreased Abeta burden in 3xTg-AD mice, which is an additional <italic>in vivo</italic> function of HN as a countermeasure against AD. We also showed that decreased Abeta levels were associated with increased NEP levels in hippocampal formation of 3xTg-AD mouse brains, suggesting that HN is a NEP modulator.</p>
+      <p>Considering that intranasal administration is practically feasible for clinical application, we chose intranasal treatment over systemic methods in this study. Since the lack of significant findings in some experiments, for instance memory retention in Novel object recognition task (<xref ref-type="fig" rid="pone-0016259-g002">Fig. 2D</xref>), might be attributed to suboptimal dosing, further studies will be necessary for pharmacological development. However, the present study contributes to the preclinical evidence that intranasal administration of HN represents a potential symptomatic and disease-modifying intervention in AD. We note that the intranasal administration route has been shown to provide effective delivery of peptides to the central nervous system in humans. Further, a recent preliminary study demonstrated cognitive benefits with intranasal administration of another peptide, AL-108 <xref ref-type="bibr" rid="pone.0016259-Gozes1">[75]</xref>. Additional preclinical mechanistic and toxicological studies of HN are thus warranted, and could lead to clinical studies of this peptide in AD.</p>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>Antibodies used for Abeta ELISA and Abeta immunostaining were generously provided by Immuno-Biological Laboratories.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0016259-Hashimoto1">
+        <label>1</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hashimoto</surname><given-names>Y</given-names></name><name name-style="western"><surname>Niikura</surname><given-names>T</given-names></name><name name-style="western"><surname>Tajima</surname><given-names>H</given-names></name><name name-style="western"><surname>Yasukawa</surname><given-names>T</given-names></name><name name-style="western"><surname>Sudo</surname><given-names>H</given-names></name><etal/></person-group>             <year>2001</year>             <article-title>A rescue factor abolishing neuronal cell death by a wide spectrum of familial Alzheimer's disease genes and Abeta.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>98</volume>             <fpage>6336</fpage>             <lpage>6341</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Niikura1">
+        <label>2</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Niikura</surname><given-names>T</given-names></name><name name-style="western"><surname>Chiba</surname><given-names>T</given-names></name><name name-style="western"><surname>Aiso</surname><given-names>S</given-names></name><name name-style="western"><surname>Matsuoka</surname><given-names>M</given-names></name><name name-style="western"><surname>Nishimoto</surname><given-names>I</given-names></name></person-group>             <year>2004</year>             <article-title>Humanin: after the discovery.</article-title>             <source>Mol Neurobiol</source>             <volume>30</volume>             <fpage>327</fpage>             <lpage>340</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Nishimoto1">
+        <label>3</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nishimoto</surname><given-names>I</given-names></name><name name-style="western"><surname>Matsuoka</surname><given-names>M</given-names></name><name name-style="western"><surname>niikura</surname><given-names>T</given-names></name></person-group>             <year>2004</year>             <article-title>Unravelling the role of Humanin.</article-title>             <source>Trends Mol Med</source>             <volume>10</volume>             <fpage>102</fpage>             <lpage>105</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Niikura2">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Niikura</surname><given-names>T</given-names></name><name name-style="western"><surname>Nishimoto</surname><given-names>I</given-names></name></person-group>             <year>2007</year>             <article-title>Neuronal cell death in Alzheimer's disease and its potential therapy with neuroprotective factors.</article-title>             <source>Int J Medical Biological Frontiers</source>             <volume>12</volume>             <fpage>199</fpage>             <lpage>240</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Hashimoto2">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hashimoto</surname><given-names>Y</given-names></name><name name-style="western"><surname>Ito</surname><given-names>Y</given-names></name><name name-style="western"><surname>Niikura</surname><given-names>T</given-names></name><name name-style="western"><surname>Shao</surname><given-names>Z</given-names></name><name name-style="western"><surname>Hata</surname><given-names>M</given-names></name><etal/></person-group>             <year>2001</year>             <article-title>Mechanisms of neuroprotection by a novel rescue factor humanin from Swedish mutant amyloid precursor protein.</article-title>             <source>Biochem Biophys Res Commun</source>             <volume>283</volume>             <fpage>460</fpage>             <lpage>468</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Hashimoto3">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hashimoto</surname><given-names>Y</given-names></name><name name-style="western"><surname>Niikura</surname><given-names>T</given-names></name><name name-style="western"><surname>Ito</surname><given-names>Y</given-names></name><name name-style="western"><surname>Sudo</surname><given-names>H</given-names></name><name name-style="western"><surname>Hata</surname><given-names>M</given-names></name><etal/></person-group>             <year>2001</year>             <article-title>Detailed characterization of neuroprotection by a rescue factor humanin against various Alzheimer's disease-relevant insults.</article-title>             <source>J Neurosci</source>             <volume>21</volume>             <fpage>9235</fpage>             <lpage>9245</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Jung1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Jung</surname><given-names>SS</given-names></name><name name-style="western"><surname>Van Nostrand</surname><given-names>WE</given-names></name></person-group>             <year>2003</year>             <article-title>Humanin rescues human cerebrovascular smooth muscle cells from Abeta-induced toxicity.</article-title>             <source>J Neurochem</source>             <volume>84</volume>             <fpage>266</fpage>             <lpage>272</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Kariya1">
+        <label>8</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kariya</surname><given-names>S</given-names></name><name name-style="western"><surname>Takahashi</surname><given-names>N</given-names></name><name name-style="western"><surname>Ooba</surname><given-names>N</given-names></name><name name-style="western"><surname>Kawahara</surname><given-names>M</given-names></name><name name-style="western"><surname>Nakayama</surname><given-names>H</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>Humanin inhibits cell death of serum-deprived PC12h cells.</article-title>             <source>Neuroreport</source>             <volume>13</volume>             <fpage>903</fpage>             <lpage>907</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Sponne1">
+        <label>9</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Sponne</surname><given-names>I</given-names></name><name name-style="western"><surname>Fifre</surname><given-names>A</given-names></name><name name-style="western"><surname>Koziel</surname><given-names>V</given-names></name><name name-style="western"><surname>Kriem</surname><given-names>B</given-names></name><name name-style="western"><surname>Oster</surname><given-names>T</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>Humanin rescues cortical neurons from prion-peptide-induced apoptosis.</article-title>             <source>Mol Cell Neurosci</source>             <volume>25</volume>             <fpage>95</fpage>             <lpage>102</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Ikonen1">
+        <label>10</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ikonen</surname><given-names>M</given-names></name><name name-style="western"><surname>Liu</surname><given-names>B</given-names></name><name name-style="western"><surname>Hashimoto</surname><given-names>Y</given-names></name><name name-style="western"><surname>Ma</surname><given-names>L</given-names></name><name name-style="western"><surname>Lee</surname><given-names>KW</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>Interaction between the Alzheimer's survival peptide humanin and insulin-like growth factor-binding protein 3 regulates cell survival and apoptosis.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>100</volume>             <fpage>13042</fpage>             <lpage>13047</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Guo1">
+        <label>11</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Guo</surname><given-names>B</given-names></name><name name-style="western"><surname>Zhai</surname><given-names>D</given-names></name><name name-style="western"><surname>Cabezas</surname><given-names>E</given-names></name><name name-style="western"><surname>Welsh</surname><given-names>K</given-names></name><name name-style="western"><surname>Nouraini</surname><given-names>S</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>Humanin peptide suppresses apoptosis by interfering with Bax activation.</article-title>             <source>Nature</source>             <volume>423</volume>             <fpage>456</fpage>             <lpage>461</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Harada1">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Harada</surname><given-names>M</given-names></name><name name-style="western"><surname>Habata</surname><given-names>Y</given-names></name><name name-style="western"><surname>Hosoya</surname><given-names>M</given-names></name><name name-style="western"><surname>Nishi</surname><given-names>K</given-names></name><name name-style="western"><surname>Fujii</surname><given-names>R</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>N-Formylated humanin activates both formyl peptide receptor-like 1 and 2.</article-title>             <source>Biochem Biophys Res Commun</source>             <volume>324</volume>             <fpage>255</fpage>             <lpage>261</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Ying1">
+        <label>13</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ying</surname><given-names>G</given-names></name><name name-style="western"><surname>Iribarren</surname><given-names>P</given-names></name><name name-style="western"><surname>Zhou</surname><given-names>Y</given-names></name><name name-style="western"><surname>Gong</surname><given-names>W</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>N</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>Humanin, a newly identified neuroprotective factor, uses the G protein-coupled formylpeptide receptor-like-1 as a functional receptor.</article-title>             <source>J Immunol</source>             <volume>172</volume>             <fpage>7078</fpage>             <lpage>7085</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Hashimoto4">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hashimoto</surname><given-names>Y</given-names></name><name name-style="western"><surname>Kurita</surname><given-names>M</given-names></name><name name-style="western"><surname>Aiso</surname><given-names>S</given-names></name><name name-style="western"><surname>Nishimoto</surname><given-names>I</given-names></name><name name-style="western"><surname>Matsuoka</surname><given-names>M</given-names></name></person-group>             <year>2009</year>             <article-title>Humanin inhibits neuronal cell death by interacting with a cytokine receptor complex or complexes involving CNTF receptor alpha/WSX-1/gp130.</article-title>             <source>Mol Biol Cell</source>             <volume>20</volume>             <fpage>2864</fpage>             <lpage>2873</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Zhai1">
+        <label>15</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zhai</surname><given-names>D</given-names></name><name name-style="western"><surname>Luciano</surname><given-names>F</given-names></name><name name-style="western"><surname>Zhu</surname><given-names>X</given-names></name><name name-style="western"><surname>Guo</surname><given-names>B</given-names></name><name name-style="western"><surname>Satterthwait</surname><given-names>AC</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Humanin binds and nullifies Bid activity by blocking its activation of Bax and Bak.</article-title>             <source>J Biol Chem</source>             <volume>280</volume>             <fpage>15815</fpage>             <lpage>15824</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Luciano1">
+        <label>16</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Luciano</surname><given-names>F</given-names></name><name name-style="western"><surname>Zhai</surname><given-names>D</given-names></name><name name-style="western"><surname>Zhu</surname><given-names>X</given-names></name><name name-style="western"><surname>Bailly-Maitre</surname><given-names>B</given-names></name><name name-style="western"><surname>Ricci</surname><given-names>JE</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Cytoprotective peptide humanin binds and inhibits proapoptotic Bcl-2/Bax family protein BimEL.</article-title>             <source>J Biol Chem</source>             <volume>280</volume>             <fpage>15825</fpage>             <lpage>15835</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Kariya2">
+        <label>17</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kariya</surname><given-names>S</given-names></name><name name-style="western"><surname>Hirano</surname><given-names>M</given-names></name><name name-style="western"><surname>Furiya</surname><given-names>Y</given-names></name><name name-style="western"><surname>Sugie</surname><given-names>K</given-names></name><name name-style="western"><surname>Ueno</surname><given-names>S</given-names></name></person-group>             <year>2005</year>             <article-title>Humanin detected in skeletal muscles of MELAS patients: a possible new therapeutic agent.</article-title>             <source>Acta Neuropathol (Berl)</source>             <volume>109</volume>             <fpage>367</fpage>             <lpage>372</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Kariya3">
+        <label>18</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kariya</surname><given-names>S</given-names></name><name name-style="western"><surname>Hirano</surname><given-names>M</given-names></name><name name-style="western"><surname>Furiya</surname><given-names>Y</given-names></name><name name-style="western"><surname>Ueno</surname><given-names>S</given-names></name></person-group>             <year>2005</year>             <article-title>Effect of humanin on decreased ATP levels of human lymphocytes harboring A3243G mutant mitochondrial DNA.</article-title>             <source>Neuropeptides</source>             <volume>39</volume>             <fpage>97</fpage>             <lpage>101</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Kariya4">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kariya</surname><given-names>S</given-names></name><name name-style="western"><surname>Hirano</surname><given-names>M</given-names></name><name name-style="western"><surname>Nagai</surname><given-names>Y</given-names></name><name name-style="western"><surname>Furiya</surname><given-names>Y</given-names></name><name name-style="western"><surname>Fujikake</surname><given-names>N</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Humanin attenuates apoptosis induced by DRPLA proteins with expanded polyglutamine stretches.</article-title>             <source>J Mol Neurosci</source>             <volume>25</volume>             <fpage>165</fpage>             <lpage>169</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Kariya5">
+        <label>20</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kariya</surname><given-names>S</given-names></name><name name-style="western"><surname>Takahashi</surname><given-names>N</given-names></name><name name-style="western"><surname>Hirano</surname><given-names>M</given-names></name><name name-style="western"><surname>Ueno</surname><given-names>S</given-names></name></person-group>             <year>2003</year>             <article-title>Humanin improves impaired metabolic activity and prolongs survival of serum-deprived human lymphocytes.</article-title>             <source>Mol Cell Biochem</source>             <volume>254</volume>             <fpage>83</fpage>             <lpage>89</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Mamiya1">
+        <label>21</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Mamiya</surname><given-names>T</given-names></name><name name-style="western"><surname>Ukai</surname><given-names>M</given-names></name></person-group>             <year>2001</year>             <article-title>[Gly(14)]-Humanin improved the learning and memory impairment induced by scopolamine in vivo.</article-title>             <source>Br J Pharmacol</source>             <volume>134</volume>             <fpage>1597</fpage>             <lpage>1599</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Krejcova1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Krejcova</surname><given-names>G</given-names></name><name name-style="western"><surname>Patocka</surname><given-names>J</given-names></name><name name-style="western"><surname>Slaninova</surname><given-names>J</given-names></name></person-group>             <year>2004</year>             <article-title>Effect of humanin analogues on experimentally induced impairment of spatial memory in rats.</article-title>             <source>J Pept Sci</source>             <volume>10</volume>             <fpage>636</fpage>             <lpage>639</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Tajima1">
+        <label>23</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Tajima</surname><given-names>H</given-names></name><name name-style="western"><surname>Kawasumi</surname><given-names>M</given-names></name><name name-style="western"><surname>Chiba</surname><given-names>T</given-names></name><name name-style="western"><surname>Yamada</surname><given-names>M</given-names></name><name name-style="western"><surname>Yamashita</surname><given-names>K</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>A humanin derivative, S14G-HN, prevents amyloid-beta-induced memory impairment in mice.</article-title>             <source>J Neurosci Res</source>             <volume>79</volume>             <fpage>714</fpage>             <lpage>723</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Miao1">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Miao</surname><given-names>J</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>W</given-names></name><name name-style="western"><surname>Yin</surname><given-names>R</given-names></name><name name-style="western"><surname>Liu</surname><given-names>R</given-names></name><name name-style="western"><surname>Su</surname><given-names>C</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>S14G-Humanin ameliorates Abeta25-35-induced behavioral deficits by reducing neuroinflammatory responses and apoptosis in mice.</article-title>             <source>Neuropeptides</source>             <volume>42</volume>             <fpage>557</fpage>             <lpage>567</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Xu1">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Xu</surname><given-names>X</given-names></name><name name-style="western"><surname>Chua</surname><given-names>CC</given-names></name><name name-style="western"><surname>Gao</surname><given-names>J</given-names></name><name name-style="western"><surname>Hamdy</surname><given-names>RC</given-names></name><name name-style="western"><surname>Chua</surname><given-names>BH</given-names></name></person-group>             <year>2006</year>             <article-title>Humanin is a novel neuroprotective agent against stroke.</article-title>             <source>Stroke</source>             <volume>37</volume>             <fpage>2613</fpage>             <lpage>2619</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Xu2">
+        <label>26</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Xu</surname><given-names>X</given-names></name><name name-style="western"><surname>Chua</surname><given-names>CC</given-names></name><name name-style="western"><surname>Gao</surname><given-names>J</given-names></name><name name-style="western"><surname>Chua</surname><given-names>KW</given-names></name><name name-style="western"><surname>Wang</surname><given-names>H</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Neuroprotective effect of humanin on cerebral ischemia/reperfusion injury is mediated by a PI3K/Akt pathway.</article-title>             <source>Brain Res</source>             <volume>1227</volume>             <fpage>12</fpage>             <lpage>18</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Muzumdar1">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Muzumdar</surname><given-names>RH</given-names></name><name name-style="western"><surname>Huffman</surname><given-names>DM</given-names></name><name name-style="western"><surname>Atzmon</surname><given-names>G</given-names></name><name name-style="western"><surname>Buettner</surname><given-names>C</given-names></name><name name-style="western"><surname>Cobb</surname><given-names>LJ</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Humanin: a novel central regulator of peripheral insulin action.</article-title>             <source>PLoS One</source>             <volume>4</volume>             <fpage>e6334</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Hoang1">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hoang</surname><given-names>PT</given-names></name><name name-style="western"><surname>Park</surname><given-names>P</given-names></name><name name-style="western"><surname>Cobb</surname><given-names>LJ</given-names></name><name name-style="western"><surname>Paharkova-Vatchkova</surname><given-names>V</given-names></name><name name-style="western"><surname>Hakimi</surname><given-names>M</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>The neurosurvival factor Humanin inhibits beta-cell apoptosis via signal transducer and activator of transcription 3 activation and delays and ameliorates diabetes in nonobese diabetic mice.</article-title>             <source>Metabolism</source>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Yamada1">
+        <label>29</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yamada</surname><given-names>M</given-names></name><name name-style="western"><surname>Chiba</surname><given-names>T</given-names></name><name name-style="western"><surname>Sasabe</surname><given-names>J</given-names></name><name name-style="western"><surname>Terashita</surname><given-names>K</given-names></name><name name-style="western"><surname>Aiso</surname><given-names>S</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Nasal Colivelin Treatment Ameliorates Memory Impairment Related to Alzheimer's Disease.</article-title>             <source>Neuropsychopharmacology</source>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Chiba1">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Chiba</surname><given-names>T</given-names></name><name name-style="western"><surname>Yamada</surname><given-names>M</given-names></name><name name-style="western"><surname>Sasabe</surname><given-names>J</given-names></name><name name-style="western"><surname>Terashita</surname><given-names>K</given-names></name><name name-style="western"><surname>Shimoda</surname><given-names>M</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Amyloid-beta causes memory impairment by disturbing the JAK2/STAT3 axis in hippocampal neurons.</article-title>             <source>Mol Psychiatry</source>             <volume>14</volume>             <fpage>206</fpage>             <lpage>222</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Frautschy1">
+        <label>31</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Frautschy</surname><given-names>SA</given-names></name><name name-style="western"><surname>Hu</surname><given-names>W</given-names></name><name name-style="western"><surname>Kim</surname><given-names>P</given-names></name><name name-style="western"><surname>Miller</surname><given-names>SA</given-names></name><name name-style="western"><surname>Chu</surname><given-names>T</given-names></name><etal/></person-group>             <year>2001</year>             <article-title>Phenolic anti-inflammatory antioxidant reversal of Abeta-induced cognitive deficits and neuropathology.</article-title>             <source>Neurobiol Aging</source>             <volume>22</volume>             <fpage>993</fpage>             <lpage>1005</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Yamaguchi1">
+        <label>32</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yamaguchi</surname><given-names>Y</given-names></name><name name-style="western"><surname>Matsuno</surname><given-names>T</given-names></name><name name-style="western"><surname>Kawashima</surname><given-names>S</given-names></name></person-group>             <year>2002</year>             <article-title>Antiamnesic effects of azaindolizinone derivative ZSET845 on impaired learning and decreased ChAT activity induced by amyloid-beta 25-35 in the rat.</article-title>             <source>Brain Res</source>             <volume>945</volume>             <fpage>259</fpage>             <lpage>265</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Yamada2">
+        <label>33</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yamada</surname><given-names>K</given-names></name><name name-style="western"><surname>Tanaka</surname><given-names>T</given-names></name><name name-style="western"><surname>Mamiya</surname><given-names>T</given-names></name><name name-style="western"><surname>Shiotani</surname><given-names>T</given-names></name><name name-style="western"><surname>Kameyama</surname><given-names>T</given-names></name><etal/></person-group>             <year>1999</year>             <article-title>Improvement by nefiracetam of beta-amyloid-(1-42)-induced learning and memory impairments in rats.</article-title>             <source>Br J Pharmacol</source>             <volume>126</volume>             <fpage>235</fpage>             <lpage>244</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Nitta1">
+        <label>34</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nitta</surname><given-names>A</given-names></name><name name-style="western"><surname>Fukuta</surname><given-names>T</given-names></name><name name-style="western"><surname>Hasegawa</surname><given-names>T</given-names></name><name name-style="western"><surname>Nabeshima</surname><given-names>T</given-names></name></person-group>             <year>1997</year>             <article-title>Continuous infusion of beta-amyloid protein into the rat cerebral ventricle induces learning impairment and neuronal and morphological degeneration.</article-title>             <source>Jpn J Pharmacol</source>             <volume>73</volume>             <fpage>51</fpage>             <lpage>57</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Nitta2">
+        <label>35</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nitta</surname><given-names>A</given-names></name><name name-style="western"><surname>Itoh</surname><given-names>A</given-names></name><name name-style="western"><surname>Hasegawa</surname><given-names>T</given-names></name><name name-style="western"><surname>Nabeshima</surname><given-names>T</given-names></name></person-group>             <year>1994</year>             <article-title>beta-Amyloid protein-induced Alzheimer's disease animal model.</article-title>             <source>Neurosci Lett</source>             <volume>170</volume>             <fpage>63</fpage>             <lpage>66</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Oddo1">
+        <label>36</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Oddo</surname><given-names>S</given-names></name><name name-style="western"><surname>Caccamo</surname><given-names>A</given-names></name><name name-style="western"><surname>Shepherd</surname><given-names>JD</given-names></name><name name-style="western"><surname>Murphy</surname><given-names>MP</given-names></name><name name-style="western"><surname>Golde</surname><given-names>TE</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>Triple-transgenic model of Alzheimer's disease with plaques and tangles: intracellular Abeta and synaptic dysfunction.</article-title>             <source>Neuron</source>             <volume>39</volume>             <fpage>409</fpage>             <lpage>421</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-HirataFukae1">
+        <label>37</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hirata-Fukae</surname><given-names>C</given-names></name><name name-style="western"><surname>Li</surname><given-names>HF</given-names></name><name name-style="western"><surname>Hoe</surname><given-names>HS</given-names></name><name name-style="western"><surname>Gray</surname><given-names>AJ</given-names></name><name name-style="western"><surname>Minami</surname><given-names>SS</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Females exhibit more extensive amyloid, but not tau, pathology in an Alzheimer transgenic model.</article-title>             <source>Brain Res</source>             <volume>1216</volume>             <fpage>92</fpage>             <lpage>103</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Planel1">
+        <label>38</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Planel</surname><given-names>E</given-names></name><name name-style="western"><surname>Richter</surname><given-names>KE</given-names></name><name name-style="western"><surname>Nolan</surname><given-names>CE</given-names></name><name name-style="western"><surname>Finley</surname><given-names>JE</given-names></name><name name-style="western"><surname>Liu</surname><given-names>L</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Anesthesia leads to tau hyperphosphorylation through inhibition of phosphatase activity by hypothermia.</article-title>             <source>J Neurosci</source>             <volume>27</volume>             <fpage>3090</fpage>             <lpage>3097</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Takahashi1">
+        <label>39</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Takahashi</surname><given-names>A</given-names></name><name name-style="western"><surname>Kato</surname><given-names>K</given-names></name><name name-style="western"><surname>Makino</surname><given-names>J</given-names></name><name name-style="western"><surname>Shiroishi</surname><given-names>T</given-names></name><name name-style="western"><surname>Koide</surname><given-names>T</given-names></name></person-group>             <year>2006</year>             <article-title>Multivariate analysis of temporal descriptions of open-field behavior in wild-derived mouse strains.</article-title>             <source>Behav Genet</source>             <volume>36</volume>             <fpage>763</fpage>             <lpage>774</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Nagai1">
+        <label>40</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nagai</surname><given-names>T</given-names></name><name name-style="western"><surname>Yamada</surname><given-names>K</given-names></name><name name-style="western"><surname>Kim</surname><given-names>HC</given-names></name><name name-style="western"><surname>Kim</surname><given-names>YS</given-names></name><name name-style="western"><surname>Noda</surname><given-names>Y</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>Cognition impairment in the genetic model of aging klotho gene mutant mice: a role of oxidative stress.</article-title>             <source>FASEB J</source>             <volume>17</volume>             <fpage>50</fpage>             <lpage>52</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Dix1">
+        <label>41</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Dix</surname><given-names>SL</given-names></name><name name-style="western"><surname>Aggleton</surname><given-names>JP</given-names></name></person-group>             <year>1999</year>             <article-title>Extending the spontaneous preference test of recognition: evidence of object-location and object-context recognition.</article-title>             <source>Behav Brain Res</source>             <volume>99</volume>             <fpage>191</fpage>             <lpage>200</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Winters1">
+        <label>42</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Winters</surname><given-names>BD</given-names></name><name name-style="western"><surname>Forwood</surname><given-names>SE</given-names></name><name name-style="western"><surname>Cowell</surname><given-names>RA</given-names></name><name name-style="western"><surname>Saksida</surname><given-names>LM</given-names></name><name name-style="western"><surname>Bussey</surname><given-names>TJ</given-names></name></person-group>             <year>2004</year>             <article-title>Double dissociation between the effects of peri-postrhinal cortex and hippocampal lesions on tests of object recognition and spatial memory: heterogeneity of function within the temporal lobe.</article-title>             <source>J Neurosci</source>             <volume>24</volume>             <fpage>5901</fpage>             <lpage>5908</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Matsuoka1">
+        <label>43</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Matsuoka</surname><given-names>Y</given-names></name><name name-style="western"><surname>Jouroukhin</surname><given-names>Y</given-names></name><name name-style="western"><surname>Gray</surname><given-names>AJ</given-names></name><name name-style="western"><surname>Ma</surname><given-names>L</given-names></name><name name-style="western"><surname>Hirata-Fukae</surname><given-names>C</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>A neuronal microtubule-interacting agent, NAPVSIPQ, reduces tau pathology and enhances cognitive function in a mouse model of Alzheimer's disease.</article-title>             <source>J Pharmacol Exp Ther</source>             <volume>325</volume>             <fpage>146</fpage>             <lpage>153</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Schmidt1">
+        <label>44</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Schmidt</surname><given-names>SD</given-names></name><name name-style="western"><surname>Jiang</surname><given-names>Y</given-names></name><name name-style="western"><surname>Nixon</surname><given-names>RA</given-names></name><name name-style="western"><surname>Mathews</surname><given-names>PM</given-names></name></person-group>             <year>2005</year>             <article-title>Tissue processing prior to protein analysis and amyloid-beta quantitation.</article-title>             <source>Methods Mol Biol</source>             <volume>299</volume>             <fpage>267</fpage>             <lpage>278</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Horikoshi1">
+        <label>45</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Horikoshi</surname><given-names>Y</given-names></name><name name-style="western"><surname>Sakaguchi</surname><given-names>G</given-names></name><name name-style="western"><surname>Becker</surname><given-names>AG</given-names></name><name name-style="western"><surname>Gray</surname><given-names>AJ</given-names></name><name name-style="western"><surname>Duff</surname><given-names>K</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>Development of Abeta terminal end-specific antibodies and sensitive ELISA for Abeta variant.</article-title>             <source>Biochem Biophys Res Commun</source>             <volume>319</volume>             <fpage>733</fpage>             <lpage>737</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Tajima2">
+        <label>46</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Tajima</surname><given-names>H</given-names></name><name name-style="western"><surname>Niikura</surname><given-names>T</given-names></name><name name-style="western"><surname>Hashimoto</surname><given-names>Y</given-names></name><name name-style="western"><surname>Ito</surname><given-names>Y</given-names></name><name name-style="western"><surname>Kita</surname><given-names>Y</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>Evidence for in vivo production of Humanin peptide, a neuroprotective factor against Alzheimer's disease-related insults.</article-title>             <source>Neurosci Lett</source>             <volume>324</volume>             <fpage>227</fpage>             <lpage>231</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Iwata1">
+        <label>47</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Iwata</surname><given-names>N</given-names></name><name name-style="western"><surname>Takaki</surname><given-names>Y</given-names></name><name name-style="western"><surname>Fukami</surname><given-names>S</given-names></name><name name-style="western"><surname>Tsubuki</surname><given-names>S</given-names></name><name name-style="western"><surname>Saido</surname><given-names>TC</given-names></name></person-group>             <year>2002</year>             <article-title>Region-specific reduction of A beta-degrading endopeptidase, neprilysin, in mouse hippocampus upon aging.</article-title>             <source>J Neurosci Res</source>             <volume>70</volume>             <fpage>493</fpage>             <lpage>500</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Tomiyama1">
+        <label>48</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Tomiyama</surname><given-names>T</given-names></name><name name-style="western"><surname>Matsuyama</surname><given-names>S</given-names></name><name name-style="western"><surname>Iso</surname><given-names>H</given-names></name><name name-style="western"><surname>Umeda</surname><given-names>T</given-names></name><name name-style="western"><surname>Takuma</surname><given-names>H</given-names></name><etal/></person-group>             <article-title>A mouse model of amyloid beta oligomers: their contribution to synaptic alteration, abnormal tau phosphorylation, glial activation, and neuronal loss in vivo.</article-title>             <source>J Neurosci</source>             <volume>30</volume>             <fpage>4845</fpage>             <lpage>4856</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Hemming1">
+        <label>49</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hemming</surname><given-names>ML</given-names></name><name name-style="western"><surname>Patterson</surname><given-names>M</given-names></name><name name-style="western"><surname>Reske-Nielsen</surname><given-names>C</given-names></name><name name-style="western"><surname>Lin</surname><given-names>L</given-names></name><name name-style="western"><surname>Isacson</surname><given-names>O</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Reducing amyloid plaque burden via ex vivo gene delivery of an Abeta-degrading protease: a novel therapeutic approach to Alzheimer disease.</article-title>             <source>PLoS Med</source>             <volume>4</volume>             <fpage>e262</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Frey1">
+        <label>50</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Frey</surname><given-names>WH</given-names><suffix>II</suffix></name></person-group>             <year>2002</year>             <article-title>Intranasal delivery: Bypassing the Blood-brain Barrier to Deliver Therapeutic Agents to the Brain and Spinal Cord.</article-title>             <source>Drug Delivery Technology</source>             <volume>2</volume>             <fpage>46</fpage>             <lpage>49</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Thorne1">
+        <label>51</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Thorne</surname><given-names>RG</given-names></name><name name-style="western"><surname>Pronk</surname><given-names>GJ</given-names></name><name name-style="western"><surname>Padmanabhan</surname><given-names>V</given-names></name><name name-style="western"><surname>Frey</surname><given-names>WH</given-names><suffix>2nd</suffix></name></person-group>             <year>2004</year>             <article-title>Delivery of insulin-like growth factor-I to the rat brain and spinal cord along olfactory and trigeminal pathways following intranasal administration.</article-title>             <source>Neuroscience</source>             <volume>127</volume>             <fpage>481</fpage>             <lpage>496</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Yasojima1">
+        <label>52</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yasojima</surname><given-names>K</given-names></name><name name-style="western"><surname>Akiyama</surname><given-names>H</given-names></name><name name-style="western"><surname>McGeer</surname><given-names>EG</given-names></name><name name-style="western"><surname>McGeer</surname><given-names>PL</given-names></name></person-group>             <year>2001</year>             <article-title>Reduced neprilysin in high plaque areas of Alzheimer brain: a possible relationship to deficient degradation of beta-amyloid peptide.</article-title>             <source>Neurosci Lett</source>             <volume>297</volume>             <fpage>97</fpage>             <lpage>100</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Kurochkin1">
+        <label>53</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kurochkin</surname><given-names>IV</given-names></name><name name-style="western"><surname>Goto</surname><given-names>S</given-names></name></person-group>             <year>1994</year>             <article-title>Alzheimer's beta-amyloid peptide specifically interacts with and is degraded by insulin degrading enzyme.</article-title>             <source>FEBS Lett</source>             <volume>345</volume>             <fpage>33</fpage>             <lpage>37</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Qiu1">
+        <label>54</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Qiu</surname><given-names>WQ</given-names></name><name name-style="western"><surname>Walsh</surname><given-names>DM</given-names></name><name name-style="western"><surname>Ye</surname><given-names>Z</given-names></name><name name-style="western"><surname>Vekrellis</surname><given-names>K</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>J</given-names></name><etal/></person-group>             <year>1998</year>             <article-title>Insulin-degrading enzyme regulates extracellular levels of amyloid beta-protein by degradation.</article-title>             <source>J Biol Chem</source>             <volume>273</volume>             <fpage>32730</fpage>             <lpage>32738</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Miners1">
+        <label>55</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Miners</surname><given-names>JS</given-names></name><name name-style="western"><surname>Baig</surname><given-names>S</given-names></name><name name-style="western"><surname>Palmer</surname><given-names>J</given-names></name><name name-style="western"><surname>Palmer</surname><given-names>LE</given-names></name><name name-style="western"><surname>Kehoe</surname><given-names>PG</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Abeta-degrading enzymes in Alzheimer's disease.</article-title>             <source>Brain Pathol</source>             <volume>18</volume>             <fpage>240</fpage>             <lpage>252</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Hashimoto5">
+        <label>56</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hashimoto</surname><given-names>Y</given-names></name><name name-style="western"><surname>Suzuki</surname><given-names>H</given-names></name><name name-style="western"><surname>Aiso</surname><given-names>S</given-names></name><name name-style="western"><surname>Niikura</surname><given-names>T</given-names></name><name name-style="western"><surname>Nishimoto</surname><given-names>I</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Involvement of tyrosine kinases and STAT3 in Humanin-mediated neuroprotection.</article-title>             <source>Life Sci</source>             <volume>77</volume>             <fpage>3092</fpage>             <lpage>3104</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Selkoe1">
+        <label>57</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Selkoe</surname><given-names>DJ</given-names></name></person-group>             <year>2008</year>             <article-title>Soluble oligomers of the amyloid beta-protein impair synaptic plasticity and behavior.</article-title>             <source>Behav Brain Res</source>             <volume>192</volume>             <fpage>106</fpage>             <lpage>113</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Treves1">
+        <label>58</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Treves</surname><given-names>A</given-names></name><name name-style="western"><surname>Tashiro</surname><given-names>A</given-names></name><name name-style="western"><surname>Witter</surname><given-names>ME</given-names></name><name name-style="western"><surname>Moser</surname><given-names>EI</given-names></name></person-group>             <year>2008</year>             <article-title>What is the mammalian dentate gyrus good for?</article-title>             <source>Neuroscience</source>             <volume>154</volume>             <fpage>1155</fpage>             <lpage>1172</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Walsh1">
+        <label>59</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Walsh</surname><given-names>DM</given-names></name><name name-style="western"><surname>Klyubin</surname><given-names>I</given-names></name><name name-style="western"><surname>Fadeeva</surname><given-names>JV</given-names></name><name name-style="western"><surname>Cullen</surname><given-names>WK</given-names></name><name name-style="western"><surname>Anwyl</surname><given-names>R</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>Naturally secreted oligomers of amyloid beta protein potently inhibit hippocampal long-term potentiation in vivo.</article-title>             <source>Nature</source>             <volume>416</volume>             <fpage>535</fpage>             <lpage>539</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Wang1">
+        <label>60</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wang</surname><given-names>Q</given-names></name><name name-style="western"><surname>Walsh</surname><given-names>DM</given-names></name><name name-style="western"><surname>Rowan</surname><given-names>MJ</given-names></name><name name-style="western"><surname>Selkoe</surname><given-names>DJ</given-names></name><name name-style="western"><surname>Anwyl</surname><given-names>R</given-names></name></person-group>             <year>2004</year>             <article-title>Block of long-term potentiation by naturally secreted and synthetic amyloid beta-peptide in hippocampal slices is mediated via activation of the kinases c-Jun N-terminal kinase, cyclin-dependent kinase 5, and p38 mitogen-activated protein kinase as well as metabotropic glutamate receptor type 5.</article-title>             <source>J Neurosci</source>             <volume>24</volume>             <fpage>3370</fpage>             <lpage>3378</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Irizarry1">
+        <label>61</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Irizarry</surname><given-names>MC</given-names></name><name name-style="western"><surname>Soriano</surname><given-names>F</given-names></name><name name-style="western"><surname>McNamara</surname><given-names>M</given-names></name><name name-style="western"><surname>Page</surname><given-names>KJ</given-names></name><name name-style="western"><surname>Schenk</surname><given-names>D</given-names></name><etal/></person-group>             <year>1997</year>             <article-title>Abeta deposition is associated with neuropil changes, but not with overt neuronal loss in the human amyloid precursor protein V717F (PDAPP) transgenic mouse.</article-title>             <source>J Neurosci</source>             <volume>17</volume>             <fpage>7053</fpage>             <lpage>7059</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Jacobsen1">
+        <label>62</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Jacobsen</surname><given-names>JS</given-names></name><name name-style="western"><surname>Wu</surname><given-names>CC</given-names></name><name name-style="western"><surname>Redwine</surname><given-names>JM</given-names></name><name name-style="western"><surname>Comery</surname><given-names>TA</given-names></name><name name-style="western"><surname>Arias</surname><given-names>R</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Early-onset behavioral and synaptic deficits in a mouse model of Alzheimer's disease.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>103</volume>             <fpage>5161</fpage>             <lpage>5166</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Billings1">
+        <label>63</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Billings</surname><given-names>LM</given-names></name><name name-style="western"><surname>Oddo</surname><given-names>S</given-names></name><name name-style="western"><surname>Green</surname><given-names>KN</given-names></name><name name-style="western"><surname>McGaugh</surname><given-names>JL</given-names></name><name name-style="western"><surname>LaFerla</surname><given-names>FM</given-names></name></person-group>             <year>2005</year>             <article-title>Intraneuronal Abeta causes the onset of early Alzheimer's disease-related cognitive deficits in transgenic mice.</article-title>             <source>Neuron</source>             <volume>45</volume>             <fpage>675</fpage>             <lpage>688</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Oddo2">
+        <label>64</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Oddo</surname><given-names>S</given-names></name><name name-style="western"><surname>Vasilevko</surname><given-names>V</given-names></name><name name-style="western"><surname>Caccamo</surname><given-names>A</given-names></name><name name-style="western"><surname>Kitazawa</surname><given-names>M</given-names></name><name name-style="western"><surname>Cribbs</surname><given-names>DH</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Reduction of soluble Abeta and tau, but not soluble Abeta alone, ameliorates cognitive decline in transgenic mice with plaques and tangles.</article-title>             <source>J Biol Chem</source>             <volume>281</volume>             <fpage>39413</fpage>             <lpage>39423</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Yoshiyama1">
+        <label>65</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yoshiyama</surname><given-names>Y</given-names></name><name name-style="western"><surname>Higuchi</surname><given-names>M</given-names></name><name name-style="western"><surname>Zhang</surname><given-names>B</given-names></name><name name-style="western"><surname>Huang</surname><given-names>SM</given-names></name><name name-style="western"><surname>Iwata</surname><given-names>N</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Synapse loss and microglial activation precede tangles in a P301S tauopathy mouse model.</article-title>             <source>Neuron</source>             <volume>53</volume>             <fpage>337</fpage>             <lpage>351</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Halagappa1">
+        <label>66</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Halagappa</surname><given-names>VK</given-names></name><name name-style="western"><surname>Guo</surname><given-names>Z</given-names></name><name name-style="western"><surname>Pearson</surname><given-names>M</given-names></name><name name-style="western"><surname>Matsuoka</surname><given-names>Y</given-names></name><name name-style="western"><surname>Cutler</surname><given-names>RG</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>Intermittent fasting and caloric restriction ameliorate age-related behavioral deficits in the triple-transgenic mouse model of Alzheimer's disease.</article-title>             <source>Neurobiol Dis</source>             <volume>26</volume>             <fpage>212</fpage>             <lpage>220</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Citron1">
+        <label>67</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Citron</surname><given-names>M</given-names></name></person-group>             <article-title>Alzheimer's disease: strategies for disease modification.</article-title>             <source>Nat Rev Drug Discov</source>             <volume>9</volume>             <fpage>387</fpage>             <lpage>398</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Craft1">
+        <label>68</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Craft</surname><given-names>S</given-names></name></person-group>             <year>2006</year>             <article-title>Insulin resistance syndrome and Alzheimer disease: pathophysiologic mechanisms and therapeutic implications.</article-title>             <source>Alzheimer Dis Assoc Disord</source>             <volume>20</volume>             <fpage>298</fpage>             <lpage>301</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Yamada3">
+        <label>69</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Yamada</surname><given-names>M</given-names></name><name name-style="western"><surname>Chiba</surname><given-names>T</given-names></name><name name-style="western"><surname>Sasabe</surname><given-names>J</given-names></name><name name-style="western"><surname>Terashita</surname><given-names>K</given-names></name><name name-style="western"><surname>Aiso</surname><given-names>S</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Nasal Colivelin treatment ameliorates memory impairment related to Alzheimer's disease.</article-title>             <source>Neuropsychopharmacology</source>             <volume>33</volume>             <fpage>2020</fpage>             <lpage>2032</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Wang2">
+        <label>70</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wang</surname><given-names>D</given-names></name><name name-style="western"><surname>Li</surname><given-names>H</given-names></name><name name-style="western"><surname>Yuan</surname><given-names>H</given-names></name><name name-style="western"><surname>Zheng</surname><given-names>M</given-names></name><name name-style="western"><surname>Bai</surname><given-names>C</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Humanin delays apoptosis in K562 cells by downregulation of P38 MAP kinase.</article-title>             <source>Apoptosis</source>             <volume>10</volume>             <fpage>963</fpage>             <lpage>971</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Franke1">
+        <label>71</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Franke</surname><given-names>TF</given-names></name></person-group>             <year>2008</year>             <article-title>PI3K/Akt: getting it right matters.</article-title>             <source>Oncogene</source>             <volume>27</volume>             <fpage>6473</fpage>             <lpage>6488</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Kharebava1">
+        <label>72</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kharebava</surname><given-names>G</given-names></name><name name-style="western"><surname>Makonchuk</surname><given-names>D</given-names></name><name name-style="western"><surname>Kalita</surname><given-names>KB</given-names></name><name name-style="western"><surname>Zheng</surname><given-names>JJ</given-names></name><name name-style="western"><surname>Hetman</surname><given-names>M</given-names></name></person-group>             <year>2008</year>             <article-title>Requirement of 3-phosphoinositide-dependent protein kinase-1 for BDNF-mediated neuronal survival.</article-title>             <source>J Neurosci</source>             <volume>28</volume>             <fpage>11409</fpage>             <lpage>11420</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-PardossiPiquard1">
+        <label>73</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Pardossi-Piquard</surname><given-names>R</given-names></name><name name-style="western"><surname>Petit</surname><given-names>A</given-names></name><name name-style="western"><surname>Kawarai</surname><given-names>T</given-names></name><name name-style="western"><surname>Sunyach</surname><given-names>C</given-names></name><name name-style="western"><surname>Alves da Costa</surname><given-names>C</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Presenilin-dependent transcriptional control of the Abeta-degrading enzyme neprilysin by intracellular domains of betaAPP and APLP.</article-title>             <source>Neuron</source>             <volume>46</volume>             <fpage>541</fpage>             <lpage>554</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Saito1">
+        <label>74</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Saito</surname><given-names>T</given-names></name><name name-style="western"><surname>Iwata</surname><given-names>N</given-names></name><name name-style="western"><surname>Tsubuki</surname><given-names>S</given-names></name><name name-style="western"><surname>Takaki</surname><given-names>Y</given-names></name><name name-style="western"><surname>Takano</surname><given-names>J</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Somatostatin regulates brain amyloid beta peptide Abeta42 through modulation of proteolytic degradation.</article-title>             <source>Nat Med</source>             <volume>11</volume>             <fpage>434</fpage>             <lpage>439</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016259-Gozes1">
+        <label>75</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Gozes</surname><given-names>I</given-names></name><name name-style="western"><surname>Stewart</surname><given-names>A</given-names></name><name name-style="western"><surname>Morimoto</surname><given-names>B</given-names></name><name name-style="western"><surname>Fox</surname><given-names>A</given-names></name><name name-style="western"><surname>Sutherland</surname><given-names>K</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Addressing Alzheimer's disease tangles: from NAP to AL-108.</article-title>             <source>Curr Alzheimer Res</source>             <volume>6</volume>             <fpage>455</fpage>             <lpage>460</lpage>          </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

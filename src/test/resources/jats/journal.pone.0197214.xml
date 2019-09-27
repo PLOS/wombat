@@ -1,0 +1,1453 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.1d3" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0197214</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-18-01858</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Earth sciences</subject><subj-group><subject>Geology</subject><subj-group><subject>Geologic time</subject><subj-group><subject>Stone age</subject><subj-group><subject>Neolithic period</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Agriculture</subject><subj-group><subject>Crop science</subject><subj-group><subject>Crops</subject><subj-group><subject>Cereal crops</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Organisms</subject><subj-group><subject>Eukaryota</subject><subj-group><subject>Plants</subject><subj-group><subject>Grasses</subject><subj-group><subject>Millet</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Organisms</subject><subj-group><subject>Eukaryota</subject><subj-group><subject>Animals</subject><subj-group><subject>Animal types</subject><subj-group><subject>Domestic animals</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Zoology</subject><subj-group><subject>Animal types</subject><subj-group><subject>Domestic animals</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Nutrition</subject><subj-group><subject>Diet</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Nutrition</subject><subj-group><subject>Diet</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Physical sciences</subject><subj-group><subject>Physics</subject><subj-group><subject>Particle physics</subject><subj-group><subject>Composite particles</subject><subj-group><subject>Atoms</subject><subj-group><subject>Isotopes</subject><subj-group><subject>Stable isotopes</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Agriculture</subject></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Agriculture</subject><subj-group><subject>Animal management</subject><subj-group><subject>Animal husbandry</subject></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>5000 years of dietary variations of prehistoric farmers in the Great Hungarian Plain</article-title>
+<alt-title alt-title-type="running-head">Dietary variations of Hungarian prehistoric farmers</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0003-3764-497X</contrib-id>
+<name name-style="western">
+<surname>Gamarra</surname>
+<given-names>Beatriz</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Howcroft</surname>
+<given-names>Rachel</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0001-7968-5564</contrib-id>
+<name name-style="western">
+<surname>McCall</surname>
+<given-names>Ashley</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Dani</surname>
+<given-names>János</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Hajdú</surname>
+<given-names>Zsigmond</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Nagy</surname>
+<given-names>Emese Gyöngyvér</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Szabó</surname>
+<given-names>László D.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Domboróczki</surname>
+<given-names>László</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff005"><sup>5</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0001-6601-1616</contrib-id>
+<name name-style="western">
+<surname>Pap</surname>
+<given-names>Ildikó</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff006"><sup>6</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Raczky</surname>
+<given-names>Pál</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff007"><sup>7</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Marcsik</surname>
+<given-names>Antónia</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff008"><sup>8</sup></xref>
+</contrib>
+<contrib contrib-type="author" deceased="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Zoffmann</surname>
+<given-names>Zsuzsanna K.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff009"><sup>9</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Hajdu</surname>
+<given-names>Tamás</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff010"><sup>10</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0003-4608-3852</contrib-id>
+<name name-style="western">
+<surname>Feeney</surname>
+<given-names>Robin N. M.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff011"><sup>11</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Pinhasi</surname>
+<given-names>Ron</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+<xref ref-type="fn" rid="currentaff001"><sup>¤</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>School of Archaeology, University College Dublin, Dublin, Ireland</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Earth Institute, University College Dublin, Dublin, Ireland</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Conway Institute, University College Dublin, Dublin, Ireland</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Déri Museum, Debrecen, Hungary</addr-line></aff>
+<aff id="aff005"><label>5</label> <addr-line>István Dobó Castle Museum, Eger, Hungary</addr-line></aff>
+<aff id="aff006"><label>6</label> <addr-line>Department of Anthropology, Hungarian Natural History Museum, Budapest, Hungary</addr-line></aff>
+<aff id="aff007"><label>7</label> <addr-line>Insitute of Archaeological Sciences, Faculty of Humanities, Eötvös Loránd University, Budapest, Hungary</addr-line></aff>
+<aff id="aff008"><label>8</label> <addr-line>University of Szeged, Szeged, Hungary</addr-line></aff>
+<aff id="aff009"><label>9</label> <addr-line>Hungarian National Museum, Budapest, Hungary</addr-line></aff>
+<aff id="aff010"><label>10</label> <addr-line>Department of Biological Anthropology, Institute of Biology, EötvösLoránd University, Budapest, Hungary</addr-line></aff>
+<aff id="aff011"><label>11</label> <addr-line>School of Medicine, University College Dublin, Dublin, Ireland</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Bondioli</surname>
+<given-names>Luca</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Museo delle Civiltà, ITALY</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="current-aff" id="currentaff001">
+<label>¤</label>
+<p>Current address: Department of Anthropology, University of Vienna, Vienna, Austria</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">beagamarra@gmail.com</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>10</day>
+<month>5</month>
+<year>2018</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2018</year>
+</pub-date>
+<volume>13</volume>
+<issue>5</issue>
+<elocation-id>e0197214</elocation-id>
+<history>
+<date date-type="received">
+<day>18</day>
+<month>1</month>
+<year>2018</year>
+</date>
+<date date-type="accepted">
+<day>27</day>
+<month>4</month>
+<year>2018</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2018</copyright-year>
+<copyright-holder>Gamarra et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0197214"/>
+<abstract>
+<p>The development of farming was a catalyst for the evolution of the human diet from the varied subsistence practices of hunter-gatherers to the more globalised food economy we depend upon today. Although there has been considerable research into the dietary changes associated with the initial spread of farming, less attention has been given to how dietary choices continued to develop during subsequent millennia. A paleogenomic time transect for 5 millennia of human occupation in the Great Hungarian Plain spanning from the advent of the Neolithic to the Iron Age, showed major genomic turnovers. Here we assess where these genetic turnovers are associated with corresponding dietary shifts, by examining the carbon and nitrogen stable isotope ratios of 52 individuals. Results provide evidence that early Neolithic individuals, which were genetically characterised as Mesolithic hunter-gatherers, relied on wild resources to a greater extent than those whose genomic attributes were of typical Neolithic European farmers. Other Neolithic individuals and those from the Copper Age to Bronze Age periods relied mostly on terrestrial C<sub>3</sub> plant resources. We also report a carbon isotopic ratio typical of C<sub>4</sub> plants, which may indicate millet consumption in the Late Bronze Age, despite suggestions of the crop’s earlier arrival in Europe during the Neolithic.</p>
+</abstract>
+<funding-group>
+<award-group id="award001">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100002081</institution-id>
+<institution>Irish Research Council</institution>
+</institution-wrap>
+</funding-source>
+<award-id>RPG2013-2</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Pinhasi</surname>
+<given-names>Ron</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award002">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100000781</institution-id>
+<institution>European Research Council</institution>
+</institution-wrap>
+</funding-source>
+<award-id>ADNABIOARC (263441)</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Pinhasi</surname>
+<given-names>Ron</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award003">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/100010665</institution-id>
+<institution>H2020 Marie Skłodowska-Curie Actions</institution>
+</institution-wrap>
+</funding-source>
+<award-id>703373</award-id>
+<principal-award-recipient>
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0003-3764-497X</contrib-id>
+<name name-style="western">
+<surname>Gamarra</surname>
+<given-names>Beatriz</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<funding-statement>The isotopic analyses were funded by the Irish Research Council Advanced Research Project Grant (RPG2013-2) (<ext-link ext-link-type="uri" xlink:href="http://research.ie/" xlink:type="simple">http://research.ie/</ext-link>), European Research Council starting grant ADNABIOARC (263441) (<ext-link ext-link-type="uri" xlink:href="http://cordis.europa.eu/project/rcn/97532_en.html" xlink:type="simple">http://cordis.europa.eu/project/rcn/97532_en.html</ext-link>) held by RP and H2020-MSCA-IF-2015 (703373) (<ext-link ext-link-type="uri" xlink:href="http://cordis.europa.eu/project/rcn/201137_en.html" xlink:type="simple">http://cordis.europa.eu/project/rcn/201137_en.html</ext-link>) held by BG.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="5"/>
+<table-count count="6"/>
+<page-count count="20"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>The transition to agriculture was one of the most significant events in human history, driving major biological and cultural changes globally. A key element in most agricultural transitions is a sedentary lifestyle, which is typically accompanied by changes in subsistence from hunting and gathering to farming [<xref ref-type="bibr" rid="pone.0197214.ref001">1</xref>]. The nature, duration, and timing of the onset of agriculture varied across Europe (see [<xref ref-type="bibr" rid="pone.0197214.ref002">2</xref>–<xref ref-type="bibr" rid="pone.0197214.ref004">4</xref>]) as did the technological, cultural, and biological changes associated with this transition [<xref ref-type="bibr" rid="pone.0197214.ref005">5</xref>]. Agriculture spread into Europe from northwestern Anatolia and the Near East during the first half of the 7<sup>th</sup> millennium BC [<xref ref-type="bibr" rid="pone.0197214.ref003">3</xref>] and reached the Carpathian Basin ~6,000 BC [<xref ref-type="bibr" rid="pone.0197214.ref006">6</xref>]. The Great Hungarian Plain (GHP), also known as the Nagy-Alföld, is a lowland situated centrally in the Carpathian Basin, east of the Danube, and connected with the Mediterranean, the Pontic steppe and Central Europe [<xref ref-type="bibr" rid="pone.0197214.ref007">7</xref>,<xref ref-type="bibr" rid="pone.0197214.ref008">8</xref>] (<xref ref-type="fig" rid="pone.0197214.g001">Fig 1</xref>). The GHP was a key area involved in the spread and development of farming across Europe. This area was the meeting point of eastern and western European cultures, and as such was a major cultural and technological transitional region throughout prehistory [<xref ref-type="bibr" rid="pone.0197214.ref009">9</xref>,<xref ref-type="bibr" rid="pone.0197214.ref010">10</xref>].</p>
+<fig id="pone.0197214.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Map showing the location of sites analysed in the study.</title>
+<p>Generic Mapping Tools 4.5.13 [<xref ref-type="bibr" rid="pone.0197214.ref011">11</xref>] and the topographic ETOPO data set [<xref ref-type="bibr" rid="pone.0197214.ref012">12</xref>] was used to create this map.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.g001" xlink:type="simple"/>
+</fig>
+<p>Gamba et al. [<xref ref-type="bibr" rid="pone.0197214.ref013">13</xref>] analysed the genomes of nine Neolithic, one Copper Age, two Bronze and one Iron Age (5,800–830 cal BC) burial(s) spanning a 5,000-year temporal transect from the Early Neolithic to Early Iron Age. They evaluated the interface between genetic changes brought on by migrations and interactions during these key techno-cultural transitions in the GHP. Interestingly, although eight of the nine Neolithic and Copper Age individuals were genetically affiliated with modern-day Sardinians (a pattern which has been observed for numerous other European Neolithic farmers [<xref ref-type="bibr" rid="pone.0197214.ref014">14</xref>–<xref ref-type="bibr" rid="pone.0197214.ref017">17</xref>]), one of the Early Neolithic Körös individuals analysed has a genomic profile characteristic of an non-admixed European Mesolithic hunter-gatherer. This unexpected result suggests that this Early Neolithic individual may not have had shared the same subsistence practices as other early and later Neolithic individuals. Their study also showed genomic turnovers coinciding with the advent of the Bronze and Iron Ages, which contrasted with ~2,800-years of genetic continuity during the preceding Neolithic and Copper Age periods.</p>
+<sec id="sec002">
+<title>Archaeological context and subsistence practice in the Great Hungarian Plain</title>
+<p>Agriculture arrived in the GHP with the appearance of the Early Neolithic Körös culture [<xref ref-type="bibr" rid="pone.0197214.ref002">2</xref>,<xref ref-type="bibr" rid="pone.0197214.ref018">18</xref>] (see <xref ref-type="table" rid="pone.0197214.t001">Table 1</xref> for more details). This was the northernmost expression of the Balkan Early Neolithic complex (Starčevo-Körös-Criş cultures) that had spread farming throughout south-east Europe from its origins in the Near East [<xref ref-type="bibr" rid="pone.0197214.ref002">2</xref>]. Körös subsistence strategies were predominantly based on grain cultivation (wheat, barley, einkorn and legumes) and animal husbandry [<xref ref-type="bibr" rid="pone.0197214.ref002">2</xref>,<xref ref-type="bibr" rid="pone.0197214.ref019">19</xref>]. Most of the Körös faunal assemblages suggest that these early farmers had a characteristically southeastern European subsistence that was heavily reliant on sheep and goat husbandry, followed by cattle contribution (although in some Körös sites, the number of cattle bones was higher than ovicaprids [<xref ref-type="bibr" rid="pone.0197214.ref020">20</xref>]), and a very limited use of pigs and wild resources [<xref ref-type="bibr" rid="pone.0197214.ref002">2</xref>,<xref ref-type="bibr" rid="pone.0197214.ref021">21</xref>]. The Neolithic Linearbandkeramik culture (LBK) appeared in Transdanubia (West Hungary) and spread across the loess plains of Central Europe westward to the Paris Basin and eastward to the Ukraine, and eventually being responsible for establishing farming across much of the northern regions of Europe [<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0197214.ref023">23</xref>]. The Alföld Linear Pottery culture (ALP) was a LBK variant culture in the GHP. The subsistence practice was characterized by a major reliance on cattle [<xref ref-type="bibr" rid="pone.0197214.ref002">2</xref>,<xref ref-type="bibr" rid="pone.0197214.ref021">21</xref>,<xref ref-type="bibr" rid="pone.0197214.ref023">23</xref>], as well as cereals (mainly: emmer, barley, einkorn), legumes (pea and lentils), and flax cultivation [<xref ref-type="bibr" rid="pone.0197214.ref002">2</xref>,<xref ref-type="bibr" rid="pone.0197214.ref023">23</xref>–<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]. The ALP culture was succeeded by the Late Neolithic Tisza–Herpály–Csőszhalom complex [<xref ref-type="bibr" rid="pone.0197214.ref026">26</xref>]. The range of subsistence practices was similar to the previous ALP, with reliance on grain cultivation and an emphasis on domesticated cattle at the expense of ovicaprids (sheep and goats). Additionally, it included an increase of wild resources consumption [<xref ref-type="bibr" rid="pone.0197214.ref021">21</xref>].</p>
+<table-wrap id="pone.0197214.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.t001</object-id>
+<label>Table 1</label> <caption><title>Summary of the prehistoric time periods and their associated cultures and subsistence practices in the Great Hungarian Plain.</title></caption>
+<alternatives>
+<graphic id="pone.0197214.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Time Period</th>
+<th align="center">Date Range</th>
+<th align="center">Associated Cultures</th>
+<th align="center">Subsistence practices</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Early Neolithic</td>
+<td align="center">6,500–5,500 BC</td>
+<td align="center">Körös</td>
+<td align="center">Grain cultivation (wheat, barley, einkorn) and animal husbandry (predominantly: sheep/goat)</td>
+</tr>
+<tr>
+<td align="center">Middle Neolithic</td>
+<td align="center">5,500–5,000 BC</td>
+<td align="center">Linearbandkeramik (LBK), Alföld Linear Pottery (ALP)</td>
+<td align="center">Grain cultivation (wheat, barley, einkorn) and animal husbandry (major reliance on cattle)</td>
+</tr>
+<tr>
+<td align="center">Late Neolithic</td>
+<td align="center">5,000–4,500 BC</td>
+<td align="center">Tisza, Herpály, Csőszhalom</td>
+<td align="center">Grain cultivation (wheat, barley, einkorn); animal husbandry with emphasis on domesticated cattle</td>
+</tr>
+<tr>
+<td align="center">Early Copper Age</td>
+<td align="center">4,500–4,000 BC</td>
+<td align="center">Tiszapolgar</td>
+<td align="center">Focus on animal husbandry (mainly cattle)</td>
+</tr>
+<tr>
+<td align="center">Middle Copper Age</td>
+<td align="center">4,000–3,500 BC</td>
+<td align="center">Bodrogkeresztúr</td>
+<td align="center">Focus on animal husbandry (mainly cattle)</td>
+</tr>
+<tr>
+<td align="center">Late Copper Age</td>
+<td align="center">3,500–2,700 BC</td>
+<td align="center">Baden</td>
+<td align="center">Focus on animal husbandry (mainly cattle)</td>
+</tr>
+<tr>
+<td align="center">Early/Middle Bronze Age</td>
+<td align="center">2,700 –,1400 BC</td>
+<td align="center">Nagyrév, Hatvan, Ottomány</td>
+<td align="center">Intensive crop cultivation and animal husbandry</td>
+</tr>
+<tr>
+<td align="center">Late Bronze Age</td>
+<td align="center">1,400–900 BC</td>
+<td align="center">Tumulus, Urnfield, Kyjatice</td>
+<td align="center">Intensive crop cultivation; millet as staple crop</td>
+</tr>
+<tr>
+<td align="center">Early/Middle Iron Age</td>
+<td align="center">900–450 BC</td>
+<td align="center">Mezőcsát</td>
+<td align="center">Pastoral nomadism, semi-nomadic or transhuman pastoralist. Stock breeding of gregarious animals (cattle, sheep or horses)</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>The transition from the Late Neolithic to the Copper Age in the GHP was characterised by an overall cultural continuity, but with some changes in settlement patterns [<xref ref-type="bibr" rid="pone.0197214.ref027">27</xref>,<xref ref-type="bibr" rid="pone.0197214.ref028">28</xref>] and subsistence, namely from a reliance on agricultural products to a focus on animal husbandry (mainly cattle). This shift became predominant especially during the Middle Copper Age [<xref ref-type="bibr" rid="pone.0197214.ref027">27</xref>,<xref ref-type="bibr" rid="pone.0197214.ref029">29</xref>].</p>
+<p>Bronze metallurgy arrived to the Carpathian Basin in the middle of the 3<sup>rd</sup> millennium BC, as a result of trade links with the northern Pontic and Balkan Peninsula [<xref ref-type="bibr" rid="pone.0197214.ref030">30</xref>,<xref ref-type="bibr" rid="pone.0197214.ref031">31</xref>]. During the Bronze Age, several new regional cultures appeared on the GHP in association with local technological developments, the emergence of extensive trade networks for metallurgy, and the arrival of various groups from the steppe [<xref ref-type="bibr" rid="pone.0197214.ref030">30</xref>,<xref ref-type="bibr" rid="pone.0197214.ref032">32</xref>–<xref ref-type="bibr" rid="pone.0197214.ref035">35</xref>]. The subsistence practices of the Early and Middle Bronze Age tell cultures (named for the new type of settlements tells or nucleated villages; e.g. Nagyrév, Hatvan, Ottomány and Perjámos in eastern Hungary) were characterised by intensive crop cultivation and animal husbandry [<xref ref-type="bibr" rid="pone.0197214.ref032">32</xref>,<xref ref-type="bibr" rid="pone.0197214.ref034">34</xref>,<xref ref-type="bibr" rid="pone.0197214.ref036">36</xref>]. This also includes domestic horses that arrived from steppe cultures, and the exploitation of freshwater resources [<xref ref-type="bibr" rid="pone.0197214.ref030">30</xref>,<xref ref-type="bibr" rid="pone.0197214.ref032">32</xref>]. The Late Bronze Age was a period of major social and economic change associated with pan-regional connections with cultures from the western part of Central Europe (e.g. Tumulus, Urnfield) [<xref ref-type="bibr" rid="pone.0197214.ref035">35</xref>–<xref ref-type="bibr" rid="pone.0197214.ref037">37</xref>]. The earliest archaeobotanical evidence of broomcorn millet is reported in China, dating 8,000 BC [<xref ref-type="bibr" rid="pone.0197214.ref038">38</xref>]. It was used as a staple crop in Neolithic northern China by 6,000 BC [<xref ref-type="bibr" rid="pone.0197214.ref039">39</xref>] and spread westward to Central Asia and Eastern Europe over time [<xref ref-type="bibr" rid="pone.0197214.ref040">40</xref>,<xref ref-type="bibr" rid="pone.0197214.ref041">41</xref>]. While some evidence suggests millet consumption by Early Neolithic individuals in the GHP [<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>,<xref ref-type="bibr" rid="pone.0197214.ref043">43</xref>], it was not until the middle of the 2<sup>nd</sup> millennium BC that a shift was documented in cultivation preferences and millet was cultivated as a staple crop in the Carpathian Basin, as well as in continental Europe [<xref ref-type="bibr" rid="pone.0197214.ref036">36</xref>,<xref ref-type="bibr" rid="pone.0197214.ref044">44</xref>,<xref ref-type="bibr" rid="pone.0197214.ref045">45</xref>].</p>
+<p>Iron metallurgy arrived in Central Europe during the first millennium BC [<xref ref-type="bibr" rid="pone.0197214.ref046">46</xref>]. During the Early and Middle Iron Ages, pre-Scythian (also referred as Mezőcsát communities) and Scythian cultures from the Eastern Steppe inhabited the GHP and the adjacent northern mountainous region [<xref ref-type="bibr" rid="pone.0197214.ref047">47</xref>]. These populations practiced a form of nomadic stockbreeding [<xref ref-type="bibr" rid="pone.0197214.ref047">47</xref>,<xref ref-type="bibr" rid="pone.0197214.ref048">48</xref>], leaving limited traces of material culture behind in the archaeological record. Mezőcsát groups who lived predominantly in the northern part of the GHP are suggested by some to be descendants of these nomadic groups [<xref ref-type="bibr" rid="pone.0197214.ref047">47</xref>], while others argue local continuity from the Late Bronze Age to the Middle Iron Ages, and the adoption of a pastoralist lifestyle as a result of contacts with eastern populations [<xref ref-type="bibr" rid="pone.0197214.ref048">48</xref>].</p>
+</sec>
+<sec id="sec003">
+<title>Carbon and nitrogen stable isotope ratios as paleodietary indicators</title>
+<p>The use of carbon and nitrogen stable isotope ratios to study paleodiet is based on the principle that the isotope values of food consumed by animals and humans are reflected in the individual’s tissues (see [<xref ref-type="bibr" rid="pone.0197214.ref049">49</xref>–<xref ref-type="bibr" rid="pone.0197214.ref051">51</xref>]). Moreover, as bone is constantly being turned over by remodelling, the stable isotope ratios of bone collagen are indicative of the average diet over a period of time prior to death that may extend many years or even decades in adult individuals [<xref ref-type="bibr" rid="pone.0197214.ref052">52</xref>]. In brief, carbon stable isotope ratios (δ<sup>13</sup>C; see <xref ref-type="supplementary-material" rid="pone.0197214.s002">S2 Appendix</xref>) are primarily used to distinguish between the consumption of C<sub>4</sub> and C<sub>3</sub> photosynthesizing plants, and the animals raised on them [<xref ref-type="bibr" rid="pone.0197214.ref053">53</xref>]. They also allow differentiation between the consumption of terrestrial and marine foods [<xref ref-type="bibr" rid="pone.0197214.ref054">54</xref>,<xref ref-type="bibr" rid="pone.0197214.ref055">55</xref>]. In terrestrial ecosystems, the range of δ<sup>13</sup>C in C<sub>3</sub> plants, which include most trees, shrubs, temperate grasses, and domesticated cereals such as wheat, barley, oats, and rice, varies widely from −24‰ to −36‰ (mean −26.5‰) depending on environmental factors [<xref ref-type="bibr" rid="pone.0197214.ref056">56</xref>,<xref ref-type="bibr" rid="pone.0197214.ref057">57</xref>]. C<sub>4</sub> plants are typically arid adapted species and include some domesticated plants like maize, sorghum, and millet. C<sub>4</sub> plants tend to have less variable and higher δ<sup>13</sup>C values (mean −12.5‰) than C<sub>3</sub> plants, and these values create a bimodal distribution making them distinguishable from each other. Although variation in δ<sup>13</sup>C values exists, freshwater fish consumption results in lower δ<sup>13</sup>C values than in terrestrial C<sub>3</sub> environments, with a range of −23‰ to −21‰ δ<sup>13</sup>C values in Europe [<xref ref-type="bibr" rid="pone.0197214.ref058">58</xref>–<xref ref-type="bibr" rid="pone.0197214.ref060">60</xref>].</p>
+<p>Nitrogen stable isotope values (δ<sup>15</sup>N) in tissues increase with trophic level, with a stepwise increase of 3–5‰ between diet and consumers. This trophic level increase is used to analyse the relative consumption of plant versus animal proteins in the diet [<xref ref-type="bibr" rid="pone.0197214.ref061">61</xref>,<xref ref-type="bibr" rid="pone.0197214.ref062">62</xref>]. Aquatic resources, from both marine and freshwater ecosystems, can be markedly <sup>15</sup>N-enriched compared to terrestrial foods, due to longer and more complex food webs [<xref ref-type="bibr" rid="pone.0197214.ref058">58</xref>,<xref ref-type="bibr" rid="pone.0197214.ref063">63</xref>]. It is of relevance to note that various environmental factors including water stress (e.g. [<xref ref-type="bibr" rid="pone.0197214.ref064">64</xref>,<xref ref-type="bibr" rid="pone.0197214.ref065">65</xref>]), soil conditions (e.g. [<xref ref-type="bibr" rid="pone.0197214.ref066">66</xref>,<xref ref-type="bibr" rid="pone.0197214.ref067">67</xref>]), climate (e.g. [<xref ref-type="bibr" rid="pone.0197214.ref068">68</xref>,<xref ref-type="bibr" rid="pone.0197214.ref069">69</xref>]), health of the individual [<xref ref-type="bibr" rid="pone.0197214.ref070">70</xref>], or breastfeeding practices [<xref ref-type="bibr" rid="pone.0197214.ref071">71</xref>] have also shown to influence nitrogen isotope ratios. The use of animal manure additionally increases δ<sup>15</sup>N values in soils resulting in higher nitrogen isotope ratios in the tissues of animals and humans consuming fertilised crops [<xref ref-type="bibr" rid="pone.0197214.ref072">72</xref>–<xref ref-type="bibr" rid="pone.0197214.ref074">74</xref>].</p>
+<p>Previous stable isotope research in Hungary has focused on Neolithic and Copper Age populations [<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>,<xref ref-type="bibr" rid="pone.0197214.ref075">75</xref>,<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>]. These studies indicate that during the Late Neolithic and Copper Age on the GHP, animal protein featured more prominently in peoples’ diet than in previous Early and Middle Neolithic periods [<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>,<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>]. Additionally, terrestrial C<sub>3</sub> plants made most of the contribution to individual’s diets, except for some sites where some individuals’ δ<sup>13</sup>C values suggest an increase in C<sub>4</sub> plant consumption (e.g. millet) [<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>]. Likewise, freshwater resources probably did not contribute significantly to Neolithic and Copper Age diets [<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]. However, no palaeodietary isotopic studies included samples from Bronze and Iron Ages from the eastern GHP and have analysed dietary changes associated with the arrival of new material culture and migration events.</p>
+<p>This study includes isotopic data from a 5,000 years transect of the GHP, including Bronze and Iron Age periods, and analyses dietary changes along prehistoric time in the GHP. Specifically, the aim of this study is to investigate if the genetic changes and cultural transitions occurred in the GHP from Early Neolithic to Iron Age were associated with dietary shifts. The analysis focuses on carbon and nitrogen stable isotope ratios of bone collagen of 13 individuals reported in [<xref ref-type="bibr" rid="pone.0197214.ref013">13</xref>], together with 39 additional individuals from the same sites. We found that changes in dietary patterns were not always accompanied by cultural and genetic shifts. We also report higher consumption of C<sub>4</sub> plant resources in the Late Bronze and Iron Age periods.</p>
+</sec>
+</sec>
+<sec id="sec004" sec-type="materials|methods">
+<title>Material and methods</title>
+<p>Carbon and nitrogen stable isotope analysis was carried out on collagen from bone samples of 52 human individuals from both sexes and various ages, along with 17 faunal bone samples representing 6 species from three settlements (Tables <xref ref-type="table" rid="pone.0197214.t002">2</xref> and <xref ref-type="table" rid="pone.0197214.t003">3</xref>; see details in <xref ref-type="supplementary-material" rid="pone.0197214.s003">S1</xref> and <xref ref-type="supplementary-material" rid="pone.0197214.s004">S2</xref> Tables). All necessary permits were obtained for the described study, which complied with all relevant regulations. Only data from adults and subadults &gt;4 years old were used for statistical purposes in order to avoid individuals that might have still been breastfeeding or in the weaning process by the time of death [<xref ref-type="bibr" rid="pone.0197214.ref071">71</xref>]. The samples span from the early Neolithic Körös culture to the Early Iron Age Mezőcsát culture. We combined previous isotopic data for humans and fauna from the same region with the new data from this study in order to increase sample sizes and to analyse diachronic patterns of dietary change (detailed in Tables <xref ref-type="table" rid="pone.0197214.t002">2</xref> and <xref ref-type="table" rid="pone.0197214.t003">3</xref>). Published data without associated ages of individuals were not used. The variability of isotopic data from sites of the same time period is likely to be due to localvariations in the isotope composition of the food web, rather than a difference in subsistence practice as shown by [<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]. Nevertheless, human samples from the Körös Early Neolithic site of Tiszaszőlős-Domaháza were compared separately from the rest of Early Neolithic individuals to test if their diet was significantly different, as their hunter-gatherer genetic affinity suggests.</p>
+<table-wrap id="pone.0197214.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.t002</object-id>
+<label>Table 2</label> <caption><title>Site information of human samples used in this study from Mesolithic to Early Iron Age.</title></caption>
+<alternatives>
+<graphic id="pone.0197214.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">Site</th>
+<th align="left">Period</th>
+<th align="left">Culture</th>
+<th align="center">N</th>
+<th align="center">References</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Szolnok-Szanda</td>
+<td align="left">EN</td>
+<td align="left">Körös</td>
+<td align="center">3</td>
+<td align="center">This study</td>
+</tr>
+<tr>
+<td align="left">Berettyóújfalu-Morotva-liget</td>
+<td align="left">EN</td>
+<td align="left">Körös</td>
+<td align="center">2</td>
+<td align="center">This study</td>
+</tr>
+<tr>
+<td align="left">Tiszaszőlős-Domahàza</td>
+<td align="left">EN; MN</td>
+<td align="left">Körös; Alföld Linear Pottery</td>
+<td align="center">4</td>
+<td align="center">This study</td>
+</tr>
+<tr>
+<td align="left">Nagykörű-Gyümölcsös TSZ</td>
+<td align="left">EN</td>
+<td align="left">Körös</td>
+<td align="center">1</td>
+<td align="center">This study</td>
+</tr>
+<tr>
+<td align="left">Ludas-Varjú-Dűlő</td>
+<td align="left">LBA; EIA</td>
+<td align="left">Kyjatice; Mezőcsát</td>
+<td align="center">18</td>
+<td align="center">This study</td>
+</tr>
+<tr>
+<td align="left">Debrecen-Tócópart, Erdőalja</td>
+<td align="left">MN</td>
+<td align="left">Alföld Linear Pottery</td>
+<td align="center">8</td>
+<td align="center">This study</td>
+</tr>
+<tr>
+<td align="left">Kompolt-Kígyósér, Kistér</td>
+<td align="left">MN, EBA</td>
+<td align="left">Alföld Linear Pottery; Makó or Hatvan</td>
+<td align="center">6</td>
+<td align="center">This study</td>
+</tr>
+<tr>
+<td align="left">Apc-Berekalja I</td>
+<td align="left">MN; LN; LCA; EBA</td>
+<td align="left">LBK; Lengyel; Baden; Makó or Hatvan</td>
+<td align="center">8</td>
+<td align="center">This study</td>
+</tr>
+<tr>
+<td align="left">Apc-Berekalja II</td>
+<td align="left">MN</td>
+<td align="left">LBK</td>
+<td align="center">1</td>
+<td align="center">This study</td>
+</tr>
+<tr>
+<td align="left">Maroslele-Pana</td>
+<td align="left">MES; EN</td>
+<td align="left">Körös</td>
+<td align="center">5</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>]</td>
+</tr>
+<tr>
+<td align="left">Deszk</td>
+<td align="left">EN</td>
+<td align="left">Körös</td>
+<td align="center">2</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>]</td>
+</tr>
+<tr>
+<td align="left">Szarvas 23</td>
+<td align="left">EN</td>
+<td align="left">Körös</td>
+<td align="center">1</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>]</td>
+</tr>
+<tr>
+<td align="left">Endrőd-Varyai-tanya</td>
+<td align="left">EN</td>
+<td align="left">Körös</td>
+<td align="center">1</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>]</td>
+</tr>
+<tr>
+<td align="left">Mezőkövesd-Mocsolyás</td>
+<td align="left">MN</td>
+<td align="left">Alföld Linear Pottery</td>
+<td align="center">4</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>]</td>
+</tr>
+<tr>
+<td align="left">Füzesabony-Gubakút</td>
+<td align="left">MN</td>
+<td align="left">Alföld Linear Pottery</td>
+<td align="center">10</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>]</td>
+</tr>
+<tr>
+<td align="left">Polgár-Ferenczi-hát</td>
+<td align="left">MN</td>
+<td align="left">Alföld Linear Pottery</td>
+<td align="center">42</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>]</td>
+</tr>
+<tr>
+<td align="left">Hódmezővásárhely-Gorzsa</td>
+<td align="left">LN</td>
+<td align="left">Tisza; proto-Tiszapolgár</td>
+<td align="center">10</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]</td>
+</tr>
+<tr>
+<td align="left">Kisköre-Gát</td>
+<td align="left">LN</td>
+<td align="left">Tisza</td>
+<td align="center">10</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]</td>
+</tr>
+<tr>
+<td align="left">Polgár-Csőszhalom<xref ref-type="table-fn" rid="t002fn002">*</xref></td>
+<td align="left">LN</td>
+<td align="left">Csőszhalom</td>
+<td align="center">9</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]</td>
+</tr>
+<tr>
+<td align="left">Vésztő-Mágor and Vésztő-Bikeri</td>
+<td align="left">LN; ECA</td>
+<td align="left">Tisza; Tiszapolgár</td>
+<td align="center">22</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]</td>
+</tr>
+<tr>
+<td align="left">Tiszapolgar-Basatanya</td>
+<td align="left">ECA; MCA</td>
+<td align="left">Tiszapolgár; Bodrogkeresztúr</td>
+<td align="center">20</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]</td>
+</tr>
+<tr>
+<td align="left">Hajdúböszörmény-Ficsori-tó</td>
+<td align="left">ECA</td>
+<td align="left">Tiszapolgár</td>
+<td align="center">10</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]</td>
+</tr>
+<tr>
+<td align="left">Magyarhomoróg</td>
+<td align="left">MCA</td>
+<td align="left">Bodrogkeresztúr</td>
+<td align="center">10</td>
+<td align="center">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>N = number of samples; MES = Mesolithic; EN = Early Neolithic; MN = Middle Neolithic; LN = Late Neolithic; ECA = Early Copper Age; MCA = Middle Copper Age; LCA = Late Copper Age; EBA = Early Bronze Age; LBA = Late Bronze Age; EIA = Early Iron Age.</p></fn>
+<fn id="t002fn002"><p>*Only one individual from this site was not included as it has an anomalous δ<sup>15</sup>N ‰ value [<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>].</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<table-wrap id="pone.0197214.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.t003</object-id>
+<label>Table 3</label> <caption><title>Site information of faunal samples used in this study from Early Neolithic to Early Copper Age.</title></caption>
+<alternatives>
+<graphic id="pone.0197214.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">Species</th>
+<th align="center">N</th>
+<th align="left">Period</th>
+<th align="left">Sites</th>
+<th align="center">References</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="3">Cattle</td>
+<td align="center" rowspan="3">51</td>
+<td align="left">Early Neolithic</td>
+<td align="left">Ecsegfalva; Berettyóújfalu-Morotva-liget; Szolnok-Szanda</td>
+<td align="center" rowspan="3">[<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>],<break/>this study</td>
+</tr>
+<tr>
+<td align="left">Middle Neolithic</td>
+<td align="left">Füzesabony-Gubakút; Polgár-Ferenczi-hát; Polgár-Piócási-dűlő; Debrecen-Tócópart, Erdőalja</td>
+</tr>
+<tr>
+<td align="left">Late Copper Age</td>
+<td align="left">Abony36; Vésztő-Bikeri</td>
+</tr>
+<tr>
+<td align="left" rowspan="3">Sheep/goat</td>
+<td align="center" rowspan="3">39</td>
+<td align="left">Early Neolithic</td>
+<td align="left">Ecsegfalva; Endrőd 119; Berettyóújfalu-Morotva-liget; Szolnok-Szanda</td>
+<td align="center" rowspan="3">[<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>,<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>], this study</td>
+</tr>
+<tr>
+<td align="left">Middle Neolithic</td>
+<td align="left">Füzesabony-Gubakút; Polgár-Ferenczi-hát; Polgár-Piócási-dűlő</td>
+</tr>
+<tr>
+<td align="left">Late Copper Age</td>
+<td align="left">Abony3;, Vésztő-Bikeri</td>
+</tr>
+<tr>
+<td align="left">Donkey</td>
+<td align="center">2</td>
+<td align="left">Middle Neolithic</td>
+<td align="left">Berettyóújfalu-Morotva-liget</td>
+<td align="center">This study</td>
+</tr>
+<tr>
+<td align="left" rowspan="3">Auroch</td>
+<td align="center" rowspan="3">5</td>
+<td align="left">Early Neolithic</td>
+<td align="left">Ecsegfalva; Berettyóújfalu-Morotva-liget</td>
+<td align="center" rowspan="3">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>],<break/>this study</td>
+</tr>
+<tr>
+<td align="left">Middle Neolithic</td>
+<td align="left">Polgár-Piócási-dűlő</td>
+</tr>
+<tr>
+<td align="left">Late Copper Age</td>
+<td align="left">Vésztő-Bikeri</td>
+</tr>
+<tr>
+<td align="left" rowspan="3">Red deer</td>
+<td align="center" rowspan="3">6</td>
+<td align="left">Early Neolithic</td>
+<td align="left">Berettyóújfalu-Morotva-liget</td>
+<td align="center" rowspan="3">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>],<break/>this study</td>
+</tr>
+<tr>
+<td align="left">Middle Neolithic</td>
+<td align="left">Polgár-Piócási-dűlő</td>
+</tr>
+<tr>
+<td align="left">Late Copper Age</td>
+<td align="left">Abony36; Vésztő-Bikeri</td>
+</tr>
+<tr>
+<td align="left" rowspan="3">Pig</td>
+<td align="center" rowspan="3">24</td>
+<td align="left">Early Neolithic</td>
+<td align="left">Berettyóújfalu-Morotva-liget; Szolnok-Szanda</td>
+<td align="center" rowspan="3">[<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>],<break/>this study</td>
+</tr>
+<tr>
+<td align="left">Middle Neolithic</td>
+<td align="left">Füzesabony-Gubakút; Polgár-Ferenczi-hát; Polgár-Piócási-dűlő; Debrecen-Tócópart, Erdőalja</td>
+</tr>
+<tr>
+<td align="left">Late Copper Age</td>
+<td align="left">Abony36; Vésztő-Bikeri</td>
+</tr>
+<tr>
+<td align="left" rowspan="3">Wild boar</td>
+<td align="center" rowspan="3">6</td>
+<td align="left">Early Neolithic</td>
+<td align="left">Ecsegfalva</td>
+<td align="center" rowspan="3">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>]</td>
+</tr>
+<tr>
+<td align="left">Middle Neolithic</td>
+<td align="left">Polgár-Piócási-dűlő</td>
+</tr>
+<tr>
+<td align="left">Late Copper Age</td>
+<td align="left">Vésztő-Bikeri</td>
+</tr>
+<tr>
+<td align="left" rowspan="3">Fish</td>
+<td align="center" rowspan="3">10</td>
+<td align="left">Early Neolithic</td>
+<td align="left">Ecsegfalva</td>
+<td align="center" rowspan="3">[<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>]</td>
+</tr>
+<tr>
+<td align="left">Middle Neolithic</td>
+<td align="left">Polgár-Piócási-dűlő</td>
+</tr>
+<tr>
+<td align="left">Late Copper Age</td>
+<td align="left">Abony36; Vésztő-Bikeri</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t003fn001"><p>N = number of samples.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Collagen extraction followed a modified Longin method [<xref ref-type="bibr" rid="pone.0197214.ref077">77</xref>] (described in detail in <xref ref-type="supplementary-material" rid="pone.0197214.s002">S2 Appendix</xref>). Stable isotope analysis was carried out following the routine procedures of Light Stable Isotope Mass Spectrometry Laboratory of the Department of Geological Science at University of Florida (Gainesville, USA) and the University of Bradford Stable Light Isotope Laboratory (Bradford, UK) (described in <xref ref-type="supplementary-material" rid="pone.0197214.s002">S2 Appendix</xref>). The atomic C:N ratio range of 2.9−3.6 was used for quality control of the bone collagen, as it corresponds to well-preserved samples [<xref ref-type="bibr" rid="pone.0197214.ref078">78</xref>]. The distribution of isotopic values obtained was tested for normality using Shapiro-Wilk test, using <italic>p</italic>&lt;0.05 at the statistical significance level (<xref ref-type="supplementary-material" rid="pone.0197214.s005">S3 Table</xref>). Statistical analyses (ANOVA and HSD Tukey post-hoc tests) were performed to assess differences between samples belonging to different periods. For those periods that do not follow a normal distribution, non-parametric Kruskal-Wallis and Mann Whitney U tests (for mean comparisons) were used. Statistical data were generated using SPSS version 24 and PAST version 3.16 [<xref ref-type="bibr" rid="pone.0197214.ref079">79</xref>]. All data generated or analysed during this study are included in this published article (and in Supporting Information files).</p>
+</sec>
+<sec id="sec005" sec-type="results">
+<title>Results</title>
+<p>Bone collagen was obtained for 48 of the 52 human samples and for all faunal samples. Only one human sample did not have an atomic C:N ratio within the acceptable quality range of 2.9–3.6 [<xref ref-type="bibr" rid="pone.0197214.ref078">78</xref>] and its isotopic data were not considered for further statistical analyses and discussion. The information on faunal and human data obtained for this study are summarised in <xref ref-type="table" rid="pone.0197214.t004">Table 4</xref>, and detailed in <xref ref-type="supplementary-material" rid="pone.0197214.s003">S1</xref> and <xref ref-type="supplementary-material" rid="pone.0197214.s004">S2</xref> Tables.</p>
+<table-wrap id="pone.0197214.t004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.t004</object-id>
+<label>Table 4</label> <caption><title>Summary of results of the new isotopic data for the fauna (domesticates and wild species) and humans (per period) reported in this study.</title></caption>
+<alternatives>
+<graphic id="pone.0197214.t004g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.t004" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left"> </th>
+<th align="center" colspan="5">δ<sup>13</sup>C ‰</th>
+<th align="center" colspan="5">δ<sup>15</sup>N ‰</th>
+</tr>
+<tr>
+<th align="center">Fauna</th>
+<th align="center">N</th>
+<th align="center">Min</th>
+<th align="center">Max</th>
+<th align="center">M</th>
+<th align="center">SD</th>
+<th align="center">N</th>
+<th align="center">Min</th>
+<th align="center">Max</th>
+<th align="center">M</th>
+<th align="center">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Domesticated</td>
+<td align="center">13</td>
+<td align="center">−21.2</td>
+<td align="center">−19.4</td>
+<td align="center">−20.4</td>
+<td align="center">0.5</td>
+<td align="center">13</td>
+<td align="center">5.7</td>
+<td align="center">9.5</td>
+<td align="center">7.0</td>
+<td align="center">1.3</td>
+</tr>
+<tr>
+<td align="left">Wild terrestrial</td>
+<td align="center">2</td>
+<td align="center">−21.8</td>
+<td align="center">−21</td>
+<td align="center">−21.4</td>
+<td align="center">0.5</td>
+<td align="center">2</td>
+<td align="center">6.1</td>
+<td align="center">7.1</td>
+<td align="center">6.6</td>
+<td align="center">0.7</td>
+</tr>
+<tr>
+<td align="center"><bold>Humans</bold></td>
+<td align="center"> </td>
+<td align="center"> </td>
+<td align="center"> </td>
+<td align="center"> </td>
+<td align="center"> </td>
+<td align="center"> </td>
+<td align="center"> </td>
+<td align="center"> </td>
+<td align="center"> </td>
+<td align="center"> </td>
+</tr>
+<tr>
+<td align="left">Early Neolithic</td>
+<td align="center">8</td>
+<td align="center">−22.6</td>
+<td align="center">−20.2</td>
+<td align="center">−21.0</td>
+<td align="center">1.0</td>
+<td align="center">8</td>
+<td align="center">8.8</td>
+<td align="center">13.1</td>
+<td align="center">11.1</td>
+<td align="center">1.4</td>
+</tr>
+<tr>
+<td align="left">Middle Neolithic</td>
+<td align="center">15</td>
+<td align="center">−20.5</td>
+<td align="center">−19.2</td>
+<td align="center">−19.9</td>
+<td align="center">0.4</td>
+<td align="center">15</td>
+<td align="center">9.2</td>
+<td align="center">12.2</td>
+<td align="center">10.6</td>
+<td align="center">0.8</td>
+</tr>
+<tr>
+<td align="left">Late Neolithic</td>
+<td align="center">2</td>
+<td align="center">−20.4</td>
+<td align="center">−20.0</td>
+<td align="center">−20.2</td>
+<td align="center">0.3</td>
+<td align="center">2</td>
+<td align="center">9.9</td>
+<td align="center">10.1</td>
+<td align="center">10.0</td>
+<td align="center">0.1</td>
+</tr>
+<tr>
+<td align="left">Late Copper Age</td>
+<td align="center">3</td>
+<td align="center">−20.5</td>
+<td align="center">−20.0</td>
+<td align="center">−20.3</td>
+<td align="center">0.3</td>
+<td align="center">3</td>
+<td align="center">10.1</td>
+<td align="center">10.4</td>
+<td align="center">10.3</td>
+<td align="center">0.2</td>
+</tr>
+<tr>
+<td align="left">Early Bronze Age</td>
+<td align="center">2</td>
+<td align="center">−19.9</td>
+<td align="center">−19.8</td>
+<td align="center">−19.9</td>
+<td align="center">0.1</td>
+<td align="center">2</td>
+<td align="center">10.7</td>
+<td align="center">11.5</td>
+<td align="center">11.1</td>
+<td align="center">0.6</td>
+</tr>
+<tr>
+<td align="left">Late Bronze Age</td>
+<td align="center">11</td>
+<td align="center">−19.0</td>
+<td align="center">−17.1</td>
+<td align="center">−17.9</td>
+<td align="center">0.6</td>
+<td align="center">11</td>
+<td align="center">10.2</td>
+<td align="center">11.6</td>
+<td align="center">10.9</td>
+<td align="center">0.5</td>
+</tr>
+<tr>
+<td align="left">Early Iron Age</td>
+<td align="center">3</td>
+<td align="center">−18.2</td>
+<td align="center">−14.4</td>
+<td align="center">−16.6</td>
+<td align="center">2.0</td>
+<td align="center">3</td>
+<td align="center">10.4</td>
+<td align="center">11.0</td>
+<td align="center">10.7</td>
+<td align="center">0.3</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t004fn001"><p>N = number of samples, Min = minimum, Max = maximum, M = mean, and SD = standard deviation.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<sec id="sec006">
+<title>Isotope values of local fauna</title>
+<p>Both domestic fauna (including ovicaprids, cattle and pig) and wild fauna (red deer, aurochs and wild boar) were used for statistical purposes, and are reported in <xref ref-type="supplementary-material" rid="pone.0197214.s003">S1 Table</xref>. The results are similar to those reported previously for other fauna from the same region and time periods. The stable isotope ratios of the local fauna analysed, with δ<sup>13</sup>C ranging from −21.8‰ to −19.4‰ and a mean value of −20.6‰ ±0.6‰ (1σ), are consistent with expected ranges for a terrestrial C<sub>3</sub> environment [<xref ref-type="bibr" rid="pone.0197214.ref080">80</xref>]. The nitrogen isotopic values range from 5.7‰ to 9.5‰, with a mean value of 7.0‰ ±1.2‰ (1σ) (<xref ref-type="table" rid="pone.0197214.t004">Table 4</xref> and <xref ref-type="supplementary-material" rid="pone.0197214.s003">S1 Table</xref>).</p>
+<p>When comparing domesticates, no significant differences were found in carbon isotopic mean values over time (ANOVA: F = 2.631, <italic>p</italic> = 0.076) (<xref ref-type="fig" rid="pone.0197214.g002">Fig 2A</xref>). However, it appears that Middle Neolithic and Copper Age domesticated animals show higher δ<sup>15</sup>N values than those sampled from the Early Neolithic (Mann-Whitney U tests, <italic>p</italic>&lt; 0.001) (<xref ref-type="fig" rid="pone.0197214.g002">Fig 2B</xref>). By contrast, wild fauna do not show significant isotopic changes over time (Kruskal-Wallis δ<sup>13</sup>C: H = 5.635, <italic>p</italic> = 0.060; ANOVA δ<sup>15</sup>N: F = 0.639, <italic>p</italic> = 0.542).</p>
+<fig id="pone.0197214.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title/>
+<p><bold>Boxplot showing the (A) δ</bold><sup><bold>13</bold></sup><bold>C and (B) δ</bold><sup><bold>15</bold></sup><bold>N values of fauna samples from Early Neolithic to Copper Age</bold>. Faunal data in this study were supplemented by published data of Early Neolithic [<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>,<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>], Middle Neolithic [<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>] and Copper Age [<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>] samples of the GHP. Domesticated fauna results on the left in yellow; wild fauna on the right in green. The dots within the boxes represent individual values of the samples; the horizontal line within the boxrepresents the median value; the vertical lines represent the range of data; and the asterisks are the possible outliers.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.g002" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec007">
+<title>Isotope values of the human samples</title>
+<p>The human δ<sup>13</sup>C values reported here range from −22.6‰ to −14.4‰ (mean value of −19.4‰ ±1.5‰ (1σ)) and the δ<sup>15</sup>N values range between 8.8‰ and 13.1‰ (mean value 10.7‰ ±0.8‰ (1σ)) (<xref ref-type="table" rid="pone.0197214.t004">Table 4</xref> and <xref ref-type="supplementary-material" rid="pone.0197214.s004">S2 Table</xref>).</p>
+<p>When combining the current and published data, most of the individuals from Early Neolithic to Early Bronze Age have similar δ<sup>13</sup>C values consistent with a diet based on terrestrial C<sub>3</sub> resources (Figs <xref ref-type="fig" rid="pone.0197214.g003">3A</xref> and <xref ref-type="fig" rid="pone.0197214.g004">4</xref>; <xref ref-type="supplementary-material" rid="pone.0197214.s004">S2 Table</xref>). However, Körös Early Neolithic individuals (n = 2) from the Tiszaszőlős-Domaháza site have significant lower δ<sup>13</sup>C values (<italic>p</italic>&lt;0.05) than other Körös Early Neolithic and later period individuals (<xref ref-type="table" rid="pone.0197214.t005">Table 5</xref>), similar to the Mesolithic individual from Maroslele-Pana [<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>] (<xref ref-type="fig" rid="pone.0197214.g005">Fig 5</xref>). By contrast, individuals from the Late Bronze Age and Iron Age have significantly (<italic>p</italic>&lt;0.05) higher δ<sup>13</sup>C values than those reported for previous periods (<xref ref-type="fig" rid="pone.0197214.g003">Fig 3A</xref>, <xref ref-type="table" rid="pone.0197214.t005">Table 5</xref>).</p>
+<fig id="pone.0197214.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title/>
+<p><bold>Boxplot showing the (A) δ</bold><sup><bold>13</bold></sup><bold>C and (B) δ</bold><sup><bold>15</bold></sup><bold>N values of human samples from Early Neolithic to Early Iron Age</bold>. Human isotopic values were combined with previous published data on the GHP from Early [<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>], Middle [<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>] and Late Neolithic [<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>], together with Early and Middle Copper Ages [<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]. Genetic affinities are based on [<xref ref-type="bibr" rid="pone.0197214.ref013">13</xref>]. The dots within the boxes represent individual values of the samples; the horizontal line within the box represents the median value; the vertical lines represent the range of data.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.g003" xlink:type="simple"/>
+</fig>
+<fig id="pone.0197214.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Stable carbon and nitrogen isotope data of human and faunal bone collagen from the GHP.</title>
+<p>Both human and fauna isotopic data are represented by mean isotopic values (standard deviation ±1σ indicated by bars). Domesticated and wild fauna belongs to Early/Middle Neolithic and Copper Age periods, and combined with published data [<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>,<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>]. Human results from this study were also combined with previous published data in the GHP [<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>]. E. Neolithic* represent mean values of Körös Tiszaszőlős-Domaháza site.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.g004" xlink:type="simple"/>
+</fig>
+<fig id="pone.0197214.g005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.g005</object-id>
+<label>Fig 5</label>
+<caption>
+<title>Stable carbon and nitrogen isotope data of human bone collagen from the GHP.</title>
+<p>Individual human results from this study (represented by highlighted symbols) were also combined with previously published data in the GHP [<xref ref-type="bibr" rid="pone.0197214.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>]. E. Neolithic* represent mean values of the Körös Tiszaszőlős-Domaháza site.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.g005" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0197214.t005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.t005</object-id>
+<label>Table 5</label> <caption><title>Results of pairwise comparisons of δ<sup>13</sup>C ‰ values between human samples from different time periods (E = Early; M = Middle; L = Late).</title></caption>
+<alternatives>
+<graphic id="pone.0197214.t005g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.t005" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left"><break/></th>
+<th align="center">E. Neolithic<xref ref-type="table-fn" rid="t005fn002">*</xref></th>
+<th align="center">E. Neolithic</th>
+<th align="center">M. Neolithic</th>
+<th align="center">L. Neolithic</th>
+<th align="center"><italic>E</italic>. <italic>Copper Age</italic></th>
+<th align="center">M. Copper Age</th>
+<th align="center">L. Copper Age</th>
+<th align="center">E. Bronze Age</th>
+<th align="center">L. Bronze Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">E. Neolithic</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"><bold> </bold></td>
+</tr>
+<tr>
+<td align="left">M. Neolithic</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center">0.158</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"><bold> </bold></td>
+</tr>
+<tr>
+<td align="left">L. Neolithic</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center">0.926</td>
+<td align="center">0.490</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"><bold> </bold></td>
+</tr>
+<tr>
+<td align="left"><italic>E</italic>. <italic>Copper Age</italic></td>
+<td align="center"><bold><italic>0</italic>.<italic>022</italic></bold></td>
+<td align="center"><italic>0</italic>.<italic>148</italic></td>
+<td align="center"><italic>0</italic>.<italic>093</italic></td>
+<td align="center"><italic>0</italic>.<italic>530</italic></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"><bold><italic> </italic></bold></td>
+</tr>
+<tr>
+<td align="left">M. Copper Age</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center">0.485</td>
+<td align="center">1.000</td>
+<td align="center">0.966</td>
+<td align="center"><italic>0</italic>.<italic>346</italic></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"><bold> </bold></td>
+</tr>
+<tr>
+<td align="left">L. Copper Age</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center">1.000</td>
+<td align="center">0.953</td>
+<td align="center">1.000</td>
+<td align="center"><italic>0</italic>.<italic>283</italic></td>
+<td align="center">0.979</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"><bold> </bold></td>
+</tr>
+<tr>
+<td align="left">E. Bronze Age</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center">0.925</td>
+<td align="center">1.000</td>
+<td align="center">0.997</td>
+<td align="center"><italic>0</italic>.<italic>265</italic></td>
+<td align="center">1.000</td>
+<td align="center">0.985</td>
+<td align="center"/>
+<td align="center"><bold> </bold></td>
+</tr>
+<tr>
+<td align="left">L. Bronze Age</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold><italic>&lt;0</italic>.<italic>001</italic></bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"> </td>
+</tr>
+<tr>
+<td align="left">E. Iron Age</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold><italic>0</italic>.<italic>006</italic></bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t005fn001"><p>All <italic>p</italic>-values correspond to HSD Tukey post-hoc comparisons, except for those from E. Copper Age samples (Mann-Whitney U test; in italics), as they do not follow a normal distribution (<xref ref-type="supplementary-material" rid="pone.0197214.s005">S3 Table</xref>). N = 199; E. Neolithic*: n = 2; E. Neolithic: n = 14; M. Neolithic: n = 71; L. Neolithic: n = 47; E. Copper Age: n = 26; M. Copper Age: n = 20; L. Copper Age: n = 3; E. Bronze Age: n = 2; L. Bronze Age: n = 11; E. Iron Age: n = 3. Values represent <italic>p</italic>-values (<italic>p</italic>&lt;0.05 in bold).</p></fn>
+<fn id="t005fn002"><p>*Early Neolithic samples from Tiszaszőlős-Domaháza site were treated separately for comparison.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>When comparing samples from Early Neolithic to Middle Copper Age, individuals have a range of δ<sup>15</sup>N values suggesting varying amounts of animal protein intake, especially in the case of the Early Neolithic (<xref ref-type="fig" rid="pone.0197214.g003">Fig 3B</xref>). As indicated above, the Körös Tiszaszőlős-Domaháza individuals have the highest δ<sup>15</sup>N values, with significant differences than other Körös Early Neolithic and later period individuals, with the exception of Late Copper and Early Bronze Age individuals (<xref ref-type="table" rid="pone.0197214.t006">Table 6</xref>). The mean δ<sup>15</sup>N values of Early Neolithic individuals (without including the Tiszaszőlős-Domaháza samples) have significantly lower values (<italic>p</italic>&lt;0.05) than individuals from the Middle Neolithic to Middle Copper Ages (<xref ref-type="table" rid="pone.0197214.t006">Table 6</xref>). At the same time, Late Neolithic samples, together with the Middle Copper Age ones, have significantly higher δ<sup>15</sup>N mean values (<italic>p</italic>&lt;0.05) than the values for Middle Neolithic individuals (<xref ref-type="fig" rid="pone.0197214.g003">Fig 3B</xref> and <xref ref-type="table" rid="pone.0197214.t006">Table 6</xref>). Individuals from the Late Copper Age have significantly lower δ<sup>15</sup>N values (<italic>p</italic>&lt;0.05) than Late Neolithic and Middle Copper Ages samples (<xref ref-type="table" rid="pone.0197214.t006">Table 6</xref>). Bronze and Iron Age δ<sup>15</sup>N values tend to be more restricted and less variable than previous periods. Late Bronze Age individuals have significantly higher δ<sup>15</sup>N values (<italic>p</italic>&lt;0.05) than those of the Early Neolithic (<xref ref-type="table" rid="pone.0197214.t006">Table 6</xref>).</p>
+<table-wrap id="pone.0197214.t006" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0197214.t006</object-id>
+<label>Table 6</label> <caption><title>Results of pairwise comparisons of δ<sup>15</sup>N‰ values between human samples from different time periods (E = Early; M = Middle; L = Late).</title></caption>
+<alternatives>
+<graphic id="pone.0197214.t006g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.t006" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left"> </th>
+<th align="center">E. Neolithic<xref ref-type="table-fn" rid="t006fn002">*</xref></th>
+<th align="center">E. Neolithic</th>
+<th align="center">M. Neolithic</th>
+<th align="center">L. Neolithic</th>
+<th align="center">E. Copper Age</th>
+<th align="center">M. Copper Age</th>
+<th align="center"><italic>L</italic>. <italic>Copper Age</italic></th>
+<th align="center">E. Bronze Age</th>
+<th align="center">L. Bronze Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">E. Neolithic</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"><bold> </bold></td>
+</tr>
+<tr>
+<td align="left">M. Neolithic</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>0.014</bold></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"> </td>
+</tr>
+<tr>
+<td align="left">L. Neolithic</td>
+<td align="center"><bold>0.001</bold></td>
+<td align="center"><bold>0.000</bold></td>
+<td align="center"><bold>0.002</bold></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"> </td>
+</tr>
+<tr>
+<td align="left">E. Copper Age</td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>0.017</bold></td>
+<td align="center">1.000</td>
+<td align="center">0.178</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"> </td>
+</tr>
+<tr>
+<td align="left">M. Copper Age</td>
+<td align="center"><bold>0.011</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center"><bold>0.005</bold></td>
+<td align="center">0.990</td>
+<td align="center">0.090</td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"/>
+<td align="center"><italic> </italic></td>
+</tr>
+<tr>
+<td align="left"><italic>L</italic>. <italic>Copper Age</italic></td>
+<td align="center"><italic>0</italic>.<italic>200</italic></td>
+<td align="center"><italic>0</italic>.<italic>432</italic></td>
+<td align="center"><italic>0</italic>.<italic>918</italic></td>
+<td align="center"><bold><italic>0</italic>.<italic>032</italic></bold></td>
+<td align="center"><italic>0</italic>.<italic>866</italic></td>
+<td align="center"><bold><italic>0</italic>.<italic>026</italic></bold></td>
+<td align="center"/>
+<td align="center"/>
+<td align="center"> </td>
+</tr>
+<tr>
+<td align="left">E. Bronze Age</td>
+<td align="center">0.157</td>
+<td align="center">0.136</td>
+<td align="center">0.855</td>
+<td align="center">1.000</td>
+<td align="center">0.928</td>
+<td align="center">1.000</td>
+<td align="center">0.200</td>
+<td align="center"/>
+<td align="center"> </td>
+</tr>
+<tr>
+<td align="left">L. Bronze Age</td>
+<td align="center"><bold>0.008</bold></td>
+<td align="center"><bold>&lt;0.001</bold></td>
+<td align="center">0.230</td>
+<td align="center">1.000</td>
+<td align="center">0.570</td>
+<td align="center">1.000</td>
+<td align="center">0.060</td>
+<td align="center">1.000</td>
+<td align="center"> </td>
+</tr>
+<tr>
+<td align="left">E. Iron Age</td>
+<td align="center"><bold>0.018</bold></td>
+<td align="center">0.252</td>
+<td align="center">0.990</td>
+<td align="center">1.000</td>
+<td align="center">0.998</td>
+<td align="center">0.995</td>
+<td align="center">0.200</td>
+<td align="center">0.999</td>
+<td align="center">1.000</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t006fn001"><p>All <italic>p</italic>-values corresponds to HSD Tukey post-hoc comparisons, except for the ones from the L. Copper Age samples (Mann-Whitney U test; in italics), as they do not follow a normal distribution (<xref ref-type="supplementary-material" rid="pone.0197214.s005">S3 Table</xref>). N = 199; E. Neolithic: n = 2; E. Neolithic: n = 14; M. Neolithic: n = 71; L. Neolithic: n = 47; E. Copper Age: n = 26; M. Copper Age: n = 20; L. Copper Age: n = 3; E. Bronze Age: n = 2; L. Bronze Age: n = 11; E. Iron Age: n = 3. Values represent <italic>p</italic>-values (<italic>p</italic>&lt;0.05 in bold).</p></fn>
+<fn id="t006fn002"><p>*Early Neolithic samples from the Tiszaszőlős-Domaháza site were treated separately for comparison.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+</sec>
+<sec id="sec008" sec-type="conclusions">
+<title>Discussion</title>
+<p>Variations in the carbon and nitrogen isotope ratios suggest that there were three main dietary patterns characteristic of Great Hungarian Plain populations spanning from the Early Neolithic to the Early Iron Age (Figs <xref ref-type="fig" rid="pone.0197214.g004">4</xref> and <xref ref-type="fig" rid="pone.0197214.g005">5</xref>). Additionally, variation in the δ<sup>15</sup>N values may be indicative of changes in agricultural and farming activities during Hungarian Prehistory.</p>
+<sec id="sec009">
+<title>Mesolithic dietary pattern during the Körös Early Neolithic</title>
+<p>The two Körös individuals from the site of Tiszaszőlős-Domaháza have lower δ<sup>13</sup>C and higher δ<sup>15</sup>N values than both the other Körös and the later period individuals. These δ<sup>13</sup>C values are too low for a diet based entirely on the local terrestrial resources, and suggest the incorporation of freshwater fish resources in the diet. This is supported by the faunal assemblage from the Körös levels at this site [<xref ref-type="bibr" rid="pone.0197214.ref020">20</xref>]. The site was dominated by wild resources including a substantial number of fish remains and mussel shells. Although fish remains are also found to some degree at other Körös sites, the isotope ratios from the other Körös individuals analysed here and in other studies [<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>] suggest that they did not form a substantial part of the diet elsewhere, despite their proximity to freshwater resources access. Likewise, these δ<sup>13</sup>C values are very similar to those found in a Mesolithic individual from a southern site (Maroslele-Pana) interpreted as freshwater resource consumer [<xref ref-type="bibr" rid="pone.0197214.ref076">76</xref>]. The δ<sup>15</sup>N values of Körös Tiszaszőlős-Domaháza individuals, nevertheless, are even higher (~1.5‰) than the Maroslele-Pana Mesolithic individual. This suggests that freshwater resources either made a greater contribution to the diet than at Maroslele-Pana, or that higher trophic level freshwater resources were consumed. Thus, the levels of fish consumption at Tiszaszőlős-Domaháza would appear to be a continuation of a Mesolithic dietary pattern, in accordance with the non-admixed Western hunter-gatherer genetic pattern found previously [<xref ref-type="bibr" rid="pone.0197214.ref013">13</xref>]. However, although these results are statistically significant, more samples are needed to fully understand the dietary pattern at this particular site.</p>
+</sec>
+<sec id="sec010">
+<title>Dietary continuity from the Early Neolithic to Early Bronze Age</title>
+<p>The remainder of the Neolithic, Copper and Early Bronze Age human isotopic data suggest a broadly similar diet based on C<sub>3</sub> terrestrial resources. Nevertheless, there appears to be some temporal and regional variation. The Körös Early Neolithic samples have lower δ<sup>13</sup>C mean values than those of the subsequent Middle Neolithic, Copper and Early Bronze Age. Although small, the consistency of this difference suggests that it is a genuine reflection of either environmental influences on plant or animal δ<sup>13</sup>C values, such as increased irrigation [<xref ref-type="bibr" rid="pone.0197214.ref081">81</xref>], or dietary change, such as the increase in consumption of carbon enriched C<sub>4</sub> plant resources (either consumed directly or by animals who ingested them). Although archaeobotanical evidence for the presence of common millet [<xref ref-type="bibr" rid="pone.0197214.ref043">43</xref>] and isotopic indications of C<sub>4</sub> plant consumption exist in some Hungarian sites from the Early Neolithic [<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>], millet was probably not used as an important dietary and foddering source until later periods, as discussed below. The less negative δ<sup>13</sup>C values from Middle Neolithic to Early Bronze Age might indicate the inclusion of some C<sub>4</sub> plant source in the diet, explaining its difference with previous Early Neolithic samples. However, the consumption was not as important as other C<sub>3</sub> crops as their δ<sup>13</sup>C values still indicate that diet is overwhelmingly based on terrestrial C<sub>3</sub> plants.</p>
+</sec>
+<sec id="sec011">
+<title>Millet consumption from the Late Bronze Age in the Great Hungarian Plain</title>
+<p>Although two of the Bronze Age individuals analysed in [<xref ref-type="bibr" rid="pone.0197214.ref013">13</xref>] have overall similar genetic affinities to modern-day Central Europeans, the isotope data presented here suggest that their subsistence was based on different resources. The isotope ratios of the Early Bronze Age individuals are similar to those observed throughout the Neolithic and Copper Age periods with a diet mostly based on terrestrial C<sub>3</sub> plant resources. In contrast, the Late Bronze Age and Early Iron Age individuals have significantly higher δ<sup>13</sup>C‰ than the values reported for earlier periods. Marine consumption would seem extremely unlikely given the landlocked location of the GHP, but the consumption of millet is entirely possible. As mentioned above, there is some scattered evidence that broomcorn millet may have been present in Europe (including Hungary) from the Early Neolithic [<xref ref-type="bibr" rid="pone.0197214.ref040">40</xref>,<xref ref-type="bibr" rid="pone.0197214.ref042">42</xref>,<xref ref-type="bibr" rid="pone.0197214.ref043">43</xref>]. However, recent direct radiocarbon dating of millet grains in some Eastern and Central Europe sites has cast doubt on evidence for millet predating the Middle Bronze Age [<xref ref-type="bibr" rid="pone.0197214.ref041">41</xref>]. Stable isotope analysis on human bone collagen, together with the higher frequency and richness concentrations of millet grains in the archaeobotanical record, suggest that millet was consumed on a large-scale and used as an important crop in Europe from the second millennium BC. This consumption was especially noticeable from the Late Bronze Age onwards [<xref ref-type="bibr" rid="pone.0197214.ref044">44</xref>,<xref ref-type="bibr" rid="pone.0197214.ref045">45</xref>,<xref ref-type="bibr" rid="pone.0197214.ref082">82</xref>–<xref ref-type="bibr" rid="pone.0197214.ref084">84</xref>], although there is also evidence that it was present during the Middle Bronze Age in northern Italy [<xref ref-type="bibr" rid="pone.0197214.ref085">85</xref>]. The regular consumption of millet as a staple crop by the Late Bronze Age is thus in accordance with the archaeobotanical evidence reported in Hungary [<xref ref-type="bibr" rid="pone.0197214.ref041">41</xref>]. This may suggest that the two Bronze Age individuals (reported in [<xref ref-type="bibr" rid="pone.0197214.ref013">13</xref>]) represent separate migrations into the GHP by groups with similar genetic ancestries. Taken together, these individuals’ consumption of millet may reflect the exogenous dietary practices of migrant populations. Establishing whether millet cultivation was adopted by indigenous people through trade with people consuming it (e.g. as part of the network package from other areas, such as northern Italy [<xref ref-type="bibr" rid="pone.0197214.ref085">85</xref>]), or migrants introducing their crop to the local population in the GHP, requires more genetic data along with other isotope approaches (strontium and oxygen isotope analyses). The inclusion of more isotopic data from Early and Middle Bronze Age individuals will also be needed to address the question if millet was consumed as a staple crop in earlier periods, as in other areas of continental Europe [<xref ref-type="bibr" rid="pone.0197214.ref085">85</xref>]. Alternatively, it may also be possible that cultivation of the C<sub>4</sub> crop gradually intensified from the Bronze to Iron Ages. The C<sub>4</sub> plant input in the diet of Late Bronze and Early Iron Age people may originate from the direct ingestion of cultivated millet or consumption of fauna foddered with this C<sub>4</sub> plant. However, without associated faunal values it is not possible to discern between these two possibilities.</p>
+</sec>
+<sec id="sec012">
+<title>Insights into changing agricultural and farming practices</title>
+<p>The nitrogen data exhibit variability from Early Neolithic to Early Iron Age. The results from humans (excluding the Körös Tiszaszőlős-Domaháza individuals) and domesticated animals, show significantly higher and more homogenous δ<sup>15</sup>N values from the Middle Neolithic onwards. Nitrogen isotopic ratios have been shown to be affected by several environmental factors (see [<xref ref-type="bibr" rid="pone.0197214.ref086">86</xref>] for a review). Among them, changes in the landscape due to human activities can also impact the δ<sup>15</sup>N values in the soil and the plants growing in it. Forest clearance resulting from slash-and-burn agriculture and animal husbandry practices have been shown to increase the nitrogen content in soils, although this pattern is not consistent in all cases [<xref ref-type="bibr" rid="pone.0197214.ref086">86</xref>]. A recent study on human impact on the landscape in North-East Hungary (in the Middle Tisza floodplain) [<xref ref-type="bibr" rid="pone.0197214.ref087">87</xref>] shows periods of woodland clearance for agricultural and farming activities in the area during Neolithic times. Especially important was the AVK Middle Neolithic period when there was an unequivocal woodland clearance and burning impact on the landscape. According to this work, this favored the spread of plant species indicative of woodland recovery following clearance. This might explain why not only the human and domesticated data from Middle Neolithic present higher δ<sup>15</sup>N values, so too do the wild fauna from Middle Neolithic (Figs <xref ref-type="fig" rid="pone.0197214.g002">2B</xref> and <xref ref-type="fig" rid="pone.0197214.g003">3B</xref>). Additionally, this study [<xref ref-type="bibr" rid="pone.0197214.ref087">87</xref>] suggests that clearance continued during the Early Copper Age period, which might have also increased δ<sup>15</sup>N values in wild fauna for the same reason. However, our data suggest that, although there is a slight increase in δ<sup>15</sup>N values for the wild fauna during Middle Neolithic, this difference is not statistically significant (as it is for humans and domesticates). Therefore, although the homogeneity of δ<sup>15</sup>N values may be explained by changes to agricultural practices, other factors may also have caused an increase of the values themselves in humans and domesticated fauna.</p>
+<p>Previous studies in the same area show that high δ<sup>15</sup>N values from Late Neolithic to Copper Age might be due to both an increase of animal protein consumption and to the effect of fertilising crops with animal secondary products (e.g. manure) [<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref029">29</xref>]. Nitrogen isotope ratios have shown to significantly increase in modern crops fertilised with animal dung in long-term experimental studies [<xref ref-type="bibr" rid="pone.0197214.ref072">72</xref>–<xref ref-type="bibr" rid="pone.0197214.ref074">74</xref>]. These results showed the manuring effect in nitrogen isotopic composition in bone collagen results, and probably the overestimation of animal protein intake in Neolithic human palaeodietary reconstructions [<xref ref-type="bibr" rid="pone.0197214.ref088">88</xref>]. Thus, a 9‰ to 11‰ δ<sup>15</sup>N range in values of human bone collagen was suggested for a combination of manured crops and animal protein intake in early Neolithic European farmers [<xref ref-type="bibr" rid="pone.0197214.ref072">72</xref>,<xref ref-type="bibr" rid="pone.0197214.ref073">73</xref>,<xref ref-type="bibr" rid="pone.0197214.ref088">88</xref>]. Although the sample size is small, the lack of significant variation in δ<sup>15</sup>N values in the wild fauna used here suggest that probably the enriched <sup>15</sup>N isotopic ratios from Middle Neolithic domesticated fauna are due to the use of fodder from manured crops [<xref ref-type="bibr" rid="pone.0197214.ref086">86</xref>,<xref ref-type="bibr" rid="pone.0197214.ref088">88</xref>]. Thus, the isotopic results for human data, with values &gt;9‰, might be indicative of both an increase of animal protein intake and consumption of agricultural products fertilised with manure from the Middle Neolithic onwards. This suggests a cultivation of manured crops earlier than previously suggested [<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0197214.ref029">29</xref>].</p>
+<p>The decrease of the mean δ<sup>15</sup>N values during the Early Copper Age could be ascribed to important changes that occurred during the Neolithic and Copper Age transition. During this transition, there were crucial changes in the use of the landscape, with settlements more dispersed across the landscape and fewer nucleated sites [<xref ref-type="bibr" rid="pone.0197214.ref028">28</xref>]. Giblin demonstrated that these changes did not necessarily lead to abrupt changes in dietary patterns between these two periods, as originally proposed [<xref ref-type="bibr" rid="pone.0197214.ref025">25</xref>]. In fact, the observed decrease in δ<sup>15</sup>N mean values is not statistically significant, and it is the variability of individual values that increase from previous Late Neolithic ones (<xref ref-type="fig" rid="pone.0197214.g003">Fig 3B</xref>). Giblin argued that the variability during the Early Copper Age might represent more regional/local site differences in terms of protein consumption and nitrogen enrichment patterns, rather than different subsistence practices. Additional samples from more sites of north and south east Hungary will shed more light on this issue.</p>
+<p>As well as this, Hoekman-Sites and Giblin [<xref ref-type="bibr" rid="pone.0197214.ref029">29</xref>] argued for an increase in animal protein consumption in the Middle and Late Copper Age, based on an increased presence of animal fat in pottery residues. The fall in δ<sup>15</sup>N values in our data for Late Copper Age individuals would not appear to support this interpretation. However our sample size for this time period is small (n = 3) and results must be interpreted with caution.</p>
+</sec>
+</sec>
+<sec id="sec013" sec-type="conclusions">
+<title>Conclusions</title>
+<p>In summary, the results of the isotopic data analysed here suggest changes in dietary patterns from Early Neolithic to Early Iron Age that are not in all cases associated with cultural and genetic shifts. The dietary practices of the individuals from the Early Neolithic Körös site of Tiszaszőlős-Domaháza is in accord with the genetic data. Their dietary isotopic profiles resemble the continuity of a Mesolithic hunter-gatherer pattern with an important reliance on freshwater resources consumption. The Mesolithic genomic signature of one of the individuals, together with similar dietary patterns, might indicate some evidence of contact between Early Neolithic communities and indigenous hunter-gatherers, as previously suggested [<xref ref-type="bibr" rid="pone.0197214.ref013">13</xref>]. A diet based on terrestrial C<sub>3</sub> plant resources seems to be common from Early Neolithic to Copper Age periods, in accordance with the genomic stasis [<xref ref-type="bibr" rid="pone.0197214.ref013">13</xref>]. Although a genomic shift was shown with the advent of Bronze Age technology, isotopic results from Early Bronze Age individuals suggest that they were not accompanied by important changes in dietary pattern and that they continued with the same subsistence practices as in previous Neolithic and Copper Age times. However, the Late Bronze Age, together with Early Iron Age individuals, have significantly higher δ<sup>13</sup>C ratios than previous times suggesting a dietary change with a higher consumption of millet, which is in accordance with its wide cultivation in Europe from the second millennium BC. Nitrogen isotopic ratios from both domesticated fauna and humans are suggestive of consumption of fertilised crops from Middle Neolithic, which may be probable due to the use of secondary agricultural products (manure) [<xref ref-type="bibr" rid="pone.0197214.ref029">29</xref>].</p>
+</sec>
+<sec id="sec014">
+<title>Supporting information</title>
+<supplementary-material id="pone.0197214.s001" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.s001" xlink:type="simple">
+<label>S1 Appendix</label>
+<caption>
+<title>Archaeological information.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0197214.s002" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.s002" xlink:type="simple">
+<label>S2 Appendix</label>
+<caption>
+<title>Extended methods.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0197214.s003" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.s003" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>Stable isotope data and sample information for faunal samples analysed.</title>
+<p>All samples represent a single individual. Samples were analyzed in duplicate except for those marked with an asterisk. The δ<sup>13</sup>C‰ and δ<sup>15</sup>N‰ values represent average values of duplicate runs for each sample. (EN = Early Neolithic; MN = Middle Neolithic). Samples collected from <sup>1</sup>Faunal Collection of the Archaeological Department of the Déri Museum (Debrecen, Hungary), <sup>2</sup>Hungarian Natural History Museum (Budapest, Hungary).</p>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0197214.s004" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.s004" xlink:type="simple">
+<label>S2 Table</label>
+<caption>
+<title>Stable isotope data and sample information for human samples analysed.</title>
+<p>All samples were analyzed in duplicate except for those marked with an asterisk. The δ<sup>13</sup>C‰ and δ<sup>15</sup>N‰ values represent average values of duplicate runs for each sample. Samples that do not meet the quality range (C:N = 2.9–3.6) are in bold. The upper/lower M1 samples employed here correspond to a root dentine subsample belonging to the very last stage of formation of the tooth, following (AlQahtani et al. 2010) and the subsampling method in Beaumont and Montgomery, 2015. Legend: no col. = no collagen; EN = Early Neolithic; MN = Middle Neolithic; LN = Late Neolithic; ECA = Early Copper Age; MCA = Middle Copper Age; LCA = Late Copper Age; EBA = Early Bronze Age; LBA = Late Bronze Age; EIA = Early Iron Age. Infant = 0−2 years.</p>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0197214.s005" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:href="info:doi/10.1371/journal.pone.0197214.s005" xlink:type="simple">
+<label>S3 Table</label>
+<caption>
+<title>Results of normality tests (Shapiro-Wilk W statistic) for human and faunal isotopic values.</title>
+<p>Human and faunal number of samples (N) includes the new samples reported in this study, together with the published data (references in Tables <xref ref-type="table" rid="pone.0197214.t002">2</xref> and <xref ref-type="table" rid="pone.0197214.t003">3</xref>). *Early Neolithic samples from Tiszaszőlős-Domaháza site were treated separately for comparison In bold: <italic>p</italic>&lt;0.05.</p>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>The authors would like to dedicate this article to Zsuzsanna K. Zoffmann who passed away during the preparation of this study. The authors would also like to thank Alexandra Anders for comments in the revision of the manuscript.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0197214.ref001"><label>1</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Munro</surname> <given-names>N</given-names></name>. <chapter-title>Epipaleolithic subsistence intensification in the southern Levant: the faunal evidence</chapter-title>. In: <name name-style="western"><surname>Hublin</surname> <given-names>J-J</given-names></name>, <name name-style="western"><surname>Richards</surname> <given-names>MP</given-names></name>, editors. <source>The evolution of hominin diets: integration approaches to the study of Paleolithic subsistence</source>. <publisher-loc>Netherlands</publisher-loc>: <publisher-name>Springer</publisher-name>; <year>2009</year>. pp. <fpage>141</fpage>–<lpage>155</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref002"><label>2</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Whittle</surname> <given-names>AWR</given-names></name>. <chapter-title>Europe in the Neolithic: the creation of new worlds</chapter-title>. <publisher-loc>Cambridge</publisher-loc>: <publisher-name>Cambridge University Press</publisher-name>; <year>1996</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref003"><label>3</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Bellwood</surname> <given-names>P</given-names></name><chapter-title>. First farmers:the origins of agricultural societies</chapter-title>. <publisher-loc>Oxford</publisher-loc>: <publisher-name>Blackwell Publishing</publisher-name>; <year>2005</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref004"><label>4</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Whittle</surname> <given-names>AWR</given-names></name>, <name name-style="western"><surname>Bickle</surname> <given-names>P</given-names></name>. <chapter-title>Early farmers: the view from archaeology and science</chapter-title>. <publisher-loc>Oxford</publisher-loc>: <publisher-name>Oxford University Press</publisher-name>; <year>2014</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref005"><label>5</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Pinhasi</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Stock</surname> <given-names>JT</given-names></name>. <chapter-title>Human bioarchaeology of the transition to agriculture</chapter-title>. <publisher-loc>London</publisher-loc>: <publisher-name>John Wiley &amp; Sons</publisher-name>; <year>2011</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref006"><label>6</label><mixed-citation publication-type="other" xlink:type="simple">Oross K, Siklósi Z. Relative and absolute chronology of the Early Neolithic in the Great Hungarian Plain. In: Anders A, Siklósi Zs, editors. The first Neolithic sites Central/South-East European transect. Volume III. The Körös culture in eastern Hungary. Oxford: BAR International Series 2334; 2012. Pp. 129–159.</mixed-citation></ref>
+<ref id="pone.0197214.ref007"><label>7</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Pécsi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sárfalvi</surname> <given-names>B</given-names></name>. <chapter-title>The geography of Hungary</chapter-title>. <publisher-loc>Budapest</publisher-loc>: <publisher-name>Corvina</publisher-name>; <year>1964</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref008"><label>8</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Sherratt</surname> <given-names>A</given-names></name>. <chapter-title>Economy and society in prehistoric Europe: changing perspectives</chapter-title>. <publisher-loc>Edinburgh</publisher-loc>: <publisher-name>Edinburgh University Press</publisher-name>; <year>1997</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref009"><label>9</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Zs</surname> <given-names>Visy</given-names></name>. <chapter-title>Hungarian archaeology at the turn of the millenium</chapter-title>. <publisher-loc>Budapest</publisher-loc>: <publisher-name>Ministry of National Cultural Heritage &amp; Teleki László Foundation</publisher-name>; <year>2003</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref010"><label>10</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Milisauskas</surname> <given-names>S</given-names></name>. <chapter-title>European prehistory: a survey</chapter-title>. <publisher-loc>New York</publisher-loc>: <publisher-name>Springer Science &amp; Business Media</publisher-name>; <year>2011</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wessel</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Smith</surname> <given-names>WHF</given-names></name>. <article-title>New, improved version of Generic Mapping Tools released</article-title>. <source>Eos, Trans Am Geophys Union</source>. <year>1998</year>; <volume>79</volume>: <fpage>579</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1029/98EO00426" xlink:type="simple">10.1029/98EO00426</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref012"><label>12</label><mixed-citation publication-type="other" xlink:type="simple">Amante C, Eakins BW. ETOPO1 1 Arc-Minute global relief model: procedures, data sources and analysis. NOAA Technical Memorandum NESDIS NGDC-24. National Geophysical Data Center, NOAA. 2009. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.7289/V5C8276M" xlink:type="simple">10.7289/V5C8276M</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gamba</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>ER</given-names></name>, <name name-style="western"><surname>Teasdale</surname> <given-names>MD</given-names></name>, <name name-style="western"><surname>McLaughlin</surname> <given-names>RL</given-names></name>, <name name-style="western"><surname>Gonzalez-Fortes</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Mattiangeli</surname> <given-names>V</given-names></name>, <etal>et al</etal>. <article-title>Genome flux and stasis in a five millennium transect of European prehistory</article-title>. <source>Nat Commun</source>. <year>2014</year>;<volume>5</volume>: <fpage>5257</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/ncomms6257" xlink:type="simple">10.1038/ncomms6257</ext-link></comment> <object-id pub-id-type="pmid">25334030</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Haak</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Lazaridis</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Patterson</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Rohland</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Mallick</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Llamas</surname> <given-names>B</given-names></name>, <etal>et al</etal>. <article-title>Massive migration from the steppe was a source for Indo-European languages in Europe</article-title>. <source>Nature</source>. <year>2015</year>; <volume>522</volume>: <fpage>207</fpage>–<lpage>211</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/nature14317" xlink:type="simple">10.1038/nature14317</ext-link></comment> <object-id pub-id-type="pmid">25731166</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mathieson</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Lazaridis</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Rohland</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Mallick</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Patterson</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Roodenberg</surname> <given-names>SA</given-names></name>, <etal>et al</etal>. <article-title>Genome-wide patterns of selection in 230 ancient Eurasians</article-title>. <source>Nature</source>. <year>2015</year>;<volume>528</volume>: <fpage>499</fpage>–<lpage>503</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/nature16152" xlink:type="simple">10.1038/nature16152</ext-link></comment> <object-id pub-id-type="pmid">26595274</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mathieson</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Roodenberg</surname> <given-names>SA</given-names></name>, <name name-style="western"><surname>Posth</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Szécsényi-Nagy</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Rohland</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Mallick</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>The genomic history of southeastern Europe</article-title>. <source>Nature</source>. <year>2018</year>; <volume>555</volume>:<fpage>197</fpage>–<lpage>203</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/nature25778" xlink:type="simple">10.1038/nature25778</ext-link></comment> <object-id pub-id-type="pmid">29466330</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lazaridis</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Mittnik</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Patterson</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Mallick</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Rohland</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Pfrengle</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>Genetic origins of the Minoans and Mycenaeans</article-title>. <source>Nature</source>. <year>2017</year>;<volume>548</volume>: <fpage>214</fpage>–<lpage>218</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/nature23310" xlink:type="simple">10.1038/nature23310</ext-link></comment> <object-id pub-id-type="pmid">28783727</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref018"><label>18</label><mixed-citation publication-type="other" xlink:type="simple">Anders A, Siklósi Zs. The first Neolithic sites in Central/South-East European transect. Volume III. The Körös culture in Eastern Hungary. Oxford: BAR International Series 2334; 2012.</mixed-citation></ref>
+<ref id="pone.0197214.ref019"><label>19</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Whittle</surname> <given-names>A</given-names></name>. <chapter-title>The first farmers</chapter-title>. In: <name name-style="western"><surname>Cunliffe</surname> <given-names>B</given-names></name>, editor. <publisher-loc>Oxford</publisher-loc>: <publisher-name>Oxford University Press</publisher-name>; <year>1998</year>. pp. <fpage>136</fpage>–<lpage>166</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref020"><label>20</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Domboróczki</surname> <given-names>L</given-names></name>. <chapter-title>Report on the excavation at Tiszaszőlős-Domaháza-puszta and a new model for the spread of the Körös Culture</chapter-title>. In: <name name-style="western"><surname>Kozłowski</surname> <given-names>JK</given-names></name>, <name name-style="western"><surname>Raczky</surname> <given-names>P</given-names></name>, editors. <source>Neolithisation of the Carpathian Basin: northernmost distribution of the Starčevo culture</source>. <publisher-loc>Kraków</publisher-loc>: <publisher-name>Polish Academy of Arts and Sciences</publisher-name>; <year>2010</year>. pp. <fpage>137</fpage>–<lpage>176</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref021"><label>21</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Bartosiewicz</surname> <given-names>L</given-names></name>. <chapter-title>Plain talk: animals, environment and culture in the Neolithic of the Carpathian Basin and adjacent areas</chapter-title>. In: <name name-style="western"><surname>Bailey</surname> <given-names>DW</given-names></name>, <name name-style="western"><surname>Whittle</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Cummlings</surname> <given-names>V</given-names></name>, editors. <source>(Un)Settling the Neolithic</source>. <publisher-loc>Oxford</publisher-loc>: <publisher-name>Oxbow</publisher-name>; <year>2005</year>. pp. <fpage>51</fpage>–<lpage>63</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref022"><label>22</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Whittle</surname> <given-names>A</given-names></name>. <chapter-title>Hungary</chapter-title>. In: <name name-style="western"><surname>Bickle</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Whittle</surname> <given-names>A</given-names></name>, editors. <source>The first farmers of central Europe: diversity in LBK lifeways</source>. <publisher-loc>Oxford</publisher-loc>: <publisher-name>Oxbow Books</publisher-name>; <year>2013</year>. pp. <fpage>49</fpage>–<lpage>97</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref023"><label>23</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Bickle</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Whittle</surname> <given-names>A</given-names></name>. <chapter-title>The first farmers of central Europe: diversity in LBK lifeways</chapter-title>. <publisher-loc>Oxford</publisher-loc>: <publisher-name>Oxbow</publisher-name>; <year>2013</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref024"><label>24</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Bogaard</surname> <given-names>A</given-names></name>. <chapter-title>Neolithic farming in central Europe: an archaeobotanical study of crop husbandry practices</chapter-title>. <publisher-loc>Oxford</publisher-loc>: <publisher-name>Routledge</publisher-name>; <year>2004</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref025"><label>25</label><mixed-citation publication-type="other" xlink:type="simple">Giblin JI. Isotope analysis on the Great Hungarian Plain: an exploration of mobility and subsistence strategies from the Neolithic to the Copper Age. Ph.D. Thesis, The Ohio State University. 2011.</mixed-citation></ref>
+<ref id="pone.0197214.ref026"><label>26</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Biró</surname> <given-names>K</given-names></name>. <chapter-title>The Neolithic in the Northern part of the Great Hungarian Plain and the Northern mountain range</chapter-title>. In: <name name-style="western"><surname>Zs</surname> <given-names>Visy</given-names></name>, editor. <source>Hungarian archaeology at the turn of the millenium</source>. <publisher-loc>Budapest</publisher-loc>: <publisher-name>Ministry of National Cultural Heritage &amp; Teleki László Foundation</publisher-name>; <year>2003</year>. p. <fpage>101</fpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref027"><label>27</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Horváth</surname> <given-names>LA</given-names></name>, <name name-style="western"><surname>Virág</surname> <given-names>ZsM</given-names></name>. <chapter-title>History of the Copper Age</chapter-title>. In: <name name-style="western"><surname>Zs</surname> <given-names>Visy</given-names></name>, editor. <source>Hungarian Archaeology in the turn of the millennium</source>. <publisher-loc>Budapest</publisher-loc>: <publisher-name>Ministry of National Cultural Heritage &amp; Teleki László Foundation</publisher-name>; <year>2003</year>. pp. <fpage>125</fpage>–<lpage>127</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref028"><label>28</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Parkinson</surname> <given-names>WA</given-names></name>. <chapter-title>Integration, interaction, and tribal “cycling”: the transition to the Copper Age on the Great Hungarian Plain</chapter-title>. In: <name name-style="western"><surname>Parkinson</surname> <given-names>WA</given-names></name>, editor. <source>The Archaeology of tribal Societies</source>. <publisher-loc>Ann Arbor, Michigan</publisher-loc>: <publisher-name>International Monographs in Prehistory</publisher-name>; <year>2002</year>; pp. <fpage>391</fpage>–<lpage>438</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hoekman-Sites</surname> <given-names>HA</given-names></name>, <name name-style="western"><surname>Giblin</surname> <given-names>JI</given-names></name>. <article-title>Prehistoric animal use on the Great Hungarian Plain: a synthesis of isotope and residue analyses from the Neolithic and Copper Age</article-title>. <source>J Anthropol Archaeol</source>. <year>2012</year>;<volume>31</volume>: <fpage>515</fpage>–<lpage>527</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.jaa.2012.05.002" xlink:type="simple">10.1016/j.jaa.2012.05.002</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref030"><label>30</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Sherratt</surname> <given-names>A</given-names></name>. <chapter-title>The emergence of élites: earlier Bronze Age Europe, 2500–1300 BC</chapter-title>. In: <name name-style="western"><surname>Cunliffe</surname> <given-names>B</given-names></name>, editor. <source>Prehistoric Europe: an illustrated history</source>. <publisher-loc>Oxford</publisher-loc>: <publisher-name>Oxford University Press</publisher-name>; <year>1998</year>. pp. <fpage>244</fpage>–<lpage>276</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref031"><label>31</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Kulcsár</surname> <given-names>G</given-names></name>. <chapter-title>The Early Bronze Age</chapter-title>. In: <name name-style="western"><surname>Zs</surname> <given-names>Visy</given-names></name>, editor. <source>Hungarian Archaeology in the turn of the millennium</source>. <publisher-loc>Budapest</publisher-loc>: <publisher-name>Ministry of National Cultural Heritage &amp; Teleki László Foundation</publisher-name>; <year>2003</year>. pp. <fpage>141</fpage>–<lpage>142</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref032"><label>32</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Poroszlai</surname> <given-names>I</given-names></name>. <chapter-title>Tell cultures of the early and Middle Bronze Age</chapter-title>. In: <name name-style="western"><surname>Zs</surname> <given-names>Visy</given-names></name>, editor. <source>Hungarian Archaeology in the turn of the millennium</source>. <publisher-loc>Budapest</publisher-loc>: <publisher-name>Ministry of National Cultural Heritage &amp; Teleki László Foundation</publisher-name>; <year>2003</year>. pp. <fpage>142</fpage>–<lpage>143</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref033"><label>33</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Vaday</surname> <given-names>A</given-names></name>. <chapter-title>Chronological charts</chapter-title>. In: <name name-style="western"><surname>Zs</surname> <given-names>Visy</given-names></name>, editor. <source>Hungarian archaeology at the turn of the millenium</source>. <publisher-loc>Budapest</publisher-loc>: <publisher-name>Ministry of National Cultural Heritage &amp; Teleki László Foundation</publisher-name>; <year>2003</year>. pp. <fpage>483</fpage>–<lpage>488</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref034"><label>34</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Dani</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Horváth</surname> <given-names>T</given-names></name>. <chapter-title>Őskori kurgánok a magyar Alföldön</chapter-title>. <source>A Gödörsíros (Jamnaja) entitás magyarországi kutatása az elmúlt 30 év során. Áttekintés és revízió</source>. <publisher-name>Archaeolingua Alapítvány</publisher-name>; <year>2012</year>.</mixed-citation></ref>
+<ref id="pone.0197214.ref035"><label>35</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Fischl</surname> <given-names>KP</given-names></name>, <name name-style="western"><surname>Kiss</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Kulcsár</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Szeverényi</surname> <given-names>V</given-names></name>. <chapter-title>Transformations in the Carpathian Basin around 1600 BC</chapter-title>. In: <name name-style="western"><surname>Meller</surname> <given-names>H</given-names></name>, editor. <source>1600 BC—Cultural change in the shadow of the Thera-Eruption?</source> <publisher-loc>Halle</publisher-loc>: <publisher-name>Landesamt für Denkmalpflege und Archäologie Sachsen-Anhalt-Landesmuseum für Vorgeschichte</publisher-name>; <year>2013</year>. pp. <fpage>355</fpage>–<lpage>372</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref036"><label>36</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Harding</surname> <given-names>A</given-names></name>. <chapter-title>Reformation in Barbarian Europe, 1300–600 BC</chapter-title>. In: <name name-style="western"><surname>Cunliffe</surname> <given-names>B</given-names></name>, editor. <source>Prehistoric Europe: an illustrated history</source>. <publisher-loc>Oxford</publisher-loc>: <publisher-name>Oxford University Press</publisher-name>; <year>1998</year>. pp. <fpage>304</fpage>–<lpage>335</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref037"><label>37</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Csányi</surname> <given-names>M</given-names></name>. <chapter-title>The Tummulus culture: Invaders from the west</chapter-title>. In: <name name-style="western"><surname>Zs</surname> <given-names>Visy</given-names></name>, editor. <source>Hungarian archaeology at the turn of the millenium</source>. <publisher-loc>Budapest</publisher-loc>: <publisher-name>Ministry of National Cultural Heritage &amp; Teleki László Foundation</publisher-name>; <year>2003</year>. pp. <fpage>161</fpage>–<lpage>163</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lu</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Zhou</surname> <given-names>K</given-names></name>, <etal>et al</etal>. <article-title>Earliest domestication of common millet (<italic>Panicum miliaceum</italic>) in East Asia extended to 10,000 years ago</article-title>. <source>Proc Natl Acad Sci</source>. <year>2009</year>;<volume>106</volume>: <fpage>7367</fpage>–<lpage>7372</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1073/pnas.0900158106" xlink:type="simple">10.1073/pnas.0900158106</ext-link></comment> <object-id pub-id-type="pmid">19383791</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Liu</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>MK</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>O’Connell</surname> <given-names>TC</given-names></name>. <article-title>The earliest evidence of millet as a staple crop: new light on Neolithic foodways in North China</article-title>. <source>Am J Phys Anthropol</source>. <year>2012</year>; <volume>149</volume>: <fpage>283</fpage>–<lpage>290</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1002/ajpa.22127" xlink:type="simple">10.1002/ajpa.22127</ext-link></comment> <object-id pub-id-type="pmid">22961368</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hunt H</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Vander Linden</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Motuzaite-Matuzeviciute</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Colledge</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>MK</given-names></name>. <article-title>Millets across Eurasia: chronology and context of early records of the genera <italic>Panicum</italic> and <italic>Setaria</italic> from archaeological sites in the Old World</article-title>. <source>Veg Hist Archaeobot</source>. <year>2008</year>; <volume>17</volume>: <fpage>5</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s00334-008-0187-1" xlink:type="simple">10.1007/s00334-008-0187-1</ext-link></comment> <object-id pub-id-type="pmid">19657476</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref041"><label>41</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Motuzaite-Matuzeviciute</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Staff</surname> <given-names>RA</given-names></name>, <name name-style="western"><surname>Hunt H</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>MK</given-names></name>. <article-title>The early chronology of broomcorn millet (<italic>Panicum miliaceum</italic>) in Europe</article-title>. <source>Antiquity</source>. <year>2013</year>;<volume>87</volume>: <fpage>1073</fpage>–<lpage>1085</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1017/S0003598X00049875" xlink:type="simple">10.1017/S0003598X00049875</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref042"><label>42</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Pearson</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Hedges</surname> <given-names>REM</given-names></name>. <chapter-title>Stable carbon and nitrogen analysis and the evidence for diet at Ecsegfalva and beyond</chapter-title>. In: <name name-style="western"><surname>Whittle</surname> <given-names>A</given-names></name>, editor. <source>The Early Neolithic on the Great Hungarian Plain: investigations of the Körös culture site of Ecsegfalva 23, County Bekes</source>. <publisher-name>Archaeological Institute of the Hungarian Academy of Sciences &amp; School of History and Archaeology, University of Cardiff, Budapest &amp; Cardiff</publisher-name>; <year>2007</year>. pp. <fpage>413</fpage>–<lpage>419</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref043"><label>43</label><mixed-citation publication-type="other" xlink:type="simple">Gyulai F. The archaeobotanical characterization of the Körös Culture. In: Anders A, Siklósi Zs, editors. The first Neolithic sites in Central/South-East European transect. Volume III. The Körös culture in Eastern Hungary. Oxford: BAR International Series 2334; 2012. pp. 223–230.</mixed-citation></ref>
+<ref id="pone.0197214.ref044"><label>44</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Stika</surname> <given-names>H-P</given-names></name>, <name name-style="western"><surname>Heiss</surname> <given-names>A</given-names></name>. <chapter-title>Plant cultivation in the Bronze Age</chapter-title>. In: <name name-style="western"><surname>Fokkens</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Harding</surname> <given-names>A</given-names></name>, editors. <source>The Oxford handbook of the European Bronze Age</source>. <publisher-loc>Oxford</publisher-loc>: <publisher-name>Oxford University Press</publisher-name>; <year>2013</year>. pp. <fpage>348</fpage>–<lpage>369</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref045"><label>45</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lightfoot</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>MK</given-names></name>. <article-title>Why move starchy cereals? A review of the isotopic evidence for prehistoric millet consumption across Eurasia</article-title>. <source>World Archaeol</source>. <year>2013</year>;<volume>45</volume>: <fpage>574</fpage>–<lpage>623</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1080/00438243.2013.852070" xlink:type="simple">10.1080/00438243.2013.852070</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref046"><label>46</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Taylor</surname> <given-names>T</given-names></name>. <chapter-title>Thracians, Scythians and Dacians, 800 BC−AD 300</chapter-title>. In: <name name-style="western"><surname>Cunliffe</surname> <given-names>B</given-names></name>, editor. <source>Prehistoric Europe: an illustrated history</source>.<publisher-loc>Oxford</publisher-loc>: <publisher-name>Oxford University Press</publisher-name>; <year>1998</year>. pp. <fpage>373</fpage>–<lpage>410</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref047"><label>47</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Kemenczei</surname> <given-names>T</given-names></name>. <chapter-title>The beginning of the Iron Age: The Pre-Scythians (8<sup>th</sup> century B.C.)</chapter-title>. In: <name name-style="western"><surname>Zs</surname> <given-names>Visy</given-names></name>, editor. <source>Hungarian Archaeology in the turn of the millennium</source>. <publisher-loc>Budapest</publisher-loc>: <publisher-name>Ministry of National Cultural Heritage &amp; Teleki László Foundation</publisher-name>; <year>2003</year>. pp. <fpage>177</fpage>–<lpage>183</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref048"><label>48</label><mixed-citation publication-type="other" xlink:type="simple">Metzner-Nebelsick C. Early Iron Age pastoral nomadism in the Great Hungarian Plain–migration or assimilation? The Thraco-Cimmerian problem revisited. In: Davis-Kimball J, Murphy ME, Koryakova L, Yablonski TL, editors. Kurgans, ritual sites, settlements Eurasian Bronze and Iron Age. Oxford: BAR–International Series 890; 2000. pp. 160–184.</mixed-citation></ref>
+<ref id="pone.0197214.ref049"><label>49</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Katzenberg</surname> <given-names>MA</given-names></name>. <chapter-title>Stable isotope analysis: a tool for studying past diet, demography, and life history</chapter-title>. In: <name name-style="western"><surname>Katzenberg</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Saunders</surname> <given-names>S</given-names></name>, editors. <source>Biological anthropology of the human skeleton</source>. <publisher-loc>New Jersey</publisher-loc>: <publisher-name>Wiley Online Library</publisher-name>; <year>2007</year>. pp. <fpage>411</fpage>–<lpage>441</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref050"><label>50</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lee‐Thorp</surname> <given-names>JA</given-names></name>. <article-title>On isotopes and old bones</article-title>. <source>Archaeometry</source>. <year>2008</year>; <volume>50</volume>: <fpage>925</fpage>–<lpage>950</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1475-4754.2008.00441.x" xlink:type="simple">10.1111/j.1475-4754.2008.00441.x</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref051"><label>51</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Schwarcz</surname> <given-names>HP</given-names></name>, <name name-style="western"><surname>White</surname> <given-names>CD</given-names></name>, <name name-style="western"><surname>Longstaffe</surname> <given-names>FJ</given-names></name>. <chapter-title>Stable and radiogenic isotopes in biological archaeology: some applications</chapter-title>. In: <name name-style="western"><surname>West</surname> <given-names>JB</given-names></name>, <name name-style="western"><surname>Bowen</surname> <given-names>GJ</given-names></name>, <name name-style="western"><surname>Dawson</surname> <given-names>TE</given-names></name>, <name name-style="western"><surname>Tu</surname> <given-names>KP</given-names></name>, editors. <source>Isoscapes: understanding movement, pattern, and process on Earth through stable isotope mapping</source>. <publisher-loc>Heidelberg</publisher-loc>: <publisher-name>Springer</publisher-name>; <year>2010</year>. pp. <fpage>335</fpage>–<lpage>356</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref052"><label>52</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hedges</surname> <given-names>REM</given-names></name>, <name name-style="western"><surname>Clement</surname> <given-names>JG</given-names></name>, <name name-style="western"><surname>Thomas</surname> <given-names>CDL</given-names></name>, <name name-style="western"><surname>O’Connell</surname> <given-names>TC</given-names></name>. <article-title>Collagen turnover in the adult femoral mid‐shaft: modeled from anthropogenic radiocarbon tracer measurements</article-title>. <source>Am J Phys Anthropol</source>. <year>2007</year>;<volume>133</volume>: <fpage>808</fpage>–<lpage>816</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1002/ajpa.20598" xlink:type="simple">10.1002/ajpa.20598</ext-link></comment> <object-id pub-id-type="pmid">17405135</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref053"><label>53</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Van der Merwe</surname> <given-names>NJ</given-names></name>, <name name-style="western"><surname>Vogel</surname> <given-names>JC</given-names></name>. <article-title><sup>13</sup>C content of human collagen as a measure of prehistoric diet in woodland North America</article-title>. <source>Nature</source>. <year>1978</year>;<volume>276</volume>: <fpage>815</fpage>–<lpage>816</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/276815a0" xlink:type="simple">10.1038/276815a0</ext-link></comment> <object-id pub-id-type="pmid">364321</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref054"><label>54</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tauber</surname> <given-names>H</given-names></name>. <article-title><sup>13</sup>C evidence for dietary habits of prehistoric man in Denmark</article-title>. <source>Nature</source>. <year>1981</year>; <volume>292</volume>: <fpage>332</fpage>–<lpage>333</lpage>. <object-id pub-id-type="pmid">7019718</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref055"><label>55</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chisholm</surname> <given-names>BS</given-names></name>, <name name-style="western"><surname>Nelson</surname> <given-names>DE</given-names></name>, <name name-style="western"><surname>Schwarcz</surname> <given-names>HP</given-names></name>. <article-title>Stable-carbon isotope ratios as a measure of marine versus terrestrial protein in ancient diets</article-title>. <source>Science</source>. <year>1982</year>; <volume>216</volume>: <fpage>1131</fpage>–<lpage>1132</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1126/science.216.4550.1131" xlink:type="simple">10.1126/science.216.4550.1131</ext-link></comment> <object-id pub-id-type="pmid">17808502</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref056"><label>56</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>O’Leary</surname> <given-names>MH</given-names></name>. <article-title>Carbon isotope fractionation in plants</article-title>. <source>Phytochemistry</source>. <year>1981</year>; <volume>20</volume>: <fpage>553</fpage>–<lpage>567</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/0031-9422(81)85134-5" xlink:type="simple">10.1016/0031-9422(81)85134-5</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref057"><label>57</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Van der Merwe</surname> <given-names>NJ</given-names></name>, <name name-style="western"><surname>Medina</surname> <given-names>E</given-names></name>. <article-title>The canopy effect, carbon isotope ratios and foodwebs in Amazonia</article-title>. <source>J Archaeol Sci</source>. <year>1991</year>;<volume>18</volume>: <fpage>249</fpage>–<lpage>259</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/0305-4403(91)90064-V" xlink:type="simple">10.1016/0305-4403(91)90064-V</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref058"><label>58</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Katzenberg</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Weber</surname> <given-names>A</given-names></name>. <article-title>Stable isotope ecology and palaeodiet in the Lake Baikal region of Siberia</article-title>. <source>J Archaeol Sci</source>. <year>1999</year>; <volume>26</volume>: <fpage>651</fpage>–<lpage>659</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1006/jasc.1998.0382" xlink:type="simple">10.1006/jasc.1998.0382</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref059"><label>59</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dufour</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Bocherens</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Mariotti</surname> <given-names>A</given-names></name>. <article-title>Palaeodietary implications of isotopic variability in Eurasian lacustrine fish</article-title>. <source>J Archaeol Sci</source>. <year>1999</year>; <volume>26</volume>: <fpage>617</fpage>–<lpage>627</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1006/jasc.1998.0379" xlink:type="simple">10.1006/jasc.1998.0379</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref060"><label>60</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lillie</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Richards</surname> <given-names>MP</given-names></name>, <name name-style="western"><surname>Jacobs</surname> <given-names>K</given-names></name>. <article-title>Stable isotope analysis of 21 individuals from the Epipalaeolithic cemetery of Vasilyevka III, Dnieper Rapids region, Ukraine</article-title>. <source>J Archaeol Sci</source>. <year>2003</year>; <volume>30</volume>: <fpage>743</fpage>–<lpage>752</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/S0305-4403(02)00249-2" xlink:type="simple">10.1016/S0305-4403(02)00249-2</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref061"><label>61</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Schoeninger</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>DeNiro</surname> <given-names>MJ</given-names></name>. <article-title>Nitrogen and carbon isotopic composition of bone collagen from marine and terrestrial animals</article-title>. <source>Geochim Cosmochim Acta</source>. <year>1984</year>;<volume>48</volume>: <fpage>625</fpage>–<lpage>639</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/0016-7037(84)90091-7" xlink:type="simple">10.1016/0016-7037(84)90091-7</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref062"><label>62</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bocherens</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Drucker</surname> <given-names>D</given-names></name>. <article-title>Trophic level isotopic enrichment of carbon and nitrogen in bone collagen: case studies from recent and ancient terrestrial ecosystems</article-title>. <source>Int J Osteoarchaeol</source>. <year>2003</year>;<volume>13</volume>: <fpage>46</fpage>–<lpage>53</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1002/oa.662" xlink:type="simple">10.1002/oa.662</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref063"><label>63</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Minagawa</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Wada</surname> <given-names>E</given-names></name>. <article-title>Stepwise enrichment of <sup>15</sup>N along food chains: further evidence and the relation between δ<sup>15</sup>N and animal age</article-title>. <source>Geochim Cosmochim Acta</source>. <year>1984</year>;<volume>48</volume>: <fpage>1135</fpage>–<lpage>1140</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/0016-7037(84)90204-7" xlink:type="simple">10.1016/0016-7037(84)90204-7</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref064"><label>64</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ambrose</surname> <given-names>SH</given-names></name>, <name name-style="western"><surname>DeNiro</surname> <given-names>MJ</given-names></name>. <article-title>Reconstruction of African human diet using bone collagen carbon and nitrogen isotope ratios</article-title>. <source>Nature</source>. <year>1986</year>;<volume>319</volume>: <fpage>321</fpage>–<lpage>324</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref065"><label>65</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Heaton</surname> <given-names>THE</given-names></name>. <article-title>The <sup>15</sup>N/<sup>14</sup>N ratios of plants in South Africa and Namibia: relationship to climate and coastal/saline environments</article-title>. <source>Oecologia</source>. <year>1987</year>;<volume>74</volume>: <fpage>236</fpage>–<lpage>246</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/BF00379365" xlink:type="simple">10.1007/BF00379365</ext-link></comment> <object-id pub-id-type="pmid">28311996</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref066"><label>66</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Handley</surname> <given-names>LL</given-names></name>, <name name-style="western"><surname>Raven</surname> <given-names>JA</given-names></name>. <article-title>The use of natural abundance of nitrogen isotopes in plant physiology and ecology</article-title>. <source>Plant Cell Environ</source>. <year>1992</year>;<volume>15</volume>: <fpage>965</fpage>–<lpage>985</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1365-3040.1992.tb01650.x" xlink:type="simple">10.1111/j.1365-3040.1992.tb01650.x</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref067"><label>67</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Marshall</surname> <given-names>JD</given-names></name>, <name name-style="western"><surname>Brooks</surname> <given-names>JR</given-names></name>, <name name-style="western"><surname>Lajtha</surname> <given-names>K</given-names></name>. <chapter-title>Sources of variation in the stable isotopic composition of plants</chapter-title>. In: <name name-style="western"><surname>Michener</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Lajtha</surname> <given-names>K</given-names></name>, editors. <source>Stable isotopes in ecology and environmental science</source>. <publisher-loc>Malden</publisher-loc>: <publisher-name>Wiley-Blackwell</publisher-name>; <year>2007</year>. pp. <fpage>22</fpage>–<lpage>60</lpage></mixed-citation></ref>
+<ref id="pone.0197214.ref068"><label>68</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ambrose</surname> <given-names>SH</given-names></name>. <article-title>Effects of diet, climate and physiology on nitrogen isotope abundances in terrestrial foodwebs</article-title>. <source>J Archaeol Sci</source>. <year>1991</year>; <volume>18</volume>: <fpage>293</fpage>–<lpage>317</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/0305-4403(91)90067-Y" xlink:type="simple">10.1016/0305-4403(91)90067-Y</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref069"><label>69</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Craine</surname> <given-names>JM</given-names></name>, <name name-style="western"><surname>Elmore</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Aidar</surname> <given-names>MPM</given-names></name>, <name name-style="western"><surname>Bustamante</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Dawson</surname> <given-names>TE</given-names></name>, <name name-style="western"><surname>Hobbie</surname> <given-names>EA</given-names></name>, <etal>et al</etal>. <article-title>Global patterns of foliar nitrogen isotopes and their relationships with climate, mycorrhizal fungi, foliar nutrient concentrations, and nitrogen availability</article-title>. <source>New Phytol</source>. <year>2009</year>;<volume>183</volume>: <fpage>980</fpage>–<lpage>992</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1469-8137.2009.02917.x" xlink:type="simple">10.1111/j.1469-8137.2009.02917.x</ext-link></comment> <object-id pub-id-type="pmid">19563444</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref070"><label>70</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Reitsema</surname> <given-names>LJ</given-names></name>. <article-title>Beyond diet reconstruction: stable isotope applications to human physiology, health, and nutrition</article-title>. <source>Am J Hum Biol</source>. <year>2013</year>; <volume>25</volume>: <fpage>445</fpage>–<lpage>456</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1002/ajhb.22398" xlink:type="simple">10.1002/ajhb.22398</ext-link></comment> <object-id pub-id-type="pmid">23784719</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref071"><label>71</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fuller</surname> <given-names>BT</given-names></name>, <name name-style="western"><surname>Fuller</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Harris</surname> <given-names>DA</given-names></name>, <name name-style="western"><surname>Hedges</surname> <given-names>REM</given-names></name>. <article-title>Detection of breastfeeding and weaning in modern human infants with carbon and nitrogen stable isotope ratios</article-title>. <source>Am J Phys Anthropol</source>. <year>2006</year>;<volume>129</volume>: <fpage>279</fpage>–<lpage>293</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1002/ajpa.20249" xlink:type="simple">10.1002/ajpa.20249</ext-link></comment> <object-id pub-id-type="pmid">16261548</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref072"><label>72</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bogaard</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Heaton</surname> <given-names>THE</given-names></name>, <name name-style="western"><surname>Poulton</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Merbach</surname> <given-names>I</given-names></name>. <article-title>The impact of manuring on nitrogen isotope ratios in cereals: archaeological implications for reconstruction of diet and crop management practices</article-title>. <source>J Archaeol Sci</source>. <year>2007</year>; <volume>34</volume>: <fpage>335</fpage>–<lpage>343</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.jas.2006.04.009" xlink:type="simple">10.1016/j.jas.2006.04.009</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref073"><label>73</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fraser</surname> <given-names>RA</given-names></name>, <name name-style="western"><surname>Bogaard</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Heaton</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Charles</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Christensen</surname> <given-names>BT</given-names></name>, <etal>et al</etal>. <article-title>Manuring and stable nitrogen isotope ratios in cereals and pulses: towards a new archaeobotanical approach to the inference of land use and dietary practices</article-title>. <source>J Archaeol Sci</source>. <year>2011</year>; <volume>38</volume>: <fpage>2790</fpage>–<lpage>2804</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.jas.2011.06.024" xlink:type="simple">10.1016/j.jas.2011.06.024</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref074"><label>74</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Szpak</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Longstaffe</surname> <given-names>FJ</given-names></name>, <name name-style="western"><surname>Millaire</surname> <given-names>J-F</given-names></name>, <name name-style="western"><surname>White</surname> <given-names>CD</given-names></name>. <article-title>Stable isotope biogeochemistry of seabird guano fertilization: results from growth chamber studies with maize (<italic>Zea mays</italic>)</article-title>. <source>PLoS One</source>. <year>2012</year>; <volume>7</volume>: <fpage>e33741</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0033741" xlink:type="simple">10.1371/journal.pone.0033741</ext-link></comment> <object-id pub-id-type="pmid">22479435</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref075"><label>75</label><mixed-citation publication-type="other" xlink:type="simple">Cramp L. AMS Dating and stable carbon and nitrogen isotope analysis of the Middle Neolithic Linearbandkeramic site of Balatonszárszó, Hungary. M. Sc. Thesis, University of Oxford. 2004.</mixed-citation></ref>
+<ref id="pone.0197214.ref076"><label>76</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Whittle</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Bartosiewicz</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Boric</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Pettitt</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Richards</surname> <given-names>M</given-names></name>. <article-title>In the beginning: new radiocarbon dates for the Early Neolithic in northern Serbia and south-east Hungary</article-title>. <source>Antaeus</source>. <year>2002</year>; <volume>25</volume>: <fpage>63</fpage>–<lpage>117</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref077"><label>77</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Longin</surname> <given-names>R</given-names></name>. <article-title>New method of collagen extraction for radiocarbon dating</article-title>. <source>Nature</source>. <year>1971</year>; <volume>230</volume>: <fpage>241</fpage>–<lpage>242</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/230241a0" xlink:type="simple">10.1038/230241a0</ext-link></comment> <object-id pub-id-type="pmid">4926713</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref078"><label>78</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>DeNiro</surname> <given-names>MJ</given-names></name>. <article-title>Postmortem preservation and alteration of <italic>in vivo</italic> bone collagen isotope ratios in relation to palaeodietary reconstruction</article-title>. <source>Nature</source>. <year>1985</year>; <volume>317</volume>: <fpage>806</fpage>–<lpage>809</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref079"><label>79</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hammer</surname> <given-names>Ø</given-names></name>, <name name-style="western"><surname>Harper</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Ryan</surname> <given-names>P</given-names></name>. <article-title>PAST-Palaeontological statistics package for education and data analysis</article-title>. <source>Paleontol Electronica</source>. <year>2001</year>;<volume>4</volume>: <fpage>1</fpage>–<lpage>9</lpage>.</mixed-citation></ref>
+<ref id="pone.0197214.ref080"><label>80</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Richards</surname> <given-names>MP</given-names></name>, <name name-style="western"><surname>Hedges</surname> <given-names>REM</given-names></name>. <article-title>A Neolithic revolution? New evidence of diet in the British Neolithic</article-title>. <source>Antiquity</source>. <year>1999</year>;<volume>73</volume>: <fpage>891</fpage>–<lpage>897</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1017/S0003598X00065649" xlink:type="simple">10.1017/S0003598X00065649</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref081"><label>81</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wallace</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Jones</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Charles</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Fraser</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Halstead</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Heaton</surname> <given-names>THE</given-names></name>, <etal>et al</etal>. <article-title>Stable carbon isotope analysis as a direct means of inferring crop water status and water management practices</article-title>. <source>World Archaeol</source>. <year>2013</year>; <volume>45</volume>: <fpage>388</fpage>–<lpage>409</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1080/00438243.2013.821671" xlink:type="simple">10.1080/00438243.2013.821671</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref082"><label>82</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lightfoot</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Šlaus</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Šikanjić</surname> <given-names>PR</given-names></name>, <name name-style="western"><surname>O’Connell</surname> <given-names>TC</given-names></name>. <article-title>Metals and millets: Bronze and Iron Age diet in inland and coastal Croatia seen through stable isotope analysis</article-title>. <source>Archaeol Anthropol Sci</source>. <year>2015</year>;<volume>7</volume>: <fpage>375</fpage>–<lpage>386</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s12520-014-0194-3" xlink:type="simple">10.1007/s12520-014-0194-3</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref083"><label>83</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Laffranchi</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Huertas</surname> <given-names>AD</given-names></name>, <name name-style="western"><surname>Brobeil</surname> <given-names>SAJ</given-names></name>, <name name-style="western"><surname>Torres</surname> <given-names>AG</given-names></name>, <name name-style="western"><surname>Cantal</surname> <given-names>JAR</given-names></name>. <article-title>Stable C &amp; N isotopes in 2100 Year-BP human bone collagen indicate rare dietary dominance of C<sub>4</sub> plants in NE-Italy</article-title>. <source>Sci Rep</source>. <year>2016</year>;<volume>6</volume>: <fpage>38817</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/srep38817" xlink:type="simple">10.1038/srep38817</ext-link></comment> <object-id pub-id-type="pmid">27934943</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref084"><label>84</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Valamoti</surname> <given-names>SM</given-names></name>. <article-title>Millet, the late comer: on the tracks of <italic>Panicum miliaceum</italic> in prehistoric Greece</article-title>. <source>Archaeol Anthropol Sci</source>. <year>2016</year>;<volume>8</volume>: <fpage>51</fpage>–<lpage>63</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s12520-013-0152-5" xlink:type="simple">10.1007/s12520-013-0152-5</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref085"><label>85</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tafuri</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Craig</surname> <given-names>OE</given-names></name>, <name name-style="western"><surname>Canci</surname> <given-names>A</given-names></name>. <article-title>Stable isotope evidence for the consumption of millet and other plants in Bronze Age Italy</article-title>. <source>Am J Phys Anthropol</source>. <year>2009</year>;<volume>139</volume>: <fpage>146</fpage>–<lpage>153</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1002/ajpa.20955" xlink:type="simple">10.1002/ajpa.20955</ext-link></comment> <object-id pub-id-type="pmid">19051259</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref086"><label>86</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Szpak</surname> <given-names>P</given-names></name>. <article-title>Complexities of nitrogen isotope biogeochemistry in plant-soil systems: implications for the study of ancient agricultural and animal management practices</article-title>. <source>Front Plant Sci</source>. <year>2014</year>;<volume>5</volume>: <fpage>288</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.3389/fpls.2014.00288" xlink:type="simple">10.3389/fpls.2014.00288</ext-link></comment> <object-id pub-id-type="pmid">25002865</object-id></mixed-citation></ref>
+<ref id="pone.0197214.ref087"><label>87</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Magyari</surname> <given-names>EK</given-names></name>, <name name-style="western"><surname>Chapman</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Fairbairn</surname> <given-names>AS</given-names></name>, <name name-style="western"><surname>Francis</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>de Guzman</surname> <given-names>M</given-names></name>. <article-title>Neolithic human impact on the landscapes of North-East Hungary inferred from pollen and settlement records</article-title>. <source>Veg Hist Archaeobot</source>. <year>2012</year>;<volume>21</volume>: <fpage>279</fpage>–<lpage>302</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s00334-012-0350-6" xlink:type="simple">10.1007/s00334-012-0350-6</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0197214.ref088"><label>88</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bogaard</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Fraser</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Heaton</surname> <given-names>THE</given-names></name>, <name name-style="western"><surname>Wallace</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Vaiglova</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Charles</surname> <given-names>M</given-names></name>, <etal>et al</etal>. <article-title>Crop manuring and intensive land management by Europe’s first farmers</article-title>. <source>Proc Natl Acad Sci</source>. National Acad Sciences; <year>2013</year>;<volume>110</volume>: <fpage>12589</fpage>–<lpage>12594</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1073/pnas.1305918110" xlink:type="simple">10.1073/pnas.1305918110</ext-link></comment> <object-id pub-id-type="pmid">23858458</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

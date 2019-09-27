@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-11-08822</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0023287</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Microbiology</subject>
+            <subj-group>
+              <subject>Bacterial pathogens</subject>
+              <subj-group>
+                <subject>Staphylococci</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Molecular cell biology</subject>
+            <subj-group>
+              <subject>Gene expression</subject>
+              <subj-group>
+                <subject>DNA transcription</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Signal transduction</subject>
+              <subj-group>
+                <subject>Mechanisms of signal transduction</subject>
+                <subj-group>
+                  <subject>Crosstalk</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Cellular stress responses</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Infectious diseases</subject>
+            <subj-group>
+              <subject>Bacterial diseases</subject>
+              <subj-group>
+                <subject>Staph infections</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Infectious Diseases</subject>
+          <subject>Microbiology</subject>
+          <subject>Molecular Biology</subject>
+          <subject>Cell Biology</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Methicillin-Resistance in <italic>Staphylococcus aureus</italic> Is Not Affected by the Overexpression in Trans of the <italic>mecA</italic> Gene Repressor: A Surprising Observation</article-title><alt-title alt-title-type="running-head">Overexpression of <italic>mecA</italic> Repressor in MRSA</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Oliveira</surname>
+            <given-names>Duarte C.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+          <xref ref-type="fn" rid="fn1">
+            <sup>¤</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>de Lencastre</surname>
+            <given-names>Hermínia</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1"><label>1</label><addr-line>Laboratory of Molecular Genetics, Instituto de Tecnologia Química e Biológica, Universidade Nova de Lisboa, Oeiras, Portugal</addr-line>       </aff><aff id="aff2"><label>2</label><addr-line>Laboratory of Microbiology, The Rockefeller University, New York, New York, United States of America</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Van Melderen</surname>
+            <given-names>Laurence</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">Universite Libre de Bruxelles, Belgium</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">dco@fct.unl.pt</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: DCO. Performed the experiments: DCO. Analyzed the data: DCO HdL. Contributed reagents/materials/analysis tools: DCO HdL. Wrote the paper: DCO HdL.</p>
+        </fn>
+        <fn fn-type="current-aff" id="fn1">
+          <label>¤</label>
+          <p>Current address: Department of Life Sciences, Faculdade de Ciências e Tecnologia, Centro de Recursos Microbiológicos (CREM), Universidade Nova de Lisboa, Caparica, Portugal</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>The authors have declared that no competing interests exist.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2011</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>2</day>
+        <month>8</month>
+        <year>2011</year>
+      </pub-date><volume>6</volume><issue>8</issue><elocation-id>e23287</elocation-id><history>
+        <date date-type="received">
+          <day>18</day>
+          <month>5</month>
+          <year>2011</year>
+        </date>
+        <date date-type="accepted">
+          <day>12</day>
+          <month>7</month>
+          <year>2011</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2011</copyright-year><copyright-holder>Oliveira, de Lencastre</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <p>Methicillin-resistant <italic>Staphylococcus aureus</italic> (MRSA) is intrinsically cross-resistant to virtually all β-lactam antibiotics. The central determinant for the MRSA phenotype is the <italic>mecA</italic> gene, whose transcriptional control may be mediated by a repressor (<italic>mecI</italic>) and a sensor/inducer (<italic>mecR1</italic>). The <italic>mecI-mecR1-</italic>mediated induction of <italic>mecA</italic> takes several hours rendering the strains phenotypically susceptible in spite of the presence of the resistance gene. Therefore, it has been proposed that the full resistance to β-lactams observed in many contemporary clinical MRSA strains requires a non-functional <italic>mecI-mecR1</italic> regulatory system. The <italic>mecA</italic> gene is embedded in a large chromosomal cassette (the SCC<italic>mec</italic> element) for which several structural types have been described. Some epidemic MRSA clones, typically expressing full β-lactam resistance, carry SCC<italic>mec</italic> elements that contain an intact <italic>mecI-mecR1 locus</italic> (e.g. SCC<italic>mec</italic> types II and III). We have addressed this apparent contradiction by first sequencing the <italic>mecI</italic> coding region and <italic>mecA</italic> promoter sequences in a collection of prototype MRSA strains characterized by different SCC<italic>mec</italic> types. A conserved non-sense mutation within <italic>mecI</italic> was detected in all SCC<italic>mec</italic> type III strains tested, presumably responsible for a non-functional truncated MecI protein and, therefore, explaining the full resistance phenotype. In SCC<italic>mec</italic> type II strains no conserved mutations were found. We next transformed a collection of prototype MRSA epidemic strains with a recombinant plasmid overexpressing a wild-type copy of <italic>mecI</italic>. Surprisingly, for the great majority of the strains no significant alterations in the phenotypic expression of β-lactam resistance could be detected. These findings were confirmed and further explored, challenging the currently accepted mechanism of <italic>mecA</italic> transcriptional control. Our observations suggest the existence of yet unidentified additional determinants involved in the transcriptional control of <italic>mecA</italic> gene and point to a revision of the <italic>mecA</italic> regulatory mechanism in contemporary MRSA strains.</p>
+      </abstract><funding-group><funding-statement>Partial support for this study was provided by Projects POCI/BIA-MIC/60320/2004 and PTDC/BIA-MIC/64071/2006 from Fundação para a Ciência e Tecnologia (FCT), Lisbon, Portugal, awarded to D. C. Oliveira; Project TROCAR, contract number 223031 from the European Commission awarded to H. de Lencastre; and grant RO1AI045738 from the U.S. Public Health Service awarded to A. Tomasz. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="9"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>Methicillin-resistant <italic>Staphylococcus aureus</italic> (MRSA) is a leading cause of nosocomial infections worldwide and has also emerged as a community-associated pathogen <xref ref-type="bibr" rid="pone.0023287-Chambers1">[1]</xref>. MRSA are inherently cross-resistant to virtually all β-lactam antibiotics, the most effective and widely used class of antimicrobials. Moreover, MRSA clinical strains are quite often multi-drug resistant, reducing significantly the therapeutic options for the treatment of staphylococcal infections.</p>
+      <p>The MRSA characteristic phenotype is due to the presence of <italic>mecA</italic>, which encodes a penicillin-binding protein (PBP), PBP2a, with reduced affinity for β-lactams <xref ref-type="bibr" rid="pone.0023287-Song1">[2]</xref>, <xref ref-type="bibr" rid="pone.0023287-Hartman1">[3]</xref>. <italic>mecA</italic> is embedded in a large heterologous chromosomal cassette, the SCC<italic>mec</italic> element <xref ref-type="bibr" rid="pone.0023287-Ito1">[4]</xref>. Some MRSA strains carry upstream to the <italic>mecA</italic> gene the regulatory genes <italic>mecI-mecR1</italic> encoding for a repressor and a sensor/inducer of the <italic>mecA</italic> expression, respectively <xref ref-type="bibr" rid="pone.0023287-Hiramatsu1">[5]</xref>. This genetic organization is similar to the β-lactamase locus that encodes for penicillin-resistance only, and contains the structural gene (<italic>blaZ</italic>), a repressor (<italic>blaI</italic>) and a sensor/inducer (<italic>blaR1</italic>). Apart from the identical structural organization between <italic>mec</italic> and <italic>bla</italic> systems, there is also good homology between the inducers (61% identity at the amino acid level) and the β-lactam binding domain of the repressors (44% identity at the amino acid level). In fact, there is a cross-talk between both regulatory systems, as each one alone is able to control the transcription of <italic>mecA</italic> and <italic>bla</italic>Z <xref ref-type="bibr" rid="pone.0023287-Hackbarth1">[6]</xref>, <xref ref-type="bibr" rid="pone.0023287-Ryffel1">[7]</xref>. However, the two regulatory systems differ remarkably in the induction efficiency: the <italic>blaI-blaR1</italic> system induces <italic>mecA</italic> in a few minutes, whereas the <italic>mecI-mecR1</italic> system takes several hours <xref ref-type="bibr" rid="pone.0023287-Hackbarth1">[6]</xref>, <xref ref-type="bibr" rid="pone.0023287-Ryffel1">[7]</xref>, <xref ref-type="bibr" rid="pone.0023287-McKinney1">[8]</xref>. Actually, the <italic>mecI</italic>-<italic>mecR1</italic> mediated induction of <italic>mecA</italic> expression is so slow that, in clinical terms, fully functional <italic>mecI</italic> and <italic>mecR1</italic> genes render the cell phenotypically susceptible in spite of the presence of <italic>mecA</italic> – the so-called “pre-MRSA” phenotype <xref ref-type="bibr" rid="pone.0023287-Hiramatsu1">[5]</xref>, <xref ref-type="bibr" rid="pone.0023287-KuwaharaArai1">[9]</xref>. In agreement with this observation, the <italic>in vitro</italic> deletion of the <italic>mecI</italic> gene has been shown to increase the resistance levels to β-lactams in staphylococci <xref ref-type="bibr" rid="pone.0023287-Hiramatsu1">[5]</xref>, <xref ref-type="bibr" rid="pone.0023287-KuwaharaArai1">[9]</xref>, <xref ref-type="bibr" rid="pone.0023287-Dickinson1">[10]</xref>.</p>
+      <p>Based on those observations, it has been postulated that full resistance to β-lactams, characteristic of many contemporary MRSA clinical strains, implies a non-functional <italic>mecI-mecR1</italic> regulatory system <xref ref-type="bibr" rid="pone.0023287-Hiramatsu1">[5]</xref>, <xref ref-type="bibr" rid="pone.0023287-KuwaharaArai1">[9]</xref>. As a matter of fact, the absence of <italic>mecI</italic> or the accumulation of point mutations in the <italic>mecI</italic> coding sequence, <italic>mecI</italic> ribosomal binding site or <italic>mecA</italic> gene promoter, have been found in several MRSA strains <xref ref-type="bibr" rid="pone.0023287-Archer1">[11]</xref>, <xref ref-type="bibr" rid="pone.0023287-HurlimannDalel1">[12]</xref>, <xref ref-type="bibr" rid="pone.0023287-Kobayashi1">[13]</xref>, <xref ref-type="bibr" rid="pone.0023287-Suzuki1">[14]</xref>, <xref ref-type="bibr" rid="pone.0023287-Weller1">[15]</xref>. Nevertheless, in spite of the negative effect of the presence of MecI on the phenotypic expression of resistance, there is no clear direct correlation between the cellular amounts of <italic>mecA</italic> transcript or PBP2a protein and the phenotypic level of resistance (i.e. the minimum inhibitory concentration, MIC, for the strain) <xref ref-type="bibr" rid="pone.0023287-Hartman2">[16]</xref>, <xref ref-type="bibr" rid="pone.0023287-Murakami1">[17]</xref>. Finally, the existence of other unknown determinants involved in <italic>mecA</italic> regulation, for instance mediating the signal transduction between the activated MecR1 and the promoter bound MecI, has been postulated based on contradictory experimental observations <xref ref-type="bibr" rid="pone.0023287-Kobayashi1">[13]</xref>, <xref ref-type="bibr" rid="pone.0023287-Weller1">[15]</xref>, <xref ref-type="bibr" rid="pone.0023287-Archer2">[18]</xref> and critical structural data analysis <xref ref-type="bibr" rid="pone.0023287-MallorquFernndez1">[19]</xref>, <xref ref-type="bibr" rid="pone.0023287-GarcaCastellanos1">[20]</xref>. Early studies on the β-lactamase regulon in <italic>S. aureus</italic> by Cohen and Sweeney have also suggested the existence of the <italic>blaR2</italic> locus, unlinked to <italic>blaI-blaR1</italic> and able to mediate the constitutive expression of <italic>blaZ</italic> <xref ref-type="bibr" rid="pone.0023287-Cohen1">[21]</xref>.</p>
+      <p>Currently, MRSA clones are defined not only based on the type of genetic lineage but also on the type of SCC<italic>mec</italic> element they carry, as the same lineage may be associated with several SCC<italic>mec</italic> types <xref ref-type="bibr" rid="pone.0023287-Oliveira1">[22]</xref>, <xref ref-type="bibr" rid="pone.0023287-Enright1">[23]</xref>. Several structural types of the SCC<italic>mec</italic> element have been described differing in size and genetic content <xref ref-type="bibr" rid="pone.0023287-IWGSCC1">[24]</xref>. The genetic organization of the <italic>mecA</italic> vicinity (<italic>mec</italic> gene complex) is one of the key characteristics used to define SCC<italic>mec</italic> types. In <italic>S. aureus</italic> three major <italic>mec</italic> classes have been described based mainly on the presence of insertion sequences and intact or disrupted <italic>mecI-mecR1</italic> sequences: class A has intact sequences for <italic>mecI-mecR1</italic>, whereas classes B and C have no <italic>mecI</italic> and partially deleted <italic>mecR1</italic> due to the integration of insertion sequences in the regulatory region of the <italic>mecA</italic>. Considering the eight major SCC<italic>mec</italic> types described so far in <italic>S. aureus</italic>, the <italic>mec</italic> gene complex class A characterizes SCC<italic>mec</italic> types II, III and VIII; class B, SCC<italic>mec</italic> types I, IV and VI; and class C, SCC<italic>mec</italic> types V and VII. According to the current model of <italic>mecA</italic> transcriptional control <xref ref-type="bibr" rid="pone.0023287-Hiramatsu1">[5]</xref>, <xref ref-type="bibr" rid="pone.0023287-KuwaharaArai1">[9]</xref>, it is tempting to interpret the disruption of the <italic>mecI-mecR1</italic> regulatory system in SCC<italic>mec</italic> types I and IV–VII, as a strategy to overcome the tight <italic>mecA</italic> repression mediated by <italic>mecI-mecR1</italic> system in MRSA strains. However, it seems that there is no clear correlation between resistance levels and <italic>mecI-mecR1</italic> functionality, as some strains lacking <italic>mecI-mecR1</italic> have a very low resistance level, whereas some strains with complete <italic>mecI-mecR1</italic> locus are highly resistant <xref ref-type="bibr" rid="pone.0023287-Suzuki1">[14]</xref>, <xref ref-type="bibr" rid="pone.0023287-Weller1">[15]</xref>, <xref ref-type="bibr" rid="pone.0023287-Shukla1">[25]</xref>. In addition, the epidemicity of MRSA strains does not correlate with the <italic>mecI-mecR1</italic> functionality as well. For example, two major pandemic nosocomial MRSA clones – the New York/Japan (or ST5-II) and the Brazilian (or ST239-III) clones – are characterized by SCC<italic>mec</italic> types II and III, respectively, and have a complete <italic>mecI-mecR1</italic> locus <xref ref-type="bibr" rid="pone.0023287-Oliveira1">[22]</xref>, <xref ref-type="bibr" rid="pone.0023287-Enright1">[23]</xref>.</p>
+      <p>In this study, we have addressed the puzzling lack of correlation between SCC<italic>mec</italic> type (i.e. <italic>mec</italic> gene class) and resistance phenotype in order to clarify how the <italic>mecA</italic> transcription is controlled in pandemic MRSA strains. We first characterized by DNA sequencing the <italic>mecA</italic> regulatory locus in prototype strains of SCC<italic>mec</italic> types II and III (i.e. with a complete <italic>mecI-mecR1</italic> locus). We found a conserved point mutation within the <italic>mecI</italic> coding-sequence among SCC<italic>mec</italic> type III strains, which introduces a premature stop codon resulting in truncated MecI repressor. Among the SCC<italic>mec</italic> type II strains we could not find any conserved sequence alteration either in the <italic>mecI</italic> coding sequence or in the <italic>mecA</italic> promoter that could suggest a non-functional <italic>mecI-mecR1</italic> system and, as such, justify the high-resistance levels to β-lactams. We thus decided to challenge the current model of <italic>mecA</italic> regulation by over-expressing <italic>in trans</italic> the wild-type MecI in a collection of prototype MRSA clinical strains. To our surprise, in most strains we could not detect any significant alterations in the phenotypic expression of oxacillin resistance. These observations suggest that other yet uncharacterized factors are involved in the control of the expression of β-lactam resistance in MRSA, namely by interfering with the <italic>mecI</italic>-mediated repression of <italic>mecA</italic>, and point to a revision of the current model for the transcriptional control of the resistance determinant in contemporary strains.</p>
+    </sec>
+    <sec id="s2" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s2a">
+        <title>Bacterial strains and culture conditions</title>
+        <p>MRSA strains used in this study and their relevant characteristics are listed in <xref ref-type="table" rid="pone-0023287-t001">Tables 1</xref> and <xref ref-type="table" rid="pone-0023287-t002">2</xref>. All strains have been selected from large international collections and have been previously characterized in detail for genetic background by pulsed-field gel electrophoresis (PFGE), multi-locus sequence typing (MLST), and <italic>spa</italic> typing and also for SCC<italic>mec</italic> type. In <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref>, we have included prototype strains for three major pandemic MRSA lineages characterized by SCC<italic>mec</italic> types I–III <xref ref-type="bibr" rid="pone.0023287-Oliveira1">[22]</xref>: the Iberian or ST247-I clone, the New York/Japan or ST5-II clone, and the Brazilian or ST239-III clone. In addition, in <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref> we have also included two reference strains extensively used in studies addressing the β-lactam resistance mechanisms in <italic>S. aureus</italic>: strains COL <xref ref-type="bibr" rid="pone.0023287-deLencastre1">[26]</xref> and N315 <xref ref-type="bibr" rid="pone.0023287-KuwaharaArai1">[9]</xref>. Strain COL is highly and homogenously resistant to oxacillin, has a non-functional <italic>mecI-mecR1</italic> system, it naturally lacks β-lactamase, and constitutively expresses <italic>mecA</italic> <xref ref-type="bibr" rid="pone.0023287-deLencastre1">[26]</xref>, <xref ref-type="bibr" rid="pone.0023287-deLencastre2">[27]</xref>. Strain N315, has a very heterogeneous oxacillin-resistance phenotypic profile, has wild-type <italic>mecI-mecR1</italic> sequences, is β-lactamase positive and has an inducible expression of <italic>mecA</italic> <xref ref-type="bibr" rid="pone.0023287-Hiramatsu1">[5]</xref>, <xref ref-type="bibr" rid="pone.0023287-KuwaharaArai1">[9]</xref>. In <xref ref-type="table" rid="pone-0023287-t002">Table 2</xref>, we list further MRSA strains that were selected to extended our initial collection in order to confirm the experimental observations. For this purpose, we have included more representative SCC<italic>mec</italic> type II strains and also strains characterized by SCC<italic>mec</italic> types IV–VI <xref ref-type="bibr" rid="pone.0023287-Milheirico1">[28]</xref>, <xref ref-type="bibr" rid="pone.0023287-Milheirico2">[29]</xref>, <xref ref-type="bibr" rid="pone.0023287-Oliveira2">[30]</xref>. <italic>S. aureus</italic> strains were routinely grown overnight at 37°C under aerobic conditions on tryptic soy agar or tryptic soy broth (Difco, BD). <italic>Escherichia coli</italic> strains were grown in Luria-Bertani broth (Difco, BD) with aeration at 37°C. Chloramphenicol (20 µg/ml) and ampicillin (100 µg/ml) (Sigma-Aldrich) were used for selection and maintenance of <italic>S. aureus</italic> and <italic>E. coli</italic> transformants, respectively.</p>
+        <table-wrap id="pone-0023287-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0023287.t001</object-id><label>Table 1</label><caption>
+            <title>Characteristics of the prototype MRSA strains used in this study.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0023287-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0023287.t001" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="4" rowspan="1">Relevant characteristics</td>
+                <td align="left" colspan="2" rowspan="1">Oxacillin MIC (µg/ml)<xref ref-type="table-fn" rid="nt108">e)</xref></td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Strain</td>
+                <td align="left" colspan="1" rowspan="1">Origin</td>
+                <td align="left" colspan="1" rowspan="1">Isolation date</td>
+                <td align="left" colspan="1" rowspan="1">Clonal<xref ref-type="table-fn" rid="nt103">a)</xref> type</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <italic>mecI</italic>
+                  <xref ref-type="table-fn" rid="nt104">b)</xref>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <italic>mecR1</italic>
+                  <xref ref-type="table-fn" rid="nt106">c)</xref>
+                </td>
+                <td align="left" colspan="1" rowspan="1">P<italic>mecA</italic></td>
+                <td align="left" colspan="1" rowspan="1">
+                  <italic>bla</italic>
+                  <xref ref-type="table-fn" rid="nt107">d)</xref>
+                </td>
+                <td align="left" colspan="1" rowspan="1">Parental strain</td>
+                <td align="left" colspan="1" rowspan="1">Recombinant strain<xref ref-type="table-fn" rid="nt109">f)</xref></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">COL</td>
+                <td align="left" colspan="1" rowspan="1">UK</td>
+                <td align="left" colspan="1" rowspan="1">1965</td>
+                <td align="left" colspan="1" rowspan="1">ST250 – I</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">1.5</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">PER34</td>
+                <td align="left" colspan="1" rowspan="1">Spain</td>
+                <td align="left" colspan="1" rowspan="1">1989</td>
+                <td align="left" colspan="1" rowspan="1">ST247 – I</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">HPV107</td>
+                <td align="left" colspan="1" rowspan="1">Portugal</td>
+                <td align="left" colspan="1" rowspan="1">1992</td>
+                <td align="left" colspan="1" rowspan="1">ST247 – I</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">N315</td>
+                <td align="left" colspan="1" rowspan="1">Japan</td>
+                <td align="left" colspan="1" rowspan="1">1982</td>
+                <td align="left" colspan="1" rowspan="1">ST5 – II</td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">32</td>
+                <td align="left" colspan="1" rowspan="1">24</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">BK2464</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1996</td>
+                <td align="left" colspan="1" rowspan="1">ST5 – II</td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">HU25</td>
+                <td align="left" colspan="1" rowspan="1">Brazil</td>
+                <td align="left" colspan="1" rowspan="1">1993</td>
+                <td align="left" colspan="1" rowspan="1">ST239 – III</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <italic>mecI</italic>
+                  <xref ref-type="table-fn" rid="nt105">*</xref>
+                </td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">BK2421</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1996</td>
+                <td align="left" colspan="1" rowspan="1">ST239 – III</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <italic>mecI</italic>
+                  <xref ref-type="table-fn" rid="nt105">*</xref>
+                </td>
+                <td align="left" colspan="1" rowspan="1">Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt101">
+              <label/>
+              <p>Abbreviations: neg., negative; pos., positive; WT, wild-type.</p>
+            </fn>
+            <fn id="nt102">
+              <label/>
+              <p>Notes:</p>
+            </fn>
+            <fn id="nt103">
+              <label>a)</label>
+              <p>Clonal types as defined by MLST sequence type (ST) and SCC<italic>mec</italic> type.</p>
+            </fn>
+            <fn id="nt104">
+              <label>b)</label>
+              <p>neg. – negative (due to IS<italic>1272</italic> insertion); WT – wild-type sequence (N315);</p>
+            </fn>
+            <fn id="nt105">
+              <label/>
+              <p>*- mutated non-functional <italic>mecI</italic> at Gln<sub>68</sub> (CAA→TAA);</p>
+            </fn>
+            <fn id="nt106">
+              <label>c)</label>
+              <p>IS::Δ<italic>mecR1</italic> – <italic>mecR1</italic> with no C-terminal sensor domain (due to IS<italic>1272</italic> insertion); Δ<italic>mecR1</italic> – 160 bp deletion in the C-terminal inducer domain.</p>
+            </fn>
+            <fn id="nt107">
+              <label>d)</label>
+              <p>The production of β-lactamase was assayed in induced and no induced cultures (see text for details). All strains positive for β-lactamase were inducible.</p>
+            </fn>
+            <fn id="nt108">
+              <label>e)</label>
+              <p>MIC as determined by E-test strips.</p>
+            </fn>
+            <fn id="nt109">
+              <label>f)</label>
+              <p>Parental strains transformed with a high copy number plasmid containing the wild-type <italic>mecI</italic> coding region (pGC2-<italic>mecI</italic><sup>WT</sup>).</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+        <table-wrap id="pone-0023287-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0023287.t002</object-id><label>Table 2</label><caption>
+            <title>Characteristics of the extended collection of representative MRSA strains.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0023287-t002-2" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0023287.t002" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Strain</td>
+                <td align="left" colspan="1" rowspan="1">Origin</td>
+                <td align="left" colspan="1" rowspan="1">Isolation date</td>
+                <td align="left" colspan="1" rowspan="1">Clonal<xref ref-type="table-fn" rid="nt112">a)</xref> type</td>
+                <td align="left" colspan="4" rowspan="1">Relevant characteristics</td>
+                <td align="left" colspan="2" rowspan="1">Oxacillin MIC (µg/ml)<xref ref-type="table-fn" rid="nt116">e)</xref></td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">
+                  <italic>mecI</italic>
+                  <xref ref-type="table-fn" rid="nt113">b)</xref>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <italic>mecR1</italic>
+                  <xref ref-type="table-fn" rid="nt114">c)</xref>
+                </td>
+                <td align="left" colspan="1" rowspan="1">P<italic>mecA</italic></td>
+                <td align="left" colspan="1" rowspan="1">β-lact.<xref ref-type="table-fn" rid="nt115">d)</xref></td>
+                <td align="left" colspan="1" rowspan="1">Parental strain</td>
+                <td align="left" colspan="1" rowspan="1">Recombinant strain<xref ref-type="table-fn" rid="nt117">f)</xref></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">USA100</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1995–2003</td>
+                <td align="left" colspan="1" rowspan="1">ST5-II</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">64</td>
+                <td align="left" colspan="1" rowspan="1">64</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">USA200</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1995–2003</td>
+                <td align="left" colspan="1" rowspan="1">ST36-II</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">HAR24</td>
+                <td align="left" colspan="1" rowspan="1">Finland</td>
+                <td align="left" colspan="1" rowspan="1">2002</td>
+                <td align="left" colspan="1" rowspan="1">ST36-II</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">USA600</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1995–2003</td>
+                <td align="left" colspan="1" rowspan="1">ST45-II</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">MW2</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1998</td>
+                <td align="left" colspan="1" rowspan="1">ST1-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">32</td>
+                <td align="left" colspan="1" rowspan="1">32</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">HAR22</td>
+                <td align="left" colspan="1" rowspan="1">Finland</td>
+                <td align="left" colspan="1" rowspan="1">2002</td>
+                <td align="left" colspan="1" rowspan="1">ST22-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">USA400</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1995–2003</td>
+                <td align="left" colspan="1" rowspan="1">ST1-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">96</td>
+                <td align="left" colspan="1" rowspan="1">96</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">USA800</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1995–2003</td>
+                <td align="left" colspan="1" rowspan="1">ST5-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">48</td>
+                <td align="left" colspan="1" rowspan="1">32</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">VNG17</td>
+                <td align="left" colspan="1" rowspan="1">Portugal</td>
+                <td align="left" colspan="1" rowspan="1">1992–1993</td>
+                <td align="left" colspan="1" rowspan="1">ST5-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">16</td>
+                <td align="left" colspan="1" rowspan="1">0.25</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">RJP17</td>
+                <td align="left" colspan="1" rowspan="1">Portugal</td>
+                <td align="left" colspan="1" rowspan="1">1992–1993</td>
+                <td align="left" colspan="1" rowspan="1">ST5-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">WT</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">32</td>
+                <td align="left" colspan="1" rowspan="1">24</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">HSA49</td>
+                <td align="left" colspan="1" rowspan="1">Portugal</td>
+                <td align="left" colspan="1" rowspan="1">1993</td>
+                <td align="left" colspan="1" rowspan="1">ST5-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">24</td>
+                <td align="left" colspan="1" rowspan="1">24</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">USA300</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1995–2003</td>
+                <td align="left" colspan="1" rowspan="1">ST8-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">24</td>
+                <td align="left" colspan="1" rowspan="1">16</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">USA500</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1995–2003</td>
+                <td align="left" colspan="1" rowspan="1">ST8-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+                <td align="left" colspan="1" rowspan="1">&gt;256</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">HAR38</td>
+                <td align="left" colspan="1" rowspan="1">Belgium</td>
+                <td align="left" colspan="1" rowspan="1">1995</td>
+                <td align="left" colspan="1" rowspan="1">ST45-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">128</td>
+                <td align="left" colspan="1" rowspan="1">128</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">USA700</td>
+                <td align="left" colspan="1" rowspan="1">USA</td>
+                <td align="left" colspan="1" rowspan="1">1995–2003</td>
+                <td align="left" colspan="1" rowspan="1">ST72-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">48</td>
+                <td align="left" colspan="1" rowspan="1">48</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">DEN2949</td>
+                <td align="left" colspan="1" rowspan="1">Denmark</td>
+                <td align="left" colspan="1" rowspan="1">2001</td>
+                <td align="left" colspan="1" rowspan="1">ST80-IV</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">64</td>
+                <td align="left" colspan="1" rowspan="1">64</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">WIS</td>
+                <td align="left" colspan="1" rowspan="1">Australia</td>
+                <td align="left" colspan="1" rowspan="1">1995</td>
+                <td align="left" colspan="1" rowspan="1">ST45-V</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">4</td>
+                <td align="left" colspan="1" rowspan="1">4</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">HDE288</td>
+                <td align="left" colspan="1" rowspan="1">Portugal</td>
+                <td align="left" colspan="1" rowspan="1">1996</td>
+                <td align="left" colspan="1" rowspan="1">ST5-VI</td>
+                <td align="left" colspan="1" rowspan="1">neg.</td>
+                <td align="left" colspan="1" rowspan="1">IS::Δ<italic>mecR1</italic></td>
+                <td align="left" colspan="1" rowspan="1">ND</td>
+                <td align="left" colspan="1" rowspan="1">pos.</td>
+                <td align="left" colspan="1" rowspan="1">6</td>
+                <td align="left" colspan="1" rowspan="1">6</td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt110">
+              <label/>
+              <p>Abbreviations: neg., negative; pos., positive; WT, wild-type; ND, not determined.</p>
+            </fn>
+            <fn id="nt111">
+              <label/>
+              <p>Notes:</p>
+            </fn>
+            <fn id="nt112">
+              <label>a)</label>
+              <p>Clonal types as defined by MLST sequence type (ST) and SCC<italic>mec</italic> type.</p>
+            </fn>
+            <fn id="nt113">
+              <label>b)</label>
+              <p>neg. – negative (due to IS<italic>1272</italic> or IS<italic>431</italic> insertions); WT – wild-type sequence (N315); * - mutated non-functional <italic>mecI</italic>.</p>
+            </fn>
+            <fn id="nt114">
+              <label>c)</label>
+              <p>IS::Δ<italic>mecR1</italic> – <italic>mecR1</italic> with no C-terminal sensor domain (due to IS<italic>1272</italic> or IS431 insertions).</p>
+            </fn>
+            <fn id="nt115">
+              <label>d)</label>
+              <p>The production of β-lactamase was tested for induced and no induced cultures (see text for details). All strains positive for β-lactamase were inducible. Strains negative for the nitrocefin assay were tested for the presence of <italic>blaZ</italic>, blaI, and <italic>bla</italic>R1 by PCR.</p>
+            </fn>
+            <fn id="nt116">
+              <label>e)</label>
+              <p>MIC as determined by E-test strips.</p>
+            </fn>
+            <fn id="nt117">
+              <label>f)</label>
+              <p>Parental strains transformed with a high copy number plasmid containing the wild-type <italic>mecI</italic> coding region (pGC2-<italic>mecI</italic><sup>WT</sup>).</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+      </sec>
+      <sec id="s2b">
+        <title>DNA manipulations</title>
+        <p>DNA manipulations were performed by standard methods <xref ref-type="bibr" rid="pone.0023287-Ausubel1">[31]</xref>, <xref ref-type="bibr" rid="pone.0023287-Sambrook1">[32]</xref>. Restriction enzymes were used as recommended by the manufacturer (New England Biolabs). Routine PCR amplification was performed with AmpliTaq DNA polymerase (Applied Biosystems) according to the manufacturer's recommendations. Wizard Plus Minipreps and Midipreps (Promega) purification systems were used for plasmid extraction. PCR and digestion products were purified with Wizard PCR Preps and Wizard DNA Clean-up systems (Promega). Ligation reactions were performed with the Rapid DNA Ligation Kit (Roche). DNA sequencing was performed by the Rockefeller University Protein/DNA Technology Center or by Macrogen (<ext-link ext-link-type="uri" xlink:href="http://www.macrogen.com" xlink:type="simple">www.macrogen.com</ext-link>).</p>
+      </sec>
+      <sec id="s2c">
+        <title>β-lactamase detection</title>
+        <p>Detection of functional β-lactamase locus was performed either with BBL™ DrySlide™ Nitrocefin (BD) (strains listed in <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref>) or with nitrocefin disks (Sigma-Aldrich) (strains listed in <xref ref-type="table" rid="pone-0023287-t002">Table 2</xref>) according to the manufacturer's recommendations for cultures grown overnight in TSB with and without induction with oxacillin at 0.5 µg/ml. Results were recorded after 30 min. incubation at room temperature. In the case of strains negative for the Nitrocefin assay, the absence of β-lactamase genes was confirmed by PCR with three pairs of primers targeting internal fragments of ca. 500 bp of <italic>blaZ</italic>, <italic>bla</italic>I, and <italic>blaR1</italic>. Primers were designed based on the available sequence at GenBank for Tn<italic>552</italic> of <italic>S. aureus</italic> (accession number: X52734); primer sequences were as follows (5′→3′): blaZ F, <named-content content-type="gene" xlink:type="simple">GAT AAG AGA TTT GCC TAT GC</named-content>; blaZ R, <named-content content-type="gene" xlink:type="simple">GCA TAT GTT ATT GCT TGA CC</named-content>; blaI F, <named-content content-type="gene" xlink:type="simple">GCA AGT TGA AAT ATC TAT GG</named-content>; blaI R, <named-content content-type="gene" xlink:type="simple">GAA AGG ATC CAT TTT CTG TAC ACT CTC ATC</named-content>; blaR1 F, <named-content content-type="gene" xlink:type="simple">CAT GAC AAT GAA GTA GAA GC</named-content>; and blaR1 R, <named-content content-type="gene" xlink:type="simple">CTT ATG ATT CCA TGA CAT ACG</named-content>.</p>
+      </sec>
+      <sec id="s2d">
+        <title>Phenotypic analysis</title>
+        <p>Initial susceptibility screening to oxacillin was determined for all parental and recombinant strains with 1 mg oxacillin diffusion disks prepared in-house <xref ref-type="bibr" rid="pone.0023287-deLencastre3">[33]</xref>. For the MIC determination oxacillin E-test strips (AB Biodisk) were used for all strains. Overnight TSB cultures were adjusted to an optical density at 620 nm (OD<sub>620</sub>) of 0.08 (equivalent to 0.5 McFarland), plated onto Muller Hinton agar (Difco) plates supplemented with 2% NaCl, and incubated at 37°C for 24 h. Strains listed in <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref> were also tested by population analysis profiles (PAPs), as previously described <xref ref-type="bibr" rid="pone.0023287-Jett1">[34]</xref>, <xref ref-type="bibr" rid="pone.0023287-Pinho1">[35]</xref>. In short, 10 µl drops of 10<sup>0</sup>, 10<sup>−1</sup>, 10<sup>−2</sup>, 10<sup>−3</sup>, 10<sup>−4</sup>, 10<sup>−5</sup>, and 10<sup>−6</sup> dilutions of an overnight culture were plated on TSA plates containing 0, 0.75, 1.5, 3, 6, 12.5, 25, 50, 100, 200, 400, 800 µg/ml of oxacillin (Sigma). For each oxacillin concentration, colonies were counted for the first dilution with non-confluent growh after 24 h and 48 h of incubation at 37°C.</p>
+      </sec>
+      <sec id="s2e">
+        <title>DNA sequencing of <italic>mecI</italic> and the <italic>mecA</italic> promoter</title>
+        <p>Based on the sequence of the <italic>mecA</italic> regulatory region for the reference strain N315 (accession number D86934) two primer sets were designed for the amplification and sequencing of the <italic>mecI</italic> coding region and the promoter region of the <italic>mecA</italic> gene (P<italic>mecA</italic>). Primer sequences were as follows (5′→3′): mecI F, <named-content content-type="gene" xlink:type="simple">TTA CGC TTA CCG CTT TTTCG</named-content>; mecI R, <named-content content-type="gene" xlink:type="simple">ATC AAG ACT TGC ATT CAG GC</named-content>; PmecA F, <named-content content-type="gene" xlink:type="simple">GTA ACA GAT GAT TGT TGA CC</named-content>; PmecA R, <named-content content-type="gene" xlink:type="simple">AAG ATG AAG TGG TAA TAG CG</named-content>. DNA sequencing raw data analysis and multi-sequence alignments were performed using the DNA Star software package (Lasergene). All sequences have been deposited in GenBank with accession numbers JF946491–JF946513.</p>
+      </sec>
+      <sec id="s2f">
+        <title>Recombinant strains</title>
+        <p>A DNA fragment containing the wild-type <italic>mecI</italic> coding region and the putative ribosomal binding site from the prototype strain N315 was amplified by PCR with the high-fidelity <italic>Pfu</italic> Turbo DNA polymerase (Stratagene, La Jolla, CA) with primers <named-content content-type="gene" xlink:type="simple">5′-ATG G<underline>GA ATT C</underline>AG CAC AAC AAA TTT CTG AGC-3′</named-content> (forward) and <named-content content-type="gene" xlink:type="simple">5′-AGA G<underline>GG GAT CC</underline>T CAA CGA CTT GAT TGT TTC C-3′</named-content> (reverse) containing the underlined recognition sequences for endonucleases <italic>Eco</italic>RI and <italic>Bam</italic>HI, respectively. Using the same strategy a PCR fragment containing a non-functional <italic>mecI</italic> coding sequence (<italic>mecI*</italic>) was obtained from strain ANS46, a prototype strain for SCC<italic>mec</italic> type III strain with a non-sense mutation at Gln<sub>68</sub> in the <italic>mecI</italic> coding sequence <xref ref-type="bibr" rid="pone.0023287-Oliveira1">[22]</xref>, <xref ref-type="bibr" rid="pone.0023287-Ito2">[36]</xref>. (CAA→TAA) . A DNA fragment containing the wild-type <italic>mecI-mecR1</italic> coding regions and the putative ribosomal binding sites from the prototype strain N315 was also amplified by PCR with <italic>Pfu</italic> Turbo DNA polymerase with forward primer <named-content content-type="gene" xlink:type="simple">5′-GTT C<underline>GA ATT C</underline>TT CTA CTT CAC CAT TAT CGC-3′</named-content> (containing the underlined recognition sequences for endonuclease <italic>Eco</italic>RI) and the same reverse primer described above. After double digestion and purification, the inserts were directionally cloned into the multiple cloning site of pGC2. pGC2 is a high-copy number <italic>E. coli-S. aureus</italic> shuttle plasmid with resistance determinants to ampicillin (<italic>E. coli</italic>) and chloramphenicol (<italic>S. aureus</italic>), obtained from P. Matthews, in which the multiple cloning site is flanked by the strong SP6 and T7 bacteriophage promoters. After ligation the recombinant plasmids were transformed and propagated in <italic>E. coli</italic> strain DH5α. The integrity of the <italic>mecI</italic><sup>WT</sup>, <italic>mecI*</italic>, and <italic>mecImecR1</italic> insert sequences was verified by DNA restriction analysis and sequencing. The recombinant plasmids were then introduced into the restriction-deficient <italic>S. aureus</italic> strain RN4220 (R. Novick) by electroporation with a Gene Pulser apparatus (Bio-Rad, Hercules, Calif.) essentially as previously described <xref ref-type="bibr" rid="pone.0023287-Kraemer1">[37]</xref> and then transduced into the MRSA clinical strains by using phage 80α, as previously described <xref ref-type="bibr" rid="pone.0023287-Oshida1">[38]</xref>.</p>
+        <p>For the electrophoretic mobility shift assay, the wild-type coding sequences of MecI and BlaI were fused to a histidine tag at the N-terminal. Inserts were obtained by PCR with the <italic>Pfu</italic> Turbo DNA polymerase using DNA from the prototype strain N315 as template and the following primers (5′→3′): mecI Q1, <named-content content-type="gene" xlink:type="simple">TCA G<underline>GG ATC C</underline>GA TAA TAA AAC GTA TGA AAT ATC ATC TGC</named-content> (forward); mecI Q2, <named-content content-type="gene" xlink:type="simple">GAG G<underline>AA GCT T</underline>TC AAC GAC TTG ATT GTT TCC</named-content> (reverse); blaI Q1, <named-content content-type="gene" xlink:type="simple">GTC T<underline>GG ATC C</underline>GC CAA TAA GCA AGT TGA ATA TCT ATG G-3</named-content> (forward); and blaI Q2, <named-content content-type="gene" xlink:type="simple">GAC A<underline>AA GCT T</underline>AT TTT CTG TAC ACT CTC ATC</named-content> (reverse), containing the underlined recognition sequences for endonucleases <italic>Bam</italic>HI (forward) and <italic>Hind</italic>III (reverse). After double digestion and purification, the inserts were directionally cloned into the multiple cloning site of pQE-30 (Qiagen), an <italic>E. coli</italic> expression vector containing the coding sequence for a tag of histidines upstream the <italic>Bam</italic>H1 restriction site. After ligation the recombinant plasmids were transformed and propagated in <italic>E. coli</italic> strain M15 (Qiagen). The integrity of insert sequences was verified by DNA restriction analysis and sequencing.</p>
+      </sec>
+      <sec id="s2g">
+        <title>Total RNA isolation and Northern blot analysis</title>
+        <p>Overnight cultures were grown in TSB, supplemented with chloramphenicol (10 µg/ml) when appropriate, and then diluted 1∶50 in fresh TSB. After cells were grown to the mid-log phase (OD<sub>620</sub>∼0.7), they were pelleted and processed with the FastRNA Blue isolation kit (Bio101, QBiogen) in combination with FastPrep FP120 (Bio101-Savant, QBiogen), according to the manufacturer's recommendations. For the analysis of the <italic>mecA</italic> induction profile, after cultures were grown to OD<sub>620</sub>∼0.7, oxacillin at 0.5 µg/ml was added and cultures were incubated for an additional 60 minutes. Samples were taken at 0, 5, 15, 30, and 60 minutes, pelleted and kept on ice until being simultaneously processed with the FastRNA Blue isolation kit. Total RNA (5 µg) was resolved through a 1.2% agarose-0.66 M formaldehyde gel in MOPS (morpholine propanesulfonic acid) running buffer (Sigma). Blotting of RNA onto Hybond N+ membranes (Amersham) was performed with Turboblotter alkaline transfer systems (Schleicher &amp; Schuell). For detection of <italic>mecA</italic> specific transcripts, a DNA probe was constructed by PCR amplification with primers (5′→3′): <italic>mecA</italic> P1, <named-content content-type="gene" xlink:type="simple">AAA TCG ATG TAA AGG TTG GC</named-content> and <italic>mecA</italic> P2, <named-content content-type="gene" xlink:type="simple">GTT CTG CAG TAC CGG ATT TG</named-content>. After purification the probe was labeled with a Ready To Go labeling kit (Amersham) by using [a-<sup>32</sup>P]dCTP (Amersham) and was hybridized under high-stringency conditions. The blots were subsequently washed and autoradiographed.</p>
+      </sec>
+      <sec id="s2h">
+        <title>Electrophoretic mobility shift assay</title>
+        <p>Expression and purification of MecI and BlaI N-terminal histidine tag fusions (His-MecI and His-BlaI, respectively) was performed in native conditions for 200 ml induced cultures using a Ni-NTA matrix (Qiagen), as recommended by the manufacturer. The purification procedure and recombinant protein purity was evaluated by SDS-PAGE analysis. The concentrations of purified His-MecI and His-BlaI proteins were estimated using the BCA Protein Assay Kit (Pierce), as recommended by the manufacturer. For the electrophoretic mobility shift assay we used the chemiluminescent-based DIG Gel Shift Kit (Roche), following the manufacturer's recommendations. As DNA target we used a c.a. 200 bp fragment encompassing the <italic>mecA</italic> promoter and operator sequences from prototype strain COL obtained by PCR amplification with primers (5′→3′): <italic>mecA</italic> PF1, <named-content content-type="gene" xlink:type="simple">ATA TCG TGA GCA ATG AAC TG</named-content> (forward) and <italic>mecA</italic> PR1, <named-content content-type="gene" xlink:type="simple">TAT ATA CCA AAC CCG ACA AC</named-content> (reverse).</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Results</title>
+      <sec id="s3a">
+        <title>Characterization of the prototype MRSA strains</title>
+        <p>The resistance-level to oxacillin of the prototype MRSA strains listed in <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref> was checked with the oxacillin E-test. All strains were classified as fully resistant to oxacillin: MIC≥32 µg/ml. The presence of inducible and functional expression of β-lactamase was also checked through the hydrolysis of the chromogenic substrate nitrocefin for overnight cultures grown in the presence or absence of an inducer (oxacillin at sub-MIC concentration of 0.5 µg/ml). All strains in <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref>, except the reference strain COL, were positive for β-lactamase and its expression was found to be inducible in the presence of oxacillin, suggesting a complete and functional <italic>bla</italic> locus (<italic>blaI-blaR1-blaZ</italic>).</p>
+        <p>The <italic>mecI</italic> sequence was determined for a total of 11 previously characterized strains positive for the <italic>mecI-mecR1 locus</italic> <xref ref-type="bibr" rid="pone.0023287-Oliveira1">[22]</xref>: three classified as ST5, SCC<italic>mec</italic> type II (including strains N315 and BK2464 listed in <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref>) and eight classified as ST239, SCC<italic>mec</italic> type III (including strains HU25 and BK2421 listed in <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref>). A conserved point mutation was found in all SCC<italic>mec</italic> type III strains. The mutation introduced a premature stop codon at Gln<sub>68</sub> (CAA→TAA) originating a truncated repressor protein (<italic>mecI</italic>*). Among the SCC<italic>mec</italic> type II strains, a point mutation (GGAG→GGA<underline>A</underline>) in the <italic>mecI</italic> ribosomal binding site (RBS) was detected in one strain (BK2464). No mutations were found within the <italic>mecI</italic> coding region for the two other SCC<italic>mec</italic> type II strains. A total of 10 previously characterized strains <xref ref-type="bibr" rid="pone.0023287-Oliveira1">[22]</xref>, including all strains listed in <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref>, were also sequenced for the <italic>mecA</italic> promoter region. Except for one mutation in the position −5 detected in a ST5, SCC<italic>mec</italic> type II strain, no point mutations were found in the promoter sequence of the <italic>mecA</italic> gene, when compared to the published sequence for the prototype strain N315 <xref ref-type="bibr" rid="pone.0023287-Hiramatsu1">[5]</xref>.</p>
+        <p>The induction profile of <italic>mecA</italic> transcription was checked by northern blotting analysis upon exposure to oxacillin for three prototype strains - PER34, HU25 and N315 - representing different SCC<italic>mec</italic> types and, therefore, with functional and non-functional <italic>mecI-</italic>mecR1 regulatory locus (<xref ref-type="table" rid="pone-0023287-t001">Table 1</xref> and <xref ref-type="fig" rid="pone-0023287-g001">Figure 1</xref>). The three strains tested were shown to have an inducible <italic>mecA</italic> expression independently of being positive or negative for a functional copy of the <italic>mecI-mecR1</italic> locus although there was a remarkable difference in the induction efficiencies: strains PER34 and HU25 (<italic>mecI</italic> negative and truncated <italic>mecI</italic>, respectively) showed a complete induction of <italic>mecA</italic> after 15 minutes, whereas for strain N315 (wild-type sequence for <italic>mecI-mecR1</italic>) the induction was not complete even after 60 minutes of induction. Since the three strains were positive for the β-lactamase locus, these observations confirm that <italic>mecA</italic> transcription can in fact be under the control of the <italic>blaI-blaR1</italic> regulatory <italic>locus</italic> in clinical MRSA strains and are also in agreement with the previous reported differences of induction efficiency of <italic>mecA</italic> between the <italic>mecI-mecR1</italic> and the <italic>blaI-blaR1</italic> systems.</p>
+        <fig id="pone-0023287-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0023287.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>Northern blot analysis of the <italic>mecA</italic> induction profile in three prototype MRSA strains.</title>
+            <p>Induction of <italic>mecA</italic> transcription for three prototype strains upon exposure to oxacillin at 0′, 5′, 15′, 30′, and 60′. Strain relevant characteristics are as follows: strain PER34 - SCC<italic>mec</italic> type I, <italic>mecI</italic> negative, Δ<italic>mecR1</italic>; strain HU25 - SCC<italic>mec</italic> type III, <italic>mecI</italic>*, <italic>mecR1</italic><sup>WT</sup>; strain N315 - SCC<italic>mec</italic> type II, <italic>mecI</italic><sup>WT</sup><italic>mecR1</italic><sup>WT</sup>. The three strains are β-lactamase positive.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0023287.g001" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s3b">
+        <title>Overexpression of the <italic>mecA</italic> repressor in prototype MRSA strains</title>
+        <p>From the above characterization of the prototype MRSA strains listed in <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref>, we were able to justify the high-level oxacillin resistance for strains carrying SCC<italic>mec</italic> types I and III. These were found to have no functional <italic>mecI-mecR1</italic> regulatory loci either due to the characteristic presence of an insertion sequence (SCC<italic>mec</italic> type I) or due to the conserved non-sense mutation within the coding region of <italic>mecI</italic> (SCC<italic>mec</italic> type III) identified in this study. However, for SCC<italic>mec</italic> type II strains we could not explain the high-resistance phenotype since, except for the point mutation in the <italic>mecI</italic> RBS of strain BK2464, no consistent alteration within the <italic>mecI</italic> coding region or <italic>mecA</italic> promoter sequence was detected.</p>
+        <p>To explore these puzzling observations, we have overexpressed <italic>in trans</italic> the <italic>mecA</italic> repressor in the prototype MRSA strains and compared the phenotypic expression of β-lactam resistance between the parental and transformed strains. For this purpose, all strains listed in <xref ref-type="table" rid="pone-0023287-t001">Table 1</xref> were transformed with a high-copy plasmid containing a wild-type copy of <italic>mecI</italic> of strain N315 (pGC2-<italic>mecI</italic>). Strain COL transformed with pGC2-mecI showed a dramatic decrease of the oxacillin resistance level according to the PAP profile (see <xref ref-type="fig" rid="pone-0023287-g002">Figure 2</xref>, panel A) and the MIC as determined by E-test dropped from &gt;256 to 1.5 µg/ml. Strains N315 and BK2464 (SCC<italic>mec</italic> type II) showed a slight decrease of the oxacillin resistance level according to the PAP profiles (see <xref ref-type="fig" rid="pone-0023287-g002">Figure 2</xref>, panel C for PAP profile of strain BK2464), although by E-test there was no detectable decrease for strain BK2464 (MIC&gt;256 µg/ml for both parental and recombinant strains) and only a slight decrease for strain N315 (from 32 to 16 µg/ml). Strains PER34 and HPV107 (SCC<italic>mec</italic> type I) and HU25 and BK2421 (SCC<italic>mec</italic> type III) showed no significant alteration of the oxacillin resistance phenotypic expression profile (see <xref ref-type="fig" rid="pone-0023287-g002">Figure 2</xref>, panels B and D, for PAP profiles of strains PER34 and HU25, respectively) nor in the MIC as determined by the E-test (MIC&gt;256 µg/ml for all cases).</p>
+        <fig id="pone-0023287-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0023287.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Population analysis profiles of representative parental strains and recombinant strains.</title>
+            <p>Panel A – strain COL and its recombinants strains COL+pGC2-<italic>mecI</italic><sup>WT</sup>, COL+pGC2-<italic>mecI</italic>*, and COL+pGC2-<italic>mecImecR1</italic> grown overnight with and without oxacillin before plating onto TSA plates. Panel B – strain PER34 (SCC<italic>mec</italic> type I) and PER34+pGC2-<italic>mecI</italic><sup>WT</sup>. Panel C – strain BK2464 (SCC<italic>mec</italic> type II) and BK2464+pGC2-<italic>mecI</italic><sup>WT</sup>. Panel D – strain HU25 (SCC<italic>mec</italic> type III) and HU25+pGC2-<italic>mecI</italic><sup>WT</sup>.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0023287.g002" xlink:type="simple"/>
+        </fig>
+        <p>A control experiment was done with the mutated <italic>mecI</italic> sequence found in SCC<italic>mec</italic> type III strains (<italic>mecI*</italic>). The cloning strategy was exactly the same used for obtaining the recombinant plasmid pGC2-<italic>mecI</italic>. When strain COL was transformed with pGC2-<italic>mecI*</italic> no significant alteration of the oxacillin resistance level was detected – see <xref ref-type="fig" rid="pone-0023287-g002">Figure 2</xref>, Panel A. Moreover, the northern blot analysis of the <italic>mecA</italic> transcription showed no differences between COL and COL+pGC2-<italic>mecI</italic>*, whereas no <italic>mecA</italic> transcript could be detected for COL+pGC2-<italic>mecI</italic> – see <xref ref-type="fig" rid="pone-0023287-g003">Figure 3</xref>, lanes 1–3.</p>
+        <fig id="pone-0023287-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0023287.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>Northern blotting analysis of <italic>mecA</italic> transcription in COL transformants.</title>
+            <p>Lane 1, parental strain COL; lane 2, COL+pGC2-<italic>mecI</italic><sup>WT</sup>; lane 3, COL+pGC2-<italic>mecI</italic>*; lane 4, COL+pGC2-<italic>mecImecR1</italic> uninduced; lane 5, COL+pGC2-<italic>mecImecR1</italic> induced with oxacillin.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0023287.g003" xlink:type="simple"/>
+        </fig>
+        <p>Since strain COL is negative for the <italic>mecI</italic> and has a truncated <italic>mecR1</italic>, the phenotype observed for COL+pGC2-<italic>mecI</italic> could be explained by the lack of an inducer of the <italic>mecA</italic> transcription able to release the <italic>mecI</italic>-mediated repression. To test this hypothesis, we have transformed COL with a recombinant plasmid containing the wild-type sequences for both <italic>mecImecR1</italic> (pGC2-<italic>mecImecR1</italic>). Although by northern blotting analysis the <italic>mecA</italic> transcription was restored after overnight growth in the presence of oxacillin (see <xref ref-type="fig" rid="pone-0023287-g003">Figure 3</xref>, lanes 4–5), suggesting a fully functional <italic>mecI-mecR1</italic> regulatory system, no significant increase on the oxacillin MIC was detected when compared to COL+pGC2-<italic>mecI</italic>. Moreover, when grown in liquid culture, this recombinant strain exhibited an atypical aggregation of cellular mass in solution (data not shown), suggesting a cellular toxic effect due to the overexpression of MecR1.</p>
+      </sec>
+      <sec id="s3c">
+        <title>Overexpression of <italic>mecI</italic> in an extended collection of representative MRSA strains</title>
+        <p>In order to confirm the previous observations, all strains listed in <xref ref-type="table" rid="pone-0023287-t002">Table 2</xref> were also transformed with the high-copy plasmid containing the wild-type <italic>mecI</italic> (pGC2-<italic>mecI</italic>). This collection includes four additional SCC<italic>mec</italic> type II strains, 13 SCC<italic>mec</italic> type IV strains, and isolates for SCC<italic>mec</italic> types V and VI. SCC<italic>mec</italic> types IV–VI are characterized by deletions in the <italic>mecImecR1</italic> locus due to the presence of insertion sequences. Once again, we could not detect significant alterations in the phenotypic expression of oxacillin resistance upon the overexpression of the <italic>mecA</italic> repressor, except for one strain negative for the nitrocefin assay (VNG17). However, for another nitrocefin negative strain (RJP17) the resistance phenotype was stable. The absence of β-lactamase was confirmed for these two strains by PCR amplification of internal fragments of <italic>blaZ</italic>, <italic>blaI</italic> and <italic>blaR1</italic>. No amplification signals were detected. DNA sequencing of the <italic>mecA</italic> promoter region for both strains revealed no mutations in the operator sequences but a point mutation in the <italic>mecA</italic> ribosomal-binding site was identified by comparison to the wild-type sequence of strain N315 (GGA GGA→GGA G<underline>T</underline>A).</p>
+      </sec>
+      <sec id="s3d">
+        <title>Relative affinity of MecI and BlaI for the <italic>mecA</italic> promoter sequence</title>
+        <p>In an attempt to explain the lack of effect on the resistance phenotype upon the overexpression of <italic>mecI</italic>, we have evaluated the <italic>in vitro</italic> relative binding affinity of MecI and BlaI repressors to the <italic>mecA</italic> operator sequences by an electrophoretic mobility shift assay (EMSA). For this purpose, we have expressed in <italic>E. coli</italic> N-terminal histidine-tag fusions to the wild-type protein sequences of prototype strain N315 (His-MecI and His-BlaI) and evaluated the binding of purified proteins to a DNA fragment containing the <italic>mecA</italic> promoter sequences of prototype strain COL. As illustrated in <xref ref-type="fig" rid="pone-0023287-g004">Figure 4</xref>, by using equivalent concentrations of the purified MecI and BlaI repressors, lower amounts of recombinant MecI protein are required to induce an electrophoretic shift of the DNA fragment containing the <italic>mecA</italic> promoter; i.e., suggesting that the cognate repressor of <italic>mecA</italic> has an increased affinity for its promoter sequences.</p>
+        <fig id="pone-0023287-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0023287.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Electrophoretic mobility shift assay of relative MecI and BlaI affinities for the <italic>mecA</italic> promoter sequence.</title>
+            <p>Binding reaction was performed with a labeled 200 bp DNA fragment encompassing the <italic>mecA</italic> promoter mixed with increasing amounts of purified MecI (panel A) and BlaI (panel B). Lanes are as follows: lane 1 – no protein (control); lane 2 – 0,001 µg; lane 3 – 0,01 µg; lane 4 – 0,05 µg; lane 5 – 0,1 µg; lane 6 – 0,25 µg; lane 7 – 0,5 µg; lane 8 – 1 µg; lane 9 – 0,1 ug of protein with a 125 molar excess of unlabelled DNA (specific competition).</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0023287.g004" xlink:type="simple"/>
+        </fig>
+      </sec>
+    </sec>
+    <sec id="s4">
+      <title>Discussion</title>
+      <p>The transcription of <italic>mecA</italic>, the gene responsible for the “broad-spectrum” β-lactam resistance in <italic>S. aureus</italic>, may be controlled by two regulatory systems: <italic>mecI-mecR1</italic> and <italic>blaI-blaR1</italic>. Due to the extremely slow induction of <italic>mecA</italic> expression mediated by <italic>mecI-mecR1</italic> regulators, it is believed that the high-level β-lactam resistance characteristic of many contemporary clinical MRSA strains requires a non-functional <italic>mecI-mecR1</italic> regulatory locus <xref ref-type="bibr" rid="pone.0023287-Hiramatsu1">[5]</xref>, <xref ref-type="bibr" rid="pone.0023287-KuwaharaArai1">[9]</xref>.</p>
+      <p>In this study we aimed to understand how the <italic>mecA</italic> transcription is regulated in contemporary pandemic MRSA strains, which in many cases express full β-lactam resistance. Based on previous studies by us and many others on the global epidemiology of MRSA, which included the characterization of the SCC<italic>mec</italic> element, we could, based on the current model of the <italic>mecA</italic> regulation, justify the potential for the expression of high-level β-lactam resistance in many MRSA clones; i.e. all those clones characterized by SCC<italic>mec</italic> types I and IV–VII, which have no-functional <italic>mecI-mecR1</italic> genes due to the presence of insertion sequences. However, for MRSA clones characterized by SCC<italic>mec</italic> types II, III and VIII, which carry a complete <italic>mecI-mecR1</italic> region, we could not explain the high-level β-lactam resistance phenotype. In addition, as illustrated among the MRSA strains selected for this study, no clear relationship exists between SCC<italic>mec</italic> type (i.e. <italic>mecI-mecR1</italic> functionality) and the level of resistance. For instance, low-level resistance is detected among SCC<italic>mec</italic> type IV strains that have no functional <italic>mecI-mecR1</italic> locus.</p>
+      <p>Upon DNA sequencing of the <italic>mecI</italic> coding region, we found a conserved non-sense mutation at Gln68 in all SCC<italic>mec</italic> type III strains tested. This mutation leads to a truncated MecI protein of 67 a.a. (instead of the 123 a.a. of the wild-type). This mutation appears to be conserved in the ST239-III lineage since it has also been detected in all isolates of a diverse international collection of c.a. 60 ST239-III strains whose genomic sequences have been fully determined <xref ref-type="bibr" rid="pone.0023287-Harris1">[39]</xref>. In addition, this very same mutation has been detected in a cluster of 12 clinical MRSA strains and found to be statistically associated to an increase in the <italic>mecA</italic> transcription, suggesting a non-functional MecI protein <xref ref-type="bibr" rid="pone.0023287-Rosato1">[40]</xref>. In our northern blotting experiments, overexpression of this mutated <italic>mecI</italic> failed to repress the <italic>mecA</italic> transcription on the prototype strain COL that is characterized by a constitutive expression of the resistance determinant. Altogether, these observations suggest that this conserved non-functional version of <italic>mecI</italic> accounts for the high-level resistance phenotype of SCC<italic>mec</italic> type III strains.</p>
+      <p>Concerning SCC<italic>mec</italic> type II strains, we detected in strain BK2464 a mutation within the ribosomal binding site (RBS) of <italic>mecI</italic>, from GGAG to GGA<underline>A</underline>. This mutation has also been previously detected among clinical MRSA strains and showed to be statistically associated to a decrease of <italic>mecA</italic> repression <xref ref-type="bibr" rid="pone.0023287-Rosato1">[40]</xref>, which could explain high-levels of β-lactam resistance. However, since we could not detect this mutation in the other two SCC<italic>mec</italic> type II strains analyzed, neither in all genomic and SCC<italic>mec</italic> sequences of type II strains available at GenBank (e.g. strains MRSA252, Mu3, Mu50, JH1, JH9, etc.), it seems that this alteration of the <italic>mecI</italic> RBS <italic>per se</italic> does not justify the β-lactam resistance phenotype of SCC<italic>mec</italic> type II strains. Rosato <italic>et al</italic> have also noticed that the <italic>mecI</italic> RBS differences could not entirely explain the difference in <italic>mecA</italic> transcription between isolates <xref ref-type="bibr" rid="pone.0023287-Rosato1">[40]</xref>. Regarding the <italic>mecA</italic> promoter, we identified a point mutation found in one single strain in the position −5, which theoretically may affect the binding of MecI <xref ref-type="bibr" rid="pone.0023287-Sharma1">[41]</xref>. However, this mutation was not detected either in the other SCC<italic>mec</italic> type II strains or in the available genomic sequences and, as such, it also does not justify the resistance phenotype of SCC<italic>mec</italic> type II strains. As we have not sequenced <italic>mecR1</italic>, the hypothesis that the inducer is mutated and able to induce <italic>mecA</italic> transcription more efficiently cannot be excluded. Nevertheless, this hypothesis seems unlikely since no mutations within the <italic>mecR1</italic> coding sequence were detected among genomic sequences available at Genbank, which include SCC<italic>mec</italic> type II and fully oxacillin-resistant strains. In addition, in a large study which addressed the allelic variation of <italic>mecA</italic> regulators only two silent mutations were found within the <italic>mecR1</italic> coding sequence <xref ref-type="bibr" rid="pone.0023287-Shukla1">[25]</xref>.</p>
+      <p>In order to further explore the puzzling observations described above, we have cloned the wild-type sequence of <italic>mecI</italic> from the reference strain N315 in a high-copy number plasmid with strong bacteriophage promoters flanking the cloning site and we have introduced this recombinant plasmid into prototype and representative MRSA strains. By over-expressing the repressor <italic>in trans</italic>, according to the current model for the <italic>mecA</italic> transcriptional control, we were expecting to see a significant decrease in the resistance level to oxacillin, particularly for strains naturally negative for <italic>mecI</italic> (i.e. containing SCC<italic>mec</italic> types I and IV–VII). To our surprise, except for strains COL and VNG17, the resistant phenotype to oxacillin showed no significant changes in all strains. Since we could see an effect in strains COL and VNG17, we were confident about the functionality of the cloned <italic>mecI</italic>. Nevertheless, we have also transformed COL with the truncated <italic>mecI</italic> found in SCC<italic>mec</italic> type III strains cloned into the same plasmid using exactly the same cloning strategy. As expected, the overexpression of the truncated <italic>mecI</italic> failed to cause any phenotypic alterations. Northern blotting analysis of <italic>mecA</italic> in COL and its transformants also showed that only the wild-type <italic>mecI</italic> was able to repress the <italic>mecA</italic> constitutive transcription of the parental strain. Because COL has no functional <italic>mecR1</italic>, the phenotype observed could be explained by the lack of an inducer able to release the <italic>mecI-</italic>mediated repression on <italic>mecA</italic>, although this would also apply to all other SCC<italic>mec</italic> types I and IV–VI tested for which there was no effect upon the overexpression of <italic>mecI</italic> (except for strain VNG17). Nevertheless, we have transformed COL with a recombinant plasmid containing the full wild-type <italic>mecI-mecR1</italic> system. Interestingly, although we could see induction of <italic>mecA</italic> transcription in the presence of oxacillin, the resistance phenotype of the parental strain could not be restored. Moreover, the transformed strain presented clear physiological perturbations when grown in liquid medium, which suggests that the overexpression of MecR1, a trans-membranar protein, might be toxic for the cell, as previously observed <xref ref-type="bibr" rid="pone.0023287-Rosato2">[42]</xref>.</p>
+      <p>The two strains for which the <italic>mecI</italic> overexpression caused a decrease in the oxacillin-resistance level (COL and VNG17) were negative for the β-lactamase locus, suggesting that this <italic>locus</italic> might be responsible for the observed “resistance” of MRSA strains to the <italic>mecI</italic> overexpression. Indeed, it has been shown that <italic>blaI-blaR1</italic> can efficiently repress and induce <italic>mecA</italic> transcription <xref ref-type="bibr" rid="pone.0023287-Hackbarth1">[6]</xref>, <xref ref-type="bibr" rid="pone.0023287-Ryffel1">[7]</xref>; we also confirmed these observations by northern blotting analysis of the <italic>mecA</italic> induction profile in three prototype strains (<xref ref-type="fig" rid="pone-0023287-g001">Figure 1</xref>). However, two lines of evidence may reject this hypothesis. First, in another β-lactamase negative strain (RJP17), belonging to the same clone of VNG17 and isolated in the same country and time period, we could not detect significant alterations in the oxacillin resistance phenotype upon the overexpression of <italic>mecI</italic>. Second, although <italic>blaI-blaR1</italic> can efficiently induce <italic>mecA</italic> transcription, the <italic>blaI-blaR1</italic> and <italic>mecI-mecR1</italic> systems are not inter-changeable; i.e. BlaR1 is not able to release the MecI-mediated repression on <italic>mecA</italic> <xref ref-type="bibr" rid="pone.0023287-McKinney1">[8]</xref>. That is to say, there is no evidence so far supporting the hypothesis that the <italic>blaI-blaR1</italic> system is able to out-compete the MecI-mediated repression on <italic>mecA</italic>, which could eventually account for the lack of effect on the resistance phenotype observed in our overexpression experiments. Moreover, in our experimental system the <italic>blaI-blaR1</italic> expressed from its native promoter would have to out-compete MecI expressed constitutively from a strong bacteriophage promoter.</p>
+      <p>Inspired by the fact that the <italic>mecI-mecR1</italic> and <italic>blaI-blaR1</italic> systems differ remarkably in the induction efficiency of <italic>mecA</italic>, we have tested the hypothesis that our observations could be explained by differences in the relative affinities of MecI and BlaI for the <italic>mecA</italic> promoter sequences. We have addressed this hypothesis <italic>in vitro</italic> through an electrophoretic mobility shift assay, which clearly showed that lower concentrations of purified MecI are required for detecting a binding to the DNA fragment containing the <italic>mecA</italic> promoter sequences, suggesting an increased affinity when compared to BlaI. Therefore, our observations could not be explained by an increased affinity of BlaR1 for the <italic>mecA</italic> promoter, which eventually would “protect” against the increased cellular amounts of MecI. Actually, this hypothesis would make little sense if one takes into account that the induction process involves the proteolysis of BlaR1 and BlaI and that the sustained expression of the resistance gene requires the continuous expression of both regulatory proteins from their common promoter <xref ref-type="bibr" rid="pone.0023287-Zhang1">[43]</xref>. In our experimental system, this signal transduction cascade would have to out-compete the binding of MecI (overexpressed constitutively) to the <italic>mecA</italic> promoter.</p>
+      <p>In short, this study has shown that unexpectedly the β-lactam resistance phenotype of MRSA strains is not affected by the overexpression <italic>in trans</italic> of the <italic>mecA</italic> repressor, even in strains negative for or with non-functional <italic>mecI</italic> gene. This puzzling observation, besides contradicting the current model for the <italic>mecA</italic> transcriptional control in contemporary MRSA strains, strongly suggests that other yet unidentified determinants are involved directly or indirectly in the transcriptional control of the <italic>mecA</italic> gene and, consequently in the phenotypic expression of β-lactam resistance. Elucidation of the nature of these determinants is under way and will be of paramount clinical relevance, since the full understanding of the molecular mechanisms controlling the phenotypic expression of the “broad-spectrum” β-lactam resistance in clinical MRSA strains may contribute to the design of new therapeutic strategies, which may extend the clinical utility of β-lactams.</p>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>We thank A. Tomasz for all the encouragement and stimulating discussions. We thank E. Feil for checking the ST239 genomic sequences for the Gln68 mutation in <italic>mecI</italic>. We also thank T. Ito and W.B. Grubb for having kindly provided some prototype MRSA strains used in this study.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0023287-Chambers1">
+        <label>1</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Chambers</surname><given-names>HF</given-names></name><name name-style="western"><surname>Deleo</surname><given-names>FR</given-names></name></person-group>             <year>2009</year>             <article-title>Waves of resistance: Staphylococcus aureus in the antibiotic era.</article-title>             <source>Nat Rev Microbiol</source>             <volume>7</volume>             <fpage>629</fpage>             <lpage>641</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Song1">
+        <label>2</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Song</surname><given-names>MD</given-names></name><name name-style="western"><surname>Wachi</surname><given-names>M</given-names></name><name name-style="western"><surname>Doi</surname><given-names>M</given-names></name><name name-style="western"><surname>Ishino</surname><given-names>F</given-names></name><name name-style="western"><surname>Matsuhashi</surname><given-names>M</given-names></name></person-group>             <year>1987</year>             <article-title>Evolution of an inducible penicillin-target protein in methicillin-resistant Staphylococcus aureus by gene fusion.</article-title>             <source>FEBS Lett</source>             <volume>221</volume>             <fpage>167</fpage>             <lpage>171</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Hartman1">
+        <label>3</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hartman</surname><given-names>B</given-names></name><name name-style="western"><surname>Tomasz</surname><given-names>A</given-names></name></person-group>             <year>1981</year>             <article-title>Altered penicillin-binding proteins in methicillin-resistant strains of Staphylococcus aureus.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>19</volume>             <fpage>726</fpage>             <lpage>735</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Ito1">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ito</surname><given-names>T</given-names></name><name name-style="western"><surname>Katayama</surname><given-names>Y</given-names></name><name name-style="western"><surname>Hiramatsu</surname><given-names>K</given-names></name></person-group>             <year>1999</year>             <article-title>Cloning and nucleotide sequence determination of the entire mec DNA of pre-methicillin-resistant Staphylococcus aureus N315.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>43</volume>             <fpage>1449</fpage>             <lpage>1458</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Hiramatsu1">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hiramatsu</surname><given-names>K</given-names></name><name name-style="western"><surname>Asada</surname><given-names>K</given-names></name><name name-style="western"><surname>Suzuki</surname><given-names>E</given-names></name><name name-style="western"><surname>Okonogi</surname><given-names>K</given-names></name><name name-style="western"><surname>Yokota</surname><given-names>T</given-names></name></person-group>             <year>1992</year>             <article-title>Molecular cloning and nucleotide sequence determination of the regulator region of mecA gene in methicillin-resistant Staphylococcus aureus (MRSA).</article-title>             <source>FEBS Lett</source>             <volume>298</volume>             <fpage>133</fpage>             <lpage>136</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Hackbarth1">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hackbarth</surname><given-names>CJ</given-names></name><name name-style="western"><surname>Chambers</surname><given-names>HF</given-names></name></person-group>             <year>1993</year>             <article-title>blaI and blaR1 regulate beta-lactamase and PBP 2a production in methicillin-resistant Staphylococcus aureus.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>37</volume>             <fpage>1144</fpage>             <lpage>1149</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Ryffel1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ryffel</surname><given-names>C</given-names></name><name name-style="western"><surname>Kayser</surname><given-names>FH</given-names></name><name name-style="western"><surname>Berger-Bachi</surname><given-names>B</given-names></name></person-group>             <year>1992</year>             <article-title>Correlation between regulation of mecA transcription and expression of methicillin resistance in staphylococci.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>36</volume>             <fpage>25</fpage>             <lpage>31</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-McKinney1">
+        <label>8</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>McKinney</surname><given-names>TK</given-names></name><name name-style="western"><surname>Sharma</surname><given-names>VK</given-names></name><name name-style="western"><surname>Craig</surname><given-names>WA</given-names></name><name name-style="western"><surname>Archer</surname><given-names>GL</given-names></name></person-group>             <year>2001</year>             <article-title>Transcription of the gene mediating methicillin resistance in Staphylococcus aureus (mecA) is corepressed but not coinduced by cognate mecA and beta-lactamase regulators.</article-title>             <source>J Bacteriol</source>             <volume>183</volume>             <fpage>6862</fpage>             <lpage>6868</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-KuwaharaArai1">
+        <label>9</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kuwahara-Arai</surname><given-names>K</given-names></name><name name-style="western"><surname>Kondo</surname><given-names>N</given-names></name><name name-style="western"><surname>Hori</surname><given-names>S</given-names></name><name name-style="western"><surname>Tateda-Suzuki</surname><given-names>E</given-names></name><name name-style="western"><surname>Hiramatsu</surname><given-names>K</given-names></name></person-group>             <year>1996</year>             <article-title>Suppression of methicillin resistance in a mecA-containing pre-methicillin-resistant Staphylococcus aureus strain is caused by the mecI-mediated repression of PBP 2′ production.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>40</volume>             <fpage>2680</fpage>             <lpage>2685</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Dickinson1">
+        <label>10</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Dickinson</surname><given-names>TM</given-names></name><name name-style="western"><surname>Archer</surname><given-names>GL</given-names></name></person-group>             <year>2000</year>             <article-title>Phenotypic expression of oxacillin resistance in Staphylococcus epidermidis: roles of mecA transcriptional regulation and resistant-subpopulation selection.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>44</volume>             <fpage>1616</fpage>             <lpage>1623</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Archer1">
+        <label>11</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Archer</surname><given-names>GL</given-names></name><name name-style="western"><surname>Niemeyer</surname><given-names>DM</given-names></name><name name-style="western"><surname>Thanassi</surname><given-names>JA</given-names></name><name name-style="western"><surname>Pucci</surname><given-names>MJ</given-names></name></person-group>             <year>1994</year>             <article-title>Dissemination among staphylococci of DNA sequences associated with methicillin resistance.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>38</volume>             <fpage>447</fpage>             <lpage>454</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-HurlimannDalel1">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hurlimann-Dalel</surname><given-names>RL</given-names></name><name name-style="western"><surname>Ryffel</surname><given-names>C</given-names></name><name name-style="western"><surname>Kayser</surname><given-names>FH</given-names></name><name name-style="western"><surname>Berger-Bachi</surname><given-names>B</given-names></name></person-group>             <year>1992</year>             <article-title>Survey of the methicillin resistance-associated genes mecA, mecR1-mecI, and femA-femB in clinical isolates of methicillin-resistant Staphylococcus aureus.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>36</volume>             <fpage>2617</fpage>             <lpage>2621</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Kobayashi1">
+        <label>13</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kobayashi</surname><given-names>N</given-names></name><name name-style="western"><surname>Taniguchi</surname><given-names>K</given-names></name><name name-style="western"><surname>Urasawa</surname><given-names>S</given-names></name></person-group>             <year>1998</year>             <article-title>Analysis of diversity of mutations in the mecI gene and mecA promoter/operator region of methicillin-resistant Staphylococcus aureus and Staphylococcus epidermidis.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>42</volume>             <fpage>717</fpage>             <lpage>720</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Suzuki1">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Suzuki</surname><given-names>E</given-names></name><name name-style="western"><surname>Kuwahara-Arai</surname><given-names>K</given-names></name><name name-style="western"><surname>Richardson</surname><given-names>JF</given-names></name><name name-style="western"><surname>Hiramatsu</surname><given-names>K</given-names></name></person-group>             <year>1993</year>             <article-title>Distribution of mec regulator genes in methicillin-resistant Staphylococcus clinical strains.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>37</volume>             <fpage>1219</fpage>             <lpage>1226</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Weller1">
+        <label>15</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Weller</surname><given-names>TM</given-names></name></person-group>             <year>1999</year>             <article-title>The distribution of mecA, mecR1 and mecI and sequence analysis of mecI and the mec promoter region in staphylococci expressing resistance to methicillin.</article-title>             <source>J Antimicrob Chemother</source>             <volume>43</volume>             <fpage>15</fpage>             <lpage>22</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Hartman2">
+        <label>16</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hartman</surname><given-names>BJ</given-names></name><name name-style="western"><surname>Tomasz</surname><given-names>A</given-names></name></person-group>             <year>1986</year>             <article-title>Expression of methicillin resistance in heterogeneous strains of Staphylococcus aureus.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>29</volume>             <fpage>85</fpage>             <lpage>92</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Murakami1">
+        <label>17</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Murakami</surname><given-names>K</given-names></name><name name-style="western"><surname>Tomasz</surname><given-names>A</given-names></name></person-group>             <year>1989</year>             <article-title>Involvement of multiple genetic determinants in high-level methicillin resistance in Staphylococcus aureus.</article-title>             <source>J Bacteriol</source>             <volume>171</volume>             <fpage>874</fpage>             <lpage>879</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Archer2">
+        <label>18</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Archer</surname><given-names>GL</given-names></name><name name-style="western"><surname>Bosilevac</surname><given-names>JM</given-names></name></person-group>             <year>2001</year>             <article-title>Signaling antibiotic resistance in staphylococci.</article-title>             <source>Science</source>             <volume>291</volume>             <fpage>1915</fpage>             <lpage>1916</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-MallorquFernndez1">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Mallorquí-Fernández</surname><given-names>G</given-names></name><name name-style="western"><surname>Marrero</surname><given-names>A</given-names></name><name name-style="western"><surname>García-Piquè</surname><given-names>S</given-names></name><name name-style="western"><surname>García-Castellanos</surname><given-names>R</given-names></name><name name-style="western"><surname>Gomis-Rüth</surname><given-names>FX</given-names></name></person-group>             <year>2004</year>             <article-title>Staphylococcal methicillin resistance: fine focus on folds and functions.</article-title>             <source>FEMS Microbiol Lett</source>             <volume>235</volume>             <fpage>1</fpage>             <lpage>8</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-GarcaCastellanos1">
+        <label>20</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>García-Castellanos</surname><given-names>R</given-names></name><name name-style="western"><surname>Mallorquí-Fernández</surname><given-names>G</given-names></name><name name-style="western"><surname>Marrero</surname><given-names>A</given-names></name><name name-style="western"><surname>Potempa</surname><given-names>J</given-names></name><name name-style="western"><surname>Coll</surname><given-names>M</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>On the transcriptional regulation of methicillin resistance: MecI repressor in complex with its operator.</article-title>             <source>J Biol Chem</source>             <volume>279</volume>             <fpage>17888</fpage>             <lpage>17896</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Cohen1">
+        <label>21</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cohen</surname><given-names>S</given-names></name><name name-style="western"><surname>Sweeney</surname><given-names>HM</given-names></name></person-group>             <year>1968</year>             <article-title>Constitutive penicillinase formation in Staphylococcus aureus owing to a mutation unlinked to the penicillinase plasmid.</article-title>             <source>J Bacteriol</source>             <volume>95</volume>             <fpage>1368</fpage>             <lpage>1374</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Oliveira1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Oliveira</surname><given-names>DC</given-names></name><name name-style="western"><surname>Tomasz</surname><given-names>A</given-names></name><name name-style="western"><surname>de Lencastre</surname><given-names>H</given-names></name></person-group>             <year>2001</year>             <article-title>The evolution of pandemic clones of methicillin resistant Staphylococcus aureus: identification of two ancestral genetic backgrounds and the associated mec elements.</article-title>             <source>Microb Drug Resist</source>             <volume>7</volume>             <fpage>349</fpage>             <lpage>361</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Enright1">
+        <label>23</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Enright</surname><given-names>MC</given-names></name><name name-style="western"><surname>Robinson</surname><given-names>DA</given-names></name><name name-style="western"><surname>Randle</surname><given-names>G</given-names></name><name name-style="western"><surname>Feil</surname><given-names>EJ</given-names></name><name name-style="western"><surname>Grundmann</surname><given-names>H</given-names></name><etal/></person-group>             <year>2002</year>             <article-title>The evolutionary history of methicillin-resistant Staphylococcus aureus (MRSA).</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>99</volume>             <fpage>7687</fpage>             <lpage>7692</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-IWGSCC1">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <collab xlink:type="simple">IWG-SCC</collab>             <year>2009</year>             <article-title>Classification of staphylococcal cassette chromosome mec (SCCmec): guidelines for reporting novel SCCmec elements.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>53</volume>             <fpage>4961</fpage>             <lpage>4967</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Shukla1">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Shukla</surname><given-names>SK</given-names></name><name name-style="western"><surname>Ramaswamy</surname><given-names>SV</given-names></name><name name-style="western"><surname>Conradt</surname><given-names>J</given-names></name><name name-style="western"><surname>Stemper</surname><given-names>ME</given-names></name><name name-style="western"><surname>Reich</surname><given-names>R</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>Novel Polymorphisms in mec Genes and a New mec Complex Type in Methicillin-Resistant Staphylococcus aureus Isolates Obtained in Rural Wisconsin.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>48</volume>             <fpage>3080</fpage>             <lpage>3085</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-deLencastre1">
+        <label>26</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>de Lencastre</surname><given-names>H</given-names></name><name name-style="western"><surname>Tomasz</surname><given-names>A</given-names></name></person-group>             <year>1994</year>             <article-title>Reassessment of the number of auxiliary genes essential for expression of high-level methicillin resistance in Staphylococcus aureus.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>38</volume>             <fpage>2590</fpage>             <lpage>2598</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-deLencastre2">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>de Lencastre</surname><given-names>H</given-names></name><name name-style="western"><surname>Wu</surname><given-names>SW</given-names></name><name name-style="western"><surname>Pinho</surname><given-names>MG</given-names></name><name name-style="western"><surname>Ludovice</surname><given-names>AM</given-names></name><name name-style="western"><surname>Filipe</surname><given-names>S</given-names></name><etal/></person-group>             <year>1999</year>             <article-title>Antibiotic resistance as a stress response: complete sequencing of a large number of chromosomal loci in Staphylococcus aureus strain COL that impact on the expression of resistance to methicillin.</article-title>             <source>Microb Drug Resist</source>             <volume>5</volume>             <fpage>163</fpage>             <lpage>175</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Milheirico1">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Milheirico</surname><given-names>C</given-names></name><name name-style="western"><surname>Oliveira</surname><given-names>DC</given-names></name><name name-style="western"><surname>de Lencastre</surname><given-names>H</given-names></name></person-group>             <year>2007</year>             <article-title>Multiplex PCR strategy for subtyping the staphylococcal cassette chromosome mec type IV in methicillin-resistant Staphylococcus aureus: ‘SCCmec IV multiplex’.</article-title>             <source>J Antimicrob Chemother</source>             <volume>60</volume>             <fpage>42</fpage>             <lpage>48</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Milheirico2">
+        <label>29</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Milheirico</surname><given-names>C</given-names></name><name name-style="western"><surname>Oliveira</surname><given-names>DC</given-names></name><name name-style="western"><surname>de Lencastre</surname><given-names>H</given-names></name></person-group>             <year>2007</year>             <article-title>Update to the multiplex PCR strategy for assignment of mec element types in Staphylococcus aureus.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>51</volume>             <fpage>3374</fpage>             <lpage>3377</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Oliveira2">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Oliveira</surname><given-names>DC</given-names></name><name name-style="western"><surname>de Lencastre</surname><given-names>H</given-names></name></person-group>             <year>2002</year>             <article-title>Multiplex PCR strategy for rapid identification of structural types and variants of the mec element in methicillin resistant isolates of Staphylococcus aureus.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>46</volume>             <fpage>2155</fpage>             <lpage>2161</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Ausubel1">
+        <label>31</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ausubel</surname><given-names>FM</given-names></name><name name-style="western"><surname>Brent</surname><given-names>R</given-names></name><name name-style="western"><surname>Kingston</surname><given-names>RE</given-names></name><name name-style="western"><surname>Moore</surname><given-names>DD</given-names></name><name name-style="western"><surname>Seidman</surname><given-names>JG</given-names></name><etal/></person-group>             <year>1992</year>             <source>Short protocols in Molecular Biology</source>             <publisher-loc>New York</publisher-loc>             <publisher-name>Green Publishing Associates and John Wiley &amp; Sons</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Sambrook1">
+        <label>32</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Sambrook</surname><given-names>JE</given-names></name><name name-style="western"><surname>Fritsch</surname><given-names>EF</given-names></name><name name-style="western"><surname>Maniatis</surname><given-names>T</given-names></name></person-group>             <year>1989</year>             <source>Molecular cloning: a laboratory manual</source>             <publisher-loc>Cold Spring Harbor, N.Y.</publisher-loc>             <publisher-name>Cold Spring Harbor Laboratory</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-deLencastre3">
+        <label>33</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>de Lencastre</surname><given-names>H</given-names></name><name name-style="western"><surname>Sa Figueiredo</surname><given-names>AM</given-names></name><name name-style="western"><surname>Urban</surname><given-names>C</given-names></name><name name-style="western"><surname>Rahal</surname><given-names>J</given-names></name><name name-style="western"><surname>Tomasz</surname><given-names>A</given-names></name></person-group>             <year>1991</year>             <article-title>Multiple mechanisms of methicillin resistance and improved methods for detection in clinical isolates of Staphylococcus aureus.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>35</volume>             <fpage>632</fpage>             <lpage>639</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Jett1">
+        <label>34</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Jett</surname><given-names>BD</given-names></name><name name-style="western"><surname>Hatter</surname><given-names>KL</given-names></name><name name-style="western"><surname>Huycke</surname><given-names>MM</given-names></name><name name-style="western"><surname>Gilmore</surname><given-names>MS</given-names></name></person-group>             <year>1997</year>             <article-title>Simplified agar plate method for quantifying viable bacteria.</article-title>             <source>Biotechniques</source>             <volume>23</volume>             <fpage>648</fpage>             <lpage>650</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Pinho1">
+        <label>35</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Pinho</surname><given-names>MG</given-names></name><name name-style="western"><surname>de Lencastre</surname><given-names>H</given-names></name><name name-style="western"><surname>Tomasz</surname><given-names>A</given-names></name></person-group>             <year>1998</year>             <article-title>Transcriptional analysis of the Staphylococcus aureus penicillin binding protein 2 gene.</article-title>             <source>J Bacteriol</source>             <volume>180</volume>             <fpage>6077</fpage>             <lpage>6081</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Ito2">
+        <label>36</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ito</surname><given-names>T</given-names></name><name name-style="western"><surname>Katayama</surname><given-names>Y</given-names></name><name name-style="western"><surname>Asada</surname><given-names>K</given-names></name><name name-style="western"><surname>Mori</surname><given-names>N</given-names></name><name name-style="western"><surname>Tsutsumimoto</surname><given-names>K</given-names></name><etal/></person-group>             <year>2001</year>             <article-title>Structural comparison of three types of staphylococcal cassette chromosome mec integrated in the chromosome in methicillin-resistant Staphylococcus aureus.</article-title>             <source>Antimicrob Agents Chemother</source>             <volume>45</volume>             <fpage>1323</fpage>             <lpage>1336</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Kraemer1">
+        <label>37</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kraemer</surname><given-names>GR</given-names></name><name name-style="western"><surname>Iandolo</surname><given-names>JJ</given-names></name></person-group>             <year>1990</year>             <article-title>High-frequency transformation of Staphylococcus aureus by electroporation.</article-title>             <source>Current Microbiology</source>             <volume>21</volume>             <fpage>373</fpage>             <lpage>376</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Oshida1">
+        <label>38</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Oshida</surname><given-names>T</given-names></name><name name-style="western"><surname>Tomasz</surname><given-names>A</given-names></name></person-group>             <year>1992</year>             <article-title>Isolation and characterization of a Tn551-autolysis mutant of Staphylococcus aureus.</article-title>             <source>J Bacteriol</source>             <volume>174</volume>             <fpage>4952</fpage>             <lpage>4959</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Harris1">
+        <label>39</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Harris</surname><given-names>SR</given-names></name><name name-style="western"><surname>Feil</surname><given-names>EJ</given-names></name><name name-style="western"><surname>Holden</surname><given-names>MTG</given-names></name><name name-style="western"><surname>Quail</surname><given-names>MA</given-names></name><name name-style="western"><surname>Nickerson</surname><given-names>EK</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Evolution of MRSA during hospital transmission and intercontinental spread.</article-title>             <source>Science</source>             <volume>327</volume>             <fpage>469</fpage>             <lpage>474</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Rosato1">
+        <label>40</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rosato</surname><given-names>AE</given-names></name><name name-style="western"><surname>Craig</surname><given-names>WA</given-names></name><name name-style="western"><surname>Archer</surname><given-names>GL</given-names></name></person-group>             <year>2003</year>             <article-title>Quantitation of mecA Transcription in Oxacillin-Resistant Staphylococcus aureus Clinical Isolates.</article-title>             <source>Journal of Bacteriology</source>             <volume>185</volume>             <fpage>3446</fpage>             <lpage>3452</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Sharma1">
+        <label>41</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Sharma</surname><given-names>VK</given-names></name><name name-style="western"><surname>Hackbarth</surname><given-names>CJ</given-names></name><name name-style="western"><surname>Dickinson</surname><given-names>TM</given-names></name><name name-style="western"><surname>Archer</surname><given-names>GL</given-names></name></person-group>             <year>1998</year>             <article-title>Interaction of native and mutant MecI repressors with sequences that regulate mecA, the gene encoding penicillin binding protein 2a in methicillin-resistant staphylococci.</article-title>             <source>J Bacteriol</source>             <volume>180</volume>             <fpage>2160</fpage>             <lpage>2166</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Rosato2">
+        <label>42</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Rosato</surname><given-names>AE</given-names></name><name name-style="western"><surname>Kreiswirth</surname><given-names>BN</given-names></name><name name-style="western"><surname>Craig</surname><given-names>WA</given-names></name><name name-style="western"><surname>Eisner</surname><given-names>W</given-names></name><name name-style="western"><surname>Climo</surname><given-names>MW</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>mecA-blaZ Corepressors in Clinical <italic>Staphylococcus aureus</italic> Isolates.</article-title>             <source>Antimicrobial Agents and Chemotherapy</source>             <volume>47</volume>             <fpage>1460</fpage>             <lpage>1463</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0023287-Zhang1">
+        <label>43</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Zhang</surname><given-names>HZ</given-names></name><name name-style="western"><surname>Hackbarth</surname><given-names>CJ</given-names></name><name name-style="western"><surname>Chansky</surname><given-names>KM</given-names></name><name name-style="western"><surname>Chambers</surname><given-names>HF</given-names></name></person-group>             <year>2001</year>             <article-title>A proteolytic transmembrane signaling pathway and resistance to beta-lactams in staphylococci.</article-title>             <source>Science</source>             <volume>291</volume>             <fpage>1962</fpage>             <lpage>1965</lpage>          </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

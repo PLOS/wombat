@@ -1,0 +1,785 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.1d3" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0192138</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-17-20285</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Diagnostic medicine</subject><subj-group><subject>Signs and symptoms</subject><subj-group><subject>Stenosis</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Pathology and laboratory medicine</subject><subj-group><subject>Signs and symptoms</subject><subj-group><subject>Stenosis</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Body fluids</subject><subj-group><subject>Blood</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Body fluids</subject><subj-group><subject>Blood</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Physiology</subject><subj-group><subject>Body fluids</subject><subj-group><subject>Blood</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Physiology</subject><subj-group><subject>Body fluids</subject><subj-group><subject>Blood</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Body fluids</subject><subj-group><subject>Blood</subject><subj-group><subject>Blood flow</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Body fluids</subject><subj-group><subject>Blood</subject><subj-group><subject>Blood flow</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Physiology</subject><subj-group><subject>Body fluids</subject><subj-group><subject>Blood</subject><subj-group><subject>Blood flow</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Physiology</subject><subj-group><subject>Body fluids</subject><subj-group><subject>Blood</subject><subj-group><subject>Blood flow</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Cardiovascular anatomy</subject><subj-group><subject>Blood vessels</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Cardiovascular anatomy</subject><subj-group><subject>Blood vessels</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Physical sciences</subject><subj-group><subject>Physics</subject><subj-group><subject>Condensed matter physics</subject><subj-group><subject>Magnetism</subject><subj-group><subject>Magnetic fields</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Physical sciences</subject><subj-group><subject>Physics</subject><subj-group><subject>Classical mechanics</subject><subj-group><subject>Continuum mechanics</subject><subj-group><subject>Fluid mechanics</subject><subj-group><subject>Fluid dynamics</subject><subj-group><subject>Fluid flow</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Vascular medicine</subject><subj-group><subject>Blood pressure</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Cardiovascular anatomy</subject><subj-group><subject>Blood vessels</subject><subj-group><subject>Arteries</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Cardiovascular anatomy</subject><subj-group><subject>Blood vessels</subject><subj-group><subject>Arteries</subject></subj-group></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Modeling and analysis of biomagnetic blood Carreau fluid flow through a stenosis artery with magnetic heat transfer: A transient study</article-title>
+<alt-title alt-title-type="running-head">Analysis of biomagnetic blood Carreau fluid flow through a stenosis artery with magnetic heat transfer</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Abdollahzadeh Jamalabadi</surname>
+<given-names>Mohammad Yaghoub</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Daqiqshirazi</surname>
+<given-names>Mohammadreza</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Nasiri</surname>
+<given-names>Hossein</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0001-7301-2561</contrib-id>
+<name name-style="western">
+<surname>Safaei</surname>
+<given-names>Mohammad Reza</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+<xref ref-type="aff" rid="aff005"><sup>5</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Nguyen</surname>
+<given-names>Truong Khang</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+<xref ref-type="aff" rid="aff005"><sup>5</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Department of Mechanical, Robotics and Energy Engineering, Dongguk University, Seoul, Republic of Korea</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>School of Mechanical Engineering, College of Engineering, University of Tehran, Tehran, Iran</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Department of Mechanical Engineering, Daneshpajoohan Higher Education Institute, Isfahan, Iran</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Division of Computational Physics, Institute for Computational Science, Ton Duc Thang University, Ho Chi Minh City, Vietnam</addr-line></aff>
+<aff id="aff005"><label>5</label> <addr-line>Faculty of Electrical and Electronics Engineering, Ton Duc Thang University, Ho Chi Minh City, Vietnam</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Tang</surname>
+<given-names>Dalin</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Worcester Polytechnic Institute, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">cfd_safaei@tdt.edu.vn</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>28</day>
+<month>2</month>
+<year>2018</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2018</year>
+</pub-date>
+<volume>13</volume>
+<issue>2</issue>
+<elocation-id>e0192138</elocation-id>
+<history>
+<date date-type="received">
+<day>26</day>
+<month>5</month>
+<year>2017</year>
+</date>
+<date date-type="accepted">
+<day>17</day>
+<month>1</month>
+<year>2018</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2018</copyright-year>
+<copyright-holder>Abdollahzadeh Jamalabadi et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0192138"/>
+<abstract>
+<p>We present a numerical investigation of tapered arteries that addresses the transient simulation of non-Newtonian bio-magnetic fluid dynamics (BFD) of blood through a stenosis artery in the presence of a transverse magnetic field. The current model is consistent with ferro-hydrodynamic (FHD) and magneto-hydrodynamic (MHD) principles. In the present work, blood in small arteries is analyzed using the Carreau-Yasuda model. The arterial wall is assumed to be fixed with cosine geometry for the stenosis. A parametric study was conducted to reveal the effects of the stenosis intensity and the Hartman number on a wide range of flow parameters, such as the flow velocity, temperature, and wall shear stress. Current findings are in a good agreement with recent findings in previous research studies. The results show that wall temperature control can keep the blood in its ideal blood temperature range (below 40°C) and that a severe pressure drop occurs for blockages of more than 60 percent. Additionally, with an increase in the Ha number, a velocity drop in the blood vessel is experienced.</p>
+</abstract>
+<funding-group>
+<funding-statement>There was no special funding in preparing this paper.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="27"/>
+<table-count count="3"/>
+<page-count count="32"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Fluid flow that contains bio-magnetic materials is an interesting field of study for bio-engineers [<xref ref-type="bibr" rid="pone.0192138.ref001">1</xref>–<xref ref-type="bibr" rid="pone.0192138.ref004">4</xref>]. Because of the properties of bio-magnetic materials, it is possible to probe the dynamic characteristics of biological fluids that are exposed to an external magnetic field [<xref ref-type="bibr" rid="pone.0192138.ref005">5</xref>–<xref ref-type="bibr" rid="pone.0192138.ref008">8</xref>]. The occlusion of arteries (narrowing of the coronary) and blood vessels is one of the most serious problems of humanity that is faced in our era [<xref ref-type="bibr" rid="pone.0192138.ref009">9</xref>–<xref ref-type="bibr" rid="pone.0192138.ref011">11</xref>]. In such geometries, the flow conditions and blood characteristics have a major effect on the flow pattern, which by themselves can lead to a stent rupture and cause an embolism. In fact, the blood movement and mechanical behavior of the vessel walls are known for their key role in the formation of blood vessel stenosis [<xref ref-type="bibr" rid="pone.0192138.ref012">12</xref>].</p>
+<p>Therefore, the importance of blood rheology, to evaluate the desired flow variables, cannot be ignored. Among other factors, the shear stress has a significant role in thrombosis and the development of pathological aneurysms. Concerning this problem, earlier studies [<xref ref-type="bibr" rid="pone.0192138.ref013">13</xref>–<xref ref-type="bibr" rid="pone.0192138.ref015">15</xref>] have considered blood mainly as a Newtonian fluid. Even though this model is a simplified form of the general case, it conserves some basic aspects of the flow, especially in the larger arteries. For example, Tanwar [<xref ref-type="bibr" rid="pone.0192138.ref016">16</xref>] analytically investigated the effect of a magnetic field on Newtonian blood flows to understand the abnormal flow conditions of blood in a locally constricted blood vessel. Reviews of flow patterns and research on stenotic arteries can be found in [<xref ref-type="bibr" rid="pone.0192138.ref017">17</xref>, <xref ref-type="bibr" rid="pone.0192138.ref018">18</xref>]. Blood flow under surgical conditions or diagnosis operations have been considered in a few publications, for example, Srivastava accounted for the catheterization of operations [<xref ref-type="bibr" rid="pone.0192138.ref019">19</xref>].</p>
+<p>Other studies [<xref ref-type="bibr" rid="pone.0192138.ref020">20</xref>, <xref ref-type="bibr" rid="pone.0192138.ref021">21</xref>] have examined the influence of non-Newtonian blood flows. This improved model has revealed new results that were more realistic. It is common to see such flow patterns and non-Newtonian behaviors manifest themselves in small blood vessels. Haldar [<xref ref-type="bibr" rid="pone.0192138.ref022">22</xref>] investigated the shape of a mild stenosis; this author declared that shear thinning is a more dominant non-Newtonian behavior in comparison to viscoelasticity. In some other studies, the pulsatile pressure was the focus of the study. A broad range of formulations and boundary conditions were utilized and studied in these analyses. Of these, the following notable aspects were considered: irregular stenosis with the development of a generalized power law [<xref ref-type="bibr" rid="pone.0192138.ref023">23</xref>], weak-form of the Casson equation [<xref ref-type="bibr" rid="pone.0192138.ref024">24</xref>], finite element formulation [<xref ref-type="bibr" rid="pone.0192138.ref025">25</xref>], overlapped stenosis [<xref ref-type="bibr" rid="pone.0192138.ref026">26</xref>], and the Lattice Boltzmann Method [<xref ref-type="bibr" rid="pone.0192138.ref027">27</xref>]. In another study, blood was represented by two layers, with each layer demonstrating a different viscosity behavior (i.e., the combined Newtonian and generalized power law) [<xref ref-type="bibr" rid="pone.0192138.ref028">28</xref>]. Lukacova [<xref ref-type="bibr" rid="pone.0192138.ref029">29</xref>] considered the fluid structure interaction of stenosed vessels, wherein the Carreau model was used to represent the blood properties. The shapes of the aortic arteries were studied by Lie <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0192138.ref030">30</xref>], to research the pressure drop as well as the wall shear stress. The effect of unsteadiness of the non-Newtonian micropolar fluid was investigated through an analytical solution with regard to the modified Bessel function in [<xref ref-type="bibr" rid="pone.0192138.ref031">31</xref>, <xref ref-type="bibr" rid="pone.0192138.ref032">32</xref>]. Significant rheological impacts were reportsed in these studies. Therefore, an emphasis must be placed on non-Newtonian modeling in any small vessel blood analysis.</p>
+<p>Studies related to magnetization are present in another collection of investigations [<xref ref-type="bibr" rid="pone.0192138.ref033">33</xref>–<xref ref-type="bibr" rid="pone.0192138.ref041">41</xref>]. These studies conclude that magnetization has a profound effect on both the blood circulation and the blood pressure drop. Among others, Tzirtzilakis [<xref ref-type="bibr" rid="pone.0192138.ref033">33</xref>] studied bio-magnetic channel flows. Ikbal [<xref ref-type="bibr" rid="pone.0192138.ref034">34</xref>] investigated stenosed vessels under the influence of transverse magnetization. Varshney [<xref ref-type="bibr" rid="pone.0192138.ref035">35</xref>] studied the occurrence of multiple stenoses in a blood vessel. Multiple aneurysms under magnetization was studied for the purpose of understanding flow patterns [<xref ref-type="bibr" rid="pone.0192138.ref036">36</xref>]. Behnia <italic>et al</italic>. studied the dynamics of a bubble in non-Newtonian blood [<xref ref-type="bibr" rid="pone.0192138.ref037">37</xref>] and under magnetization [<xref ref-type="bibr" rid="pone.0192138.ref038">38</xref>]. Alimohammadi <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0192138.ref039">39</xref>] considered carotid bifurcation in the presence of porous plaques and vessel walls under magnetization. The entropy generation of the magneto-hydrodynamics problem of blood flow is found in [<xref ref-type="bibr" rid="pone.0192138.ref040">40</xref>] for nanotubes and in [<xref ref-type="bibr" rid="pone.0192138.ref041">41</xref>] for a case with permeable walls.</p>
+<p>When blood receives magnetic heating, its heat will pass through the whole vessel, from the heated zone to the end of the blood vessel [<xref ref-type="bibr" rid="pone.0192138.ref042">42</xref>]. In the presence of magnetization, secondary circulation is induced that originates from the Joule heating [<xref ref-type="bibr" rid="pone.0192138.ref043">43</xref>]. Such a source of heat has been proven to decrease pain, inflammation, and swelling, which is considered to be relaxing the muscle and nerves. It has even been suggested to enhance circulation by removing circulatory blockages [<xref ref-type="bibr" rid="pone.0192138.ref044">44</xref>] or by softening small-scale lumps in patients [<xref ref-type="bibr" rid="pone.0192138.ref045">45</xref>]. Nonetheless, it could be fatal when blood under magnetization starts to degrade, at temperatures above forty degrees.</p>
+<p>The rise in the number of breast tumor, uterus tumor, and lymph tumor diagnoses has encouraged some researchers to foster the idea of heat therapy as an instrument for the prevention of tumors and cancers [<xref ref-type="bibr" rid="pone.0192138.ref046">46</xref>]. Many papers on heat therapy applications exist in the literature. For example, heat therapy was effectively used in intervertebral discs [<xref ref-type="bibr" rid="pone.0192138.ref047">47</xref>], dysmenorrhea syndrome [<xref ref-type="bibr" rid="pone.0192138.ref048">48</xref>], chest pain [<xref ref-type="bibr" rid="pone.0192138.ref049">49</xref>], and neck pain [<xref ref-type="bibr" rid="pone.0192138.ref050">50</xref>]. Magnetic therapy and blood vessels dilated with the use of its induced heat can be used as an alternative method for cancer therapy and other medical treatments [<xref ref-type="bibr" rid="pone.0192138.ref045">45</xref>]. In these medical functions, the issue of vessel wall cooling is proposed as an efficient approach to sustaining the living conditions of the blood.</p>
+<p>The literature survey suggests that there is a gap for a study of an essential case of stenosis in which blood is assumed to be non-Newtonian and the vessel is subjected to magnetization, especially with considering the induced heat, the heat transfer phenomena, and the paramountcy of the blood vessel temperature control and cooling. As the real phenomenon that occurs in transient form, such a case in a transient manner is studied in our research.</p>
+</sec>
+<sec id="sec002">
+<title>Mathematical modeling</title>
+<p>This study uses a mathematical model of a bio-magnetic fluid and employs the Carreau formulation for representing the non-Newtonian behavior in the model. The developed model consists of both ferro-hydrodynamic (FHD) and magneto-hydrodynamics (MHD) principles, where the blood conductivity and magnetization are considered. A transient method is used to solve the governing equations on a single grid. Blood is an important bio-magnetic fluid that demonstrates magnetic fluid behavior that is governed by the relationship between the intercellular protein, cell membrane and hemoglobin, which is a form of iron oxide that is present in the mature red blood cells extensively. It should be noted that the status and formulations of blood magnetic properties are in a close association with the oxygenation content [<xref ref-type="bibr" rid="pone.0192138.ref042">42</xref>]. Therefore, the nonlinear governing equations for such a transient, incompressible and laminar flow are the conservation of mass [<xref ref-type="bibr" rid="pone.0192138.ref051">51</xref>]
+<disp-formula id="pone.0192138.e001">
+<alternatives>
+<graphic id="pone.0192138.e001g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e001" xlink:type="simple"/>
+<mml:math display="block" id="M1">
+<mml:mi mathvariant="bold">∇</mml:mi><mml:mo>⋅</mml:mo><mml:mi mathvariant="bold-italic">V</mml:mi><mml:mo>=</mml:mo><mml:mn>0</mml:mn>
+</mml:math>
+</alternatives>
+<label>(1)</label>
+</disp-formula>
+the momentum [<xref ref-type="bibr" rid="pone.0192138.ref051">51</xref>]
+<disp-formula id="pone.0192138.e002">
+<alternatives>
+<graphic id="pone.0192138.e002g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e002" xlink:type="simple"/>
+<mml:math display="block" id="M2">
+<mml:mfrac><mml:mrow><mml:mi>ρ</mml:mi><mml:mi>D</mml:mi><mml:mi mathvariant="bold-italic">V</mml:mi></mml:mrow><mml:mrow><mml:mi>D</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:mfrac><mml:mo>=</mml:mo><mml:mo>−</mml:mo><mml:mi mathvariant="bold">∇</mml:mi><mml:mi mathvariant="normal">p</mml:mi><mml:mo>+</mml:mo><mml:mi mathvariant="normal">ρ</mml:mi><mml:mi mathvariant="normal">F</mml:mi><mml:mo>+</mml:mo><mml:mi mathvariant="normal">μ</mml:mi><mml:msup><mml:mrow><mml:mi mathvariant="bold">∇</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mi mathvariant="bold-italic">V</mml:mi><mml:mo>+</mml:mo><mml:mi mathvariant="bold-italic">J</mml:mi><mml:mo>×</mml:mo><mml:mi mathvariant="bold-italic">B</mml:mi><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi>μ</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:mi mathvariant="bold-italic">M</mml:mi><mml:mi mathvariant="bold">∇</mml:mi><mml:mi mathvariant="bold">H</mml:mi>
+</mml:math>
+</alternatives>
+<label>(2)</label>
+</disp-formula>
+and the energy [<xref ref-type="bibr" rid="pone.0192138.ref043">43</xref>]:
+<disp-formula id="pone.0192138.e003">
+<alternatives>
+<graphic id="pone.0192138.e003g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e003" xlink:type="simple"/>
+<mml:math display="block" id="M3">
+<mml:mi>ρ</mml:mi><mml:msub><mml:mrow><mml:mi mathvariant="normal">C</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">p</mml:mi></mml:mrow></mml:msub><mml:mfrac><mml:mrow><mml:mi>D</mml:mi><mml:mi>T</mml:mi></mml:mrow><mml:mrow><mml:mi>D</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:mfrac><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi>μ</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:mi>T</mml:mi><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:mi mathvariant="bold-italic">M</mml:mi></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>T</mml:mi></mml:mrow></mml:mfrac><mml:mfrac><mml:mrow><mml:mi>D</mml:mi><mml:mi mathvariant="bold-italic">H</mml:mi></mml:mrow><mml:mrow><mml:mi>D</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:mfrac><mml:mo>−</mml:mo><mml:mfrac><mml:mrow><mml:mi mathvariant="bold-italic">J</mml:mi><mml:mo>⋅</mml:mo><mml:mi mathvariant="bold-italic">J</mml:mi></mml:mrow><mml:mrow><mml:mi>σ</mml:mi></mml:mrow></mml:mfrac><mml:mo>=</mml:mo><mml:mi>k</mml:mi><mml:mspace width="0.25em"/><mml:msup><mml:mrow><mml:mi mathvariant="bold">∇</mml:mi></mml:mrow><mml:mrow><mml:mn mathvariant="bold">2</mml:mn></mml:mrow></mml:msup><mml:mi>T</mml:mi><mml:mo>+</mml:mo><mml:mi>μ</mml:mi><mml:mi mathvariant="normal">Φ</mml:mi>
+</mml:math>
+</alternatives>
+<label>(3)</label>
+</disp-formula></p>
+<p>In the above formula, <bold>V</bold> is the blood velocity, <inline-formula id="pone.0192138.e004"><alternatives><graphic id="pone.0192138.e004g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e004" xlink:type="simple"/><mml:math display="inline" id="M4"><mml:mfrac><mml:mrow><mml:mi>D</mml:mi></mml:mrow><mml:mrow><mml:mi>D</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:mfrac><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>t</mml:mi></mml:mrow></mml:mfrac><mml:mo>+</mml:mo><mml:mi>V</mml:mi><mml:mi mathvariant="normal">∇</mml:mi></mml:math></alternatives></inline-formula> is the material time derivative, <italic>ρ</italic> is the fluid density, F is the body force per unit volume, <italic>μ</italic> is the dynamic viscosity, <italic>μ</italic><sub>0</sub> is the viscosity at the zero shear rate, <bold>M</bold> is the magnetization vector, <bold>B</bold> is the magnetic induction, <bold>H</bold> is the magnetic field intensity, <italic>σ</italic> is the electrical conductivity of the bio-fluid, <bold>J</bold> is the electric current density, T is the bio-fluid temperature, k is the bio-fluid thermal conductivity, C<sub>p</sub> is the bio-fluid specific heat (at a constant pressure) and Φ is the viscous dissipation, which in the Cylindrical coordinate system is the following [<xref ref-type="bibr" rid="pone.0192138.ref043">43</xref>]:
+<disp-formula id="pone.0192138.e005">
+<alternatives>
+<graphic id="pone.0192138.e005g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e005" xlink:type="simple"/>
+<mml:math display="block" id="M5">
+<mml:msub><mml:mrow><mml:mi mathvariant="normal">Φ</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">v</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mn>2</mml:mn><mml:mrow><mml:mo>[</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>r</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>r</mml:mi></mml:mrow></mml:mfrac></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>r</mml:mi></mml:mrow></mml:mfrac><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>θ</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>θ</mml:mi></mml:mrow></mml:mfrac><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>r</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mi>r</mml:mi></mml:mrow></mml:mfrac></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>z</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>z</mml:mi></mml:mrow></mml:mfrac></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo>]</mml:mo></mml:mrow><mml:mtable><mml:mtr><mml:mtd><mml:mrow><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mo>[</mml:mo><mml:mrow><mml:mi>r</mml:mi><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>r</mml:mi></mml:mrow></mml:mfrac><mml:mo>(</mml:mo><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>θ</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mi>r</mml:mi></mml:mrow></mml:mfrac></mml:mrow><mml:mo>)</mml:mo><mml:mo>+</mml:mo><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>r</mml:mi></mml:mrow></mml:mfrac><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>r</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>θ</mml:mi></mml:mrow></mml:mfrac></mml:mrow><mml:mo>]</mml:mo></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mtd></mml:mtr><mml:mtr><mml:mtd><mml:mrow><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mo>[</mml:mo><mml:mrow><mml:mfrac><mml:mrow><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mi>r</mml:mi></mml:mrow></mml:mfrac><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>z</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>θ</mml:mi></mml:mrow></mml:mfrac><mml:mo>+</mml:mo><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>θ</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>z</mml:mi></mml:mrow></mml:mfrac></mml:mrow><mml:mo>]</mml:mo></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo>+</mml:mo><mml:mo>(</mml:mo><mml:mrow><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>r</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>z</mml:mi></mml:mrow></mml:mfrac><mml:mo>+</mml:mo><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>z</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>r</mml:mi></mml:mrow></mml:mfrac></mml:mrow><mml:mo>)</mml:mo><mml:mo>−</mml:mo><mml:mfrac><mml:mrow><mml:mn>2</mml:mn></mml:mrow><mml:mrow><mml:mn>3</mml:mn></mml:mrow></mml:mfrac><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mi mathvariant="normal">∇</mml:mi><mml:mo>⋅</mml:mo><mml:mi mathvariant="bold">V</mml:mi></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mtd></mml:mtr></mml:mtable>
+</mml:math>
+</alternatives>
+<label>(4)</label>
+</disp-formula></p>
+<p>Additionally, the viscosity <italic>μ</italic> is shear dependent and can be written as follows [<xref ref-type="bibr" rid="pone.0192138.ref052">52</xref>]:
+<disp-formula id="pone.0192138.e006">
+<alternatives>
+<graphic id="pone.0192138.e006g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e006" xlink:type="simple"/>
+<mml:math display="block" id="M6">
+<mml:mi>μ</mml:mi><mml:mo>(</mml:mo><mml:mrow><mml:mover accent="true"><mml:mrow><mml:mi>γ</mml:mi></mml:mrow><mml:mo>˙</mml:mo></mml:mover></mml:mrow><mml:mo>)</mml:mo><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi>μ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>f</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mrow><mml:mi>μ</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>−</mml:mo><mml:msub><mml:mrow><mml:mi>μ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>f</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mo>)</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mn>1</mml:mn><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mi>λ</mml:mi><mml:mspace width="0.25em"/><mml:mover accent="true"><mml:mrow><mml:mi>γ</mml:mi></mml:mrow><mml:mo>˙</mml:mo></mml:mover></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mfrac><mml:mrow><mml:mi>n</mml:mi><mml:mo>−</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:mfrac></mml:mrow></mml:msup>
+</mml:math>
+</alternatives>
+<label>(5)</label>
+</disp-formula></p>
+<p>In this model, to model the blood correctly, the following values are used: for a zero shear rate limit: (<italic>μ</italic><sub>1</sub> = 0.056 Pa.s), infinite shear rate limit: (<italic>μ</italic><sub><italic>inf</italic></sub> = 0.036 Pa.s), relaxation time constant: (<italic>λ</italic> = 3.313 <italic>s</italic>), and power index: (<italic>n</italic> = 0.3568).</p>
+<p>Finally, the governing equations are coupled with magnetic field equations [<xref ref-type="bibr" rid="pone.0192138.ref043">43</xref>]:
+<disp-formula id="pone.0192138.e007">
+<alternatives>
+<graphic id="pone.0192138.e007g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e007" xlink:type="simple"/>
+<mml:math display="block" id="M7">
+<mml:mi mathvariant="bold">∇</mml:mi><mml:mo>×</mml:mo><mml:mi mathvariant="bold">H</mml:mi><mml:mo>=</mml:mo><mml:mi mathvariant="bold">J</mml:mi><mml:mo>=</mml:mo><mml:mi mathvariant="normal">σ</mml:mi><mml:mo>(</mml:mo><mml:mi mathvariant="bold">V</mml:mi><mml:mo>×</mml:mo><mml:mi mathvariant="bold">B</mml:mi><mml:mo>)</mml:mo>
+</mml:math>
+</alternatives>
+<label>(6)</label>
+</disp-formula>
+<disp-formula id="pone.0192138.e008">
+<alternatives>
+<graphic id="pone.0192138.e008g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e008" xlink:type="simple"/>
+<mml:math display="block" id="M8">
+<mml:mover accent="true"><mml:mrow><mml:mi mathvariant="bold">∇</mml:mi></mml:mrow><mml:mo>˙</mml:mo></mml:mover><mml:mo>⋅</mml:mo><mml:mi mathvariant="bold">B</mml:mi><mml:mo>=</mml:mo><mml:mi mathvariant="bold">∇</mml:mi><mml:mo>⋅</mml:mo><mml:mo>(</mml:mo><mml:mrow><mml:mi mathvariant="bold">H</mml:mi><mml:mo>+</mml:mo><mml:mi mathvariant="bold">M</mml:mi></mml:mrow><mml:mo>)</mml:mo><mml:mo>=</mml:mo><mml:mn mathvariant="bold">0</mml:mn>
+</mml:math>
+</alternatives>
+<label>(7)</label>
+</disp-formula></p>
+<p>It is noted that Eq (<xref ref-type="disp-formula" rid="pone.0192138.e001">1</xref>) resembles the balance between the inward and outward mass flows in a steady system. Consequently, this approach dictates that the total entering mass to the system must be equal to the exiting mass. Energy conservation states that energy roughly changes from one form to another. In other words, the energy in a closed system enters or exits it only from its inlets and outlets in the shape of energy flux (the energy measured per unit of cross-sectional area). However, energy cannot be created or destroyed. For example, in the case of heat transfer, heat can be transformed from another kind of energy to it. For example, these conversions can be observed in phenomena such as Joule heating and/or frictional heating. It should be noted that although the magnetization can be regarded as a function of the temperature (for example, look at [<xref ref-type="bibr" rid="pone.0192138.ref053">53</xref>]), in this study, these two parameters are assumed to be independent.</p>
+<p>The stenosis geometrical formulation is as follows [<xref ref-type="bibr" rid="pone.0192138.ref019">19</xref>]:
+<disp-formula id="pone.0192138.e009">
+<alternatives>
+<graphic id="pone.0192138.e009g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e009" xlink:type="simple"/>
+<mml:math display="block" id="M9">
+<mml:mfrac><mml:mrow><mml:mi mathvariant="normal">r</mml:mi><mml:mo>(</mml:mo><mml:mrow><mml:mi mathvariant="normal">z</mml:mi></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">R</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:mfrac><mml:mo>=</mml:mo><mml:mrow><mml:mo>{</mml:mo><mml:mtable columnalign="left"><mml:mtr><mml:mtd><mml:mrow><mml:mn>1</mml:mn><mml:mo>−</mml:mo><mml:mn>2</mml:mn><mml:mfrac><mml:mrow><mml:mi mathvariant="normal">δ</mml:mi></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">R</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mrow><mml:mi mathvariant="normal">L</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:mfrac><mml:mo stretchy="false">(</mml:mo><mml:mrow><mml:mi mathvariant="normal">z</mml:mi><mml:mo>−</mml:mo><mml:mi mathvariant="normal">d</mml:mi></mml:mrow><mml:mo stretchy="false">)</mml:mo><mml:mo>;</mml:mo><mml:mspace width="10em"/><mml:mi mathvariant="normal">d</mml:mi><mml:mo>&lt;</mml:mo><mml:mi mathvariant="normal">z</mml:mi><mml:mo>≤</mml:mo><mml:mi mathvariant="normal">d</mml:mi><mml:mo>+</mml:mo><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">L</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:mfrac></mml:mrow></mml:mtd></mml:mtr><mml:mtr><mml:mtd><mml:mspace width="1em"/><mml:mrow><mml:mn>1</mml:mn><mml:mo>−</mml:mo><mml:mfrac><mml:mrow><mml:mi mathvariant="normal">δ</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi mathvariant="normal">R</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:mfrac><mml:mo>(</mml:mo><mml:mrow><mml:mn>1</mml:mn><mml:mo>+</mml:mo><mml:mi mathvariant="normal">c</mml:mi><mml:mi mathvariant="normal">o</mml:mi><mml:mi mathvariant="normal">s</mml:mi><mml:mfrac><mml:mrow><mml:mn>2</mml:mn><mml:mi mathvariant="normal">π</mml:mi></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">L</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:mfrac><mml:mo>(</mml:mo><mml:mrow><mml:mi mathvariant="normal">z</mml:mi><mml:mo>−</mml:mo><mml:mi mathvariant="normal">d</mml:mi><mml:mo>−</mml:mo><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">L</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:mfrac></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>)</mml:mo><mml:mo>;</mml:mo><mml:mspace width="4em"/><mml:mi mathvariant="normal">d</mml:mi><mml:mo>+</mml:mo><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">L</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:mfrac><mml:mo>&lt;</mml:mo><mml:mi mathvariant="normal">z</mml:mi><mml:mo>≤</mml:mo><mml:mi mathvariant="normal">d</mml:mi><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi mathvariant="normal">L</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:mrow></mml:mtd></mml:mtr><mml:mtr><mml:mtd><mml:mspace width="1.5em"/><mml:mrow><mml:mn>1</mml:mn><mml:mo>;</mml:mo><mml:mspace width="19em"/><mml:mi mathvariant="normal">o</mml:mi><mml:mi mathvariant="normal">t</mml:mi><mml:mi mathvariant="normal">h</mml:mi><mml:mi mathvariant="normal">e</mml:mi><mml:mi mathvariant="normal">r</mml:mi><mml:mi mathvariant="normal">w</mml:mi><mml:mi mathvariant="normal">i</mml:mi><mml:mi mathvariant="normal">s</mml:mi><mml:mi mathvariant="normal">e</mml:mi></mml:mrow></mml:mtd></mml:mtr></mml:mtable></mml:mrow>
+</mml:math>
+</alternatives>
+<label>(8)</label>
+</disp-formula>
+where <italic>R</italic><sub>0</sub> = 0.01 <italic>m</italic> is the radius of the blood vessel in the absence of stenosis. The important constants for this study are summarized in <xref ref-type="table" rid="pone.0192138.t001">Table 1</xref>.</p>
+<table-wrap id="pone.0192138.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.t001</object-id>
+<label>Table 1</label> <caption><title>An overview of the geometrical parameters used in the simulation.</title></caption>
+<alternatives>
+<graphic id="pone.0192138.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Vessel Radius</td>
+<td align="center">1 cm</td>
+</tr>
+<tr>
+<td align="center">Length</td>
+<td align="center">7 cm</td>
+</tr>
+<tr>
+<td align="center">Stenosis length</td>
+<td align="center">2.824 cm (see <xref ref-type="disp-formula" rid="pone.0192138.e006">Eq 5</xref>)</td>
+</tr>
+<tr>
+<td align="center">Stenosis height</td>
+<td align="center">50 percent of the vessel radius unless declared differently</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>The boundary conditions are
+<disp-formula id="pone.0192138.e010">
+<alternatives>
+<graphic id="pone.0192138.e010g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e010" xlink:type="simple"/>
+<mml:math display="block" id="M10">
+<mml:mo>@</mml:mo><mml:mspace width="0.25em"/><mml:mi mathvariant="normal">r</mml:mi><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi mathvariant="normal">R</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:mspace width="2em"/><mml:msub><mml:mrow><mml:mi mathvariant="normal">u</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">r</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi mathvariant="normal">u</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">z</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mn>0</mml:mn>
+</mml:math>
+</alternatives>
+<label>(9A)</label>
+</disp-formula>
+<disp-formula id="pone.0192138.e011">
+<alternatives>
+<graphic id="pone.0192138.e011g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e011" xlink:type="simple"/>
+<mml:math display="block" id="M11">
+<mml:mrow><mml:mo>@</mml:mo><mml:mspace width="0.25em"/><mml:mi mathvariant="normal">r</mml:mi><mml:mo>=</mml:mo><mml:mn>0</mml:mn><mml:mspace width="2em"/><mml:msub><mml:mrow><mml:mi mathvariant="normal">u</mml:mi></mml:mrow><mml:mi mathvariant="normal">r</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mn>0</mml:mn><mml:mo>,</mml:mo><mml:mspace width="0.5em"/><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:msub><mml:mi mathvariant="normal">u</mml:mi><mml:mi mathvariant="normal">z</mml:mi></mml:msub></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi mathvariant="normal">r</mml:mi></mml:mrow></mml:mfrac><mml:mo>=</mml:mo><mml:mn>0</mml:mn></mml:mrow>
+</mml:math>
+</alternatives>
+<label>(9B)</label>
+</disp-formula>
+<disp-formula id="pone.0192138.e012">
+<alternatives>
+<graphic id="pone.0192138.e012g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e012" xlink:type="simple"/>
+<mml:math display="block" id="M12">
+<mml:mo>@</mml:mo><mml:mspace width="0.25em"/><mml:mi>z</mml:mi><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi>l</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:mspace width="2em"/><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:msub><mml:mrow><mml:mi>u</mml:mi></mml:mrow><mml:mrow><mml:mi>z</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>z</mml:mi></mml:mrow></mml:mfrac><mml:mo>=</mml:mo><mml:mn>0</mml:mn>
+</mml:math>
+</alternatives>
+<label>(9C)</label>
+</disp-formula>
+<disp-formula id="pone.0192138.e013">
+<alternatives>
+<graphic id="pone.0192138.e013g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e013" xlink:type="simple"/>
+<mml:math display="block" id="M13">
+<mml:mo>@</mml:mo><mml:mspace width="0.25em"/><mml:mi mathvariant="normal">z</mml:mi><mml:mo>=</mml:mo><mml:mn>0</mml:mn><mml:mspace width="2em"/><mml:mi mathvariant="normal">T</mml:mi><mml:mo>=</mml:mo><mml:mn>300</mml:mn>
+</mml:math>
+</alternatives>
+<label>(9D)</label>
+</disp-formula></p>
+<p>The pulsatile pressure is modeled as a sinusoidal pressure to resemble human blood pressure, which is used in the simulation of real human heart beating, i.e., the pressure is as follows:
+<disp-formula id="pone.0192138.e014">
+<alternatives>
+<graphic id="pone.0192138.e014g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e014" xlink:type="simple"/>
+<mml:math display="block" id="M14">
+<mml:mi mathvariant="normal">P</mml:mi><mml:mo>(</mml:mo><mml:mi mathvariant="normal">t</mml:mi><mml:mo>)</mml:mo><mml:mo>=</mml:mo><mml:msub><mml:mrow><mml:mi mathvariant="normal">P</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">m</mml:mi></mml:mrow></mml:msub><mml:mspace width="0.25em"/><mml:mo>(</mml:mo><mml:mn>1</mml:mn><mml:mo>+</mml:mo><mml:mi mathvariant="normal">ϵ</mml:mi><mml:mspace width="0.25em"/><mml:mi mathvariant="normal">s</mml:mi><mml:mi mathvariant="normal">i</mml:mi><mml:mi mathvariant="normal">n</mml:mi><mml:mspace width="0.25em"/><mml:msub><mml:mrow><mml:mi mathvariant="normal">ω</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:mspace width="0.25em"/><mml:mi mathvariant="normal">t</mml:mi><mml:mo>)</mml:mo>
+</mml:math>
+</alternatives>
+<label>(10)</label>
+</disp-formula></p>
+<p>In the above equation, <inline-formula id="pone.0192138.e015"><alternatives><graphic id="pone.0192138.e015g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e015" xlink:type="simple"/><mml:math display="inline" id="M15"><mml:mi mathvariant="normal">ϵ</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">P</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">s</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">P</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">m</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfrac></mml:math></alternatives></inline-formula>, where P<sub>m</sub> is a constant that represents the mean pressure, P<sub>s</sub> is the amplitude of the sinusoidal pressure, and ω<sub>0</sub> is the frequency of the oscillation [<xref ref-type="bibr" rid="pone.0192138.ref054">54</xref>]. Some of the simulation constants are listed in <xref ref-type="table" rid="pone.0192138.t002">Table 2</xref>.</p>
+<table-wrap id="pone.0192138.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.t002</object-id>
+<label>Table 2</label> <caption><title>An overview of the simulation constants used in the simulation.</title></caption>
+<alternatives>
+<graphic id="pone.0192138.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Parameter</th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">C<sub>p</sub></td>
+<td align="center"> 3.49 <inline-formula id="pone.0192138.e016"><alternatives><graphic id="pone.0192138.e016g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e016" xlink:type="simple"/><mml:math display="inline" id="M16"><mml:mfrac><mml:mrow><mml:mi mathvariant="normal">k</mml:mi><mml:mi mathvariant="normal">J</mml:mi></mml:mrow><mml:mrow><mml:msup><mml:mrow><mml:mi mathvariant="normal">k</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msup><mml:mi mathvariant="normal">C</mml:mi></mml:mrow></mml:mfrac></mml:math></alternatives></inline-formula></td>
+</tr>
+<tr>
+<td align="center"><italic>ρ</italic></td>
+<td align="center">1050 <inline-formula id="pone.0192138.e017"><alternatives><graphic id="pone.0192138.e017g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e017" xlink:type="simple"/><mml:math display="inline" id="M17"><mml:mfrac><mml:mrow><mml:mi>K</mml:mi><mml:mi>g</mml:mi></mml:mrow><mml:mrow><mml:msup><mml:mrow><mml:mi>m</mml:mi></mml:mrow><mml:mrow><mml:mn>3</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfrac></mml:math></alternatives></inline-formula></td>
+</tr>
+<tr>
+<td align="center"><italic>σ</italic></td>
+<td align="center">0.8 <inline-formula id="pone.0192138.e018"><alternatives><graphic id="pone.0192138.e018g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e018" xlink:type="simple"/><mml:math display="inline" id="M18"><mml:mfrac><mml:mrow><mml:mi>S</mml:mi></mml:mrow><mml:mrow><mml:mi>m</mml:mi></mml:mrow></mml:mfrac></mml:math></alternatives></inline-formula></td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>As presented in <xref ref-type="fig" rid="pone.0192138.g001">Fig 1</xref>, the lowest vessel radius occurs at <italic>z</italic> = 2 cm, where the stenosis ratio is 50 percent of the blood vessel (unless stated otherwise). After the peak in the stenosis, the recirculation and flow properties are highly critical because a decrease in the flow velocities can aggravate the patient’s condition and further enlarge the stenosis by fat accumulations. If the blood is assumed to be Newtonian fluids, the longer vortex would be captured when compared to non-Newtonian fluids. Additionally, because of the lower shear rates inside the recirculation region, higher viscosities could be expected as the flow velocity reduces as a result of the shear thinning effects.</p>
+<fig id="pone.0192138.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Schematic of the computational domain used in the current work.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g001" xlink:type="simple"/>
+</fig>
+<p>It is worth noting that the Joule heating phenomenon increases the blood temperature, which is paramount, and an action to accomplish its mitigation is imperative. When the blood temperature experiences a 3°C to 4°C hike over its physiological temperature, irreversible damage to the protein in the plasma occurs, and one normally cannot survive after such a high fever [<xref ref-type="bibr" rid="pone.0192138.ref043">43</xref>]. To analyze the effect of the magnetic field and the induced temperature fields, two cases were considered initially. In the first case, non-Newtonian blood is assumed in the blood vessel without imposing a magnetic field. In the second case, the magnetic field was imposed on the second section of the blood vessel. The matter of Joule heating and the employment of a cooling region in the second part of the stenosis are presented graphically.</p>
+</sec>
+<sec id="sec003">
+<title>Numerical modeling and validation</title>
+<p>In this research, the FVM formulation on an unstructured mesh is employed [<xref ref-type="bibr" rid="pone.0192138.ref040">40</xref>]. In the following section, the discretization method is explained. Usually, the FVM method is preferred over other numerical models because it inherently satisfies the continuity law and is easier to implement for unconventional domains.</p>
+<p>For discretization, a staggered grid with a face-normal velocity component is utilized. A mesh and the control volume for discretization are shown in <xref ref-type="fig" rid="pone.0192138.g002">Fig 2</xref>.</p>
+<fig id="pone.0192138.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>The utilized mesh and control volume for the development of the discretized forms.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g002" xlink:type="simple"/>
+</fig>
+<p>A general convective-diffusive formulation, where the velocity field is denoted as <bold>V,</bold> for the property of ϕ is
+<disp-formula id="pone.0192138.e019">
+<alternatives>
+<graphic id="pone.0192138.e019g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e019" xlink:type="simple"/>
+<mml:math display="block" id="M19">
+<mml:mi mathvariant="normal">ρ</mml:mi><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:mi mathvariant="normal">ϕ</mml:mi></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi mathvariant="normal">t</mml:mi></mml:mrow></mml:mfrac><mml:mo>+</mml:mo><mml:mi mathvariant="bold">V</mml:mi><mml:mi mathvariant="normal">ρ</mml:mi><mml:mi mathvariant="normal">∇</mml:mi><mml:mo>.</mml:mo><mml:mi mathvariant="normal">ϕ</mml:mi><mml:mo>=</mml:mo><mml:msup><mml:mrow><mml:mi mathvariant="normal">Γ</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">ϕ</mml:mi></mml:mrow></mml:msup><mml:msup><mml:mrow><mml:mi mathvariant="normal">∇</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mi mathvariant="normal">ϕ</mml:mi><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mi>S</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">ϕ</mml:mi></mml:mrow></mml:msup>
+</mml:math>
+</alternatives>
+<label>(11)</label>
+</disp-formula></p>
+<p>In the above equation, Γ<sup>ϕ</sup>, <italic>S</italic><sup>ϕ</sup>,<italic>ρ</italic>, and <italic>t</italic> stand for the diffusion coefficient, source terms, density and time, respectively.</p>
+<p>After integration over a volume called P (<xref ref-type="fig" rid="pone.0192138.g002">Fig 2</xref>), with the use of the Divergence Theorem with linearized source terms, a numerical integration of space and time is performed. Then, we have the following:
+<disp-formula id="pone.0192138.e020">
+<alternatives>
+<graphic id="pone.0192138.e020g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e020" xlink:type="simple"/>
+<mml:math display="block" id="M20">
+<mml:msubsup><mml:mrow><mml:mi mathvariant="normal">M</mml:mi></mml:mrow><mml:mrow><mml:mi>p</mml:mi></mml:mrow><mml:mrow><mml:mi>n</mml:mi></mml:mrow></mml:msubsup><mml:msubsup><mml:mrow><mml:mi mathvariant="normal">ϕ</mml:mi></mml:mrow><mml:mrow><mml:mi>p</mml:mi></mml:mrow><mml:mrow><mml:mi>n</mml:mi></mml:mrow></mml:msubsup><mml:mo>−</mml:mo><mml:msubsup><mml:mrow><mml:mi>M</mml:mi></mml:mrow><mml:mrow><mml:mi>p</mml:mi></mml:mrow><mml:mrow><mml:mi>n</mml:mi><mml:mo>−</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:msubsup><mml:msubsup><mml:mrow><mml:mi mathvariant="normal">ϕ</mml:mi></mml:mrow><mml:mrow><mml:mi>p</mml:mi></mml:mrow><mml:mrow><mml:mi>n</mml:mi><mml:mo>−</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:msubsup><mml:mo>+</mml:mo><mml:mi mathvariant="normal">Δ</mml:mi><mml:mi>t</mml:mi><mml:msub><mml:mrow><mml:mrow><mml:mstyle displaystyle="false"><mml:msubsup><mml:mo>∑</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mi>p</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mrow><mml:mn>3</mml:mn></mml:mrow></mml:msubsup></mml:mstyle><mml:mrow><mml:mo>[</mml:mo><mml:mi>ρ</mml:mi><mml:mo>(</mml:mo><mml:mrow><mml:mi mathvariant="bold-italic">V</mml:mi><mml:mo>.</mml:mo><mml:mi mathvariant="bold-italic">A</mml:mi></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>p</mml:mi></mml:mrow></mml:msub><mml:mo>−</mml:mo><mml:msup><mml:mrow><mml:mi mathvariant="normal">Γ</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">ϕ</mml:mi></mml:mrow></mml:msup><mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mi mathvariant="normal">∇</mml:mi><mml:msub><mml:mrow><mml:mi mathvariant="bold">ϕ</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="bold">p</mml:mi></mml:mrow></mml:msub><mml:mo>.</mml:mo><mml:mi mathvariant="bold-italic">A</mml:mi></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>p</mml:mi></mml:mrow></mml:msub><mml:mo>−</mml:mo><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">S</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">p</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mrow><mml:mi mathvariant="normal">ϕ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>p</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi mathvariant="normal">S</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">c</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mo>)</mml:mo><mml:mfrac><mml:mrow><mml:mi mathvariant="normal">Δ</mml:mi><mml:msub><mml:mrow><mml:mi>v</mml:mi></mml:mrow><mml:mrow><mml:mi>a</mml:mi><mml:mn>1</mml:mn><mml:mi>b</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:mfrac><mml:mo>=</mml:mo><mml:mn>0</mml:mn>
+</mml:math>
+</alternatives>
+<label>(12)</label>
+</disp-formula></p>
+<p>In the above equation, (M<sub>p</sub> = <italic>ρ</italic>Δ<italic>v</italic>), <bold>A</bold> and Δ<italic>v</italic> are the mass in the control volume, each face area, and the volume of the discrete place, respectively. Additionally, we have [<xref ref-type="bibr" rid="pone.0192138.ref055">55</xref>, <xref ref-type="bibr" rid="pone.0192138.ref056">56</xref>]
+<disp-formula id="pone.0192138.e021">
+<alternatives>
+<graphic id="pone.0192138.e021g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e021" xlink:type="simple"/>
+<mml:math display="block" id="M21">
+<mml:mi mathvariant="normal">∇</mml:mi><mml:msub><mml:mrow><mml:mi mathvariant="bold">ϕ</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="bold">p</mml:mi></mml:mrow></mml:msub><mml:mo>.</mml:mo><mml:mi mathvariant="bold">A</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mrow><mml:mi>x</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>−</mml:mo><mml:msub><mml:mrow><mml:mi>x</mml:mi></mml:mrow><mml:mrow><mml:mi>p</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mo>)</mml:mo><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mrow><mml:mi>y</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:mo>−</mml:mo><mml:msub><mml:mrow><mml:mi>y</mml:mi></mml:mrow><mml:mrow><mml:mi>b</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mo>)</mml:mo><mml:mo>+</mml:mo><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mrow><mml:mi>y</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>−</mml:mo><mml:msub><mml:mrow><mml:mi>y</mml:mi></mml:mrow><mml:mrow><mml:mi>p</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mo>)</mml:mo><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mrow><mml:mi>x</mml:mi></mml:mrow><mml:mrow><mml:mi>b</mml:mi></mml:mrow></mml:msub><mml:mo>−</mml:mo><mml:msub><mml:mrow><mml:mi>x</mml:mi></mml:mrow><mml:mrow><mml:mi>a</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mo>[</mml:mo><mml:mrow><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mrow><mml:mi>x</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>−</mml:mo><mml:msub><mml:mrow><mml:mi>x</mml:mi></mml:mrow><mml:mrow><mml:mi>p</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo>+</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mrow><mml:mi>y</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>−</mml:mo><mml:msub><mml:mrow><mml:mi>y</mml:mi></mml:mrow><mml:mrow><mml:mi>p</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow><mml:mo>]</mml:mo><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mi>x</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mrow><mml:mi>x</mml:mi></mml:mrow><mml:mrow><mml:mi>A</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mrow><mml:mi>y</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mrow><mml:mi>y</mml:mi></mml:mrow><mml:mrow><mml:mi>a</mml:mi></mml:mrow></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msubsup><mml:mrow><mml:mi>x</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msubsup><mml:mo>+</mml:mo><mml:msubsup><mml:mrow><mml:mi>y</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msubsup></mml:mrow><mml:mo>)</mml:mo><mml:mo>(</mml:mo><mml:mrow><mml:msubsup><mml:mrow><mml:mi>x</mml:mi></mml:mrow><mml:mrow><mml:mi>A</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msubsup><mml:mo>+</mml:mo><mml:msubsup><mml:mrow><mml:mi>y</mml:mi></mml:mrow><mml:mrow><mml:mi>A</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mfrac></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfrac><mml:mo>(</mml:mo><mml:msub><mml:mrow><mml:mi mathvariant="normal">ϕ</mml:mi></mml:mrow><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>−</mml:mo><mml:msub><mml:mrow><mml:mi mathvariant="normal">ϕ</mml:mi></mml:mrow><mml:mrow><mml:mi>p</mml:mi></mml:mrow></mml:msub><mml:mo>)</mml:mo>
+</mml:math>
+</alternatives>
+<label>(13)</label>
+</disp-formula></p>
+<p>The variables in the above equations are summarized in <xref ref-type="table" rid="pone.0192138.t003">Table 3</xref>.</p>
+<table-wrap id="pone.0192138.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.t003</object-id>
+<label>Table 3</label> <caption><title>Variables in the formulation of the finite volume method in the current formulation.</title></caption>
+<alternatives>
+<graphic id="pone.0192138.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Variable</th>
+<th align="center">Momentum equation</th>
+<th align="center">Energy equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><bold><italic>ϕ</italic></bold></td>
+<td align="center">Any of the velocity components</td>
+<td align="center">temperature</td>
+</tr>
+<tr>
+<td align="center"><bold>Γ</bold></td>
+<td align="center">Viscosity</td>
+<td align="center"><inline-formula id="pone.0192138.e022"><alternatives><graphic id="pone.0192138.e022g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e022" xlink:type="simple"/><mml:math display="inline" id="M22"><mml:mfrac><mml:mrow><mml:mi>κ</mml:mi></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi>c</mml:mi></mml:mrow><mml:mrow><mml:mi>p</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfrac></mml:math></alternatives></inline-formula></td>
+</tr>
+<tr>
+<td align="center"><bold><italic>S</italic></bold><sub><bold><italic>P</italic></bold></sub></td>
+<td align="center">−<italic>σB</italic>.<italic>B</italic></td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center"><bold><italic>S</italic></bold><sub><bold><italic>c</italic></bold></sub></td>
+<td align="center"><italic>ρF</italic> + <italic>μ</italic><sub>0</sub> <italic>M∇H</italic></td>
+<td align="center"><inline-formula id="pone.0192138.e023"><alternatives><graphic id="pone.0192138.e023g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e023" xlink:type="simple"/><mml:math display="inline" id="M23"><mml:msub><mml:mrow><mml:mi>μ</mml:mi></mml:mrow><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:mi>T</mml:mi><mml:mfrac><mml:mrow><mml:mo>∂</mml:mo><mml:mi>H</mml:mi></mml:mrow><mml:mrow><mml:mo>∂</mml:mo><mml:mi>T</mml:mi></mml:mrow></mml:mfrac><mml:mspace width="0.25em"/><mml:mfrac><mml:mrow><mml:mi>D</mml:mi><mml:mi>H</mml:mi></mml:mrow><mml:mrow><mml:mi>D</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:mfrac><mml:mo>+</mml:mo><mml:mfrac><mml:mrow><mml:mi>J</mml:mi><mml:mo>.</mml:mo><mml:mi>J</mml:mi></mml:mrow><mml:mrow><mml:mi>σ</mml:mi></mml:mrow></mml:mfrac><mml:mo>+</mml:mo><mml:mi>μ</mml:mi><mml:mi>ϕ</mml:mi></mml:math></alternatives></inline-formula></td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>The governing equations are transformed into computational space, and then, they are reduced to second-order accurate finite-volume equations. In this study, an FVM formulation with the SIMPLE algorithm [<xref ref-type="bibr" rid="pone.0192138.ref057">57</xref>] is used to discretize the governing equations of the problem; afterward, the transport equation is solved using a time marching procedure. The transient formulation is accounted for in the spatially pulsatile pressure.</p>
+<p>Validation of the code was guaranteed through a comparison of the pipe flow with a constant pressure gradient with its analytical solution [<xref ref-type="bibr" rid="pone.0192138.ref058">58</xref>]. <xref ref-type="fig" rid="pone.0192138.g003">Fig 3</xref> represents the non-dimensionalized velocity for different radii with Ha numbers that vary from 0 to 10 and different pressure gradients.</p>
+<fig id="pone.0192138.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Comparison of the numerical and analytical solution of the pipe flow for different Ha numbers and radii.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g003" xlink:type="simple"/>
+</fig>
+<p>To assure grid independence, four different meshes, with 273, 993, 3777 and 14721 grid points (where the number of nodes increases by an order of two in each direction with the Delaunay triangulation algorithm) were considered in <xref ref-type="fig" rid="pone.0192138.g004">Fig 4</xref> (the three meshes that correspond to 273, 993, and 3777 nodes are presented). The relative errors of the finest mesh for the maximum stress of blood flow in a vessel with a fifty percent stenosis were 38.3131, 14.7454 and 4.6102 percent, respectively. Therefore, the third mesh was taken as the suitable mesh for the study.</p>
+<fig id="pone.0192138.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Three different meshes of the mesh independence analysis, with the mesh generation method of Delaunay.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g004" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec004" sec-type="conclusions">
+<title>Results and discussion</title>
+<p>This section discusses the flow parameters and patterns in a blood vessel in the presence of a stenosis with and without magnetization. Additionally, in one of the cases, the cooling of the vessel wall is examined. Normally, the velocity field and stress are of interest in studies on blood flow in the presence of a stenosis.</p>
+<p>Where a magnetization was employed; the blood is under the effect of a constant magnetic field. Moreover, a pulsatile inlet pressure was in the study; therefore, the flow properties cause velocity profile changes with time and position. In this regard, the results and properties in equal periods are presented for comparison.</p>
+<p><xref ref-type="fig" rid="pone.0192138.g005">Fig 5</xref> depicts the velocity profiles at the vessel inlet, z = 2 mm. This position is too far from the stenosis throat to be influenced by it. Five steps were used to extract the needed data. The velocity field accelerates in the first quarter of the study; it decelerates and reaches a maximum value at half of the time lapses, and then, the velocity outside the boundary layer reduces before undergoing a final increase at the last step. The boundary layer proportionally develops with respect to the flow velocity outside the boundary layer.</p>
+<fig id="pone.0192138.g005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g005</object-id>
+<label>Fig 5</label>
+<caption>
+<title>Velocity profile in the axial direction near the inlet at z = 2 mm for the case without Joule heating, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g005" xlink:type="simple"/>
+</fig>
+<p>At the stenosis throat, the temporal development of the flow was quite similar to the inlet condition, although the flow experienced higher and lower velocity values, which suggests higher acceleration and deceleration is needed to conserve continuity. <xref ref-type="fig" rid="pone.0192138.g006">Fig 6</xref> shows the phenomena mentioned above. In addition to this fact, it is evident that the flow velocity reached a maximum value and reduced to a lower value at the blood vessel center; this phenomenon is due to the non-Newtonian behavior of the blood. Furthermore, the velocity peak followed the same trend that occurred at the inlet. Such observation agrees well with velocity profiles in the literature [<xref ref-type="bibr" rid="pone.0192138.ref059">59</xref>].</p>
+<fig id="pone.0192138.g006" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g006</object-id>
+<label>Fig 6</label>
+<caption>
+<title>Profile of the axial velocity at z = 2 cm for the case without Joule heating at five different time instances, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g006" xlink:type="simple"/>
+</fig>
+<p>To study the effect of the magnetic field and the velocity profiles downstream of the stenosis, we examined the velocity in the direction of the blood vessel axis at <italic>z</italic> = 4 <italic>cm</italic>. The velocity profiles were almost the same as our inlet, which suggests an extreme velocity alteration at all steps (in terms of magnitude). For example, the flow in the middle of the study increases from <inline-formula id="pone.0192138.e024"><alternatives><graphic id="pone.0192138.e024g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e024" xlink:type="simple"/><mml:math display="inline" id="M24"><mml:msub><mml:mrow><mml:mi mathvariant="normal">u</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">z</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mn>0.1</mml:mn><mml:mfrac><mml:mrow><mml:mi mathvariant="normal">c</mml:mi><mml:mi mathvariant="normal">m</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">s</mml:mi></mml:mrow></mml:mfrac></mml:math></alternatives></inline-formula> to <inline-formula id="pone.0192138.e025"><alternatives><graphic id="pone.0192138.e025g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e025" xlink:type="simple"/><mml:math display="inline" id="M25"><mml:msub><mml:mrow><mml:mi mathvariant="normal">u</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">z</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mn>0.2</mml:mn><mml:mfrac><mml:mrow><mml:mi mathvariant="normal">c</mml:mi><mml:mi mathvariant="normal">m</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="normal">s</mml:mi></mml:mrow></mml:mfrac></mml:math></alternatives></inline-formula> and decreases to almost the same amount afterward (<xref ref-type="fig" rid="pone.0192138.g007">Fig 7</xref>). The reason for such behavior is the variation of the blood pressure pulse during the cardiac cycle. Additionally, this case manifests a lower velocity magnitude, and the findings show that the magnetization lowered the magnitude of the velocity.</p>
+<fig id="pone.0192138.g007" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g007</object-id>
+<label>Fig 7</label>
+<caption>
+<title>Profile of the velocity in the axial direction at z = 4 cm for the case without Joule heating at five different time instances, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g007" xlink:type="simple"/>
+</fig>
+<p>When the blood is in motion, its electrical conductivity is always greater than the blood at rest [<xref ref-type="bibr" rid="pone.0192138.ref060">60</xref>]. The greater the volume percentage of the hematocrit (Ht or HTC), the greater the electrical conductivity of the blood [<xref ref-type="bibr" rid="pone.0192138.ref061">61</xref>]. It should be noted that this value for the medium shear rates is approximately 10 percent [<xref ref-type="bibr" rid="pone.0192138.ref023">23</xref>]. In this study, the assumed electrical conductivity of blood equals 0.8 Sm<sup>-1</sup>. Furthermore, the dependence of the electrical conductivity with the temperature is neglected; however, the magnetic behavior of a ferro-fluid is inversely proportional to its temperature (due to Curie’s law). The temperature distribution is shown in Figs <xref ref-type="fig" rid="pone.0192138.g008">8</xref> and <xref ref-type="fig" rid="pone.0192138.g009">9</xref>. It is worth mentioning that we have surface cooling on stenosis after the stenosis peak. Initially, less variation in temperature is observed; as we reach the halfway point of the simulation, the temperature difference between the wall and the outside of the thermal boundary layer is augmented due to Joule heating, and thus, it can be inferred that the response of the blood to the magnetic field reduces in this region. The change can be informative for drug delivery or other medical procedures where the control of magnetization is essential [<xref ref-type="bibr" rid="pone.0192138.ref062">62</xref>, <xref ref-type="bibr" rid="pone.0192138.ref063">63</xref>]. Afterward, the blood temperature difference decreases, and up to a third of the simulation has heat dissipated from the cooled wall. Then, it becomes larger in magnitude as the blood velocity reduces. In this case, the blood experiences a mere two degree increase in a small boundary layer. As discussed earlier, keeping the blood at a constant temperature is vital for one’s survival.</p>
+<fig id="pone.0192138.g008" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g008</object-id>
+<label>Fig 8</label>
+<caption>
+<title>Profile of the temperature distribution at the stenosis at z = 2 cm for the case without Joule heating at five different time instances, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g008" xlink:type="simple"/>
+</fig>
+<fig id="pone.0192138.g009" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g009</object-id>
+<label>Fig 9</label>
+<caption>
+<title>Profile of the temperature distribution at z = 4 cm for the case without Joule heating at five different time instances, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g009" xlink:type="simple"/>
+</fig>
+<p>The pressure distribution during transient simulation shows a similar pattern (<xref ref-type="fig" rid="pone.0192138.g010">Fig 10</xref>). The resulting velocity vector and streamlined distribution are plotted in <xref ref-type="fig" rid="pone.0192138.g011">Fig 11</xref>. The imposed magnetic field and the pressure difference change the temperature field (see <xref ref-type="fig" rid="pone.0192138.g012">Fig 12</xref>). Such observations are in concordance with the works of Sarifudiddin [<xref ref-type="bibr" rid="pone.0192138.ref064">64</xref>] and Pontrelli [<xref ref-type="bibr" rid="pone.0192138.ref065">65</xref>]. The intravascular pressure is of importance because it can be correlated with the interstitial fluid pressure (IFP) of a tumor [<xref ref-type="bibr" rid="pone.0192138.ref066">66</xref>]. In drug delivery applications of a tumor treatment, therapeutic agents should be injected at higher pressures to improve the method’s efficacy. The variation in temperature in <xref ref-type="fig" rid="pone.0192138.g012">Fig 12</xref> is due to a variation of the velocity field that affects the convection of heat inside the blood vessel.</p>
+<fig id="pone.0192138.g010" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g010</object-id>
+<label>Fig 10</label>
+<caption>
+<title>Pressure distribution along the mid-line of the stenosed (r = 2.5 mm) artery for the case without joule heating at five different time instances, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g010" xlink:type="simple"/>
+</fig>
+<fig id="pone.0192138.g011" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g011</object-id>
+<label>Fig 11</label>
+<caption>
+<title>Streamlines for the case without Joule heating at t = 0.5 s, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g011" xlink:type="simple"/>
+</fig>
+<fig id="pone.0192138.g012" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g012</object-id>
+<label>Fig 12</label>
+<caption>
+<title/>
+<p>Comparison of the temperature fields at the middle of simulation (t = 0.5s) (a) the case with <inline-formula id="pone.0192138.e026"><alternatives><graphic id="pone.0192138.e026g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e026" xlink:type="simple"/><mml:math display="inline" id="M26"><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="bold-italic">r</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="bold-italic">s</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="bold-italic">r</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="bold-italic">i</mml:mi><mml:mi mathvariant="bold-italic">n</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfrac><mml:mo>=</mml:mo><mml:mn mathvariant="bold">0.5</mml:mn></mml:math></alternatives></inline-formula> (b) the case with <inline-formula id="pone.0192138.e027"><alternatives><graphic id="pone.0192138.e027g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e027" xlink:type="simple"/><mml:math display="inline" id="M27"><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="bold-italic">r</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="bold-italic">s</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="bold-italic">r</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="bold-italic">i</mml:mi><mml:mi mathvariant="bold-italic">n</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfrac><mml:mo>=</mml:mo><mml:mn mathvariant="bold">0.6</mml:mn></mml:math></alternatives></inline-formula>.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g012" xlink:type="simple"/>
+</fig>
+<p>For smaller initial pressure differences in the vessel, even an area of recirculation is formed after the stenosis in comparison with a larger pressure difference (Figs <xref ref-type="fig" rid="pone.0192138.g011">11</xref> and <xref ref-type="fig" rid="pone.0192138.g013">13</xref>). By an increase in the pressure difference, the recirculation zone is larger (see <xref ref-type="fig" rid="pone.0192138.g013">Fig 13A</xref> to <xref ref-type="fig" rid="pone.0192138.g013">13E</xref>). Similar behavior is also present in literature [<xref ref-type="bibr" rid="pone.0192138.ref059">59</xref>, <xref ref-type="bibr" rid="pone.0192138.ref067">67</xref>].</p>
+<fig id="pone.0192138.g013" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g013</object-id>
+<label>Fig 13</label>
+<caption>
+<title/>
+<p><bold>(a) to (e).</bold> This figure represents recirculation after the stenosis for the case of 60 percent stenosis with a low pressure gradient and Joule heating (a) t = 0 s (b) t = 0.25 s (c) t = 0.5 s (d) t = 0.75 s (e) t = 1 s, <italic>L</italic><sub><italic>vessel</italic></sub> = 6 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and a fifty percent stenosis.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g013" xlink:type="simple"/>
+</fig>
+<p>As is obvious, the most of the heating is due to Joule heating. Moreover, the importance of considering this heating is evident in <xref ref-type="fig" rid="pone.0192138.g012">Fig 12A and 12B</xref>, where the amount of temperature increases by an increase in the magnetic field strength. Additionally, the heating zone becomes larger because the area under the influence of the magnetic field enlarges.</p>
+<p>As an example, in <xref ref-type="fig" rid="pone.0192138.g013">Fig 13</xref>, five different streamlines during the simulation of the blood vessel are presented. Initially, there is a smooth streamline; then, a recirculation area appears. The wake enlargement with time is evident in the Figs, which agree well with findings in the studies that are already present in the literature ([<xref ref-type="bibr" rid="pone.0192138.ref064">64</xref>], [<xref ref-type="bibr" rid="pone.0192138.ref065">65</xref>] and [<xref ref-type="bibr" rid="pone.0192138.ref034">34</xref>]). In the sensed area, the wake enlargement occurs because of vortex generation in the stenosed wall.</p>
+<p>In all of the time instants, regions that have the highest amount of viscosity are limited to the axis of the blood vessel or the bio-fluid regions in the area with recirculation (<xref ref-type="fig" rid="pone.0192138.g013">Fig 13</xref>, no circulation in case e); at the same time, there is a reverse association between the gradients in the velocity field and the value of the viscosity. The viscosity of the bio-fluid stuck to the vessel wall far from the location of the stenosis is mostly low, and the viscosity of the bio-fluid is higher in the direction of the axis of symmetry. By means of the repulse of the vorticity at the location of the termination of the stenosis, the bio-fluid regions that contain the highest viscosities (and the highest velocity gradients) extend to the solid boundaries of the arterial blood vessel and eventually move the symmetry axis sooner (not far away from the symmetric line in <xref ref-type="fig" rid="pone.0192138.g013">Fig 13</xref>).</p>
+<p>In the second case, flow in a tapered blood vessel under a constant magnetic field was studied, and the effects of the magnetic field on the velocity, before (z = 2 mm), at stenosis (z = 2 cm), and after it (z = 4 cm), are graphically presented and explained (Figs <xref ref-type="fig" rid="pone.0192138.g014">14</xref>, <xref ref-type="fig" rid="pone.0192138.g015">15</xref> and <xref ref-type="fig" rid="pone.0192138.g016">16</xref>). The graphs are also presented to visualize the temperature distribution in a blood vessel under the above-mentioned circumstances. Heat is removed from the second portion of the stenosis wall. Thus, the cooling effect reduces the harmful effects of the Joule heating on the blood, which can affect the Joule heating of the adjacent tissue.</p>
+<fig id="pone.0192138.g014" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g014</object-id>
+<label>Fig 14</label>
+<caption>
+<title>Velocity in the axial direction before stenosis at the inlet at z = 2 mm for the case of Joule heating, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and a fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g014" xlink:type="simple"/>
+</fig>
+<fig id="pone.0192138.g015" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g015</object-id>
+<label>Fig 15</label>
+<caption>
+<title>Velocity in the axial direction at the stenosis peak at z = 2 cm for the case of Joule heating, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g015" xlink:type="simple"/>
+</fig>
+<fig id="pone.0192138.g016" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g016</object-id>
+<label>Fig 16</label>
+<caption>
+<title>Velocity in axial direction at z = 4 cm for the case of Joule heating, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g016" xlink:type="simple"/>
+</fig>
+<p>In this case, in comparison with <xref ref-type="fig" rid="pone.0192138.g012">Fig 12</xref> cases, the temperature varies less. However, the thickness of the thermal boundary layer occupies almost half of the vessel; however, the temperature fluctuation is rather small and negligible (Figs <xref ref-type="fig" rid="pone.0192138.g017">17</xref> and <xref ref-type="fig" rid="pone.0192138.g018">18</xref>), since this amount of heat (nearly 37°C) could be removed by blood perfusion.</p>
+<fig id="pone.0192138.g017" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g017</object-id>
+<label>Fig 17</label>
+<caption>
+<title>Velocity in the axial direction at z = 4 cm for the case of Joule heating, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g017" xlink:type="simple"/>
+</fig>
+<fig id="pone.0192138.g018" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g018</object-id>
+<label>Fig 18</label>
+<caption>
+<title>Temperature distribution at z = 4 cm for the case of Joule heating at various simulation instances, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g018" xlink:type="simple"/>
+</fig>
+<p>As discussed earlier, for cases with a lower pressure gradient, circulation formed near the stenosis and after the stenosis peak. This phenomenon can lead to a plaque rupture and an embolism. Wall shear stress is a dominant factor in this regard. Additionally, good knowledge of skin friction leads to an understanding of the blood flow influence on the endothelial cells [<xref ref-type="bibr" rid="pone.0192138.ref068">68</xref>–<xref ref-type="bibr" rid="pone.0192138.ref070">70</xref>]. Thus, <xref ref-type="fig" rid="pone.0192138.g019">Fig 19</xref> shows stress on the wall after the stenosis in the case of blood recirculation formation. Stress at the stenosis shows drastic drops after the stenosis peak and maintains an almost constant value with a slightly unsteady behavior; and because it changes with time, exerting a variant force on the vessel wall can cause faster plaque ruptures.</p>
+<fig id="pone.0192138.g019" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g019</object-id>
+<label>Fig 19</label>
+<caption>
+<title>Wall shear stress for a case with blood recirculation (<inline-formula id="pone.0192138.e028"><alternatives><graphic id="pone.0192138.e028g" mimetype="image" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0192138.e028" xlink:type="simple"/><mml:math display="inline" id="M28"><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="bold-italic">r</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="bold-italic">s</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="bold-italic">r</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant="bold-italic">i</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:mfrac><mml:mo>=</mml:mo><mml:mn mathvariant="bold">0.6</mml:mn></mml:math></alternatives></inline-formula>).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g019" xlink:type="simple"/>
+</fig>
+<p>The ratio of the electromagnetic body force to the effective viscous body force is presented by the Hartmann number. To elucidate the effect of different Hartmann numbers on the velocity field, three different applied magnetic fields (0, 0.1, and 1 Hartmann Numbers) were exposed on the blood vessel, and the velocity profiles are presented in Figs <xref ref-type="fig" rid="pone.0192138.g020">20</xref>–<xref ref-type="fig" rid="pone.0192138.g022">22</xref>. Based on the results above, one can interpret the linear increase in the velocity with each incremental increase in the HA number. With regard to the magnetization limit, magnetic tests on humans were conducted in literature up to 8 T and on animals up to 16 T, and the subjects survived [<xref ref-type="bibr" rid="pone.0192138.ref071">71</xref>].</p>
+<fig id="pone.0192138.g020" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g020</object-id>
+<label>Fig 20</label>
+<caption>
+<title>Velocity in the axial direction distribution for three different Ha Numbers at z = 2 cm and t = 0.5 s, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and a fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g020" xlink:type="simple"/>
+</fig>
+<fig id="pone.0192138.g021" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g021</object-id>
+<label>Fig 21</label>
+<caption>
+<title>Velocity in the axial direction distribution for three different Ha Numbers at z = 2 cm and t = 0.75 s, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g021" xlink:type="simple"/>
+</fig>
+<fig id="pone.0192138.g022" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g022</object-id>
+<label>Fig 22</label>
+<caption>
+<title>Velocity in axial direction distribution for three different Ha Number at z = 2 cm at t = 0.75 s, <italic>L</italic><sub><italic>vessel</italic></sub> = 7 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic> and fifty percent stenosis.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g022" xlink:type="simple"/>
+</fig>
+<p>Usually, the stenosis blockage augmentation increases the flow pressure drop. However, the difference between different stenosed geometries vanishes at the middle of the simulation (<xref ref-type="fig" rid="pone.0192138.g023">Fig 23(C)</xref>) and reappears afterward (<xref ref-type="fig" rid="pone.0192138.g023">Fig 23(D)</xref>). On the other hand, at <italic>t</italic> = 0.75 <italic>s</italic>, the pressure drop relation with the blockage reverses, and the lowest blockage imposes the highest pressure drop.</p>
+<fig id="pone.0192138.g023" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g023</object-id>
+<label>Fig 23</label>
+<caption>
+<title/>
+<p>Velocity in the axial direction distribution for six different stenosis blockage percent peaks at z = 2 cm (a) t = 0 s (b) t = 0.25 s (c) t = 0.5 s (d) t = 0.75 (e) t = 1 s, <bold><italic>L</italic></bold><sub><bold><italic>vessel</italic></bold></sub> <bold>= 6 <italic>cm</italic>, <italic>R</italic></bold><sub><bold><italic>vessel</italic></bold></sub> <bold>= 1 <italic>cm</italic></bold>.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g023" xlink:type="simple"/>
+</fig>
+<p><xref ref-type="fig" rid="pone.0192138.g024">Fig 24</xref> depicts the flow pressure drop for different stenosis percentages (which range from a very mild (20 percent) stenosis to a severe (85 percent) stenosis. The difference between the inlet and outlet pressure drop in the vessels with a 60 percent (or less) blockage is negligible compared to larger blockages, such as an 80 percent blockage. For example, with an increase from a 60 percent to 80 percent blockage (a 1.41X enlargement of the stenosis), the pressure drop increases by approximately 10X. It is worth noticing that the work present in literature considered milder stenosis (i.e. up to 70 percent) and suggested the stenosis depths over fifty percent would change the resistance enormously [<xref ref-type="bibr" rid="pone.0192138.ref072">72</xref>], however the magnetization increased the flow resistance in our research which agrees with the findings of Xenos [<xref ref-type="bibr" rid="pone.0192138.ref073">73</xref>]. The large pressure drop in these cases can be correlated to the size of the trailing eddy after the stenosis. This eddy occupies a large area of the vessel in these cases. Moreover, the resistance curve follows an almost steady behavior after the stenosis peak. This behavior is because blood requires a greater amount of pressure difference to flow from the small narrowing of the blockage.</p>
+<fig id="pone.0192138.g024" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g024</object-id>
+<label>Fig 24</label>
+<caption>
+<title>Resistance to the flow for five different stenosis blockage percentages over the midline of the blocked vessel at the middle of the simulation, t = 0.5 s, <italic>L</italic><sub><italic>vessel</italic></sub> = 6 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic>.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g024" xlink:type="simple"/>
+</fig>
+<p>The pressure drop is also examined for the variation in the magnetic intensity in <xref ref-type="fig" rid="pone.0192138.g025">Fig 25</xref>. Increasing the magnetic field shrinks the vortex after the stenosis (the same trend is observed in the work of Xenos and Tzirtzilakis [<xref ref-type="bibr" rid="pone.0192138.ref073">73</xref>] for Newtonian flow), which reduces the resistance to the flow; however, the shear-thinning characteristics of the non-Newtonian fluid make the vortex size alteration less severe.</p>
+<fig id="pone.0192138.g025" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g025</object-id>
+<label>Fig 25</label>
+<caption>
+<title>Resistance to the flow for five different stenosis blockage percentages over the midline (r = 1.25 mm) of the blocked vessel at the middle of the simulation, t = 0.5 s, <italic>L</italic><sub><italic>vessel</italic></sub> = 6 <italic>cm</italic>, <italic>R</italic><sub><italic>vessel</italic></sub> = 1 <italic>cm</italic>.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g025" xlink:type="simple"/>
+</fig>
+<p>Figs <xref ref-type="fig" rid="pone.0192138.g026">26</xref> and <xref ref-type="fig" rid="pone.0192138.g027">27</xref> represent the resistance to the flow in different time steps. Usually, exertion of magnetic field on the blood vessel diminishes the variation in the pressure drop due to the reduction of the blood recirculation and consequently eases the flow movement, which makes the pressure difference smaller. Additionally, the velocity increases at t = 0.25 with an augmentation of the magnetization, which is another reason for the reduction in the pressure at this time step.</p>
+<fig id="pone.0192138.g026" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g026</object-id>
+<label>Fig 26</label>
+<caption>
+<title>Variation in the resistance to the flow along the midline of stenosis (r = 2.5 mm) for different time instances in the case without joule heating.</title>
+<p>(<bold><italic>L</italic></bold><sub><bold><italic>vessel</italic></bold></sub> <bold>= 6 <italic>cm</italic>, <italic>R</italic></bold><sub><bold><italic>vessel</italic></bold></sub> <bold>= 1 <italic>cm</italic></bold>, 50 percent stenosis).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g026" xlink:type="simple"/>
+</fig>
+<fig id="pone.0192138.g027" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0192138.g027</object-id>
+<label>Fig 27</label>
+<caption>
+<title>Variation in the resistance to the flow along the midline of the stenosis (r = 2.5 mm) for different time instances in the case with joule heating.</title>
+<p>(<bold><italic>L</italic></bold><sub><bold><italic>vessel</italic></bold></sub> <bold>= 6 <italic>cm</italic>, <italic>R</italic></bold><sub><bold><italic>vessel</italic></bold></sub> <bold>= 1 <italic>cm</italic></bold>, 50 percent stenosis).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0192138.g027" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec005" sec-type="conclusions">
+<title>Conclusions</title>
+<p>An unsteady axisymmetric code for the simulation of non-Newtonian Carreau-Yasuda fluid has been developed for the stented artery tube. It is based on the SIMPLE method in a complex geometry that shows a high geometric gradient. Two cases are considered for the fluid flow investigations. Major differences are seen in the wall shear stresses. The non-Newtonian model has better prediction values for the wall shear stresses and temperature distributions, and the following results are obtained:</p>
+<list list-type="bullet">
+<list-item><p>The non-Newtonian pulsatile flow’s main characteristics are unchanged, which reinforces the maximum shear stress and the normal pressure at the solid wall, and there is a decrease in the magnitude of the bio-fluid vorticity as well as a decrease in the length of the recirculation zone and the bio-fluid zone detachment from the vessel wall.</p></list-item>
+<list-item><p>The bio-fluid rheology characteristics cause a sudden increase in the axial velocity (axial mass flow rate) and wall friction at the site of the stenosis.</p></list-item>
+<list-item><p>An appropriate magnetic field can be applied to manage and control the flow behavior of the blood.</p></list-item>
+<list-item><p>The blood temperature monitoring in the case of a tapered artery is of paramount importance to maintaining the blood temperature in the range of living conditions.</p></list-item>
+</list>
+<p>These investigations provide valuable information for medical practitioners who seek to understand the flow of blood under stenosis conditions as well as for treating hypertension patients using magnetic therapy.</p>
+</sec>
+</body>
+<back>
+<ref-list>
+<title>References</title>
+<ref id="pone.0192138.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hayat</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Rafiq</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Ahmad</surname> <given-names>B</given-names></name>. <article-title>Soret and Dufour effects on MHD peristaltic flow of Jeffrey fluid in a rotating system with porous medium</article-title>. <source>PloS one</source>. <year>2016</year>;<volume>11</volume>(<issue>1</issue>):<fpage>e0145525</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0145525" xlink:type="simple">10.1371/journal.pone.0145525</ext-link></comment> <object-id pub-id-type="pmid">26808387</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ali</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Sheikh</surname> <given-names>NA</given-names></name>, <name name-style="western"><surname>Khan</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Saqib</surname> <given-names>M</given-names></name>. <article-title>Magnetic field effect on blood flow of Casson fluid in axisymmetric cylindrical tube: A fractional model</article-title>. <source>Journal of Magnetism and Magnetic Materials</source>. <year>2017</year>;<volume>423</volume>:<fpage>327</fpage>–<lpage>36</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mousavi</surname> <given-names>SM</given-names></name>, <name name-style="western"><surname>Farhadi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sedighi</surname> <given-names>K</given-names></name>. <article-title>Effect of non-uniform magnetic field on biomagnetic fluid flow in a 3D channel</article-title>. <source>Applied Mathematical Modelling</source>. <year>2016</year>;<volume>40</volume>(<issue>15</issue>):<fpage>7336</fpage>–<lpage>48</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Liu</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>He</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Long</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>B</given-names></name>. <article-title>Biofluid flow through a throttle valve: A computational fluid dynamics study of cavitation</article-title>. <source>Journal of Mechanics in Medicine and Biology</source>. <year>2016</year>;<volume>16</volume>(<issue>03</issue>):<fpage>1650034</fpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mabood</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Ibrahim</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Rashidi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Shadloo</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Lorenzini</surname> <given-names>G</given-names></name>. <article-title>Non-uniform heat source/sink and Soret effects on MHD non-Darcian convective flow past a stretching sheet in a micropolar fluid with radiation</article-title>. <source>International Journal of Heat and Mass Transfer</source>. <year>2016</year>;<volume>93</volume>:<fpage>674</fpage>–<lpage>82</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Karimipour</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>D’Orazio</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Shadloo</surname> <given-names>MS</given-names></name>. <article-title>The effects of different nano particles of Al 2 O 3 and Ag on the MHD nano fluid flow and heat transfer in a microchannel including slip velocity and temperature jump</article-title>. <source>Physica E: Low-dimensional Systems and Nanostructures</source>. <year>2017</year>;<volume>86</volume>:<fpage>146</fpage>–<lpage>53</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jamalabadi</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Bidokhti</surname> <given-names>AAA</given-names></name>, <name name-style="western"><surname>Rah</surname> <given-names>HK</given-names></name>, <name name-style="western"><surname>Vaezi</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Hooshmand</surname> <given-names>P</given-names></name>. <article-title>Numerical Investigation of Oxygenated and Deoxygenated Blood Flow through a Tapered Stenosed Arteries in Magnetic Field</article-title>. <source>PloS one</source>. <year>2016</year>;<volume>11</volume>(<issue>12</issue>):<fpage>e0167393</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0167393" xlink:type="simple">10.1371/journal.pone.0167393</ext-link></comment> <object-id pub-id-type="pmid">27941986</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pereira</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Ivanova</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Caseiro</surname> <given-names>AR</given-names></name>, <name name-style="western"><surname>Barbosa</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Bártolo</surname> <given-names>PJ</given-names></name>, <name name-style="western"><surname>Santos</surname> <given-names>JD</given-names></name>, <etal>et al</etal>. <article-title>MSCs conditioned media and umbilical cord blood plasma metabolomics and composition</article-title>. <source>PLoS One</source>. <year>2014</year>;<volume>9</volume>(<issue>11</issue>):<fpage>e113769</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0113769" xlink:type="simple">10.1371/journal.pone.0113769</ext-link></comment> <object-id pub-id-type="pmid">25423186</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shahidian</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Ghassemi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Khorasanizade</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Jamalabadi</surname> <given-names>MYA</given-names></name>, <name name-style="western"><surname>Ahmadi</surname> <given-names>G</given-names></name>. <article-title>Flow Analysis of non-Newtonian blood in a magnetohydrodynamic pump</article-title>. <source>Magnetics, IEEE Transactions on</source>. <year>2009</year>;<volume>45</volume>(<issue>6</issue>):<fpage>2667</fpage>–<lpage>70</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vaalma</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Rahmer</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Panagiotopoulos</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Duschka</surname> <given-names>RL</given-names></name>, <name name-style="western"><surname>Borgert</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Barkhausen</surname> <given-names>J</given-names></name>, <etal>et al</etal>. <article-title>Magnetic Particle Imaging (MPI): Experimental Quantification of Vascular Stenosis Using Stationary Stenosis Phantoms</article-title>. <source>PloS one</source>. <year>2017</year>;<volume>12</volume>(<issue>1</issue>):<fpage>e0168902</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0168902" xlink:type="simple">10.1371/journal.pone.0168902</ext-link></comment> <object-id pub-id-type="pmid">28056102</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>den Harder</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Suchá</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>van Hamersvelt</surname> <given-names>RW</given-names></name>, <name name-style="western"><surname>Budde</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>de Jong</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Schilham</surname> <given-names>A</given-names></name>, <etal>et al</etal>. <article-title>Imaging of pediatric great vessel stents: Computed tomography or magnetic resonance imaging?</article-title> <source>PloS one</source>. <year>2017</year>;<volume>12</volume>(<issue>1</issue>):<fpage>e0171138</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0171138" xlink:type="simple">10.1371/journal.pone.0171138</ext-link></comment> <object-id pub-id-type="pmid">28141852</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Medhavi</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Srivastav</surname> <given-names>RK</given-names></name>, <name name-style="western"><surname>Ahmad</surname> <given-names>QS</given-names></name>, <name name-style="western"><surname>Srivastava</surname> <given-names>V</given-names></name>. <source>Two-phase arterial blood flow through a composite stenosis</source>. <year>2015</year>.</mixed-citation></ref>
+<ref id="pone.0192138.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cebral</surname> <given-names>JR</given-names></name>, <name name-style="western"><surname>Yim</surname> <given-names>PJ</given-names></name>, <name name-style="western"><surname>Löhner</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Soto</surname> <given-names>O</given-names></name>, <name name-style="western"><surname>Choyke</surname> <given-names>PL</given-names></name>. <article-title>Blood flow modeling in carotid arteries with computational fluid dynamics and MR imaging</article-title>. <source>Academic radiology</source>. <year>2002</year>;<volume>9</volume>(<issue>11</issue>):<fpage>1286</fpage>–<lpage>99</lpage>. <object-id pub-id-type="pmid">12449361</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Peskin</surname> <given-names>CS</given-names></name>. <article-title>Numerical analysis of blood flow in the heart</article-title>. <source>Journal of computational physics</source>. <year>1977</year>;<volume>25</volume>(<issue>3</issue>):<fpage>220</fpage>–<lpage>52</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Morris</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Delassus</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Callanan</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Walsh</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Wallis</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Grace</surname> <given-names>P</given-names></name>, <etal>et al</etal>. <article-title>3-D numerical simulation of blood flow through models of the human aorta</article-title>. <source>Journal of biomechanical engineering</source>. <year>2005</year>;<volume>127</volume>(<issue>5</issue>):<fpage>767</fpage>–<lpage>75</lpage>. <object-id pub-id-type="pmid">16248306</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tanwar</surname> <given-names>VK</given-names></name>, <name name-style="western"><surname>Agarwal</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Varshney</surname> <given-names>N</given-names></name>. <article-title>Magnetic field effect on oscillatory arterial blood flow with mild stenosis</article-title>. <source>Applied Mathematical Sciences</source>. <year>2012</year>;<volume>6</volume>(<issue>120</issue>):<fpage>5959</fpage>–<lpage>66</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Berger</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Jou</surname> <given-names>L</given-names></name>. <article-title>Flows in stenotic vessels</article-title>. <source>Annual Review of Fluid Mechanics</source>. <year>2000</year>;<volume>32</volume>(<issue>1</issue>):<fpage>347</fpage>–<lpage>82</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ku</surname> <given-names>DN</given-names></name>. <article-title>Blood flow in arteries</article-title>. <source>Annual Review of Fluid Mechanics</source>. <year>1997</year>;<volume>29</volume>(<issue>1</issue>):<fpage>399</fpage>–<lpage>434</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Srivastava</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Vishnoi</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Mishra</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Sinha</surname> <given-names>P</given-names></name>. <source>Blood flow through a composite stenosis in catheterized arteries</source>. <year>2015</year>.</mixed-citation></ref>
+<ref id="pone.0192138.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Caballero</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Laín</surname> <given-names>S</given-names></name>. <article-title>Numerical simulation of non-Newtonian blood flow dynamics in human thoracic aorta</article-title>. <source>Computer methods in biomechanics and biomedical engineering</source>. <year>2015</year>;<volume>18</volume>(<issue>11</issue>):<fpage>1200</fpage>–<lpage>16</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1080/10255842.2014.887698" xlink:type="simple">10.1080/10255842.2014.887698</ext-link></comment> <object-id pub-id-type="pmid">24559110</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref021"><label>21</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Šeta</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Torlak</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Vila</surname> <given-names>A</given-names></name>. <source>Numerical Simulation of Blood Flow Through the Aortic Arch</source>. CMBEBIH 2017: <publisher-name>Springer</publisher-name>; <year>2017</year>. p. <fpage>259</fpage>–<lpage>68</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Haldar</surname> <given-names>K</given-names></name>. <article-title>Effects of the shape of stenosis on the resistance to blood flow through an artery</article-title>. <source>Bulletin of mathematical biology</source>. <year>1985</year>;<volume>47</volume>(<issue>4</issue>):<fpage>545</fpage>–<lpage>50</lpage>. <object-id pub-id-type="pmid">4084691</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kumar Mandal</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Chakravarty</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Mandal</surname> <given-names>A</given-names></name>. <article-title>Numerical study of the unsteady flow of non-Newtonian fluid through differently shaped arterial stenoses</article-title>. <source>International Journal of Computer Mathematics</source>. <year>2007</year>;<volume>84</volume>(<issue>7</issue>):<fpage>1059</fpage>–<lpage>77</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lou</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>W-J</given-names></name>. <article-title>A computer simulation of the non-Newtonian blood flow at the aortic bifurcation</article-title>. <source>Journal of Biomechanics</source>. <year>1993</year>;<volume>26</volume>(<issue>1</issue>):<fpage>37</fpage>–<lpage>49</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/0021-9290(93)90611-h" xlink:type="simple">10.1016/0021-9290(93)90611-h</ext-link></comment> <object-id pub-id-type="pmid">8423167</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mosayebidorcheh</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Hatami</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Mosayebidorcheh</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Ganji</surname> <given-names>DD</given-names></name>. <article-title>Effect of periodic body acceleration and pulsatile pressure gradient pressure on non-Newtonian blood flow in arteries</article-title>. <source>Journal of the Brazilian Society of Mechanical Sciences and Engineering</source>. <year>2015</year>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s40430-015-0404-7" xlink:type="simple">10.1007/s40430-015-0404-7</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0192138.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Haghighi</surname> <given-names>AR</given-names></name>, <name name-style="western"><surname>Asl</surname> <given-names>MS</given-names></name>. <article-title>Mathematical modeling of micropolar fluid flow through an overlapping arterial stenosis</article-title>. <source>International Journal of Biomathematics</source>. <year>2015</year>:<fpage>1550056</fpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wang</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Bernsdorf</surname> <given-names>J</given-names></name>. <article-title>Lattice Boltzmann simulation of steady non-Newtonian blood flow in a 3D generic stenosis case</article-title>. <source>Computers &amp; Mathematics with Applications</source>. <year>2009</year>;<volume>58</volume>(<issue>5</issue>):<fpage>1030</fpage>–<lpage>4</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Srivastava</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Saxena</surname> <given-names>M</given-names></name>. <article-title>A two-fluid model of non-Newtonian blood flow induced by peristaltic waves</article-title>. <source>Rheologica Acta</source>. <year>1995</year>;<volume>34</volume>(<issue>4</issue>):<fpage>406</fpage>–<lpage>14</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lukáčová‐Medviďová</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Zaušková</surname> <given-names>A</given-names></name>. <article-title>Numerical modelling of shear‐thinning non‐Newtonian flows in compliant vessels</article-title>. <source>International journal for numerical methods in fluids</source>. <year>2008</year>;<volume>56</volume>(<issue>8</issue>):<fpage>1409</fpage>–<lpage>15</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Liu</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Ghista</surname> <given-names>DN</given-names></name>, <name name-style="western"><surname>Huang</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Wong</surname> <given-names>KK</given-names></name>. <article-title>Hemodynamic characterization of transient blood flow in right coronary arteries with varying curvature and side-branch bifurcation angles</article-title>. <source>Computers in biology and medicine</source>. <year>2015</year>;<volume>64</volume>:<fpage>117</fpage>–<lpage>26</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.compbiomed.2015.06.009" xlink:type="simple">10.1016/j.compbiomed.2015.06.009</ext-link></comment> <object-id pub-id-type="pmid">26164032</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ellahi</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Rahman</surname> <given-names>SU</given-names></name>, <name name-style="western"><surname>Gulzar</surname> <given-names>MM</given-names></name>, <name name-style="western"><surname>Nadeem</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Vafai</surname> <given-names>K</given-names></name>. <article-title>A Mathematical Study of Non-Newtonian Micropolar Fluid in Arterial Blood Flow Through Composite Stenosis</article-title>. <source>Appl Math Inf Sci</source>. <year>2014</year>;<volume>8</volume>(<issue>4</issue>):<fpage>1567</fpage>–<lpage>73</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.12785/amis/080410" xlink:type="simple">10.12785/amis/080410</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0192138.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shadloo</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Kimiaeifar</surname> <given-names>A</given-names></name>. <article-title>Application of homotopy perturbation method to find an analytical solution for magnetohydrodynamic flows of viscoelastic fluids in converging/diverging channels</article-title>. <source>Proceedings of the Institution of Mechanical Engineers, Part C: Journal of Mechanical Engineering Science</source>. <year>2011</year>;<volume>225</volume>(<issue>2</issue>):<fpage>347</fpage>–<lpage>53</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tzirtzilakis</surname> <given-names>E</given-names></name>. <article-title>Biomagnetic fluid flow in a channel with stenosis</article-title>. <source>Physica D: Nonlinear Phenomena</source>. <year>2008</year>;<volume>237</volume>(<issue>1</issue>):<fpage>66</fpage>–<lpage>81</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ikbal</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Chakravarty</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Wong</surname> <given-names>KK</given-names></name>, <name name-style="western"><surname>Mazumdar</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Mandal</surname> <given-names>PK</given-names></name>. <article-title>Unsteady response of non-Newtonian blood flow through a stenosed artery in magnetic field</article-title>. <source>Journal of Computational and Applied Mathematics</source>. <year>2009</year>;<volume>230</volume>(<issue>1</issue>):<fpage>243</fpage>–<lpage>59</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Varshney</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Katiyar</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Kumar</surname> <given-names>S</given-names></name>. <article-title>Effect of magnetic field on the blood flow in artery having multiple stenosis: a numerical study</article-title>. <source>International Journal of Engineering, Science and Technology</source>. <year>2010</year>;<volume>2</volume>(<issue>2</issue>):<fpage>967</fpage>–<lpage>82</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Alimohamadi</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Imani</surname> <given-names>M</given-names></name>. <article-title>Transient non-Newtonian blood flow under magnetic targeting drug delivery in an aneurysm blood vessel with porous walls</article-title>. <source>International Journal for Computational Methods in Engineering Science and Mechanics</source>. <year>2014</year>;<volume>15</volume>(<issue>6</issue>):<fpage>522</fpage>–<lpage>33</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Behnia</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Mobadersani</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Yahyavi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Rezavand</surname> <given-names>A</given-names></name>. <article-title>Chaotic behavior of gas bubble in non-Newtonian fluid: a numerical study</article-title>. <source>Nonlinear Dynamics</source>. <year>2013</year>;<volume>74</volume>(<issue>3</issue>):<fpage>559</fpage>–<lpage>70</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Behnia</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Mobadersani</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Yahyavi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Rezavand</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Hoesinpour</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Ezzat</surname> <given-names>A</given-names></name>. <article-title>Effect of magnetic field on the radial pulsations of a gas bubble in a non-Newtonian fluid</article-title>. <source>Chaos, Solitons &amp; Fractals</source>. <year>2015</year>;<volume>78</volume>:<fpage>194</fpage>–<lpage>204</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Alimohamadi</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Imani</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Forouzandeh</surname> <given-names>B</given-names></name>. <article-title>Computational analysis of transient non-Newtonian blood flow in magnetic targeting drug delivery in stenosed carotid bifurcation artery</article-title>. <source>International Journal of Fluid Mechanics Research</source>. <year>2015</year>;<volume>42</volume>(<issue>2</issue>).</mixed-citation></ref>
+<ref id="pone.0192138.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Akbar</surname> <given-names>NS</given-names></name>. <article-title>Entropy generation analysis for a CNT suspension nanofluid in plumb ducts with peristalsis</article-title>. <source>Entropy</source>. <year>2015</year>;<volume>17</volume>(<issue>3</issue>):<fpage>1411</fpage>–<lpage>24</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref041"><label>41</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Akbar</surname> <given-names>NS</given-names></name>. <article-title>Ferromagnetic CNT suspended H 2 O+ Cu nanofluid analysis through composite stenosed arteries with permeable wall</article-title>. <source>Physica E: Low-dimensional Systems and Nanostructures</source>. <year>2015</year>;<volume>72</volume>:<fpage>70</fpage>–<lpage>6</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref042"><label>42</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Higashi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Yamagishi</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Takeuchi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Kawaguchi</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Sagawa</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Onishi</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>Orientation of erythrocytes in a strong static magnetic field</article-title>. <source>Blood</source>. <year>1993</year>;<volume>82</volume>(<issue>4</issue>):<fpage>1328</fpage>–<lpage>34</lpage>. <object-id pub-id-type="pmid">8353291</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref043"><label>43</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tzirtzilakis</surname> <given-names>E</given-names></name>. <article-title>A mathematical model for blood flow in magnetic field</article-title>. <source>Physics of Fluids (1994-present)</source>. <year>2005</year>;<volume>17</volume>(<issue>7</issue>):<fpage>077103</fpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref044"><label>44</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>jamalabadi</surname> <given-names>MYA</given-names></name>, <name name-style="western"><surname>Park</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Rashidi</surname> <given-names>MM</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>JM</given-names></name>. <article-title>Joule heating in low-voltage electroosmotic with electrolyte containing nano-bubble mixtures through microchannel rectangular orifice</article-title>. <source>Chemical Engineering Research and Design</source>. <year>2015</year>;<volume>102</volume>:<fpage>407</fpage>–<lpage>15</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref045"><label>45</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jamalabadi</surname> <given-names>MYA</given-names></name>, <name name-style="western"><surname>Park</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Rashidi</surname> <given-names>MM</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>JM</given-names></name>. <article-title>Effects of Thermal Boundary Conditions on the Joule Heating of Electrolyte in a Microchannel</article-title>. <source>Journal of Hydrodynamics</source>. <year>2015</year>;<volume>14</volume>(<issue>1</issue>).</mixed-citation></ref>
+<ref id="pone.0192138.ref046"><label>46</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jamalabadi</surname> <given-names>MYA</given-names></name>, <name name-style="western"><surname>Park</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>CY</given-names></name>. <article-title>Optimal Design of Magnetohydrodynamic Mixed Convection Flow in a Vertical Channel with Slip Boundary Conditions and Thermal Radiation Effects by Using an Entropy Generation Minimization Method</article-title>. <source>Entropy</source>. <year>2015</year>;<volume>17</volume>(<issue>2</issue>):<fpage>866</fpage>–<lpage>81</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref047"><label>47</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Houpt</surname> <given-names>JC</given-names></name>, <name name-style="western"><surname>Conner</surname> <given-names>ES</given-names></name>, <name name-style="western"><surname>McFarland</surname> <given-names>EW</given-names></name>. <article-title>Experimental study of temperature distributions and thermal transport during radiofrequency current therapy of the intervertebral disc</article-title>. <source>Spine</source>. <year>1996</year>;<volume>21</volume>(<issue>15</issue>):<fpage>1808</fpage>–<lpage>12</lpage>. <object-id pub-id-type="pmid">8855467</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref048"><label>48</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kim</surname> <given-names>SO</given-names></name>, <name name-style="western"><surname>Cho</surname> <given-names>SH</given-names></name>. <article-title>The effect of hand acupuncture therapy and moxibustion heat therapy on dysmenorrhea women</article-title>. <source>Korean Journal of Women Health Nursing</source>. <year>2001</year>;<volume>7</volume>(<issue>4</issue>):<fpage>610</fpage>–<lpage>21</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref049"><label>49</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mohammadpour</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Mohammadian</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Basiri Moghadam</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Nematollahi</surname> <given-names>MR</given-names></name>. <article-title>The effects of topical heat therapy on chest pain in patients with acute coronary syndrome: a randomised double‐blind placebo‐controlled clinical trial</article-title>. <source>Journal of clinical nursing</source>. <year>2014</year>;<volume>23</volume>(<issue>23–24</issue>):<fpage>3460</fpage>–<lpage>7</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/jocn.12595" xlink:type="simple">10.1111/jocn.12595</ext-link></comment> <object-id pub-id-type="pmid">24698126</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref050"><label>50</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kalra</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Kalra</surname> <given-names>S</given-names></name>. <article-title>Efficacy of Combination Therapy in Reliving Non-Specific Cervical Neck Pain</article-title>. <source>Indian Journal of Physiotherapy and Occupational Therapy-An International Journal</source>. <year>2016</year>;<volume>10</volume>(<issue>1</issue>):<fpage>15</fpage>–<lpage>8</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref051"><label>51</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>White</surname> <given-names>FM</given-names></name>, <name name-style="western"><surname>Corfield</surname> <given-names>I</given-names></name>. <source>Viscous fluid flow</source>: <publisher-name>McGraw-Hill New York</publisher-name>; <year>2006</year>.</mixed-citation></ref>
+<ref id="pone.0192138.ref052"><label>52</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Chhabra</surname> <given-names>RP</given-names></name>, <name name-style="western"><surname>Richardson</surname> <given-names>JF</given-names></name>. <source>Non-Newtonian flow in the process industries: fundamentals and engineering applications</source>: <publisher-name>Butterworth-Heinemann</publisher-name>; <year>1999</year>.</mixed-citation></ref>
+<ref id="pone.0192138.ref053"><label>53</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Alimohamadi</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Imani</surname> <given-names>M</given-names></name>. <article-title>Finite Element Simulation of Two-Dimensional Pulsatile Blood Flow Through a Stenosed Artery in the Presence of External Magnetic Field</article-title>. <source>International Journal for Computational Methods in Engineering Science and Mechanics</source>. <year>2014</year>;<volume>15</volume>(<issue>4</issue>):<fpage>390</fpage>–<lpage>400</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref054"><label>54</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ariman</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Turk</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sylvester</surname> <given-names>N</given-names></name>. <article-title>On steady and pulsatile flow of blood</article-title>. <source>Journal of Applied Mechanics</source>. <year>1974</year>;<volume>41</volume>(<issue>1</issue>):<fpage>1</fpage>–<lpage>7</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref055"><label>55</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>de Oliveira</surname> <given-names>SLG</given-names></name>, <name name-style="western"><surname>Kischinhevsky</surname> <given-names>M</given-names></name>. <source>A brief review of simple finite volume schemes using triangular meshes</source>.</mixed-citation></ref>
+<ref id="pone.0192138.ref056"><label>56</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kim</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Choi</surname> <given-names>H</given-names></name>. <article-title>A second-order time-accurate finite volume method for unsteady incompressible flow on hybrid unstructured grids</article-title>. <source>Journal of computational physics</source>. <year>2000</year>;<volume>162</volume>(<issue>2</issue>):<fpage>411</fpage>–<lpage>28</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref057"><label>57</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Patankar</surname> <given-names>S</given-names></name>. <source>Numerical heat transfer and fluid flow</source>: <publisher-name>CRC press</publisher-name>; <year>1980</year>.</mixed-citation></ref>
+<ref id="pone.0192138.ref058"><label>58</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Brenn</surname> <given-names>G</given-names></name>. <source>Analytical Solutions for Transport Processes</source>: <publisher-name>Springer</publisher-name>; <year>2016</year>.</mixed-citation></ref>
+<ref id="pone.0192138.ref059"><label>59</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mandal</surname> <given-names>PK</given-names></name>. <article-title>An unsteady analysis of non-Newtonian blood flow through tapered arteries with a stenosis</article-title>. <source>International Journal of Non-Linear Mechanics</source>. <year>2005</year>;<volume>40</volume>(<issue>1</issue>):<fpage>151</fpage>–<lpage>64</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref060"><label>60</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Trutman</surname> <given-names>ED</given-names></name>, <name name-style="western"><surname>Newbower</surname> <given-names>RS</given-names></name>. <article-title>A practical analysis of the electrical conductivity of blood</article-title>. <source>IEEE Transactions on Biomedical Engineering</source>. <year>1983</year>;(<issue>3</issue>):<fpage>141</fpage>–<lpage>54</lpage>. <object-id pub-id-type="pmid">6862489</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref061"><label>61</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tzirtzilakis</surname> <given-names>E</given-names></name>. <article-title>A mathematical model for blood flow in magnetic field</article-title>. <source>Physics of fluids</source>. <year>2005</year>;<volume>17</volume>(<issue>7</issue>):<fpage>077103</fpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref062"><label>62</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tabatabaei</surname> <given-names>SN</given-names></name>, <name name-style="western"><surname>Girouard</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Carret</surname> <given-names>A-S</given-names></name>, <name name-style="western"><surname>Martel</surname> <given-names>S</given-names></name>. <article-title>Remote control of the permeability of the blood–brain barrier by magnetic heating of nanoparticles: a proof of concept for brain drug delivery</article-title>. <source>Journal of Controlled Release</source>. <year>2015</year>;<volume>206</volume>:<fpage>49</fpage>–<lpage>57</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.jconrel.2015.02.027" xlink:type="simple">10.1016/j.jconrel.2015.02.027</ext-link></comment> <object-id pub-id-type="pmid">25724273</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref063"><label>63</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Villa</surname> <given-names>CH</given-names></name>, <name name-style="western"><surname>Anselmo</surname> <given-names>AC</given-names></name>, <name name-style="western"><surname>Mitragotri</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Muzykantov</surname> <given-names>V</given-names></name>. <article-title>Red blood cells: Supercarriers for drugs, biologicals, and nanoparticles and inspiration for advanced delivery systems</article-title>. <source>Advanced drug delivery reviews</source>. <year>2016</year>.</mixed-citation></ref>
+<ref id="pone.0192138.ref064"><label>64</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sarifuddin</surname> <given-names>Chakravarty S</given-names></name>, <name name-style="western"><surname>Mandal</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Layek</surname> <given-names>G</given-names></name>. <article-title>Numerical simulation of unsteady generalized Newtonian blood flow through differently shaped distensible arterial stenoses</article-title>. <source>Journal of medical engineering &amp; technology</source>. <year>2008</year>;<volume>32</volume>(<issue>5</issue>):<fpage>385</fpage>–<lpage>99</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref065"><label>65</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pontrelli</surname> <given-names>G</given-names></name>. <article-title>Blood flow through an axisymmetric stenosis. Proceedings of the Institution of Mechanical Engineers, Part H</article-title>: <source>Journal of Engineering in Medicine</source>. <year>2001</year>;<volume>215</volume>(<issue>1</issue>):<fpage>1</fpage>–<lpage>10</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1177/095441190121500101" xlink:type="simple">10.1177/095441190121500101</ext-link></comment> <object-id pub-id-type="pmid">11323977</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref066"><label>66</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Truskey</surname> <given-names>GA</given-names></name>, <name name-style="western"><surname>Yuan</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Katz</surname> <given-names>DF</given-names></name>. <source>Transport phenomena in biological systems</source>. <year>2004</year>.</mixed-citation></ref>
+<ref id="pone.0192138.ref067"><label>67</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Akbar</surname> <given-names>NS</given-names></name>, <name name-style="western"><surname>Nadeem</surname> <given-names>S</given-names></name>. <article-title>Carreau fluid model for blood flow through a tapered artery with a stenosis</article-title>. <source>Ain Shams Engineering Journal</source>. <year>2014</year>;<volume>5</volume>(<issue>4</issue>):<fpage>1307</fpage>–<lpage>16</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref068"><label>68</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chiu</surname> <given-names>J-J</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Chien</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Skalak</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Usami</surname> <given-names>S</given-names></name>. <article-title>Effects of disturbed flow on endothelial cells</article-title>. <source>Journal of biomechanical engineering</source>. <year>1998</year>;<volume>120</volume>(<issue>1</issue>):<fpage>2</fpage>–<lpage>8</lpage>. <object-id pub-id-type="pmid">9675673</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref069"><label>69</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sankar</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>U</given-names></name>. <article-title>FDM analysis for MHD flow of a non-Newtonian fluid for blood flow in stenosed arteries</article-title>. <source>Journal of mechanical science and technology</source>. <year>2011</year>;<volume>25</volume>(<issue>10</issue>):<fpage>2573</fpage>–<lpage>81</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref070"><label>70</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chien</surname> <given-names>S</given-names></name>. <article-title>Effects of disturbed flow on endothelial cells</article-title>. <source>Annals of biomedical engineering</source>. <year>2008</year>;<volume>36</volume>(<issue>4</issue>):<fpage>554</fpage>–<lpage>62</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s10439-007-9426-3" xlink:type="simple">10.1007/s10439-007-9426-3</ext-link></comment> <object-id pub-id-type="pmid">18172767</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref071"><label>71</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Schenck</surname> <given-names>JF</given-names></name>. <article-title>Safety of strong, static magnetic fields</article-title>. <source>Journal of magnetic resonance imaging</source>. <year>2000</year>;<volume>12</volume>(<issue>1</issue>):<fpage>2</fpage>–<lpage>19</lpage>. <object-id pub-id-type="pmid">10931560</object-id></mixed-citation></ref>
+<ref id="pone.0192138.ref072"><label>72</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Amornsamankul</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Wiwatanapataphee</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>YH</given-names></name>, <name name-style="western"><surname>Lenbury</surname> <given-names>Y</given-names></name>. <article-title>Effect of non-Newtonian behaviour of blood on pulsatile flows in stenotic arteries</article-title>. <source>International Journal of Biological and Medical Sciences</source>. <year>2006</year>;<volume>1</volume>(<issue>1</issue>):<fpage>42</fpage>–<lpage>6</lpage>.</mixed-citation></ref>
+<ref id="pone.0192138.ref073"><label>73</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xenos</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Tzirtzilakis</surname> <given-names>E</given-names></name>. <article-title>MHD effects on blood flow in a stenosis</article-title>. <source>Advances in Dynamical Systems and Applications</source>. <year>2013</year>;<volume>8</volume>(<issue>2</issue>):<fpage>427</fpage>–<lpage>37</lpage>.</mixed-citation></ref>
+</ref-list>
+</back>
+</article>

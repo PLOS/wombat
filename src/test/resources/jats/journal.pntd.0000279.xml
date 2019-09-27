@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="editorial" dtd-version="3.0" xml:lang="EN">
+<front>
+<journal-meta><journal-id journal-id-type="nlm-ta">PLoS Negl Trop Dis</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosntds</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS Neglected Tropical Diseases</journal-title></journal-title-group><issn pub-type="epub">1935-2735</issn><publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher></journal-meta>
+<article-meta><article-id pub-id-type="publisher-id">08-PNTD-ED-0132R2</article-id><article-id pub-id-type="doi">10.1371/journal.pntd.0000279</article-id><article-categories><subj-group subj-group-type="heading"><subject>Editorial</subject></subj-group></article-categories><title-group><article-title>Training the Next Generation of Global Health Scientists: A School of Appropriate Technology for Global Health</article-title></title-group><contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Hotez</surname><given-names>Peter J.</given-names></name><xref ref-type="aff" rid="aff1"/><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+</contrib-group><aff id="aff1">          <addr-line>Sabin Vaccine Institute and Department of Microbiology, Immunology, and Tropical Medicine, George Washington University Medical Center, Washington, D.C., United States of America</addr-line>       </aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">mtmpjh@gwumc.edu</email> or
+            <email xlink:type="simple">photez@gwu.edu</email></corresp>
+        <fn fn-type="current-aff" id="a1">
+            <p>Peter J. Hotez is Editor-in-Chief of <italic>PLoS Neglected Tropical
+                Diseases</italic>. He is a Walter G. Ross Professor and Chair of his
+                Department, and President of the Sabin Vaccine Institute.</p>
+        </fn>
+    <fn fn-type="conflict"><p>PJH is President of the Sabin Vaccine Institute and Director of the Human Hookworm Vaccine Initiative, a product development partnership supported by the Bill &amp; Melinda Gates Foundation. He is an inventor on US Patent 7,303,752 B2 (issued December 4, 2007) entitled “Hookworm vaccine.”</p></fn></author-notes><pub-date pub-type="collection"><month>8</month><year>2008</year></pub-date><pub-date pub-type="epub"><day>27</day><month>8</month><year>2008</year></pub-date><volume>2</volume><issue>8</issue><elocation-id>e279</elocation-id><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2008</copyright-year><copyright-holder>Peter J. Hotez</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><funding-group><funding-statement>The author received no specific funding for this article.</funding-statement></funding-group><counts><page-count count="4"/></counts></article-meta>
+</front>
+<body><sec id="s1">
+<title/>
+<p>In March of 2008, the Bill &amp; Melinda Gates Foundation made the impressive announcement that it will accept proposals for a new Grand Challenges Explorations program <xref ref-type="bibr" rid="pntd.0000279-Bill1">[1]</xref>. Grand Challenges Explorations will provide $100 million for global health scientists to identify new ways to protect against infectious diseases (including neglected tropical diseases [NTDs]), to create new drugs or delivery systems, to prevent or cure HIV/AIDS, and to explore the basis of latency in tuberculosis <xref ref-type="bibr" rid="pntd.0000279-Bill1">[1]</xref>. In so doing, the Gates Foundation will build on its long-standing multibillion dollar commitments to develop and test new drugs, diagnostics, and vaccines for NTDs, as well as the better known “big three” diseases, HIV/AIDS, tuberculosis, and malaria, and to fund critically needed operational research in support of large-scale control programs for these conditions <xref ref-type="bibr" rid="pntd.0000279-Bill1">[1]</xref>. The Gates Foundation is not alone—the United Kingdom's Wellcome Trust has a £15 billion investment portfolio of which a significant amount is devoted to global infectious diseases <xref ref-type="bibr" rid="pntd.0000279-Wellcome1">[2]</xref>, while the United States National Institutes of Health (NIH) also devotes a significant amount of funding towards global health <xref ref-type="bibr" rid="pntd.0000279-US1">[3]</xref>. Therefore, in the coming decade we can expect that these initiatives will contribute significantly towards reducing the so-called <italic>10/90 gap</italic>, a term coined by the Global Forum for Health Research to refer to the finding that only 10% or less of the global expenditure on medical research and development is directed towards neglected health problems that disproportionately affect the poorest people in developing regions of sub-Saharan Africa, Asia, and tropical regions of the Americas.</p>
+<p>While these new funded initiatives portend great promise for addressing the global 10/90 gap, I am also concerned that there is an important piece missing from these efforts that could undermine their success. I believe that at several levels we are failing to train the next generation of global public health scientists who either have the expertise to build these new technologies or who will understand how to apply these new technologies to public health practice <xref ref-type="bibr" rid="pntd.0000279-Hotez1">[4]</xref>–<xref ref-type="bibr" rid="pntd.0000279-Hotez4">[7]</xref>. The term <italic>appropriate technology</italic> has been used to describe innovations, which are “developed, produced, delivered and monitored within a comprehensive framework that takes into account the systems, the individuals, and the community.” <xref ref-type="bibr" rid="pntd.0000279-Hotez4">[7]</xref>. In a previous paper, my co-authors and I cited as examples of appropriate technology the storied successes of vaccines for polio and measles, and how because of their appropriate use these diseases were eradicated from the Western Hemisphere; in the case of smallpox vaccine, we have achieved global eradication <xref ref-type="bibr" rid="pntd.0000279-Hotez4">[7]</xref>. In contrast, the re-emergence of malaria in India and elsewhere as a consequence of chloroquine drug resistance by the malaria parasite and resistance to DDT by the mosquito vector are cited as examples of inappropriate use of technology during the 1960s <xref ref-type="bibr" rid="pntd.0000279-Hotez4">[7]</xref>,<xref ref-type="bibr" rid="pntd.0000279-Hotez5">[8]</xref>. My concern is that unless we train a new generation of global health scientists to use appropriately the new Gates Foundation–Wellcome Trust–NIH–Howard Hughes Medical Institute–funded technologies, we risk seeing these impressive investments fail to materialize into innovations that actually make a difference in the lives of poor people in developing countries.</p>
+<p>So exactly where and how does a person obtain training in a new type of global public health practice that embraces Affymetrix chips as a diagnostic tool for human African trypanosomiasis or river blindness; tests of a new drug for the treatment or chronic Chagas disease; planning for community-based drug distributors in order to add mebendazole and praziquantel to ivermectin for NTD control together with long-lasting insecticide-treated nets for co-endemic malaria; or the development, technology transfer, and clinical testing new recombinant vaccines for malaria, tuberculosis, or hookworm infection? Similarly, where and how does an individual become trained to simultaneously learn how to conduct high throughput screening for new antimalarial drugs, or prepare batch production records for the fermentation of a new recombinant hookworm antigen? In previous papers, I have suggested that if we had to answer the question today then we could not depend on most of the approximately 40 accredited public health schools in the United States <xref ref-type="bibr" rid="pntd.0000279-Hotez1">[4]</xref>–<xref ref-type="bibr" rid="pntd.0000279-Hotez4">[7]</xref>. Such statements were based partly on my personal experiences as a lecturer at two excellent public health schools (and my role as a visitor to several other schools) during which I was astonished to find that a majority of my students who were well into their public health training did not have a knowledge base that included the etiologic agent and mosquito vector of severe malaria, the differences between African and American trypanosomiasis, or even the differences between a drug or a vaccine, much less the technology that is required to build such control tools.</p>
+<p>For me, it did not take long to discover why American students were so ill-equipped to take on substantive global health problems that require in-depth technical knowledge. In 2003, I reviewed the departmental structure of the first generation of US public health schools and compared it to some of the newer public health schools, which were established within the last 30 years <xref ref-type="bibr" rid="pntd.0000279-Hotez2">[5]</xref>. Whereas the former under the influence of the great William Henry Welch included a heavy component of organism biology, pathology, and the state-of-the-art technologies of their day <xref ref-type="bibr" rid="pntd.0000279-Hotez1">[4]</xref>, many of the latter emphasize health promotion, health communication, health policy, and exercise sciences <xref ref-type="bibr" rid="pntd.0000279-Hotez2">[5]</xref>. Although there is certainly nothing wrong with these important subjects, I feel it means that the pendulum of American public health education has swung heavily towards the social sciences, often at the expense of microbiology and infectious diseases <xref ref-type="bibr" rid="pntd.0000279-Hotez1">[4]</xref>–<xref ref-type="bibr" rid="pntd.0000279-Hotez4">[7]</xref>. In response, at The George Washington University and Sabin Vaccine Institute, I helped to create a new master's degree curriculum run jointly between our medical school's basic science Department of Microbiology, Immunology, and Tropical Medicine and the Department of Epidemiology and Biostatistics in our public health school. Even this initiative, however, falls short of what is truly needed to provide essential competencies in appropriate technology.</p>
+<p>Since I first wrote those papers 5 years ago, which called for more technology-driven curricula, the situation has improved slightly. Competencies in the biologic basis of public health are now a core component of graduate training for the master's of public health degree <xref ref-type="bibr" rid="pntd.0000279-Council1">[9]</xref>, and as shown in <xref ref-type="table" rid="pntd-0000279-t001">Tables 1</xref> and <xref ref-type="table" rid="pntd-0000279-t002">2</xref>, there are currently 16 American public health schools with significant commitments to microbiology, infectious diseases, or biomedical sciences. Unfortunately, 11 of those schools represent the first generation of public health schools founded before 1970, while only five of the 25 American pubic health schools founded after 1970 host departments with capacity to begin addressing appropriate technology instruction. I feel that the two founding tropical medicine schools in the United Kingdom, the Liverpool School of Tropical Medicine and the London School of Hygiene and Tropical Medicine, come the closest to seriously addressing appropriate technology in their curricula <xref ref-type="bibr" rid="pntd.0000279-Hotez3">[6]</xref>, but even then they fall short in the areas of new tools development and testing. Certainly some of the new interdisciplinary global health training initiatives funded by the Fogarty International Center of the NIH, such as the Frameworks Programs for Global Health, will address some of these issues <xref ref-type="bibr" rid="pntd.0000279-US2">[10]</xref>. In the meantime, I am watching with great hope and expectation the founding of the new French School for Advanced Studies in Public Health <xref ref-type="bibr" rid="pntd.0000279-EHESP1">[11]</xref>.</p>
+<table-wrap id="pntd-0000279-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pntd.0000279.t001</object-id><label>Table 1</label><caption>
+<title>US Accredited Public Health Schools Founded before 1970 with Academic Departments Devoted to Infectious and Tropical Diseases.</title>
+</caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pntd-0000279-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pntd.0000279.t001" xlink:type="simple"/><table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" colspan="1" rowspan="1">Schools (Alphabetical Order)</td>
+<td align="left" colspan="1" rowspan="1">Year Founded</td>
+<td align="left" colspan="1" rowspan="1">Academic Department or Program</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" colspan="1" rowspan="1">Harvard School of Public Health</td>
+<td align="left" colspan="1" rowspan="1">1922</td>
+<td align="left" colspan="1" rowspan="1">Immunology and Infection</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Johns Hopkins Bloomberg School of Public Health</td>
+<td align="left" colspan="1" rowspan="1">1916</td>
+<td align="left" colspan="1" rowspan="1">Molecular Microbiology and Immunology</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Tulane University School of Public Health and Tropical Medicine</td>
+<td align="left" colspan="1" rowspan="1">1912</td>
+<td align="left" colspan="1" rowspan="1">Tropical Medicine</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">University of California at Berkeley School of Public Health</td>
+<td align="left" colspan="1" rowspan="1">1943</td>
+<td align="left" colspan="1" rowspan="1">Infectious Diseases</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">University of Michigan School of Public Health</td>
+<td align="left" colspan="1" rowspan="1">1941</td>
+<td align="left" colspan="1" rowspan="1">Global and International Health</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">University of North Carolina at Chapel Hill School of Public Health</td>
+<td align="left" colspan="1" rowspan="1">1936</td>
+<td align="left" colspan="1" rowspan="1">Epidemiology</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">University of Pittsburgh Graduate School of Public Health</td>
+<td align="left" colspan="1" rowspan="1">1948</td>
+<td align="left" colspan="1" rowspan="1">Infectious Diseases and Microbiology</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">University of Texas School of Public Health</td>
+<td align="left" colspan="1" rowspan="1">1969</td>
+<td align="left" colspan="1" rowspan="1">Biomedical Lab Sciences</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">University of Washington School of Public Health and Community Medicine</td>
+<td align="left" colspan="1" rowspan="1">1970</td>
+<td align="left" colspan="1" rowspan="1">Pathobiology</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Yale School of Public Health</td>
+<td align="left" colspan="1" rowspan="1">1915</td>
+<td align="left" colspan="1" rowspan="1">Epidemiology of Microbial Disease</td>
+</tr>
+</tbody>
+</table></alternatives><table-wrap-foot><fn id="nt101"><p>Of the 15 accredited US public health schools, 11 host departments in this area.</p></fn></table-wrap-foot></table-wrap><table-wrap id="pntd-0000279-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pntd.0000279.t002</object-id><label>Table 2</label><caption>
+<title>US Accredited Public Health Schools Founded after 1970 with Academic Departments Devoted to Infectious and Tropical Diseases.</title>
+</caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pntd-0000279-t002-2" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pntd.0000279.t002" xlink:type="simple"/><table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" colspan="1" rowspan="1">Schools (Alphabetical Order)</td>
+<td align="left" colspan="1" rowspan="1">Year Founded</td>
+<td align="left" colspan="1" rowspan="1">Academic Department or Program</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" colspan="1" rowspan="1">Emory University Rollins School of Public Health</td>
+<td align="left" colspan="1" rowspan="1">1990</td>
+<td align="left" colspan="1" rowspan="1">Hubert Department of Global Health</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">George Washington University Schools of Public Health and Health Service and Medicine and Health Sciences</td>
+<td align="left" colspan="1" rowspan="1">1997</td>
+<td align="left" colspan="1" rowspan="1">Public Health Microbiology and Emerging Infectious Diseases Program (jointly with Department of Microbiology, Immunology, and Tropical Medicine)</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Instituto Nacional de Salud Publica (Cuernavaca, Mexico)</td>
+<td align="left" colspan="1" rowspan="1">1987</td>
+<td align="left" colspan="1" rowspan="1">Infectious Diseases Infectious Vector-Borne Diseases</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">University at Albany SUNY School of Public Health</td>
+<td align="left" colspan="1" rowspan="1">1985</td>
+<td align="left" colspan="1" rowspan="1">Department of Biomedical Sciences</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">University of South Florida</td>
+<td align="left" colspan="1" rowspan="1">1984</td>
+<td align="left" colspan="1" rowspan="1">Global Health Department</td>
+</tr>
+</tbody>
+</table></alternatives><table-wrap-foot><fn id="nt102"><p>Of the 25 accredited US public health schools, five schools host departments devoted to this area.</p></fn></table-wrap-foot></table-wrap>
+<p>At the turn of the 20th century William Henry Welch, who founded the original Johns Hopkins School of Public Health, teamed up with Wickliffe Rose, the architect of the Rockefeller International Health Board, in order to establish a plan for global public health education (the Rose–Welch Plan) that in some ways resembled the Flexner Report for medical education <xref ref-type="bibr" rid="pntd.0000279-Hotez1">[4]</xref>. A new 21st century plan may be needed to address exactly how we might train a new generation of global public health scientists who will leverage the discoveries and technologies funded by Gates, Wellcome, Howard Hughes, and other foundations, as well as the NIH, the UK Medical Research Council, and their equivalent organizations in Brazil, China, India, and elsewhere.</p>
+<p>Today, I feel that most of the innovation in global public health technology is coming not from schools of public health, but rather the public development partnerships (PDPs) and public–private partnerships (PPPs), many of which were launched with support from the Bill &amp; Melinda Gates Foundation <xref ref-type="bibr" rid="pntd.0000279-Widdus1">[12]</xref>–<xref ref-type="bibr" rid="pntd.0000279-Hanlin1">[14]</xref>. Listed in <xref ref-type="table" rid="pntd-0000279-t003">Table 3</xref> are some of the major PDPs, which are producing an exciting new generation of products and developing control methods for the health of developing countries, and then introducing these innovations through a program of global access. As exciting as these new activities are, I am concerned that there is no mechanism to transfer the knowledge gained through them to the next generation of public health students.</p>
+<table-wrap id="pntd-0000279-t003" position="float"><object-id pub-id-type="doi">10.1371/journal.pntd.0000279.t003</object-id><label>Table 3</label><caption>
+<title>A Listing of the Major PDPs for Global Health.</title>
+</caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pntd-0000279-t003-3" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pntd.0000279.t003" xlink:type="simple"/><table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" colspan="1" rowspan="1">Organization</td>
+<td align="left" colspan="1" rowspan="1">Location</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" colspan="1" rowspan="1">Program for Appropriate Technology in Health (PATH)</td>
+<td align="left" colspan="1" rowspan="1">Seattle, WA, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">PATH Malaria Vaccine Initiative</td>
+<td align="left" colspan="1" rowspan="1">Bethesda, MD, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Medicines for Malaria Venture</td>
+<td align="left" colspan="1" rowspan="1">Geneva, Switzerland</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">International AIDS Vaccine Initiative</td>
+<td align="left" colspan="1" rowspan="1">New York, NY, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">International Partnership for Microbiocides</td>
+<td align="left" colspan="1" rowspan="1">Silver Spring, MD, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Aeras Global TB Vaccine Foundation</td>
+<td align="left" colspan="1" rowspan="1">Rockville, MD, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Global Alliance for TB Drug Development</td>
+<td align="left" colspan="1" rowspan="1">New York, NY, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Drugs for Neglected Diseases Initiative</td>
+<td align="left" colspan="1" rowspan="1">Geneva, Switzerland, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Institute for One World Health</td>
+<td align="left" colspan="1" rowspan="1">San Francisco, CA, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Foundation for Innovative New Diagnostics</td>
+<td align="left" colspan="1" rowspan="1">Geneva, Switzerland, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Human Hookworm Vaccine Initiative- Sabin Vaccine Institute</td>
+<td align="left" colspan="1" rowspan="1">Washington, D.C., USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Infectious Disease Research Institute</td>
+<td align="left" colspan="1" rowspan="1">Seattle, WA, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Pediatric Dengue Vaccine Initiative</td>
+<td align="left" colspan="1" rowspan="1">Seoul, Korea</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Innovative Vector Control Consortium</td>
+<td align="left" colspan="1" rowspan="1">Liverpool, UK</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">UNC Consortium for Parasitic Drug Development</td>
+<td align="left" colspan="1" rowspan="1">Chapel Hill, NC, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">International Vaccine Institute</td>
+<td align="left" colspan="1" rowspan="1">Seoul, Korea</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">PATH Vaccine Solutions</td>
+<td align="left" colspan="1" rowspan="1">Washington, D.C. and Seattle , WA, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">PATH Pneumococcal Vaccine Development Program</td>
+<td align="left" colspan="1" rowspan="1">Washington, D.C. and Seattle , WA, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">PATH Influenza Vaccine Development Program</td>
+<td align="left" colspan="1" rowspan="1">Washington, D.C. and Seattle , WA, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">PATH Advancing Rotavirus Vaccine Development</td>
+<td align="left" colspan="1" rowspan="1">Washington, D.C. and Seattle , WA, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">PATH Enteric Vaccine Initiative</td>
+<td align="left" colspan="1" rowspan="1">Washington, D.C. and Seattle , WA, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">PATH Meningitis Vaccine Project</td>
+<td align="left" colspan="1" rowspan="1">Washington, D.C. and Seattle , WA, USA</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">WHO-TDR</td>
+<td align="left" colspan="1" rowspan="1">Geneva, Switzerland</td>
+</tr>
+</tbody>
+</table></alternatives></table-wrap>
+<p>As the head of one such PDP, I have experienced great frustration with the lack of appropriate training of newly minted public health graduates. Among the core competencies that my PDP and others require are 1) the ability to recognize the major infectious pathogens with a microscope; cultivation and in vitro maintenance of organisms; and performance of diagnostic tests; 2) principles of drug discovery and high throughput screening; 3) principles of vaccine development including antigen discovery, fermentation/purification technology, and principles of quality control and quality assurances; 4) GXP (current good laboratory practices [GLP], good manufacturing practices [GMP], and good clinical practices [GCP]); 5) principles of promoting global access, such as technology transfer to innovative developing countries <xref ref-type="bibr" rid="pntd.0000279-Morel1">[15]</xref>, product introduction, cost-effectiveness, and financing; 6) regulatory requirements for new drugs, diagnostics, and biologics; 7) international patent law; 8) basics of clinical trial design, mathematical principles essential to understanding transmission dynamics of disease, and translational epidemiology; and 9) the major operational research issues associated with large-scale infectious diseases control programs <xref ref-type="bibr" rid="pntd.0000279-Hotez4">[7]</xref>. Most of these topics are covered in <italic>PLoS Neglected Tropical Diseases</italic>, although it should be pointed out that many of these core competencies would also be useful for addressing the ever-increasing burden of chronic non-communicable diseases in middle- and low-income countries <xref ref-type="bibr" rid="pntd.0000279-Daar1">[16]</xref>.</p>
+<p>The MPH degree, while important for many aspects of public health, is simply not adequate for providing most of the the skills we need to staff the PDPs and PPPs for global health technology innovation. We need additional programs of instruction in US schools of public health, and possibly a new type of <italic>school of appropriate technology for global health</italic>. Graduates of such a curriculum should be highly sought after by the PDPs and PPPs, as well as the pharmaceutical industry, NIH, US Centers for Disease Control and Prevention, and the World Health Organization and other United Nations agencies committed to global health. It may be that even the establishment of a single major school of appropriate technology for global health would be sufficient to begin addressing current needs, and then elements of such instruction would in time diffuse to more conventional schools of public health. Equally important, we need to address training needs in middle- and low-income countries where the neglected diseases are endemic by identifying centers of excellence in global health technology and expanding the opportunities for young scientists to obtain training in core competencies relevant to product and clinical development, GXP, and global access. In so doing, we could maximize the growing capacity for innovation in developing countries <xref ref-type="bibr" rid="pntd.0000279-Gardner1">[17]</xref>.</p>
+<p>In my opinion, there is unprecedented interest by young people to solve global public health problems of importance to the developing world. We need now to harness that youthful energy and channel it appropriately.</p>
+</sec></body>
+<back><ref-list>
+<title>References</title>
+<ref id="pntd.0000279-Bill1"><label>1</label><element-citation publication-type="other" xlink:type="simple">             <collab xlink:type="simple">Bill &amp; Melinda Gates Foundation</collab>             <year>2008</year>             <article-title>Proposals sought for innovation global health research.</article-title>             <comment>Available: <ext-link ext-link-type="uri" xlink:href="http://www.gatesfoundation.org/GlobalHealth/Announcements/Announce-080303.htm" xlink:type="simple">http://www.gatesfoundation.org/GlobalHealth/Announcements/Announce-080303.htm</ext-link>. Accessed 1 August 2008</comment>          </element-citation></ref>
+<ref id="pntd.0000279-Wellcome1"><label>2</label><element-citation publication-type="other" xlink:type="simple">             <collab xlink:type="simple">Wellcome Trust</collab>             <year>2008</year>             <article-title>Wellcome Trust investments.</article-title>             <comment>Available: <ext-link ext-link-type="uri" xlink:href="http://www.wellcome.ac.uk/investments/index.htm" xlink:type="simple">http://www.wellcome.ac.uk/investments/index.htm</ext-link>. Accessed 1 August 2008</comment>          </element-citation></ref>
+<ref id="pntd.0000279-US1"><label>3</label><element-citation publication-type="other" xlink:type="simple">             <collab xlink:type="simple">US National Institutes of Health</collab>             <year>2008</year>             <article-title>National Institute of Allergy and Infectious Diseases (NIAID).</article-title>             <comment>Available: <ext-link ext-link-type="uri" xlink:href="http://www3.niaid.nih.gov/topics/GlobalResearch/default.htm" xlink:type="simple">http://www3.niaid.nih.gov/topics/GlobalResearch/default.htm</ext-link> and John E. Fogarty International Center for Advanced Study in Health Sciences. Available: <ext-link ext-link-type="uri" xlink:href="http://www.fic.nih.gov" xlink:type="simple">http://www.fic.nih.gov</ext-link>. Accessed 2 August 2008</comment>          </element-citation></ref>
+<ref id="pntd.0000279-Hotez1"><label>4</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Hotez</surname><given-names>PJ</given-names></name>
+</person-group>             <year>2003</year>             <article-title>Erosion of William Henry Welch's concept of the hygienic laboratory in our nation's schools of public health and medicine.</article-title>             <source>Publ Health Rep</source>             <volume>118</volume>             <fpage>184</fpage>             <lpage>186</lpage>          </element-citation></ref>
+<ref id="pntd.0000279-Hotez2"><label>5</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Hotez</surname><given-names>PJ</given-names></name>
+</person-group>             <year>2003</year>             <article-title>Training a new generation of public health professionals and laboratorians for our nation's biodefense.</article-title>             <source>J Emerg Manag</source>             <volume>1</volume>             <fpage>24</fpage>             <lpage>27</lpage>          </element-citation></ref>
+<ref id="pntd.0000279-Hotez3"><label>6</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Hotez</surname><given-names>PJ</given-names></name>
+</person-group>             <year>2004</year>             <article-title>Should we establish a north American school of global health sciences?</article-title>             <source>Am J Med Sci</source>             <volume>328</volume>             <fpage>71</fpage>             <lpage>77</lpage>          </element-citation></ref>
+<ref id="pntd.0000279-Hotez4"><label>7</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Hotez</surname><given-names>P</given-names></name>
+<name name-style="western"><surname>Gupta</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Mahoney</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Poste</surname><given-names>G</given-names></name>
+</person-group>             <year>2006</year>             <article-title>Incorporating appropriate technology into north American schools of public health.</article-title>             <source>Rev Panam Salud Publica</source>             <volume>19</volume>             <fpage>118</fpage>             <lpage>123</lpage>          </element-citation></ref>
+<ref id="pntd.0000279-Hotez5"><label>8</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Hotez</surname><given-names>PJ</given-names></name>
+</person-group>             <year>2004</year>             <article-title>The national institutes of health roadmap and the developing world.</article-title>             <source>J Investig Med</source>             <volume>52</volume>             <fpage>246</fpage>             <lpage>247</lpage>          </element-citation></ref>
+<ref id="pntd.0000279-Council1"><label>9</label><element-citation publication-type="other" xlink:type="simple">             <collab xlink:type="simple">Council on Education for Public Health</collab>             <year>2005</year>             <article-title>Accreditation criteria public health programs. 30 p.</article-title>             <comment>Available: <ext-link ext-link-type="uri" xlink:href="http://www.ceph.org/files/public/PHP-Criteria-2005.SO5.pdf" xlink:type="simple">http://www.ceph.org/files/public/PHP-Criteria-2005.SO5.pdf</ext-link>. Accessed 1 August 2008</comment>          </element-citation></ref>
+<ref id="pntd.0000279-US2"><label>10</label><element-citation publication-type="other" xlink:type="simple">             <collab xlink:type="simple">US National Institutes of Health</collab>             <year>2008</year>             <article-title>John E. Fogarty International Center for Advanced Study in the Health Sciences. Research training grants.</article-title>             <comment>Available: <ext-link ext-link-type="uri" xlink:href="http://www.fic.nih.gov/programs/training_grants/index.htm" xlink:type="simple">http://www.fic.nih.gov/programs/training_grants/index.htm</ext-link>. Accessed 1 August 2008</comment>          </element-citation></ref>
+<ref id="pntd.0000279-EHESP1"><label>11</label><element-citation publication-type="other" xlink:type="simple">             <collab xlink:type="simple">EHESP School of Public Health</collab>             <year>2008</year>             <comment>Available: <ext-link ext-link-type="uri" xlink:href="http://www.ehesp.fr" xlink:type="simple">http://www.ehesp.fr</ext-link>. Accessed 1 August 2008</comment>          </element-citation></ref>
+<ref id="pntd.0000279-Widdus1"><label>12</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Widdus</surname><given-names>R</given-names></name>
+</person-group>             <year>2005</year>             <article-title>Public-private partnerships: An overview.</article-title>             <source>Trans R Soc Trop Med Hyg</source>             <volume>99</volume><supplement>Suppl 1</supplement>             <fpage>S1</fpage>             <lpage>S8</lpage><comment>doi:10.1016/j.trstmh.2005.06.005</comment>          </element-citation></ref>
+<ref id="pntd.0000279-Croft1"><label>13</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Croft</surname><given-names>SL</given-names></name>
+</person-group>             <year>2005</year>             <article-title>Public-private partnership: From there to here.</article-title>             <source>Trans R Soc Trop Med Hyg</source>             <volume>99</volume><supplement>Suppl 1</supplement>             <fpage>S9</fpage>             <lpage>S14</lpage><comment>doi:10.1016/j.trstmh.2005.06.008</comment>          </element-citation></ref>
+<ref id="pntd.0000279-Hanlin1"><label>14</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Hanlin</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Chataway</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Smith</surname><given-names>J</given-names></name>
+</person-group>             <year>2007</year>             <article-title>Global health public-private partnerships: IAVI, partnerships and capacity building.</article-title>             <source>Afr J Med Med Sci</source><volume>36</volume><supplement>Suppl</supplement>             <fpage>69</fpage>             <lpage>75</lpage>          </element-citation></ref>
+<ref id="pntd.0000279-Morel1"><label>15</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Morel</surname><given-names>CM</given-names></name>
+<name name-style="western"><surname>Acharya</surname><given-names>T</given-names></name>
+<name name-style="western"><surname>Broun</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Dangi</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Elias</surname><given-names>C</given-names></name>
+<etal/></person-group>             <year>2005</year>             <article-title>Health innovation networks to help developing countries address neglected diseases.</article-title>             <source>Science</source>             <volume>309</volume>             <fpage>401</fpage>             <lpage>404</lpage><comment>doi:10.1126/science.1115538</comment>          </element-citation></ref>
+<ref id="pntd.0000279-Daar1"><label>16</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Daar</surname><given-names>AS</given-names></name>
+<name name-style="western"><surname>Singer</surname><given-names>PA</given-names></name>
+<name name-style="western"><surname>Persad</surname><given-names>DL</given-names></name>
+<name name-style="western"><surname>Pramming</surname><given-names>SK</given-names></name>
+<name name-style="western"><surname>Matthews</surname><given-names>DR</given-names></name>
+<etal/></person-group>             <year>2007</year>             <article-title>Grand challenges in chronic non-communicable diseases.</article-title>             <source>Nature</source>             <volume>450</volume>             <fpage>494</fpage>             <lpage>496</lpage><comment>doi:10.1038/450494a</comment>          </element-citation></ref>
+<ref id="pntd.0000279-Gardner1"><label>17</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Gardner</surname><given-names>CA</given-names></name>
+<name name-style="western"><surname>Acharya</surname><given-names>T</given-names></name>
+<name name-style="western"><surname>Yach</surname><given-names>D</given-names></name>
+</person-group>             <year>2007</year>             <article-title>Technological and social innovation: A unifying new paradigm for global health.</article-title>             <source>Health Aff (Millwood)</source>             <volume>26</volume>             <fpage>1052</fpage>             <lpage>1061</lpage><comment>doi:10.1377/hlthaff.26.4.1052</comment>          </element-citation></ref>
+</ref-list>
+
+</back>
+</article>

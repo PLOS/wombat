@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" article-type="research-article" dtd-version="3.0" xml:lang="en">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-12-13305</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0045987</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Anatomy and physiology</subject>
+            <subj-group>
+              <subject>Physiological processes</subject>
+              <subj-group>
+                <subject>Chronobiology</subject>
+                <subject>Sleep</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Genetics</subject>
+            <subj-group>
+              <subject>Human genetics</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Neuroscience</subject>
+            <subj-group>
+              <subject>Cognitive neuroscience</subject>
+              <subj-group>
+                <subject>Cognition</subject>
+                <subject>Working memory</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Anatomy and physiology</subject>
+            <subj-group>
+              <subject>Physiological processes</subject>
+              <subj-group>
+                <subject>Chronobiology</subject>
+                <subject>Sleep</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Mental health</subject>
+            <subj-group>
+              <subject>Psychology</subject>
+              <subj-group>
+                <subject>Behavior</subject>
+                <subj-group>
+                  <subject>Attention (behavior)</subject>
+                  <subject>Human performance</subject>
+                </subj-group>
+              </subj-group>
+              <subj-group>
+                <subject>Cognitive psychology</subject>
+                <subject>Experimental psychology</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Neurology</subject>
+            <subj-group>
+              <subject>Cognitive neurology</subject>
+              <subject>Sleep disorders</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Social and behavioral sciences</subject>
+          <subj-group>
+            <subject>Psychology</subject>
+            <subj-group>
+              <subject>Behavior</subject>
+              <subj-group>
+                <subject>Attention (behavior)</subject>
+                <subject>Human performance</subject>
+                <subject>Vigilance</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Cognitive psychology</subject>
+              <subject>Experimental psychology</subject>
+              <subject>Neuropsychology</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Genetics and Genomics</subject>
+          <subject>Mental Health</subject>
+          <subject>Physiology</subject>
+          <subject>Neuroscience</subject>
+          <subject>Neurological Disorders</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Effects of Partial and Acute Total Sleep Deprivation on Performance across Cognitive Domains, Individuals and Circadian Phase</article-title><alt-title alt-title-type="running-head">Sleep Deprivation and Cognitive Performance</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Lo</surname>
+            <given-names>June C.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Groeger</surname>
+            <given-names>John A.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Santhi</surname>
+            <given-names>Nayantara</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Arbon</surname>
+            <given-names>Emma L.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Lazar</surname>
+            <given-names>Alpar S.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hasan</surname>
+            <given-names>Sibah</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>von Schantz</surname>
+            <given-names>Malcolm</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Archer</surname>
+            <given-names>Simon N.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Dijk</surname>
+            <given-names>Derk-Jan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1">
+        <label>1</label>
+        <addr-line>Surrey Sleep Research Centre, Faculty of Health and Medical Sciences, University of Surrey, Guildford, United Kingdom</addr-line>
+      </aff><aff id="aff2">
+        <label>2</label>
+        <addr-line>Department of Psychology, University of Hull, Hull, United Kingdom</addr-line>
+      </aff><aff id="aff3">
+        <label>3</label>
+        <addr-line>Department of Biochemistry and Physiology, Faculty of Health and Medical Sciences, University of Surrey, Guildford, United Kingdom</addr-line>
+      </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Yamazaki</surname>
+            <given-names>Shin</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">
+        <addr-line>Vanderbilt University, United States of America</addr-line>
+      </aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">d.j.dijk@surrey.ac.uk</email></corresp>
+        <fn fn-type="conflict">
+          <p>This is not an Industry sponsored study. The authors have declared that no competing interests exist.</p>
+        </fn>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: DJD JAG SNA MvS. Performed the experiments: JCL NS ELA ASL SH. Analyzed the data: JCL ELA. Wrote the paper: DJD JL JAG NS ELA ASL SH MvS SNA.</p>
+        </fn>
+      </author-notes><pub-date pub-type="collection">
+        <year>2012</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>24</day>
+        <month>9</month>
+        <year>2012</year>
+      </pub-date><volume>7</volume><issue>9</issue><elocation-id>e45987</elocation-id><history>
+        <date date-type="received">
+          <day>9</day>
+          <month>5</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>23</day>
+          <month>8</month>
+          <year>2012</year>
+        </date>
+      </history><permissions>
+        
+        <copyright-holder>Lo et al</copyright-holder>
+        <license xlink:type="simple">
+          <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+        </license>
+      </permissions><abstract>
+        <sec>
+          <title>Background</title>
+          <p>Cognitive performance deteriorates during extended wakefulness and circadian phase misalignment, and some individuals are more affected than others. Whether performance is affected similarly across cognitive domains, or whether cognitive processes involving Executive Functions are more sensitive to sleep and circadian misalignment than Alertness and Sustained Attention, is a matter of debate.</p>
+        </sec>
+        <sec>
+          <title>Methodology/Principal Findings</title>
+          <p>We conducted a 2 × 12-day laboratory protocol to characterize the interaction of repeated partial and acute total sleep deprivation and circadian phase on performance across seven cognitive domains in 36 individuals (18 males; mean ± SD of age = 27.6±4.0 years). The sample was stratified for the rs57875989 polymorphism in <italic>PER3</italic>, which confers cognitive susceptibility to total sleep deprivation. We observed a deterioration of performance during both repeated partial and acute total sleep deprivation. Furthermore, prior partial sleep deprivation led to poorer cognitive performance in a subsequent total sleep deprivation period, but its effect was modulated by circadian phase such that it was virtually absent in the evening wake maintenance zone, and most prominent during early morning hours. A significant effect of <italic>PER3</italic> genotype was observed for Subjective Alertness during partial sleep deprivation and on n-back tasks with a high executive load when assessed in the morning hours during total sleep deprivation after partial sleep loss. Overall, however, Subjective Alertness and Sustained Attention were more affected by both partial and total sleep deprivation than other cognitive domains and tasks including n-back tasks of Working Memory, even when implemented with a high executive load.</p>
+        </sec>
+        <sec>
+          <title>Conclusions/Significance</title>
+          <p>Sleep loss has a primary effect on Sleepiness and Sustained Attention with much smaller effects on challenging Working Memory tasks. These findings have implications for understanding how sleep debt and circadian rhythmicity interact to determine waking performance across cognitive domains and individuals.</p>
+        </sec>
+      </abstract><funding-group>
+        <funding-statement>This study was funded by AFOSR award FA9550-08-1-0080. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+      </funding-group><counts>
+        <page-count count="16"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>How sleep loss and circadian clocks affect brain function is a question with topical relevance because of the negative consequences of inadequate sleep and circadian disruption on health and cognition <xref ref-type="bibr" rid="pone.0045987-Cappuccio1">[1]</xref>, <xref ref-type="bibr" rid="pone.0045987-Hanlon1">[2]</xref>, <xref ref-type="bibr" rid="pone.0045987-Killgore1">[3]</xref>, <xref ref-type="bibr" rid="pone.0045987-Takahashi1">[4]</xref>. Cognitive performance deteriorates during total sleep deprivation (TSD) <xref ref-type="bibr" rid="pone.0045987-Babkoff1">[5]</xref>, <xref ref-type="bibr" rid="pone.0045987-Horowitz1">[6]</xref> and the magnitude of this deterioration is considerable such that already after 24 h of wakefulness, performance on a range of measures is as poor as during alcohol intoxication <xref ref-type="bibr" rid="pone.0045987-Dawson1">[7]</xref>. Cognitive performance also deteriorates during repeated partial sleep deprivation (PSD), and studies have shown that to maintain brain function during the day, young adults require as much as 8–9 h of sleep <xref ref-type="bibr" rid="pone.0045987-Belenky1">[8]</xref>, <xref ref-type="bibr" rid="pone.0045987-VanDongen1">[9]</xref>. Cognitive performance is markedly affected by circadian rhythmicity, independent of sleep. Performance is jeopardized during the circadian night and early morning, even when participants have been awake for less than 16 h <xref ref-type="bibr" rid="pone.0045987-Dijk1">[10]</xref>, <xref ref-type="bibr" rid="pone.0045987-Wyatt1">[11]</xref>, but performance is relatively spared in the evening hours during the wake maintenance zone, even when wake duration exceeds 24 h and participants carry a chronic sleep debt <xref ref-type="bibr" rid="pone.0045987-Cohen1">[12]</xref>, <xref ref-type="bibr" rid="pone.0045987-Zhou1">[13]</xref>.</p>
+      <p>These experiments have established that performance at any given time is determined by an interaction of the duration of the preceding wake episode, the chronic sleep debt carried by the individual, as well as the circadian phase at which performance is assessed. Nevertheless, several issues central to a basic understanding of the modulation of cognitive performance by the sleep-wake cycle and circadian rhythmicity remain unresolved - not least whether the cognitive control processes underpinning the tasks used in these studies are all similarly affected by sleep history and circadian phase. Such underpinning control processes allow us to determine and achieve task goals <xref ref-type="bibr" rid="pone.0045987-Brown1">[14]</xref>, <xref ref-type="bibr" rid="pone.0045987-Miller1">[15]</xref> and include different aspects of Attention (e.g. Sustained, Divided), Memory (e.g. Working, Semantic), as well as three separable components of Executive Functions, i.e. Updating, Task Switching, and Response Inhibition <xref ref-type="bibr" rid="pone.0045987-Miyake1">[16]</xref>.</p>
+      <p>Tasks that rely on executive processes (e.g. Response Selection and Inhibition) have been reported to be particularly disrupted by sleep deprivation and this has led to the notion that Executive Functions are particularly sensitive to sleep loss <xref ref-type="bibr" rid="pone.0045987-Harrison1">[17]</xref>, <xref ref-type="bibr" rid="pone.0045987-Harrison2">[18]</xref>. However, a study that investigated the usefulness of various performance tasks to monitor sleepiness-related performance decrements showed that Sustained Attention as assessed by the Psychomotor Vigilance Task (PVT) was more affected during sleep restriction than Response Inhibition as assessed by the Stroop task <xref ref-type="bibr" rid="pone.0045987-Balkin1">[19]</xref>. In addition, meta-analyses and reviews of TSD studies <xref ref-type="bibr" rid="pone.0045987-Killgore1">[3]</xref>, <xref ref-type="bibr" rid="pone.0045987-Lim1">[20]</xref>, in which effect sizes of TSD on several cognitive domains were compared across investigations, also suggest that Sustained Attention is as much or more affected than Executive Functions. Furthermore, two recent studies failed to show any particular sensitivity of Executive Functions to the effect of TSD <xref ref-type="bibr" rid="pone.0045987-Cain1">[21]</xref>, <xref ref-type="bibr" rid="pone.0045987-Tucker1">[22]</xref>. Thus, the data seem to indicate that the effects of PSD and TSD primarily concern Sustained Attention, with secondary or little effect on Executive Functions. These observations challenge the hierarchical or “cascade” models of cognitive processes, in which Sustained Attention underpins higher-order cognitive functions <xref ref-type="bibr" rid="pone.0045987-Lim1">[20]</xref>, and concepts of sleep function, in which sleep loss particularly affects cortical neuronal networks involved in executive processes <xref ref-type="bibr" rid="pone.0045987-Harrison1">[17]</xref>, <xref ref-type="bibr" rid="pone.0045987-Harrison2">[18]</xref>.</p>
+      <p>However, these previous experiments have limitations, including the lack of simultaneous repeated assessment of Sustained Attention and Executive Functions. Multiple assessments of Executive Functions in sleep deprivation studies are rarely undertaken <xref ref-type="bibr" rid="pone.0045987-Blatter1">[23]</xref>, and are challenging to interpret because assessments of Executive Functions typically involve novelty, difficulty, or strategy, all of which are affected by practice. These studies also did not include a direct comparison of the effects of repeated PSD and acute TSD, did not quantify circadian phase, and did not include performance assessment across the circadian cycle. Nor did these previous experiments consider that individuals differ in a trait-like manner in their susceptibility to the effect of sleep deprivation on specific cognitive domains <xref ref-type="bibr" rid="pone.0045987-Rupp1">[24]</xref>, <xref ref-type="bibr" rid="pone.0045987-VanDongen2">[25]</xref>. In none of these studies were study samples prospectively stratified based on genotypic differences, an approach recommended in the study of individual differences <xref ref-type="bibr" rid="pone.0045987-Braver1">[26]</xref>. Finally, interpretation of the divergent results related to the differential susceptibility of cognitive domains is hampered because in none of the available studies were all of these variables and factors assessed simultaneously.</p>
+      <p>We designed an experiment in which we combined repeated PSD and acute TSD and assessments of performance across the entire circadian cycle to investigate whether cognitive domains such as Alertness, Sustained Attention, Working Memory/Executive Functions, as well as Motor and Temporal Control were differentially affected. Executive functions were assessed by using Working Memory tasks (n-back tasks) which maintain the requirement for effective use of core executive processes even after repeated assessment <xref ref-type="bibr" rid="pone.0045987-Braver2">[27]</xref>. The study was conducted in a sample of 36 healthy men and women, stratified on the basis of a variable-number (4 or 5) tandem-repeat polymorphism (rs57875989) in the coding region of the clock gene <italic>PERIOD3</italic> (<italic>PER3</italic>) <xref ref-type="bibr" rid="pone.0045987-Archer1">[28]</xref> which in previous behavioural <xref ref-type="bibr" rid="pone.0045987-Groeger1">[29]</xref> and fMRI studies <xref ref-type="bibr" rid="pone.0045987-Vandewalle1">[30]</xref>, has been identified as a bio-marker for the “trait-like” susceptibility to effects of acute TSD on Working Memory performance with a high executive load when assessed in the morning hours. The data show that cognitive domains are differentially affected by sleep loss such that Alertness and Sustained Attention deteriorate much more than Working Memory, and that these effects are modulated by genotype and circadian phase.</p>
+    </sec>
+    <sec id="s2">
+      <title>Results</title>
+      <sec id="s2a">
+        <title>Sleep Duration</title>
+        <p>Thirty-six healthy young men and women (see <xref ref-type="supplementary-material" rid="pone.0045987.s011">Table S1</xref> for demographic information) participated in this cross-over design (<xref ref-type="fig" rid="pone-0045987-g001">Figure 1A</xref>). Average polysomnographically assessed total sleep time (TST) per 24 h was 8.56±0.06 h in the Control condition and only 5.75±0.06 h in the Sleep Restriction (SR) condition, in which participants were given a 6-h sleep opportunity, i.e. under repeated PSD (SR vs. Control: <italic>F</italic><sub>1,72.2</sub> = 2075.68, <italic>P</italic>&lt;0.0001; <xref ref-type="fig" rid="pone-0045987-g001">Figure 1B</xref>). During the 12-h recovery sleep episode following acute TSD, TST was significantly longer in the SR than in the Control condition (11.19±0.16 h vs.10.86±0.16 h, <italic>F</italic><sub>1,28</sub> = 5.23, <italic>P</italic> = 0.03; <xref ref-type="fig" rid="pone-0045987-g001">Figure 1B</xref>). Thus, seven nights of sleep restriction induced a sleep deficit that was carried over the period of acute TSD.</p>
+        <fig id="pone-0045987-g001" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0045987.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>Effect of sleep history on total sleep time and performance.</title>
+            <p><italic>(</italic><bold><italic>A</italic></bold><italic>)</italic> Protocol: The study (N = 36) consisted of two 12-day, i.e. 11-night, laboratory sessions as shown in the double raster plot, in which consecutive 24-h periods are plotted both next to and below each other. Following an adaptation night and a baseline night with 8-h Time In Bed (TIB; black bars), sleep opportunity in the subsequent seven nights was either 10 h in the Control condition, or 6 h in the Sleep Restriction (SR) condition. This was followed by a 39-h (Control) or 41-h (SR) acute total sleep deprivation period (grey bars), and a recovery sleep episode (TIB = 12 h). A cognitive performance test battery (blue bars) was administered on the baseline (B) day and each of the following six days (D1 to D6), and during total sleep deprivation (TSD; TD1 = first day of total sleep deprivation; TN1 = night of total sleep deprivation; TD2 = second day of total sleep deprivation). <italic>(</italic><bold><italic>B</italic></bold><italic>)</italic> Total Sleep Time in the Control (open circles) and SR condition (closed circles). <italic>(</italic><bold><italic>C</italic></bold><italic>)</italic> Subjective Alertness assessed by the Karolinska Sleepiness Scale (KSS). <italic>(</italic><bold><italic>D</italic></bold><italic>)</italic> Sustained Attention assessed by the Psychomotor Vigilance Task (speed of the slowest 10% responses) and the Sustained Attention Response Task (A’). <italic>(</italic><bold><italic>E</italic></bold><italic>)</italic> A’ of Working Memory tasks with increasing executive load (verbal 1- to 2- to 3-back). In all panels, the least square means and standard errors estimated with PROC MIXED in SAS are plotted. Asterisks indicate the significance of the contrast between conditions (***<italic>P</italic>&lt;0.001, **<italic>P</italic>&lt;0.01, and *<italic>P</italic>&lt;0.05).</p>
+          </caption>
+          <graphic mimetype="image" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.g001" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2b">
+        <title>Effects of Repeated Partial and Acute Total Sleep Deprivation, and Circadian Phase Depend on Cognitive Domain</title>
+        <p>Participants repeatedly performed a test battery throughout the protocol (<xref ref-type="fig" rid="pone-0045987-g001">Figure 1A</xref>; see Materials and Methods for details of the test battery).</p>
+        <p>Subjective Alertness, i.e. the reverse of the participants’ scores on the Karolinska Sleepiness Scale <xref ref-type="bibr" rid="pone.0045987-Akerstedt1">[31]</xref>, was stable during the Control condition, but declined steadily during the sleep restriction days (D1 to D6; see <xref ref-type="fig" rid="pone-0045987-g001">Figure 1C</xref>). In the subsequent TSD period, Subjective Alertness declined markedly from the first day (TD1), through the following biological night (TN1), with a limited recovery the next day (TD2).</p>
+        <p>Sustained Attention was assessed with the Psychomotor Vigilance Task (PVT) <xref ref-type="bibr" rid="pone.0045987-Dinges1">[32]</xref> in which participants wait an unpredictable amount of time for a single discrete stimulus before making a simple, well-practised response. Response speed of the 10% slowest responses deteriorated during PSD and TSD (<xref ref-type="fig" rid="pone-0045987-g001">Figure 1D</xref>; see <xref ref-type="supplementary-material" rid="pone.0045987.s001">Figure S1A</xref> and Supporting Information for the results of lapses). Sustained Attention was further evaluated with the Sustained Attention to Response Task (SART) <xref ref-type="bibr" rid="pone.0045987-Robertson1">[33]</xref> in which a simple, well-practised response is made to the vast majority of rapidly presented stimuli, and withheld when a target stimulus is presented. Performance on the SART was quantified taking both errors of omission and commission into account by computing an accuracy measure, A’ (refer to the statistical methods section for details), which deteriorated during PSD and TSD (<xref ref-type="fig" rid="pone-0045987-g001">Figure 1D</xref>).</p>
+        <p>We assessed Working Memory and Executive Functions with verbal n-back tasks in which participants repeatedly compare the current stimulus with the one presented 1 to 3 items before. As task difficulty increases from 1- to 3-back, so does the load on the three components of Executive Functions, i.e. updating of maintained information, task switching (e.g. between updating and memory comparison), and response selection <xref ref-type="bibr" rid="pone.0045987-Miyake1">[16]</xref>. Performance which was also quantified by A’ varied significantly across the three n-back tasks with poorest performance observed on the 3-back (main effect of Level on A’: <italic>F</italic><sub>2,68</sub> = 26.71, <italic>P</italic>&lt;0.0001 and for each pair-wise comparison, <italic>P</italic>&lt;0.0001; on a measure of response tendency, bias [B”<sub>D</sub>]: <italic>F</italic><sub>2,68</sub> = 29.92, <italic>P</italic>&lt;0.0001 and for each pair-wise comparison, <italic>P</italic>&lt;0.05). Although the negative effect of TSD on n-back performance was substantial, especially during TN1, and a smaller effect of PSD was observed, n-back tasks with a higher executive load did not appear to be more affected by sleep deprivation than those with a lower executive load (<xref ref-type="fig" rid="pone-0045987-g001">Figure 1E</xref>). On the other hand, B”<sub>D</sub> was more sensitive to the effects of PSD. After two or four nights of sleep restriction, participants became more conservative in their responses, i.e. increased their tendency to claim that ‘matches’ were not occurring (see <xref ref-type="supplementary-material" rid="pone.0045987.s001">Figure S1B</xref>).</p>
+        <p>For the statistical evaluation of these effects and for the comparison of the size of the effects across tasks, we first analysed all segments of the protocol combined (i.e. baseline, D1–D6, TD1, TN1, and TD2; see <xref ref-type="supplementary-material" rid="pone.0045987.s012">Table S2</xref> for statistical results). We computed the implied effect size (<italic>f<sup>2</sup></italic>; refer to the statistical methods section for details) and found that the effect of Condition, i.e. Sleep Restriction vs. Control, was greater for Subjective Alertness and Sustained Attention measures than for Working Memory (<xref ref-type="supplementary-material" rid="pone.0045987.s002">Figure S2</xref>). For the latter tasks, the effects of Condition were small and independent of the level of executive demand (Condition x Level interaction on A′: <italic>F</italic><sub>2,68</sub> = 0.38, <italic>P</italic> = 0.68; B″<sub>D</sub>: <italic>F</italic><sub>2,68</sub> = 0.47, <italic>P</italic> = 0.63).</p>
+        <p>We next determined whether repeated PSD and acute TSD had differential effects on performance by contrasting effects in different segments of the protocol. The effect of <bold>repeated PSD</bold> was estimated by comparing performance after five and six nights (D5 and D6) of restricted sleep opportunities to performance during D5 and D6 in the Control condition. We found a significant effect of repeated PSD on Subjective Alertness, Sustained Attention, and all measures of Working Memory performance except for B″<sub>D</sub> in the verbal 3-back task (<xref ref-type="supplementary-material" rid="pone.0045987.s013">Table S3</xref>). The effect size of repeated PSD varied considerably across the various cognitive domains. By conventional metrics <xref ref-type="bibr" rid="pone.0045987-Cohen2">[34]</xref>, the effect size was large for Subjective Alertness, medium for the Sustained Attention measures, and small for Working Memory (<xref ref-type="fig" rid="pone-0045987-g002">Figure 2A</xref>). For the Working Memory tasks, the effect of repeated PSD was independent of the level of executive load (Level × Condition interaction on A′: <italic>F</italic><sub>2,67</sub> = 0.14, <italic>P</italic> = 0.87; B″<sub>D</sub>: <italic>F</italic><sub>2,67</sub> = 0.58, <italic>P</italic> = 0.56).</p>
+        <fig id="pone-0045987-g002" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0045987.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Comparison of effect sizes for Subjective Alertness, Sustained Attention, and Working Memory.</title>
+            <p><italic>(</italic><bold><italic>A</italic></bold><italic>)</italic> Effect size of repeated partial sleep deprivation. It was assessed by comparing performance during D5 and D6 between conditions. <italic>(</italic><bold><italic>B</italic></bold><italic>)</italic> Effect size of acute total sleep deprivation on performance during the circadian day. It was assessed by comparing performance on TD1 to performance on TD2 across conditions. <italic>(</italic><bold><italic>C</italic></bold><italic>)</italic> Effect size of acute total sleep deprivation on performance during the circadian night. It was assessed by comparing performance on TD1 to performance in TN1 across conditions. Horizontal lines indicate cut-offs for small, medium, and large effect sizes.</p>
+          </caption>
+          <graphic mimetype="image" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.g002" xlink:type="simple"/>
+        </fig>
+        <p>When we contrasted all the 52 performance measures of the seven cognitive domains between the Control and the SR conditions, we found a near linear increase in the effect of repeated PSD from D1 to D6 (<xref ref-type="supplementary-material" rid="pone.0045987.s003">Figure S3</xref>).</p>
+        <p>To further examine the differential effects of repeated PSD on Sustained Attention and Executive Functions, we contrasted the change of performance at the end of the sleep history manipulation period relative to the baseline day (i.e. D6/baseline) in the SR and the Control conditions. After six nights of restricted sleep opportunities, PVT performance was at a 79.86±1.04% (mean speed of the slowest 10% responses ± SEM) level relative to baseline, while at the end of the Control period, performance was at a 93.38±1.04% level, and these changes in performance across the sleep history manipulation period differed between the two conditions (<italic>F</italic><sub>1,33.8</sub> = 11.49, <italic>p</italic> = 0.002). In contrast, verbal 3-back performance (A′) at the end of the sleep history manipulation period was at a 99.36±1.01% level in the SR condition and 100.15±1.01% level in the Control condition relative to baseline, and no significant main effect of Condition was found (<italic>F</italic><sub>1,34.1</sub> = 0.19, <italic>p</italic> = 0.66). These results emphasized that repeated PSD impaired Sustained Attention, while its influence on Executive Functions was minimal.</p>
+        <p>The effect of <bold>acute TSD</bold> was estimated by comparing performance on TD1 to performance on TD2 of the TSD segment. These performance measures were obtained at the same circadian phase and only differed with respect to the duration of the wake episode preceding the performance assessments. TSD impaired all performance measures (<xref ref-type="supplementary-material" rid="pone.0045987.s013">Table S3</xref>), but the detrimental effects were more prominent for Subjective Alertness and Sustained Attention measures than for Working Memory (<xref ref-type="fig" rid="pone-0045987-g002">Figure 2B</xref>). The effect of TSD on Working Memory was independent of the level of executive load (Level × Condition interaction on A′: <italic>F</italic><sub>2,175</sub> = 1.12, <italic>P</italic> = 0.33; B″<sub>D</sub>: <italic>F</italic><sub>2,175</sub> = 2.95, <italic>P</italic> = 0.05).</p>
+        <p>To further investigate the differential effects of acute TSD on Sustained Attention and Executive Functions, we contrasted the change of performance on the second relative to the first day of the TSD period (i.e. TD2/TD1) in the SR and the Control conditions. Relative to the first day of TSD, PVT speed on the second day was reduced by about 50% in both the SR and the Control conditions (mean ± SEM: 46.28±1.08% vs. 49.46±1.08%, <italic>F</italic><sub>1,32.7</sub> = 0.48, <italic>p</italic> = 0.49), while verbal 3-back performance was maintained at an approximately 90% level (A’ in SR vs. Control: 90.64±1.03% vs. 91.81±1.03%, <italic>F</italic><sub>1,34.1</sub> = 0.14, <italic>p</italic> = 0.71). These findings further indicated the greater detrimental effects of acute TSD on Sustained Attention than on Executive Functions.</p>
+        <p>We also evaluated the effects of TSD on performance during the <bold>circadian night</bold> by contrasting performance on TD1 and TN1. As in the previous comparisons, the effects of TSD were larger on Subjective Alertness and Sustained Attention (particularly reflected in PVT speed) than on Working Memory performance (<xref ref-type="fig" rid="pone-0045987-g002">Figure 2C</xref>).</p>
+        <p>This indicates the robustness of these differential effects of sleep deprivation on various cognitive domains.</p>
+        <p>The effects of repeated PSD and acute TSD were computed for other measures of these tasks, e.g. lapses of attention and speed on the 10% fastest response in the PVT, errors of omission and commission of the SART, as well as tasks including measures of Motor and Temporal Control and subjective assessments of Workload (see <xref ref-type="supplementary-material" rid="pone.0045987.s004">Figure S4A and B</xref>). Even when all these measures were considered, Sustained Attention and subjective measures, including those of Workload, remained most affected by the sleep manipulations and particularly so by acute TSD.</p>
+      </sec>
+      <sec id="s2c">
+        <title>PER3 Polymorphism Modulates Effects of Partial and Total Sleep Deprivation on Alertness and Working Memory with a High Executive Load</title>
+        <p>The three <italic>PER3</italic> genotypes obtained similar amounts of sleep (main effect of Genotype on TST: <italic>F</italic><sub>2,33.9</sub> = 0.89, P = 0.42) and their TST was not differentially affected by the two conditions (Condition × Genotype: <italic>F</italic><sub>2,76.1</sub> = 0.74, <italic>P</italic> = 0.48).</p>
+        <p>The time course for selected performance measures throughout the protocols was assessed separately for the three genotypes. When the entire protocol was considered, there was no significant effect of Genotype on Subjective Alertness, but the interaction between Genotype and Condition was significant (<xref ref-type="fig" rid="pone-0045987-g003">Figure 3A and B</xref>; <xref ref-type="supplementary-material" rid="pone.0045987.s014">Table S4</xref>) such that the negative effect of sleep restriction on Subjective Alertness was greatest in the <italic>PER3<sup>5/5</sup></italic> participants. The effect of Genotype or Genotype × Condition interaction was not significant for the Sustained Attention measures (<xref ref-type="fig" rid="pone-0045987-g003">Figure 3C</xref>; see <xref ref-type="supplementary-material" rid="pone.0045987.s005">Figure S5A</xref> for the time course and <xref ref-type="supplementary-material" rid="pone.0045987.s014">Table S4</xref> for the statistics). When all segments of the protocol were considered, no significant effect of Genotype was observed for any of the Working Memory measures, and the interaction between Genotype and Condition was significant in just one circumstance (<xref ref-type="supplementary-material" rid="pone.0045987.s014">Table S4</xref>). Only for A’ in the verbal n-back task with the highest executive load, i.e. verbal 3-back, did we observe a significant interaction (<italic>F</italic><sub>2,155</sub> = 3.42, <italic>P</italic> = 0.04; <xref ref-type="fig" rid="pone-0045987-g003">Figure 3A and D</xref>), indicating that sleep restriction affected 3-back accuracy differently across the <italic>PER3</italic> genotypes. Specifically, the performance of the <italic>PER3<sup>4/4</sup></italic> homozygotes was not affected by sleep history during either the sleep restriction days or subsequent TSD, while in the <italic>PER3<sup>4/5</sup></italic> heterozygotes, negative effects of sleep restriction were observed during the TSD period only. In the <italic>PER3<sup>5/5</sup></italic> homozygotes, a decrement in verbal 3-back performance was quite consistently found after the first night of 6-h sleep opportunity, and was also observed during subsequent TSD (see <xref ref-type="supplementary-material" rid="pone.0045987.s005">Figure S5B</xref> for a similar time course of B”<sub>D</sub>). These differential responses of the <italic>PER3</italic> genotypes to sleep loss were not found in Working Memory tasks with a smaller executive load, i.e. 2-back, or in relatively undemanding Working Memory, i.e. 1-back (<xref ref-type="fig" rid="pone-0045987-g003">Figure 3D</xref>).</p>
+        <fig id="pone-0045987-g003" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0045987.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>Effect of <italic>PER3</italic> genotype on performance during repeated partial and subsequent acute total sleep deprivation.</title>
+            <p><italic>(</italic><bold><italic>A</italic></bold><italic>)</italic> Time course of Subjective Alertness (top panel) and Working Memory/Executive Functions (bottom panel) in <italic>PER3<sup>4/4</sup></italic>, <italic>PER3<sup>4/5</sup></italic>, and <italic>PER3<sup>5/5</sup></italic> individuals. The least square means and standard errors estimated with PROC MIXED in SAS are plotted. Asterisks indicate the significance of the contrast between conditions (***<italic>P</italic>&lt;0.001, **<italic>P</italic>&lt;0.01, and *<italic>P</italic>&lt;0.05). Open circles = Control condition; filled circles = Sleep Restriction (SR) condition. <italic>(</italic><bold><italic>B, C, D</italic></bold><italic>)</italic> Performance during the SR and the Control conditions averaged throughout the protocol (B - TD2) in the three genotypes. The interaction between Genotype and Condition was significant for <italic>(</italic><bold><italic>B</italic></bold><italic>)</italic> Subjective Alertness (<italic>P</italic> = 0.0039) and for <italic>(</italic><bold><italic>D</italic></bold><italic>)</italic> Working Memory<bold>,</bold> but only for verbal 3-back (<italic>P</italic> = 0.04). For neither of the <italic>(</italic><bold><italic>C</italic></bold><italic>)</italic> Sustained Attention measures was the Genotype × Condition interaction statistically significant (ns = not significant).</p>
+          </caption>
+          <graphic mimetype="image" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.g003" xlink:type="simple"/>
+        </fig>
+        <p>Comparison of the effect size of the interaction between Genotype and Condition across these tasks indicates that when all segments of the protocol are considered, Subjective Alertness and verbal 3-back performance during sleep loss were most influenced by Genotype (<xref ref-type="supplementary-material" rid="pone.0045987.s006">Figure S6</xref>). The <italic>PER3</italic> genotypes did not differ in their responses to sleep deprivation for Sustained Attention or Working Memory tasks with small load on Executive Functions.</p>
+        <p>Analyses conducted separately for the effects of repeated PSD and acute TSD revealed that whereas the Genotype effect on Subjective Alertness was more pronounced for PSD (<xref ref-type="fig" rid="pone-0045987-g004">Figure 4A</xref>), the Genotype effect on Executive Functions was almost exclusively related to the TSD effect (<xref ref-type="fig" rid="pone-0045987-g004">Figure 4B</xref>). Thus, the <italic>f<sup>2</sup></italic> of the Genotype × PSD interaction on KSS score was 5.5 times larger than that of the Genotype × TSD interaction. The <italic>f<sup>2</sup></italic> of the Genotype × TSD interaction on verbal 2-back performance was 18.2 times larger than that of the Genotype × PSD interaction. For speed measures on the PVT, effect sizes of Genotype were relatively small for both PSD and TSD. Thus, largest effects of <italic>PER3</italic> genotype during acute TSD concern different cognitive domains than during repeated PSD.</p>
+        <fig id="pone-0045987-g004" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0045987.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Comparison of the effect sizes for the Genotype × Sleep Deprivation interaction across cognitive domains.</title>
+            <p><italic>(</italic><bold><italic>A</italic></bold><italic>)</italic> During partial sleep deprivation. It was assessed by comparing performance during D5 and D6 between conditions. <italic>(</italic><bold><italic>B</italic></bold><italic>)</italic> During total sleep deprivation. It was assessed by comparing performance on TD1 to performance on TD2 across conditions. Horizontal lines indicate cut-offs for small effect sizes.</p>
+          </caption>
+          <graphic mimetype="image" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.g004" xlink:type="simple"/>
+        </fig>
+        <p>Please note that even in the <italic>PER3<sup>5/5</sup></italic> participants, the effect of TSD was greater on Sustained Attention (the speed of the slowest 10% responses in the PVT) than on Working Memory (<xref ref-type="supplementary-material" rid="pone.0045987.s007">Figure S7</xref>).</p>
+      </sec>
+      <sec id="s2d">
+        <title>Circadian Rhythmicity Modulates Effects of Partial and Total Sleep Deprivation on Cognitive Performance</title>
+        <p>Circadian rhythmicity itself was affected by PSD. After repeated PSD, the circadian rhythm of melatonin was delayed by 45 minutes (mean ± standard error of dim light melatonin onset [DLMO]: 00∶13±00∶15 vs. 23∶28±00∶15; main effect of Condition: <italic>F</italic><sub>1,30</sub> = 28.15, <italic>P</italic>&lt;0.0001; <xref ref-type="supplementary-material" rid="pone.0045987.s008">Figure S8</xref>; see <xref ref-type="supplementary-material" rid="pone.0045987.s015">Table S5</xref> for the effects of Condition and Genotype on other circadian phase markers). For all subsequent analyses of the effect of Circadian Phase, the behavioural data during TSD were aligned to the melatonin rhythm.</p>
+        <p>Prominent circadian variation was observed for Subjective Alertness, Sustained Attention, and Working Memory during the TSD period (<xref ref-type="supplementary-material" rid="pone.0045987.s016">Table S6</xref>). For all of these measures, the minimum was observed in the morning hours, i.e. DLMO +8 h (<xref ref-type="fig" rid="pone-0045987-g005">Figure 5A–C</xref>). Following repeated PSD, all performance measures were lower throughout the TSD period (<xref ref-type="supplementary-material" rid="pone.0045987.s016">Table S6</xref> and <xref ref-type="fig" rid="pone-0045987-g005">Figure 5A–C</xref>). However, the effect of repeated PSD on the time course of performance during TSD was not constant (<xref ref-type="fig" rid="pone-0045987-g005">Figure 5A–C</xref>). For most of the measures, the effect was greatest in the initial part of the TSD period, then became smaller, with a minimum in the evening hours close to the DLMO, and increased again during the circadian night with a maximum at around DLMO+4 h. On the second day of TSD, effect of prior PSD was, in most cases, smaller (<xref ref-type="supplementary-material" rid="pone.0045987.s009">Figure S9</xref>). Indeed, we found a significant Condition × Circadian Phase interaction for Subjective Alertness and PVT measures, though not for SART or n-back measures (<xref ref-type="supplementary-material" rid="pone.0045987.s016">Table S6</xref>).</p>
+        <fig id="pone-0045987-g005" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0045987.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title>Effects of sleep history on circadian modulation of performance during total sleep deprivation.</title>
+            <p>Time course of <italic>(</italic><bold><italic>A</italic></bold><italic>)</italic> Subjective Alertness, <italic>(</italic><bold><italic>B</italic></bold><italic>)</italic> Sustained Attention, and <italic>(</italic><bold><italic>C</italic></bold><italic>)</italic> Working Memory during total sleep deprivation (TSD) in the Sleep Restriction (filled circles) or the Control condition (open circles) across different circadian phases relative to dim light melatonin onset (DLMO; grey filled area = the melatonin profile averaged between the two conditions). <italic>(</italic><bold><italic>D</italic></bold><italic>)</italic> Effects size of prior partial sleep deprivation on performance during TSD per 4-h circadian melatonin bins averaged across the six performance measures. Error bars represent the between performance measure standard error of the mean. Horizontal lines indicate cut-offs for small, medium, and large effect sizes.</p>
+          </caption>
+          <graphic mimetype="image" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.g005" xlink:type="simple"/>
+        </fig>
+        <p>For the Working Memory performance measures, pairwise comparisons of performance per circadian bin suggest that significant effects of prior PSD were mainly observed in the initial part of the TSD period and during the biological night at DLMO +4 h (<xref ref-type="fig" rid="pone-0045987-g005">Figure 5C</xref>).</p>
+        <p>Averaging the effects sizes of prior PSD across these cognitive domains but separately per circadian phase bin revealed the general pattern of largest effects in the morning and afternoon during the initial hours of TSD, followed by a decline of the effects with a minimum in the evening hours at around the DLMO, followed by a sudden subsequent increase during the biological night (<xref ref-type="fig" rid="pone-0045987-g005">Figure 5D</xref>; effect of Circadian Phase: <italic>F</italic><sub>8,40</sub> = 6.33, <italic>P</italic>&lt;0.0001). This circadian modulation of the effects of sleep history on performance decrements during TSD was confirmed by analysing the effect sizes of all measures of the performance battery including Temporal and Motor Control and subjective assessments of Workload (see <xref ref-type="supplementary-material" rid="pone.0045987.s010">Figure S10A</xref>; effect of Circadian Phase: <italic>F</italic><sub>8,408</sub> = 28.96, <italic>P</italic>&lt;0.0001).</p>
+      </sec>
+      <sec id="s2e">
+        <title>PER3 Genotype Modulates Circadian Rhythmicity Effects on Cognitive Performance</title>
+        <p><italic>PER3</italic> genotype modulated the interaction between Circadian Rhythmicity and Sleep History but to a different extent for Executive Functions than Subjective Alertness, Sustained Attention, and Working Memory with a low executive load. In the <italic>PER3<sup>4/4</sup></italic> homozygotes, verbal 3-back performance during sustained wakefulness was not affected by prior PSD at any circadian phase. By contrast, in the <italic>PER3<sup>4/5</sup></italic> heterozygotes and the <italic>PER3<sup>5/5</sup></italic> homozygotes, verbal 3-back performance was poorer following PSD especially at DLMO+4 h, which on average corresponded to 02∶00 to 06∶00 (<xref ref-type="fig" rid="pone-0045987-g006">Figure 6A</xref>). This circadian modulation of the effect of Genotype × Sleep History interaction was confirmed by comparing the effect size of the Genotype × Condition interaction on performance during TSD at various circadian phases for Subjective Alertness, Sustained Attention, and the verbal n-back tasks. Although for most of the performance measures, effect sizes were in general larger at the beginning of the TSD period during the circadian night, and in the post-TSD morning than in the post-TSD afternoon, the largest <italic>f<sup>2</sup></italic> was observed for the verbal 3-back performance at DLMO+4 h, i.e. between 02∶00 and 06∶00 (<xref ref-type="fig" rid="pone-0045987-g006">Figure 6B</xref>). A general pattern of largest effects of Genotype in the morning during the initial hours of the TSD, followed by a decline of the effects throughout the biological day and a sudden subsequent increase during the biological night was revealed by averaging the effects sizes of Genotype across these cognitive domains but separately per circadian phase bin (<xref ref-type="fig" rid="pone-0045987-g006">Figure 6C</xref>; effect of Circadian Phase: <italic>F</italic><sub>8,40</sub> = 2.43, <italic>P</italic> = 0.03). The standard errors of the effect sizes co-varied with the average effect size, indicating that not only the effect sizes vary with circadian phase but also the extent to which different cognitive domains are differentially affected. This was further confirmed by analysing the effect sizes of all measures of the performance battery (see <xref ref-type="supplementary-material" rid="pone.0045987.s010">Figure S10B</xref>; effect of Circadian Phase: <italic>F</italic><sub>8,408</sub> = 2.65, <italic>P</italic>&lt;0.01), such that largest effects of Genotype and largest divergence between tasks were observed in the morning hours, with smaller effects observed in the evening and afternoon.</p>
+        <fig id="pone-0045987-g006" orientation="portrait" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0045987.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title>Effects of <italic>PER3</italic> genotypes on the circadian modulation of performance during total sleep deprivation following partial sleep deprivation.</title>
+            <p><italic>(</italic><bold><italic>A</italic></bold><italic>)</italic> Verbal 3-back performance during total sleep deprivation (TSD) in the Sleep Restriction (filled symbols) and the Control conditions (open circles) separately for the three <italic>PER3</italic> genotypes. (DLMO: dashed grey vertical line and melatonin profile averaged between the two conditions shaded in grey). <italic>(</italic><bold><italic>B</italic></bold><italic>)</italic> Effect sizes for the Genotype × Sleep History Condition interaction during TSD for Subjective Alertness, Sustained Attention, and Working Memory, computed for each 4-h circadian melatonin bin. <italic>(</italic><bold><italic>C</italic></bold><italic>)</italic> Effect size averaged across the six performance measures. Error bars represent the between performance measure standard error of the mean. Horizontal lines indicate cut-offs for small and medium effect sizes.</p>
+          </caption>
+          <graphic mimetype="image" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.g006" xlink:type="simple"/>
+        </fig>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Discussion</title>
+      <p>The protocol allowed for a comprehensive assessment of the interaction of circadian rhythmicity, chronic partial and acute total sleep loss, and <italic>PER3</italic> genotype on performance across cognitive domains under carefully controlled laboratory conditions in a substantial sample of healthy young adults. The data show that Subjective Alertness and Sustained Attention are more affected by both repeated PSD and acute TSD than Executive Functions, as assessed by a Working Memory task implemented with a high executive load. Furthermore, circadian rhythmicity modulates the effects of sleep history such that the brain appears not much affected by sleep loss when performance is assessed during the wake maintenance zone in the evening hours, whereas in the morning hours, brain function is much more vulnerable. In addition, individual differences in the susceptibility to the effects of sleep loss, as predicted by <italic>PER3</italic> genotype, primarily concern Subjective Sleepiness during PSD and Executive Functions (e.g. Updating, Task Switching) during TSD, rather than Sustained Attention. Differences between genotype and tasks in response to sleep loss are, however, dependent on the circadian phase at which performance is assessed. Together, these findings challenge the notion that Executive Functions/Working Memory are particularly susceptible to the negative effects of sleep loss <xref ref-type="bibr" rid="pone.0045987-Harrison1">[17]</xref>, <xref ref-type="bibr" rid="pone.0045987-Harrison2">[18]</xref>. Instead, they imply that sleep-wake history and circadian phase primarily modulate Sustained Attention and that Executive Functions are not necessarily affected when Sustained Attention is compromised. Greatest divergence between genotypes and variation across tasks were observed in the morning hours after TSD. These findings have practical and theoretical implications.</p>
+      <sec id="s3a">
+        <title>Validity of Protocol and Performance Measures</title>
+        <p>The longer TST during recovery sleep after Sleep Restriction relative to the Control conditions (<xref ref-type="fig" rid="pone-0045987-g001">Figure 1B</xref>) suggests that limiting the sleep opportunity to 6 h per 24 h was successful in creating a chronic sleep debt that was carried over the period of TSD. The relatively small difference in TST (approximately 20 min) during the recovery sleep episodes probably reflects a ceiling effect since TST was close to 11 hours during the 12 h sleep opportunity. In the Control condition, during which performance did not deteriorate, participants on average slept 8.56 h. This is close to a previous estimate of the sleep duration required to maintain performance <xref ref-type="bibr" rid="pone.0045987-Belenky1">[8]</xref>, <xref ref-type="bibr" rid="pone.0045987-VanDongen1">[9]</xref> and only slightly less than the 8.9 h which is the estimated maximal capacity for sleep in young adults when given 16 h of sleep opportunity per 24 h <xref ref-type="bibr" rid="pone.0045987-Klerman1">[35]</xref>.</p>
+        <p>The data reported above provide several indications for the validity of our performance measures. The magnitude of changes in Subjective Alertness observed in the current study, are comparable to previous reports <xref ref-type="bibr" rid="pone.0045987-Belenky1">[8]</xref>, <xref ref-type="bibr" rid="pone.0045987-VanDongen1">[9]</xref>. Our measures of Sustained Attention behaved as expected: the speed of the 10% slowest responses on the PVT was much more affected by repeated PSD and acute TSD than the 10% fastest responses. This is in accordance with previous behavioural studies <xref ref-type="bibr" rid="pone.0045987-Basner1">[36]</xref>, <xref ref-type="bibr" rid="pone.0045987-Graw1">[37]</xref> and provides evidence for differential brain correlates of the slowest and fastest responses as assessed in fMRI studies <xref ref-type="bibr" rid="pone.0045987-Drummond1">[38]</xref>, <xref ref-type="bibr" rid="pone.0045987-Schmidt1">[39]</xref>. Consistent with previous reports on the effects of sleep deprivation on the SART, which involves Sustained Attention and Response Inhibition <xref ref-type="bibr" rid="pone.0045987-Harrison3">[40]</xref>, both errors of omission and commission were affected by sleep deprivation, but in our data, the accuracy measure, A’, was shown to be more sensitive than either of the error measures (<xref ref-type="supplementary-material" rid="pone.0045987.s004">Figure S4</xref>). Performance on the Working Memory tasks with varying executive load displayed characteristics in accordance with the intended targeted processes. The progressive reduction of performance from 1- to 2- to 3-backs is consistent with existing findings <xref ref-type="bibr" rid="pone.0045987-Braver2">[27]</xref> and was observed throughout the protocol. Moreover, as A’ was above chance level, we are confident that the observed decrease in accuracy and increase in tendency towards more conservative responses were associated with task difficulty and that participants continued to engage genuinely with the tasks even after repeated administration.</p>
+      </sec>
+      <sec id="s3b">
+        <title>The psychological Properties of the Cognitive Tasks Used</title>
+        <p>In the present study, we compared the effects of sleep deprivation across tasks carefully selected to recruit different cognitive domains. These tasks have been widely used in cognitive research, in both laboratory and neuroimaging studies, as well as in sleep research. We used multiple tasks, with known redundancies and partial functional overlaps (e.g. 1-back verbal, spatial, visual, integrated spatial and visual) in order to counter the inherent difficulty with cognitive tasks that no task is ‘process pure’. That is, even apparently simple tasks may depend upon multiple simple processes. These simpler processes are themselves more or less influential in performance as tasks are, wittingly or otherwise, performed differently by participants on different occasions (e.g. context, time-pressure, practice, speed-accuracy trade-offs, feedback, reward, etc.). By using multiple tasks that had been extensively practiced, and almost all of which are externally paced, with minimal direct knowledge of results, we believe we can minimise many of these unwanted sources of performance variability. Our multi-task approach provides an alternative to other approaches in which the effects of sleep deprivation are investigated on the cognitive components of a single task, the interaction between which is prey to all of the influences identified above <xref ref-type="bibr" rid="pone.0045987-Tucker1">[22]</xref>.</p>
+      </sec>
+      <sec id="s3c">
+        <title>Effect Sizes of Repeated Partial and Acute Total Sleep Deprivation across Cognitive Domains</title>
+        <p>Computation of effect sizes <xref ref-type="bibr" rid="pone.0045987-Cohen2">[34]</xref>, <xref ref-type="bibr" rid="pone.0045987-VanDongen3">[41]</xref> and the simultaneous and repeated assessment of performance in many cognitive domains allowed for a unequivocal demonstration that the effects of <bold>repeated PSD</bold> and <bold>acute TSD</bold> on Subjective Alertness and Sustained Attention are larger than effects on Working Memory/Executive Functions. In fact, little evidence for a particular sensitivity of the executive component of the n-back tasks to the effects of sleep loss was observed in the present study. Importantly, no interaction between executive load and either PSD or TSD was observed for A′ or B″<sub>D</sub>. The fact that throughout the present study, performance was reliably affected by task difficulty, allows us to be more conclusive regarding the lack of a relationship between task difficulty and the negative effects of sleep deprivation, since in previous studies, simpler and more difficult tasks were impaired by sleep deprivation to similar extents <xref ref-type="bibr" rid="pone.0045987-Drummond2">[42]</xref>, <xref ref-type="bibr" rid="pone.0045987-Habeck1">[43]</xref>, <xref ref-type="bibr" rid="pone.0045987-Tomasi1">[44]</xref>.</p>
+        <p>Meta-analyses of studies on the effects of acute TSD on accuracy and speed measures of performance across a wide range of cognitive domains indicated that Sustained Attention was particularly affected, although only few studies included in the meta-analyses used n-back tasks <xref ref-type="bibr" rid="pone.0045987-Lim1">[20]</xref> and none assessed the effect of repeated PSD on Executive Functions as assessed by the n-back tasks. In our study, effects of sleep deprivation on Sustained Attention were not only greater than effects on Working Memory, but also greater than effects on measures of Temporal and Motor Control (<xref ref-type="supplementary-material" rid="pone.0045987.s004">Figure S4</xref>). The differential sensitivity of performance across cognitive domains was observed during the circadian night and day and following repeated PSD and acute TSD. In addition, in the current data set, the effects of TSD were larger than the effects of PSD, but the relative sensitivity of the various tasks appeared similar for the two interventions.</p>
+        <p>We used effects sizes, which are widely used in the psychological literature and also in meta-analyses, as our primary tool to compare the effects of sleep deprivation across tasks. The validity of this choice was confirmed by computing relative changes in performance for some of the tasks and these measures also showed that Sustained Attention task was more affected than Working Memory task even when implemented with a high executive load. In the current protocol, we also directly compared the effects of PSD and TSD and across many different tasks, thereby providing yardsticks both within and across tasks. Effect sizes, although useful in comparing across tasks, interventions, and studies, do, of course, not inform about the ‘clinical’ significance of the effect. This would require comparing the effects of sleep loss on tasks to the effects observed in specific patient populations, or using tasks that have in a quantitative way been correlated with performance in the real world.</p>
+      </sec>
+      <sec id="s3d">
+        <title>Interaction Effects of Circadian Phase and Sleep Homeostasis on Cognition</title>
+        <p>In our protocol, sleep restriction was accomplished by a symmetrical change in bedtime and wake time because we wanted to keep the centre of light exposure unchanged and thereby minimise circadian phase shifts. Nevertheless, repeated PSD led to a delay of the melatonin rhythm. This finding provides further evidence <xref ref-type="bibr" rid="pone.0045987-Rogers1">[45]</xref> for a feedback of the sleep homeostat onto the circadian timing system and emphasizes the necessity to assess circadian phase. In contrast to previous studies <xref ref-type="bibr" rid="pone.0045987-Tucker1">[22]</xref>, <xref ref-type="bibr" rid="pone.0045987-Doran1">[46]</xref>, performance data were aligned with the melatonin rhythm, which is particularly important when group averages are computed across individuals with different circadian phases. These analyses demonstrated that the effects of sleep history on cognition were modulated by circadian phase. During acute TSD, all cognitive performance measures displayed a near stable performance during the first day, a steep decline during the biological night, and some recovery on the second day <xref ref-type="bibr" rid="pone.0045987-Dijk1">[10]</xref>, <xref ref-type="bibr" rid="pone.0045987-Cajochen1">[47]</xref>, suggesting that one circadian signal modulates all these performance measures.</p>
+        <p>The effects of sleep history were greatest in the initial part of the acute TSD, became progressively smaller and then increased again during the biological night. In our protocol, sleep restriction was accomplished by a symmetrical change in bed time and wake time; hence, compared to the Control condition, in the SR condition, wake time occurred at an earlier clock time (2 h) and at any given clock time, participants had been awake for a longer duration. This can, however, not be the only explanation for the time course of the effects of sleep history because even we compared a Sleep Restriction observation at for example 12∶00 to a Control observation at 16∶00, Alertness in the SR condition was still poorer (see <xref ref-type="fig" rid="pone-0045987-g005">Figure 5A</xref>). The time course of the effect of sleep history on performance indicates that a circadian signal can modulate the effects of sleep history on Subjective Alertness, Sustained Attention, and Executive Functions, in accordance with similar observations for Sustained Attention <xref ref-type="bibr" rid="pone.0045987-Cohen1">[12]</xref>. During the wake maintenance zone when the circadian wake promoting signal is at its crest <xref ref-type="bibr" rid="pone.0045987-Dijk2">[48]</xref>, the brain is relatively protected from the negative effects of sleep deprivation on waking performance. By contrast, in the morning hours, the brain is very susceptible, and all cognitive domains are affected. This circadian modulation of sleep history effects appears strongest for Sustained Attention measures, as reflected in a significant interaction between Condition and Circadian Phase for these measures and in accordance with a previous report <xref ref-type="bibr" rid="pone.0045987-Cohen1">[12]</xref> in which only Sustained Attention was assessed. The neurochemical basis of this circadian protection of cognition remains to be elucidated, although some suggestions have been made <xref ref-type="bibr" rid="pone.0045987-Gonzalez1">[49]</xref>.</p>
+      </sec>
+      <sec id="s3e">
+        <title>Genotype Effects</title>
+        <p>At baseline, no differences in performance between the <italic>PER3</italic> genotypes were observed. Performance deteriorated following manipulation of sleep homeostasis by both repeated PSD and acute TSD in all three genotypes, but more so in the <italic>PER3<sup>5/5</sup></italic> homozygotes and in a cognitive-domain-dependent manner <xref ref-type="bibr" rid="pone.0045987-Groeger1">[29]</xref>. Please note that these differences between the genotypes cannot be explained by differences in sleep timing between the genotypes (see <xref ref-type="supplementary-material" rid="pone.0045987.s011">Table S1</xref>) because all the events in the laboratory were scheduled relative to habitual sleep times. The more rapid reduction in daytime Subjective Alertness in response to repeated PSD in <italic>PER3<sup>5/5</sup></italic> homozygotes is a new observation <xref ref-type="bibr" rid="pone.0045987-Goel1">[50]</xref>, whereas the absence of a Sleep Loss × Genotype interaction on Sustained Attention after both repeated PSD and acute TSD is consistent with previous studies <xref ref-type="bibr" rid="pone.0045987-Groeger1">[29]</xref>, <xref ref-type="bibr" rid="pone.0045987-Goel1">[50]</xref>, <xref ref-type="bibr" rid="pone.0045987-Viola1">[51]</xref>. The exquisite dependency of the expression of the Genotype effect on sleep pressure and circadian phase is in accordance with our previous behavioural <xref ref-type="bibr" rid="pone.0045987-Groeger1">[29]</xref> and fMRI studies <xref ref-type="bibr" rid="pone.0045987-Vandewalle1">[30]</xref> and demonstrates the importance of considering circadian phase and homeostatic sleep pressure in the study of individual differences <xref ref-type="bibr" rid="pone.0045987-Rupp1">[24]</xref>, <xref ref-type="bibr" rid="pone.0045987-VanDongen2">[25]</xref>. In fact, including all performance measures in the analyses of the interaction between homeostatic sleep pressure, circadian phase, and genotype demonstrated that the greatest divergence between individuals and cognitive domains was observed in the early morning hours after sleep deprivation. Thus, sleep deprivation in combination with circadian phase misalignment is a good paradigm to identify individual differences and task specificity in the susceptibility to performance decline.</p>
+      </sec>
+      <sec id="s3f">
+        <title>Theoretical and Practical Implications</title>
+        <p>Impairments in performance induced by sleep deprivation have been interpreted within various frameworks, such as the ‘neuropsychological hypothesis’, the ‘vigilance hypothesis’, and the ‘controlled attention hypothesis’ <xref ref-type="bibr" rid="pone.0045987-Lim1">[20]</xref>. According to the ‘neuropsychological hypothesis’, sleep deprivation leads to a temporary ‘functional lesion’, particularly in the frontal and prefrontal areas <xref ref-type="bibr" rid="pone.0045987-Harrison2">[18]</xref>, and behavioural deficits in those cognitive domains that rely on these brain areas, such as Executive Functions. Our data clearly indicate that Executive Functions are not more prone to the negative effects of sleep deprivation than Sustained Attention. Furthermore, performance in the n-back tasks that are more difficult and depend heavily on prefrontal mediation are not more affected than simpler versions <xref ref-type="bibr" rid="pone.0045987-Choo1">[52]</xref>.</p>
+        <p>The ‘vigilance hypothesis’ states that Sustained Attention is much affected by sleep deprivation and that Sustained Attention is very important to higher aspects of cognition <xref ref-type="bibr" rid="pone.0045987-Lim1">[20]</xref>. Although our data show the sensitivity of Sustained Attention tasks to sleep deprivation, they also demonstrate that at the same time, higher aspects of cognition are not very much affected.</p>
+        <p>By contrast, our data may seem to favour, to some extent, the ‘controlled attention hypothesis’ <xref ref-type="bibr" rid="pone.0045987-Pilcher1">[53]</xref> in which task characteristics related to how engaging they are determine the extent to which they are impaired by sleep deprivation, with the simpler, more monotonous, and less engaging tasks being more affected because in these tasks, ‘top-down’ control which is required for optimal performance is depleted during sleep deprivation. We do not have an independent measure of task engagement, but would note that the two Sustained Attention tasks used in the present study (PVT and SART) are simpler and more monotonous than those tasks assessing Working Memory and Executive Functions (the n-back tasks). In the PVT, participants are exposed to the same stimulus (onset of a time counter) for 10 minutes and need to make a simple response at random intervals ranging between 2 and 10 seconds. Compared to the PVT, the SART is less monotonous because participants are required to decide whether the stimulus displayed is a target or non-target and either withhold or make a response every 1,150 ms for about two minutes. Even more complex and challenging are the verbal n-back tasks in which every 2,500 ms, participants need to update their memory of 1–3 stimuli, compare the current stimulus with the most remote one in their memory, and decide whether it is a match or not, while switching between all of these task components. Due to the differences in the characteristics of these tasks, we postulate that the Working Memory/Executive Function tasks are the most complex, challenging, and engaging tasks, and hence, less affected by sleep deprivation. In fact, some studies have shown that adding an additional item manipulation requirement to a Working Memory task, i.e. increasing the complexity and possibly the degree of participants’ engagement to the task, renders the task less susceptible to the negative effects of sleep deprivation <xref ref-type="bibr" rid="pone.0045987-Chee1">[54]</xref>.</p>
+        <p>The observed small deficits after sleep deprivation in more demanding or engaging tasks, the self-reported effort to perform these tasks, and fMRI data <xref ref-type="bibr" rid="pone.0045987-Choo1">[52]</xref> all indicate, however, that the top-down executive control of attention required to engage with and perform these task is ultimately affected by sleep deprivation and, in part, forms the basis of inter-individual differences. This theoretical account and our data have a number of practical implications. Most obviously, for young adults, a 6-h sleep opportunity is not sufficient to maintain brain functions. Furthermore, simple measures of Sustained Attention, although sensitive to sleep deprivation, may not predict how well individuals perform on other tasks <xref ref-type="bibr" rid="pone.0045987-Frey1">[55]</xref>. Finally, circadian phase is a powerful determinant of the expression of differences in performance between individuals and tasks and identifying the mechanisms by which circadian rhythmicity accomplishes protection against the detrimental effects of sleep loss may provide new tools to improve performance or prevent the deterioration thereof.</p>
+        <p>Our data show that the extent to which acute TSD leads to deterioration in performance depends on the task domain, prior sleep debt, circadian phase at which performance is assessed, and genetically-determined subject characteristics. Careful consideration of the task characteristics in real life working conditions during night shifts and sustained operations may reduce the risks of performance failures.</p>
+      </sec>
+      <sec id="s3g">
+        <title>Limitations and Further Research</title>
+        <p>Our paradigm clearly demonstrates an interaction between the circadian and the homeostatic processes in regulating cognitive performance and implies that Sustained Attention and subjective measures of Alertness and Workload are most affected by both chronic sleep restriction and acute total sleep loss. The contribution of the circadian process was assessed during the acute TSD period. The time course of performance, with a minimum early in the morning and some indications of recovery during the next day clearly indicates the contribution of circadian processes. However, during TSD, both time awake and circadian phase change simultaneously and this paradigm does not allow the examination of the individual contribution of circadian rhythmicity and the sleep homeostat to cognitive performance. The separate contribution of circadian rhythmicity and sleep homeostasis can be assessed in forced desynchrony protocols <xref ref-type="bibr" rid="pone.0045987-Dijk1">[10]</xref>, in which sleep and wake episodes are systematically shifted across the circadian cycle. In future research, multiple cognitive domains should be examined in a forced desynchrony protocol in order to further establish whether the homeostatic and the circadian influence on performance varies across cognitive domains.</p>
+        <p>In addition, the differences in effect sizes between tasks may be related to the cognitive domain targeted by a specific task, but may, of course, also be related to other aspects of the task such as its duration. Future studies in which time on task effects are analysed across cognitive domains may be of interest.</p>
+      </sec>
+    </sec>
+    <sec id="s4" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s4a">
+        <title>Participants</title>
+        <p>The present study consisted of three phases: (1) telephone screening and screening visit, (2) pre-laboratory field study, and (3) laboratory study. Participants were recruited through flyers, emails, and newspaper and radio advertisements. Out of the 358 individuals who were successfully genotyped after the screening visit, 165 (46.1%) were <italic>PER3<sup>4/4</sup></italic> homozygotes, 159 (44.4%) were <italic>PER3<sup>4/5</sup></italic> heterozygotes, and 34 (9.5%) were <italic>PER3<sup>5/5</sup></italic> homozygotes. The relative prevalence of the three genotypes in this sample is in accordance with previous reports <xref ref-type="bibr" rid="pone.0045987-Archer1">[28]</xref>, <xref ref-type="bibr" rid="pone.0045987-Jones1">[56]</xref>, <xref ref-type="bibr" rid="pone.0045987-Lazar1">[57]</xref>. Thirty-six healthy volunteers were selected and participated in the laboratory study (18 males; mean ± SD of age = 27.6±4.0 years). They were in general good health by medical history, physical examination, and standard biochemistry and haematology tests. They did not suffer from sleep disorders based on self-report questionnaires (Pittsburgh Sleep Quality Index≤5) and a clinical polysomnographical recording conducted during the first night in the laboratory. They reported consuming≤300 mg of caffeine per day and ≤14 units of alcohol per week, and were not smokers or shift workers. They had not travelled across more than one time zone two months before the laboratory phase and had not donated blood six months before. Female volunteers were not pregnant.</p>
+        <p>This sample consisted of 12 <italic>PER3<sup>4/4</sup></italic>, 10 <italic>PER3<sup>4/5</sup></italic>, and 14 <italic>PER3<sup>5/5</sup></italic> who were matched for age, gender, body mass index (BMI), and ethnicity at the group level (<xref ref-type="supplementary-material" rid="pone.0045987.s011">Table S1</xref>). The three genotypes also did not differ in their morningness-eveningness preference <xref ref-type="bibr" rid="pone.0045987-Horne1">[58]</xref>, self-reported sleep quality <xref ref-type="bibr" rid="pone.0045987-Buysse1">[59]</xref>, level of subjective sleepiness <xref ref-type="bibr" rid="pone.0045987-Akerstedt1">[31]</xref>, <xref ref-type="bibr" rid="pone.0045987-Johns1">[60]</xref>, personality <xref ref-type="bibr" rid="pone.0045987-BenetMartinez1">[61]</xref>, <xref ref-type="bibr" rid="pone.0045987-Carver1">[62]</xref>, mental and physical health <xref ref-type="bibr" rid="pone.0045987-Goldberg1">[63]</xref>, <xref ref-type="bibr" rid="pone.0045987-Ware1">[64]</xref>, eating behaviour <xref ref-type="bibr" rid="pone.0045987-VanStrien1">[65]</xref>, intelligence <xref ref-type="bibr" rid="pone.0045987-Arthur1">[66]</xref>, <xref ref-type="bibr" rid="pone.0045987-Baddeley1">[67]</xref>, and mood state <xref ref-type="bibr" rid="pone.0045987-Watson1">[68]</xref> (<xref ref-type="supplementary-material" rid="pone.0045987.s011">Table S1</xref>). However, genotype-dependent differences were found in actigraphically assessed sleep-wake timing with <italic>PER3<sup>5/5</sup></italic> individuals going to bed and waking up earlier than <italic>PER3<sup>4/4</sup></italic>s (<xref ref-type="supplementary-material" rid="pone.0045987.s011">Table S1</xref>), which is in accordance with a recent large-scale epidemiological study <xref ref-type="bibr" rid="pone.0045987-Lazar1">[57]</xref>. Three participants (one <italic>PER3<sup>4/5</sup></italic> and two <italic>PER3<sup>5/5</sup></italic> individuals) withdrew from the study for personal reasons at various points during the laboratory phase.</p>
+        <p>Note that this sample was independent of the sample used in our previous behaviour study <xref ref-type="bibr" rid="pone.0045987-Groeger1">[29]</xref>, <xref ref-type="bibr" rid="pone.0045987-Viola1">[51]</xref> and also independent of the sample used in our previous fMRI study <xref ref-type="bibr" rid="pone.0045987-Vandewalle1">[30]</xref>.</p>
+      </sec>
+      <sec id="s4b">
+        <title>Procedures</title>
+        <sec id="s4b1">
+          <title>Genotyping</title>
+          <p>Genotyping was conducted as described previously <xref ref-type="bibr" rid="pone.0045987-Lazar1">[57]</xref>. Briefly, a buccal swab was obtained from each participant during the screening visit. Genomic DNA was extracted from the swab (QuickExtract, Epicentre Biotechnologies, Madison, WI) and DNA fragments containing the VNTR polymorphic region were amplified by PCR. PCR fragment length was determined by gel electrophoresis. Genotyping errors were controlled for by inclusion of negative and positive control samples, by repetition of all failed samples, and by repeating a proportion (∼20%) of positive samples. The participants were not informed about their genotype.</p>
+        </sec>
+        <sec id="s4b2">
+          <title>Assessment of habitual sleep-wake timing</title>
+          <p>In the two-week period prior to the first laboratory session, participants completed a Karolinska Sleep Diary <xref ref-type="bibr" rid="pone.0045987-Akerstedt2">[69]</xref> daily and wore an Actiwatch (wrist-worn Actiwatch L or Actiwatch 4, Cambridge Neurotechnology, Cambridge, UK) which provided continuous assessment of wrist activity levels. Data from the first week, when subjects followed their normal routines, were analysed to determine the habitual sleep-wake timing of each participant. The mid-point of the habitual sleep-wake cycle was calculated and four hours were added to each side to derive the bedtime and wake time of the participant in the following week, as well as during the habituation and baseline nights in the laboratory sessions.</p>
+        </sec>
+        <sec id="s4b3">
+          <title>Laboratory Study – Design and Rationale</title>
+          <p>This study was conducted at the Surrey Clinical Research Centre. This study adopted a balanced, cross-over design and consisted of two 12-day, i.e. 11-night, laboratory sessions in which the duration of sleep opportunity was manipulated. The order of experimental conditions was counter-balanced across participants, and the two laboratory sessions were at least 10 days apart. Both laboratory sessions started with a habituation night and a baseline night with 8-h time in bed (TIB; <xref ref-type="fig" rid="pone-0045987-g001">Figure 1A</xref>). In the following seven 24-h cycles in the Control condition, TIB was increased by 2 h to 10 h. In young, healthy adults, the asymptotic value of TST is 8.9 h <xref ref-type="bibr" rid="pone.0045987-Klerman1">[35]</xref>, and 8.0–8.7 h is required to maintain performance <xref ref-type="bibr" rid="pone.0045987-Banks1">[70]</xref>. With a predicted sleep efficiency of approximately 90%, a 10-h sleep opportunity should be sufficient to maintain performance. In the Sleep Restriction (SR) condition, TIB was reduced by 2 h to 6 h, which is a sleep duration reported by a large segment of the working population <xref ref-type="bibr" rid="pone.0045987-Groeger2">[71]</xref>, <xref ref-type="bibr" rid="pone.0045987-Luckhaupt1">[72]</xref>. The mid-point of all the sleep episodes, except the recovery sleep episodes, in the laboratory coincided with the mid-point of the participant’s habitual sleep-wake schedule as assessed in the field study. The timing of cognitive performance test batteries and meals during the protocol was adjusted according to the participant’s habitual sleep-wake schedule. The test batteries were administered in each participant’s sound-proof and temperature-regulated room.</p>
+          <p>During the adaptation, baseline, Control, and SR days, participants stayed indoors and no visitors were allowed. Apart from the time when cognitive performance was assessed, participants spent the majority of their waking hours in the volunteer lounge where they could interact with the staff and other participants, watch TV, listen to music, read, and play board games. In addition to normal indoor lightings, participants were also exposed to indirect natural sunlight through the windows of the volunteer lounge. Three main meals and an evening snack were served each day, and participants had free access to water and fruits (apples and pears). Napping and strenuous physical exercise were not allowed.</p>
+          <p>Total Sleep Deprivation (TSD): Upon awakening from the last 10-h or 6-h sleep episode, participants stayed awake for 39 h in the Control condition and 41 h in the SR condition under constant routine (CR) conditions modified from <xref ref-type="bibr" rid="pone.0045987-Czeisler1">[73]</xref>. During CR, participants stayed in their bed in their individual room in a semi-recumbent position with light intensity &lt;10 lux at eye level and temperature ranging between 18°C and 22°C. No information related to clock time was provided. Wakefulness was monitored with a video camera as well as continuous electroencephalogram (EEG) and electro-oculogram (EOG). Movement was limited and participants were not allowed to leave their bed. Participants received hourly nutritional drinks (Fortisip: Nutricia, UK) instead of main meals. To meet the daily calorie requirement, the volume for each participant was calculated based on an activity factor of 1.3 and the basal metabolic rate derived from the Schofield equation. Cognitive performance was assessed with a 40-minute test battery every 2 h. For circadian phase assessment, hourly blood samples (7 mL) were collected via an indwelling cannula in the participant’s forearm over a 30-h period during CR starting from 6 and 7 hours upon awakening in the Control and SR conditions respectively. After CR, participants were given a 12-h recovery sleep opportunity. During the entire laboratory sessions, the activities of the participants were closely monitored by the staff.</p>
+        </sec>
+        <sec id="s4b4">
+          <title>Assessment of cognitive performance</title>
+          <p>A cognitive performance test battery was administered 7–8 times in total on the first two days of each laboratory session to familiarize participants with the cognitive tasks and minimize any effect of practice and learning on performance on subsequent days. On the baseline, and each Control and SR day, the test battery was administered five times which were evenly distributed across the waking episodes. During the TSD period, the test battery was presented every 2 h starting from two hours after scheduled wake time. The test battery were administered on identical computers with screen refresh rates of 60 Hz and running Active X, C#, and Exactics code to control stimulus presentation and its timing, and response detection and timing. Each test battery lasted for approximately 40 minutes. In the main text of this paper, we report the data from the Karolinska Sleepiness Scale (KSS) <xref ref-type="bibr" rid="pone.0045987-Akerstedt1">[31]</xref>, the Psychomotor Vigilance Task (PVT) <xref ref-type="bibr" rid="pone.0045987-Dinges1">[32]</xref>, Sustained Attention Response Task (SART) <xref ref-type="bibr" rid="pone.0045987-Robertson1">[33]</xref><monospace>, </monospace>and verbal 1-, 2-, and 3-back tasks <xref ref-type="bibr" rid="pone.0045987-Groeger1">[29]</xref>, <xref ref-type="bibr" rid="pone.0045987-Groeger3">[74]</xref>. The tasks were presented in one of the three orders fixed for each participant (<xref ref-type="supplementary-material" rid="pone.0045987.s017">Table S7</xref>). In the supplemental figures, we also report data in relation to Temporal and Motor Control, Subjective Workload measures, as well as Affect.</p>
+          <p>The KSS assessed level of subjective sleepiness. Participants were required to rate how sleepy they were at the beginning and the end of the test battery on a 9-point Likert scale (1: very alert; 9: very sleepy, great effort to keep awake). In the main text, we focused on the first KSS score collected in the test battery.</p>
+          <p>The PVT assessed level of Sustained Attention. A counter in the middle of the computer screen started counting at random intervals which varied from 2,000 ms to 10,000 ms, and participants were required to respond with a mouse click as quickly as possible. In order to minimize the number of microsleep during this task in the TSD period, a beep was presented to alert the participants if no response was detected 6,000 ms after stimulus presentation. This task lasted for 10 minutes. The inverse of the reaction time of the 10% slowest responses and the number of lapses, i.e. responses with reaction time &gt;500 ms, were used to indicate level of Sustained Attention since these measures are considered to be sensitive to both chronic and acute sleep deprivation <xref ref-type="bibr" rid="pone.0045987-Basner1">[36]</xref>. In accordance with recommendations from <xref ref-type="bibr" rid="pone.0045987-Dinges2">[75]</xref>, the number of lapses was first transformed (<inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0045987.e001" xlink:type="simple"/></inline-formula>) in all the analyses.</p>
+          <p>Sustained Attention was also assessed with the SART. A series of numbers from 0 to 9 was presented to the participants who were required to make a mouse click in every trial except when the target number, i.e. 8, was presented when they needed to withhold their response. The target:distractor ratio was 15∶85, and the inter-stimulus interval was 900 ms. We first derived the hit rate (the number of non-target trials the participants made a response × 100/85) and the false alarm rate (the number of target trials the participants responded to × 100/15). We then computed A’ to indicate the participant’s ability to discriminate between target and distractor trials by using the formula provided in the next section.</p>
+          <p>The verbal n-back tasks assessed participants’ Working Memory/Executive Functions. Verbal 1-back was always presented to the participants first, followed by 2- and 3-back. Participants were shown one of the letters (B, C, D, F, G, H, J, K, and M) for 500 ms and required to compare it with the letter presented n trials before. The inter-stimulus interval was 2,000 ms. The match:mismatch trial ratio was 8∶24. We first computed the hit rate (hit = number of correct match trials × 100/number of match trials) and the false alarm rate (fa = number of incorrect mismatch trials × 100/number of mismatch trials). We then computed non-parametric measures of sensitivity (A′) and response bias (B″<sub>D</sub>) which were introduced by <xref ref-type="bibr" rid="pone.0045987-Pollack1">[76]</xref> and popularised by <xref ref-type="bibr" rid="pone.0045987-Macmillan1">[77]</xref>, <xref ref-type="bibr" rid="pone.0045987-Macmillan2">[78]</xref>.<disp-formula id="pone.0045987.e002"><graphic orientation="portrait" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0045987.e002" xlink:type="simple"/></disp-formula><disp-formula id="pone.0045987.e003"><graphic orientation="portrait" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0045987.e003" xlink:type="simple"/></disp-formula><disp-formula id="pone.0045987.e004"><graphic orientation="portrait" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0045987.e004" xlink:type="simple"/></disp-formula></p>
+          <p>A′ is one of the discriminability measures in signal detection theory. It is a non-parametric analogue of the more widely used d’ and can still be derived when the hit or false alarm rate is 0 or 1. A′ ranges from 0 to 1, with 0.5 suggesting chance performance. Its corresponding bias measure is B″<sub>D</sub> which indicates whether participants (a) tended to provide a ‘Yes’ response and indicate the stimuli matched, i.e. they were liberal and more likely to detect matches when they were actually present (B″<sub>D</sub> &lt;0), (b) tended to provide a ‘No’ response and indicate the stimuli did not match, i.e. they were conservative and less likely to detect matches when they were actually present (B″<sub>D</sub> &gt;0), or (c) were neutral in their tendency to provide ‘Yes’ and ‘No’ responses (B″<sub>D = </sub>0).</p>
+          <p>After each verbal n-back task, the participants were asked to report their subjective ratings of the energy, cognitive demand, mental effort, and physical effort required to perform the task on a Visual Analogue Scale. We also measured the participants’ mood with the Positive and Negative Affect Scale <xref ref-type="bibr" rid="pone.0045987-Watson1">[68]</xref>. Motor Control was assessed with the Pursuit Tracking Task <xref ref-type="bibr" rid="pone.0045987-Frith1">[79]</xref>, <xref ref-type="bibr" rid="pone.0045987-Maquet1">[80]</xref>, and Temporal Control was indicated by their performance in the Fixed/Random Interval Repetition Tasks <xref ref-type="bibr" rid="pone.0045987-Vandierendonck1">[81]</xref>.</p>
+        </sec>
+        <sec id="s4b5">
+          <title>Melatonin assays and assessment of circadian phase</title>
+          <p>The hourly blood samples collected during CR were centrifuged (15 min, 1620 × <italic>g</italic>, and 4°C) within 20 minutes upon collection to separate the plasma which was then stored at −20°C until assay. Plasma melatonin concentration was assessed with radioimmunoassay (Stockgrand, Guildford, Surrey, United Kingdom). The limit of detection was 3.4 pg/mL. The interassay coefficients of variation were 21.9% at 8.5±1.9 pg/mL, 13.4% at 36.6±4.9 pg/mL, 13.5% at 81.0±10.9 pg/mL, and 11.7% at 123.5±14.0 pg/mL. Melatonin is considered a reliable marker of circadian phase and extensive comparisons of the robustness and sensitivity of various melatonin phase markers are available <xref ref-type="bibr" rid="pone.0045987-Klerman2">[82]</xref>. To determine the dim light melatonin onset (DLMO), for each participant in each condition, we first established the baseline melatonin level using the median melatonin concentration of the first five samples collected as well as the maximum level using the median of the highest three concentrations so as to avoid local maxima or minima. The time of the DLMO was derived with linear interpolation between the melatonin sample just below and the one just above 25% of the difference between the baseline and the maximum at the rising limb of the melatonin profile. Similarly, the dim light melatonin offset (DLMOff) was determined at the declining limb of the profile. The dim light melatonin mid-point was the average of the DLMO and the DLMOff. The onset, offset, and mid-point of dim light melatonin were also assessed at a 50% level. Furthermore, in order to derive the amplitude of the melatonin profile and the time of the melatonin peak, for each participant in each condition, we fitted the melatonin data with a sinusoidal function:<disp-formula id="pone.0045987.e005"><graphic orientation="portrait" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0045987.e005" xlink:type="simple"/></disp-formula>where c = constant, A = fitted amplitude, time<sub>s</sub> = sampling time, and time<sub>p</sub> = time of fitted melatonin peak. 24.2 is the average period of the human circadian pacemaker when assessed under conditions in which the effects of the light-dark cycle and feedback from the sleep-wake cycle are minimized <xref ref-type="bibr" rid="pone.0045987-Duffy1">[83]</xref>. We used this period because we assumed that under the CR condition, the circadian pacemaker oscillates at its intrinsic period <xref ref-type="bibr" rid="pone.0045987-Duffy2">[84]</xref>.</p>
+        </sec>
+        <sec id="s4b6">
+          <title>Polysomnography</title>
+          <p>EEG signals in all sleep episodes were recorded using a 10-channel EEG montage (Fz-A2, Cz-A1, F3-A2, F4-A1, C3-A2, C4-A1, P3-A2, P4-A1, O1-A2, and O2-A1) according to the 10-20 system. T3-A2 and T4-A1 were added to the montage during those nights after participants had performed a declarative memory task, which will be reported elsewhere. Eye movement, muscle tone, and heart rate were recorded through left and right EOG, submental EMG, and ECG electrodes, which were respectively referenced to A2 and A1. The ground and common reference electrodes were placed at FPz and Pz, respectively. Participants also wore a thoracic band, a nasal airflow sensor, a microphone, and leg electrodes during the habituation night in the first laboratory session to monitor any sign of sleep-related breathing problems and periodic leg movements.</p>
+          <p>The EEG, EOG, and EMG signals were recorded on Siesta 802 devices (Compumedics, Abbotsford, Victoria, Australia). The sampling rate and the storage was 256 Hz. The low-pass filter was set at 70 Hz and the high-pass filter was set at 0.3 Hz. Electrode impedance was kept below 5 kΩ. Sleep staging was performed according to the Rechtschaffen and Kales criteria <xref ref-type="bibr" rid="pone.0045987-Rechtschaffen1">[85]</xref> and the scorer was blind to genotype.</p>
+        </sec>
+      </sec>
+      <sec id="s4c">
+        <title>Ethics</title>
+        <p>This protocol was approved by the Institutional Review Board of the Air Force Research Laboratory and received a favourable opinion from the University of Surrey Ethics Committee. It was conducted in accordance with the principles of the Declaration of Helsinki. All the participants provided written informed consent after receiving a detailed explanation of the aims and procedures of the study.</p>
+      </sec>
+      <sec id="s4d">
+        <title>Statistical Methods</title>
+        <p>Statistical analyses were performed with SAS 9.1 (SAS Institute, Cary, NC). We used a general linear mixed model with PROC MIXED to determine the effects of Genotype (<italic>PER3<sup>4/4</sup></italic>/<italic>PER3<sup>4/5</sup></italic>/<italic>PER3<sup>5/5</sup></italic>), Condition (Control/SR), Session (first/second laboratory session), and the Genotype × Condition interaction, as fixed model effects, on DLMO and other circadian phase markers, with the Subject effect as a random factor. For the performance data, we also examined the effects of Day (from baseline to the second day of TSD) as a repeated effect with a spatial power variance-covariance matrix being specified. For the performance data during the TSD period, we first aligned the data to the melatonin rhythm, and instead of the Day effect, we examined the Circadian effect (from DLMO −12 h to DLMO +20 h; 4-h bins) as a repeated effect with a first-order autoregressive variance-covariance matrix being specified. Differences of least square means were used to determine significant differences among the <italic>PER3</italic> genotypes and between the two conditions at <italic>P</italic>&lt;0.05.</p>
+        <p>Sleep data during the habituation night were not included in the analyses. Performance data collected on the arrival and habituation days were also not included in the analyses to minimize the effect of learning and practice on the results. Due to technical problems and drop-outs, 2.8% of the performance data, 8.6% of the PSG records, and 6.4% of the blood samples could not be included in the analyses.</p>
+        <p>Effect sizes were indicated by Cohen’s <italic>f<sup>2</sup></italic> <xref ref-type="bibr" rid="pone.0045987-Cohen2">[34]</xref>, <xref ref-type="bibr" rid="pone.0045987-VanDongen3">[41]</xref>:<disp-formula id="pone.0045987.e006"><graphic orientation="portrait" position="anchor" xlink:href="info:doi/10.1371/journal.pone.0045987.e006" xlink:type="simple"/></disp-formula>where <italic>u</italic> and <italic>v</italic> are respectively the numerator and denominator degrees of freedom of the <italic>F</italic> statistic used to determine the corresponding main or interaction effect in the general linear mixed model analysis.</p>
+        <p>In addition to using effect sizes to quantify the effects of repeated PSD on Sustained Attention and Executive Functions, we also compared the magnitude of change in performance in the PVT and the verbal 3-back task from the baseline day to the end of the partial sleep deprivation period (expressed as the performance on D6 in the SR condition divided by the performance on the baseline day) with the change in performance across the same days in the Control condition. For the effect of acute TSD, we did a similar comparison between the change in performance from the first to the second day of the TSD period between the two conditions (expressed as performance on TD2/performance on TD1).</p>
+      </sec>
+    </sec>
+    <sec id="s5">
+      <title>Supporting Information</title>
+      <supplementary-material id="pone.0045987.s001" mimetype="image/tiff" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s001" xlink:type="simple">
+        <label>Figure S1</label>
+        <caption>
+          <p><bold>Effect of sleep history on Sustained Attention and Working Memory.</bold> <bold><italic>(A)</italic></bold> Sustained Attention indicated by the number of lapses (reaction time &gt;500 ms) in the Psychomotor Vigilance Task. Analysis was performed after transformation (<inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0045987.e007" xlink:type="simple"/></inline-formula>). <bold><italic>(B)</italic></bold> Bias (B”<sub>D</sub>) of Working Memory tasks with increasing executive load (verbal 1- to 2- to 3-back). B = Baseline, D1–D6 = the days during the Sleep Restriction/Control condition. TSD = Total Sleep Deprivation. TD1 = first day of total sleep deprivation. TN1 = night of total sleep deprivation, TD2 = second day of total sleep deprivation. In all panels, the least square means and standard errors estimated with PROC MIXED in SAS are plotted. Asterisks indicate the significance of the contrast between conditions (***<italic>P</italic>&lt;0.001, **<italic>P</italic>&lt;0.01, and *<italic>P</italic>&lt;0.05). Open circles = Control condition; filled circles = Sleep Restriction condition.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s002" mimetype="image/tiff" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s002" xlink:type="simple">
+        <label>Figure S2</label>
+        <caption>
+          <p>
+            <bold>Comparison of effect sizes of sleep restriction for Subjective Alertness, Sustained Attention, and Working Memory throughout the protocol (B - TD2).</bold>
+          </p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s003" mimetype="image/tiff" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s003" xlink:type="simple">
+        <label>Figure S3</label>
+        <caption>
+          <p><bold>Effect size of repeated partial sleep deprivation on all performance measures from the first to the sixth day of sleep loss.</bold> PANAS = Positive and Negative Affect Scale; PTT = Pursuit Tracking Task; SD = standard deviation; ED = Euclidean distance; RIR = Random Interval Repetition task; FIR = Fixed Interval Repetition task; RT = reaction time; B”<sub>D</sub> = bias; SART: Sustained Attention to Response Task; PVT = Psychomotor Vigilance Task; KSS = Karolinska Sleepiness Scale (KSS1 and KSS2 were respectively administered at the beginning and the end of the test battery); <italic>f<sup>2</sup></italic> = implied effect size.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s004" mimetype="image/tiff" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s004" xlink:type="simple">
+        <label>Figure S4</label>
+        <caption>
+          <p><bold>Comparison of effect sizes for Subjective Alertness, Sustained Attention, Working Memory and the corresponding subjective ratings, Temporal and Motor Control, and Affect.</bold> <bold>(</bold><bold><italic>A</italic></bold><bold>)</bold> Effect size of repeated partial sleep deprivation. It was assessed by comparing performance during D5 and D6 between conditions. Subjective Alertness, Sustained Attention, and the Subjective Workload of the Working Memory tasks were the most affected by repeated partial sleep deprivation. <bold>(</bold><bold><italic>B</italic></bold><bold>)</bold> Effect size of acute total sleep deprivation. It was assessed by comparing performance on TD1 to performance on TD2 across conditions. Subjective Alertness and Sustained Attention were the most vulnerable to the impairing effects of acute total sleep deprivation. Horizontal lines indicate cut-offs for small, medium, and large effect sizes. Refer to <xref ref-type="supplementary-material" rid="pone.0045987.s003">Figure S3</xref> for the explanations of the task and variable abbreviations.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s005" mimetype="image/tiff" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s005" xlink:type="simple">
+        <label>Figure S5</label>
+        <caption>
+          <p><bold>Effect of </bold><bold><italic>PER3</italic></bold><bold> genotype on performance during partial sleep deprivation and subsequent total sleep deprivation.</bold> Time course of <bold><italic>(A)</italic></bold> Sustained Attention as indicated by the speed of the 10% slowest responses and the number of lapses in the Psychomotor Vigilance Task (PVT) and A’ in the Sustained Attention to Response Task (SART), and <bold><italic>(B)</italic></bold> Working Memory as indicated by B”<sub>D</sub> in the verbal 3-back task in <italic>PER3<sup>4/4</sup></italic>, <italic>PER3<sup>4/5</sup></italic>, and <italic>PER3<sup>5/5</sup></italic> individuals. Analysis on PVT lapses was performed after transformation (<inline-formula><inline-graphic xlink:href="info:doi/10.1371/journal.pone.0045987.e008" xlink:type="simple"/></inline-formula>). The least square means and standard errors estimated with PROC MIXED in SAS are plotted. Asterisks indicate the significance of the contrast between conditions (***<italic>P</italic>&lt;0.001, **<italic>P</italic>&lt;0.01, and *<italic>P</italic>&lt;0.05). Open circles = Control condition; filled circles = Sleep Restriction condition.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s006" mimetype="image/tiff" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s006" xlink:type="simple">
+        <label>Figure S6</label>
+        <caption>
+          <p>
+            <bold>Comparison of the effect sizes for the Genotype × Condition interaction for Subjective Alertness, Sustained Attention, and Working Memory throughout the protocol (B-TD2).</bold>
+          </p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s007" mimetype="image/tiff" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s007" xlink:type="simple">
+        <label>Figure S7</label>
+        <caption>
+          <p><bold>Comparison of effect sizes of acute total sleep deprivation for Subjective Alertness, Sustained Attention, and Working Memory in the </bold><bold><italic>PER3</italic></bold><bold> genotypes.</bold> In all the <italic>PER3</italic> genotypes, acute total sleep deprivation (assessed by comparing performance on TD1 to performance on TD2 across conditions) had greater impairing effects on Subjective Alertness and Sustained Attention than on Working Memory/Executive Functions.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s008" mimetype="image/tiff" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s008" xlink:type="simple">
+        <label>Figure S8</label>
+        <caption>
+          <p><bold>Effect of sleep history on the circadian rhythm of plasma melatonin.</bold> Repeated partial sleep restriction led to a significant delay in the melatonin rhythm as assessed by the dim light melatonin onset (DLMO; 25%). The sleep period in the Sleep Restriction (SR) and the Control conditions is respectively indicated by the dark and the light gray areas. The dash and the solid vertical lines respectively indicate the DLMO in the SR and the Control conditions. Phase angle refers to the difference between DLMO and the midpoint of the scheduled wake episode before the total sleep deprivation period.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s009" mimetype="image/tiff" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s009" xlink:type="simple">
+        <label>Figure S9</label>
+        <caption>
+          <p>
+            <bold>Effects size of prior partial sleep deprivation on performance during total sleep deprivation calculated separately per 4-h circadian melatonin bins for Subjective Alertness, Sustained Attention, and Working Memory.</bold>
+          </p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s010" mimetype="image/tiff" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s010" xlink:type="simple">
+        <label>Figure S10</label>
+        <caption>
+          <p><bold>Circadian modulation of effect size on each of the 52 performance measures during total sleep deprivation calculated separately per 4-h circadian melatonin bins.</bold> <bold><italic>(A)</italic></bold> Effects size of prior partial sleep deprivation on performance. <bold><italic>(B)</italic></bold> Effect size of the interaction of genotype and prior partial sleep deprivation on performance. Refer to <xref ref-type="supplementary-material" rid="pone.0045987.s003">Figure S3</xref> for the explanations of the task and variable abbreviations.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s011" mimetype="application/msword" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s011" xlink:type="simple">
+        <label>Table S1</label>
+        <caption>
+          <p>
+            <bold>Characteristics of </bold>
+            <bold>
+              <italic>PER3<sup>4/4</sup></italic>
+            </bold>
+            <bold>, </bold>
+            <bold>
+              <italic>PER3<sup>4/5</sup></italic>
+            </bold>
+            <bold>, and </bold>
+            <bold>
+              <italic>PER3<sup>5/5</sup></italic>
+            </bold>
+            <bold> participants (mean ± standard deviation).</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s012" mimetype="application/msword" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s012" xlink:type="simple">
+        <label>Table S2</label>
+        <caption>
+          <p>
+            <bold>Results of a general linear mixed model examining the effects of Condition (Sleep Restriction vs. Control) and Day (from baseline to the second day of total sleep deprivation) on performance.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s013" mimetype="application/msword" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s013" xlink:type="simple">
+        <label>Table S3</label>
+        <caption>
+          <p>
+            <bold>Effects of repeated partial and acute total sleep deprivation on performance.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s014" mimetype="application/msword" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s014" xlink:type="simple">
+        <label>Table S4</label>
+        <caption>
+          <p>
+            <bold>Results of a general linear mixed model examining the effects of Genotype, Condition (Sleep Restriction vs. Control), and Day (from baseline to the second day of total sleep deprivation) on performance.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s015" mimetype="application/msword" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s015" xlink:type="simple">
+        <label>Table S5</label>
+        <caption>
+          <p>
+            <bold>Circadian phase markers of the </bold>
+            <bold>
+              <italic>PER3<sup>4/4</sup></italic>
+            </bold>
+            <bold>, </bold>
+            <bold>
+              <italic>PER3<sup>4/5</sup></italic>
+            </bold>
+            <bold>, and </bold>
+            <bold>
+              <italic>PER3<sup>5/5</sup></italic>
+            </bold>
+            <bold> participants.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s016" mimetype="application/msword" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s016" xlink:type="simple">
+        <label>Table S6</label>
+        <caption>
+          <p>
+            <bold>Results of a general linear mixed model examining the effects of Condition (Sleep Restriction vs. Control) and Circadian Phase (between DLMO 12 h to DLMO+20 h) on performance.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0045987.s017" mimetype="application/msword" orientation="portrait" position="float" xlink:href="info:doi/10.1371/journal.pone.0045987.s017" xlink:type="simple">
+        <label>Table S7</label>
+        <caption>
+          <p>
+            <bold>The three orders of the cognitive tasks included in the test battery.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>We thank Prof. Michael Chee for his constructive comments on this manuscript, Dr Sigurd Johnsen and Mr Patrick McCabe for their advice on statistical procedures and SAS programming, and Mrs Ana Slak, Mr Patrick Wood, Miss Dipali Patel, and the staff of the Surrey Clinical Research Centre for their assistance in data collection.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0045987-Cappuccio1">
+        <label>1</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cappuccio</surname><given-names>FP</given-names></name>, <name name-style="western"><surname>D'Elia</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Strazzullo</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Miller</surname><given-names>MA</given-names></name> (<year>2010</year>) <article-title>Sleep duration and all-cause mortality: a systematic review and meta-analysis of prospective studies</article-title>. <source>Sleep</source> <volume>33</volume>: <fpage>585</fpage>–<lpage>592</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Hanlon1">
+        <label>2</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hanlon</surname><given-names>EC</given-names></name>, <name name-style="western"><surname>Van Cauter</surname><given-names>E</given-names></name> (<year>2011</year>) <article-title>Quantification of sleep behavior and of its impact on the cross-talk between the brain and peripheral metabolism</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>108</volume> Suppl 3<fpage>15609</fpage>–<lpage>15616</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Killgore1">
+        <label>3</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Killgore</surname><given-names>WD</given-names></name> (<year>2010</year>) <article-title>Effects of sleep deprivation on cognition</article-title>. <source>Prog Brain Res</source> <volume>185</volume>: <fpage>105</fpage>–<lpage>129</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Takahashi1">
+        <label>4</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Takahashi</surname><given-names>JS</given-names></name>, <name name-style="western"><surname>Hong</surname><given-names>HK</given-names></name>, <name name-style="western"><surname>Ko</surname><given-names>CH</given-names></name>, <name name-style="western"><surname>McDearmon</surname><given-names>EL</given-names></name> (<year>2008</year>) <article-title>The genetics of mammalian circadian order and disorder: implications for physiology and disease</article-title>. <source>Nat Rev Genet</source> <volume>9</volume>: <fpage>764</fpage>–<lpage>775</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Babkoff1">
+        <label>5</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Babkoff</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Mikulincer</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Caspy</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Kempinski</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Sing</surname><given-names>H</given-names></name> (<year>1988</year>) <article-title>The topology of performance curves during 72 hours of sleep loss: a memory and search task</article-title>. <source>Q J Exp Psychol A</source> <volume>40</volume>: <fpage>737</fpage>–<lpage>756</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Horowitz1">
+        <label>6</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Horowitz</surname><given-names>TS</given-names></name>, <name name-style="western"><surname>Cade</surname><given-names>BE</given-names></name>, <name name-style="western"><surname>Wolfe</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Czeisler</surname><given-names>CA</given-names></name> (<year>2003</year>) <article-title>Searching night and day: a dissociation of effects of circadian phase and time awake on visual selective attention and vigilance</article-title>. <source>Psychol Sci</source> <volume>14</volume>: <fpage>549</fpage>–<lpage>557</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Dawson1">
+        <label>7</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dawson</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Reid</surname><given-names>K</given-names></name> (<year>1997</year>) <article-title>Fatigue, alcohol and performance impairment</article-title>. <source>Nature</source> <volume>388</volume>: <fpage>235</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Belenky1">
+        <label>8</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Belenky</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Wesensten</surname><given-names>NJ</given-names></name>, <name name-style="western"><surname>Thorne</surname><given-names>DR</given-names></name>, <name name-style="western"><surname>Thomas</surname><given-names>ML</given-names></name>, <name name-style="western"><surname>Sing</surname><given-names>HC</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>Patterns of performance degradation and restoration during sleep restriction and subsequent recovery: a sleep dose-response study</article-title>. <source>J Sleep Res</source> <volume>12</volume>: <fpage>1</fpage>–<lpage>12</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-VanDongen1">
+        <label>9</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Van Dongen</surname><given-names>HP</given-names></name>, <name name-style="western"><surname>Maislin</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Mullington</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name> (<year>2003</year>) <article-title>The cumulative cost of additional wakefulness: dose-response effects on neurobehavioral functions and sleep physiology from chronic sleep restriction and total sleep deprivation</article-title>. <source>Sleep</source> <volume>26</volume>: <fpage>117</fpage>–<lpage>126</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Dijk1">
+        <label>10</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dijk</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Duffy</surname><given-names>JF</given-names></name>, <name name-style="western"><surname>Czeisler</surname><given-names>CA</given-names></name> (<year>1992</year>) <article-title>Circadian and sleep/wake dependent aspects of subjective alertness and cognitive performance</article-title>. <source>J Sleep Res</source> <volume>1</volume>: <fpage>112</fpage>–<lpage>117</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Wyatt1">
+        <label>11</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wyatt</surname><given-names>JK</given-names></name>, <name name-style="western"><surname>Ritz-De Cecco</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Czeisler</surname><given-names>CA</given-names></name>, <name name-style="western"><surname>Dijk</surname><given-names>DJ</given-names></name> (<year>1999</year>) <article-title>Circadian temperature and melatonin rhythms, sleep, and neurobehavioral function in humans living on a 20-h day</article-title>. <source>Am J Physiol</source> <volume>277</volume>: <fpage>R1152</fpage>–<lpage>1163</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Cohen1">
+        <label>12</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cohen</surname><given-names>DA</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Wyatt</surname><given-names>JK</given-names></name>, <name name-style="western"><surname>Kronauer</surname><given-names>RE</given-names></name>, <name name-style="western"><surname>Dijk</surname><given-names>DJ</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Uncovering residual effects of chronic sleep loss on human performance</article-title>. <source>Sci Transl Med</source> <volume>2</volume>: <fpage>14ra13</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Zhou1">
+        <label>13</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhou</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Ferguson</surname><given-names>SA</given-names></name>, <name name-style="western"><surname>Matthews</surname><given-names>RW</given-names></name>, <name name-style="western"><surname>Sargent</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Darwent</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Sleep, wake and phase dependent changes in neurobehavioral function under forced desynchrony</article-title>. <source>Sleep</source> <volume>34</volume>: <fpage>931</fpage>–<lpage>941</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Brown1">
+        <label>14</label>
+        <mixed-citation publication-type="other" xlink:type="simple">Brown JW, Braver TS (2009) Executive function and higher-order cognition: Computational models. In: Squire LR, editor. Encyclopedia of Neuroscience. Oxford: Academic Press. pp. 93–98.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Miller1">
+        <label>15</label>
+        <mixed-citation publication-type="other" xlink:type="simple">Miller EK, Wallis JD (2009) Executive function and higher-order cognition: Definitions and neural substrates. In: Squire LR, editor. Encyclopedia of Neuroscience. Oxford: Academic Press. pp. 99–104.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Miyake1">
+        <label>16</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Miyake</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Friedman</surname><given-names>NP</given-names></name>, <name name-style="western"><surname>Emerson</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Witzki</surname><given-names>AH</given-names></name>, <name name-style="western"><surname>Howerter</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>The unity and diversity of executive functions and their contributions to complex “Frontal Lobe” tasks: a latent variable analysis</article-title>. <source>Cogn Psychol</source> <volume>41</volume>: <fpage>49</fpage>–<lpage>100</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Harrison1">
+        <label>17</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Harrison</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Horne</surname><given-names>JA</given-names></name> (<year>2000</year>) <article-title>The impact of sleep deprivation on decision making: a review</article-title>. <source>J Exp Psychol Appl</source> <volume>6</volume>: <fpage>236</fpage>–<lpage>249</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Harrison2">
+        <label>18</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Harrison</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Horne</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Rothwell</surname><given-names>A</given-names></name> (<year>2000</year>) <article-title>Prefrontal neuropsychological effects of sleep deprivation in young adults–a model for healthy aging?</article-title> <source>Sleep</source> <volume>23</volume>: <fpage>1067</fpage>–<lpage>1073</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Balkin1">
+        <label>19</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Balkin</surname><given-names>TJ</given-names></name>, <name name-style="western"><surname>Bliese</surname><given-names>PD</given-names></name>, <name name-style="western"><surname>Belenky</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Sing</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Thorne</surname><given-names>DR</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Comparative utility of instruments for monitoring sleepiness-related performance decrements in the operational environment</article-title>. <source>J Sleep Res</source> <volume>13</volume>: <fpage>219</fpage>–<lpage>227</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Lim1">
+        <label>20</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lim</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name> (<year>2010</year>) <article-title>A meta-analysis of the impact of short-term sleep deprivation on cognitive variables</article-title>. <source>Psychol Bull</source> <volume>136</volume>: <fpage>375</fpage>–<lpage>389</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Cain1">
+        <label>21</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cain</surname><given-names>SW</given-names></name>, <name name-style="western"><surname>Silva</surname><given-names>EJ</given-names></name>, <name name-style="western"><surname>Chang</surname><given-names>AM</given-names></name>, <name name-style="western"><surname>Ronda</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Duffy</surname><given-names>JF</given-names></name> (<year>2011</year>) <article-title>One night of sleep deprivation affects reaction time, but not interference or facilitation in a Stroop task</article-title>. <source>Brain Cogn</source> <volume>76</volume>: <fpage>37</fpage>–<lpage>42</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Tucker1">
+        <label>22</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tucker</surname><given-names>AM</given-names></name>, <name name-style="western"><surname>Whitney</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Belenky</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Hinson</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Van Dongen</surname><given-names>HP</given-names></name> (<year>2010</year>) <article-title>Effects of sleep deprivation on dissociated components of executive functioning</article-title>. <source>Sleep</source> <volume>33</volume>: <fpage>47</fpage>–<lpage>57</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Blatter1">
+        <label>23</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Blatter</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Cajochen</surname><given-names>C</given-names></name> (<year>2007</year>) <article-title>Circadian rhythms in cognitive performance: methodological constraints, protocols, theoretical underpinnings</article-title>. <source>Physiol Behav</source> <volume>90</volume>: <fpage>196</fpage>–<lpage>208</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Rupp1">
+        <label>24</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rupp</surname><given-names>TL</given-names></name>, <name name-style="western"><surname>Wesensten</surname><given-names>NJ</given-names></name>, <name name-style="western"><surname>Balkin</surname><given-names>TJ</given-names></name> (<year>2012</year>) <article-title>Trait-like vulnerability to total and partial sleep loss</article-title>. <source>Sleep</source> <volume>35</volume>: <fpage>1163</fpage>–<lpage>1172</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-VanDongen2">
+        <label>25</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Van Dongen</surname><given-names>HP</given-names></name>, <name name-style="western"><surname>Baynard</surname><given-names>MD</given-names></name>, <name name-style="western"><surname>Maislin</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name> (<year>2004</year>) <article-title>Systematic interindividual differences in neurobehavioral impairment from sleep loss: evidence of trait-like differential vulnerability</article-title>. <source>Sleep</source> <volume>27</volume>: <fpage>423</fpage>–<lpage>433</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Braver1">
+        <label>26</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Braver</surname><given-names>TS</given-names></name>, <name name-style="western"><surname>Cole</surname><given-names>MW</given-names></name>, <name name-style="western"><surname>Yarkoni</surname><given-names>T</given-names></name> (<year>2010</year>) <article-title>Vive les differences! Individual variation in neural mechanisms of executive control</article-title>. <source>Curr Opin Neurobiol</source> <volume>20</volume>: <fpage>242</fpage>–<lpage>250</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Braver2">
+        <label>27</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Braver</surname><given-names>TS</given-names></name>, <name name-style="western"><surname>Cohen</surname><given-names>JD</given-names></name>, <name name-style="western"><surname>Nystrom</surname><given-names>LE</given-names></name>, <name name-style="western"><surname>Jonides</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Smith</surname><given-names>EE</given-names></name>, <etal>et al</etal>. (<year>1997</year>) <article-title>A parametric study of prefrontal cortex involvement in human working memory</article-title>. <source>Neuroimage</source> <volume>5</volume>: <fpage>49</fpage>–<lpage>62</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Archer1">
+        <label>28</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Archer</surname><given-names>SN</given-names></name>, <name name-style="western"><surname>Robilliard</surname><given-names>DL</given-names></name>, <name name-style="western"><surname>Skene</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Smits</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Williams</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>A length polymorphism in the circadian clock gene Per3 is linked to delayed sleep phase syndrome and extreme diurnal preference</article-title>. <source>Sleep</source> <volume>26</volume>: <fpage>413</fpage>–<lpage>415</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Groeger1">
+        <label>29</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Groeger</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Viola</surname><given-names>AU</given-names></name>, <name name-style="western"><surname>Lo</surname><given-names>JC</given-names></name>, <name name-style="western"><surname>von</surname><given-names>SM</given-names></name>, <name name-style="western"><surname>Archer</surname><given-names>SN</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Early morning executive functioning during sleep deprivation is compromised by a PERIOD3 polymorphism</article-title>. <source>Sleep</source> <volume>31</volume>: <fpage>1159</fpage>–<lpage>1167</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Vandewalle1">
+        <label>30</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vandewalle</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Archer</surname><given-names>SN</given-names></name>, <name name-style="western"><surname>Wuillaume</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Balteau</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Degueldre</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Functional magnetic resonance imaging-assessed brain responses during an executive task depend on interaction of sleep homeostasis, circadian phase, and PER3 genotype</article-title>. <source>J Neurosci</source> <volume>29</volume>: <fpage>7948</fpage>–<lpage>7956</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Akerstedt1">
+        <label>31</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Akerstedt</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Gillberg</surname><given-names>M</given-names></name> (<year>1990</year>) <article-title>Subjective and objective sleepiness in the active individual</article-title>. <source>Int J Neurosci</source> <volume>52</volume>: <fpage>29</fpage>–<lpage>37</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Dinges1">
+        <label>32</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name>, <name name-style="western"><surname>Powell</surname><given-names>JW</given-names></name> (<year>1985</year>) <article-title>Microcomputer analyses of performance on a portable, simple visual RT task during sustained operations</article-title>. <source>Behav Res Methods Instrum Comput</source> <volume>17</volume>: <fpage>652</fpage>–<lpage>655</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Robertson1">
+        <label>33</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Robertson</surname><given-names>IH</given-names></name>, <name name-style="western"><surname>Manly</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Andrade</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Baddeley</surname><given-names>BT</given-names></name>, <name name-style="western"><surname>Yiend</surname><given-names>J</given-names></name> (<year>1997</year>) <article-title>‘Oops!’: performance correlates of everyday attentional failures in traumatic brain injured and normal subjects</article-title>. <source>Neuropsychologia</source> <volume>35</volume>: <fpage>747</fpage>–<lpage>758</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Cohen2">
+        <label>34</label>
+        <mixed-citation publication-type="other" xlink:type="simple">Cohen J (1988) Statistical Power Analysis for the Behavioral Sciences. Hillsdale, NJ: Lawrence Erlbaum Associates.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Klerman1">
+        <label>35</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Klerman</surname><given-names>EB</given-names></name>, <name name-style="western"><surname>Dijk</surname><given-names>DJ</given-names></name> (<year>2008</year>) <article-title>Age-related reduction in the maximal capacity for sleep: implications for insomnia</article-title>. <source>Curr Biol</source> <volume>18</volume>: <fpage>1118</fpage>–<lpage>1123</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Basner1">
+        <label>36</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Basner</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name> (<year>2011</year>) <article-title>Maximizing Sensitivity of the Psychomotor Vigilance Test (PVT) to Sleep Loss</article-title>. <source>Sleep</source> <volume>34</volume>: <fpage>581</fpage>–<lpage>591</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Graw1">
+        <label>37</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Graw</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Krauchi</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Knoblauch</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Wirz-Justice</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Cajochen</surname><given-names>C</given-names></name> (<year>2004</year>) <article-title>Circadian and wake-dependent modulation of fastest and slowest reaction times during the psychomotor vigilance task</article-title>. <source>Physiol Behav</source> <volume>80</volume>: <fpage>695</fpage>–<lpage>701</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Drummond1">
+        <label>38</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Drummond</surname><given-names>SP</given-names></name>, <name name-style="western"><surname>Bischoff-Grethe</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name>, <name name-style="western"><surname>Ayalon</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Mednick</surname><given-names>SC</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>The neural basis of the psychomotor vigilance task</article-title>. <source>Sleep</source> <volume>28</volume>: <fpage>1059</fpage>–<lpage>1068</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Schmidt1">
+        <label>39</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Schmidt</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Collette</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Leclercq</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Sterpenich</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Vandewalle</surname><given-names>G</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Homeostatic sleep pressure and responses to sustained attention in the suprachiasmatic area</article-title>. <source>Science</source> <volume>324</volume>: <fpage>516</fpage>–<lpage>519</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Harrison3">
+        <label>40</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Harrison</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Jones</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Waterhouse</surname><given-names>J</given-names></name> (<year>2007</year>) <article-title>The influence of time awake and circadian rhythm upon performance on a frontal lobe task</article-title>. <source>Neuropsychologia</source> <volume>45</volume>: <fpage>1966</fpage>–<lpage>1972</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-VanDongen3">
+        <label>41</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Van Dongen</surname><given-names>HP</given-names></name>, <name name-style="western"><surname>Maislin</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Kerkhof</surname><given-names>GA</given-names></name> (<year>2001</year>) <article-title>Repeated assessment of the endogenous 24-hour profile of blood pressure under constant routine</article-title>. <source>Chronobiol Int</source> <volume>18</volume>: <fpage>85</fpage>–<lpage>98</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Drummond2">
+        <label>42</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Drummond</surname><given-names>SP</given-names></name>, <name name-style="western"><surname>Brown</surname><given-names>GG</given-names></name>, <name name-style="western"><surname>Salamat</surname><given-names>JS</given-names></name>, <name name-style="western"><surname>Gillin</surname><given-names>JC</given-names></name> (<year>2004</year>) <article-title>Increasing task difficulty facilitates the cerebral compensatory response to total sleep deprivation</article-title>. <source>Sleep</source> <volume>27</volume>: <fpage>445</fpage>–<lpage>451</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Habeck1">
+        <label>43</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Habeck</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Rakitin</surname><given-names>BC</given-names></name>, <name name-style="western"><surname>Moeller</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Scarmeas</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Zarahn</surname><given-names>E</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>An event-related fMRI study of the neurobehavioral impact of sleep deprivation on performance of a delayed-match-to-sample task</article-title>. <source>Brain Res Cogn Brain Res</source> <volume>18</volume>: <fpage>306</fpage>–<lpage>321</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Tomasi1">
+        <label>44</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tomasi</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>RL</given-names></name>, <name name-style="western"><surname>Telang</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Boronikolas</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Jayne</surname><given-names>MC</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Impairment of attentional networks after 1 night of sleep deprivation</article-title>. <source>Cereb Cortex</source> <volume>19</volume>: <fpage>233</fpage>–<lpage>240</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Rogers1">
+        <label>45</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rogers</surname><given-names>NL</given-names></name>, <name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name> (<year>2008</year>) <article-title>Interaction of chronic sleep restriction and circadian system in humans</article-title>. <source>J Sleep Res</source> <volume>17</volume>: <fpage>406</fpage>–<lpage>411</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Doran1">
+        <label>46</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Doran</surname><given-names>SM</given-names></name>, <name name-style="western"><surname>Van Dongen</surname><given-names>HP</given-names></name>, <name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name> (<year>2001</year>) <article-title>Sustained attention performance during sleep deprivation: evidence of state instability</article-title>. <source>Arch Ital Biol</source> <volume>139</volume>: <fpage>253</fpage>–<lpage>267</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Cajochen1">
+        <label>47</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cajochen</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Khalsa</surname><given-names>SB</given-names></name>, <name name-style="western"><surname>Wyatt</surname><given-names>JK</given-names></name>, <name name-style="western"><surname>Czeisler</surname><given-names>CA</given-names></name>, <name name-style="western"><surname>Dijk</surname><given-names>DJ</given-names></name> (<year>1999</year>) <article-title>EEG and ocular correlates of circadian melatonin phase and human performance decrements during sleep loss</article-title>. <source>Am J Physiol</source> <volume>277</volume>: <fpage>R640</fpage>–<lpage>649</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Dijk2">
+        <label>48</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dijk</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Czeisler</surname><given-names>CA</given-names></name> (<year>1995</year>) <article-title>Contribution of the circadian pacemaker and the sleep homeostat to sleep propensity, sleep structure, electroencephalographic slow waves, and sleep spindle activity in humans</article-title>. <source>J Neurosci</source> <volume>15</volume>: <fpage>3526</fpage>–<lpage>3538</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Gonzalez1">
+        <label>49</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gonzalez</surname><given-names>MM</given-names></name>, <name name-style="western"><surname>Aston-Jones</surname><given-names>G</given-names></name> (<year>2006</year>) <article-title>Circadian regulation of arousal: role of the noradrenergic locus coeruleus system and light exposure</article-title>. <source>Sleep</source> <volume>29</volume>: <fpage>1327</fpage>–<lpage>1336</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Goel1">
+        <label>50</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Goel</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Banks</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Mignot</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name> (<year>2009</year>) <article-title>PER3 polymorphism predicts cumulative sleep homeostatic but not neurobehavioral changes to chronic partial sleep deprivation</article-title>. <source>PLoS One</source> <volume>4</volume>: <fpage>e5874</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Viola1">
+        <label>51</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Viola</surname><given-names>AU</given-names></name>, <name name-style="western"><surname>Archer</surname><given-names>SN</given-names></name>, <name name-style="western"><surname>James</surname><given-names>LM</given-names></name>, <name name-style="western"><surname>Groeger</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Lo</surname><given-names>JC</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>PER3 polymorphism predicts sleep structure and waking performance</article-title>. <source>Curr Biol</source> <volume>17</volume>: <fpage>613</fpage>–<lpage>618</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Choo1">
+        <label>52</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Choo</surname><given-names>WC</given-names></name>, <name name-style="western"><surname>Lee</surname><given-names>WW</given-names></name>, <name name-style="western"><surname>Venkatraman</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Sheu</surname><given-names>FS</given-names></name>, <name name-style="western"><surname>Chee</surname><given-names>MW</given-names></name> (<year>2005</year>) <article-title>Dissociation of cortical regions modulated by both working memory load and sleep deprivation and by sleep deprivation alone</article-title>. <source>Neuroimage</source> <volume>25</volume>: <fpage>579</fpage>–<lpage>587</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Pilcher1">
+        <label>53</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pilcher</surname><given-names>JJ</given-names></name>, <name name-style="western"><surname>Band</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Odle-Dusseau</surname><given-names>HN</given-names></name>, <name name-style="western"><surname>Muth</surname><given-names>ER</given-names></name> (<year>2007</year>) <article-title>Human performance under sustained operations and acute sleep deprivation conditions: toward a model of controlled attention</article-title>. <source>Aviat Space Env Med</source> <volume>78</volume>: <fpage>B15</fpage>–<lpage>24</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Chee1">
+        <label>54</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chee</surname><given-names>MW</given-names></name>, <name name-style="western"><surname>Choo</surname><given-names>WC</given-names></name> (<year>2004</year>) <article-title>Functional imaging of working memory after 24 hr of total sleep deprivation</article-title>. <source>J Neurosci</source> <volume>24</volume>: <fpage>4560</fpage>–<lpage>4567</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Frey1">
+        <label>55</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Frey</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Badia</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Wright</surname><given-names>KP</given-names><suffix>Jr</suffix></name> (<year>2004</year>) <article-title>Inter- and intra-individual variability in performance near the circadian nadir during sleep deprivation</article-title>. <source>J Sleep Res</source> <volume>13</volume>: <fpage>305</fpage>–<lpage>315</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Jones1">
+        <label>56</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jones</surname><given-names>KH</given-names></name>, <name name-style="western"><surname>Ellis</surname><given-names>J</given-names></name>, <name name-style="western"><surname>von Schantz</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Skene</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Dijk</surname><given-names>DJ</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Age-related change in the association between a polymorphism in the PER3 gene and preferred timing of sleep and waking activities</article-title>. <source>J Sleep Res</source> <volume>16</volume>: <fpage>12</fpage>–<lpage>16</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Lazar1">
+        <label>57</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lazar</surname><given-names>AS</given-names></name>, <name name-style="western"><surname>Slak</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Lo</surname><given-names>JC</given-names></name>, <name name-style="western"><surname>Santhi</surname><given-names>N</given-names></name>, <name name-style="western"><surname>von Schantz</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Sleep, diurnal preference, health, and psychological well-being: a prospective single-allelic-variation study</article-title>. <source>Chronobiol Int</source> <volume>29</volume>: <fpage>131</fpage>–<lpage>146</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Horne1">
+        <label>58</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Horne</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Ostberg</surname><given-names>O</given-names></name> (<year>1976</year>) <article-title>A self-assessment questionnaire to determine morningness-eveningness in human circadian rhythms</article-title>. <source>Int J Chronobiol</source> <volume>4</volume>: <fpage>97</fpage>–<lpage>110</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Buysse1">
+        <label>59</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Buysse</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Reynolds</surname><given-names>CF</given-names><suffix>III</suffix></name>, <name name-style="western"><surname>Monk</surname><given-names>TH</given-names></name>, <name name-style="western"><surname>Berman</surname><given-names>SR</given-names></name>, <name name-style="western"><surname>Kupfer</surname><given-names>DJ</given-names></name> (<year>1989</year>) <article-title>The Pittsburgh Sleep Quality Index: a new instrument for psychiatric practice and research</article-title>. <source>Psychiat Res</source> <volume>28</volume>: <fpage>193</fpage>–<lpage>213</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Johns1">
+        <label>60</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Johns</surname><given-names>MW</given-names></name> (<year>1991</year>) <article-title>A new method for measuring daytime sleepiness: the Epworth sleepiness scale</article-title>. <source>Sleep</source> <volume>14</volume>: <fpage>540</fpage>–<lpage>545</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-BenetMartinez1">
+        <label>61</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Benet-Martinez</surname><given-names>V</given-names></name>, <name name-style="western"><surname>John</surname><given-names>OP</given-names></name> (<year>1998</year>) <article-title>Los Cinco Grandes across cultures and ethnic groups: multitrait multimethod analyses of the Big Five in Spanish and English</article-title>. <source>J Pers Soc Psychol</source> <volume>75</volume>: <fpage>729</fpage>–<lpage>750</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Carver1">
+        <label>62</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Carver</surname><given-names>CS</given-names></name>, <name name-style="western"><surname>White</surname><given-names>TL</given-names></name> (<year>1994</year>) <article-title>Behavioral inhibition, behavioral activation, and affective responses to impending reward and punishment: the BIS/BAS Scales</article-title>. <source>J Pers Soc Psychol</source> <volume>67</volume>: <fpage>319</fpage>–<lpage>333</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Goldberg1">
+        <label>63</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Goldberg</surname><given-names>DP</given-names></name>, <name name-style="western"><surname>Hillier</surname><given-names>VF</given-names></name> (<year>1979</year>) <article-title>A scaled version of the General Health Questionnaire</article-title>. <source>Psychol Med</source> <volume>9</volume>: <fpage>139</fpage>–<lpage>145</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Ware1">
+        <label>64</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ware</surname><given-names>JE</given-names><suffix>Jr</suffix></name>, <name name-style="western"><surname>Sherbourne</surname><given-names>CD</given-names></name> (<year>1992</year>) <article-title>The MOS 36-item short-form health survey (SF-36). I. Conceptual framework and item selection</article-title>. <source>Med Care</source> <volume>30</volume>: <fpage>473</fpage>–<lpage>483</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-VanStrien1">
+        <label>65</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Van Strien</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Frijters</surname><given-names>JER</given-names></name>, <name name-style="western"><surname>Bergers</surname><given-names>GPA</given-names></name>, <name name-style="western"><surname>Defares</surname><given-names>PB</given-names></name> (<year>1986</year>) <article-title>The Dutch Eating Behavior Questionnaire (DEBQ) for Assessment of Restrained, Emotional, and External Eating Behavior</article-title>. <source>Int J of Eat Disorder</source> <volume>5</volume>: <fpage>295</fpage>–<lpage>315</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Arthur1">
+        <label>66</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Arthur</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Day</surname><given-names>D</given-names></name> (<year>1994</year>) <article-title>Development of a short form for the Raven Advanced Progressive Matrices Test</article-title>. <source>Educ Psychol Meas</source> <volume>54</volume>: <fpage>394</fpage>–<lpage>403</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Baddeley1">
+        <label>67</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Baddeley</surname><given-names>AD</given-names></name> (<year>1968</year>) <article-title>A 3 min reasoning test based on grammatical transformation</article-title>. <source>Psychon Sci</source> <volume>10</volume>: <fpage>341</fpage>–<lpage>342</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Watson1">
+        <label>68</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Watson</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Clark</surname><given-names>LA</given-names></name>, <name name-style="western"><surname>Tellegen</surname><given-names>A</given-names></name> (<year>1988</year>) <article-title>Development and validation of brief measures of positive and negative affect: the PANAS scales</article-title>. <source>J Pers Soc Psychol</source> <volume>54</volume>: <fpage>1063</fpage>–<lpage>1070</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Akerstedt2">
+        <label>69</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Akerstedt</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Hume</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Minors</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Waterhouse</surname><given-names>J</given-names></name> (<year>1994</year>) <article-title>The subjective meaning of good sleep, an intraindividual approach using the Karolinska Sleep Diary</article-title>. <source>Percept Mot Skills</source> <volume>79</volume>: <fpage>287</fpage>–<lpage>296</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Banks1">
+        <label>70</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Banks</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Van Dongen</surname><given-names>HP</given-names></name>, <name name-style="western"><surname>Maislin</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name> (<year>2010</year>) <article-title>Neurobehavioral dynamics following chronic sleep restriction: dose-response effects of one night for recovery</article-title>. <source>Sleep</source> <volume>33</volume>: <fpage>1013</fpage>–<lpage>1026</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Groeger2">
+        <label>71</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Groeger</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Zijlstra</surname><given-names>FR</given-names></name>, <name name-style="western"><surname>Dijk</surname><given-names>DJ</given-names></name> (<year>2004</year>) <article-title>Sleep quantity, sleep difficulties and their perceived consequences in a representative sample of some 2000 British adults</article-title>. <source>J Sleep Res</source> <volume>13</volume>: <fpage>359</fpage>–<lpage>371</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Luckhaupt1">
+        <label>72</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Luckhaupt</surname><given-names>SE</given-names></name>, <name name-style="western"><surname>Tak</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Calvert</surname><given-names>GM</given-names></name> (<year>2010</year>) <article-title>The prevalence of short sleep duration by industry and occupation in the National Health Interview Survey</article-title>. <source>Sleep</source> <volume>33</volume>: <fpage>149</fpage>–<lpage>159</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Czeisler1">
+        <label>73</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Czeisler</surname><given-names>CA</given-names></name>, <name name-style="western"><surname>Ronda</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Kronauer</surname><given-names>RE</given-names></name>, <name name-style="western"><surname>Richardson</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Freitag</surname><given-names>WO</given-names></name> (<year>1985</year>) <article-title>A clinical method to assess the endogenous circadian phase (ECP) of the deep circadian oscillator in man</article-title>. <source>Sleep Res</source> <volume>14</volume>: <fpage>295</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Groeger3">
+        <label>74</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Groeger</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Lo</surname><given-names>JC</given-names></name>, <name name-style="western"><surname>Burns</surname><given-names>CG</given-names></name>, <name name-style="western"><surname>Dijk</surname><given-names>DJ</given-names></name> (<year>2011</year>) <article-title>Effects of sleep inertia after daytime naps vary with executive load and time of day</article-title>. <source>Behav Neurosci</source> <volume>125</volume>: <fpage>252</fpage>–<lpage>260</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Dinges2">
+        <label>75</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dinges</surname><given-names>DF</given-names></name>, <name name-style="western"><surname>Pack</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Williams</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Gillen</surname><given-names>KA</given-names></name>, <name name-style="western"><surname>Powell</surname><given-names>JW</given-names></name>, <etal>et al</etal>. (<year>1997</year>) <article-title>Cumulative sleepiness, mood disturbance, and psychomotor vigilance performance decrements during a week of sleep restricted to 4–5 hours per night</article-title>. <source>Sleep</source> <volume>20</volume>: <fpage>267</fpage>–<lpage>277</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Pollack1">
+        <label>76</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pollack</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Norman</surname><given-names>DA</given-names></name> (<year>1964</year>) <article-title>A non-parametric analysis of recognition experiments</article-title>. <source>Psychon Sci</source> <volume>1</volume>: <fpage>125</fpage>–<lpage>126</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Macmillan1">
+        <label>77</label>
+        <mixed-citation publication-type="other" xlink:type="simple">Macmillan NA, Creelman CD (1991) Detection theory: a user’s guide. New York: Cambridge University Press.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Macmillan2">
+        <label>78</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Macmillan</surname><given-names>NA</given-names></name>, <name name-style="western"><surname>Creelman</surname><given-names>CD</given-names></name> (<year>1996</year>) <article-title>Triangles in ROC space: History and theory of “nonparametric” measures of sensitivity and response bias</article-title>. <source>Psychon B Rev</source> <volume>3</volume>: <fpage>164</fpage>–<lpage>170</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Frith1">
+        <label>79</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Frith</surname><given-names>CD</given-names></name> (<year>1973</year>) <article-title>Learning rhythmic hand movements</article-title>. <source>Q J Exp Psychol</source> <volume>25</volume>: <fpage>253</fpage>–<lpage>259</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Maquet1">
+        <label>80</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Maquet</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Schwartz</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Passingham</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Frith</surname><given-names>C</given-names></name> (<year>2003</year>) <article-title>Sleep-related consolidation of a visuomotor skill: brain mechanisms as assessed by functional magnetic resonance imaging</article-title>. <source>J Neurosci</source> <volume>23</volume>: <fpage>1432</fpage>–<lpage>1440</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Vandierendonck1">
+        <label>81</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vandierendonck</surname><given-names>A</given-names></name>, <name name-style="western"><surname>De Vooght</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Van der Goten</surname><given-names>K</given-names></name> (<year>1998</year>) <article-title>Interfering with the central executive by means of a random interval repetition task</article-title>. <source>Q J Exp Psychol A</source> <volume>51</volume>: <fpage>197</fpage>–<lpage>218</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Klerman2">
+        <label>82</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Klerman</surname><given-names>EB</given-names></name>, <name name-style="western"><surname>Gershengorn</surname><given-names>HB</given-names></name>, <name name-style="western"><surname>Duffy</surname><given-names>JF</given-names></name>, <name name-style="western"><surname>Kronauer</surname><given-names>RE</given-names></name> (<year>2002</year>) <article-title>Comparisons of the variability of three markers of the human circadian pacemaker</article-title>. <source>J Biol Rhythms</source> <volume>17</volume>: <fpage>181</fpage>–<lpage>193</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Duffy1">
+        <label>83</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Duffy</surname><given-names>JF</given-names></name>, <name name-style="western"><surname>Cain</surname><given-names>SW</given-names></name>, <name name-style="western"><surname>Chang</surname><given-names>AM</given-names></name>, <name name-style="western"><surname>Phillips</surname><given-names>AJ</given-names></name>, <name name-style="western"><surname>Munch</surname><given-names>MY</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Sex difference in the near-24-hour intrinsic period of the human circadian timing system</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>108</volume> Suppl 3<fpage>15602</fpage>–<lpage>15608</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Duffy2">
+        <label>84</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Duffy</surname><given-names>JF</given-names></name>, <name name-style="western"><surname>Dijk</surname><given-names>DJ</given-names></name> (<year>2002</year>) <article-title>Getting through to circadian oscillators: why use constant routines?</article-title> <source>J Biol Rhythms</source> <volume>17</volume>: <fpage>4</fpage>–<lpage>13</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0045987-Rechtschaffen1">
+        <label>85</label>
+        <mixed-citation publication-type="other" xlink:type="simple">Rechtschaffen A, Kales A (1968) A Manual of Standardized Terminology, Techniques and Scoring System for Sleep Stages of Human Subjects. Los Angeles: BIS/BRI, UCLA.</mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

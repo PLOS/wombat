@@ -1,0 +1,1406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id><journal-title-group>
+<journal-title>PLoS ONE</journal-title></journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="publisher-id">PONE-D-13-51370</article-id>
+<article-id pub-id-type="doi">10.1371/journal.pone.0091646</article-id>
+<article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Medicine</subject><subj-group><subject>Oncology</subject></subj-group><subj-group><subject>Urology</subject><subj-group><subject>Bladder cancer and urothelial neoplasias of the urinary tract</subject><subject>Renal cancer</subject></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>New miRNA Profiles Accurately Distinguish Renal Cell Carcinomas and Upper Tract Urothelial Carcinomas from the Normal Kidney</article-title>
+<alt-title alt-title-type="running-head">miRNA Classification of Kidney Tumours</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Zaravinos</surname><given-names>Apostolos</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Lambrou</surname><given-names>George I.</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Mourmouras</surname><given-names>Nikos</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Katafygiotis</surname><given-names>Patroklos</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Papagregoriou</surname><given-names>Gregory</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Giannikou</surname><given-names>Krinio</given-names></name><xref ref-type="aff" rid="aff4"><sup>4</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Delakas</surname><given-names>Dimitris</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Deltas</surname><given-names>Constantinos</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+</contrib-group>
+<aff id="aff1"><label>1</label><addr-line>Molecular Medicine Research Center and Laboratory of Molecular and Medical Genetics, Department of Biological Sciences, University of Cyprus, Nicosia, Cyprus</addr-line></aff>
+<aff id="aff2"><label>2</label><addr-line>Choremeio Research Laboratory, First Department of Pediatrics, University of Athens, Athens, Greece</addr-line></aff>
+<aff id="aff3"><label>3</label><addr-line>Department of Urology, Asklipieio General Hospital, Athens, Greece</addr-line></aff>
+<aff id="aff4"><label>4</label><addr-line>Department of Medical Genetics, Medical School, University of Athens, Athens, Greece</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Lau</surname><given-names>Kin Mang</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>The Chinese University of Hong Kong, Hong Kong</addr-line></aff>
+<author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">zaravinos.apostolos@ucy.ac.cy</email> (AZ): <email xlink:type="simple">Deltas@ucy.ac.cy</email> (CD); <email xlink:type="simple">zaravinos.apostolos@ucy.ac.cy</email> (AZ):  <email xlink:type="simple">Deltas@ucy.ac.cy</email> (CD)</corresp>
+<fn fn-type="conflict"><p>The authors have declared that no competing interests exist.</p></fn>
+<fn fn-type="con"><p>Conceived and designed the experiments: AZ. Performed the experiments: AZ GL. Analyzed the data: AZ GL. Contributed reagents/materials/analysis tools: AZ GL NM PK GP KG DD CD. Wrote the paper: AZ. Read and approved the manuscript: GL DD CD.</p></fn>
+</author-notes>
+<pub-date pub-type="collection"><year>2014</year></pub-date>
+<pub-date pub-type="epub"><day>12</day><month>3</month><year>2014</year></pub-date>
+<volume>9</volume>
+<issue>3</issue>
+<elocation-id>e91646</elocation-id>
+<history>
+<date date-type="received"><day>5</day><month>12</month><year>2013</year></date>
+<date date-type="accepted"><day>11</day><month>2</month><year>2014</year></date>
+</history>
+<permissions>
+<copyright-year>2014</copyright-year>
+<copyright-holder>Zaravinos et al</copyright-holder><license xlink:type="simple"><license-p>This is an open-access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions>
+<abstract><sec>
+<title>Background</title>
+<p>Upper tract urothelial carcinomas (UT-UC) can invade the pelvicalyceal system making differential diagnosis of the various histologically distinct renal cell carcinoma (RCC) subtypes and UT-UC, difficult. Correct diagnosis is critical for determining appropriate surgery and post-surgical treatments. We aimed to identify microRNA (miRNA) signatures that can accurately distinguish the most prevalent RCC subtypes and UT-UC form the normal kidney.</p>
+</sec><sec>
+<title>Methods and Findings</title>
+<p>miRNA profiling was performed on FFPE tissue sections from RCC and UT-UC and normal kidney and 434 miRNAs were significantly deregulated in cancerous vs. the normal tissue. Hierarchical clustering distinguished UT-UCs from RCCs and classified the various RCC subtypes among them. qRT-PCR validated the deregulated expression profile for the majority of the miRNAs and ROC analysis revealed their capability to discriminate between tumour and normal kidney. An independent cohort of freshly frozen RCC and UT-UC samples was used to validate the deregulated miRNAs with the best discriminatory ability (AUC&gt;0.8, p&lt;0.001). Many of them were located within cytogenetic regions that were previously reported to be significantly aberrated. miRNA targets were predicted using the miRWalk algorithm and ingenuity pathway analysis identified the canonical pathways and curated networks of the deregulated miRNAs. Using the miRWalk algorithm, we further identified the top anti-correlated mRNA/miRNA pairs, between the deregulated miRNAs from our study and the top co-deregulated mRNAs among 5 independent ccRCC GEO datasets. The AB8/13 undifferentiated podocyte cells were used for functional assays using luciferase reporter constructs and the developmental transcription factor TFCP2L1 was proved to be a true target of miR-489, which was the second most upregulated miRNA in ccRCC.</p>
+</sec><sec>
+<title>Conclusions</title>
+<p>We identified novel miRNAs specific for each RCC subtype and UT-UC, we investigated their putative targets, the networks and pathways in which they participate and we functionally verified the true targets of the top deregulated miRNAs.</p>
+</sec></abstract>
+<funding-group><funding-statement>This project was funded by the Cyprus Research Promotion Foundation, New Infrastructure/ΣΤΡΑΤΗ/0308/24 (co-funding by the EU Structural Funds) to CD. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts><page-count count="21"/></counts></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p>Renal cell carcinoma (RCC) represents 2–3% of all cancers and accounts for approximately 90% of all kidney malignancies. Apart from surgery, it is both chemotherapy and radiotherapy resistant and it is composed of various morphologically and cytogenetically distinct subtypes. The most prevalent subtypes are clear cell RCC (ccRCC, 75–80%), papillary RCC (papRCC, 10–15%) and chromophobe RCC (chRCC, 5%) <xref ref-type="bibr" rid="pone.0091646-MeloniEhrig1">[1]</xref>. Distinguishing RCC subtypes is of clinical importance because they have different prognoses and consequently different management schemes <xref ref-type="bibr" rid="pone.0091646-Ficarra1">[2]</xref>. However, morphology-based distinction is not always conclusive since some subtypes may have overlapping or related morphologic features. For the purpose of targeted therapy it is especially important to classify the different subtypes of RCC. The histological types arise from different cells of origin in the kidney, different constellations of genetic alterations <xref ref-type="bibr" rid="pone.0091646-LopezBeltran1">[3]</xref>, and expression or mutation in different oncogenic pathways. Therefore, different subtypes offer different molecular candidates for targeted therapy, such as Tyrosine Kinase Inhibitors, Sorafenib and Sunitinib, mTOR inhibitors, Everolimus and Temsirolimus, etc. There is growing evidence that variability in response rates may be linked to sub-classification <xref ref-type="bibr" rid="pone.0091646-Taziel1">[4]</xref>. Therefore, new biomarkers are needed in order to improve the identification and diagnosis of renal tumor subtypes. Recent data suggest that RCC classification through microRNA (miRNA) expression profiles is highly accurate <xref ref-type="bibr" rid="pone.0091646-Youssef1">[5]</xref>, <xref ref-type="bibr" rid="pone.0091646-Fridman1">[6]</xref>.</p>
+<p>Upper tract urothelial carcinoma (UT-UC) is a relatively uncommon form of kidney cancer arising from the urothelial lining of the renal pelvis and calyces. UT-UC accounts for the majority of bladder cancer; however, it only accounts for about 7% of renal neoplasms <xref ref-type="bibr" rid="pone.0091646-Higgins1">[7]</xref>. UC of the renal pelvis is an aggressive tumour, which may invade the renal parenchyma, mimicking primary renal cell carcinoma. Similarly, advanced RCC can invade the pelvicalyceal system. This can make differential diagnosis of RCC and urothelial carcinoma of the renal pelvis difficult. Correct diagnosis is critical for determining appropriate surgery and post-surgical treatments. For instance, UT-UC including renal pelvis, calyces and ureters will require radical nephrectomy with ureterectomy and bladder cuff resection. However, RCC will require only partial or radical nephrectomy without extensive ureter resection. Correct diagnosis is critical for determining appropriate surgery and post-surgical treatments. Therefore, it is of major importance to identify biomarkers that can accurately distinguish UT-UC from RCC <xref ref-type="bibr" rid="pone.0091646-Roupret1">[8]</xref>, <xref ref-type="bibr" rid="pone.0091646-Kirkali1">[9]</xref>.</p>
+<p>MicroRNAs (miRNAs) are small non-coding RNAs of approximately 19–23 nt size, shown to regulate gene expression at the post-transcriptional level, by binding through partial sequence homology to the 3′ UTR of mammalian target mRNAs and causing translational inhibition and/or mRNA degradation <xref ref-type="bibr" rid="pone.0091646-Garzon1">[10]</xref>. miRNAs have been identified as key regulators in many biological processes including development, differentiation, apoptosis and proliferation. They are aberrantly expressed or mutated in cancers, suggesting that they may play a role as a novel class of oncogenes or tumour suppressor genes <xref ref-type="bibr" rid="pone.0091646-EsquelaKerscher1">[11]</xref>. Deregulated miRNAs have been found in many tumours, including kidney cancer and carcinomas of the urinary tract <xref ref-type="bibr" rid="pone.0091646-Youssef1">[5]</xref>, <xref ref-type="bibr" rid="pone.0091646-Chow1">[12]</xref>, <xref ref-type="bibr" rid="pone.0091646-White1">[13]</xref>, <xref ref-type="bibr" rid="pone.0091646-Zaravinos1">[14]</xref>, <xref ref-type="bibr" rid="pone.0091646-Chow2">[15]</xref>, <xref ref-type="bibr" rid="pone.0091646-Fridman2">[16]</xref>, <xref ref-type="bibr" rid="pone.0091646-Jung1">[17]</xref>, <xref ref-type="bibr" rid="pone.0091646-Nakada1">[18]</xref>, <xref ref-type="bibr" rid="pone.0091646-Osanto1">[19]</xref>, <xref ref-type="bibr" rid="pone.0091646-Petillo1">[20]</xref>, <xref ref-type="bibr" rid="pone.0091646-Radojicic1">[21]</xref>; however, not much is known regarding their expression profile in upper tract urothelial carcinomas. Furthermore, in RCC the results are not always consistent <xref ref-type="bibr" rid="pone.0091646-Chow1">[12]</xref>, <xref ref-type="bibr" rid="pone.0091646-White1">[13]</xref>, <xref ref-type="bibr" rid="pone.0091646-Jung1">[17]</xref>, <xref ref-type="bibr" rid="pone.0091646-Nakada1">[18]</xref>, <xref ref-type="bibr" rid="pone.0091646-Gottardo1">[22]</xref>, <xref ref-type="bibr" rid="pone.0091646-Huang1">[23]</xref>, <xref ref-type="bibr" rid="pone.0091646-Juan1">[24]</xref>, <xref ref-type="bibr" rid="pone.0091646-Yi1">[25]</xref>. Additionally, many deregulated miRNAs are located in chromosomal regions that are frequently altered in cancerous situations <xref ref-type="bibr" rid="pone.0091646-Sun1">[26]</xref>.</p>
+<p>To our knowledge there are no accurate biomarkers for early detection of both RCC and UT-UC, thereby accounting for late diagnosis and subsequent poor prognosis. Better understanding of RCC and UT-UC pathogenesis is required for identifying biomarkers and developing novel targeted therapies. In the present study, we examined the miRNA expression profiles mainly of ccRCC, as well as in a smaller cohort of papRCC, chRCC and UT-UC samples. We identified novel miRNAs that are specific for each tumour entity, we investigated their putative targets, and we explored the networks and pathways in which these miRNAs participate. Finally, we functionally verified the target gene of the top deregulated miRNA in ccRCC.</p>
+</sec><sec id="s2" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="s2a">
+<title>Patient samples</title>
+<p>Formalin-fixed and paraffin embedded (FFPE) tissue samples from patients with kidney cancer and upper tract urothelial carcinoma were retrieved from the archives of the Asklipieio General Hospital, Athens, following research ethics board approval from the same Hospital. Paraffin sections from each specimen were reviewed by two independent pathologists and histologically classified according to the WHO classification and staged according to the UICC-TNM classification (2009). Nuclear grade was scored according to the Fuhrman classification system. Kidney specimens were collected between 2007 and 2011. Written informed consent was obtained from all patients included in this study. The study protocol was approved by the Ethics Committees of the Asklipieio General Hospital, Athens and the University of Cyprus. Twenty-four ccRCC, 5 papRCC, 3 chRCC, 5 UT-UC patients and 40 normal kidney tissue (parenchyma/cortex) samples which were used as controls, were enrolled in the present study (<xref ref-type="table" rid="pone-0091646-t001"><bold>Table 1</bold></xref>). None of the patients had a history of previous bladder cancer or concomitant bladder cancer at UT-UC diagnosis. The criteria to select normal kidney tissues were that the normal kidney cortex tissue was from the same individual, from the same kidney, from the same surgical specimen, and collected under the same standard operation procedure conditions: if possible the sampling of normal cortex was done leaving ∼2 cm of macroscopically healthy cortex adjacent to the tumor untouched. ccRCC are macroscopically characterized by a sharp demarcation (fibrous pseudocapsule) between tumor and surrounding non-tumoral tissue. This is also reflected microscopically, as RCC are sharply demarcated from the surrounding tissue. The non-tumoral tissue was therefore obtained in macroscopically clear-cut benign tissue. Haematoxylin and eosin (H&amp;E) staining and immunohistochemistry (IHC) for several markers (AE1/AE3 keratins, CK7, CK8, CK18, CK19, EMA, CD10, Vimentin, EGFR, Ki67, NSE, p53 and S-100) was performed for all RCC samples. Anti-vimentin staining was also performed for UT-UC samples (<xref ref-type="fig" rid="pone-0091646-g001"><bold>Figure 1</bold></xref>).</p>
+<fig id="pone-0091646-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g001</object-id><label>Figure 1</label><caption>
+<title>Haematoxylin and eosin (H&amp;E) staining and immunohistochemistry (IHC).</title>
+<p><italic>Upper pannel:</italic> Representative H&amp;E staining from ccRCC, papRCC, chRCC and normal kidney tissue. About 5–10 serial tissue sections of 10 μm were cut from each FFPE block, deparaffinized with xylene, hydrated and stained with H&amp;E before microscopic examination. When the proportion of tumour cells was &gt;70% the FFPE block was subjected to total RNA extraction. <italic>Lower pannel:</italic> IHC of FFPE tissue sections using anti-vimentin as primary antibody. Vimentin was predominantly seen in ccRCC and papRCC (∼70% and ∼50%, respectively), but only rarely in chRCC (4%) and absent in the normal kidney. Vimentin was also down-regulated in the majority of UT-UC cases.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g001" position="float" xlink:type="simple"/></fig><table-wrap id="pone-0091646-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.t001</object-id><label>Table 1</label><caption>
+<title>Clinicopathological information of the patients.</title>
+</caption><alternatives><graphic id="pone-0091646-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.t001" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="center" rowspan="1" colspan="1">ccRCC (n = 24)</td>
+<td align="center" rowspan="1" colspan="1">papRCC (n = 5)</td>
+<td align="center" rowspan="1" colspan="1">chRCC (n = 3)</td>
+<td align="center" rowspan="1" colspan="1">UT-UC (n = 5)</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Median age (range), y</bold></td>
+<td align="center" rowspan="1" colspan="1">70 (43–79)</td>
+<td align="center" rowspan="1" colspan="1">67 (53–80)</td>
+<td align="center" rowspan="1" colspan="1">68 (60–77)</td>
+<td align="center" rowspan="1" colspan="1">76 (76–78)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Gender (male/female)</bold></td>
+<td align="center" rowspan="1" colspan="1">20/4</td>
+<td align="center" rowspan="1" colspan="1">4/1</td>
+<td align="center" rowspan="1" colspan="1">0/3</td>
+<td align="center" rowspan="1" colspan="1">4/1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Stage</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">T1</td>
+<td align="center" rowspan="1" colspan="1">13</td>
+<td align="center" rowspan="1" colspan="1">4</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">T2</td>
+<td align="center" rowspan="1" colspan="1">6</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">3</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">T3</td>
+<td align="center" rowspan="1" colspan="1">5</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">T4</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Metastatic tissue samples</bold></td>
+<td align="center" rowspan="1" colspan="1">2</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Grade</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="center" rowspan="1" colspan="1">5 (T1a), 3 (T1b), 2 (T2a), 1 (T2), 1 (T3a)</td>
+<td align="center" rowspan="1" colspan="1">2 (T1a)</td>
+<td align="center" rowspan="1" colspan="1">1 (T2b)</td>
+<td align="center" rowspan="1" colspan="1">1 (T1+in situ)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="center" rowspan="1" colspan="1">3 (T1a), 2 (T1b), 1 (T2a), 3 (T3a)</td>
+<td align="center" rowspan="1" colspan="1">2 (T1b), 1 (T2a)</td>
+<td align="center" rowspan="1" colspan="1">2 (T2a)</td>
+<td align="center" rowspan="1" colspan="1">1 (T1), 1 (T2), 1 (T3)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">4</td>
+<td align="center" rowspan="1" colspan="1">1 (T2a), 1 (T2b), 1 (T3a)</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>median tumour size (range), cm</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Grade 1</td>
+<td align="center" rowspan="1" colspan="1">-</td>
+<td align="center" rowspan="1" colspan="1">-</td>
+<td align="center" rowspan="1" colspan="1">-</td>
+<td align="center" rowspan="1" colspan="1">-</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Grade 2</td>
+<td align="center" rowspan="1" colspan="1">4 (2–8.5)</td>
+<td align="center" rowspan="1" colspan="1">2.75 (2.5–3)</td>
+<td align="center" rowspan="1" colspan="1">13.2 (0)</td>
+<td align="center" rowspan="1" colspan="1">1.5 (0)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Grade 3</td>
+<td align="center" rowspan="1" colspan="1">6.5 (1.5–9)</td>
+<td align="center" rowspan="1" colspan="1">5.5 (4.5–8.5)</td>
+<td align="center" rowspan="1" colspan="1">9.25 (8.5–10)</td>
+<td align="center" rowspan="1" colspan="1">0.7 (0.5–1.5)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Grade 4</td>
+<td align="center" rowspan="1" colspan="1">8.4 (6.5–13)</td>
+<td align="center" rowspan="1" colspan="1">-</td>
+<td align="center" rowspan="1" colspan="1">-</td>
+<td align="center" rowspan="1" colspan="1">-</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Nodal status,</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">positive/negative/unknown</td>
+<td align="center" rowspan="1" colspan="1">0/24/0</td>
+<td align="center" rowspan="1" colspan="1">0/5/0</td>
+<td align="center" rowspan="1" colspan="1">0/3/0</td>
+<td align="center" rowspan="1" colspan="1">0/5/0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Metastatic status,</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">positive/negative</td>
+<td align="center" rowspan="1" colspan="1">2/22</td>
+<td align="center" rowspan="1" colspan="1">0/5</td>
+<td align="center" rowspan="1" colspan="1">0/3</td>
+<td align="center" rowspan="1" colspan="1">0/5</td>
+</tr>
+</tbody>
+</table>
+</alternatives></table-wrap></sec><sec id="s2b">
+<title>RNA extraction and microRNA microarray analysis</title>
+<p>Total RNA containing small RNAs was isolated from 18 ccRCC, 5 papRCC, 3 chRCC, 4 UT-UC and 20 normal tissue samples using the High Pure FFPE RNA Micro Kit (Roche Applied Science, IN). The quality of the total RNA was verified by an Agilent 2100 Bioanalyzer (Agilent Technologies, Santa Clara, CA) and the concentration was measured spectrophotometrically (Nanodrop technologies, Montchanin, DE). Tissue sections were deparaffinized with xylene and ethanol washes, treated with protease and total RNA containing small RNAs was isolated using the High Pure FFPE RNA Micro Kit (Roche Applied Science). Total RNA (0.5 μg) from each sample and reference was labeled with Hy3 fluorescent label, using the miRCURY LNA microRNA Hi-Power Labeling Kit (Exiqon, Vedbaek, Denmark), according to the manufacturer protocol. The Hy3-labeled samples were hybridized to the miRCURY LNA microRNA Array, 6<sup>th</sup> gen (Exiqon, Vedbaek, Denmark), containing capture probes that target all miRNAs for all species registered in the miRBase v18.0. The hybridization was performed using an Agilent hybridization SureHyb chamber and gasket slide kits. After hybridization, the microarray slides were scanned at 10 μm using the High-Resolution Microarray Scanner (Agilent Technologies) and stored in an ozone free environment. The image analysis was carried out using the ImaGene 8.0 software (BioDiscovery, Inc., USA). Filtering was performed based on the signal intensity. Spots with no signal above the background (flags 1 and 2) were detected and removed. Background correction was performed by subtracting the median global background from the median local background from the signal intensity. Normalization was performed using the quantile normalization algorithm. Normalized data were further extracted, pre-processed and sorted with Microsoft Excel®. For further data analysis the Matlab® (The Mathworks Inc.) computing environment was used. MicroRNAs were considered to be significantly differentially expressed (DE) if they obtained a p-value&lt;0.05 and a FDR≤0.05. Two-way average-linkage hierarchical clustering (HCl) with Euclidian distance was performed with Matlab® and Genesis 1.7.2 (Technische Universitaet-Graz, Austria) software. Our MIAME compliant microarray data were deposited in the Gene Expression Omnibus (GEO; <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/geo" xlink:type="simple">www.ncbi.nlm.nih.gov/geo</ext-link>) under accession number GSE48008.</p>
+</sec><sec id="s2c">
+<title>Quantitative real time polymerase chain reaction (qRT-PCR) validation in FFPE samples and an independent cohort of freshly frozen tissue samples</title>
+<p>qRT-PCR for the top DE miRNAs was performed for all FFPE samples for which total RNA was initially extracted (24 ccRCCs, 5 papRCCs, 3 chRCCs, 5 UT-UCs and 40 normal kidney tissue samples) including those used for the microarray analysis.</p>
+<p>Additionally, a blinded independent validation set of 40 freshly frozen kidney tissue samples (10 ccRCCs, 3 papRCCs, 4 chRCCs, 3 UT-UCs and 20 normal kidney cortex samples) was used to study the assay performance. The validation set included samples that met the same selection criteria with the initial FFPE cohort, such as &gt;70% tumor cells in each sample and concordance in diagnosis between two independent pathologists. Samples were collected at the Asklipieio General Hospital, Athens. Only samples for which both pathologists agreed in the diagnosis were included in the validation cohort.</p>
+<p>Total RNA was extracted by homogenizing approximately 0.2 g of frozen tissue with a tissue homogenizer, followed by isolation using the mirVANA miRNA Isolation Kit (Ambion, Austin, TX) and the concentration was measured spectrophotometrically (Nanodrop technologies, Montchanin, DE). The microRNA in the total RNA sample (80 ng/ul) was converted to cDNA by reverse transcription using the miRCURY LNA Universal RT cDNA synthesis kit (Exiqon, Vedbaek, Denmark). qRT-PCR using appropriate endogenous controls (SNORA66, U6snRNA, RNU1A1) was performed in order to validate the microarray results of the top up-regulated miRNAs: miR-3648, miR-489, miR-638, miR-3656, miR-3687, miR-663b, miR-3126-5p, miR-25-5p, miR-1908, miR-204-3p, miR-711, miR-516b-5p, miR-498 and miR-612; as well as the top down-regulated ones: miR-145-3p, miR-551b-5p, miR-155-3p, miR-106b-3p, miR-140-5p, miR-4284, miR-520g, miR-520e, miR-944, miR-656 and miR-141-3p. The cDNA template was diluted 80x and amplified using SYBR® Green master mix (Exiqon, Vedbaek, Denmark) and LNA microRNA-specific primers on a ViiA 7 Real-Time PCR System (Applied Biosystems). Polymerase activation/DNA denaturation was at 95°C for 10 mins and qPCR amplification was performed for 45 cycles at 95°C for 10 sec and 60°C for 1 min with a ramp-rate 1.6°C/sec, followed by melt curve analysis. All reactions were performed in triplicates. Before proceeding with data normalization, a technical quality assessment was performed based on results of the melting curve, serial dilution curve and no-template-controls. The stability and ranking of the endogenous controls was calculated with the NormFinder algorithim (<ext-link ext-link-type="uri" xlink:href="http://www.mdl.dk/publicationsnormfinder.htm" xlink:type="simple">www.mdl.dk/publicationsnormfinder.htm</ext-link>). For every endogenous control gene, the pair-wise variation with all other endogenous controls was determined as a gene stability measurement M. Genes with expression stability M&gt;1.5 were considered unstable across the samples and unsuitable for endogenous controls in this experiment. Relative expression was performed using the ΔΔCt method as previously described <xref ref-type="bibr" rid="pone.0091646-Radojicic1">[21]</xref>, <xref ref-type="bibr" rid="pone.0091646-Zaravinos2">[27]</xref>. Data were standardized by log<sub>2</sub> transformation.</p>
+</sec><sec id="s2d">
+<title>Locked nucleic acids-in situ hybridization (LNA-ISH)</title>
+<p>For LNA-ISH we used the probe sequences: miR-25-5p, 5′-DIG/CAATTGCCCAAGTCTCCGCCT/DIG-3′; miR-3687, 5′-DIG/ACGTCGCACGAACGCCTGT/DIG-3′; LNA U6 snRNA control probe, 5′-DIG/CACGAATTTGCGTGTCATCCTT-3′; LNA scrambled microRNA control probe, 5′-DIG/GTGTAACACGTCTATACGCCCA/DIG-3′. Briefly, 6-µm sections of FFPE tumour and control tissue samples were prepared. Paraffin was melted at 60°C on the day before conducting the ISH experiment and slides were stored overnight at 4°C in an RNase-free environment. The following day, slides were deparaffinized in xylene and ethanol washes, treated with proteinase K (15 μg/ml) for 30 minutes at 37°C, washed in PBS and dehydrated in ethanol. Hybridization mix (1 nM LNA U6 snRNA, 50 nM double-DIG LNA miR-25-5p and miR-3687 probes or 50 nM double-DIG LNA scrambled microRNA probe) (Exiqon, Vedbaek, Denmark) was applied for 2 hours at ∼30°C below the RNA Tm of the corresponding LNA probe, in a StatSpin ThermoBrite System (Abbott Laboratories Ltd). Three different reactions were performed per slide. This was achieved by cutting with scissors the polypropylene coverslips to a size slightly larger than the tissue section. Three serial sections were placed per glass slide, in order to perform the test, the negative and positive controls on the same glass slide. This not only allowed for more efficient work, but permitted the U6 snRNA and scrambled sequence controls to be done under the same exact conditions as miR-25-5p or miR-3687. Slides were washed in SSC buffers prior to incubation with blocking solution. Subsequently, sheep anti-DIG-AP reagent was applied for 1 hour, slides were washed in PBS-T, incubated firstly with AP substrate (NBT/BCIP containing levamisol) for 2 hours at 30°C in a humidifying chamber protected from light, and then in KTBT buffer to stop the reaction. Nuclei were counter stained with Nuclear Fast Red. Slides were carefully rinsed in tap water and dehydrated in ethanol solutions. Finally, slides were mounted, left overnight to allow settlement of the precipitate and analyzed under a light microscope (Nikon eclipse TE2000-U) the subsequent day.</p>
+</sec><sec id="s2e">
+<title>Computational analysis of the deregulated microRNAs</title>
+<sec id="s2e1">
+<title>Chromosomal location and phylogenetic analysis of DE miRNAs</title>
+<p>Using miRBase v19 (<ext-link ext-link-type="uri" xlink:href="http://www.mirbase.org/" xlink:type="simple">www.mirbase.org/</ext-link>), the chromosomal distribution of the DE miRNAs was compared with reported genomic alterations in the different RCC subtypes and UT-UC. The unaligned fasta format of the mature sequences of miRNA gene families was fetched using miRBase v19 and multiple sequence alignment was subsequently performed with the ClustalW algorithm using T-Coffee (<ext-link ext-link-type="uri" xlink:href="http://www.ebi.ac.uk/Tools/msa/tcoffee/" xlink:type="simple">www.ebi.ac.uk/Tools/msa/tcoffee/</ext-link>). Finally, a phylogenetic tree for the miRNA sequences was built using bayesian reconstruction.</p>
+</sec><sec id="s2e2">
+<title>miRNA target prediction</title>
+<p>The DE microRNAs were imported into the miRWalk algorithm (<ext-link ext-link-type="uri" xlink:href="http://www.ma.uni-heidelberg.de/apps/zmf/mirwalk" xlink:type="simple">www.ma.uni-heidelberg.de/apps/zmf/mirwalk</ext-link>) and prediction of miRNA target sequences on the 3′UTR of their target genes was performed using 7 nucleotides as the minimum seed number. A multiple comparison using 4 additional algorithms was performed for filtering purposes, each one working based on different sets of properties regarding mRNA-miRNA targeting; TargetScan, miRanda, miRDB and Diana-microT. Filtering was performed for pairs of miRNA-mRNA targets that were predicted by all five algorithms and gave a p-value&lt;0.05, according to the miRWalk algorithm. This p-value depicts the probability of a miRNA 5′-end sequence to be randomly paired with a given 3′UTR mRNA sequence. The validated gene targets of the DE miRNAs in each RCC subtype and UT-UC were also investigated.</p>
+</sec><sec id="s2e3">
+<title>Ingenuity pathway analysis for the significantly deregulated miRNAs</title>
+<p>Ingenuity Pathway Analysis, version 7 (IPA; Ingenuity Systems, USA; <ext-link ext-link-type="uri" xlink:href="http://www.analysis.ingenuity.com" xlink:type="simple">www.analysis.ingenuity.com</ext-link>) was performed to identify the molecular pathways and functional groupings based on published literature for the significantly DE miRNAs. miRNAs were uploaded into IPA and overlaid onto a global molecular network developed from information contained in the application. Networks of these genes were generated by IPA based on their connectivity, each ranked by a score. This score is based on the hypergeometric distribution, calculated with the right-tailed Fisher’s Exact Test, and corresponds to the negative log of this p-value. Functional analysis in IPA identified the published biological functions that were most significantly associated with the genes in the network. Genes or gene products are represented as nodes, where shape indicates functional groups, and the biological relationship between two nodes is represented as an edge (line). All lines are supported by at least one reference in literature, textbook, or from canonical information stored in the Ingenuity Pathways knowledge database.</p>
+</sec></sec><sec id="s2f">
+<title>Functional assays</title>
+<sec id="s2f1">
+<title>Identification of anti-correlated miRNA/mRNA pairs</title>
+<p>Using miRWalk, we searched for gene targets of the top deregulated miRNAs as described above. We also selected the top co-deregulated (top co-up- and top co-down-regulated) mRNA transcripts from 5 ccRCC GEO datasets (accession numbers: GSE6344, GSE4125, GSE15641, GSE781 and GSE6280). For functional analysis we chose the miRNA/mRNA pairs that exhibited anti-correlated profiles between our miRNA profiling and the co-deregulated mRNA transcripts from the aforementioned 5 GEO datasets.</p>
+</sec><sec id="s2f2">
+<title>Bacterial transformation of ligated products and DNA sequencing</title>
+<p>Primers were designed to introduce a SpeI and a HindIII restriction enzyme sites to be cloned into the pMiR-REPORT luciferase vector (<bold><xref ref-type="supplementary-material" rid="pone.0091646.s006">Table S1</xref></bold>). DH5a E. coli cells (Takara, Japan) were gown from glycerol stocks and plasmid DNA was isolated and linearized using SpeI and a HindIII restriction enzymes. PCR-generated inserts were gel purified and ligated into the pMiR-REPORT luciferase vector. Ligation products were transformed into competent DH5a cells and the next day clones were picked and plasmid DNA was isolated. Insert verification included a restriction reaction with SpeI and HindIII. Also, 100 ng of plasmid DNA containing the insert was sequenced to confirm the absence of unwanted mutations, using the forward sequencing primer: <named-content content-type="gene" xlink:type="simple">5'-AGGCGATTAAGTTGGGTA-3′</named-content>.</p>
+<p>DNA sequencing of predicted target regions was performed using BigDye V3.1 chemistry on an ABI Prism Genetic Analyzer (Applied Biosystems, CA). Sequencing primers were designed to flank the target region but also included an additional 300 bp on average on each side. Sequence electropherograms were obtained from the ABI Sequencing Analysis V5.2 software (Applied Biosystems, CA) and sequences were imported into MEGA4 software to be aligned against a reference sequence with ClustalW algorithm.</p>
+</sec></sec><sec id="s2g">
+<title>Real-Time PCR for endogenous miRNA detection</title>
+<p>To examine the expression levels of the endogenous miR-23c, mR-204-3p, miR-520a-5p, miR-489, miR-874 and miR-513a-3p in undifferentiated AB8/13 cells, total RNA enriched in small RNAs was isolated from the cells using TRIzol® reagent (Ambion). miRNA specific reverse transcription was performed with the miRCURY LNA Universal RT cDNA synthesis kit (Exiqon, Vedbaek, Denmark). The cDNA template was diluted 80x and amplified using SYBR® Green master mix (Exiqon, Vedbaek, Denmark) and LNA microRNA-specific primers on a ViiA 7 Real-Time PCR System (Applied Biosystems). All reactions were performed in triplicates. SNORA66, U6 snRNA and RNU1A1 were used as reference.</p>
+</sec><sec id="s2h">
+<title>Transfection of AB8/13 podocytes and luciferase assays</title>
+<p>To evaluate the binding efficiency of the top deregulated miRNAs onto their predicted targets, the pMiR-REPORT miRNA Expression Reporter Vector System (AMBION, Texas) was used. The AB8/13 undifferentiated podocyte cells were incubated at 33°C at 5% CO<sub>2</sub> and cultured in RPMI medium, supplemented with 10% Fetal Bovine Serum (FBS) (Invitrogen, CA), 1% of 100 units/ml Penicillin/Streptomycin (Invitrogen, CA) and 1% Insulin-Transferrin-Selenium (Invitrogen, CA). For the luciferase reporter system experiments, AB8/13 cells were transfected with equal amounts of the pMIR-REPORT luciferase and β-gal vectors (100 ng each), as well as with 25 nM of miRNA inhibitors, mimics, or the AllStars Negative Control scrambled sequence LNA (Qiagen, West Sussex, UK), using lipofectamine 2000 (Invitrogen, CA). The β-gal vector was used for normalization. Every experiment was performed in quadruplicates in 12-well cell culture plates with the appropriate controls. Cells were harvested 16 hours after transfection. The Dual-Light Assay Kit (Applied Biosystems, CA) was used for the quantification of both luciferase and β-gal in an automated luminometer (Sirius, Berthold Detection Systems, Pforzheim, Germany).</p>
+</sec><sec id="s2i">
+<title>Western blotting</title>
+<p>AB8/13 cells were lysed in equal volumes of pre-heated 2xSDS loading buffer (Sodium Dodecyl Sulphate–125 mM Tris-HCl pH 6.8, 20% Glycerol, 2% SDS, 2% β-mercaptoethanol and bromophenol blue) and homogenized using a 2 ml syringe. Whole cell lysates were subsequently electrophoresed in a 12% SDS-Polyacrylamide gel. Gel transfer was held in a wet transfer system on Hybond Polyvinylidene Fluoride (PVDF–Millipore, MA) membranes. Membranes were blocked with 5% non-fat dry milk in PBS/0.01% Tween20 for 1 hour at room temperature. Primary antibody was diluted in milk and added to the membrane for one hour. TFCP2L1 protein was detected with the goat primary polyclonal antibody C-20 (SantaCruz Biotechnology, CA) at around 48 kDa. β-Tubulin was used as loading control by using the T-4026 primary antibody (Sigma, Taufkirchen, Germany). As secondary antibody we used the rabbit anti-mouse antibody (SantaCruz Biotechnology, CA), conjugated with Horseradish Peroxidase (HRP). Proteins were detected using the Enhanced ChemiLuminescence (ECL) Plus Blotting Detection system (Amersham Biosciences, Buckinghamshire, UK) and were visualized on a ChemiDoc MP imaging system using the Image Lab software (Bio-Rad Laboratories).</p>
+</sec><sec id="s2j">
+<title>Statistical analyses</title>
+<p>Microarray data analysis was performed using Matlab®. The two tailed student t-test was used to test the mean differences between two groups. Continuous variables are expressed as median ± standard deviation unless indicated differently. Receiver operating characteristic (ROC) curves were established to evaluate the diagnostic value of deregulated miRNAs for differentiating between RCC subtypes and controls. Pearson's correlation coefficient (CC) was used to identify positive or negative linear correlation between variables. Linear regression analysis using miRNA expression levels as dependent variables and patient age, sex, tumour stage, grade, size and nodal status as independent variables, was also performed to identify miRNAs associated with the aforementioned characteristics. Linear regression analysis along with ANOVA were also performed to develop models that discriminate RCC/UT-UC from the normal kidney samples. The median expression values of all the DE miRNAs were used to perform linear regression analysis. Similar analysis was performed based on tumor grade. All tests were performed 2-sided and a p≤0.05 was considered as statistically significant. Luciferase expression levels were analyzed using one-way ANOVA followed by Tukey post-testing, after being normalized against β-gal expression levels. One-way ANOVA was also used to test densitometry results from western blot analysis, followed by Tukey post-testing. All statistical analyses were performed using GraphPad Prism v.5 and Matlab®.</p>
+</sec></sec><sec id="s3">
+<title>Results</title>
+<sec id="s3a">
+<title>microRNA profiling</title>
+<p>microRNA profiling was performed retrospectively in a total of 27 RCCs (3 chRCC, 5 papRCC and 19 ccRCC), 4 UT-UCs and 20 normal kidney tissues. We identified 434 deregulated (DE) miRNAs (p&lt;0.05 and FDR&lt;0.05) in all RCC subtypes and UT-UC versus the normal kidney. The majority of them was down-regulated in RCCs but over-expressed in UT-UCs. Overall, 126 miRNAs (29%) showed increased expression and 303 miRNAs (69.8%) had decreased expression in RCCs and UT-UCs vs. the normal kidneys (<xref ref-type="fig" rid="pone-0091646-g002"><bold>Figure 2</bold></xref>). Specifically, 374, 420, 421 and 409 miRNAs were 90% consistently down-regulated in ccRCC, papRCC, chRCC and UT-UC, respectively. Unsupervised two-way hierarchical clustering (HCl) with Euclidian distance accurately discriminated between RCC and UT-UC. Apart from one chRCC sample that was clustered with ccRCCs, HCl also managed to successfully classify the 3 RCC subtypes among them. Furthermore, it showed that ccRCC is more closely related to papRCC and that both are distinct from chRCC or UT-UC (<xref ref-type="fig" rid="pone-0091646-g003"><bold>Figure 3</bold></xref>). HCl pair-tissue-wise also discriminated perfectly ccRCC from papRCC, chRCC from ccRCC, chRCC from papRCC, as well as ccRCC from UT-UC, papRCC from UT-UC and chRCC from UT-UC (<bold><xref ref-type="supplementary-material" rid="pone.0091646.s001">Figure S1</xref></bold>). <bold><xref ref-type="supplementary-material" rid="pone.0091646.s007">Table S2</xref></bold> lists the top deregulated miRNAs for each RCC subtype and UT-UC. The overlapping relationship of the deregulated miRNAs among the three RCC subtypes, as well as among all tumour types is depicted in <xref ref-type="fig" rid="pone-0091646-g004"><bold>Figure 4</bold></xref><bold>.</bold> Tissue-specific miRNAs, including those that can distinguish RCCs from UT-UC, were identified. We found 16 miRNAs that were specifically down-regulated (miR-3144-5p, miR-193b-3p, miR-587, miR-3117-3p, miR-769-5p, miR-617, miR-3615, miR-148b-5p, miR-24-2-5p, miR-142-5p, miR-3164, miR-514b-5p, miR-375, miR-520c-3p, miR-191-5p and miR-520b/miR-520c-3p) and 5 miRNAs that were specifically up-regulated in UT-UC (miR-885-5p, miR-1912, miR-378a-5p, miR-24-3p and miR-26a-2-3p) <bold><xref ref-type="supplementary-material" rid="pone.0091646.s008">Table S3</xref></bold>.</p>
+<fig id="pone-0091646-g002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g002</object-id><label>Figure 2</label><caption>
+<title>microRNA profiling.</title>
+<p>Four-hundred and thirty-four miRNAs were statistically significantly deregulated in all RCC subtypes and UT-UC versus the normal kidney. (A) Q-Q (quantile-quantile) plot. Red circles indicate the significantly deregulated miRNAs. (B) Frequencies of the t-scores and p-values. The deregulated miRNAs had a p&lt;0.05. (C) The volcano-plot depicts the 434 statistically significantly deregulated miRNAs in ccRCC, papRCC, chRCC and UT-UC versus the normal kidney, of which the majority was significantly down-regulated in the cancerous tissue compared to the latter. (D) FDR diagram depicting the percentage of FDR with respect to p-value along with a plot of the estimated a priori probability that the null hypothesis π(0), is true versus the tuning parameter, lambda, λ, with a cubic polynomial fitting curve.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g002" position="float" xlink:type="simple"/></fig><fig id="pone-0091646-g003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g003</object-id><label>Figure 3</label><caption>
+<title>Hierarchical Clustering (HCl).</title>
+<p>The unsupervised two-way HCl with Euclidian distance depicts differential miRNA expression in ccRCC, papRCC, chRCC and UT-UC. The log<sub>2</sub> fold change in each RCC subtype and UT-UC versus the normal kidney tissue was used to construct the heat map. miRNA profiling accurately discriminated between RCC and UT-UC, as well as among ccRCC, papRCC and chRCC. ccRCC, clear cell renal cell carcinoma; papRCC, papillary renal cell carcinoma; chRCC, chromophobe renal cell carcinoma; UT-UC, upper tract urothelial carcinoma. Red and blue colours show significant up- or down-regulation of each miRNA in the tumour versus the normal kidney, respectively.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g003" position="float" xlink:type="simple"/></fig><fig id="pone-0091646-g004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g004</object-id><label>Figure 4</label><caption>
+<title>Overlapping relationship of the deregulated miRNAs.</title>
+<p>Venn diagrams illustrate the overlapping relationship of the number of up-regulated miRNAs among RCC subtypes (A), down-regulated miRNAs among RCC subtypes (B), up-regulated miRNAs among RCC subtypes and UT-UCs (C), down-regulated miRNAs between RCC subtypes and UT-UCs (D). Ninety-four miRNAs were co-upregulated among ccRCC, papRCC and chRCC; and 11, 44 and 24 miRNAs were specifically up-regulated in each one of the three RCC subtypes (ccRCC, chRCC and papRCC), respectively. On the other hand, 222 miRNAs were co-down-regulated in the three RCC subtypes, whereas 16, 18 and 5 miRNAs were specifically down-regulated in ccRCC, chRCC and papRCC, respectively. When the DE miRNAs in each RCC subtype were combined with those in UT-UC, we identified 89 and 206 miRNAs that were up- and down-regulated, respectively in all tumor types.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g004" position="float" xlink:type="simple"/></fig>
+<p>ROC analysis of the top 30 up-regulated miRNAs in each tissue type, using the microarray expression data, evaluated the extent to which they could separate each tumour entity from the normal kidney tissue. Of them, the miRNAs with a p&lt;0.01 and an AUC&gt;0.84 were selected as successful distinguishing markers between each tumor subtype and the normal kidney tissue (<xref ref-type="fig" rid="pone-0091646-g005"><bold>Figure 5</bold></xref>). The ROC statistics of the miRNAs that exhibited the best discriminatory ability are depicted in <xref ref-type="table" rid="pone-0091646-t002"><bold>Table 2</bold></xref>.</p>
+<fig id="pone-0091646-g005" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g005</object-id><label>Figure 5</label><caption>
+<title>ROC analysis using microarray data.</title>
+<p>ROC curves of the top 30 up-regulated miRNAs in each tissue type using the microarray expression data. Of them, the miRNAs with a p&lt;0.01 and an AUC&gt;0.8 were selected as successful distinguishing markers between cancerous and normal tissues. The median area under the curve (AUC) for ccRCC was 0.85 (A); for papRCC, median AUC = 0.94 (B); for chRCC, median AUC = 0.84 (C) and for UT-UC, median AUC = 0.94 (D).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g005" position="float" xlink:type="simple"/></fig><table-wrap id="pone-0091646-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.t002</object-id><label>Table 2</label><caption>
+<title>ROC statistics of the miRNAs that exhibited the best discriminatory ability in ccRCC (A), papRCC (B), chRCC (C) and UT-UC (D) vs. the normal kidney tissue.</title>
+</caption><alternatives><graphic id="pone-0091646-t002-2" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.t002" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>A. miRNAs in ccRCC</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>AUC</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>S.E.</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>95% C.I.</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>p value</bold></td>
+<td colspan="2" align="center" rowspan="1"><bold>Sensitivity</bold></td>
+<td colspan="3" align="center" rowspan="1"><bold>1-Specificity</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3648</td>
+<td align="center" rowspan="1" colspan="1">0.918</td>
+<td align="center" rowspan="1" colspan="1">0.057</td>
+<td align="center" rowspan="1" colspan="1">0.746–0.971</td>
+<td align="center" rowspan="1" colspan="1">0.0001</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">90.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-143-3p</td>
+<td align="center" rowspan="1" colspan="1">0.878</td>
+<td align="center" rowspan="1" colspan="1">0.060</td>
+<td align="center" rowspan="1" colspan="1">0.735–0.969</td>
+<td align="center" rowspan="1" colspan="1">0.0001</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">95.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-25-5p</td>
+<td align="center" rowspan="1" colspan="1">0.878</td>
+<td align="center" rowspan="1" colspan="1">0.066</td>
+<td align="center" rowspan="1" colspan="1">0.723–0.982</td>
+<td align="center" rowspan="1" colspan="1">0.0001</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">95.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-628-3p</td>
+<td align="center" rowspan="1" colspan="1">0.868</td>
+<td align="center" rowspan="1" colspan="1">0.064</td>
+<td align="center" rowspan="1" colspan="1">0.724–0.975</td>
+<td align="center" rowspan="1" colspan="1">0.0001</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">90.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-921</td>
+<td align="center" rowspan="1" colspan="1">0.859</td>
+<td align="center" rowspan="1" colspan="1">0.060</td>
+<td align="center" rowspan="1" colspan="1">0.727–0.964</td>
+<td align="center" rowspan="1" colspan="1">0.0002</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">95.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-210</td>
+<td align="center" rowspan="1" colspan="1">0.853</td>
+<td align="center" rowspan="1" colspan="1">0.066</td>
+<td align="center" rowspan="1" colspan="1">0.699–0.958</td>
+<td align="center" rowspan="1" colspan="1">0.0004</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">95.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-711</td>
+<td align="center" rowspan="1" colspan="1">0.853</td>
+<td align="center" rowspan="1" colspan="1">0.071</td>
+<td align="center" rowspan="1" colspan="1">0.678–0.958</td>
+<td align="center" rowspan="1" colspan="1">0.0006</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">95.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miRPlus-C1087</td>
+<td align="center" rowspan="1" colspan="1">0.850</td>
+<td align="center" rowspan="1" colspan="1">0.067</td>
+<td align="center" rowspan="1" colspan="1">0.684–0.947</td>
+<td align="center" rowspan="1" colspan="1">0.0007</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">94.7</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-516b-5p</td>
+<td align="center" rowspan="1" colspan="1">0.846</td>
+<td align="center" rowspan="1" colspan="1">0.069</td>
+<td align="center" rowspan="1" colspan="1">0.674–0.944</td>
+<td align="center" rowspan="1" colspan="1">0.0009</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">95.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3126-5p</td>
+<td align="center" rowspan="1" colspan="1">0.828</td>
+<td align="center" rowspan="1" colspan="1">0.072</td>
+<td align="center" rowspan="1" colspan="1">0.660–0.944</td>
+<td align="center" rowspan="1" colspan="1">0.0012</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">90.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3687</td>
+<td align="center" rowspan="1" colspan="1">0.818</td>
+<td align="center" rowspan="1" colspan="1">0.072</td>
+<td align="center" rowspan="1" colspan="1">0.661–0.941</td>
+<td align="center" rowspan="1" colspan="1">0.0013</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">95.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-204-3p</td>
+<td align="center" rowspan="1" colspan="1">0.816</td>
+<td align="center" rowspan="1" colspan="1">0.075</td>
+<td align="center" rowspan="1" colspan="1">0.650–0.946</td>
+<td align="center" rowspan="1" colspan="1">0.0014</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">90.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3676-3p</td>
+<td align="center" rowspan="1" colspan="1">0.809</td>
+<td align="center" rowspan="1" colspan="1">0.074</td>
+<td align="center" rowspan="1" colspan="1">0.650–0.941</td>
+<td align="center" rowspan="1" colspan="1">0.0015</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">90.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-489</td>
+<td align="center" rowspan="1" colspan="1">0.802</td>
+<td align="center" rowspan="1" colspan="1">0.075</td>
+<td align="center" rowspan="1" colspan="1">0.644–0.939</td>
+<td align="center" rowspan="1" colspan="1">0.0018</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">95.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-498</td>
+<td align="center" rowspan="1" colspan="1">0.801</td>
+<td align="center" rowspan="1" colspan="1">0.072</td>
+<td align="center" rowspan="1" colspan="1">0.645–0.928</td>
+<td align="center" rowspan="1" colspan="1">0.0022</td>
+<td colspan="2" align="center" rowspan="1">100.0</td>
+<td colspan="3" align="center" rowspan="1">90.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>B. miRNAs in papRCC</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>AUC</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>S.E.</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>95% C.I.</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>p value</bold></td>
+<td colspan="2" align="center" rowspan="1"><bold>Sensitivity</bold></td>
+<td colspan="3" align="center" rowspan="1"><bold>1-Specificity</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-4290</td>
+<td align="center" rowspan="1" colspan="1">0.985</td>
+<td align="center" rowspan="1" colspan="1">0.035</td>
+<td align="center" rowspan="1" colspan="1">0.901–1.042</td>
+<td align="center" rowspan="1" colspan="1">0.002</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">92.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3687</td>
+<td align="center" rowspan="1" colspan="1">0.971</td>
+<td align="center" rowspan="1" colspan="1">0.057</td>
+<td align="center" rowspan="1" colspan="1">0.829–1.056</td>
+<td align="center" rowspan="1" colspan="1">0.004</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">92.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miRPlus-C1087</td>
+<td align="center" rowspan="1" colspan="1">0.957</td>
+<td align="center" rowspan="1" colspan="1">0.052</td>
+<td align="center" rowspan="1" colspan="1">0.840–1.046</td>
+<td align="center" rowspan="1" colspan="1">0.004</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">92.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3648</td>
+<td align="center" rowspan="1" colspan="1">0.942</td>
+<td align="center" rowspan="1" colspan="1">0.063</td>
+<td align="center" rowspan="1" colspan="1">0.803–1.054</td>
+<td align="center" rowspan="1" colspan="1">0.005</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">92.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3676-3p</td>
+<td align="center" rowspan="1" colspan="1">0.928</td>
+<td align="center" rowspan="1" colspan="1">0.043</td>
+<td align="center" rowspan="1" colspan="1">0.871–1.043</td>
+<td align="center" rowspan="1" colspan="1">0.003</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">92.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3195</td>
+<td align="center" rowspan="1" colspan="1">0.928</td>
+<td align="center" rowspan="1" colspan="1">0.022</td>
+<td align="center" rowspan="1" colspan="1">0.941–1.030</td>
+<td align="center" rowspan="1" colspan="1">0.001</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">92.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-630</td>
+<td align="center" rowspan="1" colspan="1">0.871</td>
+<td align="center" rowspan="1" colspan="1">0.035</td>
+<td align="center" rowspan="1" colspan="1">0.901–1.042</td>
+<td align="center" rowspan="1" colspan="1">0.002</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">92.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3126-5p</td>
+<td align="center" rowspan="1" colspan="1">0.857</td>
+<td align="center" rowspan="1" colspan="1">0.059</td>
+<td align="center" rowspan="1" colspan="1">0.812–1.045</td>
+<td align="center" rowspan="1" colspan="1">0.005</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">92.8</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>C. miRNAs in chRCC</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>AUC</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>S.E.</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>95% C.I.</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>p value</bold></td>
+<td colspan="2" align="center" rowspan="1"><bold>Sensitivity</bold></td>
+<td colspan="3" align="center" rowspan="1"><bold>1-Specificity</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-1276</td>
+<td align="center" rowspan="1" colspan="1">0.944</td>
+<td align="center" rowspan="1" colspan="1">0.122</td>
+<td align="center" rowspan="1" colspan="1">0.516–0.994</td>
+<td align="center" rowspan="1" colspan="1">0.1731</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miRPlus-C1087</td>
+<td align="center" rowspan="1" colspan="1">0.911</td>
+<td align="center" rowspan="1" colspan="1">0.133</td>
+<td align="center" rowspan="1" colspan="1">0.538–1.061</td>
+<td align="center" rowspan="1" colspan="1">0.109</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3665</td>
+<td align="center" rowspan="1" colspan="1">0.911</td>
+<td align="center" rowspan="1" colspan="1">0.138</td>
+<td align="center" rowspan="1" colspan="1">0.573–1.116</td>
+<td align="center" rowspan="1" colspan="1">0.066</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-1909-3p</td>
+<td align="center" rowspan="1" colspan="1">0.889</td>
+<td align="center" rowspan="1" colspan="1">0.133</td>
+<td align="center" rowspan="1" colspan="1">0.538–1.061</td>
+<td align="center" rowspan="1" colspan="1">0.109</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-204-3p</td>
+<td align="center" rowspan="1" colspan="1">0.867</td>
+<td align="center" rowspan="1" colspan="1">0.138</td>
+<td align="center" rowspan="1" colspan="1">0.485–1.026</td>
+<td align="center" rowspan="1" colspan="1">0.173</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-193b-5p</td>
+<td align="center" rowspan="1" colspan="1">0.844</td>
+<td align="center" rowspan="1" colspan="1">0.179</td>
+<td align="center" rowspan="1" colspan="1">0.381–1.085</td>
+<td align="center" rowspan="1" colspan="1">0.213</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3648</td>
+<td align="center" rowspan="1" colspan="1">0.822</td>
+<td align="center" rowspan="1" colspan="1">0.169</td>
+<td align="center" rowspan="1" colspan="1">0.356–1.021</td>
+<td align="center" rowspan="1" colspan="1">0.314</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-4290</td>
+<td align="center" rowspan="1" colspan="1">0.822</td>
+<td align="center" rowspan="1" colspan="1">0.163</td>
+<td align="center" rowspan="1" colspan="1">0.414–1.052</td>
+<td align="center" rowspan="1" colspan="1">0.213</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miRPlus-C1076</td>
+<td align="center" rowspan="1" colspan="1">0.822</td>
+<td align="center" rowspan="1" colspan="1">0.074</td>
+<td align="center" rowspan="1" colspan="1">0.764–1.057</td>
+<td align="center" rowspan="1" colspan="1">0.028</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-663b</td>
+<td align="center" rowspan="1" colspan="1">0.800</td>
+<td align="center" rowspan="1" colspan="1">0.198</td>
+<td align="center" rowspan="1" colspan="1">0.255–1.034</td>
+<td align="center" rowspan="1" colspan="1">0.441</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-489</td>
+<td align="center" rowspan="1" colspan="1">0.800</td>
+<td align="center" rowspan="1" colspan="1">0.194</td>
+<td align="center" rowspan="1" colspan="1">0.329–1.092</td>
+<td align="center" rowspan="1" colspan="1">0.26</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="3" align="center" rowspan="1">93.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>D. miRNAs in UT-UC</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>AUC</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>S.E.</bold></td>
+<td align="center" rowspan="1" colspan="1"><bold>95% C.I.</bold></td>
+<td colspan="2" align="center" rowspan="1"><bold>p value</bold></td>
+<td colspan="2" align="center" rowspan="1"><bold>Sensitivity</bold></td>
+<td colspan="2" align="center" rowspan="1"><bold>1-Specificity</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3648</td>
+<td align="center" rowspan="1" colspan="1">1.00</td>
+<td align="center" rowspan="1" colspan="1">0.063</td>
+<td align="center" rowspan="1" colspan="1">0.818–1.066</td>
+<td colspan="2" align="center" rowspan="1">0.009</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-489</td>
+<td align="center" rowspan="1" colspan="1">1.00</td>
+<td align="center" rowspan="1" colspan="1">0.078</td>
+<td align="center" rowspan="1" colspan="1">0.768–1.078</td>
+<td colspan="2" align="center" rowspan="1">0.001</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3665</td>
+<td align="center" rowspan="1" colspan="1">1.00</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">1.000–1.000</td>
+<td colspan="2" align="center" rowspan="1">0.003</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-874</td>
+<td align="center" rowspan="1" colspan="1">1.00</td>
+<td align="center" rowspan="1" colspan="1">0.063</td>
+<td align="center" rowspan="1" colspan="1">0.818–1.066</td>
+<td colspan="2" align="center" rowspan="1">0.009</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-4285</td>
+<td align="center" rowspan="1" colspan="1">1.00</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">1.000–1.000</td>
+<td colspan="2" align="center" rowspan="1">0.003</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-210</td>
+<td align="center" rowspan="1" colspan="1">1.00</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">1.000–1.000</td>
+<td colspan="2" align="center" rowspan="1">0.003</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-612</td>
+<td align="center" rowspan="1" colspan="1">0.98</td>
+<td align="center" rowspan="1" colspan="1">0.068</td>
+<td align="center" rowspan="1" colspan="1">0.788–1.058</td>
+<td colspan="2" align="center" rowspan="1">0.012</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-663b</td>
+<td align="center" rowspan="1" colspan="1">0.96</td>
+<td align="center" rowspan="1" colspan="1">0.046</td>
+<td align="center" rowspan="1" colspan="1">0.869–1.054</td>
+<td colspan="2" align="center" rowspan="1">0.006</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3687</td>
+<td align="center" rowspan="1" colspan="1">0.96</td>
+<td align="center" rowspan="1" colspan="1">0.045</td>
+<td align="center" rowspan="1" colspan="1">0.872–1.051</td>
+<td colspan="2" align="center" rowspan="1">0.006</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-1276</td>
+<td align="center" rowspan="1" colspan="1">0.96</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">1.000–1.000</td>
+<td colspan="2" align="center" rowspan="1">0.003</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-1908</td>
+<td align="center" rowspan="1" colspan="1">0.94</td>
+<td align="center" rowspan="1" colspan="1">0.056</td>
+<td align="center" rowspan="1" colspan="1">0.831–1.053</td>
+<td colspan="2" align="center" rowspan="1">0.009</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3195</td>
+<td align="center" rowspan="1" colspan="1">0.94</td>
+<td align="center" rowspan="1" colspan="1">0.087</td>
+<td align="center" rowspan="1" colspan="1">0.713–1.055</td>
+<td colspan="2" align="center" rowspan="1">0.023</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miRPlus-C1087</td>
+<td align="center" rowspan="1" colspan="1">0.94</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">1.000–1.000</td>
+<td colspan="2" align="center" rowspan="1">0.003</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-498</td>
+<td align="center" rowspan="1" colspan="1">0.94</td>
+<td align="center" rowspan="1" colspan="1">0.063</td>
+<td align="center" rowspan="1" colspan="1">0.818–1.066</td>
+<td colspan="2" align="center" rowspan="1">0.009</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-1469</td>
+<td align="center" rowspan="1" colspan="1">0.94</td>
+<td align="center" rowspan="1" colspan="1">0.091</td>
+<td align="center" rowspan="1" colspan="1">0.686–1.044</td>
+<td colspan="2" align="center" rowspan="1">0.031</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-630</td>
+<td align="center" rowspan="1" colspan="1">0.94</td>
+<td align="center" rowspan="1" colspan="1">0.094</td>
+<td align="center" rowspan="1" colspan="1">0.718–1.089</td>
+<td colspan="2" align="center" rowspan="1">0.017</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3196</td>
+<td align="center" rowspan="1" colspan="1">0.92</td>
+<td align="center" rowspan="1" colspan="1">0.124</td>
+<td align="center" rowspan="1" colspan="1">0.602–1.090</td>
+<td colspan="2" align="center" rowspan="1">0.041</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-204-3p</td>
+<td align="center" rowspan="1" colspan="1">0.92</td>
+<td align="center" rowspan="1" colspan="1">0.045</td>
+<td align="center" rowspan="1" colspan="1">0.872–1.051</td>
+<td colspan="2" align="center" rowspan="1">0.006</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-185-3p</td>
+<td align="center" rowspan="1" colspan="1">0.91</td>
+<td align="center" rowspan="1" colspan="1">0.06</td>
+<td align="center" rowspan="1" colspan="1">0.824–1.060</td>
+<td colspan="2" align="center" rowspan="1">0.009</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-423-5p</td>
+<td align="center" rowspan="1" colspan="1">0.90</td>
+<td align="center" rowspan="1" colspan="1">0.122</td>
+<td align="center" rowspan="1" colspan="1">0.567–1.048</td>
+<td colspan="2" align="center" rowspan="1">0.07</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-921</td>
+<td align="center" rowspan="1" colspan="1">0.88</td>
+<td align="center" rowspan="1" colspan="1">0.087</td>
+<td align="center" rowspan="1" colspan="1">0.712–1.057</td>
+<td colspan="2" align="center" rowspan="1">0.023</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-638</td>
+<td align="center" rowspan="1" colspan="1">0.86</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">1.000–1.000</td>
+<td colspan="2" align="center" rowspan="1">0.003</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-25-5p</td>
+<td align="center" rowspan="1" colspan="1">0.86</td>
+<td align="center" rowspan="1" colspan="1">0.029</td>
+<td align="center" rowspan="1" colspan="1">0.922–1.039</td>
+<td colspan="2" align="center" rowspan="1">0.004</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3676-3p</td>
+<td align="center" rowspan="1" colspan="1">0.84</td>
+<td align="center" rowspan="1" colspan="1">0.071</td>
+<td align="center" rowspan="1" colspan="1">0.774–1.053</td>
+<td colspan="2" align="center" rowspan="1">0.014</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-711</td>
+<td align="center" rowspan="1" colspan="1">0.84</td>
+<td align="center" rowspan="1" colspan="1">0.046</td>
+<td align="center" rowspan="1" colspan="1">0.869–1.054</td>
+<td colspan="2" align="center" rowspan="1">0.006</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3656</td>
+<td align="center" rowspan="1" colspan="1">0.82</td>
+<td align="center" rowspan="1" colspan="1">0</td>
+<td align="center" rowspan="1" colspan="1">1.000–1.000</td>
+<td colspan="2" align="center" rowspan="1">0.003</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-516b-5p</td>
+<td align="center" rowspan="1" colspan="1">0.80</td>
+<td align="center" rowspan="1" colspan="1">0.063</td>
+<td align="center" rowspan="1" colspan="1">0.818–1.066</td>
+<td colspan="2" align="center" rowspan="1">0.009</td>
+<td colspan="2" align="center" rowspan="1">100</td>
+<td colspan="2" align="center" rowspan="1">92.308</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt101"><label/><p>Due to the small chRCC sample number (n = 3), no statistical significance could be gained. AUC, area under the curve; S.E., standard error; 95% C.I., 95% confidence interval.</p></fn></table-wrap-foot></table-wrap></sec><sec id="s3b">
+<title>Validation of deregulated miRNA expression by qRT-PCR</title>
+<p>We verified by qRT-PCR the expression levels of the top 25 deregulated miRNAs as acquired by miRNA profiling (14 most up-regulated and 11 most down-regulated miRNAs). These included: miR-3648, miR-489, miR-638, miR-3656, miR-3687, miR-663b, miR-3126-5p, miR-25-5p, miR-1908, miR-204-3p, miR-711, miR-516b-5p, miR-498 and miR-612 (top up-regulated miRNAs); as well as miR-145-3p, miR-551b-5p, miR-155-3p, miR-106b-3p, miR-140-5p, miR-4284, miR-520g, miR-520e, miR-944, miR-656 and miR-141-3p (top down-regulated miRNAs). The validated significantly deregulated miRNAs in ccRCC, papRCC, chRCC and UT-UC are depicted in <xref ref-type="fig" rid="pone-0091646-g006"><bold>Figure 6</bold></xref>.</p>
+<fig id="pone-0091646-g006" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g006</object-id><label>Figure 6</label><caption>
+<title>qRT-PCR validation of the top 25 deregulated miRNAs.</title>
+<p>The Volcano-plots depict the significantly deregulated miRNAs in ccRCC, papRCC, chRCC and UT-UC. Eight miRNAs were significantly up-regulated in ccRCC, 5 in papRCC, 3 in chRCC and 4 in UT-UC. On the other hand, miR-656 was significantly down-regulated in papRCC; miR-155-3p, miR-106b-3p, miR-140-5p and miR-656 were significantly down-regulated in chRCC; and miR-520g was significantly down-regulated in UT-UC. The threshold of statistically significant difference was set at p&lt;0.05 and log<sub>2</sub> fold change&gt;2.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g006" position="float" xlink:type="simple"/></fig>
+<p>The frequencies of differential expression were mostly consistent across the same subtypes. In keeping with the microarray results, some miRNAs showed a similar expression pattern between the subtypes. For example, miR-3687 exhibited a similar up-regulation pattern in all RCC subtypes and in UT-UC; miR-3656, miR-638 and miR-3648 were similarly up-regulated in ccRCC, papRCC and UT-UC and miR-25-5p was similarly up-regulated in ccRCC and papRCC. Also, miR-656 was equally down-regulated in papRCC and chRCC.</p>
+<p>In order to further validate the capability of the DE miRNAs to discriminate between tumour and normal kidney tissue, ROC curves were further constructed for the deregulated miRNAs in each RCC subtype and in UT-UC, using the normalized qRT-PCR data. miRNAs with a p&lt;0.01 and an AUC&gt;0.8 were then selected as successful distinguishing markers between cancerous and normal kidney tissue (<xref ref-type="fig" rid="pone-0091646-g007"><bold>Figure 7</bold></xref>). miR-3648, miR-638, miR-3656 and miR-3687 were excellent discriminators between ccRCC and normal tissue (median AUC&gt;0.8, p&lt;0.0001); miR-3687 and miR-25-5p were very good discriminators between papRCC and normal tissue (median AUC&gt;0.8, p&lt;0.05); miR-3687, miR-4284 and miR-141-3p were very good discriminators between chRCC and normal tissue (median AUC&gt;0.8, p&lt;0.05); and miR-3648, miR-3656 and miR-3687 discriminated perfectly UT-UC from the normal tissue (median AUC&gt;0.94, p&lt;0.001). ROC curve data are shown in <xref ref-type="table" rid="pone-0091646-t003"><bold>Table 3</bold></xref>. The qRT-PCR results revealed similar expression patterns with the microarray results (<xref ref-type="fig" rid="pone-0091646-g008"><bold>Figure 8</bold></xref>).</p>
+<fig id="pone-0091646-g007" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g007</object-id><label>Figure 7</label><caption>
+<title>ROC analysis using qRT-PCR data.</title>
+<p>ROC curves of the significantly deregulated miRNAs, using the expression data from qRT-PCR analysis. Of them, the miRNAs with a p&lt;0.01 and an AUC&gt;0.8 were selected as successful distinguishing markers between cancerous and normal kidney tissues. The median area under the curve (AUC) for ccRCC was 0.802 (A); for papRCC, median AUC = 0.756 (B); for chRCC, median AUC = 0.926 (C) and for UT-UC, median AUC = 0.955 (D).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g007" position="float" xlink:type="simple"/></fig><fig id="pone-0091646-g008" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g008</object-id><label>Figure 8</label><caption>
+<title>Correlation between microarrays and qRT-PCR.</title>
+<p>Median log<sub>2</sub> fold change expression levels of the 14 most up-regulated and 11 most down-regulated miRNAs between ccRCC, papRCC, chRCC and UT-UC and the normal kidney tissue, as determined by both qRT-PCR and microarray analysis. As shown in the figure, qRT-PCR and microarray results were highly compatible. The most identical results between the two techniques were those for ccRCC, which was expected due to the high sample number (Pearson’s CC = 0.778, p&lt;0.001). The qRT-PCR results for papRCC, chRCC and UT-UC also revealed similar deregulation patterns with those of the microarray experimentation, however the correlation coefficients were lower, apparently due to small sample number (in papRCC, CC = 0.596, p = 0.002; in chRCC CC = 0.570, p = 0.003; in UT-UC, CC = 0.517, p = 0.009).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g008" position="float" xlink:type="simple"/></fig><table-wrap id="pone-0091646-t003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.t003</object-id><label>Table 3</label><caption>
+<title>ROC statistics of the miRNAs that exhibited the best discriminatory ability in ccRCC (A), papRCC (B), chRCC (C), and UT-UC (D) vs. the normal kidney tissue, respectively.</title>
+</caption><alternatives><graphic id="pone-0091646-t003-3" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.t003" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>A. miRNAs in ccRCC</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>AUC</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>S.E.</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>95% C.I.</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>p value</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Sensitivity</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>1-Specificity</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3648</td>
+<td align="left" rowspan="1" colspan="1">0.839</td>
+<td align="left" rowspan="1" colspan="1">0.049</td>
+<td align="left" rowspan="1" colspan="1">0.742–0.935</td>
+<td align="left" rowspan="1" colspan="1">&lt;0.0001</td>
+<td align="left" rowspan="1" colspan="1">100.0</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-489</td>
+<td align="left" rowspan="1" colspan="1">0.773</td>
+<td align="left" rowspan="1" colspan="1">0.086</td>
+<td align="left" rowspan="1" colspan="1">0.602–0.943</td>
+<td align="left" rowspan="1" colspan="1">0.003</td>
+<td align="left" rowspan="1" colspan="1">100.0</td>
+<td align="left" rowspan="1" colspan="1">96.66</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-638</td>
+<td align="left" rowspan="1" colspan="1">0.807</td>
+<td align="left" rowspan="1" colspan="1">0.056</td>
+<td align="left" rowspan="1" colspan="1">0.697–0.917</td>
+<td align="left" rowspan="1" colspan="1">&lt;0.0001</td>
+<td align="left" rowspan="1" colspan="1">100.0</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3656</td>
+<td align="left" rowspan="1" colspan="1">0.817</td>
+<td align="left" rowspan="1" colspan="1">0.055</td>
+<td align="left" rowspan="1" colspan="1">0.707–0.926</td>
+<td align="left" rowspan="1" colspan="1">&lt;0.0001</td>
+<td align="left" rowspan="1" colspan="1">100.0</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3687</td>
+<td align="left" rowspan="1" colspan="1">0.847</td>
+<td align="left" rowspan="1" colspan="1">0.048</td>
+<td align="left" rowspan="1" colspan="1">0.752–0.941</td>
+<td align="left" rowspan="1" colspan="1">&lt;0.0001</td>
+<td align="left" rowspan="1" colspan="1">100.0</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-25-5p</td>
+<td align="left" rowspan="1" colspan="1">0.796</td>
+<td align="left" rowspan="1" colspan="1">0.054</td>
+<td align="left" rowspan="1" colspan="1">0.689–0.902</td>
+<td align="left" rowspan="1" colspan="1">&lt;0.0001</td>
+<td align="left" rowspan="1" colspan="1">100.0</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-21-5p</td>
+<td align="left" rowspan="1" colspan="1">0.737</td>
+<td align="left" rowspan="1" colspan="1">0.065</td>
+<td align="left" rowspan="1" colspan="1">0.608–0.866</td>
+<td align="left" rowspan="1" colspan="1">0.001</td>
+<td align="left" rowspan="1" colspan="1">100.0</td>
+<td align="left" rowspan="1" colspan="1">96.0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-663b</td>
+<td align="left" rowspan="1" colspan="1">0.668</td>
+<td align="left" rowspan="1" colspan="1">0.068</td>
+<td align="left" rowspan="1" colspan="1">0.533–0.802</td>
+<td align="left" rowspan="1" colspan="1">0.023</td>
+<td align="left" rowspan="1" colspan="1">100.0</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>B. miRNAs in papRCC</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>AUC</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>S.E.</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>95% C.I.</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>p value</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Sensitivity</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>1-Specificity</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3648</td>
+<td align="left" rowspan="1" colspan="1">0.745</td>
+<td align="left" rowspan="1" colspan="1">0.108</td>
+<td align="left" rowspan="1" colspan="1">0.532–0.957</td>
+<td align="left" rowspan="1" colspan="1">0.076</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-638</td>
+<td align="left" rowspan="1" colspan="1">0.650</td>
+<td align="left" rowspan="1" colspan="1">0.111</td>
+<td align="left" rowspan="1" colspan="1">0.431–0.868</td>
+<td align="left" rowspan="1" colspan="1">0.278</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3656</td>
+<td align="left" rowspan="1" colspan="1">0.725</td>
+<td align="left" rowspan="1" colspan="1">0.110</td>
+<td align="left" rowspan="1" colspan="1">0.508–0.942</td>
+<td align="left" rowspan="1" colspan="1">0.104</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3687</td>
+<td align="left" rowspan="1" colspan="1">0.800</td>
+<td align="left" rowspan="1" colspan="1">0.094</td>
+<td align="left" rowspan="1" colspan="1">0.614–0.985</td>
+<td align="left" rowspan="1" colspan="1">0.030</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-25-5p</td>
+<td align="left" rowspan="1" colspan="1">0.865</td>
+<td align="left" rowspan="1" colspan="1">0.102</td>
+<td align="left" rowspan="1" colspan="1">0.663–1.066</td>
+<td align="left" rowspan="1" colspan="1">0.008</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-656</td>
+<td align="left" rowspan="1" colspan="1">0.770</td>
+<td align="left" rowspan="1" colspan="1">0.174</td>
+<td align="left" rowspan="1" colspan="1">0.427–1.113</td>
+<td align="left" rowspan="1" colspan="1">0.058</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>C. miRNAs in chRCC</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>AUC</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>S.E.</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>95% C.I.</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>p value</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Sensitivity</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>1-Specificity</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3687</td>
+<td align="left" rowspan="1" colspan="1">0.933</td>
+<td align="left" rowspan="1" colspan="1">0.053</td>
+<td align="left" rowspan="1" colspan="1">0.828–1.038</td>
+<td align="left" rowspan="1" colspan="1">0.013</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-4284</td>
+<td align="left" rowspan="1" colspan="1">0.891</td>
+<td align="left" rowspan="1" colspan="1">0.071</td>
+<td align="left" rowspan="1" colspan="1">0.752–1.031</td>
+<td align="left" rowspan="1" colspan="1">0.025</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-141-3p</td>
+<td align="left" rowspan="1" colspan="1">0.925</td>
+<td align="left" rowspan="1" colspan="1">0.084</td>
+<td align="left" rowspan="1" colspan="1">0.759–1.092</td>
+<td align="left" rowspan="1" colspan="1">0.033</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">88.89</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>D. miRNAs in UT-UC</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>AUC</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>S.E.</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>95% C.I.</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>p value</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>Sensitivity</bold></td>
+<td align="left" rowspan="1" colspan="1"><bold>1-Specificity</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3648</td>
+<td align="left" rowspan="1" colspan="1">0.940</td>
+<td align="left" rowspan="1" colspan="1">0.041</td>
+<td align="left" rowspan="1" colspan="1">0.857–1.022</td>
+<td align="left" rowspan="1" colspan="1">0.001</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-638</td>
+<td align="left" rowspan="1" colspan="1">0.905</td>
+<td align="left" rowspan="1" colspan="1">0.052</td>
+<td align="left" rowspan="1" colspan="1">0.801–1.008</td>
+<td align="left" rowspan="1" colspan="1">0.003</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3656</td>
+<td align="left" rowspan="1" colspan="1">0.970</td>
+<td align="left" rowspan="1" colspan="1">0.027</td>
+<td align="left" rowspan="1" colspan="1">0.916–1.024</td>
+<td align="left" rowspan="1" colspan="1">0.0006</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">miR-3687</td>
+<td align="left" rowspan="1" colspan="1">0.995</td>
+<td align="left" rowspan="1" colspan="1">0.007</td>
+<td align="left" rowspan="1" colspan="1">0.979–1.011</td>
+<td align="left" rowspan="1" colspan="1">0.0003</td>
+<td align="left" rowspan="1" colspan="1">100</td>
+<td align="left" rowspan="1" colspan="1">97.5</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt102"><label/><p>AUC, area under the curve; S.E., standard error; 95% C.I., 95% confidence interval.</p></fn></table-wrap-foot></table-wrap>
+<p>A blinded independent validation set composed of 40 freshly frozen ccRCC, papRCC, chRCC, UT-UC and normal kidney samples was also used to validate the discriminatory ability of the qRT-PCR verified deregulated miRNAs. The results were highly repeatable between the two cohorts, recapitulating the specificity of these miRNAs in each tumour group (in ccRCC, Pearson's CC = 0.987, p&lt;0.001; in papRCC, Pearson's CC = 0.917, p = 0.001; in chRCC, Pearson's CC = 0.952, p&lt;0.001; in UT-UC, Pearson's CC = 0.926, p = 0.001) (<xref ref-type="fig" rid="pone-0091646-g009"><bold>Figure 9</bold></xref>).</p>
+<fig id="pone-0091646-g009" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g009</object-id><label>Figure 9</label><caption>
+<title>Validation in a blinded independent cohort.</title>
+<p>A blinded independent validation cohort composed of 40 freshly frozen ccRCC, papRCC, chRCC, UT-UC and normal kidney samples was also used to validate the discriminatory ability of the qRT-PCR verified deregulated miRNAs. The results were highly repeatable between the two cohorts, recapitulating the specificity of these miRNAs in each tumour group.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g009" position="float" xlink:type="simple"/></fig></sec><sec id="s3c">
+<title>miRNA expression and clinical characteristics of the patients</title>
+<p>Only a few correlations between the expression levels of the DE miRNAs (verified by qRT-PCR) with the tumour stage, grade and size were identified. The expression levels of the significantly deregulated miRNAs that were verified by qRT-PCR, were correlated with the tumour stage, grade and size. Grade 4 ccRCCs exhibited higher miR-3656 and miR-3687 levels vs. those of grade 3 (p = 0.028 and p = 0.0497, respectively; unpaired t-test). Furthermore, grade 4 ccRCCs exhibited higher miR-21-5p levels vs. grade 2 ccRCCs (p = 0.0449, unpaired t-test). We also found a significant association between miR-21-5p expression and ccRCC size (Pearson's CC = 0.442, p = 0.031). The levels of miR-25-5p were significantly associated with papRCC tumour size (Pearson's CC = 0.935, p = 0.019). Grade II UT-UCs expressed higher levels of miR-3648 and miR-638 vs. grade III ones (p = 0.0153 and p = 0.0057, respectively). Finally, miR-638 was correlated with tumour size (Pearson's CC = 0.878, p = 0.050).</p>
+<p>Furthermore, miRNA expression was validated using one-way ANOVA along with linear regression. Of note, miR-204-3p, miR-25-5p, miR-3648, miR-3687, miR-489, miR-516b-5p, miR-638 and miR-663b exhibited a linear expression pattern among the 3 RCC subtypes, UT-UC and the normal kidney samples (<italic>R<sup>2</sup></italic> range = 0.93–0.98). Also, linear regression could classify between RCC and UT-UC, with the latter expressing higher levels of the pre-mentioned miRNAs (<bold><xref ref-type="supplementary-material" rid="pone.0091646.s002">Figure S2</xref></bold>).</p>
+<p>Similarly, high linearity was achieved when we grouped together ccRCC, papRCC and chRCC samples, and we compared them to the UT-UC and the normal kidney cases (miR-204-3p, <italic>R<sup>2</sup>&gt;</italic>0.99; miR-25-5p, <italic>R<sup>2</sup>&gt;</italic>0.83; miR-3648, <italic>R<sup>2</sup>&gt;</italic>0.98; miR-3687, <italic>R<sup>2</sup>&gt;</italic>0.95; miR-489, <italic>R<sup>2</sup>&gt;</italic>0.99; and miR-638, <italic>R<sup>2</sup>&gt;</italic>0.98) (<bold><xref ref-type="supplementary-material" rid="pone.0091646.s003">Figure S3</xref></bold>).</p>
+<p>Linear regression of RCC grades with respect to miRNA expression, revealed that miR-148b-5p, miR-1910 and miR-200b-5p, miR-210 and miR-3656, presented linear behavior in a descending order of the RCC grade; whereas miR-3687 and miR-654-5p manifested linear behavior in ascending order of the RCC grade (<bold><xref ref-type="supplementary-material" rid="pone.0091646.s004">Figure S4</xref></bold>).</p>
+<p>Furthermore, miR-148a-5p and miR-940 manifested excellent linear behavior in an descending order of age (<italic>R<sup>2</sup></italic> = 0.96 and 0.99, respectively), pointing out that both might be age-specific. Also, regression analysis showed that miR-145-3p and miR-1973 manifested increasing expression levels with ascending tumor size (&lt;5cm, 5-10cm and 10-15 cm) (<italic>R<sup>2</sup></italic> = 0.95 and 0.92, respectively).</p>
+<p>Other varieties, such as a patient’s sex, age or tumor stage, were not associated with any other miRNA expression levels.</p>
+</sec><sec id="s3d">
+<title>Pair-wise miRNA correlations</title>
+<p>Several DE microRNAs were correlated among each other. In ccRCC, the statistically significant Spearman’s correlation coefficients ranged from r<sub>s</sub> = –0.585 (miR-106b-3p to miR-612; p = 0.002) to r<sub>s</sub> = 0.843 (miR-638 to miR-3687; p&lt;0.0001). In papRCC, the statistically significant Spearman’s correlation coefficients ranged from r<sub>s</sub> = –0.90 (miR-145-3p to miR-711; and miR-21-5p to miR-141-3p; both p = 0.083) to r<sub>s</sub> =  1.0 (miR-638 to miR-3648; miR-663b to miR-3656; miR-516b-5p to miR-489; miR-498 to miR-489; miR-155-3p to miR-489, among others; all p = 0.017). Furthermore, in UT-UC the statistically significant Spearman’s correlation coefficients ranged from r<sub>s</sub> =  –0.9 (miR-551b-5p to miR-3126-5p; miR-520g to miR-3126-5p; miR-141-3p to miR-1908, among others; all p = 0.083) to r<sub>s</sub> =  1.0 (miR-489 to miR-3648; miR-3656 to miR-3648; miR-3656 to miR-489; miR-155-3p to miR-638; miR-122-5p to miR-638, among others; all p = 0.017). Finally, in the normal kidney the statistically significant Spearman’s correlation coefficients ranged from r<sub>s</sub> = –0.325 (miR-551b-5p to miR-155-3p; p = 0.041) to r<sub>s</sub> = 0.885 (miR-3648 to miR-3656; p&lt;0.0001).</p>
+</sec><sec id="s3e">
+<title>Validation of the pattern of expression of miR-25-5p and miR-3687 by LNA-ISH</title>
+<p>In situ hybridization using digoxigenin labeled LNA probes permitted the spatial localization of two of the most deregulated miRNAs: a) miR-25-5p which was significantly up-regulated in ccRCC and papRCC; and b) miR-3687 which was significantly up-regulated in all 3 RCC subtypes as well as in UT-UC. The detection of both miRNAs was confined to the cytoplasm. The nuclear expression of U6 snRNA was confirmed in all patient samples, whereas the scrambled oligonucleotide was negative in all samples. Each RCC or UT-UC section was compared against its corresponding normal kidney section. The elevated expression of miR-25-5p was confirmed in all ccRCC sections. Furthermore, ccRCCs of high stage and grade stained stronger miR-25-5p compared to lower stage and grade tumours. Also, papRCCs of type II stained stronger for miR-25-5p compared to type I papRCCs (<xref ref-type="fig" rid="pone-0091646-g010"><bold>Figure 10</bold></xref>). Likewise, the elevated expression of miR-3687 was confirmed in the majority of both RCC and UT-UC sections.</p>
+<fig id="pone-0091646-g010" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g010</object-id><label>Figure 10</label><caption>
+<title>Locked Nucleic Acids-In Situ Hybridization (LNA-ISH).</title>
+<p>LNA-ISH for miR-25-5p in ccRCC (A), papRCC (B), chRCC (C) and UT-UC (D). miR-25-5p was confined to the cytoplasm both in normal and tumour sections. The nuclear expression of U6 snRNA (positive control) was confirmed in all the patient samples, whereas the scrambled oligonucleotide was negative in all samples. miR-25-5p high expression was confirmed in all ccRCC sections by LNA-ISH. ccRCCs of high stage and grade stained stronger miR-25-5p compared to lower stage and grade ccRCCs. Each ccRCC section was compared against its corresponding normal kidney section (A). papRCCs of type II stained stronger for miR-25-5p compared to type I papRCCs (B). Validating the qRT-PCR results, miR-25-5p did not stain stronger in chRCC sections vs. the normal tissue ones. This was also confirmed for chRCCs with focal sarcomatoid differentiation, suggesting that miR-25-5p does not play any role in the metastatic behavior of the tumour (C). Verifying the qRT-PCR results, miR-25-5p was not significantly stronger in UT-UC vs. the normal tissue sections (D).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g010" position="float" xlink:type="simple"/></fig></sec><sec id="s3f">
+<title>Correlation of miRNA deregulation and chromosomal aberrations in RCC and UT-UC</title>
+<p>The chromosomal locations of the DE miRNAs were compared to the most commonly reported chromosomal aberrations in ccRCC, chRCC, papRCC <xref ref-type="bibr" rid="pone.0091646-Ljungberg1">[28]</xref> or UT-UC <xref ref-type="bibr" rid="pone.0091646-Roupret2">[29]</xref>. In general, chromosomes 14q, 19q, Xq exhibited the highest number of deregulated miRNAs. In each RCC subtype, miRNAs had deregulated patterns that agreed with some of the previously reported chromosomal gains and losses; i.e., up-regulated miRNAs were located in regions of chromosomal gains and vice versa. <bold><xref ref-type="supplementary-material" rid="pone.0091646.s009">Table S4</xref></bold> lists a summary of the reported chromosomal abnormalities associated with the three RCC subtypes and UT-UC, as well as some of the well-studied genes located within those aberrated regions that are involved in the pathogenesis of the tumour subtypes. Many of the significantly deregulated miRNAs are located within cytogenetic regions that are significantly aberrated in the different subtypes. Chromosomal mapping for the deregulated miRNAs in each RCC subtype and in UT-UC is depicted in <xref ref-type="fig" rid="pone-0091646-g011"><bold>Figure 11</bold></xref>.</p>
+<fig id="pone-0091646-g011" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g011</object-id><label>Figure 11</label><caption>
+<title>Correlation of miRNA deregulation and chromosomal aberrations.</title>
+<p>Chromosomal mapping for the deregulated miRNAs in ccRCC (A), papRCC (B), chRCC (C) and UT-UC (D). In ccRCC, the up-regulated miRNAs were mainly mapped on chromosomes Xq, 17q, 5q, 14q, 19q, 11q, 12q, 3p and 10p (in descending order); whereas the down-regulated ones were mainly mapped on chromosomes 14q, 19q, Xq, 8q, 1p, 17q, 7q, 3q, 10q, 12q and 2q (A). In papRCC, the up-regulated miRNAs were mainly mapped on chromosomes 19q, 14q, Xq, 5q, 3p, 16p, 11q, 9q and 15q; whereas the down-regulated miRNAs were mainly mapped on chromosomes 14q, 19q, Xq, 1p, 7q, 8q, 12q, 10q, 17q, 3q, 19p, Xp, 2q, 5, 6q, 4q, 11q, 15q and 20q (B). In chRCC, the up-regulated miRNAs were mainly mapped on chromosomes 14q, Xq, 19q, 17q, 5q, 7q, 11q, 15q, 2q and 12q; whereas the down-regulated ones were mainly mapped on chromosomes 14q, 19q, Xp, 3p, 8q, 17q, 3q, 10q, 12q, 4q, 7q, 3p, 5q, 19p and 20q (C). In UT-UC, the up-regulated miRNAs were mostly mapped on chromosomes 17q, 19q, 11q, 16p, 5q, 14q, 15q, Xq, 1p and 3p; whereas the down-regulated miRNAs were mainly mapped on chromosomes 14q, 19q, Xq, 8q, 1p, 7q, 12q, 3q, 10q, 5q, 17p, 19p, Xp, 2q, 4q, 3p and 8p (D).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g011" position="float" xlink:type="simple"/></fig></sec><sec id="s3g">
+<title>Phylogenetic analysis of the DE miRNAs in RCC</title>
+<p>Phylogenetic analysis showed that 340 of the 434 (78.3%) DE miRNAs were highly conserved among species. Specifically, 70.68% of the up-regulated miRNAs and 81.22% of the down-regulated miRNAs were phylogenetically conserved among species, respectively. <bold><xref ref-type="supplementary-material" rid="pone.0091646.s005">Figure S5</xref></bold> shows representative multiple sequence alignments and trees of miR-489 and miR-25-5p.</p>
+<p>IPA Core Analysis was performed for the significantly DE miRNAs, in each RCC subtype and in UT-UC. The log<sub>2</sub> ratio was set at 0.3 (range –1.9155 to 1.1864) and the DE miRNAs were filtered down to 61 for ccRCC, 48 for papRCC, 44 for chRCC and 77 for UT-UC. The top biological functions and the major miRNA networks are shown in <xref ref-type="fig" rid="pone-0091646-g012"><bold>Figure 12</bold></xref>.</p>
+<fig id="pone-0091646-g012" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g012</object-id><label>Figure 12</label><caption>
+<title>Ingenuity pathway analysis (IPA).</title>
+<p>A. In ccRCC, the most important biological functions of the top deregulated miRNAs were: 1) Cancer (p = 8.71E-11-4.91E-02); 2) Renal and Urological Disease (p = 8.71E-11-2.12E-09); 3) Inflammatory Disease (p = 2.12E-09-2.14E-03); 4) Inflammatory Response (p = 2.12E-09-2.4E-04) and 5) Reproductive System Disease (p = 3.37E-05-2.58E-02). The associated functions of the major miRNA network (score = 30) were: Inflammatory disease, inflammatory response, renal inflammation. Argonaute RISC catalytic component 2 (EIF2C2), tumour protein p53 (TP53), v-myc myelocytomatosis viral oncogene homolog (MYC) and EPH receptor B6 (EPHB6) constituted some of the major central nodes in this network. B. In papRCC, the most important biological functions of the top deregulated miRNAs were: 1) Cancer (p = 9.4E-09-4.15E-02); 2) Endocrine System Disorders (p = 9.4E-09-4.54E-02); 3) Reproductive System Disease (p = 9.4E-09-5.11E-03); 4) Inflammatory Disease (p = 2.17E-06-2.17E-06) and 5) Inflammatory Response (p = 2.17E-06-1.65E-03). The associated functions of the major miRNA network (score = 22) were: Endocrine System Disorders, Reproductive System Disease, Cellular Development. Tumour protein p53 (TP53) and EPH receptor B6 (EPHB6) constituted some of the major central nodes in this network. C. In chRCC, the most important biological functions of the top deregulated miRNAs were: 1) Cancer (p = 8.99E-07-4.73E-02); 2) Inflammatory Disease (p = 1.64E-06-1.64E-06); 3) Inflammatory Response (p = 1.64E-06-1.19E-03); 4) Renal and Urological Disease (p = 1.64E-06-7.96E-03) and 5) Reproductive System Disease (p = 3.02E-04-2.39E-02). The associated functions of the major miRNA network (score = 22) were: Hereditary Disorder, Skeletal and Muscular Disorders, Developmental Disorder. Tumour protein p53 (TP53), B-cell CLL/lymphoma 2 (BCL2) vascular endothelial growth factor A (VEGFA) and v-myc myelocytomatosis viral oncogene homolog (MYC) constituted some of the major central nodes in this network. D. In UT-UC, the most important biological functions of the top deregulated miRNAs were: 1) Inflammatory Disease (p = 2.7E-12-3.42E-02); 2) Inflammatory Response (p = 2.7E-12-1.75E-05); 3) Renal and Urological Disease (p = 2.7E-12-3.35E-09); 4) Cancer (p = 4.67E-10-4.53E-02) and 5) Reproductive System Disease (p = 3.82E-06-4.96E-02). The associated functions of the 2 major miRNA networks were: 1) Connective Tissue Disorders, Inflammatory Disease, Inflammatory Response (score = 25); and 2) Cancer, Reproductive System Disease, Renal and Urological Disease (score = 24). Insulin, hydrogen peroxide and ribosomal protein S15 (RPS15) constituted some of the major central nodes in the first network; whereas tumour protein p53 (TP53) constituted a central node in the second network.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g012" position="float" xlink:type="simple"/></fig></sec><sec id="s3h">
+<title>Target prediction and functional analysis of anti-correlated mRNA/miRNA pairs</title>
+<p>From the GEO datasets with accession numbers GSE6344, GSE4125, GSE15641, GSE781 and GSE6280 we isolated the top co-up- and down-regulated genes in ccRCC. We also isolated the top co-upregulated and top co-downregulated microRNAs according to our microarray analysis in ccRCC. Using the miRWalk algorithm (<ext-link ext-link-type="uri" xlink:href="http://www.ma.uni-heidelberg.de/apps/zmf/mirwalk" xlink:type="simple">http://www.ma.uni-heidelberg.de/apps/zmf/mirwalk</ext-link>) and four other prediction algorithms (TargetScan, miRanda, miRDB and Diana-microT) we identified the top anti-correlated mRNA/miRNA pairs, with a seed length (SL) of 10 nucleotides or more and a p&lt;0.001. Using this kind of analysis we concluded to the following anti-correlated mRNA/miRNA pairs: ABCA1/miR-23c (SL = 10; p = 0.0032), ATP2B4/miR-520a-5p (SL = 10; p = 0.004) and NR3C1/miR-513a-3p (SL = 11; p = 0.0009) (up-regulated mRNA/down-regulated miRNA); and TFCP2L1/miR-489 (SL = 10; p = 0.0074), TRIM10/miR-874 (SL = 10; p = 0.002), SLCA7A8/miR-210 (SL = 10; p = 0.004) (down-regulated mRNA/up-regulated miRNA).</p>
+<p>The AB8/13 undifferentiated podocyte cells were incubated at 33°C at 5% CO2 and cultured in RPMI medium, supplemented with 10% Fetal Bovine Serum (FBS), 1% of 100 units/ml Penicillin/Streptomycin and 1% Insulin-Transferrin-Selenium (ITS). Endogenous expression of miR-23c, miR-520a-5p, miR-513a-3p, miR-489, miR-874 and miR-210 in undifferentiated AB8/13 podocyte cells was verified by qRT-PCR. A segment of the 3′UTR of the top co-deregulated genes was cloned into the 3′UTR of the luciferase gene in pMIR-REPORT plasmid (pMIR-REPORT-Gene of interest). Luciferase reporter plasmids and β-gal reference plasmid were co-transfected in AB8/13 podocyte cell line with the corresponding miRNA mimic, miRNA inhibitor or negative control mimics for 16 hours followed by luciferase and β-gal measurement. Co-transfection of pMIR-REPORT-TFCP2L1 with either miR-489 mimic or inhibitor resulted in significant reduction or increase in luciferase expression versus the negative control, respectively, indicating that miR-489 binds directly on the 3′UTR of TFCP2L1 (p&lt;0.001; ANOVA). In agreement, transfection of miR-489 mimics in AB8/13 cells significantly reduced the endogenous levels of TFCP2L1 protein ∼21% of total expression; while miR-489 inhibitors augmented TFCP2L1 levels by reducing the endogenously expressed miRNA level by ∼17% (p&lt;0.001; ANOVA) (<xref ref-type="fig" rid="pone-0091646-g013"><bold>Figure 13</bold></xref>).</p>
+<fig id="pone-0091646-g013" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0091646.g013</object-id><label>Figure 13</label><caption>
+<title>Western blotting.</title>
+<p>A. Normalized luciferase relative light units (RLUs) in AB8/13 cell lysates after transfection with sensor constructs. Co-transfection of pMIR-REPORT-TFCP2L1 with either miR-489 mimic or inhibitor resulted in significant reduction or increase in luciferase expression versus the negative control, respectively, indicating that miR-489 binds directly on the 3′UTR of TFCP2L1 (<sup>***</sup>, p&lt;0.001; <sup>**</sup>p&lt;0.05, ANOVA). B. Western blot of TFCP2L1 from AB8/13 cells after transient transfection with miR-489 miRNA LNA mimics, Inhibitors and the AllStars™ Negative Control scrambled sequence LNA. This is a representative of three experiments.The statistical analysis of western blot densitometry results, normalized against the Negative Control is also depicted. Values represent the mean ± SEM. Results illustrate the reduction of TFCP2L1 protein levels at the presence of miR-489 mimics (<sup>*</sup>, p = 0.026), while miRNA Inhibitors significantly increased TFCP2L1 levels (<sup>*</sup>, p = 0.039).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0091646.g013" position="float" xlink:type="simple"/></fig></sec></sec><sec id="s4">
+<title>Discussion</title>
+<p>RCC subtype classification based on gene expression largely reiterates the one based on the histological appearance. However, miRNA expression profiles have shown that microRNAs are better indicators for distinguishing cancer from normal tissues, and can successfully classify even poorly differentiated tumours <xref ref-type="bibr" rid="pone.0091646-Lu1">[30]</xref>. In the present study we analyzed the global microRNA expression of the three most common RCC subtypes along with UT-UC and we compared their miRNA profiles with the corresponding profiles from normal kidney tissue. The majority of the deregulated miRNAs was down-regulated in all RCC subtypes and UT-UC, a pattern consistent with miRNA expression profiles in human cancers <xref ref-type="bibr" rid="pone.0091646-Lu1">[30]</xref>. Our hierarchical clustering also showed that RCC and UT-UC tumors could be distinguished perfectly from the normal kidney tissue. Given that RCCs and UT-UCs are distinct tumour entities, it was not surprising that they formed clearly separated clusters. Apart from one chRCC sample which was more heterogeneous and shared equal miRNA expression pattern with several ccRCC samples, each RCC subtype exhibited a distinct miRNA profile (<xref ref-type="fig" rid="pone-0091646-g003"><bold>Figure 3</bold></xref>). Furthermore, in agreement with previous reports <xref ref-type="bibr" rid="pone.0091646-Youssef1">[5]</xref>, <xref ref-type="bibr" rid="pone.0091646-Fridman2">[16]</xref>, <xref ref-type="bibr" rid="pone.0091646-Petillo1">[20]</xref>, ccRCC and papRCC subtypes were more closely related when compared with chRCC, reflecting their common origin in the proximal tubule of the renal cortex.</p>
+<p>Using a strict filtering approach in the ROC tests, following qRT-PCR validation for the top deregulated miRNAs in each tumor entity, we concluded in a group of miRNAs that were also validated in an independent patient cohort. Therefore, we suggest that these miRNAs could be successfully used as distinguishing markers for each RCC subtype or UT-UC. We showed that miR-3648, miR-489, miR-638, miR-3656, miR-3687, miR-25-5p, miR-21-5p and miR-663b have significant potential diagnostic value for ccRCC. Moreover, miR-3648, miR-638, miR-3656, miR-3687, miR-25-5p and miR-656 were the best markers for papRCC distinction; whereas miR-3687, miR-4284 and miR-141-3p can accurately discriminate chRCC over the normal kidney. These results were also confirmed using linear regression analysis, where those miRNAs manifested both differential expression and linear behavior between RCC, UT-UC and the normal kidney. However, despite the strict filtering approach that we followed, a validation in a larger papRCC, chRCC and UT-UC sample number would strengthen the diagnostic power of the latter miRNAs. It is particularly important to note that several validated miRNAs were suggested as discriminatory markers in more than one tumour entities and especially miR-3687 could discriminate evenly all RCC subtypes and UT-UC vs. the normal kidney, as also shown from our regression analysis. This finding denotes that deregulation of miR-3687 seems to be a common manifestation during the renal carcinogenic process. Similar miRNA panels were recently used by others in order to distinguish various RCC subtypes from the normal kidney; however the results are not always consistent among them <xref ref-type="bibr" rid="pone.0091646-Chow1">[12]</xref>, <xref ref-type="bibr" rid="pone.0091646-White1">[13]</xref>, <xref ref-type="bibr" rid="pone.0091646-Fridman2">[16]</xref>, <xref ref-type="bibr" rid="pone.0091646-Jung1">[17]</xref>, <xref ref-type="bibr" rid="pone.0091646-Osanto1">[19]</xref>, <xref ref-type="bibr" rid="pone.0091646-Petillo1">[20]</xref>, <xref ref-type="bibr" rid="pone.0091646-Huang1">[23]</xref>, <xref ref-type="bibr" rid="pone.0091646-Juan1">[24]</xref>, <xref ref-type="bibr" rid="pone.0091646-Nakada2">[31]</xref>, <xref ref-type="bibr" rid="pone.0091646-Weng1">[32]</xref>. This can be attributed to various factors, such as different microarray platforms used, different normalization methods followed, different sample number, etc. Spector et al. just recently developed a similar miRNA-based diagnostic assay for the classification of ccRCC, papRCC, chRCC and benign oncocytoma. Following a similar approach, they validated a classifier set of 24 miRNAs to an independent cohort and they distinguished miR-210, miR-195, miR-182, miR-31-3p and miR-551b, among others <xref ref-type="bibr" rid="pone.0091646-Spector1">[33]</xref>. Interestingly enough, these miRNAs were also included among the top 30 deregulated miRNAs in our study (<bold><xref ref-type="supplementary-material" rid="pone.0091646.s007">Table S2</xref></bold>). Apart from the recent study of Izquierdo et al. <xref ref-type="bibr" rid="pone.0091646-Izquierdo1">[34]</xref>, where the authors investigated miRNA expression in progressing and non-progressing UT-UC patients, this is the first report to our knowledge suggesting a group of miRNAs able to discriminate UT-UC from the normal kidney. Despite the small UT-UC sample number examined, our data show that miR-3648, miR-638, miR-3656 and miR-3687 were the best molecular markers for distinction of UT-UC over the normal kidney (<xref ref-type="table" rid="pone-0091646-t003"><bold>Table 3</bold></xref>). We also compared the data between UT-UC and RCC subtypes, and identified miRNAs that were specific for each tumour entity. Among them 16 miRNAs were specifically down-regulated and 5 miRNAs were specifically up-regulated in UT-UC (<bold><xref ref-type="supplementary-material" rid="pone.0091646.s008">Table S3</xref></bold>). Approximately 50% of all annotated human miRNA genes are located at fragile sites or areas of the genome that are associated with cancer which are prone to breakage and rearrangement in cancer cells <xref ref-type="bibr" rid="pone.0091646-Calin1">[35]</xref>, <xref ref-type="bibr" rid="pone.0091646-Girgis1">[36]</xref>, <xref ref-type="bibr" rid="pone.0091646-Bratslavsky1">[37]</xref>, <xref ref-type="bibr" rid="pone.0091646-Klatte1">[38]</xref>, <xref ref-type="bibr" rid="pone.0091646-Kovacs1">[39]</xref>, <xref ref-type="bibr" rid="pone.0091646-Speicher1">[40]</xref>, <xref ref-type="bibr" rid="pone.0091646-Storkel1">[41]</xref>, <xref ref-type="bibr" rid="pone.0091646-vandenBerg1">[42]</xref>, <xref ref-type="bibr" rid="pone.0091646-Velickovic1">[43]</xref>, <xref ref-type="bibr" rid="pone.0091646-Yoshimoto1">[44]</xref>. Our data showed a partial matching pattern between the reported cytogenetic changes and miRNA deregulation in RCC and UT-UC. This is in agreement with the recent findings of Chow et al. who demonstrated that chromosomal aberrations in ccRCC can control the deregulation of miRNAs <xref ref-type="bibr" rid="pone.0091646-Chow1">[12]</xref>.</p>
+<p>It was not surprising that IPA revealed that the most significant biological functions of the deregulated miRNAs in RCC involved cancer and renal and urological disease. Furthermore, the systemic inflammatory response has been revealed to contribute to tumorigenesis in the last two decades. Key inflammatory pathways, such as the NF-κB <xref ref-type="bibr" rid="pone.0091646-ThapaRJ1">[45]</xref>, AP-1 <xref ref-type="bibr" rid="pone.0091646-Sato1">[46]</xref> and STAT3 <xref ref-type="bibr" rid="pone.0091646-Zaravinos3">[47]</xref> pathways, are implicated in the proliferation, transformation, survival, invasion, angiogenesis, metastasis, chemoresistance and radioresistance of cancer <xref ref-type="bibr" rid="pone.0091646-Aggarwal1">[48]</xref>. Systemic inflammatory response, represented by elevated C-reactive protein (CRP), platelet count (PC) and erythrocyte sedimentation rate (ESR) was recently shown to predict poor survival in patients with RCC <xref ref-type="bibr" rid="pone.0091646-Wu1">[49]</xref>. The tumor suppressor p53 (TP53) and v-myc avian myelocytomatosis viral oncogene homolog (MYC) constituted central nodes in most miRNA networks. TP53 plays a central role in tumor prevention. As a transcription factor, it mainly exerts its function through transcription regulation of its target genes to initiate various cellular responses. Recent studies have demonstrated that TP53 cross-talks with miRNAs at multiple levels; from inducing their transcription expression and promoting their maturation, to being negatively regulated by them <xref ref-type="bibr" rid="pone.0091646-Feng1">[50]</xref>. MYC expression was recently shown to be significantly upregulated in RCC <xref ref-type="bibr" rid="pone.0091646-Yamada1">[51]</xref> and its implication with miRNAs in RCC was also recently reported <xref ref-type="bibr" rid="pone.0091646-Wach1">[52]</xref>. As a transcription factor, it was recently shown to regulate genes involved in cell growth, including those regulating ribosome and mitochondrial biogenesis and intermediary metabolism; and glycolytic genes, enhancing glycolysis, glutamine uptake and metabolism, and lactate production <xref ref-type="bibr" rid="pone.0091646-Teicher1">[53]</xref>.</p>
+<p>Finally, we isolated the top co-upregulated and top co-downregulated mRNA transcripts from 5 independent GEO ccRCC datasets, and combining our miRNA results by a computational approach, we concluded to the six most anti-correlated mRNA/miRNA pairs the association of which was functionally investigated. We showed that the developmental transcription factor TFCP2L1 (transcription factor CP2-like 1) whose loss was recently suggested to play a role in the loss of epithelial differentiation and function in ccRCC, is a true target of miR-489, which was among the ccRCC-specific miRNAs in our study <xref ref-type="bibr" rid="pone.0091646-Tun1">[54]</xref>.</p>
+<p>The current study adds a number of novel deregulated miRNAs accompanied by the molecular pathways in which they are involved mainly in ccRCC. These miRNAs accurately discriminate ccRCC from the normal kidney and can provide the basis for a specific targeted therapy. Due to the small sample number of the papRCC, chRCC and UT-UC samples that were used in the present study, the respective miRNAs should be carefully taken into consideration.</p>
+</sec><sec id="s5">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0091646.s001" mimetype="image/tiff" xlink:href="info:doi/10.1371/journal.pone.0091646.s001" position="float" xlink:type="simple"><label>Figure S1</label><caption>
+<p><bold>Pair-wise Hierarchical Clistering (HCl).</bold> Pair-tissue-wise unsupervised two-way hierarchical clustering with Euclidian distance. The log<sub>2</sub> fold change in each RCC subtype and UT-UC versus the normal kidney tissue was used to construct the heat map. miRNA profiling accurately discriminated between ccRCC and papRCC (A), ccRCC and chRCC (B), chRCC and papRCC (C), ccRCC and UT-UC (D), papRCC and UT-UC (E), and chRCC and UT-UC (F). ccRCC, clear cell renal cell carcinoma; papRCC, papillary renal cell carcinoma; chRCC, chromophobe renal cell carcinoma; UT-UC, upper tract urothelial carcinoma. Red and blue colours show significant up- or down-regulation of each miRNA in the tumour versus the normal kidney, respectively.</p>
+<p>(TIF)</p>
+</caption></supplementary-material><supplementary-material id="pone.0091646.s002" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" xlink:href="info:doi/10.1371/journal.pone.0091646.s002" position="float" xlink:type="simple"><label>Figure S2</label><caption>
+<p><bold>Regression analysis.</bold> Regression analysis of top up-regulated (A) and top down-regulated (B) miRNAs. miRNAs were tested with one-way ANOVA and further linear regression was used to fit their expression into a linear model. Left columns represent the ANOVA results. Right columns represent the linear regression results after sorting of the median values of the respective miRNAs in ascending order.</p>
+<p>(DOCX)</p>
+</caption></supplementary-material><supplementary-material id="pone.0091646.s003" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" xlink:href="info:doi/10.1371/journal.pone.0091646.s003" position="float" xlink:type="simple"><label>Figure S3</label><caption>
+<p><bold>Regression analysis.</bold> Regression analysis of top up-regulated (A) and top down-regulated (B) miRNAs. miRNAs were tested with one-way ANOVA and further linear regression was used to fit their expression into a linear model. Left columns represent the ANOVA results. Right columns represent the linear regression results after sorting of the median values of the respective miRNAs in ascending order.</p>
+<p>(DOCX)</p>
+</caption></supplementary-material><supplementary-material id="pone.0091646.s004" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0091646.s004" position="float" xlink:type="simple"><label>Figure S4</label><caption>
+<p><bold>Regression analysis.</bold> Regression analysis of the top deregulated miRNAs. One-way ANOVA (left columns) along with linear regression (right columns) of the RCC grades with respect to miRNA expression was used to fit miRNA expression into a linear model. Each regression consists of two curves: one of the form y = ax+b (red) and one of the form y = ax3+bx2+cx+d (blue). All results presented obtained a p&lt;0.05. The median expression values of the miRNAs were used. Interestingly, miR-148b-5p, miR-1910 and miR-200b-5p, miR-210 and miR-3656, presented linear behavior in a descending order of the RCC grade; whereas miR-3687 and miR-654-5p manifested linear behavior in ascending order of the RCC grade.</p>
+<p>(DOC)</p>
+</caption></supplementary-material><supplementary-material id="pone.0091646.s005" mimetype="image/tiff" xlink:href="info:doi/10.1371/journal.pone.0091646.s005" position="float" xlink:type="simple"><label>Figure S5</label><caption>
+<p><bold>Multiple sequence alignments (MSA).</bold> Representative MSA and phylogenetic trees of miR-489 (A) and miR-25-5p (B). The majority of the DE miRNAs (78.45%) were highly conserved among species. Specifically, 70.68% of the up-regulated and 81.22% of the down-regulated miRNAs were phylogenetically conserved among species.</p>
+<p>(TIF)</p>
+</caption></supplementary-material><supplementary-material id="pone.0091646.s006" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0091646.s006" position="float" xlink:type="simple"><label>Table S1</label><caption>
+<p><bold>The table lists the primer sequences that were designed to introduce a SpeI and a HindIII restriction enzyme sites to be cloned into the pMiR-REPORT luciferase vector.</bold></p>
+<p>(DOC)</p>
+</caption></supplementary-material><supplementary-material id="pone.0091646.s007" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0091646.s007" position="float" xlink:type="simple"><label>Table S2</label><caption>
+<p><bold>Top deregulated miRNAs in ccRCC, papRCC, chRCC and UT-UC vs. the normal kidney tissue.</bold></p>
+<p>(DOC)</p>
+</caption></supplementary-material><supplementary-material id="pone.0091646.s008" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0091646.s008" position="float" xlink:type="simple"><label>Table S3</label><caption>
+<p><bold>Co-deregulated and tissue specific miRNAs in ccRCC, papRCC, chRCC and UT-UC.</bold> Co-upregulated and tissue specific miRNAs in RCC subtypes (A). Co-downregulated and tissue specific miRNAs in RCC subtypes (B). Co-upregulated and tissue specific miRNAs in RCC and UT-UC (C). Co-downregulated and tissue specific miRNAs in RCC and UT-UC (D).</p>
+<p>(DOC)</p>
+</caption></supplementary-material><supplementary-material id="pone.0091646.s009" mimetype="application/msword" xlink:href="info:doi/10.1371/journal.pone.0091646.s009" position="float" xlink:type="simple"><label>Table S4</label><caption>
+<p><bold>Reported chromosomal abnormalities associated with ccRCC, papRCC, chRCC and UT-UC, as well as some of the well-studied genes located within those aberrated regions that are involved in the pathogenesis of the tumour subtypes.</bold> Many of the significantly deregulated miRNAs are located within cytogenetic regions that are significantly aberrated in the different subtypes. In the reported chromosomal aberrations the minus sign denotes a loss and the plus sign denotes a gain in chromosomal material. Red colour (↑) denotes elevated miRNA expression and blue colour (↓) denotes reduced miRNA expression.</p>
+<p>(DOC)</p>
+</caption></supplementary-material></sec></body>
+<back>
+<ack>
+<p>The authors would like to thank Revekka Papacharalambous for providing technical assistance. Part of this work was presented orally during the FEBS 13<sup>th</sup> Young Scientists' Forum (YSF), 3–6 July 2013, St. Petersburg, Russia, and as a poster during the FEBS Advanced Lecture Course, Molecular Mechanisms in Signal Transduction and Cancer, August 16–24, 2013 Spetses, Greece.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0091646-MeloniEhrig1"><label>1</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Meloni-Ehrig</surname><given-names>AM</given-names></name> (<year>2002</year>) <article-title>Renal cancer: cytogenetic and molecular genetic aspects</article-title>. <source>Am J Med Genet</source> <volume>115</volume>: <fpage>164</fpage>–<lpage>172</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Ficarra1"><label>2</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ficarra</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Martignoni</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Galfano</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Novara</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Gobbo</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Prognostic role of the histologic subtypes of renal cell carcinoma after slide revision</article-title>. <source>Eur Urol</source> <volume>50</volume>: <fpage>786</fpage>–<lpage>793</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-LopezBeltran1"><label>3</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lopez-Beltran</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Kirkali</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Cheng</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Egevad</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Regueiro</surname><given-names>JC</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Targeted therapies and biological modifiers in urologic tumors: pathobiology and clinical implications</article-title>. <source>Semin Diagn Pathol</source> <volume>25</volume>: <fpage>232</fpage>–<lpage>244</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Taziel1"><label>4</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tazi el</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Essadi</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Tazi</surname><given-names>MF</given-names></name>, <name name-style="western"><surname>Ahellal</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>M'Rabti</surname><given-names>H</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Advanced treatments in non-clear renal cell carcinoma</article-title>. <source>Urol J</source> <volume>8</volume>: <fpage>1</fpage>–<lpage>11</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Youssef1"><label>5</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Youssef</surname><given-names>YM</given-names></name>, <name name-style="western"><surname>White</surname><given-names>NMA</given-names></name>, <name name-style="western"><surname>Grigull</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Krizova</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Samy</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Accurate molecular classification of kidney cancer subtypes using microRNA signature</article-title>. <source>Eur Urol</source> <volume>59</volume>: <fpage>721</fpage>–<lpage>730</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Fridman1"><label>6</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fridman</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Dotan</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Barshack</surname><given-names>I</given-names></name>, <name name-style="western"><surname>David</surname><given-names>MB</given-names></name>, <name name-style="western"><surname>Dov</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Accurate molecular classification of renal tumors using microRNA expression</article-title>. <source>J Mol Diagn</source> <volume>12</volume>: <fpage>687</fpage>–<lpage>696</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Higgins1"><label>7</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Higgins</surname><given-names>JP</given-names></name>, <name name-style="western"><surname>Kaygusuz</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Montgomery</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Mason</surname><given-names>V</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Placental S100 (S100P) and GATA3: markers for transitional epithelium and urothelial carcinoma discovered by complementary DNA microarray</article-title>. <source>Am J Surg Pathol</source> <volume>31</volume>: <fpage>673</fpage>–<lpage>680</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Roupret1"><label>8</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Roupret</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Zigeuner</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Palou</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Boehle</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Kaasinen</surname><given-names>E</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>European guidelines for the diagnosis and management of upper urinary tract urothelial cell carcinomas: 2011 update</article-title>. <source>Eur Urol</source> <volume>59</volume>: <fpage>584</fpage>–<lpage>594</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Kirkali1"><label>9</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kirkali</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Tuzel</surname><given-names>E</given-names></name> (<year>2003</year>) <article-title>Transitional cell carcinoma of the ureter and renal pelvis</article-title>. <source>Crit Rev Oncol Hematol</source> <volume>47</volume>: <fpage>155</fpage>–<lpage>169</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Garzon1"><label>10</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Garzon</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Pichiorri</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Palumbo</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Visentini</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Aqeilan</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>MicroRNA gene expression during retinoic acid-induced differentiation of human acute promyelocytic leukemia</article-title>. <source>Oncogene</source> <volume>26</volume>: <fpage>4148</fpage>–<lpage>4157</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-EsquelaKerscher1"><label>11</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Esquela-Kerscher</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Slack</surname><given-names>FJ</given-names></name> (<year>2006</year>) <article-title>Oncomirs - microRNAs with a role in cancer</article-title>. <source>Nat Rev Cancer</source> <volume>6</volume>: <fpage>259</fpage>–<lpage>269</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Chow1"><label>12</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chow</surname><given-names>TF</given-names></name>, <name name-style="western"><surname>Youssef</surname><given-names>YM</given-names></name>, <name name-style="western"><surname>Lianidou</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Romaschin</surname><given-names>AD</given-names></name>, <name name-style="western"><surname>Honey</surname><given-names>RJ</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Differential expression profiling of microRNAs and their potential involvement in renal cell carcinoma pathogenesis</article-title>. <source>Clin Biochem</source> <volume>43</volume>: <fpage>150</fpage>–<lpage>158</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-White1"><label>13</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>White</surname><given-names>NM</given-names></name>, <name name-style="western"><surname>Bao</surname><given-names>TT</given-names></name>, <name name-style="western"><surname>Grigull</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Youssef</surname><given-names>YM</given-names></name>, <name name-style="western"><surname>Girgis</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>miRNA profiling for clear cell renal cell carcinoma: biomarker discovery and identification of potential controls and consequences of miRNA dysregulation</article-title>. <source>J Urol</source> <volume>186</volume>: <fpage>1077</fpage>–<lpage>1083</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Zaravinos1"><label>14</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zaravinos</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Radojicic</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Lambrou</surname><given-names>GI</given-names></name>, <name name-style="western"><surname>Volanis</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Delakas</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Expression of miRNAs involved in angiogenesis, tumor cell proliferation, tumor suppressor inhibition, epithelial-mesenchymal transition and activation of metastasis in bladder cancer</article-title>. <source>J Urol</source> <volume>188</volume>: <fpage>615</fpage>–<lpage>623</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Chow2"><label>15</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chow</surname><given-names>TF</given-names></name>, <name name-style="western"><surname>Youssef</surname><given-names>YM</given-names></name>, <name name-style="western"><surname>Lianidou</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Romaschin</surname><given-names>AD</given-names></name>, <name name-style="western"><surname>Honey</surname><given-names>RJ</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Differential expression profiling of microRNAs and their potential involvement in renal cell carcinoma pathogenesis</article-title>. <source>Clin Biochem</source> <volume>43</volume>: <fpage>150</fpage>–<lpage>158</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Fridman2"><label>16</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fridman</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Dotan</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Barshack</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Ben David</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Dov</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Accurate molecular classification of renal tumors using microRNA expression</article-title>. <source>J Mol Diagn</source> <volume>12</volume>: <fpage>687</fpage>–<lpage>696</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Jung1"><label>17</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jung</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Mollenkopf</surname><given-names>HJ</given-names></name>, <name name-style="western"><surname>Grimm</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Wagner</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Albrecht</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>MicroRNA profiling of clear cell renal cell cancer identifies a robust signature to define renal malignancy</article-title>. <source>J Cell Mol Med</source> <volume>13</volume>: <fpage>3918</fpage>–<lpage>3928</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Nakada1"><label>18</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nakada</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Matsuura</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Tsukamoto</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Tanigawa</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Yoshimoto</surname><given-names>T</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Genome-wide microRNA expression profiling in renal cell carcinoma: significant down-regulation of miR-141 and miR-200c</article-title>. <source>J Pathol</source> <volume>216</volume>: <fpage>418</fpage>–<lpage>427</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Osanto1"><label>19</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Osanto</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Qin</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Buermans</surname><given-names>HP</given-names></name>, <name name-style="western"><surname>Berkers</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Lerut</surname><given-names>E</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Genome-wide microRNA expression analysis of clear cell renal cell carcinoma by next generation deep sequencing</article-title>. <source>PLoS One</source> <volume>7</volume>: <fpage>e38298</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Petillo1"><label>20</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Petillo</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Kort</surname><given-names>EJ</given-names></name>, <name name-style="western"><surname>Anema</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Furge</surname><given-names>KA</given-names></name>, <name name-style="western"><surname>Yang</surname><given-names>XJ</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>MicroRNA profiling of human kidney cancer subtypes</article-title>. <source>Int J Oncol</source> <volume>35</volume>: <fpage>109</fpage>–<lpage>114</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Radojicic1"><label>21</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Radojicic</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Zaravinos</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Vrekoussis</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Kafousi</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Spandidos</surname><given-names>DA</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>MicroRNA expression analysis in triple-negative (ER, PR and Her2/neu) breast cancer</article-title>. <source>Cell Cycle</source> <volume>10</volume>: <fpage>507</fpage>–<lpage>517</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Gottardo1"><label>22</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gottardo</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Liu</surname><given-names>CG</given-names></name>, <name name-style="western"><surname>Ferracin</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Calin</surname><given-names>GA</given-names></name>, <name name-style="western"><surname>Fassan</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Micro-RNA profiling in kidney and bladder cancers</article-title>. <source>Urol Oncol</source> <volume>25</volume>: <fpage>387</fpage>–<lpage>392</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Huang1"><label>23</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huang</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Dai</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Yang</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Chen</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Yin</surname><given-names>Y</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Microarray analysis of microRNA expression in renal clear cell carcinoma</article-title>. <source>Eur J Surg Oncol</source> <volume>35</volume>: <fpage>1119</fpage>–<lpage>1123</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Juan1"><label>24</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Juan</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Alexe</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Antes</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Liu</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Madabhushi</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Identification of a microRNA panel for clear-cell kidney cancer</article-title>. <source>Urology</source> <volume>75</volume>: <fpage>835</fpage>–<lpage>841</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Yi1"><label>25</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yi</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Fu</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Zhao</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Zhang</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Ma</surname><given-names>C</given-names></name> (<year>2010</year>) <article-title>Differential expression of miRNA patterns in renal cell carcinoma and nontumorous tissues</article-title>. <source>J Cancer Res Clin Oncol</source> <volume>136</volume>: <fpage>855</fpage>–<lpage>862</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Sun1"><label>26</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sun</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Koo</surname><given-names>S</given-names></name>, <name name-style="western"><surname>White</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Peralta</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Esau</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Development of a micro-array to detect human and mouse microRNAs and characterization of expression in human organs</article-title>. <source>Nucleic Acids Res</source> <volume>32</volume>: <fpage>e188</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Zaravinos2"><label>27</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zaravinos</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Bizakis</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Soufla</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Sourvinos</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Spandidos</surname><given-names>DA</given-names></name> (<year>2007</year>) <article-title>Mutations and differential expression of the ras family genes in human nasal polyposis</article-title>. <source>Int J Oncol</source> <volume>31</volume>: <fpage>1051</fpage>–<lpage>1059</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Ljungberg1"><label>28</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ljungberg</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Cowan</surname><given-names>NC</given-names></name>, <name name-style="western"><surname>Hanbury</surname><given-names>DC</given-names></name>, <name name-style="western"><surname>Hora</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Kuczyk</surname><given-names>MA</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>EAU guidelines on renal cell carcinoma: the 2010 update</article-title>. <source>Eur Urol</source> <volume>58</volume>: <fpage>398</fpage>–<lpage>406</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Roupret2"><label>29</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Roupret</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Zigeuner</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Palou</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Boehle</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Kaasinen</surname><given-names>E</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>[European guidelines for the diagnosis and management of upper urinary tract urothelial cell carcinomas: 2011 update. European Association of Urology Guideline Group for urothelial cell carcinoma of the upper urinary tract]</article-title>. <source>Actas Urol Esp</source> <volume>36</volume>: <fpage>2</fpage>–<lpage>14</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Lu1"><label>30</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lu</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Getz</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Miska</surname><given-names>EA</given-names></name>, <name name-style="western"><surname>Alvarez-Saavedra</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Lamb</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>MicroRNA expression profiles classify human cancers</article-title>. <source>Nature</source> <volume>435</volume>: <fpage>834</fpage>–<lpage>838</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Nakada2"><label>31</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nakada</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Matsuura</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Tsukamoto</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Tanigawa</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Yoshimoto</surname><given-names>T</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Genome-wide microRNA expression profiling in renal cell carcinoma: significant down-regulation of miR-141 and miR-200c</article-title>. <source>J Pathol</source> <volume>216</volume>: <fpage>418</fpage>–<lpage>427</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Weng1"><label>32</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Weng</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Wu</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Gao</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Mu</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Li</surname><given-names>X</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>MicroRNA profiling of clear cell renal cell carcinoma by whole-genome small RNA deep sequencing of paired frozen and formalin-fixed, paraffin-embedded tissue specimens</article-title>. <source>J Pathol</source> <volume>222</volume>: <fpage>41</fpage>–<lpage>51</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Spector1"><label>33</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Spector</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Fridman</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Rosenwald</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Zilber</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Huang</surname><given-names>Y</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>Development and validation of a microRNA-based diagnostic assay for classification of renal cell carcinomas</article-title>. <source>Mol Oncol</source> <volume>7</volume>: <fpage>732</fpage>–<lpage>738</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Izquierdo1"><label>34</label>
+<mixed-citation publication-type="other" xlink:type="simple">Izquierdo L, Ingelmo-Torres M, Mallofre C, Lozano JJ, Verhasselt-Crinquette M, <etal>et al</etal>.. (2013) Prognostic value of microRNA expression pattern in upper tract urothelial carcinoma. BJU Int.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Calin1"><label>35</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Calin</surname><given-names>GA</given-names></name>, <name name-style="western"><surname>Sevignani</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Dumitru</surname><given-names>CD</given-names></name>, <name name-style="western"><surname>Hyslop</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Noch</surname><given-names>E</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Human microRNA genes are frequently located at fragile sites and genomic regions involved in cancers</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>101</volume>: <fpage>2999</fpage>–<lpage>3004</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Girgis1"><label>36</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Girgis</surname><given-names>AH</given-names></name>, <name name-style="western"><surname>Iakovlev</surname><given-names>VV</given-names></name>, <name name-style="western"><surname>Beheshti</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Bayani</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Squire</surname><given-names>JA</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Multilevel whole-genome analysis reveals candidate biomarkers in clear cell renal cell carcinoma</article-title>. <source>Cancer Res</source> <volume>72</volume>: <fpage>5273</fpage>–<lpage>5284</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Bratslavsky1"><label>37</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bratslavsky</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Sudarshan</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Neckers</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Linehan</surname><given-names>WM</given-names></name> (<year>2007</year>) <article-title>Pseudohypoxic pathways in renal cell carcinoma</article-title>. <source>Clin Cancer Res</source> <volume>13</volume>: <fpage>4667</fpage>–<lpage>4671</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Klatte1"><label>38</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Klatte</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Rao</surname><given-names>PN</given-names></name>, <name name-style="western"><surname>de Martino</surname><given-names>M</given-names></name>, <name name-style="western"><surname>LaRochelle</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Shuch</surname><given-names>B</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Cytogenetic profile predicts prognosis of patients with clear cell renal cell carcinoma</article-title>. <source>J Clin Oncol</source> <volume>27</volume>: <fpage>746</fpage>–<lpage>753</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Kovacs1"><label>39</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kovacs</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Fuzesi</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Emanual</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Kung</surname><given-names>HF</given-names></name> (<year>1991</year>) <article-title>Cytogenetics of papillary renal cell tumors</article-title>. <source>Genes Chromosomes Cancer</source> <volume>3</volume>: <fpage>249</fpage>–<lpage>255</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Speicher1"><label>40</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Speicher</surname><given-names>MR</given-names></name>, <name name-style="western"><surname>Schoell</surname><given-names>B</given-names></name>, <name name-style="western"><surname>du Manoir</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Schrock</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Ried</surname><given-names>T</given-names></name>, <etal>et al</etal>. (<year>1994</year>) <article-title>Specific loss of chromosomes 1, 2, 6, 10, 13, 17, and 21 in chromophobe renal cell carcinomas revealed by comparative genomic hybridization</article-title>. <source>Am J Pathol</source> <volume>145</volume>: <fpage>356</fpage>–<lpage>364</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Storkel1"><label>41</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Storkel</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Eble</surname><given-names>JN</given-names></name>, <name name-style="western"><surname>Adlakha</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Amin</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Blute</surname><given-names>ML</given-names></name>, <etal>et al</etal>. (<year>1997</year>) <article-title>Classification of renal cell carcinoma: Workgroup No. 1. Union Internationale Contre le Cancer (UICC) and the American Joint Committee on Cancer (AJCC)</article-title>. <source>Cancer</source> <volume>80</volume>: <fpage>987</fpage>–<lpage>989</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-vandenBerg1"><label>42</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>van den Berg</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Dijkhuizen</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Oosterhuis</surname><given-names>JW</given-names></name>, <name name-style="western"><surname>Geurts van Kessel</surname><given-names>A</given-names></name>, <name name-style="western"><surname>de Jong</surname><given-names>B</given-names></name>, <etal>et al</etal>. (<year>1997</year>) <article-title>Cytogenetic classification of renal cell cancer</article-title>. <source>Cancer Genet Cytogenet</source> <volume>95</volume>: <fpage>103</fpage>–<lpage>107</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Velickovic1"><label>43</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Velickovic</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Delahunt</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Storkel</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Grebem</surname><given-names>SK</given-names></name> (<year>2001</year>) <article-title>VHL and FHIT locus loss of heterozygosity is common in all renal cancer morphotypes but differs in pattern and prognostic significance</article-title>. <source>Cancer Res</source> <volume>61</volume>: <fpage>4815</fpage>–<lpage>4819</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Yoshimoto1"><label>44</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yoshimoto</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Matsuura</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Karnan</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Tagawa</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Nakada</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>High-resolution analysis of DNA copy number alterations and gene expression in renal clear cell carcinoma</article-title>. <source>J Pathol</source> <volume>213</volume>: <fpage>392</fpage>–<lpage>401</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-ThapaRJ1"><label>45</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Thapa RJ</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Cheung</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Nogusa</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Pei</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Peri</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>NF-κB inhibition by bortezomib permits IFN-γ-activated RIP1 kinase-dependent necrosis in renal cell carcinoma</article-title>. <source>Mol Cancer Ther</source> <volume>12</volume>: <fpage>1568</fpage>–<lpage>1578</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Sato1"><label>46</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sato</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Nagase</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Obinata</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Fujiwara</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Fukuda</surname><given-names>N</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>Inhibition of MMP-9 using a pyrrole-imidazole polyamide reduces cell invasion in renal cell carcinoma</article-title>. <source>Int J Oncol</source> <volume>43</volume>: <fpage>1441</fpage>–<lpage>1446</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Zaravinos3"><label>47</label>
+<mixed-citation publication-type="other" xlink:type="simple">Zaravinos A, Pieri M, Mourmouras N, Anastasiadou N, Zouvani I, <etal>et al</etal>.. (2014) Altered metabolic pathways in clear cell renal cell carcinoma: A meta-analysis and validation study focused on the deregulated genes and their associated networks. Oncoscience, Advance Publications.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Aggarwal1"><label>48</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Aggarwal</surname><given-names>BB</given-names></name>, <name name-style="western"><surname>Gehlot</surname><given-names>P</given-names></name> (<year>2009</year>) <article-title>Inflammation and cancer: how friendly is the relationship for cancer patients?</article-title> <source>Curr Opin Pharmacol</source> <volume>9</volume>: <fpage>351</fpage>–<lpage>369</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Wu1"><label>49</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wu</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Fu</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Zhu</surname><given-names>X</given-names></name>, <name name-style="western"><surname>He</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Zou</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Prognostic role of systemic inflammatory response in renal cell carcinoma: a sytemic review and meta-analysis</article-title>. <source>J Cancer Res Clin Oncol</source> <volume>137</volume>: <fpage>887</fpage>–<lpage>896</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Feng1"><label>50</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Feng</surname><given-names>Z</given-names></name>, <name name-style="western"><surname>Zhang</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Wu</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Hu</surname><given-names>W</given-names></name> (<year>2011</year>) <article-title>Tumor suppressor p53 meets microRNAs</article-title>. <source>J Mol Cell Biol</source> <volume>3</volume>: <fpage>44</fpage>–<lpage>50</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Yamada1"><label>51</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yamada</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Hidaka</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Seki</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Yoshino</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Yamasaki</surname><given-names>T</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>Tumor-suppressive microRNA-135a inhibits cancer cell proliferation by targeting the c-MYC oncogene in renal cell carcinoma</article-title>. <source>Cancer Sci</source> <volume>104</volume>: <fpage>304</fpage>–<lpage>312</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Wach1"><label>52</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wach</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Nolte</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Theil</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Stöhr</surname><given-names>C</given-names></name>, <name name-style="western"><surname>T Rau</surname><given-names>T</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>MicroRNA profiles classify papillary renal cell carcinoma subtypes</article-title>. <source>Br J Cancer</source> <volume>109</volume>: <fpage>714</fpage>–<lpage>722</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Teicher1"><label>53</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Teicher</surname><given-names>BA</given-names></name>, <name name-style="western"><surname>Linehan</surname><given-names>WM</given-names></name>, <name name-style="western"><surname>Helman</surname><given-names>LJ</given-names></name> (<year>2012</year>) <article-title>Targeting cancer metabolism</article-title>. <source>Clin Cancer Res</source> <volume>18</volume>: <fpage>5537</fpage>–<lpage>5545</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0091646-Tun1"><label>54</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tun</surname><given-names>HW</given-names></name>, <name name-style="western"><surname>Marlow</surname><given-names>LA</given-names></name>, <name name-style="western"><surname>von Roemeling</surname><given-names>CA</given-names></name>, <name name-style="western"><surname>Cooper</surname><given-names>SJ</given-names></name>, <name name-style="western"><surname>Kreinest</surname><given-names>P</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Pathway signature and cellular differentiation in clear cell renal cell carcinoma</article-title>. <source>PLoS One</source> <volume>5</volume>: <fpage>e10696</fpage>.</mixed-citation>
+</ref>
+</ref-list></back>
+</article>

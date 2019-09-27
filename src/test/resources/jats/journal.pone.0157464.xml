@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1d3" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0157464</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-16-10149</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Nucleic acids</subject><subj-group><subject>RNA</subject><subj-group><subject>Non-coding RNA</subject><subj-group><subject>Ribosomal RNA</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Ribosomes</subject><subj-group><subject>Ribosomal RNA</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Cell biology</subject><subj-group><subject>Cellular structures and organelles</subject><subj-group><subject>Ribosomes</subject><subj-group><subject>Ribosomal RNA</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Organisms</subject><subj-group><subject>Animals</subject><subj-group><subject>Vertebrates</subject><subj-group><subject>Amniotes</subject><subj-group><subject>Birds</subject><subj-group><subject>Fowl</subject><subj-group><subject>Gamefowl</subject><subj-group><subject>Chickens</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Organisms</subject><subj-group><subject>Animals</subject><subj-group><subject>Vertebrates</subject><subj-group><subject>Amniotes</subject><subj-group><subject>Birds</subject><subj-group><subject>Poultry</subject><subj-group><subject>Chickens</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Agriculture</subject><subj-group><subject>Livestock</subject><subj-group><subject>Poultry</subject><subj-group><subject>Chickens</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Computational biology</subject><subj-group><subject>Genome analysis</subject><subj-group><subject>Sequence assembly tools</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Genomics</subject><subj-group><subject>Genome analysis</subject><subj-group><subject>Sequence assembly tools</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Molecular biology</subject><subj-group><subject>Molecular biology techniques</subject><subj-group><subject>Sequencing techniques</subject><subj-group><subject>Sequence analysis</subject><subj-group><subject>Sequence alignment</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Molecular biology techniques</subject><subj-group><subject>Sequencing techniques</subject><subj-group><subject>Sequence analysis</subject><subj-group><subject>Sequence alignment</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Genomics</subject><subj-group><subject>Animal genomics</subject><subj-group><subject>Bird genomics</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Molecular biology</subject><subj-group><subject>Molecular biology techniques</subject><subj-group><subject>Cloning</subject><subj-group><subject>Vector cloning</subject><subj-group><subject>BAC cloning</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Molecular biology techniques</subject><subj-group><subject>Cloning</subject><subj-group><subject>Vector cloning</subject><subj-group><subject>BAC cloning</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Molecular biology</subject><subj-group><subject>Molecular biology techniques</subject><subj-group><subject>Cloning</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Molecular biology techniques</subject><subj-group><subject>Cloning</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Computational techniques</subject><subj-group><subject>Split-decomposition method</subject><subj-group><subject>Multiple alignment calculation</subject></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Chicken rRNA Gene Cluster Structure</article-title>
+<alt-title alt-title-type="running-head">Chicken rRNA Gene Cluster</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Dyomin</surname>
+<given-names>Alexander G.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Koshel</surname>
+<given-names>Elena I.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kiselev</surname>
+<given-names>Artem M.</given-names>
+</name>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Saifitdinova</surname>
+<given-names>Alsu F.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Galkina</surname>
+<given-names>Svetlana A.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Fukagawa</surname>
+<given-names>Tatsuo</given-names>
+</name>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kostareva</surname>
+<given-names>Anna A.</given-names>
+</name>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<contrib-id contrib-id-type="orcid">http://orcid.org/0000-0003-4967-9053</contrib-id>
+<name name-style="western">
+<surname>Gaginskaya</surname>
+<given-names>Elena R.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Saint Petersburg State University, Saint Petersburg, 199034, Russia</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Almazov Federal Medical Research Centre, Saint Petersburg, 197341, Russia</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>ITMO University, Saint Petersburg, 197101, Russia</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Osaka University, Suita, Osaka, 565–0871, Japan</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Buratti</surname>
+<given-names>Emanuele</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>International Centre for Genetic Engineering and Biotechnology, ITALY</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: AD AS EG. Performed the experiments: AD EK AMK. Analyzed the data: AD EG. Contributed reagents/materials/analysis tools: TF AAK. Wrote the paper: AD SG EG.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">elena.gaginskaya@gmail.com</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>14</day>
+<month>6</month>
+<year>2016</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2016</year>
+</pub-date>
+<volume>11</volume>
+<issue>6</issue>
+<elocation-id>e0157464</elocation-id>
+<history>
+<date date-type="received">
+<day>10</day>
+<month>3</month>
+<year>2016</year>
+</date>
+<date date-type="accepted">
+<day>31</day>
+<month>5</month>
+<year>2016</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2016</copyright-year>
+<copyright-holder>Dyomin et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0157464"/>
+<abstract>
+<p>Ribosomal RNA (rRNA) genes, whose activity results in nucleolus formation, constitute an extremely important part of genome. Despite the extensive exploration into avian genomes, no complete description of avian rRNA gene primary structure has been offered so far. We publish a complete chicken rRNA gene cluster sequence here, including <italic>5’ETS</italic> (1836 bp), <italic>18S rRNA</italic> gene (1823 bp), <italic>ITS1</italic> (2530 bp), <italic>5</italic>.<italic>8S rRNA</italic> gene (157 bp), <italic>ITS2</italic> (733 bp), <italic>28S rRNA</italic> gene (4441 bp) and <italic>3’ETS</italic> (343 bp). The rRNA gene cluster sequence of 11863 bp was assembled from raw reads and deposited to GenBank under KT445934 accession number. The assembly was validated through <italic>in situ</italic> fluorescent hybridization analysis on chicken metaphase chromosomes using computed and synthesized specific probes, as well as through the reference assembly against <italic>de novo</italic> assembled rRNA gene cluster sequence using sequenced fragments of BAC-clone containing chicken NOR (nucleolus organizer region). The results have confirmed the chicken rRNA gene cluster validity.</p>
+</abstract>
+<funding-group>
+<award-group id="award001">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100002261</institution-id>
+<institution>Russian Foundation for Basic Research</institution>
+</institution-wrap>
+</funding-source>
+<award-id>15-04-05684a</award-id>
+<principal-award-recipient>
+<contrib-id contrib-id-type="orcid">http://orcid.org/0000-0003-4967-9053</contrib-id>
+<name name-style="western">
+<surname>Gaginskaya</surname>
+<given-names>Elena R.</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award002">
+<funding-source>
+<institution-wrap>
+<institution-id institution-id-type="funder-id">http://dx.doi.org/10.13039/501100004285</institution-id>
+<institution>Saint Petersburg State University</institution>
+</institution-wrap>
+</funding-source>
+<award-id>1.50.1043. 2014</award-id>
+<principal-award-recipient>
+<contrib-id contrib-id-type="orcid">http://orcid.org/0000-0003-4967-9053</contrib-id>
+<name name-style="western">
+<surname>Gaginskaya</surname>
+<given-names>Elena R.</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<award-group id="award003">
+<funding-source>
+<institution>RF Government</institution>
+</funding-source>
+<award-id>074-U01</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Kostareva</surname>
+<given-names>Anna A.</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<funding-statement>The research has been financed by 1. Saint-Petersburg State University Grant #1.50.1043. 2014 (AD EK) <ext-link ext-link-type="uri" xlink:href="http://english.spbu.ru/" xlink:type="simple">http://english.spbu.ru/</ext-link>; 2. Russian Basic Research Foundation Grant #15-04-05684 (EG SG AD EK) <ext-link ext-link-type="uri" xlink:href="http://www.rfbr.ru/rffi/eng" xlink:type="simple">http://www.rfbr.ru/rffi/eng</ext-link>; 3. RF Government Grant #074-U01 (AnK ArK) <ext-link ext-link-type="uri" xlink:href="http://government.ru/en/" xlink:type="simple">http://government.ru/en/</ext-link>. The funders had no role in study design, data collection and analysis, decision to publish or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="3"/>
+<table-count count="4"/>
+<page-count count="13"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>NGS data are available from NCBI, SRA accession numbers—DRX001863, SRP069763. rRNA gene cluster sequence is available from NCBI, Nucleotide accession number—KT445934. All other relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Background</title>
+<p>Ribosomal gene arrays constitute one of the most important genome components [<xref ref-type="bibr" rid="pone.0157464.ref001">1</xref>]. They form nucleolus organizing regions (NOR) in chromosomes, and the functional status of NOR is an indicator of the physiological status of cells, tissues and the entire organism at various ontogenetic stages [<xref ref-type="bibr" rid="pone.0157464.ref001">1</xref>–<xref ref-type="bibr" rid="pone.0157464.ref006">6</xref>]. In a commonly accepted approach that we follow here, the term “ribosomal gene array” refers to the sequence composed of repeated rRNA gene clusters separated by intergenic spacers (<italic>IGS</italic>) [<xref ref-type="bibr" rid="pone.0157464.ref007">7</xref>]. All animal rRNA gene clusters are known to have fundamentally similar structures (<xref ref-type="fig" rid="pone.0157464.g001">Fig 1</xref>). Each cluster comprises sequences of rRNA encoding conservative genes (<italic>18S rRNA</italic>, <italic>5</italic>.<italic>8S rRNA</italic> and <italic>28S rRNA</italic>) separated by internal transcribed spacers (<italic>ITS1</italic> and <italic>ITS2</italic>), and external transcribed spacers (<italic>5’ETS</italic> and <italic>3’ETS</italic>) situated downstream of <italic>18S rRNA</italic> gene and upstream of <italic>28S rRNA</italic> gene respectively. All these elements transcribe into a single RNA precursor, pre-rRNA. <italic>18S rRNA</italic>, <italic>5</italic>.<italic>8S rRNA</italic> and <italic>28S rRNA</italic> genes are quite conserved between organisms. Both internal and external transcribed spacers feature high structural variability, which accounts for ribosome cluster length variation within a wide range from 8 to 14 thousand base pairs (bp), promoter and terminator regions for RNA polymerase I (RNApolI) being located in the <italic>IGS</italic> [<xref ref-type="bibr" rid="pone.0157464.ref007">7</xref>].</p>
+<fig id="pone.0157464.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0157464.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Ribosomal DNA structure (after Singer and Berg, 1991).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.g001" xlink:type="simple"/>
+</fig>
+<p>In general, rRNA gene cluster structure is still underinvestigated [<xref ref-type="bibr" rid="pone.0157464.ref001">1</xref>]. Despite recent vertebrate genome-wide extensive studies [<xref ref-type="bibr" rid="pone.0157464.ref008">8</xref>], decoding of NOR structure and rRNA gene clusters remains a complicated task, primarily due to the high repetitivity and extensive length of the clusters as well as a faster spacer sequence evolution [<xref ref-type="bibr" rid="pone.0157464.ref001">1</xref>]. So far GenBank [<xref ref-type="bibr" rid="pone.0157464.ref009">9</xref>] has contained annotated complete rRNA gene cluster sequences only for a limited number of vertebrate species, in particular <italic>Homo sapiens</italic> (GenBank accession number: U13369), <italic>Mus musculus</italic> (GenBank accession number: BK000964) and <italic>Nothobranchius furzeri</italic> (GenBank accession number: EU780557). Yet, no description of the complete rRNA gene cluster sequence has been offered so far for such a major taxon as Aves.</p>
+<p>Chicken rRNA gene cluster deserves special research focus among bird class representatives. Chicken plays an important role in agriculture and it has been widely used in an extensive range of biomedical research, including such areas as developmental biology, genetics, cell biology, histology, virology and so on [<xref ref-type="bibr" rid="pone.0157464.ref010">10</xref>, <xref ref-type="bibr" rid="pone.0157464.ref011">11</xref>]. Chicken genome was the first to have been sequenced in avian and among the first in vertebrata genomes [<xref ref-type="bibr" rid="pone.0157464.ref012">12</xref>]. <italic>Gallus gallus 4</italic>.<italic>0</italic> assembly has been used as a reference genome for assembling sequenced genomes of other birds [<xref ref-type="bibr" rid="pone.0157464.ref013">13</xref>]. Chicken NOR location on chromosome 16 (GGA16) [<xref ref-type="bibr" rid="pone.0157464.ref014">14</xref>–<xref ref-type="bibr" rid="pone.0157464.ref017">17</xref>] has been recently confirmed by fluorescent <italic>in situ</italic> hybridization (FISH) using plasmid <italic>ETS</italic> [<xref ref-type="bibr" rid="pone.0157464.ref018">18</xref>] and NOR containing WAG137G04 BAC-clone [<xref ref-type="bibr" rid="pone.0157464.ref019">19</xref>] as probes. Noteworthy, only 5% of GGA16 chromosome sequence has been decoded according to the published assembly of <italic>Gallus gallus 4</italic>.<italic>0</italic> genome [<xref ref-type="bibr" rid="pone.0157464.ref012">12</xref>], and such decoding does not include the NOR region [<xref ref-type="bibr" rid="pone.0157464.ref019">19</xref>].</p>
+<p>GenBank contains annotated sequences for individual fragments of chicken <italic>18S rRNA</italic> and <italic>28S rRNA</italic> genes. There are also two incompatible sequence variants, both annotated in GenBank as <italic>ITS1-5</italic>.<italic>8S-ITS2</italic> (Accession numbers: DQ018752 –DQ018755; FJ008990).</p>
+<p>In the course of “ChIP-sequencing with CENP-A from chicken cells containing neocentromeres on Z chromosome” project [<xref ref-type="bibr" rid="pone.0157464.ref020">20</xref>], we obtained multiple raw chicken sequences. Based on these sequences as well as sequences of unannotated Whole Genome Shotgun (WGS) contigs from <italic>Gallus gallus 4</italic>.<italic>0</italic> genome assembly (NCBI WGS accession number: AADN00000000), we assembled and described the complete structure of chicken rRNA gene cluster. The assembled sequence relation to GGA16 NOR was confirmed by serial FISH to chicken mitotic chromosomes. For validation of rRNA gene cluster assembly a NOR-containing BAC clone [<xref ref-type="bibr" rid="pone.0157464.ref019">19</xref>], was sequenced and re-assembled on the basis of the <italic>de novo</italic> assembled chicken rRNA gene cluster.</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Material and Methods</title>
+<sec id="sec003">
+<title>SRA data and BAC clone sample</title>
+<p>To assemble a complete chicken rRNA gene cluster <italic>de novo</italic> we used a sequence library [<xref ref-type="bibr" rid="pone.0157464.ref020">20</xref>] which had been earlier generated of raw reads (NCBI SRA accession number: DRX001863) in the course of “ChIP-sequencing with CENP-A from chicken cells containing neocentromeres on Z chromosome” project (NCBI BioProject accession number: PRJDB2279). For assembly verification and adjustment we used 19 unannotated sequences of the WGS contigs from the <italic>Gallus gallus 4</italic>.<italic>0</italic> genome assembly (NCBI WGS accession number: AADN00000000.3) [<xref ref-type="bibr" rid="pone.0157464.ref012">12</xref>] and 11 sequences from Nucleotide database [<xref ref-type="bibr" rid="pone.0157464.ref021">21</xref>] annotated by the authors as chicken ribosomal cluster fragments (<xref ref-type="table" rid="pone.0157464.t001">Table 1</xref>). WAG137G04 BAC clone containing chicken NOR was used as a probe to NOR [<xref ref-type="bibr" rid="pone.0157464.ref019">19</xref>].</p>
+<table-wrap id="pone.0157464.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0157464.t001</object-id>
+<label>Table 1</label> <caption><title>WGS contigs and annotated sequences used to verify the chicken ribosomal cluster assembly.</title></caption>
+<alternatives>
+<graphic id="pone.0157464.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">Cluster element</th>
+<th align="left">NCBI accession number</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><italic>5’ETS</italic> (complete)</td>
+<td align="left">NW_003775878, AADN03015064, AADN03001778, AADN03014081, AADN03001785, AADN03001786, AADN03001788</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref012">12</xref>]</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">DQ112354</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref011">11</xref>]</td>
+</tr>
+<tr>
+<td align="left"><italic>18S rRNA</italic> (complete)</td>
+<td align="left">AADN03000430, AADN03001677, AADN03001785, AADN03001786, AADN03001788, AADN03026634</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref012">12</xref>]</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">FM165414</td>
+<td align="left">Unpublished</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">DQ018752, DQ018754</td>
+<td align="left">Unpublished</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">HQ873432</td>
+<td align="left">Unpublished</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">AF173612</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref022">22</xref>]</td>
+</tr>
+<tr>
+<td align="left"><italic>ITS1</italic> (complete)</td>
+<td align="left">AADN03026634, AADN03000430, AADN03001782, AADN03001670, AADN03001783</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref012">12</xref>]</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">DQ018752, DQ018754</td>
+<td align="left">Unpublished</td>
+</tr>
+<tr>
+<td align="left"><italic>5</italic>.<italic>8S rRNA</italic> (complete)</td>
+<td align="left">AADN03001670, AADN03001783</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref012">12</xref>]</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">DQ018754</td>
+<td align="left">Unpublished</td>
+</tr>
+<tr>
+<td align="left"><italic>ITS2</italic> (complete)</td>
+<td align="left">AADN03001783, AADN03001784</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref012">12</xref>]</td>
+</tr>
+<tr>
+<td align="left"><italic>28S rRNA</italic> (complete)</td>
+<td align="left">AADN03001784, AADN03001774, AADN03001775, AADN03001776, AADN03022685, AADN03019346</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref012">12</xref>]</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">EF552813</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref023">23</xref>]</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">FM165415</td>
+<td align="left">Unpublished</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">JN639848</td>
+<td align="left">Unpublished</td>
+</tr>
+<tr>
+<td align="left"/>
+<td align="left">DQ018756, DQ018757</td>
+<td align="left">Unpublished</td>
+</tr>
+<tr>
+<td align="left"><italic>3’ETS</italic></td>
+<td align="left">Data is absente</td>
+<td align="left"/>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec004">
+<title>BAC clone sequencing</title>
+<p>WAG137G04 BAC clone high-throughput sequencing was performed using Illumina MiSeq sequencing machine and MiSeq Reagent Kit v3 2x300. DNA quality was analyzed using Nanodrop 1000 spectrophotometer (Thermo, USA). DNA was quantified with Quantifluor-ST fluorometer (Promega, USA) and dsDNA kit (Promega, USA). DNA fragment library was prepared from 1 ng of BAC clone DNA using NexteraXT kit (Illumina, USA) according to manufacturer’s guideline. Library quality was estimated using Agilent Bioanalyzer 2100 instrument (Agilent, USA) and RT-PCR according to Illumina Sequencing Library qPCR Quantification Guide.</p>
+</sec>
+<sec id="sec005">
+<title>Cluster assembling and annotating</title>
+<p><italic>De novo</italic> assembling of chicken rRNA gene cluster sequence from SRA sequence library DRX00186 and searching for WGS contigs homologous to the rRNA gene cluster elements was performed using BLAST [<xref ref-type="bibr" rid="pone.0157464.ref024">24</xref>] and Unipro UGENE v. 1.16.1 software package [<xref ref-type="bibr" rid="pone.0157464.ref025">25</xref>].</p>
+<p>Chicken rRNA gene cluster reference assembling was performed on the basis of BAC clone raw read library using Geneious 9.0.5 software package [<xref ref-type="bibr" rid="pone.0157464.ref026">26</xref>]. The <italic>de novo</italic> assembled sequence was used as a reference. For sequence alignment and nucleotide structure determination Mega 6.06 [<xref ref-type="bibr" rid="pone.0157464.ref027">27</xref>] was applied. Repeat searching and typing were performed in Repeatmasker 4.0.5 [<xref ref-type="bibr" rid="pone.0157464.ref028">28</xref>]. Nucleotide sequence secondary structure was computed in Mfold [<xref ref-type="bibr" rid="pone.0157464.ref029">29</xref>].</p>
+<p>To define the boundaries between spacer (<italic>5’ETS</italic>, <italic>ITS1</italic>, <italic>ITS2</italic>, <italic>3’ETS</italic>) sequences and <italic>rRNA</italic> gene (<italic>18S</italic>, <italic>5</italic>.<italic>8S</italic>, <italic>28S</italic>) sequences we used annotated fragments of ribosomal clusters of <italic>H</italic>. <italic>sapiens</italic> (GenBank accession number: U13369), <italic>Rattus norvegicus</italic> (GenBank accession number: NR_046239), <italic>M</italic>. <italic>musculus</italic> (GenBank accession number: NR_046233), <italic>Xenopus laevis</italic> (GenBank accession number: X02995) and <italic>Crocodylus porosus</italic> (GenBank accession number: EU727191).</p>
+</sec>
+<sec id="sec006">
+<title>Fluorescent <italic>in situ</italic> hybridization</title>
+<p>To verify the relation of <italic>de novo</italic> assembled sequence to the NOR on GGA16 a serial FISH was applied to chicken mitotic chromosomes using the assembled sequence fragments and WAG137G04 BAC clone DNA as probes. Metaphase spreads were obtained from primary chicken embryo cell cultures according to standard procedures. Briefly, a chicken embryo of 4 day incubation was aseptically removed from the egg, washed in PBS and fragmented. Embryo fragmrnts were mechanically macerated and cell suspension has been placed into a tissue culture flask with Dulbecco's modified Eagle's medium (DMEM, Paneco) containing 10% fetal bovine serum (PAA Laboratories), 1% Streptomycin and 1% L-Glutamine. Settled cells were cultured overnight at 37°C in humidified 5% CO<sub>2</sub> atmosphere and arrested with 0.05 μg/ml colcemid (CaryoMax, Invitrogen), followed by hypotonic treatment and fixation. Fertile eggs were provided by the Federal State Unitary research farm “Gene Pool”, Pushkin, Leningrad region, Russia (<ext-link ext-link-type="uri" xlink:href="http://genofund.narod.ru/index.htm" xlink:type="simple">http://genofund.narod.ru/index.htm</ext-link>). Experimental procedures involving chicken embryos were conducted in accordance with International Guiding Principles for Biomedical Research Involving Animals established by Council for International Organizations of Medical Sciences (CIOMS) and approved by Saint-Petersburg State University Ethics Committee (statement # 131-03-2).</p>
+<p>To prepare FISH probes, PCR primers were designed from the <italic>de novo</italic> assembled rRNA gene cluster using Unipro UGENE 1.16.1 software package; their identity to the related regions of the assembled rRNA gene cluster was validated by standard sequencing. WAG137G04 BAC clone probe was produced by standard DOP-PCR amplification using 6MW primers [<xref ref-type="bibr" rid="pone.0157464.ref030">30</xref>].</p>
+<p>PCR amplification of the selected sequence areas was carried out in 20 μl of reaction mix as follows: Taq-pol 5U/μl (Sileks, Russia) – 0,5 μl; 10X Taq Buffer (Sileks, Russia) – 2 μl; MgCl2 25 mM (Sileks, Russia) – 2 μl; 10mM dNTP (2.5 mM each) (Sileks, Russia) – 1.6 μl; 10μM primer (10 pmol/μl) – 1 μl each; DNA – 0,5 μl; H<sub>2</sub>O – 11.4 μl. PCR protocol: 94°С–5’; (94°С–20”, 60°C–15”, 72°C–20”)35 сycles; 72°С–5’; 4°C–hold.</p>
+<p>Fluorescent probes were generated by labeling PCR products with modified biotin-16-dUTP nucleotide (Sileks, Russia) during amplification procedure. Biotin was detected with streptavidin-Alexa488 (Invitrogen, USA). FISH was carried out according to a published protocol [<xref ref-type="bibr" rid="pone.0157464.ref031">31</xref>]. The preps were additionally stained with 4’,6-diamidino-2-phenylindole (DAPI) in concentration of 1μg/ml. For establishing whether the fluorescent probe hybridization had taken place at NOR on GGA16, re-FISH with WAG137G04 BAC clone probe was carried out on the same preparations.</p>
+<p>FISH results were analyzed using DM4000В (Leica Microsystems CMS, GmbH) epifluorescent microscope. The images were processed using LAS AF software (Leica Microsystems CMS, GmbH) and superposed in Adobe Photoshop CS5.1 (Adobe Systems, Inc, USA).</p>
+</sec>
+</sec>
+<sec id="sec007" sec-type="conclusions">
+<title>Results and Discussion</title>
+<sec id="sec008">
+<title><italic>De novo</italic> rRNA gene cluster assembly</title>
+<p>We analyzed all GenBank sequences annotated as chicken rRNA gene cluster elements. Eight of them were completely rejected because of their short lengths or high homology to ribosomal DNA of other organisms (<xref ref-type="table" rid="pone.0157464.t002">Table 2</xref>). Veracity of nine others and related annotations were also under doubt because in GenBank were represented only in unique copies. Among the annotated chicken rDNA sequences, 18S rDNA fragment was only deposited to GenBank in several identical copies. We found neither <italic>ITS2/3’ETS</italic> nor the major part of <italic>28S rRNA</italic> gene annotated sequences related to chicken in Genbank.</p>
+<table-wrap id="pone.0157464.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0157464.t002</object-id>
+<label>Table 2</label> <caption><title>The rejected sequences of chicken rDNA.</title></caption>
+<alternatives>
+<graphic id="pone.0157464.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="justify">NCBI accession number</th>
+<th align="justify">Annotation</th>
+<th align="justify">Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="justify">FJ008990</td>
+<td align="left"><italic>18S rRNA</italic> gene, <italic>ITS1</italic>, <italic>5</italic>.<italic>8S rRNA</italic> gene, <italic>ITS2</italic>, <italic>28S rRNA</italic> gene</td>
+<td align="justify">Unpublished</td>
+</tr>
+<tr>
+<td align="justify">D38360</td>
+<td align="left"><italic>18S rRNA</italic> gene</td>
+<td align="justify">[<xref ref-type="bibr" rid="pone.0157464.ref032">32</xref>]</td>
+</tr>
+<tr>
+<td align="justify">K01379</td>
+<td align="left"><italic>18S rRNA</italic> gene</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref033">33</xref>]</td>
+</tr>
+<tr>
+<td align="justify">AH001604</td>
+<td align="left"><italic>28S rRNA</italic> gene</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref034">34</xref>]</td>
+</tr>
+<tr>
+<td align="justify">M59792</td>
+<td align="left"><italic>28S rRNA</italic> gene</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref034">34</xref>]</td>
+</tr>
+<tr>
+<td align="justify">M59414</td>
+<td align="justify"><italic>28S rRNA</italic> gene</td>
+<td align="left">[<xref ref-type="bibr" rid="pone.0157464.ref034">34</xref>]</td>
+</tr>
+<tr>
+<td align="justify">DQ018755</td>
+<td align="justify"><italic>5</italic>.<italic>8S rRNA</italic> gene, <italic>ITS2</italic>, <italic>28S rRNA</italic> gene</td>
+<td align="justify">Unpublished</td>
+</tr>
+<tr>
+<td align="justify">DQ018753</td>
+<td align="left"><italic>ITS1</italic>, <italic>5</italic>.<italic>8S rRNA</italic> gene, <italic>ITS2</italic></td>
+<td align="justify">Unpublished</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>We selected the sequences reliably annotated as chicken rRNA gene cluster fragments to identify homologous WGS contigs in GenBank. <italic>Gallus gallus</italic> WGS project (accession number AADN00000000.3) in total contains 19 contigs. These contigs appeared to belong to chicken rRNA gene cluster. However, in the proposed rRNA gene cluster sequence, contig overlappings were absent at three sites and no contigs containing either <italic>28S rRNA</italic> gene 3’end or <italic>3’ETS</italic> sequence were found. The overlapping contig length was 9230 bp. The total length of overlapping annotated sequences and contigs from the transcription initial site was 9931 bp (<xref ref-type="supplementary-material" rid="pone.0157464.s010">S1 Table</xref>).</p>
+<p>The maximum overlapped area was found in a <italic>18S rRNA</italic> gene sequence of 388 bp assembled from ten homologous sequences (six contigs and four annotated sequences). This 388 bp sequence served as a primary reference for our rRNA gene cluster <italic>de novo</italic> assembly using raw reads obtained earlier (NCBI SRA accession number DRX001863) [<xref ref-type="bibr" rid="pone.0157464.ref020">20</xref>]. 388 bp DNA fragment homologous reads were identified in BLAST and aligned in Unipro UGENE v. 1.16.1. The hanging ends of the consensus sequence were tiled in Geneious 9.0.5. As a result, we assembled a sequence of 12053 bp, a 11994 bp sequence being upstream of a pre-rRNA transcription initiator site representing a uninterrupted contig.</p>
+<p>In total, we used 941443 forward and reverse reads. Sequence mean coverage with reads was 1767 per site.</p>
+</sec>
+<sec id="sec009">
+<title>FISH co-localization assembled sequence fragments with NOR</title>
+<p>To verify the assembled sequence relation to the NOR on GGA16, we applied serial re-FISH to chicken mitotic chromosomes. The probes to areas from 1829 to 2024 bp and from 6189 to 6358 bp, presumably associated with <italic>5’ETS–18S</italic> rDNA and <italic>ITS1–5</italic>.<italic>8S</italic> rDNA boundaries respectively within the assembled sequence, were obtained from genome DNA by primer synthesis (<xref ref-type="table" rid="pone.0157464.t003">Table 3</xref>). Probe were 196 bp and 170 bp in length respectively. The primers were computed based on the assembled rRNA gene cluster. Probe adequacy was validated by standard sequencing. The NOR probe was produced by DOP-PCR amplification of WAG137G04 BAC-clone known to contain a chicken GGA16 fragment comprising NOR [<xref ref-type="bibr" rid="pone.0157464.ref019">19</xref>]. On chicken mitotic plates, all probes were hybridized to similar positions on two homologous microchromosomes (<xref ref-type="fig" rid="pone.0157464.g002">Fig 2</xref>). Our findings reliably confirm that our assembly strongly matches chicken NOR.</p>
+<fig id="pone.0157464.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0157464.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Localization of assembled rRNA gene cluster fragments on chicken mitotic chromosomes.</title>
+<p>FISH with (A) <italic>5’ETS–18S</italic> rDNA fragment probe, (D) <italic>ITS1–5</italic>.<italic>8S</italic> rDNA fragment probe, (B, E) WAG137G04 BAC probe, which contains NOR, marker of GGA16, (C, F) merge. A, D–green fluorescence; B, E–red fluorescence; C, F–merge. Chromosomes are counterstained with DAPI (blue). Bar – 5 μm.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.g002" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0157464.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0157464.t003</object-id>
+<label>Table 3</label> <caption><title>The list of primers for amplification of target regions of the assembled ribosomal cluster sequence.</title></caption>
+<alternatives>
+<graphic id="pone.0157464.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="justify">Primer designed</th>
+<th align="justify">Fragment length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="justify">F1829 5’-AGAGAGGGAAGGAGCGAGAG-3’</td>
+<td align="justify">196 bp</td>
+</tr>
+<tr>
+<td align="justify">R2024 5’-GAGCGACCAAAGGAACCATA-3’</td>
+<td align="justify"/>
+</tr>
+<tr>
+<td align="justify">F6189 5’-CAAGGCGAGAGAGAACGAG-3’</td>
+<td align="justify">170 bp</td>
+</tr>
+<tr>
+<td align="left">R6358 5’-AGTGCGTTCGAAGTGTCGAT-3’</td>
+<td align="justify"/>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec010">
+<title>BAC clone sequencing and reference assembly of rRNA gene cluster</title>
+<p>WAG137G04 BAC clone -containing chicken NOR was sequenced using Illumina MiSeq to check whether the assembled sequence was really a chicken rRNA gene cluster. In total, 941780 forward and reverse reads were obtained. The mean read length was 239 bp. The BAC clone raw reads library was submitted to SRA database (GenBank accession number: SRP069763; BioProject accession number PRJNA311164). The <italic>de novo</italic> assembled rRNA gene cluster was used as a reference sequence. The assembling was carried out in Geneious 9.0.5. 91444 reads were found to be homologous to the reference sequence. Mean reference coverage was 1713. A total of 98.3% of the reference sequence overlapped the reads. The <italic>de novo</italic> and re-assembled variants of the rRNA gene cluster sequence demonstrate 99.7% identity in the overlap area (<xref ref-type="supplementary-material" rid="pone.0157464.s012">S3 Table</xref>). Therefore, our results demonstrate that the assembled <italic>de novo</italic> sequence of 12053 bp represents a chicken rRNA gene cluster.</p>
+</sec>
+<sec id="sec011">
+<title>Chicken rRNA gene cluster sequence annotation</title>
+<p>Chicken rRNA gene cluster sequence was described through comparison with the most completely annotated Tetrapoda rDNA sequences in Genbank: <italic>H</italic>.<italic>sapiens</italic>, <italic>R</italic>.<italic>norvegicus</italic>, <italic>M</italic>.<italic>musculus</italic>, <italic>X</italic>.<italic>laevis</italic> and <italic>C</italic>.<italic>porosus</italic> (<xref ref-type="supplementary-material" rid="pone.0157464.s011">S2 Table</xref>).</p>
+<sec id="sec012">
+<title><italic>5’ETS</italic></title>
+<p>The validity of our chicken rRNA <italic>5’ETS</italic> assembly was confirmed using seven WGS contigs (<xref ref-type="table" rid="pone.0157464.t001">Table 1</xref>). Additionally, we used a chicken sequence (GenBank accession number: DQ112354) containing the entire RNApolI promoter and a pre-rRNA initiation site [<xref ref-type="bibr" rid="pone.0157464.ref011">11</xref>]. These WGS contigs and annotated sequences overlapped 63.9% and 14.8% of the assembly respectively (<xref ref-type="supplementary-material" rid="pone.0157464.s010">S1 Table</xref>). Within the designated boundaries (<xref ref-type="supplementary-material" rid="pone.0157464.s001">S1 Fig</xref>) the length of <italic>5’ETS</italic> is 1836 bp (from 1 to 1836 bp) (<xref ref-type="supplementary-material" rid="pone.0157464.s011">S2 Table</xref>). Within the assembled <italic>5’ETS</italic>, repeating sequences account for 6.4% of its size and are composed of (GCGA)n and (GAGA)n nucleotide combinations and (CGG)n and (GCC)n reverse repeats, the latter being responsible for formation of hairpins related to rRNA processing. The <italic>5’ETS</italic> sequence was also found to feature increased GC pair content – 75.0%. At the same time, CpG content in chicken <italic>5'ETS</italic> (15.7%) is comparable to CpG content in <italic>5'ETS</italic> of human (16.6%) and xenopus (15.5%).</p>
+<p>Despite significant variation in <italic>5'ETS</italic> length among these three species (1961, 3656 and 713 bp, respectively) and lack of a clear homology (<xref ref-type="supplementary-material" rid="pone.0157464.s011">S2 Table</xref>), their CpG content variability does not exceed 1.1%. The CpG dinucleotide content similarity in varying sequences from quite distant animal taxa probably suggests the importance of CpG role in promoter and spacer functions of <italic>5'ETS</italic>. It might also be indicative of the existence of a stabilizer for spacer nucleotide content.</p>
+</sec>
+<sec id="sec013">
+<title><italic>18S rRNA</italic> gene</title>
+<p>To confirm the accuracy of our assembly, six WGS contigs and five annotated sequences of fragments of <italic>18S rRNA</italic> gene were used in addition to raw sequences (<xref ref-type="table" rid="pone.0157464.t001">Table 1</xref>). These WGS contigs and annotated sequences overlapped 100% and 99.4% of the assembly respectively (<xref ref-type="supplementary-material" rid="pone.0157464.s010">S1 Table</xref>). Within the designated boundaries (<xref ref-type="supplementary-material" rid="pone.0157464.s002">S2 Fig</xref>) the length of complete <italic>18S rRNA</italic> sequences was 1823 bp (from 1837 to 3659 bp starting from the transcription initiation site; <xref ref-type="supplementary-material" rid="pone.0157464.s011">S2 Table</xref>), which is virtually the same as the length of <italic>X</italic>. <italic>laevis 18S rRNA</italic> (1825 bp). GC pair content is 54.5% and is also comparable to other taxon data: <italic>H</italic>. <italic>sapiens</italic> (56.1%), <italic>X</italic>. <italic>laevis</italic> (53.8%), <italic>C</italic>. <italic>porosus</italic> (49.5%).</p>
+</sec>
+<sec id="sec014">
+<title><italic>ITS1</italic></title>
+<p>ITS1 sequence deposited to GenBank by Tang et al. (DQ018754, complete sequence; DQ018752, partial sequence) and Chen et al. (FJ008990, complete sequence) were found to be mismatched. We did define chicken ITS1 structure more precisely through tiling assembly of raw sequences and 5 WGS contigs. WGS contigs overlapped 83% of ITS1 assembly (<xref ref-type="supplementary-material" rid="pone.0157464.s010">S1 Table</xref>). Within the designated boundaries (<xref ref-type="supplementary-material" rid="pone.0157464.s003">S3 Fig</xref>) the length of chicken 1TS1 is 2530 bp (from 3660 to 6189 bp) (<xref ref-type="supplementary-material" rid="pone.0157464.s011">S2 Table</xref>). Our entire ITS1 sequences are homologous to the version offered by Tang et al., with the exception of spacer boundaries and 430 bp insertion in position 4898–5328 bp starting from the transcription initiation site. ITS1 nucleotide content analysis resulted in high GC pair content – 82.2% and high CpG dinucleotide content – 20.1%. Repeats account for 13.4% of ITS1 size and are composed of the following nucleotide combinations: (CCGAGG)n, (CCGGT)n, (GC)n, (GGGGGCC)n, (GAG)n и (GGCGCG)n. High GC pair content in ITS1 sequence leads to formation of multiple hairpin structures. In accordance with the models produced for T – 60°C, [K<sup>+</sup>] – 50 mM PCR conditions, complete hairpin dissociation does not take place (<xref ref-type="supplementary-material" rid="pone.0157464.s004">S4 Fig</xref>). Under such conditions, the average increment of Gibbs free energy (ΔG) in ITS1 sequence in ssDNA form is – 183.23.</p>
+</sec>
+<sec id="sec015">
+<title><italic>5</italic>.<italic>8S rRNA</italic> gene</title>
+<p>For assembly validation two WGS contigs and an annotated sequence (GenBank accession number: DQ018754) (<xref ref-type="table" rid="pone.0157464.t001">Table 1</xref>) were used. These WGS contigs and annotated sequences overlapped 100% and 66.2% of the assembly respectively (<xref ref-type="supplementary-material" rid="pone.0157464.s010">S1 Table</xref>). Upon alignment (<xref ref-type="supplementary-material" rid="pone.0157464.s005">S5 Fig</xref>) the length of chicken <italic>5</italic>.<italic>8S rRNA</italic> gene was 157 bp (from 6190 to 6346 bp) and similar to the equivalent human gene (<xref ref-type="supplementary-material" rid="pone.0157464.s011">S2 Table</xref>). The number of GC pars in chicken <italic>5</italic>.<italic>8S rRNA</italic> sequence was also similar to human (57.3% and 57.4% respectively).</p>
+</sec>
+<sec id="sec016">
+<title><italic>ITS2</italic></title>
+<p>Chicken <italic>ITS2</italic> assembly was validated using two overlapping WGS contigs (<xref ref-type="table" rid="pone.0157464.t001">Table 1</xref>), assembly overlapped being 100% (<xref ref-type="supplementary-material" rid="pone.0157464.s010">S1 Table</xref>). We excluded from the analysis sequences DQ018753, DQ018755 and FJ008990, which are annotated as containing chicken <italic>ITS2</italic>. The reason was that the related gene flank sequences were found non-homologous to 3’-end of <italic>5</italic>.<italic>8S rRNA</italic> sequence and to <italic>5</italic>’-end of chicken <italic>28S rRNA</italic>. Within the designated boundaries (<xref ref-type="supplementary-material" rid="pone.0157464.s006">S6 Fig</xref>) the length of chicken <italic>1TS2</italic> was 733 bp (from 6347 to 7079 bp) (<xref ref-type="supplementary-material" rid="pone.0157464.s011">S2 Table</xref>). Repeats account for 24.3% of spacer size. These repeats are composed of the following nucleotide combinations: (CCGT)n, (GCGCG)n, (CGTT)n, (CCGT)n, (GCG)n. The sequence features increased GC pair content – 82.0% and CpG dinucleotide content – 20.7% which is virtually similar to <italic>ITS1</italic> values (see above). Similarly to <italic>ITS1</italic>, <italic>ITS2</italic> also feature formation of extended hairpins with high melting temperature. According to our results obtained under standard PCR parameters, ΔG = -62.5 (<xref ref-type="supplementary-material" rid="pone.0157464.s007">S7 Fig</xref>).</p>
+</sec>
+<sec id="sec017">
+<title><italic>28S rRNA</italic> gene</title>
+<p>The assembled chicken <italic>28S rRNA</italic> sequence was verified using six WGS contigs and five annotated sequences from GenBank (<xref ref-type="table" rid="pone.0157464.t001">Table 1</xref>). These WGS contigs and annotated sequences overlapped 76.7% and 69.7% of the assembly respectively (<xref ref-type="supplementary-material" rid="pone.0157464.s010">S1 Table</xref>). Within the designated boundaries (<xref ref-type="supplementary-material" rid="pone.0157464.s008">S8 Fig</xref>) chicken <italic>28S rRNA</italic> gene length is 4441 bp (from 7080 to 11520 bp) (<xref ref-type="supplementary-material" rid="pone.0157464.s011">S2 Table</xref>). GC pair content in <italic>28S rRNA</italic> chicken gene is much higher than in <italic>18S</italic> and <italic>5</italic>.<italic>8S rRNA</italic> genes and achieves as much as 68.0%.</p>
+</sec>
+<sec id="sec018">
+<title><italic>3’ETS</italic></title>
+<p>Chicken <italic>3’ETS</italic> sequence was assembled from raw reads. The length of the initial assembly was 474 bp. Yet we were unable to define precisely the position of the 3’-end of <italic>3’ETS</italic> due to lack of data on the sequence of Sal1-box, the variable element of RNApolI transcription termination [<xref ref-type="bibr" rid="pone.0157464.ref035">35</xref>].</p>
+<p>Based on comparison of <italic>3’ETS</italic> length and nucleotide content in other organisms (345 bp / 82.9% GC in human, 521 bp / 75.62% GC in mouse, 236 bp / 84.32% GC in xenopus), we can assume that in chicken pre-rRNA transcription termination could occur at 11863 bp position. In chicken <italic>3’ETS</italic> sequence, the region between 11864 bp and 11994 bp is a poly-T region (<xref ref-type="supplementary-material" rid="pone.0157464.s010">S1 Table</xref>). This region has not been reported to exist in <italic>3’ETS</italic> of <italic>H</italic>.<italic>sapiens</italic>, <italic>M</italic>.<italic>musculus</italic>, and <italic>X</italic>.<italic>laevis</italic> (<xref ref-type="supplementary-material" rid="pone.0157464.s009">S9 Fig</xref>). An analysis of 343 bp (from 11521 to 11863 bp) of the <italic>3’ETS</italic> region has resulted in 79.9% and 18.9% of GC pair and CpG dinucleotide content respectively. (GC)n, (CGTT)n and (CGGC)n repeats constitute about 24.78% of the analyzed sequence. These results indicate a certain similarity between the 5’<italic>ETS</italic> and internal ribosomal cluster spacers. We believe that this phenomenon could be related to the existence of a general evolutionary mechanism supporting this stability of spacer nucleotide content within the ribosomal cluster sequence in birds.</p>
+</sec>
+</sec>
+<sec id="sec019">
+<title><italic>ITS1</italic> and <italic>ITS2</italic> features</title>
+<p>We have shown chicken <italic>ITS1</italic> sequence to be more extended than that of most animals, with the exception of marsupials [<xref ref-type="bibr" rid="pone.0157464.ref036">36</xref>]. Chicken <italic>ITS2</italic> has also proved to be far more extended than reported earlier (GenBank accession numbers: DQ018753, DQ018755, FJ008990). Our attempts to amplify chicken <italic>ITS1</italic> and <italic>ITS2</italic> using routine PCR with different thermostable polymerases and GC-enhancers as well as to obtain their complete sequences have been unsuccessful. Our findings suggest that the key problem in avian <italic>ITS1</italic> and <italic>ITS2</italic> amplification and sequencing related to high CG pair content and secondary structure formation. These factors impact polymerase effect in PCR process and increase the probability of AT-enriched regions non-specific amplification. This is quite likely to be the main reason for the poor representation of annotated avian ribosomal cluster sequences in the current version of GenBank (<xref ref-type="table" rid="pone.0157464.t004">Table 4</xref>).</p>
+<table-wrap id="pone.0157464.t004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0157464.t004</object-id>
+<label>Table 4</label> <caption><title>GenBank representation of <italic>ITS1</italic> and <italic>ITS2</italic> sequences.</title></caption>
+<alternatives>
+<graphic id="pone.0157464.t004g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.t004" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" rowspan="2">Taxonomic group</th>
+<th align="center" colspan="2">Number of deposited sequences</th>
+</tr>
+<tr>
+<th align="center"><italic>ITS1</italic></th>
+<th align="center"><italic>ITS2</italic></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Nematoda</td>
+<td align="center">7301</td>
+<td align="center">7283</td>
+</tr>
+<tr>
+<td align="left">Insecta</td>
+<td align="center">9616</td>
+<td align="center">19614</td>
+</tr>
+<tr>
+<td align="left">Mollusca</td>
+<td align="center">5729</td>
+<td align="center">4374</td>
+</tr>
+<tr>
+<td align="left">Chondrichthyes</td>
+<td align="center">22</td>
+<td align="center">193</td>
+</tr>
+<tr>
+<td align="left">Osteichthyes</td>
+<td align="center">1432</td>
+<td align="center">571</td>
+</tr>
+<tr>
+<td align="left">Amphibia</td>
+<td align="center">4</td>
+<td align="center">51</td>
+</tr>
+<tr>
+<td align="left">Reptilia</td>
+<td align="center">56</td>
+<td align="center">102</td>
+</tr>
+<tr>
+<td align="left"><bold>Aves</bold></td>
+<td align="center"><bold>5</bold></td>
+<td align="center"><bold>3</bold></td>
+</tr>
+<tr>
+<td align="left">Mammalia</td>
+<td align="center">22</td>
+<td align="center">23</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>Notably, among the eight avian sequences deposited to GenBank, only three actually belong to ribosomal clusters, namely to <italic>ITS1</italic> sequence. At the same time, complete decoding of the ribosomal cluster sequence in different groups of organisms is of a great value for various fields of biology, primarily systematics, phylogeny, and ecology. Our alignment of chicken rRNA gene complete cluster might be useful for comparative research in these fields. In the majority of animals, including birds, the order of alternation of coding and spacer sequences within rRNA gene clusters is conserved. Yet spacer sequences, particularly <italic>ITS1</italic> and <italic>ITS2</italic>, are characterized by high variability. Due to this they are used extensively as DNA barcodes as well as nuclear markers of micro- and macro-evolutionary events [<xref ref-type="bibr" rid="pone.0157464.ref037">37</xref>–<xref ref-type="bibr" rid="pone.0157464.ref040">40</xref>]. However, the features of avian <italic>ITS1</italic> and <italic>ITS2</italic> do not allow treating their sequences as easily accessible and effective DNA barcodes or phylogenetic markers for this class.</p>
+</sec>
+</sec>
+<sec id="sec020" sec-type="conclusions">
+<title>Conclusions</title>
+<p>In this work, we determined, verified, and featured the complete sequence of chicken ribosomal cluster <bold>(</bold><xref ref-type="fig" rid="pone.0157464.g003">Fig 3</xref><bold>)</bold>. The assembled chicken cluster is 11863 bp in length and contains complete <italic>5’ETS</italic>, <italic>18S rRNA</italic>, <italic>ITSI</italic>, <italic>5</italic>.<italic>8S rRNA</italic>, <italic>ITS2</italic>, <italic>28S rRNA</italic> sequences as well as <italic>3’ETS</italic> sequence 5’-end. This cluster sequence was deposited to GenBank under accession number KT445934. Chicken <italic>18S</italic>, <italic>5</italic>.<italic>8S</italic> and <italic>28S rRNA</italic> gene sequences are typical for orther tetrapods. However both <italic>ITS1</italic> and <italic>ITS2</italic> were found to be more extended in size and higher in GC content. As a result, they have a complicated secondary structure that prevents their PCR amplification and consequently their use as phylogenetic markers. It seems more promising to use a relatively less GC-enriched <italic>5’ETS</italic> sequence for phylogeny purposes. Meanwhile, <italic>ITS1</italic>, <italic>ITS2</italic> and <italic>3’ETS</italic> sequences revealed similarities in the GC, CpG and repeated sequence contents. Thus it seems possible to suggest the existence of a general evolutionary mechanism supporting the spacer constant nucleotide proportions within avian rDNA genome.</p>
+<fig id="pone.0157464.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0157464.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>The chicken rRNA gene cluster structure and features.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.g003" xlink:type="simple"/>
+</fig>
+<p>Chicken rRNA gene cluster structure knowledge extends the use of birds as a model object for exploration of NOR regulation, particularly in ontogenesis and cell differentiation. Our results could be useful for developing optimal solutions in the areas of population genetics and evolution.</p>
+</sec>
+<sec id="sec021">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0157464.s001" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s001" xlink:type="simple">
+<label>S1 Fig</label>
+<caption>
+<title>Chicken <italic>5’ETS</italic> sequence boundaries resulted from a multiple sequence alignment.</title>
+<p>Black frames outline the elements of the ribosomal cluster. Cluster members are schematically indicated by colored boxes. Asterisk–chicken pre-rRNA transcription initiation site. Arrow–transcription direction. Double slashes schematically point the hidden area of alignment. Extreme right and left–accession numbers and taxa abbreviations relating to the sequences located before and after the hidden area of the alignment, respectively. G. gal–<italic>Gallus gallus</italic>; R. nor–<italic>Rattus norvegicus</italic>; C. por–<italic>Crocodylus porosus</italic>; X. laev–<italic>Xenopus laevis</italic>; H. sap–<italic>Homo sapiens</italic>; M. mus–<italic>Mus musculus</italic>. KT445934.2_G. gal–sequence assembled by raw read tiling.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s002" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s002" xlink:type="simple">
+<label>S2 Fig</label>
+<caption>
+<title><italic>18S rRNA</italic> gene sequence boundaries resulted from a multiple sequence alignment.</title>
+<p>Indications are the same as in <xref ref-type="supplementary-material" rid="pone.0157464.s001">S1 Fig</xref>.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s003" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s003" xlink:type="simple">
+<label>S3 Fig</label>
+<caption>
+<title>Chicken <italic>ITS1</italic> sequence boundaries resulted from a multiple sequence alignment.</title>
+<p>Indications are the same as in <xref ref-type="supplementary-material" rid="pone.0157464.s001">S1 Fig</xref>.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s004" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s004" xlink:type="simple">
+<label>S4 Fig</label>
+<caption>
+<title>Chicken <italic>ITS1</italic> ssDNA secondary structures under the conditions of T = 60°C, [K<sup>+</sup>] = 50 mM.</title>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s005" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s005" xlink:type="simple">
+<label>S5 Fig</label>
+<caption>
+<title>Chicken <italic>5</italic>.<italic>8S rRNA</italic> gene sequence boundaries resulted from a multiple sequence alignment.</title>
+<p>Indications are the same as in <xref ref-type="supplementary-material" rid="pone.0157464.s001">S1 Fig</xref>.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s006" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s006" xlink:type="simple">
+<label>S6 Fig</label>
+<caption>
+<title>Chicken <italic>ITS2</italic> sequence boundaries resulted from a multiple sequence alignment.</title>
+<p>Indications are the same as in <xref ref-type="supplementary-material" rid="pone.0157464.s001">S1 Fig</xref>.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s007" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s007" xlink:type="simple">
+<label>S7 Fig</label>
+<caption>
+<title>Chicken <italic>ITS2</italic> ssDNA secondary structures under the conditions of T = 60°C, [K<sup>+</sup>] = 50 mM.</title>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s008" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s008" xlink:type="simple">
+<label>S8 Fig</label>
+<caption>
+<title>Chicken <italic>28S rRNA</italic> gene sequence boundaries resulted from a multiple sequence alignment.</title>
+<p>Indications are the same as in <xref ref-type="supplementary-material" rid="pone.0157464.s001">S1 Fig</xref>.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s009" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s009" xlink:type="simple">
+<label>S9 Fig</label>
+<caption>
+<title>Chicken <italic>3’ETS</italic> sequence boundaries resulted from a multiple sequence alignment.</title>
+<p>Indications are the same as in <xref ref-type="supplementary-material" rid="pone.0157464.s001">S1 Fig</xref>.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s010" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s010" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>Raw read assembly verification using WGS contigs and annotated sequences.</title>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s011" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s011" xlink:type="simple">
+<label>S2 Table</label>
+<caption>
+<title>Multiple alignment matrix for chicken rRNA gene cluster boundaries search using annotated fragments of ribosomal clusters of <italic>Homo sapiens</italic>, <italic>Rattus norvegicus</italic>, <italic>Mus musculus</italic>, <italic>Xenopus laevis</italic> and <italic>Crocodylus porosus</italic>.</title>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0157464.s012" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0157464.s012" xlink:type="simple">
+<label>S3 Table</label>
+<caption>
+<title>De novo and re-assembled rRNA gene cluster sequence alignment.</title>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>We are grateful to Romain Solinhac and Valerie Fillon for kindly provided WAG137G04 BAC-clone. We acknowledge “Chromas” and “Molecular and Cell Technology” Saint-Petersburg State University Resource Centers.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0157464.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shaw</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Brown</surname> <given-names>J</given-names></name>. <article-title>Nucleoli: composition, function, and dynamics</article-title>. <source>Plant Physiol</source>. <year>2012</year>; <volume>158</volume>(<issue>1</issue>): <fpage>44</fpage>–<lpage>51</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1104/pp.111.188052" xlink:type="simple">10.1104/pp.111.188052</ext-link></comment> <object-id pub-id-type="pmid">22082506</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Smirnov</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Kalmárová</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Koberna</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Zemanová</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Malínský</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Masata</surname> <given-names>M</given-names></name>, <etal>et al</etal>. <article-title>NORs and their transcription competence during the cell cycle</article-title>. <source>Folia Biol</source>. <year>2006</year>; <volume>52</volume>(<issue>3</issue>): <fpage>59</fpage>–<lpage>70</lpage>.</mixed-citation></ref>
+<ref id="pone.0157464.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hernandez-Verdun</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Roussel</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Thiry</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sirri</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Lafontaine</surname> <given-names>DL</given-names></name>. <article-title>The nucleolus: structure/function relationship in RNA metabolism</article-title>. <source>Wiley Interdiscip Rev RNA</source>. <year>2010</year>; <volume>1</volume>(<issue>3</issue>): <fpage>415</fpage>–<lpage>431</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1002/wrna.39" xlink:type="simple">10.1002/wrna.39</ext-link></comment> <object-id pub-id-type="pmid">21956940</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bozinovic</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Sit</surname> <given-names>TL</given-names></name>, <name name-style="western"><surname>Hinton</surname> <given-names>DE</given-names></name>, <name name-style="western"><surname>Oleksiak</surname> <given-names>MF</given-names></name>. <article-title>Gene expression throughout a vertebrate's embryogenesis</article-title>. <source>BMC Genomics</source>. <year>2011</year> <month>Feb</month> <day>28</day>;<volume>12</volume>:<fpage>132</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1186/1471-2164-12-132" xlink:type="simple">10.1186/1471-2164-12-132</ext-link></comment> <object-id pub-id-type="pmid">21356103</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zheng</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Jia</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Bou</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Hu</surname> <given-names>LL</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>ZD</given-names></name>, <name name-style="western"><surname>Shen</surname> <given-names>XH</given-names></name>, <etal>et al</etal>. <article-title>rRNA genes are not fully activated in mouse somatic cell nuclear transfer embryos</article-title>. <source>J Biol Chem</source>. <year>2012</year>;<volume>287</volume>(<issue>24</issue>): <fpage>19949</fpage>–<lpage>19960</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1074/jbc.M112.355099" xlink:type="simple">10.1074/jbc.M112.355099</ext-link></comment> <object-id pub-id-type="pmid">22467869</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tafforeau</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Zorbas</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Langhendries</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Mullineux</surname> <given-names>ST</given-names></name>, <name name-style="western"><surname>Stamatopoulou</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Mullier</surname> <given-names>R</given-names></name>, <etal>et al</etal>. <article-title>The complexity of human ribosome biogenesis revealed by systematic nucleolar screening of Pre-rRNA processing factors</article-title>. <source>Mol Cell</source>. <year>2013</year>;<volume>51</volume>(<issue>4</issue>): <fpage>539</fpage>–<lpage>551</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.molcel.2013.08.011" xlink:type="simple">10.1016/j.molcel.2013.08.011</ext-link></comment> <object-id pub-id-type="pmid">23973377</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref007"><label>7</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Singer</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Berg</surname> <given-names>P</given-names></name>. <source>Genes and Genomes, a Changing Perspective</source>. <publisher-loc>Mill Valley</publisher-loc>: <publisher-name>University Science Books</publisher-name>; <year>1991</year>.</mixed-citation></ref>
+<ref id="pone.0157464.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Koepfli</surname> <given-names>KP</given-names></name>, <name name-style="western"><surname>Paten</surname> <given-names>B</given-names></name>. <collab>Genome 10K Community of Scientists</collab>, <name name-style="western"><surname>O'Brien</surname> <given-names>SJ</given-names></name>. <article-title>The Genome 10K Project: a way forward</article-title>. <source>Annu Rev Anim Biosci</source>. <year>2015</year>;<volume>3</volume>: <fpage>57</fpage>–<lpage>111</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1146/annurev-animal-090414-014900" xlink:type="simple">10.1146/annurev-animal-090414-014900</ext-link></comment> <object-id pub-id-type="pmid">25689317</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref009"><label>9</label><mixed-citation publication-type="other" xlink:type="simple">NCBI GenBank database. Available: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/genbank" xlink:type="simple">http://www.ncbi.nlm.nih.gov/genbank</ext-link></mixed-citation></ref>
+<ref id="pone.0157464.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Yelbuz</surname> <given-names>TM</given-names></name>, <name name-style="western"><surname>Cofer</surname> <given-names>GP</given-names></name>, <name name-style="western"><surname>Choma</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Kirby</surname> <given-names>ML</given-names></name>, <name name-style="western"><surname>Johnson</surname> <given-names>GA</given-names></name>. <article-title>Improved preparation of chick embryonic samples for magnetic resonance microscopy</article-title>. <source>Magn Reson Med</source>. <year>2003</year>;<volume>49</volume>(<issue>6</issue>): <fpage>1192</fpage>–<lpage>1195</lpage>. <object-id pub-id-type="pmid">12768599</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Massin</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Rodrigues</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Marasescu</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>van der Werf</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Naffakh</surname> <given-names>N</given-names></name>. <article-title>Cloning of the chicken RNA polymerase I promoter and use for reverse genetics of influenza A viruses in avian cells</article-title>. <source>J Virol</source>. <year>2005</year>;<volume>79</volume>(<issue>21</issue>):<fpage>13811</fpage>–<lpage>6</lpage>. <object-id pub-id-type="pmid">16227302</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><collab>International Chicken Genome Sequencing Consortium</collab>. <article-title>Sequence and comparative analysis of the chicken genome provide unique perspectives on vertebrate evolution</article-title>. <source>Nature</source>. <year>2004</year>;<volume>432</volume>(<issue>7018</issue>): <fpage>695</fpage>–<lpage>716</lpage>. <object-id pub-id-type="pmid">15592404</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhang</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Larkin</surname> <given-names>DM</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>C</given-names></name>, <etal>et al</etal>. <article-title>Comparative genomics reveals insights into avian genome evolution and adaptation</article-title>. <source>Science</source>. <year>2014</year>;<volume>346</volume>(<issue>6215</issue>): <fpage>1311</fpage>–<lpage>1320</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1126/science.1251385" xlink:type="simple">10.1126/science.1251385</ext-link></comment> <object-id pub-id-type="pmid">25504712</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Auer</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Mayr</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Lambrou</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Schleger</surname> <given-names>W</given-names></name>. <article-title>An extended chicken karyotype, including the NOR chromosome</article-title>. <source>Cytogenet Cell Genet</source>. <year>1987</year>;<volume>45</volume>(<issue>3–4</issue>): <fpage>218</fpage>–<lpage>221</lpage>. <object-id pub-id-type="pmid">3691189</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Miller</surname> <given-names>MM</given-names></name>, <name name-style="western"><surname>Goto</surname> <given-names>RM</given-names></name>, <name name-style="western"><surname>Taylor</surname> <given-names>RL</given-names> <suffix>Jr</suffix></name>, <name name-style="western"><surname>Zoorob</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Auffray</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Briles</surname> <given-names>RW</given-names></name>, <etal>et al</etal>. <article-title>Assignment of Rfp-Y to the chicken major histocompatibility complex/NOR microchromosome and evidence for high-frequency recombination associated with the nucleolar organizer region</article-title>. <source>Proc Natl Acad Sci USA</source>. <year>1996</year>;<volume>93</volume>(<issue>9</issue>): <fpage>3958</fpage>–<lpage>3962</lpage>. <object-id pub-id-type="pmid">8632997</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wain</surname> <given-names>HM</given-names></name>, <name name-style="western"><surname>Toye</surname> <given-names>AA</given-names></name>, <name name-style="western"><surname>Hughes</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Bumstead</surname> <given-names>N</given-names></name>. <article-title>Targeting of marker loci to chicken chromosome 16 by representational difference analysis</article-title>. <source>Anim Genet</source>. <year>1998</year>;<volume>29</volume>(<issue>6</issue>):<fpage>446</fpage>–<lpage>452</lpage>. <object-id pub-id-type="pmid">9883506</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Masabanda</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Burt</surname> <given-names>DW</given-names></name>, <name name-style="western"><surname>O'Brien</surname> <given-names>PC</given-names></name>, <name name-style="western"><surname>Vignal</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Fillon</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Walsh</surname> <given-names>PS</given-names></name>, <etal>et al</etal>. <article-title>Molecular cytogenetic definition of the chicken genome: the first complete avian karyotype</article-title>. <source>Genetics</source>. <year>2004</year>;<volume>166</volume>(<issue>3</issue>): <fpage>1367</fpage>–<lpage>1373</lpage>. <object-id pub-id-type="pmid">15082555</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Delany</surname> <given-names>ME</given-names></name>, <name name-style="western"><surname>Gessaro</surname> <given-names>TM</given-names></name>, <name name-style="western"><surname>Rodrigue</surname> <given-names>KL</given-names></name>, <name name-style="western"><surname>Daniels</surname> <given-names>LM</given-names></name>. <article-title>Chromosomal mapping of chicken mega-telomere arrays to GGA9, 16, 28 and W using a cytogenomic approach</article-title>. <source>Cytogenet Genome Res</source>. <year>2007</year>;<volume>117</volume>(<issue>1–4</issue>): <fpage>54</fpage>–<lpage>63</lpage>. <object-id pub-id-type="pmid">17675845</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Solinhac</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Leroux</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Galkina</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Chazara</surname> <given-names>O</given-names></name>, <name name-style="western"><surname>Feve</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Vignoles</surname> <given-names>F</given-names></name>, <etal>et al</etal>. <article-title>Integrative mapping analysis of chicken microchromosome 16 organization</article-title>. <source>BMC Genomics</source>. <year>2010</year> <month>Nov</month> <day>4</day>;<volume>11</volume>:<fpage>616</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1186/1471-2164-11-616" xlink:type="simple">10.1186/1471-2164-11-616</ext-link></comment> <object-id pub-id-type="pmid">21050458</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shang</surname> <given-names>WH</given-names></name>, <name name-style="western"><surname>Hori</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Martins</surname> <given-names>NM</given-names></name>, <name name-style="western"><surname>Toyoda</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Misu</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Monma</surname> <given-names>N</given-names></name>, <etal>et al</etal>. <article-title>Chromosome engineering allows the efficient isolation of vertebrate neocentromeres</article-title>. <source>Dev Cell</source>. <year>2013</year>;<volume>24</volume>(<issue>6</issue>): <fpage>635</fpage>–<lpage>648</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.devcel.2013.02.009" xlink:type="simple">10.1016/j.devcel.2013.02.009</ext-link></comment> <object-id pub-id-type="pmid">23499358</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref021"><label>21</label><mixed-citation publication-type="other" xlink:type="simple">NCBI Nucleotide database. Available: <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/nuccore" xlink:type="simple">http://www.ncbi.nlm.nih.gov/nuccore</ext-link>.</mixed-citation></ref>
+<ref id="pone.0157464.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>van Tuinen</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sibley</surname> <given-names>CG</given-names></name>, <name name-style="western"><surname>Hedges</surname> <given-names>SB</given-names></name>. <article-title>The early history of modern birds inferred from DNA sequences of nuclear and mitochondrial ribosomal genes</article-title>. <source>Mol Biol Evol</source>. <year>2000</year> <month>Mar</month>;<volume>17</volume>(<issue>3</issue>): <fpage>451</fpage>–<lpage>457</lpage>. <object-id pub-id-type="pmid">10723745</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Paśko</surname> <given-names>Ł</given-names></name>, <name name-style="western"><surname>Ericson</surname> <given-names>PG</given-names></name>, <name name-style="western"><surname>Elzanowski</surname> <given-names>A</given-names></name>. <article-title>Phylogenetic utility and evolution of indels: a study in neognathous birds</article-title>. <source>Mol Phylogenet Evol</source>. <year>2011</year>;<volume>61</volume>(<issue>3</issue>): <fpage>760</fpage>–<lpage>771</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.ympev.2011.07.021" xlink:type="simple">10.1016/j.ympev.2011.07.021</ext-link></comment> <object-id pub-id-type="pmid">21843647</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref024"><label>24</label><mixed-citation publication-type="other" xlink:type="simple">NCBI BLAST databases. Available: <ext-link ext-link-type="uri" xlink:href="http://blast.ncbi.nlm.nih.gov/Blast.cgi" xlink:type="simple">http://blast.ncbi.nlm.nih.gov/Blast.cgi</ext-link>.</mixed-citation></ref>
+<ref id="pone.0157464.ref025"><label>25</label><mixed-citation publication-type="other" xlink:type="simple">Unipro UGENE. Available: <ext-link ext-link-type="uri" xlink:href="http://ugene.net" xlink:type="simple">http://ugene.net</ext-link>.</mixed-citation></ref>
+<ref id="pone.0157464.ref026"><label>26</label><mixed-citation publication-type="other" xlink:type="simple">Geneious. Available: <ext-link ext-link-type="uri" xlink:href="http://www.geneious.com" xlink:type="simple">http://www.geneious.com</ext-link>.</mixed-citation></ref>
+<ref id="pone.0157464.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tamura</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Stecher</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Peterson</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Filipski</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Kumar</surname> <given-names>S</given-names></name>. <article-title>MEGA6: Molecular Evolutionary Genetics Analysis version 6.0</article-title>. <source>Molecular Biology and Evolution</source>. <year>2013</year>;<volume>30</volume>: <fpage>2725</fpage>–<lpage>2729</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1093/molbev/mst197" xlink:type="simple">10.1093/molbev/mst197</ext-link></comment> <object-id pub-id-type="pmid">24132122</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref028"><label>28</label><mixed-citation publication-type="other" xlink:type="simple">RepeatMasker. Available: <ext-link ext-link-type="uri" xlink:href="http://www.repeatmasker.org" xlink:type="simple">http://www.repeatmasker.org</ext-link>.</mixed-citation></ref>
+<ref id="pone.0157464.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zuker</surname> <given-names>M</given-names></name>. <article-title>Mfold web server for nucleic acid folding and hybridization prediction</article-title>. <source>Nucleic Acids Res</source>. <year>2003</year>;<volume>31</volume>(<issue>13</issue>): <fpage>3406</fpage>–<lpage>3415</lpage>. <object-id pub-id-type="pmid">12824337</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Telenius</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Carter</surname> <given-names>NP</given-names></name>, <name name-style="western"><surname>Bebb</surname> <given-names>CE</given-names></name>, <name name-style="western"><surname>Nordenskjold</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Ponder</surname> <given-names>BAJ</given-names></name>, <name name-style="western"><surname>Tunnacliffe</surname> <given-names>A</given-names></name>. <article-title>Degenerate oligonucleotide-primed PCR: General amplification of target DNA by a single degenerate primer</article-title>. <source>Genomics</source>.<year>1992</year>;<volume>13</volume>: <fpage>718</fpage>–<lpage>725</lpage>. <object-id pub-id-type="pmid">1639399</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Galkina</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Deryusheva</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Fillon</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Vignal</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Crooijmans</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Groenen</surname> <given-names>M</given-names></name>, <etal>et al</etal>. <article-title>FISH on avian lampbrush chromosomes produces higher resolution gene mapping</article-title>. <source>Genetica</source>. <year>2006</year>;<volume>128</volume>: <fpage>241</fpage>–<lpage>251</lpage>. <object-id pub-id-type="pmid">17028954</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chikuni</surname> <given-names>K</given-names></name>., <name name-style="western"><surname>Minaka</surname> <given-names>N.</given-names></name>, <name name-style="western"><surname>Ikenaga</surname> <given-names>H.</given-names></name> <article-title>Molecular phylogeny of some Passeriformes, based on cytochrome b sequences</article-title>. <source>J. Yamashina Inst. for Ornithology</source>. <year>1995</year>;<volume>28</volume>: <fpage>1</fpage>–<lpage>8</lpage>.</mixed-citation></ref>
+<ref id="pone.0157464.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Azad</surname> <given-names>AA</given-names></name>, <name name-style="western"><surname>Deacon</surname> <given-names>NJ</given-names></name>. <article-title>The 3'-terminal primary structure of five eukaryotic 18S rRNAs determined by the direct chemical method of sequencing. The highly conserved sequences include an invariant region complementary to eukaryotic 5S rRNA</article-title>. <source>Nucleic Acids Res</source>. <year>1980</year>;<volume>8</volume>(<issue>19</issue>): <fpage>4365</fpage>–<lpage>4376</lpage>. <object-id pub-id-type="pmid">7433112</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hedges</surname> <given-names>SB</given-names></name>, <name name-style="western"><surname>Moberg</surname> <given-names>KD</given-names></name>, <name name-style="western"><surname>Maxson</surname> <given-names>LR</given-names></name>. <article-title>Tetrapod phylogeny inferred from 18S and 28S ribosomal RNA sequences and a review of the evidence for amniote relationships</article-title>. <source>Mol Biol Evol</source>. <year>1990</year>;<volume>7</volume>(<issue>6</issue>): <fpage>607</fpage>–<lpage>633</lpage>. <object-id pub-id-type="pmid">2283953</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Evers</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Grummt</surname> <given-names>I</given-names></name>. <article-title>Molecular coevolution of mammalian ribosomal gene terminator sequences and the transcription termination factor TTF-I</article-title>. <source>Proc Natl Acad Sci USA</source>. <year>1995</year>;<volume>92</volume>(<issue>13</issue>): <fpage>5827</fpage>–<lpage>5831</lpage>. <object-id pub-id-type="pmid">7597036</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Coleman</surname> <given-names>AW</given-names></name>. <article-title>Analysis of mammalian rDNA internal transcribed spacers</article-title>. <source>PLoS One</source>. <year>2013</year> <month>Nov</month> <day>19</day>;<volume>8</volume>(<issue>11</issue>):<fpage>e79122</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0079122" xlink:type="simple">10.1371/journal.pone.0079122</ext-link></comment> <object-id pub-id-type="pmid">24260162</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bellemain</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Carlsen</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Brochmann</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Coissac</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Taberlet</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Kauserud</surname> <given-names>H</given-names></name>. <article-title>ITS as an environmental DNA barcode for fungi: an in silico approach reveals potential PCR biases</article-title>. <source>BMC Microbiol</source>. <year>2010</year> <month>Jul</month> <day>9</day>;<volume>10</volume>:<fpage>189</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1186/1471-2180-10-189" xlink:type="simple">10.1186/1471-2180-10-189</ext-link></comment> <object-id pub-id-type="pmid">20618939</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yao</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Song</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Luo</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Han</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>Y</given-names></name>, <etal>et al</etal>. <article-title>Use of ITS2 region as the universal DNA barcode for plants and animals</article-title>. <source>PLoS One</source>. <year>2010</year> <month>Oct</month> <day>1</day>;<volume>5</volume>(<issue>10</issue>). pii: e13102. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0013102" xlink:type="simple">10.1371/journal.pone.0013102</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0157464.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chen</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Yao</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Han</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Song</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Shi</surname> <given-names>L</given-names></name>, <etal>et al</etal>. <article-title>Validation of the ITS2 region as a novel DNA barcode for identifying medicinal plant species</article-title>. <source>PLoS One</source>. <year>2010</year> <month>Jan</month> <day>7</day>;<volume>5</volume>(<issue>1</issue>):<fpage>e8613</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0008613" xlink:type="simple">10.1371/journal.pone.0008613</ext-link></comment> <object-id pub-id-type="pmid">20062805</object-id></mixed-citation></ref>
+<ref id="pone.0157464.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wang</surname> <given-names>XC</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Huang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Bengtsson-Palme</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Cai</surname> <given-names>D</given-names></name>, <etal>et al</etal>. <article-title>ITS1: a DNA barcode better than ITS2 in eukaryotes?</article-title> <source>Mol Ecol Resour</source>. <year>2015</year>;<volume>15</volume>(<issue>3</issue>): <fpage>573</fpage>–<lpage>586</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1111/1755-0998.12325" xlink:type="simple">10.1111/1755-0998.12325</ext-link></comment> <object-id pub-id-type="pmid">25187125</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

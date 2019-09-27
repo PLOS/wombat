@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-10-02368</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0016747</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Computational biology</subject>
+            <subj-group>
+              <subject>Population genetics</subject>
+              <subj-group>
+                <subject>Effective population size</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Genetics</subject>
+            <subj-group>
+              <subject>Human genetics</subject>
+              <subj-group>
+                <subject>Genome-wide association studies</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Population genetics</subject>
+              <subj-group>
+                <subject>Effective population size</subject>
+                <subject>Gene flow</subject>
+                <subject>Gene pool</subject>
+                <subject>Genetic drift</subject>
+                <subject>Genetic polymorphism</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Genome-wide association studies</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Genomics</subject>
+            <subj-group>
+              <subject>Genome analysis tools</subject>
+              <subj-group>
+                <subject>Genome-wide association studies</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Population biology</subject>
+            <subj-group>
+              <subject>Population genetics</subject>
+              <subj-group>
+                <subject>Effective population size</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Social and behavioral sciences</subject>
+          <subj-group>
+            <subject>Anthropology</subject>
+            <subj-group>
+              <subject>Cultural anthropology</subject>
+              <subj-group>
+                <subject>Geographic and national differences</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Geography</subject>
+            <subj-group>
+              <subject>Biogeography</subject>
+              <subject>Human geography</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Sociology</subject>
+            <subj-group>
+              <subject>Demography</subject>
+              <subj-group>
+                <subject>Indigenous populations</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Genetics and Genomics</subject>
+          <subject>Computational Biology</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Swedish Population Substructure Revealed by Genome-Wide Single Nucleotide Polymorphism Data</article-title><alt-title alt-title-type="running-head">SNP Variation in Sweden</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Salmela</surname>
+            <given-names>Elina</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Lappalainen</surname>
+            <given-names>Tuuli</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff4">
+            <sup>4</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Liu</surname>
+            <given-names>Jianjun</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff5">
+            <sup>5</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Sistonen</surname>
+            <given-names>Pertti</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff6">
+            <sup>6</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Andersen</surname>
+            <given-names>Peter M.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff7">
+            <sup>7</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Schreiber</surname>
+            <given-names>Stefan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff8">
+            <sup>8</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Savontaus</surname>
+            <given-names>Marja-Liisa</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff9">
+            <sup>9</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Czene</surname>
+            <given-names>Kamila</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff10">
+            <sup>10</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Lahermo</surname>
+            <given-names>Päivi</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hall</surname>
+            <given-names>Per</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff10">
+            <sup>10</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Kere</surname>
+            <given-names>Juha</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff11">
+            <sup>11</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff12">
+            <sup>12</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1"><label>1</label><addr-line>Institute for Molecular Medicine Finland (FIMM), University of Helsinki, Helsinki, Finland</addr-line>       </aff><aff id="aff2"><label>2</label><addr-line>Department of Medical Genetics, University of Helsinki, Helsinki, Finland</addr-line>       </aff><aff id="aff3"><label>3</label><addr-line>Folkhälsan Institute of Genetics, Helsinki, Finland</addr-line>       </aff><aff id="aff4"><label>4</label><addr-line>Department of Genetic Medicine and Development, University of Geneva Medical School, Geneva, Switzerland</addr-line>       </aff><aff id="aff5"><label>5</label><addr-line>Human Genetics, Genome Institute of Singapore, Singapore, Singapore</addr-line>       </aff><aff id="aff6"><label>6</label><addr-line>Finnish Red Cross Blood Transfusion Service, Helsinki, Finland</addr-line>       </aff><aff id="aff7"><label>7</label><addr-line>Department of Neurology, Umeå University Hospital, University of Umeå, Umeå, Sweden</addr-line>       </aff><aff id="aff8"><label>8</label><addr-line>Department of General Internal Medicine, Institute for Clinical Molecular Biology, Christian-Albrechts-University, Kiel, Germany</addr-line>       </aff><aff id="aff9"><label>9</label><addr-line>Department of Medical Genetics, University of Turku, Turku, Finland</addr-line>       </aff><aff id="aff10"><label>10</label><addr-line>Department of Medical Epidemiology and Biostatistics, Karolinska Institutet, Stockholm, Sweden</addr-line>       </aff><aff id="aff11"><label>11</label><addr-line>Department of Biosciences and Nutrition, Karolinska Institutet, Huddinge, Sweden</addr-line>       </aff><aff id="aff12"><label>12</label><addr-line>Clinical Research Centre, Karolinska University Hospital, Huddinge, Sweden</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Kayser</surname>
+            <given-names>Manfred</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">Erasmus University Medical Center, Netherlands</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">juha.kere@ki.se</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: ES TL JL PL PH JK. Performed the experiments: ES TL JL. Analyzed the data: ES TL. Contributed reagents/materials/analysis tools: JL PS PMA SS MLS KC PH. Wrote the paper: ES TL.</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>The authors have read the journal's policy and have the following conflicts: Prof. Schreiber has been a member of Applied Biosystems scientific advisory board. No Applied Biosystems product or services were used in this study. This does not alter the authors' adherence to all the PLoS ONE policies on sharing data and materials.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2011</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>9</day>
+        <month>2</month>
+        <year>2011</year>
+      </pub-date><volume>6</volume><issue>2</issue><elocation-id>e16747</elocation-id><history>
+        <date date-type="received">
+          <day>17</day>
+          <month>9</month>
+          <year>2010</year>
+        </date>
+        <date date-type="accepted">
+          <day>10</day>
+          <month>1</month>
+          <year>2011</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2011</copyright-year><copyright-holder>Salmela et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <p>The use of genome-wide single nucleotide polymorphism (SNP) data has recently proven useful in the study of human population structure. We have studied the internal genetic structure of the Swedish population using more than 350,000 SNPs from 1525 Swedes from all over the country genotyped on the Illumina HumanHap550 array. We have also compared them to 3212 worldwide reference samples, including Finns, northern Germans, British and Russians, based on the more than 29,000 SNPs that overlap between the Illumina and Affymetrix 250K Sty arrays. The Swedes - especially southern Swedes - were genetically close to the Germans and British, while their genetic distance to Finns was substantially longer. The overall structure within Sweden appeared clinal, and the substructure in the southern and middle parts was subtle. In contrast, the northern part of Sweden, Norrland, exhibited pronounced genetic differences both within the area and relative to the rest of the country. These distinctive genetic features of Norrland probably result mainly from isolation by distance and genetic drift caused by low population density. The internal structure within Sweden (F<sub>ST</sub> = 0.0005 between provinces) was stronger than that in many Central European populations, although smaller than what has been observed for instance in Finland; importantly, it is of the magnitude that may hamper association studies with a moderate number of markers if cases and controls are not properly matched geographically. Overall, our results underline the potential of genome-wide data in analyzing substructure in populations that might otherwise appear relatively homogeneous, such as the Swedes.</p>
+      </abstract><funding-group><funding-statement>Sigrid Juselius Foundation (<ext-link ext-link-type="uri" xlink:href="http://www.sigridjuselius.fi" xlink:type="simple">http://www.sigridjuselius.fi</ext-link>) (ES, TL, JK), Emil Aaltonen foundation (<ext-link ext-link-type="uri" xlink:href="http://www.emilaaltonen.fi" xlink:type="simple">http://www.emilaaltonen.fi</ext-link>) (TL, PL), Academy of Finland (<ext-link ext-link-type="uri" xlink:href="http://www.aka.fi/fi/A/" xlink:type="simple">http://www.aka.fi/fi/A/</ext-link>) (TL, JK), Research Foundation of the University of Helsinki (<ext-link ext-link-type="uri" xlink:href="http://www.helsinki.fi/tiedesaatio/index.htm" xlink:type="simple">http://www.helsinki.fi/tiedesaatio/index.htm</ext-link>) (TL), Swedish Research Council (<ext-link ext-link-type="uri" xlink:href="http://www.vr.se" xlink:type="simple">http://www.vr.se</ext-link>) (JK), National Genome Research Network (NGFN; <ext-link ext-link-type="uri" xlink:href="http://www.ngfn.de" xlink:type="simple">http://www.ngfn.de</ext-link>) and the popgen biobank (<ext-link ext-link-type="uri" xlink:href="http://www.popgen.de" xlink:type="simple">http://www.popgen.de</ext-link>), both through the German Ministry of Education and Science (SS), DFG excellence cluster "inflammation at interfaces" (SS), National Institutes of Health (<ext-link ext-link-type="uri" xlink:href="http://www.nih.gov" xlink:type="simple">http://www.nih.gov</ext-link>) grant number R01 CA104021-05 (KC, PH), Agency for Science, Technology and Research (A*STAR) (JL, KC, PH). Funding for the WTCCC project was provided by the Wellcome Trust (<ext-link ext-link-type="uri" xlink:href="http://www.wellcome.ac.uk/" xlink:type="simple">http://www.wellcome.ac.uk/</ext-link>) under award 076113. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="11"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>The recent flood of genome-wide association studies (GWAS) for common diseases has created an upsurge also in studies of population structure based on genome-wide autosomal single nucleotide polymorphism (SNP) array data. This is not only due to the availability of these novel datasets but also due to an increased interest into population structure as a potential confounding factor in the association studies. As a result, this new type of data has already complemented the ones classically used in population genetics. Several studies have shown a general correspondence between genetic and geographic distances within Europe <xref ref-type="bibr" rid="pone.0016747-Lao1">[1]</xref>–<xref ref-type="bibr" rid="pone.0016747-Heath1">[3]</xref>. Population substructure has also been studied in detail in many European populations, e.g. in Finns <xref ref-type="bibr" rid="pone.0016747-Salmela1">[4]</xref>, <xref ref-type="bibr" rid="pone.0016747-Jakkula1">[5]</xref>, Estonians <xref ref-type="bibr" rid="pone.0016747-Nelis1">[6]</xref>, and British <xref ref-type="bibr" rid="pone.0016747-ODushlaine1">[7]</xref>. In this paper we study the genetic structure within the Northern European population of Sweden using data from more than 350,000 SNPs genotyped in 1525 Swedes and also compare them to reference samples from several of the neighboring populations.</p>
+      <p>The first inhabitants to the area of present-day Sweden came after the ice age from Central Europe. For millennia, the country was sparsely inhabited by hunter-gatherer populations until the slow adoption of agriculture and ceramics that began around 4000 BC in southern Sweden <xref ref-type="bibr" rid="pone.0016747-Siiriinen1">[8]</xref>. While the southern parts of the country developed strong contacts with the Germanic culture, the north associated to Finland and Karelia with a common culture covering the entire northern Fennoscandia. This culture has sometimes been suggested to be ancestral to the indigenous Sami population still inhabiting the area. Sweden was not united under one ruler until the 11th century, and the traditional division to the southern Götaland, central Svealand, and northern Norrland is still widely known despite lacking any official status. There have been long-standing contacts with the neighboring populations, with Norwegian influence in western Sweden, Danish in the south, and Finnish in the north <xref ref-type="bibr" rid="pone.0016747-Lindkvist1">[9]</xref>, <xref ref-type="bibr" rid="pone.0016747-Lindqvist1">[10]</xref>. The population density has been highest in Southern and Central Sweden, while in Norrland the population is centered on the eastern coast and in river valleys whereas the mountaineous regions in the northwest are largely uninhabited.</p>
+      <p>Genetically the Swedes have appeared relatively similar to their neighboring populations - for example the Norwegians, Danish, Germans, Dutch and British - both in a classical study based on a small number of autosomal markers <xref ref-type="bibr" rid="pone.0016747-CavalliSforza1">[11]</xref> and in the recent genome-wide studies <xref ref-type="bibr" rid="pone.0016747-Lao1">[1]</xref>-<xref ref-type="bibr" rid="pone.0016747-Nelis1">[6]</xref>, <xref ref-type="bibr" rid="pone.0016747-McEvoy1">[12]</xref>. Similar patterns of a close relationship with neighboring populations have been observed in the Y-chromosomal and mitochondrial DNA (mtDNA) variation <xref ref-type="bibr" rid="pone.0016747-Lappalainen1">[13]</xref>. In contrast, the Finns seem to be an exception to this rule: they do not appear genetically very close to the Swedes although they are geographically nearby. However, the Finns tend to show inflated genetic distances relative to the European populations in general <xref ref-type="bibr" rid="pone.0016747-Lao1">[1]</xref>, <xref ref-type="bibr" rid="pone.0016747-Salmela1">[4]</xref>, <xref ref-type="bibr" rid="pone.0016747-Nelis1">[6]</xref>, not only relative to the Swedes.</p>
+      <p>The internal genetic structure of the Swedish population has been mostly studied with the Y chromosome and mtDNA. These studies have shown haplogroup frequency differences within the country <xref ref-type="bibr" rid="pone.0016747-Karlsson1">[14]</xref>, <xref ref-type="bibr" rid="pone.0016747-Lappalainen2">[15]</xref> that are mostly clinal but also reflect the effects of local genetic drift and reveal signs of influence from neighboring populations into respective parts of the country <xref ref-type="bibr" rid="pone.0016747-Lappalainen2">[15]</xref>. On the other hand, a study with 34 unlinked autosomal SNPs found little population structure within Sweden <xref ref-type="bibr" rid="pone.0016747-Hannelius1">[16]</xref>. The river valleys in Northern Sweden have shown genetic differentiation in terms of the frequency of protein markers <xref ref-type="bibr" rid="pone.0016747-Einarsdottir1">[17]</xref>. Studies of ancient DNA have shown a genetic discontinuity between the Neolithic inhabitants of the southern part of Sweden (ca. 3000 BC) and the current Swedish population <xref ref-type="bibr" rid="pone.0016747-Malmstrm1">[18]</xref>.</p>
+      <p>In this study, we have analyzed the current autosomal population structure within Sweden using 1525 individuals genotyped on the Illumina HumanHap550 SNP array, and compared the Swedes also to Finns, Germans, Russians and other reference populations. We observed that the Southern Swedes were genetically close to northern Central Europeans and exhibited subtle genetic substructure, whereas the northern part of Sweden, Norrland, clearly differed from the rest of the country and showed significant internal structure.</p>
+    </sec>
+    <sec id="s2">
+      <title>Results</title>
+      <sec id="s2a">
+        <title>Swedes relative to neighboring populations</title>
+        <p>We used genome-wide SNP genotypes of 1525 Swedes and 3212 worldwide reference individuals to study the autosomal population structure within Sweden and relative to neighboring populations (<xref ref-type="fig" rid="pone-0016747-g001">Fig. 1</xref>, <xref ref-type="table" rid="pone-0016747-t001">Table 1</xref>, <xref ref-type="supplementary-material" rid="pone.0016747.s011">Table S1</xref>; see Methods for details of the datasets). A multidimensional scaling (MDS) plot of identity by state (IBS) distances (pairwise proportions of alleles not identical by state) in Northern Europe (<xref ref-type="fig" rid="pone-0016747-g002">Fig. 2a</xref>) showed clustering of individuals primarily according to their area of origin, and revealed a triangular pattern with Northern Swedes and Eastern Finns in the two furthest corners; the third dimension (<xref ref-type="supplementary-material" rid="pone.0016747.s001">Fig. S1</xref>) further differentiated Germany from Southern Sweden (Svealand and Götaland). There was an overall correspondence between geographic and genetic distances, with the exception that Northern Swedes and Eastern Finns exhibited longer genetic distances than their geographic location would imply. Focusing further, the MDS plot of Swedes and Finns colored according to the province of origin (<xref ref-type="fig" rid="pone-0016747-g002">Fig. 2b</xref>, <xref ref-type="supplementary-material" rid="pone.0016747.s001">Fig. S1</xref>) exhibited a similar triangular pattern, with Northern Sweden, Southern Sweden (Svealand and Götaland) and Eastern Finland spanning the corners, and showed a fairly high degree of overlap between provinces, especially in Southern Sweden. Of the Swedes, Norrland and Svealand individuals were closest to Finns, and the Finns who had closest affinity to the Swedes were mainly Swedish-speaking Ostrobothnians (SSOB). Interestingly, the neighboring Swedish and Finnish provinces in the north, Norrbotten (NBO) and Northern Ostrobothnia (NOB), did not appear very close in the MDS plot; instead, Norrbotten seemed to show closer affinity to Western Finland. A Structure analysis of Europeans (<xref ref-type="fig" rid="pone-0016747-g003">Fig. 3</xref>) showed successive clusters (two to five) dominated by Eastern Finns, Swedes, Northern Swedes and Germans, respectively. The sixth and seventh clusters (not shown) did not bring out further differences. The likelihoods of clusterings appeared approximately equal (<xref ref-type="supplementary-material" rid="pone.0016747.s002">Fig. S2</xref>); using a specific statistic <xref ref-type="bibr" rid="pone.0016747-Evanno1">[19]</xref>, the most likely numbers of clusters were 2 or 6.</p>
+        <fig id="pone-0016747-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016747.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>A map of the studied provinces and regions of Sweden and Finland.</title>
+            <p>Full population names and their sample sizes are given in <xref ref-type="table" rid="pone-0016747-t001">Table 1</xref> and <xref ref-type="supplementary-material" rid="pone.0016747.s011">Table S1</xref>.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.g001" xlink:type="simple"/>
+        </fig>
+        <fig id="pone-0016747-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016747.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Multidimensional scaling plots of genetic distances between individuals.</title>
+            <p>Identity by state (IBS) distances in Northern Europe (a), Sweden and Finland (b), Sweden (c) and Norrland (d), with the legend for panels (b) and (c) in (e). The axis labels show the proportion of variance explained by the axis. Abbreviations as in <xref ref-type="table" rid="pone-0016747-t001">Table 1</xref> and <xref ref-type="supplementary-material" rid="pone.0016747.s011">Table S1</xref>. In (d), the colouring of individuals represents one of the ten major river valleys of Norrland, from north to south. See also <xref ref-type="supplementary-material" rid="pone.0016747.s001">Figure S1</xref> for animated three-dimensional versions of (a) and (b).</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.g002" xlink:type="simple"/>
+        </fig>
+        <fig id="pone-0016747-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016747.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>Clustering of North European individuals by the Structure software.</title>
+            <p>Each individual is represented by a thin vertical line, and their proportions of ancestry in each of the K inferred clusters (from 2 to 5) are denoted by colors. Abbreviations as in <xref ref-type="table" rid="pone-0016747-t001">Table 1</xref>.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.g003" xlink:type="simple"/>
+        </fig>
+        <table-wrap id="pone-0016747-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0016747.t001</object-id><label>Table 1</label><caption>
+            <title>Names, abbreviations and sample sizes of the main study populations.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0016747-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.t001" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Country</td>
+                <td align="left" colspan="1" rowspan="1">Region</td>
+                <td align="left" colspan="1" rowspan="1">Abbreviation</td>
+                <td align="left" colspan="1" rowspan="1">Sample size in Dataset 2</td>
+                <td align="left" colspan="1" rowspan="1">Sample size in Dataset 3</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Sweden</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">Norrland</td>
+                <td align="left" colspan="1" rowspan="1">NORR</td>
+                <td align="left" colspan="1" rowspan="1">115</td>
+                <td align="left" colspan="1" rowspan="1">237</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">Svealand</td>
+                <td align="left" colspan="1" rowspan="1">SVEA</td>
+                <td align="left" colspan="1" rowspan="1">245</td>
+                <td align="left" colspan="1" rowspan="1">545</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">Götaland</td>
+                <td align="left" colspan="1" rowspan="1">GOTA</td>
+                <td align="left" colspan="1" rowspan="1">395</td>
+                <td align="left" colspan="1" rowspan="1">743</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">unknown</td>
+                <td align="left" colspan="1" rowspan="1">SWEmix</td>
+                <td align="left" colspan="1" rowspan="1">113</td>
+                <td align="left" colspan="1" rowspan="1">0</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Finland</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1"/>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">Western Finland</td>
+                <td align="left" colspan="1" rowspan="1">FIW</td>
+                <td align="left" colspan="1" rowspan="1">141</td>
+                <td align="left" colspan="1" rowspan="1">0</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">Eastern Finland</td>
+                <td align="left" colspan="1" rowspan="1">FIE</td>
+                <td align="left" colspan="1" rowspan="1">139</td>
+                <td align="left" colspan="1" rowspan="1">0</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Germany</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">GER</td>
+                <td align="left" colspan="1" rowspan="1">492</td>
+                <td align="left" colspan="1" rowspan="1">0</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Russia</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">RUS</td>
+                <td align="left" colspan="1" rowspan="1">25</td>
+                <td align="left" colspan="1" rowspan="1">0</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">Great Britain</td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">BRI</td>
+                <td align="left" colspan="1" rowspan="1">740</td>
+                <td align="left" colspan="1" rowspan="1">0</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">CEPH<xref ref-type="table-fn" rid="nt102">a</xref></td>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">CEU</td>
+                <td align="left" colspan="1" rowspan="1">101</td>
+                <td align="left" colspan="1" rowspan="1">0</td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt101">
+              <label/>
+              <p>The corresponding information for the Swedish and Finnish provinces is given in <xref ref-type="supplementary-material" rid="pone.0016747.s011">Table S1</xref>.</p>
+            </fn>
+            <fn id="nt102">
+              <label>a</label>
+              <p>Utah residents with Northern and Western European ancestry from the CEPH collection.</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+        <p>In analyses with predefined population divisions, the F<sub>ST</sub> distances between European populations (<xref ref-type="supplementary-material" rid="pone.0016747.s012">Table S2</xref>, <xref ref-type="supplementary-material" rid="pone.0016747.s003">Fig. S3a</xref>) showed a pattern mostly corresponding to geographic distances, with the exceptions of Eastern Finns (and to a certain degree also Western Finns), Basques and Sardinians showing longer genetic than geographic distances. The overall levels of allele frequency differences between North European populations showed a similar pattern (<xref ref-type="table" rid="pone-0016747-t002">Table 2</xref>), with Eastern Finns differing the most, and Swedes - especially in Svealand and Götaland - being relatively close to Central Europeans (Germans and British). The IBS distributions between Northern Europeans and HapMap populations (<xref ref-type="fig" rid="pone-0016747-g004">Fig. 4</xref>) showed that Götaland and Germany were most similar and Eastern Finns and Russians least similar to HapMap CEU, while in the comparison with HapMap CHB and JPT, the opposite order emerged (Bonferroni-corrected p&lt;0.015 for all distribution pairs, except Götaland vs. Germany and Eastern Finland vs. Russia nonsignificant with respect to both HapMap populations, Germany vs. Svealand with CEU, and Norrland vs. Svealand with CHB and JPT). However, a very different pattern was observed when comparing with the Russians (<xref ref-type="supplementary-material" rid="pone.0016747.s004">Fig. S4a</xref>): Norrland and Eastern Finland showed the least similarity, Svealand and Götaland an intermediate amount, and Germany and especially Western Finland the most (Bonferroni-corrected p&lt;0.031 for Western Finland vs. all other populations except Germany, and for Germany vs. Norrland and Eastern Finland). The F<sub>ST</sub> distances between the Swedish and Finnish provinces (<xref ref-type="supplementary-material" rid="pone.0016747.s013">Table S3</xref>, <xref ref-type="supplementary-material" rid="pone.0016747.s003">Fig. S3b</xref>) repeated the features seen in the MDS, with the Swedish-speaking Finns (SSOB) being closest to Sweden and Northern Ostrobothnia (NOB) not very close to northern Norrland; furthermore, the distances between the Swedish provinces were generally smaller than those between the Finnish provinces.</p>
+        <fig id="pone-0016747-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016747.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Distributions of pairwise identities by state between North European populations and four HapMap populations.</title>
+            <p>Each curve represents the IBS similarities of all pairs of individuals where one individual is from the HapMap population in question and one from the population indicated by the color of the curve. The location of distribution medians is denoted by triangles of corresponding color. All distributions with CEU differed significantly (p&lt;0.015) except Eastern Finland vs. Russia, Götaland vs. Germany, and Svealand vs. Germany. All distributions with CHB+JPT differed significantly (p&lt;0.002) except Eastern Finland vs. Russia, Götaland vs. Germany, and Svealand vs. Norrland. In the comparison with YRI, Germany and Russia differed significantly from all populations except each other, and Eastern Finland from Götaland (p&lt;0.027 for each). These p values have been Bonferroni-corrected. Abbreviations: Yoruba from Ibadan, Nigeria (YRI, n = 105); Han Chinese from Beijing, China (CHB, n = 78); and Japanese from Tokyo, Japan (JPT, n = 84); other abbreviations as in <xref ref-type="table" rid="pone-0016747-t001">Table 1</xref>.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.g004" xlink:type="simple"/>
+        </fig>
+        <table-wrap id="pone-0016747-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0016747.t002</object-id><label>Table 2</label><caption>
+            <title>Degree of allele frequency differences between population pairs.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0016747-t002-2" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.t002" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">λ</td>
+                <td align="left" colspan="1" rowspan="1">FIE</td>
+                <td align="left" colspan="1" rowspan="1">FIW</td>
+                <td align="left" colspan="1" rowspan="1">NORR</td>
+                <td align="left" colspan="1" rowspan="1">SVEA</td>
+                <td align="left" colspan="1" rowspan="1">GOTA</td>
+                <td align="left" colspan="1" rowspan="1">GER</td>
+                <td align="left" colspan="1" rowspan="1">BRI</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">FIE</td>
+                <td align="left" colspan="1" rowspan="1">1.00</td>
+                <td align="left" colspan="1" rowspan="1">1.71</td>
+                <td align="left" colspan="1" rowspan="1">2.59</td>
+                <td align="left" colspan="1" rowspan="1">2.62</td>
+                <td align="left" colspan="1" rowspan="1">2.91</td>
+                <td align="left" colspan="1" rowspan="1">3.08</td>
+                <td align="left" colspan="1" rowspan="1">3.30</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">FIW</td>
+                <td align="left" colspan="1" rowspan="1">1.71</td>
+                <td align="left" colspan="1" rowspan="1">1.00</td>
+                <td align="left" colspan="1" rowspan="1">1.56</td>
+                <td align="left" colspan="1" rowspan="1">1.52</td>
+                <td align="left" colspan="1" rowspan="1">1.70</td>
+                <td align="left" colspan="1" rowspan="1">1.82</td>
+                <td align="left" colspan="1" rowspan="1">2.05</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">NORR</td>
+                <td align="left" colspan="1" rowspan="1">2.59</td>
+                <td align="left" colspan="1" rowspan="1">1.56</td>
+                <td align="left" colspan="1" rowspan="1">1.00</td>
+                <td align="left" colspan="1" rowspan="1">1.12</td>
+                <td align="left" colspan="1" rowspan="1">1.20</td>
+                <td align="left" colspan="1" rowspan="1">1.36</td>
+                <td align="left" colspan="1" rowspan="1">1.46</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">SVEA</td>
+                <td align="left" colspan="1" rowspan="1">2.62</td>
+                <td align="left" colspan="1" rowspan="1">1.52</td>
+                <td align="left" colspan="1" rowspan="1">1.12</td>
+                <td align="left" colspan="1" rowspan="1">1.00</td>
+                <td align="left" colspan="1" rowspan="1">1.03</td>
+                <td align="left" colspan="1" rowspan="1">1.16</td>
+                <td align="left" colspan="1" rowspan="1">1.28</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">GOTA</td>
+                <td align="left" colspan="1" rowspan="1">2.91</td>
+                <td align="left" colspan="1" rowspan="1">1.70</td>
+                <td align="left" colspan="1" rowspan="1">1.20</td>
+                <td align="left" colspan="1" rowspan="1">1.03</td>
+                <td align="left" colspan="1" rowspan="1">1.00</td>
+                <td align="left" colspan="1" rowspan="1">1.13</td>
+                <td align="left" colspan="1" rowspan="1">1.21</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">GER</td>
+                <td align="left" colspan="1" rowspan="1">3.08</td>
+                <td align="left" colspan="1" rowspan="1">1.82</td>
+                <td align="left" colspan="1" rowspan="1">1.36</td>
+                <td align="left" colspan="1" rowspan="1">1.16</td>
+                <td align="left" colspan="1" rowspan="1">1.13</td>
+                <td align="left" colspan="1" rowspan="1">1.00</td>
+                <td align="left" colspan="1" rowspan="1">1.11</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">BRI</td>
+                <td align="left" colspan="1" rowspan="1">3.30</td>
+                <td align="left" colspan="1" rowspan="1">2.05</td>
+                <td align="left" colspan="1" rowspan="1">1.46</td>
+                <td align="left" colspan="1" rowspan="1">1.28</td>
+                <td align="left" colspan="1" rowspan="1">1.21</td>
+                <td align="left" colspan="1" rowspan="1">1.11</td>
+                <td align="left" colspan="1" rowspan="1">1.00</td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt103">
+              <label/>
+              <p>Measured as the overdispersion factor (λ) of observed vs. expected chi-square statistics; λ = 1 indicates no difference. Abbreviations as in <xref ref-type="table" rid="pone-0016747-t001">Table 1</xref>.</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+      </sec>
+      <sec id="s2b">
+        <title>Variation within Sweden</title>
+        <p>The MDS plot of the Swedes alone (<xref ref-type="fig" rid="pone-0016747-g002">Fig. 2C</xref>) showed a north-south gradient in the first dimension and a spread between Västerbotten (VBO) and Norrbotten (NBO) in the second, whereas the Southern Swedish samples remained tightly clustered. Again, a fair degree of overlap was seen between the provinces. When MDS was done for Southern Swedes separately (<xref ref-type="supplementary-material" rid="pone.0016747.s005">Fig. S5</xref>), the first dimension suggested a north-south gradient, and the second dimension a subtle degree of structuring within Götaland. MDS of the Norrland samples alone, with a north-south colouring according to ten major river valleys (<xref ref-type="fig" rid="pone-0016747-g002">Fig. 2D</xref>), revealed a loose division into three: northern, middle and southern parts of Norrland; notably, the middle differed in the first dimension and the north only in the second. A Structure analysis discovered two clusters within Sweden (3 clusters were also tested but yielded a lower likelihood); these clusters showed an overall north-south cline in frequency, and ancestry in one of them was especially common in Västerbotten (<xref ref-type="fig" rid="pone-0016747-g005">Fig. 5a</xref>, <xref ref-type="supplementary-material" rid="pone.0016747.s006">Fig. S6</xref>). Similarly, inbreeding (<xref ref-type="fig" rid="pone-0016747-g005">Fig. 5b</xref>) showed a cline with stronger inbreeding in the north, strongest in coastal Västerbotten (p&lt;0.0002 for inbreeding differences between the three Swedish regions). The correlation between genetic and geographic distances was significant in Sweden as a whole (r = 0.066, p&lt;0.0001) and stronger in Norrland (r = 0.164) than in Svealand or Götaland (r = 0.011 and r = 0.036, respectively; p&lt;0.0001 for all three regions). Concordantly, a local analysis (<xref ref-type="fig" rid="pone-0016747-g005">Fig. 5c</xref>) showed the strongest correlation in the north, especially in Västerbotten.</p>
+        <fig id="pone-0016747-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0016747.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title>Local genetic variation within Sweden.</title>
+            <p>The colour of each area corresponds to the local value of median ancestry proportion in one of two Structure-inferred clusters (a), median inbreeding coefficient (b) and correlation of genetic and geographic distances (c), calculated in circles with a radius of 150 km and depicted only for those circles that had at least 20 samples (at least 40 in (c)).</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.g005" xlink:type="simple"/>
+        </fig>
+        <p>In terms of F<sub>ST</sub>, the differences between provinces were small but significant within the whole of Sweden as well as within Norrland and Götaland (0.0005, 0.0009 and 0.0002, respectively; p&lt;0.0002 for each) but not within Svealand (p = 0.19). (For comparison, the population structure among the British reference samples was nonsignificant (p = 0.08).) When F<sub>ST</sub> was analyzed between the three regions and the provinces simultanously, differences both among the regions (F<sub>ST</sub> = 0.0004) and among the provinces within the regions (F<sub>ST</sub> = 0.0003) were significant (p&lt;0.0002 for both). Pairwise F<sub>ST</sub> values between the Swedish provinces (<xref ref-type="supplementary-material" rid="pone.0016747.s014">Table S4</xref>, <xref ref-type="supplementary-material" rid="pone.0016747.s003">Fig. S3c</xref>) showed that the two northernmost provinces, Norrbotten (NBO) and Västerbotten (VBO), differed most from the rest of the provinces and also significantly from each other. This was also seen in a Barrier analysis (<xref ref-type="supplementary-material" rid="pone.0016747.s007">Fig. S7</xref>), where the two first barriers were located in the north. In terms of IBS similarity within the population (<xref ref-type="supplementary-material" rid="pone.0016747.s004">Fig. S4b</xref>), Eastern Finland differed significantly from all other populations, Norrland from Götaland and Western Finland, and Western Finland from Svealand (Bonferroni-corrected p&lt;0.034 for each); interestingly, the similarity in Norrland was among the lowest. Linkage disequilibrium (LD) (<xref ref-type="supplementary-material" rid="pone.0016747.s008">Fig. S8</xref>) was stronger in Norrland than in the two other Swedish regions; all three regions showed weaker LD than Eastern and Western Finland but stronger than Germany and Great Britain (p&lt;0.002 for all pairwise comparisons, except Svealand vs. Götaland and Germany vs. Great Britain nonsignificant).</p>
+        <p>Allele frequencies in Svealand and Götaland appeared very similar (<xref ref-type="table" rid="pone-0016747-t002">Table 2</xref>), but the differences between them and Norrland were of the same magnitude or larger than between Germany and Great Britain. Between Svealand and Götaland, an allele frequency difference with p&lt;0.05 was observed for 5.1% of the SNPs, whereas Norrland differed from Svealand and Götaland for 6.4% and 7.2% of the SNPs, respectively. For comparison, corresponding proportions were 13.4% between Eastern and Western Finland and 5.2% within Britain (Scotland and Northern vs. Eastern and Southeastern areas). However, the small sample size in these comparisons (n = 115 per population) obviously limited the power to detect significant differences: in our largest dataset, 13.1% of the SNPs showed a chi-square p&lt;0.05 between Norrland and Götaland (n = 237 and n = 743, respectively). The SNPs with the largest allele frequency differences between Norrland and the rest of Sweden were relatively scattered across the genome (<xref ref-type="supplementary-material" rid="pone.0016747.s009">Fig. S9</xref>); while the genes closest to these SNPs showed no systematic enrichment into any Gene Ontology class, nominally significant SNPs were unexpectedly common in the MHC region and in genome areas associated to skin pigment and blood lipid traits (<xref ref-type="supplementary-material" rid="pone.0016747.s015">Table S5</xref>). However, the latter result remains suggestive, as the analysis did not correct for differing LD patterns across genome areas. The topmost differing SNPs and their closest genes are listed in <xref ref-type="supplementary-material" rid="pone.0016747.s016">Table S6</xref>, and all SNPs with p&lt;0.001 in <xref ref-type="supplementary-material" rid="pone.0016747.s017">Table S7</xref>.</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Discussion</title>
+      <p>In this study, we have used genome-wide SNP data to analyze the population structure within Sweden, and discovered a clinal north-to-south structure that was particularly pronounced in the northern part of the country. The Swedes showed a considerable genetic difference from the neighboring population of Finns, whereas the southern Swedes appeared genetically very close to northern Central Europeans: northern Germans, British, and the HapMap CEU samples.</p>
+      <p>In population genetic studies, systematic differences in sampling and genotyping are a potential confounder and may inflate the observed population structure. This warrants caution in our study which combines data genotyped on various platforms in several genotyping centers, but it is unlikely to cause major errors since several population comparisons showed little differentiation across datasets. Using combined cases and controls from Sweden is also unlikely to have a substantial effect on our results, because after the exclusion of the most differing SNPs, these sample groups hardly differed, and similar results were obtained also without the cases. Furthermore, technological biases can also be partly alleviated by our choice of analysis methods that are not overly sensitive to small numbers of differing SNPs, e.g. MDS instead of principal component analysis (PCA), and by limiting the analyses to the SNPs that have been genotyped in all the populations, instead of using imputed data.</p>
+      <p>An issue of bigger concern are the effects of the sampling scheme, both in terms of ancestry ascertainment and geographic distribution. For instance, although we observed a much more subtle internal structure in Sweden than in Finland, it is difficult to estimate to which degree the difference was caused by the differential ascertainment (for place of residence vs. grandparental birthplace, respectively). Nevertheless, the substructure within Sweden was significant, stronger than between Northern and Southern Germany <xref ref-type="bibr" rid="pone.0016747-Steffens1">[20]</xref> or within Britain (this study), and consistent with earlier studies using Y-chromosomal and mitochondrial DNA markers <xref ref-type="bibr" rid="pone.0016747-Karlsson1">[14]</xref>, <xref ref-type="bibr" rid="pone.0016747-Lappalainen2">[15]</xref>. The overall proportion of variance explained by the first MDS dimensions was small, reflecting the well-known fact that most of the genetic variation in humans lies between individuals. The effects of differential geographical sampling were also demonstrated: When we compared the Swedish samples from our earlier study that lacked detailed ancestry information <xref ref-type="bibr" rid="pone.0016747-Salmela1">[4]</xref> to the larger dataset of this study, we observed that the former samples likely originate predominantly from Norrland. Therefore, the relatively large difference between the two datasets (F<sub>ST</sub> = 0.0012) is likely caused by a difference in the geographical sampling distributions. Notably, the datasets also behaved rather differently in the F<sub>ST</sub> comparisons to Central Europeans. This nicely illustrates how differences in geographical sampling between studies could affect quite a lot the way that Swedes appear in comparisons with other populations.</p>
+      <p>The northern part of Sweden, Norrland, showed a particularly strong population structure, which could be explained by genetic drift in this sparsely inhabited region. However, this hypothesis was challenged by the genetic diversity within Norrland that was not consistently reduced: in fact, Norrland showed significantly lower IBS similarity than Götaland. This could suggest the presence of several isolates within Norrland, and indeed, signs of such were detected in the MDS and F<sub>ST</sub> analyses. Furthermore, LD in Norrland was stronger than in the rest of Sweden. Together, these patterns of variation could be partly explained by migration. While the influence from Finland seemed moderate, at the most, we unfortunately lacked the reference samples necessary for analyzing possible Sami and Norwegian contributions. However, earlier mitochondrial DNA and Y-chromosomal studies have indicated influence from the Sami and/or Finns in Northern Sweden, as well as decreased genetic diversity <xref ref-type="bibr" rid="pone.0016747-Karlsson1">[14]</xref>, <xref ref-type="bibr" rid="pone.0016747-Lappalainen2">[15]</xref>. A pattern of pronounced genetic differences similar to those in Norrland has been previously observed in the northern parts of Finland <xref ref-type="bibr" rid="pone.0016747-Jakkula1">[5]</xref>. However, Eastern Finland showed a different combination of signs of drift: strong LD and low diversity. These probably stem from the major founder event during the 16th century migration wave <xref ref-type="bibr" rid="pone.0016747-Pitknen1">[21]</xref> that appears to have affected the gene pool more profoundly than subsequent drift within local population isolates. Thus, not all small and drifted populations are alike, and the relevant geographic scale of drift can vary.</p>
+      <p>Interestingly, the Finnish province genetically closest to Norrland was not the neighboring Northern Ostrobothnia, but the Swedish-speaking Ostrobothnia and Southwestern Finland hundreds of kilometers further south. Although this pattern might first seem surprising, it is consistent with the history of Northern Ostrobothnia, where the current population is largely derived from a 16th-century migration that originated from the province of Southern Savo <xref ref-type="bibr" rid="pone.0016747-Pitknen1">[21]</xref>. The arrival of these genetically distinct <xref ref-type="bibr" rid="pone.0016747-Salmela1">[4]</xref> eastern migrants may have broken a possible earlier genetic cline along the coasts of Northern Sweden and Western Finland, and despite the later contacts across the border, the following centuries might not have been long enough a time to fully restore the cline.</p>
+      <p>Among our Finnish sample, genetically closest to Swedes were the Swedish-speaking Finns of coastal Ostrobothnia. This agrees well with the history of the Swedish-speakers, who arrived into the western and southern coastal areas of Finland in the beginning of the second millennium <xref ref-type="bibr" rid="pone.0016747-Pitknen1">[21]</xref>. However, they have obviously experienced a lot of subsequent admixture with the Finnish-speakers, resulting in a subtle difference between them and their closest neighbors; conversely, their genetic distance from the Swedes is of the same magnitude as the largest distances between provinces within Sweden. A similar, intermediate position of the Swedish-speakers has been detected earlier <xref ref-type="bibr" rid="pone.0016747-VirtarantaKnowles1">[22]</xref>, although with differing admixture proportions, probably depending on the choice of reference samples.</p>
+      <p>In our earlier study <xref ref-type="bibr" rid="pone.0016747-Salmela1">[4]</xref>, we saw that North European populations exhibited differing amounts of IBS similarity to East Asians so that Finns, especially Eastern Finns, were the most similar. Now we have observed the same phenomenon - though in a smaller degree - within Sweden, where Norrland showed the most of East Asian similarity and Götaland the least. This is consistent with earlier Y-chromosomal studies <xref ref-type="bibr" rid="pone.0016747-Lappalainen1">[13]</xref>. In strong contrast, however, neither Norrland nor Eastern Finns showed any increase in similarity to the Vologda Russians, and a similar lack of affinity between Finns and Russians can also be seen in separate datasets <xref ref-type="bibr" rid="pone.0016747-Nelis1">[6]</xref>, <xref ref-type="bibr" rid="pone.0016747-Lappalainen1">[13]</xref>. Thus, if the current references are representative of Russians in this respect, the observed affinity to Eastern Asia would not be mediated by contacts with Russians but could reflect an ancient eastern influence predating the arrival of Slavic populations to Northeastern Europe in the end of the first millennium <xref ref-type="bibr" rid="pone.0016747-Myhre1">[23]</xref>. It remains unclear whether the eastern affinity observed in Sweden would date back to the same era, or rather reflect the amount of later Finnish contacts to the area.</p>
+      <p>Several studies have now shown a general correspondence between geographic and autosomal genetic distances between European populations <xref ref-type="bibr" rid="pone.0016747-Lao1">[1]</xref>–<xref ref-type="bibr" rid="pone.0016747-Heath1">[3]</xref>, and a similar pattern was seen in our data. However, the exact strength of this correspondence seemed to vary substantially: In Southern Sweden and in northern Central Europe, a given genetic distance corresponded to long geographic distances, which would be consistent for example with a scenario of relatively large breeding units and moderate effects of genetic drift balanced by frequent migration. In Northern Sweden, Western Finland and especially in Eastern Finland, similar genetic distances were observed across much shorter geographic distances, suggesting that in these areas, genetic drift may have been a more powerful force shaping the gene pool. Thus, the mere notion of an overall correlation between geographic and genetic distances is insufficient to describe the complexity of the Northern European genetic landscape and its demographic determinants.</p>
+      <p>Population substructure can be a crucial issue in association studies, where population differences between cases and controls can cause spurious association signals. In GWAS, it is possible to correct for population stratification by using the bulk of data that is not assumed to correlate with the phenotype of interest, but in replication or candidate gene-based association studies that involve a more limited number of markers, such corrections are not possible. The amount of allele frequency differences we detected within Sweden warrants caution when matching controls for cases geographically, especially if individuals with descent from the northern part of Sweden are involved: for example in a study with cases from Norrland and controls from Götaland, a random SNP would have a substantially inflated chance of showing a chi-square p&lt;0.05 due to the population structure alone - even in our moderately sized dataset of less than 1000 individuals, the chance was 13%. As the observed structure within Sweden is mostly caused by random forces such as drift, the differing SNPs are scattered throughout the genome, and there is no means of recognizing them without prior population data. Thus, especially with phenotypes where cases are likely to be geographically clustered, rigorous matching of controls may be needed in order to avoid effects of stratification.</p>
+      <p>Genome-wide SNP datasets are quickly proving their usefulness in population genetic studies. Firstly, such datasets greatly increase the number of available loci, and they can therefore yield a more balanced picture of the diverse aspects of a population's history than for instance the uniparental markers that comprise only two loci. Secondly, the large number of individuals typically involved in a GWAS improves the resolution of population genetic analyses. Admittedly, GWAS control individuals can lack detailed ancestry information or might not represent populations with particularly interesting ancestry, which may limit their utility for population history studies. Nevertheless, studies such as ours that are based on residence information can uncover the patterns of the current population structure, which are often more important for practical applications, and still provide novel information of the population history in high precision.</p>
+    </sec>
+    <sec id="s4" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s4a">
+        <title>Ethics statement</title>
+        <p>All the samples were analyzed anonymously. The Swedish, Finnish and German samples were collected with informed consent according to the principles of the Declaration of Helsinki, and their use for population genetics study was approved by the ethics committees of the Karolinska Institute, Umeå University, Finnish Red Cross, and the Kiel Medical Faculty. For details of the collection of the British and worldwide samples, see the references below.</p>
+      </sec>
+      <sec id="s4b">
+        <title>Genotypes</title>
+        <p>We used genome-wide SNP genotypes from altogether 1642 Swedes, 280 Finns, 492 Germans, 740 British, and 1587 worldwide population samples to study the genetic structure in Northern Europe, especially within Sweden. The Swedes consisted of 774 case and 755 control females from a breast cancer study <xref ref-type="bibr" rid="pone.0016747-Einarsdttir1">[24]</xref> who had been ascertained for place of residence in 1993–1995, and 113 male population samples of ethnic Swedes mainly from eastern Sweden but without further geographic information <xref ref-type="bibr" rid="pone.0016747-Salmela1">[4]</xref>. The Finns were male blood donors, 141 of whom had grandparental birthplaces in Western and 139 in Eastern Finland <xref ref-type="bibr" rid="pone.0016747-Salmela1">[4]</xref>. The Germans were male and female control samples from the PopGen cohort from Kiel area in Schleswig-Holstein in Northern Germany <xref ref-type="bibr" rid="pone.0016747-Krawczak1">[25]</xref>. The British were male controls of the 1958 birth cohort whose genotype data were kindly provided by the Wellcome Trust Case Control Consortium <xref ref-type="bibr" rid="pone.0016747-Wellcome1">[26]</xref>. Additionally, we used the publicly available genotypes of 860 individuals from Human Genome Diversity Project (HGDP, <ext-link ext-link-type="uri" xlink:href="http://www.stanford.edu/group/morrinst/hgdp.html" xlink:type="simple">http://www.stanford.edu/group/morrinst/hgdp.html</ext-link>) <xref ref-type="bibr" rid="pone.0016747-Li1">[27]</xref> and 727 individuals from HapMap phase 3 release 1 (<ext-link ext-link-type="uri" xlink:href="http://hapmap.ncbi.nlm.nih.gov" xlink:type="simple">http://hapmap.ncbi.nlm.nih.gov</ext-link>) <xref ref-type="bibr" rid="pone.0016747-International1">[28]</xref> as worldwide reference samples; in particular, analyses of Northern Europe included 101 CEU samples (Utah residents with Northern and Western European ancestry from the CEPH collection) from HapMap and 25 Russians (from Vologda, ca. 550 km east of Saint Petersburg) from HGDP.</p>
+      </sec>
+      <sec id="s4c">
+        <title>Quality control and the different datasets</title>
+        <p>The genotypes used in this study originated from various platforms: the Swedish females from Illumina HumanHap550 (San Diego, CA); the Swedish males, the Finns, the Germans and the British from Affymetrix 250K StyI (Santa Clara, CA); the HGDP samples from Illumina HumanHap650K; and the HapMap samples from Affymetrix 6.0 and Illumina 1M. DNA extraction, genotyping and genotype calling had been done for the datasets separately according to manufacturers' instructions and is described in more detail in the references given above. Quality control (QC) filtering and LD-based pruning were done using Plink version 1.06 (<ext-link ext-link-type="uri" xlink:href="http://pngu.mgh.harvard.edu/purcell/plink/" xlink:type="simple">http://pngu.mgh.harvard.edu/purcell/plink/</ext-link>) <xref ref-type="bibr" rid="pone.0016747-Purcell1">[29]</xref>. Three datasets were formed (<xref ref-type="supplementary-material" rid="pone.0016747.s018">Table S8</xref>) to maximize the number of SNPs, reference populations, and Swedish samples, respectively. Dataset 1 consists of Illumina-genotyped individuals: HapMap, HGDP, and the Swedish breast cancer controls. QC thresholds were 99% success per individual and 95% success per SNP in each of the three source datasets, HWE p = 10<sup>−7</sup> for each population (except for HapMap, where the source dataset had been filtered for p = 10<sup>−6</sup>) and minor allele frequency (MAF) 0.05 for the whole dataset. In 119 pairs of individuals with high identity by state (IBS) similarity, the individual with lower genotyping success was excluded; additionally, the whole MKK population of HapMap was excluded due to multiple cases of high IBS relatedness. In Dataset 2, also the Affymetrix genotypes (the Swedes without geographic information, Finns, Germans and British) were added. Only the markers overlapping between the source datasets were used; no imputation was done. QC thresholds were the same as for Dataset 1, except for individual success 97% for the Affymetrix individuals. Nine SNPs were removed due to highly discordant frequencies (chi-square p&lt;10<sup>−10</sup>) between comparable parts of the Affymetrix and Illumina datasets (the two Swedish datasets against each other, and the British vs. HapMap CEU). Dataset 3 consists of the Swedish individuals of Dataset 1 supplemented by Swedish cases (774 cases and 751 controls). In addition to the same QC procedure as for Dataset 1, 41868 SNPs with p&lt;0.1 in a chi-square test of allele frequencies between cases and controls were excluded; <xref ref-type="supplementary-material" rid="pone.0016747.s010">Fig. S10</xref> shows the remaining differences. Each of the three datasets was pruned based on LD between markers to form both a pruned and a highly pruned dataset. <xref ref-type="supplementary-material" rid="pone.0016747.s018">Table S8</xref> gives the number of individuals and SNPs in each of the datasets, and <xref ref-type="supplementary-material" rid="pone.0016747.s019">Table S9</xref> indicates the dataset used in each analysis.</p>
+      </sec>
+      <sec id="s4d">
+        <title>Geographical coordinates and province divisions for Swedes and Finns</title>
+        <p>Coordinates for the Swedish individuals were obtained from GeoNames (<ext-link ext-link-type="uri" xlink:href="http://www.geonames.org" xlink:type="simple">www.geonames.org</ext-link>) based on both their postal code and county information, and confirmed from Google Maps in case of disparity. Coordinates for the Finnish individuals were based on the grandparental birthplaces, and a mean of these was used as a coordinate for the individual.</p>
+        <p>The places of residence of the Swedish individuals were distributed throughout the country, approximately reflecting the population density. For frequency-based analyses, the Swedes were divided into 21 provinces according to the administrative divisions (“län”) of Sweden (<xref ref-type="supplementary-material" rid="pone.0016747.s011">Table S1</xref>). Some provinces were combined to reach sufficient sample sizes. The largest cities (Malmö and Gothenburg) were separated from their surrounding provinces (Skåne and Västra Götaland, respectively). The provinces were further combined according to a traditional division to form three regions: Norrland, Svealand, and Götaland. The resulting sample sizes per province and region are shown in <xref ref-type="supplementary-material" rid="pone.0016747.s011">Table S1</xref>.</p>
+      </sec>
+      <sec id="s4e">
+        <title>Analyses</title>
+        <p>The F<sub>ST</sub> calculations were done in Arlequin 3.11 <xref ref-type="bibr" rid="pone.0016747-Excoffier1">[30]</xref>, using 5000 permutations to calculate the p values. IBS matrices between pairs of individuals were calculated in R 2.7.2 (<ext-link ext-link-type="uri" xlink:href="http://www.R-project.org" xlink:type="simple">www.R-project.org</ext-link>) <xref ref-type="bibr" rid="pone.0016747-R1">[31]</xref> package GenABEL 1.4–2 <xref ref-type="bibr" rid="pone.0016747-AulchenkoYS1">[32]</xref>. Matrices of IBS distance (1-IBS) and F<sub>ST</sub> were visualized by classical multidimensional scaling (MDS) in R. The proportion of variance explained by each MDS dimension was calculated as the ratio of the respective eigenvalue to the sum of all eigenvalues <xref ref-type="bibr" rid="pone.0016747-Cox1">[33]</xref>. The statistical significance of the difference between the IBS distributions was calculated by comparing the observed Mann-Whitney U test statistic to its empirical distribution based on 10.000 permutations of population labels for each pair of populations. Within each population, LD between 5083 randomly chosen SNPs and all other SNPs at less than 500 kb distance from them (altogether 67620 pairs) was calculated using the EM algorithm in Plink. The statistical significance of the differences in LD between populations was evaluated using a Wilcoxon signed rank test (i.e., a paired test) in R. Great-circle distances from R package fields <xref ref-type="bibr" rid="pone.0016747-Nychka1">[34]</xref> were used as the geographic distances between individuals. The correlation of the geographic and genetic (1-IBS) distance matrices was tested with Mantel test using the R package ade4 version 1.4 <xref ref-type="bibr" rid="pone.0016747-Dray1">[35]</xref>.</p>
+        <p>Allele frequency differences in pairs of populations were calculated by a chi-square test (1 degree of freedom) in Plink, and the general degree of inflation (λ) was calculated as the ratio of the means of the smallest 90% of observed vs. expected chi-square test statistics as in <xref ref-type="bibr" rid="pone.0016747-Clayton1">[36]</xref>. The degree of allele frequency differences between cases and controls was calculated similarly, and visualized with a quantile-quantile plot. To study whether the genetic differences within Sweden would be disproportionately often related to a certain gene function or pathway, we determined for each SNP the closest gene (within 200 kb), and compared the Gene Ontology classifications of the genes for the most differing SNPs (with -log(p) cutoffs 3, 3.5 and 4 resulting in 431, 190 and 87 genes, respectively) to those of the whole dataset using Panther version 7 (<ext-link ext-link-type="uri" xlink:href="http://www.pantherdb.org" xlink:type="simple">http://www.pantherdb.org</ext-link>) <xref ref-type="bibr" rid="pone.0016747-Thomas1">[37]</xref>, <xref ref-type="bibr" rid="pone.0016747-Thomas2">[38]</xref>. For eight interesting phenotypes, we also checked whether their associated genome areas (those within 200 kb of associated SNPs listed in National Human Genome Research Institute's Catalog of Published Genome-Wide Association Studies (<ext-link ext-link-type="uri" xlink:href="http://www.genome.gov/gwastudies" xlink:type="simple">http://www.genome.gov/gwastudies</ext-link>) <xref ref-type="bibr" rid="pone.0016747-Hindorff1">[39]</xref> on 11/16/2010) harbored unexpectedly many SNPs with nominally significant regional allele frequency differences.</p>
+        <p>Individuals were clustered with Structure 2.2 software <xref ref-type="bibr" rid="pone.0016747-Falush1">[40]</xref> using the admixture model and 10,000 burn-ins and iterations. Three separate runs were done for each number of clusters (K). The relative likelihoods of different K were judged from the run probabilities and by visual inspection of the resulting clusters as well as with a specific statistic <xref ref-type="bibr" rid="pone.0016747-Evanno1">[19]</xref>. Inbreeding coefficients of Swedish individuals relative to the total Swedish sample (in terms of observed vs. expected homozygotes) were calculated in Plink, and the differences between the three regional distributions were tested with a Kruskal-Wallis rank sum test. In addition to comparing regional distributions, inbreeding was analyzed within local geographical units: for a set of grid points on a map, each grid point that had at least 20 samples within a 150 km distance was plotted on the map in a color corresponding to the median inbreeding coefficient of those samples. A similar grid-based visualization was done for the individuals' proportions of Structure-inferred ancestry and for the correlation coefficient of genetic and geographic distances. The latter used, for each grid point, all pairs of individuals within a 150 km distance. The areas of strongest genetic change between Swedish provinces were analyzed using Barrier software v. 2.2 <xref ref-type="bibr" rid="pone.0016747-Manni1">[41]</xref> on the residuals of a linear regression of the genetic distance (F<sub>ST</sub>) on the geographic distance (between provinces' average sample locations). In allele frequency difference and LD analyses all populations were sampled to 115 individuals to avoid the effects of sample size. The reported significance levels for the IBS distributions, LD and inbreeding have been Bonferroni-corrected for the number of tests done within each analysis.</p>
+      </sec>
+    </sec>
+    <sec id="s5">
+      <title>Supporting Information</title>
+      <supplementary-material id="pone.0016747.s001" mimetype="image/gif" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s001" xlink:type="simple">
+        <label>Figure S1</label>
+        <caption>
+          <p><bold>Multidimensional scaling plots of genetic distances between individuals in three dimensions.</bold> Identity by state distances in Northern Europe (left), and Sweden and Finland (right). The proportions of variance explained by the three axes are 0.64%, 0.24%, and 0.17% in Northern Europe and 1.04%, 0.26%, and 0.24% in Sweden and Finland, respectively. The animation files can be opened e.g. in most internet browsers. Abbreviations as in <xref ref-type="table" rid="pone-0016747-t001">Table 1</xref> and <xref ref-type="supplementary-material" rid="pone.0016747.s011">Table S1</xref>.</p>
+          <p>(GIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s002" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s002" xlink:type="simple">
+        <label>Figure S2</label>
+        <caption>
+          <p>
+            <bold>The probabilities of different numbers of clusters (K) in the Structure analysis of Northern Europe.</bold>
+          </p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s003" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s003" xlink:type="simple">
+        <label>Figure S3</label>
+        <caption>
+          <p><bold>F<sub>ST</sub> distances visualized by multidimensional scaling.</bold> Pairwise distances between European populations (a), Swedish and Finnish provinces (b), and Swedish provinces (c). The corresponding F<sub>ST</sub> values can be found in <xref ref-type="supplementary-material" rid="pone.0016747.s012">Tables S2</xref>-<xref ref-type="supplementary-material" rid="pone.0016747.s014">S4</xref>. Abbreviations: Toscans in Italy (TSI) from HapMap; French (FRE), French Basque (FRB), North Italian (ITN), Orcadian (ORC), and Sardinian (SAR) from HGDP; Swedes with geographical information (NORR+SVEA+GOTA) (SWE); other abbreviations as in <xref ref-type="table" rid="pone-0016747-t001">Table 1</xref> and <xref ref-type="supplementary-material" rid="pone.0016747.s011">Table S1</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s004" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s004" xlink:type="simple">
+        <label>Figure S4</label>
+        <caption>
+          <p><bold>Distributions of pairwise identities by state (IBS).</bold> IBS distributions between six populations and Russians (a) and within the six populations (b). The location of distribution medians is denoted by triangles of corresponding color. In (a), Western Finland differed significantly from all other populations except Germany, and Germany from Norrland and Eastern Finland (p &lt; 0.031 after a Bonferroni correction). In (b), Eastern Finland differed significantly from all other populations, Norrland from Götaland and Western Finland, and Western Finland from Svealand (p &lt; 0.034 after a Bonferroni correction). Abbreviations as in <xref ref-type="table" rid="pone-0016747-t001">Table 1</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s005" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s005" xlink:type="simple">
+        <label>Figure S5</label>
+        <caption>
+          <p><bold>Multidimensional scaling plots of genetic distances between individuals in Svealand and Götaland.</bold> The genetic distance used is based on identity by state (IBS). Abbreviations as in <xref ref-type="supplementary-material" rid="pone.0016747.s011">Table S1</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s006" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s006" xlink:type="simple">
+        <label>Figure S6</label>
+        <caption>
+          <p><bold>Clustering of Swedish individuals by the Structure software.</bold> Each individual is represented by a thin vertical line, and its proportional ancestry in the two inferred clusters is denoted by colors. The individuals are sorted according to latitude from south to north.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s007" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s007" xlink:type="simple">
+        <label>Figure S7</label>
+        <caption>
+          <p><bold>Six zones of strong genetic change inferred by the Barrier software.</bold> The borders (in red) are numbered in decreasing order of strength, and they are based on F<sub>ST</sub> distances that have been corrected for the geographical distance between provinces. Note that the F<sub>ST</sub> values differ significantly from zero only for the first two borders.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s008" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s008" xlink:type="simple">
+        <label>Figure S8</label>
+        <caption>
+          <p><bold>Linkage disequilibrium as a function of distance between markers.</bold> Median D' in overlapping 40 kb windows at 10 kb intervals is plotted for each population using 67620 marker pairs. All distributions differed significantly (p &lt; 0.002) except Germany vs. Great Britain and Svealand vs. Götaland. Abbreviations as in <xref ref-type="table" rid="pone-0016747-t001">Table 1</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s009" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s009" xlink:type="simple">
+        <label>Figure S9</label>
+        <caption>
+          <p><bold>Genomic locations of SNPs whose allele frequency differs in Norrland.</bold> The p value from a chi-square test of allele frequencies between Norrland (n  =  115) and the rest of Sweden (n  =  635) is indicated for each SNP. The most differing SNPs are listed in <xref ref-type="supplementary-material" rid="pone.0016747.s016">Table S6</xref> and <xref ref-type="supplementary-material" rid="pone.0016747.s017">Table S7</xref>.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s010" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s010" xlink:type="simple">
+        <label>Figure S10</label>
+        <caption>
+          <p><bold>Differences between cases and controls in Dataset 3.</bold> A quantile-quantile plot of observed vs. expected test statistics (in blue) from a chi-square test of allele frequency differences between cases and controls for the SNPs that remain in Dataset 3 after quality control. Lambda denotes the overdispersion factor of observed vs. expected chi-square statistics.</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s011" mimetype="application/x-excel" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s011" xlink:type="simple">
+        <label>Table S1</label>
+        <caption>
+          <p>
+            <bold>Names, abbreviations and sample sizes for the Swedish and Finnish provinces.</bold>
+          </p>
+          <p>(XLS)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s012" mimetype="application/x-excel" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s012" xlink:type="simple">
+        <label>Table S2</label>
+        <caption>
+          <p>
+            <bold>Pairwise F<sub>ST</sub> values (multiplied by 10,000) between European populations.</bold>
+          </p>
+          <p>(XLS)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s013" mimetype="application/x-excel" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s013" xlink:type="simple">
+        <label>Table S3</label>
+        <caption>
+          <p>
+            <bold>Pairwise F<sub>ST</sub> values (multiplied by 10,000) between Swedish and Finnish provinces.</bold>
+          </p>
+          <p>(XLS)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s014" mimetype="application/x-excel" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s014" xlink:type="simple">
+        <label>Table S4</label>
+        <caption>
+          <p>
+            <bold>Pairwise F<sub>ST</sub> values (multiplied by 10,000) between Swedish provinces.</bold>
+          </p>
+          <p>(XLS)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s015" mimetype="application/x-excel" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s015" xlink:type="simple">
+        <label>Table S5</label>
+        <caption>
+          <p>
+            <bold>Number of SNPs with geographical differentiation within Sweden located in genome areas associated with eight phenotypes.</bold>
+          </p>
+          <p>(XLS)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s016" mimetype="application/x-excel" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s016" xlink:type="simple">
+        <label>Table S6</label>
+        <caption>
+          <p>
+            <bold>The SNPs with largest allele frequency difference between Norrland and the rest of Sweden, and their nearest genes (within 200 kb).</bold>
+          </p>
+          <p>(XLS)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s017" mimetype="application/x-excel" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s017" xlink:type="simple">
+        <label>Table S7</label>
+        <caption>
+          <p>
+            <bold>A list of the SNPs whose frequency differs between Norrland and the rest of Sweden (chi-square p&lt;10<sup>−3</sup>).</bold>
+          </p>
+          <p>(XLS)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s018" mimetype="application/x-excel" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s018" xlink:type="simple">
+        <label>Table S8</label>
+        <caption>
+          <p>
+            <bold>The numbers of SNPs and individuals in the different datasets after quality control.</bold>
+          </p>
+          <p>(XLS)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0016747.s019" mimetype="application/x-excel" position="float" xlink:href="info:doi/10.1371/journal.pone.0016747.s019" xlink:type="simple">
+        <label>Table S9</label>
+        <caption>
+          <p>
+            <bold>The datasets used in each analysis.</bold>
+          </p>
+          <p>(XLS)</p>
+        </caption>
+      </supplementary-material>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>This study makes use of data generated by the Wellcome Trust Case Control Consortium. A full list of the investigators who contributed to the generation of the data is available from <ext-link ext-link-type="uri" xlink:href="http://www.wtccc.org.uk" xlink:type="simple">www.wtccc.org.uk</ext-link>. Furthermore, we would like to acknowledge Jouni K. Seppänen for assistance in permutation testing.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0016747-Lao1">
+        <label>1</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Lao</surname><given-names>O</given-names></name><name name-style="western"><surname>Lu</surname><given-names>TT</given-names></name><name name-style="western"><surname>Nothnagel</surname><given-names>M</given-names></name><name name-style="western"><surname>Junge</surname><given-names>O</given-names></name><name name-style="western"><surname>Freitag-Wolf</surname><given-names>S</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Correlation between genetic and geographic structure in Europe.</article-title>             <source>Curr Biol</source>             <volume>18</volume>             <fpage>1241</fpage>             <lpage>1248</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Novembre1">
+        <label>2</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Novembre</surname><given-names>J</given-names></name><name name-style="western"><surname>Johnson</surname><given-names>T</given-names></name><name name-style="western"><surname>Bryc</surname><given-names>K</given-names></name><name name-style="western"><surname>Kutalik</surname><given-names>Z</given-names></name><name name-style="western"><surname>Boyko</surname><given-names>AR</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Genes mirror geography within Europe.</article-title>             <source>Nature</source>             <volume>456</volume>             <fpage>274</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Heath1">
+        <label>3</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Heath</surname><given-names>SC</given-names></name><name name-style="western"><surname>Gut</surname><given-names>IG</given-names></name><name name-style="western"><surname>Brennan</surname><given-names>P</given-names></name><name name-style="western"><surname>McKay</surname><given-names>JD</given-names></name><name name-style="western"><surname>Bencko</surname><given-names>V</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Investigation of the fine structure of European populations with applications to disease association studies.</article-title>             <source>Eur J Hum Genet</source>             <volume>16</volume>             <fpage>1413</fpage>             <lpage>1429</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Salmela1">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Salmela</surname><given-names>E</given-names></name><name name-style="western"><surname>Lappalainen</surname><given-names>T</given-names></name><name name-style="western"><surname>Fransson</surname><given-names>I</given-names></name><name name-style="western"><surname>Andersen</surname><given-names>PM</given-names></name><name name-style="western"><surname>Dahlman-Wright</surname><given-names>K</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Genome-wide analysis of single nucleotide polymorphisms uncovers population structure in Northern Europe.</article-title>             <source>PLoS ONE</source>             <volume>3</volume>             <fpage>e3519</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Jakkula1">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Jakkula</surname><given-names>E</given-names></name><name name-style="western"><surname>Rehnstrom</surname><given-names>K</given-names></name><name name-style="western"><surname>Varilo</surname><given-names>T</given-names></name><name name-style="western"><surname>Pietilainen</surname><given-names>OP</given-names></name><name name-style="western"><surname>Paunio</surname><given-names>T</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>The genome-wide patterns of variation expose significant substructure in a founder population.</article-title>             <source>Am J Hum Genet</source>             <volume>83</volume>             <fpage>787</fpage>             <lpage>794</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Nelis1">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nelis</surname><given-names>M</given-names></name><name name-style="western"><surname>Esko</surname><given-names>T</given-names></name><name name-style="western"><surname>Magi</surname><given-names>R</given-names></name><name name-style="western"><surname>Zimprich</surname><given-names>F</given-names></name><name name-style="western"><surname>Zimprich</surname><given-names>A</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Genetic structure of Europeans: a view from the North-East.</article-title>             <source>PLoS ONE</source>             <volume>4</volume>             <fpage>e5472</fpage>             <comment>10.1371/journal.pone.0005472</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-ODushlaine1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>O'Dushlaine</surname><given-names>CT</given-names></name><name name-style="western"><surname>Morris</surname><given-names>D</given-names></name><name name-style="western"><surname>Moskvina</surname><given-names>V</given-names></name><name name-style="western"><surname>Kirov</surname><given-names>G</given-names></name><name name-style="western"><surname>Consortium</surname><given-names>IS</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Population structure and genome-wide patterns of variation in Ireland and Britain.</article-title>             <source>Eur J Hum Genet</source>             <volume>18</volume>             <fpage>1248</fpage>             <lpage>54</lpage>             <comment>10.1038/ejhg.2010.87</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Siiriinen1">
+        <label>8</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Siiriäinen</surname><given-names>A</given-names></name></person-group>             <year>2003</year>             <article-title>The Stone and Bronze Ages.</article-title>             <person-group person-group-type="editor"><name name-style="western"><surname>Helle</surname><given-names>K</given-names></name></person-group>             <source>The Cambridge History of Scandinavia</source>             <publisher-loc>Cambridge</publisher-loc>             <publisher-name>Cambridge University Press</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Lindkvist1">
+        <label>9</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Lindkvist</surname><given-names>T</given-names></name></person-group>             <year>2003</year>             <article-title>Kings and provinces in Sweden.</article-title>             <person-group person-group-type="editor"><name name-style="western"><surname>Helle</surname><given-names>K</given-names></name><name name-style="western"><surname>Jansson</surname><given-names>T</given-names></name></person-group>             <source>The Cambridge History of Scandinavia</source>             <publisher-loc>Cambridge</publisher-loc>             <publisher-name>Cambridge University Press</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Lindqvist1">
+        <label>10</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Lindqvist</surname><given-names>H</given-names></name></person-group>             <year>2006</year>             <article-title>A history of Sweden.</article-title>             <publisher-loc>Stockholm</publisher-loc>             <publisher-name>Nordstedts Förlag</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-CavalliSforza1">
+        <label>11</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cavalli-Sforza</surname><given-names>LL</given-names></name><name name-style="western"><surname>Piazza</surname><given-names>A</given-names></name><name name-style="western"><surname>Menozzi</surname><given-names>P</given-names></name></person-group>             <year>1994</year>             <article-title>History and geography of human genes.</article-title>             <publisher-loc>Princeton</publisher-loc>             <publisher-name>Princeton University Press</publisher-name>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-McEvoy1">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>McEvoy</surname><given-names>BP</given-names></name><name name-style="western"><surname>Montgomery</surname><given-names>GW</given-names></name><name name-style="western"><surname>McRae</surname><given-names>AF</given-names></name><name name-style="western"><surname>Ripatti</surname><given-names>S</given-names></name><name name-style="western"><surname>Perola</surname><given-names>M</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Geographical structure and differential natural selection among North European populations.</article-title>             <source>Genome Res</source>             <volume>19</volume>             <fpage>804</fpage>             <lpage>814</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Lappalainen1">
+        <label>13</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Lappalainen</surname><given-names>T</given-names></name><name name-style="western"><surname>Laitinen</surname><given-names>V</given-names></name><name name-style="western"><surname>Salmela</surname><given-names>E</given-names></name><name name-style="western"><surname>Andersen</surname><given-names>P</given-names></name><name name-style="western"><surname>Huoponen</surname><given-names>K</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Migration waves to the Baltic Sea region.</article-title>             <source>Ann Hum Genet</source>             <volume>72</volume>             <fpage>337</fpage>             <lpage>348</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Karlsson1">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Karlsson</surname><given-names>AO</given-names></name><name name-style="western"><surname>Wallerstrom</surname><given-names>T</given-names></name><name name-style="western"><surname>Gotherstrom</surname><given-names>A</given-names></name><name name-style="western"><surname>Holmlund</surname><given-names>G</given-names></name></person-group>             <year>2006</year>             <article-title>Y-chromosome diversity in Sweden - a long-time perspective.</article-title>             <source>Eur J Hum Genet</source>             <volume>14</volume>             <fpage>963</fpage>             <lpage>970</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Lappalainen2">
+        <label>15</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Lappalainen</surname><given-names>T</given-names></name><name name-style="western"><surname>Hannelius</surname><given-names>U</given-names></name><name name-style="western"><surname>Salmela</surname><given-names>E</given-names></name><name name-style="western"><surname>von Dobeln</surname><given-names>U</given-names></name><name name-style="western"><surname>Lindgren</surname><given-names>CM</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Population structure in contemporary Sweden - a Y-chromosomal and mitochondrial DNA analysis.</article-title>             <source>Ann Hum Genet</source>             <volume>73</volume>             <fpage>61</fpage>             <lpage>73</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Hannelius1">
+        <label>16</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hannelius</surname><given-names>U</given-names></name><name name-style="western"><surname>Salmela</surname><given-names>E</given-names></name><name name-style="western"><surname>Lappalainen</surname><given-names>T</given-names></name><name name-style="western"><surname>Guillot</surname><given-names>G</given-names></name><name name-style="western"><surname>Lindgren</surname><given-names>CM</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Population substructure in Finland and Sweden revealed by the use of spatial coordinates and a small number of unlinked autosomal SNPs.</article-title>             <source>BMC Genet</source>             <volume>9</volume>             <fpage>54</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Einarsdottir1">
+        <label>17</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Einarsdottir</surname><given-names>E</given-names></name><name name-style="western"><surname>Egerbladh</surname><given-names>I</given-names></name><name name-style="western"><surname>Beckman</surname><given-names>L</given-names></name><name name-style="western"><surname>Holmberg</surname><given-names>D</given-names></name><name name-style="western"><surname>Escher</surname><given-names>SA</given-names></name></person-group>             <year>2007</year>             <article-title>The genetic population structure of northern Sweden and its implications for mapping genetic diseases.</article-title>             <source>Hereditas</source>             <volume>144</volume>             <fpage>171</fpage>             <lpage>180</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Malmstrm1">
+        <label>18</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Malmström</surname><given-names>H</given-names></name><name name-style="western"><surname>Gilbert</surname><given-names>MT</given-names></name><name name-style="western"><surname>Thomas</surname><given-names>MG</given-names></name><name name-style="western"><surname>Brandström</surname><given-names>M</given-names></name><name name-style="western"><surname>Storå</surname><given-names>J</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Ancient DNA reveals lack of continuity between Neolithic hunter-gatherers and contemporary Scandinavians.</article-title>             <source>Curr Biol</source>             <volume>19</volume>             <fpage>1758</fpage>             <lpage>1762</lpage>             <comment>10.1016/j.cub.2009.09.017</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Evanno1">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Evanno</surname><given-names>G</given-names></name><name name-style="western"><surname>Regnaut</surname><given-names>S</given-names></name><name name-style="western"><surname>Goudet</surname><given-names>J</given-names></name></person-group>             <year>2005</year>             <article-title>Detecting the number of clusters of individuals using the software STRUCTURE: a simulation study.</article-title>             <source>Mol Ecol</source>             <volume>14</volume>             <fpage>2611</fpage>             <lpage>2620</lpage>             <comment>10.1111/j.1365-294X.2005.02553.x</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Steffens1">
+        <label>20</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Steffens</surname><given-names>M</given-names></name><name name-style="western"><surname>Lamina</surname><given-names>C</given-names></name><name name-style="western"><surname>Illig</surname><given-names>T</given-names></name><name name-style="western"><surname>Bettecken</surname><given-names>T</given-names></name><name name-style="western"><surname>Vogler</surname><given-names>R</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>SNP-based analysis of genetic substructure in the German population.</article-title>             <source>Hum Hered</source>             <volume>62</volume>             <fpage>20</fpage>             <lpage>29</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Pitknen1">
+        <label>21</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Pitkänen</surname><given-names>K</given-names></name></person-group>             <year>2007</year>             <article-title>Suomen väestön historialliset kehityslinjat.</article-title>             <person-group person-group-type="editor"><name name-style="western"><surname>Koskinen</surname><given-names>S</given-names></name><name name-style="western"><surname>Martelin</surname><given-names>T</given-names></name><name name-style="western"><surname>Notkola</surname><given-names>IL</given-names></name><name name-style="western"><surname>Notkola</surname><given-names>V</given-names></name><name name-style="western"><surname>Pitkänen</surname><given-names>K</given-names></name><etal/></person-group>             <source>Suomen väestö</source>             <publisher-loc>Tampere</publisher-loc>             <publisher-name>Gaudeamus Helsinki University Press</publisher-name>             <fpage>41</fpage>             <lpage>76</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-VirtarantaKnowles1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Virtaranta-Knowles</surname><given-names>K</given-names></name><name name-style="western"><surname>Sistonen</surname><given-names>P</given-names></name><name name-style="western"><surname>Nevanlinna</surname><given-names>HR</given-names></name></person-group>             <year>1991</year>             <article-title>A population genetic study in Finland: comparison of the Finnish- and Swedish-speaking populations.</article-title>             <source>Hum Hered</source>             <volume>41</volume>             <fpage>248</fpage>             <lpage>264</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Myhre1">
+        <label>23</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Myhre</surname><given-names>B</given-names></name></person-group>             <year>2003</year>             <article-title>The Iron Age.</article-title>             <person-group person-group-type="editor"><name name-style="western"><surname>Helle</surname><given-names>K</given-names></name></person-group>             <source>The Cambridge History of Scandinavia</source>             <publisher-loc>Cambridge</publisher-loc>             <publisher-name>Cambridge University Press</publisher-name>             <fpage>60</fpage>             <lpage>94</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Einarsdttir1">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Einarsdóttir</surname><given-names>K</given-names></name><name name-style="western"><surname>Humphreys</surname><given-names>K</given-names></name><name name-style="western"><surname>Bonnard</surname><given-names>C</given-names></name><name name-style="western"><surname>Palmgren</surname><given-names>J</given-names></name><name name-style="western"><surname>Iles</surname><given-names>MM</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Linkage disequilibrium mapping of CHEK2: common variation and breast cancer risk.</article-title>             <source>PLoS Med</source>             <volume>3</volume>             <fpage>e168</fpage>             <comment>10.1371/journal.pmed.0030168</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Krawczak1">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Krawczak</surname><given-names>M</given-names></name><name name-style="western"><surname>Nikolaus</surname><given-names>S</given-names></name><name name-style="western"><surname>von Eberstein</surname><given-names>H</given-names></name><name name-style="western"><surname>Croucher</surname><given-names>PJ</given-names></name><name name-style="western"><surname>El Mokhtari</surname><given-names>NE</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>PopGen: population-based recruitment of patients and controls for the analysis of complex genotype-phenotype relationships.</article-title>             <source>Community Genet</source>             <volume>9</volume>             <fpage>55</fpage>             <lpage>61</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Wellcome1">
+        <label>26</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <collab xlink:type="simple">Wellcome Trust Case Control Consortium</collab>             <year>2007</year>             <article-title>Genome-wide association study of 14,000 cases of seven common diseases and 3,000 shared controls.</article-title>             <source>Nature</source>             <volume>447</volume>             <fpage>661</fpage>             <lpage>678</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Li1">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Li</surname><given-names>JZ</given-names></name><name name-style="western"><surname>Absher</surname><given-names>DM</given-names></name><name name-style="western"><surname>Tang</surname><given-names>H</given-names></name><name name-style="western"><surname>Southwick</surname><given-names>AM</given-names></name><name name-style="western"><surname>Casto</surname><given-names>AM</given-names></name><etal/></person-group>             <year>2008</year>             <article-title>Worldwide human relationships inferred from genome-wide patterns of variation.</article-title>             <source>Science</source>             <volume>319</volume>             <fpage>1100</fpage>             <lpage>1104</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-International1">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Altshuler</surname><given-names>DM</given-names></name><name name-style="western"><surname>Gibbs</surname><given-names>RA</given-names></name><name name-style="western"><surname>Peltonen</surname><given-names>L</given-names></name><name name-style="western"><surname>Altshuler</surname><given-names>DM</given-names></name><etal/></person-group>             <collab xlink:type="simple">International HapMap 3 Consortium</collab>             <year>2010</year>             <article-title>Integrating common and rare genetic variation in diverse human populations.</article-title>             <source>Nature</source>             <volume>467</volume>             <fpage>52</fpage>             <lpage>58</lpage>             <comment>10.1038/nature09298</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Purcell1">
+        <label>29</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Purcell</surname><given-names>S</given-names></name><name name-style="western"><surname>Neale</surname><given-names>B</given-names></name><name name-style="western"><surname>Todd-Brown</surname><given-names>K</given-names></name><name name-style="western"><surname>Thomas</surname><given-names>L</given-names></name><name name-style="western"><surname>Ferreira</surname><given-names>MA</given-names></name><etal/></person-group>             <year>2007</year>             <article-title>PLINK: a tool set for whole-genome association and population-based linkage analyses.</article-title>             <source>Am J Hum Genet</source>             <volume>81</volume>             <fpage>559</fpage>             <lpage>575</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Excoffier1">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Excoffier</surname><given-names>L</given-names></name><name name-style="western"><surname>Laval</surname><given-names>G</given-names></name><name name-style="western"><surname>Schneider</surname><given-names>S</given-names></name></person-group>             <year>2005</year>             <article-title>Arlequin (version 3.0): an integrated software package for population genetics data analysis.</article-title>             <source>Evol Bioinform Online</source>             <volume>1</volume>             <fpage>47</fpage>             <lpage>50</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-R1">
+        <label>31</label>
+        <element-citation publication-type="other" xlink:type="simple">             <collab xlink:type="simple">R Development Core Team.</collab>             <year>2008</year>                          <comment>R: A language and environment for statistical computing. 2.6.2. Available: <ext-link ext-link-type="uri" xlink:href="http://www.R-project.org" xlink:type="simple">http://www.R-project.org</ext-link> via the Internet.</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-AulchenkoYS1">
+        <label>32</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Aulchenko</surname><given-names>YS</given-names></name><name name-style="western"><surname>Ripke</surname><given-names>S</given-names></name><name name-style="western"><surname>Isaacs</surname><given-names>A</given-names></name><name name-style="western"><surname>van Duijn</surname><given-names>CM</given-names></name></person-group>             <year>2007</year>             <article-title>GenABEL: an R library for genome-wide association analysis.</article-title>             <source>Bioinformatics</source>             <volume>23</volume>             <fpage>1294</fpage>             <lpage>1296</lpage>             <comment>10.1093/bioinformatics/btm108</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Cox1">
+        <label>33</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cox</surname><given-names>TF</given-names></name><name name-style="western"><surname>Cox</surname><given-names>MAA</given-names></name></person-group>             <year>2001</year>             <article-title>Multidimensional scaling.</article-title>             <publisher-loc>Boca Raton</publisher-loc>             <publisher-name>Chapman and Hall/CRC</publisher-name> <!--===== Restructure page-count as size[@units="page"] =====--><size units="page">308</size>           </element-citation>
+      </ref>
+      <ref id="pone.0016747-Nychka1">
+        <label>34</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Nychka</surname><given-names>D</given-names></name></person-group>             <year>2007</year>             <article-title>fields: Tools for spatial data.</article-title>             <source>R package version</source>             <volume>4.1</volume>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Dray1">
+        <label>35</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Dray</surname><given-names>S</given-names></name><name name-style="western"><surname>Dufour</surname><given-names>AB</given-names></name></person-group>             <year>2007</year>             <article-title>The ade4 package: implementing the duality diagram for ecologists.</article-title>             <source>Journal of Statistical Software</source>             <volume>22</volume>             <fpage>1</fpage>             <lpage>20</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Clayton1">
+        <label>36</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Clayton</surname><given-names>DG</given-names></name><name name-style="western"><surname>Walker</surname><given-names>NM</given-names></name><name name-style="western"><surname>Smyth</surname><given-names>DJ</given-names></name><name name-style="western"><surname>Pask</surname><given-names>R</given-names></name><name name-style="western"><surname>Cooper</surname><given-names>JD</given-names></name><etal/></person-group>             <year>2005</year>             <article-title>Population structure, differential bias and genomic control in a large-scale, case-control association study.</article-title>             <source>Nat Genet</source>             <volume>37</volume>             <fpage>1243</fpage>             <lpage>1246</lpage>             <comment>10.1038/ng1653</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Thomas1">
+        <label>37</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Thomas</surname><given-names>PD</given-names></name><name name-style="western"><surname>Campbell</surname><given-names>MJ</given-names></name><name name-style="western"><surname>Kejariwal</surname><given-names>A</given-names></name><name name-style="western"><surname>Mi</surname><given-names>H</given-names></name><name name-style="western"><surname>Karlak</surname><given-names>B</given-names></name><etal/></person-group>             <year>2003</year>             <article-title>PANTHER: a library of protein families and subfamilies indexed by function.</article-title>             <source>Genome Res</source>             <volume>13</volume>             <fpage>2129</fpage>             <lpage>2141</lpage>             <comment>10.1101/gr.772403</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Thomas2">
+        <label>38</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Thomas</surname><given-names>PD</given-names></name><name name-style="western"><surname>Kejariwal</surname><given-names>A</given-names></name><name name-style="western"><surname>Guo</surname><given-names>N</given-names></name><name name-style="western"><surname>Mi</surname><given-names>H</given-names></name><name name-style="western"><surname>Campbell</surname><given-names>MJ</given-names></name><etal/></person-group>             <year>2006</year>             <article-title>Applications for protein sequence-function evolution data: mRNA/protein expression analysis and coding SNP scoring tools.</article-title>             <source>Nucleic Acids Res</source>             <volume>34</volume>             <fpage>W645</fpage>             <lpage>50</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Hindorff1">
+        <label>39</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Hindorff</surname><given-names>LA</given-names></name><name name-style="western"><surname>Sethupathy</surname><given-names>P</given-names></name><name name-style="western"><surname>Junkins</surname><given-names>HA</given-names></name><name name-style="western"><surname>Ramos</surname><given-names>EM</given-names></name><name name-style="western"><surname>Mehta</surname><given-names>JP</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Potential etiologic and functional implications of genome-wide association loci for human diseases and traits.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>106</volume>             <fpage>9362</fpage>             <lpage>9367</lpage>             <comment>10.1073/pnas.0903103106</comment>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Falush1">
+        <label>40</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Falush</surname><given-names>D</given-names></name><name name-style="western"><surname>Stephens</surname><given-names>M</given-names></name><name name-style="western"><surname>Pritchard</surname><given-names>JK</given-names></name></person-group>             <year>2003</year>             <article-title>Inference of population structure using multilocus genotype data: linked loci and correlated allele frequencies.</article-title>             <source>Genetics</source>             <volume>164</volume>             <fpage>1567</fpage>             <lpage>1587</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0016747-Manni1">
+        <label>41</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Manni</surname><given-names>F</given-names></name><name name-style="western"><surname>Guerard</surname><given-names>E</given-names></name><name name-style="western"><surname>Heyer</surname><given-names>E</given-names></name></person-group>             <year>2004</year>             <article-title>Geographic patterns of (genetic, morphologic, linguistic) variation: how barriers can be detected by using Monmonier's algorithm.</article-title>             <source>Hum Biol</source>             <volume>76</volume>             <fpage>173</fpage>             <lpage>190</lpage>          </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

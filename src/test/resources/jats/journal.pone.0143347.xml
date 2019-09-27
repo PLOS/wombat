@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0143347</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-15-30201</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+</article-categories>
+<title-group>
+<article-title>Effects of Prey Presence and Scale on Bobcat Resource Selection during Winter</article-title>
+<alt-title alt-title-type="running-head">Effects of Prey Presence and Scale on Bobcat Resource Selection during Winter</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Bled</surname>
+<given-names>Florent</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+<xref rid="cor001" ref-type="corresp">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Summers</surname>
+<given-names>Savanna</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Martell</surname>
+<given-names>Deborah</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Petroelje</surname>
+<given-names>Tyler R.</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Beyer</surname>
+<given-names>Dean E.</given-names>
+<suffix>Jr</suffix>
+</name>
+<xref rid="aff002" ref-type="aff"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Belant</surname>
+<given-names>Jerrold L.</given-names>
+</name>
+<xref rid="aff001" ref-type="aff"><sup>1</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Carnivore Ecology Laboratory, Forest and Wildlife Research Center, Mississippi State University, Mississippi, United States of America</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Wildlife Division, Michigan Department of Natural Resources, Marquette, Michigan, United States of America</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Crowther</surname>
+<given-names>Mathew S.</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>University of Sydney, AUSTRALIA</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: JLB DEB TRP. Performed the experiments: JLB TRP DEB DM. Analyzed the data: FB SS. Wrote the paper: FB SS DM TRP DEB JLB.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">florent.bled@gmail.com</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>18</day>
+<month>11</month>
+<year>2015</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2015</year>
+</pub-date>
+<volume>10</volume>
+<issue>11</issue>
+<elocation-id>e0143347</elocation-id>
+<history>
+<date date-type="received">
+<day>9</day>
+<month>7</month>
+<year>2015</year>
+</date>
+<date date-type="accepted">
+<day>2</day>
+<month>11</month>
+<year>2015</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2015</copyright-year>
+<copyright-holder>Bled et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0143347" xlink:type="simple"/>
+<abstract>
+<p>Factors relevant to resource selection in carnivores may vary across spatial and temporal scales, both in magnitude and rank. Understanding relationships among carnivore occupancy, prey presence, and habitat characteristics, as well as their interactions across multiple scales, is necessary to improve our understanding of resource selection and predict population changes. We used a multi-scale dynamic hierarchical co-occurrence model with camera data to study bobcat and snowshoe hare occupancy in the Upper Peninsula of Michigan during winter 2012–2013. Bobcat presence was influenced at the local scale by snowshoe hare presence, and by road density at the local and larger scale when hare were absent. Hare distribution was related primarily to vegetation cover types, and detectability varied in space and time. Bobcat occupancy dynamics were influenced by different factors depending on the spatial scale considered and the resource availability context. Moreover, considering observed co-occurrence, we suggest that bobcat presence had a greater effect on hare occupancy than hare presence on bobcat occupancy. Our results highlight the importance of studying carnivore distributions in the context of predator-prey relationships and its interactions with environmental covariates at multiple spatial scales. Our approach can be applied to other carnivore species to provide insights beneficial for management and conservation.</p>
+</abstract>
+<funding-group>
+<funding-statement>This study was supported by the Federal Aid in Wildlife Restoration; Michigan Department of Natural Resources; Safari Club International Foundation; Michigan Involvement Committee of Safari Club International Foundation; and Undergraduate Research Scholars Program of Mississippi State University. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="3"/>
+<table-count count="3"/>
+<page-count count="17"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability" xlink:type="simple">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Habitat selection refers to the process by which an animal, through a series of hierarchical behavioral responses might choose to disproportionally use some areas of its habitat [<xref rid="pone.0143347.ref001" ref-type="bibr">1</xref>]. In a heterogeneous environment, this process may influence the survival and fitness of individuals making this choice. Habitat use, or the way an animal uses the collection of conditions and resources in a habitat, is the result of this selection. Multiple resources and environmental factors (e.g. cover, food, or the presence of predators or conspecifics) can influence habitat selection and result in variations of habitat use [<xref rid="pone.0143347.ref002" ref-type="bibr">2</xref>][<xref rid="pone.0143347.ref003" ref-type="bibr">3</xref>]. Consequently, because the factors relevant to this selection process may vary across spatial or temporal scales in magnitude and rank [<xref rid="pone.0143347.ref004" ref-type="bibr">4</xref>][<xref rid="pone.0143347.ref005" ref-type="bibr">5</xref>][<xref rid="pone.0143347.ref006" ref-type="bibr">6</xref>][<xref rid="pone.0143347.ref007" ref-type="bibr">7</xref>], habitat use will be scale-dependent. For example, while a forest might be considered used by a predator at a large scale, at a finer scale some parts might be preferentially used for refugia or hunting, while other areas might not be used at all. Some of the factors influencing spatio-temporal habitat selection include season [<xref rid="pone.0143347.ref008" ref-type="bibr">8</xref>], intraspecific interactions [<xref rid="pone.0143347.ref009" ref-type="bibr">9</xref>], breeding behaviors [<xref rid="pone.0143347.ref010" ref-type="bibr">10</xref>], landscape attributes (e.g., land cover heterogeneity) [<xref rid="pone.0143347.ref011" ref-type="bibr">11</xref>] and fragmentation or human development [<xref rid="pone.0143347.ref012" ref-type="bibr">12</xref>][<xref rid="pone.0143347.ref013" ref-type="bibr">13</xref>]. Moreover, the relative importance of factors influencing habitat selection and subsequent use may also vary depending on the scale considered. Animals can select different resources at different scales [<xref rid="pone.0143347.ref014" ref-type="bibr">14</xref>][<xref rid="pone.0143347.ref015" ref-type="bibr">15</xref>][<xref rid="pone.0143347.ref016" ref-type="bibr">16</xref>]. For example, Canada lynx (<italic>Lynx Canadensis</italic>) selected dens based on topography at a greater spatial scale, followed by forest seral stage and horizontal cover/log volume at increasingly finer scales [<xref rid="pone.0143347.ref017" ref-type="bibr">17</xref>]. Distributions analyses should consider the effects of scale when estimating the effects of factors underlying habitat selection.</p>
+<p>For carnivores, resources including landscape features and characteristics as well as prey availability will impact habitat use [<xref rid="pone.0143347.ref018" ref-type="bibr">18</xref>]. For example, forest cover types, and especially vegetation cover was identified as one of the factors that influenced habitat selection by bobcats (<italic>Lynx rufus</italic>) [<xref rid="pone.0143347.ref019" ref-type="bibr">19</xref>] and grizzly bears (<italic>Ursus arctos</italic>) [<xref rid="pone.0143347.ref020" ref-type="bibr">20</xref>]. However, more important than this factor was prey availability. Murray, Boutin &amp; O'Donoghue (1994) [<xref rid="pone.0143347.ref021" ref-type="bibr">21</xref>] found that lynx (<italic>Lynx canadensis</italic>) and coyote (<italic>Canis latrans</italic>) occupancy shifted with variation in availability of snowshoe hare. Landscape features such as road density and hydrogeography can complement the set of factors involved in carnivore habitat selection. While the presence of a developed road network can have a negative effect [<xref rid="pone.0143347.ref022" ref-type="bibr">22</xref>], linear features such as smaller roads or trails can also be used as travel corridors ([<xref rid="pone.0143347.ref023" ref-type="bibr">23</xref>]; e.g., gray wolves (<italic>C</italic>. <italic>lupus</italic>) [<xref rid="pone.0143347.ref024" ref-type="bibr">24</xref>] or cougars (<italic>Puma concolor</italic>) [<xref rid="pone.0143347.ref025" ref-type="bibr">25</xref>]. The repartition (both absolute and relatively to each other) of these factors will vary spatially and as a function of the scale considered.</p>
+<p>Since one of the main factors responsible for carnivore habitat selection is prey availability, to accurately predict carnivore habitat use, we need to account for their prey distribution, as well as the factors affecting this prey habitat use. For several medium-sized carnivore species, including bobcats, the target species of our study, snowshoe hare (<italic>Lepus americanus</italic>) is an important prey species [<xref rid="pone.0143347.ref026" ref-type="bibr">26</xref>]. Snowshoe hare prefers dense understory [<xref rid="pone.0143347.ref027" ref-type="bibr">27</xref>] and to forage near cover [<xref rid="pone.0143347.ref028" ref-type="bibr">28</xref>], possibly in response to the high predation pressure that the species is facing. In this context, cover types and proportions is an essential factor to consider when modeling snowshoe hare habitat use.</p>
+<p>We addressed habitat use of bobcats (<italic>Lynx rufus</italic>) in the Upper Peninsula of Michigan during winter. Specifically, we estimated how bobcat occupancy was influenced by landscape factors as well as by snowshoe hare habitat use. In turn, we considered cover types structure to model hare occupancy. During winter, most bobcat activity is associated with foraging [<xref rid="pone.0143347.ref029" ref-type="bibr">29</xref>]; consequently, bobcat occupancy should be linked to prey availability [<xref rid="pone.0143347.ref002" ref-type="bibr">2</xref>][<xref rid="pone.0143347.ref021" ref-type="bibr">21</xref>][<xref rid="pone.0143347.ref030" ref-type="bibr">30</xref>]. Moreover, linear features such as roads and streams may also influence bobcat occupancy [<xref rid="pone.0143347.ref022" ref-type="bibr">22</xref>] because of learned behavior to avoid high activity roads due to risk or use as travel corridors. Our objective was to determine the factors governing distribution of bobcat and its prey. We were also interested in how the factors impacting bobcat occupancy could vary depending on the spatial scale at which they are considered. Because snowshoe hare is an important prey of bobcats during winter, we predicted bobcat occupancy would increase in areas with greater snowshoe hare occupancy. We predicted that bobcat occupancy probability would be positively correlated with the hydrogeography characteristics of our survey area (i.e. extent of rivers and streams). We also hypothesized bobcats would avoid roads at fine and coarse spatial scales, due to associated risk. Finally, we expected a positive association between hare occupancy and dense vegetative cover types. Thanks to a novel multi-scale hierarchical model we have been able to assess these hypotheses and provide directions to improve our understanding of habitat selection and use by a medium sized carnivore.</p>
+</sec>
+<sec id="sec002">
+<title>Material and Methods</title>
+<sec id="sec003">
+<title>Study design</title>
+<p>We conducted the study in a 400 km<sup>2</sup> square area, north of the Michigamme Reservoir in the Upper Peninsula of Michigan (46°15' N, 88°14' W). Land cover included deciduous forests (38%), woody wetlands (29%), mixed forests (13%), conifer forests (6%), open water (4%), grassland/herbaceous (3%), developed (3%), and other (3%). Dominant tree species include sugar maple (<italic>Acer saccharum</italic>) and trembling aspen (<italic>Populus tremuloides</italic>) in upland deciduous forests, black spruce (<italic>Picea mariana</italic>) in lowland coniferous forests, and red pine (<italic>Pinus resinosa</italic>) in plantations. Average annual snowfall in the study area is about 180 cm and average annual rainfall is about 69 cm. State and US highways border the study area with secondary roads interspersed throughout. Land within the study area is state, commercial forest association, or privately owned.</p>
+<p>We divided the study area into 64 2.5 x 2.5 km cells, and selected a station in each cell that we considered suitable bobcat habitat, following Stricker et al. [<xref rid="pone.0143347.ref029" ref-type="bibr">29</xref>]. At each station, we constructed a circular barrier 0.7–1.0 m high and containing 4 entrances, then baited stations using vehicle- or hunter-killed white-tailed deer (<italic>Odocoileus virginianus</italic>) or beaver (<italic>Castor canadensis</italic>) carcasses wired to a central tree. We applied a commercial skunk-based lure to the central tree about 1.7 m above ground. At each station, we attached a remote camera (Bushnell Infrared Trophy Cameras; Bushnell Outdoor Products, Overland Park, Kansas, USA) to a tree, 70 to 100 cm above ground and positioned to capture all animal activity within the station. We programmed cameras to obtain images of animals with a 5-minute delay between detections. We conducted an 11 week survey from December 2012 to February 2013 with visits to each station every 7 days. We replaced image cards and batteries each visit and added bait and lure as necessary. We recorded the date and time of each image containing bobcat or hare detected and summarized by week and species the number of days the species was detected, and the number of days each camera operated (i.e., number of sampling replicates). In this context, we assumed occupancy to be constant during each week, and used each day in a week as a temporal replicate. Therefore, most cells received 7 temporal replicates (i.e. days) each week.</p>
+</sec>
+<sec id="sec004">
+<title>Covariates</title>
+<p>Using remote-sensing data, we extracted covariates for each cell in our survey grid. To model bobcat occupancy, we used the following covariates: road and water densities at the scale of the cell and of the first-order neighborhood (defined as the eight cells surrounding the target cell), and distance from the station to the nearest water source. Full neighborhood information for cells in the border of the study area was provided via a one-cell buffer area surrounding our target region. We obtained river, stream and road data from Topologically Integrated Geographic Encoding and Referencing system files [<xref rid="pone.0143347.ref031" ref-type="bibr">31</xref>]. We modeled snowshoe hare occupancy as a function of vegetation cover type. We used 2011 National Landcover Data (30-m resolution; [<xref rid="pone.0143347.ref032" ref-type="bibr">32</xref>]) that we reclassified from 15 original landcovers to 9 (<xref rid="pone.0143347.t001" ref-type="table">Table 1</xref>). For each cell, we then estimated the percentage of the cell covered by each vegetation cover type. Each covariate was scaled and centered for analyses, and no strong or moderate multicollinearity was detected [<xref rid="pone.0143347.ref033" ref-type="bibr">33</xref>]. The range of each covariate, once scaled, is presented in <xref rid="pone.0143347.s001" ref-type="supplementary-material">S1 Table</xref>.</p>
+<table-wrap id="pone.0143347.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0143347.t001</object-id>
+<label>Table 1</label> <caption><title>Land cover designations as defined in the 2011 national land cover database with percentage land cover within study area, Iron County, Upper Peninsula Michigan (from [<xref rid="pone.0143347.ref032" ref-type="bibr">32</xref>]).</title></caption>
+<alternatives>
+<graphic id="pone.0143347.t001g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.t001" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Land cover</th>
+<th align="left" rowspan="1" colspan="1">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Deciduous forest excluding aspen (DEA)</td>
+<td align="left" rowspan="1" colspan="1">Areas dominated by trees (excluding aspen) generally greater than 5 meters tall, and greater than 20% of total vegetation cover. More than 75 percent of the tree species shed foliage simultaneously in response to seasonal change.</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Aspen forest</td>
+<td align="left" rowspan="1" colspan="1">Areas where aspens are present and dominated by trees generally greater than 5 meters tall, and greater than 20% of total vegetation cover. More than 75 percent of the tree species shed foliage simultaneously in response to seasonal change.</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Woody wetland (WW)</td>
+<td align="left" rowspan="1" colspan="1">Areas where forest or shrub land vegetation accounts for greater than 20 percent of vegetative cover and the soil or substrate is periodically saturated with or covered with water.</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Mixed forest</td>
+<td align="left" rowspan="1" colspan="1">Areas dominated by trees generally greater than 5 meters tall, and greater than 20% of total vegetation cover. Neither deciduous nor evergreen species are greater than 75 percent of total tree cover.</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Evergreen forest</td>
+<td align="left" rowspan="1" colspan="1">Areas dominated by trees generally greater than 5 meters tall, and greater than 20% of total vegetation cover. More than 75 percent of the tree species maintain their leaves all year. Canopy is never without green foliage.</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Open water</td>
+<td align="left" rowspan="1" colspan="1">Areas of open water, generally with less than 25% cover or vegetation or soil</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Grassland/herbaceous</td>
+<td align="left" rowspan="1" colspan="1">Areas dominated by grammanoid or herbaceous vegetation, generally greater than 80% of total vegetation. These areas are not subject to intensive management such as tilling, but can be utilized for grazing.</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Emergent herbaceous wetland (EHW)</td>
+<td align="left" rowspan="1" colspan="1">Areas where perennial herbaceous vegetation accounts for greater than 80 percent of vegetative cover and the soil or substrate is periodically saturated with or covered with water.</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Shrub/scrub</td>
+<td align="left" rowspan="1" colspan="1">Areas dominated by shrubs; less than 5 meters tall with shrub canopy typically greater than 20% of total vegetation. This class includes true shrubs, young trees in an early successional stage or trees stunted from environmental conditions.</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Unsuitable (i.e., urban, barren, pasture, agriculture)</td>
+<td align="left" rowspan="1" colspan="1">All other areas modified by agriculture or developed land use practices such as farmed row crops, pastures, roads, and structures.</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+</sec>
+<sec id="sec005">
+<title>Statistical analysis</title>
+<p>We estimated bobcat and snowshoe hare occupancies using a hierarchical co-occurrence model [<xref rid="pone.0143347.ref034" ref-type="bibr">34</xref>]. We first modeled snowshoe hare occupancy <inline-formula id="pone.0143347.e001"><alternatives><graphic id="pone.0143347.e001g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e001" xlink:type="simple"/><mml:math display="inline" id="M1" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>Z</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> in cell <italic>i</italic> during week <italic>t</italic> as following a Bernoulli distribution with a mean <inline-formula id="pone.0143347.e002"><alternatives><graphic id="pone.0143347.e002g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e002" xlink:type="simple"/><mml:math display="inline" id="M2" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula>, that we modeled as a linear function of landcover covariates on the logit scale, such as:
+<disp-formula id="pone.0143347.e003">
+<alternatives>
+<graphic id="pone.0143347.e003g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e003" xlink:type="simple"/>
+<mml:math display="block" id="M3" overflow="scroll">
+<mml:mrow><mml:msubsup><mml:mi>Z</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup><mml:msub><mml:mrow/><mml:mo> </mml:mo></mml:msub><mml:mo>~</mml:mo><mml:mi>B</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mi>n</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+<disp-formula id="pone.0143347.e004">
+<alternatives>
+<graphic id="pone.0143347.e004g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e004" xlink:type="simple"/>
+<mml:math display="block" id="M4" overflow="scroll">
+<mml:mrow><mml:mtable columnalign="left"><mml:mtr columnalign="left"><mml:mtd columnalign="left"><mml:mrow><mml:mi>l</mml:mi><mml:mi>o</mml:mi><mml:mi>g</mml:mi><mml:mi>i</mml:mi><mml:mi>t</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msup><mml:mi>b</mml:mi><mml:mi>H</mml:mi></mml:msup><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>A</mml:mi><mml:mi>s</mml:mi><mml:mi>p</mml:mi><mml:mi>e</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub><mml:mi>A</mml:mi><mml:mi>s</mml:mi><mml:mi>p</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>n</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>D</mml:mi><mml:mi>E</mml:mi><mml:mi>A</mml:mi></mml:mrow></mml:msub><mml:mi>D</mml:mi><mml:mi>E</mml:mi><mml:msub><mml:mi>A</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>E</mml:mi><mml:mi>v</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mi>g</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>e</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub><mml:mi>E</mml:mi><mml:mi>v</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mi>g</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>n</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>M</mml:mi><mml:mi>i</mml:mi><mml:mi>x</mml:mi><mml:mi>e</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:mi>M</mml:mi><mml:mi>i</mml:mi><mml:mi>x</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:mtd></mml:mtr><mml:mtr columnalign="left"><mml:mtd columnalign="left"><mml:mrow><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>S</mml:mi><mml:mi>h</mml:mi><mml:mi>r</mml:mi><mml:mi>u</mml:mi><mml:mi>b</mml:mi></mml:mrow></mml:msub><mml:mi>S</mml:mi><mml:mi>h</mml:mi><mml:mi>r</mml:mi><mml:mi>u</mml:mi><mml:msub><mml:mi>b</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>G</mml:mi><mml:mi>r</mml:mi><mml:mi>a</mml:mi><mml:mi>s</mml:mi><mml:mi>s</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:mi>G</mml:mi><mml:mi>r</mml:mi><mml:mi>a</mml:mi><mml:mi>s</mml:mi><mml:mi>s</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>W</mml:mi><mml:mi>W</mml:mi></mml:mrow></mml:msub><mml:mi>W</mml:mi><mml:msub><mml:mi>W</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>E</mml:mi><mml:mi>H</mml:mi><mml:mi>W</mml:mi></mml:mrow></mml:msub><mml:mi>E</mml:mi><mml:mi>H</mml:mi><mml:msub><mml:mi>W</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>U</mml:mi><mml:mi>n</mml:mi><mml:mi>s</mml:mi><mml:mi>u</mml:mi><mml:mi>i</mml:mi><mml:mi>t</mml:mi><mml:mi>a</mml:mi><mml:mi>b</mml:mi><mml:mi>l</mml:mi><mml:mi>e</mml:mi></mml:mrow></mml:msub><mml:mi>U</mml:mi><mml:mi>n</mml:mi><mml:mi>s</mml:mi><mml:mi>u</mml:mi><mml:mi>i</mml:mi><mml:mi>t</mml:mi><mml:mi>a</mml:mi><mml:mi>b</mml:mi><mml:mi>l</mml:mi><mml:msub><mml:mi>e</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:mtd></mml:mtr><mml:mtr columnalign="left"><mml:mtd columnalign="left"><mml:mrow><mml:mo>+</mml:mo><mml:msubsup><mml:mi>ε</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow></mml:mtd></mml:mtr></mml:mtable></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+where <italic>b</italic><sup><italic>H</italic></sup> is the intercept and <italic>β</italic><sub><italic>x</italic></sub> corresponds to the ‘x’ vegetation type specific slope. The intercept was given a flat prior, while the slopes for cover type covariates were given non-informative Normal priors with mean 0 and variance 100. We accounted for any residual spatial and time variations using the random effect <inline-formula id="pone.0143347.e005"><alternatives><graphic id="pone.0143347.e005g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e005" xlink:type="simple"/><mml:math display="inline" id="M5" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>ε</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula>, following a normal distribution such as:
+<disp-formula id="pone.0143347.e006">
+<alternatives>
+<graphic id="pone.0143347.e006g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e006" xlink:type="simple"/>
+<mml:math display="block" id="M6" overflow="scroll">
+<mml:mrow><mml:msubsup><mml:mi>ε</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup><mml:mo>~</mml:mo><mml:mi>N</mml:mi><mml:mi>o</mml:mi><mml:mi>r</mml:mi><mml:mi>m</mml:mi><mml:mi>a</mml:mi><mml:mi>l</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mn>0</mml:mn><mml:mo>,</mml:mo><mml:msubsup><mml:mi>σ</mml:mi><mml:mrow><mml:mi>h</mml:mi><mml:mi>a</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi></mml:mrow><mml:mn>2</mml:mn></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula></p>
+<p>Similarly, bobcat occupancy <inline-formula id="pone.0143347.e007"><alternatives><graphic id="pone.0143347.e007g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e007" xlink:type="simple"/><mml:math display="inline" id="M7" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>Z</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> followed a Bernoulli distribution with a mean <inline-formula id="pone.0143347.e008"><alternatives><graphic id="pone.0143347.e008g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e008" xlink:type="simple"/><mml:math display="inline" id="M8" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula>. In turn, <inline-formula id="pone.0143347.e009"><alternatives><graphic id="pone.0143347.e009g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e009" xlink:type="simple"/><mml:math display="inline" id="M9" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> is defined conditionally on hare presence, as we expected bobcat occupancy probability to be greater when its prey is present.
+<disp-formula id="pone.0143347.e010">
+<alternatives>
+<graphic id="pone.0143347.e010g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e010" xlink:type="simple"/>
+<mml:math display="block" id="M10" overflow="scroll">
+<mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup><mml:mo>=</mml:mo><mml:msubsup><mml:mi>Z</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup><mml:mo> </mml:mo><mml:mo>.</mml:mo><mml:mo> </mml:mo><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup><mml:mo>+</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mn>1</mml:mn><mml:mo>−</mml:mo><mml:msubsup><mml:mi>Z</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>.</mml:mo><mml:mo> </mml:mo><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+where <inline-formula id="pone.0143347.e011"><alternatives><graphic id="pone.0143347.e011g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e011" xlink:type="simple"/><mml:math display="inline" id="M11" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> and <inline-formula id="pone.0143347.e012"><alternatives><graphic id="pone.0143347.e012g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e012" xlink:type="simple"/><mml:math display="inline" id="M12" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> represent bobcat occupancy when hare is present and absent, respectively. We then modeled those probabilities as a linear function of water and road covariates on the logit scale:
+<disp-formula id="pone.0143347.e013">
+<alternatives>
+<graphic id="pone.0143347.e013g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e013" xlink:type="simple"/>
+<mml:math display="block" id="M13" overflow="scroll">
+<mml:mrow><mml:mi>l</mml:mi><mml:mi>o</mml:mi><mml:mi>g</mml:mi><mml:mi>i</mml:mi><mml:mi>t</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msubsup><mml:mi>b</mml:mi><mml:mn>1</mml:mn><mml:mi>B</mml:mi></mml:msubsup><mml:mo>+</mml:mo><mml:msub><mml:mi>α</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>c</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>α</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>c</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>n</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>n</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>γ</mml:mi><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msubsup><mml:mi>ε</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+<disp-formula id="pone.0143347.e014">
+<alternatives>
+<graphic id="pone.0143347.e014g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e014" xlink:type="simple"/>
+<mml:math display="block" id="M14" overflow="scroll">
+<mml:mrow><mml:mi>l</mml:mi><mml:mi>o</mml:mi><mml:mi>g</mml:mi><mml:mi>i</mml:mi><mml:mi>t</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msubsup><mml:mi>b</mml:mi><mml:mn>0</mml:mn><mml:mi>B</mml:mi></mml:msubsup><mml:mo>+</mml:mo><mml:msub><mml:mi>α</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>c</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>α</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>c</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>n</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>n</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>γ</mml:mi><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msubsup><mml:mi>ε</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula></p>
+<p>Thus, <inline-formula id="pone.0143347.e015"><alternatives><graphic id="pone.0143347.e015g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e015" xlink:type="simple"/><mml:math display="inline" id="M15" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>b</mml:mi><mml:mn>1</mml:mn><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> and <inline-formula id="pone.0143347.e016"><alternatives><graphic id="pone.0143347.e016g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e016" xlink:type="simple"/><mml:math display="inline" id="M16" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>b</mml:mi><mml:mn>0</mml:mn><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> are intercepts for bobcat occupancy probabilities when hare are present and absent, respectively. When hare are present, slopes for the cell road and water densities (<italic>D</italic><sub>road(c)i</sub> and <italic>D</italic><sub>water(c)i</sub>), neighborhood road and water densities (<italic>D</italic><sub>road(n)i</sub> and <italic>D</italic><sub>water(n)i</sub>), and distance to nearest water source (<italic>d</italic><sub><italic>i</italic></sub>) are represented by <italic>α</italic><sub>1 road</sub>, <italic>α</italic><sub>1 water</sub>, <italic>β</italic><sub>1 road</sub>, <italic>β</italic><sub>1 water</sub> and <italic>γ</italic><sub>1</sub>, respectively. When hare are absent, <italic>α</italic><sub>0 road</sub>, <italic>α</italic><sub>0 water</sub>, <italic>β</italic><sub>0 road</sub>, <italic>β</italic><sub>0 water</sub> and <italic>γ</italic><sub>0</sub> are the corresponding slopes. Intercepts were given flat priors, while slopes for road and water covariates were given non-informative Normal priors with mean 0 and variance 10000. Finally, <inline-formula id="pone.0143347.e017"><alternatives><graphic id="pone.0143347.e017g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e017" xlink:type="simple"/><mml:math display="inline" id="M17" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>ε</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> and <inline-formula id="pone.0143347.e018"><alternatives><graphic id="pone.0143347.e018g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e018" xlink:type="simple"/><mml:math display="inline" id="M18" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>ε</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> are random cell-week effects. This formulation allows bobcat occupancy, as well as its relationship to the covariates, to vary with hare presence.</p>
+<p>We used a hierarchical approach to model bobcat and snowshoe hare and their potential ecological determinants independently of the effects of imperfect detection and sampling [<xref rid="pone.0143347.ref035" ref-type="bibr">35</xref>]. We modeled bobcat and snowshoe hare detections, <inline-formula id="pone.0143347.e019"><alternatives><graphic id="pone.0143347.e019g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e019" xlink:type="simple"/><mml:math display="inline" id="M19" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>Y</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> and <inline-formula id="pone.0143347.e020"><alternatives><graphic id="pone.0143347.e020g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e020" xlink:type="simple"/><mml:math display="inline" id="M20" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>Y</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula>, respectively, in cell <italic>i</italic> during week <italic>t</italic> as following a binomial distribution such that:
+<disp-formula id="pone.0143347.e021">
+<alternatives>
+<graphic id="pone.0143347.e021g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e021" xlink:type="simple"/>
+<mml:math display="block" id="M21" overflow="scroll">
+<mml:mrow><mml:msubsup><mml:mi>Y</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup><mml:mo>~</mml:mo><mml:mi>B</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>o</mml:mi><mml:mi>m</mml:mi><mml:mi>i</mml:mi><mml:mi>a</mml:mi><mml:mi>l</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mi>K</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow></mml:msub><mml:mo> </mml:mo><mml:mo>,</mml:mo><mml:mo> </mml:mo><mml:msubsup><mml:mi>p</mml:mi><mml:mi>i</mml:mi><mml:mi>B</mml:mi></mml:msubsup><mml:mo>.</mml:mo><mml:msubsup><mml:mi>Z</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+<disp-formula id="pone.0143347.e022">
+<alternatives>
+<graphic id="pone.0143347.e022g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e022" xlink:type="simple"/>
+<mml:math display="block" id="M22" overflow="scroll">
+<mml:mrow><mml:msubsup><mml:mi>Y</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup><mml:mo>~</mml:mo><mml:mi>B</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>o</mml:mi><mml:mi>m</mml:mi><mml:mi>i</mml:mi><mml:mi>a</mml:mi><mml:mi>l</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mi>K</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow></mml:msub><mml:mo> </mml:mo><mml:mo>,</mml:mo><mml:mo> </mml:mo><mml:msubsup><mml:mi>p</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup><mml:mo>.</mml:mo><mml:msubsup><mml:mi>Z</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+where <inline-formula id="pone.0143347.e023"><alternatives><graphic id="pone.0143347.e023g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e023" xlink:type="simple"/><mml:math display="inline" id="M23" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>p</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> is the daily hare detection probability during week <italic>t</italic> in cell <italic>i</italic>, and <inline-formula id="pone.0143347.e024"><alternatives><graphic id="pone.0143347.e024g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e024" xlink:type="simple"/><mml:math display="inline" id="M24" overflow="scroll"><mml:mrow><mml:mo> </mml:mo><mml:msubsup><mml:mi>p</mml:mi><mml:mi>i</mml:mi><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> is the daily bobcat detection probability in cell <italic>i</italic>. <italic>K</italic><sub><italic>i</italic>,<italic>t</italic></sub> indicates the number of days in week <italic>t</italic> during which the camera in cell <italic>i</italic> was operating, and therefore corresponds to 7 temporal replicates for most cell-week combinations.</p>
+</sec>
+<sec id="sec006">
+<title>Implementation</title>
+<p>We implemented the model using program WinBUGS [<xref rid="pone.0143347.ref036" ref-type="bibr">36</xref>], called from R (v.3.0.1, [<xref rid="pone.0143347.ref037" ref-type="bibr">37</xref>]) with the package R2WinBUGS [<xref rid="pone.0143347.ref038" ref-type="bibr">38</xref>] (<xref rid="pone.0143347.s002" ref-type="supplementary-material">S1 File</xref>, corresponding data available in <xref rid="pone.0143347.s003" ref-type="supplementary-material">S1 Dataset</xref>). We ran three chains using non-informative priors, for 100,000 iterations after a 300,000 iteration burn-in period (to insure convergence) with a thinning of 10. We monitored convergence by visual inspection of the MCMC chains and using the Gelman-Rubin convergence statistic <inline-formula id="pone.0143347.e025"><alternatives><graphic id="pone.0143347.e025g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e025" xlink:type="simple"/><mml:math display="inline" id="M25" overflow="scroll"><mml:mover accent="true"><mml:mi>R</mml:mi><mml:mo>^</mml:mo></mml:mover></mml:math></alternatives></inline-formula> [<xref rid="pone.0143347.ref039" ref-type="bibr">39</xref>].</p>
+<p>Model selection was done following a two-step process: 1) selecting the general observation process modeling structure and 2) selecting the relevant set of covariates used in the ecological process part of the model. First, we determined a suitable general model structure for our observation process by assessing goodness-of-fit based on Bayesian p-values both for bobcat and hare weekly total detection [<xref rid="pone.0143347.ref040" ref-type="bibr">40</xref>]. Our original model considered daily bobcat and hare detection probabilities (<italic>p</italic><sup><italic>B</italic></sup> and <italic>p</italic><sup><italic>H</italic></sup>, respectively) to be constant over time and space since we did not expect variation in our monitoring using cameras. However, fitting this initial model resulted in poor goodness-of-fit (Bayesian p-values [<xref rid="pone.0143347.ref041" ref-type="bibr">41</xref>] of 0.00 for hare and 0.01for bobcat; <xref rid="pone.0143347.s004" ref-type="supplementary-material">S1 Fig</xref>). We therefore revised the model to allow the daily bobcat detection probability <inline-formula id="pone.0143347.e026"><alternatives><graphic id="pone.0143347.e026g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e026" xlink:type="simple"/><mml:math display="inline" id="M26" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>p</mml:mi><mml:mi>i</mml:mi><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> to vary across space and the daily hare detection probability <inline-formula id="pone.0143347.e027"><alternatives><graphic id="pone.0143347.e027g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e027" xlink:type="simple"/><mml:math display="inline" id="M27" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>p</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> across both space and time (i.e. between weeks), resulting in satisfactory goodness-of-fit (Bayesian p-values of 0.77 for hare and 0.38 for bobcat; <xref rid="pone.0143347.s005" ref-type="supplementary-material">S2 Fig</xref>). We tested a final model where bobcat and hare detection probabilities varied across space and time, but the improvement in goodness-of-fit for bobcat did not warrant the additional parameters, with Bayesian p-value of 0.77 and 0.69 for hare and bobcat, respectively. Secondly, to determine which covariates were important to explain bobcat and hare occupancy, we specified a set of latent indicator variables <italic>w</italic><sub><italic>k</italic></sub> (one for each model effect <italic>k</italic>) [<xref rid="pone.0143347.ref041" ref-type="bibr">41</xref>]. By imposing a Bernoulli prior on each indicator variable, we can dictate the probability of each set of model covariates, and therefore their probability of being included in the final model [<xref rid="pone.0143347.ref042" ref-type="bibr">42</xref>] [<xref rid="pone.0143347.ref035" ref-type="bibr">35</xref>]. Consider the set of later indicator variables
+<disp-formula id="pone.0143347.e028">
+<alternatives>
+<graphic id="pone.0143347.e028g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e028" xlink:type="simple"/>
+<mml:math display="block" id="M28" overflow="scroll">
+<mml:mrow><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:msubsup><mml:mo>{</mml:mo><mml:mrow><mml:mn>0</mml:mn><mml:mtext>  if not</mml:mtext></mml:mrow><mml:mrow><mml:mn>1</mml:mn><mml:mtext>   if covariate  </mml:mtext><mml:mi>k</mml:mi><mml:mtext>  is  included  in  the   model</mml:mtext></mml:mrow></mml:msubsup></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+with prior distributions:
+<disp-formula id="pone.0143347.e029">
+<alternatives>
+<graphic id="pone.0143347.e029g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e029" xlink:type="simple"/>
+<mml:math display="block" id="M29" overflow="scroll">
+<mml:mrow><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>~</mml:mo><mml:mi>B</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mi>n</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mn>0.5</mml:mn></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+assumed to be mutually independent. We can then reformulate the occupancy probabilities definitions such as:
+<disp-formula id="pone.0143347.e030">
+<alternatives>
+<graphic id="pone.0143347.e030g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e030" xlink:type="simple"/>
+<mml:math display="block" id="M30" overflow="scroll">
+<mml:mrow><mml:mi>l</mml:mi><mml:mi>o</mml:mi><mml:mi>g</mml:mi><mml:mi>i</mml:mi><mml:mi>t</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msubsup><mml:mi>b</mml:mi><mml:mn>1</mml:mn><mml:mi>B</mml:mi></mml:msubsup><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:msub><mml:mi>α</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>c</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:msub><mml:mi>α</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>c</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mn>3</mml:mn></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>n</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mn>4</mml:mn></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo> </mml:mo><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>n</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mn>5</mml:mn></mml:msub><mml:msub><mml:mi>γ</mml:mi><mml:mrow><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msubsup><mml:mi>ε</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+<disp-formula id="pone.0143347.e031">
+<alternatives>
+<graphic id="pone.0143347.e031g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e031" xlink:type="simple"/>
+<mml:math display="block" id="M31" overflow="scroll">
+<mml:mrow><mml:mi>l</mml:mi><mml:mi>o</mml:mi><mml:mi>g</mml:mi><mml:mi>i</mml:mi><mml:mi>t</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msubsup><mml:mi>b</mml:mi><mml:mn>0</mml:mn><mml:mi>B</mml:mi></mml:msubsup><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mn>6</mml:mn></mml:msub><mml:msub><mml:mi>α</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>c</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mn>7</mml:mn></mml:msub><mml:msub><mml:mi>α</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>c</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mn>8</mml:mn></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>r</mml:mi><mml:mi>o</mml:mi><mml:mi>a</mml:mi><mml:mi>d</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>n</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mn>9</mml:mn></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo> </mml:mo><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>w</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mi>n</mml:mi><mml:mo>)</mml:mo></mml:mrow><mml:mo> </mml:mo><mml:mi>i</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mn>10</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>γ</mml:mi><mml:mrow><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msubsup><mml:mi>ε</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>B</mml:mi></mml:msubsup></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+<disp-formula id="pone.0143347.e032">
+<alternatives>
+<graphic id="pone.0143347.e032g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e032" xlink:type="simple"/>
+<mml:math display="block" id="M32" overflow="scroll">
+<mml:mtable columnalign="left"><mml:mtr><mml:mtd><mml:mi>l</mml:mi><mml:mi>o</mml:mi><mml:mi>g</mml:mi><mml:mi>i</mml:mi><mml:mi>t</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msubsup><mml:mi>μ</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msup><mml:mi>b</mml:mi><mml:mi>H</mml:mi></mml:msup><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mn>11</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>A</mml:mi><mml:mi>s</mml:mi><mml:mi>p</mml:mi><mml:mi>e</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub><mml:mi>A</mml:mi><mml:mi>s</mml:mi><mml:mi>p</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>n</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mn>12</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>D</mml:mi><mml:mi>E</mml:mi><mml:mi>A</mml:mi></mml:mrow></mml:msub><mml:mi>D</mml:mi><mml:mi>E</mml:mi><mml:msub><mml:mi>A</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mn>13</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>E</mml:mi><mml:mi>v</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mi>g</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>e</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub><mml:mi>E</mml:mi><mml:mi>v</mml:mi><mml:mi>e</mml:mi><mml:mi>r</mml:mi><mml:mi>g</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>n</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mn>14</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>M</mml:mi><mml:mi>i</mml:mi><mml:mi>x</mml:mi><mml:mi>e</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:mi>M</mml:mi><mml:mi>i</mml:mi><mml:mi>x</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mn>15</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>S</mml:mi><mml:mi>h</mml:mi><mml:mi>r</mml:mi><mml:mi>u</mml:mi><mml:mi>b</mml:mi></mml:mrow></mml:msub><mml:mi>S</mml:mi><mml:mi>h</mml:mi><mml:mi>r</mml:mi><mml:mi>u</mml:mi><mml:msub><mml:mi>b</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mtd></mml:mtr><mml:mtr><mml:mtd><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mn>16</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>G</mml:mi><mml:mi>r</mml:mi><mml:mi>a</mml:mi><mml:mi>s</mml:mi><mml:mi>s</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>d</mml:mi></mml:mrow></mml:msub><mml:mi>G</mml:mi><mml:mi>r</mml:mi><mml:mi>a</mml:mi><mml:mi>s</mml:mi><mml:mi>s</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mn>17</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>W</mml:mi><mml:mi>W</mml:mi></mml:mrow></mml:msub><mml:mi>W</mml:mi><mml:msub><mml:mi>W</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mn>18</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>E</mml:mi><mml:mi>H</mml:mi><mml:mi>W</mml:mi></mml:mrow></mml:msub><mml:mi>E</mml:mi><mml:mi>H</mml:mi><mml:msub><mml:mi>W</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mn>19</mml:mn></mml:mrow></mml:msub><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>U</mml:mi><mml:mi>n</mml:mi><mml:mi>s</mml:mi><mml:mi>u</mml:mi><mml:mi>i</mml:mi><mml:mi>t</mml:mi><mml:mi>a</mml:mi><mml:mi>b</mml:mi><mml:mi>l</mml:mi><mml:mi>e</mml:mi></mml:mrow></mml:msub><mml:mi>U</mml:mi><mml:mi>n</mml:mi><mml:mi>s</mml:mi><mml:mi>u</mml:mi><mml:mi>i</mml:mi><mml:mi>t</mml:mi><mml:mi>a</mml:mi><mml:mi>b</mml:mi><mml:mi>l</mml:mi><mml:msub><mml:mi>e</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:msubsup><mml:mi>ε</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mtd></mml:mtr></mml:mtable>
+</mml:math>
+</alternatives>
+</disp-formula></p>
+<p>Finally, based on the posterior distribution each <italic>w</italic><sub><italic>k</italic></sub>, we estimated the likelihood of each corresponding <italic>k</italic> covariate to be included in the final model.</p>
+<p>To provide a simple summary of co-occurrence probabilities, we estimated a posterior co-occurrence contingency table indicating how many times across cells and weeks bobcat and hare were each present, present together, or neither present. Based on this posterior contingency table, we then estimated the probability that the proportion of cells occupied by bobcats when hares were present was greater than, equal to, or less than the proportion of cells occupied by bobcats when hares were absent. Let <italic>y</italic><sub><italic>1</italic></sub> and <italic>y</italic><sub><italic>2</italic></sub> be the number of cells occupied by bobcats when hare is present or absent, respectively. Let <italic>n</italic><sub><italic>1</italic></sub> and <italic>n</italic><sub><italic>2</italic></sub> be the total number of cells occupied or not occupied by hares, respectively. Then, the number of cells occupied by bobcats depending on hare occupancy can be defined as:
+<disp-formula id="pone.0143347.e033">
+<alternatives>
+<graphic id="pone.0143347.e033g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e033" xlink:type="simple"/>
+<mml:math display="block" id="M33" overflow="scroll">
+<mml:mrow><mml:msub><mml:mi>y</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo> </mml:mo><mml:mo>~</mml:mo><mml:mo> </mml:mo><mml:mi>B</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>o</mml:mi><mml:mi>m</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mi>n</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mi>θ</mml:mi><mml:mn>1</mml:mn></mml:msub></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+<disp-formula id="pone.0143347.e034">
+<alternatives>
+<graphic id="pone.0143347.e034g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e034" xlink:type="simple"/>
+<mml:math display="block" id="M34" overflow="scroll">
+<mml:mrow><mml:msub><mml:mi>y</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo> </mml:mo><mml:mo>~</mml:mo><mml:mo> </mml:mo><mml:mi>B</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>o</mml:mi><mml:mi>m</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mi>n</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mi>θ</mml:mi><mml:mn>2</mml:mn></mml:msub></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+with <italic>θ</italic><sub><italic>1</italic></sub> and <italic>θ</italic><sub><italic>2</italic></sub> representing the proportion of sites that are occupied by bobcat when hare is present and absent, respectively. Assuming Beta(1,1) priors (equivalent to a uniform distribution) on the proportions <italic>θ</italic><sub><italic>1</italic></sub> and <italic>θ</italic><sub><italic>2</italic></sub>, and given the conjugacy of the beta for the binomial, we have:
+<disp-formula id="pone.0143347.e035">
+<alternatives>
+<graphic id="pone.0143347.e035g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e035" xlink:type="simple"/>
+<mml:math display="block" id="M35" overflow="scroll">
+<mml:mrow><mml:mi>p</mml:mi><mml:mo stretchy="false">(</mml:mo><mml:msub><mml:mi>θ</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>|</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>,</mml:mo><mml:mo> </mml:mo><mml:msub><mml:mi>n</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo stretchy="false">)</mml:mo><mml:mo>=</mml:mo><mml:mo> </mml:mo><mml:mi>B</mml:mi><mml:mi>e</mml:mi><mml:mi>t</mml:mi><mml:mi>a</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mi>θ</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>|</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>+</mml:mo><mml:mn>1</mml:mn><mml:mo>,</mml:mo><mml:msub><mml:mi>n</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>−</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>+</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+<disp-formula id="pone.0143347.e036">
+<alternatives>
+<graphic id="pone.0143347.e036g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e036" xlink:type="simple"/>
+<mml:math display="block" id="M36" overflow="scroll">
+<mml:mrow><mml:mi>p</mml:mi><mml:mo stretchy="false">(</mml:mo><mml:msub><mml:mi>θ</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo>|</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo>,</mml:mo><mml:mo> </mml:mo><mml:msub><mml:mi>n</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo stretchy="false">)</mml:mo><mml:mo>=</mml:mo><mml:mo> </mml:mo><mml:mi>B</mml:mi><mml:mi>e</mml:mi><mml:mi>t</mml:mi><mml:mi>a</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mi>θ</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo>|</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo>+</mml:mo><mml:mn>1</mml:mn><mml:mo>,</mml:mo><mml:msub><mml:mi>n</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo>−</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo>+</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula></p>
+<p>From there, we can estimate by simulation the posterior density of <italic>δ = θ</italic><sub><italic>1</italic></sub><italic>-θ</italic><sub><italic>2</italic></sub>, the probability that <italic>θ</italic><sub><italic>1</italic></sub> is greater than <italic>θ</italic><sub><italic>2</italic></sub>, i.e. the probability that cells are more likely to be occupied by bobcats when hare are present (compared to when hare are absent). This simulation is done by taking M = 10000 samples from the joint posterior
+<disp-formula id="pone.0143347.e037">
+<alternatives>
+<graphic id="pone.0143347.e037g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e037" xlink:type="simple"/>
+<mml:math display="block" id="M37" overflow="scroll">
+<mml:mrow><mml:mi>p</mml:mi><mml:mo stretchy="false">(</mml:mo><mml:msub><mml:mi>θ</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mi>θ</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mrow><mml:mo>|</mml:mo><mml:mrow><mml:msub><mml:mi>y</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo>,</mml:mo><mml:mo> </mml:mo><mml:msub><mml:mi>n</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mi>n</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo stretchy="false">)</mml:mo><mml:mo> </mml:mo><mml:mo>=</mml:mo><mml:mo> </mml:mo><mml:mi>p</mml:mi><mml:mo stretchy="false">(</mml:mo><mml:msub><mml:mi>θ</mml:mi><mml:mn>1</mml:mn></mml:msub></mml:mrow><mml:mo>|</mml:mo></mml:mrow><mml:msub><mml:mi>y</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>,</mml:mo><mml:mo> </mml:mo><mml:msub><mml:mi>n</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo stretchy="false">)</mml:mo><mml:mo> </mml:mo><mml:mo>×</mml:mo><mml:mo> </mml:mo><mml:mi>p</mml:mi><mml:mo stretchy="false">(</mml:mo><mml:msub><mml:mi>θ</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo>|</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo>,</mml:mo><mml:mo> </mml:mo><mml:msub><mml:mi>n</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo stretchy="false">)</mml:mo></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+and then use the approximation
+<disp-formula id="pone.0143347.e038">
+<alternatives>
+<graphic id="pone.0143347.e038g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e038" xlink:type="simple"/>
+<mml:math display="block" id="M38" overflow="scroll">
+<mml:mrow><mml:mtext>Pr</mml:mtext><mml:mo stretchy="false">(</mml:mo><mml:msub><mml:mi>θ</mml:mi><mml:mn>1</mml:mn></mml:msub><mml:mo>&gt;</mml:mo><mml:msub><mml:mi>θ</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:mo stretchy="false">)</mml:mo><mml:mo>≈</mml:mo><mml:mfrac><mml:mn>1</mml:mn><mml:mi>M</mml:mi></mml:mfrac><mml:munderover><mml:mo>∑</mml:mo><mml:mi>M</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:munderover><mml:mi>I</mml:mi><mml:mo stretchy="false">(</mml:mo><mml:msubsup><mml:mi>θ</mml:mi><mml:mn>1</mml:mn><mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mi>m</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:msubsup><mml:mo>&gt;</mml:mo><mml:msubsup><mml:mi>θ</mml:mi><mml:mn>2</mml:mn><mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mi>m</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:msubsup><mml:mo stretchy="false">)</mml:mo></mml:mrow>
+</mml:math>
+</alternatives>
+</disp-formula>
+where <inline-formula id="pone.0143347.e039"><alternatives><graphic id="pone.0143347.e039g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e039" xlink:type="simple"/><mml:math display="inline" id="M39" overflow="scroll"><mml:mrow><mml:mi>I</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msubsup><mml:mi>θ</mml:mi><mml:mn>1</mml:mn><mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mi>m</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:msubsup><mml:mo>&gt;</mml:mo><mml:msubsup><mml:mi>θ</mml:mi><mml:mn>2</mml:mn><mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mi>m</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:msubsup></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:math></alternatives></inline-formula>, if <inline-formula id="pone.0143347.e040"><alternatives><graphic id="pone.0143347.e040g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e040" xlink:type="simple"/><mml:math display="inline" id="M40" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>θ</mml:mi><mml:mn>1</mml:mn><mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mi>m</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula> is greater than <inline-formula id="pone.0143347.e041"><alternatives><graphic id="pone.0143347.e041g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e041" xlink:type="simple"/><mml:math display="inline" id="M41" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>θ</mml:mi><mml:mn>2</mml:mn><mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mi>m</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mrow></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula>, and 0 otherwise. More details concerning this approach can be found following Carpenter [<xref rid="pone.0143347.ref043" ref-type="bibr">43</xref>] and Gelman [<xref rid="pone.0143347.ref044" ref-type="bibr">44</xref>] [<xref rid="pone.0143347.ref039" ref-type="bibr">39</xref>]. We conducted a similar assessment of hare occupancy response to bobcat presence/absence.</p>
+</sec>
+<sec id="sec007">
+<title>Ethics statement</title>
+<p>This research was conducted with approval from The Mississippi State University Institutional Animal Care and Use Committee, Animal Ethics Committee, Animal Ethics Permit number CMLR/304/13/QLD GOVT Protocol Number 09–004, was carried out in the field according to the conditions of Michigan Department of Natural Resources scientific collector permit number 1376.</p>
+</sec>
+</sec>
+<sec id="sec008" sec-type="results">
+<title>Results</title>
+<sec id="sec009">
+<title>Detectabilities</title>
+<p>Mean hare detection probability was 0.46 ± 0.28 (mean ± standard deviation) averaged across weeks and cells) and mean bobcat detection probability was 0.36 ± 0.27 (averaged across cells). As expected, following model selection, both bobcat and hare detection probabilities vary across space (<xref rid="pone.0143347.g001" ref-type="fig">Fig 1</xref>).</p>
+<fig id="pone.0143347.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0143347.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Bobcat (A) and snowshoe hare (B) detection probabilities averaged over weeks, Upper Peninsula Michigan, December 2012–February 2013.</title>
+<p>Roads and streams are represented by grey and blue lines, respectively.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.g001" position="float" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec010">
+<title>Hare occupancy</title>
+<p>Overall mean hare occupancy probability (averaged over weeks and cells) was 0.29± 0.15 with greatest occupancy in the northeast and southwest portions of the study area (<xref rid="pone.0143347.g002" ref-type="fig">Fig 2</xref>). While overall mean hare occupancy probability did not vary greatly over time, cell specific probabilities varied in space and time. Hare occupancy was positively correlated to grassland cover type, and had a probability of being selected in the model of 0.95 (<xref rid="pone.0143347.t002" ref-type="table">Table 2</xref>).</p>
+<fig id="pone.0143347.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0143347.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Bobcat occupancy probability (and corresponding standard deviations) (A &amp; B) and snowshoe hare occupancy (and corresponding standard deviations) (C &amp; D) averaged over weeks for each cell, Upper Peninsula Michigan, December 2012–February 2013.</title>
+<p>Roads and streams are represented by grey and blue lines, respectively.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.g002" position="float" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0143347.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0143347.t002</object-id>
+<label>Table 2</label> <caption><title>Intercepts and slopes on the logit scale for the selected bobcat-snowshoe hare hierarchical co-occurrence model in Upper Peninsula Michigan, during December 2012—February 2013.</title> <p>Model selection probability corresponds to the percentage of iterations in which the corresponding covariate was selected to be part of the model. Corresponding parameter values are only indicated for model selection probabilities higher than 0.5.</p></caption>
+<alternatives>
+<graphic id="pone.0143347.t002g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.t002" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1">Response variable</th>
+<th align="left" rowspan="1" colspan="1">Parameter</th>
+<th align="left" rowspan="1" colspan="1">Scale</th>
+<th align="left" rowspan="1" colspan="1">Mean</th>
+<th align="left" rowspan="1" colspan="1">95% Credible Interval</th>
+<th align="left" rowspan="1" colspan="1">Model selection probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Bobcat occupancy probability (when hare present)</bold></td>
+<td align="left" rowspan="1" colspan="1">Intercept (<inline-formula id="pone.0143347.e042"><alternatives><graphic id="pone.0143347.e042g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e042" xlink:type="simple"/><mml:math display="inline" id="M42" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>b</mml:mi><mml:mn>1</mml:mn><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula>)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">-3.2</td>
+<td align="left" rowspan="1" colspan="1">[-4.18; -2.04]</td>
+<td align="left" rowspan="1" colspan="1">NA</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Road density (<italic>α</italic><sub>1 road</sub>)</td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.04</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Road density (<italic>β</italic><sub>1 road</sub>)</td>
+<td align="left" rowspan="1" colspan="1">Neighborhood</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.01</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Water density (<italic>α</italic><sub>1 water</sub>)</td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.03</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Water density (<italic>β</italic><sub>1 water</sub>)</td>
+<td align="left" rowspan="1" colspan="1">Neighborhood</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Distance to water (<italic>γ</italic><sub>1</sub>)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Bobcat occupancy probability (when hare absent)</bold></td>
+<td align="left" rowspan="1" colspan="1">Intercept (<inline-formula id="pone.0143347.e043"><alternatives><graphic id="pone.0143347.e043g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e043" xlink:type="simple"/><mml:math display="inline" id="M43" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>b</mml:mi><mml:mn>0</mml:mn><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula>)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">-2.82</td>
+<td align="left" rowspan="1" colspan="1">[-3.44; -2.24]</td>
+<td align="left" rowspan="1" colspan="1">NA</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Road density (<italic>α</italic><sub>0 road</sub>)</td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-1.04</td>
+<td align="left" rowspan="1" colspan="1">[-1.69; -0.43]</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Road density (<italic>β</italic><sub>0 road</sub>)</td>
+<td align="left" rowspan="1" colspan="1">Neighborhood</td>
+<td align="left" rowspan="1" colspan="1">0.83</td>
+<td align="left" rowspan="1" colspan="1">[0.31;1.40]</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Water density (<italic>α</italic><sub>0 water</sub>)</td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Water density (<italic>β</italic><sub>0 water</sub>)</td>
+<td align="left" rowspan="1" colspan="1">Neighborhood</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Distance to water (<italic>γ</italic><sub>0</sub>)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Hare occupancy probability</bold></td>
+<td align="left" rowspan="1" colspan="1">Intercept (<italic>b</italic><sup><italic>H</italic></sup>)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">-1.03</td>
+<td align="left" rowspan="1" colspan="1">[-1.39; -0.77]</td>
+<td align="left" rowspan="1" colspan="1">NA</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>β</italic><sub><italic>DEA</italic></sub></td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>β</italic><sub><italic>Aspen</italic></sub></td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>β</italic><sub><italic>Mixed</italic></sub></td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>β</italic><sub><italic>Shrub</italic></sub></td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.07</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>β</italic><sub><italic>WW</italic></sub></td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.01</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>β</italic><sub><italic>Unsuitable</italic></sub></td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.16</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>β</italic><sub><italic>Evergreen</italic></sub></td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.07</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>β</italic><sub><italic>Grassland</italic></sub></td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">0.41</td>
+<td align="left" rowspan="1" colspan="1">[0.18; 0.69]</td>
+<td align="left" rowspan="1" colspan="1">0.95</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><italic>β</italic><sub><italic>EHW</italic></sub></td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">-</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Bobcat detection probability</bold></td>
+<td align="left" rowspan="1" colspan="1">Detection probability (<inline-formula id="pone.0143347.e044"><alternatives><graphic id="pone.0143347.e044g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e044" xlink:type="simple"/><mml:math display="inline" id="M44" overflow="scroll"><mml:mrow><mml:mo> </mml:mo><mml:msubsup><mml:mi>p</mml:mi><mml:mi>i</mml:mi><mml:mi>B</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula>)</td>
+<td align="left" rowspan="1" colspan="1">Cell</td>
+<td align="left" rowspan="1" colspan="1">NA</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">NA</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Hare detection probability</bold></td>
+<td align="left" rowspan="1" colspan="1">Detection probability (<inline-formula id="pone.0143347.e045"><alternatives><graphic id="pone.0143347.e045g" position="anchor" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.e045" xlink:type="simple"/><mml:math display="inline" id="M45" overflow="scroll"><mml:mrow><mml:msubsup><mml:mi>p</mml:mi><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>t</mml:mi></mml:mrow><mml:mi>H</mml:mi></mml:msubsup></mml:mrow></mml:math></alternatives></inline-formula>)</td>
+<td align="left" rowspan="1" colspan="1">Cell + week</td>
+<td align="left" rowspan="1" colspan="1">NA</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">NA</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>‘-’: parameter not selected in the final model, ‘NA’: non-applicable</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec011">
+<title>Bobcat occupancy</title>
+<p>Overall mean bobcat occupancy probability (averaged over weeks and cells) was 0.11 ± 0.14. Occupancy was greatest near the center of the study area and occupancy of most cells varied little over time (<xref rid="pone.0143347.g002" ref-type="fig">Fig 2</xref>). When hares were absent, bobcat occupancy probability was negatively correlated with road density at the cell scale, and positively correlated at the neighborhood scale (<xref rid="pone.0143347.t002" ref-type="table">Table 2</xref>), and both of these parameters had a probability of being selected in the model equal to 1. When hares were present, bobcat occupancy probability was not influenced by other covariates and mean bobcat occupancy (averaged over weeks and cells) appeared lower when hares were present (0.07 ± 0.07 against 0.12 ± 0.16 with hares absent).</p>
+</sec>
+<sec id="sec012">
+<title>Co-occurrence</title>
+<p>When hares were present, bobcats were present only 7.4% of the time (12.6% when hare was absent; <xref rid="pone.0143347.t003" ref-type="table">Table 3</xref>). According to our model, and based on the observed data, there was a 94% [64%; 99%] chance that the proportion of cells occupied by bobcats was greater than the proportion of cells without bobcat when hares were absent. Conversely, when bobcat were present, hares were present only 19.6% of the time (30.5% when bobcat was absent). The probability that the proportion of cells occupied by hare was greater than the proportion of cells without hare when bobcats were present was only a 0.06 [0; 0.36]. Greater average bobcat occupancy when hare was absent appeared driven by a subset of cells in the center of our study area where occupancy probability was greater (<xref rid="pone.0143347.g003" ref-type="fig">Fig 3</xref>). The remainder of the study area had a lower bobcat occupancy probability when hare was absent, but occupancy probabilities for those cells increased when hare was present. The central area of high bobcat occupancy probability when hares were absent appeared to influence overall bobcat occupancy when hare occupancy was considered.</p>
+<table-wrap id="pone.0143347.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0143347.t003</object-id>
+<label>Table 3</label> <caption><title>Contingency table of the total number of cells and corresponding 95% credible intervals (summed across weeks) summarizing bobcat and snowshoe hare presence, Upper Peninsula Michigan, December 2012–February 2013.</title></caption>
+<alternatives>
+<graphic id="pone.0143347.t003g" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.t003" xlink:type="simple"/>
+<table>
+<colgroup span="1">
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+<col align="left" valign="middle" span="1"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="1" colspan="1"/>
+<th align="left" rowspan="1" colspan="1">Hare present</th>
+<th align="left" rowspan="1" colspan="1">Hare Absent</th>
+<th align="left" rowspan="1" colspan="1">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Bobcat present</bold></td>
+<td align="left" rowspan="1" colspan="1">15.3 [111; 22]</td>
+<td align="left" rowspan="1" colspan="1">62.9 [50; 81]</td>
+<td align="left" rowspan="1" colspan="1">78.2 [65; 97]</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Bobcat absent</bold></td>
+<td align="left" rowspan="1" colspan="1">190.7 [178; 204]</td>
+<td align="left" rowspan="1" colspan="1">435.2 [414; 453]</td>
+<td align="left" rowspan="1" colspan="1">625.8 [607; 639]</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Total</bold></td>
+<td align="left" rowspan="1" colspan="1">205.9 [194; 219]</td>
+<td align="left" rowspan="1" colspan="1">498.1 [485; 510]</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<fig id="pone.0143347.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0143347.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Bobcat occupancy probability when snowshoe hare are present (A) and absent (B), Upper Peninsula Michigan, December 2012–February 2013.</title>
+<p>Roads and streams are represented by grey and blue lines, respectively.</p>
+</caption>
+<graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0143347.g003" position="float" xlink:type="simple"/>
+</fig>
+</sec>
+</sec>
+<sec id="sec013" sec-type="conclusions">
+<title>Discussion</title>
+<p>Bobcat occupancy was strongly negatively correlated with road density at the cell scale (and positively at the neighborhood scale) when hare were absent, but hare presence was the only driver of bobcat occupancy when present. In contrast, hare occupancy varied greatly over time and space, was positively correlated with grassland cover types, and possible avoidance of bobcats. Thus, bobcat and hare occupancy appeared influenced by landscape features and predator-prey relations.</p>
+<sec id="sec014">
+<title>Snowshoe hare occupancy</title>
+<p>Snowshoe hare selected for grassland cover types. Snowshoe hare presence has been associated with landcover [<xref rid="pone.0143347.ref045" ref-type="bibr">45</xref>], food and cover [<xref rid="pone.0143347.ref046" ref-type="bibr">46</xref>], habitat fragmentation [<xref rid="pone.0143347.ref047" ref-type="bibr">47</xref>], and predator presence and density [<xref rid="pone.0143347.ref048" ref-type="bibr">48</xref>][<xref rid="pone.0143347.ref049" ref-type="bibr">49</xref>]. Hares vacate suboptimal habitats during population declines and during population increases, use less-preferred habitats once higher-quality habitats are saturated [<xref rid="pone.0143347.ref048" ref-type="bibr">48</xref>]. The first cover types to be deserted are usually open or marginal habitats, then mature birch or aspen stands [<xref rid="pone.0143347.ref046" ref-type="bibr">46</xref>][<xref rid="pone.0143347.ref048" ref-type="bibr">48</xref>][<xref rid="pone.0143347.ref050" ref-type="bibr">50</xref>]. In contrast, hare occupancy is positively correlated with presence of dense brushy understory and conifers [<xref rid="pone.0143347.ref040" ref-type="bibr">40</xref>][<xref rid="pone.0143347.ref042" ref-type="bibr">42</xref>][<xref rid="pone.0143347.ref043" ref-type="bibr">43</xref>][<xref rid="pone.0143347.ref051" ref-type="bibr">51</xref>] as well as young forests [<xref rid="pone.0143347.ref052" ref-type="bibr">52</xref>]. One reason why evergreen was not selected might be that cells contained adequate amounts of this land cover such that our model would have identified it as a baseline. It is also possible that coniferous forests, while offering a dense cover, can also lack suitable amounts of preferred browse, especially during winter [<xref rid="pone.0143347.ref051" ref-type="bibr">51</xref>], causing hares to move among those habitat patches to more successional forests to find food.</p>
+<p>Large scale patterns of extinction and colonization by snowshoe hares are influenced by cover characteristics, with habitat quality having greatest effect at local scales [<xref rid="pone.0143347.ref049" ref-type="bibr">49</xref>]. Hares exhibit daily variation in use of vegetation types, even when food and cover appear abundant in a single habitat [<xref rid="pone.0143347.ref046" ref-type="bibr">46</xref>][<xref rid="pone.0143347.ref051" ref-type="bibr">51</xref>]. Similarly, temporal variation in hare detectability arises from variation in availability for detection. For example, we demonstrated use of stations varied in response to bobcat occurrence. Consequently, including factors such as predator avoidance should be considered in future models to better understand species habitat relationships.</p>
+</sec>
+<sec id="sec015">
+<title>Bobcat occupancy</title>
+<p>Bobcat occupancy probabilities varied across space and time and were related to local hare presence and (when hares were absent) to road density at both local spatial scales. Local presence of snowshoe hare was the main driver for bobcat occupancy, but when hare were absent, road density influenced variation in occupancy probabilities. We demonstrated an adverse effect of roads on bobcats at the local scale. Increases in road density can negatively affect bobcat populations [<xref rid="pone.0143347.ref053" ref-type="bibr">53</xref>][<xref rid="pone.0143347.ref022" ref-type="bibr">22</xref>] through habitat loss, altering landscape structure and function, and increasing access for humans [<xref rid="pone.0143347.ref054" ref-type="bibr">54</xref>]. Interestingly, bobcats do not always avoid roads [<xref rid="pone.0143347.ref055" ref-type="bibr">55</xref>], and sometimes use them to conserve energy by avoiding walking in deeper snow [<xref rid="pone.0143347.ref056" ref-type="bibr">56</xref>][<xref rid="pone.0143347.ref057" ref-type="bibr">57</xref>]. This could explain the slight positive association we observed between bobcat occupancy probabilities and road density at the neighborhood scale. Saunders et al. suggested the potential effects of road density should be examined at appropriate scales and across different forest types and can be used to indicate the level of human disturbance [<xref rid="pone.0143347.ref054" ref-type="bibr">54</xref>]. Further, mature forests typically are of lower suitability for hares than successional forests [<xref rid="pone.0143347.ref045" ref-type="bibr">45</xref>]. As timber harvesting in our study area occurs near or adjacent to roads, subsequent greater habitat suitability for hares in these areas may facilitate selection for roads by bobcats at the coarser resolution.</p>
+<p>Bobcat habitat selection was not only scale specific, but context specific. While road density influenced bobcat occupancy in two different ways depending on if looking at the local (i.e. cell) or larger (i.e. neighborhood) scale, this occurred only when hares were absent at the local scale. When present, hare occupancy at the local scale was the only relevant parameter to predict bobcat presence. Prey abundance and availability is an important driver of bobcat populations [<xref rid="pone.0143347.ref058" ref-type="bibr">58</xref>][<xref rid="pone.0143347.ref059" ref-type="bibr">59</xref>][<xref rid="pone.0143347.ref060" ref-type="bibr">60</xref>][<xref rid="pone.0143347.ref061" ref-type="bibr">61</xref>][<xref rid="pone.0143347.ref062" ref-type="bibr">62</xref>][<xref rid="pone.0143347.ref010" ref-type="bibr">10</xref>]. Though prey presence explained bobcat occupancy at the local scale, other factors can be more important at a larger scale (or when preys are absent). Godbois, Conner &amp; Warren demonstrated that bobcat habitat selection at a smaller spatial scale was driven by food, whereas habitat composition was more important at coarser spatial scale, concluding that prey and refugia are important to bobcats [<xref rid="pone.0143347.ref018" ref-type="bibr">18</xref>]. We similarly suggest that prey presence is important to bobcats at fine spatial scales and that environmental factors become important at larger scales and when an important prey species is absent.</p>
+</sec>
+<sec id="sec016">
+<title>Cooccurrence</title>
+<p>In contrast to our prediction, overall bobcat occupancy was lower when hares were present. Snowshoe hare experience dramatic variation in weather, food availability, and predation pressure [<xref rid="pone.0143347.ref051" ref-type="bibr">51</xref>]. Hares will select habitat with denser cover when more predators are present [<xref rid="pone.0143347.ref046" ref-type="bibr">46</xref>][<xref rid="pone.0143347.ref063" ref-type="bibr">63</xref>], trading preferred browse for reduced predation risk [<xref rid="pone.0143347.ref064" ref-type="bibr">64</xref>][<xref rid="pone.0143347.ref065" ref-type="bibr">65</xref>][<xref rid="pone.0143347.ref051" ref-type="bibr">51</xref>]. This could explain why in our study hare occupancy appeared to be lower when bobcats were present. Avoidance of bobcats by hares at the scale of bait stations is likely to lead to lower availability of hares when bobcats are present in an area. Hare would avoid the area around the bait station when bobcats area present, but could still be present in the cell. This behavior would affect our results by lowering hare apparent occupancy probability and lowering the chances of hare detection by our cameras when bobcats were present. Consequently, the lower detection probability for hares when bobcats were present could lead to underestimation of the simultaneous presence of both species. Our results support this hypothesis as hares actively avoided bobcats.</p>
+<p>Other factors could influence bobcat occupancy, including alternate prey. In Massachusetts, white-tailed deer were used more by bobcats than snowshoe hares, despite hares being more abundant [<xref rid="pone.0143347.ref056" ref-type="bibr">56</xref>]. In this same study, once a deer had been killed, due to its large body size bobcats would apparently feed for up to 3–4 days. Finally, bobcats could stay in areas of their home range offering better refugia, only occasionally leaving them for hunting in cells where preys are more readily available. Similarly, space use of lynx in Alberta was not related to snowshoe hare density; rather, lynx met their food requirements by switching to alternate prey including carrion.</p>
+<p>Several improvements for our approach are possible. Currently, the conclusions drawn from our modeling approach and methods are limited by several factors. First, the current resolution of our sampling design limits our inferences of the relationship between bobcat and hare presence. Snowshoe hare home range sizes have been report to be up to 6 ha [<xref rid="pone.0143347.ref051" ref-type="bibr">51</xref>], while our study design resolution (i.e. cell size) correspond to 625 ha. Therefore, the importance of potential relationships, among hare presence, bobcat presence, and habitat covariates summarized at this resolution might not accurately reflect the effect of these covariates at the scale of snowshoe hare’s home range. Moreover, since we only have one bait station per cell, our results rely on the assumption that each station provides a valid representation of the processes occurring in its corresponding cell. Increasing our sampling effort by augmenting the total number of bait stations should help regarding these issues. Moreover, setting several stations in each cell could facilitate i) achieving more accurate estimates of cell occupancy and ii) estimating variation in hare use of bait stations within weeks in response to bobcat presence. However, increasing the number of bait station could also cause another problem. One essential feature of this design is that each station should accurately sample bobcat occupancy in its corresponding cell, i.e. it should not attract individuals from neighboring cells. In this context, the widely accepted use of bait stations for carnivore studies represents a challenge for habitat use under the occupancy modeling paradigm. However, this approach can prove to be especially useful in the case of rare or hard-to-detect species [<xref rid="pone.0143347.ref066" ref-type="bibr">66</xref>] and has been proven to be a viable method for estimating occupancy at both local and landscape scales for at least some carnivores [<xref rid="pone.0143347.ref067" ref-type="bibr">67</xref>]. Any subsequent design should account for the risk of affecting perceived habitat use (via the attraction of individual from other cells) by optimizing the bait station density against their attractiveness. To our knowledge, there is not good data on bobcat detection distances of lures. However, it has been suggested black bears could likely detect lures up to about 135m away [<xref rid="pone.0143347.ref068" ref-type="bibr">68</xref>], and we have circumstantial evidences of bobcats not detecting our scented and baited traps from just a few meters away, depending on the wind direction. For all our carnivore trapping, we have not seen evidence of attraction of more than several meters, and this confirms why trap/site location is so important. Finally, future extensions of this model could benefit from modeling hare detection probability conditionally on bobcat presence, or conversely bobcat detectability in function of hare presence [<xref rid="pone.0143347.ref034" ref-type="bibr">34</xref>]. This could improve our understanding of the relationship between bobcat (or hare) presence and hare (or bobcat) presence and detectability. One final consideration could be to directly account for occupancy (presence/absence over weeks) and use (variation in occupancy among days within a week) to further our understanding of the dynamic use of their habitat by our target species [<xref rid="pone.0143347.ref069" ref-type="bibr">69</xref>].</p>
+<p>Habitat use by bobcats [<xref rid="pone.0143347.ref052" ref-type="bibr">52</xref>] and other carnivore species is hierarchical [<xref rid="pone.0143347.ref017" ref-type="bibr">17</xref>][<xref rid="pone.0143347.ref007" ref-type="bibr">7</xref>]. We identified some factors driving bobcat and snowshoe hare occupancies and the importance of understanding interactions among these factors across multiple spatial scales. Importantly, we demonstrated that the effects of those factors on bobcat occupancy were context specific to predation and the presence of a primary prey species. While our model would benefit by the addition of more dynamic covariates to explain weekly variations in bobcat and snowshoe hare occupancy, we demonstrate how scale, environment, and prey presence can interact to explain carnivore occupancy. When trying to understand the factors underlying carnivore distributions, we recommend addressing landscape attributes in addition to factors controlling prey species dynamics and at which spatial scales those factors are acting.</p>
+</sec>
+</sec>
+<sec id="sec017">
+<title>Supporting Information</title>
+<supplementary-material id="pone.0143347.s001" xlink:href="info:doi/10.1371/journal.pone.0143347.s001" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>Range of the covariates used in the selected bobcat-snowshoe hare hierarchical co-occurrence model in Upper Peninsula Michigan, during December 2012—February 2013.</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0143347.s002" xlink:href="info:doi/10.1371/journal.pone.0143347.s002" mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document" position="float" xlink:type="simple">
+<label>S1 File</label>
+<caption>
+<title>Winbugs code for the selected bobcat-hare cooccurrence model (Upper Peninsula Michigan, December 2012–February 2013).</title>
+<p>(DOCX)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0143347.s003" xlink:href="info:doi/10.1371/journal.pone.0143347.s003" mimetype="application/octet-stream" position="float" xlink:type="simple">
+<label>S1 Dataset</label>
+<caption>
+<title>R workspace containing the data used in the selected bobcat-snowshoe hare hierarchical co-occurrence model in Upper Peninsula Michigan, during December 2012—February 2013.</title>
+<p>(RDATA)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0143347.s004" xlink:href="info:doi/10.1371/journal.pone.0143347.s004" mimetype="image/jpeg" position="float" xlink:type="simple">
+<label>S1 Fig</label>
+<caption>
+<title>Goodness-of-fit for model with bobcat and snowshoe hare detection probabilities constant over space and time.</title>
+<p>(JPG)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0143347.s005" xlink:href="info:doi/10.1371/journal.pone.0143347.s005" mimetype="image/jpeg" position="float" xlink:type="simple">
+<label>S2 Fig</label>
+<caption>
+<title>Goodness-of-fit for model with cell-specific bobcat detection probability and cell-week-specific hare bobcat detection probability.</title>
+<p>(JPG)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>We thank T. Kautz, M. Peterson, C. Wright, T. Wolf, O. Montgomery, E. Robbe and the other field assistants who helped with data collection for this study. We also thank the two anonymous reviewers who provided helpful comments to improve the quality of this article.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0143347.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jones</surname> <given-names>J</given-names></name>. <article-title>2001. Habitat Selection Studies in Avian Ecology: A Critical Review</article-title>. <source>Auk</source>. <year>2001</year>; <volume>118</volume>: <fpage>556</fpage>–<lpage>562</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Litvaitis</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Sherburne</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Bissonette</surname> <given-names>JA</given-names></name>. <article-title>Influence of understory characteristics on snowshoe hare habitat use and density</article-title>. <source>J Wildl Manage</source>. <year>1985</year>; <volume>49</volume>(<issue>4</issue>): <fpage>866</fpage>–<lpage>873</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mao</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Boyce</surname> <given-names>MS</given-names></name>, <name name-style="western"><surname>Smith</surname> <given-names>DW</given-names></name>, <name name-style="western"><surname>Singer</surname> <given-names>FJ</given-names></name>, <name name-style="western"><surname>Vales</surname> <given-names>DJ</given-names></name>, <name name-style="western"><surname>Vore</surname> <given-names>JM</given-names></name>, <etal>et al</etal>. <article-title>Habitat selection by elk before and after wolf reintroduction in Yellowstone National Park</article-title>. <source>J Wildl Manage</source>. <year>2005</year>; <volume>69</volume>(<issue>4</issue>): <fpage>1691</fpage>–<lpage>1707</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hwang</surname> <given-names>YT</given-names></name>, <name name-style="western"><surname>Lariviere</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Messier</surname> <given-names>F</given-names></name>. <article-title>Local-and landscape-level den selection of striped skunks on the Canadian prairies</article-title>. <source>Can J Zool</source>. <year>2007</year>; <volume>85</volume>(<issue>1</issue>): <fpage>33</fpage>–<lpage>39</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Elfström</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Swenson</surname> <given-names>JE</given-names></name>, <name name-style="western"><surname>Ball</surname> <given-names>JP</given-names></name>. <article-title>Selection of denning habitats by Scandinavian brown bears <italic>Ursus arctos</italic></article-title>. <source>Wildlife Biol</source>. <year>2008</year>; <volume>14</volume>(<issue>2</issue>): <fpage>176</fpage>–<lpage>187</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Libal</surname> <given-names>NS</given-names></name>, <name name-style="western"><surname>Belant</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Maraj</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Leopold</surname> <given-names>BD</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Marshall</surname> <given-names>S</given-names></name>. <article-title>Microscale den-site selection of grizzly bears in southwestern Yukon</article-title>. <source>Ursus</source>. <year>2012</year>; <volume>23</volume>(<issue>2</issue>): <fpage>226</fpage>–<lpage>230</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Waller</surname> <given-names>BW</given-names></name>, <name name-style="western"><surname>Belant</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Leopold</surname> <given-names>BD</given-names></name>, <name name-style="western"><surname>Evans</surname> <given-names>DL</given-names></name>, <name name-style="western"><surname>Young</surname> <given-names>BW</given-names></name>, <name name-style="western"><surname>Simek</surname> <given-names>SL</given-names></name>. <article-title>Scale-dependent den-site selection by American black bears in Mississippi</article-title>. <source>Mammal Study</source>. <year>2013</year>; <volume>38</volume>: <fpage>211</fpage>–<lpage>216</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rolley</surname> <given-names>RE</given-names></name>, <name name-style="western"><surname>Warde</surname> <given-names>WD</given-names></name>. <article-title>Bobcat habitat use in southeastern Oklahoma</article-title>. <source>J Wildl Manage</source>. <year>1985</year>; <volume>49</volume>(<issue>4</issue>):, <fpage>913</fpage>–<lpage>920</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bailey</surname> <given-names>TN</given-names></name>. <article-title>Social organization in a bobcat population</article-title>. <source>J Wildl Manage</source>. <year>1974</year>; <volume>38</volume>: <fpage>435</fpage>–<lpage>446</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chamberlain</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Leopold</surname> <given-names>BD</given-names></name>, <name name-style="western"><surname>Conner</surname> <given-names>LM</given-names></name>. <article-title>Space use, movements and habitat selection of adult bobcats (<italic>Lynx rufus</italic>) in central Mississippi</article-title>. <source>Am. Midl. Nat</source>. <year>2003</year>; <volume>149</volume>(<issue>2</issue>): <fpage>395</fpage>–<lpage>405</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dussault</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Ouellet</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Courtois</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Huot</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Breton</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Jolicoeur</surname> <given-names>H</given-names></name>. <article-title>Linking moose habitat selection to limiting factors</article-title>. <source>Ecography</source>. <year>2005</year>; <volume>28</volume>(<issue>5</issue>): <fpage>619</fpage>–<lpage>628</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ordeñana</surname> <given-names>MA</given-names></name>, <name name-style="western"><surname>Crooks</surname> <given-names>KR</given-names></name>, <name name-style="western"><surname>Boydston</surname> <given-names>EE</given-names></name>, <name name-style="western"><surname>Fisher</surname> <given-names>RN</given-names></name>, <name name-style="western"><surname>Lyren</surname> <given-names>LM</given-names></name>, <name name-style="western"><surname>Siudyla</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>Effects of urbanization on carnivore species distribution and richness</article-title>. <source>J Mammal</source>. <year>2010</year>; <volume>91</volume>(<issue>6</issue>): <fpage>1322</fpage>–<lpage>1331</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Erb</surname> <given-names>PL</given-names></name>, <name name-style="western"><surname>McShea</surname> <given-names>WJ</given-names></name>, <name name-style="western"><surname>Guralnick</surname> <given-names>RP</given-names></name>. <article-title>Anthropogenic influences on macro-level mammal occupancy in the Appalachian trail corridor</article-title>. <source>PloS one</source>. <year>2012</year>; <volume>7</volume>(<issue>8</issue>), <fpage>e42574</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0042574" xlink:type="simple">10.1371/journal.pone.0042574</ext-link></comment> <object-id pub-id-type="pmid">22880038</object-id></mixed-citation></ref>
+<ref id="pone.0143347.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kotliar</surname> <given-names>NB</given-names></name>, <name name-style="western"><surname>Wiens</surname> <given-names>JA</given-names></name>. <article-title>Multiple scales of patchiness and patch structure: a hierarchical framework for the study of heterogeneity</article-title>. <source>Oikos</source>. <year>1990</year>; <volume>59</volume>(<issue>2</issue>): <fpage>253</fpage>–<lpage>260</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bergin</surname> <given-names>TM</given-names></name>. <article-title>Habitat selection by the Western Kingbird in western Nebraska: a hierarchical analysis</article-title>. <source>Condor</source>. <year>1992</year>; <volume>94</volume>(<issue>4</issue>): <fpage>903</fpage>–<lpage>911</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Boyce</surname> <given-names>MS</given-names></name>, <name name-style="western"><surname>Mao</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Merrill</surname> <given-names>EH</given-names></name>, <name name-style="western"><surname>Fortin</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Turner</surname> <given-names>MG</given-names></name>, <name name-style="western"><surname>Fryxell</surname> <given-names>J</given-names></name>, <etal>et al</etal>. <article-title>Scale and heterogeneity in habitat selection by elk in Yellowstone National Park</article-title>. <source>Ecoscience</source>. <year>2003</year>; <volume>10</volume>(<issue>4</issue>): <fpage>421</fpage>–<lpage>431</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Squires</surname> <given-names>JR</given-names></name>, <name name-style="western"><surname>Decesare</surname> <given-names>NJ</given-names></name>, <name name-style="western"><surname>Kolbe</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Ruggiero</surname> <given-names>LF</given-names></name>. <article-title>Hierarchical den selection of Canada lynx in western Montana</article-title>. <source>J Wildl Manage</source>. <year>2008</year>; <volume>72</volume>: <fpage>1497</fpage>–<lpage>1506</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Godbois</surname> <given-names>IA</given-names></name>, <name name-style="western"><surname>Conner</surname> <given-names>LM</given-names></name>, <name name-style="western"><surname>Warren</surname> <given-names>RJ</given-names></name>. <article-title>Habitat use of bobcats at two spatial scales in Southwestern Georgia</article-title>. <source>Proceedings of the Annual Conference of the Southeastern Association of Fish and Wildlife Agencies</source>. <year>2003</year>; <volume>57</volume>: <fpage>228</fpage>–<lpage>234</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tucker</surname> <given-names>SA</given-names></name>, <name name-style="western"><surname>Clark</surname> <given-names>WR</given-names></name>, <name name-style="western"><surname>Gosselink</surname> <given-names>TE</given-names></name>. <article-title>Space Use and Habitat Selection by bobcats in the fragmented landscape of South-Central Iowa</article-title>. <source>J Wildl Manage</source>. <year>2008</year>; <volume>72</volume>(<issue>5</issue>): <fpage>1114</fpage>–<lpage>1124</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>McLoughlin</surname> <given-names>PD</given-names></name>, <name name-style="western"><surname>Case</surname> <given-names>RL</given-names></name>, <name name-style="western"><surname>Gau</surname> <given-names>RJ</given-names></name>, <name name-style="western"><surname>Cluff</surname> <given-names>DH</given-names></name>, <name name-style="western"><surname>Mulders</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Messier</surname> <given-names>F</given-names></name>. <article-title>Hierarchical habitat selection by barren-ground grizzly bears in the central Canadian Arctic</article-title>. <source>Oecologia</source>. <year>2002</year>; <volume>132</volume>(<issue>1</issue>): <fpage>102</fpage>–<lpage>108</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Murray</surname> <given-names>DL</given-names></name>, <name name-style="western"><surname>Boutin</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>O'Donoghue</surname> <given-names>M</given-names></name>. <article-title>Winter habitat selection by lynx and coyotes in relation to snowshoe hare abundance</article-title>. <source>Can J Zool</source>. <year>1994</year>; <volume>72</volume>(<issue>8</issue>): <fpage>1444</fpage>–<lpage>1451</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fahrig</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Rytwinski</surname> <given-names>T</given-names></name>. <article-title>Effects of roads on animal abundance: an empirical review and synthesis</article-title>. <source>Ecol Soc</source>. <year>2009</year>; <volume>14</volume>(<issue>1</issue>): <fpage>21</fpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tigas</surname> <given-names>LA</given-names></name>, <name name-style="western"><surname>Van Vuren</surname> <given-names>DH</given-names></name>, <name name-style="western"><surname>Sauvajot</surname> <given-names>RM</given-names></name>. <article-title>Behavioral responses of bobcats and coyotes to habitat fragmentation and corridors in an urban environment</article-title>. <source>Biol Conserv</source>. <year>2002</year>; <volume>108</volume>(<issue>3</issue>): <fpage>299</fpage>–<lpage>306</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Whittington</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>St Clair</surname> <given-names>CC</given-names></name>, <name name-style="western"><surname>Mercer</surname> <given-names>G</given-names></name>. <article-title>Path tortuosity and the permeability of roads and trails to wolf movement</article-title>. <source>Ecol Soc</source>. <year>2004</year>; <volume>9</volume>(<issue>1</issue>): <fpage>4</fpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dickson</surname> <given-names>BG</given-names></name>, <name name-style="western"><surname>Jenness</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Beier</surname> <given-names>P</given-names></name>. <article-title>Influence of vegetation, topography, and roads on cougar movement in southern California</article-title>. <source>J Wildl Manage</source>. <year>2005</year>; <volume>69</volume>(<issue>1</issue>): <fpage>264</fpage>–<lpage>276</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref026"><label>26</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Krebs</surname> <given-names>CJ</given-names></name>, <name name-style="western"><surname>Boutin</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Boonstra</surname> <given-names>R</given-names></name>. <source>Ecosystem dynamics of the boreal forest: the Kluane project</source>. <publisher-name>Oxford University Press</publisher-name>. <year>2001</year>.</mixed-citation></ref>
+<ref id="pone.0143347.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Litvaitis</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Sherburne</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Bissonette</surname> <given-names>JA</given-names></name>. <article-title>Bobcat Habitat Use and Home Range Size in Relation to Prey Density</article-title>. <source>J Wildl Manage</source>. <year>1986</year>; <volume>50</volume> (<issue>1</issue>): <fpage>110</fpage>–<lpage>117</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hodges</surname> <given-names>KE</given-names></name>, <name name-style="western"><surname>Sinclair</surname> <given-names>ARE</given-names></name>. <article-title>Browse site selection by snowshoe hares: effects of food supply and predation risk</article-title>. <source>Can J Zool</source>. <year>2005</year>; <volume>83</volume>(<issue>2</issue>): <fpage>280</fpage>–<lpage>292</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Stricker</surname> <given-names>HK</given-names></name>, <name name-style="western"><surname>Belant</surname> <given-names>JL</given-names></name>, <name name-style="western"><surname>Beyer</surname> <given-names>DE</given-names></name>, <name name-style="western"><surname>Kanefsky</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Scribner</surname> <given-names>KT</given-names></name>, <name name-style="western"><surname>Etter</surname> <given-names>DR</given-names></name>, <etal>et al</etal>. <article-title>Use of modified snares to estimate bobcat abundance</article-title>. <source>Wildl. Soc. Bull</source>. <year>2012</year>; <volume>36</volume>(<issue>2</issue>): <fpage>257</fpage>–<lpage>263</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref030"><label>30</label><mixed-citation publication-type="other" xlink:type="simple">O’Donoghue M. Responses of coyotes and lynx to the snowshoe hare cycle. Ph.D. Dissertation. University of British Columbia, Vancouver. 1997.</mixed-citation></ref>
+<ref id="pone.0143347.ref031"><label>31</label><mixed-citation publication-type="other" xlink:type="simple">United States Bureau of the Census Topologically Integrated Geographic Encoding and Referencing (TIGER) system files. 2010. URL: <ext-link ext-link-type="uri" xlink:href="http://www.census.gov/geo/www/" xlink:type="simple">http://www.census.gov/geo/www/</ext-link> tiger/</mixed-citation></ref>
+<ref id="pone.0143347.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jin</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Danielson</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Homer</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Fry</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Xian</surname> <given-names>G</given-names></name>. <article-title>A comprehensive change detection method for updating the National Land Cover Database to circa 2011</article-title>. <source>Remote Sens Environ</source>. <year>2013</year>; <volume>132</volume>: <fpage>159</fpage>–<lpage>175</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dormann</surname> <given-names>CF</given-names></name>, <name name-style="western"><surname>Elith</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Bacher</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Buchmann</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Carl</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Carré</surname> <given-names>G</given-names></name>, <etal>et al</etal>. <article-title>Collinearity: a review of methods to deal with it and a simulation study evaluating their performance</article-title>. <source>Ecography</source>. <year>2013</year>; <volume>36</volume>(<issue>1</issue>): <fpage>27</fpage>–<lpage>46</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Waddle</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Dorazio</surname> <given-names>RM</given-names></name>, <name name-style="western"><surname>Walls</surname> <given-names>SC</given-names></name>, <name name-style="western"><surname>Rice</surname> <given-names>KG</given-names></name>, <name name-style="western"><surname>Beauchamp</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Chuman</surname> <given-names>MJ</given-names></name>, <etal>et al</etal>. <article-title>A new parameterization for estimating co-occurrence of interacting species</article-title>. <source>Ecol Appl</source>. <year>2010</year>; <volume>20</volume>(<issue>5</issue>): <fpage>1467</fpage>–<lpage>1475</lpage>. <object-id pub-id-type="pmid">20666262</object-id></mixed-citation></ref>
+<ref id="pone.0143347.ref035"><label>35</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Royle</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Dorazio</surname> <given-names>RM</given-names></name>. <source>Hierarchical modeling and inference in ecology: the analysis of data from populations, metapopulations and communities</source>. <publisher-name>Academic Press</publisher-name>. <year>2008</year>.</mixed-citation></ref>
+<ref id="pone.0143347.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lunn</surname> <given-names>DJ</given-names></name>, <name name-style="western"><surname>Thomas</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Best</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Spiegelhalter</surname> <given-names>D</given-names></name>. <article-title>WinBUGS: a Bayesian modelling framework: concepts, structure, and extensibility</article-title>. <source>Stat Comput</source>. <year>2000</year>; <volume>10</volume>: <fpage>325</fpage>–<lpage>337</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref037"><label>37</label><mixed-citation publication-type="other" xlink:type="simple">R Core Team R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. 2014. URL: <ext-link ext-link-type="uri" xlink:href="http://www.R-project.org/" xlink:type="simple">http://www.R-project.org/</ext-link></mixed-citation></ref>
+<ref id="pone.0143347.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sturtz</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Ligges</surname> <given-names>U</given-names></name>, <name name-style="western"><surname>Gelman</surname> <given-names>A</given-names></name>. <article-title>R2WinBUGS: A Package for Running WinBUGS from R</article-title>. <source>J Stat Softw</source>. <year>2005</year>; <volume>12</volume>(<issue>3</issue>): <fpage>1</fpage>–<lpage>16</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref039"><label>39</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Gelman</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Carlin</surname> <given-names>JB</given-names></name>, <name name-style="western"><surname>Stern</surname> <given-names>HS</given-names></name>, <name name-style="western"><surname>Rubin</surname> <given-names>DB</given-names></name>. <source>Bayesian Data Analysis</source>. <edition>3rd edition</edition>. <publisher-name>Chapman and Hall/CRC</publisher-name>; <year>2014</year>.</mixed-citation></ref>
+<ref id="pone.0143347.ref040"><label>40</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Kéry</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Schaub</surname> <given-names>M</given-names></name>. <source>Bayesian population analysis using WinBUGS: a hierarchical perspective</source>. <publisher-name>Academic Press</publisher-name>; <year>2012</year>.</mixed-citation></ref>
+<ref id="pone.0143347.ref041"><label>41</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kuo</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Mallick</surname> <given-names>B</given-names></name>. <article-title>Variable selection for regression models</article-title>. <source>Sankhya Ser B</source>. <year>1998</year>; <volume>60</volume>(<issue>1</issue>): <fpage>65</fpage>–<lpage>81</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref042"><label>42</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Congdon</surname> <given-names>P</given-names></name>. <source>Bayesian models for categorical data</source>. <publisher-name>John Wiley &amp; Sons</publisher-name>; <year>2005</year>.</mixed-citation></ref>
+<ref id="pone.0143347.ref043"><label>43</label><mixed-citation publication-type="other" xlink:type="simple">Carpenter B. Bayesian Counterpart to Fisher Exact Test on Contingency Tables. 2009. Available: <ext-link ext-link-type="uri" xlink:href="http://lingpipe-blog.com/2009/10/13/bayesian-counterpart-to-fisher-exact-test-on-contingency-tables/" xlink:type="simple">http://lingpipe-blog.com/2009/10/13/bayesian-counterpart-to-fisher-exact-test-on-contingency-tables/</ext-link></mixed-citation></ref>
+<ref id="pone.0143347.ref044"><label>44</label><mixed-citation publication-type="other" xlink:type="simple">Gelman A. What is the Bayesian counterpart to the so-called Fisher exact test? 2009. Available: <ext-link ext-link-type="uri" xlink:href="http://andrewgelman.com/2009/10/13/what_is_the_bay/" xlink:type="simple">http://andrewgelman.com/2009/10/13/what_is_the_bay/</ext-link></mixed-citation></ref>
+<ref id="pone.0143347.ref045"><label>45</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Orr</surname> <given-names>CD</given-names></name>, <name name-style="western"><surname>Dodds</surname> <given-names>DG</given-names></name>. <article-title>Snowshoe Hare Habitat Preferences in Nova Scotia Spruce-Fir Forests</article-title>. <source>Wildl. Soc. Bull</source>. <year>1982</year>; <volume>10</volume>(<issue>2</issue>): <fpage>147</fpage>–<lpage>150</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref046"><label>46</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wolff</surname> <given-names>JO</given-names></name>. <article-title>The role of habitat patchiness in the population dynamics of snowshoe hares</article-title>. <source>Ecol Monogr</source>. <year>1980</year>; <volume>50</volume>(<issue>1</issue>): <fpage>111</fpage>–<lpage>130</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref047"><label>47</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Keith</surname> <given-names>LB</given-names></name>, <name name-style="western"><surname>Bloomer</surname> <given-names>SE</given-names></name>, <name name-style="western"><surname>Willebrand</surname> <given-names>T</given-names></name>. <article-title>Dynamics of a snow shoe hare population in fragmented habitat</article-title>. <source>Can J Zool</source>. <year>1993</year>; <volume>71</volume>(<issue>7</issue>): <fpage>1385</fpage>–<lpage>1392</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref048"><label>48</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pietz</surname> <given-names>PJ</given-names></name>, <name name-style="western"><surname>Tester</surname> <given-names>JR</given-names></name>. <article-title>Habitat Selection by Snowshoe Hares in North Central Minnesota</article-title>. <source>J Wildl Manage</source>. <year>1983</year>; <volume>47</volume>(<issue>3</issue>): <fpage>686</fpage>–<lpage>696</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref049"><label>49</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Thornton</surname> <given-names>DH</given-names></name>, <name name-style="western"><surname>Wirsing</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Roth</surname> <given-names>JD</given-names></name>, <name name-style="western"><surname>Murray</surname> <given-names>DL</given-names></name>. <article-title>Habitat quality and population density drive occupancy dynamics of snowshoe hare in variegated landscapes</article-title>. <source>Ecography</source>. <year>2013</year>; <volume>36</volume>(<issue>5</issue>): <fpage>610</fpage>–<lpage>621</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref050"><label>50</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lewis</surname> <given-names>CW</given-names></name>, <name name-style="western"><surname>Hodges</surname> <given-names>KE</given-names></name>, <name name-style="western"><surname>Koehler</surname> <given-names>GM</given-names></name>, <name name-style="western"><surname>Mills</surname> <given-names>LS</given-names></name>. <article-title>Influence of stand and landscape features on snowshoe hare abundance in fragmented forests</article-title>. <source>J Mammal</source>. <year>2011</year>; <volume>92</volume>(<issue>3</issue>): <fpage>561</fpage>–<lpage>567</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref051"><label>51</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Feierabend</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Kielland</surname> <given-names>K</given-names></name>. <article-title>Movements, activity patterns, and habitat use of snowshoe hares (<italic>Lepus americanus</italic>) in interior Alaska</article-title>. <source>J Mammal</source>. <year>2014</year>; <volume>95</volume>(<issue>3</issue>): <fpage>525</fpage>–<lpage>533</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref052"><label>52</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>McCann</surname> <given-names>NP</given-names></name>, <name name-style="western"><surname>Moen</surname> <given-names>RA</given-names></name>. <article-title>Mapping potential core areas for lynx (<italic>Lynx canadensis</italic>) using pellet counts from snowshoe hares (<italic>Lepus americanus</italic>) and satellite imagery</article-title>. <source>Can J Zool</source>. <year>2011</year>; <volume>89</volume>(<issue>6</issue>): <fpage>509</fpage>–<lpage>516</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref053"><label>53</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Evink</surname> <given-names>GL</given-names></name>. <chapter-title>Florida department of transportation initiatives related to wildlife mortality</chapter-title>. In: <name name-style="western"><surname>Evink</surname> <given-names>GL</given-names></name>, <name name-style="western"><surname>Garrett</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Zeigler</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Berry</surname> <given-names>J</given-names></name>. (Eds.), <source>Proceedings of the Transportation Related Wildlife Mortality Seminar (FL-ER-58-96)</source>. <publisher-name>Florida Department of Transportation</publisher-name>, <publisher-loc>Tallahassee, FL</publisher-loc>. <year>1996</year>.</mixed-citation></ref>
+<ref id="pone.0143347.ref054"><label>54</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Saunders</surname> <given-names>SC</given-names></name>, <name name-style="western"><surname>Mislivets</surname> <given-names>MR</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Cleland</surname> <given-names>DT</given-names></name>. <article-title>Effects of roads on landscape structure within nested ecological units of the Northern Great Lakes Region, USA</article-title>. <source>Biol Conserv</source>. <year>2002</year>; <volume>103</volume>(<issue>2</issue>): <fpage>209</fpage>–<lpage>225</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref055"><label>55</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cain</surname> <given-names>AT</given-names></name>, <name name-style="western"><surname>Tuovila</surname> <given-names>VR</given-names></name>, <name name-style="western"><surname>Hewitt</surname> <given-names>DG</given-names></name>, <name name-style="western"><surname>Tewes</surname> <given-names>ME</given-names></name>. <article-title>Effects of a highway and mitigation projects on bobcats in Southern Texas</article-title>. <source>Biol Conserv</source>. <year>2003</year>; <volume>114</volume>(<issue>2</issue>): <fpage>189</fpage>–<lpage>197</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref056"><label>56</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>McCord</surname> <given-names>CM</given-names></name>. <article-title>Selection of Winter Habitat by Bobcats (<italic>Lynx rufus</italic>) on the Quabbin Reservation, Massachusetts</article-title>. <source>J Mammal</source>. <year>1974</year>; <volume>55</volume>(<issue>2</issue>): <fpage>428</fpage>–<lpage>437</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref057"><label>57</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bradley</surname> <given-names>LC</given-names></name>, <name name-style="western"><surname>Fagre</surname> <given-names>DB</given-names></name>. <article-title>Coyote and bobcat responses to integrated ranch management practices in south Texas</article-title>. <source>Journal of Range Management</source>. <year>1988</year>; <volume>41</volume>: <fpage>322</fpage>–<lpage>327</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref058"><label>58</label><mixed-citation publication-type="other" xlink:type="simple">Bailey TN. Den ecology, population parameters and diet of eastern Idaho bobcats. In: Proceedings of the Bobcat Research Conference, National Wildlife Federation Scientific and Technical Series. 1979; 6: 62–69.</mixed-citation></ref>
+<ref id="pone.0143347.ref059"><label>59</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fuller</surname> <given-names>TK</given-names></name>, <name name-style="western"><surname>Berg</surname> <given-names>WE</given-names></name>, <name name-style="western"><surname>Kuehn</surname> <given-names>DW</given-names></name>. <article-title>Bobcat Home Range Size and Daytime Cover-Type Use in Northcentral Minnesota</article-title>. <source>J Mammal</source>. <year>1985</year>; <volume>66</volume>(<issue>3</issue>): <fpage>568</fpage>–<lpage>571</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref060"><label>60</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Boyle</surname> <given-names>KA</given-names></name>, <name name-style="western"><surname>Fendley</surname> <given-names>TT</given-names></name>. <article-title>Habitat suitability index models: bobcat</article-title>. <source>U.S. Fish and Wildlife Service, Biological Report</source>. <year>1987</year>; <volume>82</volume>(<issue>10.147</issue>). <fpage>16</fpage>p.</mixed-citation></ref>
+<ref id="pone.0143347.ref061"><label>61</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Knick</surname> <given-names>ST</given-names></name>. <article-title>Ecology of bobcats relative to exploitation and a prey decline in southeastern Idaho</article-title>. <source>Wildlife Monographs</source>. <year>1990</year>; <volume>108</volume>: <fpage>3</fpage>–<lpage>42</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref062"><label>62</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kamler</surname> <given-names>JF</given-names></name>, <name name-style="western"><surname>Gipson</surname> <given-names>PS</given-names></name>. <article-title>Home range, habitat selection, and survival of bobcats, Lynx rufus, in a prairie ecosystem in Kansas</article-title>. <source>Canadian Field-Naturalist</source>. <year>2000</year>; <volume>114</volume>(<issue>3</issue>): <fpage>388</fpage>–<lpage>394</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref063"><label>63</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Boutin</surname> <given-names>S</given-names></name>. <article-title>Effect of late winter food addition on numbers and movements of snowshoe hares</article-title>. <source>Oecologia</source>. <year>1984</year>; <volume>62</volume>(<issue>3</issue>): <fpage>393</fpage>–<lpage>400</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref064"><label>64</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Keith</surname> <given-names>LB</given-names></name>, <name name-style="western"><surname>Cary</surname> <given-names>JR</given-names></name>, <name name-style="western"><surname>Rongstad</surname> <given-names>OJ</given-names></name>, <name name-style="western"><surname>Brittingham</surname> <given-names>MC</given-names></name>. <article-title>Demography and ecology of a declining snowshoe hare population</article-title>. <source>Wildlife Monographs</source>. <year>1984</year>; <volume>90</volume>: <fpage>3</fpage>–<lpage>43</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref065"><label>65</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sievert</surname> <given-names>PR</given-names></name>, <name name-style="western"><surname>Keith</surname> <given-names>LB</given-names></name>. <article-title>Survival of snowshoe hares at a geographic range boundary</article-title>. <source>J Wildl Manage</source>. <year>1985</year>; <volume>49</volume>(<issue>4</issue>): <fpage>854</fpage>–<lpage>866</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref066"><label>66</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shannon</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Lewis</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Gerber</surname> <given-names>BD</given-names></name>. <article-title>Recommended survey designs for occupancy modelling using motion-activated cameras: insights from empirical wildlife data</article-title>. <source>PeerJ</source>. <year>2014</year>; <volume>2</volume>: <fpage>e532</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.7717/peerj.532" xlink:type="simple">10.7717/peerj.532</ext-link></comment> <object-id pub-id-type="pmid">25210658</object-id></mixed-citation></ref>
+<ref id="pone.0143347.ref067"><label>67</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Thorn</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Scott</surname> <given-names>DM</given-names></name>, <name name-style="western"><surname>Green</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Bateman</surname> <given-names>PW</given-names></name>, <name name-style="western"><surname>Cameron</surname> <given-names>EZ</given-names></name>. <article-title>Estimating brown hyenas occupancy using baited camera traps</article-title>. <source>South African Journal of Wildlife Research</source>. <year>2009</year>; <volume>39</volume>(<issue>1</issue>): <fpage>1</fpage>–<lpage>10</lpage>.</mixed-citation></ref>
+<ref id="pone.0143347.ref068"><label>68</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wilton</surname> <given-names>CM</given-names></name>, <name name-style="western"><surname>Beringer</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Puckett</surname> <given-names>EE</given-names></name>, <name name-style="western"><surname>Eggert</surname> <given-names>LS</given-names></name>, <name name-style="western"><surname>Belant</surname> <given-names>JL</given-names></name>. <article-title>Spatio-temporal capture-recapture biases in black bear detection probability</article-title>. <source>J Mammal</source>. <year>2016</year>; In press.</mixed-citation></ref>
+<ref id="pone.0143347.ref069"><label>69</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bled</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Nichols</surname> <given-names>JD</given-names></name>, <name name-style="western"><surname>Altwegg</surname> <given-names>R</given-names></name>. <article-title>Dynamic occupancy models for analyzing species' range dynamics across large geographic scales</article-title>. <source>Ecol Evol</source>. <year>2013</year>; <volume>3</volume>(<issue>15</issue>): <fpage>4896</fpage>–<lpage>4909</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1002/ece3.858" xlink:type="simple">10.1002/ece3.858</ext-link></comment> <object-id pub-id-type="pmid">24455124</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

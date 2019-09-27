@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1d3" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS Negl Trop Dis</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosntds</journal-id>
+<journal-title-group>
+<journal-title>PLOS Neglected Tropical Diseases</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1935-2735</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pntd.0004970</article-id>
+<article-id pub-id-type="publisher-id">PNTD-D-16-00102</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Tropical diseases</subject><subj-group><subject>Neglected tropical diseases</subject><subj-group><subject>Leishmaniasis</subject><subj-group><subject>Kala-azar</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Parasitic diseases</subject><subj-group><subject>Protozoan infections</subject><subj-group><subject>Leishmaniasis</subject><subj-group><subject>Kala-azar</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Infectious diseases</subject><subj-group><subject>Zoonoses</subject><subj-group><subject>Leishmaniasis</subject><subj-group><subject>Kala-azar</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>People and places</subject><subj-group><subject>Population groupings</subject><subj-group><subject>Professions</subject><subj-group><subject>Supervisors</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>People and places</subject><subj-group><subject>Geographical locations</subject><subj-group><subject>Asia</subject><subj-group><subject>India</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Public and occupational health</subject></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Tropical diseases</subject><subj-group><subject>Neglected tropical diseases</subject><subj-group><subject>Leishmaniasis</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Parasitic diseases</subject><subj-group><subject>Protozoan infections</subject><subj-group><subject>Leishmaniasis</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Infectious diseases</subject><subj-group><subject>Zoonoses</subject><subj-group><subject>Leishmaniasis</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Computer and information sciences</subject><subj-group><subject>Data management</subject></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Diagnostic medicine</subject><subj-group><subject>Signs and symptoms</subject><subj-group><subject>Fevers</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Pathology and laboratory medicine</subject><subj-group><subject>Signs and symptoms</subject><subj-group><subject>Fevers</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>People and places</subject><subj-group><subject>Population groupings</subject><subj-group><subject>Professions</subject><subj-group><subject>Teachers</subject></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Snowball Vs. House-to-House Technique for Measuring Annual Incidence of Kala-azar in the Higher Endemic Blocks of Bihar, India: A Comparison</article-title>
+<alt-title alt-title-type="running-head">A Search for a Cost-Effective Technique for Measuring Annual Kala-azar Incidence</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Siddiqui</surname>
+<given-names>Niyamat A.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Rabidas</surname>
+<given-names>Vidya N.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Sinha</surname>
+<given-names>Sanjay K.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Verma</surname>
+<given-names>Rakesh B.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Pandey</surname>
+<given-names>Krishna</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Singh</surname>
+<given-names>Vijay P.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Ranjan</surname>
+<given-names>Alok</given-names>
+</name>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Topno</surname>
+<given-names>Roshan K.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Lal</surname>
+<given-names>Chandra S.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kumar</surname>
+<given-names>Vijay</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Sahoo</surname>
+<given-names>Ganesh C.</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Sridhar</surname>
+<given-names>Srikantaih</given-names>
+</name>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Pandey</surname>
+<given-names>Arvind</given-names>
+</name>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Das</surname>
+<given-names>Pradeep</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Rajendra Memorial Research Institute of Medical Sciences (ICMR), Agamkuan, Patna, Bihar, India</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>All India Institute of Medical Sciences (AIIMS), Patna, Bihar, India</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>CARE India, Bihar, India</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>National Institute of Medical Statistics (ICMR), Ansari Nagar, New Delhi India</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Louzir</surname>
+<given-names>Hechmi</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Institut Pasteur de Tunis, TUNISIA</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors declare that they have no conflict of interests.</p>
+</fn>
+<fn fn-type="con">
+<p><list list-type="simple">
+<list-item><p><bold>Conceptualization:</bold> NAS SS AP PD.</p></list-item>
+<list-item><p><bold>Data curation:</bold> NAS SKS RBV AR GCS.</p></list-item>
+<list-item><p><bold>Formal analysis:</bold> NAS SKS RBV GCS.</p></list-item>
+<list-item><p><bold>Funding acquisition:</bold> NAS PD.</p></list-item>
+<list-item><p><bold>Investigation:</bold> NAS VNR SKS RBV KP VPS AR RKT CSL VK.</p></list-item>
+<list-item><p><bold>Methodology:</bold> NAS SS AR AP.</p></list-item>
+<list-item><p><bold>Project administration:</bold> NAS SS PD.</p></list-item>
+<list-item><p><bold>Resources:</bold> SS AP PD.</p></list-item>
+<list-item><p><bold>Software:</bold> RBV VPS GCS.</p></list-item>
+<list-item><p><bold>Supervision:</bold> NAS VNR SKS KP VPS AR CSL.</p></list-item>
+<list-item><p><bold>Validation:</bold> SKS RBV VPS RKT VK.</p></list-item>
+<list-item><p><bold>Writing – original draft:</bold> NAS RBV AP.</p></list-item>
+<list-item><p><bold>Writing – review &amp; editing:</bold> NAS VNR RBV KP RKT CSL VK.</p></list-item></list></p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">niyamatalisiddiqui@yahoomail.com</email> (NAS); <email xlink:type="simple">drpradeep.das@gmail.com</email> (PD)</corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>28</day>
+<month>9</month>
+<year>2016</year>
+</pub-date>
+<pub-date pub-type="collection">
+<month>9</month>
+<year>2016</year>
+</pub-date>
+<volume>10</volume>
+<issue>9</issue>
+<elocation-id>e0004970</elocation-id>
+<history>
+<date date-type="received">
+<day>25</day>
+<month>1</month>
+<year>2016</year>
+</date>
+<date date-type="accepted">
+<day>10</day>
+<month>8</month>
+<year>2016</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2016</copyright-year>
+<copyright-holder>Siddiqui et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pntd.0004970"/>
+<abstract>
+<sec id="sec001">
+<title>Background</title>
+<p>Visceral Leishmaniasis, commonly known as kala-azar, is widely prevalent in Bihar. The National Kala-azar Control Program has applied house-to-house survey approach several times for estimating Kala-azar incidence in the past. However, this approach includes huge logistics and operational cost, as occurrence of kala-azar is clustered in nature. The present study aims to compare efficiency, cost and feasibility of snowball sampling approach to house-to-house survey approach in capturing kala-azar cases in two endemic districts of Bihar, India.</p>
+</sec>
+<sec id="sec002">
+<title>Methodology/Principal findings</title>
+<p>A community based cross-sectional study was conducted in two highly endemic Primary Health Centre (PHC) areas, each from two endemic districts of Bihar, India. Snowball technique (used to locate potential subjects with help of key informants where subjects are hard to locate) and house-to-house survey technique were applied to detect all the new cases of Kala-azar during a defined reference period of one year i.e. June, 2010 to May, 2011. The study covered a total of 105,035 households with 537,153 populations. Out of total 561 cases and 17 deaths probably due to kala-azar, identified by the study, snowball sampling approach captured only 221 cases and 13 deaths, whereas 489 cases and 17 deaths were detected by house-to-house survey approach. Higher value of McNemar’s χ² statistics (64; p&lt;0.0001) for house-to-house survey approach than snowball sampling and relative difference (&gt;1) indicates that most of the kala-azar cases missed by snowball sampling were captured by house-to-house approach with 13% of omission.</p>
+</sec>
+<sec id="sec003">
+<title>Conclusion/Significance</title>
+<p>Snowball sampling was not found sensitive enough as it captured only about 50% of VL cases. However, it captured about 77% of the deaths probably due to kala-azar and was found more cost-effective than house-to-house approach. Standardization of snowball approach with improved procedure, training and logistics may enhance the sensitivity of snowball sampling and its application in national Kala-azar elimination programme as cost-effective approach for estimation of kala-azar burden.</p>
+</sec>
+</abstract>
+<abstract abstract-type="summary">
+<title>Author Summary</title>
+<p>Visceral Leishmaniasis, commonly known as kala-azar, is one of the major health concerns for Bihar state in India. Time to time estimation of kala-azar incidence plays a pivotal role in defining and evaluating control strategies under National Kala-azar Elimination programme. The house-to-house survey approach, adopted several times for estimation of kala-azar incidence, requires huge logistics and operational cost as occurrence of kala-azar is clustered in nature. Snowball sampling approach is used to locate potential subjects with help of key informants where subjects are hard to locate. This is the first ever comparative study to assess efficacy, cost and feasibility of snowball sampling approach to house-to-house survey in capturing kala-azar cases. Snowball sampling was found cost-effective, but not sensitive enough as it captured about 50% of kala-azar cases. It captured deaths possibly due to kala-azar more efficiently (77%). However, standardization of snowball approach with improved procedure, training, logistics, etc. may enhance the sensitivity of snowball sampling and its application in national Kala-azar elimination programme as cost-effective approach for estimation of kala-azar burden.</p>
+</abstract>
+<funding-group>
+<award-group id="award001">
+<funding-source>
+<institution>NVBDCP/ World Bank</institution>
+</funding-source>
+<award-id>3-87/2009 NVBDCP (KA) World Bank</award-id>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Das</surname>
+<given-names>Pradeep</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<funding-statement>The present study was funded by National Vector Borne Disease Control Programme (NVBDCP) under World Bank Scheme for Kala-azar Elimination of the country vide Grant No. 3-87/2009 NVBDCP (KA) World Bank in favour of Director, RMRIMS, Patna (PD). The funder had no role in study design, data collection and analysis, decision to publish or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="2"/>
+<table-count count="2"/>
+<page-count count="15"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec004" sec-type="intro">
+<title>Introduction</title>
+<p>Visceral Leishmaniasis (VL), also known as Kala-azar, is a major cause of morbidity and mortality and of tremendous public health importance in India, Bangladesh and Nepal affecting the poorest population groups, primarily in rural areas. With an estimated 200 million people at risk, India, Nepal and Bangladesh harbour an estimated 67% of the global VL disease burden [<xref ref-type="bibr" rid="pntd.0004970.ref001">1</xref>]. In India, Bihar state alone reports nearly 80–90% of the VL cases. In this region, <italic>Leishmania donovani</italic> is the only species causing VL, the female sand fly <italic>Phlebotomus argentipes</italic> is the only vector and humans are the only known reservoir [<xref ref-type="bibr" rid="pntd.0004970.ref002">2</xref>–<xref ref-type="bibr" rid="pntd.0004970.ref003">3</xref>]. Recent advances in rapid field based diagnostics and availability of effective and safe oral drugs make the disease a target for elimination (reducing incidence to less than one per 10,000 population at sub-district level by 2020) [<xref ref-type="bibr" rid="pntd.0004970.ref004">4</xref>]. The country is under kala-azar elimination mode, therefore reduction in kala-azar incidence has been the key developmental goal for monitoring the progress of the national elimination program. The need of setting such goals has been discussed and documented in various national and international deliberations and brain storming meetings at Office of the Directorate, National Vector Borne Disease Control Program, New Delhi (NVBDCP) [<xref ref-type="bibr" rid="pntd.0004970.ref005">5</xref>, <xref ref-type="bibr" rid="pntd.0004970.ref006">6</xref>]. Availability of reliable data is one of the major concerns. It is said that measuring VL incidence is not only crucial but also complex for practical reasons. NVBDCP provides state-wise reported number of kala-azar cases and deaths in India [<xref ref-type="bibr" rid="pntd.0004970.ref007">7</xref>]. But the estimate of kala-azar disease burden is suspected to be under-estimated in absence of a robust surveillance mechanism [<xref ref-type="bibr" rid="pntd.0004970.ref008">8</xref>]. Since this disease is rare with clustered distribution, its estimation with adequate precision requires a very large sample for survey that is logistically and financially burdensome.</p>
+<p>As the kala-azar control program moves to an elimination trajectory, the program has set itself the goal of reducing the annual incidence of kala-azar to less than 1 per 10,000 populations in at least half the currently affected blocks by the year 2017. The estimate of VL incidence with high precision is a major issue for impact assessment of elimination strategies. The current “gold standard” method for estimating disease burden is house-to-house approach (HHA) that requires high logistic and operational cost. Snowball sampling approach (SBA) could be an alternative to HHA. Snowball sampling is preferred when the desired sample characteristic is rare, difficult and/or cost restrictive to locate potential subjects in the study population. Initially, key informants for the study population are identified, and based on the information provided by the key informants, potential subjects are located. The identified potential subjects may provide information about other subject/s in turn and so on. SBA relies on referrals from initial subjects to generate additional subjects. This approach has widely been used to identify criminals, prostitutes [<xref ref-type="bibr" rid="pntd.0004970.ref009">9</xref>], drug users [<xref ref-type="bibr" rid="pntd.0004970.ref010">10</xref>–<xref ref-type="bibr" rid="pntd.0004970.ref012">12</xref>] and people with unusual or stigmatized conditions such as HIV/AIDS, STD patients in a defined study population [<xref ref-type="bibr" rid="pntd.0004970.ref013">13</xref>]. Given the inaccessibility of these populations, the referrals can significantly facilitate researchers to locate potential subjects through their social networks. However, this approach is biased and may reduce the likelihood of sample representing good cross-section from the population. But on the other side, it can enormously lower search costs. Nonetheless the method has been found to be economical, efficient and effective as compared to other probabilistic approaches of sampling applied in course of investigating rare events [<xref ref-type="bibr" rid="pntd.0004970.ref014">14</xref>, <xref ref-type="bibr" rid="pntd.0004970.ref015">15</xref>]. In India, it has been used for estimating maternal-mortality ratio in the population [<xref ref-type="bibr" rid="pntd.0004970.ref016">16</xref>]. In theory, this is an efficient and cost-effective method to find cases of rare diseases. It is most useful where the condition or event under consideration is well-recognized by communities. Kala-azar is familiar to communities in Bihar, at least in the endemic areas, and thus it appeared that SBA should work. This is the first ever study to assess whether SBA can be applied for measuring annual incidence of kala-azar.</p>
+</sec>
+<sec id="sec005" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<p>Based on recommendation of a high level consultative meeting on “Indicators for kala-azar elimination”, held at the Office of WHO/SEARO, New Delhi in June 2009, this community-based cross-sectional study was undertaken on pilot basis to compare efficacy, cost and feasibility of snowball sampling approach with house-to-house approach for measuring kala-azar incidence in a pre-defined highly endemic population of Bihar, India.</p>
+<sec id="sec006">
+<title>Study setting, design and sampling</title>
+<p>The study was conducted in two socio-culturally distinct highly endemic districts, namely Vaishali and Saharsa, of Bihar, India. Vaishali is situated in northern region of Bihar whereas Saharsa is one of the north-eastern districts, close to the border of West Bengal, other kala-azar endemic state. Apart from endemic status, other criteria considered for district selection were: a) Cultural distinctiveness (which could provide assurance of the method being effective in varying cultural contexts), b) Variation in health care access (which could determine the level of awareness of the disease, and influence the usefulness of key informants within the health system), and c) Inclusion of distinct logistical contexts (which could be helpful in preparation of larg baseline survey).</p>
+<p>From each of the two districts, one of the most highly endemic Public Health Centre (PHC) was selected. Lalganj PHC of Vaishali district had relatively good, long-established health care access and health facilities than other selected PHC (Simri-Bakhtiyarpur) of Sahrasa district. All the villages, with varying level of endemic status, under the selected PHC constitute the study area.</p>
+<p>A community based cross-sectional study was designed to cover overall population of the two PHCs. Both house-to-house and snowball sampling approach were applied by two separate teams to capture cases of kala-azar during a defined reference period of one year. Snowball sampling preceded the house-to-house survey. All the suspected cases of kala-azar, identified through both approaches, were enlisted for further confirmation. Details of cost and time involved in data collection by both approaches were also documented for cost-efficacy analysis.</p>
+<p>A multistage sampling technique was adopted. In the second stage, the most highly endemic PHC from each selected district was selected, and at the third stage villages and households under PHC areas were enumerated.</p>
+<p>The relatively low incidence of kala-azar and its clustering nature implied that required sample sizes could be very large, close to the actual population of the PHC/block. Every habitation in the PHC was covered by both approaches.</p>
+<p>The study was for a period of 18 months. However, the information on kala-azar cases occurred in between June 2010 to May 2011 was captured under this study.</p>
+</sec>
+<sec id="sec007">
+<title>Survey procedure</title>
+<p>Prior to actual survey, mapping and listing of all the households under study area were performed by trained staffs. It was started in 2<sup>nd</sup> week of January 2011 and completed by 2<sup>nd</sup> week of March 2011.</p>
+</sec>
+<sec id="sec008">
+<title>Case definitions</title>
+<p>A kala-azar case may be defined as: An individual with fever of more than 15 days duration with splenomegaly and positive by rapid diagnostic blood test (rk-39 strip test), or a case confirmed with laboratory-based diagnosis i.e. splenic/ bone marrow aspirate examination for <italic>Leishmania donovani</italic> (L.d.). In context of measuring annual incidence, the following criteria were considered during survey (implied for both approach) to be a case of kala-azar:</p>
+<list list-type="bullet">
+<list-item><p>A person with history of fever within the reference period and diagnosed/ treated for kala-azar (subject to document verification during the survey).</p></list-item>
+<list-item><p>A person with history of prolonged fever within the reference period, but did not have any document for diagnosis/ treatment (subject to positive by rk-39 strip test conducted during the survey).</p></list-item>
+<list-item><p>A current case of kala-azar (subject to document verification during the survey)</p></list-item>
+<list-item><p>A current case of fever, not tested as on date (subject to positive by rk-39 strip test during the survey)</p></list-item>
+</list>
+<p>Death probably due to kala-azar was considered if the individual died during or before treatment with history of prolonged fever.</p>
+<p>During survey, a popular festival in Bihar (known as “Chhat”) was used to identify the reference period of “the last one year” (defined as last Chhat to current Chhat) to ensure minimal misclassification of incidence across consecutive years. To ensure non-missing of deaths probably due to kala-azar, each and every households having death during the reference period were visited. The head/ representative of household was interviewed to collect detail information on death/s occurred, using the standardized verbal autopsy schedule used in earlier study conducted by Padam Singh <italic>et</italic>. <italic>al</italic>., 2007. Though the schedule was administered by a trained field supervisor, relation of death with kala-azar was verified through respective medical officer and renowned local person, wherever it was possible, and finally judged by study physician.</p>
+</sec>
+<sec id="sec009">
+<title>Use of survey instruments and data collection</title>
+<p>House-to-house and snowballing sampling approach was made by separate teams of trained field workers. It was assumed that an intensive house-to-house survey for kala-azar may increase people’s awareness, and eventually may positively affect the sensitivity of snowballing approach in identification of cases and deaths. In order to overrun this bias, snowballing survey was preceded to house-to-house survey.</p>
+</sec>
+<sec id="sec010">
+<title>Snowball sampling approach</title>
+<p>Area-wise list of Accredited Social Health Activist (ASHA’s), Aganwadi Workers (AWW’s), Auxiliary Nurse Midwife (ANM’s), school teachers, local healers and local leaders were prepared as possible key informants, but it was not limited to them only. A pilot field visit suggested that mere these key informants may not suffice to track all kala-azar cases, and few key informants may not be available at the time of actual survey by the snowballing team. Typically, communities live in caste-based clusters (locally called tolas), and their inter-cluster social interactions are not intensive enough to provide information on kala-azar from other cluster. Hence, additional key informants were also identified through a series of focussed group discussion meetings conducted in different areas (<xref ref-type="supplementary-material" rid="pntd.0004970.s001">S1 File</xref>).</p>
+<p>The snowballing team contacted the identified key informants for the area to be surveyed. Based on their information, the kala-azar affected households were visited. A detailed interview schedule, specifically designed to capture the case/ death as per study definition, was administered to the head/ representative of households. Apart from case and death, data relevant to the family’s basic socio-demographic background was also collected. Besides the key informants, information provided by members of the visited households also provided a link to other households possibly having kala-azar during the reference period. On an average, three villages were covered by one team per day as 2–3 hours were required to cover one average sized village.</p>
+</sec>
+<sec id="sec011">
+<title>House-to-house survey approach</title>
+<p>Each and every households of the study area were covered for house-to house survey to identify kala-azar cases occurred within the reference period. In order to ensure thorough coverage of all the households, standard principle of house-listing operations was followed. Using right-hand/ left-hand rule, each households were marked with unique household numbers and a rough map was drawn for household tracking. Head of the households or adult representative (in case of absence of head) were interviewed through pre-tested interview schedule to collect demographic data and information on individual(s) who suffered from/ died possibly due to kala-azar during the reference period. Similar to snowballing sampling approach, a detailed interview schedule was used to confirm the case as per study definition, and capture socio-demographic data of the family. A team of four investigators and one supervisor completely covered one village per working day.</p>
+<p>Both, snowballing and house-to-house survey teams were provided sub-centre wise list of villages for each PHC. In order to ensure thorough coverage, teams were instructed to cover all villages of the assigned sub-centre prior to moving to villages of other sub-centres. Special attention was made to ensure coverage of all the outlying clusters/ hamlets of villages.</p>
+</sec>
+<sec id="sec012">
+<title>Final list of suspected cases and deaths identified</title>
+<p>The central team of investigators closely monitored the thorough coverage of study population and data collection through both approaches (SBA and HHA), with special emphasis on identified potential suspected cases and deaths. After cross verification, village-wise final list of suspected cases was generated for confirmation by the medical field team. A separate list of deaths possibly due to kala-azar during the reference period, identified by both approaches, was also prepared. Each and every identified cases and deaths were marked with the type of approach through which identified i.e. HHA, SBA or both for further analysis.</p>
+</sec>
+<sec id="sec013">
+<title>Confirmation of identified cases and deaths</title>
+<p>Village-wise identified cases and deaths were confirmed by medical team consisted of one clinician, one technician and one paramedics of Rajendra Memorial Research Institute of Medical Sciences (RMRIMS). During door-level visit, the team re-verified the fact through personnel discussion and the available medical documents. After taking informed consent from the concerned individuals/ legal representatives, the enlisted cases were clinically examined and subjected to on-the-spot rapid diagnostic blood test (rk-39 strip test). Since rK-39 test is sensitive enough to capture present as well as past infection of leishmania, rK-39 positive cases were considered as true cases identified during survey. Some rK-39 negative cases were considered based on strong document-based evidence. The cause of death was judged by study physician using verbal autopsy schedule supported by documentary evidence (if available).</p>
+</sec>
+<sec id="sec014">
+<title>Logistics</title>
+<sec id="sec015">
+<title>Field teams</title>
+<p>Separate field teams for snowballing and house-to-house approach were deployed to avoid inter-mixing of data and personal influence. For house-to-house survey, 80 field investigators and 20 supervisors were hired. Minimum education qualification for field investigators and supervisors was matriculate (Class 10 pass) and graduate degree (preferably in science subject) respectively with experience in field based activity. Each team consisted of four investigators and one supervisor and two teams moved together by a hired four-wheel vehicle to cover the target population of different villages in same direction.</p>
+<p>Field investigators hired for snowballing survey were graduate with experience in field work. Investigators having their own two-wheel vehicle (motorcycle) were preferred. Apart from field investigators, 20 senior level investigators were also hired. Field work of snowballing team was monitored closely by independent observers nominated for the study. A team of two senior level investigators moved together in the field for highest mobility and cost effectiveness. They were compensated for POL and any breakdowns occurred during field visit.</p>
+<p>Proportionate number of teams was constituted for snowballing and house-to-house approach to maintain more or less uniform time lag (about a week) between the two teams visiting a given village. Field investigators were hired locally at PHC/ block level whereas supervisors and senior level investigators were hired at district level.</p>
+</sec>
+<sec id="sec016">
+<title>Training</title>
+<p>A brief one-day class-room training at RMRIMS, followed by 3-days hands-on training in field, was conducted for field investigators and supervisors, hired for house-to-house survey, to make them fully comfortable with the tools and working procedures. Field-based hands-on training was arranged in kala-azar endemic villages other than the study area and it was focussed on skill development in identification of suspected cases/ deaths. Training was imparted by research team in three batches (maximum 40 trainees per batch including about 30 field investigators and 8 supervisors). Supervisors were specifically trained on quality control measures to make them competent enough for data verification related to suspected cases/ deaths.</p>
+<p>Being snowball sampling a new approach for kala-azar survey, personnel deployed for this approach were imparted more intensive training than the house-to-house team. A thorough classroom session, conducted at RMRIMS, on kala-azar orientation and study-specific methodologies was followed by 6-days field-based hands-on training in different kala-azar endemic villages. The add-on training component for senior level investigators was supervision and monitoring skill development.</p>
+<p>The personnel hired at different levels for both the approaches were deployed in actual survey only when they were certified by trainers as competent enough to accomplish their assigned task. A detailed record of training activities including expenditure incurred was maintained to measure realistic estimates of efforts required for such kind of survey in future if planned by the Government.</p>
+</sec>
+</sec>
+<sec id="sec017">
+<title>Data management, quality control and statistical analysis</title>
+<p>The total data load was small compared to other surveys of equivalent size, since the instruments were limited in size. After field editing (by field supervisors) and desk editing (by designated desk editors), data was entered in customized data entry programs in Epi Info Version 3.3.2 (CDC Atlanta). All forms of suspected cases were double-entered and errors validated against original schedules. The snowballing team was not having any field supervisors accompanying them, and thus checked and balanced from outside. Part of this was provided by the supervisors of the house-to-house team that followed the snowballing team. They were confirmed whether snowballing was attempted in the village. In addition, two field teams from RMRI were looked into the entire data collection process using independent vehicles, and were conducted systematic back checks on both, snowballing and house-to-house teams, making particular efforts to find additional cases in a sub-sample of villages. Finally, the medical teams that visit suspected cases was reconfirmed that they do indeed meet the definition of suspected cases. All the structured/semi-structured questionnaires used under this survey were pre-tested.</p>
+<p>Statistical analysis was done using Epi Info Version 3.3.2 (CDC Atlanta). For comparison of snowball technique with house-to-house survey, the number of kala-azar cases identified in the study area through each approach was matched. We conducted matched-pair analysis (using McNemar χ² statistic) to find a statistical significance as well as identify number of cases/ deaths missed by house-to-house approach as compared to the snowball approach and vice versa. The population of affected villages in sub-district/PHC level was used as denominator for estimation of incidence. Per unit cost and time involved in snowballing approach was compared with that of house-to-house approach to assess its cost-effectiveness. Descriptive statistics as well as chi square test was used for comparison between proportions. In addition to that, Standard Error (SE), Relative precision (RP) and 95% Confidence Interval (CI) were calculated for assessing the estimates.</p>
+</sec>
+<sec id="sec018">
+<title>Ethics statement</title>
+<p>The study was duly approved by the Scientific Advisory Committee and Ethics Committee of Rajendra Memorial Research Institute of Medical Sciences. A written informed consent was obtained from all adult subjects participating in the study. In case of study subjects less than 18 years of age, written consent was obtained from their parent or guardian. Confidentiality was maintained as per the ethical norm.</p>
+</sec>
+</sec>
+<sec id="sec019" sec-type="results">
+<title>Results</title>
+<sec id="sec020">
+<title>Brief profile of the study districts</title>
+<p>Vaishali consists of three sub-divisions and 16 blocks/PHCs with Hajipur Sadar as district head quarter. Vaishali is an important pilgrim center for both Buddhists and Jains and surrounded by banana and mango groves as well as rice fields. It is 30 kilometers from state capital and just after crossing river Ganga. Vaishali stretches in 2036 sq km area with latitude = 25.11’ N and longitude = 85.32’ E. The total population of district is 3,495,249 with 1,847,049 males and 1,648,191 females, literacy rate as 66.60 and sex ratio of 895/1000. The population density is 1,717 inhabitants per square kilometer and the population growth rate over the decade 2001–2011 was 28.57%.</p>
+<p>There are two sub-divisions and 10 blocks/PHCs in Saharsa district with Saharsa Sadar and Simri-Bakhtiyarpur as district head quarter. Saharsa district is surrounded on the west by the river Koshi. Saharsa is located 300 Km away from state capital Patna and stretching in 1696 sq km area with latitude = 25.88’ N and longitude = 86.60’ E. As per census 2011, Saharsa has a population of 1,900,661 with 997,174 males and 903,487 females, literacy rate as 54.57 and sex ratio of 906/1000. The population density is 1,125 inhabitants per square kilometre and the population growth rate over the decade 2001–2011 was 25.79% (<xref ref-type="fig" rid="pntd.0004970.g001">Fig 1</xref>).</p>
+<fig id="pntd.0004970.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pntd.0004970.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Map of Bihar showing study districts (Source: <ext-link ext-link-type="uri" xlink:href="http://www.bihar.gov.in/" xlink:type="simple">www.bihar.gov.in</ext-link>).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pntd.0004970.g001" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec021">
+<title>Findings</title>
+<p>Two approaches (snowballing and house-to-house survey) were used to collect data on morbidity and mortality of kala-azar in the catchment area of two PHCs, one from each of the two socio-cultural distinct districts. A total of 105,035 households with 537,153 populations [(Male 285,617 (53%) and female 251,536 (47%)] spread over 213 villages under area of 58 sub-centres were covered. The socio-demographic profile and age-sex distribution of the screened population was consistent with that of census 2001 and 2011 of the study districts [<xref ref-type="bibr" rid="pntd.0004970.ref017">17</xref>]. The average household size of 5 was comparable to that of the national average of Bihar state.</p>
+<p>During the reference period, a total of 489 and 221 confirmed cases of kala-azar were detected by HHA and SBA respectively (<xref ref-type="table" rid="pntd.0004970.t001">Table 1</xref>). Matched-pair analysis using McNemar’s χ² statistics revealed that out of 221 cases identified by SBA, 149 matched with cases identified by HHA and rest 72 cases were missed by HHA. Considering additional cases captured by SBA (N = 72), the total number of confirmed kala-azar in the study population came to 561. Thus efficacy of HHA and SBA in capturing kala-azar cases was 87% (489 of 561) and 39% (221 of 561) respectively. Though, HHA is supposed to be gold standard, it also missed about 13% of true cases. Out of 17 deaths possibly due to kala-azar, captured by HHA, 13 (76%) were captured by SBA. No additional deaths were detected by SBA. Snowballing detected deaths more efficiently (13 of 17, 76%) than cases (221 of 561, 39%). The higher value of McNemar’s χ² statistics (64; p&lt;0.0001) with relative difference &gt;1 indicated that most of the kala-azar cases missed by snowballing approach were captured by house-to-house approach with some percentage of omission. Snowball sampling approach was not found sensitive enough for measuring annual incidence (reference period of one year) of kala-azar as compared to house-to-house approach. House-to-house approach picked up about 48% more cases than snowballing approach. However, snowballing approach was able to accurately capture about 50% of true cases.</p>
+<table-wrap id="pntd.0004970.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pntd.0004970.t001</object-id>
+<label>Table 1</label> <caption><title>Number of Kala-azar cases captured by snowballing and house-to-house survey approach.</title></caption>
+<alternatives>
+<graphic id="pntd.0004970.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pntd.0004970.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">PHC (District)</th>
+<th align="center" colspan="2">Number of Kala-azar cases</th>
+</tr>
+<tr>
+<th align="left"/>
+<th align="center">Snowballing (n)</th>
+<th align="center">House-to-house (n)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Lalganj (Vaishali)</td>
+<td align="center">43</td>
+<td align="center">92</td>
+</tr>
+<tr>
+<td align="left">Simri Bakhtiyarpur (Saharsa)</td>
+<td align="center">178</td>
+<td align="center">397</td>
+</tr>
+<tr>
+<td align="left">Total</td>
+<td align="center">221</td>
+<td align="center">489</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>The house-to-house approach was completed in 37 days with 40 field staff resulting into 1480 man-days per PHC whereas in snowballing approach, only 10 field staff covered the whole study population in 24 days <italic>i</italic>.<italic>e</italic>. 240 man-days per PHC. The ratio was found as 1:6. As regard to cost, INR 737,000 was incurred on house-to-house approach per PHC while cost for snowballing approach per PHC came to INR 370,300, about 50% less than house-to-house approach. Considering accurately capturing of about 50% of cases and 76% of deaths, SBA may be considered as cost-effective alternative to house-to-house approach.</p>
+<p>Based on total number of kala-azar cases cumulatively identified by both approaches under this study, the estimated incidence in Lalganj (Vaishali district) and Simri Bakhtiyarpur PHC (Saharsa district) was 3.6 and 16.6 per 10,000 respectively. This estimate was compared with officially reported surveillance data of the respective PHCs during the reference period. The estimated incidence was found almost similar to officially reported incidence in Lalganj PHC (3.6 vs. 3.2), but it was significantly higher in Simari Bakhtiyarpur (16.6 vs. 7.1) (p&lt;0.05). Although the block sample covered in the survey was below the size required for estimating the annual kala-azar incidence in the higher endemic blocks of Bihar. But it was further tried to provide the possible estimates of annual incidence of kala-azar based on the findings of this study along with its standard error and confidence interval for the selected blocks and as well for all the higher endemic blocks of state (<xref ref-type="table" rid="pntd.0004970.t002">Table 2</xref>).</p>
+<table-wrap id="pntd.0004970.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pntd.0004970.t002</object-id>
+<label>Table 2</label> <caption><title>Estimates of annual incidence of Kala-azar in the study area based on total number of cases captured during survey.</title></caption>
+<alternatives>
+<graphic id="pntd.0004970.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pntd.0004970.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">PHC (District)</th>
+<th align="left">Population covered (N)</th>
+<th align="left">Kala-azar cases captured (N)</th>
+<th align="left">Incidence /10 000 population</th>
+<th align="left">SE (Incidence)</th>
+<th align="left">Relative Precision (Incidence)</th>
+<th align="left" colspan="2">95% C.I.</th>
+</tr>
+<tr>
+<th align="left"/>
+<th align="justify"/>
+<th align="justify"/>
+<th align="justify"/>
+<th align="justify"/>
+<th align="justify"/>
+<th align="justify">Lower</th>
+<th align="justify">Upper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Lalganj (Vaishali)</td>
+<td align="right">254597</td>
+<td align="right">92</td>
+<td align="right">3.6</td>
+<td align="right">0.61</td>
+<td align="right">34.78</td>
+<td align="right">2.25</td>
+<td align="right">4.64</td>
+</tr>
+<tr>
+<td align="left">Simri Bakhtiyarpur (Saharsa)</td>
+<td align="right">282556</td>
+<td align="right">469</td>
+<td align="right">16.6</td>
+<td align="right">11.81</td>
+<td align="right">60.29</td>
+<td align="right">15.24</td>
+<td align="right">61.55</td>
+</tr>
+<tr>
+<td align="left">Total</td>
+<td align="right">537153</td>
+<td align="right">561</td>
+<td align="right">10.4</td>
+<td align="right">5.86</td>
+<td align="right">67.99</td>
+<td align="right">5.42</td>
+<td align="right">28.38</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>SE: Standard error; C.I.: Confidence interval</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Under snowballing approach, altogether 1501 key informants were identified, of which maximum key informants 913 (61%) were from others categories that includes shopkeepers, big agricultural farmers (renowned home owner), pharmacist, fellow villagers, relatives, etc. A statistically significant difference (p&lt;0.001) was observed between other categories of key informants and defined (accredited) categories of key informants (viz. AWW, ASHA, Sarpanch, local healer, teacher, etc.) in respect to giving information about kala-azar cases and deaths. Amongst the defined categories of key informants, ASHAs and school teachers performed poor in providing reference to cases/deaths (1.85–7.02% and 0.67–3.70% respectively). However, comparatively ASHAs were found more effective (7.02%) than school teacher (0%) in identifying deaths during the reference period of last one year. The role of the village leaders/Sarpanch in identification of kala-azar cases as key informant was found negligible (1.20%).</p>
+<p>Socio-demographic characteristics of kala-azar cases identified during the survey revealed that significantly higher proportion (268, 48%) of cases were from 0–14 years of age as compared to rest age-groups viz. 15–29, 30–44 &amp; 45–59 years (p&lt;0.001) (<xref ref-type="fig" rid="pntd.0004970.g002">Fig 2</xref>). About half of the cases were from growing age group and majority (333, 59%) were males. kala-azar patients coming from very low socio-economic categories (viz. unskilled labourers, rickshaw pullers, Agricultural labourer etc.) were significantly higher (78%) than altogether middle and higher socio-economic categories (p&lt;0.001).</p>
+<fig id="pntd.0004970.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pntd.0004970.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Age group distribution of kala-azar cases identified during survey.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pntd.0004970.g002" xlink:type="simple"/>
+</fig>
+<p>The concordance between Health Management Information System (HMIS) and house-to-house data revealed that about 75% of cases detected by house-to-house approach were completely and accurately matched with HMIS data and rest 25% cases were not reported to HMIS.</p>
+</sec>
+</sec>
+<sec id="sec022" sec-type="conclusions">
+<title>Discussion</title>
+<p>Under the national kala-azar elimination programme, Health Management Information System (HMIS) provides the information on kala-azar cases and deaths at different levels viz. PHC, district, state and national level. The estimated incidence of kala-azar, inferred from this study, was 3.6 and 16.6 per 10,000 populations for Lalganj (Vaishali district) and Simri Bakhtiyarpur (Saharsa district) respectively. Significantly higher estimate for Simri Bakhtiyarpur (p&lt;0.05) than HMIS-based estimate was in concordance to earlier studies conducted in India. Singh VP <italic>et al</italic>., reported underreporting of kala-zar cases by a factor of 4.17 [<xref ref-type="bibr" rid="pntd.0004970.ref018">18</xref>]. In a study conducted in East Champaran district of Bihar, Das P <italic>et al</italic>. estimated annual incidence of 35.6, 16.8 and 21.9 cases per 10,000 population for a high endemic PHC, medium endemic PHC, and overall at district level respectively, which was much higher than officially reported incidence rate [<xref ref-type="bibr" rid="pntd.0004970.ref019">19</xref>].</p>
+<p>The possible overall estimates for higher endemic PHC’s of Bihar State was 10.4 per 10,000 population, which was significantly higher (p&lt;0.001) with that of 2.3 per 10,000 for Bihar state (As per the surveillance data of the country; NVBDCP). There are no estimates available for higher endemic PHCs, neither at national level nor at the state level. None of the research study provides such estimates for Bihar state. Both the PHCs under the present study were well above the elimination level as per the estimated annual incidence computed by both house-to-house and snowballing approach. Although the possible estimates found under this study have low precision, but it may provide a lead to kala-zar disease burden at least for higher endemic sub-districts/ PHCs of Bihar. The probable factors for this low precision may be sample size considered, selection of study blocks, and underreporting of cases. High precision estimate can be achieved through large sample size.</p>
+<p>The present study aimed to assess efficacy of snowballing approach as an alternative to the highly exhaustive and costly house-to-house survey approach. As compared to HHA, snowballing approach was able to capture about 50% of kala-azar cases. However, SBA captured deaths more efficiently (76%) as compared to capturing of cases. It is noteworthy to discuss here that in spite of uniform educational criteria for recruitment of snowballing team members, training and logistic support, out of 10 teams (numbered as Team-1 to Team-10), Team-3 (Lalganj PHC) and Team-9 (Simri Bakhtiyarpur PHC) had slightly higher performance than rest of the teams. This inter-team performance variation attracts more careful recruitment of personnel for better performance of SBA.</p>
+<p>House-to-house survey, the “Gold-standard” tool, captured most of the cases missed by SBA with some percentage of omission (about 13%). It may be related to wrong information from fellow villagers, non-availability of respondents, hurriedness of field investigators in conducting the survey, non-coverage of isolated clusters of villages, and slackness in monitoring and supervision etc. The wrong information from fellow villagers may be linked to lack of appropriate knowledge about kala-azar symptoms amongst general population. Under the present study, level of knowledge, attitude and practice (KAP) at the community level towards kala-azar was not assessed. However, proper information, education and communication (IEC) activity at community level may enhance the sensitivity of both HHA and SBA.</p>
+<p>Apart from effective strategies for diagnosis, treatment and control, community participation in programme is a key for success of national kala-azar elimination programme. The key informants grouped under “defined (accredited)” category were supposed to be potentially competent informants for snowballing approach. But statistically significant difference (p&lt;0.001) was observed between “other” categories of key informants and “defined (accredited)” categories of key informants in identification of kala-azar cases and deaths. It suggests more efforts to be undertaken to strengthen the defined categories of personnel. Poor performance of ASHAs in identifying kala-azar cases differed from the earlier conducted study by Das et al., 2014 in India [<xref ref-type="bibr" rid="pntd.0004970.ref020">20</xref>]. However, ASHAs were found more effective (7.02%) in identifying deaths. Nowadays, there is provision of incentives for ASHA for detection of new VL case after ensuring complete treatment. However, the study finding suggests that still ASHAs need to be motivated towards kala-azar programme. Some of the reasons may be: lack of training, re-orientation, level of understanding about kala-azar disease, non-payment of incentives in time for their activities, etc. Possible identification of kala-azar cases (only 1.2%) by village leaders/Sarpanch indicates their less involvement in kala-azar programme, weak and ineffective awareness strategies at the community level, weak social mobilization, etc. Their position and service may be utilized in more effective way by the national policy and program managers for kala-azar control at the village/Panchayat level. Further, in spite of defined categories of key informant other undefined categories of key informant need to be visualized and streamlined to strengthen the kala-azar elimination programme and thus to achieve the elimination goal.</p>
+<p>The socio-demographic characteristics of kala-azar cases identified during the survey revealed that significantly higher proportion (268; 48%) of kala-azar cases were from 0–14 years of age as compared to rest age-groups viz. 15–29, 30–44 &amp; 45–59 years (p&lt;0.001). About half of the VL cases were from growing age group and majority (333; 59%) was males. Kala-azar patients coming from very low socio-economic categories (viz. labourers (unskilled), rickshaw pullers, Agricultural labourer, etc.) were significantly higher (78%) as compared to middle and higher socio-economic (as combined) categories of patients (p&lt;0.001). The socio-demographic characteristics found under this study was almost identical at par with other studies conducted in India [<xref ref-type="bibr" rid="pntd.0004970.ref021">21</xref>–<xref ref-type="bibr" rid="pntd.0004970.ref023">23</xref>].</p>
+<p>The concordance between Health Management Information System (HMIS) and house-to-house data revealed that about 75% of cases detected by house-to-house approach were completely and accurately matched with HMIS data and rest 25% cases were not reported to HMIS. This finding suggests that still there is underreporting of kala-azar cases. Hence, there is a need to further improve the kala-azar surveillance system to report the actual disease burden.</p>
+<p>In terms of cost analysis, the ratio of man-days for snowballing and house-to-house approach per PHC was 1:6 and snowballing cost was about just half when compared to house-to-house approach. Though snowballing approach was not found sensitive enough but it was found as a cost-effective alternative to HHA.</p>
+<p>Keeping in view assessment of kala-azar elimination programme in India, snowballing approach may be used as an alternative approach after standardization based on the strengths and weaknesses of this study finding. As snowballing approach correctly recorded about 77% kala-azar deaths, it may be considered more appropriate especially in rural areas for capturing deaths due to kala-azar and could be used as an effective methodology for enumerating annual morbidity and mortality of kala-azar.</p>
+<sec id="sec023">
+<title>Conclusions</title>
+<p>In our study, though snowballing sampling approach was not found sensitive enough but it was rapid and cost effective as compared to house-to-house survey approach. The possible reasons for failure of snowballing approach in the present study might be lack of adequate training, competency, motivation to field investigators, access to the isolated clusters, high level supervision and monitoring, etc.</p>
+<p>As annual incidence is the key indicator for monitoring progress of the national kala-azar elimination programme, kala-azar surveillance system needs to be strengthened. Presently, kala-azar control program moves to an elimination trajectory, hence it needs to be evaluated in the country by the end of extended target year 2017. Such assessment would be resource extensive and require huge logistics and finance. Under the above situation, snowballing approach may be used in future as a cost-effective surveillance approach after standardization of specific procedure, training and logistics.</p>
+</sec>
+<sec id="sec024">
+<title>Limitation of the study</title>
+<p>This study was conducted in large sample population (thorough coverage of two PHC’s areas) as compared to earlier studies conducted in India. The estimated incidence by this study may lack precision due to requirement of sample size. Possible reasons for missing of cases include–absence family members at the time of visit by team, concealing of fact by respondents due to fear/stigma, households left by team, etc. Discordance between house-to-house and snowballing approach may be due to different response by the respondents to different teams.</p>
+</sec>
+</sec>
+<sec id="sec025">
+<title>Supporting Information</title>
+<supplementary-material id="pntd.0004970.s001" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pntd.0004970.s001" xlink:type="simple">
+<label>S1 File</label>
+<caption>
+<title>Snowball sampling procedure for identification of potentially suspected case of kala-azar in a village.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>We are grateful to NVBDCP, especially Dr. A.C. Dhariwal, Director and Dr. R.K. Das Gupta, Joint Director for their valuable suggestions for this study. We would also like to thank all the participating technical and field staff for their support, Mr. Rajiv Ahuja, Mr. Naresh Kumar, A.O. and Mr. Udai Kumar, A.O. (F&amp;A) for administrative and financial assistance. Finally, indispensable contribution of Bihar State Health Authorities, health workers, community leaders and local residents is hereby acknowledged to accomplish the work in strict time schedule.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pntd.0004970.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Stauch</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Sarkar</surname> <given-names>RR</given-names></name>, <name name-style="western"><surname>Picado</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Ostyn</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Sunder</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Rijal</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>Visceral leishmaniasis in the Indian subcontinent: modelling epidemiology and control</article-title>. <source>PLoS Negl Trop Dis</source>. <year>2011</year>; <volume>5</volume>(<issue>11</issue>): <fpage>e1405</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pntd.0001405" xlink:type="simple">10.1371/journal.pntd.0001405</ext-link></comment> <object-id pub-id-type="pmid">22140589</object-id></mixed-citation></ref>
+<ref id="pntd.0004970.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bern</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Chowdhury</surname> <given-names>R</given-names></name>. <article-title>The epidemiology of visceral leishmaniasis in Bangladesh: prospects for improved control</article-title>. <source>Indian Journal of Medical Research</source>. <year>2006</year>; <volume>123</volume>(<issue>3</issue>): <fpage>275</fpage>–<lpage>288</lpage>. <object-id pub-id-type="pmid">16778310</object-id></mixed-citation></ref>
+<ref id="pntd.0004970.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Joshi</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Narain</surname> <given-names>JP</given-names></name>, <name name-style="western"><surname>Prasittisuk</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Bhatia</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Hashim</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Jorge</surname> <given-names>A</given-names></name>, <etal>et al</etal>. <article-title>Can visceral leishmaniasis be eliminated from Asia?</article-title> <source>J. Vector Borne Dis</source>. <year>2008</year>; <volume>45</volume>(<issue>2</issue>): <fpage>105</fpage>–<lpage>111</lpage>. <object-id pub-id-type="pmid">18592839</object-id></mixed-citation></ref>
+<ref id="pntd.0004970.ref004"><label>4</label><mixed-citation publication-type="other" xlink:type="simple">World Health Organization: Regional Strategic Framework for Elimination of Kala-azar from the South-East Asia Region (2011–2015), New Delhi: Regional Office for South-East Asia, 2014.</mixed-citation></ref>
+<ref id="pntd.0004970.ref005"><label>5</label><mixed-citation publication-type="other" xlink:type="simple">A consultation meeting on indicators for Kala-azar elimination organized at SEARO office, New-Delhi in June 09.</mixed-citation></ref>
+<ref id="pntd.0004970.ref006"><label>6</label><mixed-citation publication-type="other" xlink:type="simple">Brain storming session meeting at National Vector Borne Diseases Control Programme office, New-Delhi on 19th Jan. 2011.</mixed-citation></ref>
+<ref id="pntd.0004970.ref007"><label>7</label><mixed-citation publication-type="other" xlink:type="simple">National Vector Borne Disease Control Programme, Directorate General of Health Services, Ministry of Health &amp; Family Welfare, Kala-azar disease burden in India: <ext-link ext-link-type="uri" xlink:href="http://www.//" xlink:type="simple">www.//</ext-link><ext-link ext-link-type="uri" xlink:href="http://nvbdcp.gov.in" xlink:type="simple">http://nvbdcp.gov.in</ext-link>.</mixed-citation></ref>
+<ref id="pntd.0004970.ref008"><label>8</label><mixed-citation publication-type="other" xlink:type="simple">Singh SP, Reddy DCS, Rai M, Sunder S. Serious underreporting of visceral Leishmaniasis through passive case reporting in Bihar, India. Tropical Medicine and International Health. 2006; June,11: 899–905.</mixed-citation></ref>
+<ref id="pntd.0004970.ref009"><label>9</label><mixed-citation publication-type="other" xlink:type="simple">McNamara RP. Male Prostitution in New York City,Westport: Praeger.The Times Square Hustler. 1994.</mixed-citation></ref>
+<ref id="pntd.0004970.ref010"><label>10</label><mixed-citation publication-type="other" xlink:type="simple">Avico U, Kaplan, C.Korczak, d. Van Meter, K. Cocaine. Epidemiology in three European Community cities: a pilot study using snowball sampling methodology, Brussels. European Communities Health Directorate. 1988.</mixed-citation></ref>
+<ref id="pntd.0004970.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Griffiths</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Gossop</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Powis</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Strang</surname> <given-names>J</given-names></name>. <article-title>Reaching hidden populations of drug users by privileged access interviewers: methodological and practical issues</article-title>. <source>Addiction</source>. <year>1993</year>; <volume>88</volume>: <fpage>1617</fpage>–<lpage>26</lpage>. <object-id pub-id-type="pmid">8130701</object-id></mixed-citation></ref>
+<ref id="pntd.0004970.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kaplan</surname> <given-names>CD</given-names></name>, <name name-style="western"><surname>Korf</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Sterk</surname> <given-names>C</given-names></name>. <article-title>Temporal and social contexts of heroin-using populations: an illustration of the snowball sampling technique</article-title>. <source>J Nerv Ment Dis</source>. <year>1987</year>; <volume>175</volume>: <fpage>566</fpage>–<lpage>74</lpage>. <object-id pub-id-type="pmid">3655783</object-id></mixed-citation></ref>
+<ref id="pntd.0004970.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sudman</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Freeman</surname> <given-names>H</given-names></name>. <article-title>The use of network sampling for locating the seriously ill</article-title>. <source>Med Care</source>. <year>1988</year>; <volume>26</volume>: <fpage>992</fpage>–<lpage>9</lpage>. <object-id pub-id-type="pmid">3172869</object-id></mixed-citation></ref>
+<ref id="pntd.0004970.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Snijders</surname> <given-names>T</given-names></name>. <article-title>Estimation on the basis of snowball samples: how to weight?</article-title> <source>Bull Methodol Sociol</source>. <year>1992</year>; <volume>36</volume>: <fpage>59</fpage>–<lpage>70</lpage>.</mixed-citation></ref>
+<ref id="pntd.0004970.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Singh</surname> <given-names>Padam</given-names></name>, <name name-style="western"><surname>Pandey</surname> <given-names>Arvind</given-names></name> and <name name-style="western"><surname>Aggarwal</surname> <given-names>Abha</given-names></name>. <article-title>House-to-house survey vs. snowball technique for capturing maternal deaths in India: A search for a cost-effective method Indian</article-title> <source>J Med Res</source>. <year>2007</year>; <volume>125</volume>:<fpage>550</fpage>–<lpage>556</lpage>.</mixed-citation></ref>
+<ref id="pntd.0004970.ref016"><label>16</label><mixed-citation publication-type="other" xlink:type="simple">Institute for Research in Medical Statistics. Report of Estimates of Maternal Mortality in Five States of India: A Pilot Study. 2002; <ext-link ext-link-type="uri" xlink:href="http://www.icmr.nic.in" xlink:type="simple">http://www.icmr.nic.in</ext-link>.</mixed-citation></ref>
+<ref id="pntd.0004970.ref017"><label>17</label><mixed-citation publication-type="other" xlink:type="simple">Office of the Registrar General &amp; Census Commissioner, India, Ministry of Home Affairs, Government of India, New-Delhi. Website: <ext-link ext-link-type="uri" xlink:href="https://data.gov.in" xlink:type="simple">https://data.gov.in</ext-link>.</mixed-citation></ref>
+<ref id="pntd.0004970.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Singh</surname> <given-names>VP</given-names></name>, <name name-style="western"><surname>Ranjan</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Topno</surname> <given-names>RK</given-names></name>, <name name-style="western"><surname>Verma</surname> <given-names>RB</given-names></name>, <name name-style="western"><surname>Siddiqui</surname> <given-names>NA</given-names></name>, <name name-style="western"><surname>Rabidas</surname> <given-names>VN</given-names></name>, <etal>et al</etal>. <article-title>Short Report: Estimation of underreporting of visceral leishmaniasis cases in Bihar, India</article-title>. <source>American Journal of Tropical Medicine and Hygiene</source>. <year>2010</year>; <volume>82</volume>(<issue>1</issue>): <fpage>9</fpage>–<lpage>11</lpage>.</mixed-citation></ref>
+<ref id="pntd.0004970.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Das</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Samuels</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Desjeux</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Atul</surname> <given-names>Mittal</given-names></name>, <name name-style="western"><surname>Roshan</surname> <given-names>Topno</given-names></name>, <name name-style="western"><surname>Niyamat Ali</surname> <given-names>Siddiqui</given-names></name>, <etal>et al</etal>. <article-title>Annual incidence of visceral leishmaniasis in an endemic area of Bihar, India</article-title>. <source>Tropical Medicine and International Health</source>. <year>2010</year>;<volume>15</volume> (<issue>2</issue>): <fpage>4</fpage>–<lpage>11</lpage>.</mixed-citation></ref>
+<ref id="pntd.0004970.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ravi Das</surname> <given-names>Vidya Nand</given-names></name>, <name name-style="western"><surname>Pandey</surname> <given-names>Ravindra Nath</given-names></name>, <name name-style="western"><surname>Pandey</surname> <given-names>Krishna</given-names></name>, <name name-style="western"><surname>Singh</surname> <given-names>Varsha</given-names></name>, <name name-style="western"><surname>Kumar</surname> <given-names>Vijay</given-names></name>, <name name-style="western"><surname>Matlashewski</surname> <given-names>Greg</given-names></name>, <etal>et al</etal>. <article-title>Impact of ASHA Training on Active Case Detection of Visceral Leishmaniasis in Bihar, India</article-title>. <source>PLOS Neglected Tropical Diseases</source>. <year>2014</year>; <volume>8</volume> (<issue>5</issue>): <fpage>e2774</fpage> <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pntd.0002774" xlink:type="simple">10.1371/journal.pntd.0002774</ext-link></comment> <object-id pub-id-type="pmid">24853122</object-id></mixed-citation></ref>
+<ref id="pntd.0004970.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sheets</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Mubayi</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Kojouharov</surname> <given-names>HV</given-names></name>. <article-title>Impact of socio-economic conditions on the incidence of visceral leishmaniasis in Bihar, India. Int</article-title>. <source>J Environ Health Research</source>. <year>2010</year>; <volume>20</volume>(<issue>6</issue>):<fpage>415</fpage>–<lpage>30</lpage>.</mixed-citation></ref>
+<ref id="pntd.0004970.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Thakur</surname> <given-names>C.P</given-names></name>. <article-title>Socio-economics of visceral leishmaniasis in Bihar (India)</article-title>. <source>Trans RSTMH</source>. <year>2000</year>; <volume>94</volume> (<issue>2</issue>):<fpage>156</fpage>–<lpage>157</lpage>.</mixed-citation></ref>
+<ref id="pntd.0004970.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sarnoff</surname> <given-names>Rhonda</given-names></name>, <name name-style="western"><surname>Desai</surname> <given-names>Jaikishan</given-names></name>, <name name-style="western"><surname>Desjeux</surname> <given-names>Philippe</given-names></name>, <name name-style="western"><surname>Mittal</surname> <given-names>Atul</given-names></name>, <name name-style="western"><surname>Topno</surname> <given-names>Roshan</given-names></name>, <name name-style="western"><surname>Siddiqui</surname> <given-names>Niyamat Ali</given-names></name>, <etal>et al</etal>. <article-title>The economic impact of visceral leishmaniasis on rural households in one endemic district of Bihar</article-title>, <source>India. Tropical Medicine and International Health</source>. <year>2010</year>;<volume>15</volume>(<issue>2</issue>): <fpage>42</fpage>–<lpage>49</lpage>,</mixed-citation></ref>
+</ref-list>
+</back>
+</article>

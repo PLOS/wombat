@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id><journal-title-group>
+<journal-title>PLoS ONE</journal-title></journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="publisher-id">PONE-D-13-30124</article-id>
+<article-id pub-id-type="doi">10.1371/journal.pone.0088456</article-id>
+<article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Biology</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Biomacromolecule-ligand interactions</subject></subj-group></subj-group><subj-group><subject>Computational biology</subject><subj-group><subject>Computational neuroscience</subject></subj-group></subj-group><subj-group><subject>Model organisms</subject><subj-group><subject>Animal models</subject><subj-group><subject>Rat</subject></subj-group></subj-group></subj-group><subj-group><subject>Neuroscience</subject><subj-group><subject>Molecular neuroscience</subject><subj-group><subject>Signaling pathways</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Medicine</subject><subj-group><subject>Drugs and devices</subject><subj-group><subject>Pharmacokinetics</subject></subj-group></subj-group><subj-group><subject>Neurology</subject><subj-group><subject>Epilepsy</subject></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Clobazam and Its Active Metabolite <italic>N</italic>-desmethylclobazam Display Significantly Greater Affinities for α<sub>2</sub>- versus α<sub>1</sub>-GABA<sub>A</sub>–Receptor Complexes</article-title>
+<alt-title alt-title-type="running-head">Clobazam Affinity for GABA<sub>A</sub> α2 vs. α1 Receptors</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Jensen</surname><given-names>Henrik Sindal</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Nichol</surname><given-names>Kathryn</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Lee</surname><given-names>Deborah</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Ebert</surname><given-names>Bjarke</given-names></name><xref ref-type="aff" rid="aff4"><sup>4</sup></xref></contrib>
+</contrib-group>
+<aff id="aff1"><label>1</label><addr-line>Synaptic Transmission, Neuroscience Drug Discovery, H. Lundbeck A/S, Valby, Denmark</addr-line></aff>
+<aff id="aff2"><label>2</label><addr-line>Medical Affairs, Lundbeck LLC, Deerfield, Illinois, United States of America</addr-line></aff>
+<aff id="aff3"><label>3</label><addr-line>Clinical Affairs, Lundbeck LLC, Deerfield, Illinois, United States of America</addr-line></aff>
+<aff id="aff4"><label>4</label><addr-line>Department of Electrophysiology, H. Lundbeck A/S, Valby, Denmark</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Rudolph</surname><given-names>Uwe</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>McLean Hospital/Harvard Medical School, United States of America</addr-line></aff>
+<author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">hsin@lundbeck.com</email></corresp>
+<fn fn-type="conflict"><p>The authors have read the journal's policy and have the following conflicts: This work was conducted and fully funded by Lundbeck. All authors were full-time Lundbeck employees at the time the analyses were conducted. Clobazam (Onfi) is a Lundbeck product. This does not alter the authors' adherence to all the PLoS ONE policies on sharing data and materials.</p></fn>
+<fn fn-type="con"><p>Conceived and designed the experiments: HSJ. Performed the experiments: HSJ. Analyzed the data: HSJ KN DL BE. Contributed reagents/materials/analysis tools: HSJ. Wrote the paper: HSJ. Reviewed and approved final manuscript for submission: BE HSJ DL KN.</p></fn>
+</author-notes>
+<pub-date pub-type="collection"><year>2014</year></pub-date>
+<pub-date pub-type="epub"><day>12</day><month>2</month><year>2014</year></pub-date>
+<volume>9</volume>
+<issue>2</issue>
+<elocation-id>e88456</elocation-id>
+<history>
+<date date-type="received"><day>22</day><month>7</month><year>2013</year></date>
+<date date-type="accepted"><day>7</day><month>1</month><year>2014</year></date>
+</history>
+<permissions>
+<copyright-year>2014</copyright-year>
+<copyright-holder>Jensen et al</copyright-holder><license xlink:type="simple"><license-p>This is an open-access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions>
+<abstract>
+<p>Clobazam (CLB), a 1,5-benzodiazepine (BZD), was FDA-approved in October 2011 for the adjunctive treatment of seizures associated with Lennox-Gastaut syndrome (LGS) in patients 2 years and older. BZDs exert various CNS effects through allosteric modulation of GABA<sub>A</sub> receptors. The structurally distinct, 1,4-BZD clonazepam (CLN) is also approved to treat LGS. The precise mechanisms of action and clinical efficacy of both are unknown. Data show that the GABA<sub>A</sub> α<sub>1</sub>-subunit–selective compound zolpidem [ZOL] exhibits hypnotic/sedative effects. Conversely, data from knock-in mice carrying BZD binding site mutations suggest that the α<sub>2</sub> subunit mediates anticonvulsant effects, without sedative actions. Hence, the specific pattern of interactions across the GABA<sub>A</sub> receptor complexes of BZDs might be reflected in their clinical efficacies and adverse effect profiles. In this study, GABA<sub>A</sub>-receptor binding affinities of CLB, <italic>N</italic>-desmethylclobazam (<italic>N</italic>-CLB, the major metabolite of CLB), CLN, and ZOL were characterized with native receptors from rat-brain homogenates and on cloned receptors from HEK293 cells transfected with combinations of α (α<sub>1</sub>, α<sub>2</sub>, α<sub>3</sub>, or α<sub>5</sub>), β<sub>2</sub>, and γ<sub>2</sub> subtypes. Our results demonstrate that CLB and <italic>N</italic>-CLB have significantly greater binding affinities for α<sub>2</sub>- vs. α<sub>1</sub>-receptor complexes, a difference not observed for CLN, for which no distinction between α<sub>2</sub> and α<sub>1</sub> receptors was observed. Our experiments with ZOL confirmed the high preference for α<sub>1</sub> receptors. These results provide potential clues to a new understanding of the pharmacologic modes of action of CLB and <italic>N</italic>-CLB.</p>
+</abstract>
+<funding-group><funding-statement>The authors have no support or funding to report.</funding-statement></funding-group><counts><page-count count="8"/></counts></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p>GABA<sub>A</sub> receptors are the principal inhibitory neurotransmitter-receptor system in the mammalian brain. GABA<sub>A</sub> receptors are hetero-oligopentameric complexes that are members of the pentameric, ligand-gated family (also known as cys-loop family). Upon activation by the endogenous ligand GABA, receptors become permeable to chloride ions, thereby triggering chloride ion influx, which hyperpolarizes the cell and dampens activity. Most GABA<sub>A</sub> receptors consist of α, β, and γ subunits, and the most prominently expressed combination is the α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub> receptor complex <xref ref-type="bibr" rid="pone.0088456-Berezhnoy1">[1]</xref>.</p>
+<p>Pharmacologic modulation of GABA<sub>A</sub> receptors has long been used to treat a range of conditions such as epilepsy, anxiety and panic disorders, muscle spasms, and sleep disorders. A subset of GABA<sub>A</sub>-receptor modulators bind to the allosteric site situated at the α- and γ-subunit interface, termed the benzodiazepine (BZD) site. The variety of possible GABA<sub>A</sub>-receptor subunit combinations suggests that subunit-specific compounds may allow for clinical tuning of desired therapeutic effects <xref ref-type="bibr" rid="pone.0088456-Rudolph1">[2]</xref>, <xref ref-type="bibr" rid="pone.0088456-McKernan1">[3]</xref>, <xref ref-type="bibr" rid="pone.0088456-Fradley1">[4]</xref>, <xref ref-type="bibr" rid="pone.0088456-Rudolph2">[5]</xref>. Such subtype selectivity toward the GABA<sub>A</sub> α<sub>1</sub> subunit is linked to the clinical effectiveness of zolpidem as a sedative <xref ref-type="bibr" rid="pone.0088456-Nutt1">[6]</xref>, <xref ref-type="bibr" rid="pone.0088456-Mhler1">[7]</xref>. Preclinical studies with knock-in mice carrying single amino acid point–mutations in the BZD binding site demonstrate that BZD modulation of the GABA<sub>A</sub> α<sub>1</sub>-subunit receptors confers hypnotic/sedative effects, in addition to anticonvulsant effects. In contrast, BZD modulation of GABA<sub>A</sub> α<sub>2</sub>–containing receptors appears to mediate anxiolytic effects and potentially may also determine anticonvulsant effect, but with no effect on sedation <xref ref-type="bibr" rid="pone.0088456-Rudolph1">[2]</xref>, <xref ref-type="bibr" rid="pone.0088456-McKernan1">[3]</xref>, <xref ref-type="bibr" rid="pone.0088456-Fradley1">[4]</xref>, <xref ref-type="bibr" rid="pone.0088456-Sanger1">[8]</xref>, <xref ref-type="bibr" rid="pone.0088456-Rowlett1">[9]</xref>. However, the anticonvulsant role of the GABA<sub>A</sub> α<sub>2</sub>–containing receptors is described in the literature with divergent results.</p>
+<p>For example, a comparative study by Fradley et al. <xref ref-type="bibr" rid="pone.0088456-Fradley1">[4]</xref> using identical drug dosages, pre-treatment times, and scorings across different mouse strains (α<sub>1</sub>, α<sub>2</sub>, and α<sub>5</sub> H→R knock-in mice) found that, apparently, the α<sub>2</sub> subtype plays a greater role than α<sub>1</sub>-containing GABA<sub>A</sub> receptors in determining anticonvulsant effect following GABA<sub>A</sub> receptor modulation. They address this through two models using pentylenetetrazole (PTZ)-induced seizures or tonic seizures induced by electroshock. Wild-type mice were dosage-dependently protected by diazepam in the PZT model scored using the Racine scale from 6 reversed to seizure level 1 at greatest diazepam dosage. In contrast, with the α<sub>2</sub>(H101R) mice, the greatest diazepam dosage produced less protection, to a scoring of approximately 3.5 on the Racine scale. No difference was observed in diazepam protection of the electroshock-induced seizures, for which a single 20-mg/kg dosage was evaluated. The authors conclude that experiments of anticonvulsant effects in rodents indicate that effect on more than one subtype is required, and that these can act synergistically <xref ref-type="bibr" rid="pone.0088456-Fradley1">[4]</xref>. Earlier work showed that the anticonvulsant action of diazepam is partially but not completely reduced in α<sub>1</sub>(H101R) mice <xref ref-type="bibr" rid="pone.0088456-Rudolph1">[2]</xref>, indicating that other GABA<sub>A</sub> receptor subtypes also mediate anticonvulsant actions. Further, a study by Low et al. <xref ref-type="bibr" rid="pone.0088456-Lw1">[10]</xref> examining diazepam-induced behavior in α<sub>2</sub>(H101R) and α<sub>3</sub>(H126R) knock-in mice revealed that the anxiolytic-like action of diazepam is absent in the α<sub>2</sub>(H101R), but preserved in the α<sub>3</sub>(H126R) mice. This suggests that the α<sub>2</sub> subunit mediates this action of BZDs. In addition, the authors showed that diazepam-induced sedation and motor impairment is preserved in the two lines of mice, suggesting that other GABA<sub>A</sub> subtypes mediate these effects. The anticonvulsive effects of 3-, 10-, and 30-mg/kg diazepam were assessed by percentage of mice developing tonic convulsions following PTZ administration. This yielded 100% protection at 10 and 30 mg/kg in both wild-type and α<sub>2</sub>(H101R) mice, while the lower dosage of 3 mg/kg resulted in convulsing in approximately 20% of the wild-type mice, but convulsing in approximately 50% of the α<sub>2</sub>(H101R) mice. Moreover, the α<sub>1</sub> inactive compound L-838,417 that binds to α<sub>1</sub> receptors but does not potentiate GABA responses retains anticonvulsant activity to PTZ and audiogenic-induced seizures in mice <xref ref-type="bibr" rid="pone.0088456-McKernan1">[3]</xref>. Collectively, the precise roles of the α<sub>1</sub> and α<sub>2</sub> subunits in drug-induced efficacy across preclinical models of human disease continue to be debated, except for the clear involvement of α<sub>1</sub> in sedation.</p>
+<p>Beyond the α<sub>1</sub> and α<sub>2</sub> subunits, the roles of BZD site modulation of the α<sub>3</sub>- and α<sub>5</sub>-containing receptor complexes are less established. Together with the α<sub>2</sub> subunit, the α<sub>3</sub> subunit has been implicated in BZD modulation of inflammatory and neuropathic pain responses, as well as in having some role in anticonvulsant activity <xref ref-type="bibr" rid="pone.0088456-Fradley1">[4]</xref>, <xref ref-type="bibr" rid="pone.0088456-Knabl1">[11]</xref>. Negative modulation of α<sub>5</sub>-containing receptors has been pursued in disorders with cognitive deficits such as Down syndrome (e.g., Roche's RG-1662 currently in Phase I trials [NCT01436955 and NCT01667367]). In addition, development of tolerance to the sedative effects of diazepam (DZP) has been coupled to continued activation of α<sub>5</sub> receptors <xref ref-type="bibr" rid="pone.0088456-vanRijnsoever1">[12]</xref>. The data suggest that conclusions regarding the clinical impact of significant differences in binding related to the α<sub>3</sub>- and α<sub>5</sub>-containing receptors cannot be drawn with certainty.</p>
+<p>Clobazam (Onfi®; CLB), a structurally unique 1,5-BZD, was approved by the US Food and Drug Administration (FDA) in October 2011 for the adjunctive treatment of seizures associated with Lennox-Gastaut syndrome (LGS) in patients 2 years and older, based on results from a Phase III randomized controlled study <xref ref-type="bibr" rid="pone.0088456-Ng1">[13]</xref>. CLB was first approved and used as an anxiolytic agent in the early 1970s <xref ref-type="bibr" rid="pone.0088456-Sankar1">[14]</xref>. Since then, the efficacy of CLB for patients with treatment-refractory epilepsy has been well-documented in a retrospective study <xref ref-type="bibr" rid="pone.0088456-Canadian1">[15]</xref>. Moreover, Lennox-Gastaut syndrome is well-known for its highly refractory nature <xref ref-type="bibr" rid="pone.0088456-Arzimanoglou1">[16]</xref>. CLB's primary active metabolite, <italic>N</italic>-desmethylclobazam (<italic>N</italic>-CLB), has a much longer half-life than the parent compound (79 h vs. 36 h), resulting in greater metabolite than CLB concentrations following prolonged dosing in humans <xref ref-type="bibr" rid="pone.0088456-Tolbert1">[17]</xref>. The ratio of CLB to <italic>N</italic>-CLB is dependent on CYP2C19 genotypes and shows considerable correlation to polymorphisms in the CYP2C19 gene <xref ref-type="bibr" rid="pone.0088456-Kosaki1">[18]</xref>, <xref ref-type="bibr" rid="pone.0088456-Yamamoto1">[19]</xref>. Clonazepam (Klonopin®) is a 1,4-BZD used in the United States either alone or as an adjunctive treatment for LGS (petit mal variant), akinetic and myoclonic seizures <xref ref-type="bibr" rid="pone.0088456-Klonopin1">[20]</xref>. Zolpidem (Ambien®), on the other hand, is approved in the United States for the short-term treatment of insomnia characterized by difficulties with sleep initiation <xref ref-type="bibr" rid="pone.0088456-Ambien1">[21]</xref>.</p>
+<p>Although drawing clinical conclusions from <italic>in vitro</italic> and <italic>in vivo</italic> animal data is not feasible, elucidating possible mechanisms of action may be an important first step in providing potential explanations of and links between preclinical and clinical findings. To examine and compare the modes of action of CLB, <italic>N</italic>-CLB, and CLN, we here present the results of radio-ligand binding assays to the BZD site on native receptors from the rat brain, as well as human receptors of known composition.</p>
+</sec><sec id="s2" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="s2a">
+<title>Animals</title>
+<p>Male Lister Hooded rats from Charles River, Germany (250–300 g, 7–8 weeks) were used in these studies. All animals were housed two per cage under a 12 h light/dark cycle in a temperature- and humidity-controlled environment. Food and water were available <italic>ad libitum</italic>. Rats were used 1 week after arrival. The experiments were carried out at H. Lundbeck A/S, Denmark, and ethical permissions were granted by The Danish Animal Experiments Inspectorate. All animal procedures for these studies were conducted in compliance with the EC Directive 86/609/EEC and Danish law regulating experiments on animals.</p>
+</sec><sec id="s2b">
+<title>Rat-Brain Membrane Preparation</title>
+<p>Rats were killed by rapid decapitation. Brains were rapidly removed and kept briefly on ice. The cerebellum was removed and the remaining brain tissue was homogenized in 10 volumes of buffered solution (10 mM Tris-citrate buffer [pH 7.4] and 0.32 M sucrose, 4°C) using a glass-teflon homogenizer. The homogenate was centrifuged for 10 minutes at 1,000<italic>g</italic> at 4°C, the supernatant collected, and the pellet re-suspended and centrifuged again. The combined supernatants were centrifuged at 13,000<italic>g</italic> for 20 minutes at 4°C. The pellet was re-suspended in 20–40 volumes of 5 mM Tris-citrate buffer (pH 7.4) and 5 mM EDTA solution at 4°C using an ULTRA-TURRAX® (24,000 RPM, 10–30 sec). Following 15–30 minutes of incubation on ice and 3 subsequent rounds of centrifugation (48,000<italic>g</italic> for 10 min at 4°C) and re-suspension (20–40 volumes of 5 mM Tris-citrate buffer [pH 7.4] and 5 mM EDTA solution at 4°C), the pellet was re-suspended in 50 mM Tris-citrate buffer (pH 7.4) and stored overnight at −20°C. On the day of the experiment, the homogenate was centrifuged (48,000<italic>g</italic> for 10 min at 4°C) and re-suspended (20–40 volumes of 50 mM Tris-citrate [pH 7.4] at 4°C) for a total of 4 times. For each batch of brain homogenate, the total protein content, tracer equilibrium dissociation constant (K<sub>d</sub>), and maximum density of receptors corrected for protein concentration (B<sub>max</sub>) were determined.</p>
+</sec><sec id="s2c">
+<title>Transfection and Expression of Recombinant Human GABA<sub>A</sub> Receptors</title>
+<p>Human embryonic kidney cells (i.e., HEK293) served as the host for overexpression of recombinant human GABA<sub>A</sub> receptors. Specifically, α<sub>1</sub>, α<sub>2</sub>, α<sub>3</sub>, and α<sub>5</sub> subunits were individually co-expressed with β<sub>2</sub> and γ<sub>2</sub> subunits in a 1∶1∶3 ratio (constructs were in the pcDNA3 vector). Batches of HEK293 cells were transiently transfected with GABA<sub>A</sub>-receptor cDNAs complemented with enhanced green fluorescent protein (EGFP) cDNA serving as an indicator for successful transfection. All transfections (4–6 h) were accomplished with PolyFect Transfection Reagent (QIAGEN, Denmark) in a 1∶5 weight/volume ratio (µg total cDNA to µL transfection reagent), according to the manufacturer's instructions. Cells were harvested and used for binding experiments 2–3 days after transfection.</p>
+</sec><sec id="s2d">
+<title>Cell Homogenate Preparation</title>
+<p>The cell media was first removed followed by 3 washing steps with phosphate-buffered saline (PBS) without Ca<sup>2+</sup>/Mg<sup>2+</sup>. The cells were then harvested by scraping in PBS without Ca<sup>2+</sup>/Mg<sup>2+</sup> and pelleted by centrifugation (3,000<italic>g</italic> for 5 min at 4°C). The supernatant was removed and the cell pellet was either stored at −80°C for later use or homogenized using an ULTRA-TURRAX® (24,000 rpm for 10–24 sec) in ice-cold buffer (5 mM Tris-citrate [pH 7.4] and 5 mM EDTA solution) and Protease Inhibitor Cocktail (Sigma Aldrich, Denmark). The cell-homogenate was centrifuged again (50,000<italic>g</italic> for 60 min at 4°C), the supernatant was discarded, and the pellet was re-suspended in buffer (50 mM Tris-citrate [pH 7.4] at 4°C). Protein content was determined using the BCA Protein Assay Reagent (Pierce/Thermo Scientific, Denmark) according to the manufacturer's instructions; and the homogenates were either stored at −80°C or used immediately for binding experiments. For each batch of cell homogenates, we determined total protein content, K<sub>d</sub>, and B<sub>max</sub>.</p>
+</sec><sec id="s2e">
+<title>Radio-Ligand Binding</title>
+<p>All experiments utilizing cloned GABA<sub>A</sub> receptors were conducted using <sup>3</sup>H-flumazenil (Ro15-1788, NET 757250UC, Perkin Elmer, Denmark) and those conducted with native receptors from brain homogenates employed <sup>3</sup>H-flunitrazepam (NET 567250UC, Perkin Elmer, Denmark). <sup>3</sup>H-flunitrazepam was not used with cloned GABA<sub>A</sub> receptors as it provided substantial non-related binding, likely from the presence of the peripheral BZD receptors in HEK293 cells (data not shown).</p>
+<p>For each experiment, a suitable amount of cell or brain homogenate was thawed and mixed with diluted <sup>3</sup>H-flumazenil or <sup>3</sup>H-flunitrazepam, and the test compound of choice in a 4∶1∶1 volume ratio (typically 100 µL homogenate, 25 µL radio ligand, and 25 µL test compound). Dimethyl sulfoxide (DMSO) stock solutions were made of compounds, and these were diluted into assay buffer, with the final DMSO content kept below 0.3%. Dilutions were made using assay buffer at 4°C (for cloned receptors: 50 mM Tris-citrate [pH 7.4] and 150 mM NaCl solution; for brain homogenates: 50 mM Tris-citrate [pH 7.4]). Binding experiments were allowed to equilibrate for 90 minutes at 4°C with slow plate rotation and then harvested using a Tomtec harvester (Tomtec, Inc., CT, USA) with harvest buffer (50 mM Tris-citrate [pH 7.4] at 4°C) onto 96-well format glass-fiber filters (B-size filters) pre-wetted with 0.1% polyethyleneimine. The degree of retained radioactivity was quantified on a Wallac MicroBeta counter (Wallac/Perkin Elmer, Denmark). On each 96-well plate, controls for total binding (assay buffer) and non-specific binding (100 µM and 20 µM DZP for cloned receptors and brain homogenates, respectively) were included, allowing for calculations of the relative percentage inhibition. The time of radioactivity counting was set so the total counts per well were &gt;10,000.</p>
+<p>Saturation experiments to determine K<sub>d</sub> and B<sub>max</sub> were performed with 12 different concentrations of tracer (up to 10 nM). Specific binding at the K<sub>d</sub> concentration was &gt;80% and depletion of tracer &lt;10% in all cases. Half-maximum inhibitory concentrations (IC<sub>50</sub>) for test compounds were determined through 10-point, serial 5-fold dilutions covering at least 7 log scales surrounding the experimentally determined IC<sub>50</sub> values. Individual determinations for each compound on each GABA<sub>A</sub>-receptor subtype or brain homogenate were made on independent experimental days and were conducted with a tracer concentration close to the K<sub>d</sub> value.</p>
+</sec><sec id="s2f">
+<title>Data Analysis</title>
+<p>K<sub>d</sub> and B<sub>max</sub> values were determined through saturation binding experiments and fitting the specific binding signal (total binding minus the background binding obtained with DZP) to a hyperbolic function (<xref ref-type="disp-formula" rid="pone.0088456.e001">Equation 1</xref>).<disp-formula id="pone.0088456.e001"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0088456.e001" xlink:type="simple"/><label>(1)</label></disp-formula>where L is the concentration of the radio-ligand. K<sub>d</sub> and B<sub>max</sub> were presented as the average values from several experiments. The experimentally determined concentration-inhibition data were fitted to the 4 Parameter Logistic (4PL) model (<xref ref-type="disp-formula" rid="pone.0088456.e002">Equation 2</xref>) using non-linear regression (Microsoft Excel and XLfit) to yield the IC<sub>50</sub> values.<disp-formula id="pone.0088456.e002"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0088456.e002" xlink:type="simple"/><label>(2)</label></disp-formula>The IC<sub>50</sub> values were transformed to K<sub>i</sub> (binding affinity) values using the Cheng-Prusoff correction (<xref ref-type="disp-formula" rid="pone.0088456.e003">Equation 3</xref>).<disp-formula id="pone.0088456.e003"><graphic position="anchor" xlink:href="info:doi/10.1371/journal.pone.0088456.e003" xlink:type="simple"/><label>(3)</label></disp-formula>where L is the concentration of the radio-ligand. The individual K<sub>i</sub> values were transformed into pK<sub>i</sub> (pK<sub>i</sub> = −log[K<sub>i</sub>]) and presented as mean values with standard errors of the mean (SEM). The mean of the pK<sub>i</sub> values were evaluated for statistical differences across the receptor subtypes per compound by one-way ANOVA with Tukey's Multiple-Comparison <italic>post-hoc</italic> Test (<italic>P</italic>&lt;0.05 considered significant). Testing the hypothesis of same mean across subtypes was done using GraphPad Prism 4 (GraphPad Software, Inc., La Jolla, CA).</p>
+</sec></sec><sec id="s3">
+<title>Results</title>
+<p>K<sub>d</sub> and B<sub>max</sub> values for <sup>3</sup>H-flunitrazepam (used as a tracer for binding) on rat-brain homogenates were 1.5±0.2 nM and 1,906±166 fmol/mg, respectively (<xref ref-type="fig" rid="pone-0088456-g001">Figure 1A</xref>). Specific binding at the K<sub>d</sub> value was determined to be 85%±3.3% (N = 6). CLN was determined to have subnanomolar binding affinity (0.26 nM), whereas CLB and <italic>N</italic>-CLB exhibited submicromolar binding affinities (151 and 133 nM, respectively, <xref ref-type="table" rid="pone-0088456-t001">Table 1</xref>).</p>
+<fig id="pone-0088456-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0088456.g001</object-id><label>Figure 1</label><caption>
+<title>Saturation binding experiments of equilibrium binding of various concentrations of radio-ligand.</title>
+<p>(A) Rat brain homogenate with <sup>3</sup>H-flunitrazepam, and (B) recombinant human GABA<sub>A</sub> receptors with <sup>3</sup>H-flumazenil.Total binding, non-specific binding, and specific binding are shown.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0088456.g001" position="float" xlink:type="simple"/></fig><table-wrap id="pone-0088456-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0088456.t001</object-id><label>Table 1</label><caption>
+<title>Clonazepam, clobazam, and <italic>N</italic>-desmethylclobazam binding affinities for rat-brain homogenates using <sup>3</sup>H-flunitrazepam as tracer.</title>
+</caption><alternatives><graphic id="pone-0088456-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0088456.t001" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">pK<sub>i</sub> (mean ±SEM)</td>
+<td align="left" rowspan="1" colspan="1">K<sub>i</sub> (nM)</td>
+<td align="left" rowspan="1" colspan="1">N</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Clonazepam</bold></td>
+<td align="left" rowspan="1" colspan="1">9.58 (±0.08)</td>
+<td align="left" rowspan="1" colspan="1">0.26</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Clobazam</bold></td>
+<td align="left" rowspan="1" colspan="1">6.82 (±0.10)</td>
+<td align="left" rowspan="1" colspan="1">151</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold><italic>N</italic></bold><bold>-desmethylclobazam</bold></td>
+<td align="left" rowspan="1" colspan="1">6.88 (±0.17)</td>
+<td align="left" rowspan="1" colspan="1">133</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt101"><label/><p>K<sub>i</sub> = binding affinity; SEM = standard error of the mean.</p></fn></table-wrap-foot></table-wrap>
+<p>Transfected HEK293 cell homogenates were probed with <sup>3</sup>H-flumazenil as the tracer; K<sub>d</sub> values were 0.43–1.24 nM and B<sub>max</sub> values were 188–300 fmol/mg across the 4 GABA<sub>A</sub>-receptor complexes (<xref ref-type="fig" rid="pone-0088456-g001">Figure 1B</xref> and <xref ref-type="table" rid="pone-0088456-t002">Table 2</xref>). These K<sub>d</sub> values are in agreement with previously published data for combinations of α<sub>1</sub>, α<sub>2</sub>, α<sub>3</sub>, and α<sub>5</sub> subunits with β<sub>3</sub> and γ<sub>2</sub> expressed in mouse fibroblast L(tk<sup>−</sup>) cells <xref ref-type="bibr" rid="pone.0088456-Atack1">[22]</xref>.</p>
+<table-wrap id="pone-0088456-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0088456.t002</object-id><label>Table 2</label><caption>
+<title>Saturation equilibrium binding results of <sup>3</sup>H-flumazenil on four different GABA<sub>A</sub>-receptor complexes overexpressed in HEK293 cells.</title>
+</caption><alternatives><graphic id="pone-0088456-t002-2" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0088456.t002" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><sup>3</sup>H-flumazenil</td>
+<td align="left" rowspan="1" colspan="1">Mean (±SEM)</td>
+<td align="left" rowspan="1" colspan="1">Mean (±SEM)</td>
+<td align="left" rowspan="1" colspan="1">Mean (±SEM)</td>
+<td align="left" rowspan="1" colspan="1">Mean (±SEM)</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>B<sub>max</sub> (fmol/mg)</bold></td>
+<td align="left" rowspan="1" colspan="1">300 (±22)</td>
+<td align="left" rowspan="1" colspan="1">225 (±11)</td>
+<td align="left" rowspan="1" colspan="1">188 (±18)</td>
+<td align="left" rowspan="1" colspan="1">227 (±24)</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>K<sub>d</sub> (nM)</bold></td>
+<td align="left" rowspan="1" colspan="1">0.50 (±0.05)</td>
+<td align="left" rowspan="1" colspan="1">1.11 (±0.12)</td>
+<td align="left" rowspan="1" colspan="1">1.24 (±0.14)</td>
+<td align="left" rowspan="1" colspan="1">0.43 (±0.05)</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt102"><label/><p>B<sub>max</sub> = maximum density of receptor binding sites; K<sub>d</sub>: tracer equilibrium dissociation constant; SEM = standard error of the mean.</p></fn><fn id="nt103"><label/><p>The number of experiments ranged from 9 to 12.</p></fn></table-wrap-foot></table-wrap>
+<p>All 4 compounds fully displaced <sup>3</sup>H-flumazenil in a concentration-dependent manner, consistent with competitive binding to the BZD binding site on GABA<sub>A</sub> receptors. CLB displaced <sup>3</sup>H-flumazenil at submicromolar K<sub>i</sub> values across all α-subunit subtypes tested in the range of 205 nM to 753 nM (α<sub>2</sub>&lt;α<sub>5</sub>&lt;α<sub>1</sub>&lt;α<sub>3</sub>). In addition, submicromolar K<sub>i</sub> values in the interval of 147 nM to 668 nM were determined for <italic>N</italic>-CLB (α<sub>2</sub>&lt;α<sub>5</sub>&lt;α<sub>1</sub>&lt;α<sub>3</sub>, <xref ref-type="table" rid="pone-0088456-t003">Table 3</xref>). CLN and ZOL were found to have K<sub>i</sub> values ranging from 0.65–2.20 nM (α<sub>1</sub>&lt;α<sub>2</sub>&lt;α<sub>3</sub>&lt;α<sub>5</sub>) and 30–5,431 nM (α<sub>1</sub>&lt;α<sub>2</sub>&lt;α<sub>5</sub>&lt;α<sub>3</sub>), respectively (<xref ref-type="table" rid="pone-0088456-t003">Table 3</xref>), with ZOL showing preferential binding at α<sub>1</sub>. These results for ZOL and CLN are in agreement with published data <xref ref-type="bibr" rid="pone.0088456-Pritchett1">[23]</xref>, <xref ref-type="bibr" rid="pone.0088456-Huang1">[24]</xref>. The range of pK<sub>i</sub> values for all 4 compounds are depicted in <xref ref-type="fig" rid="pone-0088456-g002">Figure 2</xref>, and the results (i.e., <italic>P</italic>-values) of pair-wise comparisons of the mean pK<sub>i</sub> values between receptor subtypes performed with Tukey's Multiple-Comparison Test are provided in <xref ref-type="table" rid="pone-0088456-t004">Table 4</xref>. The binding profiles across the receptor subtypes are different for these compounds (i.e., both CLB and N-CLB show significantly greater binding affinities for α<sub>2</sub> over α<sub>1</sub>, whereas CLN does not show this particular subtype difference). In line with its use as a sedative, ZOL has the greatest affinity for α<sub>1</sub> versus all other receptor subtypes.</p>
+<fig id="pone-0088456-g002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0088456.g002</object-id><label>Figure 2</label><caption>
+<p>Distribution of individually determined pK<sub>i</sub> values for (A) clobazam, (B) <italic>N</italic>-desmethylclobazam, (C) clonazepam, and (D) zolpidem across GABA<sub>A</sub>-receptor subtypes.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0088456.g002" position="float" xlink:type="simple"/></fig><table-wrap id="pone-0088456-t003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0088456.t003</object-id><label>Table 3</label><caption>
+<title>Binding affinities of clobazam, <italic>N</italic>-desmethylclobazam, clonazepam, and zolpidem to four different human GABA<sub>A</sub>-receptors complexes expressed in HEK293 cells obtained by displacement of <sup>3</sup>H-flumazenil.</title>
+</caption><alternatives><graphic id="pone-0088456-t003-3" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0088456.t003" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="3" align="left" rowspan="1">α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td colspan="3" align="left" rowspan="1">α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td colspan="3" align="left" rowspan="1">α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td colspan="3" align="left" rowspan="1">α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="3" align="left" rowspan="1">pK<sub>i</sub></td>
+<td colspan="3" align="left" rowspan="1">pK<sub>i</sub></td>
+<td colspan="3" align="left" rowspan="1">pK<sub>i</sub></td>
+<td colspan="3" align="left" rowspan="1">pK<sub>i</sub></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Drug</td>
+<td align="left" rowspan="1" colspan="1">Mean (±SEM)</td>
+<td align="left" rowspan="1" colspan="1">N</td>
+<td align="left" rowspan="1" colspan="1">K<sub>i</sub> (nM)</td>
+<td align="left" rowspan="1" colspan="1">Mean (±SEM)</td>
+<td align="left" rowspan="1" colspan="1">N</td>
+<td align="left" rowspan="1" colspan="1">K<sub>i</sub> (nM)</td>
+<td align="left" rowspan="1" colspan="1">Mean (±SEM)</td>
+<td align="left" rowspan="1" colspan="1">N</td>
+<td align="left" rowspan="1" colspan="1">K<sub>i</sub> (nM)</td>
+<td align="left" rowspan="1" colspan="1">Mean (±SEM)</td>
+<td align="left" rowspan="1" colspan="1">N</td>
+<td align="left" rowspan="1" colspan="1">K<sub>i</sub> (nM)</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Clobazam</td>
+<td align="left" rowspan="1" colspan="1">6.28 (±0.05)</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">519</td>
+<td align="left" rowspan="1" colspan="1">6.69 (±0.11)</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">205</td>
+<td align="left" rowspan="1" colspan="1">6.12 (±0.03)</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">753</td>
+<td align="left" rowspan="1" colspan="1">6.48 (±0.08)</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">331</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>N</italic>-desmethylclobazam</td>
+<td align="left" rowspan="1" colspan="1">6.20 (±0.06)</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">634</td>
+<td align="left" rowspan="1" colspan="1">6.83 (±0.10)</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">147</td>
+<td align="left" rowspan="1" colspan="1">6.18 (±0.07)</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">668</td>
+<td align="left" rowspan="1" colspan="1">6.53 (±0.09)</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">292</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Clonazepam</td>
+<td align="left" rowspan="1" colspan="1">9.19 (±0.03)</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">0.65</td>
+<td align="left" rowspan="1" colspan="1">9.14 (±0.10)</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">0.72</td>
+<td align="left" rowspan="1" colspan="1">8.65 (±0.04)</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">2.2</td>
+<td align="left" rowspan="1" colspan="1">9.11 (±0.08)</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">0.78</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Zolpidem</td>
+<td align="left" rowspan="1" colspan="1">7.52 (±0.05)</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">30</td>
+<td align="left" rowspan="1" colspan="1">6.78 (±0.04)</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">165</td>
+<td align="left" rowspan="1" colspan="1">6.35 (±0.05)</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">442</td>
+<td align="left" rowspan="1" colspan="1">5.27 (±0.04)</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">5431</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt104"><label/><p>K<sub>i</sub> = binding affinity; SEM = standard error of the mean.</p></fn></table-wrap-foot></table-wrap><table-wrap id="pone-0088456-t004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0088456.t004</object-id><label>Table 4</label><caption>
+<title>Binding affinities normalized to GABA<sub>A</sub> α<sub>2</sub> (ratios of K<sub>i</sub> values, show in gray) and pair-wise comparison of the mean pK<sub>i</sub> values of clobazam, <italic>N</italic>-desmethylclobazam, clonazepam, and zolpidem across GABA<sub>A</sub> receptor subtypes.</title>
+</caption><alternatives><graphic id="pone-0088456-t004-4" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0088456.t004" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1">Clobazam</td>
+<td align="left" rowspan="1" colspan="1">α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">2.5</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.01</td>
+<td align="left" rowspan="1" colspan="1">NS</td>
+<td align="left" rowspan="1" colspan="1">NS</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+<td align="left" rowspan="1" colspan="1">NS</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">3.7</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.05</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">1.6</td>
+</tr>
+</tbody>
+</table>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>N</italic>-desmethylclobazam</td>
+<td align="left" rowspan="1" colspan="1">α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">4.3</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+<td align="left" rowspan="1" colspan="1">NS</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.05</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+<td align="left" rowspan="1" colspan="1">NS</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">4.6</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.05</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">2.0</td>
+</tr>
+</tbody>
+</table>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1">Clonazepam</td>
+<td align="left" rowspan="1" colspan="1">α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">0.9</td>
+<td align="left" rowspan="1" colspan="1">NS</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+<td align="left" rowspan="1" colspan="1"><italic>NS</italic></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+<td align="left" rowspan="1" colspan="1">NS</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">2.2</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">1.1</td>
+</tr>
+</tbody>
+</table>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1">Zolpidem</td>
+<td align="left" rowspan="1" colspan="1">α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub></td>
+<td align="left" rowspan="1" colspan="1">α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">0.2</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">2.7</td>
+<td align="left" rowspan="1" colspan="1"><italic>P</italic>&lt;0.001</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub></bold></td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">–</td>
+<td align="left" rowspan="1" colspan="1">33</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt105"><label/><p>NS = not significant.</p></fn><fn id="nt106"><label/><p>The degree of significance from the comparison of the mean of the pK<sub>i</sub> values following one-way ANOVA with Tukey's multiple-comparison <italic>post-hoc</italic> test is presented across the subtypes per compound.</p></fn></table-wrap-foot></table-wrap></sec><sec id="s4">
+<title>Discussion</title>
+<p>This report describes the binding affinities of a set of compounds (clobazam [CLB], <italic>N</italic>-desmethylclobazam [<italic>N</italic>-CLB], clonazepam [CLN], and zolpidem [ZOL]) to native GABA<sub>A</sub>-receptor complexes overall (obtained from rat-brain homogenates) and to specific human GABA<sub>A</sub>-receptor subunits (obtained from HEK293 cells transiently transfected with human cDNA encoding GABA<sub>A</sub>-receptors, namely α<sub>1</sub>β<sub>2</sub>γ<sub>2</sub>, α<sub>2</sub>β<sub>2</sub>γ<sub>2</sub>, α<sub>3</sub>β<sub>2</sub>γ<sub>2</sub>, or α<sub>5</sub>β<sub>2</sub>γ<sub>2</sub>). CLB and <italic>N</italic>-CLB were found to have similar submicromolar binding affinities for native receptors, and CLN was found to display subnanomolar binding affinity. Data from our head-to-head comparisons on human receptors demonstrate that the 1,5-BZD CLB, and its active metabolite <italic>N</italic>-CLB, have significantly greater affinities for the α<sub>2</sub>-receptor subtype versus the α<sub>1</sub>-receptor subtype, whereas the 1,4-BZD CLN does not. This subtype preference was slightly more marked for <italic>N</italic>-CLB than for CLB. With the same experimental conditions, the sedative agent ZOL displayed the greatest affinity for α<sub>1</sub>-containing receptor complexes. The results from these experiments confirm that our assay is sensitive in determining differences in subtype affinity. Importantly, the binding affinities observed for the 2 different sources of GABA<sub>A</sub> receptors (rat-brain homogenates and transfected HEK293 cells) were in the same concentration range for the tested compounds. Therefore, the recombinant receptors are representative of the native receptors. The K<sub>i</sub> values for CLB on native receptors are in the same range as previously published data <xref ref-type="bibr" rid="pone.0088456-Arendt1">[25]</xref>, whereas our determined affinity for <italic>N</italic>-CLB is markedly different than what this previous group has published. We can only conjecture as to what may have caused this difference in binding affinity for <italic>N</italic>-CLB. Arendt et al. <xref ref-type="bibr" rid="pone.0088456-Arendt1">[25]</xref> unfortunately do not present information on the variation of their results and nor on the K<sub>d</sub> or B<sub>max</sub> values obtained for <sup>3</sup>H-flunitrazepam. Hence, evaluation of the variation and significance of their results is not possible. We note that the affinities we found using native receptors are in the same range as those we found using recombinant receptors. Interestingly, Haigh et al. <xref ref-type="bibr" rid="pone.0088456-Haigh1">[26]</xref> reported that <italic>N</italic>-CLB is effective both in a preclinical convulsion model in mice, but also in human patients when administered at dosages leading to concentrations similar to those obtained following dosing of clobazam (i.e., 8 of 9 patients responded favorably to <italic>N</italic>-CLB).</p>
+<p>Upon initiation of CLB or CLN in clinical settings, drug concentrations in the human brain and plasma rise gradually. Extrapolating our preclinical binding data to such a clinical setting would imply that CLB (and resulting <italic>N</italic>-CLB) will initially bind to the α<sub>2</sub> receptor before interacting with α<sub>1</sub> receptor because of the difference in binding affinities. CLN, on the other hand, will bind simultaneously to both the α<sub>1</sub> receptor and the α<sub>2</sub> receptor by virtue of identical binding affinities for the two receptors. With the assumption that similar percentages of binding to α<sub>2</sub> receptors are obtained during antiepileptic treatment with CLB and CLN, our data suggest that a separation to α<sub>1</sub>-receptor binding may be present for CLB but not for CLN.</p>
+<p>During prolonged clinical use of CLB, concentrations of <italic>N</italic>-CLB build up (a direct result of its longer half-life) to more than 2-fold of the parent compound <xref ref-type="bibr" rid="pone.0088456-Walzer1">[27]</xref>. In this situation, given their similar K<sub>i</sub> values, both compounds potentially would interact with GABA<sub>A</sub> receptors and act together to produce a combined modulatory effect. In addition, the significant separation between α<sub>1</sub> and α<sub>2</sub> for CLB/<italic>N</italic>-CLB could increase during <italic>N</italic>-CLB accumulation following prolonged dosing, as <italic>N</italic>-CLB presents the largest K<sub>i</sub>-value ratio of α<sub>1</sub> to α<sub>2</sub> (<xref ref-type="table" rid="pone-0088456-t004">Table 4</xref>).</p>
+<p>Our results are interesting in the light of data from published studies comparing the clinical effects of orally administered CLB and CLN <xref ref-type="bibr" rid="pone.0088456-vanderMeyden1">[28]</xref>, <xref ref-type="bibr" rid="pone.0088456-Wildin1">[29]</xref>, <xref ref-type="bibr" rid="pone.0088456-Vuilleumier1">[30]</xref> for use for acute conditions. These independent double-blind, placebo-controlled (in the case of <xref ref-type="bibr" rid="pone.0088456-Vuilleumier1">[30]</xref>, an active placebo was used), cross-over studies of healthy volunteers show a greater incidence of sedation following oral dosing with CLN (0.5, 1 or 2 mg) relative to CLB (10 or 20 mg) <xref ref-type="bibr" rid="pone.0088456-vanderMeyden1">[28]</xref>, <xref ref-type="bibr" rid="pone.0088456-Wildin1">[29]</xref>, <xref ref-type="bibr" rid="pone.0088456-Vuilleumier1">[30]</xref>. The FDA-recommended starting oral dosages of CLB for patients with LGS weighing more than 30 kg are 10 mg/day <xref ref-type="bibr" rid="pone.0088456-Onfi1">[31]</xref>. The FDA-recommended initial oral dosage of CLN for adult patients with seizure disorders is 1.5 mg/day <xref ref-type="bibr" rid="pone.0088456-Klonopin1">[20]</xref>. While the clinical data are very limited, preclinical data from a mice study suggest greater specificity of CLB and <italic>N</italic>-CLB for anticonvulsive/antiepileptic over sedative effects relative to 1,4-BZDs <xref ref-type="bibr" rid="pone.0088456-Steru1">[32]</xref>. Findings from the spontaneously epileptic Ihara rat also suggest differential effects of CLB relative to CLN, with respect to differences in antiepileptic and sedative effects <xref ref-type="bibr" rid="pone.0088456-Miura1">[33]</xref>.</p>
+<p>In summary, our binding studies with GABA<sub>A</sub>-receptor complexes expressing different α-subunit subtypes show that CLB and <italic>N</italic>-CLB have significantly greater affinities for the α<sub>2</sub>-containing receptors over α<sub>1</sub>-containing receptors. On the other hand, CLN has similar affinities for both α<sub>1</sub>- and α<sub>2</sub>-containing receptors, and, as previously shown, ZOL has greatest affinity for α<sub>1</sub>-containing receptors. This data set presents information on one important aspect of BZD interaction with GABA<sub>A-</sub>receptors (i.e., affinity), but our work did not investigate another important aspect of BZD function (i.e., efficacy — the degree of potentiation of the GABA response across the subtypes) <xref ref-type="bibr" rid="pone.0088456-Rudolph2">[5]</xref>. To gain a full understanding of the modulatory effect of these compounds and the differences across subtypes we report here, such experiments should be conducted.</p>
+</sec></body>
+<back>
+<ack>
+<p>The authors would like to thank Charlotte Fredsøe Hundahl for expert technical assistance. The authors also thank Jouko Isojarvi, Niels Plath, and Tine Bryan Stensbøl, all of Lundbeck, for their critical scientific reviews of this manuscript. Writing assistance and editorial support during manuscript preparation were provided by Apurva Davé, PhD, of Prescott Medical Communications Group (Chicago, IL), and Michael A. Nissen, ELS, Lundbeck LLC (Deerfield, IL).</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0088456-Berezhnoy1"><label>1</label>
+<mixed-citation publication-type="book" xlink:type="simple">Berezhnoy D, Gravielle MC, Farb DH (2007) Pharmacology of the GABA<sub>A</sub> Receptor, in Handbook of Contemporary Neuropharmacology, John Wiley &amp; Sons, Inc.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Rudolph1"><label>2</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rudolph</surname><given-names>U</given-names></name>, <name name-style="western"><surname>Crestani</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Benke</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Brunig</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Benson</surname><given-names>JA</given-names></name>, <etal>et al</etal>. (<year>1999</year>) <article-title>Benzodiazepine actions mediated by specific GABA<sub>A</sub> receptor subtypes</article-title>. <source>Nature</source> <volume>401</volume>: <fpage>796</fpage>–<lpage>800</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-McKernan1"><label>3</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>McKernan</surname><given-names>RM</given-names></name>, <name name-style="western"><surname>Rosahl</surname><given-names>TW</given-names></name>, <name name-style="western"><surname>Reynolds</surname><given-names>DS</given-names></name>, <name name-style="western"><surname>Sur</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Wafford</surname><given-names>KA</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Sedative but not anxiolytic properties of benzodiazepines are mediated by the GABA<sub>A</sub> receptor alpha1 subtype</article-title>. <source>Nat Neurosci</source> <volume>3</volume>: <fpage>587</fpage>–<lpage>592</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Fradley1"><label>4</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fradley</surname><given-names>RL</given-names></name>, <name name-style="western"><surname>Guscott</surname><given-names>MR</given-names></name>, <name name-style="western"><surname>Bull</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Hallett</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Goodacre</surname><given-names>SC</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Differential contribution of GABA<sub>A</sub> receptor subtypes to the anticonvulsant efficacy of benzodiazepine site ligands</article-title>. <source>J Psychopharmacol</source> <volume>21</volume>: <fpage>384</fpage>–<lpage>391</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Rudolph2"><label>5</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rudolph</surname><given-names>U</given-names></name>, <name name-style="western"><surname>Knoflach</surname><given-names>F</given-names></name> (<year>2011</year>) <article-title>Beyond classical benzodiazepines: novel therapeutic potential of GABA<sub>A</sub> receptor subtypes</article-title>. <source>Nat Rev Drug Discov</source> <volume>10</volume>: <fpage>685</fpage>–<lpage>697</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Nutt1"><label>6</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nutt</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Stahl</surname><given-names>SM</given-names></name> (<year>2010</year>) <article-title>Searching for perfect sleep: the continuing evolution of GABA<sub>A</sub> receptor modulators as hypnotics</article-title>. <source>Psychopharmacol</source> <volume>11</volume>: <fpage>1601</fpage>–<lpage>1612</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Mhler1"><label>7</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Möhler</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Fritschy</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Crestani</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Hensch</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Rudolph</surname><given-names>U</given-names></name> (<year>2004</year>) <article-title>Specific GABA(A) circuits in brain development and therapy</article-title>. <source>Biochem Pharmacol</source> <volume>68</volume>: <fpage>1685</fpage>–<lpage>1690</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Sanger1"><label>8</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sanger</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Benavides</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Perrault</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Morel</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Cohen</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>1994</year>) <article-title>Recent developments in the behavioral pharmacology of benzodiazepine (ω) receptors: evidence for the functional significance of receptor subtypes</article-title>. <source>Neurosci Biobehav Rev</source> <volume>18</volume>: <fpage>355</fpage>–<lpage>372</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Rowlett1"><label>9</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rowlett</surname><given-names>JK</given-names></name>, <name name-style="western"><surname>Platt</surname><given-names>DM</given-names></name>, <name name-style="western"><surname>Lelas</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Atack</surname><given-names>JR</given-names></name>, <name name-style="western"><surname>Dawson</surname><given-names>GR</given-names></name> (<year>2005</year>) <article-title>Different GABA<sub>A</sub> receptor subtypes mediate the anxiolytic, abuse-related, and motor effects of benzodiazepine-like drugs in primates</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>102</volume>: <fpage>915</fpage>–<lpage>920</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Lw1"><label>10</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Löw</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Crestani</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Keist</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Benke</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Brünig</surname><given-names>I</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Molecular and neuronal substrate for the selective attenuation of anxiety</article-title>. <source>Science</source> <volume>6</volume>: <fpage>131</fpage>–<lpage>134</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Knabl1"><label>11</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Knabl</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Witschi</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Hosl</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Reinold</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Zeilhofer</surname><given-names>UB</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Reversal of pathological pain through specific spinal GABA<sub>A</sub> receptor subtypes</article-title>. <source>Nature</source> <volume>451</volume>: <fpage>330</fpage>–<lpage>334</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-vanRijnsoever1"><label>12</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>van Rijnsoever</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Tauber</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Choulli</surname><given-names>MK</given-names></name>, <name name-style="western"><surname>Keist</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Rudolph</surname><given-names>U</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Requirement of α<sub>5</sub>-GABA<sub>A</sub> receptors for the development of tolerance to the sedative action of diazepam in mice</article-title>. <source>J Neurosci</source> <volume>24</volume>: <fpage>6785</fpage>–<lpage>6790</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Ng1"><label>13</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ng</surname><given-names>YT</given-names></name>, <name name-style="western"><surname>Conry</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Drummond</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Stolle</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Weinberg</surname><given-names>M</given-names></name> (<year>2011</year>) <collab xlink:type="simple">on behalf of the OV-1012 Study Investigators</collab> (<year>2011</year>) <article-title>Randomized, phase III study results of clobazam in Lennox-Gastaut Syndrome</article-title>. <source>Neurology</source> <volume>77</volume>: <fpage>1473</fpage>–<lpage>1481</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Sankar1"><label>14</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sankar</surname><given-names>R</given-names></name> (<year>2012</year>) <article-title>GABA<sub>A</sub> receptor physiology and its relationship to the mechanism of action of the 1,5-benzodiazepine clobazam</article-title>. <source>CNS Drugs</source> <volume>26</volume>: <fpage>229</fpage>–<lpage>244</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Canadian1"><label>15</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><collab xlink:type="simple">Canadian Clobazam Cooperative Group</collab> (<year>1991</year>) <article-title>Clobazam in treatment of refractory epilepsy: the Canadian experience. A retrospective study</article-title>. <source>Epilepsia</source> <volume>32</volume>: <fpage>407</fpage>–<lpage>416</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Arzimanoglou1"><label>16</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Arzimanoglou</surname><given-names>A</given-names></name>, <name name-style="western"><surname>French</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Blume</surname><given-names>WT</given-names></name>, <name name-style="western"><surname>Cross</surname><given-names>JH</given-names></name>, <name name-style="western"><surname>Ernst</surname><given-names>JP</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Lennox-Gastaut syndrome: a consensus approach on diagnosis, assessment, management, and trial methodology</article-title>. <source>Lancet Neurol</source> <volume>8</volume>: <fpage>82</fpage>–<lpage>93</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Tolbert1"><label>17</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tolbert</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Bekersky</surname><given-names>I</given-names></name> (<year>2013</year>) <article-title>Pharmacokinetics of <italic>N</italic>-desmethylclobazam, the Active and Primary Metabolite of Clobazam. 66th Annual Meeting of the American Epilepsy Society. San Diego, California</article-title>. <source>Epilepsy Currents</source> <volume>13</volume><supplement>(1 Suppl 1)</supplement>: <comment>Abstract #2.226</comment></mixed-citation>
+</ref>
+<ref id="pone.0088456-Kosaki1"><label>18</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kosaki</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Tamura</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Sato</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Samejima</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Tanigawara</surname><given-names>Y</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>A major influence of CYP2C19 genotype on the steady-state concentration of <italic>N</italic>-desmethylclobazam</article-title>. <source>Brain Dev</source> <volume>26</volume>: <fpage>530</fpage>–<lpage>534</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Yamamoto1"><label>19</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yamamoto</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Takahashi</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Imai</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Miyakawa</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Nishimura</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>Influence of CYP2C19 polymorphism and concomitant antiepileptic drugs on serum clobazam and <italic>N</italic>-desmethylclobazam concentrations in patients with epilepsy</article-title>. <source>Ther Drug Monit</source> <volume>35</volume>: <fpage>305</fpage>–<lpage>312</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Klonopin1"><label>20</label>
+<mixed-citation publication-type="book" xlink:type="simple">Klonopin (clonazepam) (2010) [prescribing information]. South San Francisco, CA: Genentech.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Ambien1"><label>21</label>
+<mixed-citation publication-type="book" xlink:type="simple">Ambien (zolpidem) (2013) [prescribing information]. Bridgewater, NJ: Sanofi-Aventis US LLC.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Atack1"><label>22</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Atack</surname><given-names>JR</given-names></name>, <name name-style="western"><surname>Wafford</surname><given-names>KA</given-names></name>, <name name-style="western"><surname>Tye</surname><given-names>SJ</given-names></name>, <name name-style="western"><surname>Cook</surname><given-names>SM</given-names></name>, <name name-style="western"><surname>Sohal</surname><given-names>B</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>TPA023 [7-(1,1-dimethylethyl)-6-(2-ethyl-2H-1,2,4-triazol-3-ylmethoxy)-3-(2-fluorophenyl)-1,2,4-triazolo[4,3-b]pyridazine], an agonist selective for α<sub>2</sub>- and α<sub>3</sub>-containing GABA<sub>A</sub> receptors, is a nonsedating anxiolytic in rodents and primates</article-title>. <source>J Pharmacol Exp Ther</source> <volume>316</volume>: <fpage>410</fpage>–<lpage>422</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Pritchett1"><label>23</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pritchett</surname><given-names>DB</given-names></name>, <name name-style="western"><surname>Luddens</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Seeburg</surname><given-names>PH</given-names></name> (<year>1989</year>) <article-title>Type I and type II GABA<sub>A</sub>-benzodiazepine receptors produced in transfected cells</article-title>. <source>Science</source> <volume>245</volume>: <fpage>1389</fpage>–<lpage>1392</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Huang1"><label>24</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huang</surname><given-names>Q</given-names></name>, <name name-style="western"><surname>He</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Ma</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Liu</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Yu</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Pharmacophore/receptor models for GABA<sub>A</sub>/BzR subtypes (α<sub>1</sub>β<sub>3</sub>γ<sub>2</sub>, α<sub>5</sub> β<sub>3</sub>γ<sub>2</sub>, and α<sub>6</sub>β<sub>3</sub>γ<sub>2</sub>) via a comprehensive ligand-mapping approach</article-title>. <source>J Med Chem</source> <volume>43</volume>: <fpage>71</fpage>–<lpage>95</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Arendt1"><label>25</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Arendt</surname><given-names>RM</given-names></name>, <name name-style="western"><surname>Greenblatt</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Liebisch</surname><given-names>DC</given-names></name>, <name name-style="western"><surname>Luu</surname><given-names>MD</given-names></name>, <name name-style="western"><surname>Paul</surname><given-names>SM</given-names></name> (<year>1987</year>) <article-title>Determinants of benzodiazepine brain uptake: lipophilicity versus binding affinity</article-title>. <source>Psychopharmacology (Berl)</source> <volume>93</volume>: <fpage>72</fpage>–<lpage>76</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Haigh1"><label>26</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Haigh</surname><given-names>JR</given-names></name>, <name name-style="western"><surname>Pullar</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Gent</surname><given-names>JP</given-names></name>, <name name-style="western"><surname>Dailley</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Feely</surname><given-names>M</given-names></name> (<year>1987</year>) <article-title><italic>N</italic>-desmethylclobazam: a possible alternative to clobazam in the treatment of refractory epilepsy?</article-title> <source>Br J Clin Pharmacol</source> <volume>23</volume>: <fpage>213</fpage>–<lpage>218</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Walzer1"><label>27</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Walzer</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Bekersky</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Blum</surname><given-names>RA</given-names></name>, <name name-style="western"><surname>Tolbert</surname><given-names>D</given-names></name> (<year>2012</year>) <article-title>Pharmacokinetic Drug Interactions Between Clobazam and Drugs Metabolized by Cytochrome P450 Isoenzymes</article-title>. <source>Pharmacotherapy</source> <volume>32</volume>: <fpage>340</fpage>–<lpage>353</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-vanderMeyden1"><label>28</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>van der Meyden</surname><given-names>CH</given-names></name>, <name name-style="western"><surname>Bartel</surname><given-names>PR</given-names></name>, <name name-style="western"><surname>Sommers</surname><given-names>DK</given-names></name>, <name name-style="western"><surname>Blom</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Pretorius</surname><given-names>LC</given-names></name> (<year>1989</year>) <article-title>Effects of clobazam and clonazepam on saccadic eye movements and other parameters of psychomotor performance</article-title>. <source>Eur J Clin Pharmacol</source> <volume>37</volume>: <fpage>365</fpage>–<lpage>369</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Wildin1"><label>29</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wildin</surname><given-names>JD</given-names></name>, <name name-style="western"><surname>Pleuvry</surname><given-names>BJ</given-names></name>, <name name-style="western"><surname>Mawer</surname><given-names>GE</given-names></name>, <name name-style="western"><surname>Onon</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Millington</surname><given-names>L</given-names></name> (<year>1990</year>) <article-title>Respiratory and sedative effects of clobazam and clonazepam in volunteers</article-title>. <source>Br J Clin Pharmacol</source> <volume>29</volume>: <fpage>169</fpage>–<lpage>177</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Vuilleumier1"><label>30</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vuilleumier</surname><given-names>PH</given-names></name>, <name name-style="western"><surname>Besson</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Desmeules</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Arendt-Nielsen</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Curatolo</surname><given-names>M</given-names></name> (<year>2013</year>) <article-title>Evaluation of anti-hyperalgesic and analgesic effects of two benzodiazepines in human experimental pain: a randomized placebo-controlled study</article-title>. <source>PLoS One</source> <volume>8</volume><supplement>(3)</supplement>: <fpage>e43896</fpage> <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0043896.E-pub2013Mar15" xlink:type="simple">10.1371/journal.pone.0043896. E-pub 2013 Mar 15</ext-link></comment></mixed-citation>
+</ref>
+<ref id="pone.0088456-Onfi1"><label>31</label>
+<mixed-citation publication-type="book" xlink:type="simple">Onfi (clobazam) (2013) [prescribing information]. Deerfield, IL: Lundbeck LLC.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Steru1"><label>32</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Steru</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Chermat</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Millet</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Mico</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Simon</surname><given-names>P</given-names></name> (<year>1986</year>) <article-title>Comparative study in mice of ten 1,4-benzodiazepines and of clobazam: anticonvulsant, anxiolytic, sedative, and myorelaxant effects</article-title>. <source>Epilepsia</source> <supplement>(Suppl 1)</supplement>: <fpage>S14</fpage>–<lpage>S17</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0088456-Miura1"><label>33</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Miura</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Amano</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Torii</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Ihara</surname><given-names>N</given-names></name> (<year>2002</year>) <article-title>Clobazam shows a different antiepileptic action profile from clonazepam and zonisamide in Ihara epileptic rats</article-title>. <source>Epilepsy Res</source> <volume>49</volume>: <fpage>189</fpage>–<lpage>202</lpage>.</mixed-citation>
+</ref>
+</ref-list></back>
+</article>

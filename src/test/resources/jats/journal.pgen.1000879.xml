@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+<front>
+<journal-meta><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="nlm-ta">PLoS Genet</journal-id><journal-id journal-id-type="pmc">plosgen</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS Genetics</journal-title></journal-title-group><issn pub-type="ppub">1553-7390</issn><issn pub-type="epub">1553-7404</issn><publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher></journal-meta>
+<article-meta><article-id pub-id-type="publisher-id">09-PLGE-RA-1212R3</article-id><article-id pub-id-type="doi">10.1371/journal.pgen.1000879</article-id><article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline"><subject>Gastroenterology and Hepatology/Gastrointestinal Cancers</subject></subj-group></article-categories><title-group><article-title>MiR-218 Inhibits Invasion and Metastasis of Gastric Cancer by Targeting the Robo1 Receptor</article-title><alt-title alt-title-type="running-head">MiR-218 Inhibits Invasion and Metastasis</alt-title></title-group><contrib-group>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple"><name name-style="western"><surname>Tie</surname><given-names>Jun</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple"><name name-style="western"><surname>Pan</surname><given-names>Yanglin</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple"><name name-style="western"><surname>Zhao</surname><given-names>Lina</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Wu</surname><given-names>Kaichun</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Liu</surname><given-names>Jie</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Sun</surname><given-names>Shiren</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Guo</surname><given-names>Xuegang</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Wang</surname><given-names>Biaoluo</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Gang</surname><given-names>Yi</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Zhang</surname><given-names>Yongguo</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Li</surname><given-names>Quanjiang</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Qiao</surname><given-names>Taidong</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Zhao</surname><given-names>Qingchuan</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Nie</surname><given-names>Yongzhan</given-names></name><xref ref-type="aff" rid="aff1"/><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Fan</surname><given-names>Daiming</given-names></name><xref ref-type="aff" rid="aff1"/><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+</contrib-group><aff id="aff1">          <addr-line>State Key Laboratory of Cancer Biology and Xijing Hospital of Digestive Diseases, Fourth Military Medical University, Xi'an, Shaanxi, China</addr-line>       </aff><contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Clurman</surname><given-names>Bruce E.</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group><aff id="edit1">Fred Hutchinson Cancer Research Center, United States of America</aff><author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">Fandaim@fmmu.edu.cn</email> (DM); <email xlink:type="simple">nieyongzhan@gmail.com</email> (YN)</corresp>
+<fn fn-type="con"><p>Conceived and designed the experiments: JT YP KW JL YN DF. Performed the experiments: JT YP LZ SS BW YG YZ TQ. Analyzed the data: JT QL DF. Contributed reagents/materials/analysis tools: XG QZ DF. Wrote the paper: JT.</p></fn>
+<fn fn-type="conflict"><p>The authors have declared that no competing interests exist.</p></fn></author-notes><pub-date pub-type="collection"><month>3</month><year>2010</year></pub-date><pub-date pub-type="epub"><day>12</day><month>3</month><year>2010</year></pub-date><volume>6</volume><issue>3</issue><elocation-id>e1000879</elocation-id><history>
+<date date-type="received"><day>15</day><month>7</month><year>2009</year></date>
+<date date-type="accepted"><day>10</day><month>2</month><year>2010</year></date>
+</history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2010</copyright-year><copyright-holder>Tie et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+<p>MicroRNAs play key roles in tumor metastasis. Here, we describe the regulation and function of miR-218 in gastric cancer (GC) metastasis. miR-218 expression is decreased along with the expression of one of its host genes, Slit3 in metastatic GC. However, Robo1, one of several Slit receptors, is negatively regulated by miR-218, thus establishing a negative feedback loop. Decreased miR-218 levels eliminate Robo1 repression, which activates the Slit-Robo1 pathway through the interaction between Robo1 and Slit2, thus triggering tumor metastasis. The restoration of miR-218 suppresses Robo1 expression and inhibits tumor cell invasion and metastasis <italic>in vitro</italic> and <italic>in vivo</italic>. Taken together, our results describe a Slit-miR-218-Robo1 regulatory circuit whose disruption may contribute to GC metastasis. Targeting miR-218 may provide a strategy for blocking tumor metastasis.</p>
+</abstract><abstract abstract-type="summary"><title>Author Summary</title>
+<p>MicroRNAs have been identified as playing important roles in tumor metastasis, but their impact on GC metastasis has been poorly explored. We have discovered miR-218, which functions as a suppressor of tumor metastasis and is correlated with clinical stage, lymph node metastasis, and prognosis in patients with GC. Our results show that miR-218 is part of a regulatory circuit involving the Slit-Robo1 pathway. In metastatic tumor cells, miR-218 was suppressed along with Slit3, one of its host genes. Meanwhile, Robo1, one of several Slit receptors, is upregulated in response to the decrease in miR-218, which in turn induced a reactive upregulation of the Slit-Robo1 pathway through an interaction with Slit2, thus facilitating tumor cell migration and invasion. Such findings not only provide new insights into the metastatic mechanisms in GC but also provide evidence for a novel miRNA–mediated regulatory mode of receptor signaling.</p>
+</abstract><funding-group><funding-statement>This study was supported by the National Natural Science Foundation of China (No. 30670970, No. 30873026, No. 30672369, No. 30530780) and the National Basic Research Program of China (No.2010CB529300). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts><page-count count="11"/></counts></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p>Advances in diagnostic and therapeutic approaches have led to excellent expectations for long-term survival for early gastric cancer (GC). However, the prognosis for advanced GC with extensive invasion and metastasis remains poor <xref ref-type="bibr" rid="pgen.1000879-Oue1">[1]</xref>. In order to metastasize, tumor cells must pass through a series of sequential and selective events, including detachment, migration, local invasion, angiogenesis, intravasation, survival in the circulatory system, extravasation, and regrowth in different organs. In the metastatic cascade, invasion of GC into the surrounding tissue is a crucial early step <xref ref-type="bibr" rid="pgen.1000879-Gupta1">[2]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Steeg1">[4]</xref><bold>.</bold> However, the mechanisms of invasion have not yet been fully elucidated.</p>
+<p>A large number of microribonucleic acids (microRNAs or miRNAs) have been recently implicated in cancer metastasis <xref ref-type="bibr" rid="pgen.1000879-Nicoloso1">[5]</xref>, including miR-10b, miR-21, miR-126, miR-335, miR-373, miR-146, miR-520c, and miR-205 in breast cancer <xref ref-type="bibr" rid="pgen.1000879-Ma1">[6]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Hurst1">[11]</xref>; miR-224 and miR-21 in prostate cancer <xref ref-type="bibr" rid="pgen.1000879-Prueitt1">[12]</xref>,<xref ref-type="bibr" rid="pgen.1000879-Li1">[13]</xref>; miR-29c in nasopharyngeal carcinomas <xref ref-type="bibr" rid="pgen.1000879-Sengupta1">[14]</xref>; miR-10a, miR-222, miR-125b, miR-7, and miR-452 in urothelial carcinomas <xref ref-type="bibr" rid="pgen.1000879-Veerla1">[15]</xref>; miR-182 in melanoma <xref ref-type="bibr" rid="pgen.1000879-Segura1">[16]</xref>; miR-92b and miR-9/9* in brain tumors <xref ref-type="bibr" rid="pgen.1000879-Nass1">[17]</xref>; and miR-21 in colorectal cancer <xref ref-type="bibr" rid="pgen.1000879-Asangani1">[18]</xref>. However, very few miRNAs known to be involved in GC metastasis have been reported. miRNAs are naturally occurring, short, non-coding RNA molecules that negatively regulate gene expression <xref ref-type="bibr" rid="pgen.1000879-Lewis1">[19]</xref>. In mammals, mature miRNAs are generated from pri-miRNAs and pre-miRNAs via sequential processing by Drosha and Dicer and are found in many organisms. They consist of 21–24 nucleotides, integrate into RNA-inducing silencing complexes, and pair with the 3′ untranslated regions (3′-UTR) of specific target messenger RNAs (mRNAs) to suppress translation or induce degradation of the target mRNAs <xref ref-type="bibr" rid="pgen.1000879-Lai1">[20]</xref>. Emerging evidence has revealed that miRNAs play key roles in various biological processes, including cell differentiation, proliferation, apoptosis, stress resistance, fat metabolism, tumorigenesis, and metastasis <xref ref-type="bibr" rid="pgen.1000879-Kloosterman1">[21]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Lu1">[23]</xref>. A better understanding of the changes in miRNA expression during GC invasion may lead to a better understanding of GC development, as well as possible improvements in the diagnosis and treatment of advanced GC.</p>
+<p>In the present study, we established high (MKN28-M and SGC7901-M) and low invasive cell sublines (MKN28-NM and SGC7901-NM) using a repetitive transwell assay <italic>in vitro</italic>. We then examined the global miRNA expression profile in each cell subline using a miRNA microarray to identify differentially expressed miRNAs related to human GC invasion. In total, 45 miRNAs were shown to be differentially expressed in invasive vs. non-invasive GC cells. Among these, miR-218, a significantly downregulated miRNA in highly invasive cells, was shown to be closely correlated with GC tumorigenesis and metastasis in patients. More recently, a decrease in miR-218 has been reported in several kinds of solid tumors, including prostate cancer, GC, lung cancer, and cervical carcinoma <xref ref-type="bibr" rid="pgen.1000879-Volinia1">[24]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Yanaihara1">[27]</xref>, but this decrease in miRNA-218 was simply screened out as being one of the dozens of potential miRNAs of interest in the cancers described above. No further studies have been performed to assess the significance of miR-218 in tumor metastasis. Here, we have found that decreased miR-218 expression was correlated with advanced clinical stage, lymph node metastasis, and poor prognosis in patients, and re-expression of miR-218 in metastatic cells was able to inhibit migration, invasion, and metastasis formation both <italic>in vitro</italic> and <italic>in vivo</italic>. Using a bioinformatics search for miR-218 targets, we pinpointed the receptor Robo1 as miR-218's functional target, and we confirmed that the interaction between miR-218 and Robo1 was crucial to GC cell motility by demonstrating that there was an inverse correlation between miR-218 and Robo1 in GC cell lines as well as in GC patients. Furthermore, we discovered an intriguing negative feedback loop involving Slit, miR-218, and Robo1, in which miR-218 can be derived from either of two genes located in the introns of two distinct members of the Slit protein family. In addition, members of this family are ligands of the Robo1 receptor. We demonstrated that expression of the two miRNA precursor genes (miR-218-1 and miR-218-2) correlated with expression of the host genes (Slit2 and Slit3, respectively) and that the mature miR-218 was mainly derived from the miR-218-2 precursor, with a concomitant reduction of host Slit3 but not of Slit2 in metastatic GC cells. Thus, upregulation of Robo1 in response to the decrease in miR-218 induced a reactive upregulation of the Slit-Robo1 pathway through its interaction with Slit2, thus facilitating tumor cell invasion and metastasis. Our findings not only provide new insights into the metastatic mechanisms in GC, but they also revealed a novel regulatory mechanism of receptor signaling.</p>
+</sec><sec id="s2">
+<title>Results</title>
+<sec id="s2a">
+<title>Establishment and characterization of cell sublines with different invasive and metastatic potentials</title>
+<p>To establish the GC metastasis models, we created invasive and non-invasive cell sublines from the human GC cell lines SGC7901 and MKN28 using the repeated transwell approach (<xref ref-type="fig" rid="pgen-1000879-g001">Figure 1A</xref>, see <xref ref-type="sec" rid="s4">Materials and Methods</xref>). Briefly, a repetitive invasion assay was performed, and those cells that failed to invade the membranes and cells that had the ability to migrate through the collagen-coated membrane in all selection rounds were separated. After ten rounds of selection, we obtained invasive (MKN28-M and SGC7901-M) and non-invasive cell sublines (MKN28-NM and SGC7901-NM). The metastatic properties of each cell subline were then characterized <italic>in vitro</italic> and <italic>in vivo</italic>. As shown in <xref ref-type="fig" rid="pgen-1000879-g001">Figure 1B and 1C</xref>, migration ability of MKN28-M cells was approximately 4-fold greater than that of MKN28-NM cells. Likewise, the invasive potential was about 5-fold greater for MKN28-M cells as compared to MKN28-NM cells. In the <italic>in vivo</italic> studies, tumor cell metastasis was observed in nude mice. As shown in <xref ref-type="fig" rid="pgen-1000879-g001">Figure 1D and 1E</xref>, almost no metastatic GC cells were detected in the lungs or livers of nude mice at 10 weeks after injection of MKN28-NM cells, whereas most of the mice injected with MKN28-M cells displayed obvious lung or liver metastases. Similar results were observed for SGC7901-M and SGC7901-NM cells (data not shown). No significant differences in cell proliferation or cell-cycle distribution were observed among these cell sublines (<xref ref-type="supplementary-material" rid="pgen.1000879.s009">Text S1</xref>, <xref ref-type="supplementary-material" rid="pgen.1000879.s001">Figures S1</xref> and <xref ref-type="supplementary-material" rid="pgen.1000879.s002">S2</xref>).</p>
+<fig id="pgen-1000879-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pgen.1000879.g001</object-id><label>Figure 1</label><caption>
+<title>The metastatic characteristics of each cell subline.</title>
+<p>(A) General scheme of the establishment of invasive and non-invasive cell sublines derived from human GC cell lines. (B,C) <italic>In vitro</italic> migration and invasion activity of each cell subline<bold>.</bold> Migration and invasion activities were measured <italic>in vitro</italic> with transwell chambers, as described in <xref ref-type="sec" rid="s4">Materials and Methods</xref>. Photos are representative fields of invasive cells on the membrane. Magnification, 100x. Bar graphs represent the average number of cells on the underside of the membrane ± SE. ** <italic>P</italic>&lt;0.01 as compared with non-invasive cells, analyzed by <italic>t</italic>-test. (D and E) Metastasis potential of each cell subline <italic>in vivo</italic> (n = 10). (D) The incidence of metastasis in mice that received intravenous tail injections of each selected cell subline. (E) H&amp;E staining of lungs and livers isolated from mice that received intravenous tail injections of MKN28-NM and MKN28-M cells, respectively. Magnification, 100x.</p>
+</caption><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.g001" xlink:type="simple"/></fig></sec><sec id="s2b">
+<title>Identification of metastasis-related miRNAs by array-based hybridization</title>
+<p>To identify miRNAs potentially involved in GC invasion, we examined global miRNA expression in each cell subline using the microRNA array (v.10.0, Exiqon, Vedbaek, Denmark), which consists of 847 capture probes for mature human miRNAs. The microarray results revealed that the expression of 124 miRNAs significantly differed between the highly invasive variant MKN28-M and the non-invasive cell subline MKN28-NM. Of these, 83 were upregulated and 41 were downregulated. Compared with SGC7901-NM, 62 miRNAs were differentially expressed in the SGC7901-M cell subline, including 47 downregulated and 15 upregulated miRNAs. In total, 11 miRNAs were found to be upregulated and 34 miRNAs were downregulated in both MKN28-M and SGC7901-M cells compared with those in the corresponding non-invasive sublines (<xref ref-type="supplementary-material" rid="pgen.1000879.s006">Table S1</xref>).</p>
+<p>Of the 45 differentially regulated miRNAs, miR-218 was one of those that displayed significantly differential expression. miR-218 has been reported to be downregulated in cervical cancer <xref ref-type="bibr" rid="pgen.1000879-Martinez1">[25]</xref>, GC <xref ref-type="bibr" rid="pgen.1000879-Petrocca1">[26]</xref>, lung cancer <xref ref-type="bibr" rid="pgen.1000879-Yanaihara1">[27]</xref> and prostate cancer <xref ref-type="bibr" rid="pgen.1000879-Leite1">[28]</xref>, indicating possible involvement in both oncogenic transformation and tumor metastasis. However, miRNA-218 was only one of the many potential miRNAs of interest in cancers. In this work, miR-218 has been investigated in much greater detail. To validate the microarray results, we assessed miR-218 expression in the GC cell sublines previously mentioned and in the immortal gastric epithelial cell line GES using qRT–PCR <xref ref-type="bibr" rid="pgen.1000879-He1">[29]</xref>. miR-218 expression was significantly decreased in MKN28-M and SGC7901-M cells and was lower in all four GC cell sublines compared to immortalized human gastric epithelial GES cells (<xref ref-type="fig" rid="pgen-1000879-g002">Figure 2A</xref>). Furthermore, we compared miR-218 expression in the primary GC tumor vs. the metastatic lymph nodes in 10 patients with stage III/IV GC using qRT–PCR. As shown in <xref ref-type="fig" rid="pgen-1000879-g002">Figure 2B</xref>, mature miR-218 levels were significantly decreased in 7 out of 10 metastatic lymph nodes, indicating that miR-218 may play a causal role in GC metastasis.</p>
+<fig id="pgen-1000879-g002" position="float"><object-id pub-id-type="doi">10.1371/journal.pgen.1000879.g002</object-id><label>Figure 2</label><caption>
+<title>Validation of miR-218 expression in metastatic GC cells.</title>
+<p>The expression of miR-218 was investigated by qRT-PCR. (A) Each bar represents the relative fold change compared to GES cell lines. (B) Bars represent relative fold changes between primary GC and metastatic lymph nodes from the same patient. Each sample was analyzed in triplicate and was normalized to U6. Fold change was calculated by 2<sup>−ΔΔCt</sup>. The results were consistent with the microarray data.</p>
+</caption><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.g002" xlink:type="simple"/></fig></sec><sec id="s2c">
+<title>Decreased miR-218 expression in GC was associated with advanced clinical stage, lymph node metastasis, and poor patient prognosis</title>
+<p>To determine the potential clinicopathological implications of altered miR-218 expression, we investigated the expression levels of miR-218 in 40 GC tissues (T) and non-tumor mucosa (N) b<bold>y</bold> qRT–PCR. The term -ΔCt was used to describe the expression level of miR-218. Consistent with the above data, the results verified that the miR-218 expression level in GC (-13.81±0.15, mean ± SE) tissues was significantly lower than that in non-neoplastic mucosa (-11.62±0.15, mean ± SE) (<italic>P</italic>&lt;0.0001, t = 10.62, paired <italic>t</italic>-test) (<xref ref-type="fig" rid="pgen-1000879-g003">Figure 3A</xref>). Correlations between the miR-218 expression level and clinicopathologic characteristics of GC are summarized in <xref ref-type="table" rid="pgen-1000879-t001">Table 1</xref>. Statistically significant associations between the miR-218 expression level and clinical stage and between the miR-218 expression level and GC metastasis were observed in this study. The median expression of miR-218 was −14.25±0.17 in the 22 cases with advanced stage (stage III and IV) disease, whereas the median expression was −13.27±0.20 (<italic>P</italic> = 0.0010, Mann-Whitney test) in the 18 cases with early-stage (stages I and II) disease. In the 29 cases of GC with lymph node metastasis, the median expression of miR-218 was −14.09±0.16, which was significantly lower than the median expression (−13.07±0.24) in the 11 non-metastatic GC cases (<italic>P</italic> = 0.0036). The expression of miR-218 in GC patients did not correlate with age, gender, tumor size, or cell differentiation. Moreover, we examined whether the level of miR-218 expression was associated with survival in patients with GC. Patients were subsequently divided into low expression (n = 20) and high expression groups (n = 20) based on miR-218 levels greater or less than the mean (−13.81) (<xref ref-type="fig" rid="pgen-1000879-g003">Figure 3B</xref>). Kaplan–Meier survival analyses revealed that patients whose primary tumors displayed low expression of miR-218 had a shorter median survival time. The three-year survival rate of patients with low miR-218 expression was 30%, which was significantly lower than the survival rate in patients with high miR-218 expression (65%; <italic>P</italic> = 0.0012, log-rank test; <xref ref-type="fig" rid="pgen-1000879-g003">Figure 3C</xref>).</p>
+<fig id="pgen-1000879-g003" position="float"><object-id pub-id-type="doi">10.1371/journal.pgen.1000879.g003</object-id><label>Figure 3</label><caption>
+<title>miR-218 expression in clinical GC specimens.</title>
+<p>(A) miR-218 was differentially expressed between GC and the corresponding non-neoplastic mucosa (N). The term -ΔCt was used to describe the expression level of miR-218 (−ΔCt = CtU6−CtmiR-218). A significant difference was detected in the mean value of miR-218 expression between these two groups (<italic>P</italic>&lt;0.0001, t = 10.62, paired <italic>t</italic>-test). (B) The same GC samples as in (A) were divided into two groups according to the mean expression of miR-218 (mean, −13.81). Cases with levels of miR-218 below the mean were miR-218 low expressers (<italic>n</italic> = 20), and those with levels of miR-218 above the mean were miR-218 high expressers (<italic>n</italic> = 20). (C) Kaplan–Meier survival curve and log-rank test for GC patients between high and low miR-218 expressers. miR-218 expression demonstrated a significant relationship with patient survival (log-rank, <italic>P</italic> = 0.0012).</p>
+</caption><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.g003" xlink:type="simple"/></fig><table-wrap id="pgen-1000879-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pgen.1000879.t001</object-id><label>Table 1</label><caption>
+<title>The relationship between clinicopathological parameters and miR-218 expression in primary gastric adenocarcinoma.</title>
+</caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pgen-1000879-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.t001" xlink:type="simple"/><table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" colspan="1" rowspan="1">Variable</td>
+<td align="left" colspan="1" rowspan="1">Number of cases</td>
+<td align="left" colspan="1" rowspan="1">%</td>
+<td align="left" colspan="1" rowspan="1">Median expression of miR-218(range)</td>
+<td align="left" colspan="1" rowspan="1"><italic>P</italic>-value</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" colspan="1" rowspan="1">Age (years)</td>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">≥60</td>
+<td align="left" colspan="1" rowspan="1">16</td>
+<td align="left" colspan="1" rowspan="1">40%</td>
+<td align="left" colspan="1" rowspan="1">−13.83±0.22</td>
+<td align="left" colspan="1" rowspan="1">0.85</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">&lt;60</td>
+<td align="left" colspan="1" rowspan="1">24</td>
+<td align="left" colspan="1" rowspan="1">60%</td>
+<td align="left" colspan="1" rowspan="1">−13.79±0.21</td>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Gender</td>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Male</td>
+<td align="left" colspan="1" rowspan="1">30</td>
+<td align="left" colspan="1" rowspan="1">75%</td>
+<td align="left" colspan="1" rowspan="1">−13.86±0.16</td>
+<td align="left" colspan="1" rowspan="1">0.43</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Female</td>
+<td align="left" colspan="1" rowspan="1">10</td>
+<td align="left" colspan="1" rowspan="1">25%</td>
+<td align="left" colspan="1" rowspan="1">−13.66±0.38</td>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Tumor size</td>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">≥5</td>
+<td align="left" colspan="1" rowspan="1">26</td>
+<td align="left" colspan="1" rowspan="1">65%</td>
+<td align="left" colspan="1" rowspan="1">−13.91±0.20</td>
+<td align="left" colspan="1" rowspan="1">0.36</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">&lt;5</td>
+<td align="left" colspan="1" rowspan="1">14</td>
+<td align="left" colspan="1" rowspan="1">35%</td>
+<td align="left" colspan="1" rowspan="1">−13.62±0.22</td>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Degree of differentiation</td>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">well and moderately differentiated</td>
+<td align="left" colspan="1" rowspan="1">18</td>
+<td align="left" colspan="1" rowspan="1">45%</td>
+<td align="left" colspan="1" rowspan="1">−13.77±0.23</td>
+<td align="left" colspan="1" rowspan="1">0.7649</td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">poorly differentiated</td>
+<td align="left" colspan="1" rowspan="1">22</td>
+<td align="left" colspan="1" rowspan="1">55%</td>
+<td align="left" colspan="1" rowspan="1">−13.84±0.20</td>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">TNM stage</td>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Stage I/II</td>
+<td align="left" colspan="1" rowspan="1">18</td>
+<td align="left" colspan="1" rowspan="1">45%</td>
+<td align="left" colspan="1" rowspan="1">−13.27±0.20</td>
+<td align="left" colspan="1" rowspan="1">0.0010<sup>*</sup></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Stage III/IV</td>
+<td align="left" colspan="1" rowspan="1">22</td>
+<td align="left" colspan="1" rowspan="1">55%</td>
+<td align="left" colspan="1" rowspan="1">−14.25±0.17</td>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Lymph node status</td>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">Metastasis</td>
+<td align="left" colspan="1" rowspan="1">29</td>
+<td align="left" colspan="1" rowspan="1">72.5%</td>
+<td align="left" colspan="1" rowspan="1">−14.09±0.16</td>
+<td align="left" colspan="1" rowspan="1">0.0036<sup>*</sup></td>
+</tr>
+<tr>
+<td align="left" colspan="1" rowspan="1">No metastasis</td>
+<td align="left" colspan="1" rowspan="1">11</td>
+<td align="left" colspan="1" rowspan="1">27.5%</td>
+<td align="left" colspan="1" rowspan="1">−13.07±0.24</td>
+<td align="left" colspan="1" rowspan="1"/>
+</tr>
+</tbody>
+</table></alternatives></table-wrap></sec><sec id="s2d">
+<title>Ectopic expression of miR-218 inhibited tumor cell invasion and metastasis <italic>in vitro</italic> and <italic>in vivo</italic></title>
+<p>To study the role of miR-218 in GC metastasis, MKN28-M cells were transfected with pGenesil-1-miR-218 or a control vector expressing a nonspecific miRNA, cel-miR-67, using Lipofectamine 2000 (Invitrogen, Carlsbad, CA, USA). The cells were then selected with 400 mg/L G418 to generate MKN28-M-miR-218 and MKN28-M-miR-control stable cells. We found that ectopic expression of miR-218 resulted in an approximately three-fold reduction in migration and invasiveness. To determine whether the loss of miR-218 would promote the migration or invasion of cancer cells, we silenced miR-218 with an antisense oligonucleotide inhibitor in the MKN28-NM cell line, resulting in a three- to four-fold increase in cell migration and invasiveness (<xref ref-type="fig" rid="pgen-1000879-g004">Figure 4A and 4B</xref>). To test if inhibition of tumor invasion by miR-218 is caused by impairing the invasive ability of tumor cells, we excluded the effect of miR-218 on the proliferation and cell cycle distribution of gastric cancer cells. Over-expression of miR-218 did not affect the proliferation and the cell cycle distribution of MKN28-M cells <italic>in vitro</italic> (<xref ref-type="supplementary-material" rid="pgen.1000879.s005">Figure S5A and S5D</xref>). To further investigate the inhibition of <italic>in vivo</italic> tumor metastasis by miR-218, we implanted MKN28-M-miR-218 cells that were stably expressing miR-218 or control cells into nude mice through the lateral tail vein. Lung and liver metastasis of GC was apparent in mice injected with MKN28-M-miR-control cells. In contrast, few metastatic tumors were detected in mice injected with MKN28-M-miR-218 cells (<xref ref-type="fig" rid="pgen-1000879-g004">Figure 4C</xref>). Furthermore, we simultaneously observed the growth of the primary tumors and the incidence of distant metastasis in the nude mice injected subcutaneously with MKN28-M-miR-218 cells or control cells. The results showed lung or liver metastasis was apparent in 3 out of 10 mice injected with MKN28-M-miR-control cells; in stark contrast, no metastasis were found in mice injected with MKN28-M-miR-218 cells (<xref ref-type="supplementary-material" rid="pgen.1000879.s005">Figure S5E</xref>). These results are consistent with data obtained from tail vein assays that assess cancer metastasis and indicate that miR-218 has the ability to suppress metastasis without affecting cell proliferation.</p>
+<fig id="pgen-1000879-g004" position="float"><object-id pub-id-type="doi">10.1371/journal.pgen.1000879.g004</object-id><label>Figure 4</label><caption>
+<title>miR-218 suppressed tumor cell invasion and metastasis.</title>
+<p>(A) qRT–PCR analysis of miR-218 in MKN28-M cells transfected with the miR-218-expression vector or the miR-control vector and MKN28-NM cells transfected with anti-miR-218 or a negative control. (B) Cell invasion assay. (B1) Average number of invasive cells from three independent experiments ± SE. * <italic>P</italic>&lt;0.05. (B2) Representative fields of invasive cells on the membrane. (C) <italic>In vivo</italic> metastasis assay. MKN28-M cells were transfected with the miR-218-expression vector or the miR-control vector and injected into nude mice via the tail vein, as described in <xref ref-type="sec" rid="s4">Materials and Methods</xref>. Animals were killed 10 weeks after injection. (C1) Incidence of metastasis in mice. (C2) Representative H&amp;E staining of lungs and livers isolated from mice that received injections of MKN28-M-miR-control or MKN28-M-miR-218 cells.</p>
+</caption><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.g004" xlink:type="simple"/></fig></sec><sec id="s2e">
+<title>Robo1 was a direct functional target of miR-218 in GC metastasis</title>
+<p>To assess how a low level of miR-218 expression contributes to the invasion and metastasis of GC, we searched for the potential regulatory targets of miR-218 using prediction tools, including miRanda, PicTar, and TargetScan. Although hundreds of different targets were predicted, those genes involved in migration or invasion may be the relevant targets with respect to the biological functions of miR-218. We then performed a functional classification of the predicted targets using the DAVID program (<ext-link ext-link-type="uri" xlink:href="http://david.abcc.ncifcrf.gov/" xlink:type="simple">http://david.abcc.ncifcrf.gov/</ext-link>). Of these genes, Robo1 is regarded as a proto-oncogene and harbors migration-promoting activity <xref ref-type="bibr" rid="pgen.1000879-Wang1">[30]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Legg1">[35]</xref>. Mertsch <italic>et al.</italic> demonstrated that Robo1 facilitates glioma cell migration mediated by Slit2 <xref ref-type="bibr" rid="pgen.1000879-Mertsch1">[36]</xref>. Schmid <italic>et al.</italic> found that breast tumor cell migration is induced by the Slit2-Robo1 interaction <italic>in vitro</italic> <xref ref-type="bibr" rid="pgen.1000879-Schmid1">[37]</xref>. These findings suggest that Robo1 may be a target for miR-218. To further test our hypothesis, we analyzed the expression of miR-218 and Robo1 in GES and in non-invasive (MKN28-NM and SGC7901-NM) and invasive (MKN28-M and SGC7901-M) GC cells. The results showed a negative correlation between the levels of miR-218 and Robo1 mRNA in these cells (<xref ref-type="supplementary-material" rid="pgen.1000879.s003">Figure S3A</xref>). Furthermore, we observed that Robo1 mRNA (<xref ref-type="supplementary-material" rid="pgen.1000879.s003">Figure S3B</xref>) and protein (<xref ref-type="fig" rid="pgen-1000879-g005">Figure 5B2</xref>) levels were decreased when miR-218 was expressed by pGenesil-1-miR-218 in MKN28-M cells (<xref ref-type="fig" rid="pgen-1000879-g005">Figure 5B1</xref>). The reverse was observed for Robo1 expression when miR-218 was knocked down in MKN28-NM cells (<xref ref-type="fig" rid="pgen-1000879-g005">Figure 5C1</xref> and <xref ref-type="fig" rid="pgen-1000879-g005">Figure 5C2</xref>). The inverse relationship between miR-218 and Robo1 expression was further confirmed by immunohistochemistry (<xref ref-type="supplementary-material" rid="pgen.1000879.s009">Text S1</xref>) in 40 cases of gastric cancer, in matched adjacent normal tissues that were also used in clinicopathological studies, and in 29 matched metastases. The results show that Robo1 was upregulated in GC, especially in metastatic GC (<xref ref-type="supplementary-material" rid="pgen.1000879.s004">Figure S4</xref>), in which miR-218 has a relatively low expression.</p>
+<p>To obtain further direct evidence that Robo1 is a target of miR-218, we investigated the binding site of miR-218 in the 3′-UTR of Robo1 mRNA (<xref ref-type="fig" rid="pgen-1000879-g005">Figure 5A</xref>). We constructed a luciferase reporter (Luc-Robo1) in which the nucleotides of the Robo1 3′-UTR complementary to miR-218 (nt 971–978) were inserted into the pMIR-REPORT miRNA expression reporter vector <xref ref-type="bibr" rid="pgen.1000879-Gramantieri1">[38]</xref>. Correspondingly, we also generated both a mutant reporter (Luc-Robo1-mu), in which the first six nucleotides in the miR-218 seed-region complementary sites were deleted, and a control reporter, which contained a non-related fragment of cDNA (Luc-Ctrl). miR-218-expression plasmids were co-transfected with Luc-Robo1, Luc-Robo1-mu, or Luc-Ctrl into MKN28-M cells. The assays showed that the luciferase activity in the Luc-Robo1-transfected cells was significantly decreased compared to the luciferase activity in the mutant and negative control cells (<italic>P</italic>&lt;0.05), suggesting that miR-218 reduced the luciferase activity of Luc-Robo1 but had no effect on Luc-Robo1-mu (<xref ref-type="fig" rid="pgen-1000879-g005">Figure 5D</xref>). Therefore, we concluded that the inserted fragment of Robo1 (nt 971<italic>–</italic>978) was the target of miR-218.</p>
+<fig id="pgen-1000879-g005" position="float"><object-id pub-id-type="doi">10.1371/journal.pgen.1000879.g005</object-id><label>Figure 5</label><caption>
+<title>miR-218 targeted Robo1 by binding to its 3′-UTR.</title>
+<p>(A) The Robo1 3′-UTR was a potential target of miR-218. (B and C) miR-218 and Robo1 levels were analyzed by qRT–PCR and western blot, respectively. Robo1 levels decreased when miR-218 was upregulated in response to the miR-218-expression vector in MKN28-M cells, whereas the reverse was observed for Robo1 expression when miR-218 was knocked down in MKN28-NM cells. (D) MKN28-M cells were co-transfected with miR-218 and a luciferase reporter (Luc-Robo1) containing a fragment of the Robo1 3′-UTR harboring either the miR-218 binding site or a mutant (Luc-Robo1<italic>-</italic>mu) in which the first six nucleotides of the miR-218 binding site were deleted. A luciferase reporter construct engineered with a non-related fragment of cDNA was used as a negative control (Luc-control). The assays showed that luciferase activity in the Luc-Robo1 group was significantly decreased compared to the luciferase activity of the mutant and negative control groups. (E) MKN28-M-miR-218 cells, which stably over-expressed miR-218, were transiently transfected with a Robo1 expression construct or a Robo1 mutant construct lacking the miR-218 binding site. MKN28-M cells were transfected with Robo1 siRNA or a negative control siRNA. Western blot analysis for Robo1 showed that co-transfection of miR-218 and the Robo1 mutant construct produced higher levels of Robo1 protein than co-transfection of miR-218 and the Robo1 construct. Robo1 siRNA effectively reduced the amount Robo1 protein observed. (F) The cell invasion assay indicated that Robo1 mutant constructs could reverse the effect of miR-218-mediated suppression of cell invasion. Knockdown of Robo1 by siRNA in MKN28-M cells inhibited cell invasion. * <italic>P</italic>&lt;0.05.</p>
+</caption><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.g005" xlink:type="simple"/></fig>
+<p>Robo1 has been shown to be over-expressed in cancer cells and is known to promote tumor angiogenesis and metastasis via an interaction with Slit <xref ref-type="bibr" rid="pgen.1000879-Seth1">[39]</xref>,<xref ref-type="bibr" rid="pgen.1000879-Abdollahi1">[40]</xref>. To test whether Robo1 is functionally regulated by miR-218, we generated a Robo1 expression construct containing only a fragment of the predicted miR-218 binding site and Robo1 mutant expression vector entirely lacking the 3′-UTR. We also made the Robo1 siRNA. MKN28-M-miR-218 cells, which stably expressed miR-218 ectopically, were transiently transfected with the Robo1 construct or the mutant construct (with no miR-218 binding site), and MKN28-M cells were transfected with Robo1 siRNA or a negative control siRNA. MKN28-M-miR-218 cells transfected with the Robo1 mutant construct showed a 3.8-fold increase in invasion ability compared to cells transfected with the Robo1 construct. These results indicate that introduction of mutant Robo1 cDNA that lacked the miR-218 binding site into the miR-218-overexpressing cells reversed the effect of miR-218-mediated suppression of cell invasion. However, the effect of Robo1 was repressed by miR-218 in the presence of the Robo1 3′-UTR containing the miR-218 binding sites. Knockdown of Robo1 by siRNA in MKN28-M cells inhibited cell invasion, which fell to levels similar to those observed after transfection with the miR-218-expressing vector (<xref ref-type="fig" rid="pgen-1000879-g005">Figure 5E and 5F</xref>). These observations suggest that miR-218 directly suppresses Robo1-mediated cell invasion.</p>
+</sec><sec id="s2f">
+<title>Slit2, but not Slit3, can interact with Robo1, enriched by the absence of miR-218, to promote GC invasion</title>
+<p>Two types of miRNAs exist: intergenic and intronic. The former are located in non-coding regions between genes, and their corresponding pri-miRNAs are generally transcribed from their own promoters by RNA polymerase II. The latter are located within the introns of host genes, and their biogenesis is controlled by the host gene promoters <xref ref-type="bibr" rid="pgen.1000879-Shi1">[41]</xref>,<xref ref-type="bibr" rid="pgen.1000879-Lin1">[42]</xref>. miR-218 is an intronic miRNA. Two genes code for mature miR-218, miR-218-1 and miR-218-2, which are located within intron 15 of Slit2 and intron 14 of Slit3, respectively (<xref ref-type="fig" rid="pgen-1000879-g006">Figure 6A</xref>). The intronic location of the two miR-218 genes prompted us to ask whether miR-218-1 and miR-218-2 are transcribed together with their host gene mRNAs. To test this hypothesis, we used qRT-PCR to examine the expression of the miR-218-1 precursor, the miR-218-2 precursor, mature miR-218, Slit2 mRNA, and Slit3 mRNA in the GC tissues used in the survival analysis. Statistical analysis of the correlation coefficient of the qRT-PCR results revealed a significant positive correlation between the levels of Slit2 mRNA and miR-218-1 and between the levels of Slit3 mRNA and miR-218-2 (<xref ref-type="fig" rid="pgen-1000879-g006">Figure 6B and 6C</xref>). These results indicate that the miR-218 coding genes, miR-218-1 and miR-218-2, are transcribed together with their host genes, Slit2 and Slit3, respectively. A significant positive correlation between the levels of miR-218 and miR-218-2 (<xref ref-type="fig" rid="pgen-1000879-g006">Figure 6D</xref>) was seen in GC; however, no such correlation was seen between the levels of miR-218 and miR-218-1 (<xref ref-type="fig" rid="pgen-1000879-g006">Figure 6E</xref>). These results indicate that downregulation of miR-218 in GC is promoted by a decrease in miR-218-2, but not in miR-218-1. Consistent with this conclusion, Slit3 expression was significantly reduced in GC (−22.43±0.21, mean ± SE) compared to normal gastric tissue (−20.79±0.23, mean ± SE), (<italic>P</italic>&lt;0.0001, t = 7.67, paired <italic>t</italic>-test) (<xref ref-type="fig" rid="pgen-1000879-g006">Figure 6F</xref>), whereas Slit2 expression was not significantly different (<italic>P</italic> = 0.0772, paired <italic>t</italic>-test) (<xref ref-type="fig" rid="pgen-1000879-g006">Figure 6G</xref>). In summary, our experimental results suggest that significant upregulation of the Robo1 gene in response to removal of miR-218 may induce a subsequent upregulation of the Slit-Robo1 pathway through its interaction with Slit2, facilitating tumor cell migration and invasion.</p>
+<fig id="pgen-1000879-g006" position="float"><object-id pub-id-type="doi">10.1371/journal.pgen.1000879.g006</object-id><label>Figure 6</label><caption>
+<title>Results of the expression analysis of miR-218, miR-218-1, miR-218-2, Slit2, and Slit3 in 40 matched GC tumors and corresponding normal tissues via qRT–PCR.</title>
+<p>(A) Schematic representation of the miR-218 genomic locus hosted in the intron of Slit. Expression patterns of Slit2 with miR-218-1 (B) and Slit3 with miR-218-2 (C) exhibited a significant positive correlation, as did mature miR-218 with the miR-218-2 precursor (D), but not with miR-218-1 (E), in GC. A significant differential gene expression pattern was detected between normal and tumor samples with regard to Slit3 (<italic>P</italic>&lt;0.0001, paired Student's <italic>t</italic>-test, <xref ref-type="fig" rid="pgen-1000879-g006">Figure 6F</xref>), but not Slit2 (<italic>P</italic> = 0.0772, <xref ref-type="fig" rid="pgen-1000879-g006">Figure 6G</xref>). Using relative quantification methods, the results were expressed as –ΔCt. The left and right lines of (F,G) represent the mean values for the normal and tumor groups, respectively.</p>
+</caption><graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.g006" xlink:type="simple"/></fig></sec></sec><sec id="s3">
+<title>Discussion</title>
+<p>To study a disease, it is vital to construct an ideal model. In the present study, we isolated invasive and non-invasive cell subpopulations from established human GC cell lines using the repeated transwell approach, which has been successfully applied in many studies investigating tumor metastasis <xref ref-type="bibr" rid="pgen.1000879-Chu1">[43]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Yu1">[48]</xref>. The results of metastatic examination <italic>in vitro</italic> and <italic>in vivo</italic> showed that the established cell sublines had distinct invasive and metastatic capabilities. Here, we screened not only cell sublines derived from GC cell lines with high-invasive potential, but also those with low-invasive potential. With the exception of their metastatic abilities, the selected cell sublines were both quite similar, since they share the same genetic background. Since the major difference between the two types of sublines is metastatic capability, the genes that differ between them should correlate well with metastasis. Moreover, our method is able to distinguish invasion stages from metastasis and enables the study of specific steps in metastasis, which cannot be assessed in the live-animal model.</p>
+<p>Recently, miRNAs have been reported to promote <xref ref-type="bibr" rid="pgen.1000879-Zhu1">[49]</xref>,<xref ref-type="bibr" rid="pgen.1000879-Hiyoshi1">[50]</xref> or suppress <xref ref-type="bibr" rid="pgen.1000879-Crawford1">[51]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Gebeshuber1">[54]</xref> tumor metastasis, providing a new perspective on the metastatic process. Nonetheless, the role of miRNAs in GC metastasis is lacking. In this report, we explored and obtained for the first time 45 metastasis-related miRNAs in GC based on a well-established metastasis cell model. The finding that miR-218 was downregulated in metastatic GC is intriguing, as decreased miR-218 levels have been reported in several types of solid tumors <xref ref-type="bibr" rid="pgen.1000879-Volinia1">[24]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Yanaihara1">[27]</xref>,<xref ref-type="bibr" rid="pgen.1000879-Dalmay1">[55]</xref>, indicating that the loss of miR-218 may be a common event in tumorigenesis. In the present study, we focused on the effect of miR-218 on GC metastasis and demonstrated that miR-218 acts as a tumor suppressor in GC metastasis. Restoration of miR-218 reduced cell migration and invasion <italic>in vitro</italic> and tumor metastasis <italic>in vivo</italic>. To obtain stable cell lines that over-expressed miR-218, we transfected MKN28-M cells with miR-218 plasmids and screened by G418. We selected twelve cell colonies in the miR-218-transfected group and found 10 out of 12 colonies exhibited remarkably uniform, stable and high-level expression of miR-218. Furthermore, three randomly chosen monoclonal cell lines exhibited similar reduction in invasive ablility. However, plasmid transfection strategies often result in lower integration efficiency compared to viral expression leading to the possibility of stochastic selection of rare functionally heterogeneous variants from the initial bulk population. Therefore the future use of viral expression systems should create a more unbiased starting population to test our hypothesis.</p>
+<p>As part of our research on how the loss of miR-218 affects GC metastasis, we demonstrated that Robo1 was a critical downstream target of miR-218. It is known that Robo is an axon guidance receptor for Slit and is conserved in animals ranging from fruit flies to mammals. In mammals, three Slit (Slit1–3) and four Robo (Robo1–4) genes have been described <xref ref-type="bibr" rid="pgen.1000879-Huminiecki1">[56]</xref>,<xref ref-type="bibr" rid="pgen.1000879-Brose1">[57]</xref>. The Slit–Robo interactions convey signals mediating repulsive cues on axons and growth cones during neural development and participate in T cell and monocyte chemotaxis <xref ref-type="bibr" rid="pgen.1000879-Kidd1">[58]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Prasad1">[64]</xref>. As for other developmental pathways, aberrant expression of the Slit<italic>-</italic>Robo genes has been observed in a variety of tumor types <xref ref-type="bibr" rid="pgen.1000879-Rossi1">[65]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Prasad2">[68]</xref>. For instance, in breast carcinoma tissue samples, Robo1 has been shown to be over-expressed, and it has been demonstrated to induce migration of breast cancer cell lines <xref ref-type="bibr" rid="pgen.1000879-Schmid1">[37]</xref>. Slit2-Robo1 signaling facilitates glioma cell migration <xref ref-type="bibr" rid="pgen.1000879-Mertsch1">[36]</xref> and is involved in angiogenesis by increasing microvessel density and tumor mass in a tumor xenograft model <xref ref-type="bibr" rid="pgen.1000879-Wang1">[30]</xref>. Wang <italic>et al.</italic> demonstrated that the over-expression of Robo1 in new blood vessels in tumors induces cancer neovascularization and growth via an interaction between Robo1 and its ligand, Slit2. They also identified phosphoinositide-3-kinase (PI-3K) as a downstream effector of Slit2/Robo1 signaling. This suggests that there exists a Slit–Robo1–PI-3K cascade that could lead to the generation of phosphoinositol-3,4,5-triphosphate and the subsequent activation of small GTPases that mediate cell movement and remodeling of the actin cytoskeleton <xref ref-type="bibr" rid="pgen.1000879-Wang1">[30]</xref>,<xref ref-type="bibr" rid="pgen.1000879-Legg1">[35]</xref>. In contrast, other studies have argued that the downregulation of Robo1 caused by deletions or epigenetic modifications may play a role in tumor progression <xref ref-type="bibr" rid="pgen.1000879-Dallol1">[69]</xref>–<xref ref-type="bibr" rid="pgen.1000879-Jin1">[73]</xref>. We propose that a tissue-specific expression pattern exists for the Slit-Robo genes.</p>
+<p>In the current study, we found that Robo1 was often expressed at high levels in invasive cells and at low levels in non-invasive cells, whereas miR-218 displayed the opposite expression pattern. When we transfected the miR-218-expression vector and inhibiting oligonucleotides into MKN28-M and MKN28-NM cells, respectively, an inverse expression pattern was observed between miR-218 and Robo1, that is, if miR-218 expression was high, Robo1 expression was low and vice versa. This result was further confirmed in clinical samples and in luciferase activity assays. We also noticed that induction of expression of Robo1 by the Robo1 mutant construct without the miR-218 binding site could reverse miR-218-mediated suppression of tumor cell invasion. In contrast, knockdown of Robo1 gene expression by RNAi had an effect on reducing tumor cell invasion similar to that of the restoration of miR-218, although Robo1 knockdown alone demonstrated a weak effect. This could be because Robo1 is not the only target of miR-218 that is relevant to tumor metastasis. These findings indicate that the invasion suppression effect of miR-218 is at least partly mediated through a decrease in Robo1 expression. This is also the first study to show that the tumor-associated gene Robo1 is negatively regulated by miR-218 via a specific target site (nt 971–978) within the 3′-UTR. The Robo1 receptor is crucial for the response to extracellular signals and cellular phenotypic changes; therefore, tight regulation of the Robo1 receptor by miR-218 may facilitate more robust signal transduction. Anti-Robo1 monoclonal antibody has been reported to be an effective treatment for Robo1-expressing cancers <xref ref-type="bibr" rid="pgen.1000879-Wang1">[30]</xref>,<xref ref-type="bibr" rid="pgen.1000879-Ito1">[33]</xref>. In the present study, we found a new inhibitor of Robo1, miR-218, that may potentially be used to treat some types of cancer.</p>
+<p>As mentioned above, Slit1, Slit2, and Slit3 comprise the Slit family of proteins. Although the genes overlap, their expression patterns and functions are distinct. The former two proteins are known to be involved in axon guidance and cell migration <xref ref-type="bibr" rid="pgen.1000879-Schmid1">[37]</xref>,<xref ref-type="bibr" rid="pgen.1000879-Andrews1">[74]</xref>, while Slit3 is involved in the development of organs and organ systems, including the diaphragm and the kidney <xref ref-type="bibr" rid="pgen.1000879-Liu1">[75]</xref>. In agreement with these data, we found that Slit2, but not Slit3, interacted with Robo1 to promote GC invasion.</p>
+<p>In addition, we demonstrated that the miR-218 coding genes were located in and transcribed together with Slit genes, which were Robo1 ligands, thus creating a negative feedback loop that regulates Slit/Robo1 signaling. Sailen Barik demonstrated that an intronic miRNA, miR-338, silenced genes that are functionally antagonistic to its host gene product, thus creating a positive feedback loop that assists in the physiological role of the host gene <xref ref-type="bibr" rid="pgen.1000879-Barik1">[76]</xref>. However, a miRNA hosted in a ligand gene that simultaneously targets its corresponding receptor gene has never been reported. We have identified a negative regulatory loop involving the ligand (host gene), the intronic miRNA, and the receptor, in which the miRNA is co-transcribed with the ligand while receptor expression is repressed. The associations among ligand/receptor and intronic miRNA indicate that the early steps in the information flow may have built-in controls to limit excess signal propagation, which include a negative feedback loop to preserve homeostasis. This regulatory model, which is based on intronic miRNAs, is a novel mechanism of regulation in receptor signaling systems. Even though the full regulatory circuitry of miR-218 has yet to be completely elucidated, our study revealed a potential negative feedback pattern in which a miRNA was co-transcribed with the Slits ligand and repressed Robo1 receptor expression. This study not only provides new insights into the metastatic mechanism of GC but also generates a set of testable hypotheses that are helpful for understanding the miRNA-mediated regulation of cellular ligand/receptor interactions.</p>
+<p>In conclusion, we have identified miRNAs that are aberrantly expressed in invasive GC cells compared with non-invasive GC cells. Here we have showed that when significantly downregulated, miR-218 promoted GC cell invasion and metastasis, at least in part via induction of Robo1. This result indicates that restoration of miR-218 may be a rational therapeutic strategy for the treatment of GC in the future. It remains to be investigated whether the other differentially expressed miRNAs found in this study also participate in GC metastasis. Importantly, our findings have implications for describing new mechanisms for miRNA-mediated regulation of receptor signaling.</p>
+</sec><sec id="s4" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="s4a">
+<title>Ethics statement</title>
+<p>All experimental procedures were approved by the Institutional Review Board of the Fourth Military Medical University. Written informed consent was obtained for all patient samples. Animal experiments were performed with the approval of the Institutional Committee for Animal Research and in conformity with national guidelines for the care and use of laboratory animals.</p>
+</sec><sec id="s4b">
+<title>Cell culture</title>
+<p>The human GC cell lines MKN28 and SGC7901 were routinely maintained in RPMI-1640 medium (GIBCO, Carlsbad, CA, USA) supplemented with 10% fetal bovine serum, 100 U/ml of penicillin sodium, and 100 µg/ml of streptomycin sulfate at 37°C in a humidified air atmosphere containing 5% carbon dioxide. Throughout the experiment, cells were used in the logarithmic phase of growth.</p>
+</sec><sec id="s4c">
+<title>Isolation of invasive and non-invasive cell sublines using transwell chambers</title>
+<p>Six-well polycarbonate transwell membrane inserts with 8-µm pores (Corning, USA) were used to isolate cell sublines with different levels of invasiveness from the cultured MKN28 cell line. First, cells that were serum-starved for 24 h were suspended in serum-free RPMI-1640 to a final cell density of 5×10<sup>5</sup> cells/mL. A 1 mL cell suspension was seeded into the top chamber, which was coated with 200 mg/mL of Matrigel (BD Biosciences, San Jose, CA, USA), and the lower well beneath the polycarbonate membranes was filled with 2.5 mL RPMI-1640 medium supplemented with 20% bovine serum to create a chemotactic gradient to stimulate penetration of the cells. Following incubation for 24 h at 37°C, the invasive cells on the underside of the membrane and the non-invasive cells on the top of the membrane were harvested aseptically and were expanded for selection. Via ten-round selection, the cell subline that failed to invade through the membranes in all selection rounds was designated as MKN28-NM, and the subline that was able to migrate through the membranes was designated as MKN28-M. We also obtained two cell sublines, SGC7901-M and SGC7901-NM, derived from the SGC7901 GC cell line, using the same method (<xref ref-type="fig" rid="pgen-1000879-g001">Figure 1</xref>).</p>
+</sec><sec id="s4d">
+<title><italic>In vitro</italic> migration and invasion assays</title>
+<p>A 24-well transwell plate (8-µm pore size, Corning, USA) was used to measure each cell line's migratory and invasive ability. For transwell migration assays, 2.5×10<sup>4</sup> cells were plated in the top chamber lined with a non-coated membrane. For invasion assays, chamber inserts were coated with 200 mg/mL of Matrigel and dried overnight under sterile conditions. Then, 5×10<sup>4</sup> cells were plated in the top chamber. In both assays, cells were suspended in medium without serum or growth factors, and medium supplemented with serum was used as a chemoattractant in the lower chamber. After incubation at 37°C for 24 h, the top chambers were wiped with cotton wool to remove the non-migratory or non-invasive cells. The invading cells on the underside of the membrane were fixed in 100% methanol for 10 min, air-dried, stained in 0.1% crystal violet, and counted under a microscope. The mean of triplicate assays for each experimental condition was used.</p>
+</sec><sec id="s4e">
+<title>Experimental metastasis</title>
+<p>To produce experimental metastasis, cells were washed and resuspended in PBS. Five-week-old BALB/C-nu/nu nude mice obtained from the Shanghai Laboratory Animal Center of China were injected into the lateral tail vein, and the animals were maintained in a sterile animal facility. Each tumor cell subline was injected into ten mice. After ten weeks, the mice were killed, and the lungs and liver were examined for metastases. Tumor tissues derived from various organs were dissected and examined histologically. The experiments were repeated two to three times.</p>
+</sec><sec id="s4f">
+<title>miRNA microarrays</title>
+<p>Total RNA was extracted from each cell subline using the miRVana miRNA Isolation Kit (Ambion Inc., Austin, TX, USA) according to the manufacturer's instructions. The purity and quantity of the isolated RNAs were assessed using 1% formaldehyde-agarose gel electrophoresis and spectrophotometry (Bio-Rad, Hercules, CA, USA). We then submitted the samples to KangChen-Biotech (Shanghai, China) for array hybridization on a miRCURY LNA microRNA array (v.10.0, Exiqon, Vedbaek, Denmark). Each microarray chip was hybridized with a single sample labeled with either Cy3 or Cy5. Background subtraction and normalization were performed. We selected miRNAs whose expression levels between invasive cell sublines and non-invasive cell sublines differed by at least 1.5-fold.</p>
+</sec><sec id="s4g">
+<title>Clinical samples</title>
+<p>Forty patients (30 males and 10 females) who had undergone gastrectomy with lymph node dissection for gastric carcinoma at Xijing Hospital between March and September of 2003 were included in the study (<xref ref-type="supplementary-material" rid="pgen.1000879.s007">Table S2</xref>). The patients ranged in age from 26 to 77 years (median 54.13 years). None of the patients received preoperative chemotherapy. The resected specimens were histologically examined by H&amp;E staining. The primary tumor tissues and corresponding non-tumor mucosa and lymph nodes were collected from each patient immediately after surgical removal and snap-frozen in liquid nitrogen until further use. Total RNA from the frozen tissues was isolated with Trizol (Invitrogen, Carlsbad, CA, USA) according to the manufacturer's instructions.</p>
+</sec><sec id="s4h">
+<title>Quantitative real-time RT–PCR (qRT–PCR)</title>
+<p>Total RNA was extracted with suitable reagents. The TaqMan stem-loop RT-PCR method was used to assess the expression of miRNAs with kits from Applied Biosystems (Foster City, CA, USA). SYBR green real-time RT-PCR was performed to detect Slit2, Slit3, and Robo1. All RT-PCR experiments were performed on a Chromo4 Real-Time PCR Detection System (Bio-Rad, Hercules, CA, USA). The primers for miR-218 and its precursors were obtained from Applied Biosystems(Foster City, California, USA)and Eurogentec North America, Inc (Flintkote Avenue, San Diego, California, USA), respectively. The primers for Slit2, Slit3, and Robo1 were designed to produce amplicons that were 76–150 bp in length and with an annealing temperature of approximately 60°C using Primer Premier v5.0 Software. Data are presented as fold differences relative to either 18S for Slit2, Slit3, and Robo1 or U6 for miRNA based on calculations of 2<sup>−ΔΔCt</sup>. All primer sequences in this study are listed in <xref ref-type="supplementary-material" rid="pgen.1000879.s008">Table S3</xref>.</p>
+</sec><sec id="s4i">
+<title>Construct design and cell transfections</title>
+<sec id="s4i1">
+<title>miR-218-expressing vector</title>
+<p>The precursor sequence of miR-218 (110 bp, MI0000295) generated by annealing and primer extension with miR-218-precursor-F and miR-218-precursor-R (<xref ref-type="supplementary-material" rid="pgen.1000879.s008">Table S3</xref>) was digested with BamHI and HindIII and cloned into the BamHI-HindIII fragment of the pGenesil-1 vector. A construct including the nonspecific miRNA cel-miR-67 (99 bp, MI0000038) was used as a negative control.</p>
+</sec><sec id="s4i2">
+<title>Luc-Robo1 vector</title>
+<p>The Robo1 3′-UTR containing the predicted miR-218 binding site was amplified by RT-PCR from the total RNA of cultured MKN28 cells and was cloned into the pCR2.1-TOPO vector (Invitrogen, Carlsbad, CA, USA). The pCR2.1-TOPO-Robo1 3′-UTR construct was digested with SpeI and HindIII. The resulting fragment was subcloned into the SpeI and HindIII sites of the pMIR-REPORT miRNA expression reporter vector (Applied Biosystems). The first six nucleotides complementary to the miR-218 seed-region were deleted from the mutant constructs using the QuikChange Site-Directed Mutagenesis Kit (Stratagene) according to the manufacturer's protocol.</p>
+</sec><sec id="s4i3">
+<title>Robo1-expressing vector with or without miR-218 binding sites</title>
+<p>Full-length Robo1 cDNA that entirely lacks the 3′-UTR (Clone ID: 9057080) was purchased from Open Biosystems (USA) and was subcloned into the eukaryotic expression vector pcDNA3.1(+) to generate the Robo1 mutant expression vector. A Robo1-expressing vector was constructed by inserting the fragment of the predicted miR-218 binding site into the Robo1 mutant expression vector. Robo1 siRNA and negative control oligonucleotides were purchased from GenePharma (Shanghai, China).</p>
+</sec><sec id="s4i4">
+<title>Cell transfections</title>
+<p>MKN28-M cells were transfected with the miR-218-expressing vector or the control vector expressing a nonspecific miRNA, cel-miR-67, using Lipofectamine 2000 (Invitrogen), and were selected with 400 mg/L G418 to generate two stable monoclonal cell lines (a miR-218 stable cell line, MKN28-M-miR-218, and a control stable cell line, MKN28-M-miR-control). The oligonucleotides comprising the miR-218 inhibitor and the mismatched sequence negative control were purchased from Ambion Inc. and were transfected into MKN28-NM cells using Oligofectamine (Invitrogen). The Robo1-expressing vector with or without the miR-218 binding sites was transfected into MKN28-M-miR-218 cells, and Robo1 siRNA was transfected into MKN28-M cells<bold>.</bold></p>
+</sec><sec id="s4i5">
+<title>Luciferase assay</title>
+<p>The pMIR-REPORT β-galactosidase control vector and Luc-Robo1, Luc-Robo1-mu, or Luc-control were co-transfected into MKN28-M-miR-218 cells. Lysates were prepared at 48 h post-transfection. Luciferase activity was measured using the Dual-Light luminescent reporter gene assay (Applied Biosystems). All measurements were normalized to β-galactosidase activities to correct for variations in transfection efficiencies and for non-miR-218-specific effects of miRNA transfection on enzymatic activity.</p>
+</sec><sec id="s4i6">
+<title>Western blot</title>
+<p>Cellular proteins were extracted and separated in SDS-PAGE gels, and western blot analyses were performed according to standard procedures. Western blotting of β-actin on the same membrane was used as a loading control. The antibodies used were anti-Robo1 (SC-25672) and anti-β-actin (sc-47778), both from Santa Cruz Biotechnology (CA, USA).</p>
+</sec><sec id="s4i7">
+<title>Statistical analyses</title>
+<p>All data are presented as means ± SE and were analyzed using Prism 5.0 software (GraphPad). The significance of the observed differences was determined with the Student's <italic>t</italic>-test or the χ2 test. The relationships among the miR-218-1 precursor, the miR-218-2 precursor, mature miR-218, Slit2 mRNA, and Slit3 mRNA were analyzed by correlation coefficients and linear regression analysis. <italic>P</italic>&lt;0.05 was considered statistically significant. * <italic>P</italic>&lt;0.05; ** <italic>P</italic>&lt;0.01.</p>
+</sec></sec></sec><sec id="s5">
+<title>Supporting Information</title>
+<supplementary-material id="pgen.1000879.s001" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.s001" xlink:type="simple"><label>Figure S1</label><caption>
+<p>No significant difference in the proliferation rate was observed in the three cell sublines. (A) Proliferation rates of the cell sublines were detected by the MTT assay. (B) Tumor volume growth curves for each cell subline are shown. Tumor sizes were measured using calipers. Tumor volume was calculated using the formula (length × width<sup>2</sup>)/2. (<italic>n</italic> = 5, paired Wilcoxon test, <italic>P</italic>&gt;0.05). (C) On day 37, all tumors were collected to measure tumor weights (<italic>P</italic>&gt;0.05; <italic>n</italic> = 5). (D) Photos of tumors 37 days after injection with MKN28, MKN28-NM, or MKN28-M cells.</p>
+<p>(6.14 MB TIF)</p>
+</caption></supplementary-material><supplementary-material id="pgen.1000879.s002" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.s002" xlink:type="simple"><label>Figure S2</label><caption>
+<p>Cell-cycle analysis of three established cell sublines. (A) Representative flow cytometry results for each cell subline. (B) Cell-cycle distribution (<italic>P</italic>&gt;0.05; <italic>n</italic> = 3).</p>
+<p>(2.82 MB TIF)</p>
+</caption></supplementary-material><supplementary-material id="pgen.1000879.s003" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.s003" xlink:type="simple"><label>Figure S3</label><caption>
+<p>qRT-PCR analysis of the relative expression of miR-218 and Robo1. (A) Expression of miR-218 and Robo1 were reversed in invasive (MKN28-M and SGC7901-M) and non-invasive GC cells (MKN28-NM and SGC7901-NM) compared with GES cells. (B) Robo1 mRNA levels decreased when miR-218 was upregulated in response to transfection of MKN28-M cells with miR-218-expressing vector.</p>
+<p>(2.56 MB TIF)</p>
+</caption></supplementary-material><supplementary-material id="pgen.1000879.s004" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.s004" xlink:type="simple"><label>Figure S4</label><caption>
+<p>Immunohistochemical analysis of Robo1. (A-F) represent normal and tumor tissues taken from the same patient and processed in the same way using paraffin sectioning. (A,C,E) H&amp;E staining of normal gastric mucosa, primary gastric cancer, and the ovarian metastasis from gastric cancer. Magnification, 100×. (B,D,F) Robo1 in normal gastric mucosa, primary gastric cancer, and ovarian metastasis from gastric cancer (serial section adjacent to the H&amp;E-stained specimen). Magnification, 100×. Robo1 was expressed at low levels in the gastric epithelial cells of normal tissues and was expressed at increased levels in gastric cancer tissues, especially in metastatic tumor tissues.</p>
+<p>(9.91 MB TIF)</p>
+</caption></supplementary-material><supplementary-material id="pgen.1000879.s005" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.s005" xlink:type="simple"><label>Figure S5</label><caption>
+<p>miR-218 has the ability to specifically suppress metastasis without affecting cell proliferation. (A) MTT assay of the effects of miR-218 on proliferation of MKN28-M cells. No significant difference in the proliferation rate was found between MKN28-M-miR-218 cells stably over-expressing miR-218 and control cells. (B) MKN28-M-miR-218 and control cells were subcutaneously injected into nude mice. Growth curves of primary gastric cancers formed by MKN28-M-miR-218 cells or control cells are shown. Tumor sizes were measured using calipers. Tumor volume was calculated using the formula (length × width<sup>2</sup>)/2. Each data point represents the mean ± standard error (<italic>n</italic> = 10; <italic>P</italic>&gt;0.05). (C) Median tumor weight at day 72. Data are presented as mean ± standard error (<italic>n</italic> = 10; <italic>P</italic>&gt;0.05). (D) Cell cycle distribution (<italic>P</italic>&gt;0.05; <italic>n</italic> = 3). (E) Representative H&amp;E staining of lungs and livers isolated from mice that received injections of MKN28-M-miR-control or MKN28-M-miR-218 cells. Magnification, 200×.</p>
+<p>(3.55 MB TIF)</p>
+</caption></supplementary-material><supplementary-material id="pgen.1000879.s006" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.s006" xlink:type="simple"><label>Table S1</label><caption>
+<p>Differentially expressed miRNAs in highly invasive GC cells versus non-invasive GC cells.</p>
+<p>(0.10 MB DOC)</p>
+</caption></supplementary-material><supplementary-material id="pgen.1000879.s007" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.s007" xlink:type="simple"><label>Table S2</label><caption>
+<p>Clinicopathologic features in 40 tumor samples.</p>
+<p>(0.25 MB DOC)</p>
+</caption></supplementary-material><supplementary-material id="pgen.1000879.s008" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.s008" xlink:type="simple"><label>Table S3</label><caption>
+<p>Primer sequences used in the study.</p>
+<p>(0.04 MB DOC)</p>
+</caption></supplementary-material><supplementary-material id="pgen.1000879.s009" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pgen.1000879.s009" xlink:type="simple"><label>Text S1</label><caption>
+<p>Supplementary methods.</p>
+<p>(0.05 MB DOC)</p>
+</caption></supplementary-material></sec></body>
+<back>
+<ack>
+<p>We thank Zhao Yiling, Department of Pathology, Xijing Hospital, for histological assessment; Liang Shuhui for help with the animal experiment; Li Zeng, Cheng Ying, and Shen Xin for collecting the clinical samples; and He Biyun for assistance with statistical data analysis. We also thank Derek M. Erion for revising the manuscript.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pgen.1000879-Oue1"><label>1</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Oue</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>Aung</surname><given-names>PP</given-names></name>
+<name name-style="western"><surname>Mitani</surname><given-names>Y</given-names></name>
+<name name-style="western"><surname>Kuniyasu</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Nakayama</surname><given-names>H</given-names></name>
+<etal/></person-group>             <year>2005</year>             <article-title>Genes involved in invasion and metastasis of gastric cancer identified by array-based hybridization and serial analysis of gene expression.</article-title>             <source>Oncology</source>             <volume>69</volume>             <supplement>Suppl 1</supplement>             <fpage>17</fpage>             <lpage>22</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Gupta1"><label>2</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Gupta</surname><given-names>GP</given-names></name>
+<name name-style="western"><surname>Massague</surname><given-names>J</given-names></name>
+</person-group>             <year>2006</year>             <article-title>Cancer metastasis: building a framework.</article-title>             <source>Cell</source>             <volume>127</volume>             <fpage>679</fpage>             <lpage>695</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Klein1"><label>3</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Klein</surname><given-names>CA</given-names></name>
+</person-group>             <year>2008</year>             <article-title>Cancer. The metastasis cascade.</article-title>             <source>Science</source>             <volume>321</volume>             <fpage>1785</fpage>             <lpage>1787</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Steeg1"><label>4</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Steeg</surname><given-names>PS</given-names></name>
+</person-group>             <year>2006</year>             <article-title>Tumor metastasis: mechanistic insights and clinical challenges.</article-title>             <source>Nat Med</source>             <volume>12</volume>             <fpage>895</fpage>             <lpage>904</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Nicoloso1"><label>5</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Nicoloso</surname><given-names>MS</given-names></name>
+<name name-style="western"><surname>Spizzo</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Shimizu</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Rossi</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Calin</surname><given-names>GA</given-names></name>
+</person-group>             <year>2009</year>             <article-title>MicroRNAs - the micro steering wheel of tumour metastases</article-title>             <source>Nat Rev Cancer</source>          </element-citation></ref>
+<ref id="pgen.1000879-Ma1"><label>6</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Ma</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>Teruya-Feldstein</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Weinberg</surname><given-names>RA</given-names></name>
+</person-group>             <year>2007</year>             <article-title>Tumour invasion and metastasis initiated by microRNA-10b in breast cancer.</article-title>             <source>Nature</source>             <volume>449</volume>             <fpage>682</fpage>             <lpage>688</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Huang1"><label>7</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Huang</surname><given-names>Q</given-names></name>
+<name name-style="western"><surname>Gumireddy</surname><given-names>K</given-names></name>
+<name name-style="western"><surname>Schrier</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>le Sage</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Nagel</surname><given-names>R</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>The microRNAs miR-373 and miR-520c promote tumour invasion and metastasis.</article-title>             <source>Nat Cell Biol</source>             <volume>10</volume>             <fpage>202</fpage>             <lpage>210</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Lee1"><label>8</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Lee</surname><given-names>DY</given-names></name>
+<name name-style="western"><surname>Deng</surname><given-names>Z</given-names></name>
+<name name-style="western"><surname>Wang</surname><given-names>CH</given-names></name>
+<name name-style="western"><surname>Yang</surname><given-names>BB</given-names></name>
+</person-group>             <year>2007</year>             <article-title>MicroRNA-378 promotes cell survival, tumor growth, and angiogenesis by targeting SuFu and Fus-1 expression.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>104</volume>             <fpage>20350</fpage>             <lpage>20355</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Gregory1"><label>9</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Gregory</surname><given-names>PA</given-names></name>
+<name name-style="western"><surname>Bert</surname><given-names>AG</given-names></name>
+<name name-style="western"><surname>Paterson</surname><given-names>EL</given-names></name>
+<name name-style="western"><surname>Barry</surname><given-names>SC</given-names></name>
+<name name-style="western"><surname>Tsykin</surname><given-names>A</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>The miR-200 family and miR-205 regulate epithelial to mesenchymal transition by targeting ZEB1 and SIP1.</article-title>             <source>Nat Cell Biol</source>             <volume>10</volume>             <fpage>593</fpage>             <lpage>601</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Wu1"><label>10</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Wu</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Zhu</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Mo</surname><given-names>YY</given-names></name>
+</person-group>             <year>2009</year>             <article-title>Suppression of cell growth and invasion by miR-205 in breast cancer.</article-title>             <source>Cell Res</source>          </element-citation></ref>
+<ref id="pgen.1000879-Hurst1"><label>11</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Hurst</surname><given-names>DR</given-names></name>
+<name name-style="western"><surname>Edmonds</surname><given-names>MD</given-names></name>
+<name name-style="western"><surname>Scott</surname><given-names>GK</given-names></name>
+<name name-style="western"><surname>Benz</surname><given-names>CC</given-names></name>
+<name name-style="western"><surname>Vaidya</surname><given-names>KS</given-names></name>
+<etal/></person-group>             <year>2009</year>             <article-title>Breast cancer metastasis suppressor 1 up-regulates miR-146, which suppresses breast cancer metastasis.</article-title>             <source>Cancer Res</source>             <volume>69</volume>             <fpage>1279</fpage>             <lpage>1283</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Prueitt1"><label>12</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Prueitt</surname><given-names>RL</given-names></name>
+<name name-style="western"><surname>Yi</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Hudson</surname><given-names>RS</given-names></name>
+<name name-style="western"><surname>Wallace</surname><given-names>TA</given-names></name>
+<name name-style="western"><surname>Howe</surname><given-names>TM</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>Expression of microRNAs and protein-coding genes associated with perineural invasion in prostate cancer.</article-title>             <source>Prostate</source>             <volume>68</volume>             <fpage>1152</fpage>             <lpage>1164</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Li1"><label>13</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Li</surname><given-names>T</given-names></name>
+<name name-style="western"><surname>Li</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Sha</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Sun</surname><given-names>P</given-names></name>
+<name name-style="western"><surname>Huang</surname><given-names>Y</given-names></name>
+</person-group>             <year>2009</year>             <article-title>MicroRNA-21 directly targets MARCKS and promotes apoptosis resistance and invasion in prostate cancer cells.</article-title>             <source>Biochem Biophys Res Commun</source>          </element-citation></ref>
+<ref id="pgen.1000879-Sengupta1"><label>14</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Sengupta</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>den Boon</surname><given-names>JA</given-names></name>
+<name name-style="western"><surname>Chen</surname><given-names>IH</given-names></name>
+<name name-style="western"><surname>Newton</surname><given-names>MA</given-names></name>
+<name name-style="western"><surname>Stanhope</surname><given-names>SA</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>MicroRNA 29c is down-regulated in nasopharyngeal carcinomas, up-regulating mRNAs encoding extracellular matrix proteins.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>105</volume>             <fpage>5874</fpage>             <lpage>5878</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Veerla1"><label>15</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Veerla</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Lindgren</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Kvist</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Frigyesi</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Staaf</surname><given-names>J</given-names></name>
+<etal/></person-group>             <year>2009</year>             <article-title>MiRNA expression in urothelial carcinomas: important roles of miR-10a, miR-222, miR-125b, miR-7 and miR-452 for tumor stage and metastasis, and frequent homozygous losses of miR-31.</article-title>             <source>Int J Cancer</source>             <volume>124</volume>             <fpage>2236</fpage>             <lpage>2242</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Segura1"><label>16</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Segura</surname><given-names>MF</given-names></name>
+<name name-style="western"><surname>Hanniford</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Menendez</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Reavie</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>Zou</surname><given-names>X</given-names></name>
+<etal/></person-group>             <year>2009</year>             <article-title>Aberrant miR-182 expression promotes melanoma metastasis by repressing FOXO3 and microphthalmia-associated transcription factor.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>106</volume>             <fpage>1814</fpage>             <lpage>1819</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Nass1"><label>17</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Nass</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Rosenwald</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Meiri</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Gilad</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Tabibian-Keissar</surname><given-names>H</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>MiR-92b and miR-9/9* Are Specifically Expressed in Brain Primary Tumors and Can Be Used to Differentiate Primary from Metastatic Brain Tumors.</article-title>             <source>Brain Pathol</source>          </element-citation></ref>
+<ref id="pgen.1000879-Asangani1"><label>18</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Asangani</surname><given-names>IA</given-names></name>
+<name name-style="western"><surname>Rasheed</surname><given-names>SA</given-names></name>
+<name name-style="western"><surname>Nikolova</surname><given-names>DA</given-names></name>
+<name name-style="western"><surname>Leupold</surname><given-names>JH</given-names></name>
+<name name-style="western"><surname>Colburn</surname><given-names>NH</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>MicroRNA-21 (miR-21) post-transcriptionally downregulates tumor suppressor Pdcd4 and stimulates invasion, intravasation and metastasis in colorectal cancer.</article-title>             <source>Oncogene</source>             <volume>27</volume>             <fpage>2128</fpage>             <lpage>2136</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Lewis1"><label>19</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Lewis</surname><given-names>BP</given-names></name>
+<name name-style="western"><surname>Burge</surname><given-names>CB</given-names></name>
+<name name-style="western"><surname>Bartel</surname><given-names>DP</given-names></name>
+</person-group>             <year>2005</year>             <article-title>Conserved seed pairing, often flanked by adenosines, indicates that thousands of human genes are microRNA targets.</article-title>             <source>Cell</source>             <volume>120</volume>             <fpage>15</fpage>             <lpage>20</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Lai1"><label>20</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Lai</surname><given-names>EC</given-names></name>
+</person-group>             <year>2002</year>             <article-title>Micro RNAs are complementary to 3′ UTR sequence motifs that mediate negative post-transcriptional regulation.</article-title>             <source>Nat Genet</source>             <volume>30</volume>             <fpage>363</fpage>             <lpage>364</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Kloosterman1"><label>21</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Kloosterman</surname><given-names>WP</given-names></name>
+<name name-style="western"><surname>Plasterk</surname><given-names>RH</given-names></name>
+</person-group>             <year>2006</year>             <article-title>The diverse functions of microRNAs in animal development and disease.</article-title>             <source>Dev Cell</source>             <volume>11</volume>             <fpage>441</fpage>             <lpage>450</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-EsquelaKerscher1"><label>22</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Esquela-Kerscher</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Slack</surname><given-names>FJ</given-names></name>
+</person-group>             <year>2006</year>             <article-title>Oncomirs - microRNAs with a role in cancer.</article-title>             <source>Nat Rev Cancer</source>             <volume>6</volume>             <fpage>259</fpage>             <lpage>269</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Lu1"><label>23</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Lu</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Getz</surname><given-names>G</given-names></name>
+<name name-style="western"><surname>Miska</surname><given-names>EA</given-names></name>
+<name name-style="western"><surname>Alvarez-Saavedra</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Lamb</surname><given-names>J</given-names></name>
+<etal/></person-group>             <year>2005</year>             <article-title>MicroRNA expression profiles classify human cancers.</article-title>             <source>Nature</source>             <volume>435</volume>             <fpage>834</fpage>             <lpage>838</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Volinia1"><label>24</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Volinia</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Calin</surname><given-names>GA</given-names></name>
+<name name-style="western"><surname>Liu</surname><given-names>CG</given-names></name>
+<name name-style="western"><surname>Ambs</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Cimmino</surname><given-names>A</given-names></name>
+<etal/></person-group>             <year>2006</year>             <article-title>A microRNA expression signature of human solid tumors defines cancer gene targets.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>103</volume>             <fpage>2257</fpage>             <lpage>2261</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Martinez1"><label>25</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Martinez</surname><given-names>I</given-names></name>
+<name name-style="western"><surname>Gardiner</surname><given-names>AS</given-names></name>
+<name name-style="western"><surname>Board</surname><given-names>KF</given-names></name>
+<name name-style="western"><surname>Monzon</surname><given-names>FA</given-names></name>
+<name name-style="western"><surname>Edwards</surname><given-names>RP</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>Human papillomavirus type 16 reduces the expression of microRNA-218 in cervical carcinoma cells.</article-title>             <source>Oncogene</source>             <volume>27</volume>             <fpage>2575</fpage>             <lpage>2582</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Petrocca1"><label>26</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Petrocca</surname><given-names>F</given-names></name>
+<name name-style="western"><surname>Visone</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Onelli</surname><given-names>MR</given-names></name>
+<name name-style="western"><surname>Shah</surname><given-names>MH</given-names></name>
+<name name-style="western"><surname>Nicoloso</surname><given-names>MS</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>E2F1-regulated microRNAs impair TGFbeta-dependent cell-cycle arrest and apoptosis in gastric cancer.</article-title>             <source>Cancer Cell</source>             <volume>13</volume>             <fpage>272</fpage>             <lpage>286</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Yanaihara1"><label>27</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Yanaihara</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>Caplen</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>Bowman</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Seike</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Kumamoto</surname><given-names>K</given-names></name>
+<etal/></person-group>             <year>2006</year>             <article-title>Unique microRNA molecular profiles in lung cancer diagnosis and prognosis.</article-title>             <source>Cancer Cell</source>             <volume>9</volume>             <fpage>189</fpage>             <lpage>198</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Leite1"><label>28</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Leite</surname><given-names>KR</given-names></name>
+<name name-style="western"><surname>Sousa-Canavez</surname><given-names>JM</given-names></name>
+<name name-style="western"><surname>Reis</surname><given-names>ST</given-names></name>
+<name name-style="western"><surname>Tomiyama</surname><given-names>AH</given-names></name>
+<name name-style="western"><surname>Camara-Lopes</surname><given-names>LH</given-names></name>
+<etal/></person-group>             <year>2009</year>             <article-title>Change in expression of miR-let7c, miR-100, and miR-218 from high grade localized prostate cancer to metastasis.</article-title>             <source>Urol Oncol</source>          </element-citation></ref>
+<ref id="pgen.1000879-He1"><label>29</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>He</surname><given-names>XX</given-names></name>
+<name name-style="western"><surname>Yang</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Ding</surname><given-names>YW</given-names></name>
+<name name-style="western"><surname>Liu</surname><given-names>W</given-names></name>
+<name name-style="western"><surname>Shen</surname><given-names>QY</given-names></name>
+<etal/></person-group>             <year>2006</year>             <article-title>Increased epithelial and serum expression of macrophage migration inhibitory factor (MIF) in gastric cancer: potential role of MIF in gastric carcinogenesis.</article-title>             <source>Gut</source>             <volume>55</volume>             <fpage>797</fpage>             <lpage>802</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Wang1"><label>30</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Wang</surname><given-names>B</given-names></name>
+<name name-style="western"><surname>Xiao</surname><given-names>Y</given-names></name>
+<name name-style="western"><surname>Ding</surname><given-names>B-B</given-names></name>
+<name name-style="western"><surname>Zhang</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>Yuan</surname><given-names>X-b</given-names></name>
+<etal/></person-group>             <year>2003</year>             <article-title>Induction of tumor angiogenesis by Slit-Robo signaling and inhibition of cancer growth by blocking Robo activity.</article-title>             <source>Cancer Cell</source>             <volume>4</volume>             <fpage>19</fpage>             <lpage>29</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Suchting1"><label>31</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Suchting</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Heal</surname><given-names>P</given-names></name>
+<name name-style="western"><surname>Tahtis</surname><given-names>K</given-names></name>
+<name name-style="western"><surname>Stewart</surname><given-names>LM</given-names></name>
+<name name-style="western"><surname>Bicknell</surname><given-names>R</given-names></name>
+</person-group>             <year>2005</year>             <article-title>Soluble Robo4 receptor inhibits in vivo angiogenesis and endothelial cell migration.</article-title>             <source>FASEB J</source>             <volume>19</volume>             <fpage>121</fpage>             <lpage>123</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Grone1"><label>32</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Grone</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Doebler</surname><given-names>O</given-names></name>
+<name name-style="western"><surname>Loddenkemper</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Hotz</surname><given-names>B</given-names></name>
+<name name-style="western"><surname>Buhr</surname><given-names>HJ</given-names></name>
+<etal/></person-group>             <year>2006</year>             <article-title>Robo1/Robo4: differential expression of angiogenic markers in colorectal cancer.</article-title>             <source>Oncol Rep</source>             <volume>15</volume>             <fpage>1437</fpage>             <lpage>1443</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Ito1"><label>33</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Ito</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Funahashi</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Yamauchi</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>Shibahara</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Midorikawa</surname><given-names>Y</given-names></name>
+<etal/></person-group>             <year>2006</year>             <article-title>Identification of ROBO1 as a novel hepatocellular carcinoma antigen and a potential therapeutic and diagnostic target.</article-title>             <source>Clin Cancer Res</source>             <volume>12</volume>             <fpage>3257</fpage>             <lpage>3264</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Lee2"><label>34</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Lee</surname><given-names>CH</given-names></name>
+<name name-style="western"><surname>Fang</surname><given-names>CY</given-names></name>
+<name name-style="western"><surname>Sheu</surname><given-names>JJ</given-names></name>
+<name name-style="western"><surname>Chang</surname><given-names>Y</given-names></name>
+<name name-style="western"><surname>Takada</surname><given-names>K</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>Amplicons on chromosome 3 contain oncogenes induced by recurrent exposure to 12-O-tetradecanoylphorbol-13-acetate and sodium n-butyrate and Epstein-Barr virus reactivation in a nasopharyngeal carcinoma cell line.</article-title>             <source>Cancer Genet Cytogenet</source>             <volume>185</volume>             <fpage>1</fpage>             <lpage>10</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Legg1"><label>35</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Legg</surname><given-names>JA</given-names></name>
+<name name-style="western"><surname>Herbert</surname><given-names>JM</given-names></name>
+<name name-style="western"><surname>Clissold</surname><given-names>P</given-names></name>
+<name name-style="western"><surname>Bicknell</surname><given-names>R</given-names></name>
+</person-group>             <year>2008</year>             <article-title>Slits and Roundabouts in cancer, tumour angiogenesis and endothelial cell migration.</article-title>             <source>Angiogenesis</source>             <volume>11</volume>             <fpage>13</fpage>             <lpage>21</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Mertsch1"><label>36</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Mertsch</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Schmitz</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>Jeibmann</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Geng</surname><given-names>JG</given-names></name>
+<name name-style="western"><surname>Paulus</surname><given-names>W</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>Slit2 involvement in glioma cell migration is mediated by Robo1 receptor.</article-title>             <source>J Neurooncol</source>             <volume>87</volume>             <fpage>1</fpage>             <lpage>7</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Schmid1"><label>37</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Schmid</surname><given-names>BC</given-names></name>
+<name name-style="western"><surname>Rezniczek</surname><given-names>GA</given-names></name>
+<name name-style="western"><surname>Fabjani</surname><given-names>G</given-names></name>
+<name name-style="western"><surname>Yoneda</surname><given-names>T</given-names></name>
+<name name-style="western"><surname>Leodolter</surname><given-names>S</given-names></name>
+<etal/></person-group>             <year>2007</year>             <article-title>The neuronal guidance cue Slit2 induces targeted migration and may play a role in brain metastasis of breast cancer cells.</article-title>             <source>Breast Cancer Res Treat</source>             <volume>106</volume>             <fpage>333</fpage>             <lpage>342</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Gramantieri1"><label>38</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Gramantieri</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>Ferracin</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Fornari</surname><given-names>F</given-names></name>
+<name name-style="western"><surname>Veronese</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Sabbioni</surname><given-names>S</given-names></name>
+<etal/></person-group>             <year>2007</year>             <article-title>Cyclin G1 is a target of miR-122a, a microRNA frequently down-regulated in human hepatocellular carcinoma.</article-title>             <source>Cancer Res</source>             <volume>67</volume>             <fpage>6092</fpage>             <lpage>6099</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Seth1"><label>39</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Seth</surname><given-names>P</given-names></name>
+<name name-style="western"><surname>Lin</surname><given-names>Y</given-names></name>
+<name name-style="western"><surname>Hanai</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Shivalingappa</surname><given-names>V</given-names></name>
+<name name-style="western"><surname>Duyao</surname><given-names>MP</given-names></name>
+<etal/></person-group>             <year>2005</year>             <article-title>Magic roundabout, a tumor endothelial marker: expression and signaling.</article-title>             <source>Biochem Biophys Res Commun</source>             <volume>332</volume>             <fpage>533</fpage>             <lpage>541</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Abdollahi1"><label>40</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Abdollahi</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Schwager</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Kleeff</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Esposito</surname><given-names>I</given-names></name>
+<name name-style="western"><surname>Domhan</surname><given-names>S</given-names></name>
+<etal/></person-group>             <year>2007</year>             <article-title>Transcriptional network governing the angiogenic switch in human pancreatic cancer.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>104</volume>             <fpage>12890</fpage>             <lpage>12895</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Shi1"><label>41</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Shi</surname><given-names>XB</given-names></name>
+<name name-style="western"><surname>Tepper</surname><given-names>CG</given-names></name>
+<name name-style="western"><surname>W</surname><given-names>RW</given-names></name>
+</person-group>             <year>2008</year>             <article-title>Cancerous miRNAs and their regulation.</article-title>             <source>Cell Cycle</source>             <volume>7</volume>             <fpage>1529</fpage>             <lpage>1538</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Lin1"><label>42</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Lin</surname><given-names>SL</given-names></name>
+<name name-style="western"><surname>Miller</surname><given-names>JD</given-names></name>
+<name name-style="western"><surname>Ying</surname><given-names>SY</given-names></name>
+</person-group>             <year>2006</year>             <article-title>Intronic MicroRNA (miRNA).</article-title>             <source>J Biomed Biotechnol 2006: 26818.</source>             <fpage>26818</fpage>          </element-citation></ref>
+<ref id="pgen.1000879-Chu1"><label>43</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Chu</surname><given-names>YW</given-names></name>
+<name name-style="western"><surname>Yang</surname><given-names>PC</given-names></name>
+<name name-style="western"><surname>Yang</surname><given-names>SC</given-names></name>
+<name name-style="western"><surname>Shyu</surname><given-names>YC</given-names></name>
+<name name-style="western"><surname>Hendrix</surname><given-names>MJ</given-names></name>
+<etal/></person-group>             <year>1997</year>             <article-title>Selection of invasive and metastatic subpopulations from a human lung adenocarcinoma cell line.</article-title>             <source>Am J Respir Cell Mol Biol</source>             <volume>17</volume>             <fpage>353</fpage>             <lpage>360</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Wang2"><label>44</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Wang</surname><given-names>CC</given-names></name>
+<name name-style="western"><surname>Tsai</surname><given-names>MF</given-names></name>
+<name name-style="western"><surname>Dai</surname><given-names>TH</given-names></name>
+<name name-style="western"><surname>Hong</surname><given-names>TM</given-names></name>
+<name name-style="western"><surname>Chan</surname><given-names>WK</given-names></name>
+<etal/></person-group>             <year>2007</year>             <article-title>Synergistic activation of the tumor suppressor, HLJ1, by the transcription factors YY1 and activator protein 1.</article-title>             <source>Cancer Res</source>             <volume>67</volume>             <fpage>4816</fpage>             <lpage>4826</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Tseng1"><label>45</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Tseng</surname><given-names>RC</given-names></name>
+<name name-style="western"><surname>Lin</surname><given-names>RK</given-names></name>
+<name name-style="western"><surname>Wen</surname><given-names>CK</given-names></name>
+<name name-style="western"><surname>Tseng</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Hsu</surname><given-names>HS</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>Epigenetic silencing of AXIN2/betaTrCP and deregulation of p53-mediated control lead to wild-type beta-catenin nuclear accumulation in lung tumorigenesis.</article-title>             <source>Oncogene</source>             <volume>27</volume>             <fpage>4488</fpage>             <lpage>4496</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Chang1"><label>46</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Chang</surname><given-names>DK</given-names></name>
+<name name-style="western"><surname>Lin</surname><given-names>CT</given-names></name>
+<name name-style="western"><surname>Wu</surname><given-names>CH</given-names></name>
+<name name-style="western"><surname>Wu</surname><given-names>HC</given-names></name>
+</person-group>             <year>2009</year>             <article-title>A novel peptide enhances therapeutic efficacy of liposomal anti-cancer drugs in mice models of human lung cancer.</article-title>             <source>PLoS ONE</source>             <volume>4</volume>             <fpage>e4171</fpage>             <comment>doi:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0004171" xlink:type="simple">10.1371/journal.pone.0004171</ext-link></comment>          </element-citation></ref>
+<ref id="pgen.1000879-Torng1"><label>47</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Torng</surname><given-names>PL</given-names></name>
+<name name-style="western"><surname>Lee</surname><given-names>YC</given-names></name>
+<name name-style="western"><surname>Huang</surname><given-names>CY</given-names></name>
+<name name-style="western"><surname>Ye</surname><given-names>JH</given-names></name>
+<name name-style="western"><surname>Lin</surname><given-names>YS</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>Insulin-like growth factor binding protein-3 (IGFBP-3) acts as an invasion-metastasis suppressor in ovarian endometrioid carcinoma.</article-title>             <source>Oncogene</source>             <volume>27</volume>             <fpage>2137</fpage>             <lpage>2147</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Yu1"><label>48</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Yu</surname><given-names>SL</given-names></name>
+<name name-style="western"><surname>Chen</surname><given-names>HY</given-names></name>
+<name name-style="western"><surname>Chang</surname><given-names>GC</given-names></name>
+<name name-style="western"><surname>Chen</surname><given-names>CY</given-names></name>
+<name name-style="western"><surname>Chen</surname><given-names>HW</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>MicroRNA signature predicts survival and relapse in lung cancer.</article-title>             <source>Cancer Cell</source>             <volume>13</volume>             <fpage>48</fpage>             <lpage>57</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Zhu1"><label>49</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Zhu</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Wu</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Wu</surname><given-names>F</given-names></name>
+<name name-style="western"><surname>Nie</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Sheng</surname><given-names>S</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>MicroRNA-21 targets tumor suppressor genes in invasion and metastasis.</article-title>             <source>Cell Res</source>             <volume>18</volume>             <fpage>350</fpage>             <lpage>359</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Hiyoshi1"><label>50</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Hiyoshi</surname><given-names>Y</given-names></name>
+<name name-style="western"><surname>Kamohara</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Karashima</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Sato</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>Imamura</surname><given-names>Y</given-names></name>
+<etal/></person-group>             <year>2009</year>             <article-title>MicroRNA-21 Regulates the Proliferation and Invasion in Esophageal Squamous Cell Carcinoma.</article-title>             <source>Clin Cancer Res</source>          </element-citation></ref>
+<ref id="pgen.1000879-Crawford1"><label>51</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Crawford</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Brawner</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Batte</surname><given-names>K</given-names></name>
+<name name-style="western"><surname>Yu</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>Hunter</surname><given-names>MG</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>MicroRNA-126 inhibits invasion in non-small cell lung carcinoma cell lines.</article-title>             <source>Biochem Biophys Res Commun</source>             <volume>373</volume>             <fpage>607</fpage>             <lpage>612</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Tavazoie1"><label>52</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Tavazoie</surname><given-names>SF</given-names></name>
+<name name-style="western"><surname>Alarcon</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Oskarsson</surname><given-names>T</given-names></name>
+<name name-style="western"><surname>Padua</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Wang</surname><given-names>Q</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>Endogenous human microRNAs that suppress breast cancer metastasis.</article-title>             <source>Nature</source>             <volume>451</volume>             <fpage>147</fpage>             <lpage>152</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Li2"><label>53</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Li</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>Fu</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Tie</surname><given-names>Y</given-names></name>
+<name name-style="western"><surname>Hu</surname><given-names>Z</given-names></name>
+<name name-style="western"><surname>Kong</surname><given-names>W</given-names></name>
+<etal/></person-group>             <year>2009</year>             <article-title>miR-34a inhibits migration and invasion by down-regulation of c-Met expression in human hepatocellular carcinoma cells.</article-title>             <source>Cancer Lett</source>             <volume>275</volume>             <fpage>44</fpage>             <lpage>53</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Gebeshuber1"><label>54</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Gebeshuber</surname><given-names>CA</given-names></name>
+<name name-style="western"><surname>Zatloukal</surname><given-names>K</given-names></name>
+<name name-style="western"><surname>Martinez</surname><given-names>J</given-names></name>
+</person-group>             <year>2009</year>             <article-title>miR-29a suppresses tristetraprolin, which is a regulator of epithelial polarity and metastasis.</article-title>             <source>EMBO Rep</source>          </element-citation></ref>
+<ref id="pgen.1000879-Dalmay1"><label>55</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Dalmay</surname><given-names>T</given-names></name>
+<name name-style="western"><surname>Edwards</surname><given-names>DR</given-names></name>
+</person-group>             <year>2006</year>             <article-title>MicroRNAs and the hallmarks of cancer.</article-title>             <source>Oncogene</source>             <volume>25</volume>             <fpage>6170</fpage>             <lpage>6175</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Huminiecki1"><label>56</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Huminiecki</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>Gorn</surname><given-names>M</given-names></name>
+<name name-style="western"><surname>Suchting</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Poulsom</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Bicknell</surname><given-names>R</given-names></name>
+</person-group>             <year>2002</year>             <article-title>Magic Roundabout Is a New Member of the Roundabout Receptor Family That Is Endothelial Specific and Expressed at Sites of Active Angiogenesis.</article-title>             <source>Genomics</source>             <volume>79</volume>             <fpage>547</fpage>             <lpage>552</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Brose1"><label>57</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Brose</surname><given-names>K</given-names></name>
+<name name-style="western"><surname>Tessier-Lavigne</surname><given-names>M</given-names></name>
+</person-group>             <year>2000</year>             <article-title>Slit proteins: key regulators of axon guidance, axonal branching, and cell migration.</article-title>             <source>Curr Opin Neurobiol</source>             <volume>10</volume>             <fpage>95</fpage>             <lpage>102</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Kidd1"><label>58</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Kidd</surname><given-names>T</given-names></name>
+<name name-style="western"><surname>Brose</surname><given-names>K</given-names></name>
+<name name-style="western"><surname>Mitchell</surname><given-names>KJ</given-names></name>
+<name name-style="western"><surname>Fetter</surname><given-names>RD</given-names></name>
+<name name-style="western"><surname>Tessier-Lavigne</surname><given-names>M</given-names></name>
+<etal/></person-group>             <year>1998</year>             <article-title>Roundabout controls axon crossing of the CNS midline and defines a novel subfamily of evolutionarily conserved guidance receptors.</article-title>             <source>Cell</source>             <volume>92</volume>             <fpage>205</fpage>             <lpage>215</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Zallen1"><label>59</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Zallen</surname><given-names>JA</given-names></name>
+<name name-style="western"><surname>Yi</surname><given-names>BA</given-names></name>
+<name name-style="western"><surname>Bargmann</surname><given-names>CI</given-names></name>
+</person-group>             <year>1998</year>             <article-title>The conserved immunoglobulin superfamily member SAX-3/Robo directs multiple aspects of axon guidance in C. elegans.</article-title>             <source>Cell</source>             <volume>92</volume>             <fpage>217</fpage>             <lpage>227</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Dickson1"><label>60</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Dickson</surname><given-names>BJ</given-names></name>
+<name name-style="western"><surname>Gilestro</surname><given-names>GF</given-names></name>
+</person-group>             <year>2006</year>             <article-title>Regulation of commissural axon pathfinding by slit and its Robo receptors.</article-title>             <source>Annu Rev Cell Dev Biol</source>             <volume>22</volume>             <fpage>651</fpage>             <lpage>675</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Bhat1"><label>61</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Bhat</surname><given-names>KM</given-names></name>
+<name name-style="western"><surname>Gaziova</surname><given-names>I</given-names></name>
+<name name-style="western"><surname>Krishnan</surname><given-names>S</given-names></name>
+</person-group>             <year>2007</year>             <article-title>Regulation of axon guidance by slit and netrin signaling in the Drosophila ventral nerve cord.</article-title>             <source>Genetics</source>             <volume>176</volume>             <fpage>2235</fpage>             <lpage>2246</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Wu2"><label>62</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Wu</surname><given-names>JY</given-names></name>
+<name name-style="western"><surname>Feng</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>Park</surname><given-names>HT</given-names></name>
+<name name-style="western"><surname>Havlioglu</surname><given-names>N</given-names></name>
+<name name-style="western"><surname>Wen</surname><given-names>L</given-names></name>
+<etal/></person-group>             <year>2001</year>             <article-title>The neuronal repellent Slit inhibits leukocyte chemotaxis induced by chemotactic factors.</article-title>             <source>Nature</source>             <volume>410</volume>             <fpage>948</fpage>             <lpage>952</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Guan1"><label>63</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Guan</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Zu</surname><given-names>G</given-names></name>
+<name name-style="western"><surname>Xie</surname><given-names>Y</given-names></name>
+<name name-style="western"><surname>Tang</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Johnson</surname><given-names>M</given-names></name>
+<etal/></person-group>             <year>2003</year>             <article-title>Neuronal repellent Slit2 inhibits dendritic cell migration and the development of immune responses.</article-title>             <source>J Immunol</source>             <volume>171</volume>             <fpage>6519</fpage>             <lpage>6526</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Prasad1"><label>64</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Prasad</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Qamri</surname><given-names>Z</given-names></name>
+<name name-style="western"><surname>Wu</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Ganju</surname><given-names>RK</given-names></name>
+</person-group>             <year>2007</year>             <article-title>Slit-2/Robo-1 modulates the CXCL12/CXCR4-induced chemotaxis of T cells.</article-title>             <source>J Leukoc Biol</source>             <volume>82</volume>             <fpage>465</fpage>             <lpage>476</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Rossi1"><label>65</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Rossi</surname><given-names>MR</given-names></name>
+<name name-style="western"><surname>Huntoon</surname><given-names>K</given-names></name>
+<name name-style="western"><surname>Cowell</surname><given-names>JK</given-names></name>
+</person-group>             <year>2005</year>             <article-title>Differential expression of the LGI and SLIT families of genes in human cancer cells.</article-title>             <source>Gene</source>             <volume>356</volume>             <fpage>85</fpage>             <lpage>90</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Narayan1"><label>66</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Narayan</surname><given-names>G</given-names></name>
+<name name-style="western"><surname>Goparaju</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Arias-Pulido</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Kaufmann</surname><given-names>AM</given-names></name>
+<name name-style="western"><surname>Schneider</surname><given-names>A</given-names></name>
+<etal/></person-group>             <year>2006</year>             <article-title>Promoter hypermethylation-mediated inactivation of multiple Slit-Robo pathway genes in cervical cancer progression.</article-title>             <source>Mol Cancer</source>             <volume>5</volume>             <fpage>16</fpage>          </element-citation></ref>
+<ref id="pgen.1000879-Singh1"><label>67</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Singh</surname><given-names>RK</given-names></name>
+<name name-style="western"><surname>Indra</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Mitra</surname><given-names>S</given-names></name>
+<name name-style="western"><surname>Mondal</surname><given-names>RK</given-names></name>
+<name name-style="western"><surname>Basu</surname><given-names>PS</given-names></name>
+<etal/></person-group>             <year>2007</year>             <article-title>Deletions in chromosome 4 differentially associated with the development of cervical cancer: evidence of slit2 as a candidate tumor suppressor gene.</article-title>             <source>Hum Genet</source>             <volume>122</volume>             <fpage>71</fpage>             <lpage>81</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Prasad2"><label>68</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Prasad</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Paruchuri</surname><given-names>V</given-names></name>
+<name name-style="western"><surname>Preet</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Latif</surname><given-names>F</given-names></name>
+<name name-style="western"><surname>Ganju</surname><given-names>RK</given-names></name>
+</person-group>             <year>2008</year>             <article-title>Slit-2 induces a tumor-suppressive effect by regulating beta-catenin in breast cancer cells.</article-title>             <source>J Biol Chem</source>             <volume>283</volume>             <fpage>26624</fpage>             <lpage>26633</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Dallol1"><label>69</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Dallol</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Forgacs</surname><given-names>E</given-names></name>
+<name name-style="western"><surname>Martinez</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Sekido</surname><given-names>Y</given-names></name>
+<name name-style="western"><surname>Walker</surname><given-names>R</given-names></name>
+<etal/></person-group>             <year>2002</year>             <article-title>Tumour specific promoter region methylation of the human homologue of the Drosophila Roundabout gene DUTT1 (ROBO1) in human cancers.</article-title>             <source>Oncogene</source>             <volume>21</volume>             <fpage>3020</fpage>             <lpage>3028</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Xian1"><label>70</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Xian</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Clark</surname><given-names>KJ</given-names></name>
+<name name-style="western"><surname>Fordham</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Pannell</surname><given-names>R</given-names></name>
+<name name-style="western"><surname>Rabbitts</surname><given-names>TH</given-names></name>
+<etal/></person-group>             <year>2001</year>             <article-title>Inadequate lung development and bronchial hyperplasia in mice with a targeted deletion in the Dutt1/Robo1 gene.</article-title>             <source>Proc Natl Acad Sci U S A</source>             <volume>98</volume>             <fpage>15062</fpage>             <lpage>15066</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Latil1"><label>71</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Latil</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Chene</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>Cochant-Priollet</surname><given-names>B</given-names></name>
+<name name-style="western"><surname>Mangin</surname><given-names>P</given-names></name>
+<name name-style="western"><surname>Fournier</surname><given-names>G</given-names></name>
+<etal/></person-group>             <year>2003</year>             <article-title>Quantification of expression of netrins, slits and their receptors in human prostate tumors.</article-title>             <source>Int J Cancer</source>             <volume>103</volume>             <fpage>306</fpage>             <lpage>315</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Kim1"><label>72</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Kim</surname><given-names>HK</given-names></name>
+<name name-style="western"><surname>Zhang</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Li</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Wu</surname><given-names>TT</given-names></name>
+<name name-style="western"><surname>Swisher</surname><given-names>S</given-names></name>
+<etal/></person-group>             <year>2008</year>             <article-title>Slit2 inhibits growth and metastasis of fibrosarcoma and squamous cell carcinoma.</article-title>             <source>Neoplasia</source>             <volume>10</volume>             <fpage>1411</fpage>             <lpage>1420</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Jin1"><label>73</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Jin</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>You</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Yu</surname><given-names>B</given-names></name>
+<name name-style="western"><surname>Deng</surname><given-names>Y</given-names></name>
+<name name-style="western"><surname>Tang</surname><given-names>N</given-names></name>
+<etal/></person-group>             <year>2009</year>             <article-title>Epigenetic inactivation of SLIT2 in human hepatocellular carcinomas.</article-title>             <source>Biochem Biophys Res Commun</source>             <volume>379</volume>             <fpage>86</fpage>             <lpage>91</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Andrews1"><label>74</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Andrews</surname><given-names>W</given-names></name>
+<name name-style="western"><surname>Liapi</surname><given-names>A</given-names></name>
+<name name-style="western"><surname>Plachez</surname><given-names>C</given-names></name>
+<name name-style="western"><surname>Camurri</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>Zhang</surname><given-names>J</given-names></name>
+<etal/></person-group>             <year>2006</year>             <article-title>Robo1 regulates the development of major axon tracts and interneuron migration in the forebrain.</article-title>             <source>Development</source>             <volume>133</volume>             <fpage>2243</fpage>             <lpage>2252</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Liu1"><label>75</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Liu</surname><given-names>J</given-names></name>
+<name name-style="western"><surname>Zhang</surname><given-names>L</given-names></name>
+<name name-style="western"><surname>Wang</surname><given-names>D</given-names></name>
+<name name-style="western"><surname>Shen</surname><given-names>H</given-names></name>
+<name name-style="western"><surname>Jiang</surname><given-names>M</given-names></name>
+<etal/></person-group>             <year>2003</year>             <article-title>Congenital diaphragmatic hernia, kidney agenesis and cardiac defects associated with Slit3-deficiency in mice.</article-title>             <source>Mech Dev</source>             <volume>120</volume>             <fpage>1059</fpage>             <lpage>1070</lpage>          </element-citation></ref>
+<ref id="pgen.1000879-Barik1"><label>76</label><element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author">
+<name name-style="western"><surname>Barik</surname><given-names>S</given-names></name>
+</person-group>             <year>2008</year>             <article-title>An intronic microRNA silences genes that are functionally antagonistic to its host gene.</article-title>             <source>Nucleic Acids Res</source>             <volume>36</volume>             <fpage>5232</fpage>             <lpage>5241</lpage>          </element-citation></ref>
+</ref-list>
+
+</back>
+</article>

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article article-type="research-article" dtd-version="3.0" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0147183</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-15-22483</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Pharmacology</subject><subj-group><subject>Drug interactions</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Pharmacology</subject><subj-group><subject>Pharmacokinetics</subject><subj-group><subject>Drug metabolism</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Enzymology</subject><subj-group><subject>Enzyme chemistry</subject><subj-group><subject>Enzyme metabolism</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Enzymology</subject><subj-group><subject>Enzymes</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Proteins</subject><subj-group><subject>Enzymes</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Enzymology</subject><subj-group><subject>Enzyme inhibitors</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Pharmaceutics</subject><subj-group><subject>Drug therapy</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Enzymology</subject><subj-group><subject>Enzyme kinetics</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Oncology</subject><subj-group><subject>Cancer treatment</subject></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Screening of Drug Metabolizing Enzymes for the Ginsenoside Compound K <italic>In Vitro</italic>: An Efficient Anti-Cancer Substance Originating from <italic>Panax Ginseng</italic></article-title>
+<alt-title alt-title-type="running-head">Screening of Metabolizing Enzymes for CK</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Xiao</surname>
+<given-names>Jian</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="aff" rid="aff005"><sup>5</sup></xref>
+</contrib>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Chen</surname>
+<given-names>Dan</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Lin</surname>
+<given-names>Xiu-Xian</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Peng</surname>
+<given-names>Shi-Fang</given-names>
+</name>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Xiao</surname>
+<given-names>Mei-Fang</given-names>
+</name>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Huang</surname>
+<given-names>Wei-Hua</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Wang</surname>
+<given-names>Yi-Cheng</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Peng</surname>
+<given-names>Jing-Bo</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Zhang</surname>
+<given-names>Wei</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Ouyang</surname>
+<given-names>Dong-Sheng</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Chen</surname>
+<given-names>Yao</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Department of Clinical Pharmacology, Xiangya Hospital, Central South University, Changsha, Hunan, China</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Institute of Clinical Pharmacology, Central South University, Changsha, Hunan, China</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Department of Hepatology and Infectious Diseases, Xiangya Hospital, Central South University, Changsha, Hunan, China</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Health Management Center, Xiangya Hospital, Central South University, Changsha, Hunan, China</addr-line></aff>
+<aff id="aff005"><label>5</label> <addr-line>Department of Pharmacy, Xiangya Hospital, Central South University, Changsha, Hunan, China</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Ogunwobi</surname>
+<given-names>Olorunseun</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Hunter College of The City University of New York, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>Thanks to Zhejiang Hisun Pharmaceutical Company Limited (Zhejiang, China) for providing the Ginsenoside compound K. The pharmaceutical company didn't have a role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript.</p>
+</fn>
+<fn fn-type="con" id="contrib001">
+<p>Conceived and designed the experiments: JX WHH YC. Performed the experiments: JX DC XXL YCW JBP YC. Analyzed the data: JX DC WZ YC. Contributed reagents/materials/analysis tools: SFP MFX DSO YC. Wrote the paper: JX DC YC.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">cbohua@163.com</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>4</day>
+<month>2</month>
+<year>2016</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2016</year>
+</pub-date>
+<volume>11</volume>
+<issue>2</issue>
+<elocation-id>e0147183</elocation-id>
+<history>
+<date date-type="received">
+<day>23</day>
+<month>5</month>
+<year>2015</year>
+</date>
+<date date-type="accepted">
+<day>30</day>
+<month>12</month>
+<year>2015</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2016</copyright-year>
+<copyright-holder>Xiao et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0147183"/>
+<abstract>
+<p>Ginsenoside compound K (CK), a rare ginsenoside originating from <italic>Panax Ginseng</italic>, has been found to possess unique pharmacological activities specifically as anti-cancers. However, the role of cytochrome P450s (CYPs) in the metabolism of CK is unclear. In this study, we screened the CYPs for the metabolism of CK <italic>in vitro</italic> using human liver microsomes (HLMs) or human recombinant CYPs. The results showed that CK inhibited the enzyme activities of CYP2C9 and CYP3A4 in the HLMs. The <italic>K</italic><sub><italic>m</italic></sub> and <italic>V</italic><sub><italic>max</italic></sub> values of CK were 84.20±21.92 μM and 0.28±0.04 nmol/mg protein/min, respectively, for the HLMs; 34.63±10.48 μM and 0.45±0.05 nmol/nmol P450/min, respectively, for CYP2C9; and 27.03±5.04 μM and 0.68±0.04 nmol/nmol P450/min, respectively, for CYP3A4. The <italic>IC</italic><sub><italic>50</italic></sub> values were 16.00 μM and 9.83 μM, and <italic>K</italic><sub><italic>i</italic></sub> values were 14.92 μM and 11.42μM for CYP2C9 and CYP3A4, respectively. Other human CYP isoforms, including CYP1A2, CYP2A6, CYP2D6, CYP2E1, and CYP2C19, showed minimal or no effect on CK metabolism. The results suggested that CK was a substrate and also inhibitors for both CYP2C9 and CYP3A4. Patients using CK in combination with therapeutic drugs that are substrates of CYP2C9 and CYP3A4 for different reasons should be careful, although the inhibiting potency of CK is much poorer than that of enzyme-specific inhibitors.</p>
+</abstract>
+<funding-group>
+<funding-statement>This work was supported by the National Scientific Foundation of China (Grants 81302850, 81300204, 31400306); the China Postdoctoral Science Foundation (Grants 2013M531817, 2014T70793); and the Science and Technology Plan Projects of Hunan Province (Grant 2014RS4011).</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="10"/>
+<table-count count="0"/>
+<page-count count="15"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p><italic>Panax Ginseng</italic> is a complementary and alternative medicine (CAM) that has many pharmacological activities, such as maintaining physical vitality and boosting resistance to stress and aging [<xref ref-type="bibr" rid="pone.0147183.ref001">1</xref>]. <italic>Panax Ginseng</italic> is widely used in clinics for cancer prevention, erectile dysfunction, and enhanced physical functions, among others [<xref ref-type="bibr" rid="pone.0147183.ref002">2</xref>]. The main active constituents of <italic>Panax Ginseng</italic> are ginsenosides, and to date, more than 150 naturally derived ginsenosides have been obtained from <italic>Panax Ginseng</italic> [<xref ref-type="bibr" rid="pone.0147183.ref003">3</xref>]. The main constituents comprising more than 80% of the content of <italic>Panax Ginseng</italic> are Rb1, Rb2, Rc, Rg1, and Re. The rest are known as rare ginsenosides, which account for only a small portion of the total saponins, and they have unique pharmacological activities [<xref ref-type="bibr" rid="pone.0147183.ref004">4</xref>].</p>
+<p>Ginsenoside compound K (CK), or 20-O-β-(D-glucopyranosyl)-20(S)-protopanaxadiol (The molecular structure is shown in <xref ref-type="fig" rid="pone.0147183.g001">Fig 1</xref>), is naturally absent. It belongs to the rare ginsenoside, which is transformed from ginsenosideRb1 and Rb2 by intestinal bacteria [<xref ref-type="bibr" rid="pone.0147183.ref005">5</xref>]. Ginsenosides are poorly absorbed from the gut while their metabolite CK is absorbed. As the final form, CK playing a pharmacological role has caused growing interest. CK can resist all kinds of tumor cells and promote cell apoptosis, such as colorectal cancer cells, gastric cancer cells, lung cancer cells, and multiple myeloma [<xref ref-type="bibr" rid="pone.0147183.ref001">1</xref>, <xref ref-type="bibr" rid="pone.0147183.ref006">6</xref>, <xref ref-type="bibr" rid="pone.0147183.ref007">7</xref>]. CK increases the resistance to immunity function to extend the transplant survival time in heart transplantation, has an anti-inflammatory function, resists skin aging, and protects the myocardium [<xref ref-type="bibr" rid="pone.0147183.ref001">1</xref>, <xref ref-type="bibr" rid="pone.0147183.ref008">8</xref>].</p>
+<fig id="pone.0147183.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0147183.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>The molecular structure of CK.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0147183.g001" xlink:type="simple"/>
+</fig>
+<p>The unique biological activity of CK has attracted much attention, and thus it has a wide application prospect. The current use of CAM by patients is increasing [<xref ref-type="bibr" rid="pone.0147183.ref009">9</xref>]. The concomitant use of CAM and therapeutic drugs could lead to serious safety issues in patients. CAM has the potential to cause pharmacokinetic interactions with therapeutic drugs. It can either increase or decrease the plasma levels of therapeutic drugs and result in unexpected toxicities or reduced efficacy [<xref ref-type="bibr" rid="pone.0147183.ref010">10</xref>].</p>
+<p>Most pharmacokinetic CAM–drug interactions involve drug metabolizing cytochrome P450 (CYP) enzymes [<xref ref-type="bibr" rid="pone.0147183.ref011">11</xref>, <xref ref-type="bibr" rid="pone.0147183.ref012">12</xref>]. The CYPs are a large family of drug-metabolizing enzymes that play a critical role in phase I drug metabolism. Moreover, most of the endogenous and exogenous substances are the substrates of CYPs. The major CYPs involved in the metabolism of most drugs are CYP1A2, CYP2A6, CYP2C9, CYP2D6, CYP2E1, CYP2C19, and CYP3A4, which account for more than 90% of the metabolism of endogenous and exogenous substances [<xref ref-type="bibr" rid="pone.0147183.ref013">13</xref>].</p>
+<p>CK is one of the most frequently used CAM for many diseases in clinics. As co-administration cannot be avoided, how to prevent CK–drug interactions has become a main issue among patients. To provide rational advice for the usage of drugs, we examined the CYP enzymes responsible for the metabolism of CK in the present study.</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Methods</title>
+<sec id="sec003">
+<title>Enzymes and chemicals</title>
+<p>The enzymes and chemicals ware prepared according to our previous study with some modifications [<xref ref-type="bibr" rid="pone.0147183.ref014">14</xref>]. Pooled human liver microsomes, recombinant human CYP enzymes, and NADPH were purchased from Cypex Ltd. (U.K.) and stored at -80°C until use. Ginsenoside compound K (CK, C<sub>36</sub>H<sub>62</sub>O<sub>8</sub>, MW:622.873, assay≥99.2%, Lot: P1201-1) was provided by Zhejiang Hisun Pharmaceutical Company Limited (Zhejiang, China). Furafylline, tranylcypromine, ketoconazole,sulfaphenazole, quinidine, chlormethiazole hydrochloride, and ticlopidine hydrochloride were purchased from the National Institutes for Food and Drug Control (Beijing, China). Phenacetin, coumarin, midazolam, tolbutamide, S-Mephenytoin, metoprolol, chlorzoxazone, and the standards for their metabolites, including acetaminophen, 7-hydroxyl coumarin, 1-hydroxyl midazolam, 4-hydroxyl tolbutamide, 4-hydroxyl mephenytoin, α-hydroxyl metoprolol, 6-hydroxyl chlorzoxazone, and irbesartan (the internal standard), were purchased from Sigma-Aldrich (Shanghai, China). All other chemicals and solvents were of high-performance liquid chromatography (HPLC) grade.</p>
+</sec>
+<sec id="sec004">
+<title>Apparatus and operation conditions</title>
+<p>The concentrations of the CYP substrates and their metabolites were quantified according to the method reported in our previous study with some modifications [<xref ref-type="bibr" rid="pone.0147183.ref014">14</xref>]. A Waters 2695 separation module HPLC system coupled to a Quattro micro<sup>™</sup> API triple quadrupole tandem mass spectrometer (Waters Corp., Milford, Massachusetts, USA) with an electrospray ionization source was used. The samples were separated on a HyPURITY C<sub>18</sub> column (150 mm × 2.1 mm, 5 μm, Thermo, USA). The mobile phases consisted of 20 mM ammonium formate and acetonitrile at a ratio of 60:40. Aliquots of 20 μL were injected at a mobile phase flow rate of 0.3 mL/min. Multiple reaction monitoring was conducted in the positive mode, except for CK that was conducted in the negative mode (parent ion m/z 621.4 to daughter ion m/z 160.8). The other transitions were the same as those reported in our previous study [<xref ref-type="bibr" rid="pone.0147183.ref014">14</xref>]. The mass spectra of the metabolites formed in the incubations were identical to those of the corresponding authentic standards.</p>
+</sec>
+<sec id="sec005">
+<title>General incubation conditions</title>
+<p>The method was conducted according to our previous study with some modifications [<xref ref-type="bibr" rid="pone.0147183.ref014">14</xref>]. The CYP isoform-specific probe reactions used were phenacetin O-deethylation (for CYP1A2), coumarin 7-hydroxylation (for CYP2A6), tolbutamide 4-hydroxylation (for CYP2C9), metoprolol α-hydroxylation (for CYP2D6), chlorzoxazone 6-hydroxylation (for CYP2E1),S-Mephenytoin 4-hydroxylation (for CYP2C19), and midazolam 1-hydroxylation (for CYP3A4). The kinetic study of CK was conducted with HLMs. A 0.2 mL incubation mixture that consisted of CK (as a substrate), the HLMs (0.5 mg/mL) or CYP isoforms (10 pmol), and 0.1 M sodium phosphate buffer (pH 7.4) was pre-warmed for 5 min at 37°C. The reaction was initiated by the addition of 1 mg/mL triphosphopyridine nucleotide (NADPH). All the reagents were dissolved in methanol, and the final solvent concentration in all incubations (including the controls) was 1%. The final incubations were performed in a shaking water bath (37°C) for 30 min. The reactions were stopped by adding 0.2 mL ice-cold acetonitrile, which contains irbesartan (114.9 ng/mL) as the internal standard. The samples were vortexed for 5 min. After centrifugation (12000×g for 10 min), the supernatants were transferred, and aliquots of 20 μL were injected into the HPLC-MS/MS system for analysis.</p>
+</sec>
+<sec id="sec006">
+<title>Kinetic analysis of CK</title>
+<p>The kinetic parameters for the metabolism of CK were determined by incubating increasing concentrations of CK (10–100 μM) at 37°C with the HLMs and NADPH under the incubation conditions as described in detail previously [<xref ref-type="bibr" rid="pone.0147183.ref014">14</xref>]. The equation of CK reaction velocity (<italic>V</italic>) in the HLMs or CYP isoforms is expressed as <italic>V = (C</italic><sub><italic>0</italic></sub><italic>–C</italic><sub><italic>t</italic></sub><italic>)/</italic>T<italic>/C</italic><sub><italic>p</italic></sub>, where <italic>C</italic><sub><italic>0</italic></sub>and <italic>C</italic><sub><italic>t</italic></sub> are the initial and final concentrations of CK in the incubation solution, respectively, T is the incubation time (min), and <italic>Cp</italic> is the protein concentration (mg/mL or nmol). All values were expressed as the mean±standard deviation (SD). The mean intrinsic clearance rate (<italic>CL</italic><sub><italic>int</italic></sub>) for the <italic>in vitro</italic> incubation was estimated using <italic>V</italic><sub><italic>max</italic></sub><italic>/K</italic><sub><italic>m</italic></sub>.</p>
+</sec>
+<sec id="sec007">
+<title>Specific CYP isoforms screened for the CK metabolism</title>
+<p>To screen the specific CYP isoform responsible for the CK metabolism, we determined the inhibitory effect of specific inhibitors on the metabolism of CK in the HLMs as described in detail previously [<xref ref-type="bibr" rid="pone.0147183.ref014">14</xref>]. Inhibitors including furafylline (for CYP1A2), tranylcypromine (for CYP2A6), sulfaphenazole (for CYP2C9), quinidine (for CYP2D6), chlormethiazole (for CYP2E1), ticlopidine (for CYP2C19), and ketoconazole (for CYP3A4) were separately incubated with CK (50 μM), the HLMs, and NADPH under the same incubation conditions as mentioned above.The concentrations of the inhibitors used were approximately at their respective <italic>IC</italic><sub><italic>50</italic></sub> values according to previous reports [<xref ref-type="bibr" rid="pone.0147183.ref015">15</xref>–<xref ref-type="bibr" rid="pone.0147183.ref018">18</xref>]. The inhibitory effects of the above specific inhibitors on the metabolic clearance rate of CK were evaluated separately to screen the CYP isoforms responsible for the CK metabolism. The relative activity of the CYP isoforms was calculated by dividing the peak area of CK when incubated with the inhibitor by that of CK from the negative controls.</p>
+</sec>
+<sec id="sec008">
+<title>Inhibition studies on <italic>IC</italic><sub><italic>50</italic></sub> determination</title>
+<p>CK (10–100 μM) and a single CYP isoform-specific substrate (with a concentration similar to its corresponding <italic>K</italic><sub><italic>m</italic></sub>value) were used to determine the inhibitory effect of CK on specific CYP isoforms as described in detail previously [<xref ref-type="bibr" rid="pone.0147183.ref014">14</xref>]. Substrates including phenacetin, coumarin, tolbutamide, metoprolol, chlorzoxazone, S-Mephenytoin, and midazolam were used at concentrations of 10, 5, 100, 7.5, 40, 100, and 5 μM, respectively. All incubation conditions were the same as mentioned above. The inhibitory effects on the CYP isoforms were investigated individually by incubating the HLMs in the absence or presence of CK. The incubation solution with the solvent that was used to dissolve CK was regarded as the negative control, and the solutions containing the specific inhibitors mentioned above were considered the positive controls.</p>
+</sec>
+<sec id="sec009">
+<title>Determination of <italic>K</italic><sub><italic>i</italic></sub></title>
+<p>In the <italic>IC</italic><sub><italic>50</italic></sub> determination experiments, CK markedly inhibited CYP2C9 and CYP3A4, whereas its effect on CYP1A2, CYP2A6, CYP2D6, CYP2E1 and CYP2C19 was minimal. Therefore, Dixon plots for the inhibition of CYP2C9 and CYP3A4 were determined by incubating the substrate probe at multiple concentrations with or without the test inhibitor with the HLMs and cofactors. The inhibition data obtained from the pilot experiments were used as a guide to generate the appropriate probe substrate and test inhibitor concentrations for the determination of the <italic>K</italic><sub><italic>i</italic></sub> values for each CYP isoform. The isoform-specific probe substrate concentrations used were 25–200 μM tolbutamide for CYP2C9 and 5–50 μM midazolam for CYP3A4. The CK concentrations used were 10–100 μM.</p>
+</sec>
+<sec id="sec010">
+<title>Determination of <italic>K</italic><sub><italic>i</italic></sub><sup><italic>’</italic></sup></title>
+<p>According to Cornish-Bowden <italic>et al</italic>.[<xref ref-type="bibr" rid="pone.0147183.ref019">19</xref>], a Dixon plot is limited by the fact that it does not distinguish unambiguously between competitive and mixed inhibitors and, for mixed or uncompetitive inhibitors, it provides no measure of <italic>K</italic><sub><italic>i’</italic></sub>, the dissociation constant of the EIS complex. Therefore, we used S/V versus [I] plots to determine the <italic>K</italic><sub><italic>i’</italic></sub> values for the inhibition of CYP2C9 and CYP3A4. When <italic>K</italic><sub><italic>i</italic></sub>&gt;<italic>K</italic><sub><italic>i</italic></sub>’, the intersection was above the [I] axis in the plot of S/V against [I] and below it in the Dixon plot; the opposite was true if <italic>K</italic><sub><italic>i</italic></sub>&lt;<italic>K</italic><sub><italic>i</italic></sub><italic>’</italic>. In the special case where <italic>K</italic><sub><italic>i</italic></sub> = <italic>Ki’</italic> (simple non-competitive inhibition), the intersections occurred on the [I] axis in both plots. The asymptotic cases of competitive and uncompetitive inhibition can be generated by inserting the conditions <italic>K</italic><sub><italic>i’</italic></sub> to ∞ for competitive inhibition, or <italic>K</italic><sub><italic>i</italic></sub> to ∞ for uncompetitive inhibition [<xref ref-type="bibr" rid="pone.0147183.ref019">19</xref>].</p>
+</sec>
+<sec id="sec011">
+<title>Calculation of the enzyme kinetics and statistical method</title>
+<p>As described in detail previously [<xref ref-type="bibr" rid="pone.0147183.ref014">14</xref>], to determine the major enzymes responsible for the CK metabolism in HLMs, the metabolic clearance rate of the incubation solution without any specific inhibitor for CK was considered as 100%. The effects of the specific inhibitors on the metabolic clearance rate of CK were evaluated with SPSS one-way analysis of variance (SPSS Inc., Chicago, IL, USA). P&lt;0.05 was considered significant in all cases. The apparent kinetic parameters of CK (<italic>K</italic><sub><italic>m</italic></sub> and <italic>V</italic><sub><italic>max</italic></sub>) were determined by fitting the Michaelis–Menten equation using the GraphPad Prism Enzyme Kinetic 5 Demo software (GraphPad Co. Ltd, San Diego, CA, USA). The equation is expressed as <italic>V = V</italic><sub><italic>max</italic></sub><italic>[S]/(K</italic><sub><italic>m</italic></sub><italic>+[S])</italic>, where <italic>K</italic><sub><italic>m</italic></sub> is the substrate concentration at which the reaction velocity is 50% of <italic>V</italic><sub><italic>max</italic></sub>. To determine the inhibition of the CYP isoforms, the activity of each CYP isoform was calculated using the metabolic clearance rate of its corresponding probe substrate. The metabolic clearance rate of the probe substrate was considered 100% when no specific inhibitor and CK were added to the incubation assay. The <italic>IC</italic><sub><italic>50</italic></sub><italic>s</italic> were determined by analyzing the plot of the logarithm of the inhibitor concentration versus the percentage of activity remaining after inhibition using the SPSS software for Windows (version 11.5, SPSS, Chicago, IL). To calculate the <italic>K</italic><sub><italic>i</italic></sub> values, the inhibition data were fit to different models of enzyme inhibition (competitive, noncompetitive) by nonlinear least-squares regression analysis using the GraphPad Prism 5 software (GraphPad Co. Ltd), <italic>K</italic><sub><italic>i</italic></sub> values were calculated with the use of nonlinear regression according to the equation <italic>v</italic> = (<italic>V</italic><sub><italic>max</italic></sub><italic>S</italic>)/(<italic>K</italic><sub><italic>m</italic></sub>(1+<italic>I/K</italic><sub><italic>i</italic></sub>)+<italic>S</italic>) for competitive inhibition and equation <italic>v</italic> = (<italic>V</italic><sub><italic>max</italic></sub><italic>S</italic>)/(<italic>K</italic><sub><italic>m</italic></sub>+<italic>S</italic>)(1+<italic>I/K</italic><sub><italic>i</italic></sub>) for noncompetitive inhibition, where <italic>I</italic> is compound concentration, <italic>K</italic><sub><italic>i</italic></sub> is the inhibition constant, <italic>S</italic> is the substrate concentration, and <italic>K</italic><sub><italic>m</italic></sub> is the substrate concentration at half of the maximum velocity (<italic>V</italic><sub>max</sub>) of the reaction [<xref ref-type="bibr" rid="pone.0147183.ref020">20</xref>]. <italic>K</italic><sub><italic>i</italic></sub><italic>’ values</italic> were calculated using the secondary plot of slopes of the S/V versus [I] [<xref ref-type="bibr" rid="pone.0147183.ref019">19</xref>].</p>
+</sec>
+</sec>
+<sec id="sec012" sec-type="results">
+<title>Results</title>
+<sec id="sec013">
+<title>Kinetic analysis of CK</title>
+<p><xref ref-type="fig" rid="pone.0147183.g002">Fig 2A, 2B and 2C</xref> show the metabolism of CK after incubation with the HLMs, CYP2C9, and CYP3A4. The kinetic plots indicated that the <italic>K</italic><sub><italic>m</italic></sub> and <italic>V</italic><sub><italic>max</italic></sub> values were 84.20±21.92 μM and 0.28±0.04 nmol/mg protein/min for the HLMs, 34.63±10.48 μM and 0.45±0.05 nmol/nmol P450/min for CYP2C9, 27.03±5.04 μM and 0.68±0.04 nmol/nmol P450/min for CYP3A4, respectively. The <italic>in vitroCL</italic><sub><italic>int</italic></sub> values of CK in the HLMs, CYP2C9, and CYP3A4 were 0.0033 mL/mg protein<sup>-1</sup>·min<sup>-1</sup>, 0.0130 mL/nmol P450<sup>-1</sup>·min<sup>-1</sup>, and 0.0252 mL/nmol P450<sup>-1</sup>·min<sup>-1</sup>, respectively.</p>
+<fig id="pone.0147183.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0147183.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Concentration-velocity curve of CK metabolism after incubation with HLMs (A), recombinant CYP2C9 (B) and recombinant CYP3A4 (C).</title>
+<p>Note: The incubation conditions are described in the materials and methods section. The curve was automatically fitted using nonlinear regression and the Michaelis–Menten equation. Data were obtained in triplicate.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0147183.g002" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec014">
+<title>Specific CYP isoforms for the metabolism of CK</title>
+<p>The inhibitory effects of the CYP specific inhibitors on the metabolic clearance rate of CK in the HLMs are shown in <xref ref-type="fig" rid="pone.0147183.g003">Fig 3</xref>. The concentrations of furafylline, tranylcypromine, sulfaphenazole, quinidine, ticlopidine, and ketoconazole were 1 μM, except for chlormethiazole at 5 μM. The concentrations were selected on the basis of previously reported <italic>IC</italic><sub><italic>50</italic></sub> or <italic>K</italic><sub><italic>i</italic></sub> values for the CYP isoforms to ensure adequate inhibitory selectivity and maximal inhibitory potency. In the presence of sulfaphenazole and ketoconazole, the metabolic clearance rate (MCR) of CK decreased to 73.5±20.9% and 74.6±28.1% of that of the control, respectively (<xref ref-type="fig" rid="pone.0147183.g003">Fig 3</xref>). However, other inhibitors had no obvious inhibitory effects on the metabolism of CK. The screened enzymes were further confirmed by human recombinant CYPs using the specific inhibitors. The MCRs of CK decreased to 22.0% of that of the control for CYP2C9 and to 13.2% of that of the control for CYP3A4 (<xref ref-type="fig" rid="pone.0147183.g004">Fig 4</xref>). The results indicated that CYP2C9 and CYP3A4 were the major enzymes responsible for the metabolism of CK <italic>in vitro</italic>.</p>
+<fig id="pone.0147183.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0147183.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Effect of specific inhibitors on CYP-mediated CK (50 μM) metabolism in HLMs.</title>
+<p>Note: Furafylline, tranylcypromine, sulfaphenazole, quinidine, chlormethiazole, ticlopidine, and ketoconazole were used as the specific inhibitors for CYP1A2, CYP2A6, CYP2C9, CYP2D6, CYP2E1, and CYP2C19, respectively. The incubation conditions are described in the materials and methods section. Each data point represents the average of triple determinations and error bars. In the presence of sulfaphenazole (1 μM) and ketoconazole (1 μM), the metabolic clearance rate of CK decreased to 73.5% and 74.6% of that of the control, respectively, whereas the other inhibitors had no significant inhibitory effects on the metabolism of CK.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0147183.g003" xlink:type="simple"/>
+</fig>
+<fig id="pone.0147183.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0147183.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Effect on the metabolic clearance rate (MCR) of CK under the inhibition of recombinant CYP2C9 and CYP3A4.</title>
+<p>Note: About 50 μM of CK was incubated with the CYP recombinants and cofactors in the absence (control) or presence of the inhibitors by sulfaphenazole (1 μM) and ketoconazole (1 μM), respectively. Each point represents the average of triplicate incubations. The MCRs of CK were significantly decreased compared with those of the control for CYP3A4 and CYP2C9.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0147183.g004" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec015">
+<title>Estimation of <italic>IC</italic><sub><italic>50</italic></sub><italic>s</italic></title>
+<p>The inhibitory effects of multiple concentrations of CK (10–100 μM) on the activity of each CYP isoform determined by the metabolism of a single concentration of isoform-specific probe were tested with the HLMs (or expressed CYPs when needed). CK showed the potent inhibition of CYP2C9 (tolbutamide 4-hydroxylation) and CYP3A4 (midazolam 1-hydroxylation)(<xref ref-type="fig" rid="pone.0147183.g005">Fig 5</xref>), with <italic>IC</italic><sub><italic>50s</italic></sub> of 16.00 μM and 9.83 μM, respectively. The inhibitory effect of CK on the activity of CYP1A2, CYP2A6, CYP2D6, CYP2E1 and CYP2C19 was negligible.</p>
+<fig id="pone.0147183.g005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0147183.g005</object-id>
+<label>Fig 5</label>
+<caption>
+<title>Effect of CK on the metabolic reactions of the CYP2C9 (A) and CYP3A4 (B) specific substrates in HLMs.</title>
+<p>Note: The incubation conditions are described in the materials and methods section. Each data point represents the average of triple determinations and error bars.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0147183.g005" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec016">
+<title>Estimation of <italic>K</italic><sub><italic>i</italic></sub> values</title>
+<p>For CYP2C9, the <italic>K</italic><sub><italic>i</italic></sub> values were determined using tolbutamide as the probe substrate. The <italic>V</italic><sub><italic>max</italic></sub> and <italic>K</italic><sub><italic>m</italic></sub> values estimated using a nonlinear regression model for the competitive enzyme inhibition of CYP2C9-catalyzed tolbutamide 4-hydroxylation in the HLMs, the representative Lineweaver-Burk plots (<xref ref-type="fig" rid="pone.0147183.g006">Fig 6</xref>) and the secondary plot of CYP2C9 activity using the slopes of the primary Lineweaver–Burk plots versus concentrations of CK show that <italic>K</italic><sub><italic>i</italic></sub>of CK were 14.92 μM (<xref ref-type="fig" rid="pone.0147183.g007">Fig 7</xref>) [<xref ref-type="bibr" rid="pone.0147183.ref020">20</xref>]. The representative Dixon plots of the effect of CK on tolbutamide 4-hydroxylation formation and S/V versus [I] plots (<xref ref-type="fig" rid="pone.0147183.g006">Fig 6</xref>) suggested that the inhibition data fit well to a mixed type of inhibition [<xref ref-type="bibr" rid="pone.0147183.ref019">19</xref>]. For CYP3A4, the <italic>K</italic><sub><italic>i</italic></sub> values were determined using midazolam as the probe substrate. The <italic>V</italic><sub><italic>max</italic></sub> and <italic>K</italic><sub><italic>m</italic></sub> values estimated using a nonlinear regression model for the competitive enzyme inhibition of CYP3A4-catalyzed midazolam 1-hydroxylation in the HLMs (<xref ref-type="fig" rid="pone.0147183.g008">Fig 8</xref>). The representative Lineweaver-Burk plots (<xref ref-type="fig" rid="pone.0147183.g008">Fig 8</xref>) and the secondary plot of CYP2C9 activity using the slopes of the primary Lineweaver–Burk plots versus concentrations of CK show that <italic>K</italic><sub><italic>i</italic></sub>of CKvalues were 11.42 μM (<xref ref-type="fig" rid="pone.0147183.g009">Fig 9</xref>) [<xref ref-type="bibr" rid="pone.0147183.ref020">20</xref>]. The representative Dixon plots of the effect of CK on midazolam 1-hydroxylation formation and S/V versus [I] plots (<xref ref-type="fig" rid="pone.0147183.g008">Fig 8</xref>) showed that the inhibition data fit well to a noncompetitive inhibition [<xref ref-type="bibr" rid="pone.0147183.ref019">19</xref>].</p>
+<fig id="pone.0147183.g006" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0147183.g006</object-id>
+<label>Fig 6</label>
+<caption>
+<title>A nonlinear regression analysis curves of velocity (nmol/min/mg protein) enzyme activity for tolbutamide (μM) assuming Michaelis-Menten kinetics (A), representative Lineweaver-Burk plots (B) and Dixon plots (C) of the effect of CK on tolbutamide 4-hydroxylation formation and S/V versus [I] plots (D)in human liver microsomes, Note: The inhibition of CYP2C9 activity is best described as a mixed type inhibition mechanism by different concentrations of CK (10–100 μM) in HLM incubations (0.5 mg·mL<sup>-1</sup> protein).</title>
+<p>The data points are the mean values of triplicate incubations. TB, tolbutamide.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0147183.g006" xlink:type="simple"/>
+</fig>
+<fig id="pone.0147183.g007" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0147183.g007</object-id>
+<label>Fig 7</label>
+<caption>
+<title>Secondary plot of CYP2C9 activity using the slopes of the primary Lineweaver–Burk plots versus concentrations of CK.</title>
+<p>Note: Nonlinear regression analysis of the tolbutamide 4-hydroxylation versus the substrate concentration was performed to obtain the <italic>K</italic><sub><italic>i</italic></sub> values. Each point represents the mean of triplicate determinations.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0147183.g007" xlink:type="simple"/>
+</fig>
+<fig id="pone.0147183.g008" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0147183.g008</object-id>
+<label>Fig 8</label>
+<caption>
+<title>A nonlinear regression analysis curves of velocity (nmol/min/mg protein) enzyme activity for midazolam (μM) assuming Michaelis-Menten kinetics (A), representative Lineweaver-Burk plots (B) and Dixon plots (C) of the effect of CK on midazolam 1-hydroxylation formation and S/V versus [I] plots (D) in human liver microsomes.</title>
+<p>Note: The inhibition of CYP3A4 activity is best described as a noncompetitive inhibition by different concentrations of CK (10–100 μM) in HLM incubations (0.5 mg·mL<sup>-1</sup> protein). The data points are the mean values of triplicate incubations. MDZ, midazolam.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0147183.g008" xlink:type="simple"/>
+</fig>
+<fig id="pone.0147183.g009" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0147183.g009</object-id>
+<label>Fig 9</label>
+<caption>
+<title>Secondary plot of CYP3A4 activity using the slopes of the primary Lineweaver–Burk plots versus concentrations of CK.</title>
+<p>Note: Nonlinear regression analysis of the CK versus the substrate concentration was performed to obtain the <italic>K</italic><sub><italic>i</italic></sub> values. Each point represents the mean of triplicate determinations.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0147183.g009" xlink:type="simple"/>
+</fig>
+</sec>
+</sec>
+<sec id="sec017" sec-type="conclusions">
+<title>Discussion</title>
+<p>Currently, the concomitant use of CAM and therapeutic drugs are popular. CAM has the potential to cause pharmacokinetic and dynamic interactions with therapeutic drugs. Therefore, the decreased or increased plasma levels of these drugs could result in a lower therapeutic efficacy or a higher risk of toxicity [<xref ref-type="bibr" rid="pone.0147183.ref009">9</xref>, <xref ref-type="bibr" rid="pone.0147183.ref010">10</xref>]. Especially for anti-cancer drugs, which have narrow therapeutic windows, pharmacokinetic interactions could easily lead to clinically relevant effects [<xref ref-type="bibr" rid="pone.0147183.ref009">9</xref>]. CK is a CAM that has a prospective application for treating cancer [<xref ref-type="bibr" rid="pone.0147183.ref005">5</xref>–<xref ref-type="bibr" rid="pone.0147183.ref007">7</xref>]. Therefore, screening the drug-metabolizing enzymes of CK may provide useful information for avoiding CK–drugs interactions.</p>
+<p>The CYP superfamily comprises important phase Ι drug-metabolizing enzymes that oxidize more than 90% of the current therapeutics drugs. Over 90% of human drug oxidation can be attributed to CYP1A2, CYP2A6, CYP2C9, CYP 2C19, CYP2E1, CYP2D6, and CYP3A4 [<xref ref-type="bibr" rid="pone.0147183.ref012">12</xref>]. Drugs competing with the same metabolizing enzyme can lead to drug–drug interactions, resulting in altered efficacy or toxicity in individuals [<xref ref-type="bibr" rid="pone.0147183.ref013">13</xref>].</p>
+<p>In the present study, our data suggested that CYP2C9 and CYP3A4 were the major enzymes involved in the metabolism of CK <italic>in vitro</italic>, not the substrates of CYP1A2, CYP2A6, CYP2D6, CYP2E1 and CYP2C19. Furthermore, our study showed that CYP2C9 and CYP3A4 were sensitive to the inhibition by CK, and their <italic>IC</italic><sub><italic>50</italic></sub> valueswere 16.00 μM and 9.83 μM, respectively. CYP1A2, CYP2A6, CYP2D6, CYP2E1, and CYP2C19 were hardly sensitive to the inhibition of CK (<italic>IC</italic><sub><italic>50s</italic></sub> were all greater than 100 μM). These findings are partly supported by the study of Hao et al.(2008) that ginsenosides, Rh2, CK, and all sapogenins exhibited moderate CYP3A4 inhibition in baculosomes. According to Kong <italic>et al</italic>[<xref ref-type="bibr" rid="pone.0147183.ref021">21</xref>], the potency of a compound can be classified according to its <italic>IC</italic><sub><italic>50</italic></sub> values, as potent, if <italic>IC</italic><sub><italic>50</italic></sub>≤ 20 μg/mL or ≤10 μM; moderate, if <italic>IC</italic><sub><italic>50</italic></sub> 20–100 μg/mL or 10–50 μM; or weak, if <italic>IC</italic><sub><italic>50</italic></sub>≥100 μg/mL or ≥50 μM. CK is classified as a potent inhibitor of CYP3A4, a moderate inhibitor of CYP2C9, and a weak inhibitor of the other five CYPs tested in this study.</p>
+<p>CYP2C9 is one of the most abundant CYP enzymes (about 20% of the hepatic total CYP content) [<xref ref-type="bibr" rid="pone.0147183.ref022">22</xref>]. It metabolizes a number of important clinical drugs, including anti-cancer, antibiotic, anti-diabetic, anti-epileptic, anti-hypertensive, anti-coagulant, and anti-hyperlipidemic drugs [<xref ref-type="bibr" rid="pone.0147183.ref023">23</xref>]. Of special interest is the CYP2C9-mediated metabolism of drugs with a narrow therapeutic index, such as warfarin and phenytoin [<xref ref-type="bibr" rid="pone.0147183.ref024">24</xref>]. Therefore, competing with the CYP2C9 metabolism can lead to severe toxicity. CYP3A4 is a major cytochrome P450 in human liver that has broad substrates [<xref ref-type="bibr" rid="pone.0147183.ref025">25</xref>]. CYP3A4 metabolizes not only xenobiotics, including the majority of drugs and carcinogens, but also many endogenous compounds, such as cholesterol, bile acids, fatty acids, prostaglandins, leukotrienes, retinoids, and biogenic amines, and thus most pharmacokinetic CAM–drug interactions involve CYP3A4[<xref ref-type="bibr" rid="pone.0147183.ref026">26</xref>]. The present study shows that CK is an inhibitor of both CYP2C9 and CYP3A4. Therefore, patients using CK in combination with conventional therapeutic drugs that are substrates of CYP2C9 and CYP3A4 for different reasons should be careful.</p>
+<p>However, in contrast to the specific inhibitors of CYP2C9, the <italic>IC</italic><sub><italic>50</italic></sub> <italic>and K</italic><sub><italic>i</italic></sub> values of CK were 11-53-fold and 49-fold higher than those of sulfaphenazole in HLMs, respectively [<xref ref-type="bibr" rid="pone.0147183.ref015">15</xref>, <xref ref-type="bibr" rid="pone.0147183.ref016">16</xref>]. For CYP3A4, the <italic>IC</italic><sub><italic>50</italic></sub> <italic>and K</italic><sub><italic>i</italic></sub> values of CK were 41-123-fold and 761-fold higher than those of ketoconazole in HLMs, respectively [<xref ref-type="bibr" rid="pone.0147183.ref017">17</xref>]. The potent inhibition of CK was poorer than that of enzyme-specific inhibitors. Presumably, the inhibiting potency of CK is too low to cause significant clinical CYP2C9 and CYP3A4 inhibition. Note that in our other study carried out in healthy volunteers, 10 healthy male volunteers received administrations of 800 mg pure CK tablets (100mg/tablet, provided by Zhejiang Hisun Pharmaceutical Company Limited, China) swallowed by 150 mL water, then series venous blood samples of 5 mL were collected into EDTA-containing tubes at 0, 0.25, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 8, 12, 24, 36, 48, 72 and 96h. The plasma samples were analyzed by HPLC-MS/MS, the peak plasma concentration (C<sub>max</sub>) and time to peak plasma concentration (T<sub>max</sub>) were directly obtained from the observed concentration-time data. The area under the plasma concentration-time curve (AUC) from time zero to last measured concentration (AUC<sub>(0−t)</sub>) was calculated according to the linear trapezoidal rule, the estimate of oral clearance(CL/F) was calculated as CL/F = Dose /AUC<sub>(0–t)</sub> [<xref ref-type="bibr" rid="pone.0147183.ref027">27</xref>]. The results showed the C<sub>max</sub> of CK were 4.07 μM (95% CI: 2.89, 5.24). The C<sub>max</sub> of CK of some volunteers were found to be near 5 μM through one-day supplementation of 800 mg, which is close to the <italic>IC</italic><sub><italic>50</italic></sub> and <italic>Ki</italic> values of CK for CYP2C9 and CYP3A4 (<xref ref-type="fig" rid="pone.0147183.g010">Fig 10</xref>). Thus, we still caution against CK–drug interaction despite its mildness.</p>
+<fig id="pone.0147183.g010" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0147183.g010</object-id>
+<label>Fig 10</label>
+<caption>
+<title>Plasma concentration –time profiles of CK in 10 healthy subjects after a single oral dose of 800 mg CK tablet.</title>
+<p>Inset depicts the same data on a semilogarithmic scale, each value is the mean value ± SD.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0147183.g010" xlink:type="simple"/>
+</fig>
+</sec>
+</body>
+<back>
+<ack>
+<p>Thanks to Zhejiang Hisun Pharmaceutical Company Limited (Zhejiang, China) for providing the Ginsenoside compound K. This work was supported by the National Scientific Foundation of China (Grants 81302850, 81300204, 31400306); the China Postdoctoral Science Foundation (Grants 2013M531817, 2014T70793); and the Science and Technology Plan Projects of Hunan Province (Grant 2014RS4011). The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0147183.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yang</surname> <given-names>XD</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>YY</given-names></name>, <name name-style="western"><surname>Ouyang</surname> <given-names>DS</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>GP</given-names></name> (<year>2015</year>) <article-title>A review of biotransformation and pharmacology of ginsenoside compound K</article-title>. <source>Fitoterapia</source> <volume>100</volume>: <fpage>208</fpage>–<lpage>220</lpage>. <object-id pub-id-type="pmid">25449425</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.fitote.2014.11.019" xlink:type="simple">10.1016/j.fitote.2014.11.019</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Helms</surname> <given-names>S</given-names></name> (<year>2004</year>) <article-title>Cancer prevention and therapeutics: Panax ginseng</article-title>. <source>Alternative medicine review: a journal of clinical therapeutic</source> <volume>9</volume>: <fpage>259</fpage>–<lpage>274</lpage>. <object-id pub-id-type="pmid">15387718</object-id>.</mixed-citation></ref>
+<ref id="pone.0147183.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Christensen</surname> <given-names>LP</given-names></name> (<year>2009</year>) <article-title>Ginsenosides chemistry, biosynthesis, analysis, and potential health effects</article-title>. <source>Advances in food and nutrition research</source> <volume>55</volume>: <fpage>1</fpage>–<lpage>99</lpage>. <object-id pub-id-type="pmid">18772102</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S1043-4526(08)00401-4" xlink:type="simple">10.1016/S1043-4526(08)00401-4</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kim</surname> <given-names>YJ</given-names></name>, <name name-style="western"><surname>Jeon</surname> <given-names>JN</given-names></name>, <name name-style="western"><surname>Jang</surname> <given-names>MG</given-names></name>, <name name-style="western"><surname>Oh</surname> <given-names>JY</given-names></name>, <name name-style="western"><surname>Kwon</surname> <given-names>WS</given-names></name>, <etal>et al</etal>. (<year>2014</year>) <article-title>Ginsenoside profiles and related gene expression during foliation in Panax ginseng Meyer</article-title>. <source>Journal of ginseng research</source> <volume>38</volume>: <fpage>66</fpage>–<lpage>72</lpage>. <object-id pub-id-type="pmid">24558313</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.jgr.2013.11.001" xlink:type="simple">10.1016/j.jgr.2013.11.001</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chen</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Chang</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>K</given-names></name>, <etal>et al</etal>. (<year>2015</year>) <article-title>Ginsenoside metabolite compound K suppresses T-cell priming via modulation of dendritic cell trafficking and costimulatory signals, resulting in alleviation of collagen-induced arthritis</article-title>. <source>The Journal of pharmacology and experimental therapeutics</source> <volume>353</volume>: <fpage>71</fpage>–<lpage>79</lpage>. <object-id pub-id-type="pmid">25630466</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1124/jpet.114.220665" xlink:type="simple">10.1124/jpet.114.220665</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chen</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Xu</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Zhu</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>X</given-names></name> (<year>2013</year>) <article-title>Anti-cancer effects of ginsenoside compound k on pediatric acute myeloid leukemia cells</article-title>. <source>Cancer cell international</source> <volume>13</volume>: <fpage>24</fpage>. <object-id pub-id-type="pmid">23497352</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1186/1475-2867-13-24" xlink:type="simple">10.1186/1475-2867-13-24</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhang</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Du</surname> <given-names>GJ</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>CZ</given-names></name>, <name name-style="western"><surname>Wen</surname> <given-names>XD</given-names></name>, <name name-style="western"><surname>Calway</surname> <given-names>T</given-names></name>, <etal>et al</etal>. (<year>2013</year>) <article-title>Compound K, a Ginsenoside Metabolite, Inhibits Colon Cancer Growth via Multiple Pathways Including p53-p21 Interactions</article-title>. <source>International journal of molecular sciences</source> <volume>14</volume>: <fpage>2980</fpage>–<lpage>2995</lpage>. <object-id pub-id-type="pmid">23434653</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.3390/ijms14022980" xlink:type="simple">10.3390/ijms14022980</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Li</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Zhong</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Hu</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Yuan</surname> <given-names>J</given-names></name>, <etal>et al</etal>. (<year>2014</year>) <article-title>Ginsenoside metabolite compound K promotes recovery of dextran sulfate sodium-induced colitis and inhibits inflammatory responses by suppressing NF-kappaB activation</article-title>. <source>PloS one</source> <volume>9</volume>: <fpage>e87810</fpage>. <object-id pub-id-type="pmid">24504372</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0087810" xlink:type="simple">10.1371/journal.pone.0087810</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Leggett</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Koczwara</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Miller</surname> <given-names>M</given-names></name> (<year>2015</year>) <article-title>The impact of complementary and alternative medicines on cancer symptoms, treatment side effects, quality of life, and survival in women with breast cancer-a systematic review</article-title>. <source>Nutrition and cancer</source> <volume>67</volume>: <fpage>373</fpage>–<lpage>391</lpage>. <object-id pub-id-type="pmid">25811312</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1080/01635581.2015.1004731" xlink:type="simple">10.1080/01635581.2015.1004731</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Smith</surname> <given-names>PJ</given-names></name>, <name name-style="western"><surname>Clavarino</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Long</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Steadman</surname> <given-names>KJ</given-names></name> (<year>2014</year>) <article-title>Why do some cancer patients receiving chemotherapy choose to take complementary and alternative medicines and what are the risks?</article-title> <source>Asia-Pacific journal of clinical oncology</source> <volume>10</volume>: <fpage>1</fpage>–<lpage>10</lpage>. <object-id pub-id-type="pmid">23910177</object-id>.</mixed-citation></ref>
+<ref id="pone.0147183.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yamane</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Kawashima</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Yamaguchi</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Nagao</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Sato</surname> <given-names>M</given-names></name>, <etal>et al</etal>. (<year>2015</year>) <article-title>In vitro profiling of the metabolism and drug-drug interaction of tofogliflozin, a potent and highly specific sodium-glucose co-transporter 2 inhibitor, using human liver microsomes, human hepatocytes, and recombinant human CYP</article-title>. <source>Xenobiotica; the fate of foreign compounds in biological systems</source> <volume>45</volume>: <fpage>230</fpage>–<lpage>238</lpage>. <object-id pub-id-type="pmid">25350082</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.3109/00498254.2014.976296" xlink:type="simple">10.3109/00498254.2014.976296</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lee</surname> <given-names>JI</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Men</surname> <given-names>AY</given-names></name>, <name name-style="western"><surname>Kenna</surname> <given-names>LA</given-names></name>, <name name-style="western"><surname>Huang</surname> <given-names>SM</given-names></name> (<year>2010</year>) <article-title>CYP-mediated therapeutic protein-drug interactions: clinical findings, proposed mechanisms and regulatory implications</article-title>. <source>Clinical pharmacokinetics</source> <volume>49</volume>: <fpage>295</fpage>–<lpage>310</lpage>. <object-id pub-id-type="pmid">20384392</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.2165/11319980-000000000-00000" xlink:type="simple">10.2165/11319980-000000000-00000</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lin</surname> <given-names>JH</given-names></name> (<year>2006</year>) <article-title>CYP induction-mediated drug interactions: in vitro assessment and clinical implications</article-title>. <source>Pharmaceutical research</source> <volume>23</volume>: <fpage>1089</fpage>–<lpage>1116</lpage>. <object-id pub-id-type="pmid">16718615</object-id>.</mixed-citation></ref>
+<ref id="pone.0147183.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Guo</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Huang</surname> <given-names>WH</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Tan</surname> <given-names>ZR</given-names></name>, <etal>et al</etal>. (<year>2014</year>) <article-title>Searching the cytochrome p450 enzymes for the metabolism of meranzin hydrate: a prospective antidepressant originating from Chaihu-Shugan-San</article-title>. <source>PloS one</source> <volume>9</volume>: <fpage>e113819</fpage>. <object-id pub-id-type="pmid">25427198</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0113819" xlink:type="simple">10.1371/journal.pone.0113819</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Li</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Wei</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Liu</surname> <given-names>YY</given-names></name>, <name name-style="western"><surname>Gong</surname> <given-names>L</given-names></name> (<year>2013</year>) <article-title>In vitro metabolism of brucine by human liver microsomes and its interactions with CYP substrates</article-title>. <source>Chemico-biological interactions</source> <volume>204</volume>: <fpage>140</fpage>–<lpage>143</lpage>. <object-id pub-id-type="pmid">23707193</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.cbi.2013.05.007" xlink:type="simple">10.1016/j.cbi.2013.05.007</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Qin</surname> <given-names>CZ</given-names></name>, <name name-style="western"><surname>Ren</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Tan</surname> <given-names>ZR</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Yin</surname> <given-names>JY</given-names></name>, <etal>et al</etal>. (<year>2014</year>) <article-title>A high-throughput inhibition screening of major human cytochrome P450 enzymes using an in vitro cocktail and liquid chromatography-tandem mass spectrometry</article-title>. <source>Biomedical chromatography: BMC</source> <volume>28</volume>: <fpage>197</fpage>–<lpage>203</lpage>. <object-id pub-id-type="pmid">23946123</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1002/bmc.3003" xlink:type="simple">10.1002/bmc.3003</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bourrie</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Meunier</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Berger</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Fabre</surname> <given-names>G</given-names></name> (<year>1996</year>) <article-title>Cytochrome P450 isoform inhibitors as a tool for the investigation of metabolic reactions catalyzed by human liver microsomes</article-title>. <source>The Journal of pharmacology and experimental therapeutics</source> <volume>277</volume>: <fpage>321</fpage>–<lpage>332</lpage>. <object-id pub-id-type="pmid">8613937</object-id>.</mixed-citation></ref>
+<ref id="pone.0147183.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Taavitsainen</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Juvonen</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Pelkonen</surname> <given-names>O</given-names></name> (<year>2001</year>) <article-title>In vitro inhibition of cytochrome P450 enzymes in human liver microsomes by a potent CYP2A6 inhibitor, trans-2-phenylcyclopropylamine (tranylcypromine), and its nonamine analog, cyclopropylbenzene</article-title>. <source>Drug metabolism and disposition: the biological fate of chemicals</source> <volume>29</volume>: <fpage>217</fpage>–<lpage>222</lpage>. <object-id pub-id-type="pmid">11181487</object-id>.</mixed-citation></ref>
+<ref id="pone.0147183.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Liu</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>JW</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Ma</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Sun</surname> <given-names>J</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Ginsenoside metabolites, rather than naturally occurring ginsenosides, lead to inhibition of human cytochrome P450 enzymes</article-title>. <source>Toxicological sciences: an official journal of the Society of Toxicology</source> <volume>91</volume>: <fpage>356</fpage>–<lpage>364</lpage>. <object-id pub-id-type="pmid">16547074.</object-id></mixed-citation></ref>
+<ref id="pone.0147183.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cornish-Bowden</surname> <given-names>A</given-names></name> (<year>1974</year>) <article-title>A simple graphical method for determining the inhibition constants of mixed, uncompetitive and non-competitive inhibitors</article-title>. <source>The Biochemical journal</source> <volume>137</volume>: <fpage>143</fpage>–<lpage>144</lpage>. <object-id pub-id-type="pmid">4206907</object-id>.</mixed-citation></ref>
+<ref id="pone.0147183.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kong</surname> <given-names>WM</given-names></name>, <name name-style="western"><surname>Chik</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Ramachandra</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Subramaniam</surname> <given-names>U</given-names></name>, <name name-style="western"><surname>Aziddin</surname> <given-names>RE</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Evaluation of the effects of Mitragyna speciosa alkaloid extract on cytochrome P450 enzymes using a high throughput assay</article-title>. <source>Molecules</source> <volume>16</volume>: <fpage>7344</fpage>–<lpage>7356</lpage>. <object-id pub-id-type="pmid">21876481</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.3390/molecules16097344" xlink:type="simple">10.3390/molecules16097344</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dorado</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Penas-Lledo</surname> <given-names>EM</given-names></name>, <name name-style="western"><surname>Llerena</surname> <given-names>A</given-names></name> (<year>2014</year>) <article-title>Research Highlights: novel CYP2C9 genetic polymorphisms and assessment of their impact on hydroxylation capacity</article-title>. <source>Pharmacogenomics</source> <volume>15</volume>: <fpage>261</fpage>–<lpage>264</lpage>. <object-id pub-id-type="pmid">24533705</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.2217/pgs.13.243" xlink:type="simple">10.2217/pgs.13.243</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hirota</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Eguchi</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Ieiri</surname> <given-names>I</given-names></name> (<year>2013</year>) <article-title>Impact of genetic polymorphisms in CYP2C9 and CYP2C19 on the pharmacokinetics of clinically used drugs</article-title>. <source>Drug metabolism and pharmacokinetics</source> <volume>28</volume>: <fpage>28</fpage>–<lpage>37</lpage> <object-id pub-id-type="pmid">23165865</object-id>.</mixed-citation></ref>
+<ref id="pone.0147183.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ghozlan</surname> <given-names>MF</given-names></name>, <name name-style="western"><surname>Foad</surname> <given-names>DA</given-names></name>, <name name-style="western"><surname>Darwish</surname> <given-names>YW</given-names></name>, <name name-style="western"><surname>Saad</surname> <given-names>AA</given-names></name> (<year>2015</year>) <article-title>Impact of CYP2C9 and VKORC1 genetic polymorphisms upon warfarin dose requirements in Egyptian patients with acute coronary syndrome</article-title>. <source>Blood coagulation &amp; fibrinolysis: an international journal in haemostasis and thrombosis</source>. <object-id pub-id-type="pmid">25699611</object-id>.</mixed-citation></ref>
+<ref id="pone.0147183.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Goey</surname> <given-names>AK</given-names></name>, <name name-style="western"><surname>Mooiman</surname> <given-names>KD</given-names></name>, <name name-style="western"><surname>Beijnen</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Schellens</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Meijerman</surname> <given-names>I</given-names></name> (<year>2013</year>) <article-title>Relevance of in vitro and clinical data for predicting CYP3A4-mediated herb-drug interactions in cancer patients</article-title>. <source>Cancer treatment reviews</source> <volume>39</volume>: <fpage>773</fpage>–<lpage>783</lpage>. <object-id pub-id-type="pmid">23394826</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.ctrv.2012.12.008" xlink:type="simple">10.1016/j.ctrv.2012.12.008</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chen</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>KN</given-names></name>, <name name-style="western"><surname>Chen</surname> <given-names>C</given-names></name> (<year>2014</year>) <article-title>The role of CYP3A4 in the biotransformation of bile acids and therapeutic implication for cholestasis</article-title>. <source>Annals of translational medicine</source> <volume>2</volume>: <fpage>7</fpage>. <object-id pub-id-type="pmid">25332983</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.3978/j.issn.2305-5839.2013.03.02" xlink:type="simple">10.3978/j.issn.2305-5839.2013.03.02</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0147183.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Malati</surname> <given-names>CY</given-names></name>, <name name-style="western"><surname>Robertson</surname> <given-names>SM</given-names></name>, <name name-style="western"><surname>Hunt</surname> <given-names>JD</given-names></name>, <name name-style="western"><surname>Chairez</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Alfaro</surname> <given-names>RM</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Influence of Panax ginseng on cytochrome P450 (CYP)3A and P-glycoprotein (P-gp) activity in healthy participants</article-title>. <source>Journal of clinical pharmacology</source> <volume>52</volume>: <fpage>932</fpage>–<lpage>939</lpage>. <object-id pub-id-type="pmid">21646440</object-id>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1177/0091270011407194" xlink:type="simple">10.1177/0091270011407194</ext-link></comment></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

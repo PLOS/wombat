@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id><journal-title-group>
+<journal-title>PLoS ONE</journal-title></journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="publisher-id">PONE-D-13-13829</article-id>
+<article-id pub-id-type="doi">10.1371/journal.pone.0071424</article-id>
+<article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Biology</subject><subj-group><subject>Neuroscience</subject><subj-group><subject>Cognitive neuroscience</subject><subject>Developmental neuroscience</subject><subject>Neuropsychology</subject><subject>Sensory perception</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Medicine</subject><subj-group><subject>Mental health</subject><subj-group><subject>Psychology</subject><subj-group><subject>Sensory perception</subject></subj-group></subj-group></subj-group><subj-group><subject>Neurology</subject><subj-group><subject>Developmental and pediatric neurology</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Social and behavioral sciences</subject><subj-group><subject>Psychology</subject><subj-group><subject>Neuropsychology</subject><subject>Sensory perception</subject></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Development of Time Sensitivity and Information Processing Speed</article-title>
+<alt-title alt-title-type="running-head">Time Sensitivity and Processing Speed</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Droit-Volet</surname><given-names>Sylvie</given-names></name><xref ref-type="aff" rid="aff1"/><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Zélanti</surname><given-names>Pierre S.</given-names></name><xref ref-type="aff" rid="aff1"/></contrib>
+</contrib-group>
+<aff id="aff1"><addr-line>Laboratoire de Psychologie Sociale et Cognitive, Centre national de la recherche scientifique, Université Blaise Pascal, Clermont-Ferrand, France</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Penney</surname><given-names>Trevor Bruce</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>National University of Singapore, Singapore</addr-line></aff>
+<author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">Sylvie.DROIT-VOLET@univ-bpclermont.fr</email></corresp>
+<fn fn-type="conflict"><p>The authors have declared that no competing interests exist.</p></fn>
+<fn fn-type="con"><p>Conceived and designed the experiments: SDV PZ. Performed the experiments: PZ. Analyzed the data: SDV. Contributed reagents/materials/analysis tools: PZ SDV. Wrote the paper: SDV.</p></fn>
+</author-notes>
+<pub-date pub-type="collection"><year>2013</year></pub-date>
+<pub-date pub-type="epub"><day>21</day><month>8</month><year>2013</year></pub-date>
+<volume>8</volume>
+<issue>8</issue>
+<elocation-id>e71424</elocation-id>
+<history>
+<date date-type="received"><day>5</day><month>4</month><year>2013</year></date>
+<date date-type="accepted"><day>4</day><month>7</month><year>2013</year></date>
+</history>
+<permissions>
+<copyright-year>2013</copyright-year>
+<copyright-holder>Droit-Volet, Zélanti</copyright-holder><license xlink:type="simple"><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions>
+<abstract>
+<p>The aim of this study was to examine whether age-related changes in the speed of information processing are the best predictors of the increase in sensitivity to time throughout childhood. Children aged 5 and 8 years old, as well adults, were given two temporal bisection tasks, one with short (0.5/1-s) and the other with longer (4/8-s) anchor durations. In addition, the participants' scores on different neuropsychological tests assessing both information processing speed and other dimensions of cognitive control (short-term memory, working memory, selective attention) were calculated. The results showed that the best predictor of individual variances in sensitivity to time was information processing speed, although working memory also accounted for some of the individual differences in time sensitivity, albeit to a lesser extent. In sum, the faster the information processing speed of the participants, the higher their sensitivity to time was. These results are discussed in the light of the idea that the development of temporal capacities has its roots in the maturation of the dynamic functioning of the brain.</p>
+</abstract>
+<funding-group><funding-statement>This study was supported by a grant from the ANR (Agence Nationale de la Recherche), Emotion(s), Cognition, Comportement (EMCO-01-2011), France. This funder had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts><page-count count="9"/></counts></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p>From the moment of their birth, children are immersed in time. Every day, they experience the timing and duration of actions and events and rapidly learn to monitor time and evaluate its passage. Evidence of children's early timing abilities has been provided by studies conducted among infants and 3-year-old children that have shown that they accurately discriminate different stimulus durations <xref ref-type="bibr" rid="pone.0071424-Brannon1">[1]</xref>–<xref ref-type="bibr" rid="pone.0071424-VanMarle1">[5]</xref>. In addition, their timing behavior obeys Weber's law. More precisely, the variability (Standard Deviation) in their temporal discrimination increases linearly with the mean of the durations for discrimination. Their timing behavior therefore strongly suggests that the timing observed in human adults and other animals is functional in these young subjects at an early age.</p>
+<p>Nevertheless, the capacity to judge time precisely in a wide variety of temporal tasks (temporal production, reproduction, generalization and bisection) improves during childhood <xref ref-type="bibr" rid="pone.0071424-DroitVolet1">[3]</xref>, <xref ref-type="bibr" rid="pone.0071424-Chelonis1">[6]</xref>–<xref ref-type="bibr" rid="pone.0071424-Szelag1">[12]</xref>. In their attempt to trace the typical development of temporal discrimination capacities, researchers have employed the temporal bisection task <xref ref-type="bibr" rid="pone.0071424-DroitVolet4">[13]</xref>. This task is particularly suitable for use with very young children and has also been used in lower animals, such as rats. In this task, children are presented with a short (<italic>S</italic>) and a long (<italic>L</italic>) standard duration. They are then presented with comparison durations (<italic>D</italic>) (equal to <italic>S</italic> or <italic>L</italic> or of intermediate values) and must judge whether these durations are more similar to <italic>S</italic> or <italic>L</italic>. In this bisection task, children of different ages exhibit orderly psychophysical functions, with the proportion of long responses (<italic>p</italic>(long)) increasing with the comparison duration values, thus revealing their ability to discriminate time. The point of subjective equality (<italic>D</italic>(p(long)  = .50), also called the bisection point (BP), appears to be similar across ages. However, the psychometric function slopes are systematically flatter in younger children. When indexes of variability in time discrimination are calculated, such as the Difference Limen (DL) (<italic>D</italic>(<italic>p</italic>(long)  = .75–<italic>D</italic>(<italic>p</italic>(long)  = .25)/2) or the Weber Ratio (WR) – which is a type of coefficient of variation (DL/BP) -, their values decrease with increasing age. This demonstrates that time sensitivity in a temporal discrimination task, such as the bisection task, improves during childhood.</p>
+<p>In sum, beyond similarities across ages in the basic functioning of temporal discrimination, there is also an age-related improvement in sensitivity to time. The question is: what determines these age-related changes in time sensitivity? Recent neuroscientific studies have revealed that the processing of time involves distributed areas in the brain (cerebellum, supplementary motor areas, prefrontal and parietal cortex, caudate and putamen and the right insula), although the fronto-striatal system seems to be the key cerebral structure responsible for the encoding of time across different time-related tasks <xref ref-type="bibr" rid="pone.0071424-Wiener1">[14]</xref>–<xref ref-type="bibr" rid="pone.0071424-Meck1">[17]</xref>. It is thus logical to assume that the developmental improvement in time sensitivity results from the maturation of these neural circuits, although the impact of experience cannot be excluded. Indeed, the increase in white matter during childhood and adolescence, as well as the elimination and pruning of neural processes (i.e. axonal and dendritic processes), may increase the speed and efficiency of neural transmission, as well as the connectivity between different brain regions <xref ref-type="bibr" rid="pone.0071424-Brain1">[18]</xref>, <xref ref-type="bibr" rid="pone.0071424-Brown1">[19]</xref>. However, the fronto-striatal system contributes to the executive functions that are involved in performing not only temporal but also other cognitive tasks <xref ref-type="bibr" rid="pone.0071424-Coull2">[20]</xref>, <xref ref-type="bibr" rid="pone.0071424-Rubia1">[21]</xref>. Consequently changes in time sensitivity may arise from the development of general functions that operate across a wide range of different cognitive processes rather than from a time-specific mechanism.</p>
+<p>In order to examine the extent to which the development of general cognitive functions contributes to the improvement of time sensitivity in healthy children, we conducted a series of studies using the temporal bisection task in children aged between 5 and 9 years whose cognitive abilities had been assessed using various neuropsychological tests <xref ref-type="bibr" rid="pone.0071424-Zlanti1">[22]</xref>–<xref ref-type="bibr" rid="pone.0071424-DroitVolet5">[24]</xref>. The results of these studies indicated that two cognitive dimensions are able to account for the majority of developmental changes in sensitivity to time: (1) selective attention and (2) working memory. Selective attention refers to the controlled processes that enable individuals to focus attention on relevant information while shutting out interfering irrelevant information. Zélanti and Droit-Volet assessed this function in children by means of the visual subtest of the developmental neuropsychological assessment (Nepsy) <xref ref-type="bibr" rid="pone.0071424-Korkman1">[25]</xref> which measures selective attention with an inhibitory component <xref ref-type="bibr" rid="pone.0071424-Zlanti1">[22]</xref>. Working memory refers to processes that enable individuals to keep information active while integrating it with other information until the problem at hand is solved. A frequently used measure is the maximum amount of information that can be repeated backward (e.g., visuo-spatial movements in the Corsi test). However, although these two cognitive dimensions draw on partially separable processes, they are closely related. According to Baddeley's model, working memory consists of storage systems as well as of a central executive control system that plays the role of “attentional controller” responsible for the control and regulation of cognitive resources <xref ref-type="bibr" rid="pone.0071424-Baddeley1">[26]</xref>–<xref ref-type="bibr" rid="pone.0071424-Baddeley3">[28]</xref>. As both selective attention and working memory are based on the management of limited attentional resources, Droit-Volet argued that the most important sources involved in the typical development of time abilities arise from the development of attentional capacities rather then from the development of a specific mechanism devoted to time <xref ref-type="bibr" rid="pone.0071424-DroitVolet6">[29]</xref>. This view is consistent with the results of numerous studies showing that adults and children with ADHD, a disorder characterized by attention and working memory deficits, perform poorly in various temporal tasks <xref ref-type="bibr" rid="pone.0071424-Noreika1">[30]</xref>.</p>
+<p>However, in Zélanti and Droit-Volet's studies conducted in healthy children, the proportion of individual variance in time sensitivity explained by scores on selective attention and working memory tests was relatively low <xref ref-type="bibr" rid="pone.0071424-Zlanti1">[22]</xref>–<xref ref-type="bibr" rid="pone.0071424-DroitVolet5">[24]</xref>. In analyses performed by these authors, age was always shown to be a reliable predictor of inter-individual variances in the development of temporal performance. This suggests that changes in cognitive dimensions other than selective attention and working memory might also contribute to the increase in the efficiency of time processing throughout childhood. Studies conducted in the field of cognitive development have shown a high correlation between different cognitive dimensions involved in the executive control of cognition. Nevertheless, models of the development of intelligence suggest that cognitive development results from a cascade of related processes in which age-related changes in the speed of information processing play a critical role <xref ref-type="bibr" rid="pone.0071424-Demetriou1">[31]</xref>–<xref ref-type="bibr" rid="pone.0071424-Fry1">[34]</xref>. According to Demetriou et al., the changes in information processing speed would be “followed in time” by changes in working memory and selective attention <xref ref-type="bibr" rid="pone.0071424-Demetriou1">[31]</xref>. Kail has indeed demonstrated that the development of information processing speed mediates the development of working memory capacities <xref ref-type="bibr" rid="pone.0071424-Kail1">[35]</xref>–<xref ref-type="bibr" rid="pone.0071424-Kail2">[36]</xref>. Age-related changes in the speed of processing of the ongoing information flow might indeed make it possible to protect the system from intrusive irrelevant information and increase the working memory space available for the storage and utilization of relevant information. In other words, when information is processed faster, it is less vulnerable to interference and available working memory capacity increases. As argued by Luna, Garver, Urban, Lazar and Sweeney, “developmental improvements in processing speed may reflect the overall benefit of increase of efficiency of neural communication associated with increase of myelination, whereas development of inhibition and working memory may reflect the increased efficiency of particular brain regions associated with local refinements in brain circuits, reflecting changes in synaptic organization” (p. 2369) <xref ref-type="bibr" rid="pone.0071424-Luna1">[37]</xref>. Although cognitive processes interact and overlap, the speed of information processing may thus play a specific basic role in controlling cognition, especially during the processing of dynamic information such as time. As we discuss below, the encoding and judgment of time are inherent to the dynamic functioning of the brain. The efficiency of temporal information processing may therefore be linked to accelerated information processing. In other words, the faster information processing is, the more sensitive subjects would be to time. As far as the development of time processing is concerned, it can therefore be assumed that the increase in speed of information processing during childhood and adolescence should be one of the best predictors of developmental changes in time sensitivity.</p>
+<p>In the present study, children aged 5 and 8 years, as well as adults, were given two temporal bisection tasks, one with short anchor durations (0.5/1-s) and the other with longer anchor durations (4/8-s) whose processing is thought to require more attention <xref ref-type="bibr" rid="pone.0071424-Coull2">[20]</xref>, <xref ref-type="bibr" rid="pone.0071424-Lewis1">[38]</xref>. In addition, the participants' cognitive abilities in terms of short-term memory, working memory, selective attention and information processing speed were assessed using different neuropsychological tests. We hypothesized that the speed of information processing would be a better predictor of age differences in sensitivity to time than working memory or selective attention.</p>
+</sec><sec id="s2" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="s2a">
+<title>Participants</title>
+<p>The sample was composed of 180 participants (91 girls and 89 boys): 60 aged 5 years (mean age  = 5.76, SD  = 0.31, 22 girls and 38 boys), 60 aged 8 years (mean age  = 8.82, SD  = 0.44, 34 girls and 26 boys) and 60 adults (mean age  = 23.97, SD  = 2.79, 35 women and 25 men). The children were recruited from nursery and primary schools at St Germain des Fossés and the adults were undergraduate psychology students at Clermont-Ferrand, all in the Auvergne region of France. The students and the children's parents signed a written consent. The inspector of the academy (local representative of the French Education Ministery), and the directors of schools also signed a formal agreement to conduct this study with the children in their school. This experiment conducted in typical children and students in 2011–2012 has been approved by Clermont-Ferrand Sud-Est VI Statutory Ethics Committee (Comité de Protection des Personnes (CPP) Sud-Est 6, France) according to the articles of law L. 1121–1–1 and R 1121–3.</p>
+</sec><sec id="s2b">
+<title>Material</title>
+<p>The children performed the test individually in a quiet room at their schools, while the adults completed the test at the university. In the bisection task, the stimulus to be timed was a blue circle (6 cm in diameter) presented in the center of the screen of a PC computer using E-prime software. The participants gave their responses (short or long) orally and the experimenter recorded these responses by pressing the <italic>K</italic> and <italic>D</italic> keys on the computer keyboard. In the training session, the short and the long standard duration were followed by a 500-ms feedback that took the form of cartoon pictures that varied from trial to trial for the positive feedback, and of a picture of an unhappy Calimero cartoon character for the negative feedback.</p>
+</sec><sec id="s2c">
+<title>Procedure</title>
+<sec id="s2c1">
+<title>Bisection task</title>
+<p>The participants attended two sessions, one for each duration range. In the 0.5/1-s condition, <italic>S</italic> was equal to 0.5 s and <italic>L</italic> to 1 s. The comparison durations were 0.5, 0.58, 0.67, 0.75, 0.83, 0.92, 1 s. In the 4/8-s condition, <italic>S</italic> and <italic>L</italic> were 4 and 8 s respectively, and the comparison durations were 4, 4.67, 5.33, 6, 6.67, 7.33 and 8 s. In each bisection task, the participants were initially trained to respond short and long after <italic>S</italic> and <italic>L</italic> with the positive/negative feedback following a correct/incorrect response. The participants completed 20 trials with 10 <italic>S</italic> and 10 <italic>L</italic> randomly presented with an inter-trial interval that varied from 0.5 to 2 s. Each trial started with the word “ready!” being displayed on the screen. Then, if the participant was ready, the experimenter pressed the spacebar, and the stimulus duration was displayed after a 500-ms interval. The test phase immediately followed the training phase and the same experimental conditions as in training were used, except that feedback was only given for the anchor durations. Each participant performed 9 blocks of 11 trials each (99 trials): 3 trials for <italic>S</italic> and <italic>L,</italic> and 1 trial for each intermediate duration. In each bisection session, the experimenter told the participants not to count and explained to them that counting time might bias the scientific data <xref ref-type="bibr" rid="pone.0071424-Rattat1">[39]</xref>.</p>
+</sec><sec id="s2c2">
+<title>Neuropsychological tests</title>
+<p>After each bisection session, the participants performed 2 of the 4 neuropsychological tests. The forward and the backward versions of the Corsi Block-tapping test from the non-verbal Wechsler Intelligence Scale <xref ref-type="bibr" rid="pone.0071424-Weschler1">[40]</xref> were used to assess short-term and working memory capacities, respectively <xref ref-type="bibr" rid="pone.0071424-EngeldeAbreu1">[41]</xref>. In this test, the participants recalled the spatial configuration of a block-tapping sequence shown by the experimenter on a board consisting of 9 blocks, either in the same order for the forward Corsi span (short-term memory), or in the reverse order for the backward Corsi span (working memory). To assess selective attention, we used the visual attention subtest of the Developmental Neuropsychological Assessment (NEPSY) <xref ref-type="bibr" rid="pone.0071424-Korkman1">[25]</xref>. In this test, the participants had to focus selectively and maintain attention on a visual target located in an array of 96 items for a maximum of 3 minutes. The instructions were to find the 20 pictures that were the same as the targets (i.e. cats or faces) in a set of pictures. To evaluate information processing speed, we used the information processing speed test of the Wechsler Intelligence Scales adapted to the age of the participants (WPPSI for the 5-year-olds, WISC for the 8-year-olds and WAIS for the adults) by adding the scores from the coding and the symbol search subtests. In the coding test, the children had to, as quickly as possible and within a period of 2 minutes, either mark a maximum of 65 rows of shapes in accordance with a code (coding test A for children younger than 8 years) or transcribe a maximum of 119 digit-symbols based on another code (coding test B for children older than 8 years and adults). In the symbol search test, the children were given 2 minutes to decide as quickly as possible if a given target symbol appeared in 45 rows of 3 symbols (Searching Test A for children younger than 8 years) or if 1 of 2 different target symbols appeared in 60 rows of 5 symbols (Searching Test B for children older than 8 years and adults). In each row, the target symbol was different. The raw score in the coding test was the number of correct responses, whereas the raw score in the symbol search test was calculated as the number of correct responses minus the number of incorrect responses.</p>
+</sec></sec></sec><sec id="s3">
+<title>Results</title>
+<sec id="s3a">
+<title>Temporal bisection</title>
+<p><xref ref-type="fig" rid="pone-0071424-g001">Figure 1</xref> shows the proportion of long responses (<italic>p</italic>(long)) plotted against the stimulus durations for the 0.5/1-s and the 4/8-s anchor durations. An age-related difference in the psychophysical function can be clearly seen in <xref ref-type="fig" rid="pone-0071424-g001">Figure 1</xref>, with the slope of the curves increasing with age. This was confirmed by the analyses of the DL [<italic>D</italic>(<italic>p</italic>(long)  = .75) – <italic>D</italic>(<italic>p</italic>(long)  = .25/2], and the WR [DL/BP]. These measures, as well as that for the BP (<italic>D</italic>(<italic>p</italic>(long)  = .50), were derived from the intercept and slope parameters obtained from the significant fitting of a linear function to the subjects' individual psychophysical functions (5 years: mean <italic>R</italic><sup>2</sup>  = .73, <italic>SD</italic>  = .08; 8 years: mean R<italic><sup>2</sup></italic>  = .78, <italic>SD</italic>  = .08; Adults: mean <italic>R<sup>2</sup></italic>  = .87, <italic>SD</italic>  = .04). <xref ref-type="table" rid="pone-0071424-t001">Table 1</xref> shows the timing measures obtained in this way for each age group for the 0.5/1-s and the 4/8-s anchor durations. The ANOVA on the BP with one within-subject factor (duration) and two between-subject factors (age, gender) showed a significant main effect of duration, <italic>F</italic>(1, 174)  = 3952.79, <italic>p</italic> = .0001, while age, gender and the interaction involving these factors were not significant (all, <italic>p</italic>&gt;.05). Consequently, the BPs for the short duration (M = 0.77, <italic>SE</italic>  = 0.01) were closer to the arithmetic mean [(L+S)/2] (0.5/1-s: 0.75) than to the geometric mean [√(LxS)] (0.5/1-s: 0.71) of the two anchor durations, while the BPs for the long duration were closer to their geometric mean (4/8-s: 5.66) than to their arithmetic mean (4/8-s: 6), and higher in the long than in the short duration condition. Nevertheless, the BP values did not change across the age groups.</p>
+<fig id="pone-0071424-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0071424.g001</object-id><label>Figure 1</label><caption>
+<title>Bisection functions.</title>
+<p>Proportions of long responses plotted against stimulus durations for the 5-, the 8-year-olds and the adults in the short (0.5/1-s) and the longer (4/8-s) duration range condition.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0071424.g001" position="float" xlink:type="simple"/></fig><table-wrap id="pone-0071424-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0071424.t001</object-id><label>Table 1</label><caption>
+<title>Mean of Bisection Point, Difference Limen and Weber Ratio for the 5-year-olds, the 8 year-olds and the adults in the 0.5/1-s and 4/8-s anchor duration.</title>
+</caption><alternatives><graphic id="pone-0071424-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0071424.t001" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="2" align="left" rowspan="1">Bisection Point</td>
+<td colspan="2" align="left" rowspan="1">Difference Limen</td>
+<td colspan="2" align="left" rowspan="1">Weber Ratio</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.5/1-s</td>
+<td align="left" rowspan="1" colspan="1">4/8-s</td>
+<td align="left" rowspan="1" colspan="1">0.5/1-s</td>
+<td align="left" rowspan="1" colspan="1">4/8-s</td>
+<td align="left" rowspan="1" colspan="1">0.5/1-s</td>
+<td align="left" rowspan="1" colspan="1">4/8-s</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">5 years</td>
+<td align="left" rowspan="1" colspan="1">832</td>
+<td align="left" rowspan="1" colspan="1">5951</td>
+<td align="left" rowspan="1" colspan="1">832</td>
+<td align="left" rowspan="1" colspan="1">5951</td>
+<td align="left" rowspan="1" colspan="1">0.34</td>
+<td align="left" rowspan="1" colspan="1">0.38</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">8 years</td>
+<td align="left" rowspan="1" colspan="1">783</td>
+<td align="left" rowspan="1" colspan="1">5814</td>
+<td align="left" rowspan="1" colspan="1">783</td>
+<td align="left" rowspan="1" colspan="1">5814</td>
+<td align="left" rowspan="1" colspan="1">0.22</td>
+<td align="left" rowspan="1" colspan="1">0.27</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Adults</td>
+<td align="left" rowspan="1" colspan="1">698</td>
+<td align="left" rowspan="1" colspan="1">5654</td>
+<td align="left" rowspan="1" colspan="1">698</td>
+<td align="left" rowspan="1" colspan="1">5654</td>
+<td align="left" rowspan="1" colspan="1">0.16</td>
+<td align="left" rowspan="1" colspan="1">0.16</td>
+</tr>
+</tbody>
+</table>
+</alternatives></table-wrap>
+<p>In contrast, for the DL and the WR, there was an age effect as illustrated in <xref ref-type="fig" rid="pone-0071424-g002">Figure 2</xref> for the WR. More precisely, for the DL, the ANOVA showed a significant main effect of age, <italic>F</italic>(2, 174)  = 52.21, <italic>p</italic> = .0001, and duration, <italic>F</italic>(1, 174)  = 650.52, <italic>p</italic> = .0001, as well as an age x duration interaction, <italic>F</italic>(2, 174)  = 31.99, <italic>p</italic> = .0001, while the other effects were not significant. This indicated that the variability in time discrimination was higher for the long than for the short durations, but that the magnitude of the difference in DL between the two durations decreased with age, being higher in the 5-year-olds (1.87) than in either the 8-year-olds (1.37) or the adults (0.79), and also higher in the 8-year-olds than in the adults (Scheffé tests, all <italic>p</italic>&lt;.05). For the WR, which is an index of relative temporal sensitivity, only the effect of age reached statistical significance, <italic>F</italic>(2, 174)  = 62.68, <italic>p</italic> = .0001, revealing that the sensitivity to time improved across age groups (Scheffé for all pairwise comparisons, <italic>p</italic>&lt;.05).</p>
+<fig id="pone-0071424-g002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0071424.g002</object-id><label>Figure 2</label><caption>
+<title>Time sensitivity.</title>
+<p>Weber ratio for the 5-, the 8-year-olds and the adults in the short (0.5/1-s) and the longer (4/8-s) duration range condition.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0071424.g002" position="float" xlink:type="simple"/></fig>
+<p>The 3-way interaction between age, duration and gender nevertheless just failed to reach significance for the WR, <italic>F</italic>(2, 174)  = 2.89, <italic>p</italic> = .06. This was due to the boys, who obtained a significantly higher WR for the long (4/8-s) than for the short (0.5/1-s) anchor durations at the age of 5, <italic>t</italic>(37)  = 2.31, <italic>p</italic> = .03, and 8 years, <italic>t</italic>(25)  = 2.24, <italic>p</italic> = .03, while the girls obtained the same WR scores for these two duration conditions. At adult age, no difference between the men's and women's WR scores as a function of duration conditions was observed, with the men and women producing similar WRs for the different anchor duration values. This effect of gender will not be further discussed in our manuscript, although other studies have already found a sex effect on temporal performance <xref ref-type="bibr" rid="pone.0071424-Hancock1">[42]</xref>, <xref ref-type="bibr" rid="pone.0071424-Block1">[43]</xref>. It nevertheless suggests that there is a difference in the rhythm at which girls and boys develop time sensitivity for long durations, which are more attentionally demanding, probably as a result of education and/or maturation of the brain <xref ref-type="bibr" rid="pone.0071424-Haier1">[44]</xref>.</p>
+</sec><sec id="s3b">
+<title>Correlation between the timing measures and neuropsychological scores</title>
+<p><xref ref-type="table" rid="pone-0071424-t002">Table 2</xref> shows the means and standard deviations of the scores for the four neuropsychological tests used to assess short-term memory, working memory, selective attention and information processing speed. For each neuropsychological test, there was a significant effect of age, <italic>F</italic>(2, 177)  = 63.38, <italic>F</italic>(2, 177)  = 48.44, <italic>F</italic>(2, 177)  = 47.58, <italic>F</italic>(2, 177)  = 994.04, all <italic>p</italic> = .0001, with all pairwise comparisons being significant (Scheffé, all <italic>p</italic>&lt;.05). <xref ref-type="table" rid="pone-0071424-t003">Table 3</xref> shows the correlation between the z score for each neuropsychological score, the age and timing measures for which a significant effect of age has been previously found (i.e., for DL in the short and the long duration conditions as a significant duration x age interaction has been found, and for the mean WR as only a main effect of age has been found). The correlations between the scores for the neuropsychological tests and the time sensitivity indexes were significant (all <italic>p</italic>&lt;.001): The higher the working memory, the selective attention and the processing speed scores, the lower the DL and WR values were (indicative of higher sensitivity to time). As there were strong correlations between the different neuropsychological scores, which indicated that there was an overlap between the different dimensions of cognitive control, we ran a hierarchical regression analysis with the scores for each neuropsychological test and age entered into the equation to identify which factor was the best predictor of the variance in each timing measure.</p>
+<table-wrap id="pone-0071424-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0071424.t002</object-id><label>Table 2</label><caption>
+<title>Scores on the neuropsychological tests for the 5-year-olds, the 8-year-olds and the adults.</title>
+</caption><alternatives><graphic id="pone-0071424-t002-2" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0071424.t002" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="2" align="left" rowspan="1">5 years</td>
+<td colspan="2" align="left" rowspan="1">8 years</td>
+<td colspan="2" align="left" rowspan="1">Adults</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">M</td>
+<td align="left" rowspan="1" colspan="1"><italic>SD</italic></td>
+<td align="left" rowspan="1" colspan="1">M</td>
+<td align="left" rowspan="1" colspan="1"><italic>SD</italic></td>
+<td align="left" rowspan="1" colspan="1">M</td>
+<td align="left" rowspan="1" colspan="1"><italic>SD</italic></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Short-Term Memory</td>
+<td align="left" rowspan="1" colspan="1">5.42</td>
+<td align="left" rowspan="1" colspan="1"><italic>2.27</italic></td>
+<td align="left" rowspan="1" colspan="1">7.60</td>
+<td align="left" rowspan="1" colspan="1"><italic>1.86</italic></td>
+<td align="left" rowspan="1" colspan="1">9.48</td>
+<td align="left" rowspan="1" colspan="1"><italic>1.77</italic></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Working Memory</td>
+<td align="left" rowspan="1" colspan="1">3.73</td>
+<td align="left" rowspan="1" colspan="1"><italic>2.63</italic></td>
+<td align="left" rowspan="1" colspan="1">5.52</td>
+<td align="left" rowspan="1" colspan="1"><italic>1.85</italic></td>
+<td align="left" rowspan="1" colspan="1">7.55</td>
+<td align="left" rowspan="1" colspan="1"><italic>1.79</italic></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Selective Attention</td>
+<td align="left" rowspan="1" colspan="1">15.93</td>
+<td align="left" rowspan="1" colspan="1"><italic>8.63</italic></td>
+<td align="left" rowspan="1" colspan="1">23.08</td>
+<td align="left" rowspan="1" colspan="1"><italic>7.82</italic></td>
+<td align="left" rowspan="1" colspan="1">29.88</td>
+<td align="left" rowspan="1" colspan="1"><italic>6.96</italic></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Processing Speed</td>
+<td align="left" rowspan="1" colspan="1">31.30</td>
+<td align="left" rowspan="1" colspan="1"><italic>8.64</italic></td>
+<td align="left" rowspan="1" colspan="1">59.82</td>
+<td align="left" rowspan="1" colspan="1"><italic>9.99</italic></td>
+<td align="left" rowspan="1" colspan="1">120.88</td>
+<td align="left" rowspan="1" colspan="1"><italic>14.31</italic></td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt101"><label/><p>Abbreviations: M, mean; SD, standard-deviation.</p></fn></table-wrap-foot></table-wrap><table-wrap id="pone-0071424-t003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0071424.t003</object-id><label>Table 3</label><caption>
+<title>Correlation between timing measures in bisection, age and z-scores on neuropsychological tests.</title>
+</caption><alternatives><graphic id="pone-0071424-t003-3" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0071424.t003" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">1. DL (0.5/1-s)</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">2. DL (4/8-s)</td>
+<td align="left" rowspan="1" colspan="1">.42</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">3. WR</td>
+<td align="left" rowspan="1" colspan="1">.68</td>
+<td align="left" rowspan="1" colspan="1">.81</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">4. Age</td>
+<td align="left" rowspan="1" colspan="1">−.51</td>
+<td align="left" rowspan="1" colspan="1">−.53</td>
+<td align="left" rowspan="1" colspan="1">−.58</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">5. Short-Term Memory</td>
+<td align="left" rowspan="1" colspan="1">−.48</td>
+<td align="left" rowspan="1" colspan="1">−.37</td>
+<td align="left" rowspan="1" colspan="1">−.48</td>
+<td align="left" rowspan="1" colspan="1">.56</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">6. Working Memory</td>
+<td align="left" rowspan="1" colspan="1">−.47</td>
+<td align="left" rowspan="1" colspan="1">−.32</td>
+<td align="left" rowspan="1" colspan="1">−.44</td>
+<td align="left" rowspan="1" colspan="1">.56</td>
+<td align="left" rowspan="1" colspan="1">.71</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">7. Selective Attention</td>
+<td align="left" rowspan="1" colspan="1">−.36</td>
+<td align="left" rowspan="1" colspan="1">−.25</td>
+<td align="left" rowspan="1" colspan="1">−.35</td>
+<td align="left" rowspan="1" colspan="1">.57</td>
+<td align="left" rowspan="1" colspan="1">.28</td>
+<td align="left" rowspan="1" colspan="1">.38</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">8. Processing Speed</td>
+<td align="left" rowspan="1" colspan="1">−.52</td>
+<td align="left" rowspan="1" colspan="1">−.56</td>
+<td align="left" rowspan="1" colspan="1">−.60</td>
+<td align="left" rowspan="1" colspan="1">.93</td>
+<td align="left" rowspan="1" colspan="1">.59</td>
+<td align="left" rowspan="1" colspan="1">.53</td>
+<td align="left" rowspan="1" colspan="1">.58</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt102"><label/><p><bold>All coefficients significant at 0.01.</bold></p></fn><fn id="nt103"><label/><p>Abbreviations: DL, Difference Limen; WR, Weber Ratio.</p></fn><fn id="nt104"><label/><p><italic>The higher the DL or WR values, the lower the sensitivity to time was.</italic></p></fn></table-wrap-foot></table-wrap>
+<p>As argued in the Introduction, cognitive development may represent a cascade in which changes in processing speed lead to changes in working memory and selective attention capacities. Consequently, we ran an initial hierarchical regression analysis with a specific sequence of causal priority in which processing speed was loaded as the first predictor. Then, the memory variables (short-term and working memory) were entered into equation at the same time, followed by selective attention. Age was added as the last predictor to examine whether it accounted for an additional proportion of variance (beyond that of the other predictor variables) in timing measures. <xref ref-type="table" rid="pone-0071424-t004">Table 4</xref> summarizes the results of this hierarchical regression analyses for the 3 timing measures: DL (0.5–1-s), DL (4/8-s), and mean WR. However, in order to test our model, we also performed a hierarchical regression analysis with memory scores as the first predictor variable, selective attention scores as the second predictor, and processing speed as the third predictor (<xref ref-type="table" rid="pone-0071424-t005">Table 5</xref>). Age was always included in the last step of the regression analysis. As indicated in <xref ref-type="table" rid="pone-0071424-t004">Table 4</xref>, processing speed explained from 27 to 37% of the variance in timing measures in Model 1 (processing speed loaded as the first predictor). When other variables were added into the analysis, increases in processing speed remained the best predictor of improvement in time sensitivity. Indeed, the scores on this test explained the largest proportion of variance for the DL in the short and the long duration conditions, and for the mean WR in all the models that we employed. The other neuropsychological scores did not emerge as reliable predictors of time sensitivity in temporal bisection, with the exception of the scores in the memory tests in Model 2. Indeed, for WR, processing speed scores were the only reliable predictor across all models. However, for the DL in the short duration condition, adding the memory scores to the information processing speed scores significantly increased the proportion of variance explained. The Δ in the proportion of variance explained nevertheless remained small, although it was relatively greater for the DL in the short duration condition (Δ = .07) than for the WR (Δ = .02).</p>
+<table-wrap id="pone-0071424-t004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0071424.t004</object-id><label>Table 4</label><caption>
+<title>Hierarchical regression analyses for the timing measures for the models with the information processing speed as first predictor.</title>
+</caption><alternatives><graphic id="pone-0071424-t004-4" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0071424.t004" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="3" align="left" rowspan="1">DL (0.5/1-s)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="3" align="left" rowspan="1">DL (4/8-s)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="3" align="left" rowspan="1">WR</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Variables</td>
+<td align="left" rowspan="1" colspan="1">B</td>
+<td align="left" rowspan="1" colspan="1"><italic>SE</italic> B</td>
+<td align="left" rowspan="1" colspan="1">β</td>
+<td align="left" rowspan="1" colspan="1"><italic>R<sup>2</sup></italic></td>
+<td align="left" rowspan="1" colspan="1">B</td>
+<td align="left" rowspan="1" colspan="1"><italic>SE</italic> B</td>
+<td align="left" rowspan="1" colspan="1">β</td>
+<td align="left" rowspan="1" colspan="1"><italic>R<sup>2</sup></italic></td>
+<td align="left" rowspan="1" colspan="1">B</td>
+<td align="left" rowspan="1" colspan="1"><italic>SE</italic> B</td>
+<td align="left" rowspan="1" colspan="1">β</td>
+<td align="left" rowspan="1" colspan="1"><italic>R<sup>2</sup></italic></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="13" align="left" rowspan="1">Model 1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Processing Speed</italic></td>
+<td align="left" rowspan="1" colspan="1">−57.72</td>
+<td align="left" rowspan="1" colspan="1">7.05</td>
+<td align="left" rowspan="1" colspan="1">−.52***</td>
+<td align="left" rowspan="1" colspan="1">.<italic>27***</italic></td>
+<td align="left" rowspan="1" colspan="1">−479.6</td>
+<td align="left" rowspan="1" colspan="1">52.86</td>
+<td align="left" rowspan="1" colspan="1">−.56***</td>
+<td align="left" rowspan="1" colspan="1">.<italic>32***</italic></td>
+<td align="left" rowspan="1" colspan="1">−.08</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.60***</td>
+<td align="left" rowspan="1" colspan="1">.<italic>37***</italic></td>
+</tr>
+<tr>
+<td colspan="13" align="left" rowspan="1">Model 2</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Processing Speed</italic></td>
+<td align="left" rowspan="1" colspan="1">−36.99</td>
+<td align="left" rowspan="1" colspan="1">8.55</td>
+<td align="left" rowspan="1" colspan="1">−.34***</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−454.1</td>
+<td align="left" rowspan="1" colspan="1">66.94</td>
+<td align="left" rowspan="1" colspan="1">−.53***</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.06</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.48***</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Short-Term Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−17.68</td>
+<td align="left" rowspan="1" colspan="1">10.32</td>
+<td align="left" rowspan="1" colspan="1">−.16</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−42.06</td>
+<td align="left" rowspan="1" colspan="1">80.84</td>
+<td align="left" rowspan="1" colspan="1">−.05</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.02</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.13</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Working Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−19.63</td>
+<td align="left" rowspan="1" colspan="1">9.79</td>
+<td align="left" rowspan="1" colspan="1">−.18<xref ref-type="table-fn" rid="nt106">*</xref></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−1.44</td>
+<td align="left" rowspan="1" colspan="1">76.67</td>
+<td align="left" rowspan="1" colspan="1">−.01<xref ref-type="table-fn" rid="nt106">*</xref></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.10</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Overall significance</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>34***</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>32</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>39</italic><xref ref-type="table-fn" rid="nt106">*</xref></td>
+</tr>
+<tr>
+<td colspan="13" align="left" rowspan="1">Model 3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Processing Speed</italic></td>
+<td align="left" rowspan="1" colspan="1">−31.81</td>
+<td align="left" rowspan="1" colspan="1">9.92</td>
+<td align="left" rowspan="1" colspan="1">−.29**</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−514.3</td>
+<td align="left" rowspan="1" colspan="1">77.41</td>
+<td align="left" rowspan="1" colspan="1">−.60***</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.06</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.48***</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Short-Term Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−19.83</td>
+<td align="left" rowspan="1" colspan="1">10.53</td>
+<td align="left" rowspan="1" colspan="1">−.18</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−17.11</td>
+<td align="left" rowspan="1" colspan="1">82.16</td>
+<td align="left" rowspan="1" colspan="1">−.02</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.02</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.13</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Working Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−17.46</td>
+<td align="left" rowspan="1" colspan="1">10.02</td>
+<td align="left" rowspan="1" colspan="1">−.16</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−26.66</td>
+<td align="left" rowspan="1" colspan="1">78.13</td>
+<td align="left" rowspan="1" colspan="1">−.03</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.10</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>3. Selective Attention</italic></td>
+<td align="left" rowspan="1" colspan="1">−8.77</td>
+<td align="left" rowspan="1" colspan="1">8.53</td>
+<td align="left" rowspan="1" colspan="1">−.08</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">101.95</td>
+<td align="left" rowspan="1" colspan="1">66.51</td>
+<td align="left" rowspan="1" colspan="1">.12</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.01</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Overall significance</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>34</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>33</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>39</italic></td>
+</tr>
+<tr>
+<td colspan="13" align="left" rowspan="1">Model 4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Processing Speed</italic></td>
+<td align="left" rowspan="1" colspan="1">−25.41</td>
+<td align="left" rowspan="1" colspan="1">19.30</td>
+<td align="left" rowspan="1" colspan="1">−.23</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−439.4</td>
+<td align="left" rowspan="1" colspan="1">150.45</td>
+<td align="left" rowspan="1" colspan="1">−.52**</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.05</td>
+<td align="left" rowspan="1" colspan="1">.02</td>
+<td align="left" rowspan="1" colspan="1">−.39<xref ref-type="table-fn" rid="nt106">*</xref></td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Short-Term Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−20.24</td>
+<td align="left" rowspan="1" colspan="1">10.61</td>
+<td align="left" rowspan="1" colspan="1">−.18</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−21.99</td>
+<td align="left" rowspan="1" colspan="1">82.74</td>
+<td align="left" rowspan="1" colspan="1">−.03</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.02</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.13</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Working Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−16.54</td>
+<td align="left" rowspan="1" colspan="1">10.32</td>
+<td align="left" rowspan="1" colspan="1">−.15</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−15.85</td>
+<td align="left" rowspan="1" colspan="1">80.46</td>
+<td align="left" rowspan="1" colspan="1">−.02</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.09</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>3. Selective Attention</italic></td>
+<td align="left" rowspan="1" colspan="1">−8.59</td>
+<td align="left" rowspan="1" colspan="1">8.56</td>
+<td align="left" rowspan="1" colspan="1">−.08</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">104.0</td>
+<td align="left" rowspan="1" colspan="1">66.72</td>
+<td align="left" rowspan="1" colspan="1">.12</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.01</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>4. Age</italic></td>
+<td align="left" rowspan="1" colspan="1">−.07</td>
+<td align="left" rowspan="1" colspan="1">.19</td>
+<td align="left" rowspan="1" colspan="1">−.07</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.87</td>
+<td align="left" rowspan="1" colspan="1">1.50</td>
+<td align="left" rowspan="1" colspan="1">−.10</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.10</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Overall significance</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>35</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>33</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>39</italic></td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt105"><label/><p>Abbreviations: DL, Difference Limen; WR, Weber Ratio; B, Unstandardized beta coefficient; SE B, Standard error on beta; β, Standardized beta coefficient.</p></fn><fn id="nt106"><label>*</label><p><italic>p</italic>&lt;.05; ** <italic>p</italic>&lt;.001; *** <italic>p</italic>&lt;.001.</p></fn></table-wrap-foot></table-wrap><table-wrap id="pone-0071424-t005" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0071424.t005</object-id><label>Table 5</label><caption>
+<title>Hierarchical regression analyses for the timing measures for the models with the memory (short-term and working memory) as first predictor.</title>
+</caption><alternatives><graphic id="pone-0071424-t005-5" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0071424.t005" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="4" align="left" rowspan="1">DL (0.5/1-s)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="4" align="left" rowspan="1">DL (4/8-s)</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td colspan="2" align="left" rowspan="1">WR</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Variables</td>
+<td align="left" rowspan="1" colspan="1">B</td>
+<td align="left" rowspan="1" colspan="1"><italic>SE</italic> B</td>
+<td align="left" rowspan="1" colspan="1">β</td>
+<td align="left" rowspan="1" colspan="1"><italic>R<sup>2</sup></italic></td>
+<td align="left" rowspan="1" colspan="1">B</td>
+<td align="left" rowspan="1" colspan="1"><italic>SE</italic> B</td>
+<td align="left" rowspan="1" colspan="1">β</td>
+<td align="left" rowspan="1" colspan="1"><italic>R<sup>2</sup></italic></td>
+<td align="left" rowspan="1" colspan="1">B</td>
+<td align="left" rowspan="1" colspan="1"><italic>SE</italic> B</td>
+<td align="left" rowspan="1" colspan="1">β</td>
+<td align="left" rowspan="1" colspan="1"><italic>R<sup>2</sup></italic></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="13" align="left" rowspan="1">Model 1</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Short-Term Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−33.90</td>
+<td align="left" rowspan="1" colspan="1">10.09</td>
+<td align="left" rowspan="1" colspan="1">−.31**</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−241.2</td>
+<td align="left" rowspan="1" colspan="1">84.36</td>
+<td align="left" rowspan="1" colspan="1">−.28**</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.04</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.34***</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Working Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−27.53</td>
+<td align="left" rowspan="1" colspan="1">10.09</td>
+<td align="left" rowspan="1" colspan="1">−.25**</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−98.46</td>
+<td align="left" rowspan="1" colspan="1">84.36</td>
+<td align="left" rowspan="1" colspan="1">−.12</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.03</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.20<xref ref-type="table-fn" rid="nt108">*</xref></td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Overall significance</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>27***</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>14***</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>25***</italic></td>
+</tr>
+<tr>
+<td colspan="13" align="left" rowspan="1"><italic>Model 2</italic></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Short-Term Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−33.57</td>
+<td align="left" rowspan="1" colspan="1">9.87</td>
+<td align="left" rowspan="1" colspan="1">−.30**</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−239.4</td>
+<td align="left" rowspan="1" colspan="1">83.73</td>
+<td align="left" rowspan="1" colspan="1">−.28**</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.04</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.33***</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Working Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−19.07</td>
+<td align="left" rowspan="1" colspan="1">10.26</td>
+<td align="left" rowspan="1" colspan="1">−.17</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−52.69</td>
+<td align="left" rowspan="1" colspan="1">87.07</td>
+<td align="left" rowspan="1" colspan="1">−.06</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.02</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.12</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Selective Attention</italic></td>
+<td align="left" rowspan="1" colspan="1">−22.65</td>
+<td align="left" rowspan="1" colspan="1">7.53</td>
+<td align="left" rowspan="1" colspan="1">−.21**</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−122.5</td>
+<td align="left" rowspan="1" colspan="1">63.93</td>
+<td align="left" rowspan="1" colspan="1">−.14</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.03</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.21**</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Overall significance</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>30**</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>16</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>29**</italic></td>
+</tr>
+<tr>
+<td colspan="13" align="left" rowspan="1">Model 3</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Short-Term Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−19.83</td>
+<td align="left" rowspan="1" colspan="1">10.53</td>
+<td align="left" rowspan="1" colspan="1">−.18</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−17.11</td>
+<td align="left" rowspan="1" colspan="1">82.16</td>
+<td align="left" rowspan="1" colspan="1">−.02</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.02</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.13</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Working Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−17.46</td>
+<td align="left" rowspan="1" colspan="1">10.02</td>
+<td align="left" rowspan="1" colspan="1">−.16</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−26.66</td>
+<td align="left" rowspan="1" colspan="1">78.13</td>
+<td align="left" rowspan="1" colspan="1">−.03</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.10</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Selective Attention</italic></td>
+<td align="left" rowspan="1" colspan="1">−8.77</td>
+<td align="left" rowspan="1" colspan="1">8.53</td>
+<td align="left" rowspan="1" colspan="1">−.08</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">101.95</td>
+<td align="left" rowspan="1" colspan="1">66.51</td>
+<td align="left" rowspan="1" colspan="1">.12</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.01</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>3. Processing Speed</italic></td>
+<td align="left" rowspan="1" colspan="1">−31.81</td>
+<td align="left" rowspan="1" colspan="1">9.92</td>
+<td align="left" rowspan="1" colspan="1">−.29**</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−514.3</td>
+<td align="left" rowspan="1" colspan="1">77.41</td>
+<td align="left" rowspan="1" colspan="1">−.60***</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.06</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.48***</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Overall significance</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>34**</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>33***</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>39***</italic></td>
+</tr>
+<tr>
+<td colspan="13" align="left" rowspan="1">Model 4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Short-Term Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−20.24</td>
+<td align="left" rowspan="1" colspan="1">10.61</td>
+<td align="left" rowspan="1" colspan="1">−.18</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−21.99</td>
+<td align="left" rowspan="1" colspan="1">82.74</td>
+<td align="left" rowspan="1" colspan="1">−.03</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.02</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.13</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. Working Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">−16.54</td>
+<td align="left" rowspan="1" colspan="1">10.32</td>
+<td align="left" rowspan="1" colspan="1">−.15</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−15.85</td>
+<td align="left" rowspan="1" colspan="1">80.46</td>
+<td align="left" rowspan="1" colspan="1">−.02</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.09</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Selective Attention</italic></td>
+<td align="left" rowspan="1" colspan="1">−8.59</td>
+<td align="left" rowspan="1" colspan="1">8.56</td>
+<td align="left" rowspan="1" colspan="1">−.08</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">104.00</td>
+<td align="left" rowspan="1" colspan="1">66.72</td>
+<td align="left" rowspan="1" colspan="1">.12</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.01</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>3. Processing Speed</italic></td>
+<td align="left" rowspan="1" colspan="1">−25.41</td>
+<td align="left" rowspan="1" colspan="1">19.30</td>
+<td align="left" rowspan="1" colspan="1">−.23</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−439.4</td>
+<td align="left" rowspan="1" colspan="1">150.45</td>
+<td align="left" rowspan="1" colspan="1">−.52**</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.05</td>
+<td align="left" rowspan="1" colspan="1">.02</td>
+<td align="left" rowspan="1" colspan="1">−.39<xref ref-type="table-fn" rid="nt108">*</xref></td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>4. Age</italic></td>
+<td align="left" rowspan="1" colspan="1">−.07</td>
+<td align="left" rowspan="1" colspan="1">.19</td>
+<td align="left" rowspan="1" colspan="1">−.07</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">−.87</td>
+<td align="left" rowspan="1" colspan="1">1.50</td>
+<td align="left" rowspan="1" colspan="1">−.10</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">−.10</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Overall significance</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>34</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>33</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>39</italic></td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt107"><label/><p>Abbreviations: DL, Difference Limen; WR, Weber Ratio; B, Unstandardized beta coefficient; SE B, Standard error on beta; β, Standardized beta coefficient.</p></fn><fn id="nt108"><label>*</label><p><italic>p</italic>&lt;.05; ** <italic>p</italic>&lt;.001; *** <italic>p</italic>&lt;.001.</p></fn></table-wrap-foot></table-wrap>
+<p>As indicated in <xref ref-type="table" rid="pone-0071424-t005">Table 5</xref>, Model 1 (memory scores loaded as the first predictor) explained 27 %, 14% and 25% of variance in the DL (0.5/1-s), the DL (4/8-s) and the WR values, respectively. When selective attention scores were added to the memory scores in the Model 2, there was a slight increase in the proportion of variance explained (Δ <italic>R</italic><sup>2</sup>  = .03 for DL (0.5/1-s); Δ <italic>R</italic><sup>2</sup>  = .04 for WR). However, once processing speed was entered into equation, it was the only predictor variable that accounted for the variance in every temporal sensitivity index (DL (0.5/1-s), <italic>ß</italic> = .29; DL (4/8-s), <italic>ß</italic> = .60; WR, <italic>ß</italic> = .48, all <italic>p</italic>&lt;.05). As revealed by Model 4, age did not increase the proportion of variance explained. In sum, our hierarchical regression analyses demonstrated that processing speed was the major predictor of variances in age-related differences in time sensitivity. <xref ref-type="fig" rid="pone-0071424-g003">Figure 3</xref> illustrates this strong relationship between the WR value and the information processing speed scores, which took the form of a linear regression function or, more accurately, an exponential decay function (<italic>R</italic><sup>2</sup>  = .49, <italic>p</italic>&lt;.05): The higher the information processing scores, the lower the WR values were. In other words, time sensitivity increases when information processing speeds up as children grow older.</p>
+<fig id="pone-0071424-g003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0071424.g003</object-id><label>Figure 3</label><caption>
+<title>Time sensitivity and information processing speed.</title>
+<p>Significant correlation between Weber Ratio and information processing speed (z-scores).</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0071424.g003" position="float" xlink:type="simple"/></fig>
+<p>As discussed below, time processing is therefore an inherent part of the speed of execution of cognitive tasks such as those tested in the subtests of the Wechsler Intelligence Scale for Children that assess information processing speed. Therefore, and in line with Rammsayer and Brandler, we decided to examine whether, conversely, sensitivity to time was a good predictor of variance in scores in the information processing speed test <xref ref-type="bibr" rid="pone.0071424-Rammsayer1">[45]</xref>. Consequently, we entered an index of time sensitivity (mean WR) in the first step of the hierarchical regression analysis, and the scores from the other neuropsychological tests, i.e., the short-term and the working memory scores in the second step and the selective attention scores in the last step of this regression procedure (<xref ref-type="table" rid="pone-0071424-t006">Table 6</xref>). The overall <italic>R</italic><sup>2</sup> for Model 1 was significant (<italic>p</italic>&lt;.0001) and revealed that the WR took account for 37% of variance in the processing speed scores. However, the proportion of variance explained increased when the scores on the memory tests (Model 2, Δ <italic>R</italic><sup>2</sup>  = .12) and those on the selective attention test were added to the time sensitivity index (Model 3, Δ <italic>R</italic><sup>2</sup>  = .11). In fact, the summary of the hierarchical regression models revealed that time sensitivity, selective attention and short-term memory were all reliable predictors of individual differences in processing speed (all <italic>p</italic>&lt;.01) that together accounted for 60% of the variance.</p>
+<table-wrap id="pone-0071424-t006" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0071424.t006</object-id><label>Table 6</label><caption>
+<title>Hierarchical regression analyses for the information processing speed scores.</title>
+</caption><alternatives><graphic id="pone-0071424-t006-6" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0071424.t006" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1">Variables</td>
+<td align="left" rowspan="1" colspan="1">B</td>
+<td align="left" rowspan="1" colspan="1"><italic>SE</italic> B</td>
+<td align="left" rowspan="1" colspan="1">β</td>
+<td align="left" rowspan="1" colspan="1"><italic>R<sup>2</sup></italic></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Model 1</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. WR</italic></td>
+<td align="left" rowspan="1" colspan="1">−4.75</td>
+<td align="left" rowspan="1" colspan="1">.47</td>
+<td align="left" rowspan="1" colspan="1">−.60***</td>
+<td align="left" rowspan="1" colspan="1">.<italic>37***</italic></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Model 2</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. WR</italic></td>
+<td align="left" rowspan="1" colspan="1">−3.14</td>
+<td align="left" rowspan="1" colspan="1">.49</td>
+<td align="left" rowspan="1" colspan="1">−.40***</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Short-Term Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">.31</td>
+<td align="left" rowspan="1" colspan="1">.08</td>
+<td align="left" rowspan="1" colspan="1">.31***</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Working Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">.13</td>
+<td align="left" rowspan="1" colspan="1">.07</td>
+<td align="left" rowspan="1" colspan="1">.13</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Overall significance</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>49***</italic></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Model 3</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>1. WR</italic></td>
+<td align="left" rowspan="1" colspan="1">−2.45</td>
+<td align="left" rowspan="1" colspan="1">.44</td>
+<td align="left" rowspan="1" colspan="1">−.31**</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Short-Term Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">.33</td>
+<td align="left" rowspan="1" colspan="1">.07</td>
+<td align="left" rowspan="1" colspan="1">.33***</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>2. Working Memory</italic></td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1">.07</td>
+<td align="left" rowspan="1" colspan="1">.01</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>3. Selective Attention</italic></td>
+<td align="left" rowspan="1" colspan="1">.37</td>
+<td align="left" rowspan="1" colspan="1">.05</td>
+<td align="left" rowspan="1" colspan="1">.37***</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><italic>Overall significance</italic></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">.<italic>60***</italic></td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt109"><label/><p>Abbreviations: WR, Weber Ratio; B, Unstandardized beta coefficient; SE B, Standard error on beta; β, Standardized beta coefficient.</p></fn><fn id="nt110"><label>*</label><p><italic>p</italic>&lt;.05; ** <italic>p</italic>&lt;.001; *** <italic>p</italic>&lt;.001.</p></fn></table-wrap-foot></table-wrap></sec></sec><sec id="s4">
+<title>Discussion</title>
+<p>In line with the findings of many developmental studies, our results found that the scores on neuropsychological tests assessing short-term memory, working memory, selective attention, and information processing speed increased with age until early adulthood. In addition, there was a large overlap between the cognitive processes assessed by these different tests, as the positive correlation between the scores on the different neuropsychological tests revealed. Nevertheless, as Luna et al. have argued, although these cognitive processes interact, each of them makes a specific contribution to the control of cognition <xref ref-type="bibr" rid="pone.0071424-Luna1">[37]</xref>. As far as the discrimination of time is concerned, previous studies have suggested that the development of selective and sustained attention assessed by the attention/concentration index of the Children's Memory Scale (CMS) <xref ref-type="bibr" rid="pone.0071424-Cohen1">[46]</xref> accounts for individual differences in temporal sensitivity for long durations (&gt;15 s) <xref ref-type="bibr" rid="pone.0071424-Zlanti1">[22]</xref>, while the development of selective attention accounts for these differences in temporal sensitivity to the difficult ratio of 2:3 between the two anchor durations <xref ref-type="bibr" rid="pone.0071424-DroitVolet5">[24]</xref>. However, in time discrimination tasks such as that used in the present study, in which the ratio between <italic>S</italic> and <italic>L</italic> is 1 2, working memory capacity has been identified as the best predictor of improvement in time sensitivity for the short (&lt;1 s) and the long durations (from 4 to 8 s) <xref ref-type="bibr" rid="pone.0071424-Zlanti1">[22]</xref>, <xref ref-type="bibr" rid="pone.0071424-Zlanti2">[23]</xref>. The results of the present study thus confirm the important role played by the development of working memory capacities in the improvement of temporal discrimination and therefore demonstrate that the temporal judgment tasks used in humans impose demands at the level of controlled processes. However, our results also suggest that working memory capacity is not sufficient in itself to explain age-related changes in time sensitivity in a temporal discrimination task. Indeed, our current findings show that information processing speed accounts for a larger proportion of individual variance in children's time sensitivity than working memory.</p>
+<p>While only very few neuropsychological studies of time discrimination have been conducted in healthy children, several studies have examined the relationships between scores on different neuropsychological tests and time judgments in human adults. The studies conducted in healthy adults have effectively highlighted the critical role of working memory in timing <xref ref-type="bibr" rid="pone.0071424-Broadway1">[47]</xref>–<xref ref-type="bibr" rid="pone.0071424-Fink1">[49]</xref>. For instance, Broadway and Engle recently showed that individuals with high working memory capacities reproduced durations more accurately and with less variability than those with lower working memory capacities <xref ref-type="bibr" rid="pone.0071424-Broadway1">[47]</xref>. Studies comparing young and elderly subjects have also shown that deficits in working memory capacities can help explain deficits in time judgments with aging <xref ref-type="bibr" rid="pone.0071424-Baudouin1">[50]</xref>–<xref ref-type="bibr" rid="pone.0071424-Ulbrich1">[53]</xref>. This finding is consistent with the results of studies that have used an interference task paradigm to show that temporal performance decreases when working-memory demands increase <xref ref-type="bibr" rid="pone.0071424-Fortin1">[54]</xref>–<xref ref-type="bibr" rid="pone.0071424-Fortin3">[56]</xref>. All authors have therefore concluded that maintaining and capturing the flow of temporal information in a temporal task require working memory capacities. However, in these studies, when processing speed was factored out (simple reaction time, temporal rhythm), working memory explained a large proportion of individual variances in temporal accuracy in temporal reproduction tasks but not in temporal production tasks <xref ref-type="bibr" rid="pone.0071424-Baudouin1">[50]</xref>, <xref ref-type="bibr" rid="pone.0071424-Baudouin2">[51]</xref>, <xref ref-type="bibr" rid="pone.0071424-Perbal1">[52]</xref>. Therefore, in a production task, working memory was not found to be a predictor of variance in temporal accuracy <xref ref-type="bibr" rid="pone.0071424-Baudouin2">[51]</xref>, <xref ref-type="bibr" rid="pone.0071424-Perbal1">[52]</xref>. The fact that information processing speed is a better predictor of temporal accuracy than working memory is entirely consistent with our findings in children in a temporal bisection task (although our data related to temporal variability and not to temporal accuracy). The cognitive processes involved in working memory overlap those that contribute to information processing speed. However, this later is itself characterized by cognitive dimensions other than the storage and maintenance of information in memory, namely the speed-dependent efficiency of information processing <xref ref-type="bibr" rid="pone.0071424-Kail3">[57]</xref>. Indeed, the cognitive tasks involved in tests that assess information processing speed have to be performed under temporal constraints, i.e. as quickly as possible. Consequently, processing speed and timing are interdependent. In our study, the test scores for processing speed were the best predictor of developmental changes in time sensitivity in a bisection task and, conversely, sensitivity to time was the best predictor of developmental changes in the scores in the information processing speed tests, although in this latter test, attention and memory capacities are also required.</p>
+<p>Rammsayer and colleagues, who obtained similar results in human adults, hypothesized “a temporal resolution power” and suggested that the capacity for temporal accuracy would be a major predictor of general intelligence (factor g) <xref ref-type="bibr" rid="pone.0071424-Rammsayer1">[45]</xref>, <xref ref-type="bibr" rid="pone.0071424-Rammsayer2">[58]</xref>, <xref ref-type="bibr" rid="pone.0071424-Troche1">[59]</xref>. As these authors argued, the degree of temporal resolution would be an indicator of the dynamic physiological activity of our brains: A higher rate of neuronal oscillation should bring about faster and more efficient information processing and a higher level of temporal resolution. Several models of timing have been proposed based on mechanisms involving neural oscillations <xref ref-type="bibr" rid="pone.0071424-Creelman1">[60]</xref>, <xref ref-type="bibr" rid="pone.0071424-Treisman1">[61]</xref>. Nevertheless, the most popular of these models in the neuroscientific field is the Striatal Beat Frequency (SBF) model proposed by Mattell and Meck <xref ref-type="bibr" rid="pone.0071424-Matell1">[62]</xref>, <xref ref-type="bibr" rid="pone.0071424-Matell2">[63]</xref>. According to this model, the representation of time emerges from synchronous neural oscillations occurring across distributed cortical regions at the moment of the stimulus to be timed. In addition, the spiny neurons in the striatum, which are active at certain critical times, are thought to play the role of coincidence detectors. As training progresses, these neurons fire when they recognize a pattern of coincidences of oscillators associated with the stimulus that is to be timed. Within this framework, it seems likely that the speeding up of information processing with age indirectly reflects the increasing dynamic efficiency of the neural circuits responsible for timing as the brain matures. The role of neural oscillators in the perception of time has found support in Treisman et al. 's research showing that periodic clicks influence time judgments as a function of their rate by affecting the frequency of cortical oscillations <xref ref-type="bibr" rid="pone.0071424-Treisman1">[61]</xref>. More than 40 years ago, Survillo also established a link between neural oscillations and information processing speed (reaction time): the faster the alpha rhythm, the faster information processing is <xref ref-type="bibr" rid="pone.0071424-Survillo1">[64]</xref>, <xref ref-type="bibr" rid="pone.0071424-Survillo2">[65]</xref>. As far as electrical brain activity in children is concerned, EEG activity changes from birth through to adolescence, with alpha frequency increasing (8–12 Hz) and theta frequency decreasing (4–8 Hz) (<xref ref-type="bibr" rid="pone.0071424-Eisermann1">[66]</xref>, <xref ref-type="bibr" rid="pone.0071424-Petersen1">[67]</xref>, <xref ref-type="bibr" rid="pone.0071424-Klimesch1">[68]</xref> for a review). These age-related changes in EEG are thought to reflect the continuing maturation of neural circuits (e.g., myelination). They might therefore indicate the age-related acceleration in neural oscillatory activities that underpin time representation. As stated by Rammsayer and Brandler, the higher the frequency of neural oscillators, the finer the temporal resolution of the internal clock <xref ref-type="bibr" rid="pone.0071424-Rammsayer2">[58]</xref>. In addition, brain maturation may be accompanied by an improvement in the synchronization between the neuronal groups, on the one hand, and, on the other, in the connection between cortical and striatal structures due to neural differentiation and an increase in axonal conduction velocity <xref ref-type="bibr" rid="pone.0071424-Brown1">[19]</xref>. EEG coherence is a measure of the degree of correlation between different EEG sites and provides information about the neurophysiological dynamics of the maturing brain <xref ref-type="bibr" rid="pone.0071424-Brown1">[19]</xref>. More specifically, the coherence distance increases with age up to 5 years, especially in the posterior-anterior direction, thus suggesting that differentiated subsystems may become integrated. Changes continue to occur at the ages of approximately 9 and 14 years but, in this case, from long to shorter distances and reflect a process involving the differentiation of integrated subsystems <xref ref-type="bibr" rid="pone.0071424-Brown1">[19]</xref>. This is consistent with fMRI studies indicating that areas activated in cognitive tasks in children are both more local in the brain, but also larger and more “diffuse”. In sum, the age changes in information processing speed may be an indirect measure that reflects the maturation of the functioning of cerebral systems that underpin the processing of time. However, little neurodevelopmental research has been devoted to the performance of temporal tasks in typically developing children, with the exception of the two recent fMRI studies conducted by Smith et al. and Neufang et al. among participants aged from 10 to 53 years and from 8 to 15 years, respectively <xref ref-type="bibr" rid="pone.0071424-Smith1">[69]</xref>, <xref ref-type="bibr" rid="pone.0071424-Neufang1">[70]</xref>. In their fMRI study, Smith et al. observed a progressive increase with age in the activation of both the right dorsolateral striatum and the left dorsolateral prefrontal and parietal regions <xref ref-type="bibr" rid="pone.0071424-Smith1">[69]</xref>. Further investigations of children's time perception using measures of the dynamic activity of the brain are thus required.</p>
+<p>In conclusion, the mechanisms underlying the processing of time seem to speed up during development. In other words, as development progresses, the timing mechanisms run faster and temporal precision improves. As Buhusi and Meck point out, the human brain is a time machine <xref ref-type="bibr" rid="pone.0071424-Buhusi1">[71]</xref>. Rammsayer and Brandler used the metaphor of “internal master clock” <xref ref-type="bibr" rid="pone.0071424-Rammsayer2">[58]</xref>. We can now go further and say that the temporal resolution of this master clock improves with development. However the acceleration of this master clock affects a complex cascade of cognitive processes (working memory, attention) that improves not only the efficiency of temporal information processing, but also the processing of all dynamic information that, by definition, unfolds in time <xref ref-type="bibr" rid="pone.0071424-Burle1">[72]</xref>, <xref ref-type="bibr" rid="pone.0071424-Ivry1">[73]</xref>. Indeed, time is inherent to the dynamic physiological activity of our brain, and it is not therefore surprising that the development of timing capacities originates in basic mechanisms that accelerate the general dynamic functioning of the brain and which, in turn, affect other related cognitive processes.</p>
+</sec></body>
+<back>
+<ack>
+<p>We would like to thank Suzanne Terret, nursery school teacher, Aures and Charles-Louis-Phillipe in St Germain des Fossés, as well as the teachers: C. Joffroy, I. Brodier, N. Morvan, M.-C. Ségafrédo, P. Raynaud, S. Choco, I. Deprin, and I. Patin.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0071424-Brannon1"><label>1</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brannon</surname><given-names>EM</given-names></name>, <name name-style="western"><surname>Suanda</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Libertus</surname><given-names>K</given-names></name> (<year>2007</year>) <article-title>Temporal discrimination increases in precision over development and parallels the development of numerosity discrimination</article-title>. <source>Developmental Science</source> <volume>10(6)</volume>: <fpage>770</fpage>–<lpage>777</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Brannon2"><label>2</label>
+<mixed-citation publication-type="other" xlink:type="simple">Brannon EM, Roussel LW, Meck W, Woldorff M (2004) Timing in the baby brain. Cognitive Brain Research 21, 227–233.</mixed-citation>
+</ref>
+<ref id="pone.0071424-DroitVolet1"><label>3</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Droit-Volet</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Wearden</surname><given-names>JH</given-names></name> (<year>2001</year>) <article-title>Temporal bisection in children</article-title>. <source>Journal of Experimental Child Psychology</source> <volume>55</volume>: <fpage>142</fpage>–<lpage>159</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Provasi1"><label>4</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Provasi</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Rattat</surname><given-names>A–C</given-names></name>, <name name-style="western"><surname>Droit-Volet</surname><given-names>S</given-names></name> (<year>2010</year>) <article-title>Temporal bisection in 4-month-old infants</article-title>. <source>Journal of Experimental Psychology: Animal Behavior Processes</source> <volume>37(1)</volume>: <fpage>108</fpage>–<lpage>113</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-VanMarle1"><label>5</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>VanMarle</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Wynn</surname><given-names>K</given-names></name> (<year>2006</year>) <article-title>Six-month-olds infants use analog magnitudes to represent durations</article-title>. <source>Developmental Science</source> <volume>9</volume>: <fpage>41</fpage>–<lpage>49</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Chelonis1"><label>6</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chelonis</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Flake</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Baldwin</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Blake</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Paule</surname><given-names>M</given-names></name> (<year>2004</year>) <article-title>Developmental aspects of timing behavior in children</article-title>. <source>Neurotoxicology and Teratology</source> <volume>26</volume>: <fpage>461</fpage>–<lpage>476</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-McCormack1"><label>7</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>McCormack</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Brown</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Maylor</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Darby</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Green</surname><given-names>D</given-names></name> (<year>1999</year>) <article-title>Developmental changes in time estimation: Comparing childhood and old age</article-title>. <source>Developmental Psychology</source> <volume>35</volume>: <fpage>1143</fpage>–<lpage>1155</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-DroitVolet2"><label>8</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Droit-Volet</surname><given-names>S</given-names></name> (<year>2002</year>) <article-title>Scalar timing in temporal generalization in children with short and long stimulus durations</article-title>. <source>The Quarterly Journal of Experimental Psychology</source> <volume>55(A)</volume>: <fpage>1193</fpage>–<lpage>1209</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-DroitVolet3"><label>9</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Droit-Volet</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Clément</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Wearden</surname><given-names>JH</given-names></name> (<year>2001</year>) <article-title>Temporal generalization in 3- to 8-year-old children</article-title>. <source>Journal of Experimental Child Psychology</source> <volume>80</volume>: <fpage>271</fpage>–<lpage>288</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Matsuda1"><label>10</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Matsuda</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Matsuda</surname><given-names>M</given-names></name> (<year>1983</year>) <article-title>A longitudinal study of learning process of duration estimation in young children</article-title>. <source>Japanese Psychological Research</source> <volume>25</volume>: <fpage>119</fpage>–<lpage>129</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-EspinosaFernandez1"><label>11</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Espinosa-Fernandez</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Miro</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Cano</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Buela-Casal</surname><given-names>G</given-names></name> (<year>2003</year>) <article-title>Age-related changes and gender differences in time estimation</article-title>. <source>Acta Psychologica</source> <volume>112</volume>: <fpage>221</fpage>–<lpage>232</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Szelag1"><label>12</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Szelag</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Kowalska</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Rymarczyk</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Pöppel</surname><given-names>E</given-names></name> (<year>2002</year>) <article-title>Duration processing in children as determined by time reproduction: implications for a few seconds temporal window</article-title>. <source>Acta Psychologica</source> <volume>110</volume>: <fpage>1</fpage>–<lpage>9</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-DroitVolet4"><label>13</label>
+<mixed-citation publication-type="other" xlink:type="simple">Droit-Volet S (2011) Child and Time. In: Vatakis A, Esposito A, Giagkou M, Cummins F, Papdelis G, editors. Multidisciplinary Aspects of Time and Time Perception. Springer-Verlag: Berlin Heidelberg. 151–173.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Wiener1"><label>14</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wiener</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Turkeltaub</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Coslett</surname><given-names>HB</given-names></name> (<year>2010</year>) <article-title>The image of time: A voxel-wise meta-analysis</article-title>. <source>NeuroImage</source> <volume>49</volume>: <fpage>1728</fpage>–<lpage>1740</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Coull1"><label>15</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Coull</surname><given-names>JT</given-names></name>, <name name-style="western"><surname>Cheng</surname><given-names>RK</given-names></name>, <name name-style="western"><surname>Meck</surname><given-names>WH</given-names></name> (<year>2011</year>) <article-title>Neuroanatomical and neurochemical substrates of timing</article-title>. <source>Neuropsychopharmacology</source> <volume>36(1)</volume>: <fpage>3</fpage>–<lpage>25</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Harrington1"><label>16</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Harrington</surname><given-names>DL</given-names></name>, <name name-style="western"><surname>Zimbelman</surname><given-names>JL</given-names></name>, <name name-style="western"><surname>Hinton</surname><given-names>SC</given-names></name>, <name name-style="western"><surname>Rao</surname><given-names>SM</given-names></name> (<year>2010</year>) <article-title>Neural modulation of temporal encoding, maintenance, and decision processes</article-title>. <source>Cerebral Cortex</source> <volume>20</volume>: <fpage>1274</fpage>–<lpage>1285</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Meck1"><label>17</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Meck</surname><given-names>WH</given-names></name>, <name name-style="western"><surname>Penney</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Pouthas</surname><given-names>V</given-names></name> (<year>2008</year>) <article-title>Cortico-striatal representation of time in animals and humans</article-title>. <source>Current Opinion in Neurobiology</source> <volume>18</volume>: <fpage>145</fpage>–<lpage>152</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Brain1"><label>18</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><collab xlink:type="simple">Brain Development Cooperative Group</collab> (<year>2012</year>) <article-title>Total and regional brain volumes in a population-based normative sample from 4 to 18 years: The NIH MRI study of normal brain development</article-title>. <source>Cerebral Cortex</source> <volume>22</volume>: <fpage>1</fpage>–<lpage>12</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Brown1"><label>19</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brown</surname><given-names>TT</given-names></name>, <name name-style="western"><surname>Jernigan</surname><given-names>TL</given-names></name> (<year>2012</year>) <article-title>Brain development during the preschool years</article-title>. <source>Neuropsychological Review</source> <volume>22</volume>: <fpage>313</fpage>–<lpage>333</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Coull2"><label>20</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Coull</surname><given-names>JT</given-names></name>, <name name-style="western"><surname>Vidal</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Nazarian</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Macar</surname><given-names>F</given-names></name> (<year>2004</year>) <article-title>Functional anatomy of the attentional modulation of time estimation</article-title>. <source>Science</source> <volume>303</volume>: <fpage>1506</fpage>–<lpage>1508</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Rubia1"><label>21</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rubia</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Smith</surname><given-names>AB</given-names></name> (<year>2004</year>) <article-title>The neural correlates of cognitive time management: A review</article-title>. <source>Acta Neurobiologiae Experimentalis</source> <volume>64</volume>: <fpage>329</fpage>–<lpage>340</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Zlanti1"><label>22</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zélanti</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Droit-Volet</surname><given-names>S</given-names></name> (<year>2011</year>) <article-title>Cognitive abilities explaining age-related changes in time perception of short and long durations</article-title>. <source>Journal of Experimental Child Psychology</source> <volume>109(2)</volume>: <fpage>143</fpage>–<lpage>157</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Zlanti2"><label>23</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zélanti</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Droit-Volet</surname><given-names>S</given-names></name> (<year>2012</year>) <article-title>Auditory and Visual Differences in Time Perception? An Investigation from a Developmental Perspective with Neuropsychological Tests</article-title>. <source>Journal of Experimental Child Psychology</source> <volume>112</volume>: <fpage>296</fpage>–<lpage>311</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-DroitVolet5"><label>24</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Droit-Volet</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Zélanti</surname><given-names>P</given-names></name> (<year>2013</year>) <article-title>Time sensitivity in children and adults: duration ratios in bisection</article-title>. <source>Quarterly Journal of Experimental Psychology</source> <volume>66(44)</volume>: <fpage>687</fpage>–<lpage>704</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Korkman1"><label>25</label>
+<mixed-citation publication-type="other" xlink:type="simple">Korkman M, Kirk U, Kemp S (1998) NEPSY: A Developmental Neuropsychological Assessment. San Antonio, TX: Psychological Corporation.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Baddeley1"><label>26</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Baddeley</surname><given-names>AD</given-names></name> (<year>2012</year>) <article-title>Working memory: theories, models, and controversies</article-title>. <source>Annual Review of Psychology</source> <volume>63</volume>: <fpage>1</fpage>–<lpage>23</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Baddeley2"><label>27</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Baddeley</surname><given-names>AD</given-names></name>, <name name-style="western"><surname>Della Sala</surname><given-names>SD</given-names></name> (<year>1996</year>) <article-title>Working memory and executive control. Phil. Trans</article-title>. <source>R. Society</source> <volume>351</volume>: <fpage>1397</fpage>–<lpage>1404</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Baddeley3"><label>28</label>
+<mixed-citation publication-type="other" xlink:type="simple">Baddeley AD, Hitch G (1974) Working memory. In Bower GA, editor. Recent advances in learning and motivation. New York: Academic Press. 647–667.</mixed-citation>
+</ref>
+<ref id="pone.0071424-DroitVolet6"><label>29</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Droit-Volet</surname><given-names>S</given-names></name> (<year>2013</year>) <article-title>Time perception in children: A neurodevelopmental approach</article-title>. <source>Neuropsychologia</source> <volume>51</volume>: <fpage>220</fpage>–<lpage>234</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Noreika1"><label>30</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Noreika</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Falter</surname><given-names>CM</given-names></name>, <name name-style="western"><surname>Rubia</surname><given-names>K</given-names></name> (<year>2013</year>) <article-title>Timing deficits in attention-deficit/hyperactivity disorder (ADHD): Evidence from neurocognitive and neuroimaging studies</article-title>. <source>Neuropsychologia</source> <volume>51</volume>: <fpage>235</fpage>–<lpage>266</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Demetriou1"><label>31</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Demetriou</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Mouyi</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Spanoudis</surname><given-names>G</given-names></name> (<year>2008</year>) <article-title>Modeling the structure and development of g</article-title>. <source>Intelligence</source> <volume>36</volume>: <fpage>437</fpage>–<lpage>454</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Case1"><label>32</label>
+<mixed-citation publication-type="other" xlink:type="simple">Case R (1985) Intellectual development: Birth to adulthood. New York Academic Press.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Camos1"><label>33</label>
+<mixed-citation publication-type="other" xlink:type="simple">Camos V, Barouillet P (2013) Le développement de la mémoire de travail: perspectives dans le cadre du modèle partage temporel des ressources. Psychologie Française.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Fry1"><label>34</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fry</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Hale</surname><given-names>S</given-names></name> (<year>1996</year>) <article-title>Processing speed, working memory, and fluid intelligence: Evidence for a developmental cascade</article-title>. <source>Psychological Science</source> <volume>7(4)</volume>: <fpage>237</fpage>–<lpage>241</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Kail1"><label>35</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kail</surname><given-names>RV</given-names></name> (<year>1991</year>) <article-title>Developmental change in speed of processing during childhood and adolescence</article-title>. <source>Psychological Bulletin</source> <volume>109</volume>: <fpage>490</fpage>–<lpage>501</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Kail2"><label>36</label>
+<mixed-citation publication-type="other" xlink:type="simple">Kail RV (2001) Development of processing speed in childhood and adolescence. In Reese H, editor. Advances in child development and behavior. San Diego: Academic Press. 151–185.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Luna1"><label>37</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Luna</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Garver</surname><given-names>KE</given-names></name>, <name name-style="western"><surname>Urban</surname><given-names>TA</given-names></name>, <name name-style="western"><surname>Lazar</surname><given-names>NA</given-names></name>, <name name-style="western"><surname>Sweeney</surname><given-names>JA</given-names></name> (<year>2004</year>) <article-title>Maturation of cognitive processes from late childhood to adulthood</article-title>. <source>Child Development</source> <volume>75(5)</volume>: <fpage>1357</fpage>–<lpage>1372</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Lewis1"><label>38</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lewis</surname><given-names>PA</given-names></name>, <name name-style="western"><surname>Miall</surname><given-names>RC</given-names></name> (<year>2003</year>) <article-title>Distinct systems for automatic and cognitively controlled time measurement: evidence from neuroimaging</article-title>. <source>Current Opinion Neurobiolgy</source> <volume>13</volume>: <fpage>250</fpage>–<lpage>255</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Rattat1"><label>39</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rattat</surname><given-names>A–C</given-names></name>, <name name-style="western"><surname>Droit-Volet</surname><given-names>S</given-names></name> (<year>2012</year>) <article-title>What is the best and easiest method of preventing counting in different temporal tasks?</article-title> <source>Behavior Research Methods</source> <volume>44</volume>: <fpage>67</fpage>–<lpage>80</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Weschler1"><label>40</label>
+<mixed-citation publication-type="other" xlink:type="simple">Weschler D, Naglieri JA (2009) Echelle non verbale d'intelligence. Paris: Editions du Centre de Psychologie Appliquée.</mixed-citation>
+</ref>
+<ref id="pone.0071424-EngeldeAbreu1"><label>41</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Engel de Abreu</surname><given-names>PMJ</given-names></name>, <name name-style="western"><surname>Conway</surname><given-names>ARA</given-names></name>, <name name-style="western"><surname>Gathercole</surname><given-names>SE</given-names></name> (<year>2010</year>) <article-title>Working memory and fluid intelligence in young children</article-title>. <source>Intelligence</source> <volume>38(6)</volume>: <fpage>552</fpage>–<lpage>561</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Hancock1"><label>42</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hancock</surname><given-names>PA</given-names></name>, <name name-style="western"><surname>Rausch</surname><given-names>R</given-names></name> (<year>2010</year>) <article-title>The effects of sex, age, and interval duration on the perception of time</article-title>. <source>Acta Psychologica</source> <volume>133</volume>: <fpage>170</fpage>–<lpage>179</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Block1"><label>43</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Block</surname><given-names>RA</given-names></name>, <name name-style="western"><surname>Hancock</surname><given-names>PA</given-names></name>, <name name-style="western"><surname>Zakay</surname><given-names>D</given-names></name> (<year>2000</year>) <article-title>Sex differences in duration judgments: A meta-analytic review</article-title>. <source>Memory and Cognition</source> <volume>28</volume>: <fpage>1333</fpage>–<lpage>1346</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Haier1"><label>44</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Haier</surname><given-names>RJ</given-names></name>, <name name-style="western"><surname>Jung</surname><given-names>RE</given-names></name>, <name name-style="western"><surname>Yeo</surname><given-names>RA</given-names></name>, <name name-style="western"><surname>Head</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Alkired</surname><given-names>MT</given-names></name> (<year>2005</year>) <article-title>The neuroanatomy of general intelligence: sex matters</article-title>. <source>NeuroImage</source> <volume>25</volume>: <fpage>320</fpage>–<lpage>327</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Rammsayer1"><label>45</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rammsayer</surname><given-names>TH</given-names></name>, <name name-style="western"><surname>Brandler</surname><given-names>S</given-names></name> (<year>2002</year>) <article-title>On the relationship between general fluid intelligence and psychophysical indicators of temporal resolution in the brain</article-title>. <source>Journal of Research in Personnality</source> <volume>36</volume>: <fpage>507</fpage>–<lpage>530</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Cohen1"><label>46</label>
+<mixed-citation publication-type="other" xlink:type="simple">Cohen MJ (1997) Examiner's manual: Children's Memory Scale. San Antonio, TX: Harcourt Brace.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Broadway1"><label>47</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Broadway</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Engle</surname><given-names>RW</given-names></name> (<year>2011</year>) <article-title>Lapsed attention to elapsed time? Individual differences in working memory capacity and temporal reproduction</article-title>. <source>Acta Psychologica</source> <volume>137</volume>: <fpage>115</fpage>–<lpage>126</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Dutke1"><label>48</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dutke</surname><given-names>S</given-names></name> (<year>2005</year>) <article-title>Remembered duration: Working memory and the reproduction of intervals</article-title>. <source>Perception &amp; Psychophysic</source> <volume>67(8)</volume>: <fpage>1404</fpage>–<lpage>1413</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Fink1"><label>49</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fink</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Neubauer</surname><given-names>AC</given-names></name> (<year>2005</year>) <article-title>Individual difference in time estimation related to cognitive abilities, speed of information processing and working memory</article-title>. <source>Intelligence</source> <volume>33</volume>: <fpage>5</fpage>–<lpage>26</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Baudouin1"><label>50</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Baudouin</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Vanneste</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Pouthas</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Isingrini</surname><given-names>M</given-names></name> (<year>2006</year>) <article-title>Age-related changes in duration reproduction: Involvement of working memory processes</article-title>. <source>Brain and Cognition</source> <volume>62(1)</volume>: <fpage>17</fpage>–<lpage>23</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Baudouin2"><label>51</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Baudouin</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Vanneste</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Isingrini</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Pouthas</surname><given-names>V</given-names></name> (<year>2006</year>) <article-title>Differential involvement of internal clock and working memory in the production and reproduction of duration: A study on older adults</article-title>. <source>Acta Psychologica</source> <volume>121</volume>: <fpage>285</fpage>–<lpage>296</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Perbal1"><label>52</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Perbal</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Droit-Volet</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Isingrini</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Pouthas</surname><given-names>V</given-names></name> (<year>2002</year>) <article-title>Relationships between age-related changes in time estimation and age-related changes in processing speed, attention and memory</article-title>. <source>Aging, Neuropsychology and Cognition</source> <volume>9(3)</volume>: <fpage>201</fpage>–<lpage>216</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Ulbrich1"><label>53</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ulbrich</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Churan</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Fink</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Wittmann</surname><given-names>M</given-names></name> (<year>2007</year>) <article-title>Temporal reproduction: Further evidence for 2 processes</article-title>. <source>Acta Psychologica</source> <volume>125</volume>: <fpage>51</fpage>–<lpage>65</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Fortin1"><label>54</label>
+<mixed-citation publication-type="other" xlink:type="simple">Fortin C (2003) Attentional time-sharing in interval timing. In Meck WH, editor). Functional and neural mechanisms of interval timing. Boca Raton FL: CRC Press. 235–259.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Fortin2"><label>55</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fortin</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Breton</surname><given-names>R</given-names></name> (<year>1995</year>) <article-title>Temporal interval production and processing in working memory</article-title>. <source>Perception &amp; Psychophysics</source> <volume>57</volume>: <fpage>203</fpage>–<lpage>215</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Fortin3"><label>56</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fortin</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Rousseau</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Bourque</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Kirouac</surname><given-names>E</given-names></name> (<year>1993</year>) <article-title>Time estimation and concurrent nontemporal processing: Specific interference from short-term memory demands</article-title>. <source>Perception &amp; Psychophysics</source> <volume>53(5)</volume>: <fpage>536</fpage>–<lpage>548</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Kail3"><label>57</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kail</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Salthouse</surname><given-names>TA</given-names></name> (<year>1994</year>) <article-title>Processing speed as mental capacity</article-title>. <source>Acta Psychologica</source> <volume>86</volume>: <fpage>199</fpage>–<lpage>222</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Rammsayer2"><label>58</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rammsayer</surname><given-names>TH</given-names></name>, <name name-style="western"><surname>Brandler</surname><given-names>S</given-names></name> (<year>2007</year>) <article-title>Performance on temporal information processing as an index of general intelligence</article-title>. <source>Intelligence</source> <volume>35</volume>: <fpage>123</fpage>–<lpage>139</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Troche1"><label>59</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Troche</surname><given-names>SJ</given-names></name>, <name name-style="western"><surname>Rammsayer</surname><given-names>TH</given-names></name> (<year>2009</year>) <article-title>The influence of temporal resolution power and working memory capacity on psychometric intelligence</article-title>. <source>Intelligence</source> <volume>37</volume>: <fpage>479</fpage>–<lpage>486</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Creelman1"><label>60</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Creelman</surname><given-names>CD</given-names></name> (<year>1962</year>) <article-title>Human discrimination of auditory duration</article-title>. <source>Journal of the Acoustical Society of America</source> <volume>34</volume>: <fpage>582</fpage>–<lpage>593</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Treisman1"><label>61</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Treisman</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Faulkner</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Naish</surname><given-names>PLN</given-names></name>, <name name-style="western"><surname>Brogan</surname><given-names>D</given-names></name> (<year>1990</year>) <article-title>The internal clock: evidence for a temporal oscillator underlying time perception with some estimates of its characteristic frequency</article-title>. <source>Perception</source> <volume>19</volume>: <fpage>705</fpage>–<lpage>743</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Matell1"><label>62</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Matell</surname><given-names>MS</given-names></name>, <name name-style="western"><surname>Meck</surname><given-names>WH</given-names></name> (<year>2000</year>) <article-title>Neuropsychological mechanisms of interval timing behaviour</article-title>. <source>BioEssays</source> <volume>22</volume>: <fpage>94</fpage>–<lpage>103</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Matell2"><label>63</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Matell</surname><given-names>MS</given-names></name>, <name name-style="western"><surname>Meck</surname><given-names>WH</given-names></name> (<year>2004</year>) <article-title>Cortico-striatal circuits and interval timing: coincidence detection of oscillatory processes</article-title>. <source>Cognitive Brain Research</source> <volume>21</volume>: <fpage>139</fpage>–<lpage>170</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Survillo1"><label>64</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Survillo</surname><given-names>WW</given-names></name> (<year>1961</year>) <article-title>Frequency of the alpha rhythm, reaction time and age</article-title>. <source>Nature</source> <volume>19</volume>: <fpage>823</fpage>–<lpage>824</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Survillo2"><label>65</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Survillo</surname><given-names>WW</given-names></name> (<year>1963</year>) <article-title>The relation of response-time variability to age and the influence of brain wave frequency</article-title>. <source>Electroencephalography and Clinical Neurophysiology</source> <volume>15</volume>: <fpage>1029</fpage>–<lpage>1032</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Eisermann1"><label>66</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Eisermann</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Kaminska</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Moutard</surname><given-names>M-L</given-names></name>, <name name-style="western"><surname>Soufflet</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Plouin</surname><given-names>P</given-names></name> (<year>2013</year>) <article-title>Normal EEG in childhood: From neonates to adolescents</article-title>. <source>Clinical Neurophysiology</source> <volume>43</volume>: <fpage>35</fpage>–<lpage>65</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Petersen1"><label>67</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Petersen</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Eeg-Olofsson</surname><given-names>O</given-names></name> (<year>1971</year>) <article-title>The development of the electroencephalogram in normal children from the age of 1 through 15 years: non-paroxysmal activity</article-title>. <source>Neuropädiatrie</source> <volume>3</volume>: <fpage>247</fpage>–<lpage>304</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Klimesch1"><label>68</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Klimesch</surname><given-names>W</given-names></name> (<year>1999</year>) <article-title>EEG alpha and theta oscillations reflect cognitive and memory performance: a review and analysis</article-title>. <source>Brain Research Reviews</source> <volume>29</volume>: <fpage>169</fpage>–<lpage>195</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Smith1"><label>69</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Smith</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Giampietro</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Brammer</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Halari</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Simmons</surname><given-names>A</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Functional development of fronto-striato-parietal networks associated with time perception</article-title>. <source>Frontiers in Human Neurosciences</source> <volume>5(136)</volume>: <fpage>1</fpage>–<lpage>11</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Neufang1"><label>70</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Neufang</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Fink</surname><given-names>GR</given-names></name>, <name name-style="western"><surname>Herpertz-Dahlmann</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Willmes</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Konrad</surname><given-names>K</given-names></name> (<year>2008</year>) <article-title>Developmental changes in neural activation and psychophysiological interaction patterns of brain regions associated with interference control and time perception</article-title>. <source>NeuroImage</source> <volume>43</volume>: <fpage>399</fpage>–<lpage>409</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Buhusi1"><label>71</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Buhusi</surname><given-names>CV</given-names></name>, <name name-style="western"><surname>Meck</surname><given-names>WH</given-names></name> (<year>2005</year>) <article-title>What makes us tick? Functional and neural mechanisms of interval timing</article-title>. <source>Nat Rev Neurosci</source> <volume>6(10)</volume>: <fpage>755</fpage>–<lpage>65</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Burle1"><label>72</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Burle</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Bonnet</surname><given-names>M</given-names></name> (<year>1999</year>) <article-title>What's an internal clock for? From temporal information processing to temporal processing of information</article-title>. <source>Behavioural Processes</source> <volume>45</volume>: <fpage>59</fpage>–<lpage>72</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0071424-Ivry1"><label>73</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ivry</surname><given-names>RB</given-names></name>, <name name-style="western"><surname>Spencer</surname><given-names>RMC</given-names></name> (<year>2004</year>) <article-title>The neural representation of time</article-title>. <source>Current Opinion in Neurobiology</source> <volume>14</volume>: <fpage>225</fpage>–<lpage>232</lpage>.</mixed-citation>
+</ref>
+</ref-list></back>
+</article>

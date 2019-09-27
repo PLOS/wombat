@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+      <journal-id journal-id-type="publisher-id">plos</journal-id>
+      <journal-id journal-id-type="pmc">plosone</journal-id>
+      <journal-title-group>
+        <journal-title>PLoS ONE</journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">1932-6203</issn>
+      <publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">PONE-D-12-34753</article-id>
+      <article-id pub-id-type="doi">10.1371/journal.pone.0059932</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Immunology</subject>
+            <subj-group>
+              <subject>Immunity</subject>
+              <subj-group>
+                <subject>Immunity to infections</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Microbiology</subject>
+            <subj-group>
+              <subject>Bacterial pathogens</subject>
+              <subj-group>
+                <subject>Staphylococci</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Immunity</subject>
+              <subj-group>
+                <subject>Immune activation</subject>
+                <subject>Innate immunity</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Host-pathogen interaction</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Molecular cell biology</subject>
+            <subj-group>
+              <subject>Cellular types</subject>
+              <subj-group>
+                <subject>Epithelial cells</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Clinical genetics</subject>
+            <subj-group>
+              <subject>Autosomal recessive</subject>
+              <subj-group>
+                <subject>Cystic fibrosis</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Infectious diseases</subject>
+            <subj-group>
+              <subject>Bacterial diseases</subject>
+              <subj-group>
+                <subject>Bacterial pneumonia</subject>
+                <subject>Pseudomonas infections</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Pulmonology</subject>
+            <subj-group>
+              <subject>Respiratory infections</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Immunology</subject>
+          <subject>Genetics and Genomics</subject>
+          <subject>Infectious Diseases</subject>
+          <subject>Microbiology</subject>
+          <subject>Cell Biology</subject>
+          <subject>Respiratory Medicine</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Epithelial Uptake of Flagella Initiates Proinflammatory Signaling</article-title>
+        <alt-title alt-title-type="running-head">Epithelial Flagellin Signaling</alt-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Parker</surname>
+            <given-names>Dane</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Prince</surname>
+            <given-names>Alice</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1"/>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <addr-line>Department of Pediatrics, Columbia University, New York, New York, United States of America</addr-line>
+      </aff>
+      <contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Kalinichenko</surname>
+            <given-names>Vladimir V.</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group>
+      <aff id="edit1">
+        <addr-line>Cincinnati Children’s Hospital Medical Center, United States of America</addr-line>
+      </aff>
+      <author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">dp2375@columbia.edu</email></corresp>
+        <fn fn-type="conflict">
+          <p>The authors have declared that no competing interests exist.</p>
+        </fn>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: DP AP. Performed the experiments: DP. Analyzed the data: DP AP. Wrote the paper: DP AP.</p>
+        </fn>
+      </author-notes>
+      <pub-date pub-type="collection">
+        <year>2013</year>
+      </pub-date>
+      <pub-date pub-type="epub">
+        <day>20</day>
+        <month>3</month>
+        <year>2013</year>
+      </pub-date>
+      <volume>8</volume>
+      <issue>3</issue>
+      <elocation-id>e59932</elocation-id>
+      <history>
+        <date date-type="received">
+          <day>5</day>
+          <month>11</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>21</day>
+          <month>2</month>
+          <year>2013</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-year>2013</copyright-year>
+        <copyright-holder>Parker, Prince</copyright-holder>
+        <license xlink:type="simple">
+          <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>The airway epithelium serves multiple roles in the defense of the lung. Not only does it act as a physical barrier, it acts as a distal extension of the innate immune system. We investigated the role of the airway epithelium in the interaction with flagella, an important virulence factor of the pathogen <italic>Pseudomonas aeruginosa</italic>, a cause of ventilator associated pneumonia and significant morbidity and mortality in patients with cystic fibrosis. Flagella were required for transmigration across polarized airway epithelial cells and this was a direct consequence of motility, and not a signaling effect. Purified flagella did not alter the barrier properties of the epithelium but were observed to be rapidly endocytosed inside epithelial cells. Neither flagella nor intact <italic>P. aeruginosa</italic> stimulated epithelial inflammasome signaling. Flagella-dependent signaling required dynamin-based uptake as well as TLR5 and primarily led to the induction of proinflammatory (<italic>Tnf</italic>, <italic>Il6</italic>) as well as neutrophil (<italic>Cxcl1</italic>, <italic>Cxcl2</italic>, <italic>Ccl3</italic>) and macrophage (<italic>Ccl20</italic>) chemokines. Although flagella are important in invasion across the epithelial barrier their shedding in the airway lumen results in epithelial uptake and signaling that has a major role in the initial recruitment of immune cells in the lung.</p>
+      </abstract>
+      <funding-group>
+        <funding-statement>This work was supported by National Institutes of Health grant R01HL073989 to AP. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+      </funding-group>
+      <counts>
+        <page-count count="8"/>
+      </counts>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p><italic>Pseudomonas aeruginosa</italic> is a major opportunistic pathogen associated with infection in compromised hosts. It is one of the major causes of ventilator associated pneumonia (VAP), a common and costly complication of modern intensive care <xref ref-type="bibr" rid="pone.0059932-Fujitani1">[1]</xref>. Following colonization of the upper respiratory tract and often biofilm formation, these opportunistic pathogens are aspirated into the lower airways and initiate pneumonia. Some of these infections are complicated by bacteremia and sepsis, especially those attributed to organisms expressing specific type III secreted toxins <xref ref-type="bibr" rid="pone.0059932-Hauser1">[2]</xref>. The type III secreted toxins and motility are conserved attributes associated with the pathogenesis of acute <italic>P. aeruginosa</italic> pneumonia in this setting.</p>
+      <p>Motility and attachment are major functions attributed to <italic>P. aeruginosa</italic> flagella thought to be relevant to the pathogenesis of pneumonia. <italic>fliC</italic> mutants have been shown to cause less mortality than wild type organisms in murine models of acute pulmonary infection as they fail to disseminate and are associated with more focal infection in the lung <xref ref-type="bibr" rid="pone.0059932-Feldman1">[3]</xref>, <xref ref-type="bibr" rid="pone.0059932-Balloy1">[4]</xref>. Flagella are ligands for epithelial cells in model systems, interacting, at least in vitro, with baso-lateral receptors-heparan sulfate proteoglycans <xref ref-type="bibr" rid="pone.0059932-Bucior1">[5]</xref>. Phagocytic cells are able to recognize motility as strains expressing non-functional flagella are able to evade phagocytosis <xref ref-type="bibr" rid="pone.0059932-Lovewell1">[6]</xref>, <xref ref-type="bibr" rid="pone.0059932-Amiel1">[7]</xref>, <xref ref-type="bibr" rid="pone.0059932-Mahenthiralingam1">[8]</xref>.</p>
+      <p>Perhaps the best characterized receptors for flagella are those involved in their potent immunostimulatory activities <xref ref-type="bibr" rid="pone.0059932-Raoust1">[9]</xref>. As highly conserved PAMPs there are at least two discrete signaling systems dedicated to flagellin recognition, TLR5 <xref ref-type="bibr" rid="pone.0059932-Hayashi1">[10]</xref>, <xref ref-type="bibr" rid="pone.0059932-Feuillet1">[11]</xref> and the NLRC4/IPAF inflammasome <xref ref-type="bibr" rid="pone.0059932-Franchi1">[12]</xref>, <xref ref-type="bibr" rid="pone.0059932-Franchi2">[13]</xref>, <xref ref-type="bibr" rid="pone.0059932-Miao1">[14]</xref>, <xref ref-type="bibr" rid="pone.0059932-Miao2">[15]</xref>. TLR5 can be present apically in the airway epithelium <xref ref-type="bibr" rid="pone.0059932-Adamo1">[16]</xref>, <xref ref-type="bibr" rid="pone.0059932-Wang1">[17]</xref>, in contrast to the gut in which TLR5 is exclusively found on the basolateral side <xref ref-type="bibr" rid="pone.0059932-Gewirtz1">[18]</xref>, which is linked to the activation of NF-κB and the induction of proinflammatory chemokines such as IL-8 and cytokines <xref ref-type="bibr" rid="pone.0059932-Hayashi1">[10]</xref>, <xref ref-type="bibr" rid="pone.0059932-Feuillet1">[11]</xref>, <xref ref-type="bibr" rid="pone.0059932-Adamo1">[16]</xref>. Recent structural studies suggest that the flagellin epitope that interacts with TLR5 is not exposed in intact flagella <xref ref-type="bibr" rid="pone.0059932-Smith1">[19]</xref> as it is involved in FliC oligomerization <xref ref-type="bibr" rid="pone.0059932-Lu1">[20]</xref>. Thus, flagellin monomers are required for TLR5 recognition, implying a requirement for some type of proteolytic processing. In models of airway infection, <italic>Tlr5</italic><sup>−/−</sup> mice have very modest defects in early immunostimulation and no significant defects in <italic>P. aeruginosa</italic> clearance or survival <xref ref-type="bibr" rid="pone.0059932-Feuillet1">[11]</xref>, <xref ref-type="bibr" rid="pone.0059932-Morris1">[21]</xref>. Only in the absence of TLR4 and TLR5 do mice become susceptible to <italic>P. aeruginosa</italic> infection <xref ref-type="bibr" rid="pone.0059932-Feuillet1">[11]</xref>, <xref ref-type="bibr" rid="pone.0059932-Ramphal1">[22]</xref>.</p>
+      <p>The mechanisms of activation of the NLRC4/IPAF inflammasome by flagellin have been extensively characterized <xref ref-type="bibr" rid="pone.0059932-Franchi1">[12]</xref>, <xref ref-type="bibr" rid="pone.0059932-Franchi2">[13]</xref>, <xref ref-type="bibr" rid="pone.0059932-Miao1">[14]</xref>, <xref ref-type="bibr" rid="pone.0059932-Miao2">[15]</xref>, <xref ref-type="bibr" rid="pone.0059932-Miao3">[23]</xref>. Flagellin, as well as the PscI component of the type three secretion system (TTSS), directly interacts with the NLRC4 inflammasome, resulting in the production of IL-1ß and IL-18 both potent proinflammatory cytokines that can contribute to pulmonary pathology <xref ref-type="bibr" rid="pone.0059932-Miao3">[23]</xref>, <xref ref-type="bibr" rid="pone.0059932-Jordan1">[24]</xref>, <xref ref-type="bibr" rid="pone.0059932-Birrell1">[25]</xref>, <xref ref-type="bibr" rid="pone.0059932-Sutterwala1">[26]</xref>, <xref ref-type="bibr" rid="pone.0059932-Lappalainen1">[27]</xref>. The inflammasome components are cytosolic, thus this signaling cascade requires the delivery of flagellin to the cytosol, a process that must accompany the processing of intact bacteria or isolated flagellins by macrophages <xref ref-type="bibr" rid="pone.0059932-Franchi3">[28]</xref>. Although some components of the inflammasome are detectable in airway epithelial cells <xref ref-type="bibr" rid="pone.0059932-Tran1">[29]</xref>, there has not been evidence of epithelial inflammasome activation in response to <italic>P. aeruginosa</italic> infection in vitro <xref ref-type="bibr" rid="pone.0059932-Tang1">[30]</xref>. The biological rationale for these redundant signaling mechanisms is not fully understood, but may reflect the distinct immunological functions carried out by immune cells, that have a major phagocytic function versus epithelial cells that maintain both a physical and immunological barrier. Activation of the inflammasome, induction of caspase-1 activity and pyroptosis of epithelial cells would likely result in a breach of the epithelial barrier and further contribute to <italic>P.aeruginosa</italic> invasive infection.</p>
+      <p>In the pathogenesis of airway infection, many opportunistic pathogens such as <italic>P. aeruginosa</italic> are entrapped in mucin and often shed surface components including LPS, pili and flagella. In contrast to other epithelial surfaces, particularly the gastrointestinal epithelium, exactly how flagella are sensed and interact with polarized airway epithelial cells has not been well studied. Given the multiple potential interactions of flagella/flagellins and specific epithelial and immune signaling cascades, we determined the role of flagella in; epithelial transmigration, characterized how flagellins affect the barrier function of airway epithelia: establishing their effects on epithelial tight junctions, their ability to stimulate epithelial inflammasome signaling, as well as the signaling pathways associated with TLR5 stimulation.</p>
+    </sec>
+    <sec id="s2">
+      <title>Results</title>
+      <sec id="s2a">
+        <title>Flagella Mediate <italic>P. aeruginosa</italic> Transmigration Across the Airway Epithelial Barrier</title>
+        <p>In the context of ventilator-associated pneumonia, <italic>P. aeruginosa</italic> colonizing the respiratory tract can initiate invasive infection causing pneumonia, bacteremia and sepsis. Previous studies have demonstrated the importance of the type III secreted toxins (TTST), including the ADP ribosylating activity of <italic>P. aeruginosa</italic> in modifying the epithelial cytoskeleton to facilitate bacterial transmigration across the airway epithelial barrier <xref ref-type="bibr" rid="pone.0059932-Soong1">[31]</xref>. We hypothesized that flagella were also involved in bacterial transmigration across the epithelial barrier. Using human 16HBE airway epithelial cells grown in a polarized fashion, we quantified the number of organisms of a 1–2×10<sup>7</sup> cfu inoculum of strain PAK able to cross an intact epithelium (<xref ref-type="fig" rid="pone-0059932-g001">Fig. 1A</xref>). We confirmed the involvement of the TTSS in facilitating transmigration across the epithelium, as almost 2 logs fewer of a ΔSTY mutant were recovered from the basal compartment of the transwells than the wild type control. Pilin dependent bacterial adherence, which is required for TTSS <xref ref-type="bibr" rid="pone.0059932-Sundin1">[32]</xref> was also involved; as a <italic>pilA</italic> mutant was as impaired as the ΔSTY mutant in transmigration. Lack of FliC similarly inhibited <italic>P. aeruginosa</italic> transmigration across the monolayer (96% reduction, P&lt;0.001). Despite the effects of the type III toxins the <italic>fliCpilA</italic> mutant, unable to attach and inject the TTST or to swim, was the most significantly impaired in epithelial transmigration, almost completely incapable of transmigration (10<sup>6</sup> reduction, P&lt;0.05).</p>
+        <fig id="pone-0059932-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0059932.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>Flagella are required for transmigration across airway epithelial cell barriers.</title>
+            <p>A) Bacteria (1–2×10<sup>7</sup> cfu) were incubated with 16HBE cells for 4 h before enumerating cfus in the basal compartment. Data are the average of three independent experiments (n = 15). *P&lt;0.05, **P&lt;0.01 students t test compared to WT. B) Z-section from confocal microscopy of GFP expressing <italic>P. aeruginosa</italic> WT and mutant strains migrating across 16HBE cells. E-cadherin is stained red.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059932.g001" position="float" xlink:type="simple"/>
+        </fig>
+        <p>We confirmed the expected interactions of these mutants and the polarized airway cells by confocal imaging (<xref ref-type="fig" rid="pone-0059932-g001">Fig. 1B</xref>). Following a four hour incubation with the monolayers WT PAK (green) was observed primarily at the basal aspects of the monolayer as well as penetrating through the monolayer. The TTST mutant was observed associated with the monolayer, but did not reach the basal surface of the transwells. The <italic>fliC</italic> and <italic>pilA</italic> mutants accumulated at the apical surface; consistent with the function of either flagellin or pilin in attachment, but lacking either motility (<italic>fliC</italic>) or the ability to inject type III toxins (<italic>pilA</italic>) did not penetrate across. The <italic>fliCpilA</italic> was also observed only on the apical side of the monolayer (<xref ref-type="fig" rid="pone-0059932-g001">Fig. 1B</xref>).</p>
+      </sec>
+      <sec id="s2b">
+        <title>Purified Flagella do not Alter the Properties of the Epithelial Junctions</title>
+        <p><italic>P. aeruginosa</italic> movement across an intact epithelial barrier appears to require pilin-mediated attachment, the activity of the type III secreted toxins and the expression of <italic>fliC</italic>. While the motility function associated with <italic>fliC</italic> expression is most likely responsible for bacterial transmigration, given the known signaling functions associated with flagellin, we sought to determine if isolated flagella alter the barrier properties of polarized airway cells. This could occur either as a direct effect or as a consequence of downstream signaling as has been observed for TLR2 stimulation which causes calpain activity and cleavage of junctional proteins <xref ref-type="bibr" rid="pone.0059932-Chun1">[33]</xref>. We first explored whether isolated flagella could complement the transmigration defect of the <italic>fliC</italic> mutant (<xref ref-type="fig" rid="pone-0059932-g002">Fig. 2A</xref>). Purified flagella were added back to the <italic>fliC</italic> and to the <italic>fliCpilA</italic> mutants and epithelial transmigration quantified. As shown, there was no detectable complementation of the transmigration defect of either mutant. To establish directly if flagella themselves alter the barrier properties of airway epithelial cells, we monitored the translocation of 3, 000 MW dextran (as a marker for barrier function) from the apical to the basolateral compartment of human airway epithelial cells at 1 and 4 hours following the addition of <italic>P. aeruginosa</italic> flagella (<xref ref-type="fig" rid="pone-0059932-g002">Fig. 2B</xref>), as well as changes in transepithelial resistance over this period of time (<xref ref-type="fig" rid="pone-0059932-g002">Fig. 2C</xref>). While the epithelial barrier maintained an initial resistance of on average 424 ohms/cm<sup>2</sup>, there was no evidence that flagella directly changed the barrier properties of the airway epithelium.</p>
+        <fig id="pone-0059932-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0059932.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Flagella do not alter the barrier of the airway epithelium.</title>
+            <p>A) Transmigration of <italic>fliC</italic> and <italic>fliCpilA</italic> strains across polarized 16HBE cells was examined with and without the additional of exogenous flagella. n = 12. B) The transepithelial resistance of polarized 16HBE cells was measured after 4 h of flagella stimulation. n = 6. C) The ability of fluorescent dextran to migrate across 16HBE cells to the basolateral compartment was monitored after addition of flagella for varying times. EGTA was used as a positive control. n = 6. ns-not significant.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059932.g002" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2c">
+        <title>Endocytosis of Flagella by Airway Epithelial Cells</title>
+        <p>As flagella are often shed from growing bacteria, we examined whether airway cells endocytose flagella directly. We incubated Alex Fluor 488-labeled flagella with 16HBE airway epithelial cells and monitored fluorescence over time (<xref ref-type="fig" rid="pone-0059932-g003">Fig. 3A</xref>). There was significant uptake of labeled flagella at 37 degrees C (9.7-fold after 8 h, P&lt;0.05) but not at 4 degrees C and this uptake increased over an 8 hour time period. Flagella uptake induced epithelial expression of <italic>Il8</italic> (<xref ref-type="fig" rid="pone-0059932-g003">Fig. 3B</xref>), which was completely abrogated in cells pretreated with dynasore (91% reduction, P&lt;0.01), which blocks dynamin dependent GTPase activity associated with endocytosis <xref ref-type="bibr" rid="pone.0059932-Macia1">[34]</xref>. Confocal images of the 16HBE cells clearly indicated the presence of flagella in the cytosol (<xref ref-type="fig" rid="pone-0059932-g003">Fig. 3C</xref>) and over the 4 hour incubation period (or 8 h, data not shown), little if any, co-localization of flagella and the lysosome was detected. Thus, flagella are rapidly endocytosed by airway epithelial cells in a dynamin-dependent fashion and persist within the cytosol.</p>
+        <fig id="pone-0059932-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0059932.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>Flagella are internalized by epithelial cells.</title>
+            <p>A) 16HBE cells were incubated with fluorescently labeled flagella for the indicated times and temperatures and analyzed by flow cytometry. A histogram representation of the data showing the increase in fluorescence intensity over time is also shown. B) 16HBE cells were incubated with flagella for 4 h in the presence or absence of dynasore. <italic>Il8</italic> levels were quantitated by qRT-PCR. C) Confocal microscopy images of 16HBE cells incubated with fluorescently labeled flagella (green) and stained with a nucleic acid dye (TOPRO3, blue) and lysosome dye (Lyso-ID, pink). *P&lt;0.05, **P&lt;0.01, students t test compared to untreated. Data are representative of two independent experiments. UN-unstimulated.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059932.g003" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2d">
+        <title>Endocytosed Flagella Activate TLR5-NF-κB Signaling in Airway Epithelial Cells</title>
+        <p>Airway epithelial cells induce <italic>Il8</italic> in response to purified <italic>P. aeruginosa</italic> flagella <xref ref-type="bibr" rid="pone.0059932-Adamo1">[16]</xref>. To document the involvement of TLR5 in this response we preincubated 16HBE cells with a TLR5 antagonist peptide before stimulation with flagella. In the absence of the TLR5 inhibitor flagella stimulated a 50-fold induction in <italic>Il8</italic> transcription that was decreased in a dose-dependent fashion by blocking TLR5 (<xref ref-type="fig" rid="pone-0059932-g004">Fig. 4A</xref>). To confirm the importance of flagella in stimulating epithelial signaling, we demonstrated 92% less (P&lt;0.05) epithelial <italic>Il8</italic> induction by the <italic>fliC</italic> null mutant as compared with WT <italic>P. aeruginosa</italic> PAK. The involvement of epithelial inflammasome signaling was also investigated. The presence of an <italic>Nlrc4</italic> transcript was readily detected in the 16HBE cells, however IL-1ß expression was not detected following 2–24 hours of stimulation with flagella or <italic>P. aeruginosa</italic> (<xref ref-type="fig" rid="pone-0059932-g004">Fig. 4D</xref>). This is in contrast to the observed production of IL-1 ß in THP-1 cells in response to <italic>P. aeruginosa</italic> (<xref ref-type="fig" rid="pone-0059932-g004">Fig. 4D</xref>).</p>
+        <fig id="pone-0059932-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0059932.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Signaling by flagella is TLR5 dependent.</title>
+            <p>A) Flagella were incubated in the presence of varying concentration of a TLR5 inhibitory peptide and levels of <italic>Il8</italic> induction measured by qRT-PCR. ***P&lt;0.001 compared to flagella without inhibitor. B) 16HBE cells were incubated with WT and <italic>fliC</italic> null strains of <italic>P. aeruginosa</italic> for 4 h before RNA was extracted and <italic>Il8</italic> levels quantitiated by qRT-PCR. C) RT-PCR of the <italic>NlrC4</italic> gene from 16HBE cells. D) Production of IL-1b by 16HBE and THP-1 cells in response to purified flagella and <italic>P. aeruginosa (Pa</italic>). *P&lt;0.05, compared to WT stimulated cells. N = 3, Data are representatives of two independent experiments.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059932.g004" position="float" xlink:type="simple"/>
+        </fig>
+        <p>To further establish the consequences of flagellin activation of epithelial TLR5 we monitored the expression of 84 cytokine and chemokine genes on 16HBE cells pre-treated with buffer, the TLR5 inhibitor, or dynasore (<xref ref-type="fig" rid="pone-0059932-g005">Fig. 5A</xref>). There was over 30-fold induction of epithelial TNF expression, which was decreased by 64% in the presence of the TLR5 inhibitor and completely blocked by dynasore (P&lt;0.001), as was the induction of IL-6. The neutrophil chemoattractants, CXCL1 and CXCL2 were each induced by over 30-fold as was the macrophage chemoattractant CCL20 (<xref ref-type="fig" rid="pone-0059932-g005">Fig. 5A</xref>). The neutrophil chemokine CCL3 was also induced by 18-fold (<xref ref-type="fig" rid="pone-0059932-g005">Fig. 5A</xref>). All of the cytokine gene expression observed to be induced by flagella was inhibited in the presence of the TLR5 inhibitor as well as by dynasore (<xref ref-type="fig" rid="pone-0059932-g005">Fig. 5A</xref>). We did not observe any TRIF-dependent gene expression (such as <italic>Ifnb</italic>), which is readily produced in murine nasal epithelial cells (<xref ref-type="fig" rid="pone-0059932-g005">Fig. 5B</xref>). Thus, epithelial endocytosis of flagella initiates the major proinflammatory stimulus of epithelial cells via production of TLR5-NF-κB-dependent macrophage and neutrophil chemokines.</p>
+        <fig id="pone-0059932-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0059932.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title><italic>P. aeruginosa</italic> flagella activate TLR5-NF-κB signaling in airway epithelial cells.</title>
+            <p>A) Purified <italic>P. aeruginosa</italic> flagellin was applied to 16HBE cells for 4 h before RNA was extracted and gene levels quantitated by qRT-PCR. *P&lt;0.05, **P&lt;0.01, ***P&lt;0.001, TLR5 inhibitor is compared to flagella alone while dynasore is compared to the DMSO alone control (students t test). N = 3 and is representative of two independent experiments. Dyn-dynasore. B) Primary murine nasal epithelial cells were stimulated with purified flagella or <italic>P. aeruginosa</italic> (<italic>Pa</italic>) for 4 h before levels of <italic>Ifnb</italic> were quantitated by qRT-PCR.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0059932.g005" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Discussion</title>
+      <p>Bacterial flagella are sensed by many different types of cells in the airway and can interact with a number of discrete receptors. In these studies we observed that airway epithelial cells have a major signaling role in the initial response to flagellin. The predominant response of the airway epithelial cells to <italic>P. aeruginosa</italic> flagella, was endocytosis, activation of TLR5 signaling and expression of neutrophil and macrophage chemokines. These observations agree with recent studies demonstrating the induction of IL-8 and subsequently Muc5AC and host defense genes in airway cells in response to flagella <xref ref-type="bibr" rid="pone.0059932-Mohamed1">[35]</xref>, <xref ref-type="bibr" rid="pone.0059932-Cobb1">[36]</xref>. Based on published studies indicating that processed flagellins actually contain the relevant TLR5-epitope, we expect that endocytosed flagella are broken down in the cytoplasm to flagellin by available proteases, to expose the immunostimulatory domain <xref ref-type="bibr" rid="pone.0059932-Smith1">[19]</xref>, <xref ref-type="bibr" rid="pone.0059932-Lu1">[20]</xref>, <xref ref-type="bibr" rid="pone.0059932-Yoon1">[37]</xref>, <xref ref-type="bibr" rid="pone.0059932-Gerstel1">[38]</xref>. This contrasts with the gut where TLR5 is located basolaterally and therefore only senses organisms that have invaded through the epithelial layer <xref ref-type="bibr" rid="pone.0059932-Gewirtz1">[18]</xref>. Flagellin can also be internalized by intestinal epithelial cells however, the signaling consequences of this outside of IL-8 production are unknown <xref ref-type="bibr" rid="pone.0059932-EavesPyles1">[39]</xref>. Thus the epithelium is able to sense shed flagella from bacteria accumulating in the airway lumen, even in the absence of bacterial invasion or disruption of the epithelial barrier. This is especially relevant for patients with airway colonization with <italic>P. aeruginosa</italic>, either acutely as in VAP or in cystic fibrosis patients that are chronically colonized with <italic>P. aeruginosa</italic> and are known to have aberrant neutrophils <xref ref-type="bibr" rid="pone.0059932-Makam1">[40]</xref>, <xref ref-type="bibr" rid="pone.0059932-Cohen1">[41]</xref>.</p>
+      <p>Bacterial components can induce changes in the airway epithelium to facilitate both bacterial and host cell migration. Intact <italic>P. aeruginosa</italic> through the expression of pilin adhesins and TTST are able to cleave tight junction proteins and invade through the paracellular spaces to reach the basolateral aspects of the polarized airway epithelium <xref ref-type="bibr" rid="pone.0059932-Soong1">[31]</xref>, where in vitro studies suggest that attachment occurs <xref ref-type="bibr" rid="pone.0059932-Bucior1">[5]</xref>. PAMPs of <italic>P. aeruginosa</italic> such as lipoteichoic acid and the cell wall lipoproteins sensed by TLR2 induce cleavage of tight junction proteins, occludin and ZO1, that facilitate neutrophil transmigration to the site of infection in the airway <xref ref-type="bibr" rid="pone.0059932-Chun1">[33]</xref>. However, in contrast to lipoproteins, we did not observe that flagella, by themselves, were able to change the integrity of the epithelial barrier. The presence of a functional flagellum was required for epithelial transmigration, highlighting the cooperative effort of multiple <italic>P. aeruginosa</italic> virulence factors (type III toxins and flagella) in invasion. Likewise, the host signaling induced as a result of flagellin stimulation, proinflammatory cytokines and leukocyte chemokines, demonstrates the coordinated action of the innate immune system in response to pathogens. Flagellin along with other PAMPS induce leukocyte chemokines while TLR2 can facilitate the junctional changes necessary for leukocyte transmigration.</p>
+      <p>In addition to the contribution of flagella for <italic>P. aeruginosa</italic> transepithelial invasion, isolated flagella were found to be the major stimuli for epithelial proinflammatory chemokine and cytokine expression. Given the ability of rhamnolipid to induce shedding of flagellin from <italic>P. aeruginosa</italic> <xref ref-type="bibr" rid="pone.0059932-Smith1">[19]</xref>, <xref ref-type="bibr" rid="pone.0059932-Lu1">[20]</xref>, <xref ref-type="bibr" rid="pone.0059932-Yoon1">[37]</xref>, <xref ref-type="bibr" rid="pone.0059932-Gerstel1">[38]</xref>, there is apparently substantial epithelial exposure to flagella during chronic airway infection. Unexpectedly we observed that internalization of isolated flagella is highly efficient and provides a potent stimulus for epithelial gene expression. This suggests that the airway epithelium serves a major role in surveillance of bacterial PAMPs and rapidly recruits phagocytes in response to detection and endocytosis of flagella. This endocytosis of flagella by epithelial cells results in chemokine expression, but does not result in epithelial inflammasome activation, in contrast to the requirement for TLR5 in internalization and IL-1β production in macrophages <xref ref-type="bibr" rid="pone.0059932-Descamps1">[42]</xref>. Exactly how flagella are processed in the epithelium remains unclear.</p>
+      <p>Our observations that epithelial signaling via TLR5 initiates neutrophil and macrophage chemokine production are consistent with in vivo studies of <italic>P. aeruginosa</italic> infection in <italic>Tlr5</italic><sup>−/−</sup> mice <xref ref-type="bibr" rid="pone.0059932-Morris1">[21]</xref>. <italic>Tlr5<sup>−/−</sup></italic> mice were not significantly impaired at 24 hours post <italic>P. aeruginosa</italic> inoculation, but they did exhibit reduced initial inflammatory inflammation consistent with our signaling data. Similarly, mouse chimera studies have also demonstrated that neutrophil recruitment in response to flagellin is highly dependent upon radioresistant cells <xref ref-type="bibr" rid="pone.0059932-Janot1">[43]</xref>. The importance of epithelial TLR5 has also been observed in allergic models of asthma using flagellin as a primer for allergic responses <xref ref-type="bibr" rid="pone.0059932-Wilson1">[44]</xref>. Although the flagellin-TLR5 interaction has not been shown to be essential in the resolution of <italic>P. aeruginosa</italic> pneumonia <xref ref-type="bibr" rid="pone.0059932-Morris1">[21]</xref>, epithelial recognition of flagellin contributes to pathogen clearance, and does not induce the more proinflammatory and damaging signaling associated with activation of the NLRC4 inflammasome <xref ref-type="bibr" rid="pone.0059932-Franchi1">[12]</xref>, <xref ref-type="bibr" rid="pone.0059932-Franchi2">[13]</xref>, <xref ref-type="bibr" rid="pone.0059932-Miao1">[14]</xref>, <xref ref-type="bibr" rid="pone.0059932-Miao2">[15]</xref>. Given the redundancies of proinflammatory signaling mechanisms in the airway and the multiple PAMPs released by <italic>P. aeruginosa</italic>, epithelial recognition of flagellin appears to assist in the early recognition of potential pathogens and the initial recruitment of professional phagocytes to the airway.</p>
+    </sec>
+    <sec id="s4" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s4a">
+        <title>Cell Lines, Bacterial Strains and Reagents</title>
+        <p>16HBE human airway epithelial cells (D. Gruenert, California Pacific Medical Center Research Institute <xref ref-type="bibr" rid="pone.0059932-Soong1">[31]</xref>, <xref ref-type="bibr" rid="pone.0059932-Rajan1">[45]</xref>, <xref ref-type="bibr" rid="pone.0059932-Cozens1">[46]</xref>) were grown in MEM medium with 10% heat inactivated fetal bovine serum, 2 mM L-glutamine, penicillin and streptomycin. <italic>P. aeruginosa</italic> PAK and its derivatives were grown in LB broth. Green fluorescent protein (GFP) expressing strains of <italic>P. aeruginosa</italic> were grown in LB containing 300 µg/ml of carbenicillin. Mouse monoclonal antibodies to E-cadherin were used (BD Biosciences) along with Alexa Fluor conjugated secondary antibodies (Life Technologies). The TLR5 inhibitory peptide (H-18, Santa Cruz) was used at the indicated concentrations, typically 10 µg/ml unless otherwise stated. Dynasore <xref ref-type="bibr" rid="pone.0059932-Macia1">[34]</xref> was suspended in DMSO and incubated an hour prior to stimulation at 80 µM. Primary murine nasal epithelial cells isolated from nasal septa were cultured as described elsewhere <xref ref-type="bibr" rid="pone.0059932-Parker1">[47]</xref>, <xref ref-type="bibr" rid="pone.0059932-Antunes1">[48]</xref>. THP-1 cells were grown in RPMI 1640 medium with antibiotics. The day before stimulation cells were exposed to 10 nM of PMA.</p>
+      </sec>
+      <sec id="s4b">
+        <title>Flagella Preparation</title>
+        <p>Flagella were purified as described previously <xref ref-type="bibr" rid="pone.0059932-Adamo1">[16]</xref> with the modification of growing cultures for 24 h in M9 minimal medium. After purification preparations were run through an endotoxin removal column (Thermo Scientific). Fluorescent labeling of flagella was conducted using the Alex Fluro 488 protein labeling kit (Life Technologies). Cells were typically stimulated with 10 µg/ml of flagella unless otherwise stated.</p>
+      </sec>
+      <sec id="s4c">
+        <title>Epithelial Permeability and Bacterial Transmigration</title>
+        <p>Bacterial transmigration assays were performed as described previously <xref ref-type="bibr" rid="pone.0059932-Soong1">[31]</xref>. Briefly polarized 16HBE epithelial cells were stimulated for 4 h with 5×10<sup>7</sup> cfu/ml of <italic>P. aeruginosa</italic> from an overnight grown culture in LB broth. 3, 000 MW dextran was added 1 h and fluorescence in the basal compartment measured at 485 nm excitation and 535 nm emission on a SpectroFluor Plus fluorimeter (Tecan). Bacteria present in the basal compartment were enumeration by serial dilution and plating on LB agar. Transepithelial resistance across the polarized monolayer was measured using a Millicell-ERS (Millipore).</p>
+      </sec>
+      <sec id="s4d">
+        <title>Confocal Microscopy</title>
+        <p>16HBE were stained as described previously <xref ref-type="bibr" rid="pone.0059932-Soong1">[31]</xref> with cells permeabilized with 0.2% Triton X-100. Staining was performed at room temperature using E-cadherin antibodies (BD Biosciences) diluted 1∶100 followed by Alex Fluor 647 secondary antibody (Life Technologies) 1∶1000. Filters were removed from Transwells and mounted onto glass slides using Vectashield (Vector Laboratories). Imaging with purified flagella was performed using glass chamber slides (Millicell EZ slide, Millipore). TOPRO3 (Life Technologies) and Lyso-ID (Enzo) were applied 30 min before the end of the flagella stimulation. Cells were washed and fixed with 4% paraformaldehyde.</p>
+      </sec>
+      <sec id="s4e">
+        <title>RNA Analysis</title>
+        <p>Cells were typically stimulated with 10 µg/ml of purified flagella for 4 h unless otherwise stated. After stimulation cells were lysed using RNA lysis buffer and RNA extracted as per instructions of the PureLink RNA mini kit (Life Technologies). DNA was removed using DNAfree (Life Technologies) before cDNA synthesis using the High Capacity cDNA Reverse Transcription Kit (Applied Biosystems). qRT-PCR was performed using Power SYBR Green (Applied Biosystems) as described previously <xref ref-type="bibr" rid="pone.0059932-Parker1">[47]</xref>. Stimulation of 16HBE cells with <italic>P. aeruginosa</italic> for RNA analysis was conducted for 4 h at an MOI of 20. qRT-PCR arrays (Human cytokines and chemokines, SABiosciences-Qiagen) were performed according to the manufacturers instructions but using cDNA and SYBR Green as described above. Sequences for oligonucleotide primers are as follows: β-actin, sense 5′ <named-content content-type="gene" xlink:type="simple">TCCTCCCTGGAGAAGAGCTAC</named-content> 3′, antisense 5′ <named-content content-type="gene" xlink:type="simple">TAAAGCCATGCCAATCTCATC</named-content> 3′; <italic>Il8</italic>, sense 5′ <named-content content-type="gene" xlink:type="simple">GTGCAGTTTTGCCAAGGAGT</named-content> 3;, antisense 5′ <named-content content-type="gene" xlink:type="simple">CTCTGCACCCAGTTTTCCTT</named-content> 3′; <italic>Il6</italic>, sense 5′ <named-content content-type="gene" xlink:type="simple">AAGAGTAACATGTGTGAAAGC</named-content> 3′, antisense 5′ <named-content content-type="gene" xlink:type="simple">CTACTCTCAAATCTGTTCTGG</named-content> 3′; <italic>Tnf</italic>, sense 5′ <named-content content-type="gene" xlink:type="simple">GAGTGACAAGCCTGTAGCCCA</named-content> 3′, antisense 5′ <named-content content-type="gene" xlink:type="simple">GAATGATAAAGTAGACCTGCC</named-content> 3′; <italic>Cxcl1</italic>, sense 5′ <named-content content-type="gene" xlink:type="simple">AGTCATAGCCACACTCAAGAATGG</named-content> 3′, antisense 5′ <named-content content-type="gene" xlink:type="simple">GATGCAGGATTGAGGCAAGC</named-content> 3′; <italic>Cxcl2</italic>, sense 5′ <named-content content-type="gene" xlink:type="simple">CTGCGCCCAAACCGAAGTCATA</named-content> 3′, antsense 5′ <named-content content-type="gene" xlink:type="simple">TTCAGGAACAGCCACCAATAAGC</named-content> 3′; <italic>Ccl3</italic>, sense 5′ <named-content content-type="gene" xlink:type="simple">TGCTGCTTCAGCTACACCTC</named-content> 3′, antisense 5′ <named-content content-type="gene" xlink:type="simple">TTTCTGGACCCACTCCTCAC</named-content> 3′; <italic>Ccl20</italic>, sense 5′ <named-content content-type="gene" xlink:type="simple">CTGGCCAATGAAGGCTGTGA</named-content> 3′, antisense, 5′ <named-content content-type="gene" xlink:type="simple">GAAACCTCCAACCCCAGCAA</named-content> 3′ and <italic>NlrC4</italic>, sense 5′ <named-content content-type="gene" xlink:type="simple">GCAAAGGCAAGTCCACTCTG</named-content> 3′, antisense, 5′ <named-content content-type="gene" xlink:type="simple">CCATGAATGTCTGCTTCCTG</named-content> 3′. Murine β-actin and <italic>Ifnb</italic> primers have been described elsewhere <xref ref-type="bibr" rid="pone.0059932-Martin1">[49]</xref>.</p>
+      </sec>
+      <sec id="s4f">
+        <title>FACS Analysis</title>
+        <p>Fluorescently labeled flagella was incubated with 16HBE airway epithelial cells for various times, dissociated from plates using 2% EGTA in PBS and suspending cells in 1% paraformaldeyde. Cells were analyzed on a FACScalibur (Becton Dickinson) using CellQuest software (version 3.3; BD). Cells were gated on their side and forward scatter and FITC levels were quantitated.</p>
+      </sec>
+      <sec id="s4g">
+        <title>Ethics Statement</title>
+        <p>All mouse experiments were performed under the guidelines of the Institutional Animal Care and Use Committee of Columbia University.</p>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>We would like to thank Grace Soong for assistance with confocal microscopy.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0059932-Fujitani1">
+        <label>1</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fujitani</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Sun</surname><given-names>HY</given-names></name>, <name name-style="western"><surname>Yu</surname><given-names>VL</given-names></name>, <name name-style="western"><surname>Weingarten</surname><given-names>JA</given-names></name> (<year>2011</year>) <article-title>Pneumonia due to <italic>Pseudomonas aeruginosa</italic>: part I: epidemiology, clinical diagnosis, and source</article-title>. <source>Chest</source> <volume>139</volume>: <fpage>909</fpage>–<lpage>919</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Hauser1">
+        <label>2</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hauser</surname><given-names>AR</given-names></name> (<year>2009</year>) <article-title>The type III secretion system of <italic>Pseudomonas aeruginosa</italic>: infection by injection</article-title>. <source>Nat Rev Microbiol</source> <volume>7</volume>: <fpage>654</fpage>–<lpage>665</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Feldman1">
+        <label>3</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Feldman</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Bryan</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Rajan</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Scheffler</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Brunnert</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>1998</year>) <article-title>Role of flagella in pathogenesis of <italic>Pseudomonas aeruginosa</italic> pulmonary infection</article-title>. <source>Infect Immun</source> <volume>66</volume>: <fpage>43</fpage>–<lpage>51</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Balloy1">
+        <label>4</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Balloy</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Verma</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Kuravi</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Si-Tahar</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Chignard</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>The role of flagellin versus motility in acute lung disease caused by <italic>Pseudomonas aeruginosa</italic></article-title>. <source>J Infect Dis</source> <volume>196</volume>: <fpage>289</fpage>–<lpage>296</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Bucior1">
+        <label>5</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bucior</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Pielage</surname><given-names>JF</given-names></name>, <name name-style="western"><surname>Engel</surname><given-names>JN</given-names></name> (<year>2012</year>) <article-title><italic>Pseudomonas aeruginosa</italic> pili and flagella mediate distinct binding and signaling events at the apical and basolateral surface of airway epithelium</article-title>. <source>PLoS Pathog</source> <volume>8</volume>: <fpage>e1002616</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Lovewell1">
+        <label>6</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lovewell</surname><given-names>RR</given-names></name>, <name name-style="western"><surname>Collins</surname><given-names>RM</given-names></name>, <name name-style="western"><surname>Acker</surname><given-names>JL</given-names></name>, <name name-style="western"><surname>O’Toole</surname><given-names>GA</given-names></name>, <name name-style="western"><surname>Wargo</surname><given-names>MJ</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Step-wise loss of bacterial flagellar torsion confers progressive phagocytic evasion</article-title>. <source>PLoS Pathog</source> <volume>7</volume>: <fpage>e1002253</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Amiel1">
+        <label>7</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Amiel</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Lovewell</surname><given-names>RR</given-names></name>, <name name-style="western"><surname>O’Toole</surname><given-names>GA</given-names></name>, <name name-style="western"><surname>Hogan</surname><given-names>DA</given-names></name>, <name name-style="western"><surname>Berwin</surname><given-names>B</given-names></name> (<year>2010</year>) <article-title><italic>Pseudomonas aeruginosa</italic> evasion of phagocytosis is mediated by loss of swimming motility and is independent of flagellum expression</article-title>. <source>Infect Immun</source> <volume>78</volume>: <fpage>2937</fpage>–<lpage>2945</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Mahenthiralingam1">
+        <label>8</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mahenthiralingam</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Speert</surname><given-names>DP</given-names></name> (<year>1995</year>) <article-title>Nonopsonic phagocytosis of <italic>Pseudomonas aeruginosa</italic> by macrophages and polymorphonuclear leukocytes requires the presence of the bacterial flagellum</article-title>. <source>Infect Immun</source> <volume>63</volume>: <fpage>4519</fpage>–<lpage>4523</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Raoust1">
+        <label>9</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Raoust</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Balloy</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Garcia-Verdugo</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Touqui</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Ramphal</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title><italic>Pseudomonas aeruginosa</italic> LPS or flagellin are sufficient to activate TLR-dependent signaling in murine alveolar macrophages and airway epithelial cells</article-title>. <source>PLoS One</source> <volume>4</volume>: <fpage>e7259</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Hayashi1">
+        <label>10</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hayashi</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Smith</surname><given-names>KD</given-names></name>, <name name-style="western"><surname>Ozinsky</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Hawn</surname><given-names>TR</given-names></name>, <name name-style="western"><surname>Yi</surname><given-names>EC</given-names></name>, <etal>et al</etal>. (<year>2001</year>) <article-title>The innate immune response to bacterial flagellin is mediated by Toll-like receptor 5</article-title>. <source>Nature</source> <volume>410</volume>: <fpage>1099</fpage>–<lpage>1103</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Feuillet1">
+        <label>11</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Feuillet</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Medjane</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Mondor</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Demaria</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Pagni</surname><given-names>PP</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Involvement of Toll-like receptor 5 in the recognition of flagellated bacteria</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>103</volume>: <fpage>12487</fpage>–<lpage>12492</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Franchi1">
+        <label>12</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Franchi</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Amer</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Body-Malapel</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Kanneganti</surname><given-names>TD</given-names></name>, <name name-style="western"><surname>Ozoren</surname><given-names>N</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Cytosolic flagellin requires Ipaf for activation of caspase-1 and interleukin 1beta in salmonella-infected macrophages</article-title>. <source>Nat Immunol</source> <volume>7</volume>: <fpage>576</fpage>–<lpage>582</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Franchi2">
+        <label>13</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Franchi</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Stoolman</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Kanneganti</surname><given-names>TD</given-names></name>, <name name-style="western"><surname>Verma</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Ramphal</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Critical role for Ipaf in <italic>Pseudomonas aeruginosa</italic>-induced caspase-1 activation</article-title>. <source>Eur J Immunol</source> <volume>37</volume>: <fpage>3030</fpage>–<lpage>3039</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Miao1">
+        <label>14</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Miao</surname><given-names>EA</given-names></name>, <name name-style="western"><surname>Alpuche-Aranda</surname><given-names>CM</given-names></name>, <name name-style="western"><surname>Dors</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Clark</surname><given-names>AE</given-names></name>, <name name-style="western"><surname>Bader</surname><given-names>MW</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Cytoplasmic flagellin activates caspase-1 and secretion of interleukin 1beta via Ipaf</article-title>. <source>Nat Immunol</source> <volume>7</volume>: <fpage>569</fpage>–<lpage>575</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Miao2">
+        <label>15</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Miao</surname><given-names>EA</given-names></name>, <name name-style="western"><surname>Ernst</surname><given-names>RK</given-names></name>, <name name-style="western"><surname>Dors</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Mao</surname><given-names>DP</given-names></name>, <name name-style="western"><surname>Aderem</surname><given-names>A</given-names></name> (<year>2008</year>) <article-title><italic>Pseudomonas aeruginosa</italic> activates caspase 1 through Ipaf</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>105</volume>: <fpage>2562</fpage>–<lpage>2567</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Adamo1">
+        <label>16</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Adamo</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Sokol</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Soong</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Gomez</surname><given-names>MI</given-names></name>, <name name-style="western"><surname>Prince</surname><given-names>A</given-names></name> (<year>2004</year>) <article-title><italic>Pseudomonas aeruginosa</italic> flagella activate airway epithelial cells through asialoGM1 and toll-like receptor 2 as well as toll-like receptor 5</article-title>. <source>Am J Respir Cell Mol Biol</source> <volume>30</volume>: <fpage>627</fpage>–<lpage>634</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Wang1">
+        <label>17</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wang</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Ahmed</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Hassan</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Strulovici-Barel</surname><given-names>Y</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Airway epithelial expression of TLR5 is downregulated in healthy smokers and smokers with chronic obstructive pulmonary disease</article-title>. <source>J Immunol</source> <volume>189</volume>: <fpage>2217</fpage>–<lpage>2225</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Gewirtz1">
+        <label>18</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gewirtz</surname><given-names>AT</given-names></name>, <name name-style="western"><surname>Navas</surname><given-names>TA</given-names></name>, <name name-style="western"><surname>Lyons</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Godowski</surname><given-names>PJ</given-names></name>, <name name-style="western"><surname>Madara</surname><given-names>JL</given-names></name> (<year>2001</year>) <article-title>Cutting edge: bacterial flagellin activates basolaterally expressed TLR5 to induce epithelial proinflammatory gene expression</article-title>. <source>J Immunol</source> <volume>167</volume>: <fpage>1882</fpage>–<lpage>1885</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Smith1">
+        <label>19</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Smith</surname><given-names>KD</given-names></name>, <name name-style="western"><surname>Andersen-Nissen</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Hayashi</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Strobe</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Bergman</surname><given-names>MA</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>Toll-like receptor 5 recognizes a conserved site on flagellin required for protofilament formation and bacterial motility</article-title>. <source>Nat Immunol</source> <volume>4</volume>: <fpage>1247</fpage>–<lpage>1253</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Lu1">
+        <label>20</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lu</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Sun</surname><given-names>PD</given-names></name> (<year>2012</year>) <article-title>The structure of the TLR5-flagellin complex: a new mode of pathogen detection, conserved receptor dimerization for signaling</article-title>. <source>Sci Signal</source> <volume>5</volume>: <fpage>pe11</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Morris1">
+        <label>21</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Morris</surname><given-names>AE</given-names></name>, <name name-style="western"><surname>Liggitt</surname><given-names>HD</given-names></name>, <name name-style="western"><surname>Hawn</surname><given-names>TR</given-names></name>, <name name-style="western"><surname>Skerrett</surname><given-names>SJ</given-names></name> (<year>2009</year>) <article-title>Role of Toll-like receptor 5 in the innate immune response to acute <italic>Pseudomonas aeruginosa</italic> pneumonia</article-title>. <source>Am J Physiol Lung Cell Mol Physiol</source> <volume>297</volume>: <fpage>L1112</fpage>–<lpage>1119</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Ramphal1">
+        <label>22</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ramphal</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Balloy</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Jyot</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Verma</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Si-Tahar</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Control of <italic>Pseudomonas aeruginosa</italic> in the lung requires the recognition of either lipopolysaccharide or flagellin</article-title>. <source>J Immunol</source> <volume>181</volume>: <fpage>586</fpage>–<lpage>592</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Miao3">
+        <label>23</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Miao</surname><given-names>EA</given-names></name>, <name name-style="western"><surname>Mao</surname><given-names>DP</given-names></name>, <name name-style="western"><surname>Yudkovsky</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Bonneau</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Lorang</surname><given-names>CG</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Innate immune detection of the type III secretion apparatus through the NLRC4 inflammasome</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>107</volume>: <fpage>3076</fpage>–<lpage>3080</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Jordan1">
+        <label>24</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jordan</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Guo</surname><given-names>RF</given-names></name>, <name name-style="western"><surname>Yun</surname><given-names>EC</given-names></name>, <name name-style="western"><surname>Sarma</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Warner</surname><given-names>RL</given-names></name>, <etal>et al</etal>. (<year>2001</year>) <article-title>Role of IL-18 in acute lung inflammation</article-title>. <source>J Immunol</source> <volume>167</volume>: <fpage>7060</fpage>–<lpage>7068</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Birrell1">
+        <label>25</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Birrell</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Eltom</surname><given-names>S</given-names></name> (<year>2011</year>) <article-title>The role of the NLRP3 inflammasome in the pathogenesis of airway disease</article-title>. <source>Pharmacol Ther</source> <volume>130</volume>: <fpage>364</fpage>–<lpage>370</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Sutterwala1">
+        <label>26</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sutterwala</surname><given-names>FS</given-names></name>, <name name-style="western"><surname>Mijares</surname><given-names>LA</given-names></name>, <name name-style="western"><surname>Li</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Ogura</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Kazmierczak</surname><given-names>BI</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Immune recognition of <italic>Pseudomonas aeruginosa</italic> mediated by the IPAF/NLRC4 inflammasome</article-title>. <source>J Exp Med</source> <volume>204</volume>: <fpage>3235</fpage>–<lpage>3245</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Lappalainen1">
+        <label>27</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lappalainen</surname><given-names>U</given-names></name>, <name name-style="western"><surname>Whitsett</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Wert</surname><given-names>SE</given-names></name>, <name name-style="western"><surname>Tichelaar</surname><given-names>JW</given-names></name>, <name name-style="western"><surname>Bry</surname><given-names>K</given-names></name> (<year>2005</year>) <article-title>Interleukin-1beta causes pulmonary inflammation, emphysema, and airway remodeling in the adult murine lung</article-title>. <source>Am J Respir Cell Mol Biol</source> <volume>32</volume>: <fpage>311</fpage>–<lpage>318</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Franchi3">
+        <label>28</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Franchi</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Munoz-Planillo</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Nunez</surname><given-names>G</given-names></name> (<year>2012</year>) <article-title>Sensing and reacting to microbes through the inflammasomes</article-title>. <source>Nat Immunol</source> <volume>13</volume>: <fpage>325</fpage>–<lpage>332</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Tran1">
+        <label>29</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tran</surname><given-names>HB</given-names></name>, <name name-style="western"><surname>Lewis</surname><given-names>MD</given-names></name>, <name name-style="western"><surname>Tan</surname><given-names>LW</given-names></name>, <name name-style="western"><surname>Lester</surname><given-names>SE</given-names></name>, <name name-style="western"><surname>Baker</surname><given-names>LM</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Immunolocalization of NLRP3 Inflammasome in Normal Murine Airway Epithelium and Changes following Induction of Ovalbumin-Induced Airway Inflammation</article-title>. <source>J Allergy (Cairo)</source> <volume>2012</volume>: <fpage>819176</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Tang1">
+        <label>30</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tang</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Sharma</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Jen</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Hirschfeld</surname><given-names>AF</given-names></name>, <name name-style="western"><surname>Chilvers</surname><given-names>MA</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Inflammasome-mediated IL-1beta production in humans with cystic fibrosis</article-title>. <source>PLoS One</source> <volume>7</volume>: <fpage>e37689</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Soong1">
+        <label>31</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Soong</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Parker</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Magargee</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Prince</surname><given-names>AS</given-names></name> (<year>2008</year>) <article-title>The type III toxins of <italic>Pseudomonas aeruginosa</italic> disrupt epithelial barrier function</article-title>. <source>J Bacteriol</source> <volume>190</volume>: <fpage>2814</fpage>–<lpage>2821</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Sundin1">
+        <label>32</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sundin</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Wolfgang</surname><given-names>MC</given-names></name>, <name name-style="western"><surname>Lory</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Forsberg</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Frithz-Lindsten</surname><given-names>E</given-names></name> (<year>2002</year>) <article-title>Type IV pili are not specifically required for contact dependent translocation of exoenzymes by <italic>Pseudomonas aeruginosa</italic></article-title>. <source>Microb Pathog</source> <volume>33</volume>: <fpage>265</fpage>–<lpage>277</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Chun1">
+        <label>33</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chun</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Prince</surname><given-names>A</given-names></name> (<year>2009</year>) <article-title>TLR2-induced calpain cleavage of epithelial junctional proteins facilitates leukocyte transmigration</article-title>. <source>Cell Host Microbe</source> <volume>5</volume>: <fpage>47</fpage>–<lpage>58</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Macia1">
+        <label>34</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Macia</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Ehrlich</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Massol</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Boucrot</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Brunner</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Dynasore, a cell-permeable inhibitor of dynamin</article-title>. <source>Dev Cell</source> <volume>10</volume>: <fpage>839</fpage>–<lpage>850</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Mohamed1">
+        <label>35</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mohamed</surname><given-names>FB</given-names></name>, <name name-style="western"><surname>Garcia-Verdugo</surname><given-names>I</given-names></name>, <name name-style="western"><surname>Medina</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Balloy</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Chignard</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>A crucial role of Flagellin in the induction of airway mucus production by <italic>Pseudomonas aeruginosa</italic></article-title>. <source>PLoS One</source> <volume>7</volume>: <fpage>e39888</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Cobb1">
+        <label>36</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cobb</surname><given-names>LM</given-names></name>, <name name-style="western"><surname>Mychaleckyj</surname><given-names>JC</given-names></name>, <name name-style="western"><surname>Wozniak</surname><given-names>DJ</given-names></name>, <name name-style="western"><surname>Lopez-Boado</surname><given-names>YS</given-names></name> (<year>2004</year>) <article-title><italic>Pseudomonas aeruginosa</italic> flagellin and alginate elicit very distinct gene expression patterns in airway epithelial cells: implications for cystic fibrosis disease</article-title>. <source>J Immunol</source> <volume>173</volume>: <fpage>5659</fpage>–<lpage>5670</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Yoon1">
+        <label>37</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Yoon</surname><given-names>SI</given-names></name>, <name name-style="western"><surname>Kurnasov</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Natarajan</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Hong</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Gudkov</surname><given-names>AV</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Structural basis of TLR5-flagellin recognition and signaling</article-title>. <source>Science</source> <volume>335</volume>: <fpage>859</fpage>–<lpage>864</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Gerstel1">
+        <label>38</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gerstel</surname><given-names>U</given-names></name>, <name name-style="western"><surname>Czapp</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Bartels</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Schroder</surname><given-names>JM</given-names></name> (<year>2009</year>) <article-title>Rhamnolipid-induced shedding of flagellin from <italic>Pseudomonas aeruginosa</italic> provokes hBD-2 and IL-8 response in human keratinocytes</article-title>. <source>Cell Microbiol</source> <volume>11</volume>: <fpage>842</fpage>–<lpage>853</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-EavesPyles1">
+        <label>39</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Eaves-Pyles</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Bu</surname><given-names>HF</given-names></name>, <name name-style="western"><surname>Tan</surname><given-names>XD</given-names></name>, <name name-style="western"><surname>Cong</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Patel</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Luminal-applied flagellin is internalized by polarized intestinal epithelial cells and elicits immune responses via the TLR5 dependent mechanism</article-title>. <source>PLoS One</source> <volume>6</volume>: <fpage>e24869</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Makam1">
+        <label>40</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Makam</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Diaz</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Laval</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Gernez</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Conrad</surname><given-names>CK</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Activation of critical, host-induced, metabolic and stress pathways marks neutrophil entry into cystic fibrosis lungs</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>106</volume>: <fpage>5779</fpage>–<lpage>5783</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Cohen1">
+        <label>41</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cohen</surname><given-names>TS</given-names></name>, <name name-style="western"><surname>Prince</surname><given-names>A</given-names></name> (<year>2012</year>) <article-title>Cystic fibrosis: a mucosal immunodeficiency syndrome</article-title>. <source>Nat Med</source> <volume>18</volume>: <fpage>509</fpage>–<lpage>519</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Descamps1">
+        <label>42</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Descamps</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Le Gars</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Balloy</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Barbier</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Maschalidi</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Toll-like receptor 5 (TLR5), IL-1beta secretion, and asparagine endopeptidase are critical factors for alveolar macrophage phagocytosis and bacterial killing</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>109</volume>: <fpage>1619</fpage>–<lpage>1624</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Janot1">
+        <label>43</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Janot</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Sirard</surname><given-names>JC</given-names></name>, <name name-style="western"><surname>Secher</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Noulin</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Fick</surname><given-names>L</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Radioresistant cells expressing TLR5 control the respiratory epithelium’s innate immune responses to flagellin</article-title>. <source>Eur J Immunol</source> <volume>39</volume>: <fpage>1587</fpage>–<lpage>1596</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Wilson1">
+        <label>44</label>
+        <mixed-citation publication-type="book" xlink:type="simple">Wilson RH, Maruoka S, Whitehead GS, Foley JF, Flake GP, et al.. (2012) The Toll-like receptor 5 ligand flagellin promotes asthma by priming allergic responses to indoor allergens. Nat Med.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Rajan1">
+        <label>45</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rajan</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Cacalano</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Bryan</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Ratner</surname><given-names>AJ</given-names></name>, <name name-style="western"><surname>Sontich</surname><given-names>CU</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title><italic>Pseudomonas aeruginosa</italic> induction of apoptosis in respiratory epithelial cells: analysis of the effects of cystic fibrosis transmembrane conductance regulator dysfunction and bacterial virulence factors</article-title>. <source>Am J Respir Cell Mol Biol</source> <volume>23</volume>: <fpage>304</fpage>–<lpage>312</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Cozens1">
+        <label>46</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cozens</surname><given-names>AL</given-names></name>, <name name-style="western"><surname>Yezzi</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Yamaya</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Steiger</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Wagner</surname><given-names>JA</given-names></name>, <etal>et al</etal>. (<year>1992</year>) <article-title>A transformed human epithelial cell line that retains tight junctions post crisis</article-title>. <source>In Vitro Cell Dev Biol</source> <volume>28A</volume>: <fpage>735</fpage>–<lpage>744</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Parker1">
+        <label>47</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Parker</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Martin</surname><given-names>FJ</given-names></name>, <name name-style="western"><surname>Soong</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Harfenist</surname><given-names>BS</given-names></name>, <name name-style="western"><surname>Aguilar</surname><given-names>JL</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title><italic>Streptococcus pneumoniae</italic> DNA initiates type I interferon signaling in the respiratory tract</article-title>. <source>MBio</source> <volume>2</volume>: <fpage>e00016</fpage>–<lpage>00011</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Antunes1">
+        <label>48</label>
+        <mixed-citation publication-type="book" xlink:type="simple">Antunes MB, Woodworth BA, Bhargave G, Xiong G, Aguilar JL, et al.. (2007) Murine nasal septa for respiratory epithelial air-liquid interface cultures. Biotechniques 43: 195–196, 198, 200 passim.</mixed-citation>
+      </ref>
+      <ref id="pone.0059932-Martin1">
+        <label>49</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Martin</surname><given-names>FJ</given-names></name>, <name name-style="western"><surname>Gomez</surname><given-names>MI</given-names></name>, <name name-style="western"><surname>Wetzel</surname><given-names>DM</given-names></name>, <name name-style="western"><surname>Memmi</surname><given-names>G</given-names></name>, <name name-style="western"><surname>O’Seaghdha</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title><italic>Staphylococcus aureus</italic> activates type I IFN signaling in mice and humans through the Xr repeated sequences of protein A. J Clin Invest</article-title>. <volume>119</volume>: <fpage>1931</fpage>–<lpage>1939</lpage>.</mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+      <journal-id journal-id-type="publisher-id">plos</journal-id>
+      <journal-id journal-id-type="pmc">plosone</journal-id>
+      <journal-title-group>
+        <journal-title>PLoS ONE</journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">1932-6203</issn>
+      <publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">PONE-D-12-24538</article-id>
+      <article-id pub-id-type="doi">10.1371/journal.pone.0052141</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Anatomy and physiology</subject>
+            <subj-group>
+              <subject>Immune physiology</subject>
+              <subj-group>
+                <subject>Immune cells</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Developmental biology</subject>
+            <subj-group>
+              <subject>Cell differentiation</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Immunology</subject>
+            <subj-group>
+              <subject>Immune cells</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Model organisms</subject>
+            <subj-group>
+              <subject>Animal models</subject>
+              <subj-group>
+                <subject>Mouse</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Molecular cell biology</subject>
+            <subj-group>
+              <subject>Cellular types</subject>
+              <subj-group>
+                <subject>Immune cells</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Signal transduction</subject>
+              <subj-group>
+                <subject>Signaling in selected disciplines</subject>
+                <subj-group>
+                  <subject>Immunological signaling</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Cell growth</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Immunology</subject>
+          <subject>Physiology</subject>
+          <subject>Cell Biology</subject>
+          <subject>Developmental Biology</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>PU.1 Is Essential for CD11c Expression in CD8<sup>+</sup>/CD8<sup>−</sup> Lymphoid and Monocyte-Derived Dendritic Cells during GM-CSF or FLT3L-Induced Differentiation</article-title>
+        <alt-title alt-title-type="running-head">PU.1 and CD11c Expression in DCs</alt-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+          <name name-style="western">
+            <surname>Zhu</surname>
+            <given-names>Xue-Jun</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+          <name name-style="western">
+            <surname>Yang</surname>
+            <given-names>Zhong-Fa</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Chen</surname>
+            <given-names>Yaoyu</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Wang</surname>
+            <given-names>Junling</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Rosmarin</surname>
+            <given-names>Alan G.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <label>1</label>
+        <addr-line>Cell and Molecular Biology Laboratory, Division of Hematology, Department of Medicine, Jiangsu Provincial Traditional Chinese Medical Hospital, Nanjing, China</addr-line>
+      </aff>
+      <aff id="aff2">
+        <label>2</label>
+        <addr-line>Division of Hematology-Oncology, Department of Medicine, University of Massachusetts Medical School, Worcester, Massachusetts, United States of America</addr-line>
+      </aff>
+      <contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Appel</surname>
+            <given-names>Silke</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group>
+      <aff id="edit1">
+        <addr-line>University of Bergen, Norway</addr-line>
+      </aff>
+      <author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">Zhuxj2@hotmail.com</email> (XJZ); <email xlink:type="simple">Alan.Rosmarin@umassmed.edu</email> (AGR)</corresp>
+        <fn fn-type="conflict">
+          <p>The authors have declared that no competing interests exist.</p>
+        </fn>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: XZ ZFY. Performed the experiments: XZ ZFY YC JW. Analyzed the data: XZ ZFY AR. Wrote the paper: ZFY AR.</p>
+        </fn>
+      </author-notes>
+      <pub-date pub-type="collection">
+        <year>2012</year>
+      </pub-date>
+      <pub-date pub-type="epub">
+        <day>20</day>
+        <month>12</month>
+        <year>2012</year>
+      </pub-date>
+      <volume>7</volume>
+      <issue>12</issue>
+      <elocation-id>e52141</elocation-id>
+      <history>
+        <date date-type="received">
+          <day>16</day>
+          <month>8</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>8</day>
+          <month>11</month>
+          <year>2012</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-year>2012</copyright-year>
+        <copyright-holder>Zhu et al</copyright-holder>
+        <license xlink:type="simple">
+          <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <p>Dendritic cells (DCs) regulate innate and acquired immunity through their roles as antigen-presenting cells. Specific subsets of mature DCs, including monocyte-derived and lymphoid-derived DCs, can be distinguished based on distinct immunophenotypes and functional properties. The leukocyte integrin, CD11c, is considered a specific marker for DCs and it is expressed by all DC subsets. We created a strain of mice in which DCs and their progenitors could be lineage traced based on activity of the CD11c proximal promoter. Surprisingly, we observed levels of CD11c promoter activity that were similar in DCs and in other mature leukocytes, including monocytes, granulocytes, and lymphocytes. We sought to identify DNA elements and transcription factors that regulate DC-associated expression of CD11c. The ets transcription factor, PU.1, is a key regulator of DC development, and expression of PU.1 varies in different DC subsets. GM-CSF increased monocyte-derived DCs in mice and from mouse bone marrow cultured in vitro, but it did not increase CD8<sup>+</sup> lymphoid-derived DCs or B220<sup>+</sup> plasmacytoid DCs. FLT3L increased both monocyte-derived DCs and lymphoid-derived DCs from mouse bone marrow cultured in vitro. GM-CSF increased the 5.3 Kb CD11c proximal promoter activity in monocyte-derived DCs and CD8<sup>+</sup> lymphoid-derived DCs, but not in B220<sup>+</sup> plasmacytoid DCs. In contrast, FLT3L increased the CD11c proximal promoter activity in both monocyte-derived DCs and B220<sup>+</sup> plasmacytoid DCs. We used shRNA gene knockdown and chromatin immunoprecipitation to demonstrate that PU.1 is required for the effects of GM-CSF or FLT3L on monocyte-derived DCs. We conclude that both GM-CSF and FLT3L act through PU.1 to activate the 5.3 Kb CD11c proximal promoter in DCs and to induce differentiation of monocyte-derived DCs. We also confirm that the CD11c proximal promoter is not sufficient to direct lineage specificity of CD11c expression, and that additional DNA elements are required for lineage-specific CD11c expression.</p>
+      </abstract>
+      <funding-group>
+        <funding-statement>The Top Six Elite Scholar Program of Jiangsu Province China #2010-WS-012. University of Massachusetts Medical School startup funding; and Jiangsu Province Triditional Chinese Medicine Hospital scholar exchange fund. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+      </funding-group>
+      <counts>
+        <page-count count="11"/>
+      </counts>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>Dendritic cells (DCs) are bone marrow-derived cells that play crucial roles in regulating and integrating innate and adaptive immune responses. DCs sample the environment, recognize invading pathogens through pattern recognition Toll-like receptors (TLRs), and initiate protective T cell responses by presenting antigens to lymphocytes. Because of their highly developed antigen presenting capacity, DCs have drawn attention for use in cell therapy <xref ref-type="bibr" rid="pone.0052141-Steinman1">[1]</xref>, <xref ref-type="bibr" rid="pone.0052141-Shortman1">[2]</xref>. DCs are a heterogeneous group of cells that have been classified into distinct subsets, primarily based on patterns of cell surface antigen expression. The integrin αL chain, CD11c, is considered relatively specific for DCs. CD11c is expressed on all mature DC subsets in mouse, and its expression increases as DCs mature from DC progenitors. Subsets of mature DCs in blood and the lymphatic system include conventional DCs (cDCs; CD11c<sup>+</sup>CD4<sup>−</sup>CD8<sup>+</sup>CD11b<sup>−</sup>MHCII<sup>+</sup>, or CD11c<sup>+</sup>CD4<sup>+</sup>CD8<sup>−</sup>CD11b<sup>−</sup>MHCII<sup>+</sup>), plasmacytoid DCs (pDCs; CD11c<sup>+</sup>B220<sup>+</sup>Ly6C<sup>+</sup>), and monocyte-derived DCs (CD11c<sup>+</sup>CD11b<sup>+</sup>CD8<sup>−</sup>CD4<sup>−</sup>MHCII<sup>+</sup>) <xref ref-type="bibr" rid="pone.0052141-Belz1">[3]</xref>, <xref ref-type="bibr" rid="pone.0052141-Satpathy1">[4]</xref>, <xref ref-type="bibr" rid="pone.0052141-Geissmann1">[5]</xref>.</p>
+      <p>Differentiation of DCs from hematopoietic progenitor cells depends on the activity of cytokines, including FLT3L (FMS-related tyrosine kinase 3 ligand) and GM-CSF (granulocyte-monocyte colony stimulating factor). Mouse hematopoietic progenitor cells cultured with FLT3L generate all cDC subsets and pDCs <xref ref-type="bibr" rid="pone.0052141-Naik1">[6]</xref>, <xref ref-type="bibr" rid="pone.0052141-Brasel1">[7]</xref>, and mice deficient for Flt3l have markedly reduced numbers of cDCs and pDCs <xref ref-type="bibr" rid="pone.0052141-McKenna1">[8]</xref>. GM-CSF stimulates cultured bone marrow cells to differentiate into monocyte-derived DCs <xref ref-type="bibr" rid="pone.0052141-Inaba1">[9]</xref>, <xref ref-type="bibr" rid="pone.0052141-Sallusto1">[10]</xref>, but GM-CSF is not essential for DC development in the steady state, as mice lacking the GM-CSF receptor (GM-CSFR) have only slightly reduced numbers of DCs <xref ref-type="bibr" rid="pone.0052141-Vremec1">[11]</xref>.</p>
+      <p>DC development also depends on transcription factors that mediate extracellular cues from cytokines and their cognate receptors. For example, interferon regulatory factor 8 (IRF-8) is essential for the development of CD8<sup>+</sup> cDCs and pDCs <xref ref-type="bibr" rid="pone.0052141-Schiavoni1">[12]</xref>, <xref ref-type="bibr" rid="pone.0052141-Tsujimura1">[13]</xref>, while IRF-4 deficiency in mice is associated with a marked reduction in CD8<sup>−</sup>CD4<sup>+</sup> cDCs <xref ref-type="bibr" rid="pone.0052141-Tamura1">[14]</xref>, <xref ref-type="bibr" rid="pone.0052141-Suzuki1">[15]</xref>. The E protein, E2-2, controls DC progenitor diversion to pDCs, as it is abundantly expressed by pDCs and is required for pDC lineage specification <xref ref-type="bibr" rid="pone.0052141-Cisse1">[16]</xref>, <xref ref-type="bibr" rid="pone.0052141-Ghosh1">[17]</xref>. Conditional deletion in the hematopoietic compartment of the ets transcription factor, PU.1, blocks development of both cDC and pDC subsets <xref ref-type="bibr" rid="pone.0052141-Carotta1">[18]</xref>. PU.1 expression is high in early DC progenitors and cDCs, but remains low in pDCs <xref ref-type="bibr" rid="pone.0052141-Belz1">[3]</xref>, <xref ref-type="bibr" rid="pone.0052141-Satpathy1">[4]</xref>. PU.1 controls the expression of FLT3 and GM-CSFR on progenitor cells, but the mechanism by which it regulates DC lineage fate choice remains to be elucidated.</p>
+      <p>In this study, we used lineage fate mapping to examine activity of the CD11c proximal promoter under steady state conditions, and in response to GM-CSF induction <italic>in vivo</italic> and <italic>ex vivo</italic>. Although CD11c is considered relatively specific for DCs, we found that the 5.3 Kb CD11c proximal promoter is active in about 30% cells of myeloid and lymphoid cells from bone marrow, spleen and peripheral blood. Unexpectedly, CD11c promoter activity was only slightly higher in DCs than in other hematopoietic lineages. Growth of mouse bone marrow cells in the presence of GM-CSF or FLT3L induced monocyte-derived DC differentiation, and stimulated CD11c promoter activity in nearly 90% of DCs. Similarly, treatment of mice with GM-CSF markedly increased activity of the CD11c proximal promoter in both CD8a<sup>+</sup> and CD8a<sup>−</sup> cDCs in spleen, but not in B220<sup>+</sup> pDC subsets or other hematopoietic lineages. Chromatin immunoprecipitation (ChIP) demonstrated that PU.1 and IRF-4, which are known to be essential for DC development, bound DNA elements within the 5.3 kb CD11c proximal promoter. Expression of these transcription factors increased in response to GM-CSF or FLT3L-induced DC differentiation. shRNA-mediated knock down of PU.1 in cultured bone marrow cells inhibited GM-CSF or FLT3L-induced monocyte-derived DC differentiation and reduced CD11c promoter activity in response to these cytokines. In mouse spleen, expression of Irf-4 is maintained at high level only in CD8a<sup>−</sup>CD4<sup>+</sup> cDCs. Thus, GM-CSF or FLT3L activates the 5.3 kb CD11c proximal promoter through synergy with essential DC transcription factors, including PU.1 and IRF-4, whose expression are also induced by GM-CSF or FLT3L signaling during differentiation of cultured monocyte-derived DCs. Although administration of GM-CSF in mice did not promote differentiation of CD8<sup>+</sup> cDCs in spleen, it was sufficient to CD11c promoter activity in both CD8<sup>+</sup> and CD8<sup>−</sup> cDCs, most likely through the up-regulation of PU.1 in these cells. This suggests that additional promoter or enhancer elements, together with other transcription factors, account for the CD11c expression in B220<sup>+</sup> pDC subsets in spleen, and its lineage-specific expression pattern exclusively in DCs.</p>
+    </sec>
+    <sec id="s2">
+      <title>Results</title>
+      <sec id="s2a">
+        <title>The CD11c Proximal Promoter Controlled GFP Expression cannot be Detected in the Majority of DC Subsets from the CD11c-Cre Mice</title>
+        <p>CD11c is considered a relatively specific marker of DCs, and CD11c promoter-driven expression of Cre recombinase has been used to inactivate genes in DCs. Stranges, <italic>et al.</italic> used a 5.3 kb genomic DNA fragment that includes the mouse CD11c proximal promoter to drive expression of both Cre recombinase and enhanced green fluorescent protein (GFP); because GFP is co-transcribed with Cre from the CD11c promoter, the intensity of green fluorescence should indicate the specificity and efficacy of the CD11c promoter. Among several transgenic mouse strains, strain 4097 exhibited the highest level of GFP in CD11c<sup>+</sup> DCs <xref ref-type="bibr" rid="pone.0052141-Stranges1">[19]</xref>. However, even in CD11c-Cre mouse strain 4097, the GFP expression in lymph node CD11c<sup>+</sup> DCs was not markedly higher than non-transgenic littermate controls, so that there was a substantial portion of GFP<sup>−</sup>CD11c<sup>+</sup> DCs from the CD11c-Cre mice that overlapped with the GFP<sup>−</sup>CD11c<sup>+</sup> DCs from the non-transgenic littermate control mice. Therefore, the efficacy and specificity of the CD11c-Cre transgene in the CD11c-Cre mouse strain 4097 require better evaluation.</p>
+        <p>We analyzed GFP expression in DC and non-DC subsets of cells from spleen, blood, and bone marrow of CD11c-Cre GFP mouse train 4097; littermates that lacked CD11c-Cre GFP served as negative controls. The percentage of GFP<sup>+</sup> cells in total spleen cells was less than 1% (<xref ref-type="fig" rid="pone-0052141-g001">Figure 1A</xref>). Because expression of GFP reflects CD11c promoter activity, one would expect the percentage of GFP<sup>+</sup> cells to be higher in CD11c<sup>+</sup> DC subsets than in the total cell population or in other cell types. The percentage of GFP<sup>+</sup> cells in various CD11c<sup>−</sup> populations, including myeloid cells (Gr1<sup>+</sup>), T-lymphocytes (CD3<sup>+</sup>), B-lymphocytes (CD19<sup>+</sup>), and natural killer (NK) cells (CD49b<sup>+</sup>) varied from 0.2% to 1.1% (<xref ref-type="fig" rid="pone-0052141-g001">Figure 1A</xref>); thus, the percentage of GFP<sup>+</sup> cells among these other cell types was not significantly different from the percentage of GFP<sup>+</sup> cells in CD11c<sup>+</sup> cells in spleen (0.4%). Stranges et. al. only characterized DCs with the single surface marker CD11c <xref ref-type="bibr" rid="pone.0052141-Stranges1">[19]</xref>. It is possible that the portion of GFP-expressing DCs was underestimated, and that better defined DC populations with additional surface antigens (B220 and Ly6C for pDCs; CD8, CD11b and MHC class II (MHCII) for cDCs) could significantly increase the percentages of GFP-expressing cells. Although CD8<sup>+</sup> cDCs (CD11c<sup>+</sup>CD8<sup>+</sup>CD11b<sup>−</sup>MHCII<sup>+</sup>) exhibited marked increase in the percentage of GFP<sup>+</sup> cells (16%), the majority of CD8<sup>+</sup> cDCs were still GFP<sup>−</sup>. Furthermore, neither the percentages of GFP<sup>+</sup> cells nor the GFP level was significantly higher than non-DC cells in spleen pDCs (CD11c<sup>+</sup>B220<sup>+</sup>Ly6C<sup>+</sup>), CD8<sup>−</sup> cDCs (CD11c<sup>+</sup>CD8<sup>−</sup>CD11b<sup>+</sup>MHCII<sup>+</sup>), MHCII<sup>+</sup> activated DCs (CD11c<sup>+</sup>MHCII<sup>+</sup>CD8<sup>−</sup>), or in bone marrow derived DC progenitors (Lineage<sup>−</sup>CD11c<sup>+</sup>CD11b<sup>−</sup>B220<sup>−</sup>CD43<sup>+</sup>) (<xref ref-type="fig" rid="pone-0052141-g001">Figure 1B</xref>).</p>
+        <fig id="pone-0052141-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052141.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>CD11c-Cre mice have minimal GFP<sup>+</sup> DCs in spleen.</title>
+            <p>Flow cytometric analysis of CD11c-Cre mouse spleen cells for their GFP expression in <bold>A</bold>) DCs, myeloid cells, T- and B-lymphocytes and natural killer (NK) cells. <bold>B</bold>) Flow cytometric analysis of the same mouse spleen cells for GFP expression in different DC subsets including pDCs (CD11c<sup>+</sup>B220<sup>+</sup>CD8<sup>−</sup>CD11b<sup>−</sup>Ly6C<sup>+</sup>), CD8<sup>+</sup> DCs (CD11c<sup>+</sup>CD8<sup>+</sup>CD11b<sup>−</sup>MHCII<sup>+</sup>), CD8<sup>−</sup>CD11b<sup>+</sup> DCs (CD11c<sup>+</sup>CD8<sup>−</sup>CD11b<sup>+</sup>MHCII<sup>+</sup>), inactivated (CD11c<sup>+</sup>MHCII<sup>+</sup>CD8<sup>+</sup>) and activated DCs (CD11c<sup>+</sup>MHCII<sup>+</sup>CD8<sup>−</sup>) and DC progenitors (Lineage<sup>−</sup>CD11c<sup>+</sup>CD11b<sup>−</sup>B220<sup>−</sup>CD43<sup>+</sup>). <bold>C</bold>) Analysis of CD11b<sup>+</sup> spleen cells for GFP expression during their maturation from group I (CD11c<sup>−</sup>Ly6C<sup>hi</sup>), group II (CD11c<sup>−</sup>Ly6C<sup>low</sup>), to group III (CD11c<sup>−</sup>Ly6C<sup>−</sup>), and group IV (CD11c<sup>+</sup>Ly6C<sup>−</sup>).</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052141.g001" position="float" xlink:type="simple"/>
+        </fig>
+        <p>Expression of CD11c increases and Ly6C decreases as DCs mature. Based on expression of these antigens, splenic CD8<sup>−</sup>CD11c<sup>+</sup> DCs can be divided into groups I, II, III, and IV, which represent increasing states of differentiation <xref ref-type="bibr" rid="pone.0052141-Caton1">[20]</xref>. Because CD11c expression increases during DC maturation, the percentage of GFP<sup>+</sup> cells should be expected to increase. However, we observed no significant increase in the percentage of GFP<sup>+</sup> cells in group I compared to groups II, III, or IV (<xref ref-type="fig" rid="pone-0052141-g001">Figure 1C</xref>). GFP expression was detected in only a small fraction of the CD11c<sup>+</sup> DCs, and some CD11c<sup>−</sup> cells contain comparable percentage of GFP<sup>+</sup> cells. We conclude that expression of CD11c-GFP expression is not specific for CD11c<sup>+</sup> DCs, and the CD11c proximal promoter did not accurately recapitulate the expression of native CD11c in mouse DC subsets.</p>
+      </sec>
+      <sec id="s2b">
+        <title>Generation of Mice Bearing both CD11c-Cre and Rosa26 loxP-STOP-loxP</title>
+        <p>Because CD11c proximal promoter activity (i.e. CD11c-Cre-GFP expression) did not reflect expression of native CD11c in DCs, we utilized CD11c promoter-driven Cre recombinase expression to lineage trace DCs. The similar strategy has been used to examine gene activation/deletion restricted in DCs of another CD11c-Cre transgenic mouse train <xref ref-type="bibr" rid="pone.0052141-Caton1">[20]</xref>. We bred CD11c-Cre mice to a mouse strain that bears the enhanced yellow fluorescent protein (YFP) gene that was knocked-into a locus immediately downstream of the endogenous Rosa26 gene promoter and loxP-STOP-loxP sequences <xref ref-type="bibr" rid="pone.0052141-Caton1">[20]</xref>, <xref ref-type="bibr" rid="pone.0052141-Srinivas1">[21]</xref>, as illustrated in <xref ref-type="fig" rid="pone-0052141-g002">Figure 2A, B, C</xref>. Rosa26 is expressed in all tissues, and flow cytometry can be used to detect YFP expression that is activated by Cre-mediated deletion of the STOP sequence. Mice carrying both transgenes genes were identified by PCR on their genomic DNA for the presence of CD11c-Cre construct (420 bps) and the Rosa26 loxP-STOP-loxP (600 bps) (<xref ref-type="fig" rid="pone-0052141-g002">Figure 2D</xref>).</p>
+        <fig id="pone-0052141-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052141.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Generation of mice bearing both CD11c-Cre and Rosa26 loxP-STOP-loxP YFP.</title>
+            <p>Diagrams show <bold>A</bold>) the construct of loxP (triangles) flanked transcription stop signal sequence (SA) followed by YFP under the control of Rosa26 locus; and <bold>B</bold>) the 5.3 kb CD11c proximal promoter controlled Cre recombinase followed by IRES and GFP. <bold>C</bold>) the diagram demonstrates the breeding strategy of generating mice carrying both CD11c-Cre and Rosa26 loxP-STOP-loxP. <bold>D</bold>) PCR on genomic DNA from offspring mice of the breeding pairs in C. Mice carrying both CD11c-Cre and Rosa26 loxP-STOP-loxP demonstrate both the 420 bp Cre product and the 600 bp YFP product.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052141.g002" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2c">
+        <title>YFP Expression occurs in all Lineages of Hematopoietic Cells from Mice Bearing CD11c-Cre and Rosa26 loxP-STOP-loxP</title>
+        <p>As illustrated in <xref ref-type="fig" rid="pone-0052141-g003">Figure 3A</xref>, YFP expression was observed in about 30% of total spleen cells and 26% of peripheral blood leukocytes. Because each of these hematopoietic organs contains only a small percentage of CD11c<sup>+</sup> DCs, the substantially higher percentages of YFP<sup>+</sup> cells indicates that CD11c-Cre must also be active in non-DC lineages. In fact, approximately 30% of Gr1<sup>+</sup> granulocytes, B220<sup>+</sup> B-lymphocytes, and CD3<sup>+</sup> T-lymphocytes in spleen express YFP (<xref ref-type="fig" rid="pone-0052141-g003">Figure 3A</xref>). Unexpectedly, nearly half of CD11c<sup>+</sup> DCs were YFP negative. Analysis of various DC subsets with additional cell surface markers demonstrated significant increases of YFP<sup>+</sup> cells in CD8<sup>+</sup> cDCs (CD11c<sup>+</sup>CD8<sup>+</sup>CD11b<sup>−</sup>MHCII<sup>+</sup>) (65%), CD8<sup>−</sup> cDCs (CD11c<sup>+</sup>CD8<sup>−</sup>CD11b<sup>+</sup>MHCII<sup>+</sup>) (52%), pDCs (CD11c<sup>+</sup>B220<sup>+</sup>Ly6C<sup>+</sup>) (48%), inactivated (CD11c<sup>+</sup>CD8<sup>+</sup>MHCII<sup>+</sup>) (59%) and activated DCs (CD11c<sup>+</sup>CD8<sup>−</sup>MHCII<sup>+</sup>) (58%). But none of their percentages of YFP<sup>+</sup> DCs were even close to 100% (<xref ref-type="fig" rid="pone-0052141-g003">Figure 3B</xref>). CD11c expression increases during the maturation of spleen DCs from stage I through II and III to stage IV and, as expected, the percentage of YFP<sup>+</sup> DCs increased from 32% to 58% as DCs differentiated from stage I through stage IV (<xref ref-type="fig" rid="pone-0052141-g003">Figure 3C</xref>), however, even the most mature DCs, i.e. stage IV, were not 100% YFP positive. This finding demonstrates that CD11c proximal promoter-driven Cre-mediated recombination occurs in all hematopoietic lineages. Although there was higher percentage of YFP<sup>+</sup> cells in CD11c<sup>+</sup> DCs, not all CD11c<sup>+</sup> DCs were YFP<sup>+</sup>. This finding is in great contrast to the observation from Boris Reizis group, where in a different strain of CD11c-Cre transgenic mouse, the percentages of YFP<sup>+</sup> cells ranges from 86% to 97% in DC subsets, and were from 0.3% to 12% in nonDC cells <xref ref-type="bibr" rid="pone.0052141-Caton1">[20]</xref>. Thus, the 5.3 Kb CD11c proximal promoter activity is neither fully sensitive nor specific for detection of DCs.</p>
+        <fig id="pone-0052141-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052141.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>CD11c-Cre mediated recombination to activate YFP expression in spleen cells.</title>
+            <p>Flow cytometric analysis of spleen cells from mice bearing both CD11c-Cre and Rosa26 loxP-STOP-loxP for the Cre activated YFP expression in <bold>A</bold>) various lineages including CD11c<sup>+</sup> DCs, Gr1<sup>+</sup> myeloid cells, B220<sup>+</sup> B- and CD3<sup>+</sup> T-lymphocytes, and in <bold>B</bold>) DC subsets including CD8<sup>+</sup> DCs, CD8<sup>−</sup>CD11b<sup>+</sup> DCs, pDCs, inactivated and activated DCs. <bold>C</bold>) Analysis of YFP expression in CD11b<sup>+</sup> DCs during their maturation from group I to group IV.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052141.g003" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2d">
+        <title>YFP Expression Occurs in Hematopoietic Stem and Progenitor Cells from Mice Bearing CD11c-Cre and Rosa26 loxP-STOP-loxP</title>
+        <p>Bone marrow derived DC progenitors express low levels of CD11c, but hematopoietic stem cells (HSCs), myeloid, and lymphoid progenitor cells do not express CD11c <xref ref-type="bibr" rid="pone.0052141-Onai1">[22]</xref>. If expression of the CD11c-Cre transgene mimics expression of endogenous CD11c, lineage negative (Lin<sup>−</sup>) stem and progenitor cells should be CD11c<sup>−</sup> and YFP<sup>−</sup>. Surprisingly, nearly a quarter of Lin- bone marrow cells expressed YFP (<xref ref-type="fig" rid="pone-0052141-g004">Figure 4A and 4B</xref>). Furthermore, more than one quarter of HSCs (Lin<sup>−</sup> c-Kit<sup>+</sup> and Sca1<sup>+</sup>, LSK) and myeloid progenitor cells (Lin<sup>−</sup> c-Kit<sup>+</sup> Sca1<sup>−</sup>, LK) expressed YFP (<xref ref-type="fig" rid="pone-0052141-g004">Figure 4A</xref>). Bone marrow DC progenitor cells that are Lin<sup>−</sup>, Sca1<sup>−</sup>, Flt3<sup>+</sup> and Mcsfr<sup>+</sup>, including MDP (c-Kit<sup>+</sup>FcγII/III<sup>+</sup>) and CDP (c-Kit<sup>−</sup>FcγII/III<sup>+</sup>), demonstrated similar percentages of YFP<sup>+</sup> cells (<xref ref-type="fig" rid="pone-0052141-g004">Figure 4B</xref>). Thus, the 5.3 Kb CD11c proximal promoter is active under steady state conditions in a significant portion of HSCs and progenitor cells.</p>
+        <fig id="pone-0052141-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052141.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>CD11c-Cre mediated recombination to activate YFP expression in mouse bone marrow hematopoietic stem and progenitor cells.</title>
+            <p>Flow cytometric analysis of bone marrow cells from mice bearing both CD11c-Cre and Rosa26 loxP-STOP-loxP for YFP expression in <bold>A</bold>) lineage negative cells, early myeloid progenitors (LK), stem cells (LSK) and CMPs, GMPs, MEPs; and in <bold>B</bold>) DC progenitor cells including MDPs and CDPs.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052141.g004" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2e">
+        <title>GM-CSF and FLT3L Induced a Significant Increase in Transgenic 5.3 Kb CD11c Proximal Promoter Activity in Cultured Bone Marrow Derived DC Subsets</title>
+        <p>Cytokine signaling plays crucial roles in DC development. GM-CSF drives the formation of DCs from cultured mouse bone marrow cells or human peripheral monocytes <xref ref-type="bibr" rid="pone.0052141-Inaba1">[9]</xref>, <xref ref-type="bibr" rid="pone.0052141-Sallusto1">[10]</xref>, and GM-CSF promotes monocyte derived DC development under inflammatory conditions <xref ref-type="bibr" rid="pone.0052141-Inaba1">[9]</xref>–<xref ref-type="bibr" rid="pone.0052141-Vremec1">[11]</xref>. FLT3L supports the development of DCs <italic>in vitro</italic> <xref ref-type="bibr" rid="pone.0052141-Brasel1">[7]</xref>, <xref ref-type="bibr" rid="pone.0052141-McKenna1">[8]</xref>, <xref ref-type="bibr" rid="pone.0052141-Gilliet1">[23]</xref>, and FLT3L signaling is required for <italic>in vivo</italic> steady-state development of various mouse DC subsets <xref ref-type="bibr" rid="pone.0052141-McKenna1">[8]</xref>. To test whether the 5.3 Kb CD11c proximal promoter is responsive to GM-CSF or FLT3L signaling, bone marrow cells from mice bearing CD11c-Cre and Rosa26 loxP-STOP-loxP were cultured <italic>in vitro</italic> with GM-CSF or FLT3L to induce DC differentiation. After six days growth in GM-CSF, the majority of the bone marrow cells were CD11b<sup>+</sup>, and CD11c<sup>+</sup> cells increased to 7% of total cultured bone marrow cells (<xref ref-type="fig" rid="pone-0052141-g005">Figure 5A</xref>). The percentage of YFP<sup>+</sup> cells in CD11b<sup>+</sup>CD11c<sup>+</sup> DCs was 50%, which was markedly higher than that in total cultured cells or CD11b<sup>+</sup>CD11c<sup>−</sup> non-DC cells (<xref ref-type="fig" rid="pone-0052141-g005">Figure 5A</xref>). The percentage of CD11c<sup>+</sup> cells increased further to 71% after eleven days of growth in GM-CSF (<xref ref-type="fig" rid="pone-0052141-g005">Figure 5B</xref>). Both the intensity of YFP expression and the percentage of YFP<sup>+</sup> CD11c<sup>+</sup>CD11b<sup>+</sup> DCs increased from 50% on day 6 to nearly 90% on day 11 (<xref ref-type="fig" rid="pone-0052141-g005">Figure 5B</xref>). In FLT3L treated cell culture, however, the CD11b<sup>+</sup> cells were less than 20%, and the CD11c<sup>+</sup> cells increased to more than 12% of total cultured bone marrow cells after six days induction by FLT3L. Consistent with previous reports, FLT3L induced an additional population of CD11c<sup>+</sup>CD11b<sup>−</sup>B220<sup>+</sup> pDCs (<xref ref-type="fig" rid="pone-0052141-g005">Figure 5C</xref>) <xref ref-type="bibr" rid="pone.0052141-Gilliet1">[23]</xref>. Similarly, the percentage of YFP<sup>+</sup> cells in FLT3L treated CD11b<sup>+</sup>CD11c<sup>+</sup> DCs was 44%, which was higher than that in CD11c<sup>+</sup>CD11b<sup>−</sup>B220<sup>+</sup> pDCs or CD11b<sup>+</sup>CD11c<sup>−</sup> non-DC cells (<xref ref-type="fig" rid="pone-0052141-g005">Figure 5C</xref>). Once again, the percentage of CD11c<sup>+</sup> cells increased further to 54% after eleven days of treatment of FLT3L (<xref ref-type="fig" rid="pone-0052141-g005">Figure 5D</xref>). Both the intensity of YFP expression and the percentage of YFP<sup>+</sup> DCs increased from 44% on day 6 to nearly 90% on day 11. The YFP<sup>+</sup> CD11c<sup>+</sup>CD11b<sup>−</sup> pDCs increased from 36% on day 6 to 58% on day 11 (<xref ref-type="fig" rid="pone-0052141-g005">Figure 5D</xref>). Thus, the 5.3 Kb CD11c proximal promoter is highly responsive to both GM-CSF and FLT3L signaling during DC development in cultured mouse bone marrow cells.</p>
+        <fig id="pone-0052141-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052141.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title>CD11c-Cre mediated recombination to activate YFP expression in mouse bone marrow cells cultured with GM-CSF or FLT3L.</title>
+            <p>Flow cytometric analysis of bone marrow cells from mice bearing both CD11c-Cre and Rosa26 loxP-STOP-loxP for their YFP expression in CD11c<sup>+</sup> and CD11c<sup>−</sup> cells after cultured with GM-CSF or FLT3L for 6 days <bold>A</bold>) and <bold>C</bold>), and for 11 days <bold>B</bold>) and <bold>D</bold>), respectively.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052141.g005" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2f">
+        <title>GM-CSF Activated the Transgenic 5.3 Kb CD11c Proximal Promoter in CD8<sup>+</sup> and CD8<sup>−</sup> cDCs, but not pDCs, During the Induced Differentiation of DCs in Mouse Spleen</title>
+        <p>GM-CSF stimulates DC differentiation in culture, but it is not essential for the steady-state DC differentiation <italic>in vivo</italic> <xref ref-type="bibr" rid="pone.0052141-Vremec1">[11]</xref>. GM-CSF has a greater role in production of monocyte-derived DCs than in other DC subsets. To test whether GM-CSF can activate the 5.3 Kb CD11c proximal promoter <italic>in vivo</italic>, CD11c-Cre and Rosa26 loxP-STOP-loxP mice were injected with GM-CSF, or saline control. Flow cytometric analysis of cells harvested 48 hours after injection demonstrated that saline injection did not change the percentage of YFP<sup>+</sup> spleen cells in DCs, myeloid or lymphoid cells, and the percentages of the YFP<sup>+</sup> cells were comparable to uninjected mice in <xref ref-type="fig" rid="pone-0052141-g003">Figure 3</xref> (data not shown). As shown in <xref ref-type="fig" rid="pone-0052141-g006">Figure 6A</xref>, injection of GM-CSF significantly increased the percentage and the total number of CD11c<sup>+</sup> DCs in spleen. There was a significant increase in the percentage of YFP<sup>+</sup> cells in CD11c<sup>+</sup> DCs, a slight increase in Gr1<sup>+</sup> myeloid cells, and a mild decrease in B220<sup>+</sup> B-lymphocytes (<xref ref-type="fig" rid="pone-0052141-g006">Figure 6A</xref>). As shown in <xref ref-type="fig" rid="pone-0052141-g006">Figure 6B</xref>, the CD11c<sup>+</sup>CD11b<sup>+</sup>CD8<sup>−</sup>MHCII<sup>+</sup> cDCs represented the majority of the increased DCs stimulated by GM-CSF in total spleen cells. Similar to the observation in cultured cells, mice injected with GM-CSF exhibited a substantial increase in the percentage of CD8<sup>−</sup>CD11b<sup>+</sup> DCs in spleen and increased the percentage of YFP<sup>+</sup> cells among this population (compare <xref ref-type="fig" rid="pone-0052141-g006">Figure 6B to F</xref>igure 3B). GM-CSF administration did not increase the percentage of CD11c<sup>+</sup>CD11b<sup>−</sup>CD8<sup>+</sup>MHCII<sup>+</sup> cDCs, CD11c<sup>+</sup>CD8<sup>+</sup>MHCII<sup>+</sup> inactiveated or CD11c<sup>+</sup>CD8<sup>−</sup>MHCII<sup>+</sup> activated DCs, but it did markedly increased the percentage of YFP<sup>+</sup> cells among these splenic DC subsets (<xref ref-type="fig" rid="pone-0052141-g006">Figure 6B</xref>). There was no increase either in the percentage of CD11c<sup>+</sup>B220<sup>+</sup>pLy6C<sup>+</sup> pDCs, or in the percentage that were YFP<sup>+</sup> (<xref ref-type="fig" rid="pone-0052141-g006">Figure 6B</xref>). In addition, the most mature CD11b<sup>+</sup>Ly6C<sup>−</sup>CD11c<sup>hi</sup> DCs in spleen demonstrated nearly 90% YFP<sup>+</sup> cells, as shown in <xref ref-type="fig" rid="pone-0052141-g006">Figure 6C</xref>. Thus, the 5.3 Kb CD11c proximal promoter, as measured by YFP activity, is highly responsive to GM-CSF in both CD8<sup>−</sup>CD11b<sup>+</sup> and CD8<sup>+</sup>CD11b<sup>−</sup> cDCs during GM-CSF induced DC differentiation <italic>in vivo</italic>, but not in pDCs.</p>
+        <fig id="pone-0052141-g006" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052141.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title>CD11c-Cre mediated recombination to activate YFP expression in spleen cells after GM-CSF administration in mice.</title>
+            <p>Mice bearing both CD11c<sup>−</sup>Cre and Rosa26 loxP-STOP-loxP were injected with GM-CSF followed by flow cytometric analysis of their spleen cells for YFP expression in <bold>A</bold>) different lineages including DCs, myeloid cells, B- and T-lymphocytes, and in <bold>B</bold>) DC subsets including CD8<sup>+</sup> DCs, CD8<sup>−</sup>CD11b<sup>+</sup> DCs and pDCs. <bold>C</bold>) Analysis of YFP expression in CD11b<sup>+</sup> DCs during their maturation from group I to group IV.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052141.g006" position="float" xlink:type="simple"/>
+        </fig>
+      </sec>
+      <sec id="s2g">
+        <title>Cis-regulatory Elements on 5.3 Kb CD11c Proximal Promoter Contain Motifs that are Bound by Crucial DC Transcription factors During Cytokine Induced Differentiation</title>
+        <p>The increased percentage of YFP<sup>+</sup> DCs suggests that the 5.3 Kb CD11c proximal promoter contains cis-elements that are responsive to GM-CSF and FLT3L signaling. Alignment of a 5.3 kb DNA sequence upstream of the CD11c transcription start site (TSS) among mammalian species identified an evolutionarily conserved region with about 2 kb that spans the TSS (<xref ref-type="fig" rid="pone-0052141-g007">Figure 7A</xref>). Chromatin immunoprecipitation (ChIP) followed by high throughput deep sequencing (ChIP-seq) on cell lines revealed potential transcription factor binding sites in this conserved promoter region (<xref ref-type="fig" rid="pone-0052141-g007">Figure 7A</xref>), including IRF-4 and PU.1, both of which are known to be crucial for the development of DCs, B-lymphocytes and myeloid cells.</p>
+        <fig id="pone-0052141-g007" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052141.g007</object-id>
+          <label>Figure 7</label>
+          <caption>
+            <title>CD11c proximal promoter contains binding sites for PU.1 and IRF-4, which are essential for GM-CSF or FLT3L-induced CD11c activation.</title>
+            <p><bold>A</bold>) Diagram demonstrating the human 5.3 kb CD11c proximal promoter. Transcription factors binding to this region according to ChIP-seq analysis of existing data are illustrated in the diagram. <bold>B</bold>) ChIP assays on cultured mouse bone marrow cells with GM-CSF for the binding of Pu.1 and Irf-4 to the CD11c proximal promoter region. <bold>C</bold>) Quantitative PCR on reverse transcribed mRNA from mouse bone marrow cells cultured with GM-CSF or FLT3L to evaluate expression of Pu.1 and Irf-4. Bone marrow cells from mice bearing both CD11c-Cre and Rosa26 loxP-STOP-loxP were transduced with retrovirus carrying either scrambled control shRNA or shRNA against Pu.1 followed by puromycin selection of transduced cells. Immunoblotting <bold>D</bold>) and Flow cytometric analysis of the transduced cells for the expression YFP in both CD11c<sup>+</sup> and CD11c<sup>−</sup> cells 11 days after culturing with GM-CSF <bold>E</bold>), or FLT3L F).</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052141.g007" position="float" xlink:type="simple"/>
+        </fig>
+        <p>Bone marrow cells were cultured <italic>in vitro</italic> with GM-CSF or FLT3L for 7 days and analyzed by ChIP assay. As shown in <xref ref-type="fig" rid="pone-0052141-g007">Figure 7B</xref>, both Irf-4 and Pu.1 bound the region of the CD11c proximal promoter 2 kb upstream of the TSS in response to GM-CSF (<xref ref-type="fig" rid="pone-0052141-g007">Figure 7B</xref>) or FLT3L (data not shown). Furthermore, the mRNA levels of Irf-4 and Pu.1 in bone marrow cells cultured with GM-CSF or FLT3L increased up to two fold, compared to the same cells in the absence of GM-CSF or FLT3L (<xref ref-type="fig" rid="pone-0052141-g007">Figure 7C</xref>). Irf-4 expression is high only in CD8<sup>−</sup>CD4<sup>+</sup> cDCs, and is essential for their development. PU.1 expression is high in both DC progenitors and mature cDCs, but low in pDCs. Coincidentally, GM-CSF-induced activation of the 5.3 Kb CD11c proximal promoter occurs in CD8<sup>+</sup> and CD8<sup>−</sup>CD11b<sup>+</sup> cDCs, but not in pDCs. This suggests that GM-CSF-induced Pu.1 expression in cDCs is required for activation of CD11c proximal promoter. To test this hypothesis, bone marrow cells were transduced with retrovirus containing shRNA specifically against Pu.1 or scrambled control shRNA. Immunoblotting on protein extracts from cultured bone marrow cells demonstrated the near complete loss of Pu.1 protein expression suppressed by shRNA specifically against Pu.1 gene, but not by scrambled control shRNA (<xref ref-type="fig" rid="pone-0052141-g007">Figure 7D</xref>). As shown in <xref ref-type="fig" rid="pone-0052141-g007">Figure 7E–7F</xref>, Pu.1 knock-down markedly inhibited GM-CSF (<xref ref-type="fig" rid="pone-0052141-g007">Figure 7E</xref>) or FLT3L-induced (<xref ref-type="fig" rid="pone-0052141-g007">Figure 7F</xref>) differentiation of CD11c<sup>+</sup> monocyte-derived DCs and greatly reduced the percentage of YFP<sup>+</sup> DCs, compared to control cells transduced with scrambled shRNA. Pu.1 knockdown also reduced FLT3L-induced differentiation of pDCs and the percentage of YFP<sup>+</sup> pDCs (<xref ref-type="fig" rid="pone-0052141-g007">Figure 7F</xref>). To summarize, the 5.3 Kb CD11c proximal promoter contains Irf-4 and Pu.1 binding elements that are responsive to GM-CSF or FLT3L-induced DC differentiation <italic>in vivo</italic> and <italic>ex vivo</italic>, Irf-4 and Pu.1 expression increase in response to GM-CSF treatment, and Pu.1 is essential for both GM-CSF and FLT3L-induced CD11c expression in monocyte-derived DCs in culture. Thus, Pu.1 appears to be the key regulator that controls CD11c expression in both CD8<sup>+</sup> and CD8<sup>−</sup> lymphoid resident cDCs.</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Discussion</title>
+      <p>The leukocyte integrin, CD11c, is expressed by DCs and is considered to be a relatively specific marker of this lineage. In this study we demonstrated that expression of GFP driven by the 5.3 kb proximal promoter of mouse CD11c did not accurately reflect expression of native CD11c. We generated mice that are transgenic for both CD11c-Cre and Rosa26-loxP-STOP-loxP YFP, which can trace activation of the CD11c proximal promoter during DC differentiation. We found that the CD11c promoter was also active in HSCs, hematopoietic progenitor cells, and in all categories of mature leukocytes. Thus, the CD11c proximal promoter is neither sufficient nor specific for driving CD11c expression in DCs, and we conclude that additional promoter or enhancer regions of CD11c must be required to control its specific expression pattern in DCs. Treatment of bone marrow cells <italic>in vitro</italic> with GM-CSF or FLT3L increased CD11c expression in monocyte-derived (CD11b<sup>+</sup>) DCs. <italic>In vivo</italic>, GM-CSF activated the CD11c promoter in CD11b<sup>+</sup> DCs and in CD8<sup>+</sup> DCs, but not in B220<sup>+</sup> pDCs. We showed that the transcription factors, Irf-4 and Pu.1, bound to the CD11c proximal promoter, and that Pu.1 knock down reduced GM-CSF or FLT3L-induced CD11c promoter activation. Together with the observation that expression of Pu.1 is high in CD8<sup>+</sup> and CD11b<sup>+</sup> cDCs, but low in B220<sup>+</sup> pDCs, we conclude that high level expression of Pu.1 is essential for the control of CD11c expression in CD11b<sup>+</sup> and in CD8<sup>+</sup> cDCs.</p>
+      <p>The <italic>CD11c</italic> gene encodes the integrin αL chain, a leukocyte cell surface antigen that is routinely used as a specific marker of DCs, but the cis-regulatory elements that restrict its expression to DCs have not been identified. We used two different approaches to examine CD11c promoter activity in mouse DCs and other blood cells. Expression of GFP directly reflects CD11c promoter activity at the time of analysis. In contrast, Cre activation of YFP expression reflects a cumulative effect of CD11c activity during the development of particular lineages. Expression of YFP by HSCs and progenitors indicates that the CD11c promoter is active in immature hematopoietic cells. Thus, Cre activation of YFP reflects the derivation of hematopoietic cells. It may also serve as a more sensitive indicator of CD11c promoter activity than the GFP model.</p>
+      <p>Growth and differentiation of DCs depend on signals from extracellular growth factors, including GM-CSF and FLT3L. The transcription factors, IRF-4 and PU.1, are critical for development of DCs, <italic>i.e.</italic> PU.1 is required for the development of all DC subsets, while IRF-4 is essential for CD8<sup>−</sup>CD4<sup>+</sup> lymphoid resident cDCs in spleen. Our findings demonstrated that expression of transcription factors PU.1 and IRF-4 is induced by GM-CSF or FLT3L. Expression of CD11c, the DC specific target gene of both Pu.1 and Irf-4, is rapidly increased in response to GM-CSF or FLT3L induction in mouse bone marrow cells. This demonstrates that the coordination of extrinsic GM-CSF or FLT3L signal with the transcriptional programming by PU.1 and IRF-4 in DCs contributes to the DC specific gene expression and committed DC differentiation.</p>
+      <p>GM-CSF induces development of monocyte-derived DCs in culture, while FLT3L induces the differentiation of both monocyte-derived and lymphocyte-derived DCs <xref ref-type="bibr" rid="pone.0052141-McKenna1">[8]</xref>. We showed that monocyte-derived DCs increased significantly in GM-CSF-treated mice. It appears that PU.1 is the key transcription factor mediating the GM-CSF or FLT3L induced up-regulation of CD11c in cDCs, because PU.1 knockdown markedly reduced CD11c activation in response to these cytokines. PU.1 knockdown demonstrated that PU.1 is also required for FLT3L induced CD11c expression in pDCs. GM-CSF also induced activation of CD11c in CD8<sup>+</sup> cDCs, even though GM-CSF alone is not sufficient to promote the differentiation of CD8<sup>+</sup> cDCs. Thus, the molecular mechanism on how CD11c gene is activated by GM-CSF signaling in CD8<sup>+</sup> DCs remains to be elucidated. The findings that GM-CSF did not further activate CD11c expression in pDCs, and that GM-CSF induction or Pu.1 expression cannot promote CD8<sup>+</sup> DC differentiation, indicate that different transcription factors are responsive to the same extracellular signaling in specific DC subsets, and that specific combinations of transcription factors contribute to terminal cell differentiation of these different DC subsets.</p>
+    </sec>
+    <sec id="s4" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s4a">
+        <title>Mice, Bone Marrow Cell Culture and Retroviral Gene Transfer</title>
+        <p>CD11c-Cre mice (C57BL/6J-Tg(Itgax-cre,-EGFP)4097Ach/J) and Rosa26 loxP-STOP-loxP YFP mice (B6.129X1-Gt(ROSA)26Sortm1(EYFP)Cos/J) were purchased from The Jackson Laboratory (Bar Harbor, ME). To generate mice carrying both the transgenes, CD11c-Cre mice were bred with Rosa26 loxP-STOP-loxP mice and offspring pups were subject to genomic PCR for genotyping. Mice that carry one allele of the CD11c-Cre and one allele of the Rosa26 loxP-STOP-loxP were selected for subsequent analysis. Six to twelve week old mice were used for all studies. All animal studies were approved by the University of Massachusetts Institutional Animal Care and Utilization Committee.</p>
+        <p>For bone marrow cell culture, bone marrow cells were flushed from femora and pelves of indicated mice with RPMI (American Type Culture Collection [ATCC] Manassas, VA) plus 10% fetal bovine serum (FBS; Invitrogen, Carlsbad, California). NIH/3T3 and HEK293 (ATCC, Manassas, VA) cells were maintained in DMEM (Invitrogen Corp., Carlsbad, CA) with 10% FBS. Bone marrow cells were grown in RPMI/10% FBS with GM-CSF at 30 ng/mL, or FLT3L at 100 ng/mL for 6 or 11 days. GM-CSF and FLT3L were purchased from PeproTech Inc. (Rocky Hill, NJ). For in vivo administration, mice were intraperitoneally injected with GM-CSF at 100 ng/gram body weight and cells were collected 48 hours later for analysis. For retroviral shRNA transduction, bone marrow cells were transduced with retroviruses containing shRNA against Pu.1 or scrambled control (Open Biosystems Inc. Lafayette, CO) for 48 hours and grown in 2.5 µg ml<sup>−1</sup> puromycin (Sigma-Aldrich, St. Louis, MO) for 3–5 days.</p>
+      </sec>
+      <sec id="s4b">
+        <title>Flow Cytometry Analysis and Immunoblotting</title>
+        <p>Lineage staining of bone marrow and spleen was performed with fluorescent conjugated antibodies against Gr1, CD11b, B220, CD3e, Ter119, F4/80 and Mac3 (eBiosciences, San Diego, CA). Other antibodies used for flow cytometry include: M-CSF-R, Ly6C, c-kit, Flt3, Sca-1, CD34 and FcγII/III (eBiosciences). Antibodies against CD11c, CD19 and CD49b were purchased from BD Biosciences (Franklin Lakes, NJ). Flow cytometry utilized LSRII or FACSAria II, respectively (BD Biosciences). Flow cytometry data were analyzed with Diva (BD Biosciences) and FlowJo software (Tree Star Inc, Ashland, OR). Immunoblotting was performed according to standard protocol. Antibodies against PU.1 and β-Actin were purchased from SantaCruz Biotechnology (Santa Cruz, CA).</p>
+      </sec>
+      <sec id="s4c">
+        <title>Reverse Transcription and Real-Time, Quantitative PCR</title>
+        <p>Reverse Transcription was performed with New England BioLabs DyNAmo cDNA synthesis kit, per manufacturer’s protocol, with an Applied Biosystems thermal-cycler. Quantitative Real-time PCR was performed with Qiagen real-time PCR master kit with an Eppendorf real-time thermal-cycler.</p>
+      </sec>
+      <sec id="s4d">
+        <title>Chromatin Immunoprecipitation (ChIP) Assays</title>
+        <p>Chromatin was immunoprecipitated with Pu.1 or Irf-4 antibody (Santa Cruz Biotechnology, Inc.), and protein G sepharose beads (Pierce Biotechnology, Inc. Rockford, IL). ChIP procedure was performed according to manufacturer’s protocol (Pierce Biotechnology). PCR primers for PU.1: <named-content content-type="gene" xlink:type="simple">5′-ACAACTTCCCACCCTGACTG-3′</named-content>, <named-content content-type="gene" xlink:type="simple">5′-GGTTGTGAAGGTGTGGCTTT-3′</named-content>; IRF-4: <named-content content-type="gene" xlink:type="simple">5′-GCAGAGCAAGACCCTGTTTC-3′</named-content>, <named-content content-type="gene" xlink:type="simple">5′-CTGAGCATTGAAAGCAACCA-3′</named-content>.</p>
+      </sec>
+    </sec>
+  </body>
+  <back>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0052141-Steinman1">
+        <label>1</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Steinman</surname><given-names>RM</given-names></name> (<year>2003</year>) <article-title>Some interfaces of dendritic cell biology</article-title>. <source>APMIS</source> <volume>111</volume>: <fpage>675</fpage>–<lpage>697</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Shortman1">
+        <label>2</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shortman</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Liu</surname><given-names>YJ</given-names></name> (<year>2002</year>) <article-title>Mouse and human dendritic cell subtypes</article-title>. <source>Nat Rev Immunol</source> <volume>2</volume>: <fpage>151</fpage>–<lpage>161</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Belz1">
+        <label>3</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Belz</surname><given-names>GT</given-names></name>, <name name-style="western"><surname>Nutt</surname><given-names>SL</given-names></name> (<year>2012</year>) <article-title>Transcriptional programming of the dendritic cell network</article-title>. <source>Nat Rev Immunol</source> <volume>12</volume>: <fpage>101</fpage>–<lpage>113</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Satpathy1">
+        <label>4</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Satpathy</surname><given-names>AT</given-names></name>, <name name-style="western"><surname>Murphy KM W</surname><given-names>KC</given-names></name> (<year>2011</year>) <article-title>Transcription factor networks in dendritic cell development</article-title>. <source>Semin Immunol</source> <volume>23</volume>: <fpage>388</fpage>–<lpage>397</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Geissmann1">
+        <label>5</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Geissmann</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Manz</surname><given-names>MG</given-names></name>, <name name-style="western"><surname>Jung</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Sieweke</surname><given-names>MH</given-names></name>, <name name-style="western"><surname>Merad</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Development of Monocytes, Macrophages, and Dendritic Cells</article-title>. <source>Science</source> <volume>327</volume>: <fpage>656</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Naik1">
+        <label>6</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Naik</surname><given-names>SH</given-names></name>, <name name-style="western"><surname>Proietto</surname><given-names>AI</given-names></name>, <name name-style="western"><surname>Wilson</surname><given-names>NS</given-names></name>, <name name-style="western"><surname>Dakic</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Schnorrer</surname><given-names>P</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>Cutting edge: generation of splenic CD8+ and CD8− dendritic cell equivalents in Fms-like tyrosine kinase 3 ligand bone marrow cultures</article-title>. <source>J Immunol</source> <volume>174</volume>: <fpage>6592</fpage>–<lpage>6597</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Brasel1">
+        <label>7</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brasel</surname><given-names>K</given-names></name>, <name name-style="western"><surname>De Smedt</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Smith</surname><given-names>JL</given-names></name>, <name name-style="western"><surname>Maliszewski</surname><given-names>CR</given-names></name> (<year>2000</year>) <article-title>Generation of murine dendritic cells from flt3-ligand-supplemented bone marrow cultures</article-title>. <source>Blood</source> <volume>96</volume>: <fpage>3029</fpage>–<lpage>3039</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-McKenna1">
+        <label>8</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>McKenna</surname><given-names>HJ</given-names></name>, <name name-style="western"><surname>Stocking</surname><given-names>KL</given-names></name>, <name name-style="western"><surname>Miller</surname><given-names>RE</given-names></name>, <name name-style="western"><surname>Brasel</surname><given-names>K</given-names></name>, <name name-style="western"><surname>De Smedt</surname><given-names>T</given-names></name>, <etal>et al</etal>. (<year>2000</year>) <article-title>Mice lacking flt3 ligand have deficient hematopoiesis affecting hematopoietic progenitor cells, dendritic cells, and natural killer cells</article-title>. <source>Blood</source> <volume>95</volume>: <fpage>3489</fpage>–<lpage>3497</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Inaba1">
+        <label>9</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Inaba</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Inaba</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Romani</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Aya</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Deguchi</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>1992</year>) <article-title>Generation of large numbers of dendritic cells from mouse bone marrow cultures supplemented with granulocyte/macrophage colony-stimulating factor</article-title>. <source>J Exp Med</source> <volume>176</volume>: <fpage>1693</fpage>–<lpage>1702</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Sallusto1">
+        <label>10</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sallusto</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Lanzavecchia</surname><given-names>A</given-names></name> (<year>1994</year>) <article-title>Efficient presentation of soluble antigen by cultured human dendritic cells is maintained by granulocyte/macrophage colony-stimulating factor plus interleukin 4 and downregulated by tumor necrosis factor alpha</article-title>. <source>J Exp Med</source> <volume>179</volume>: <fpage>1109</fpage>–<lpage>1118</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Vremec1">
+        <label>11</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Vremec</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Lieschke</surname><given-names>GJ</given-names></name>, <name name-style="western"><surname>Dunn</surname><given-names>AR</given-names></name>, <name name-style="western"><surname>Robb</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Metcalf</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>1997</year>) <article-title>The influence of granulocyte/macrophage colony-stimulating factor on dendritic cell levels in mouse lymphoid organs</article-title>. <source>Eur J Immunol</source> <volume>27</volume>: <fpage>40</fpage>–<lpage>44</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Schiavoni1">
+        <label>12</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Schiavoni</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Mattei</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Sestili</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Borghi</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Venditti</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>ICSBP is essential for the development of mouse type I interferon-producing cells and for the generation and activation of CD8alpha(+) dendritic cells</article-title>. <source>J Exp Med</source> <volume>196</volume>: <fpage>1415</fpage>–<lpage>1425</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Tsujimura1">
+        <label>13</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tsujimura</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Tamura</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Ozato</surname><given-names>K</given-names></name> (<year>2003</year>) <article-title>Cutting edge: IFN consensus sequence binding protein/IFN regulatory factor 8 drives the development of type I IFN-producing plasmacytoid dendritic cells</article-title>. <source>J Immunol</source> <volume>170</volume>: <fpage>1131</fpage>–<lpage>1135</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Tamura1">
+        <label>14</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tamura</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Tailor</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Yamaoka</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Kong</surname><given-names>HJ</given-names></name>, <name name-style="western"><surname>Tsujimura</surname><given-names>H</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>IFN regulatory factor-4 and -8 govern dendritic cell subset development and their functional diversity</article-title>. <source>J Immunol</source> <volume>174</volume>: <fpage>2573</fpage>–<lpage>2581</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Suzuki1">
+        <label>15</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Suzuki</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Honma</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Matsuyama</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Suzuki</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Toriyama</surname><given-names>K</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Critical roles of interferon regulatory factor 4 in CD11bhighCD8alpha- dendritic cell development</article-title>. <source>Proc Natl Acad Sci USA</source> <volume>101</volume>: <fpage>8981</fpage>–<lpage>8986</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Cisse1">
+        <label>16</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Cisse</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Caton</surname><given-names>ML</given-names></name>, <name name-style="western"><surname>Lehner</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Maeda</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Scheu</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Transcription factor E2–2 is an essential and specific regulator of plasmacytoid dendritic cell development</article-title>. <source>Cell</source> <volume>135</volume>: <fpage>37</fpage>–<lpage>48</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Ghosh1">
+        <label>17</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ghosh</surname><given-names>HS</given-names></name>, <name name-style="western"><surname>Cisse</surname><given-names>B</given-names></name>, <name name-style="western"><surname>Bunin</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Lewis</surname><given-names>KL</given-names></name>, <name name-style="western"><surname>Reizis</surname><given-names>B</given-names></name> (<year>2010</year>) <article-title>Continuous expression of the transcription factor e2–2 maintains the cell fate of mature plasmacytoid dendritic cells</article-title>. <source>Immunity</source> <volume>33</volume>: <fpage>905</fpage>–<lpage>916</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Carotta1">
+        <label>18</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Carotta</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Dakic</surname><given-names>A</given-names></name>, <name name-style="western"><surname>D’Amico</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Pang</surname><given-names>SH</given-names></name>, <name name-style="western"><surname>Greig</surname><given-names>KT</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>The transcription factor PU.1 controls dendritic cell development and Flt3 cytokine receptor expression in a dose-dependent manner</article-title>. <source>Immunity</source> <volume>32</volume>: <fpage>628</fpage>–<lpage>641</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Stranges1">
+        <label>19</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Stranges</surname><given-names>PB</given-names></name>, <name name-style="western"><surname>Watson</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Cooper</surname><given-names>CJ</given-names></name>, <name name-style="western"><surname>Choisy-Rossi</surname><given-names>CM</given-names></name>, <name name-style="western"><surname>Stonebraker</surname><given-names>AC</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Elimination of antigen-presenting cells and autoreactive T cells by Fas contributes to prevention of autoimmunity</article-title>. <source>Immunity</source> <volume>26</volume>: <fpage>629</fpage>–<lpage>641</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Caton1">
+        <label>20</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Caton</surname><given-names>ML</given-names></name>, <name name-style="western"><surname>Smith-Raska</surname><given-names>MR</given-names></name>, <name name-style="western"><surname>Reizis</surname><given-names>B</given-names></name> (<year>2007</year>) <article-title>Notch-RBP-J signaling controls the homeostasis of CD8− dendritic cells in the spleen</article-title>. <source>J Exp Med</source> <volume>204</volume>: <fpage>1653</fpage>–<lpage>1664</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Srinivas1">
+        <label>21</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Srinivas</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Watanabe</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Lin</surname><given-names>CS</given-names></name>, <name name-style="western"><surname>William</surname><given-names>CM</given-names></name>, <name name-style="western"><surname>Tanabe</surname><given-names>Y</given-names></name> (<year>2001</year>) <article-title>Cre reporter strains produced by targeted insertion of EYFP and ECFP into the ROSA26 locus</article-title>. <source>BMC Dev Biol</source> <volume>1</volume>: <fpage>4</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Onai1">
+        <label>22</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Onai</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Obata-Onai</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Schmid</surname><given-names>MA</given-names></name>, <name name-style="western"><surname>Ohteki</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Jarrossay</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Identification of clonogenic common Flt3+M-CSFR+ plasmacytoid and conventional dendritic cell progenitors in mouse bone marrow</article-title>. <source>Nat Immunol</source> <volume>8</volume>: <fpage>1207</fpage>–<lpage>1216</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052141-Gilliet1">
+        <label>23</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gilliet</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Boonstra</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Paturel</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Antonenko</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Xu</surname><given-names>XL</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>The Development of Murine Plasmacytoid Dendritic Cell Precursors Is Differentially Regulated by FLT3-ligand and Granulocyte/Macrophage Colony-Stimulating Factor</article-title>. <source>J Exp Med</source> <volume>195</volume>: <fpage>953</fpage>–<lpage>958</lpage>.</mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

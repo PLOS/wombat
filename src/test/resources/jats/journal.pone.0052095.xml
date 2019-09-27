@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+      <journal-id journal-id-type="publisher-id">plos</journal-id>
+      <journal-id journal-id-type="pmc">plosone</journal-id>
+      <journal-title-group>
+        <journal-title>PLoS ONE</journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">1932-6203</issn>
+      <publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="publisher-id">PONE-D-12-10242</article-id>
+      <article-id pub-id-type="doi">10.1371/journal.pone.0052095</article-id>
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Molecular cell biology</subject>
+            <subj-group>
+              <subject>Cell death</subject>
+              <subject>Cell growth</subject>
+              <subject>Gene expression</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Medicine</subject>
+          <subj-group>
+            <subject>Oncology</subject>
+            <subj-group>
+              <subject>Cancer treatment</subject>
+              <subj-group>
+                <subject>Epigenetic therapy</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Cancers and neoplasms</subject>
+              <subj-group>
+                <subject>Gastrointestinal tumors</subject>
+                <subj-group>
+                  <subject>Pancreatic cancer</subject>
+                </subj-group>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Molecular Biology</subject>
+          <subject>Cell Biology</subject>
+          <subject>Oncology</subject>
+        </subj-group>
+      </article-categories>
+      <title-group>
+        <article-title>Class I and Class II Histone Deacetylases Are Potential Therapeutic Targets for Treating Pancreatic Cancer</article-title>
+        <alt-title alt-title-type="running-head">Therapeutic Roles of HDACs in Pancreatic Cancer</alt-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Wang</surname>
+            <given-names>Guan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>He</surname>
+            <given-names>Jing</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Zhao</surname>
+            <given-names>Jianyun</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Yun</surname>
+            <given-names>Wenting</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Xie</surname>
+            <given-names>Chengzhi</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff4">
+            <sup>4</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff7">
+            <sup>7</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Taub</surname>
+            <given-names>Jeffrey W.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff4">
+            <sup>4</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Azmi</surname>
+            <given-names>Asfar</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff7">
+            <sup>7</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Mohammad</surname>
+            <given-names>Ramzi M.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff7">
+            <sup>7</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Dong</surname>
+            <given-names>Yan</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff5">
+            <sup>5</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Kong</surname>
+            <given-names>Wei</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff6">
+            <sup>6</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Guo</surname>
+            <given-names>Yingjie</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Ge</surname>
+            <given-names>Yubin</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff4">
+            <sup>4</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff7">
+            <sup>7</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1">
+        <label>1</label>
+        <addr-line>The State Engineering Laboratory of AIDS Vaccine, College of Life Science, Jilin University, Changchun, China</addr-line>
+      </aff>
+      <aff id="aff2">
+        <label>2</label>
+        <addr-line>Division of Pediatric Hematology/Oncology, Children's Hospital of Michigan, Detroit, Michigan, United States of America</addr-line>
+      </aff>
+      <aff id="aff3">
+        <label>3</label>
+        <addr-line>Department of Pediatrics, Wayne State University School of Medicine, Detroit, Michigan, United States of America</addr-line>
+      </aff>
+      <aff id="aff4">
+        <label>4</label>
+        <addr-line>Molecular Therapeutics Program, Barbara Ann Karmanos Cancer Institute, Wayne State University School of Medicine, Detroit, Michigan, United States of America</addr-line>
+      </aff>
+      <aff id="aff5">
+        <label>5</label>
+        <addr-line>Department of Structural and Cellular Biology, Tulane University School of Medicine, Tulane Cancer Center, New Orleans, Louisiana, United States of America</addr-line>
+      </aff>
+      <aff id="aff6">
+        <label>6</label>
+        <addr-line>Key Laboratory for Molecular Enzymology and Engineering of the Ministry of Education, Jilin University, Changchun, China</addr-line>
+      </aff>
+      <aff id="aff7">
+        <label>7</label>
+        <addr-line>Department of Oncology, Wayne State University School of Medicine, Detroit, Michigan, United States of America</addr-line>
+      </aff>
+      <contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Batra</surname>
+            <given-names>Surinder K.</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group>
+      <aff id="edit1">
+        <addr-line>University of Nebraska Medical Center, United States of America</addr-line>
+      </aff>
+      <author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">gey@karmanos.org</email> (Y. Ge); <email xlink:type="simple">guoyinjie@jlu.edu.cn</email> (Y. Guo)</corresp>
+        <fn fn-type="conflict">
+          <p>The authors have declared that no competing interests exist.</p>
+        </fn>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: JWT YD WK Y. Guo Y. Ge. Performed the experiments: GW JH JZ WY CX. Analyzed the data: GW YD Y. Ge. Contributed reagents/materials/analysis tools: AA RMM. Wrote the paper: YD Y. Ge.</p>
+        </fn>
+      </author-notes>
+      <pub-date pub-type="collection">
+        <year>2012</year>
+      </pub-date>
+      <pub-date pub-type="epub">
+        <day>14</day>
+        <month>12</month>
+        <year>2012</year>
+      </pub-date>
+      <volume>7</volume>
+      <issue>12</issue>
+      <elocation-id>e52095</elocation-id>
+      <history>
+        <date date-type="received">
+          <day>12</day>
+          <month>4</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>9</day>
+          <month>11</month>
+          <year>2012</year>
+        </date>
+      </history>
+      <permissions>
+        <copyright-year>2012</copyright-year>
+        <copyright-holder>Wang et al</copyright-holder>
+        <license xlink:type="simple">
+          <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+        </license>
+      </permissions>
+      <abstract>
+        <sec>
+          <title>Background</title>
+          <p>Pancreatic cancer is a highly malignant disease with an extremely poor prognosis. Histone deacetylase inhibitors (HDACIs) have shown promising antitumor activities against preclinical models of pancreatic cancer, either alone or in combination with chemotherapeutic agents. In this study, we sought to identify clinically relevant histone deacetylases (HDACs) to guide the selection of HDAC inhibitors (HDACIs) tailored to the treatment of pancreatic cancer.</p>
+        </sec>
+        <sec>
+          <title>Methodology</title>
+          <p>HDAC expression in seven pancreatic cancer cell lines and normal human pancreatic ductal epithelial cells was determined by Western blotting. Antitumor interactions between class I- and class II-selective HDACIs were determined by MTT assays and standard isobologram/CompuSyn software analyses. The effects of HDACIs on cell death, apoptosis and cell cycle progression, and histone H4, alpha-tubulin, p21, and γH2AX levels were determined by colony formation assays, flow cytometry analysis, and Western blotting, respectively.</p>
+        </sec>
+        <sec>
+          <title>Results</title>
+          <p>The majority of classes I and II HDACs were detected in the pancreatic cancer cell lines, albeit at variable levels. Treatments with MGCD0103 (a class I-selective HDACI) resulted in dose-dependent growth arrest, cell death/apoptosis, and cell cycle arrest in G2/M phase, accompanied by induction of p21 and DNA double-strand breaks (DSBs). In contrast, MC1568 (a class IIa-selective HDACI) or Tubastatin A (a HDAC6-selective inhibitor) showed minimal effects. When combined simultaneously, MC1568 significantly enhanced MGCD0103-induced growth arrest, cell death/apoptosis, and G2/M cell cycle arrest, while Tubastatin A only synergistically enhanced MGCD0103-induced growth arrest. Although MC1568 or Tubastatin A alone had no obvious effects on DNA DSBs and p21 expression, their combination with MGCD0103 resulted in cooperative induction of p21 in the cells.</p>
+        </sec>
+        <sec>
+          <title>Conclusion</title>
+          <p>Our results suggest that classes I and II HDACs are potential therapeutic targets for treating pancreatic cancer. Accordingly, treating pancreatic cancer with pan-HDACIs may be more beneficial than class- or isoform-selective inhibitors.</p>
+        </sec>
+      </abstract>
+      <funding-group>
+        <funding-statement>This study was supported by grants from Jilin University, Changchun, China, the National Natural Science Foundation of China (No. 31071105), and in part by a Start-up Fund from the Barbara Ann Karmanos Cancer Institute, Wayne State University School of Medicine, Detroit, MI. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+      </funding-group>
+      <counts>
+        <page-count count="10"/>
+      </counts>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>Pancreatic cancer is a highly malignant disease with a steadily increasing incidence. Despite being the fourth leading cause of death from cancer in the US, little improvement in prognosis has been made over the past 20 years <xref ref-type="bibr" rid="pone.0052095-Siegel1">[1]</xref>–<xref ref-type="bibr" rid="pone.0052095-Strimpakos1">[3]</xref>. Due to delays in clinical diagnosis, pancreatic cancer is often detected at an advanced stage and the prognosis is extremely poor, with a survival of 4 to 6 months <xref ref-type="bibr" rid="pone.0052095-Giovannetti1">[2]</xref>. Gemcitabine (2′, 2′-difluorodeoxycytidine, dFdC) is the standard first-line drug for treating patients with advanced pancreatic cancer <xref ref-type="bibr" rid="pone.0052095-Burris1">[4]</xref>. However, with median survival of 5.7 months and 1-year survival rate of 18%, its efficacy remains low <xref ref-type="bibr" rid="pone.0052095-Kullmann1">[5]</xref>, <xref ref-type="bibr" rid="pone.0052095-Li1">[6]</xref>. Therefore, pancreatic cancer remains a highly chemoresistant malignancy and urgently needs new therapeutic approaches.</p>
+      <p>Histone deacetylases (HDACs) play critical roles in the epigenetic regulation of gene expression by catalyzing the removal of acetyl groups, stimulating chromatin condensation and promoting transcriptional repression <xref ref-type="bibr" rid="pone.0052095-Carew1">[7]</xref>, <xref ref-type="bibr" rid="pone.0052095-Witt1">[8]</xref>. HDACs comprise a large group of proteins divided into four classes based on their homologies to yeast HDACs, their subcellular localization and their enzymatic activities <xref ref-type="bibr" rid="pone.0052095-Witt1">[8]</xref>–<xref ref-type="bibr" rid="pone.0052095-Gregoretti1">[10]</xref>. Class I comprises HDAC1, 2, 3 and 8, which are all homologues of the yeast rpd3 protein. They are ubiquitously expressed and located primarily in the nucleus <xref ref-type="bibr" rid="pone.0052095-Witt1">[8]</xref>–<xref ref-type="bibr" rid="pone.0052095-Gregoretti1">[10]</xref>. Class II enzymes include HDAC4, 5, 6, 7, 9 and 10, which are homologues of the yeast hda1 protein. These enzymes generally exhibit tissue-specific expression and shuttle between the cytoplasm and nucleus in response to cellular signals <xref ref-type="bibr" rid="pone.0052095-Witt1">[8]</xref>, <xref ref-type="bibr" rid="pone.0052095-Verdin1">[11]</xref>. Since HDACs 6 and 10 contain two catalytic sites, these enzymes are sometimes further designated as a separate subclass (Class IIb) from HDACs 4, 5, 7, and 9 (Class IIa) <xref ref-type="bibr" rid="pone.0052095-Witt1">[8]</xref>, <xref ref-type="bibr" rid="pone.0052095-Guardiola1">[12]</xref>. Class III comprises the seven sirtuins, SIRT1-7, homologues of the yeast SIR2 protein <xref ref-type="bibr" rid="pone.0052095-Witt1">[8]</xref>, <xref ref-type="bibr" rid="pone.0052095-Blander1">[13]</xref>. HDAC11 contains conserved residues that are shared by both class I and class II enzymes and represents a separate class of HDAC (Class IV) <xref ref-type="bibr" rid="pone.0052095-Witt1">[8]</xref>, <xref ref-type="bibr" rid="pone.0052095-Gregoretti1">[10]</xref>, <xref ref-type="bibr" rid="pone.0052095-Ledent1">[14]</xref>.</p>
+      <p>Aberrant epigenetic changes are a hallmark of human cancers <xref ref-type="bibr" rid="pone.0052095-Feinberg1">[15]</xref>. High HDAC1 expression has been found to correlate with advanced stage lung and pancreatic cancer <xref ref-type="bibr" rid="pone.0052095-Sung1">[16]</xref>–<xref ref-type="bibr" rid="pone.0052095-Miyake1">[18]</xref>. Thus, HDACs may represent promising targets for pharmacological intervention of cancer. Numerous small molecule HDACIs have been developed during the past decade <xref ref-type="bibr" rid="pone.0052095-Marks1">[19]</xref>, <xref ref-type="bibr" rid="pone.0052095-Bolden1">[20]</xref>, which have shown promising antitumor activities against preclinical models of pancreatic cancer, either alone or in combination with chemotherapeutic or targeted agents <xref ref-type="bibr" rid="pone.0052095-Sung1">[16]</xref>, <xref ref-type="bibr" rid="pone.0052095-Chun1">[21]</xref>–<xref ref-type="bibr" rid="pone.0052095-Kauh1">[24]</xref>. However, the clinically relevant HDAC isoforms in pancreatic cancer have not been entirely determined. Knockout and siRNA knockdown experiments have suggested that class I HDACs are essential for cancer cell proliferation and survival in contrast to class II HDACs 4 and 7<xref ref-type="bibr" rid="pone.0052095-Glaser1">[25]</xref>, <xref ref-type="bibr" rid="pone.0052095-Lagger1">[26]</xref>. However, inhibition of the class IIb HDAC6 leads to acetylation and disruption of the chaperone function of heat-shock 90 (Hsp90) in leukemia cells <xref ref-type="bibr" rid="pone.0052095-Bali1">[27]</xref>. Although some HDACIs are considered to be pan-HDACIs (e.g., LBH-589, PXD-101, and SAHA), a recent study demonstrated that the class IIa enzymes are not targeted by most HDACIs (e.g., FK-228, LBH-589, MGCD0103, MS-275, PXD-101, and SAHA) at pharmacologically relevant concentrations <xref ref-type="bibr" rid="pone.0052095-Bradner1">[28]</xref>. Thus, although it is increasingly apparent that the class I HDAC enzymes are clinically relevant for cancer <xref ref-type="bibr" rid="pone.0052095-Glaser1">[25]</xref>, <xref ref-type="bibr" rid="pone.0052095-Lagger1">[26]</xref>, this is less established for the class II enzymes especially in the context with class I HDACs.</p>
+      <p>In this study, we examined the expression of classes I and II HDACs in seven pancreatic cancer cell lines and human pancreatic ductal epithelial cells and determined their therapeutic roles in pancreatic cancer cells by using class-, subclass-, and isoform-selective HDACIs. Our results demonstrate, for the first time, <italic>in vitro</italic> synergistic antitumor interactions between class I and class II HDACIs in pancreatic cancer cells, but not in normal human pancreatic ductal epithelial cells. Although there is a need for follow-up studies in <italic>in vivo</italic> models, our results suggest that both class I and class II HDACs are potential therapeutic targets for treating pancreatic cancer.</p>
+    </sec>
+    <sec id="s2" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s2a">
+        <title>HDACIs</title>
+        <p>The novel class I-selective HDACI MGCD0103 (Mocetinostat) <xref ref-type="bibr" rid="pone.0052095-Khan1">[29]</xref>, and the class IIa-selective HDACI MC1568 <xref ref-type="bibr" rid="pone.0052095-Duong1">[30]</xref>–<xref ref-type="bibr" rid="pone.0052095-Mai2">[32]</xref> were purchased from Selleck Chemicals LLC (Houston, TX). The novel HDAC6-selective inhibitor Tubastatin A <xref ref-type="bibr" rid="pone.0052095-Butler1">[33]</xref> was purchased from BioVision Inc. (Mountain View, CA). All the HDACIs were dissolved in DMSO and stored at −80°C, as recommended by the suppliers.</p>
+      </sec>
+      <sec id="s2b">
+        <title>Cell Culture</title>
+        <p>The HPAC, MIAPaCa-2, BxPC-3, PANC-1 (derived from primary tumor <xref ref-type="bibr" rid="pone.0052095-Deer1">[34]</xref>), AsPC-1, CFPAC-1, and Capan-1 (derived from metastasis <xref ref-type="bibr" rid="pone.0052095-Deer1">[34]</xref>) human pancreatic cancer cell lines were purchased from the American Type Culture Collection (ATCC; Manassas, VA). Normal human pancreatic ductal epithelial (HPDE) cells were obtained from M. D. Anderson Cancer Center. The cell lines were cultured in Dulbecco's Modified Eagle Medium (DMEM) or RPMI1640 (Invitrogen, Carlsbad, CA) with 10% heat-inactivated fetal bovine serum (FBS; Hyclone Labs, Logan, UT) plus 100 U/mL penicillin and 100 µg/mL streptomycin in a 37°C humidified atmosphere containing 5% CO<sub>2</sub>/95% air.</p>
+      </sec>
+      <sec id="s2c">
+        <title><italic>In Vitro</italic> Cytotoxicity Assays</title>
+        <p><italic>In vitro</italic> HDACI cytotoxicities of pancreatic cancer cell lines and the HPDE cells were measured by using MTT (3-[4,5-dimethyl-thiazol-2-yl]-2,5-diphenyltetrazolium-bromide, Sigma-Aldrich, St Louis, MO) reagent, as previously described <xref ref-type="bibr" rid="pone.0052095-Xie1">[35]</xref>, <xref ref-type="bibr" rid="pone.0052095-Xu1">[36]</xref>. Briefly, AsPC-1, BxPC-3, PANC-1 (widely used cell line models for pancreatic cancer research), or HPDE cells were cultured in 100 µl of DMEM/10% FBS in 96-well plates. Cells were incubated at 37°C in the presence of 5 variable concentrations of MGCD0103 (0–4 µM), MC1568 (0–10 µM), or Tubastatin A (0–8 µM). After 96 h, MTT was added to a final concentration of 1 mM. After 4.5 hours, formazan crystals were dissolved by the addition of 100 µl of 10% SDS in 10 mM HCl. Optical densities were measured with a visible microplate reader at 590 nm. IC<sub>50</sub> values were calculated as drug concentrations necessary to inhibit 50% growth compared to untreated control cells. The data for the cell lines are presented as means ± standard errors from at least 3 independent experiments. The extent and direction of MGCD0103 and MC1568 or Tubastatin A antitumor interactions were evaluated by standard isobologram analysis as described previously <xref ref-type="bibr" rid="pone.0052095-Xie1">[35]</xref>, <xref ref-type="bibr" rid="pone.0052095-Chou1">[37]</xref>, <xref ref-type="bibr" rid="pone.0052095-Tallarida1">[38]</xref>, and by using the CompuSyn software (ComboSyn, Inc., Paramus, NJ). Briefly, drug interactions were quantified by determining the combination index (CI), where CI&lt;1, CI = 1, and CI&gt;1 indicate synergistic, additive, and antagonistic effects, respectively. The data are presented as means ± standard errors from at least 3 independent experiments.</p>
+      </sec>
+      <sec id="s2d">
+        <title>Colony Formation Assays</title>
+        <p>One day prior to HDACI treatments, 300 PANC-1 or 500 BxPC-3 cells were seeded into 100 mm dishes in complete DMEM or RPMI160. The cells were then treated with variable concentrations of MGCD0103 (0–1.0 µM), MC1568 (0–10 µM), Tubastatin A (0–4 µM), MGCD0103 plus MC1568 (0.5 µM +5 µM), or MGCD0103 plus Tubastatin A (0.5 µM +2 µM) for 96 h. The cells were then washed twice with drug-free DMEM or RPMI1640 and cultured in complete DMEM or RPMI1640 for up to 3 weeks. Colonies were visualized by coomassie blue staining and counted. Results are presented as mean percentages ± standard errors relative to untreated control cells from three independent experiments. Extent and direction of antitumor interactions between MGCD0103 and MC1568 or Tubastatin A were determined by using the CompuSyn software (ComboSyn, Inc.).</p>
+      </sec>
+      <sec id="s2e">
+        <title>shRNA Knockdown of HDACs in PANC-1 cells</title>
+        <p>HDAC4 and HDAC6 shRNA lentivirus clones were purchased from the RNAi Consortium (Sigma-Aldrich) and used to infect PANC-1 cells. After selection with puromycin, a pool of infected cells was expanded and tested for HDAC4 or HDAC6 expression by Western blotting (designated HDAC4- or HDAC6-shRNA cells). A pool of cells from the negative control transduction was used as the negative control (designated NTC-shRNA cells).</p>
+      </sec>
+      <sec id="s2f">
+        <title>Western Blot Analysis</title>
+        <p>Soluble proteins were extracted from HPAC, MIAPaCa-2, BxPC-3, PANC-1, AsPC-1, CFPAC-1, Capan-1, or HPDE cells, untreated or treated with HDACIs for 96 h, and subjected to SDS-polyacrylamide gel electrophoresis. Separated proteins were electrophoretically transferred to polyvinylidene difluoride (PVDF) membranes (Thermo Fisher Inc., Rockford, IL) and immunoblotted with anti-HDAC1 (#2062), -HDAC2 (#2540), -HDAC3 (#2632), -HDAC4 (#2072), -HDAC5 (#2082), -HDAC7 (#2882), -p21 (#2947S), -γH2AX (#2577S), (Cell Signaling Technology, Beverly, MA), -HDAC6 (sc-11420, Santa Cruz Biotechnology, Santa Cruz, CA), -HDAC8 (H6412), -HDAC10 (H3412), -acetyl (ac)-tubulin (T7451) (Sigma, Saint Louis, MO), -HDAC9 (SH030228P, ABGENT, San Diego, CA), -ac-histone H4, -histone H4, or -beta-actin antibody (Upstate Biotechnology, Lake Placid, NY), as described previously <xref ref-type="bibr" rid="pone.0052095-Edwards1">[39]</xref>, <xref ref-type="bibr" rid="pone.0052095-Ge1">[40]</xref>. Immunoreactive proteins were detected with Lumi-Light Western blotting substrate (Roche Diagnostics, Indianapolis, IN), as described by the manufacturer.</p>
+      </sec>
+      <sec id="s2g">
+        <title>Assessment of Baseline and HDACI-Induced Apoptosis</title>
+        <p>BxPC-3 or PANC-1 cells were treated with MGCD0103 (0.5 µM), MC1568 (5 µM), Tubastatin A (2 µM), MGCD0103 plus MC1568 (0.5 µM +5 µM), or MGCD0103 plus Tubastatin A (0.5 µM +2 µM) for 96 h. The cells were then harvested and vigorously pipetted, and samples were taken to determine baseline and HDACI-induced apoptosis using the Apoptosis Annexin V–FITC/Propidium Iodide (PI) kit (Beckman Coulter; Brea, CA) and a FACS Calibur flow cytometer (Becton Dickinson, San Jose, CA), as described previously <xref ref-type="bibr" rid="pone.0052095-Xie1">[35]</xref>, <xref ref-type="bibr" rid="pone.0052095-Xu1">[36]</xref>, <xref ref-type="bibr" rid="pone.0052095-Xie2">[41]</xref>. Apoptotic events were recorded as a combination of Annexin V<sup>+</sup>/PI<sup>−</sup> (early apoptotic) and Annexin V<sup>+</sup>/PI<sup>+</sup> (late apoptotic/dead) events. The experiment was repeated three times, and results are presented as mean percentages ± standard errors of Annexin V<sup>+</sup> cells of triplicates from one representative experiment.</p>
+      </sec>
+      <sec id="s2h">
+        <title>Effects of HDACIs on Cell Cycle Progression in Pancreatic Cancer Cells</title>
+        <p>BxPC-3 or PANC-1 cells treated with MGCD0103 (0.5 µM), MC1568 (5 µM), Tubastatin A (2 µM), MGCD0103 plus MC1568 (0.5 µM +5 µM), or MGCD0103 plus Tubastatin A (0.5 µM +2 µM) for 96 h were harvested and fixed with ice-cold 70% (v/v) ethanol for 24 hours. After centrifugation at 200×g for 5 minutes, the cell pellets were washed with PBS (pH 7.4) and resuspended in PBS containing PI (50 μg/mL), Triton X-100 (0.1%, v/v), and DNase-free RNase (1 μg/mL). DNA contents were determined by flow cytometry (FACS Calibur). Cell cycle analysis was performed with the ModFit <italic>LT</italic><sup>TM</sup>3.0 DNA analysis software (Becton Dickinson).</p>
+      </sec>
+      <sec id="s2i">
+        <title>Statistical Analysis</title>
+        <p>Differences in MGCD0103 IC<sub>50</sub>s between MC1568 or Tubastatin A treated and untreated BxPC-3 or PANC-1 cells and differences in cell death/apoptosis between MGCD0103 and MC1568 or Tubastatin A treated (individually or combined) and untreated cells were compared using the paired t-test. Statistical analyses were performed with GraphPad Prism 4.0.</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Results</title>
+      <sec id="s3a">
+        <title>HDAC Expression and HDACI Sensitivities in Pancreatic Cancer Cell Lines and the HPDE Cells</title>
+        <p>The class III HDACs (SIRTs 1–7) are not targeted by traditional HDACIs <xref ref-type="bibr" rid="pone.0052095-Bolden1">[20]</xref> and were not included in this study. Expression of classes I and II HDACs was determined by Western blotting in HPAC, MIAPaCa-2, BxPC-3, PANC-1, AsPC-1, CFPAC-1, Capan-1, and the normal HPDE cell line. The class I HDACs (1, 2, 3, and 8) were detected in all the cell lines though the levels were variable. In general, the levels of the class I HDACs in the HPDE cells were relatively lower compared to the majority of the pancreatic cancer cell lines. Interestingly, the majority of class IIa HDACs (except for HDAC5) were detected in almost all the pancreatic cancer cell lines but not in the HPDE cells. In contrast, HDACs 6 and 10 were detected in all the cell lines and their levels in the HPDE cells were comparable (if not higher) to those in the cancer cell lines (<xref ref-type="fig" rid="pone-0052095-g001">Figure 1</xref>). To determine the roles of these HDACs in pancreatic cancer cell growth and survival, we used three different HDACIs, MGCD0103 (Mocetinostat, a class I-selective HDACI) <xref ref-type="bibr" rid="pone.0052095-Khan1">[29]</xref>, MC1568 (a class IIa-selective HDACI) <xref ref-type="bibr" rid="pone.0052095-Duong1">[30]</xref>–<xref ref-type="bibr" rid="pone.0052095-Mai2">[32]</xref>, and Tubastatin A (a novel HDAC6-specific inhibitor) <xref ref-type="bibr" rid="pone.0052095-Butler1">[33]</xref>. Treatments of PANC-1 cells with variable concentrations of MGCD0103 (0–1.0 µM) resulted in a dose-dependent hyperacetylation of histone H4, while having no effects on alpha-tubulin (a HDAC6 substrate) acetylation or total H4 levels (<xref ref-type="fig" rid="pone-0052095-g002">Figure 2A</xref>). Treatments with MC1568 also resulted in acetylation of histone H4 (obvious at 5 and 10 µM), however, to a much lesser extent compared to MGCD0103, and the levels of acetylated histone H4 plateaued at 5 and 10 µM. Further, these treatments had no impact on alpha-tubulin acetylation (<xref ref-type="fig" rid="pone-0052095-g002">Figure 2B</xref>). In contrast to the other two HDACIs, Tubastatin A treatments (0–4 µM) resulted in dose-dependent hyperacetylation of alpha-tubulin, which plateaued at 2 and 4 µM. However, these treatments had no effect on the acetylation of histone H4 (<xref ref-type="fig" rid="pone-0052095-g002">Figure 2C</xref>). These results validated the HDACI properties of these agents and partially supported their substrate specificities.</p>
+        <fig id="pone-0052095-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052095.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>HDAC expression in pancreatic cancer cell lines and the HPDE cells.</title>
+            <p>Protein extracts from log phase AsPC-1, BxPC-3, PANC-1, HPAC, MIAPaCa-2, CFPAC-1, Capan-1, and the HPDE cells were subjected to Western blots probed by anti-HDAC or -β-actin antibody, as described in the Materials and Methods. The class I HDACs (1, 2, 3, and 8) were detected in all the cell lines though the levels were variable. In general, the levels of the class I HDACs in the HPDE cells were relatively lower compared to the majority of the pancreatic cancer cell lines. Interestingly, the majority of class IIa HDACs (except for HDAC5) were detected in almost all the pancreatic cancer cell lines but not in the HPDE cells. In contrast, HDACs 6 and 10 were detected in all the cell lines and their levels in the HPDE cells were comparable (if not higher) to those in the cancer cell lines.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052095.g001" position="float" xlink:type="simple"/>
+        </fig>
+        <fig id="pone-0052095-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052095.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>HDACI sensitivities in pancreatic cancer cell lines and the HPDE cells.</title>
+            <p><bold>Panels A–C:</bold> PANC-1 cells were harvested and lysed after incubation with a range of concentrations of MGCD0103 (0–1.0 µM), MC1568 (0–10 µM), or Tubastatin A (0–4 µM) for 96 h. Soluble proteins were analyzed on Western blots probed by anti-acetylated (ac)-H4, -H4, -ac-tubulin, or –β-actin antibody. <bold>Panel D:</bold> AsPC-1, BxPC-3, PANC-1, or the HPDE cells were cultured at 37°C for 96 h in complete medium in 96-well plates, with a range of concentrations of MGCD0103, MC1568, or Tubastatin A, and cell viabilities were determined using the MTT reagent and a visible light microplate reader. The IC<sub>50</sub> values were calculated as the concentrations of drug necessary to inhibit 50% growth compared to control cells cultured in the absence of drug. The data are presented as mean values ± standard errors from at least 3 independent experiments. MG, MGCD0103; MC, MC1568; TA, Tubastatin A. The same abbreviations were used throughout the study unless otherwise stated.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052095.g002" position="float" xlink:type="simple"/>
+        </fig>
+        <p>Treatments of PANC-1 cells with variable concentrations of MGCD0103 (0–4 µM) resulted in dose-dependent growth arrest, as determined by MTT assays (data not shown), with an IC<sub>50</sub> of 2.0 µM (<xref ref-type="fig" rid="pone-0052095-g002">Figure 2D</xref>). In contrast, treatments of the cells with MC1568 (0–10 µM) or Tubastatin A (0–8 µM) resulted in limited inhibition of cell growth (especially at lower doses, data not shown) with an <bold><italic>estimated</italic></bold> IC<sub>50</sub> of 29.7 µM and 11.5 µM, respectively (<xref ref-type="fig" rid="pone-0052095-g002">Figure 2D</xref>). Similar results were obtained with AsPC-1 and BxPC-3 cells (<xref ref-type="fig" rid="pone-0052095-g002">Figure 2D</xref>). Surprisingly, the HPDE cells responded to MGCD0103 as well as the pancreatic cancer cell lines (<xref ref-type="fig" rid="pone-0052095-g002">Figure 2D</xref>). Although treatments with Tubastatin A (0–4 µM) also resulted in limited inhibition of cell growth of the HPDE cells (with an estimated IC<sub>50</sub> of 11.5 µM), treatments with MC1568 (0–10 µM) showed no effects at all (data not shown and <xref ref-type="fig" rid="pone-0052095-g002">Figure 2D</xref>).</p>
+        <p>These findings suggest that class I HDACs play critical roles in pancreatic cancer cell growth, while class II HDACs by themselves play minimal roles on this aspect. However, it is possible that simultaneous targeting of class I and class II HDACs may result in synergistic growth arrest of pancreatic cancer cells.</p>
+      </sec>
+      <sec id="s3b">
+        <title>Synergistic Antitumor Interactions between Class I- and Class II-Selective HDACIs in Pancreatic Cancer Cells</title>
+        <p>To test this possibility, PANC-1 cells were treated with variable concentrations of MGCD0103, MC1568, or Tubastatin A, either alone or in combination for 96 h. Inhibition of cell growth by these treatments was measured by MTT assays. When administered simultaneously, MC1568 or Tubastatin A significantly enhanced MGCD0103-induced growth arrest (as reflected in the decreased IC<sub>50</sub>s) of the cells (<xref ref-type="fig" rid="pone-0052095-g003">Figures 3A&amp;B</xref>). The combined effects of MGCD0103 with MC1568 or Tubastatin A on cell growth arrest were clearly synergistic, as determined by standard isobologram analyses (<xref ref-type="fig" rid="pone-0052095-g003">Figures 3C&amp;D</xref>) and by calculating CI values with the CompuSyn software. A CI&lt;1, indicative of synergism, was calculated for each of the drug combinations (data not shown). Almost identical results were obtained with BxPC-3 cells (<xref ref-type="fig" rid="pone-0052095-g003">Figures 3A, B, E, and F</xref>). To provide direct evidence that targeting class II HDACs can enhance the antitumor activity of MGCD0103 in pancreatic cancer cells, shRNA knockdown stable clones for HDAC4 (designated HDAC4-shRNA cells), HDAC6 (designated HDAC6-shRNA cells), and a negative control (designated NTC-shRNA cells) were generated in PANC-1 cells (<xref ref-type="fig" rid="pone-0052095-g003">Figure 3G</xref>). Interestingly, the HDAC4-shRNA and HDAC6-shRNA cells showed significantly increased sensitivities to MGCD0103 compared to the NTC-shRNA cells (MGCD0103 IC<sub>50</sub>s were 2.60, 1.06, and 0.83 µM for NTC-, HDAC4-, and HDAC6-shRNA cells, respectively; p&lt;0.005) (<xref ref-type="fig" rid="pone-0052095-g003">Figure 3H</xref>). In great contrast, combined treatment of the HPDE cells with MC1568 and MGCD0103 resulted in slightly decreased MGCD0103 sensitivity (<xref ref-type="fig" rid="pone-0052095-g004">Figure 4A</xref>). Standard isobologram and CompuSyn analysis could not be performed due to the lack of response of the HPDE cells to MC1568. Although cotreatment of the HPDE cells with Tubastatin A and MGCD0103 also resulted in slightly increased sensitivity to MGCD0103 (<xref ref-type="fig" rid="pone-0052095-g004">Figure 4B</xref>), the interaction between the two agents was at the best additive when determined by standard isobologram analysis (<xref ref-type="fig" rid="pone-0052095-g004">Figure 4C</xref>).</p>
+        <fig id="pone-0052095-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052095.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title>Synergistic interactions in inducing growth arrest between MGCD0103 and MC1568 or Tubastatin A in BxPC-3 or PANC-1 cells.</title>
+            <p><bold>Panels A and B:</bold> MGCD0103 IC<sub>50</sub>s of BxPC-3 or PANC-1 cells were determined in the absence or presence of MC1568 (panel A) or Tubastatin A (panel B) treated simultaneously. * indicates p&lt;0.05, while ** indicates p&lt;0.005. <bold>Panels C–F:</bold> Standard isobologram analysis of inhibition of PANC-1 (panels C&amp;D) or BxPC-3 (panels E&amp;F) cell growth by MGCD0103 and MC1568 (panels C&amp;E) or Tubastatin A (panels D&amp;F). The IC<sub>50</sub> values of each drug are plotted on the axes; the solid line represents the additive effect, while the points represent the concentrations of each drug resulting in 50% inhibition of growth. Points falling below the line indicate synergism between drug combinations whereas those above the line indicate antagonism. <bold>Panels G and H:</bold> shRNA stable clones for a negative control (NTC), HDAC4, and HDAC6 were generated in PANC-1 cells. Expression levels of HDAC4, HDAC6, ac-H4 and ac-alpha-tubulin were determined by western blots (Panel G). Sensitivity to MGCD0103 of these shRNA stable clones was determined by MTT assays. ** indicates p&lt;0.005.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052095.g003" position="float" xlink:type="simple"/>
+        </fig>
+        <fig id="pone-0052095-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052095.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title>Interactions in inducing growth arrest between MGCD0103 and MC1568 or Tubastatin A in the normal HPDE cells.</title>
+            <p><bold>Panels A and B:</bold> MGCD0103 IC<sub>50</sub>s of HPDE cells were determined in the absence or presence of MC1568 (panel A) or Tubastatin A (panel B) treated simultaneously. <bold>Panel C:</bold> Standard isobologram analysis of inhibition of the HPDE cell growth by MGCD0103 and Tubastatin A. The IC<sub>50</sub> values of each drug are plotted on the axes; the solid line represents the additive effect, while the points represent the concentrations of each drug resulting in 50% inhibition of growth. Points falling below the line indicate synergism between drug combinations whereas those above the line indicate antagonism.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052095.g004" position="float" xlink:type="simple"/>
+        </fig>
+        <p>Efforts were then undertaken to determine if class I- and class II-selective HDACIs synergize in causing pancreatic cancer cell death by colony formation assays. Treatments of PANC-1 or BxPC-3 cells with variable concentrations of MGCD0103 for 96 h resulted in dose-dependent induction of cell death, as reflected by the decreased numbers of colonies compared to untreated control cells (<xref ref-type="fig" rid="pone-0052095-g005">Figures 5A&amp;B</xref>). This was in great contrast to the treatments with MC1568 or Tubastatin A which produced very limited effects on cell death, especially at lower concentrations (<xref ref-type="fig" rid="pone-0052095-g005">Figures 5A&amp;B</xref>). Interestingly, when administered simultaneously, MC1568 or Tubastatin A significantly enhanced MGCD0103-induced cell death, as reflected by the further decreased numbers of colonies compared to that from MGCD0103 treatment alone (<xref ref-type="fig" rid="pone-0052095-g005">Figures 5C&amp;D</xref>). These combined effects of MGCD0103 and MC1568 or Tubastatin A on the death of PANC-1 cells were synergistic when determined by using the CompuSyn software (CI = 0.46 and 0.77, respectively). Essentially the same results were obtained with BxPC-3 cells (CI = 0.30 and 0.54, respectively).</p>
+        <fig id="pone-0052095-g005" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052095.g005</object-id>
+          <label>Figure 5</label>
+          <caption>
+            <title>Synergistic interactions in inducing cell death between MGCD0103 and MC1568 or Tubastatin A in BxPC-3 or PANC-1 cells.</title>
+            <p>Three hundred PANC-1 cells or five hundred BxPC-3 cells were plated in 100 mm dishes 1 day prior to the treatments with variable concentrations of MGCD0103, MC1568, or Tubastatin A, alone (<bold>panels A and B</bold>) or in combination (<bold>panels C and D</bold>) for 96 h. The drugs were then washed out, and the cells were cultured in drug-free complete medium for up to 3 weeks. Colonies were visualized by coomassie blue staining and counted. Results are presented as mean percentages ± standard errors relative to untreated control cells from three independent experiments. * indicates p&lt;0.05, while ** indicates p&lt;0.005.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052095.g005" position="float" xlink:type="simple"/>
+        </fig>
+        <p>Taken together, our results suggest that class I HDACs play pivotal roles in pancreatic cancer cell growth and survival. Although class II HDACs by themselves play very limited roles, they cooperate with class I HDACs to enhance class I HDACs-mediated pancreatic cancer cell growth and survival.</p>
+      </sec>
+      <sec id="s3c">
+        <title>Effects of Class I- and Class II-Selective HDACIs on Apoptosis and Cell Cycle Progression in Pancreatic Cancer Cells</title>
+        <p>To begin to determine the mechanisms by which MGCD0103 and MC1568 or Tubastatin A synergize in causing pancreatic cancer cell growth arrest and death, we next examined the effects of the three HDACIs on apoptosis and cell cycle distribution in PANC-1 and BxPC-3 cells. Treatments of PANC-1 or BxPC-3 cells with MGCD0103 (0.5 µM) resulted in induction of apoptosis and cell cycle arrest in G2/M phase. In contrast, treatments with MC1568 (5 µM) or Tubastatin A (2 µM) had no obvious effect on either apoptosis or cell cycle progression in these cells (<xref ref-type="fig" rid="pone-0052095-g006">Figures 6A–D</xref>). When combined simultaneously, MC1568 but not Tubastatin A, significantly enhanced MGCD0103-induced apoptosis and G2/M arrest in PANC-1 or BxPC-3 cells (<xref ref-type="fig" rid="pone-0052095-g006">Figures 6A–D</xref>).</p>
+        <fig id="pone-0052095-g006" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0052095.g006</object-id>
+          <label>Figure 6</label>
+          <caption>
+            <title>Panels A–D: Effects of class I- and class II-selective HDACIs on apoptosis and cell cycle progression in BxPC-3 and PANC-1 cells.</title>
+            <p>PANC-1 (<bold>panels A and B</bold>) or BxPC-3 (<bold>panels C and D</bold>) cells were treated with MGCD0103, MC1568, or Tubastatin A, alone or combined for 96 h. The cells were harvested and subjected to flow cytometry analysis to measure both baseline and HDACI-induced apoptosis (<bold>panels A and C</bold>) and cell cycle distribution (<bold>panels B and D</bold>). The experiments were repeated three times, and results are presented as means ± standard errors of triplicates from one representative experiment. ** indicates p&lt;0.005. <bold>Panels E and F: Effects of class I- and class II-selective HDACIs on p21 expression and DNA DSBs in BxPC-3 and PANC-1 cells.</bold> PANC-1 (<bold>panel E</bold>) or BxPC-3 (<bold>panel F</bold>) cells were treated with MGCD0103, MC1568, or Tubastatin A, alone or combined for 96 h. The cells were harvested and soluble proteins extracted and subjected to Western blotting to measure p21 and γH2AX levels. β-actin was used as the loading control.</p>
+          </caption>
+          <graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0052095.g006" position="float" xlink:type="simple"/>
+        </fig>
+        <p>These results suggest that inducing apoptosis and cell cycle arrest in G2/M phase may represent major mechanisms responsible for the cell death and growth arrest induced by MGCD0103, or MGCD0103 plus MC1568. Our results also suggest that class I HDACs play critical roles in pancreatic cancer cell apoptosis and G2 to M phase progression and these effects can be enhanced by class IIa HDACs, but not by HDAC6.</p>
+      </sec>
+      <sec id="s3d">
+        <title>Effects of Class I- and Class II-Selective HDACIs on DNA Double-Strand Breaks and p21 Expression in Pancreatic Cancer Cells</title>
+        <p>Recent studies demonstrated that inhibition of HDACs in cancer cells induces DNA damage, such as DNA double-strand breaks (DSBs), which can lead to activation of cell cycle checkpoints and subsequent apoptosis if the damaged DNA could not be repaired <xref ref-type="bibr" rid="pone.0052095-Conti1">[42]</xref>–<xref ref-type="bibr" rid="pone.0052095-Minucci1">[45]</xref>. Further, HDACI-induced proliferation arrest is tightly linked to the induction of p21 <xref ref-type="bibr" rid="pone.0052095-Minucci1">[45]</xref>. Thus, HDACs may promote pancreatic cancer cell growth and survival through regulating p21 expression and DNA DSB repair. Interestingly, treatments of PANC-1 or BxPC-3 cells with MGCD0103 resulted in substantial induction of p21 and DNA DSBs, reflected in the induction of γH2AX, a biomarker of DSBs <xref ref-type="bibr" rid="pone.0052095-Redon1">[46]</xref>. In contrast, treatments with MC1568 or Tubastatin A showed no effects on DNA DSBs or induction of p21. When combined simultaneously, both MC1568 and Tubastatin A cooperatively (if not synergistically) enhanced MGCD0103-induced expression of p21 (<xref ref-type="fig" rid="pone-0052095-g006">Figures 6E&amp;F</xref>). However, these combinations did not show further effects on the levels of γH2AX compared to MGCD0103 treatment alone (<xref ref-type="fig" rid="pone-0052095-g006">Figures 6E&amp;F</xref>). These results suggest that class II HDACs are required for maximal suppression of p21 expression predominantly mediated by class I HDACs, however, they are dispensable for class I HDACs-mediated repair of DNA DSBs.</p>
+      </sec>
+    </sec>
+    <sec id="s4">
+      <title>Discussion</title>
+      <p>HDACIs represent a promising new class of anticancer agents <xref ref-type="bibr" rid="pone.0052095-Marks1">[19]</xref>, <xref ref-type="bibr" rid="pone.0052095-Bolden1">[20]</xref>, <xref ref-type="bibr" rid="pone.0052095-Minucci1">[45]</xref>, <xref ref-type="bibr" rid="pone.0052095-Prince1">[47]</xref>. Besides Vorinostat and Romidepsin which have been approved by the US Food and Drug Administration for treating cutaneous T-cell lymphoma, at least 11 other HDACIs are currently under clinical evaluation for treating both solid tumors and hematologic malignancies <xref ref-type="bibr" rid="pone.0052095-Marks1">[19]</xref>. Although HDACIs have shown promising antitumor activities in preclinical models of pancreatic cancer <xref ref-type="bibr" rid="pone.0052095-Sung1">[16]</xref>, <xref ref-type="bibr" rid="pone.0052095-Chun1">[21]</xref>–<xref ref-type="bibr" rid="pone.0052095-Kauh1">[24]</xref>, it remains unclear which HDACs are the relevant therapeutic targets. The answer of this important question would be a prerequisite to the selection of the optimal HDACI for treating this extremely aggressive disease.</p>
+      <p>The aim of this study was to address the above question. We first determined the expression profiles of classes I and II HDACs in seven pancreatic cancer cell lines and normal HPDE cells. SIRTs 1–7 (class III HDACs) were excluded since traditional HDACIs don't inhibit this class of HDACs. Western blotting revealed that the majority of classes I and II HDACs (except for HDAC5) were readily detected in the pancreatic cancer cell lines, rendering them the potential to be involved in pancreatic cancer cell growth and/or survival. When compared to the normal HPDE cells, the levels of class I and class IIa HDACs in the majority of the pancreatic cancer cell lines were higher. These results suggest that targeting class I and class IIa HDACs by HDACIs for treating pancreatic cancer may have some level of tumor selectivity. However, this may not apply to class IIb HDACs since their levels in the HPDE cells were comparable to that in the pancreatic cancer cells.</p>
+      <p>We then used 3 different HDACIs with differential substrate specificities, MGCD0103, MC1568, and Tubastatin A, to explore the roles of class I and class II HDACs in pancreatic cancer cell growth and survival. Our MTT and colony formation assays suggested that class I HDACs play critical roles in promoting pancreatic cancer cell growth and survival. This is consistent with previous reports which highlight the importance of class I HDACs to cancer cell proliferation and survival which contrasts with class IIa HDACs 4 and 7 <xref ref-type="bibr" rid="pone.0052095-Glaser1">[25]</xref>, <xref ref-type="bibr" rid="pone.0052095-Huang1">[48]</xref>, <xref ref-type="bibr" rid="pone.0052095-Karagiannis1">[49]</xref>. Surprisingly, the normal HPDE cells responded to MGCD0103 as well as the pancreatic cancer cell lines suggesting that the adverse effects of HDACIs observed clinically may be due to inhibition of class I HDACs. Although our results showed that selective targeting of class II HDACs resulted in minimal growth arrest and cell death, simultaneous targeting of both class I and class II HDACs with class I- and class II-selective HDACIs resulted in synergistic effects on both aspects in pancreatic cancer cells. In great contrast, these synergisms were not observed in the normal HPDE cells indicating that these drug combinations may not result in greater toxicity compared to that of MGCD0103 alone. Further, shRNA knockdown of HDAC4 and HDAC6 provided direct evidence that targeting class II HDACs can enhance the sensitivity of the class I-selective HDACI, MGCD0103, in PANC-1 cells. Thus, our results support the notion that both classes I and II HDACs are potential therapeutic targets for treating pancreatic cancer. This novel finding is crucial for selecting the optimal HDACI for treating the disease.</p>
+      <p>We next began to determine the mechanisms underlying the synergistic antitumor interactions between class I- and class II-selective HDACIs in pancreatic cancer cells. Flow cytometry analyses revealed that induction of apoptosis and cell cycle arrest in G2/M phase may be responsible for the antitumor effects of MGCD0103. This was accompanied by induction of DNA DSBs (reflected in the induction of γH2AX) and p21 expression in the cells. Consistent with our results from MTT and colony formation assays, treatments with MC1568 or Tubastatin A did not result in obvious effects on apoptosis, cell cycle progression, or induction of DNA DSBs and p21 expression in both BxPC-3 and PANC-1 cells. These results are consistent with previous studies suggesting that HDACs 4 and 7 are not important for cancer cell proliferation and survival, however, differ from a recent study which showed DNA damage induction in cancer cells by selective targeting of HDAC6 <xref ref-type="bibr" rid="pone.0052095-Glaser1">[25]</xref>, <xref ref-type="bibr" rid="pone.0052095-Namdar1">[50]</xref>. This difference could be attributed to the different cancer cell lines used in the studies. When combined simultaneously, MC1568 (5 µM, the minimum dose to induce maximum acetylation of histone H4 in PANC-1 cells) significantly enhanced MGCD0103-induced apoptosis and G2/M arrest in both cell lines, accompanied by cooperative induction of p21, but not γH2AX. These results suggest that class I HDACs play primary roles in modulating apoptosis, cell cycle progression from G2 to M, DNA DSB repair, and p21 expression in pancreatic cancer cells. Although class IIa HDACs by themselves seem not to play a role on these aspects, they cooperate with class I HDACs to promote pancreatic cancer cell growth and survival potentially mediated by mechanisms involving apoptosis and cell cycle progression from G2 to M, independent of the repair of DNA DSBs. Although Tubastatin A (at 2 µM, the minimum dose to induce maximum acetylation of alpha-tubulin) also cooperated with MGCD0103 in inducing p21, but not γH2AX, it had no effects on MGCD0103-induced apoptosis and cell cycle arrest in G2/M in the cells. Thus, other mechanisms must exist responsible for the enhancing effects of HDAC6 on class I HDACs-mediated pancreatic cancer cell growth and survival.</p>
+      <p>Together, we report for the first time that both class I- and class II-selective HDACIs synergize in inducing growth arrest and death of pancreatic cancer cells, but not in normal HPDE cells. However, the molecular mechanisms underlying the synergistic antitumor interactions between class I and class II HDACIs are not entirely clear, which warrant further investigation. Further, our <italic>in vitro</italic> findings need follow up studies in <italic>in vivo</italic> models. Nonetheless, our data suggest that both classes I and II HDACs are potential therapeutic targets for treating the disease. Accordingly, treating pancreatic cancer with a true pan-HDACI (which targets both classes I, IIa and IIb HDACs) or with combined class I and class II HDACIs may be more beneficial than the use of class- or isoform-selective HDACIs.</p>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>This study is dedicated in memory of Dr. Edward Winbaum.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0052095-Siegel1">
+        <label>1</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Siegel</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Ward</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Brawley</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Jemal</surname><given-names>A</given-names></name> (<year>2011</year>) <article-title>Cancer statistics, 2011: the impact of eliminating socioeconomic and racial disparities on premature cancer deaths</article-title>. <source>CA Cancer J Clin</source> <volume>61</volume>: <fpage>212</fpage>–<lpage>236</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Giovannetti1">
+        <label>2</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Giovannetti</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Mey</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Nannizzi</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Pasqualetti</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Del Tacca</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Pharmacogenetics of anticancer drug sensitivity in pancreatic cancer</article-title>. <source>Mol Cancer Ther</source> <volume>5</volume>: <fpage>1387</fpage>–<lpage>1395</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Strimpakos1">
+        <label>3</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Strimpakos</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Saif</surname><given-names>MW</given-names></name>, <name name-style="western"><surname>Syrigos</surname><given-names>KN</given-names></name> (<year>2008</year>) <article-title>Pancreatic cancer: from molecular pathogenesis to targeted therapy</article-title>. <source>Cancer Metastasis Rev</source> <volume>27</volume>: <fpage>495</fpage>–<lpage>522</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Burris1">
+        <label>4</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><collab xlink:type="simple">Burris HA 3rd, Moore MJ, Andersen J, Green MR, Rothenberg ML, et al</collab> (<year>1997</year>) <article-title>Improvements in survival and clinical benefit with gemcitabine as first-line therapy for patients with advanced pancreas cancer: a randomized trial</article-title>. <source>J Clin Oncol</source> <volume>15</volume>: <fpage>2403</fpage>–<lpage>2413</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Kullmann1">
+        <label>5</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kullmann</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Hollerbach</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Dollinger</surname><given-names>MM</given-names></name>, <name name-style="western"><surname>Harder</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Fuchs</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Cetuximab plus gemcitabine/oxaliplatin (GEMOXCET) in first-line metastatic pancreatic cancer: a multicentre phase II study</article-title>. <source>Br J Cancer</source> <volume>100</volume>: <fpage>1032</fpage>–<lpage>1036</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Li1">
+        <label>6</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Li</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Saif</surname><given-names>MW</given-names></name> (<year>2009</year>) <article-title>Advancements in the management of pancreatic cancer</article-title>. <source>JOP</source> <volume>10</volume>: <fpage>109</fpage>–<lpage>117</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Carew1">
+        <label>7</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Carew</surname><given-names>JS</given-names></name>, <name name-style="western"><surname>Giles</surname><given-names>FJ</given-names></name>, <name name-style="western"><surname>Nawrocki</surname><given-names>ST</given-names></name> (<year>2008</year>) <article-title>Histone deacetylase inhibitors: mechanisms of cell death and promise in combination cancer therapy</article-title>. <source>Cancer Lett</source> <volume>269</volume>: <fpage>7</fpage>–<lpage>17</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Witt1">
+        <label>8</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Witt</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Deubzer</surname><given-names>HE</given-names></name>, <name name-style="western"><surname>Milde</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Oehme</surname><given-names>I</given-names></name> (<year>2009</year>) <article-title>HDAC family: What are the cancer relevant targets?</article-title> <source>Cancer Lett</source> <volume>277</volume>: <fpage>8</fpage>–<lpage>21</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-deRuijter1">
+        <label>9</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>de Ruijter</surname><given-names>AJ</given-names></name>, <name name-style="western"><surname>van Gennip</surname><given-names>AH</given-names></name>, <name name-style="western"><surname>Caron</surname><given-names>HN</given-names></name>, <name name-style="western"><surname>Kemp</surname><given-names>S</given-names></name>, <name name-style="western"><surname>van Kuilenburg</surname><given-names>AB</given-names></name> (<year>2003</year>) <article-title>Histone deacetylases (HDACs): characterization of the classical HDAC family</article-title>. <source>Biochem J</source> <volume>370</volume>: <fpage>737</fpage>–<lpage>749</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Gregoretti1">
+        <label>10</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gregoretti</surname><given-names>IV</given-names></name>, <name name-style="western"><surname>Lee</surname><given-names>YM</given-names></name>, <name name-style="western"><surname>Goodson</surname><given-names>HV</given-names></name> (<year>2004</year>) <article-title>Molecular evolution of the histone deacetylase family: functional implications of phylogenetic analysis</article-title>. <source>J Mol Biol</source> <volume>338</volume>: <fpage>17</fpage>–<lpage>31</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Verdin1">
+        <label>11</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Verdin</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Dequiedt</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Kasler</surname><given-names>HG</given-names></name> (<year>2003</year>) <article-title>Class II histone deacetylases: versatile regulators</article-title>. <source>Trends Genet</source> <volume>19</volume>: <fpage>286</fpage>–<lpage>293</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Guardiola1">
+        <label>12</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Guardiola</surname><given-names>AR</given-names></name>, <name name-style="western"><surname>Yao</surname><given-names>TP</given-names></name> (<year>2002</year>) <article-title>Molecular cloning and characterization of a novel histone deacetylase HDAC10</article-title>. <source>J Biol Chem</source> <volume>277</volume>: <fpage>3350</fpage>–<lpage>3356</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Blander1">
+        <label>13</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Blander</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Guarente</surname><given-names>L</given-names></name> (<year>2004</year>) <article-title>The Sir2 family of protein deacetylases</article-title>. <source>Annu Rev Biochem</source> <volume>73</volume>: <fpage>417</fpage>–<lpage>435</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Ledent1">
+        <label>14</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ledent</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Vervoort</surname><given-names>M</given-names></name> (<year>2006</year>) <article-title>Comparative genomics of the class 4 histone deacetylase family indicates a complex evolutionary history</article-title>. <source>BMC Biol</source> <volume>4</volume>: <fpage>24</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Feinberg1">
+        <label>15</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Feinberg</surname><given-names>AP</given-names></name>, <name name-style="western"><surname>Ohlsson</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Henikoff</surname><given-names>S</given-names></name> (<year>2006</year>) <article-title>The epigenetic progenitor origin of human cancer</article-title>. <source>Nat Rev Genet</source> <volume>7</volume>: <fpage>21</fpage>–<lpage>33</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Sung1">
+        <label>16</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sung</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Richard</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Brady</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Maier</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Kelter</surname><given-names>G</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Histone deacetylase inhibitor MGCD0103 synergizes with gemcitabine in human pancreatic cells</article-title>. <source>Cancer Sci</source> <volume>102</volume>: <fpage>1201</fpage>–<lpage>1207</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Sasaki1">
+        <label>17</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Sasaki</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Moriyama</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Nakashima</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Kobayashi</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Kiriyama</surname><given-names>M</given-names></name>, <etal>et al</etal>. (<year>2004</year>) <article-title>Histone deacetylase 1 mRNA expression in lung cancer</article-title>. <source>Lung Cancer</source> <volume>46</volume>: <fpage>171</fpage>–<lpage>178</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Miyake1">
+        <label>18</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Miyake</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Yoshizumi</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Imura</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Sugimoto</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Batmunkh</surname><given-names>E</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Expression of hypoxia-inducible factor-1alpha, histone deacetylase 1, and metastasis-associated protein 1 in pancreatic carcinoma: correlation with poor prognosis with possible regulation</article-title>. <source>Pancreas</source> <volume>36</volume>: <fpage>e1</fpage>–<lpage>9</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Marks1">
+        <label>19</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Marks</surname><given-names>PA</given-names></name> (<year>2010</year>) <article-title>The clinical development of histone deacetylase inhibitors as targeted anticancer drugs</article-title>. <source>Expert Opin Investig Drugs</source> <volume>19</volume>: <fpage>1049</fpage>–<lpage>1066</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Bolden1">
+        <label>20</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bolden</surname><given-names>JE</given-names></name>, <name name-style="western"><surname>Peart</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Johnstone</surname><given-names>RW</given-names></name> (<year>2006</year>) <article-title>Anticancer activities of histone deacetylase inhibitors</article-title>. <source>Nat Rev Drug Discov</source> <volume>5</volume>: <fpage>769</fpage>–<lpage>784</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Chun1">
+        <label>21</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chun</surname><given-names>SG</given-names></name>, <name name-style="western"><surname>Zhou</surname><given-names>W</given-names></name>, <name name-style="western"><surname>Yee</surname><given-names>NS</given-names></name> (<year>2009</year>) <article-title>Combined targeting of histone deacetylases and hedgehog signaling enhances cytoxicity in pancreatic cancer</article-title>. <source>Cancer Biol Ther</source> <volume>8</volume>: <fpage>1328</fpage>–<lpage>1339</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Kumagai1">
+        <label>22</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kumagai</surname><given-names>T</given-names></name>, <name name-style="western"><surname>Wakimoto</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Yin</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Gery</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Kawamata</surname><given-names>N</given-names></name>, <etal>et al</etal>. (<year>2007</year>) <article-title>Histone deacetylase inhibitor, suberoylanilide hydroxamic acid (Vorinostat, SAHA) profoundly inhibits the growth of human pancreatic cancer cells</article-title>. <source>Int J Cancer</source> <volume>121</volume>: <fpage>656</fpage>–<lpage>665</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Arnold1">
+        <label>23</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Arnold</surname><given-names>NB</given-names></name>, <name name-style="western"><surname>Arkus</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Gunn</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Korc</surname><given-names>M</given-names></name> (<year>2007</year>) <article-title>The histone deacetylase inhibitor suberoylanilide hydroxamic acid induces growth inhibition and enhances gemcitabine-induced cell death in pancreatic cancer</article-title>. <source>Clin Cancer Res</source> <volume>13</volume>: <fpage>18</fpage>–<lpage>26</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Kauh1">
+        <label>24</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kauh</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Fan</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Xia</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Yue</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Yang</surname><given-names>L</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>c-FLIP degradation mediates sensitization of pancreatic cancer cells to TRAIL-induced apoptosis by the histone deacetylase inhibitor LBH589</article-title>. <source>PLoS One</source> <volume>5</volume>: <fpage>e10376</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Glaser1">
+        <label>25</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Glaser</surname><given-names>KB</given-names></name>, <name name-style="western"><surname>Li</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Staver</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Wei</surname><given-names>RQ</given-names></name>, <name name-style="western"><surname>Albert</surname><given-names>DH</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>Role of class I and class II histone deacetylases in carcinoma cells using siRNA</article-title>. <source>Biochem Biophys Res Commun</source> <volume>310</volume>: <fpage>529</fpage>–<lpage>536</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Lagger1">
+        <label>26</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lagger</surname><given-names>G</given-names></name>, <name name-style="western"><surname>O'Carroll</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Rembold</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Khier</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Tischler</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2002</year>) <article-title>Essential function of histone deacetylase 1 in proliferation control and CDK inhibitor repression</article-title>. <source>EMBO J</source> <volume>21</volume>: <fpage>2672</fpage>–<lpage>2681</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Bali1">
+        <label>27</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bali</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Pranpat</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Bradner</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Balasis</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Fiskus</surname><given-names>W</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>Inhibition of histone deacetylase 6 acetylates and disrupts the chaperone function of heat shock protein 90: a novel basis for antileukemia activity of histone deacetylase inhibitors</article-title>. <source>J Biol Chem</source> <volume>280</volume>: <fpage>26729</fpage>–<lpage>26734</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Bradner1">
+        <label>28</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bradner</surname><given-names>JE</given-names></name>, <name name-style="western"><surname>West</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Grachan</surname><given-names>ML</given-names></name>, <name name-style="western"><surname>Greenberg</surname><given-names>EF</given-names></name>, <name name-style="western"><surname>Haggarty</surname><given-names>SJ</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Chemical phylogenetics of histone deacetylases</article-title>. <source>Nat Chem Biol</source> <volume>6</volume>: <fpage>238</fpage>–<lpage>243</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Khan1">
+        <label>29</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Khan</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Jeffers</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Kumar</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Hackett</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Boldog</surname><given-names>F</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Determination of the class and isoform selectivity of small-molecule histone deacetylase inhibitors</article-title>. <source>Biochem J</source> <volume>409</volume>: <fpage>581</fpage>–<lpage>589</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Duong1">
+        <label>30</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Duong</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Bret</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Altucci</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Mai</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Duraffourd</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2008</year>) <article-title>Specific activity of class II histone deacetylases in human breast cancer cells</article-title>. <source>Mol Cancer Res</source> <volume>6</volume>: <fpage>1908</fpage>–<lpage>1919</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Mai1">
+        <label>31</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mai</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Massa</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Pezzi</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Rotili</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Loidl</surname><given-names>P</given-names></name>, <etal>et al</etal>. (<year>2003</year>) <article-title>Discovery of (aryloxopropenyl)pyrrolyl hydroxyamides as selective inhibitors of class IIa histone deacetylase homologue HD1-A</article-title>. <source>J Med Chem</source> <volume>46</volume>: <fpage>4826</fpage>–<lpage>4829</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Mai2">
+        <label>32</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mai</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Massa</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Pezzi</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Simeoni</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Rotili</surname><given-names>D</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>Class II (IIa)-selective histone deacetylase inhibitors. 1. Synthesis and biological evaluation of novel (aryloxopropenyl)pyrrolyl hydroxyamides</article-title>. <source>J Med Chem</source> <volume>48</volume>: <fpage>3344</fpage>–<lpage>3353</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Butler1">
+        <label>33</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Butler</surname><given-names>KV</given-names></name>, <name name-style="western"><surname>Kalin</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Brochier</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Vistoli</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Langley</surname><given-names>B</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Rational design and simple chemistry yield a superior, neuroprotective HDAC6 inhibitor, tubastatin A. J Am Chem Soc</article-title>. <volume>132</volume>: <fpage>10842</fpage>–<lpage>10846</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Deer1">
+        <label>34</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Deer</surname><given-names>EL</given-names></name>, <name name-style="western"><surname>Gonzalez-Hernandez</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Coursen</surname><given-names>JD</given-names></name>, <name name-style="western"><surname>Shea</surname><given-names>JE</given-names></name>, <name name-style="western"><surname>Ngatia</surname><given-names>J</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Phenotype and genotype of pancreatic cancer cell lines</article-title>. <source>Pancreas</source> <volume>39</volume>: <fpage>425</fpage>–<lpage>435</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Xie1">
+        <label>35</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xie</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Edwards</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Xu</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Zhou</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Buck</surname><given-names>SA</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Mechanisms of synergistic antileukemic interactions between valproic acid and cytarabine in pediatric acute myeloid leukemia</article-title>. <source>Clin Cancer Res</source> <volume>16</volume>: <fpage>5499</fpage>–<lpage>5510</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Xu1">
+        <label>36</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xu</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Xie</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Edwards</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Zhou</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Buck</surname><given-names>SA</given-names></name>, <etal>et al</etal>. (<year>2011</year>) <article-title>Inhibition of histone deacetylases 1 and 6 enhances cytarabine-induced apoptosis in pediatric acute myeloid leukemia cells</article-title>. <source>PLoS One</source> <volume>6</volume>: <fpage>e17138</fpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Chou1">
+        <label>37</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chou</surname><given-names>TC</given-names></name> (<year>2006</year>) <article-title>Theoretical basis, experimental design, and computerized simulation of synergism and antagonism in drug combination studies</article-title>. <source>Pharmacol Rev</source> <volume>58</volume>: <fpage>621</fpage>–<lpage>681</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Tallarida1">
+        <label>38</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tallarida</surname><given-names>RJ</given-names></name> (<year>2001</year>) <article-title>Drug synergism: its detection and applications</article-title>. <source>J Pharmacol Exp Ther</source> <volume>298</volume>: <fpage>865</fpage>–<lpage>872</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Edwards1">
+        <label>39</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Edwards</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Xie</surname><given-names>C</given-names></name>, <name name-style="western"><surname>LaFiura</surname><given-names>KM</given-names></name>, <name name-style="western"><surname>Dombkowski</surname><given-names>AA</given-names></name>, <name name-style="western"><surname>Buck</surname><given-names>SA</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>RUNX1 regulates phosphoinositide 3-kinase/AKT pathway: role in chemotherapy sensitivity in acute megakaryocytic leukemia</article-title>. <source>Blood</source> <volume>114</volume>: <fpage>2744</fpage>–<lpage>2752</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Ge1">
+        <label>40</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ge</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Stout</surname><given-names>ML</given-names></name>, <name name-style="western"><surname>Tatman</surname><given-names>DA</given-names></name>, <name name-style="western"><surname>Jensen</surname><given-names>TL</given-names></name>, <name name-style="western"><surname>Buck</surname><given-names>S</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>GATA1, cytidine deaminase, and the high cure rate of Down syndrome children with acute megakaryocytic leukemia</article-title>. <source>J Natl Cancer Inst</source> <volume>97</volume>: <fpage>226</fpage>–<lpage>231</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Xie2">
+        <label>41</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xie</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Edwards</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Lograsso</surname><given-names>SB</given-names></name>, <name name-style="western"><surname>Buck</surname><given-names>SA</given-names></name>, <name name-style="western"><surname>Matherly</surname><given-names>LH</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Valproic acid synergistically enhances the cytotoxicity of clofarabine in pediatric acute myeloid leukemia cells</article-title>. <source>Pediatr Blood Cancer</source> <volume>59</volume>: <fpage>1245</fpage>–<lpage>1251</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Conti1">
+        <label>42</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Conti</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Leo</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Eichler</surname><given-names>GS</given-names></name>, <name name-style="western"><surname>Sordet</surname><given-names>O</given-names></name>, <name name-style="western"><surname>Martin</surname><given-names>MM</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Inhibition of histone deacetylase in cancer cells slows down replication forks, activates dormant origins, and induces DNA damage</article-title>. <source>Cancer Res</source> <volume>70</volume>: <fpage>4470</fpage>–<lpage>4480</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Gaymes1">
+        <label>43</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gaymes</surname><given-names>TJ</given-names></name>, <name name-style="western"><surname>Padua</surname><given-names>RA</given-names></name>, <name name-style="western"><surname>Pla</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Orr</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Omidvar</surname><given-names>N</given-names></name>, <etal>et al</etal>. (<year>2006</year>) <article-title>Histone deacetylase inhibitors (HDI) cause DNA damage in leukemia cells: a mechanism for leukemia-specific HDI-dependent apoptosis?</article-title> <source>Mol Cancer Res</source> <volume>4</volume>: <fpage>563</fpage>–<lpage>573</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Dai1">
+        <label>44</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Dai</surname><given-names>Y</given-names></name>, <name name-style="western"><surname>Grant</surname><given-names>S</given-names></name> (<year>2010</year>) <article-title>New insights into checkpoint kinase 1 in the DNA damage response signaling network</article-title>. <source>Clin Cancer Res</source> <volume>16</volume>: <fpage>376</fpage>–<lpage>383</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Minucci1">
+        <label>45</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Minucci</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Pelicci</surname><given-names>PG</given-names></name> (<year>2006</year>) <article-title>Histone deacetylase inhibitors and the promise of epigenetic (and more) treatments for cancer</article-title>. <source>Nat Rev Cancer</source> <volume>6</volume>: <fpage>38</fpage>–<lpage>51</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Redon1">
+        <label>46</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Redon</surname><given-names>CE</given-names></name>, <name name-style="western"><surname>Nakamura</surname><given-names>AJ</given-names></name>, <name name-style="western"><surname>Zhang</surname><given-names>YW</given-names></name>, <name name-style="western"><surname>Ji</surname><given-names>JJ</given-names></name>, <name name-style="western"><surname>Bonner</surname><given-names>WM</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Histone gammaH2AX and poly(ADP-ribose) as clinical pharmacodynamic biomarkers</article-title>. <source>Clin Cancer Res</source> <volume>16</volume>: <fpage>4532</fpage>–<lpage>4542</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Prince1">
+        <label>47</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Prince</surname><given-names>HM</given-names></name>, <name name-style="western"><surname>Bishton</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Harrison</surname><given-names>SJ</given-names></name> (<year>2009</year>) <article-title>Clinical studies of histone deacetylase inhibitors</article-title>. <source>Clin Cancer Res</source> <volume>15</volume>: <fpage>3958</fpage>–<lpage>3969</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Huang1">
+        <label>48</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huang</surname><given-names>BH</given-names></name>, <name name-style="western"><surname>Laban</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Leung</surname><given-names>CH</given-names></name>, <name name-style="western"><surname>Lee</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Lee</surname><given-names>CK</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>Inhibition of histone deacetylase 2 increases apoptosis and p21Cip1/WAF1 expression, independent of histone deacetylase 1</article-title>. <source>Cell Death Differ</source> <volume>12</volume>: <fpage>395</fpage>–<lpage>404</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Karagiannis1">
+        <label>49</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Karagiannis</surname><given-names>TC</given-names></name>, <name name-style="western"><surname>El-Osta</surname><given-names>A</given-names></name> (<year>2007</year>) <article-title>Will broad-spectrum histone deacetylase inhibitors be superseded by more specific compounds?</article-title> <source>Leukemia</source> <volume>21</volume>: <fpage>61</fpage>–<lpage>65</lpage>.</mixed-citation>
+      </ref>
+      <ref id="pone.0052095-Namdar1">
+        <label>50</label>
+        <mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Namdar</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Perez</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Ngo</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Marks</surname><given-names>PA</given-names></name> (<year>2010</year>) <article-title>Selective inhibition of histone deacetylase 6 (HDAC6) induces DNA damage and sensitizes transformed cells to anticancer agents</article-title>. <source>Proc Natl Acad Sci U S A</source> <volume>107</volume>: <fpage>20003</fpage>–<lpage>20008</lpage>.</mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

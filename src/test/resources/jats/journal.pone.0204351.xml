@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1d3" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0204351</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-18-11902</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Heredity</subject><subj-group><subject>Genetic mapping</subject><subj-group><subject>Haplotypes</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Evolutionary biology</subject><subj-group><subject>Population genetics</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Population genetics</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Population biology</subject><subj-group><subject>Population genetics</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>People and places</subject><subj-group><subject>Geographical locations</subject><subj-group><subject>Asia</subject><subj-group><subject>India</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Heredity</subject><subj-group><subject>Gene flow</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Evolutionary biology</subject><subj-group><subject>Population genetics</subject><subj-group><subject>Gene flow</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Population genetics</subject><subj-group><subject>Gene flow</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Population biology</subject><subj-group><subject>Population genetics</subject><subj-group><subject>Gene flow</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Evolutionary biology</subject><subj-group><subject>Evolutionary processes</subject><subj-group><subject>Hybridization</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Evolutionary biology</subject><subj-group><subject>Evolutionary systematics</subject><subj-group><subject>Phylogenetics</subject><subj-group><subject>Phylogenetic analysis</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Taxonomy</subject><subj-group><subject>Evolutionary systematics</subject><subj-group><subject>Phylogenetics</subject><subj-group><subject>Phylogenetic analysis</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Computer and information sciences</subject><subj-group><subject>Data management</subject><subj-group><subject>Taxonomy</subject><subj-group><subject>Evolutionary systematics</subject><subj-group><subject>Phylogenetics</subject><subj-group><subject>Phylogenetic analysis</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Genetic loci</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Organisms</subject><subj-group><subject>Eukaryota</subject><subj-group><subject>Animals</subject><subj-group><subject>Vertebrates</subject><subj-group><subject>Amniotes</subject><subj-group><subject>Birds</subject><subj-group><subject>Fowl</subject><subj-group><subject>Gamefowl</subject><subj-group><subject>Chickens</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Organisms</subject><subj-group><subject>Eukaryota</subject><subj-group><subject>Animals</subject><subj-group><subject>Vertebrates</subject><subj-group><subject>Amniotes</subject><subj-group><subject>Birds</subject><subj-group><subject>Poultry</subject><subj-group><subject>Chickens</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Understanding the cryptic introgression and mixed ancestry of Red Junglefowl in India</article-title>
+<alt-title alt-title-type="running-head">Genetic introgression of wild Red Junglefowl</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0003-2609-7579</contrib-id>
+<name name-style="western">
+<surname>Thakur</surname>
+<given-names>Mukesh</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<role content-type="http://credit.casrai.org/">Validation</role>
+<role content-type="http://credit.casrai.org/">Visualization</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="fn" rid="currentaff001"><sup>¤a</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Fernandes</surname>
+<given-names>Merwyn</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="fn" rid="currentaff002"><sup>¤b</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Sathyakumar</surname>
+<given-names>Sambandam</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0002-3671-1328</contrib-id>
+<name name-style="western">
+<surname>Singh</surname>
+<given-names>Sujeet K.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Data curation</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Vijh</surname>
+<given-names>Ramesh Kumar</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Software</role>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Han</surname>
+<given-names>Jianlin</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+<xref ref-type="aff" rid="aff005"><sup>5</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Wu</surname>
+<given-names>Dong-Dong</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Zhang</surname>
+<given-names>Ya-Ping</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Supervision</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Wildlife Institute of India, Chandrabani, Dehradun,Uttarakhand, India</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>State Key Laboratory of Genetic Resources and Evolution and Yunnan Laboratory of Molecular Biology of Domestic Animals, Kunming Institute of Zoology, Chinese Academy of Sciences, Kunming, Yunnan, P.R. China</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>ICAR-National Bureau of Animal Genetic Resources (NBAGR), G.T. Road Bye Pass, Near Basant Vihar, Karnal, Haryana, India</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>CAAS—ILRI Joint Laboratory on Livestock and Forage Genetic Resources, Institute of Animal Science, Chinese Academy of Agricultural Sciences (CAAS), Beijing, P.R. China</addr-line></aff>
+<aff id="aff005"><label>5</label> <addr-line>International Livestock Research Institute (ILRI), Nairobi, Kenya</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Chaubey</surname>
+<given-names>Gyaneshwer</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Banaras Hindu University, INDIA</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="current-aff" id="currentaff001">
+<label>¤a</label>
+<p>Current address: Zoological Survey of India, New Alipore, Kolkata, West Bengal, India.</p>
+</fn>
+<fn fn-type="current-aff" id="currentaff002">
+<label>¤b</label>
+<p>Current address: TRAFFIC, C/o WWF India Secretariat, 172-B, Lodhi Estate, New Delhi, India.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">thamukesh@gmail.com</email> (MT); <email xlink:type="simple">ssk@wii.gov.in</email> (SS)</corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>11</day>
+<month>10</month>
+<year>2018</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2018</year>
+</pub-date>
+<volume>13</volume>
+<issue>10</issue>
+<elocation-id>e0204351</elocation-id>
+<history>
+<date date-type="received">
+<day>20</day>
+<month>4</month>
+<year>2018</year>
+</date>
+<date date-type="accepted">
+<day>6</day>
+<month>9</month>
+<year>2018</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2018</copyright-year>
+<copyright-holder>Thakur et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0204351"/>
+<abstract>
+<p>Red Junglefowls (RJFs), the wild progenitor of modern day chickens (DCs), are believed to be in genetic endangerment due to introgression of domestic genes through opportunistic matings with domestic or feral chickens. Previous studies from India reported rare hybridization of RJFs in the wild. However, RJF population genetic structure, pattern of gene flow and their admixture with DC populations are poorly understood at the landscape level. We conducted this study with a large sample size, covering the predicted natural distribution range of RJFs in India. We documented strong evidence of directional gene flow from DCs to free-ranging wild RJFs, with the Northeastern RJF population exhibiting the most genetic variants in their nuclear and mitochondrial genomes, indicating it to be the ancestral population from which early radiation may have occurred. The results provide evidence that landscape features do not act as a barrier to gene flow and the distribution pattern could not be explored due to physical sharing or exchange of wild birds in the past when forests were continuous across RJF range in India.</p>
+</abstract>
+<funding-group>
+<award-group id="award001">
+<funding-source>
+<institution>Wildlife Institute of India, Dehradun</institution>
+</funding-source>
+<principal-award-recipient>
+<name name-style="western">
+<surname>Sathyakumar</surname>
+<given-names>Sambandam</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<funding-statement>The project was funded through the grant in aid scheme of Wildlife Institute of India, Dehradun. Funds were raised by Dr. S. Sathyakumar.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="9"/>
+<table-count count="4"/>
+<page-count count="19"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>Data available from the Dryad Digital Repository: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.5061/dryad.rv38cp4" xlink:type="simple">https://doi.org/10.5061/dryad.rv38cp4</ext-link>.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>The polyphyletic origins of Domestic Chickens (DCs, <italic>Gallus gallus domesticus</italic>) is a reason to speculate that gene flow between RJFs (<italic>Gallus gallus murghi</italic>) and DCs is widespread and more frequent than supposed by previous studies [<xref ref-type="bibr" rid="pone.0204351.ref001">1</xref>,<xref ref-type="bibr" rid="pone.0204351.ref002">2</xref>,<xref ref-type="bibr" rid="pone.0204351.ref003">3</xref>] while domestication may have occurred at multiple locations in South and South-East Asia [<xref ref-type="bibr" rid="pone.0204351.ref004">4</xref>,<xref ref-type="bibr" rid="pone.0204351.ref005">5</xref>,<xref ref-type="bibr" rid="pone.0204351.ref006">6</xref>,<xref ref-type="bibr" rid="pone.0204351.ref007">7</xref>]. However, cryptic introgression from domestic or feral DCs to RJFs or viceversa and the transport of DCs amongst different regions obscure the history of these two species. Several studies have suggested physical mixing and gene flow between RJF in the wild and DC populations [<xref ref-type="bibr" rid="pone.0204351.ref004">4</xref>,<xref ref-type="bibr" rid="pone.0204351.ref008">8</xref>,<xref ref-type="bibr" rid="pone.0204351.ref009">9</xref>, <xref ref-type="bibr" rid="pone.0204351.ref010">10</xref>,<xref ref-type="bibr" rid="pone.0204351.ref011">11</xref>]. Interestingly, Gering <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0204351.ref012">12</xref>] reported feralisation of <italic>Kauai</italic> chicken through invasive genetics and further raised the issue of <italic>'domestication in reverse'</italic>. In general, hybridization in the absence of reproductive isolation is an inevitable phenomenon and cannot be avoided in cases where domestic and wild congenerics are sympatric [<xref ref-type="bibr" rid="pone.0204351.ref013">13</xref>,<xref ref-type="bibr" rid="pone.0204351.ref014">14</xref>,<xref ref-type="bibr" rid="pone.0204351.ref015">15</xref>,<xref ref-type="bibr" rid="pone.0204351.ref016">16</xref>]. The situation gets complex when hybrid offsprings are reproductively viable and participate subsequent mating across the species. Allendorf <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0204351.ref017">17</xref>] stated that 5% or less proportion of hybridization in RJFs is an effect of admixture or natural selection whereas another study, based largely on birds reared in captivity and released into the wild, reported rare hybridization between RJFs and DCs in the wild in India [<xref ref-type="bibr" rid="pone.0204351.ref005">5</xref>]. Berthouly <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0204351.ref006">6</xref>] postulated that their observation of low genetic exchange might be due to sampling bias and reported a fair gene flow from RJF to local Vietnamese chicken populations.</p>
+<p>RJFs in India are widely distributed across 51 x 10<sup>5</sup> km<sup>2</sup> in 21 States [<xref ref-type="bibr" rid="pone.0204351.ref018">18</xref>]. Further, based on our field observations and monitoring on RJFs in the wild, we often encountered RJFs and DCs feeding in the same flocks in the vicinity of forest habitats [<xref ref-type="bibr" rid="pone.0204351.ref019">19</xref>]. We believe that the threat of hybridization to RJFs with DCs has not been addressed appropriately at a landscape level. In addition, the extent of hybridization between wild RJFs and DCs is stressed to be of importance in the International Union for Conservation of Nature (IUCN) Action Plan for Pheasants (2000). However, IUCN listing of RJFs as “Least Concern”, the non-listing of RJFs on the Convention of International Trade in Endangered Species of Wild Fauna and Flora (CITES) [<xref ref-type="bibr" rid="pone.0204351.ref020">20</xref>], and the present inclusion of RJFs in the Wildlife (Protection) Act, 1972 of India has no provisions to assess the hybridization threat to this speciesdespite a multi-billion dollar poultry industry has evolved through wild RJF. Recent poultry epidemics, such as the one in Hong Kong in 1998 and the ‘bird flu’ in India and other parts of S.E. Asia, could spell doom to the poultry industry and the only fallback option the poultry farmers would eventually be the ‘wild’ RJF [<xref ref-type="bibr" rid="pone.0204351.ref018">18</xref>].</p>
+<p>Further, one of the primary premises in present-day conservation programs is to maximize the conservation of genetic diversity available for potential future use. If hybridization of RJFs with and DCs occurrs and continues, it would produce populations which may not be valued for future breeding and conservation purposes under the IUCN guidelines. Considering the importance of conservation concern to safeguard the wild ancestor of DCs, we undertook this study to answer two important questions:</p>
+<list list-type="order">
+<list-item><p>Whether or not, the threat of hybridization and genetic exchange between RJF and DC in India is significant or rare as documented by earlier studies.</p></list-item>
+<list-item><p>If such hybridization occurs or has occurred in India in the past, whether it is localized with specific distribution pattern and how does it affect the current population genetic structure of RJF?</p></list-item>
+</list>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Materials and methods</title>
+<sec id="sec003">
+<title>Sample collection and DNA extraction</title>
+<p>For sampling, we divided India into five zones based on the availability of continuous habitats for RJF viz., <italic>North</italic> the States of Jammu and Kashmir, Himachal Pradesh, Uttarakhand, Haryana, Punjab and Uttar Pradesh, <italic>Central</italic> the States of Madhya Pradesh and Chhattisgarh, <italic>East</italic> the States of Bihar, Jharkhand, West Bengal and Sikkim, <italic>Southeast</italic> the States of Odisha and Andhra Pradesh and <italic>Northeast</italic> the States of Assam, Arunachal Pradesh, Nagaland, Mizoram, Manipur, Tripura and Meghalaya. We collected blood samples from 57 wild RJF and 79 DC individuals across India (<xref ref-type="fig" rid="pone.0204351.g001">Fig 1</xref>). The wild RJF were live trapped and approximately 500μl blood from each bird was withdrawn from the brachial vein and stored in DNA zol BD (Invitrogen TM, Carlsbad, CA, USA). All DC samples were collected in the vicinity of wild RJFs adjacent to the forests. The genomic DNA from whole blood was extracted following Mackey <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0204351.ref021">21</xref>].</p>
+<fig id="pone.0204351.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>India geographic map showing sampling locations of RJFs.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.g001" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec004">
+<title>Microsatellite genotyping and sequencing of D-loop region</title>
+<p>We genotyped samples with 30 microsatellite loci (ADL0268, MCW0206, LEI0166, MCW0020, MCW0037, ADL0112, MCW0295, MCW0067, MCW0104, MCW0111, MCW0034, MCW0222, LEI0094, MCW0216, MCW0081, MCW0330, LEI0234, MCW0103, MCW0098, MCW0069, MCW0016, MCW0078, MCW0123, MCW0165, MCW0248, ADL0278, LEI0192, MCW0014, MCW0183 and MCW0284). We scrutinized these loci based on their wide coverage on the genome and high degree of polymorphism [<xref ref-type="bibr" rid="pone.0204351.ref022">22</xref>,<xref ref-type="bibr" rid="pone.0204351.ref023">23</xref>,<xref ref-type="bibr" rid="pone.0204351.ref024">24</xref>]. The PCR composition and cycling conditions followed standard procedures outlined elsewhere [<xref ref-type="bibr" rid="pone.0204351.ref025">25</xref>,<xref ref-type="bibr" rid="pone.0204351.ref026">26</xref>]. The fluorescent-based genotyping was performed through capillary electrophoresis on an ABI 3130 Genetic Analyzer (Applied Biosystems, Foster City, CA, USA). The allele scoring was done manually using GeneMapper (ver. 3.7) (Applied Biosystems, Foster City, CA, USA).</p>
+<p>To amplify mitochondrial DNA D-loop hypervariable region (HV1), specific primers L16750 (<monospace>5′-AGGACTACGGCTTGAAAAGC-3′</monospace>) as theforward primer and H547 (<monospace>5′-ATGTGCCTGACCGAGGAACCAG-3′</monospace>) as reverse primer were used. This primer pair amplified a 550 bp fragment between sites 16750 (GenBank accession number NC_001323; [<xref ref-type="bibr" rid="pone.0204351.ref027">27</xref>]) and 547 (GenBank accession number AB098668; [<xref ref-type="bibr" rid="pone.0204351.ref028">28</xref>]). The PCRs were conducted in 10 μl reaction—0.25 mM MgCl<sub>2</sub>, 1 μM each of forward and reverse primers, 0.25 mM dNTPs and 1 unit <italic>Taq</italic> polymerase. Thermocycling conditions of PCR consisted of an initial denaturation at 94°C for 2 min, followed by 35 cycles of denaturation at 94°C for 30 seconds, an annealing step at 52°C for 20 seconds, and an extension at 72°C for 60 seconds and finished by a final extension at 72°C for 10 min. PCR products were purified using the QIAquick PCR purification kit (QIAGEN, GmbH, Germany) according to the manufacturer’s protocol. Direct sequencing of a HV1 segment of the D-loop region was performed using two internal primers CR-for (<monospace>5′-TCTATATTCCACATTTCTC-3′) a</monospace>nd CR-rev (<monospace>5′-GCGAGCATAACCAAATGG-3′</monospace>). Sequencing was done using the BigDye Terminator (ver. 3.1) Cycle Sequencing Kit (Applied Biosystems, Foster City, CA, USA) and the purified sequencing products were electrophoresed on the ABI 3130 Genetic Analyzer.</p>
+</sec>
+<sec id="sec005">
+<title>Statistical analysis</title>
+<sec id="sec006">
+<title>(a) Microsatellites</title>
+<p><underline>Genetic variability, inbreeding and population differentiation.</underline> Genetic diversity estimates <italic>i</italic>.<italic>e</italic>. observed (Na) andeffective numbers of alleles (ne), observed (Ho), expected (He) and unbiased expected heterozygosity (UHe) and pair‐wise <italic>F</italic><sub><italic>ST</italic></sub> were estimated using GENEALEX (ver. 6.5) [<xref ref-type="bibr" rid="pone.0204351.ref029">29</xref>]. The mean allelic richness (A<sub>R</sub>), which is an estimate of an independent sample size for each population and the polymorphic information content (PIC)were estimated using FSTAT (ver.2.9.3.2) [<xref ref-type="bibr" rid="pone.0204351.ref030">30</xref>] and Cervus (ver. 3.0) [<xref ref-type="bibr" rid="pone.0204351.ref031">31</xref>], respectively. We tested any deviation from Hardy–Weinberg equilibrium (HWE) at each locus following probability test approach involving 10,000 dememorizations, 500 batches and 10,000 iterations per batch in GENEPOP (ver. 4.2) [<xref ref-type="bibr" rid="pone.0204351.ref032">32</xref>, <xref ref-type="bibr" rid="pone.0204351.ref033">33</xref>]. The <italic>F</italic><sub><italic>IS</italic></sub> following Weir and Cockerham [<xref ref-type="bibr" rid="pone.0204351.ref034">34</xref>] method and Linkage disequilibrium (LD) were tested using the a log likelihood ratio statistic in GENEPOP (ver. 4.2) [<xref ref-type="bibr" rid="pone.0204351.ref033">33</xref>].</p>
+<p><underline>Population genetic structure.</underline> Population genetic structure of RJF in India was inferred using the Bayesian clustering algorithm implemented in program STRUCTURE (ver.2.3.3) [<xref ref-type="bibr" rid="pone.0204351.ref035">35</xref>] following a model assuming <italic>K</italic> populations (e.g. 1 to 10). We selected an admixture model with a burn‐in period of 50,000 and 500,000 Markov chain Monte Carlo repetitions as well as a model of correlated allele frequencies without prior sampling location information. Twenty independent runs at each <italic>K</italic> value were performed. The most appropriate <italic>K</italic> value was determined by calculating ad hoc quantity (ΔK) as proposed by Evanno <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0204351.ref036">36</xref>] and each individual was assigned to the inferred clusters using a threshold proportion of membership (q), <italic>i</italic>.<italic>e</italic>. q ≥ 0.80, following Mukesh <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0204351.ref026">26</xref>, <xref ref-type="bibr" rid="pone.0204351.ref037">37</xref>, <xref ref-type="bibr" rid="pone.0204351.ref038">38</xref>]. The clustering results of STRUCTURE were visualized over ClumpaK (<ext-link ext-link-type="uri" xlink:href="http://clumpak.tau.ac.il/index.html" xlink:type="simple">http://clumpak.tau.ac.il/index.html</ext-link>), a web server that provides a full pipeline for clustering, summarizing and visualizing the STRUCTURE results.</p>
+<p><underline>Spatial genetics and barrier detection.</underline> As sampling was done across the species distribution in India, we performed a spatial Bayesian clustering analysis in GENELAND (ver.) 4.0.3 [<xref ref-type="bibr" rid="pone.0204351.ref039">39</xref>] to detect barriers in the gene flow between free-ranging RJF populations. Unlike population assignment in STRUCTURE, this analysis also takes into account the spatial coordinates (<italic>i</italic>.<italic>e</italic>. latitude and longitude) of each individual along with their multi-locus genotypes for specifically identifying genetic breaks while generating maps of population ranges. We employed the spatial model to infer the most likely number of clusters indicated as ‘K’ with either correlated or uncorrelated allele frequency model. In these analyses, we conducted 30 independent runs for each K ranging from 1 to 10, with 1,000,000 iterations and 1,000 thinning. Other parameters were set to default values (maximum rate of the Poisson process, 100; uncertainty on spatial coordinates, 0; maximum number of nuclei, 300; null allele model, FALSE). The top three runs showing the highest average logarithm of the posterior probability were selected and post-processing was conducted using 100 x 100 pixels in the spatial domain with a burnin period of 200.</p>
+</sec>
+<sec id="sec007">
+<title>(b) Mitochondrial D-loop region</title>
+<p><underline>Genetic variability and demographic history.</underline> We checked all raw sequences using Sequencher ver. 4.7 (<ext-link ext-link-type="uri" xlink:href="http://www.genecode.com/" xlink:type="simple">www.genecode.com</ext-link>) and any ambiguity, if encountered, was manually corrected. The cleaned sequences were aligned using CLUSTAL W-multiple sequence alignment algorithm, implemented in BioEdit version 7.2.5 (<ext-link ext-link-type="uri" xlink:href="http://www.mbio.ncsu.edu/BioEdit/bioedit.html" xlink:type="simple">http://www.mbio.ncsu.edu/BioEdit/bioedit.html</ext-link>). Using DnaSP (ver.5.10) [<xref ref-type="bibr" rid="pone.0204351.ref040">40</xref>], diversity estimates <italic>i</italic>.<italic>e</italic>. polymorphic sites (S), number of haplotypes (H), nucleotide diversity (π), haplotype diversity (Hd), average number of nucleotide differences (K) and mismatch distribution test for demographic expansion, equilibrium or bottleneck [<xref ref-type="bibr" rid="pone.0204351.ref041">41</xref>] were computed. Neutrality tests, <italic>i</italic>.<italic>e</italic>. Tajima’s D [<xref ref-type="bibr" rid="pone.0204351.ref042">42</xref>], Fu’s Fs [<xref ref-type="bibr" rid="pone.0204351.ref043">43</xref>] and Fu and Li’s F and D [<xref ref-type="bibr" rid="pone.0204351.ref044">44</xref>] were carried out to evaluate the demographic effects.</p>
+</sec>
+<sec id="sec008">
+<title>(c) Genetic introgression and clustering of RJFs with DCs</title>
+<p>Program STRUCTURE with the same parameters as described above was used with the inclusion of DC samples collected in the vicinity of RJFs to assign the admixed individuals. To evaluate the direction of gene flow, haplotypes shared, and their frequencies of occurrence between RJFs and DCs were examined using the phylogenetic network based on the median-joining method [<xref ref-type="bibr" rid="pone.0204351.ref045">45</xref>] implemented inNETWORK ver. 4.5.1 (<ext-link ext-link-type="uri" xlink:href="http://www.fluxusengineering.com/" xlink:type="simple">http://www.fluxusengineering.com</ext-link>). In NETWORK, we assigned equal weights to all variable sites and applied default values for the epsilon parameter (epsilon = 0). The microsatellite and sequencing data phylogenetic trees constructed were used to investigate the recent and long-term admixture and the genetic relationship between wild RJF and DC populations. For microsatellite data, a genetic distance matrix was calculated using Program GENALEX (ver. 6.5) [<xref ref-type="bibr" rid="pone.0204351.ref029">29</xref>], and a phylogenetic tree was constructed following the maximum likelihood (ML) method in MEGA program version 7.0 [<xref ref-type="bibr" rid="pone.0204351.ref046">46</xref>]. For sequencing data, maximum likelihood method and the Tamura 3 parameter, the most fit substitution model, were considered to reconstruct the phylogenetic tree using MEGA program version 7.0 program [<xref ref-type="bibr" rid="pone.0204351.ref046">46</xref>].</p>
+</sec>
+</sec>
+</sec>
+<sec id="sec009" sec-type="results">
+<title>Results</title>
+<p>Among the 57 RJF and 79 DC samples collected, there was 68 (32 RJFs and 36 DCs) samples from North, 25 (9 RJFs and 16 DCs) from East, 5 (2 RJFs and 3 DCs) from Central, 5 (4 RJFs and 1 DC) from South East and 33 (10 RJFs and 23 DCs) from Northeast of India. Since, we can trap only a few wild RJFs in Central and Southeast zones; we pooled samples of these zones to create a Cent-Southeast population for further analysis. During analysis, two birds- RJ1 (Cent-Southeast) and RJ9 (Northeast) were excluded due to uncertainty in the GPS locations of their sample points.</p>
+<p>We genotyped all samples three times or repeated the process until we generated consensus genotypes for all samples. However, four loci <italic>i</italic>.<italic>e</italic>. LEI0192, MCW0014, MCW0183 and MCW0284 exhibited a considerable amount of missing values for few a samples even after multiple repetition, so we removed them from further analysis. We manually checked allelic data, and found no indication of any genotyping error (Data available on the Dryad Digital Repository on <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.5061/dryad.rv38cp4" xlink:type="simple">https://doi.org/10.5061/dryad.rv38cp4</ext-link>).</p>
+<sec id="sec010">
+<title>Genetic diversity indices and demographic history</title>
+<p>All 26 microsatellite loci were polymorphic, yielding a total of 692 alleles across the four RJF populations. The average Na and ne ranged from 4.27±0.34 (Cent-Southeast) to 9.69±0.76 (North) and from 3.11±0.27 (Cent-Southeast) to 5.02±0.35 (North), respectively. The Ho ranged from 0.52 (±0.04 North; ±0.06 Cent-Southeast) to 0.58 (±0.05 East; ± 0.04 Northeast) and did not differ significantly among the four populations. The mean PIC values were greater than 0.5 for all the four RJF populations. The UHeranged from 0.67±0.04 in Cent-Southeast to 0.81±0.02 in Northeast population, and the average A<sub>R</sub> (rarefaction after two diploid individuals per population) ranged from 2.59±0.13 in Cent-Southeast to 3.04±0.07 in Northeast population. Total count of N<sub>P</sub> was the highest in North (85 alleles) but the lowest in Cent-Southeast (12 alleles) RJF populations. The <italic>F</italic><sub><italic>IS</italic></sub> estimates in the four RJF populations were significantly positive (P&lt;0.001), suggesting that all the populations were slightly inbred. The number of loci deviated from HWE (P&lt;0.05) ranged from four in Cent-Southeast population to 22 in North population with the majority of them showing a heterozygote deficit. Nevertheless only two loci (MCW0295 and MCW0123) deviated from HWE across the four populations (P&lt;0.05; <xref ref-type="supplementary-material" rid="pone.0204351.s001">S1 Table</xref>). Several pairs of loci showed significant LD (P&lt;0.05; <xref ref-type="supplementary-material" rid="pone.0204351.s002">S2 Table</xref>), but none of them was present across the four populations.</p>
+<p>For D-loop data, we analysed 100 samples, <italic>i</italic>.<italic>e</italic>.38 wild RJF (15 North, 7 East, 6 Cent-Southeast and 10 Northeast) and 62 DC collected in the vicinity of the RJF. Wild RJF yielded 37 polymorphic sites which formed 31 haplotypes with an average of 6.48 nucleotide differences. All analyzed samples yielded 68 haplotypes, among which 37 were found in DCs. Most haplotypes were present in one sample each. Haplotypes # 1, 12 and 13 were shared among the individuals of the same population while haplotype 3 was shared between North and Northeast populations (<xref ref-type="supplementary-material" rid="pone.0204351.s006">S1 Fig</xref>). Novel haplotypes were deposited in the GenBank database (Accession no. MG053424 to MG053491). Northeast population represented the highest diversity estimates with 26 polymorphic sites, 10 haplotypes and 8.71 nucleotide differences. The overall haplotype (Hd) and nucleotide diversity (π) were 0.98 ±0.014 and 0.01±0.001, respectively (<xref ref-type="table" rid="pone.0204351.t001">Table 1</xref>). All four RJF populations showed a multimodal pattern of mismatch distribution, supporting these populations to be under demographic equilibrium and without any bottleneck (<xref ref-type="supplementary-material" rid="pone.0204351.s007">S2 Fig</xref>). The estimates of neutrality tests, in general, showed a similar pattern revealed by mismatch distribution curve while negative estimates of Tajima’s D and Fu’s Fs statistic tests implied that rare alleles were more common than expected. However, the observed estimates were not significant (P&gt;0.10), suggesting that populations have not undergone any expansion. Fu and Li’s D and F tests also indicated no significant departure from neutrality (P&gt;0.10).</p>
+<table-wrap id="pone.0204351.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.t001</object-id>
+<label>Table 1</label> <caption><title>Summary of molecular genetic diversity indices of wild RJF populations.</title></caption>
+<alternatives>
+<graphic id="pone.0204351.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center" rowspan="3">RJF population<break/>(No of msat/mt)<xref ref-type="table-fn" rid="t001fn002">†</xref><break/></th>
+<th align="center" colspan="9">Diversity estimates<break/>(Microsatellites)</th>
+<th align="center" colspan="5">Diversity estimates<break/>(mt-DNA D-loop)</th>
+<th align="center" colspan="4">Neutrality tests</th>
+</tr>
+<tr>
+<th align="center" colspan="2">Average number of alleles</th>
+<th align="center" colspan="3">Average Heterogygosity</th>
+<th align="center" rowspan="2">A<sub>R</sub><break/></th>
+<th align="center" rowspan="2">N<sub>P</sub><break/></th>
+<th align="center" rowspan="2">Average PIC<break/></th>
+<th align="center" rowspan="2">Average<break/>F<sub>IS</sub></th>
+<th align="center" rowspan="2">S<break/></th>
+<th align="center" rowspan="2">H<break/></th>
+<th align="center" rowspan="2">K<break/></th>
+<th align="center" rowspan="2">Hd<break/></th>
+<th align="center" rowspan="2">Π<break/></th>
+<th align="center" rowspan="2">Tajima'sD<xref ref-type="table-fn" rid="t001fn003">*</xref><break/></th>
+<th align="center" rowspan="2">Fu's Fs<xref ref-type="table-fn" rid="t001fn003">*</xref></th>
+<th align="center" rowspan="2">Fu and Li's D<xref ref-type="table-fn" rid="t001fn003">*</xref></th>
+<th align="center" rowspan="2">Fu and Li's F<xref ref-type="table-fn" rid="t001fn003">*</xref></th>
+</tr>
+<tr>
+<th align="center">Na</th>
+<th align="center">Ne</th>
+<th align="center">Ho</th>
+<th align="center">He</th>
+<th align="center">UHe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><bold>North</bold><break/><bold>(32/15)</bold></td>
+<td align="center">9.69<break/>±0.76</td>
+<td align="center">5.02<break/>±0.35</td>
+<td align="center">0.52<break/>±0.04</td>
+<td align="center">0.77<break/>±0.02</td>
+<td align="center">0.79<break/>±0.02</td>
+<td align="center">2.96<break/>±0.08</td>
+<td align="center">85</td>
+<td align="center">0.74</td>
+<td align="center">0.34</td>
+<td align="center">19</td>
+<td align="center">11</td>
+<td align="center">5.31</td>
+<td align="center">0.93<break/>± 0.05</td>
+<td align="center">0.01<break/>± 0.001</td>
+<td align="center">-0.56</td>
+<td align="center">-3.07</td>
+<td align="center">-0.81</td>
+<td align="center">-0.85</td>
+</tr>
+<tr>
+<td align="center"><bold>East</bold><break/><bold>(9/7)</bold></td>
+<td align="center">6.04<break/>±0.44</td>
+<td align="center">4.32<break/>±0.35</td>
+<td align="center">0.58<break/>±0.05</td>
+<td align="center">0.73<break/>±0.02</td>
+<td align="center">0.78<break/>±0.02</td>
+<td align="center">2.93<break/>±0.09</td>
+<td align="center">27</td>
+<td align="center">0.69</td>
+<td align="center">0.25</td>
+<td align="center">17</td>
+<td align="center">5</td>
+<td align="center">7.00</td>
+<td align="center">0.91<break/>± 0.10</td>
+<td align="center">0.02<break/>± 0.002</td>
+<td align="center">-0.26</td>
+<td align="center">0.94</td>
+<td align="center">-0.27</td>
+<td align="center">-0.30</td>
+</tr>
+<tr>
+<td align="center"><bold>Cent-Southeast</bold><break/><bold>(6/6)</bold></td>
+<td align="center">4.27<break/>±.34</td>
+<td align="center">3.11<break/>±0.27</td>
+<td align="center">0.52<break/>±0.06</td>
+<td align="center">0.61<break/>±0.04</td>
+<td align="center">0.67<break/>±0.04</td>
+<td align="center">2.59<break/>±0.13</td>
+<td align="center">12</td>
+<td align="center">0.56</td>
+<td align="center">0.25</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">2.40</td>
+<td align="center">1.0<break/>± 0.09</td>
+<td align="center">0.01<break/>± 0.0008</td>
+<td align="center">-0.50</td>
+<td align="center">-3.85</td>
+<td align="center">-0.42</td>
+<td align="center">-0.46</td>
+</tr>
+<tr>
+<td align="center"><bold>Northeast</bold><break/><bold>(10/10)</bold></td>
+<td align="center">6.62<break/>±0.36</td>
+<td align="center">4.74<break/>±0.30</td>
+<td align="center">0.58<break/>±0.04</td>
+<td align="center">0.76<break/>±0.02</td>
+<td align="center">0.81<break/>±0.02</td>
+<td align="center">3.04<break/>±0.07</td>
+<td align="center">22</td>
+<td align="center">0.73</td>
+<td align="center">0.29</td>
+<td align="center">26</td>
+<td align="center">10</td>
+<td align="center">8.71</td>
+<td align="center">1.0<break/>± 0.04</td>
+<td align="center">0.02<break/>± 0.002</td>
+<td align="center">-0.25</td>
+<td align="center">-3.89</td>
+<td align="center">-0.28</td>
+<td align="center">-0.31</td>
+</tr>
+<tr>
+<td align="center"><bold>Pooled</bold><break/><bold>(57/38)</bold></td>
+<td align="center">6.65<break/>±0.31</td>
+<td align="center">4.30<break/>±0.17</td>
+<td align="center">0.55<break/>±0.02</td>
+<td align="center">0.72<break/>±0.01</td>
+<td align="center">0.76<break/>±0.01</td>
+<td align="center">3.09<break/>±0.06</td>
+<td align="center"/>
+<td align="center">0.79</td>
+<td align="center">0.23</td>
+<td align="center">37</td>
+<td align="center">31</td>
+<td align="center">6.48</td>
+<td align="center">0.98<break/>± 0.014</td>
+<td align="center">0.01<break/>± 0.001</td>
+<td align="center">-1.07</td>
+<td align="center">-23.14</td>
+<td align="center">-1.25</td>
+<td align="center">-1.41</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>Na,- Observed number of alleles; Ne,- Effective number of alleles; Ho,- Observed heterozygosity; He,-Expected heterozygosity; UHe,- Unbiased expected heterozygosity; A<sub>R,</sub>- Allelic richness; N<sub>P,</sub>- Number of private alleles; PIC,- Polymorphic information content; <italic>F</italic><sub><italic>IS</italic>,</sub>- Inbreeding coefficient index; S,- Polymorphic sites; H,- Number of haplotypes; K,- Average number of nucleotide differences; Hd,- Haplotypes diversity; Π,- Nucleotide diversity.</p></fn>
+<fn id="t001fn002"><p>† N,- sample size (msat- for microsatellite analysis and / mt- mitochondrial D loop analysis</p></fn>
+<fn id="t001fn003"><p>* P &gt; 0.10 (not significant).</p></fn>
+</table-wrap-foot>
+</table-wrap>
+<p>Pair-wise <italic>F</italic><sub><italic>ST</italic></sub> values between all four RJF populations were significant (P&lt;0.01; <xref ref-type="table" rid="pone.0204351.t002">Table 2</xref>) for both the microsatellite and D-loop data. The highest differentiation was found between North and Cent-Southeast populations (0.10 for microsatellites and 0.30 for D loop data). However, similar estimates were observed between North and Northeast populations for microsatellites (0.05) and D-loop sequences (0.06).</p>
+<table-wrap id="pone.0204351.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.t002</object-id>
+<label>Table 2</label> <caption><title>Comparison of pair-wise <italic>F</italic><sub><italic>ST</italic></sub> estimates between four wild RJF and four DC populations.</title></caption>
+<alternatives>
+<graphic id="pone.0204351.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Population</th>
+<th align="center">North</th>
+<th align="center">East</th>
+<th align="center">Cent-Southeast</th>
+<th align="center">Northeast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><bold>North</bold></td>
+<td align="center"/>
+<td align="center">0.06</td>
+<td align="center">0.30</td>
+<td align="center">0.06</td>
+</tr>
+<tr>
+<td align="center"><bold>East</bold></td>
+<td align="center">0.05</td>
+<td align="center"/>
+<td align="center">0.11</td>
+<td align="center">0.07</td>
+</tr>
+<tr>
+<td align="center"><bold>Cent-Southeast</bold></td>
+<td align="center">0.10</td>
+<td align="center">0.06</td>
+<td align="center"/>
+<td align="center">0.27</td>
+</tr>
+<tr>
+<td align="center"><bold>Northeast</bold></td>
+<td align="center">0.05</td>
+<td align="center">0.07</td>
+<td align="center">0.09</td>
+<td align="center"/>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>(Fst values below diagonal- microsatellites and Fst values above diagonal mt-DNA- D loop)</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec011">
+<title>Inference of population genetic structure and clustering patterns on the spatial scale</title>
+<p>The <italic>ad hoc</italic> quantity value was the highest at K = 2 (ΔK -139.8081; <xref ref-type="fig" rid="pone.0204351.g002">Fig 2B</xref>; <xref ref-type="table" rid="pone.0204351.t003">Table 3</xref>). All individuals were successfully assigned to two clusters, <italic>cluster 1–</italic>54.38% and <italic>cluster 2–</italic>45.61% based on their posterior probability values <italic>i</italic>.<italic>e</italic>. q ≥ 0.80. A further increase in the <italic>K</italic> value did not split the samples into additional clusters (<xref ref-type="fig" rid="pone.0204351.g003">Fig 3</xref>). Interestingly, birds from North and Northeast populations were assigned to both clusters, indicating their shared ancestry in the past. However, nearly all birds of East and Cent-Southeast populations were assigned to <italic>cluster</italic> 1.The global performance of STRUCTURE in assigning all individuals at K = 2 was 100% (<xref ref-type="table" rid="pone.0204351.t003">Table 3</xref>).</p>
+<fig id="pone.0204351.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Graphical representation of the true number of the cluster in wild RJF populations.</title>
+<p>(A) Mean L(K) (±SD) over 20 independent runs for each <italic>K</italic>-value. (B) The ad hoc quantity (ΔK).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.g002" xlink:type="simple"/>
+</fig>
+<fig id="pone.0204351.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title>Bayesian clustering patterns of wild RJF populations (n = 57).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.g003" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0204351.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.t003</object-id>
+<label>Table 3</label> <caption><title>Genetic assignment of wild RJF (n = 57) populations through Bayesian clustering analysis.</title></caption>
+<alternatives>
+<graphic id="pone.0204351.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="center">Population (No.)</th>
+<th align="center">Cluster 1</th>
+<th align="center">Cluster 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">North (32)</td>
+<td align="center">0.375 (12)</td>
+<td align="center">0.625 (20)</td>
+</tr>
+<tr>
+<td align="center">East (9)</td>
+<td align="center">0.888 (8)</td>
+<td align="center">0.111 (1)</td>
+</tr>
+<tr>
+<td align="center">Cent-Southeast (6)</td>
+<td align="center">1 (6)</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">Northeast (10)</td>
+<td align="center">0.5 (5)</td>
+<td align="center">0.5 (5)</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>In a GENELAND analysis assuming uncorrelated allele frequency model, four genetic clusters (K = 4) were inferred in 20 out of 30 runs (66.66%; <xref ref-type="supplementary-material" rid="pone.0204351.s004">S4 Table</xref>, the first three columns,) based on the highest average logarithm of the posterior probability (<xref ref-type="supplementary-material" rid="pone.0204351.s008">S3 Fig</xref>). In contrast, when assuming correlated allele frequency model, nearly all runs (29/30) indicated 10 clusters (<xref ref-type="supplementary-material" rid="pone.0204351.s004">S4 Table</xref>, the last three columns) which were not interpretable. Therefore, we considered only the results of the analysis assuming uncorrelated frequency model. The results of the top three runs showing the highest average logarithm of the posterior probability were largely consistent. The spatial distribution of these four inferred clusters showed that the boundaries of these clusters were generally coincided with multiple landscape features and individuals were assigned to these four clusters as cluster-I (green; 36.36%), cluster-II (light green; 7.27%), cluster-III (orange; 5.45%) and cluster- IV (white; 50.90%) (<xref ref-type="fig" rid="pone.0204351.g004">Fig 4E</xref>). Interestingly, all the samples collected from the State Uttar Pradesh (Pilibhit Tiger Reserve, Dudhwa National Park, Katerniaghat &amp; Kishanpur Wildlife Sanctuary) were assigned to cluster- IV while samples collected from the State Uttarakhand (Terai Forest Division, Corbett National Park, Rajaji National Park &amp; Wildlife Institute of India campus) were assigned to cluster- I. All the samples collected from Manipur were grouped in cluster-III (<xref ref-type="supplementary-material" rid="pone.0204351.s004">S4 Table</xref>). Only three individuals (one each from Khelma Forest Division-Nagaland, Hailakandi Forest Division -Assam and Nameri National Park -Assam) were grouped in cluster- II. Samples collected from several locations were assigned to cluster-IV, and this can plausibly be interpreted based on the possible historic gene flow and physical exchange of the birds in the past. Each individual’s estimated proportions of membership obtained from GENELAND analysis (around 0.50 at maximum, <xref ref-type="supplementary-material" rid="pone.0204351.s005">S5 Table</xref>) were lower than those obtained using the STRUCTURE analysis. The results provided indications that the present landscape features did not act as a barrier to gene flow or the actual geo-spatial clustering trend in the landscape remained masked by the fact of physical sharing/exchange of wild birds in the past as the forested areas and most preferred habitats for the species may be connected.</p>
+<fig id="pone.0204351.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title>Results of Bayesian model based clustering in GENELAND using wild RJF individuals (n = 57; K = 4 as the best run showing the highest average logarithm of the posterior probability).</title>
+<p>(a—d) Maps of posterior probability for each inferred cluster show the spatial location of genetic discontinuities of clusters I,II,III and IV; (e) A map of estimated cluster membership shows spatial distribution of the four inferred genetic clusters across the study areas. Sample locations are represented by <italic>black dots</italic>. <italic>X</italic> and <italic>Y spaces</italic> indicate longitude (E) and latitude (N). <italic>Light yellow coloring</italic> corresponds to high posterior probability and <italic>red</italic> corresponds to low posterior probability.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.g004" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec012">
+<title>Genetic introgression and identification of admixed individuals</title>
+<p>The results indicated a multi-modal value of delta <italic>K</italic> as each peak breaking out quite clearly at <italic>K</italic> = 2 and <italic>K</italic> = 4 (<xref ref-type="fig" rid="pone.0204351.g005">Fig 5B</xref>). Individual assignment was &gt;98% at <italic>K</italic> = 2 (<xref ref-type="fig" rid="pone.0204351.g006">Fig 6</xref>; <xref ref-type="supplementary-material" rid="pone.0204351.s003">S3 Table</xref>) and ~82% at <italic>K</italic> = 4 (<xref ref-type="fig" rid="pone.0204351.g006">Fig 6</xref>; <xref ref-type="table" rid="pone.0204351.t004">Table 4</xref>) considering a posterior probability value q ≥ 0.80. At <italic>K</italic> = 2, all the RJFs but one bird of East population (RJ-110_SK) were assigned to any of these two clusters while at <italic>K</italic> = 4 nine RJFs were admixed (RJ-76_UK, RJ-84_UK, RJ-116_UP, RJ-55_UP, RJ-58_UP, RJ-63_UP, RJ-105_BH, RJ-110_SK and RJ-113_AS).</p>
+<fig id="pone.0204351.g005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.g005</object-id>
+<label>Fig 5</label>
+<caption>
+<title>Graphical representation of the true number of the cluster in wild RJF and DC populations.</title>
+<p>(A) Mean L(K) (±SD) over 20 independent runs for each <italic>K</italic>value. (B) The ad hoc quantity (ΔK).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.g005" xlink:type="simple"/>
+</fig>
+<fig id="pone.0204351.g006" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.g006</object-id>
+<label>Fig 6</label>
+<caption>
+<title>Bayesian clustering patterns of wild RJF (n = 57) and DC(n = 79) populations.</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.g006" xlink:type="simple"/>
+</fig>
+<table-wrap id="pone.0204351.t004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.t004</object-id>
+<label>Table 4</label> <caption><title>Assignment of admixed individuals between wild RJF (n = 57) and DC (n = 79) populations through Bayesian clustering analysis at <italic>K</italic> = 4.</title></caption>
+<alternatives>
+<graphic id="pone.0204351.t004g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.t004" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left"/>
+<th align="left">Cluster 1</th>
+<th align="left">Cluster 2</th>
+<th align="left">Cluster 3</th>
+<th align="left">Cluster 4</th>
+<th align="left">Unassigned individuals</th>
+<th align="left">Assigned individuals</th>
+<th align="left">Percent assignment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">RJF_North (32)</td>
+<td align="left">0</td>
+<td align="left">16</td>
+<td align="left">11</td>
+<td align="left">1</td>
+<td align="left">4</td>
+<td align="left">28</td>
+<td align="left">87.50</td>
+</tr>
+<tr>
+<td align="left">RJF_East (9)</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">7</td>
+<td align="left">77.78</td>
+</tr>
+<tr>
+<td align="left">RJF_Central_Southeast (6)</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">6</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">6</td>
+<td align="left">100.00</td>
+</tr>
+<tr>
+<td align="left">RJF_Northeast (10)</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">5</td>
+<td align="left">4</td>
+<td align="left">1</td>
+<td align="left">9</td>
+<td align="left">90.00</td>
+</tr>
+<tr>
+<td align="left">DC_North (36)</td>
+<td align="left">2</td>
+<td align="left">0</td>
+<td align="left">15</td>
+<td align="left">13</td>
+<td align="left">6</td>
+<td align="left">30</td>
+<td align="left">83.33</td>
+</tr>
+<tr>
+<td align="left">DC_East (16)</td>
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">6</td>
+<td align="left"/>
+<td align="left">3</td>
+<td align="left">13</td>
+<td align="left">81.25</td>
+</tr>
+<tr>
+<td align="left">DC_Central_Southeast (4)</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">3</td>
+<td align="left">75.00</td>
+</tr>
+<tr>
+<td align="left">DC_Northeast (23)</td>
+<td align="left">11</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">4</td>
+<td align="left">8</td>
+<td align="left">15</td>
+<td align="left">65.22</td>
+</tr>
+<tr>
+<td align="left">Global assignment</td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="left">111</td>
+<td align="left">81.62</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+</table-wrap>
+<p>A Maximum Likelihood (ML) tree obtained from the microsatellite data formed several groups of possible hybrids between the RJFs and DCs (represented by a red triangle with pink shadow in <xref ref-type="fig" rid="pone.0204351.g007">Fig 7</xref>. There were 13 RJFs (22.8% of total RJF samples; RJ-123, RJ-116, RJ-66, RJ-98, RJ-99, RJ-115, RJ-105, RJ-108, RJ-112, RJ-6 and RJ-70, RJ-9 and RJ-11) being grouped with DCs representing sharing of similar alleles between RJFs and DCs. This clustering pattern as revealed by ML tree based on a distance matrix of microsatellite data exhibited the recent event of admixture. While ML tree based on D-loop sequences identified several RJFs <italic>i</italic>.<italic>e</italic>. RJ123, RJ101, RJ104 and RJ1 sharing identical haplotypes present in DCs and several other RJFs being grouped with DCs (<xref ref-type="fig" rid="pone.0204351.g008">Fig 8</xref>).</p>
+<fig id="pone.0204351.g007" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.g007</object-id>
+<label>Fig 7</label>
+<caption>
+<title>A maximum likelihood phylogenetic tree constructed using microsatellite data of wild RJF and DC samples.</title>
+<p>(The genetic distance matrix was calculated using GeneAlex and phylogenetic tree was constructed in Mega version 7.0. Scale indicates the allele frequency. The possible hybrids as revealed by sharing similar alleles are represented with red triangle under pink shadow).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.g007" xlink:type="simple"/>
+</fig>
+<fig id="pone.0204351.g008" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.g008</object-id>
+<label>Fig 8</label>
+<caption>
+<title>Molecular phylogenetic analysis by Maximum Likelihood method based on the Hasegawa-Kishino-Yano model (HKY+G+I to be the best fit model).</title>
+<p>(The tree is drawn to scale, with branch lengths measured in the number of substitutions per site. The analysis involved 108 nucleotide sequences. All positions containing gaps and missing data were eliminated. There were a total of 452 positions in the final dataset. The possible hybrids as revealed by sharing the same haplotypes <italic>i</italic>.<italic>e</italic>. Hap# 10, 14 and 19 are represented with red triangle, supporting a longer term admixture).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.g008" xlink:type="simple"/>
+</fig>
+<p>The median-joining network analysis of 68 haplotypes suggested a strong geospatial structure in the wild RJFs and DCs (<xref ref-type="fig" rid="pone.0204351.g009">Fig 9</xref>). To understand the direction of gene flow, we prioritize shared haplotypes over the haplotypes unique to individual populations. We assigned shared haplotypes into three categories <italic>viz</italic>. shared—between RJF and DC populations (Hap#10, 14 and 19), between RJF populations (Hap#6) and between DC populations (Hap#37, 40, 41, 45, 50 and 53). Among three haplotypes shared between RJFs and DCs, Hap#14 and 19 were predominant in DCs at 60% and75%, respectively. While Hap#10 was shared by 50% in RJFs or DCs. In the second group, Hap#6 which was shared between RJF populations of North (Uttarakhand) and Northeast (Assam) might be the ancestral haplotype reflecting historic gene flow between these two populations. Interestingly, it was well supported by the results of STRUCTURE (50% of assignment of Northeast RJFs with North RJFs; <xref ref-type="table" rid="pone.0204351.t003">Table 3</xref>) and GENELAND (One RJF sample collected from Assam being grouped in cluster-IV along with RJFs collected from Uttarakhand; <xref ref-type="supplementary-material" rid="pone.0204351.s005">S5 Table</xref>) analyses. However, we did not give much attention to the haplotypes shared between DCs as this could be due to the transport of DCs across the country for the local benefit or commercial purposes.</p>
+<fig id="pone.0204351.g009" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0204351.g009</object-id>
+<label>Fig 9</label>
+<caption>
+<title>Median joining haplotype network of 136 birds (57 wild RJFs and 79 DCs) belonged to 68 haplotypes.</title>
+<p>(Haplotypes of RJFs and DCs are represented in different colored circles. The size of the circle is proportional to the haplotype frequency. Important haplotyoes shared within wild RJF populations, between wild RJFs and DCs and within DC populations are numbered).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.g009" xlink:type="simple"/>
+</fig>
+</sec>
+</sec>
+<sec id="sec013" sec-type="conclusions">
+<title>Discussion</title>
+<p>All the 26 loci were polymorphic and informative for population genetic analysis as the majority of loci showed a highPIC value &gt; 0.5. Several loci were deviated individually from HWE in different populations e.g. four loci in Cent-Southeast and 22 loci in North RJF populations due to heterozygote deficit following possible inbreeding at regional level. Two loci were deviated from HWE across all four RJF populations attributed to the significant heterozygote deficit. None of the locus pairs showed significant LD, and independent assortment across the four RJF populations. The diversity indices, <italic>e</italic>.<italic>g</italic>. Na, ne, He, average PIC values and N<sub>P,</sub> were found to be the highest in the North RJF population. However, most of these genetic attributes in a population are likely influenced by the sample size. UHe and A<sub>R</sub> which are independent of sample size, were were the highest in Northeast population which was also corroborated by the D-loop data. Statham <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0204351.ref047">47</xref>] reported that the parental population of a widespread free-ranging animal species, like Russian silver fox (<italic>Vulpes vulpes</italic>), tended to represent most of its genetic diversity across the entire range. Thus our study warrants that Northeast RJF population would be the wild progenitor due to its abundance of genetic variants in both nuclear and mitochondrial genomes from where early radiation of RJFs throughout India would have occurred.</p>
+<p>The Bayesian analysis of population assignment grouped all the samples into two clusters and the shared assignment of Northeast RJFs with North RJFs (50% being assigned in <italic>cluster-I</italic>; <xref ref-type="table" rid="pone.0204351.t003">Table 3</xref>) indicated their common ancestry probably due to the habitat connectivity among the two populations along Bhutan, the <italic>Duars</italic> region of North Bengal and the <italic>Terai</italic> region of Nepal and India. However, the GENELAND clustering pattern showed four clusters c (<xref ref-type="fig" rid="pone.0204351.g004">Fig 4E</xref>). Interestingly, samples of North RJF population were assigned to both clusters-I and IV (<xref ref-type="supplementary-material" rid="pone.0204351.s005">S5 Table</xref>). This result was also observed in the STRUCTURE analysis. Further, cluster-II (Manipur) was largely separated from cluster-IV, because of the urban areas while, cluster-III present in a small island, might have been separated from the main range by the Brahmaputra River, a significant zoogeographic barrier as evident for the restricted movement of many terrestrial and arboreal mammals. Only two samples, one each from Sikkim and Assam, were assigned into cluster-III. Cluster-IV revealed interesting observations as individuals were collected from several locations, <italic>i</italic>.<italic>e</italic>. S1 (J&amp;K, HP and UK), S2 (Bihar), S3 (Chhattisgarh), S4 (Odisha), S5 (Assam) and S6 (Mizoram and Nagaland), reflecting this cluster-IV to be a genetic reservoir and perhaps a source of radiation either due to historic gene flow or physical exchange of the birds.</p>
+<p>Interestingly, RJF samples from the State of Uttar Pradesh (Pilibhit Tiger Reserve, Dudhwa National Park, Katerniaghat and Kishanpur Wildlife Sanctuary) were assigned to cluster-IV and RJF samples from the State of Uttarakhand (Terai Forest Division, Corbett National Park, Rajaji National Park and Wildlife Institute of India campus) were assigned to cluster-I, irrespective of their physical proximity. There may be several explanations for this unusual observation, one possiblity might be the restricted exchange of wild RJFs within the region by the locals for upgrading their DCs or the other possible reason could be the anthropogenic activities in this region, particularly in and around Terai East and West along the Gola river which might have affected the movement of free-ranging RJFs within the region, as also demonstrated for other animal species such as tigers and leopards [<xref ref-type="bibr" rid="pone.0204351.ref048">48</xref>]. After identifying the admixed individuals between RJFs and DCs, we obtained individual assignment &gt;98% at K = 2 (<xref ref-type="fig" rid="pone.0204351.g005">Fig 5B</xref>; <xref ref-type="supplementary-material" rid="pone.0204351.s003">S3 Table</xref>) but we considered assignment above 82% at <italic>K =</italic> .4 yielding a relatively high resolution of individual ancestry for identifying admixed individuals (<xref ref-type="fig" rid="pone.0204351.g005">Fig 5B</xref>; <xref ref-type="table" rid="pone.0204351.t004">Table 4</xref>). At K = 4, nine RJFs <italic>i</italic>.<italic>e</italic>. RJ-76, RJ-84, RJ-116, RJ-55, RJ-58, RJ-63, RJ-105, RJ-110 and RJ-113 were found to be admixed. Since microsatellites have high mutation rates, they provide information about recent evolutionary history as compared to the slow mutating genes, for example the mitochondrial genes that provide data about ancient history [<xref ref-type="bibr" rid="pone.0204351.ref045">45</xref>]. To reconstruct the recent past, we used both these marker systems to address the issue of genetic swapping between wild RJFs and DCs. A ML tree based on microsatellites distance matrix identified 13 RJFs (~23% of the sampled RJFs) being grouped with DCs as plausible hybrids. However, the phylogenetic relationship based on the D loop sequences identified several RJFs <italic>i</italic>.<italic>e</italic>. RJ123, RJ101, RJ104 and RJ1 sharingidentical haplotypes with DCs. These result indicated that hybridization of RJF is not a recent phenomenon but may have persisted since the domestication of junglefowls. By cross-checking the hybrids identified based on microsatellites with the Dloop based phylogeny, we identified RJF <italic>i</italic>.<italic>e</italic>. RJ123 to be a hybrid. This observation was not surprising as the microsatellites and D loop follow different modes of genetic inheritance, where the former are involved in recombinations due to their bi-parental inheritance while D-loop located in mitochondria follows a maternal inheritance. Network analysis has also identified three haplotypes (Hap#10, 14 and 19) to be shared between RJFs and DCs, supporting a longer-term admixture of the species. Among these three haplotypes, frequencies of Hap#14 and 19 were 60% and 75% in DCs suggesting gene flow between RJFs and DCs. This trend, however was supported by a small number of samples probably derived from male RJFs crossing with DC hens. This explanation was highly reasonable since we have encountered the mixing behaviour of RJF males with DC hens even in the presence of DC cocks [<xref ref-type="bibr" rid="pone.0204351.ref019">19</xref>]. Our results are in the accordance with the observations made by Gering <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0204351.ref012">12</xref>] about the origin of <italic>Kauai</italic> chickens whose behaviour and morphology overlap with those of DCs and RJFs, implying these chickens to be feral <italic>G</italic>. <italic>gallus</italic> descendent from recent invasion(s) of DCs into an ancient RJF reservoir.</p>
+<p>To infer on the threat status of the species undergoing hybridization, we believe it is necessary to sample across the species range as the phenomenon may alter with the compromised samples or the sampling locality. Kanginakudru <italic>et al</italic>. [<xref ref-type="bibr" rid="pone.0204351.ref005">5</xref>] concluded that hybridization is a rare phenomenon, but we believe that such underestimated patterns was due to the limited number of samples, mostly collected from captivity. This study is the first attempt to address the phenomenon of hybridization across the distribution of the RJF species, and our results did not find landscape features contributing to the population genetic structure, possibly due to the exchange of wild RJFs in the past when forests were continuous across India.</p>
+<p>RJF wild populations across the range are under extreme pressure of poaching for local consumption, habitat loss and genetic hybridization with domestic/feral chickens, it is necessary to monitor the presence/absence and abundance of this species in different parts of the distribution range within as well as outside Protected Area network. Conservation breeding of ‘genetically pure’ RJFs may be initiated with inclusion of genetic parameters and captive stocks are required to be scientifically managed for future use such as research and reintroductions.</p>
+</sec>
+<sec id="sec014">
+<title>Supporting information</title>
+<supplementary-material id="pone.0204351.s001" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.s001" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>Hardy–Weinberg equilibrium (HWE) test.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0204351.s002" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.s002" xlink:type="simple">
+<label>S2 Table</label>
+<caption>
+<title>Linkage disequilibrium (LD) test.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0204351.s003" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.s003" xlink:type="simple">
+<label>S3 Table</label>
+<caption>
+<title>Assignment of admixed individuals between wild RJF (n = 57) and DC (n = 79) populations through Bayesian clustering analysis at <italic>K</italic>2.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0204351.s004" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.s004" xlink:type="simple">
+<label>S4 Table</label>
+<caption>
+<title>The most likely number of clusters (<italic>K</italic>) and average logarithm of the posterior probability for each of the 30 runs in GENELAND analysis assuming either uncorrelated or correlated allele frequency models.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0204351.s005" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.s005" xlink:type="simple">
+<label>S5 Table</label>
+<caption>
+<title>The individual’s proportion of membership of the wild RJFs (n = 55) in each of the four clusters (<italic>K</italic> = 4) inferred by GENELAND analysis using uncorrelated allele frequency model.</title>
+<p>(DOC)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0204351.s006" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.s006" xlink:type="simple">
+<label>S1 Fig</label>
+<caption>
+<title>Median joining haplotype network of 38 wild RJFs that represented 31 haplotypes.</title>
+<p>(Haplotypes of four RJF populations are represented in different colored circles. The size of the circle is proportional to the haplotype frequency. Haplotype 3 is shared between North and Northeast populations).</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0204351.s007" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.s007" xlink:type="simple">
+<label>S2 Fig</label>
+<caption>
+<title>Demographic mismatch distribution curve of four RJF populations.</title>
+<p>A, North; B, East; C, Central-Southeast and D,Northeast.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0204351.s008" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0204351.s008" xlink:type="simple">
+<label>S3 Fig</label>
+<caption>
+<title>The number of cluster (<italic>K</italic>) simulated from the posterior distribution of the best run showing the highest average logarithm of the posterior probability in GENELAND analysis.</title>
+<p>Analysis was conducted under the spatial model with uncorrelated allele frequencyincorporating latitude/longitude.</p>
+<p>(TIF)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>We thank all the State Forest / Wildlife Departments, Principal Chief Conservator of Forests and Chief Wildlife Wardens for granting permission for live-trapping and collection of RJF samples in the wild and the logistics provided during field surveys. We are thankful to Director, Dean, Research Coordinator and faculties of Wildlife Institute of India, Dehradun for their encouragement and support. This study was funded by the in-house research grant of Wildlife Institute of India, Dehradun. We acknowledge Dr William J. McShea (Smithsonian Conservation Biology Institute, Virginia) for editing manuscript and two reviewers for helping in improving the contents of the present manuscript.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0204351.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Eriksson</surname> <given-names>J.</given-names></name>, <name name-style="western"><surname>Larson</surname> <given-names>G.</given-names></name>, <name name-style="western"><surname>Gunnarsson</surname> <given-names>U.</given-names></name>, <name name-style="western"><surname>Bed’hom</surname> <given-names>B.</given-names></name>, <name name-style="western"><surname>Tixier-Boichard</surname> <given-names>M.</given-names></name>, <name name-style="western"><surname>Strömstedt</surname> <given-names>L.</given-names></name> <etal>et al.</etal> (<year>2008</year>). <article-title>Identification of the yellow skin gene reveals a hybrid origin of the domestic chicken</article-title>. <source><italic>PLoS Genet</italic></source> <volume>4</volume>: <fpage>e1000010</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pgen.1000010" xlink:type="simple">10.1371/journal.pgen.1000010</ext-link></comment> <object-id pub-id-type="pmid">18454198</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fumihito</surname> <given-names>A.</given-names></name>, <name name-style="western"><surname>Miyake</surname> <given-names>T.</given-names></name>, <name name-style="western"><surname>Sumi</surname> <given-names>S.</given-names></name>, <name name-style="western"><surname>Takada</surname> <given-names>M.</given-names></name>, <name name-style="western"><surname>Ohno</surname> <given-names>S.</given-names></name> and <name name-style="western"><surname>Kondo</surname> <given-names>N.</given-names></name> (<year>1994</year>). <article-title>One subspecies of the red junglefowl <italic>Gallus gallus gallus</italic>. suffices as the matriarchic ancestor of all domestic breeds</article-title>. <source><italic>Proc Natl Acad Sci USA</italic></source>, <volume>91</volume>:<fpage>12505</fpage>–<lpage>12509</lpage>. <object-id pub-id-type="pmid">7809067</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fumihito</surname> <given-names>A.</given-names></name>, <name name-style="western"><surname>Miyake</surname> <given-names>T.</given-names></name>, <name name-style="western"><surname>Takada</surname> <given-names>M.</given-names></name>, <name name-style="western"><surname>Shingu</surname> <given-names>R.</given-names></name>, <name name-style="western"><surname>Endo</surname> <given-names>T.</given-names></name>, <name name-style="western"><surname>Gojobori</surname> <given-names>T.</given-names></name> <etal>et al</etal>. (<year>1996</year>). <article-title>Monophyletic origin and unique dispersal patterns of domestic fowls</article-title>. <source><italic>Proc Natl Acad Sci USA</italic></source>. <volume>93</volume>: <fpage>792</fpage>–<lpage>6795</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Liu</surname> <given-names>Y.P.</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>G.S.</given-names></name>, <name name-style="western"><surname>Yao</surname> <given-names>Y.G.</given-names></name>, <name name-style="western"><surname>Miao</surname> <given-names>Y.W.</given-names></name>, <name name-style="western"><surname>Luikart</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Baig</surname> <given-names>M</given-names></name> <etal>et al</etal>. (<year>2006</year>). <article-title>Multiple origins of chickens: out of Asian jungles</article-title>. ‎<source><italic>Mol Phylogenetics Evol</italic></source>, <volume>38</volume>: <fpage>12</fpage>–<lpage>19</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kanginakudru</surname> <given-names>S.</given-names></name>, <name name-style="western"><surname>Murlidhar</surname> <given-names>M.</given-names></name>, <name name-style="western"><surname>Jakati</surname> <given-names>R. D.</given-names></name> and <name name-style="western"><surname>Nagaraju</surname> <given-names>J.</given-names></name> (<year>2008</year>). <article-title>Genetic evidence from Indian red junglefowl corroborates multiple domestication of modern day chicken</article-title>. <source><italic>BMC Evol Biol</italic></source>, <volume>8</volume>: <fpage>174</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/1471-2148-8-174" xlink:type="simple">10.1186/1471-2148-8-174</ext-link></comment> <object-id pub-id-type="pmid">18544161</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Berthouly</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Leroy</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Van</surname> <given-names>TN</given-names></name>, <name name-style="western"><surname>Thanh</surname> <given-names>HH</given-names></name>, <name name-style="western"><surname>Bed’Hom</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Nguyen</surname> <given-names>BT</given-names></name> <etal>et al.</etal> (<year>2009</year>). <article-title>Genetic analysis of local Vietnamese chickens provides evidence of gene flow from wild to domestic populations</article-title>. <source><italic>BMC Genet</italic></source> <volume>10</volume>: <fpage>1</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1186/1471-2156-10-1" xlink:type="simple">10.1186/1471-2156-10-1</ext-link></comment> <object-id pub-id-type="pmid">19133138</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Miao</surname> <given-names>Y.W.</given-names></name>, <name name-style="western"><surname>Peng</surname> <given-names>M.S.</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>G.S.</given-names></name>, <name name-style="western"><surname>Ouyang</surname> <given-names>Y.N.</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>Z.Y.</given-names></name>, <name name-style="western"><surname>Yu</surname> <given-names>N</given-names></name>. <etal>et al.</etal> <article-title>Chicken domestication: an updated perspective based on mitochondrial genomes</article-title>. (<year>2013</year>). <source><italic>Heredity</italic></source>, <volume>110</volume>, <fpage>277</fpage>–<lpage>282</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/hdy.2012.83" xlink:type="simple">10.1038/hdy.2012.83</ext-link></comment> <object-id pub-id-type="pmid">23211792</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Peterson</surname> <given-names>A.T.</given-names></name>, and <name name-style="western"><surname>Brisbin</surname> <given-names>I. L.</given-names> <suffix>Jr</suffix></name>. (<year>1999</year>). <article-title>Genetic endangerment of wild Red Junglefowl <italic>Gallus</italic> gallus?</article-title> <source><italic>Bird Conserv Int</italic></source> <volume>8</volume>: <fpage>387</fpage>–<lpage>394</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brisbin</surname> <given-names>I. L.</given-names> <suffix>Jr.</suffix></name>, <name name-style="western"><surname>Peterson</surname> <given-names>A.T.</given-names></name>, <name name-style="western"><surname>Okimoto</surname> <given-names>R.</given-names></name>, and <name name-style="western"><surname>Amoto</surname> <given-names>G.</given-names></name> (<year>2002</year>). <article-title>Characterisation of the genetic status of populations of Red Junglefowl</article-title>. <source><italic>J</italic>. <italic>Bombay Nat Hist Soc</italic></source>, <volume>99</volume>: <fpage>217</fpage>–<lpage>223</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nishibori</surname> <given-names>M.</given-names></name>, <name name-style="western"><surname>Shimogiri</surname> <given-names>T.</given-names></name>, <name name-style="western"><surname>Hayashi</surname> <given-names>T.</given-names></name>, and <name name-style="western"><surname>Yasue</surname> <given-names>H.</given-names></name> (<year>2005</year>). <article-title>Molecular evidence for hybridization of species in the genus Gallus except for <italic>Gallus varius</italic></article-title>. <source><italic>Ani Gen</italic></source>, <volume>36</volume>: <fpage>367</fpage>–<lpage>375</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brisbin</surname> <given-names>I. L.</given-names> <suffix>Jr.</suffix></name>, and <name name-style="western"><surname>Peterson</surname> <given-names>A. T.</given-names></name> (<year>2007</year>). <article-title>Playing chicken with Red Junglefowl: identifying phenotypic markers of genetic purity in <italic>Gallus gallus</italic></article-title>. <source><italic>Ani Cons</italic></source>, <volume>10</volume>: <fpage>429</fpage>–<lpage>435</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gering</surname> <given-names>E.</given-names></name>, <name name-style="western"><surname>Johnsson</surname> <given-names>M.</given-names></name>, <name name-style="western"><surname>Willis</surname> <given-names>P.</given-names></name>, <name name-style="western"><surname>Getty</surname> <given-names>T.</given-names></name> and <name name-style="western"><surname>Wright</surname> <given-names>D.</given-names></name> (<year>2015</year>). <article-title>Mixed ancestry and admixture in Kauai’s feral chickens: invasion of domestic genes into ancient Red Junglefowl reservoirs</article-title>. <source><italic>Mol Ecol</italic></source>, <volume>24</volume>, <fpage>2112</fpage>–<lpage>2124</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/mec.13096" xlink:type="simple">10.1111/mec.13096</ext-link></comment> <object-id pub-id-type="pmid">25655399</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Flamand</surname> <given-names>J.R.B.</given-names></name>, <name name-style="western"><surname>Vankan</surname> <given-names>D.</given-names></name>, <name name-style="western"><surname>Gairhe</surname> <given-names>K.P.</given-names></name>, <name name-style="western"><surname>Duong</surname> <given-names>H.</given-names></name> and <name name-style="western"><surname>Barker</surname> <given-names>J.S.F.</given-names></name> (<year>2003</year>). <article-title>Genetic identification of wild Asian water buffalo in Nepal</article-title>. <source><italic>Ani Cons</italic></source>, <volume>6</volume>, 3: <fpage>265</fpage>–<lpage>270</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Randi</surname> <given-names>E.</given-names></name> (<year>2008</year>). <article-title>Detecting hybridization between wild species and their domesticated relatives</article-title>. <source><italic>Mol Ecol</italic></source>, <volume>17</volume>, <fpage>285</fpage>–<lpage>93</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1365-294X.2007.03417.x" xlink:type="simple">10.1111/j.1365-294X.2007.03417.x</ext-link></comment> <object-id pub-id-type="pmid">18173502</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Šprem</surname> <given-names>N.</given-names></name>, <name name-style="western"><surname>Salajpal</surname> <given-names>K.</given-names></name>, <name name-style="western"><surname>Safner</surname> <given-names>T.</given-names></name>, <name name-style="western"><surname>Đikić</surname> <given-names>D.</given-names></name>, <name name-style="western"><surname>Jurić</surname> <given-names>J.</given-names></name>, <name name-style="western"><surname>Curik</surname> <given-names>I.</given-names></name> <etal>et al.</etal> (<year>2014</year>). <article-title>Genetic analysis of hybridization between domesticated endangered pig breeds and wild boar</article-title>, <source><italic>Livest Sci</italic></source>, <volume>162</volume>, <fpage>1</fpage>–<lpage>4</lpage>. <bold><ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.livsci.2013.12.010" xlink:type="simple">https://doi.org/10.1016/j.livsci.2013.12.010</ext-link></bold>.</mixed-citation></ref>
+<ref id="pone.0204351.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Torres</surname> <given-names>R.T.</given-names></name>, <name name-style="western"><surname>Ferreira</surname> <given-names>E.</given-names></name>, <name name-style="western"><surname>Rocha</surname> <given-names>R.G.</given-names></name> and <name name-style="western"><surname>Fonseca</surname> <given-names>C.</given-names></name>, (<year>2017</year>). <article-title>Hybridization between wolf and domestic dog: First evidence from an endangered population in central Portugal</article-title>, <source><italic>Mamm Biol</italic></source>, <volume>86</volume>, <fpage>70</fpage>–<lpage>74</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Allendorf</surname> <given-names>W. F.</given-names></name>, <name name-style="western"><surname>Leary</surname> <given-names>R. F.</given-names></name>, <name name-style="western"><surname>Spruell</surname> <given-names>P.</given-names></name>, and <name name-style="western"><surname>Wenburg</surname> <given-names>K. J.</given-names></name> (<year>2001</year>). <article-title>The problems with hybrids: setting conservation guidelines</article-title>. <source><italic>Trends Ecol Evolut</italic></source>, <volume>16</volume>: <fpage>613</fpage>–<lpage>622</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref018"><label>18</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Sathyakumar</surname> <given-names>S.</given-names></name>, <name name-style="western"><surname>Fernandes</surname> <given-names>M.</given-names></name>, <name name-style="western"><surname>Mukesh</surname></name>, <name name-style="western"><surname>Kaul</surname> <given-names>R</given-names></name>. and <name name-style="western"><surname>Kalsi</surname> <given-names>R.S.</given-names></name>, (<year>2012</year>). <chapter-title>Conservation of Red Junglefowl <italic>Gallus gallus</italic> in India</chapter-title>. <publisher-name>Final Project Report. Wildlife Institute of India</publisher-name>, <publisher-loc>Dehradun</publisher-loc>. 98 Pp.</mixed-citation></ref>
+<ref id="pone.0204351.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Thakur</surname> <given-names>M.</given-names></name> and <name name-style="western"><surname>Schättin</surname> <given-names>E.W.</given-names></name>, (<year>2014</year>). <article-title>Die Ahnen des Haushuhns sind gefährdet. Geflügel</article-title>, TIERWELT / 1/ 2.</mixed-citation></ref>
+<ref id="pone.0204351.ref020"><label>20</label><mixed-citation publication-type="book" xlink:type="simple"><name name-style="western"><surname>Fuller</surname> <given-names>R. A</given-names></name>. and <name name-style="western"><surname>Garson</surname> <given-names>P.J.</given-names></name> (eds) (<year>2000</year>). <chapter-title>Pheasants: status survey and conservation action plan 2000–2004</chapter-title>. <publisher-name>WPA/Birdlife/SSC Pheasant Specialist Group. IUCN, Gland. Switzerland and Cambridge, U.K. and the World Pheasant Association, Reading</publisher-name>, <publisher-loc>U.K</publisher-loc>.</mixed-citation></ref>
+<ref id="pone.0204351.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mackey</surname> <given-names>K</given-names></name>., <name name-style="western"><surname>Williams</surname> <given-names>P</given-names></name>., <name name-style="western"><surname>Seim</surname> <given-names>S</given-names></name>., and <name name-style="western"><surname>Chomczynski</surname> <given-names>P.</given-names></name> (<year>1996</year>). <article-title>The use of DNAzol for the rapid isolation of genomic DNA from whole blood</article-title>. <source><italic>Biomedical Products Supplement</italic></source>, <fpage>13</fpage>–<lpage>15</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref022"><label>22</label><mixed-citation publication-type="book" xlink:type="simple"><collab>FAO</collab>. (<year>2011</year>). <chapter-title>Molecular genetics characterization of animal genetic resources</chapter-title>. <publisher-name>FAO Animal Production and Health Guidelines</publisher-name>. No. 9. <publisher-loc>Rome</publisher-loc>.</mixed-citation></ref>
+<ref id="pone.0204351.ref023"><label>23</label><mixed-citation publication-type="other" xlink:type="simple">FAO/MoDAD. (2004). Secondary Guidelines. Measurement of Domestic Animal Diversity (MoDAD): Recommended Microsatellite Markers. Available at <ext-link ext-link-type="uri" xlink:href="http://fao.org/dad-is" xlink:type="simple">http://fao.org/dad-is</ext-link>.</mixed-citation></ref>
+<ref id="pone.0204351.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mwacharo</surname> <given-names>J.M.</given-names></name>, <name name-style="western"><surname>Nomura</surname> <given-names>K.</given-names></name>, <name name-style="western"><surname>Hanada</surname> <given-names>H.</given-names></name>, <name name-style="western"><surname>Amano</surname> <given-names>T.</given-names></name>, <name name-style="western"><surname>Han</surname> <given-names>H.J.</given-names></name> and <name name-style="western"><surname>Hanotte</surname> <given-names>O.</given-names></name> (<year>2013</year>). <article-title>Reconstructing the origin and dispersal patterns of village chickens across East Africa: insights from autosomal markers</article-title>. <source><italic>Mol</italic>. <italic>Ecol</italic>.</source>, <volume>22</volume>: <fpage>2683</fpage>–<lpage>2697</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/mec.12294" xlink:type="simple">10.1111/mec.12294</ext-link></comment> <object-id pub-id-type="pmid">23611649</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mukesh</surname></name>, <name name-style="western"><surname>Kalsi</surname> <given-names>R.S.</given-names></name>, <name name-style="western"><surname>Mandhan</surname> <given-names>R.P</given-names></name>. and <name name-style="western"><surname>Sathyakumar</surname> <given-names>S.</given-names></name> (<year>2011</year>). <article-title>Genetic diversity studies of red jungle fowl across its distribution range in Northern India</article-title>. <source><italic>Asian J Biot</italic></source>, <volume>3</volume>: <fpage>293</fpage>–<lpage>301</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mukesh</surname></name>, <name name-style="western"><surname>Fernandes</surname> <given-names>M.</given-names></name>, <name name-style="western"><surname>Jianlin</surname> <given-names>H</given-names></name>. and <name name-style="western"><surname>Sathyakumar</surname> <given-names>S</given-names></name>. (<year>2013</year>). <article-title>Genetics driven interventions for ex situ conservation of red junglefowl (Gallus gallus murghi) populations in India</article-title>. <source>Zoo Biol,</source> <volume>32</volume>(<issue>5</issue>):<fpage>476</fpage>–<lpage>83</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Desjardins</surname> <given-names>P</given-names></name> and <name name-style="western"><surname>Morais</surname> <given-names>R.</given-names></name> (<year>1990</year>). <article-title>Sequence and gene organization of the chicken mitochondrial genome. A novel gene order in higher vertebrates</article-title>. <source><italic>J Mol Biol</italic></source> <volume>212</volume>: <fpage>599</fpage>–<lpage>634</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/0022-2836(90)90225-B" xlink:type="simple">10.1016/0022-2836(90)90225-B</ext-link></comment> <object-id pub-id-type="pmid">2329578</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Komiyama</surname> <given-names>T.</given-names></name>, <name name-style="western"><surname>Ikeo</surname> <given-names>K.</given-names></name> and <name name-style="western"><surname>Gojobori</surname> <given-names>T.</given-names></name> (<year>2003</year>). <article-title>Where is the origin of the Japanese gamecocks?</article-title> <source><italic>Gene</italic></source> <volume>317</volume>: <fpage>195</fpage>–<lpage>202</lpage>. <object-id pub-id-type="pmid">14604808</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Peakall</surname> <given-names>R</given-names></name> and <name name-style="western"><surname>Smouse</surname> <given-names>P.E.</given-names></name> (<year>2012</year>) <article-title>GenAlEx 6.5: genetic analysis in Excel. Population genetics software for teaching and research-an update</article-title>. <source><italic>Bioinformatics</italic></source>, <volume>28</volume>:<fpage>2537</fpage>–<lpage>2539</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/bioinformatics/bts460" xlink:type="simple">10.1093/bioinformatics/bts460</ext-link></comment> <object-id pub-id-type="pmid">22820204</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref030"><label>30</label><mixed-citation publication-type="other" xlink:type="simple">Goudet J. (2001). FSTAT, a program to estimate and test gene diversities and fixation indices (Version 2.9.3.2). Available online at: <ext-link ext-link-type="uri" xlink:href="http://www2.unil.ch/popgen/softwares/fstat.htm" xlink:type="simple">http://www2.unil.ch/popgen/softwares/fstat.htm</ext-link> [last accessed February 2012].</mixed-citation></ref>
+<ref id="pone.0204351.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kalinowski</surname> <given-names>S.T.</given-names></name>, <name name-style="western"><surname>Taper</surname> <given-names>M.L.</given-names></name> and <name name-style="western"><surname>Marshall</surname> <given-names>T.C.</given-names></name> (<year>2007</year>) <article-title>Revising how the computer program CERVUS accommodates genotyping error increases success in paternity assignment</article-title>. <source><italic>Mol Ecol</italic></source> <volume>16</volume>:<fpage>1099</fpage>–<lpage>1106</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1365-294X.2007.03089.x" xlink:type="simple">10.1111/j.1365-294X.2007.03089.x</ext-link></comment> <object-id pub-id-type="pmid">17305863</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Guo</surname> <given-names>S.W.</given-names></name> and <name name-style="western"><surname>Thompson</surname> <given-names>E.A.</given-names></name> (<year>1992</year>). <article-title>Performing the exact test of Hardy–Weinberg proportion for multiple alleles</article-title>. <source><italic>Biometrics</italic></source> <volume>48</volume>:<fpage>361</fpage>–<lpage>372</lpage>. <object-id pub-id-type="pmid">1637966</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Raymond</surname> <given-names>M.</given-names></name> and <name name-style="western"><surname>Rousset</surname> <given-names>F.</given-names></name> (<year>1995</year>). <article-title>GENEPOP (Version 1.2): population genetics software for exact tests and ecumenicism</article-title>. <source><italic>J Hered</italic></source> <volume>86</volume>:<fpage>248</fpage>–<lpage>249</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Weir</surname> <given-names>B.S.</given-names></name> and <name name-style="western"><surname>Cockerham</surname> <given-names>C.C.</given-names></name> (<year>1984</year>). <article-title>Estimating F-statistics for the analysis of population structure</article-title>. <source><italic>Evolution</italic></source> <volume>38</volume>:<fpage>1358</fpage>–<lpage>1370</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1558-5646.1984.tb05657.x" xlink:type="simple">10.1111/j.1558-5646.1984.tb05657.x</ext-link></comment> <object-id pub-id-type="pmid">28563791</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pritchard</surname> <given-names>J.K.</given-names></name>, <name name-style="western"><surname>Stephens</surname> <given-names>M.</given-names></name> and <name name-style="western"><surname>Donnelly</surname> <given-names>P</given-names></name>. (<year>2000</year>). <article-title>Inference of population structure using multi-locus genotype data</article-title>. <source><italic>Genetics</italic></source>, <volume>155</volume>:<fpage>945</fpage>–<lpage>959</lpage>. <object-id pub-id-type="pmid">10835412</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Evanno</surname> <given-names>G.</given-names></name>, <name name-style="western"><surname>Regnaut</surname> <given-names>S.</given-names></name> and <name name-style="western"><surname>Goudet</surname> <given-names>J.</given-names></name> (<year>2005</year>). <article-title>Detecting the number of clusters of individuals using the software STRUCTURE: a simulation study</article-title>. <source><italic>Mol Ecol</italic></source> <volume>14</volume>:<fpage>2611</fpage>–<lpage>2620</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1365-294X.2005.02553.x" xlink:type="simple">10.1111/j.1365-294X.2005.02553.x</ext-link></comment> <object-id pub-id-type="pmid">15969739</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mukesh</surname></name>, <name name-style="western"><surname>Kumar</surname> <given-names>V.P.</given-names></name>, <name name-style="western"><surname>Sharma</surname> <given-names>L.K.</given-names></name>, <name name-style="western"><surname>Shukla</surname> <given-names>M.</given-names></name>, and <name name-style="western"><surname>a</surname> <given-names>S.</given-names></name> (<year>2015</year>a). <article-title>Pragmatic Perspective on Conservation genetics and demographic history of the last surviving population of Kashmir red deer (Cervus elaphus hanglu) in India</article-title>. <source>PLoS ONE</source> <volume>10</volume>(<issue>2</issue>): <fpage>e0117069</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0117069" xlink:type="simple">10.1371/journal.pone.0117069</ext-link></comment> <object-id pub-id-type="pmid">25671567</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mukesh</surname></name>, <name name-style="western"><surname>Sharma</surname> <given-names>L.K.</given-names></name>, <name name-style="western"><surname>Charoo</surname> <given-names>S.A</given-names></name>. and <name name-style="western"><surname>Sathyakumar</surname> <given-names>S.</given-names></name> (<year>2015</year>b). <article-title>Conflict Bear Translocation: Investigating Population Genetics and Fate of Bear Translocation in Dachigam National Park, Jammu and Kashmir, India</article-title>. <source>PLoS ONE</source> <volume>10</volume>(<issue>8</issue>): <fpage>e0132005</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1371/journal.pone.0132005" xlink:type="simple">10.1371/journal.pone.0132005</ext-link></comment> <object-id pub-id-type="pmid">26267280</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Guillot</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Mortier</surname> <given-names>F.</given-names></name> and <name name-style="western"><surname>Estoup</surname> <given-names>A.</given-names></name> (<year>2005</year>) <article-title>GENELAND: a computer package for landscape genetics</article-title>. <source><italic>Mol Ecol Notes</italic></source> <volume>5</volume>:<fpage>712</fpage>–<lpage>715</lpage>.</mixed-citation></ref>
+<ref id="pone.0204351.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Librado</surname> <given-names>P.</given-names></name> and <name name-style="western"><surname>Rozas</surname> <given-names>J.</given-names></name> (<year>2009</year>). <article-title>DnaSP v5: A software for comprehensive analysis of DNA polymorphism data</article-title>. <source><italic>Bioinformatics</italic></source>, <volume>25</volume>:<fpage>1451</fpage>–<lpage>1452</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/bioinformatics/btp187" xlink:type="simple">10.1093/bioinformatics/btp187</ext-link></comment> <object-id pub-id-type="pmid">19346325</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref041"><label>41</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Rogers</surname> <given-names>A.R.</given-names></name> and <name name-style="western"><surname>Harpending</surname> <given-names>H.</given-names></name> (<year>1992</year>) <article-title>Population growth makes waves in the distribution of pairwise genetic differences</article-title>. <source><italic>Mol Biol Evol</italic></source> <volume>9</volume>:<fpage>552</fpage>–<lpage>569</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/oxfordjournals.molbev.a040727" xlink:type="simple">10.1093/oxfordjournals.molbev.a040727</ext-link></comment> <object-id pub-id-type="pmid">1316531</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref042"><label>42</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tajima</surname> <given-names>H</given-names></name>. (<year>1989</year>) <article-title>Statistical method for testing the neutral mutation hypothesis by DNA polymorphism</article-title>. <source><italic>Genetics</italic></source>, <volume>123</volume>: <fpage>585</fpage>–<lpage>595</lpage>. <object-id pub-id-type="pmid">2513255</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref043"><label>43</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fu</surname> <given-names>Y.</given-names></name> (<year>1997</year>) <article-title>Statistical tests of neutrality of mutations against population growth, hitchhiking and background selection</article-title>. <source><italic>Genetics</italic></source>, <volume>147</volume>: <fpage>915</fpage>–<lpage>925</lpage>. <object-id pub-id-type="pmid">9335623</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref044"><label>44</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fu</surname> <given-names>Y</given-names></name> and <name name-style="western"><surname>Li</surname> <given-names>W.</given-names></name> (<year>1993</year>) <article-title>Statistical tests on neutrality of mutations</article-title>. <source><italic>Genetics</italic></source> <volume>133</volume>, <fpage>693</fpage>–<lpage>709</lpage>. <object-id pub-id-type="pmid">8454210</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref045"><label>45</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bandelt</surname> <given-names>HJ</given-names></name>, <name name-style="western"><surname>Forster</surname> <given-names>P</given-names></name>, and <name name-style="western"><surname>Ro¨hl</surname> <given-names>A.</given-names></name>(<year>1999</year>) <article-title>Median-joining networks for inferring intraspecific phylogenies</article-title>. <source><italic>Mol Biol Evol</italic></source> <volume>16</volume>:<fpage>37</fpage>–<lpage>48</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/oxfordjournals.molbev.a026036" xlink:type="simple">10.1093/oxfordjournals.molbev.a026036</ext-link></comment> <object-id pub-id-type="pmid">10331250</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref046"><label>46</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kumar</surname> <given-names>S.</given-names></name>, <name name-style="western"><surname>Stecher</surname> <given-names>G.</given-names></name> and <name name-style="western"><surname>Tamura</surname> <given-names>K.</given-names></name> (<year>2016</year>). <article-title>MEGA7: Molecular Evolutionary Genetics Analysis version 7.0 for bigger datasets</article-title>. <source><italic>Mol Biol Evol</italic></source>, <volume>33</volume>:<fpage>1870</fpage>–<lpage>1874</lpage> <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/molbev/msw054" xlink:type="simple">10.1093/molbev/msw054</ext-link></comment> <object-id pub-id-type="pmid">27004904</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref047"><label>47</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Statham</surname> <given-names>M. J.</given-names></name>, <name name-style="western"><surname>Trut</surname> <given-names>L. N.</given-names></name>, <name name-style="western"><surname>Sacks</surname> <given-names>B. N.</given-names></name>, <name name-style="western"><surname>Kharlamova</surname> <given-names>A. V.</given-names></name>, <name name-style="western"><surname>Oskina</surname> <given-names>I. N.</given-names></name>, <name name-style="western"><surname>Gulevich</surname> <given-names>R. G.</given-names></name> <etal>et al</etal>. (<year>2011</year>). <article-title>On the origin of a domesticated species: Identifying the parent population of Russian silver foxes (<italic>Vulpes vulpes)</italic></article-title>. <source><italic>Biol J Linn Soc Lond</italic></source> <volume>103</volume>(<issue>1</issue>):<fpage>168</fpage>–<lpage>175</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1111/j.1095-8312.2011.01629.x" xlink:type="simple">10.1111/j.1095-8312.2011.01629.x</ext-link></comment> <object-id pub-id-type="pmid">21625363</object-id></mixed-citation></ref>
+<ref id="pone.0204351.ref048"><label>48</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Johnsingh</surname> <given-names>A.J.T</given-names></name> and <name name-style="western"><surname>Negi</surname> <given-names>A.S</given-names></name>. (<year>2003</year>). <article-title>Status of tiger and leopard in Rajaji–Corbett Conservation Unit, Northern India</article-title>. <source>Biological Conservation</source>. <volume>111</volume>, <fpage>385</fpage>–<lpage>393</lpage></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

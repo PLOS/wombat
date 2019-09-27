@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id><journal-title-group>
+<journal-title>PLoS ONE</journal-title></journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, USA</publisher-loc></publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="publisher-id">PONE-D-13-40453</article-id>
+<article-id pub-id-type="doi">10.1371/journal.pone.0093674</article-id>
+<article-categories><subj-group subj-group-type="heading"><subject>Research Article</subject></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Biology and life sciences</subject><subj-group><subject>Genetics</subject><subj-group><subject>Genetic dominance</subject><subj-group><subject>Autosomal dominant diseases</subject><subj-group><subject>Polycystic kidney disease</subject></subj-group></subj-group><subj-group><subject>Autosomal dominant traits</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Medicine and health sciences</subject><subj-group><subject>Diagnostic medicine</subject><subj-group><subject>Diagnostic radiology</subject><subj-group><subject>Tomography</subject><subj-group><subject>Computed axial tomography</subject></subj-group></subj-group></subj-group></subj-group><subj-group><subject>Clinical genetics</subject></subj-group><subj-group><subject>Nephrology</subject><subj-group><subject>Chronic kidney disease</subject></subj-group></subj-group><subj-group><subject>Pulmonology</subject><subj-group><subject>Respiratory infections</subject></subj-group></subj-group><subj-group><subject>Radiology and imaging</subject></subj-group></subj-group><subj-group subj-group-type="Discipline-v2"><subject>Research and analysis methods</subject><subj-group><subject>Research design</subject><subj-group><subject>Case-control studies</subject><subject>Clinical research design</subject><subject>Retrospective studies</subject></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Radiologic and Clinical Bronchiectasis Associated with Autosomal Dominant Polycystic Kidney Disease</article-title>
+<alt-title alt-title-type="running-head">Bronchiectasis and ADPKD</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Moua</surname><given-names>Teng</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref><xref ref-type="corresp" rid="cor1"><sup>*</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Zand</surname><given-names>Ladan</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Hartman</surname><given-names>Robert P.</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Hartman</surname><given-names>Thomas E.</given-names></name><xref ref-type="aff" rid="aff3"><sup>3</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Qin</surname><given-names>Dingxin</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Peikert</surname><given-names>Tobias</given-names></name><xref ref-type="aff" rid="aff1"><sup>1</sup></xref></contrib>
+<contrib contrib-type="author" xlink:type="simple"><name name-style="western"><surname>Qian</surname><given-names>Qi</given-names></name><xref ref-type="aff" rid="aff2"><sup>2</sup></xref></contrib>
+</contrib-group>
+<aff id="aff1"><label>1</label><addr-line>Division of Pulmonary/Critical Care, Mayo Clinic Rochester, Rochester, Minnesota, United States of America</addr-line></aff>
+<aff id="aff2"><label>2</label><addr-line>Division of Nephrology, Mayo Clinic Rochester, Rochester, Minnesota, United States of America</addr-line></aff>
+<aff id="aff3"><label>3</label><addr-line>Department of Radiology, Mayo Clinic Rochester, Rochester, Minnesota, United States of America</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple"><name name-style="western"><surname>Burdmann</surname><given-names>Emmanuel A.</given-names></name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/></contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>University of Sao Paulo Medical School, Brazil</addr-line></aff>
+<author-notes>
+<corresp id="cor1">* E-mail: <email xlink:type="simple">moua.teng@mayo.edu</email></corresp>
+<fn fn-type="conflict"><p>The authors have declared that no competing interests exist.</p></fn>
+<fn fn-type="con"><p>Conceived and designed the experiments: TM LZ DQ RH TH TP QQ. Performed the experiments: TM LZ RH TH. Analyzed the data: TM LZ QQ TP TH RH DQ. Wrote the paper: TM TP QQ.</p></fn>
+</author-notes>
+<pub-date pub-type="collection"><year>2014</year></pub-date>
+<pub-date pub-type="epub"><day>18</day><month>4</month><year>2014</year></pub-date>
+<volume>9</volume>
+<issue>4</issue>
+<elocation-id>e93674</elocation-id>
+<history>
+<date date-type="received"><day>2</day><month>10</month><year>2013</year></date>
+<date date-type="accepted"><day>8</day><month>3</month><year>2014</year></date>
+</history>
+<permissions>
+<copyright-year>2014</copyright-year>
+<copyright-holder>Moua et al</copyright-holder><license xlink:type="simple"><license-p>This is an open-access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions>
+<abstract><sec>
+<title>Background</title>
+<p>Polycystin 1 and 2, the protein abnormalities associated with autosomal dominant polycystic kidney disease (ADPKD), are also found in airway cilia and smooth muscle cells. There is evidence of increased radiologic bronchiectasis associated with ADPKD, though the clinical and functional implications of this association are unknown. We hypothesized an increased prevalence of both radiologic and clinical bronchiectasis is associated with APDKD as compared to non-ADPKD chronic kidney disease (CKD) controls.</p>
+</sec><sec>
+<title>Materials and Methods</title>
+<p>A retrospective case-control study was performed at our institution involving consecutive ADPKD and non-ADPKD chronic kidney disease (CKD) patients seen over a 13 year period with both chest CT and PFT. CTs were independently reviewed by two blinded thoracic radiologists. Manually collected clinical data included symptoms, smoker status, transplant history, and PFT findings.</p>
+</sec><sec>
+<title>Results</title>
+<p>Ninety-two ADPKD and 95 non-ADPKD CKD control patients were compared. Increased prevalence of radiologic bronchiectasis, predominantly mild lower lobe disease, was found in ADPKD patients compared to CKD control (19 vs. 9%, P = 0.032, OR 2.49 (CI 1.1–5.8)). After adjustment for covariates, ADPKD was associated with increased risk of radiologic bronchiectasis (OR 2.78 (CI 1.16–7.12)). Symptomatic bronchiectasis occurred in approximately a third of ADPKD patients with radiologic disease. Smoking was associated with increased radiologic bronchiectasis in ADPKD patients (OR 3.59, CI 1.23–12.1).</p>
+</sec><sec>
+<title>Conclusions</title>
+<p>Radiological bronchiectasis is increased in patients with ADPKD particularly those with smoking history as compared to non-ADPKD CKD controls. A third of such patients have symptomatic disease. Bronchiectasis should be considered in the differential in ADPKD patients with respiratory symptoms and smoking history.</p>
+</sec></abstract>
+<funding-group><funding-statement>These authors have no support or funding to report.</funding-statement></funding-group><counts><page-count count="7"/></counts></article-meta>
+</front>
+<body><sec id="s1">
+<title>Introduction</title>
+<p>Autosomal dominant polycystic kidney disease (ADPKD) characteristically manifests with progressive fluid filled renal cysts leading to end-stage renal disease in approximately 50% of patients <xref ref-type="bibr" rid="pone.0093674-Torres1">[1]</xref>, <xref ref-type="bibr" rid="pone.0093674-Barua1">[2]</xref>. The contributing genetic defects are found in polycystin-1 and 2, two transmembrane regulatory proteins responsible for mechanoreception, cell polarization, and orientation <xref ref-type="bibr" rid="pone.0093674-Hopp1">[3]</xref>, <xref ref-type="bibr" rid="pone.0093674-Gallagher1">[4]</xref>.</p>
+<p>Multiple non-pulmonary extra-renal manifestations of ADPKD have been described <xref ref-type="bibr" rid="pone.0093674-Qian1">[5]</xref>, <xref ref-type="bibr" rid="pone.0093674-Qian2">[6]</xref>, <xref ref-type="bibr" rid="pone.0093674-Kumar1">[7]</xref>. Interestingly, polycystins are expressed in the cilia of both human airway epithelial <xref ref-type="bibr" rid="pone.0093674-Driscoll1">[8]</xref> and airway smooth muscle cells <xref ref-type="bibr" rid="pone.0093674-Wu1">[9]</xref>. Consequently, functional abnormalities in polycystins may result in radiological bronchiectasis due to decreased mucociliary clearance or impaired airway injury repair <xref ref-type="bibr" rid="pone.0093674-Driscoll1">[8]</xref>. The functional and clinical significance of this radiologic association remains mostly unexplored.</p>
+<p>In the current study we investigated the possible association of radiologic bronchiectasis with abnormal PFT and increased clinical pulmonary disease in a retrospective review of consecutive ADPKD patients seen at our institution as case patients compared to non-ADPKD CKD controls.</p>
+</sec><sec id="s2" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<p>IRB approval was obtained (Mayo Clinic IRB#: 09-002623) regarding study of patients giving written consent to have their stored medical records reviewed for the purposes of research. Clinical records of consecutive adult ADPKD patients seen at Mayo Clinic, Rochester, who underwent both high resolution chest computed tomography (HRCT) and pulmonary function testing (PFT) between 1998 and 2011, were reviewed. Patients were excluded if they had a known secondary etiology for clinical or radiologic bronchiectasis as reviewed in the available record, specifically cystic fibrosis (CF), prior mechanical airway obstruction, chest trauma or surgery resulting in focal lung injury, recurrent or severe pneumonia, or clinical immunodeficiencies such as common variable immunodeficiency (CVID) resulting in proclivity towards recurrent infection. Patients who underwent transplantation of any organ other than lung (solid and hematological) were included in the study. Non-ADPKD chronic kidney disease (CKD) patients who also underwent chest CT and PFT during the same study period were selected as consecutive unmatched controls. The most recent chest CT in the record was used if multiple studies were completed.</p>
+<p>Collected demographics were manually obtained from the primary medical record for both study groups including age, gender, smoker status (active, former, and non-smoker), pack years, and transplant history. Laboratory data included stable GFR and creatinine within one year of the selected study CT. Clinical pulmonary diagnoses or symptoms of individual study patients at the time of CT were categorized in the following manner: Group 0 = None or no longstanding clinical pulmonary disease, Group 1 = idiopathic clinical bronchiectasis defined as presenting symptoms of chronic productive cough, dyspnea, and/or other constitutional symptoms such as fever, weight loss, not explained by a secondary or underlying pulmonary diagnosis, Group 2 = All other airways disease (COPD, asthma, bronchial or small airways disease), and Group 3 = All other parenchymal, pleural, or pulmonary vascular disease (acute infection, interstitial lung disease or fibrosis, granulomatous disease, malignant and non-malignant nodules or masses, pulmonary emboli, vasculitis, and pleural disease). For patients with multiple pulmonary diagnoses, idiopathic clinical bronchiectasis (Group 1) was selected first as a primary categorization if present followed by all other airways disease (Group 2), then all other parenchymal/pleural/pulmonary vascular disease (Group 3). Our rationale was to categorize or capture existing clinical bronchiectasis or airways disease in the setting of radiologic findings.</p>
+<p>CT criteria for radiologic bronchiectasis included one or more of the following: 1) an enlarged bronchial diameter greater than that of the accompanying blood vessel (Signet ring sign), 2) failure of airway tapering at least 2 cm beyond the last branch point, or 3) visible airway within one centimeter of the lung periphery <xref ref-type="bibr" rid="pone.0093674-Naidich1">[10]</xref>, <xref ref-type="bibr" rid="pone.0093674-Muller1">[11]</xref>, <xref ref-type="bibr" rid="pone.0093674-Kim1">[12]</xref>. All selected CT scans were independently reviewed by two experienced thoracic radiologists (RH &amp; TH) who were blinded to the presence of ADPKD and CKD with agreement on presence and severity of radiologic bronchiectasis by consensus.</p>
+<p>Pulmonary function testing done within one year of the selected chest CT was categorized based on standard criteria <xref ref-type="bibr" rid="pone.0093674-Miller1">[13]</xref>, <xref ref-type="bibr" rid="pone.0093674-Wanger1">[14]</xref>, <xref ref-type="bibr" rid="pone.0093674-Pellegrino1">[15]</xref> into one of four diagnostic findings: 1) Normal, 2) Obstructive, 3) Restrictive, or 4) Other (mixed restrictive and obstructive, non-specific pattern, and isolated low diffusing capacity for carbon monoxide (DLCO)); interpreted previously in the record by an experienced non-study pulmonologist. No further revision or reinterpretation of PFT findings was done by study investigators. If PFT was not available within one year of the selected scan, the most recent PFT in the clinical record was reviewed. Selected PFT measurements, including pre-bronchodilator percent predicted forced expiratory volume in 1 second (FEV<sub>1</sub>) and forced vital capacity (FVC), total lung capacity (TLC), forced expiratory flow at 25–75% of the FVC (FEF <sub>25–75</sub>), FEV1/FVC ratio, and diffusing capacity for carbon monoxide (DLCO) were also collected and compared between the two cohorts.</p>
+<p>Statistical analysis was performed using JMP Software Version 9.4 (Cary, NC) with Chi-square or Fisher's exact test applied to proportional or categorical data, and a Two Sample T-test with 2-sided P value used for comparison of continuous or mean data. Chi-square and ANOVA were used to compare proportion and means among multiple groups. For predictors of a dichotomous outcome, univariable and multivariable logistic regression was applied adjusting for a priori selected covariates of age, gender, GFR, smoker status, and transplant history. Two-tailed P values&lt;0.05 were considered statistically significant.</p>
+<p>No external funding was involved in the hypothesis, study design, data collection, or analysis, of this work.</p>
+</sec><sec id="s3">
+<title>Results</title>
+<p>Ninety-two consecutive ADPKD patients and 95 consecutive non-ADPKD CKD patients underwent both chest CT and PFT and were ultimately included in the study and control groups, respectively. Comparison baseline demographic and clinical characteristics are presented in <xref ref-type="table" rid="pone-0093674-t001">Table 1</xref>. Of the initial screening cohort fitting radiologic criteria for bronchiectasis, two were excluded from the ADPKD group secondary to history of prior severe pneumonia as likely causes of radiologic findings, and one was excluded from the CKD group due to concomitant cystic fibrosis diagnosis.</p>
+<table-wrap id="pone-0093674-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0093674.t001</object-id><label>Table 1</label><caption>
+<title>Demographics and baseline characteristics.</title>
+</caption><alternatives><graphic id="pone-0093674-t001-1" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0093674.t001" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">ADPKD (N = 92)</td>
+<td align="left" rowspan="1" colspan="1">Control (N = 95)</td>
+<td align="left" rowspan="1" colspan="1">P value</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Characteristic</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Age, mean (SD)</td>
+<td align="left" rowspan="1" colspan="1">59.84 (12.6)</td>
+<td align="left" rowspan="1" colspan="1">61.59 (12.9)</td>
+<td align="left" rowspan="1" colspan="1">0.35</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gender, M/F (%)</td>
+<td align="left" rowspan="1" colspan="1">42/50 (46/54)</td>
+<td align="left" rowspan="1" colspan="1">64/31 (67/33)</td>
+<td align="left" rowspan="1" colspan="1"><bold>0.003</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BMI, mean (SD)</td>
+<td align="left" rowspan="1" colspan="1">29.21 (6.9)</td>
+<td align="left" rowspan="1" colspan="1">30.06 (6.1)</td>
+<td align="left" rowspan="1" colspan="1">0.37</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Smoker Status;</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.35</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Non-smoker N (%)</td>
+<td align="left" rowspan="1" colspan="1">46 (50)</td>
+<td align="left" rowspan="1" colspan="1">41 (43)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Former N (%)</td>
+<td align="left" rowspan="1" colspan="1">38(41)</td>
+<td align="left" rowspan="1" colspan="1">52 (55)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Active N (%)</td>
+<td align="left" rowspan="1" colspan="1">8(9)</td>
+<td align="left" rowspan="1" colspan="1">2(2)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Pack years, mean (SD)</td>
+<td align="left" rowspan="1" colspan="1">31.41 (20.7)</td>
+<td align="left" rowspan="1" colspan="1">37.32 (29.5)</td>
+<td align="left" rowspan="1" colspan="1">0.26</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Creatinine, mean (SD)</td>
+<td align="left" rowspan="1" colspan="1">2.10 (1.9)</td>
+<td align="left" rowspan="1" colspan="1">1.93 (1.2)</td>
+<td align="left" rowspan="1" colspan="1">0.47</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">GFR, mean (SD)</td>
+<td align="left" rowspan="1" colspan="1">50.1 (28.7)</td>
+<td align="left" rowspan="1" colspan="1">46.92 (25.4)</td>
+<td align="left" rowspan="1" colspan="1">0.43</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Radiologic bronchiectasis, N (%)</td>
+<td align="left" rowspan="1" colspan="1">19 (21)</td>
+<td align="left" rowspan="1" colspan="1">9 (9.1)</td>
+<td align="left" rowspan="1" colspan="1"><bold>0.032</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Clinical bronchiectasis, N (%)</td>
+<td align="left" rowspan="1" colspan="1">6 (7)</td>
+<td align="left" rowspan="1" colspan="1">3 (3)</td>
+<td align="left" rowspan="1" colspan="1">0.32</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Summary PFT dx</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.121</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Normal, N (%)</td>
+<td align="left" rowspan="1" colspan="1">42 (46)</td>
+<td align="left" rowspan="1" colspan="1">29 (31)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Obstructive, N (%)</td>
+<td align="left" rowspan="1" colspan="1">26 (28)</td>
+<td align="left" rowspan="1" colspan="1">30 (31)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Restrictive, N (%)</td>
+<td align="left" rowspan="1" colspan="1">6 (6)</td>
+<td align="left" rowspan="1" colspan="1">13 (14)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Other, N (%)</td>
+<td align="left" rowspan="1" colspan="1">18 (20)</td>
+<td align="left" rowspan="1" colspan="1">23 (24)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FEV1 % predicted, mean (SD), range</td>
+<td align="left" rowspan="1" colspan="1">79.28 (21.5), (36–119)</td>
+<td align="left" rowspan="1" colspan="1">71.96 (24), (22–121)</td>
+<td align="left" rowspan="1" colspan="1"><bold>0.032</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FVC % predicted, mean (SD), range</td>
+<td align="left" rowspan="1" colspan="1">86.78 (18.7), (36–134)</td>
+<td align="left" rowspan="1" colspan="1">77.15 (22.6), (24–119)</td>
+<td align="left" rowspan="1" colspan="1"><bold>0.003</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FEV1/FVC, mean (SD), range</td>
+<td align="left" rowspan="1" colspan="1">72.2 (10.1), (35.2–88.5)</td>
+<td align="left" rowspan="1" colspan="1">72.3 (10.2), (33.9–95.2)</td>
+<td align="left" rowspan="1" colspan="1">0.98</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FEF 25–75 % predicted, mean (SD), range</td>
+<td align="left" rowspan="1" colspan="1">67.2 (33.1), (13–152)</td>
+<td align="left" rowspan="1" colspan="1">61 (36.8), (6–174)</td>
+<td align="left" rowspan="1" colspan="1">0.23</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">TLC % predicted, mean (SD), range</td>
+<td align="left" rowspan="1" colspan="1">96.25 (22.4), (53–164) (N = 52)</td>
+<td align="left" rowspan="1" colspan="1">89.64 (20.1), (47–130) (N = 56)</td>
+<td align="left" rowspan="1" colspan="1">0.112</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">DLCO % predicted, mean (SD), range</td>
+<td align="left" rowspan="1" colspan="1">76.11 (19.3), (34–134) (N = 85)</td>
+<td align="left" rowspan="1" colspan="1">68.24 (23.4), (17–125) (N = 80)</td>
+<td align="left" rowspan="1" colspan="1"><bold>0.022</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Transplant of any kind, N (%)</td>
+<td align="left" rowspan="1" colspan="1">37 (40)</td>
+<td align="left" rowspan="1" colspan="1">28 (29)</td>
+<td align="left" rowspan="1" colspan="1">0.123</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Time from Transplant to Study CT, months, median (range)</td>
+<td align="left" rowspan="1" colspan="1">35.4 (−121–291) (N = 37)</td>
+<td align="left" rowspan="1" colspan="1">31.4 (−30–163.5) (N = 28)</td>
+<td align="left" rowspan="1" colspan="1">0.63</td>
+</tr>
+</tbody>
+</table>
+</alternatives></table-wrap>
+<p>Compared to ADPKD there were more men in the consecutively selected CKD control group (67% vs. 46%, P = 0.003). Mean FEV<sub>1</sub>, FVC, and DLCO were statistically lower in the CKD group compared to ADPKD, though smoking status and summary PFT findings were not statistically different (P = 0.35 and P = 0.121, respectively). Frequency of organ transplantation of both solid and hematological origin was similar (P = 0.123). The majority of CT scans in both groups was obtained for assessment of clinical respiratory symptoms or previously established pulmonary disease, with none obtained for incidental findings found initially on lower lung cuts of abdominal CTs. In those whom underwent organ transplantation, 25% of reviewed CTs occurred prior to transplantation. The median time from date of transplant to CT was 35.4 (range −121 to 291) months, with no statistical difference between the two groups (P = 0.62).</p>
+<p>Subgroup comparison data for baseline clinical features among APDKD patients with and without radiologic bronchiectasis is presented in <xref ref-type="table" rid="pone-0093674-t002">Table 2</xref>. Smoking history was more prevalent in ADPKD patients with radiological bronchiectasis (74% vs. 44%, P = 0.04) without difference in other baseline characteristics.</p>
+<table-wrap id="pone-0093674-t002" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0093674.t002</object-id><label>Table 2</label><caption>
+<title>Subgroup Analysis of ADPKD with and without radiologic bronchiectasis.</title>
+</caption><alternatives><graphic id="pone-0093674-t002-2" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0093674.t002" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">ADPKD Bronchiectasis (N = 19)</td>
+<td align="left" rowspan="1" colspan="1">ADPKD No Bronchiectasis (N = 73)</td>
+<td align="left" rowspan="1" colspan="1">P value</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Characteristic</bold></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Age, mean (SD)</td>
+<td align="left" rowspan="1" colspan="1">62.63 (12.2)</td>
+<td align="left" rowspan="1" colspan="1">59.1 (12.7)</td>
+<td align="left" rowspan="1" colspan="1">0.28</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gender, M/F (%)</td>
+<td align="left" rowspan="1" colspan="1">11/8 (58/42)</td>
+<td align="left" rowspan="1" colspan="1">31/42 (42/58)</td>
+<td align="left" rowspan="1" colspan="1">0.23</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">BMI, mean (SD)</td>
+<td align="left" rowspan="1" colspan="1">27.52 (5.4)</td>
+<td align="left" rowspan="1" colspan="1">29.66 (7.3)</td>
+<td align="left" rowspan="1" colspan="1">0.24</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Smoker status;</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"><bold>0.021</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Non-smoker N (%),</td>
+<td align="left" rowspan="1" colspan="1">5 (26)</td>
+<td align="left" rowspan="1" colspan="1">41 (56)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Former N (%)</td>
+<td align="left" rowspan="1" colspan="1">12 (63)</td>
+<td align="left" rowspan="1" colspan="1">26 (36)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Active N (%)</td>
+<td align="left" rowspan="1" colspan="1">2 (11)</td>
+<td align="left" rowspan="1" colspan="1">6 (8)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Creatinine, mean (SD)</td>
+<td align="left" rowspan="1" colspan="1">1.62 (1.1)</td>
+<td align="left" rowspan="1" colspan="1">2.23 (2.1)</td>
+<td align="left" rowspan="1" colspan="1">0.24</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">GFR, mean (SD)</td>
+<td align="left" rowspan="1" colspan="1">52.26 (22.7)</td>
+<td align="left" rowspan="1" colspan="1">49.53 (30.2)</td>
+<td align="left" rowspan="1" colspan="1">0.71</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">PFT dx</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">0.52</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Normal, N (%)</td>
+<td align="left" rowspan="1" colspan="1">8 (42)</td>
+<td align="left" rowspan="1" colspan="1">34 (47)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Obstructive, N (%)</td>
+<td align="left" rowspan="1" colspan="1">6 (32)</td>
+<td align="left" rowspan="1" colspan="1">20 (27)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Restrictive, N (%)</td>
+<td align="left" rowspan="1" colspan="1">0 (0)</td>
+<td align="left" rowspan="1" colspan="1">6 (8)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Other, N (%)</td>
+<td align="left" rowspan="1" colspan="1">5 (26)</td>
+<td align="left" rowspan="1" colspan="1">13 (18)</td>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FEV1 % predicted, mean (SD), range</td>
+<td align="left" rowspan="1" colspan="1">81.42 (19.9), (39–108)</td>
+<td align="left" rowspan="1" colspan="1">78.73 (22.1), (36–119)</td>
+<td align="left" rowspan="1" colspan="1">0.63</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FVC % predicted, mean (SD), range</td>
+<td align="left" rowspan="1" colspan="1">87.68 (14.6), (53–105)</td>
+<td align="left" rowspan="1" colspan="1">86.55 (19.7), (36–134)</td>
+<td align="left" rowspan="1" colspan="1">0.81</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FEV1/FVC (SD), range</td>
+<td align="left" rowspan="1" colspan="1">72.32 (9.9), (55.6–86.5)</td>
+<td align="left" rowspan="1" colspan="1">72.22 (10.3), (35.2–88.5)</td>
+<td align="left" rowspan="1" colspan="1">0.96</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FEF 25–75 % predicted (SD), range</td>
+<td align="left" rowspan="1" colspan="1">60.5 (33.2), (15–136)</td>
+<td align="left" rowspan="1" colspan="1">68.9 (33.1), (13–152)</td>
+<td align="left" rowspan="1" colspan="1">0.33</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">TLC % predicted, mean (SD), range</td>
+<td align="left" rowspan="1" colspan="1">99.7 (13.6), (79–122) (N = 10)</td>
+<td align="left" rowspan="1" colspan="1">95.43 (24.1), (53–164) (N = 42)</td>
+<td align="left" rowspan="1" colspan="1">0.59</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">DLCO % predicted, mean (SD), range</td>
+<td align="left" rowspan="1" colspan="1">71.83 (19), (45–107) (N = 18)</td>
+<td align="left" rowspan="1" colspan="1">77.25 (19.4), (34–134) (N = 67)</td>
+<td align="left" rowspan="1" colspan="1">0.29</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Transplant of any kind (N, %)</td>
+<td align="left" rowspan="1" colspan="1">10 (53)</td>
+<td align="left" rowspan="1" colspan="1">27 (37)</td>
+<td align="left" rowspan="1" colspan="1">0.22</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Time from Transplant to study CT, months, median (range)</td>
+<td align="left" rowspan="1" colspan="1">67. 4 (−37–268)</td>
+<td align="left" rowspan="1" colspan="1">22.8 (−120–292)</td>
+<td align="left" rowspan="1" colspan="1">0.27</td>
+</tr>
+</tbody>
+</table>
+</alternatives></table-wrap>
+<p>Radiologic changes of bronchiectasis were more frequent in ADPKD patients (19 (21%) vs. 9 (9%); P = 0.032, OR 2.49 (CI 1.1–5.8)), with no difference in prevalence of clinically symptomatic disease (6 (7%) vs. 3 (3%), P = 0.32) (<xref ref-type="table" rid="pone-0093674-t001">Table 1</xref>.) Univariate logistic regression for selected covariates is presented in <xref ref-type="table" rid="pone-0093674-t003">Table 3</xref> for the whole cohort and <xref ref-type="table" rid="pone-0093674-t004">Table 4</xref> for subgroup analysis of the ADPKD group. The presence of ADPKD was associated with radiologic bronchiectasis, even after adjusting for age, gender, GFR, transplant history, and smoking by multivariate regression (OR 2.78, CI 1.16–7.12). Smoking history among ADPKD patients after adjustment for age, gender, GFR, and transplant history, was associated with increased risk of radiologic bronchiectasis (OR 4.79, CI 1.43–19.58) despite similar rates of smoking between ADPKD and CKD patients. Smoking was not associated with increased clinical disease among the two groups (ADPKD 5/6 (83%) vs. 41/86 (47%), P = 0.09 vs. Control 1/3 (33%) vs. 53/92 (57%), P = 0.40).</p>
+<table-wrap id="pone-0093674-t003" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0093674.t003</object-id><label>Table 3</label><caption>
+<title>Univariate logistic regression analysis for predictors of radiologic bronchiectasis for the entire cohort (N = 187).</title>
+</caption><alternatives><graphic id="pone-0093674-t003-3" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0093674.t003" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Odds Ratio</td>
+<td align="left" rowspan="1" colspan="1">95% Confidence Intervals</td>
+<td align="left" rowspan="1" colspan="1">P value</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Age</td>
+<td align="left" rowspan="1" colspan="1">0.98</td>
+<td align="left" rowspan="1" colspan="1">0.94–1.01</td>
+<td align="left" rowspan="1" colspan="1">0.202</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gender</td>
+<td align="left" rowspan="1" colspan="1">1.21</td>
+<td align="left" rowspan="1" colspan="1">0.54–2.83</td>
+<td align="left" rowspan="1" colspan="1">0.64</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Smoker status</td>
+<td align="left" rowspan="1" colspan="1">1.69</td>
+<td align="left" rowspan="1" colspan="1">0.75–4.0</td>
+<td align="left" rowspan="1" colspan="1">0.21</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Presence of ADPKD</td>
+<td align="left" rowspan="1" colspan="1">2.49</td>
+<td align="left" rowspan="1" colspan="1">1.1–6.1</td>
+<td align="left" rowspan="1" colspan="1"><bold>0.031</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Creatinine</td>
+<td align="left" rowspan="1" colspan="1">0.98</td>
+<td align="left" rowspan="1" colspan="1">0.73–1.24</td>
+<td align="left" rowspan="1" colspan="1">0.88</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">GFR</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">0.98–1.01</td>
+<td align="left" rowspan="1" colspan="1">0.92</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FEV1</td>
+<td align="left" rowspan="1" colspan="1">1.42</td>
+<td align="left" rowspan="1" colspan="1">0.25–8.32</td>
+<td align="left" rowspan="1" colspan="1">0.69</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FVC</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">0.99–1.02</td>
+<td align="left" rowspan="1" colspan="1">0.52</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">TLC</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">0.98–1.03</td>
+<td align="left" rowspan="1" colspan="1">0.50</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">DLCO</td>
+<td align="left" rowspan="1" colspan="1">0.99</td>
+<td align="left" rowspan="1" colspan="1">0.97–1.01</td>
+<td align="left" rowspan="1" colspan="1">0.161</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Transplant Hx</td>
+<td align="left" rowspan="1" colspan="1">1.25</td>
+<td align="left" rowspan="1" colspan="1">0.54–2.85</td>
+<td align="left" rowspan="1" colspan="1">0.59</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Time from Transplant to Study CT</td>
+<td align="left" rowspan="1" colspan="1">1.01</td>
+<td align="left" rowspan="1" colspan="1">0.99–1.02</td>
+<td align="left" rowspan="1" colspan="1">0.141</td>
+</tr>
+</tbody>
+</table>
+</alternatives></table-wrap><table-wrap id="pone-0093674-t004" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0093674.t004</object-id><label>Table 4</label><caption>
+<title>Subgroup univariate logistic regression analysis for predictors of radiologic bronchiectasis in patients with ADPKD (N = 92).</title>
+</caption><alternatives><graphic id="pone-0093674-t004-4" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0093674.t004" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">Odds Ratio</td>
+<td align="left" rowspan="1" colspan="1">95% Confidence Intervals</td>
+<td align="left" rowspan="1" colspan="1">P value</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Age</td>
+<td align="left" rowspan="1" colspan="1">1.02</td>
+<td align="left" rowspan="1" colspan="1">0.98–1.07</td>
+<td align="left" rowspan="1" colspan="1">0.27</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Gender</td>
+<td align="left" rowspan="1" colspan="1">1.86</td>
+<td align="left" rowspan="1" colspan="1">0.68–5.33</td>
+<td align="left" rowspan="1" colspan="1">0.23</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Smoker status</td>
+<td align="left" rowspan="1" colspan="1">3.59</td>
+<td align="left" rowspan="1" colspan="1">1.23–12.1</td>
+<td align="left" rowspan="1" colspan="1"><bold>0.026</bold></td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Creatinine</td>
+<td align="left" rowspan="1" colspan="1">0.80</td>
+<td align="left" rowspan="1" colspan="1">0.51–1.10</td>
+<td align="left" rowspan="1" colspan="1">0.185</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">GFR</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">0.99–1.02</td>
+<td align="left" rowspan="1" colspan="1">0.71</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FEV1</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">0.98–1.03</td>
+<td align="left" rowspan="1" colspan="1">0.62</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">FVC</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">0.98–1.03</td>
+<td align="left" rowspan="1" colspan="1">0.81</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">TLC</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">0.97–1.04</td>
+<td align="left" rowspan="1" colspan="1">0.59</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">DLCO</td>
+<td align="left" rowspan="1" colspan="1">0.98</td>
+<td align="left" rowspan="1" colspan="1">0.95–1.01</td>
+<td align="left" rowspan="1" colspan="1">0.28</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Transplant Hx</td>
+<td align="left" rowspan="1" colspan="1">1.89</td>
+<td align="left" rowspan="1" colspan="1">0.68–5.34</td>
+<td align="left" rowspan="1" colspan="1">0.22</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Time from Transplant to Study CT</td>
+<td align="left" rowspan="1" colspan="1">1.0</td>
+<td align="left" rowspan="1" colspan="1">0.99–1.01</td>
+<td align="left" rowspan="1" colspan="1">0.26</td>
+</tr>
+</tbody>
+</table>
+</alternatives></table-wrap>
+<p>Distribution of summary PFT patterns and frequency of clinical pulmonary diagnoses were similar among ADPKD patients and controls (<xref ref-type="table" rid="pone-0093674-t005">Table 5</xref>). Statistically lower percent predicted mean FEV<sub>1</sub>, FVC, and DLCO were noted in CKD controls (<xref ref-type="table" rid="pone-0093674-t001">Table 1</xref>) despite increased prevalence of active smokers in ADPKD patients. Abnormal FEF 25–75 was primarily associated with concomitant obstructive physiology in those clinically diagnosed with COPD or emphysema followed by advanced restriction seen in interstitial lung disease. There were no isolated low FEF 25–75 values with normal FEV1/FVC and TLC to suggest early or small airways disease. Indications for PFT testing were no different between those with APDKD and CKD, primarily done for assessment of acute or chronic respiratory symptoms or those with known pulmonary disease (63%) followed by perioperative assessment for surgical clearance or related pulmonary complications of organ transplantation (37%). There was no difference in final clinical pulmonary diagnoses.</p>
+<table-wrap id="pone-0093674-t005" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0093674.t005</object-id><label>Table 5</label><caption>
+<title>Frequency and distribution of summary respiratory diagnoses.</title>
+</caption><alternatives><graphic id="pone-0093674-t005-5" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0093674.t005" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1">No Clinical Respiratory Disease (Group 0)</td>
+<td align="left" rowspan="1" colspan="1">Idiopathic clinical bronchiectasis (Group 1)</td>
+<td align="left" rowspan="1" colspan="1">All Other Airways Diseases (Group 2)</td>
+<td align="left" rowspan="1" colspan="1">Other Respiratory (Group 3)</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>ADPKD</bold><xref ref-type="table-fn" rid="nt101">¶</xref></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Radiologic Bronchiectasis (N = 19)</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">5</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">No bronchiectasis (N = 73)</td>
+<td align="left" rowspan="1" colspan="1">15</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">22</td>
+<td align="left" rowspan="1" colspan="1">36</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1"><bold>Control</bold><xref ref-type="table-fn" rid="nt101">¶</xref></td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Radiologic Bronchiectasis (N = 9)</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">No bronchiectasis (N = 86)</td>
+<td align="left" rowspan="1" colspan="1">22</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">20</td>
+<td align="left" rowspan="1" colspan="1">44</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt101"><label>¶</label><p>P values were not significant for distribution of clinical respiratory diagnoses between ADPKD cohort and control.</p></fn></table-wrap-foot></table-wrap>
+<p>All ADPKD patients with clinical bronchiectasis (6 patients) had at least one or more years (range 14–60 months) of symptoms by the time of their CT assessment. Symptoms included productive cough, recurrent rhinosinusitis, and intermittent dyspnea. Chronic rhinosinusitis was seen in two APDKD patients with clinical bronchiectasis and none without radiologic disease, while occurring in only one patient from the CKD cohort who did not have radiologic disease. No other etiologies for bronchiectasis were evident at the time of clinical assessment. All were treated with various antibiotic and/or inhaler regimens previously or at the time of reviewed CT.</p>
+<p>ADPKD-associated bronchiectasis most commonly represented mild bilateral lower lobe radiologic disease as opposed to more focal disease (<xref ref-type="table" rid="pone-0093674-t006">Table 6</xref>) observed in control patients. Cylindrical bronchiectasis was the predominant radiological pattern in both groups (<xref ref-type="fig" rid="pone-0093674-g001">Figure 1</xref>).</p>
+<fig id="pone-0093674-g001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0093674.g001</object-id><label>Figure 1</label><caption>
+<title>Radiologic and clinical bronchiectasis associated with ADPKD.</title>
+<p>Top panels (A and B) represent bronchiectasis in a 65 yo ADPKD female with productive cough and dyspnea on exertion, without a known secondary etiology. Panel B delineates enlarged airways visible within 1 cm of the lung periphery. Second panels (C and D) represent radiologic bronchiectasis manifesting predominantly in the right lower lobe of a 70 yo ADPKD female without clinical disease.</p>
+</caption><graphic mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0093674.g001" position="float" xlink:type="simple"/></fig><table-wrap id="pone-0093674-t006" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0093674.t006</object-id><label>Table 6</label><caption>
+<title>Location and distribution of ADPKD-associated radiologic bronchiectasis.</title>
+</caption><alternatives><graphic id="pone-0093674-t006-6" position="float" mimetype="image" xlink:href="info:doi/10.1371/journal.pone.0093674.t006" xlink:type="simple"/>
+<table><colgroup span="1"><col align="left" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/><col align="center" span="1"/></colgroup>
+<thead>
+<tr>
+<td align="left" rowspan="1" colspan="1">Lobe</td>
+<td align="left" rowspan="1" colspan="1">Focal</td>
+<td align="left" rowspan="1" colspan="1">Unilateral Multilobe</td>
+<td align="left" rowspan="1" colspan="1">Diffuse (bilateral multilobe)</td>
+<td align="left" rowspan="1" colspan="1">RUL<xref ref-type="table-fn" rid="nt102">*</xref></td>
+<td align="left" rowspan="1" colspan="1">RML</td>
+<td align="left" rowspan="1" colspan="1">RLL</td>
+<td align="left" rowspan="1" colspan="1">LUL</td>
+<td align="left" rowspan="1" colspan="1">LML (lingula)</td>
+<td align="left" rowspan="1" colspan="1">LLL</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" rowspan="1" colspan="1">Group</td>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+<td align="left" rowspan="1" colspan="1"/>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">ADPKD (N)</td>
+<td align="left" rowspan="1" colspan="1">7</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">10</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">13</td>
+<td align="left" rowspan="1" colspan="1">0</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">13</td>
+</tr>
+<tr>
+<td align="left" rowspan="1" colspan="1">Control (N)</td>
+<td align="left" rowspan="1" colspan="1">6</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">2</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">3</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">1</td>
+<td align="left" rowspan="1" colspan="1">4</td>
+</tr>
+</tbody>
+</table>
+</alternatives><table-wrap-foot><fn id="nt102"><label/><p>*RUL = right upper lobe; RML = right middle lobe; RLL = right lower lobe; LUL = left upper lobe; LML = left middle lobe; LLL = left lower lobe.</p></fn></table-wrap-foot></table-wrap></sec><sec id="s4">
+<title>Discussion</title>
+<p>Our study confirms previously reported <xref ref-type="bibr" rid="pone.0093674-Driscoll1">[8]</xref>, <xref ref-type="bibr" rid="pone.0093674-Jain1">[16]</xref> increased prevalence of radiologic bronchiectasis associated with ADPKD (21% vs. 9%, P = 0.032). We observed similarly mild bilateral lower lobe disease using only chest CT studies. In the majority of cases, such radiologic findings were not identified during initial CT interpretation. Approximately one third of ADPKD patients with radiologic bronchiectasis (6 of 19, 32%) also had clinical idiopathic bronchiectasis however there was no difference in PFT pattern or prevalence of other pulmonary diagnoses. Finally, in ADPKD patients, smoking was associated with an increased risk of radiologic bronchiectasis (OR 4.79, CI 1.43–19.58) in our cohort even after adjustment for a priori covariates.</p>
+<p>In the US, prevalence of clinically diagnosed bronchiectasis increases with age and ranges between 4.2 per 100,000 (age 18–34) and 271.8 cases per 100,000 individuals (age 75 and older) <xref ref-type="bibr" rid="pone.0093674-Weycker1">[17]</xref>. A recent trend analysis based on Medicare ICD-9 claims data between 2000 and 2007, found bronchiectasis prevalence to be 8.7% per year (period prevalence of 1,106 cases per 100,000 people) <xref ref-type="bibr" rid="pone.0093674-Seitz1">[18]</xref>. However, in the absence of universally accepted clinical and radiologic disease definitions, reliable prevalence studies are lacking <xref ref-type="bibr" rid="pone.0093674-Barker1">[19]</xref>, <xref ref-type="bibr" rid="pone.0093674-ODonnell1">[20]</xref>. Kwak and colleagues <xref ref-type="bibr" rid="pone.0093674-Kwak1">[21]</xref> investigated the prevalence of radiologic bronchiectasis in 1409 Korean adult patients who underwent CT scanning as part of general health assessment. They reported radiologic disease in 129 (9.1%) and more than half were clinically symptomatic (53.7%) <xref ref-type="bibr" rid="pone.0093674-Kwak1">[21]</xref>. Female gender, increased age, and history of prior tuberculosis were risk factors for the presence of radiologic disease in the study. Despite comprehensive medical evaluation the cause of bronchiectasis frequently remained unidentified and such cases were subsequently classified as idiopathic. While we used a non-ADPKD CKD control cohort in our study, currently available evidence does not suggest a higher risk of radiological or clinical bronchiectasis in such patients. We did find a similar rate of radiologic bronchiectasis (9%) in our control patients as compared to the general population studied by Kwak et al.</p>
+<p>Jain et al. recently reviewed the clinical and radiologic features of ADPKD associated bronchiectasis in 163 transplanted and non-transplanted patients <xref ref-type="bibr" rid="pone.0093674-Jain1">[16]</xref>. They found older age as predictive of radiologic disease using a modified scoring system with the majority of presenting radiologic features similarly mild in nature. Although demographic data was not available in all studied patients, only older age was again seen as a significant risk factor for bronchiectasis based on multivariable analysis. There was also noted increased frequency and severity of radiologic disease among those with renal transplantation compared to non-transplanted patients (52.4% vs 31.4%, P = 0.02). In contrast, our study noted significant correlation of radiologic bronchiectasis with active and prior smoking history, without difference in age distribution among our more highly selected cohort using chest CT and PFT findings. Including both solid (excluding lung transplant) and hematologic organ transplants in both case and control cohorts, we noted no difference in frequency of both radiologic and clinical bronchiectasis.</p>
+<p>The spectrum of clinical disease among those with radiologic bronchiectasis was mild to moderate at most and not statistically different between the two groups in our study. Although symptoms were reported on average greater than a year prior to selected study CT, none had history of significant weight loss, recurrent fevers, or hemoptysis. Even among those with persistent clinical symptoms, severity of radiologic disease was not advanced, with the majority of all patients with radiologic disease presenting as mild cylindrical bilateral lower lobe disease.</p>
+<p>While the overall rate of smoking was similar between ADPKD and control patients, subgroup analysis revealed that radiologic bronchiectasis occurred more frequently in ADPKD smokers than non-smokers. This association is intriguing in the setting of known airway epithelial injury with exposure to cigarette smoke including impaired mucociliary clearance, stunned ciliary function, and decreased ciliary growth <xref ref-type="bibr" rid="pone.0093674-Tamashiro1">[22]</xref>, <xref ref-type="bibr" rid="pone.0093674-Leopold1">[23]</xref>, <xref ref-type="bibr" rid="pone.0093674-Maestrelli1">[24]</xref>, <xref ref-type="bibr" rid="pone.0093674-Simet1">[25]</xref>, <xref ref-type="bibr" rid="pone.0093674-Bhatta1">[26]</xref>. Smoking may further hasten these effects in patients with ADPKD whom perhaps have intrinsic ciliary dysfunction as compared to CKD controls whom did not see an association of radiologic bronchiectasis with smoking history in our study. Further work is needed to confirm this association while smoking cessation should be generally encouraged in all patients.</p>
+<p>Interestingly we observed statistically lower mean FEV<sub>1</sub>, FVC, and DLCO among CKD patients compared to ADPKD despite comparable smoking status. As CKD patients were consecutively allocated based on presence of HRCT and PFT without matching, such findings were unlikely explained by smoking having a protective effect on PFT findings in ADPKD patients or a much more severe effect in CKD. Smoking over the entire cohort was not associated with increased radiologic or clinical bronchiectasis, but again with subgroup analysis of ADPKD patients, significantly associated with radiologic disease even after correction for a priori covariates. Summary PFT findings (normal, obstructive, restrictive, and other) were not statistically different between ADPKD and CKD patients, or among ADPKD patients with or without radiologic or clinical bronchiectasis.</p>
+<p>A proposed mechanism for the development of bronchiectasis in patients with ADPKD may be linked to abnormalities in polycystin-1 and 2, the gene products of PKD1 and PKD 2 located on chromosomes 16 and 4 respectively. Although alterations of these genes are responsible along with other genetic abnormalities for renal cyst formation <xref ref-type="bibr" rid="pone.0093674-Torres1">[1]</xref>, <xref ref-type="bibr" rid="pone.0093674-Chapin1">[27]</xref>, <xref ref-type="bibr" rid="pone.0093674-AlBhalal1">[28]</xref>, expression of both of these genes have been reported in various cell types involved in the extra-renal manifestations of ADPKD, including valvular heart disease, vascular aneurysm, gut diverticula, and hepatic cysts <xref ref-type="bibr" rid="pone.0093674-Torres1">[1]</xref>, <xref ref-type="bibr" rid="pone.0093674-AlBhalal1">[28]</xref>. The presence of functional polycystin-1 in the motile cilia of human airway epithelial cells <xref ref-type="bibr" rid="pone.0093674-Driscoll1">[8]</xref> and primary cilia of human airway smooth muscle cells <xref ref-type="bibr" rid="pone.0093674-Wu1">[9]</xref> has also been demonstrated. These particular cells have been implicated in airway ciliary function and injury repair with decreased function due to polycystin abnormality, perhaps an underlying mechanism by which ADPKD patients develop radiologic and clinical bronchiectasis. The negative impact of cigarette smoke may possibly hasten these effects. Although suggestive, more directed studies are needed to confirm this mechanism at a cellular level.</p>
+<p>Strengths of our study include the review of ADPKD patients with both high resolution chest CT (as opposed to abdominal CT with lower lung cuts) and comprehensive PFT, allowing assessment and comparison of both radiologic and functional characteristics. While our cohort provided a more specific assessment of ADPKD-associated clinical and radiologic bronchiectasis, exclusion of ADPKD and control patients whom did not undergo CT and PFT may have underestimated the true prevalence of radiologic disease, explaining our lower prevalence of radiologic findings as compared to Driscoll and colleagues <xref ref-type="bibr" rid="pone.0093674-Driscoll1">[8]</xref>. As well, such selection may bias towards patients with other respiratory symptoms or pulmonary disease whose presentation may be difficult to differentiate from clinical bronchiectasis, and may not represent again a true estimate of less symptomatic bronchiectatic disease where chest CT and PFT would not have been obtained. However, our methodology was less likely to have missed ADPKD patients with more advanced or clinically relevant bronchiectasis, one of our study objectives. Another possible confounder is the inclusion of transplanted patients, whose immunosuppression may have led to increased risk of both radiologic and clinical bronchiectasis. While immunosuppression may be contributory, clinical bronchiectasis was infrequent and similar between the two groups with both groups having similar transplantation rates. As well, median time from date of transplantation to study CT was statistically similar making duration of transplantation over time less likely contributory to increased risk of infection or immunosuppression related radiologic or clinical bronchiectasis. Finally, our study has all the limitations associated with retrospective data collection and reflects the patient population of a tertiary referral center. It did allow though for maximal accrual of selected patients for a meaningful analysis using more strict radiologic and functional inclusion criteria.</p>
+<p>In conclusion, we observed an increased prevalence of radiologic bronchiectasis among ADPKD patients who underwent high resolution chest CT. These changes most frequently involved mild-to-moderate cylindrical bronchiectasis with bilateral lower lung predominance. There were no differences in summary PFT abnormalities or frequency of clinical disease. A history of smoking in patients with APDKD may predispose to the development of radiologic and clinical bronchiectasis and smoking cessation should be generally encouraged. Radiologic bronchiectasis may be regarded as an extra-renal manifestation of ADPKD with further studies needed to explore this association.</p>
+</sec></body>
+<back><ref-list>
+<title>References</title>
+<ref id="pone.0093674-Torres1"><label>1</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Torres</surname><given-names>VE</given-names></name>, <name name-style="western"><surname>Harris</surname><given-names>PC</given-names></name> (<year>2006</year>) <article-title>Mechanisms of Disease: autosomal dominant and recessive polycystic kidney diseases</article-title>. <source>Nature clinical practice Nephrology</source> <volume>2</volume>: <fpage>40</fpage>–<lpage>55; quiz 55</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Barua1"><label>2</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Barua</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Pei</surname><given-names>Y</given-names></name> (<year>2010</year>) <article-title>Diagnosis of autosomal-dominant polycystic kidney disease: an integrated approach</article-title>. <source>Seminars in nephrology</source> <volume>30</volume>: <fpage>356</fpage>–<lpage>365</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Hopp1"><label>3</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hopp</surname><given-names>K</given-names></name>, <name name-style="western"><surname>Ward</surname><given-names>CJ</given-names></name>, <name name-style="western"><surname>Hommerding</surname><given-names>CJ</given-names></name>, <name name-style="western"><surname>Nasr</surname><given-names>SH</given-names></name>, <name name-style="western"><surname>Tuan</surname><given-names>HF</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Functional polycystin-1 dosage governs autosomal dominant polycystic kidney disease severity</article-title>. <source>The Journal of clinical investigation</source> <volume>122</volume>: <fpage>4257</fpage>–<lpage>4273</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Gallagher1"><label>4</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gallagher</surname><given-names>AR</given-names></name>, <name name-style="western"><surname>Germino</surname><given-names>GG</given-names></name>, <name name-style="western"><surname>Somlo</surname><given-names>S</given-names></name> (<year>2010</year>) <article-title>Molecular advances in autosomal dominant polycystic kidney disease</article-title>. <source>Advances in chronic kidney disease</source> <volume>17</volume>: <fpage>118</fpage>–<lpage>130</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Qian1"><label>5</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Qian</surname><given-names>Q</given-names></name>, <name name-style="western"><surname>Hartman</surname><given-names>RP</given-names></name>, <name name-style="western"><surname>King</surname><given-names>BF</given-names></name>, <name name-style="western"><surname>Torres</surname><given-names>VE</given-names></name> (<year>2007</year>) <article-title>Increased occurrence of pericardial effusion in patients with autosomal dominant polycystic kidney disease</article-title>. <source>Clinical journal of the American Society of Nephrology: CJASN</source> <volume>2</volume>: <fpage>1223</fpage>–<lpage>1227</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Qian2"><label>6</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Qian</surname><given-names>Q</given-names></name>, <name name-style="western"><surname>Younge</surname><given-names>BR</given-names></name>, <name name-style="western"><surname>Torres</surname><given-names>VE</given-names></name> (<year>2007</year>) <article-title>Retinal arterial and venous occlusions in patients with ADPKD</article-title>. <source>Nephrology, dialysis, transplantation : official publication of the European Dialysis and Transplant Association - European Renal Association</source> <volume>22</volume>: <fpage>1769</fpage>–<lpage>1771</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Kumar1"><label>7</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kumar</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Adeva</surname><given-names>M</given-names></name>, <name name-style="western"><surname>King</surname><given-names>BF</given-names></name>, <name name-style="western"><surname>Kamath</surname><given-names>PS</given-names></name>, <name name-style="western"><surname>Torres</surname><given-names>VE</given-names></name> (<year>2006</year>) <article-title>Duodenal diverticulosis in autosomal dominant polycystic kidney disease</article-title>. <source>Nephrology, dialysis, transplantation : official publication of the European Dialysis and Transplant Association - European Renal Association</source> <volume>21</volume>: <fpage>3576</fpage>–<lpage>3578</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Driscoll1"><label>8</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Driscoll</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Bhalla</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Liapis</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Ibricevic</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Brody</surname><given-names>SL</given-names></name> (<year>2008</year>) <article-title>Autosomal dominant polycystic kidney disease is associated with an increased prevalence of radiographic bronchiectasis</article-title>. <source>Chest</source> <volume>133</volume>: <fpage>1181</fpage>–<lpage>1188</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Wu1"><label>9</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wu</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Du</surname><given-names>H</given-names></name>, <name name-style="western"><surname>Wang</surname><given-names>X</given-names></name>, <name name-style="western"><surname>Mei</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Sieck</surname><given-names>GC</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Characterization of primary cilia in human airway smooth muscle cells</article-title>. <source>Chest</source> <volume>136</volume>: <fpage>561</fpage>–<lpage>570</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Naidich1"><label>10</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Naidich</surname><given-names>DP</given-names></name>, <name name-style="western"><surname>McCauley</surname><given-names>DI</given-names></name>, <name name-style="western"><surname>Khouri</surname><given-names>NF</given-names></name>, <name name-style="western"><surname>Stitik</surname><given-names>FP</given-names></name>, <name name-style="western"><surname>Siegelman</surname><given-names>SS</given-names></name> (<year>1982</year>) <article-title>Computed tomography of bronchiectasis</article-title>. <source>Journal of computer assisted tomography</source> <volume>6</volume>: <fpage>437</fpage>–<lpage>444</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Muller1"><label>11</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Muller</surname><given-names>NL</given-names></name>, <name name-style="western"><surname>Bergin</surname><given-names>CJ</given-names></name>, <name name-style="western"><surname>Ostrow</surname><given-names>DN</given-names></name>, <name name-style="western"><surname>Nichols</surname><given-names>DM</given-names></name> (<year>1984</year>) <article-title>Role of computed tomography in the recognition of bronchiectasis</article-title>. <source>AJR American journal of roentgenology</source> <volume>143</volume>: <fpage>971</fpage>–<lpage>976</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Kim1"><label>12</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kim</surname><given-names>JS</given-names></name>, <name name-style="western"><surname>Muller</surname><given-names>NL</given-names></name>, <name name-style="western"><surname>Park</surname><given-names>CS</given-names></name>, <name name-style="western"><surname>Grenier</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Herold</surname><given-names>CJ</given-names></name> (<year>1997</year>) <article-title>Cylindrical bronchiectasis: diagnostic findings on thin-section CT</article-title>. <source>AJR American journal of roentgenology</source> <volume>168</volume>: <fpage>751</fpage>–<lpage>754</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Miller1"><label>13</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Miller</surname><given-names>MR</given-names></name>, <name name-style="western"><surname>Hankinson</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Brusasco</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Burgos</surname><given-names>F</given-names></name>, <name name-style="western"><surname>Casaburi</surname><given-names>R</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>Standardisation of spirometry</article-title>. <source>The European respiratory journal</source> <volume>26</volume>: <fpage>319</fpage>–<lpage>338</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Wanger1"><label>14</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wanger</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Clausen</surname><given-names>JL</given-names></name>, <name name-style="western"><surname>Coates</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Pedersen</surname><given-names>OF</given-names></name>, <name name-style="western"><surname>Brusasco</surname><given-names>V</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>Standardisation of the measurement of lung volumes</article-title>. <source>The European respiratory journal</source> <volume>26</volume>: <fpage>511</fpage>–<lpage>522</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Pellegrino1"><label>15</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pellegrino</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Viegi</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Brusasco</surname><given-names>V</given-names></name>, <name name-style="western"><surname>Crapo</surname><given-names>RO</given-names></name>, <name name-style="western"><surname>Burgos</surname><given-names>F</given-names></name>, <etal>et al</etal>. (<year>2005</year>) <article-title>Interpretative strategies for lung function tests</article-title>. <source>The European respiratory journal</source> <volume>26</volume>: <fpage>948</fpage>–<lpage>968</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Jain1"><label>16</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Jain</surname><given-names>R</given-names></name>, <name name-style="western"><surname>Javidan-Nejad</surname><given-names>C</given-names></name>, <name name-style="western"><surname>Alexander-Brett</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Horani</surname><given-names>A</given-names></name>, <name name-style="western"><surname>Cabellon</surname><given-names>MC</given-names></name>, <etal>et al</etal>. (<year>2012</year>) <article-title>Sensory functions of motile cilia and implication for bronchiectasis</article-title>. <source>Frontiers in bioscience</source> <volume>4</volume>: <fpage>1088</fpage>–<lpage>1098</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Weycker1"><label>17</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Weycker</surname><given-names>D</given-names></name>, <name name-style="western"><surname>Edelsberg</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Oster</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Tino</surname><given-names>G</given-names></name> (<year>2005</year>) <article-title>Prevalence and economic burden of bronchiectasis</article-title>. <source>Clinical Pulmonary Medicine</source> <volume>12</volume>: <fpage>205</fpage>–<lpage>209</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Seitz1"><label>18</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Seitz</surname><given-names>AE</given-names></name>, <name name-style="western"><surname>Olivier</surname><given-names>KN</given-names></name>, <name name-style="western"><surname>Adjemian</surname><given-names>J</given-names></name>, <name name-style="western"><surname>Holland</surname><given-names>SM</given-names></name>, <name name-style="western"><surname>Prevots</surname><given-names>R</given-names></name> (<year>2012</year>) <article-title>Trends in bronchiectasis among medicare beneficiaries in the United States, 2000 to 2007</article-title>. <source>Chest</source> <volume>142</volume>: <fpage>432</fpage>–<lpage>439</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Barker1"><label>19</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Barker</surname><given-names>AF</given-names></name> (<year>2002</year>) <article-title>Bronchiectasis</article-title>. <source>The New England journal of medicine</source> <volume>346</volume>: <fpage>1383</fpage>–<lpage>1393</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-ODonnell1"><label>20</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>O'Donnell</surname><given-names>AE</given-names></name> (<year>2008</year>) <article-title>Bronchiectasis</article-title>. <source>Chest</source> <volume>134</volume>: <fpage>815</fpage>–<lpage>823</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Kwak1"><label>21</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kwak</surname><given-names>HJ</given-names></name>, <name name-style="western"><surname>Moon</surname><given-names>JY</given-names></name>, <name name-style="western"><surname>Choi</surname><given-names>YW</given-names></name>, <name name-style="western"><surname>Kim</surname><given-names>TH</given-names></name>, <name name-style="western"><surname>Sohn</surname><given-names>JW</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>High prevalence of bronchiectasis in adults: analysis of CT findings in a health screening program</article-title>. <source>The Tohoku journal of experimental medicine</source> <volume>222</volume>: <fpage>237</fpage>–<lpage>242</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Tamashiro1"><label>22</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tamashiro</surname><given-names>E</given-names></name>, <name name-style="western"><surname>Xiong</surname><given-names>G</given-names></name>, <name name-style="western"><surname>Anselmo-Lima</surname><given-names>WT</given-names></name>, <name name-style="western"><surname>Kreindler</surname><given-names>JL</given-names></name>, <name name-style="western"><surname>Palmer</surname><given-names>JN</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Cigarette smoke exposure impairs respiratory epithelial ciliogenesis</article-title>. <source>American journal of rhinology &amp; allergy</source> <volume>23</volume>: <fpage>117</fpage>–<lpage>122</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Leopold1"><label>23</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Leopold</surname><given-names>PL</given-names></name>, <name name-style="western"><surname>O'Mahony</surname><given-names>MJ</given-names></name>, <name name-style="western"><surname>Lian</surname><given-names>XJ</given-names></name>, <name name-style="western"><surname>Tilley</surname><given-names>AE</given-names></name>, <name name-style="western"><surname>Harvey</surname><given-names>BG</given-names></name>, <etal>et al</etal>. (<year>2009</year>) <article-title>Smoking is associated with shortened airway cilia</article-title>. <source>PloS one</source> <volume>4</volume>: <fpage>e8157</fpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Maestrelli1"><label>24</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Maestrelli</surname><given-names>P</given-names></name>, <name name-style="western"><surname>Saetta</surname><given-names>M</given-names></name>, <name name-style="western"><surname>Mapp</surname><given-names>CE</given-names></name>, <name name-style="western"><surname>Fabbri</surname><given-names>LM</given-names></name> (<year>2001</year>) <article-title>Remodeling in response to infection and injury. Airway inflammation and hypersecretion of mucus in smoking subjects with chronic obstructive pulmonary disease</article-title>. <source>American journal of respiratory and critical care medicine</source> <volume>164</volume>: <fpage>S76</fpage>–<lpage>80</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Simet1"><label>25</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Simet</surname><given-names>SM</given-names></name>, <name name-style="western"><surname>Sisson</surname><given-names>JH</given-names></name>, <name name-style="western"><surname>Pavlik</surname><given-names>JA</given-names></name>, <name name-style="western"><surname>Devasure</surname><given-names>JM</given-names></name>, <name name-style="western"><surname>Boyer</surname><given-names>C</given-names></name>, <etal>et al</etal>. (<year>2010</year>) <article-title>Long-term cigarette smoke exposure in a mouse model of ciliated epithelial cell function</article-title>. <source>American journal of respiratory cell and molecular biology</source> <volume>43</volume>: <fpage>635</fpage>–<lpage>640</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Bhatta1"><label>26</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Bhatta</surname><given-names>N</given-names></name>, <name name-style="western"><surname>Dhakal</surname><given-names>SS</given-names></name>, <name name-style="western"><surname>Rizal</surname><given-names>S</given-names></name>, <name name-style="western"><surname>Kralingen</surname><given-names>KW</given-names></name>, <name name-style="western"><surname>Niessen</surname><given-names>L</given-names></name> (<year>2008</year>) <article-title>Clinical spectrum of patients presenting with bronchiectasis in Nepal: evidence of linkage between tuberculosis, tobacco smoking and toxic exposure to biomass smoke</article-title>. <source>Kathmandu University medical journal</source> <volume>6</volume>: <fpage>195</fpage>–<lpage>203</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-Chapin1"><label>27</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Chapin</surname><given-names>HC</given-names></name>, <name name-style="western"><surname>Caplan</surname><given-names>MJ</given-names></name> (<year>2010</year>) <article-title>The cell biology of polycystic kidney disease</article-title>. <source>The Journal of cell biology</source> <volume>191</volume>: <fpage>701</fpage>–<lpage>710</lpage>.</mixed-citation>
+</ref>
+<ref id="pone.0093674-AlBhalal1"><label>28</label>
+<mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Al-Bhalal</surname><given-names>L</given-names></name>, <name name-style="western"><surname>Akhtar</surname><given-names>M</given-names></name> (<year>2005</year>) <article-title>Molecular basis of autosomal dominant polycystic kidney disease</article-title>. <source>Advances in anatomic pathology</source> <volume>12</volume>: <fpage>126</fpage>–<lpage>133</lpage>.</mixed-citation>
+</ref>
+</ref-list></back>
+</article>

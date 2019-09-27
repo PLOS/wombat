@@ -1,0 +1,711 @@
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="1.1d3" xml:lang="en">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0164056</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-16-23785</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Oncology</subject><subj-group><subject>Cancers and neoplasms</subject><subj-group><subject>Lung and intrathoracic tumors</subject><subj-group><subject>Small cell lung cancer</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Musculoskeletal system</subject><subj-group><subject>Muscles</subject><subj-group><subject>Skeletal muscles</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Musculoskeletal system</subject><subj-group><subject>Muscles</subject><subj-group><subject>Skeletal muscles</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Immunology</subject><subj-group><subject>Immune response</subject><subj-group><subject>Inflammation</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Immunology</subject><subj-group><subject>Immune response</subject><subj-group><subject>Inflammation</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Diagnostic medicine</subject><subj-group><subject>Signs and symptoms</subject><subj-group><subject>Inflammation</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Pathology and laboratory medicine</subject><subj-group><subject>Signs and symptoms</subject><subj-group><subject>Inflammation</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Health care</subject><subj-group><subject>Palliative care</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Oncology</subject></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Physiology</subject><subj-group><subject>Physiological parameters</subject><subj-group><subject>Body weight</subject><subj-group><subject>Body mass index</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Physiology</subject><subj-group><subject>Physiological parameters</subject><subj-group><subject>Body weight</subject><subj-group><subject>Body mass index</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Diagnostic medicine</subject><subj-group><subject>Prognosis</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Oncology</subject><subj-group><subject>Cancer treatment</subject></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Prognostic Significance of Modified Advanced Lung Cancer Inflammation Index (ALI) in Patients with Small Cell Lung Cancer_ Comparison with Original ALI</article-title>
+<alt-title alt-title-type="running-head">Modified ALI Using Skeletal Muscle Index in SCLC</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Kim</surname>
+<given-names>Eun Young</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" equal-contrib="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Kim</surname>
+<given-names>Nambeom</given-names>
+</name>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<name name-style="western">
+<surname>Kim</surname>
+<given-names>Young Saing</given-names>
+</name>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Seo</surname>
+<given-names>Ja-Young</given-names>
+</name>
+<xref ref-type="aff" rid="aff004"><sup>4</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Park</surname>
+<given-names>Inkeun</given-names>
+</name>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Ahn</surname>
+<given-names>Hee Kyung</given-names>
+</name>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Jeong</surname>
+<given-names>Yu Mi</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Kim</surname>
+<given-names>Jeong Ho</given-names>
+</name>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>Department of Radiology, Gachon University Gil Medical Center, Incheon, Republic of Korea</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Neuroscience Research Institute, Gachon University, Incheon, Republic of Korea</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>Division of Hematology and Oncology, Department of Internal Medicine, Gachon University Gil Medical Center, Incheon, Republic of Korea</addr-line></aff>
+<aff id="aff004"><label>4</label> <addr-line>Department of Laboratory Medicine, Gachon University Gil Medical Center, Incheon, Republic of Korea</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Singh</surname>
+<given-names>Pankaj K</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>University of Nebraska Medical Center, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<fn fn-type="con">
+<p><list list-type="simple"><list-item><p><bold>Conceptualization:</bold> EYK YSK.</p></list-item>
+<list-item><p><bold>Data curation:</bold> EYK YSK J-YS IP HKA YMJ JHK.</p></list-item>
+<list-item><p><bold>Formal analysis:</bold> EYK NK.</p></list-item>
+<list-item><p><bold>Investigation:</bold> EYK YSK.</p></list-item>
+<list-item><p><bold>Methodology:</bold> EYK YSK NK.</p></list-item>
+<list-item><p><bold>Resources:</bold> YSK HKA.</p></list-item>
+<list-item><p><bold>Software:</bold> NK.</p></list-item>
+<list-item><p><bold>Supervision:</bold> YSK.</p></list-item>
+<list-item><p><bold>Validation:</bold> EYK NK.</p></list-item>
+<list-item><p><bold>Visualization:</bold> YSK.</p></list-item>
+<list-item><p><bold>Writing – original draft:</bold> EYK YSK.</p></list-item>
+<list-item><p><bold>Writing – review &amp; editing:</bold> EYK YSK J-YS IP HKA YMJ JHK.</p></list-item></list></p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">zoomboom@hanmail.net</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>5</day>
+<month>10</month>
+<year>2016</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2016</year>
+</pub-date>
+<volume>11</volume>
+<issue>10</issue>
+<elocation-id>e0164056</elocation-id>
+<history>
+<date date-type="received">
+<day>13</day>
+<month>6</month>
+<year>2016</year>
+</date>
+<date date-type="accepted">
+<day>19</day>
+<month>9</month>
+<year>2016</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2016</copyright-year>
+<copyright-holder>Kim et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0164056"/>
+<abstract>
+<sec id="sec001">
+<title>Background</title>
+<p>Advanced lung cancer inflammation index (ALI, body mass index [BMI] x serum albumin/neutrophil-lymphocyte ratio [NLR]) has been shown to predict overall survival (OS) in small cell lung cancer (SCLC). CT enables skeletal muscle to be quantified, whereas BMI cannot accurately reflect body composition. The purpose was to evaluate prognostic value of modified ALI (mALI) using CT-determined L3 muscle index (L3MI, muscle area at L3/height<sup>2</sup>) beyond original ALI.</p>
+</sec>
+<sec id="sec002">
+<title>Methods</title>
+<p>L3MIs were calculated using the CT images of 186 consecutive patients with SCLC taken at diagnosis, and mALI was defined as L3MI x serum albumin/NLR. Using chi-squared test determined maximum cut-offs for low ALI and low mALI, the prognostic values of low ALI and low mALI were tested using Kaplan-Meier method and Cox proportional hazards analysis. Finally, deviance statistics was used to test whether the goodness of fit of the prognostic model is improved by adding mALI as an extra variable.</p>
+</sec>
+<sec id="sec003">
+<title>Results</title>
+<p>Patients with low ALI (cut-off, 31.1, n = 94) had shorter OS than patients with high ALI (median, 6.8 months vs. 15.8 months; <italic>p</italic> &lt; 0.001), and patients with low mALI (cut-off 67.7, n = 94) had shorter OS than patients with high mALI (median, 6.8 months vs. 16.5 months; <italic>p</italic> &lt; 0.001). There was no significant difference in estimates of median survival time between low ALI and low mALI (z = 0.000, <italic>p</italic> = 1.000) and between high ALI and high mALI (z = 0.330, <italic>p</italic> = 0.740). Multivariable analysis showed that low ALI was an independent prognostic factor for shorter OS (HR, 1.67, <italic>p</italic> = 0.004), along with advanced age (HR, 1.49, <italic>p</italic> = 0.045), extensive disease (HR, 2.27, <italic>p</italic> &lt; 0.001), supportive care only (HR, 7.86, <italic>p</italic> &lt; 0.001), and elevated LDH (HR, 1.45, <italic>p</italic> = 0.037). Furthermore, goodness of fit of this prognostic model was not significantly increased by adding mALI as an extra variable (LR difference = 2.220, <italic>p</italic> = 0.136).</p>
+</sec>
+<sec id="sec004">
+<title>Conclusion</title>
+<p>The present study confirms mALI using CT-determined L3MI has no additional prognostic value beyond original ALI using BMI. ALI is a simple and useful prognostic indicator in SCLC.</p>
+</sec>
+</abstract>
+<funding-group>
+<funding-statement>The authors have declared there was no funding source, no sources of support.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="1"/>
+<table-count count="3"/>
+<page-count count="9"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec005" sec-type="intro">
+<title>Introduction</title>
+<p>Lung cancer is the leading cause of cancer-related death worldwide and small cell lung cancer (SCLC) accounts for about 15% of all cases. Although SCLC is highly responsive to initial chemotherapy and radiotherapy, it spreads much more quickly than <ext-link ext-link-type="uri" xlink:href="https://www.nlm.nih.gov/medlineplus/ency/article/007194.htm" xlink:type="simple">non-small cell lung cancer</ext-link> and its prognosis is poor [<xref ref-type="bibr" rid="pone.0164056.ref001">1</xref>, <xref ref-type="bibr" rid="pone.0164056.ref002">2</xref>]. Tumor staging systems are the most important predictors of overall survival (OS), and a number of clinical indicators are also related to prognosis in SCLC patients. In particular, studies indicate that clinical characteristics, such as, gender, age, smoking status, and performance status, have prognostic significance [<xref ref-type="bibr" rid="pone.0164056.ref001">1</xref>, <xref ref-type="bibr" rid="pone.0164056.ref003">3</xref>]. A recent study described the prognostic significance of advance lung cancer inflammation index (ALI; a systemic inflammation-based index), which was calculated by multiplying body mass index (BMI, kg/m<sup>2</sup>) by the serum albumin/neutrophil-lymphocyte ratio (NLR). The results obtained showed a low ALI (&lt; 19.5) was significantly associated with a poor prognosis in SCLC [<xref ref-type="bibr" rid="pone.0164056.ref004">4</xref>].</p>
+<p>Quantification of skeletal muscle mass is important for determining the presence of sarcopenia, which is an important component of cancer cachexia syndrome and significant prognostic indicator in cancer patients, because skeletal muscle mass status is associated with functional impairment, increased risk of chemotherapy-related toxicities, and reduced survival [<xref ref-type="bibr" rid="pone.0164056.ref005">5</xref>–<xref ref-type="bibr" rid="pone.0164056.ref010">10</xref>]. However, although BMI is known not to reflect body composition accurately, it is used to calculate ALI. Accordingly, we undertook this study to determine whether the modified ALI (mALI) incorporating CT-determined skeletal muscle mass has more prognostic value than ALI as originally defined.</p>
+</sec>
+<sec id="sec006" sec-type="materials|methods">
+<title>Materials and Methods</title>
+<sec id="sec007">
+<title>Patients</title>
+<p>We retrospectively identified patients with newly diagnosed, pathologically proven SCLC that underwent a baseline chest CT scan and a PET/CT scan from January 2010 to October of 2015 using the radiology database and medical records system at Gachon University Gil Medical Center (Incheon, Korea). Heights and weights were measured and functional statuses were recorded at first visit to our oncology department. Body mass index (BMI) was defined as weight divided by height squared (kg/m<sup>2</sup>).</p>
+<p>SCLC was classified as limited or extensive. Limited stage was defined as American Joint Committee on Cancer (AJCC) stages I to III, which can be safely treated by definitive radiation therapy [<xref ref-type="bibr" rid="pone.0164056.ref011">11</xref>]. Treatment for SCLC included active therapies, such as, chemotherapy, chemoradiotherapy (including sequential and concurrent therapy), chest radiotherapy, and supportive care only. The institutional review board of our hospital approved this retrospective study and waived the requirement for informed patient consent.</p>
+</sec>
+<sec id="sec008">
+<title>Neutrophil to lymphocyte ratio (NLR)</title>
+<p>At time of diagnosis, a pretreatment venous blood sample was collected after a 12-hour overnight fast. Blood cell counts were determined using the ADVIA 2120 Hematology System (Siemens AG, Eschborn, Germany) and serum albumin, lactate dehydrogenase (LDH) levels were measured using an ADVIA 2400 Chemistry System (Siemens Healthcare Diagnostics, Sacramento, CA, USA).</p>
+</sec>
+<sec id="sec009">
+<title>CT Image analysis</title>
+<p>Single cross-sectional area of third lumbar vertebra (L3MA) measured on PET/CT at the time of SCLC diagnosis served as a reference standard. A six-detector CT (Siemens Medical Systems, Erlangen, Germany) equipped with lutetium oxyorthosilicate crystal PET detectors was operated using the following imaging parameters; 130 kVp, 110 mAs, 2-mm pitch, 1-s tube rotation, and a slice thickness of 5 mm, which matched the slice thickness of PET images.</p>
+<p>Quantitative assessments of muscle areas were performed using commercially available software (Terarecon 3.4.2.11, San Mateo, CA, USA) by a subspecialty-trained chest radiologist. Tissue cross-sectional areas (cm<sup>2</sup>) of respective tissues in slices were computed automatically by summing appropriate pixels using the CT Hounsfield unit (HU) range -29 HU to 150 HU for skeletal muscle. After applying threshold methods using the predefined HU threshold range to each slice, boundaries between different tissues were corrected manually when necessary. L3 muscle index (L3MI, cm<sup>2</sup>/m<sup>2</sup>) was defined as the cross-sectional area of muscle at the L3 level divided by height squared as is conventional for BMI.</p>
+</sec>
+<sec id="sec010">
+<title>Statistical analysis</title>
+<p>Descriptive statistics are reported as proportions or means with standard deviations (SDs). For categorical variables, Pearson’s chi-squared test or Fisher’s exact test were used for intergroup comparisons. Continuous variables were compared using the Student’s <italic>t</italic>-test or the Mann-Whitney <italic>U</italic> test. ALI was defined as BMI x serum albumin/NLR and mALI was defined as CT-determined L3MI x serum albumin/NLR. Maxstat, a maximal chi-squared method in open source statistical software R (R Development Core Team, Vienna, Austria, <ext-link ext-link-type="uri" xlink:href="http://www.R-project.org" xlink:type="simple">http://www.R-project.org</ext-link>) was used to determine optimal cut-off points for ALI and mALI, and the prognostic significances of determined low ALI and mALI values were evaluated using Kaplan-Meier. The median survival time (MST) was compared between low ALI and low mALI by using independent two-sample z-test.</p>
+<p>Univariable and multivariable Cox proportional hazard models were used to identify prognostic factors of survival. Variables with a <italic>p</italic> value of &lt; 0.15 by the log-rank test were included in the backward stepwise multivariable analysis. Goodness of fit for the final model was assessed by calculating the likelihood ratio test. The reliability of the predictors for prognosis was assessed using a bootstrap resampling technique with 1,000 samples [<xref ref-type="bibr" rid="pone.0164056.ref012">12</xref>]; for each sample, analysis was performed using a backward stepwise Cox proportional hazard model. If the final prognostic model variables appear in a majority (&gt; 50%) of the bootstrap models, the original final stepwise regression model can be judged as stable. In addition, deviance statistics was used to test whether the goodness of fit of the final prognostic model is improved by adding mALI as an extra variable [<xref ref-type="bibr" rid="pone.0164056.ref013">13</xref>]. A <italic>p</italic> values of ≤ 0.05 were considered statistically significant and the analysis was performed using SPSS for Windows ver. 19.0 (SPSS Inc., Chicago, IL, USA) and R ver 3.3.1.</p>
+</sec>
+</sec>
+<sec id="sec011" sec-type="results">
+<title>Results</title>
+<sec id="sec012">
+<title>Characteristics of the study population</title>
+<p>A total of 186 consecutive patients were included in the present study (<xref ref-type="table" rid="pone.0164056.t001">Table 1</xref>). Mean patient age was 68.6 ± 9.4 years and 156 (83.9%) were male. Of the 186 patients, 122 (65.6%) had extensive disease at presentation. Average BMI was 22.3 ± 3.6 kg/m<sup>2</sup> and average L3MI was 48.6 ± 9.6 cm<sup>2</sup>/m<sup>2</sup>.</p>
+<table-wrap id="pone.0164056.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0164056.t001</object-id>
+<label>Table 1</label> <caption><title>Characteristics of patients with small cell lung cancer according to advanced lung inflammation index (ALI) values.</title></caption>
+<alternatives>
+<graphic id="pone.0164056.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0164056.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left">Characteristics</th>
+<th align="left">All (n = 186)</th>
+<th align="left">ALI &lt; 31.1 (n = 94)</th>
+<th align="left">ALI ≥ 31.1 (n = 92)</th>
+<th align="left"><italic>p</italic> value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><bold>Age, years</bold></td>
+<td align="left">68.8 ± 9.4</td>
+<td align="left">71.5 ± 9.2</td>
+<td align="left">66.1 ± 8.8</td>
+<td align="char" char=".">&lt; 0.001<xref ref-type="table-fn" rid="t001fn002"><sup>a</sup></xref></td>
+</tr>
+<tr>
+<td align="left">≥ 65 years</td>
+<td align="left">127 (67.1%)</td>
+<td align="left">71 (75.5%)</td>
+<td align="left">56 (60.9%)</td>
+<td align="char" char=".">0.032<xref ref-type="table-fn" rid="t001fn003"><sup>b</sup></xref></td>
+</tr>
+<tr>
+<td align="left"><bold>Male</bold></td>
+<td align="left">156 (83.9%)</td>
+<td align="left">82 (87.2%)</td>
+<td align="left">74 (80.4%)</td>
+<td align="char" char=".">0.207<xref ref-type="table-fn" rid="t001fn003"><sup>b</sup></xref></td>
+</tr>
+<tr>
+<td align="left"><bold>Smoking Status</bold></td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Current/ex-smoker</td>
+<td align="left">166 (89.2%)</td>
+<td align="left">88 (93.6%)</td>
+<td align="left">78 (84.8%)</td>
+<td align="char" char=".">0.052<xref ref-type="table-fn" rid="t001fn003"><sup>b</sup></xref></td>
+</tr>
+<tr>
+<td align="left"> Never smoker</td>
+<td align="left">20 (10.8%)</td>
+<td align="left">6 (6.4%)</td>
+<td align="left">14 (15.2%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Pack year, median (range)</td>
+<td align="left">35 (0–171)</td>
+<td align="left">40 (0–171)</td>
+<td align="left">30 (0–120)</td>
+<td align="char" char=".">0.151<xref ref-type="table-fn" rid="t001fn004"><sup>c</sup></xref></td>
+</tr>
+<tr>
+<td align="left"><bold>Stage</bold></td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Limited disease</td>
+<td align="left">64 (34.4%)</td>
+<td align="left">23 (24.5%)</td>
+<td align="left">41 (44.6%)</td>
+<td align="char" char=".">0.004<xref ref-type="table-fn" rid="t001fn003"><sup>b</sup></xref></td>
+</tr>
+<tr>
+<td align="left"> Extensive disease</td>
+<td align="left">122 (65.6%)</td>
+<td align="left">71 (75.5%)</td>
+<td align="left">51 (55.4%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>ECOG PS</bold></td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> 0–1</td>
+<td align="left">132 (71.0%)</td>
+<td align="left">53 (56.4%)</td>
+<td align="left">79 (85.9%)</td>
+<td align="char" char=".">&lt; 0.001<xref ref-type="table-fn" rid="t001fn003"><sup>b</sup></xref></td>
+</tr>
+<tr>
+<td align="left"> ≥ 2</td>
+<td align="left">54 (29.0%)</td>
+<td align="left">41 (43.6%)</td>
+<td align="left">13 (14.1%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>Charlson comorbidity index</bold></td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> 0</td>
+<td align="left">59 (31.7%)</td>
+<td align="left">24 (25.5%)</td>
+<td align="left">35 (38.0%)</td>
+<td align="char" char=".">0.157<xref ref-type="table-fn" rid="t001fn003"><sup>b</sup></xref></td>
+</tr>
+<tr>
+<td align="left"> 1–2</td>
+<td align="left">101 (54.3%)</td>
+<td align="left">57 (60.6%)</td>
+<td align="left">44 (47.8%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> ≥ 3</td>
+<td align="left">26 (14.0%)</td>
+<td align="left">13 (13.8%)</td>
+<td align="left">13 (14.1%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>Body mass index, kg/m</bold><sup><bold>2</bold></sup></td>
+<td align="left">22.3 ± 3.6</td>
+<td align="left">20.8 ± 3.2</td>
+<td align="left">23.9. ± 3.3</td>
+<td align="char" char=".">&lt; 0.001<xref ref-type="table-fn" rid="t001fn002"><sup>a</sup></xref></td>
+</tr>
+<tr>
+<td align="left"><bold>L3 muscle index, cm/m</bold><sup><bold>2</bold></sup></td>
+<td align="left">48.6 ± 9.6</td>
+<td align="left">46.4 ± 9.3</td>
+<td align="left">50.9 ± 9.4</td>
+<td align="char" char=".">0.001<xref ref-type="table-fn" rid="t001fn002"><sup>a</sup></xref></td>
+</tr>
+<tr>
+<td align="left"><bold>Inflammatory markers</bold></td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> WBC, 10<sup>9</sup>/L</td>
+<td align="left">7.90 (3.58–24.11)</td>
+<td align="left">8.71 (3.93–24.11)</td>
+<td align="left">7.39 (3.58–15.02)</td>
+<td align="char" char=".">&lt; 0.001<xref ref-type="table-fn" rid="t001fn004"><sup>c</sup></xref></td>
+</tr>
+<tr>
+<td align="left"> Neutrophil to lymphocyte ratio</td>
+<td align="left">2.7 (0.8–20.6)</td>
+<td align="left">4.28 (2.11–20.59)</td>
+<td align="left">1.82 (0.80–2.84)</td>
+<td align="char" char=".">&lt; 0.001<xref ref-type="table-fn" rid="t001fn004"><sup>c</sup></xref></td>
+</tr>
+<tr>
+<td align="left"> Albumin, g/dL</td>
+<td align="left">3.95 (2.50–4.90)</td>
+<td align="left">3.80 (2.50–4.70)</td>
+<td align="left">4.10 (3.30–4.90)</td>
+<td align="char" char=".">&lt; 0.001<xref ref-type="table-fn" rid="t001fn004"><sup>c</sup></xref></td>
+</tr>
+<tr>
+<td align="left"><bold>ALI</bold></td>
+<td align="left">37.07 ± 25.3</td>
+<td align="left">18.4 ± 7.3</td>
+<td align="left">56.2 ± 22.7</td>
+<td align="char" char=".">&lt; 0.001<xref ref-type="table-fn" rid="t001fn002"><sup>a</sup></xref></td>
+</tr>
+<tr>
+<td align="left"><bold>mALI</bold></td>
+<td align="left">80.0 ± 54.3</td>
+<td align="left">41.3 ± 17.7</td>
+<td align="left">119.6 ± 50.3</td>
+<td align="char" char=".">&lt; 0.001<xref ref-type="table-fn" rid="t001fn002"><sup>a</sup></xref></td>
+</tr>
+<tr>
+<td align="left"><bold>Treatment</bold></td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="char" char=".">0.001<xref ref-type="table-fn" rid="t001fn005"><sup>d</sup></xref></td>
+</tr>
+<tr>
+<td align="left"> Chemotherapy</td>
+<td align="left">94 (50.5%)</td>
+<td align="left">49 (52.1%)</td>
+<td align="left">45 (48.9%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Chemoradiotherapy</td>
+<td align="left">59 (31.7%)</td>
+<td align="left">20 (21.3%)</td>
+<td align="left">39 (42.4%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Chest radiotherapy</td>
+<td align="left">2 (1.1%)</td>
+<td align="left">1 (1.1%)</td>
+<td align="left">1 (1.1%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Supportive care only</td>
+<td align="left">31 (16.7%)</td>
+<td align="left">24 (25.5%)</td>
+<td align="left">7 (7.6%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>First-line chemotherapy regimen</bold></td>
+<td align="left"/>
+<td align="left"/>
+<td align="left"/>
+<td align="char" char=".">0.018<xref ref-type="table-fn" rid="t001fn005"><sup>d</sup></xref></td>
+</tr>
+<tr>
+<td align="left"> Etoposide/cisplatin</td>
+<td align="left">96 (62.7%)</td>
+<td align="left">38 (55.1%)</td>
+<td align="left">58 (59.0%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Etoposide/carboplatin</td>
+<td align="left">22 (14.4%)</td>
+<td align="left">15 (21.7%)</td>
+<td align="left">7 (8.3%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Irinotecan/cisplatin</td>
+<td align="left">12 (7.8%)</td>
+<td align="left">5 (7.2%)</td>
+<td align="left">7 (8.3%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Belotecan/ifosfamide</td>
+<td align="left">16 (10.5%)</td>
+<td align="left">5 (7.2%)</td>
+<td align="left">11 (13.1%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"> Etoposide monotherapy</td>
+<td align="left">7 (4.6%)</td>
+<td align="left">6 (8.7%)</td>
+<td align="left">1 (1.2%)</td>
+<td align="left"/>
+</tr>
+<tr>
+<td align="left"><bold>LDH (U/L), median (range)</bold></td>
+<td align="left">531 (282–8587)</td>
+<td align="left">569 (294–8587)</td>
+<td align="left">500 (282–2289)</td>
+<td align="char" char=".">0.012<xref ref-type="table-fn" rid="t001fn004"><sup>c</sup></xref></td>
+</tr>
+<tr>
+<td align="left"> Elevated LDH (≥ 486 U/L)</td>
+<td align="left">105 (56.5%)</td>
+<td align="left">56 (59.6%)</td>
+<td align="left">49 (53.3%)</td>
+<td align="char" char=".">0.385<xref ref-type="table-fn" rid="t001fn003"><sup>b</sup></xref></td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>Abbreviations: ECOG PS, Eastern Cooperative Oncology Group performance status; CRP, C-reactive protein; mGPS, modified Glasgow Prognostic Score; LDH, lactate dehydrogenase; ALI, Advanced lung cancer inflammation index; mALI, modified ALI. Values are means ± standard deviations.</p></fn>
+<fn id="t001fn002"><p><sup>a</sup>Student <italic>t</italic>- test,</p></fn>
+<fn id="t001fn003"><p><sup>b</sup>Chi-squared test,</p></fn>
+<fn id="t001fn004"><p><sup>c</sup>Mann-Whitney <italic>U</italic> test,</p></fn>
+<fn id="t001fn005"><p><sup>d</sup>Fisher’s exact test</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec013">
+<title>Original ALI and modified ALI</title>
+<p>For the 186 study subjects, mean ALI and mALI values were 37.07 ± 25.3 and 80.0 ± 54.3 respectively, and a significant correlation was found between ALI and mALI (r = 0.962, <italic>p</italic> &lt; 0.001). Cut-offs for low ALI and low mALI as determined by the maximum chi-squared test were 31.1 and 67.7, respectively; 94 patients (50.5%) had a low ALI (&lt; 31.1) and 94 had a low mALI (&lt; 67.7) (<xref ref-type="table" rid="pone.0164056.t002">Table 2</xref>), and for 172 patients (92.4%) categorizations by ALI and mALI concurred. Patients with a low ALI (n = 94) were older and had higher proportions of patients with extensive disease, poor performance status, supportive care only, and higher LDH levels than patients with a high ALI (<xref ref-type="table" rid="pone.0164056.t001">Table 1</xref>).</p>
+<table-wrap id="pone.0164056.t002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0164056.t002</object-id>
+<label>Table 2</label> <caption><title>Numbers of patients categorized according to ALI and mALI (ALI) cut-off values.</title></caption>
+<alternatives>
+<graphic id="pone.0164056.t002g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0164056.t002" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<tbody>
+<tr>
+<td align="center"/>
+<td align="center">Low ALI (ALI &lt; 31.1)</td>
+<td align="center">ALI <bold>≥</bold> 31.1</td>
+</tr>
+<tr>
+<td align="center">Low mALI (mALI &lt; 67.7)</td>
+<td align="center">85</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="center">mALI ≥ 67.7</td>
+<td align="center">7</td>
+<td align="center">87</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t002fn001"><p>Abbreviations: ALI, Advanced lung cancer inflammation index; mALI, modified ALI</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec014">
+<title>Prognostic significances of ALI and mALI</title>
+<p>Over a median follow-up of 29.0 months (95% confidence interval [CI], 19.7 to 38.3 months), 141 patients (83.5%) died. For all 186 study subjects, median OS was 10.6 months (95% CI, 8.6 to 12.6 months). Patients with a low ALI had shorter OS than patients with a high ALI (median OS, 6.8 months vs. 15.8 months; <italic>p</italic> &lt; 0.001), and patients with a low mALI had shorter OS than patients with a high mALI (median OS, 6.8 months vs. 16.5 months; <italic>p</italic> &lt; 0.001) (<xref ref-type="fig" rid="pone.0164056.g001">Fig 1</xref>). There was no significant difference in estimates of MST between low ALI and low mALI (z = 0.000, <italic>p</italic> = 1.000) and between high ALI and high mALI (z = 0.330, <italic>p</italic> = 0.740).</p>
+<fig id="pone.0164056.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0164056.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title>Kaplan-Meier curves of advance lung cancer inflammation index (ALI) and modified ALI (mALI).</title>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0164056.g001" xlink:type="simple"/>
+</fig>
+<p>Univariable Cox regression analysis revealed that both low ALI and low mALI were significantly associated with shorter OS (hazard ratio [HR], 2.10 for low ALI and 2.20 for low mALI, <italic>p</italic> &lt; 0.001). Other poor prognostic factors in univariable analyses were advanced age (≥ 65 years), extensive disease, poor performance status (PS), supportive care only, and elevated LDH. Multivariable analysis showed that low ALI was an independent prognostic factor for shorter OS (HR, 1.67, <italic>p</italic> = 0.004), along with advanced age (HR, 1.49, <italic>p</italic> = 0.045), extensive disease (HR, 2.27, <italic>p</italic> &lt; 0.001), supportive care only (HR, 7.86, <italic>p</italic> &lt; 0.001), and elevated LDH (HR, 1.45, <italic>p</italic> = 0.037) (<xref ref-type="table" rid="pone.0164056.t003">Table 3</xref>). In internal validation using a bootstrap resampling technique, low ALI (bootstrap frequency, 98.1%), advanced age (76.0%), extensive disease (100%), supportive care only (100%), and elevated LDH (76.8%) were all reliable prognostic factors. In addition, goodness of fit of this final prognostic model was not significantly increased by adding mALI as an extra variable (LR difference = 2.220, <italic>p</italic> = 0.136).</p>
+<table-wrap id="pone.0164056.t003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0164056.t003</object-id>
+<label>Table 3</label> <caption><title>Results of univariable and multivariable analyses of overall survival.</title></caption>
+<alternatives>
+<graphic id="pone.0164056.t003g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0164056.t003" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left" rowspan="2">Variables</th>
+<th align="center" colspan="2">Univariable analysis</th>
+<th align="center" colspan="2">Multivariable analysis</th>
+</tr>
+<tr>
+<th align="center">HR (95% CI)</th>
+<th align="center"><italic>p</italic> value<xref ref-type="table-fn" rid="t003fn002"><sup>a</sup></xref></th>
+<th align="center">HR (95% CI)</th>
+<th align="center"><italic>p</italic> value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><bold>Male sex</bold></td>
+<td align="center">1.21 (0.74–1.96)</td>
+<td align="char" char=".">0.446</td>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"><bold>Age ≥ 65 years</bold></td>
+<td align="center">1.90 (1.31–2.75)</td>
+<td align="char" char=".">0.001</td>
+<td align="center">1.49 (1.01–2.20)</td>
+<td align="char" char=".">0.045</td>
+</tr>
+<tr>
+<td align="left"><bold>Extensive stage</bold></td>
+<td align="center">2.93 (1.99–4.32)</td>
+<td align="char" char=".">&lt; 0.001</td>
+<td align="center">2.27 (1.52–3.40)</td>
+<td align="char" char=".">&lt; 0.001</td>
+</tr>
+<tr>
+<td align="left"><bold>ECOG PS ≥ 2</bold></td>
+<td align="center">2.65 (1.84–3.82)</td>
+<td align="char" char=".">&lt; 0.001</td>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"><bold>Supportive care only</bold></td>
+<td align="center">11.74 (7.03–19.61)</td>
+<td align="char" char=".">&lt; 0.001</td>
+<td align="center">7.86 (4.65–13.29)</td>
+<td align="char" char=".">&lt; 0.001</td>
+</tr>
+<tr>
+<td align="left"><bold>Charlson comorbidity Index ≥ 1</bold></td>
+<td align="center">1.33 (0.93–1.91)</td>
+<td align="char" char=".">0.118</td>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"><bold>Current/ex-smoker</bold></td>
+<td align="center">0.79 (0.46–1.38)</td>
+<td align="char" char=".">0.413</td>
+<td align="center"/>
+<td align="center"/>
+</tr>
+<tr>
+<td align="left"><bold>Elevated LDH (≥ 486 U/L)</bold></td>
+<td align="center">1.54 (1.10–2.17)</td>
+<td align="char" char=".">0.011</td>
+<td align="center">1.45 (1.02–2.05)</td>
+<td align="char" char=".">0.037</td>
+</tr>
+<tr>
+<td align="left"><bold>Low ALI (ALI &lt; 31.1)</bold></td>
+<td align="center">2.10 (1.50–2.94)</td>
+<td align="char" char=".">&lt; 0.001</td>
+<td align="center">1.67 (1.17–2.37)</td>
+<td align="char" char=".">0.004</td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t003fn001"><p>Abbreviations: HR, hazard ratio; CI, confidence interval; ECOG PS, Eastern Cooperative Oncology Group performance status; BMI, body mass index; LDH, lactate dehydrogenase; ALI, Advanced lung inflammation index</p></fn>
+<fn id="t003fn002"><p><sup>a</sup>Log-rank test</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+</sec>
+<sec id="sec015" sec-type="conclusions">
+<title>Discussion</title>
+<p>Inflammation plays key roles in immune response to pathogens and in tissue repair, but can become chronic and promote the generation of reactive oxygen and nitrogen species, and stimulate angiogenesis and cellular proliferation, which play key roles during carcinogenesis [<xref ref-type="bibr" rid="pone.0164056.ref014">14</xref>, <xref ref-type="bibr" rid="pone.0164056.ref015">15</xref>]. Furthermore, epidemiological evidence implicates systemic inflammation in the etiology of cancer and indicates its prognostic significance in different cancers [<xref ref-type="bibr" rid="pone.0164056.ref003">3</xref>, <xref ref-type="bibr" rid="pone.0164056.ref004">4</xref>, <xref ref-type="bibr" rid="pone.0164056.ref016">16</xref>–<xref ref-type="bibr" rid="pone.0164056.ref018">18</xref>].</p>
+<p>Cancer cachexia is a multi-factorial syndrome defined as an ongoing loss of skeletal muscle mass (with or without loss of fat mass) that cannot be reversed by conventional nutritional support and leads to progressive functional impairment [<xref ref-type="bibr" rid="pone.0164056.ref019">19</xref>]. The cachexia status is considered to be the clinical consequence of interactions between the tumor, the host metabolism, and pro-inflammatory cytokines [<xref ref-type="bibr" rid="pone.0164056.ref020">20</xref>]. As cancer cachexia impairs quality of life and response to therapy, the estimation of body composition is of considerable important in oncologic patients, because the quantification of skeletal muscle mass became an important diagnostic component of this syndrome and an important therapeutic target [<xref ref-type="bibr" rid="pone.0164056.ref019">19</xref>, <xref ref-type="bibr" rid="pone.0164056.ref021">21</xref>, <xref ref-type="bibr" rid="pone.0164056.ref022">22</xref>].</p>
+<p>CT provides an objective and reproducible means of quantifying skeletal muscle mass, and single cross-sectional area of muscle at L3 is regarded as the gold standard for quantifying total-body skeletal muscle mass [<xref ref-type="bibr" rid="pone.0164056.ref023">23</xref>]. On the other hand, measures of BMI are obviously limited in terms of evaluating sarcopenic status, because body weights do not precisely reflect body compositions, and weight loss is obscured in patients with a large tumor mass or collected fluid, such as, pleural effusion or body edema. Accordingly, we undertook to determine whether a CT-determined L3MI-based mALI has greater prognostic value than the original BMI-based ALI. The present study shows that low mALI and low ALI are both significant prognostic indicators, but that they have similar prognostic values.</p>
+<p>Although BMI does not provide a direct measure of body fat and skeletal muscle, it has been previously shown that a low BMI is significantly associated with a sarcopenic status [<xref ref-type="bibr" rid="pone.0164056.ref024">24</xref>]. Furthermore, BMI and weight loss, which are common at presentation in advanced cancer patients, has been used as a conventional diagnostic criterion for cancer cachexia traditionally.</p>
+<p>The present study has several limitations that require consideration. First, the number of patients included was small, although the study population was homogeneous in terms of histology. Second, since optimal cut-off values have not been established for ALI or mALI, we used maximal chi-squared test determined cut-off values. Furthermore, the result that mALI has no additional value beyond original ALI should be interpreted cautiously, since it does not mean CT-determined sarcopenia has no additional value than BMI based underweight, or weight loss.</p>
+<p>Summarizing, although CT-determined L3MI provides a precise means of quantifying skeletal muscle mass, and sarcopenia is considered an independent prognostic indicator in SCLC [<xref ref-type="bibr" rid="pone.0164056.ref024">24</xref>], our results show mALI, which incorporated CT-determined skeletal muscle mass has no additional value beyond ALI with respect to predicting the prognosis in SCLC. We conclude ALI, based on BMI and inflammatory markers, is a simple, clinically useful prognostic indicator in SLCL.</p>
+</sec>
+</body>
+<back>
+<ref-list>
+<title>References</title>
+<ref id="pone.0164056.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fruh</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>De Ruysscher</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Popat</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Crino</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Peters</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Felip</surname> <given-names>E</given-names></name>, <etal>et al</etal>. <article-title>Small-cell lung cancer (SCLC): ESMO Clinical Practice Guidelines for diagnosis, treatment and follow-up</article-title>. <source>Ann Oncol</source>. <year>2013</year>;<volume>24</volume> <issue>Suppl 6</issue>: <fpage>vi99</fpage>–<lpage>105</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1093/annonc/mdt178" xlink:type="simple">10.1093/annonc/mdt178</ext-link></comment> <object-id pub-id-type="pmid">23813929</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Torre</surname> <given-names>LA</given-names></name>, <name name-style="western"><surname>Bray</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Siegel</surname> <given-names>RL</given-names></name>, <name name-style="western"><surname>Ferlay</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Lortet-Tieulent</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Jemal</surname> <given-names>A</given-names></name>. <article-title>Global cancer statistics, 2012</article-title>. <source>CA Cancer J Clin</source>. <year>2015</year>;<volume>65</volume>: <fpage>87</fpage>–<lpage>108</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.3322/caac.21262" xlink:type="simple">10.3322/caac.21262</ext-link></comment> <object-id pub-id-type="pmid">25651787</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhou</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Hong</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Hu</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Hou</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Huang</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Zhao</surname> <given-names>H</given-names></name>, <etal>et al</etal>. <article-title>A systemic inflammation-based prognostic scores (mGPS) predicts overall survival of patients with small-cell lung cancer</article-title>. <source>Tumour Biol</source>. <year>2015</year>;<volume>36</volume>: <fpage>337</fpage>–<lpage>343</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s13277-014-2623-4" xlink:type="simple">10.1007/s13277-014-2623-4</ext-link></comment> <object-id pub-id-type="pmid">25256672</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>He</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Zhou</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Yang</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Hong</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Zhan</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Hu</surname> <given-names>Z</given-names></name>, <etal>et al</etal>. <article-title>Advanced Lung Cancer Inflammation Index, a New Prognostic Score, Predicts Outcome in Patients With Small-Cell Lung Cancer</article-title>. <source>Clin Lung Cancer</source>. <year>2015</year>;<volume>16</volume>: <fpage>e165</fpage>–<lpage>171</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.cllc.2015.03.005" xlink:type="simple">10.1016/j.cllc.2015.03.005</ext-link></comment> <object-id pub-id-type="pmid">25922292</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Huillard</surname> <given-names>O</given-names></name>, <name name-style="western"><surname>Mir</surname> <given-names>O</given-names></name>, <name name-style="western"><surname>Peyromaure</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Tlemsani</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Giroux</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Boudou-Rouquette</surname> <given-names>P</given-names></name>, <etal>et al</etal>. <article-title>Sarcopenia and body mass index predict sunitinib-induced early dose-limiting toxicities in renal cancer patients</article-title>. <source>Br J Cancer</source>. <year>2013</year>;<volume>108</volume>: <fpage>1034</fpage>–<lpage>1041</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1038/bjc.2013.58" xlink:type="simple">10.1038/bjc.2013.58</ext-link></comment> <object-id pub-id-type="pmid">23462722</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Harimoto</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Shirabe</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Yamashita</surname> <given-names>YI</given-names></name>, <name name-style="western"><surname>Ikegami</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Yoshizumi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Soejima</surname> <given-names>Y</given-names></name>, <etal>et al</etal>. <article-title>Sarcopenia as a predictor of prognosis in patients following hepatectomy for hepatocellular carcinoma</article-title>. <source>Br J Surg</source>. <year>2013</year>;<volume>100</volume>: <fpage>1523</fpage>–<lpage>1530</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1002/bjs.9258" xlink:type="simple">10.1002/bjs.9258</ext-link></comment> <object-id pub-id-type="pmid">24037576</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Prado</surname> <given-names>CM</given-names></name>, <name name-style="western"><surname>Baracos</surname> <given-names>VE</given-names></name>, <name name-style="western"><surname>McCargar</surname> <given-names>LJ</given-names></name>, <name name-style="western"><surname>Reiman</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Mourtzakis</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Tonkin</surname> <given-names>K</given-names></name>, <etal>et al</etal>. <article-title>Sarcopenia as a determinant of chemotherapy toxicity and time to tumor progression in metastatic breast cancer patients receiving capecitabine treatment</article-title>. <source>Clin Cancer Res</source>. <year>2009</year>;<volume>15</volume>: <fpage>2920</fpage>–<lpage>2926</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1158/1078-0432.CCR-08-2242" xlink:type="simple">10.1158/1078-0432.CCR-08-2242</ext-link></comment> <object-id pub-id-type="pmid">19351764</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Villasenor</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Ballard-Barbash</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Baumgartner</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Baumgartner</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Bernstein</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>McTiernan</surname> <given-names>A</given-names></name>, <etal>et al</etal>. <article-title>Prevalence and prognostic effect of sarcopenia in breast cancer survivors: the HEAL Study</article-title>. <source>J Cancer Surviv</source>. <year>2012</year>;<volume>6</volume>: <fpage>398</fpage>–<lpage>406</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s11764-012-0234-x" xlink:type="simple">10.1007/s11764-012-0234-x</ext-link></comment> <object-id pub-id-type="pmid">23054848</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fukushima</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Yokoyama</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Nakanishi</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Tobisu</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Koga</surname> <given-names>F</given-names></name>. <article-title>Sarcopenia as a prognostic biomarker of advanced urothelial carcinoma</article-title>. <source>PLoS One</source>. <year>2015</year>;<volume>10</volume>: <fpage>e0115895</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1371/journal.pone.0115895" xlink:type="simple">10.1371/journal.pone.0115895</ext-link></comment> <object-id pub-id-type="pmid">25612215</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Meza-Junco</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Montano-Loza</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Baracos</surname> <given-names>VE</given-names></name>, <name name-style="western"><surname>Prado</surname> <given-names>CM</given-names></name>, <name name-style="western"><surname>Bain</surname> <given-names>VG</given-names></name>, <name name-style="western"><surname>Beaumont</surname> <given-names>C</given-names></name>, <etal>et al</etal>. <article-title>Sarcopenia as a prognostic index of nutritional status in concurrent cirrhosis and hepatocellular carcinoma</article-title>. <source>J Clin Gastroenterol</source>. <year>2013</year>;<volume>47</volume>: <fpage>861</fpage>–<lpage>870</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1097/MCG.0b013e318293a825" xlink:type="simple">10.1097/MCG.0b013e318293a825</ext-link></comment> <object-id pub-id-type="pmid">23751844</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kalemkerian</surname> <given-names>GP</given-names></name>, <name name-style="western"><surname>Gadgeel</surname> <given-names>SM</given-names></name>. <article-title>Modern staging of small cell lung cancer</article-title>. <source>J Natl Compr Canc Netw</source>. <year>2013</year>;<volume>11</volume>: <fpage>99</fpage>–<lpage>104</lpage>. <object-id pub-id-type="pmid">23307985</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brunelli</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Rocco</surname> <given-names>G</given-names></name>. <article-title>Internal validation of risk models in lung resection surgery: bootstrap versus training-and-test sampling</article-title>. <source>J Thorac Cardiovasc Surg</source>. <year>2006</year>;<volume>131</volume>: <fpage>1243</fpage>–<lpage>1247</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.jtcvs.2006.02.002" xlink:type="simple">10.1016/j.jtcvs.2006.02.002</ext-link></comment> <object-id pub-id-type="pmid">16733152</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Nelder</surname> <given-names>JA</given-names></name>, <name name-style="western"><surname>Wedderburn</surname> <given-names>RWM</given-names></name>. <article-title>Generalized Linear Models</article-title>. <source>Journal of the Royal Statistical Society Series A (General)</source>. <year>1972</year>;<volume>135</volume>: <fpage>370</fpage>–<lpage>384</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.2307/2344614" xlink:type="simple">10.2307/2344614</ext-link></comment></mixed-citation></ref>
+<ref id="pone.0164056.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lu</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Ouyang</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Huang</surname> <given-names>C</given-names></name>. <article-title>Inflammation, a key event in cancer development</article-title>. <source>Mol Cancer Res</source>. <year>2006</year>;<volume>4</volume>: <fpage>221</fpage>–<lpage>233</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1158/1541-7786.MCR-05-0261" xlink:type="simple">10.1158/1541-7786.MCR-05-0261</ext-link></comment> <object-id pub-id-type="pmid">16603636</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Azad</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Rojanasakul</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Vallyathan</surname> <given-names>V</given-names></name>. <article-title>Inflammation and lung cancer: roles of reactive oxygen/nitrogen species</article-title>. <source>J Toxicol Environ Health B Crit Rev</source>. <year>2008</year>;<volume>11</volume>: <fpage>1</fpage>–<lpage>15</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1080/10937400701436460" xlink:type="simple">10.1080/10937400701436460</ext-link></comment> <object-id pub-id-type="pmid">18176884</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Proctor</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Morrison</surname> <given-names>DS</given-names></name>, <name name-style="western"><surname>Talwar</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Balmer</surname> <given-names>SM</given-names></name>, <name name-style="western"><surname>Fletcher</surname> <given-names>CD</given-names></name>, <name name-style="western"><surname>O'Reilly</surname> <given-names>DS</given-names></name>, <etal>et al</etal>. <article-title>A comparison of inflammation-based prognostic scores in patients with cancer. A Glasgow Inflammation Outcome Study</article-title>. <source>Eur J Cancer</source>. <year>2011</year>;<volume>47</volume>: <fpage>2633</fpage>–<lpage>2641</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/j.ejca.2011.03.028" xlink:type="simple">10.1016/j.ejca.2011.03.028</ext-link></comment> <object-id pub-id-type="pmid">21724383</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Proctor</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>Morrison</surname> <given-names>DS</given-names></name>, <name name-style="western"><surname>Talwar</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Balmer</surname> <given-names>SM</given-names></name>, <name name-style="western"><surname>O'Reilly</surname> <given-names>DS</given-names></name>, <name name-style="western"><surname>Foulis</surname> <given-names>AK</given-names></name>, <etal>et al</etal>. <article-title>An inflammation-based prognostic score (mGPS) predicts cancer survival independent of tumour site: a Glasgow Inflammation Outcome Study</article-title>. <source>Br J Cancer</source>. <year>2011</year>;<volume>104</volume>: <fpage>726</fpage>–<lpage>734</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1038/sj.bjc.6606087" xlink:type="simple">10.1038/sj.bjc.6606087</ext-link></comment> <object-id pub-id-type="pmid">21266974</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shafique</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Proctor</surname> <given-names>MJ</given-names></name>, <name name-style="western"><surname>McMillan</surname> <given-names>DC</given-names></name>, <name name-style="western"><surname>Qureshi</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Leung</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Morrison</surname> <given-names>DS</given-names></name>. <article-title>Systemic inflammation and survival of patients with prostate cancer: evidence from the Glasgow Inflammation Outcome Study</article-title>. <source>Prostate Cancer Prostatic Dis</source>. <year>2012</year>;<volume>15</volume>: <fpage>195</fpage>–<lpage>201</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1038/pcan.2011.60" xlink:type="simple">10.1038/pcan.2011.60</ext-link></comment> <object-id pub-id-type="pmid">22343838</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Fearon</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Strasser</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Anker</surname> <given-names>SD</given-names></name>, <name name-style="western"><surname>Bosaeus</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Bruera</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Fainsinger</surname> <given-names>RL</given-names></name>, <etal>et al</etal>. <article-title>Definition and classification of cancer cachexia: an international consensus</article-title>. <source>Lancet Oncol</source>. <year>2011</year>;<volume>12</volume>: <fpage>489</fpage>–<lpage>495</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S1470-2045(10)70218-7" xlink:type="simple">10.1016/S1470-2045(10)70218-7</ext-link></comment> <object-id pub-id-type="pmid">21296615</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Lucia</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Esposito</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Rossi Fanelli</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Muscaritoli</surname> <given-names>M</given-names></name>. <article-title>Cancer cachexia: from molecular mechanisms to patient's care</article-title>. <source>Crit Rev Oncog</source>. <year>2012</year>;<volume>17</volume>: <fpage>315</fpage>–<lpage>321</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1615/CritRevOncog.v17.i3.90" xlink:type="simple">10.1615/CritRevOncog.v17.i3.90</ext-link></comment> <object-id pub-id-type="pmid">22831162</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Martin</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Birdsell</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Macdonald</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Reiman</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Clandinin</surname> <given-names>MT</given-names></name>, <name name-style="western"><surname>McCargar</surname> <given-names>LJ</given-names></name>, <etal>et al</etal>. <article-title>Cancer cachexia in the age of obesity: skeletal muscle depletion is a powerful prognostic factor, independent of body mass index</article-title>. <source>J Clin Oncol</source>. <year>2013</year>;<volume>31</volume>: <fpage>1539</fpage>–<lpage>1547</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1200/JCO.2012.45.2722" xlink:type="simple">10.1200/JCO.2012.45.2722</ext-link></comment> <object-id pub-id-type="pmid">23530101</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Prado</surname> <given-names>CM</given-names></name>, <name name-style="western"><surname>Lieffers</surname> <given-names>JR</given-names></name>, <name name-style="western"><surname>McCargar</surname> <given-names>LJ</given-names></name>, <name name-style="western"><surname>Reiman</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Sawyer</surname> <given-names>MB</given-names></name>, <name name-style="western"><surname>Martin</surname> <given-names>L</given-names></name>, <etal>et al</etal>. <article-title>Prevalence and clinical implications of sarcopenic obesity in patients with solid tumours of the respiratory and gastrointestinal tracts: a population-based study</article-title>. <source>Lancet Oncol</source>. <year>2008</year>;<volume>9</volume>: <fpage>629</fpage>–<lpage>635</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1016/S1470-2045(08)70153-0" xlink:type="simple">10.1016/S1470-2045(08)70153-0</ext-link></comment> <object-id pub-id-type="pmid">18539529</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shen</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Punyanitya</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Wang</surname> <given-names>Z</given-names></name>, <name name-style="western"><surname>Gallagher</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>St-Onge</surname> <given-names>MP</given-names></name>, <name name-style="western"><surname>Albu</surname> <given-names>J</given-names></name>, <etal>et al</etal>. <article-title>Total body skeletal muscle and adipose tissue volumes: estimation from a single abdominal cross-sectional image</article-title>. <source>J Appl Physiol (1985)</source>. <year>2004</year>;<volume>97</volume>: <fpage>2333</fpage>–<lpage>2338</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1152/japplphysiol.00744.2004" xlink:type="simple">10.1152/japplphysiol.00744.2004</ext-link></comment> <object-id pub-id-type="pmid">15310748</object-id></mixed-citation></ref>
+<ref id="pone.0164056.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kim</surname> <given-names>EY</given-names></name>, <name name-style="western"><surname>Kim</surname> <given-names>YS</given-names></name>, <name name-style="western"><surname>Park</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Ahn</surname> <given-names>HK</given-names></name>, <name name-style="western"><surname>Cho</surname> <given-names>EK</given-names></name>, <name name-style="western"><surname>Jeong</surname> <given-names>YM</given-names></name>. <article-title>Prognostic Significance of CT-Determined Sarcopenia in Patients with Small-Cell Lung Cancer</article-title>. <source>J Thorac Oncol</source>. <year>2015</year>;<volume>10</volume>: <fpage>1795</fpage>–<lpage>1799</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1097/JTO.0000000000000690" xlink:type="simple">10.1097/JTO.0000000000000690</ext-link></comment> <object-id pub-id-type="pmid">26484630</object-id></mixed-citation></ref>
+</ref-list>
+</back>
+</article>

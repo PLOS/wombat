@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN" "http://jats.nlm.nih.gov/publishing/1.1d3/JATS-journalpublishing1.dtd">
+<article article-type="research-article" dtd-version="1.1d3" xml:lang="en" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink">
+<front>
+<journal-meta>
+<journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id>
+<journal-id journal-id-type="publisher-id">plos</journal-id>
+<journal-id journal-id-type="pmc">plosone</journal-id>
+<journal-title-group>
+<journal-title>PLOS ONE</journal-title>
+</journal-title-group>
+<issn pub-type="epub">1932-6203</issn>
+<publisher>
+<publisher-name>Public Library of Science</publisher-name>
+<publisher-loc>San Francisco, CA USA</publisher-loc>
+</publisher>
+</journal-meta>
+<article-meta>
+<article-id pub-id-type="doi">10.1371/journal.pone.0201498</article-id>
+<article-id pub-id-type="publisher-id">PONE-D-18-15265</article-id>
+<article-categories>
+<subj-group subj-group-type="heading">
+<subject>Research Article</subject>
+</subj-group>
+<subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Cell biology</subject><subj-group><subject>Cell processes</subject><subj-group><subject>Cell death</subject><subj-group><subject>Apoptosis</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Developmental biology</subject><subj-group><subject>Fibrosis</subject></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Biochemistry</subject><subj-group><subject>Proteins</subject><subj-group><subject>Collagens</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Cardiovascular anatomy</subject><subj-group><subject>Heart</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Cardiovascular anatomy</subject><subj-group><subject>Heart</subject></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Diagnostic medicine</subject><subj-group><subject>Diagnostic radiology</subject><subj-group><subject>Ultrasound imaging</subject><subj-group><subject>Echocardiography</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Imaging techniques</subject><subj-group><subject>Diagnostic radiology</subject><subj-group><subject>Ultrasound imaging</subject><subj-group><subject>Echocardiography</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Radiology and imaging</subject><subj-group><subject>Diagnostic radiology</subject><subj-group><subject>Ultrasound imaging</subject><subj-group><subject>Echocardiography</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Cardiovascular anatomy</subject><subj-group><subject>Heart</subject><subj-group><subject>Myocardium</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Cardiovascular anatomy</subject><subj-group><subject>Heart</subject><subj-group><subject>Myocardium</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Molecular biology</subject><subj-group><subject>Molecular biology techniques</subject><subj-group><subject>Molecular biology assays and analysis techniques</subject><subj-group><subject>Gene expression and vector techniques</subject><subj-group><subject>Protein expression</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Research and analysis methods</subject><subj-group><subject>Molecular biology techniques</subject><subj-group><subject>Molecular biology assays and analysis techniques</subject><subj-group><subject>Gene expression and vector techniques</subject><subj-group><subject>Protein expression</subject></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Biology and life sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Cardiovascular anatomy</subject><subj-group><subject>Blood vessels</subject><subj-group><subject>Arteries</subject><subj-group><subject>Common carotid arteries</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group><subj-group subj-group-type="Discipline-v3"><subject>Medicine and health sciences</subject><subj-group><subject>Anatomy</subject><subj-group><subject>Cardiovascular anatomy</subject><subj-group><subject>Blood vessels</subject><subj-group><subject>Arteries</subject><subj-group><subject>Common carotid arteries</subject></subj-group></subj-group></subj-group></subj-group></subj-group></subj-group></article-categories>
+<title-group>
+<article-title>Truncations of the titin Z-disc predispose to a heart failure with preserved ejection phenotype in the context of pressure overload</article-title>
+<alt-title alt-title-type="running-head">Titin truncation and pressure overload</alt-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author" corresp="yes" xlink:type="simple">
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0001-5039-6224</contrib-id>
+<name name-style="western">
+<surname>Ye</surname>
+<given-names>Lei</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Formal analysis</role>
+<role content-type="http://credit.casrai.org/">Funding acquisition</role>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<role content-type="http://credit.casrai.org/">Project administration</role>
+<role content-type="http://credit.casrai.org/">Writing – original draft</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="corresp" rid="cor001">*</xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Su</surname>
+<given-names>Liping</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Wang</surname>
+<given-names>Chenxu</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Loo</surname>
+<given-names>Szejie</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Tee</surname>
+<given-names>Guizhen</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Tan</surname>
+<given-names>Shihua</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Khin</surname>
+<given-names>Sandar Win</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Ko</surname>
+<given-names>Shijie</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Su</surname>
+<given-names>Boyang</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Investigation</role>
+<role content-type="http://credit.casrai.org/">Methodology</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+</contrib>
+<contrib contrib-type="author" xlink:type="simple">
+<name name-style="western">
+<surname>Cook</surname>
+<given-names>Stuart A.</given-names>
+</name>
+<role content-type="http://credit.casrai.org/">Conceptualization</role>
+<role content-type="http://credit.casrai.org/">Project administration</role>
+<role content-type="http://credit.casrai.org/">Resources</role>
+<role content-type="http://credit.casrai.org/">Writing – review &amp; editing</role>
+<xref ref-type="aff" rid="aff001"><sup>1</sup></xref>
+<xref ref-type="aff" rid="aff002"><sup>2</sup></xref>
+<xref ref-type="aff" rid="aff003"><sup>3</sup></xref>
+</contrib>
+</contrib-group>
+<aff id="aff001"><label>1</label> <addr-line>National Heart Research Institute Singapore, National Heart Centre Singapore, Singapore, Singapore</addr-line></aff>
+<aff id="aff002"><label>2</label> <addr-line>Duke-National University of Singapore Medical School, Singapore, Singapore</addr-line></aff>
+<aff id="aff003"><label>3</label> <addr-line>National Heart and Lung Institute, Imperial College, London, United Kingdom</addr-line></aff>
+<contrib-group>
+<contrib contrib-type="editor" xlink:type="simple">
+<name name-style="western">
+<surname>Tang</surname>
+<given-names>Yaoliang</given-names>
+</name>
+<role>Editor</role>
+<xref ref-type="aff" rid="edit1"/>
+</contrib>
+</contrib-group>
+<aff id="edit1"><addr-line>Augusta University Medical College of Georgia, UNITED STATES</addr-line></aff>
+<author-notes>
+<fn fn-type="conflict" id="coi001">
+<p>The authors have declared that no competing interests exist.</p>
+</fn>
+<corresp id="cor001">* E-mail: <email xlink:type="simple">ye.lei@nhcs.com.sg</email></corresp>
+</author-notes>
+<pub-date pub-type="epub">
+<day>31</day>
+<month>7</month>
+<year>2018</year>
+</pub-date>
+<pub-date pub-type="collection">
+<year>2018</year>
+</pub-date>
+<volume>13</volume>
+<issue>7</issue>
+<elocation-id>e0201498</elocation-id>
+<history>
+<date date-type="received">
+<day>21</day>
+<month>5</month>
+<year>2018</year>
+</date>
+<date date-type="accepted">
+<day>15</day>
+<month>7</month>
+<year>2018</year>
+</date>
+</history>
+<permissions>
+<copyright-year>2018</copyright-year>
+<copyright-holder>Ye et al</copyright-holder>
+<license xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">
+<license-p>This is an open access article distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/" xlink:type="simple">Creative Commons Attribution License</ext-link>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p>
+</license>
+</permissions>
+<self-uri content-type="pdf" xlink:href="info:doi/10.1371/journal.pone.0201498"/>
+<abstract>
+<p>Titin (TTN) Truncating variants (TTNtv) in the A-band of TTN predispose the mouse heart to systolic dysfunction when subjected to pressure-loading. However, the effects of TTNtv of the Z-disc are largely unexplored. A rat model of pressure-loaded heart is developed by trans-aortic constriction (TAC). Rats with TTNtv of the Z-disc were randomly assigned to TAC (Z-TAC) or sham-surgery (Z-Sham) and wildtype (WT) littermates served as controls (WT-TAC or WT-Sham). Left ventricular (LV) function was assessed by echocardiography. Pressure volume (PV) loops, histology and molecular profiling were performed eight months after surgery. Pressure-load by TAC increased LV mass in all cases when compared with Sham animals. Notably, systolic function was preserved in TAC animals throughout the study period, which was confirmed by terminal PV loops. Diastolic function was impaired in Z-disc TTNtv rats at baseline as compared to WT and became impaired further after TAC (dp/dt<sub>min</sub>, mmHg/s): Z-TAC = -3435±763, WT-TAC = -6497±1299 (p&lt;0.01). Z-TAC animals had greater cardiac fibrosis, with elevated collagen content and decreased vascular density as compared to WT-TAC animals associated with enhanced apoptosis of myocyte and non-myocyte populations. In the context of pressure overload, Z-disc TTNtv is associated with cardiac fibrosis, diastolic dysfunction, and capillary rarefaction in the absence of overt systolic dysfunction.</p>
+</abstract>
+<funding-group>
+<award-group id="award001">
+<funding-source>
+<institution>SingHealth foundation</institution>
+</funding-source>
+<award-id>SHF/FG611P/2015</award-id>
+<principal-award-recipient>
+<contrib-id authenticated="true" contrib-id-type="orcid">http://orcid.org/0000-0001-5039-6224</contrib-id>
+<name name-style="western">
+<surname>Ye</surname>
+<given-names>Lei</given-names>
+</name>
+</principal-award-recipient>
+</award-group>
+<funding-statement>The study was support by SingHealth foundation grant SHF/FG611P/2015, Singapore. The funder had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement>
+</funding-group>
+<counts>
+<fig-count count="5"/>
+<table-count count="1"/>
+<page-count count="15"/>
+</counts>
+<custom-meta-group>
+<custom-meta id="data-availability">
+<meta-name>Data Availability</meta-name>
+<meta-value>All relevant data are within the paper and its Supporting Information files.</meta-value>
+</custom-meta>
+</custom-meta-group>
+</article-meta>
+</front>
+<body>
+<sec id="sec001" sec-type="intro">
+<title>Introduction</title>
+<p>Titin, a major myofilament of cardiac muscle, is essential for organizing muscle sarcomeres and it spans from the Z-disk to the M-band region of the cardiac sarcomere [<xref ref-type="bibr" rid="pone.0201498.ref001">1</xref>, <xref ref-type="bibr" rid="pone.0201498.ref002">2</xref>]. It has many functions that include acting as a molecular spring, important for the passive elasticity of the heart [<xref ref-type="bibr" rid="pone.0201498.ref002">2</xref>]. Truncating variants in TTN (TTNtv) perturb sarcomere development [<xref ref-type="bibr" rid="pone.0201498.ref003">3</xref>–<xref ref-type="bibr" rid="pone.0201498.ref009">9</xref>] and can lead to impaired cardiac function, notably dilated cardiomyopathy (DCM) [<xref ref-type="bibr" rid="pone.0201498.ref005">5</xref>, <xref ref-type="bibr" rid="pone.0201498.ref009">9</xref>–<xref ref-type="bibr" rid="pone.0201498.ref013">13</xref>].</p>
+<p>Approximately 1% of the general population has a TTNtv, but the phenotype most commonly associated is mild and characterized by sub-clinical features of eccentric remodeling [<xref ref-type="bibr" rid="pone.0201498.ref014">14</xref>]. Titin truncation mutations located at A-band are a common cause of DCM [<xref ref-type="bibr" rid="pone.0201498.ref015">15</xref>]. In rats with TTNtv, we have shown perturbation of key signaling pathways and metabolic processes and a shift towards foetal metabolism but preserved ventricular function in the absence of injury [<xref ref-type="bibr" rid="pone.0201498.ref014">14</xref>]. We and others also showed that TTNtv prime the heart to fail when exposed to a second insult, such as volume overload [<xref ref-type="bibr" rid="pone.0201498.ref014">14</xref>] or pregnancy[<xref ref-type="bibr" rid="pone.0201498.ref016">16</xref>] or chemotherapy [<xref ref-type="bibr" rid="pone.0201498.ref017">17</xref>]. While the effects of TTNtv in the A-band in mouse predispose to systolic heart failure in the context of pressure loading [<xref ref-type="bibr" rid="pone.0201498.ref018">18</xref>–<xref ref-type="bibr" rid="pone.0201498.ref020">20</xref>], the impact of Z-disc variants are not well characterized.</p>
+<p>Here, we used a rat model to determine whether there is an interaction between heterozygous TTNtv in the Z-disc and pressure loading induced by trans-aortic constriction (TAC). Mutant and wildtype (WT) rats were subjected to either TAC or sham surgery, and followed up by serial echocardiography. Terminal assessment of ventricular function was performed by cardiac cannulation and <italic>ex vivo</italic> measurements of cardiac histology and its molecular function.</p>
+</sec>
+<sec id="sec002" sec-type="materials|methods">
+<title>Materials and methods</title>
+<sec id="sec003">
+<title>Rat pressure overload model of trans-aortic constriction (TAC)</title>
+<p>The experimental protocol was approved by the SingHealth Institutional Animal Care and Use Committee (IACUC). All experimental and animal maintenance procedures were performed in accordance with the Animal Use Guidelines of the SingHealth IACUC and under the guidelines from Directive 2010/63/EU of the European Parliament on the protection of animals used for scientific purposes or the NIH guidelines.</p>
+<p>Rat TTNtv model was generated by SAGE Laboratories using zinc-finger nuclease–mediated gene targeting as previously described [<xref ref-type="bibr" rid="pone.0201498.ref014">14</xref>]. Animals were maintained on a F344 background. Z-disc TTNtv was generated by deletion of exons 2 to 6 (5286bp deletion, coordinates 2323–7608) to introduce a frame-shift. Absence of truncated TTN protein in Z-disc TTNtv rat hearts was shown previously [<xref ref-type="bibr" rid="pone.0201498.ref014">14</xref>]. Male rats with Z-disc TTNtv and their wildtype littermates at 8-9-weeks of age were used for experiments. Rats were anesthetized with ketamine (100 mg/kg) and Xylazine (2.5 mg/kg) mixture. Rats were ventilated using a rodent ventilator at a respiratory rate of 90/min after intubation. The chest was shaved and disinfected with betadine and 70% alcohol. A minimally left lateral thoracotomy was performed to visualize the aortic arch, left common carotid artery and brachiocephalic artery as described [<xref ref-type="bibr" rid="pone.0201498.ref021">21</xref>–<xref ref-type="bibr" rid="pone.0201498.ref023">23</xref>]. Dissection was performed on the aortic arch between left common carotid artery and brachiocephalic artery. A sterile titanium clip (Hemoclip Plus, Weck Closure Systems, USA) loaded into the applicator was placed on the ascending aorta between the left carotid and brachiocephalic arteries. This would stop 50–60% of aortic arch flow [<xref ref-type="bibr" rid="pone.0201498.ref021">21</xref>–<xref ref-type="bibr" rid="pone.0201498.ref023">23</xref>]. The muscle layers and skin were then closed by sutures. The pressure gradient across the arch was determined by Doppler velocity using echocardiogram (Echo). The animals were kept on Baytril (15 mg/kg, <italic>i</italic>.<italic>m</italic>.) for at least three days after surgical operation to prevent infection. Ketoprofen at 2.5 mg/kg (<italic>s</italic>.<italic>c</italic>) was used for at least three days post surgery. Four animal groups were studied. They are: 1. Sham operated wildtype littermates (WT-Sham, n = 7); 2. TAC of wildtype littermates (WT-TAC, n = 11); 3. Sham operated Z-disc mutant rats (Z-Sham, n = 5); and 4. TAC of Z-disc mutant rats (Z-TAC, n = 7).</p>
+</sec>
+<sec id="sec004">
+<title>Left ventricular function assessment by echocardiography</title>
+<p>Transthoracic echocardiography (TTE) was performed (Vevo 2100; VisualSonics, VSI, Toronto, Canada) using a MS250 linear array transducer on rats under anesthesia (isoflurane, 1–2.5%). The rats were placed in dorsal decubitus position where their chest were shaved and a layer of acoustic coupling gel was applied to the thorax. Averages of 10 cardiac cycles of standard 2-dimensional guided m-mode short axis at mid papillary muscle level were acquired and recorded for subsequent offline analysis. Left ventricular (LV) function were determined at month-0 (as baseline), and every other month up to eight months after surgery. Measurements included LV diameter, anterior and posterior LV wall thickness at systole and diastole. LV ejection fraction (LVEF) was calculated using modified Quinone method. LV mass were calculated according to previously described method [<xref ref-type="bibr" rid="pone.0201498.ref024">24</xref>]. The transverse aorta was visualized with 2-dimensional imaging (<xref ref-type="supplementary-material" rid="pone.0201498.s001">S1 Fig</xref>). Guided by color flow Doppler, the peak velocity (V) distal to the contriction was measured with pulsed wave Doppler, and pressure gradient was calculated using the modified Bernoulli equation: ΔP = 4 x V<sup>2</sup> [<xref ref-type="bibr" rid="pone.0201498.ref025">25</xref>].</p>
+</sec>
+<sec id="sec005">
+<title>Left ventricular function assessment by pressure-volume (PV) loop</title>
+<p>PV loop studies were performed eight months after surgery. Animals were anesthetized with ketamine (100 mg/kg) and Xylazine (2.5 mg/kg) mixture and placed in dorsal decubitus position. The neck and chest were shaved and disinfected with 70% alcohol. An incision was made on the right neck parallel to the middle line of the neck to expose and isolate the right carotid artery. A secure suture was placed around the proximal end of the artery, where a tiny incision was made near the proximal end of the artery. The catheter tip was inserted into the artery until it reached inside the ventricle and the catheter shaft was gently rotated to achieve optimal placement of the tip along the axis of the left ventricle. After stabilization for five min, the baseline PV loops was recorded at a steady state. A saline calibration (10% NaCl solution) was performed in each animal to correct volume as described [<xref ref-type="bibr" rid="pone.0201498.ref026">26</xref>]. For each animal, the mean of each index was calculated from 2–3 analysis that contained at least nine loops. The indices calculated were: 1) systolic indices, including stroke work (SW), ejection fraction, and dp/dt<sub>max</sub>, and 2) diastolic indices, including dp/dt<sub>min</sub> and Tau (G).</p>
+</sec>
+<sec id="sec006">
+<title>Tissue collection, histochemical and immuno-histochemical assessments</title>
+<p>Under anesthesia, rat heart was arrested by direct intra-cardiac injection of 100 mg/kg KCl. Wet heart tissues were then explanted and weighed. Harvested tissues were divided into three parts: 1. embedded into paraffin for histochemical (fibrotic assessment and cardiac apoptosis assay) experiments; 2. Embedded into OCT compound for cryo-section; and 3). the remaining LV portion was used for quantitative RT-PCR, western blot, and collagen quantification.</p>
+</sec>
+<sec id="sec007">
+<title>Cardiac fibrosis assessment</title>
+<p>Accustain Trichrome Stains (Masson) (Sigma-Aldrich, USA) and Sirus Red/Fast Green Collagen (Chondrex, USA) staining kits were used to visualize fibrosis in rat LV. Paraffin sections with 6 μm thickness were dewaxed and stained as per supplier’s instruction [<xref ref-type="bibr" rid="pone.0201498.ref027">27</xref>]. To assess the severity of fibrosis in LV myocardium, pictures of Sirus Red/Fast Green stained paraffin sections were analyzed. Images of cross-sectional myocardium were processed by an in-house C++ program. Captured images were stored in Joint Photographic Expert Group (JPEG) format with 8-bit depth and the pixel value in any color channel varied from 0 to 255. To quantify fibrosis (red color) in the entire LV wall, all pixels from the image was read and categorized into three labels: collagen (red), non-collagenous proteins (green), or background after excluding staining artifacts, LV epicardium, and right ventricular wall. Pixels containing all red, green and blue values higher than 255 were considered as background and excluded from analysis. Since collagen is stained as red, a pixel was defined as red when its value was 30 times higher than the green pixel. Finally, the total number of fibrosis pixels were divided by the sum of red and green pixels to obtain the percentage of fibrosis in LV.</p>
+</sec>
+<sec id="sec008">
+<title>Apoptosis assessment</title>
+<p>In situ cell death detection kit (Roche, Germany) was used to determine apoptosis in tissue sections as per supplier’s instruction [<xref ref-type="bibr" rid="pone.0201498.ref028">28</xref>, <xref ref-type="bibr" rid="pone.0201498.ref029">29</xref>]. Paraffin sections were counter-stained with α-sarcomere actin (α-SA) to visualize cardiomyocytes and DAPI to identify nuclei. The apoptotic cell number was counted in LV myocardium and presented as total TUNEL+ cardiac cells/section, while the cardiomyocyte apoptotic cell number is presented as TUNEL<sup>+</sup> cardiomyocyte number/section [<xref ref-type="bibr" rid="pone.0201498.ref028">28</xref>, <xref ref-type="bibr" rid="pone.0201498.ref029">29</xref>].</p>
+</sec>
+<sec id="sec009">
+<title>Vascular density determination</title>
+<p>Cryosections of 8-μm thickness were stained for CD31 and smooth muscle actin (SMA) to quantify vessel density. Blood vessel density was measured at 400X magnification in eight microscopic fields/heart after double fluorescent immunostaining for CD31 (Santa Cruz Biotechnology, Inc, USA) and SMA (Sigma Aldrich, USA) [<xref ref-type="bibr" rid="pone.0201498.ref027">27</xref>].</p>
+</sec>
+<sec id="sec010">
+<title>Quantification of total collagen in rat myocardium</title>
+<p>Collagen from the remainder LV tissue was collected using Total Collagen Assay kit from Quickzyme Biosciences (The Netherlands) as per instructions. Briefly, the tissue was loaded into 6 M HCl and incubated for 20 hours at 95°C in a thermoblock. Tissues were then homogenized and total lysates were centrifuged for 10 min at 13,000 g to collect the supernatants for analysis as per instruction.</p>
+</sec>
+<sec id="sec011">
+<title>Quantitative RT-PCR analysis of rat cardiac tissue</title>
+<p>To determine fibrosis and cardiac injury, total RNA was isolated from rats at eight months after surgery as described [<xref ref-type="bibr" rid="pone.0201498.ref030">30</xref>, <xref ref-type="bibr" rid="pone.0201498.ref031">31</xref>] The gene expression level of collagen type I alpha 1 chain (Collagen-I), collagen type III alpha 1 chain (Collagen-III), natriuretic peptide B (BNP), and natriuretic peptide A (ANP) were quantified after normalized with GAPDH. Primers used were: 1. Collagen-I (98 bp): sense <monospace>ACTGGTACATCAGCCCAAAC</monospace> and antisense <monospace>GGAACCTTCGCTTCCATACTC</monospace>; 2. Collagen-III (120 bp): sense <monospace>CTGAACTCAAGAGCGGAGAATAC</monospace> and antisense: <monospace>CAGTCATGGGACTGGCATTTA</monospace>; 3. BNP (85 bp): sense <monospace>CTAGCCAGTCTCC AGAACAATC</monospace> and antisense <monospace>AGCTGTCTCTGAGCCATTTC</monospace>; 4. ANP (106 bp) sense: <monospace>TCCGATAGATCTGCCCTCTT</monospace> and antisense: <monospace>CTCCAATCCTGTCAATCCTACC</monospace>; 5. GAPDH (105 bp) sense: <monospace>ACTCCCATTCTTCCACCTTTG</monospace> and antisense: <monospace>CCCTGTTGCTGTAGCCATATT</monospace>. Gene expression level was compared with that of WT sham group (considered as 100%) and expressed as either fold increase or decrease.</p>
+</sec>
+<sec id="sec012">
+<title>Western blot analysis</title>
+<p>To determine the caspase 3 activity and Bax protein expression level, total rat cardiac protein from the LV tissue was isolated using PhosphoSafe™ Extraction Reagent (Merck, Germany) and protein concentration was determined using Bradford reagent (Bio-Rad Laboratories, USA) as per instruction. Proteins (20 μg/ sample) were separated on SDS-polyacrylamide gel and transferred onto nitrocellulose membrane. After blocking with 5% non-fat milk in Tris-buffered saline Tween-20 buffer (TBST; 25 mM Tris, pH 7.5, 150 mM NaCl, and 0.1% Tween-20), the membranes were incubated with either 1: 500 diluted rabbit anti cleaved caspase 3 or 1: 2000 rabbit anti Bax (all purchased from Cell Signaling, USA) for overnight at 4°C. Anti-rabbit IgG conjugated with HRP (dilution: 1: 2,000) was used for antibody detection. Binding of the specific antibody was visualized using Super Signal Chemiluminescent Substrate kit (Pierce, USA) and visualized by ChemiDocTM MP Imaging System (Bio-Lab, USA) and quantified using Image Lab 5.1 software (Bio-Lab, USA). The optical intensity of the band was quantified and expressed as percentage of GAPDH (regarded as 100%).</p>
+</sec>
+<sec id="sec013">
+<title>Statistical analyses</title>
+<p>Statistical analyses were performed using SPSS (version 20.0). All data were presented as mean ± standard deviation (SD). Comparisons among groups for significance were conducted using one-way analysis of variance (ANOVA), where p-value &lt;0.05 was considered statistically significant. Post-hoc analyses were performed using Tukey’s Test with a significance level of 5%.</p>
+</sec>
+</sec>
+<sec id="sec014" sec-type="results">
+<title>Results</title>
+<sec id="sec015">
+<title>LV function by echocardiography</title>
+<p>Heart function and morphology was assessed by serial echocardiograph. Surprisingly, unlike the A-band TTNtv mouse [<xref ref-type="bibr" rid="pone.0201498.ref014">14</xref>] systolic function remained preserved for a prolonged period in the Z-TAC rats (<xref ref-type="supplementary-material" rid="pone.0201498.s004">S1 Table</xref>) despite sustained and marked pressure loading (<xref ref-type="supplementary-material" rid="pone.0201498.s001">S1 Fig</xref>). LV function trended downwards in both TAC groups at 8 months of follow-up, at which time echocardiograms were performed in detail (<xref ref-type="table" rid="pone.0201498.t001">Table 1</xref>). Then, hearts were harvested to assess functional and molecular factors.</p>
+<table-wrap id="pone.0201498.t001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0201498.t001</object-id>
+<label>Table 1</label> <caption><title>Cardiac function at 8 months after surgery as assessed by echocardiogram.</title></caption>
+<alternatives>
+<graphic id="pone.0201498.t001g" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0201498.t001" xlink:type="simple"/>
+<table>
+<colgroup>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+<col align="left" valign="middle"/>
+</colgroup>
+<thead>
+<tr>
+<th align="left"> </th>
+<th align="left">WT-Sham<break/>(n = 6)</th>
+<th align="left">Z-Sham<break/>(n = 5)</th>
+<th align="left">WT-TAC<break/>(n = 11)</th>
+<th align="left">Z-TAC<break/>(n = 7)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Body weight (g)</td>
+<td align="center">435.3±20.3</td>
+<td align="center">413.6±23.2</td>
+<td align="center">445±26.7</td>
+<td align="center">426±13.9</td>
+</tr>
+<tr>
+<td align="left">Pressure gradient (mmHg)</td>
+<td align="center">2.2±0.5</td>
+<td align="center">2.5±0.5</td>
+<td align="center">51.7±13.4<xref ref-type="table-fn" rid="t001fn011"><sup>&amp;</sup></xref></td>
+<td align="center">54±13.2<xref ref-type="table-fn" rid="t001fn011"><sup>&amp;</sup></xref></td>
+</tr>
+<tr>
+<td align="left">LVEF (%)</td>
+<td align="center">79.8±3.4</td>
+<td align="center">81.3±3.4</td>
+<td align="center">70.8±6.2</td>
+<td align="center">71.6±6.5</td>
+</tr>
+<tr>
+<td align="left">Anted (mm) </td>
+<td align="center">1.99±0.15</td>
+<td align="center">2.0±0.07</td>
+<td align="center">2.11 ±0.12</td>
+<td align="center">2.05 ±0.10</td>
+</tr>
+<tr>
+<td align="left">Antes (mm)</td>
+<td align="center">3.64±0.26</td>
+<td align="center">3.52±0.13</td>
+<td align="center">3.46±0.26</td>
+<td align="center">3.45±0.17</td>
+</tr>
+<tr>
+<td align="left">PLVWed (mm)</td>
+<td align="center">1.91±0.18</td>
+<td align="center">1.85±0.02</td>
+<td align="center">2.13±0.1<xref ref-type="table-fn" rid="t001fn007">*</xref><sup>,</sup><xref ref-type="table-fn" rid="t001fn009"><sup>##</sup></xref></td>
+<td align="center">2.2±0.14<xref ref-type="table-fn" rid="t001fn008">**</xref><sup>,</sup><xref ref-type="table-fn" rid="t001fn010"><sup>###</sup></xref></td>
+</tr>
+<tr>
+<td align="left">PLVWes (mm)</td>
+<td align="center">3.24±0.23</td>
+<td align="center">3.3±0.11</td>
+<td align="center">3.37±0.24</td>
+<td align="center">3.31±0.19</td>
+</tr>
+<tr>
+<td align="left">LV mass (mg)</td>
+<td align="center">1024.7±62.9</td>
+<td align="center">992.6±87.1</td>
+<td align="center">1246.9±78.1<xref ref-type="table-fn" rid="t001fn011"><sup>&amp;</sup></xref></td>
+<td align="center">1258.3±94.1<xref ref-type="table-fn" rid="t001fn011"><sup>&amp;</sup></xref></td>
+</tr>
+</tbody>
+</table>
+</alternatives>
+<table-wrap-foot>
+<fn id="t001fn001"><p>LVEF: left ventricular ejection fraction</p></fn>
+<fn id="t001fn002"><p>Anted: anterior left ventricular wall thickness at end of diastole</p></fn>
+<fn id="t001fn003"><p>Antes: anterior left ventricular wall thickness at end of systole</p></fn>
+<fn id="t001fn004"><p>PLVWed: posterior left ventricular wall thickness at end of diastole</p></fn>
+<fn id="t001fn005"><p>PLVWes: posterior left ventricular wall thickness at end of systole</p></fn>
+<fn id="t001fn006"><p>LV: left ventricular.</p></fn>
+<fn id="t001fn007"><p>*: compared with WT-Sham: p&lt;0.05</p></fn>
+<fn id="t001fn008"><p>**: compared with WT-Sham: p&lt;0.01.</p></fn>
+<fn id="t001fn009"><p>##: compared with Z-Sham: p&lt;0.01</p></fn>
+<fn id="t001fn010"><p>###: compared with Z-Sham: p&lt;0.001</p></fn>
+<fn id="t001fn011"><p>&amp;: compared with WT-Sham and Z-Sham: p&lt;0.001.</p></fn>
+</table-wrap-foot>
+</table-wrap>
+</sec>
+<sec id="sec016">
+<title>TAC causes diastolic dysfunction in rats with TTNtv</title>
+<p>PV loop studies were performed in rats as a terminal procedure. EF and stroke work in WT-TAC and Z-TAC animals were similar to WT-Sham and Z-Sham groups (<xref ref-type="fig" rid="pone.0201498.g001">Fig 1A</xref> and <xref ref-type="supplementary-material" rid="pone.0201498.s002">S2 Fig</xref>). There was a non-significant downward trend in contraction rate (dp/dt<sub>max</sub>) in the Z-TAC group (<xref ref-type="fig" rid="pone.0201498.g001">Fig 1B</xref>). Overall, the PV loop data confirmed that the overall systolic function in the Z-TAC rats was largely preserved as compared to other experimental groups after 8 months of TAC.</p>
+<fig id="pone.0201498.g001" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0201498.g001</object-id>
+<label>Fig 1</label>
+<caption>
+<title/>
+<p>Rat LV function assessed by PV loop. LV systolic function indexes: <bold>(A)</bold> Left ventricular ejection fraction (LVEF), <bold>(B)</bold> dp/dt<sub>max</sub>. LV diastolic function indexes: <bold>(C)</bold> dp/dt<sub>min</sub> and <bold>(D)</bold> Tau. (*: p&lt;0.05; **: p&lt;0.01; ***: p&lt;0.001.</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0201498.g001" xlink:type="simple"/>
+</fig>
+<p>Diastolic function, as assessed by dp/dt<sub>min</sub> (LV relaxation rate), was impaired at baseline (Z-Sham) and after TAC (Z-TAC) in mutant rats as compared to WT-Sham and WT-TAC groups, with Z-TAC rats exhibiting the worst diastolic function (<xref ref-type="fig" rid="pone.0201498.g001">Fig 1C</xref>). The Tau (relaxation time constant) of the Z-TAC group was significantly higher compared to the WT-Sham group (p&lt;0.05) and was trending up compared to WT-TAC (p = 0.052) (<xref ref-type="fig" rid="pone.0201498.g001">Fig 1D</xref>). These data show that Z-disc TTNtv in the rat causes diastolic dysfunction at baseline and that this effect is exacerbated by pressure overload.</p>
+</sec>
+<sec id="sec017">
+<title>Increased myocardial fibrosis after TAC in rats with TTNtv</title>
+<p>The ratio of wet heart weight/body weight (mg/g) was increased by TAC (WT-Sham 2.52±0.11 vs WT-TAC 2.86±0.22 (p&lt;0.05); Z-Sham, 2.61±0.29 vs Z-TAC, 3.13 ± 0.08 (p&lt;0.01)).</p>
+<p>Sirus Red/Fast Green Collagen and Masson trichrome staining showed significantly increased myocardial fibrosis in Z-TAC group (<xref ref-type="fig" rid="pone.0201498.g002">Fig 2A–2E</xref> and <xref ref-type="supplementary-material" rid="pone.0201498.s003">S3 Fig</xref>). Molecular quantification of collagen content confirmed that both TAC groups had significantly increased collagen content in LV myocardium with Z-TAC group having significantly higher amounts than the other three groups (<xref ref-type="fig" rid="pone.0201498.g002">Fig 2F</xref>).</p>
+<fig id="pone.0201498.g002" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0201498.g002</object-id>
+<label>Fig 2</label>
+<caption>
+<title>Rat heart weight/bodyweight eight months post-surgery.</title>
+<p>Representative pictures of Sirus Red/Fast Green Collage staining to visualize fibrosis in rat heart of WT-Sham <bold>(A)</bold>, Z-Sham <bold>(B)</bold>, WT-TAC <bold>(C)</bold>, and Z-TAC <bold>(D)</bold> groups. <bold>(E)</bold> Quantification of LV fibrosis using Sirus red/Fast green stained rat cardiac tissue sections. <bold>(F)</bold> Quantification of total collagen in rat myocardium. Gene expression levels of rat collagen type I alpha 1 chain (Col1a1) <bold>(G)</bold>, collagen type III alpha 1 chain (Col3a1) <bold>(H)</bold>, atrial natriuretic peptide (ANP) <bold>(I)</bold>, and natriuretic peptide B (NppB) <bold>(J)</bold> in rat myocardium. (*: p&lt;0.05; **: p&lt;0.01; ***: p&lt;0.001. Bar = 2000 μm).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0201498.g002" xlink:type="simple"/>
+</fig>
+<p>Gene expression levels of collagen type I alpha 1 chain and collagen type III alpha 1 chain were mildly elevated in Z-Sham at baseline and in both TAC groups with highest levels in the Z-TAC (<xref ref-type="fig" rid="pone.0201498.g002">Fig 2G &amp; 2H</xref>). Similarly, ANP and NppB gene expression levels were increased in both TAC groups (<xref ref-type="fig" rid="pone.0201498.g002">Fig 2I &amp; 2J</xref>).</p>
+</sec>
+<sec id="sec018">
+<title>Capillary rarefaction in Z-disc TTNtv rat heart after TAC</title>
+<p>The total vessel density based on CD31 fluorescence immunostaining was reduced in Z-Sham, WT-TAC and Z-TAC groups, especially so in Z-TAC rats, which had significantly lower vessel density as compared with WT-Sham group (<xref ref-type="fig" rid="pone.0201498.g003">Fig 3A1–3D1 &amp; 3E</xref>). Arteriole density based on the co-immunostaining for CD31 and SMA (<xref ref-type="fig" rid="pone.0201498.g003">Fig 3A2–3D2 &amp; 3A3–3D3</xref>) was similar in all groups (<xref ref-type="fig" rid="pone.0201498.g003">Fig 3F</xref>).</p>
+<fig id="pone.0201498.g003" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0201498.g003</object-id>
+<label>Fig 3</label>
+<caption>
+<title/>
+<p>Vascular density and arteriole density were evaluated in cryo-sections eight months after TAC from the <bold>(A1-A3)</bold> WT-Sham, <bold>(B1-B3)</bold> Z-Sham, <bold>(C1-C3)</bold> WT-TAC, and <bold>(D1-D3)</bold> Z-TAC groups via immunofluorescent staining for CD31 and SMA. <bold>(E)</bold> Total vessel density was determined by counting CD31+ vascular structures, and <bold>(F)</bold> arteriole density was determined by counting vascular structure that co-expressed CD31 and SMA. (*: p&lt;0.05. Bar = 50 μm).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0201498.g003" xlink:type="simple"/>
+</fig>
+</sec>
+<sec id="sec019">
+<title>Apoptosis in TTNtv rat hearts after TAC</title>
+<p>TUNEL staining showed that pressure overload increased apoptotic cells in both TAC groups, with significantly higher levels in the Z-TAC group (21.8 ± 2.0/section) when compared to the WT groups (<xref ref-type="fig" rid="pone.0201498.g004">Fig 4A–4E</xref>). Apoptotic cardiomyocytes were found in the LV of 4 out of 7 rats in Z-TAC group (<xref ref-type="fig" rid="pone.0201498.g004">Fig 4F</xref>), while 2 of 11 rats in the WT-TAC group had apoptotic cardiomyocytes in the LV (<xref ref-type="fig" rid="pone.0201498.g004">Fig 4G</xref>). There were no apoptotic cardiomyocytes found in WT-Sham and Z-Sham groups.</p>
+<fig id="pone.0201498.g004" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0201498.g004</object-id>
+<label>Fig 4</label>
+<caption>
+<title/>
+<p>TUNEL staining of rat cardiac tissue to identify apoptotic cells. TUNEL<sup>+</sup> nuclei in WT-Sham <bold>(A1)</bold>, Z-Sham <bold>(B1)</bold>, WT-TAC <bold>(C1)</bold>, and Z-TAC <bold>(D1)</bold> rat hearts. The same sections were count-stained with α-sarcomere actin (α-SA) to show the localization of TUNEL+ nuclei in rat cardiac tissue <bold>(A2-D2)</bold>. <bold>(E)</bold> Quantification of TUNEL<sup>+</sup> cardiac cells per LV section. Representative pictures of a TUNEL<sup>+</sup> nucleus <bold>(F1)</bold> located in a cardiomyocyte that was stained for α-SA expression <bold>(F2)</bold>. <bold>(G)</bold> Quantification of TUNEL<sup>+</sup> cardiomyocytes per LV section. (*: p&lt;0.05; **: p&lt;0.01; ***: p&lt;0.001. Bar = 50 μm).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0201498.g004" xlink:type="simple"/>
+</fig>
+<p>Protein expression levels of cleaved caspase 3 in the Z-TAC group by Western blot was significantly higher compared to the WT-Sham and Z-Sham groups (<xref ref-type="fig" rid="pone.0201498.g005">Fig 5A &amp; 5B</xref>). Bax increased significantly in both TAC groups when compared to the WT-Sham and Z-Sham groups (<xref ref-type="fig" rid="pone.0201498.g005">Fig 5A–5D</xref>).</p>
+<fig id="pone.0201498.g005" position="float">
+<object-id pub-id-type="doi">10.1371/journal.pone.0201498.g005</object-id>
+<label>Fig 5</label>
+<caption>
+<title>Western blot analysis of rat myocardium to determine the activity of caspase 3 and Bax.</title>
+<p><bold>(A)</bold> Image of cleavage caspase 3 protein expression. <bold>(B)</bold> Quantification of cleaved caspase 3 protein expression after normalized with GAPDH protein expression level. <bold>(C)</bold> Image of Bax protein expression. <bold>(D)</bold> Quantification of Bax protein expression after normalized with GAPDH protein expression level. (*: p&lt;0.05).</p>
+</caption>
+<graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0201498.g005" xlink:type="simple"/>
+</fig>
+</sec>
+</sec>
+<sec id="sec020" sec-type="conclusions">
+<title>Discussion</title>
+<p>Previous studies in the mouse have focused on A-band TTNtv [<xref ref-type="bibr" rid="pone.0201498.ref018">18</xref>–<xref ref-type="bibr" rid="pone.0201498.ref020">20</xref>] and shown impairment of LVEF and diffuse myocardial fibrosis when mice are subjected to pharmacological stress [<xref ref-type="bibr" rid="pone.0201498.ref019">19</xref>] or pressure overload [<xref ref-type="bibr" rid="pone.0201498.ref018">18</xref>]. Here we studied the effect of Z-disc TTNtv in the rat and its interaction with pressure loading and found an exaggerated phenotype of cardiac fibrosis, apoptosis, and vascular rarefaction similar to that seen in the heart failure with preserved ejection fraction (HFpEF). Z-disc TTNtv rats were still at compensated stage at 8 months’ after TAC as evidenced by preserved systolic function and no notably dilated cardiomyopathy was observed.</p>
+<p>The Z-disc senses, integrates, and transduces biomechanical stress signals [<xref ref-type="bibr" rid="pone.0201498.ref032">32</xref>]. Mouse knock-out studies of Z-disc proteins, including muscle LIM protein [<xref ref-type="bibr" rid="pone.0201498.ref033">33</xref>], calsarcin-1 [<xref ref-type="bibr" rid="pone.0201498.ref034">34</xref>], and the costameric protein melusin [<xref ref-type="bibr" rid="pone.0201498.ref035">35</xref>] have shown that defects of Z-disc proteins are associated with heart failure phenotypes. Here, in a rat model of Z-disc TTNtv we observed a predominant diastolic heart failure phenotype.</p>
+<p>We found significantly increased non-myocyte apoptosis in hearts of Z-TAC rats with compensated hypertrophy. Non-myocytes have been reported as the predominant apoptotic cell type in compensated pressure overload, whereas myocyte apoptosis are mainly found in decompensated stages associated with systolic dysfunction [<xref ref-type="bibr" rid="pone.0201498.ref036">36</xref>–<xref ref-type="bibr" rid="pone.0201498.ref039">39</xref>]. Limited numbers of apoptotic myocytes were found in both TAC groups. We speculate that the increased non-myocyte apoptosis may play a role in the fibrosis and diastolic phenotypes we observed.</p>
+<p>Microvascular rarefaction is a feature of structural change in HFpEF[<xref ref-type="bibr" rid="pone.0201498.ref040">40</xref>], which was also observed in the current study. It’s unknown that apoptosis of non-myocyte in Z-TAC rat can cause capillary rarefaction or not. However, cardiac hypertrophy can activate NF-ĸB, which may cause capillary rarefaction through regulation of matrix metalloproteinase (MMP) activity [<xref ref-type="bibr" rid="pone.0201498.ref041">41</xref>–<xref ref-type="bibr" rid="pone.0201498.ref043">43</xref>].</p>
+<p>Another hallmark feature of cardiac remodeling is the deposition of excessive extracellular matrix [<xref ref-type="bibr" rid="pone.0201498.ref044">44</xref>, <xref ref-type="bibr" rid="pone.0201498.ref045">45</xref>]. We found that Z-disc TTNtv results in an increase in ventricular fibrosis in the context of pressure overload. Increased fibrosis causes myocardial stiffness, which can contribute to diastolic dysfunction [<xref ref-type="bibr" rid="pone.0201498.ref046">46</xref>, <xref ref-type="bibr" rid="pone.0201498.ref047">47</xref>]. Our PV loop data showed significantly impaired LV relaxation in Z-disc mutant rats at baseline and even more so after TAC, which may relate to properties intrinsic to the myocyte at baseline and to greater fibrosis after TAC.</p>
+<p>Our study has limitations. We did not assess cardiac inflammation or plasma cytokine levels, such as TNF-α and IL6, which contributes to changes in the extracellular matrix in HFpEF. We also did not measure reactive oxygen species (ROS) production, which can trigger cardiac myocyte apoptosis [<xref ref-type="bibr" rid="pone.0201498.ref048">48</xref>, <xref ref-type="bibr" rid="pone.0201498.ref049">49</xref>]. Nor did we measure individual myocyte function that may be affected by mutation of the titin Z-disc.</p>
+<p>In conclusion, TTNtv in the Z-disc interact with pressure overload and result in a cardiac phenotype defined by fibrosis, reduced vascular density, non-myocyte apoptosis and impaired diastolic function with preserved EF.</p>
+</sec>
+<sec id="sec021">
+<title>Supporting information</title>
+<supplementary-material id="pone.0201498.s001" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0201498.s001" xlink:type="simple">
+<label>S1 Fig</label>
+<caption>
+<title>Representation of color flow and pulsed wave Doppler images of the aortic arch in a WT-Sham and a WT-TAC rat.</title>
+<p>Typical color flow Doppler depicting normal aortic flow in a WT-Sham rat (<bold>A</bold>). Sample volume with proper angle correction was set approximately 1mm proximal from LCCA to obtain aortic pulse wave velocity image (<bold>B</bold>). Color aliasing (white-color arrow) corresponding to the stenosis (<bold>C</bold>) was visualized in a TAC rat, and was used to guide the placement of sample volume to obtain highest post constriction pulsed wave velocity (<bold>D).</bold> (IA = Innominate artery; LCCA = Left common carotid artery; LSA = Left subclavian artery).</p>
+<p>(TIFF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0201498.s002" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0201498.s002" xlink:type="simple">
+<label>S2 Fig</label>
+<caption>
+<title>Stroke work (SW) as assessed by PV loop.</title>
+<p>(WT-Sham = 5, Z-Sham = 5, WT-TAC = 6, and Z-TAC = 5).</p>
+<p>(TIFF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0201498.s003" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0201498.s003" xlink:type="simple">
+<label>S3 Fig</label>
+<caption>
+<title/>
+<p>Representative pictures of Masson trichrome staining to visualize fibrosis in rat heart of WT-Sham <bold>(A)</bold>, Z-Sham <bold>(B)</bold>, WT-TAC <bold>(C)</bold>, and Z-TAC <bold>(D)</bold> groups.</p>
+<p>(TIFF)</p>
+</caption>
+</supplementary-material>
+<supplementary-material id="pone.0201498.s004" mimetype="application/pdf" position="float" xlink:href="info:doi/10.1371/journal.pone.0201498.s004" xlink:type="simple">
+<label>S1 Table</label>
+<caption>
+<title>TAC rat cardiac function assessed by echocardiogram.</title>
+<p>(PDF)</p>
+</caption>
+</supplementary-material>
+</sec>
+</body>
+<back>
+<ack>
+<p>The authors would like to thank Eddy Saputra Leman for his editorial assistance.</p>
+</ack>
+<ref-list>
+<title>References</title>
+<ref id="pone.0201498.ref001"><label>1</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Furst</surname> <given-names>DO</given-names></name>, <name name-style="western"><surname>Osborn</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Nave</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Weber</surname> <given-names>K</given-names></name>. <article-title>The organization of titin filaments in the half-sarcomere revealed by monoclonal antibodies in immunoelectron microscopy: a map of ten nonrepetitive epitopes starting at the Z line extends close to the M line</article-title>. <source>J Cell Biol</source>. <year>1988</year>;<volume>106</volume>(<issue>5</issue>):<fpage>1563</fpage>–<lpage>72</lpage>. <object-id pub-id-type="pmid">2453516</object-id>; PubMed Central PMCID: PMC2115059.</mixed-citation></ref>
+<ref id="pone.0201498.ref002"><label>2</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Granzier</surname> <given-names>HL</given-names></name>, <name name-style="western"><surname>Labeit</surname> <given-names>S</given-names></name>. <article-title>The giant protein titin: a major player in myocardial mechanics, signaling, and disease</article-title>. <source>Circ Res</source>. <year>2004</year>;<volume>94</volume>(<issue>3</issue>):<fpage>284</fpage>–<lpage>95</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/01.RES.0000117769.88862.F8" xlink:type="simple">10.1161/01.RES.0000117769.88862.F8</ext-link></comment> <object-id pub-id-type="pmid">14976139</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref003"><label>3</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Linke</surname> <given-names>WA</given-names></name>. <article-title>Sense and stretchability: the role of titin and titin-associated proteins in myocardial stress-sensing and mechanical dysfunction</article-title>. <source>Cardiovasc Res</source>. <year>2008</year>;<volume>77</volume>(<issue>4</issue>):<fpage>637</fpage>–<lpage>48</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.cardiores.2007.03.029" xlink:type="simple">10.1016/j.cardiores.2007.03.029</ext-link></comment> <object-id pub-id-type="pmid">17475230</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref004"><label>4</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Peng</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Raddatz</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Molkentin</surname> <given-names>JD</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Labeit</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Granzier</surname> <given-names>H</given-names></name>, <etal>et al</etal>. <article-title>Cardiac hypertrophy and reduced contractility in hearts deficient in the titin kinase region</article-title>. <source>Circulation</source>. <year>2007</year>;<volume>115</volume>(<issue>6</issue>):<fpage>743</fpage>–<lpage>51</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/CIRCULATIONAHA.106.645499" xlink:type="simple">10.1161/CIRCULATIONAHA.106.645499</ext-link></comment> <object-id pub-id-type="pmid">17261657</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref005"><label>5</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Radke</surname> <given-names>MH</given-names></name>, <name name-style="western"><surname>Peng</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>McNabb</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Nelson</surname> <given-names>OL</given-names></name>, <name name-style="western"><surname>Granzier</surname> <given-names>H</given-names></name>, <etal>et al</etal>. <article-title>Targeted deletion of titin N2B region leads to diastolic dysfunction and cardiac atrophy</article-title>. <source>Proc Natl Acad Sci U S A</source>. <year>2007</year>;<volume>104</volume>(<issue>9</issue>):<fpage>3444</fpage>–<lpage>9</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1073/pnas.0608543104" xlink:type="simple">10.1073/pnas.0608543104</ext-link></comment> <object-id pub-id-type="pmid">17360664</object-id>; PubMed Central PMCID: PMCPMC1805563.</mixed-citation></ref>
+<ref id="pone.0201498.ref006"><label>6</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Person</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Kostin</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Suzuki</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Labeit</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Schaper</surname> <given-names>J</given-names></name>. <article-title>Antisense oligonucleotide experiments elucidate the essential role of titin in sarcomerogenesis in adult rat cardiomyocytes in long-term culture</article-title>. <source>J Cell Sci</source>. <year>2000</year>;<volume>113</volume> <issue>Pt 21</issue>:<fpage>3851</fpage>–<lpage>9</lpage>. <object-id pub-id-type="pmid">11034912</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref007"><label>7</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Miller</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Musa</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Gautel</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Peckham</surname> <given-names>M</given-names></name>. <article-title>A targeted deletion of the C-terminal end of titin, including the titin kinase domain, impairs myofibrillogenesis</article-title>. <source>J Cell Sci</source>. <year>2003</year>;<volume>116</volume>(<issue>Pt 23</issue>):<fpage>4811</fpage>–<lpage>9</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1242/jcs.00768" xlink:type="simple">10.1242/jcs.00768</ext-link></comment> <object-id pub-id-type="pmid">14600266</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref008"><label>8</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gotthardt</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Hammer</surname> <given-names>RE</given-names></name>, <name name-style="western"><surname>Hubner</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Monti</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Witt</surname> <given-names>CC</given-names></name>, <name name-style="western"><surname>McNabb</surname> <given-names>M</given-names></name>, <etal>et al</etal>. <article-title>Conditional expression of mutant M-line titins results in cardiomyopathy with altered sarcomere structure</article-title>. <source>J Biol Chem</source>. <year>2003</year>;<volume>278</volume>(<issue>8</issue>):<fpage>6059</fpage>–<lpage>65</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1074/jbc.M211723200" xlink:type="simple">10.1074/jbc.M211723200</ext-link></comment> <object-id pub-id-type="pmid">12464612</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref009"><label>9</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Hinson</surname> <given-names>JT</given-names></name>, <name name-style="western"><surname>Chopra</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Nafissi</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Polacheck</surname> <given-names>WJ</given-names></name>, <name name-style="western"><surname>Benson</surname> <given-names>CC</given-names></name>, <name name-style="western"><surname>Swist</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>HEART DISEASE. Titin mutations in iPS cells define sarcomere insufficiency as a cause of dilated cardiomyopathy</article-title>. <source>Science</source>. <year>2015</year>;<volume>349</volume>(<issue>6251</issue>):<fpage>982</fpage>–<lpage>6</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1126/science.aaa5458" xlink:type="simple">10.1126/science.aaa5458</ext-link></comment> <object-id pub-id-type="pmid">26315439</object-id>; PubMed Central PMCID: PMCPMC4618316.</mixed-citation></ref>
+<ref id="pone.0201498.ref010"><label>10</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Itoh-Satoh</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Hayashi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Nishi</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Koga</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Arimura</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Koyanagi</surname> <given-names>T</given-names></name>, <etal>et al</etal>. <article-title>Titin mutations as the molecular basis for dilated cardiomyopathy</article-title>. <source>Biochem Biophys Res Commun</source>. <year>2002</year>;<volume>291</volume>(<issue>2</issue>):<fpage>385</fpage>–<lpage>93</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1006/bbrc.2002.6448" xlink:type="simple">10.1006/bbrc.2002.6448</ext-link></comment> <object-id pub-id-type="pmid">11846417</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref011"><label>11</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Matsumoto</surname> <given-names>Y</given-names></name>, <name name-style="western"><surname>Hayashi</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Inagaki</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Takahashi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Hiroi</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Nakamura</surname> <given-names>T</given-names></name>, <etal>et al</etal>. <article-title>Functional analysis of titin/connectin N2-B mutations found in cardiomyopathy</article-title>. <source>J Muscle Res Cell Motil</source>. <year>2005</year>;<volume>26</volume>(<issue>6–8</issue>):<fpage>367</fpage>–<lpage>74</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s10974-005-9018-5" xlink:type="simple">10.1007/s10974-005-9018-5</ext-link></comment> <object-id pub-id-type="pmid">16465475</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref012"><label>12</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Satoh</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Takahashi</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Sakamoto</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Hiroe</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Marumo</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Kimura</surname> <given-names>A</given-names></name>. <article-title>Structural analysis of the titin gene in hypertrophic cardiomyopathy: identification of a novel disease gene</article-title>. <source>Biochem Biophys Res Commun</source>. <year>1999</year>;<volume>262</volume>(<issue>2</issue>):<fpage>411</fpage>–<lpage>7</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1006/bbrc.1999.1221" xlink:type="simple">10.1006/bbrc.1999.1221</ext-link></comment> <object-id pub-id-type="pmid">10462489</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref013"><label>13</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Elhamine</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Radke</surname> <given-names>MH</given-names></name>, <name name-style="western"><surname>Pfitzer</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Granzier</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Gotthardt</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Stehle</surname> <given-names>R</given-names></name>. <article-title>Deletion of the titin N2B region accelerates myofibrillar force development but does not alter relaxation kinetics</article-title>. <source>J Cell Sci</source>. <year>2014</year>;<volume>127</volume>(<issue>Pt 17</issue>):<fpage>3666</fpage>–<lpage>74</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1242/jcs.141796" xlink:type="simple">10.1242/jcs.141796</ext-link></comment> <object-id pub-id-type="pmid">24982444</object-id>; PubMed Central PMCID: PMCPMC4150059.</mixed-citation></ref>
+<ref id="pone.0201498.ref014"><label>14</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Schafer</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>de Marvao</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Adami</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Fiedler</surname> <given-names>LR</given-names></name>, <name name-style="western"><surname>Ng</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Khin</surname> <given-names>E</given-names></name>, <etal>et al</etal>. <article-title>Titin-truncating variants affect heart function in disease cohorts and the general population</article-title>. <source>Nat Genet</source>. <year>2017</year>;<volume>49</volume>(<issue>1</issue>):<fpage>46</fpage>–<lpage>53</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/ng.3719" xlink:type="simple">10.1038/ng.3719</ext-link></comment> <object-id pub-id-type="pmid">27869827</object-id>; PubMed Central PMCID: PMCPMC5201198.</mixed-citation></ref>
+<ref id="pone.0201498.ref015"><label>15</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Roberts</surname> <given-names>AM</given-names></name>, <name name-style="western"><surname>Ware</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Herman</surname> <given-names>DS</given-names></name>, <name name-style="western"><surname>Schafer</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Baksi</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Bick</surname> <given-names>AG</given-names></name>, <etal>et al</etal>. <article-title>Integrated allelic, transcriptional, and phenomic dissection of the cardiac effects of titin truncations in health and disease</article-title>. <source>Sci Transl Med</source>. <year>2015</year>;<volume>7</volume>(<issue>270</issue>):<fpage>270ra6</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1126/scitranslmed.3010134" xlink:type="simple">10.1126/scitranslmed.3010134</ext-link></comment> <object-id pub-id-type="pmid">25589632</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref016"><label>16</label><mixed-citation publication-type="journal" xlink:type="simple"><collab>Case records of the Massachusetts General Hospital</collab>. <article-title>Weekly clinicopathological exercises. Case 29–1997. A 54-year-old diabetic woman with pain and swelling of the leg</article-title>. <source>N Engl J Med</source>. <year>1997</year>;<volume>337</volume>(<issue>12</issue>):<fpage>839</fpage>–<lpage>45</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1056/NEJM199709183371208" xlink:type="simple">10.1056/NEJM199709183371208</ext-link></comment> <object-id pub-id-type="pmid">9297115</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref017"><label>17</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Linschoten</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Teske</surname> <given-names>AJ</given-names></name>, <name name-style="western"><surname>Baas</surname> <given-names>AF</given-names></name>, <name name-style="western"><surname>Vink</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Dooijes</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Baars</surname> <given-names>HF</given-names></name>, <etal>et al</etal>. <article-title>Truncating Titin (TTN) Variants in Chemotherapy-Induced Cardiomyopathy</article-title>. <source>J Card Fail</source>. <year>2017</year>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.cardfail.2017.03.003" xlink:type="simple">10.1016/j.cardfail.2017.03.003</ext-link></comment> <object-id pub-id-type="pmid">28315399</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref018"><label>18</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhou</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Kesteven</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Wu</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Aidery</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Gawaz</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Gramlich</surname> <given-names>M</given-names></name>, <etal>et al</etal>. <article-title>Pressure Overload by Transverse Aortic Constriction Induces Maladaptive Hypertrophy in a Titin-Truncated Mouse Model</article-title>. <source>Biomed Res Int</source>. <year>2015</year>;<volume>2015</volume>:<fpage>163564</fpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1155/2015/163564" xlink:type="simple">10.1155/2015/163564</ext-link></comment> <object-id pub-id-type="pmid">26504781</object-id>; PubMed Central PMCID: PMCPMC4609346.</mixed-citation></ref>
+<ref id="pone.0201498.ref019"><label>19</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gramlich</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Michely</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Krohne</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Heuser</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Erdmann</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Klaassen</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>Stress-induced dilated cardiomyopathy in a knock-in mouse model mimicking human titin-based disease</article-title>. <source>J Mol Cell Cardiol</source>. <year>2009</year>;<volume>47</volume>(<issue>3</issue>):<fpage>352</fpage>–<lpage>8</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.yjmcc.2009.04.014" xlink:type="simple">10.1016/j.yjmcc.2009.04.014</ext-link></comment> <object-id pub-id-type="pmid">19406126</object-id>; PubMed Central PMCID: PMCPMC2764556.</mixed-citation></ref>
+<ref id="pone.0201498.ref020"><label>20</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Granzier</surname> <given-names>HL</given-names></name>, <name name-style="western"><surname>Hutchinson</surname> <given-names>KR</given-names></name>, <name name-style="western"><surname>Tonino</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Methawasin</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>FW</given-names></name>, <name name-style="western"><surname>Slater</surname> <given-names>RE</given-names></name>, <etal>et al</etal>. <article-title>Deleting titin's I-band/A-band junction reveals critical roles for titin in biomechanical sensing and cardiac function</article-title>. <source>Proc Natl Acad Sci U S A</source>. <year>2014</year>;<volume>111</volume>(<issue>40</issue>):<fpage>14589</fpage>–<lpage>94</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1073/pnas.1411493111" xlink:type="simple">10.1073/pnas.1411493111</ext-link></comment> <object-id pub-id-type="pmid">25246556</object-id>; PubMed Central PMCID: PMCPMC4210014.</mixed-citation></ref>
+<ref id="pone.0201498.ref021"><label>21</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zhang</surname> <given-names>X</given-names></name>, <name name-style="western"><surname>Javan</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Li</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Szucsik</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Deng</surname> <given-names>Y</given-names></name>, <etal>et al</etal>. <article-title>A modified murine model for the study of reverse cardiac remodelling</article-title>. <source>Exp Clin Cardiol</source>. <year>2013</year>;<volume>18</volume>(<issue>2</issue>):<fpage>e115</fpage>–<lpage>7</lpage>. <object-id pub-id-type="pmid">23940448</object-id>; PubMed Central PMCID: PMCPMC3718611.</mixed-citation></ref>
+<ref id="pone.0201498.ref022"><label>22</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Stansfield</surname> <given-names>WE</given-names></name>, <name name-style="western"><surname>Charles</surname> <given-names>PC</given-names></name>, <name name-style="western"><surname>Tang</surname> <given-names>RH</given-names></name>, <name name-style="western"><surname>Rojas</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Bhati</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Moss</surname> <given-names>NC</given-names></name>, <etal>et al</etal>. <article-title>Regression of pressure-induced left ventricular hypertrophy is characterized by a distinct gene expression profile</article-title>. <source>J Thorac Cardiovasc Surg</source>. <year>2009</year>;<volume>137</volume>(<issue>1</issue>):<fpage>232</fpage>–<lpage>8</lpage>, 8e1-8. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.jtcvs.2008.08.019" xlink:type="simple">10.1016/j.jtcvs.2008.08.019</ext-link></comment> <object-id pub-id-type="pmid">19154930</object-id>; PubMed Central PMCID: PMCPMC3335190.</mixed-citation></ref>
+<ref id="pone.0201498.ref023"><label>23</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Stansfield</surname> <given-names>WE</given-names></name>, <name name-style="western"><surname>Andersen</surname> <given-names>NM</given-names></name>, <name name-style="western"><surname>Tang</surname> <given-names>RH</given-names></name>, <name name-style="western"><surname>Selzman</surname> <given-names>CH</given-names></name>. <article-title>Periostin is a novel factor in cardiac remodeling after experimental and clinical unloading of the failing heart</article-title>. <source>Ann Thorac Surg</source>. <year>2009</year>;<volume>88</volume>(<issue>6</issue>):<fpage>1916</fpage>–<lpage>21</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.athoracsur.2009.07.038" xlink:type="simple">10.1016/j.athoracsur.2009.07.038</ext-link></comment> <object-id pub-id-type="pmid">19932262</object-id>; PubMed Central PMCID: PMCPMC3686640.</mixed-citation></ref>
+<ref id="pone.0201498.ref024"><label>24</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pawlush</surname> <given-names>DG</given-names></name>, <name name-style="western"><surname>Moore</surname> <given-names>RL</given-names></name>, <name name-style="western"><surname>Musch</surname> <given-names>TI</given-names></name>, <name name-style="western"><surname>Davidson</surname> <given-names>WR</given-names> <suffix>Jr</suffix></name>. <article-title>Echocardiographic evaluation of size, function, and mass of normal and hypertrophied rat ventricles</article-title>. <source>J Appl Physiol (1985)</source>. <year>1993</year>;<volume>74</volume>(<issue>5</issue>):<fpage>2598</fpage>–<lpage>605</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1152/jappl.1993.74.5.2598" xlink:type="simple">10.1152/jappl.1993.74.5.2598</ext-link></comment> <object-id pub-id-type="pmid">8335596</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref025"><label>25</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mohammed</surname> <given-names>SF</given-names></name>, <name name-style="western"><surname>Storlie</surname> <given-names>JR</given-names></name>, <name name-style="western"><surname>Oehler</surname> <given-names>EA</given-names></name>, <name name-style="western"><surname>Bowen</surname> <given-names>LA</given-names></name>, <name name-style="western"><surname>Korinek</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Lam</surname> <given-names>CS</given-names></name>, <etal>et al</etal>. <article-title>Variable phenotype in murine transverse aortic constriction</article-title>. <source>Cardiovasc Pathol</source>. <year>2012</year>;<volume>21</volume>(<issue>3</issue>):<fpage>188</fpage>–<lpage>98</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.carpath.2011.05.002" xlink:type="simple">10.1016/j.carpath.2011.05.002</ext-link></comment> <object-id pub-id-type="pmid">21764606</object-id>; PubMed Central PMCID: PMCPMC3412352.</mixed-citation></ref>
+<ref id="pone.0201498.ref026"><label>26</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Pacher</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Nagayama</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Mukhopadhyay</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Batkai</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Kass</surname> <given-names>DA</given-names></name>. <article-title>Measurement of cardiac function using pressure-volume conductance catheter technique in mice and rats</article-title>. <source>Nat Protoc</source>. <year>2008</year>;<volume>3</volume>(<issue>9</issue>):<fpage>1422</fpage>–<lpage>34</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/nprot.2008.138" xlink:type="simple">10.1038/nprot.2008.138</ext-link></comment> <object-id pub-id-type="pmid">18772869</object-id>; PubMed Central PMCID: PMCPMC2597499.</mixed-citation></ref>
+<ref id="pone.0201498.ref027"><label>27</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ye</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Duval</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Su</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Xiong</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>J</given-names></name>. <article-title>Thymosin beta4 increases the potency of transplanted mesenchymal stem cells for myocardial repair</article-title>. <source>Circulation</source>. <year>2013</year>;<volume>128</volume>(<issue>11</issue> Suppl 1):<fpage>S32</fpage>–<lpage>41</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/CIRCULATIONAHA.112.000025" xlink:type="simple">10.1161/CIRCULATIONAHA.112.000025</ext-link></comment> <object-id pub-id-type="pmid">24030419</object-id>; PubMed Central PMCID: PMCPMC3886821.</mixed-citation></ref>
+<ref id="pone.0201498.ref028"><label>28</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ye</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Haider</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Tan</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Toh</surname> <given-names>W</given-names></name>, <name name-style="western"><surname>Law</surname> <given-names>PK</given-names></name>, <name name-style="western"><surname>Tan</surname> <given-names>W</given-names></name>, <etal>et al</etal>. <article-title>Transplantation of nanoparticle transfected skeletal myoblasts overexpressing vascular endothelial growth factor-165 for cardiac repair</article-title>. <source>Circulation</source>. <year>2007</year>;<volume>116</volume>(<issue>11</issue> Suppl):<fpage>I113</fpage>–<lpage>20</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/CIRCULATIONAHA.106.680124" xlink:type="simple">10.1161/CIRCULATIONAHA.106.680124</ext-link></comment> <object-id pub-id-type="pmid">17846290</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref029"><label>29</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ye</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Chang</surname> <given-names>YH</given-names></name>, <name name-style="western"><surname>Xiong</surname> <given-names>Q</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>P</given-names></name>, <name name-style="western"><surname>Zhang</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Somasundaram</surname> <given-names>P</given-names></name>, <etal>et al</etal>. <article-title>Cardiac repair in a porcine model of acute myocardial infarction with human induced pluripotent stem cell-derived cardiovascular cells</article-title>. <source>Cell Stem Cell</source>. <year>2014</year>;<volume>15</volume>(<issue>6</issue>):<fpage>750</fpage>–<lpage>61</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.stem.2014.11.009" xlink:type="simple">10.1016/j.stem.2014.11.009</ext-link></comment> <object-id pub-id-type="pmid">25479750</object-id>; PubMed Central PMCID: PMC4275050.</mixed-citation></ref>
+<ref id="pone.0201498.ref030"><label>30</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ye</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>KO</given-names></name>, <name name-style="western"><surname>Su</surname> <given-names>LP</given-names></name>, <name name-style="western"><surname>Toh</surname> <given-names>WC</given-names></name>, <name name-style="western"><surname>Haider</surname> <given-names>HK</given-names></name>, <name name-style="western"><surname>Law</surname> <given-names>PK</given-names></name>, <etal>et al</etal>. <article-title>Skeletal myoblast transplantation for attenuation of hyperglycaemia, hyperinsulinaemia and glucose intolerance in a mouse model of type 2 diabetes mellitus</article-title>. <source>Diabetologia</source>. <year>2009</year>;<volume>52</volume>(<issue>9</issue>):<fpage>1925</fpage>–<lpage>34</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1007/s00125-009-1421-9" xlink:type="simple">10.1007/s00125-009-1421-9</ext-link></comment> <object-id pub-id-type="pmid">19593542</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref031"><label>31</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Ma</surname> <given-names>JH</given-names></name>, <name name-style="western"><surname>Su</surname> <given-names>LP</given-names></name>, <name name-style="western"><surname>Zhu</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Law</surname> <given-names>PK</given-names></name>, <name name-style="western"><surname>Lee</surname> <given-names>KO</given-names></name>, <name name-style="western"><surname>Ye</surname> <given-names>L</given-names></name>, <etal>et al</etal>. <article-title>Skeletal myoblast transplantation on gene expression profiles of insulin signaling pathway and mitochondrial biogenesis and function in skeletal muscle</article-title>. <source>Diabetes Res Clin Pract</source>. <year>2013</year>;<volume>102</volume>(<issue>1</issue>):<fpage>43</fpage>–<lpage>52</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1016/j.diabres.2013.08.006" xlink:type="simple">10.1016/j.diabres.2013.08.006</ext-link></comment> <object-id pub-id-type="pmid">24008100</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref032"><label>32</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Frank</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Frey</surname> <given-names>N</given-names></name>. <article-title>Cardiac Z-disc signaling network</article-title>. <source>J Biol Chem</source>. <year>2011</year>;<volume>286</volume>(<issue>12</issue>):<fpage>9897</fpage>–<lpage>904</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1074/jbc.R110.174268" xlink:type="simple">10.1074/jbc.R110.174268</ext-link></comment> <object-id pub-id-type="pmid">21257757</object-id>; PubMed Central PMCID: PMCPMC3060542.</mixed-citation></ref>
+<ref id="pone.0201498.ref033"><label>33</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Knoll</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Hoshijima</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Hoffman</surname> <given-names>HM</given-names></name>, <name name-style="western"><surname>Person</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Lorenzen-Schmidt</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Bang</surname> <given-names>ML</given-names></name>, <etal>et al</etal>. <article-title>The cardiac mechanical stretch sensor machinery involves a Z disc complex that is defective in a subset of human dilated cardiomyopathy</article-title>. <source>Cell</source>. <year>2002</year>;<volume>111</volume>(<issue>7</issue>):<fpage>943</fpage>–<lpage>55</lpage>. <object-id pub-id-type="pmid">12507422</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref034"><label>34</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Frey</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Barrientos</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Shelton</surname> <given-names>JM</given-names></name>, <name name-style="western"><surname>Frank</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Rutten</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Gehring</surname> <given-names>D</given-names></name>, <etal>et al</etal>. <article-title>Mice lacking calsarcin-1 are sensitized to calcineurin signaling and show accelerated cardiomyopathy in response to pathological biomechanical stress</article-title>. <source>Nature medicine</source>. <year>2004</year>;<volume>10</volume>(<issue>12</issue>):<fpage>1336</fpage>–<lpage>43</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/nm1132" xlink:type="simple">10.1038/nm1132</ext-link></comment> <object-id pub-id-type="pmid">15543153</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref035"><label>35</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Brancaccio</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Fratta</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Notte</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Hirsch</surname> <given-names>E</given-names></name>, <name name-style="western"><surname>Poulet</surname> <given-names>R</given-names></name>, <name name-style="western"><surname>Guazzone</surname> <given-names>S</given-names></name>, <etal>et al</etal>. <article-title>Melusin, a muscle-specific integrin beta1-interacting protein, is required to prevent cardiac failure in response to chronic pressure overload</article-title>. <source>Nature medicine</source>. <year>2003</year>;<volume>9</volume>(<issue>1</issue>):<fpage>68</fpage>–<lpage>75</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1038/nm805" xlink:type="simple">10.1038/nm805</ext-link></comment> <object-id pub-id-type="pmid">12496958</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref036"><label>36</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Gelpi</surname> <given-names>RJ</given-names></name>, <name name-style="western"><surname>Park</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Gao</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Dhar</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Vatner</surname> <given-names>DE</given-names></name>, <name name-style="western"><surname>Vatner</surname> <given-names>SF</given-names></name>. <article-title>Apoptosis in severe, compensated pressure overload predominates in nonmyocytes and is related to the hypertrophy but not function</article-title>. <source>Am J Physiol Heart Circ Physiol</source>. <year>2011</year>;<volume>300</volume>(<issue>3</issue>):<fpage>H1062</fpage>–<lpage>8</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1152/ajpheart.00998.2010" xlink:type="simple">10.1152/ajpheart.00998.2010</ext-link></comment> <object-id pub-id-type="pmid">21148760</object-id>; PubMed Central PMCID: PMCPMC3302193.</mixed-citation></ref>
+<ref id="pone.0201498.ref037"><label>37</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Park</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Shen</surname> <given-names>YT</given-names></name>, <name name-style="western"><surname>Gaussin</surname> <given-names>V</given-names></name>, <name name-style="western"><surname>Heyndrickx</surname> <given-names>GR</given-names></name>, <name name-style="western"><surname>Bartunek</surname> <given-names>J</given-names></name>, <name name-style="western"><surname>Resuello</surname> <given-names>RR</given-names></name>, <etal>et al</etal>. <article-title>Apoptosis predominates in nonmyocytes in heart failure</article-title>. <source>Am J Physiol Heart Circ Physiol</source>. <year>2009</year>;<volume>297</volume>(<issue>2</issue>):<fpage>H785</fpage>–<lpage>91</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1152/ajpheart.00310.2009" xlink:type="simple">10.1152/ajpheart.00310.2009</ext-link></comment> <object-id pub-id-type="pmid">19465551</object-id>; PubMed Central PMCID: PMCPMC2724204.</mixed-citation></ref>
+<ref id="pone.0201498.ref038"><label>38</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Condorelli</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Morisco</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Stassi</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>Notte</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Farina</surname> <given-names>F</given-names></name>, <name name-style="western"><surname>Sgaramella</surname> <given-names>G</given-names></name>, <etal>et al</etal>. <article-title>Increased cardiomyocyte apoptosis and changes in proapoptotic and antiapoptotic genes bax and bcl-2 during left ventricular adaptations to chronic pressure overload in the rat</article-title>. <source>Circulation</source>. <year>1999</year>;<volume>99</volume>(<issue>23</issue>):<fpage>3071</fpage>–<lpage>8</lpage>. <object-id pub-id-type="pmid">10368127</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref039"><label>39</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Shiojima</surname> <given-names>I</given-names></name>, <name name-style="western"><surname>Komuro</surname> <given-names>I</given-names></name>. [<article-title>Molecular mechanisms of congestive heart failure</article-title>]. <source>Nihon Rinsho</source>. <year>2006</year>;<volume>64</volume>(<issue>5</issue>):<fpage>826</fpage>–<lpage>31</lpage>. <object-id pub-id-type="pmid">16689360</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref040"><label>40</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Mohammed</surname> <given-names>SF</given-names></name>, <name name-style="western"><surname>Hussain</surname> <given-names>S</given-names></name>, <name name-style="western"><surname>Mirzoyev</surname> <given-names>SA</given-names></name>, <name name-style="western"><surname>Edwards</surname> <given-names>WD</given-names></name>, <name name-style="western"><surname>Maleszewski</surname> <given-names>JJ</given-names></name>, <name name-style="western"><surname>Redfield</surname> <given-names>MM</given-names></name>. <article-title>Coronary microvascular rarefaction and myocardial fibrosis in heart failure with preserved ejection fraction</article-title>. <source>Circulation</source>. <year>2015</year>;<volume>131</volume>(<issue>6</issue>):<fpage>550</fpage>–<lpage>9</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/CIRCULATIONAHA.114.009625" xlink:type="simple">10.1161/CIRCULATIONAHA.114.009625</ext-link></comment> <object-id pub-id-type="pmid">25552356</object-id>; PubMed Central PMCID: PMCPMC4324362.</mixed-citation></ref>
+<ref id="pone.0201498.ref041"><label>41</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Zelarayan</surname> <given-names>L</given-names></name>, <name name-style="western"><surname>Renger</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Noack</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Zafiriou</surname> <given-names>MP</given-names></name>, <name name-style="western"><surname>Gehrke</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>van der Nagel</surname> <given-names>R</given-names></name>, <etal>et al</etal>. <article-title>NF-kappaB activation is required for adaptive cardiac hypertrophy</article-title>. <source>Cardiovasc Res</source>. <year>2009</year>;<volume>84</volume>(<issue>3</issue>):<fpage>416</fpage>–<lpage>24</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1093/cvr/cvp237" xlink:type="simple">10.1093/cvr/cvp237</ext-link></comment> <object-id pub-id-type="pmid">19620128</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref042"><label>42</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Tran</surname> <given-names>ED</given-names></name>, <name name-style="western"><surname>DeLano</surname> <given-names>FA</given-names></name>, <name name-style="western"><surname>Schmid-Schonbein</surname> <given-names>GW</given-names></name>. <article-title>Enhanced matrix metalloproteinase activity in the spontaneously hypertensive rat: VEGFR-2 cleavage, endothelial apoptosis, and capillary rarefaction</article-title>. <source>J Vasc Res</source>. <year>2010</year>;<volume>47</volume>(<issue>5</issue>):<fpage>423</fpage>–<lpage>31</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1159/000281582" xlink:type="simple">10.1159/000281582</ext-link></comment> <object-id pub-id-type="pmid">20145415</object-id>; PubMed Central PMCID: PMCPMC2968763.</mixed-citation></ref>
+<ref id="pone.0201498.ref043"><label>43</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Wu</surname> <given-names>KI</given-names></name>, <name name-style="western"><surname>Schmid-Schonbein</surname> <given-names>GW</given-names></name>. <article-title>Nuclear factor kappa B and matrix metalloproteinase induced receptor cleavage in the spontaneously hypertensive rat</article-title>. <source>Hypertension</source>. <year>2011</year>;<volume>57</volume>(<issue>2</issue>):<fpage>261</fpage>–<lpage>8</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/HYPERTENSIONAHA.110.158709" xlink:type="simple">10.1161/HYPERTENSIONAHA.110.158709</ext-link></comment> <object-id pub-id-type="pmid">21220710</object-id>; PubMed Central PMCID: PMCPMC3077933.</mixed-citation></ref>
+<ref id="pone.0201498.ref044"><label>44</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Burchfield</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Xie</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Hill</surname> <given-names>JA</given-names></name>. <article-title>Pathological ventricular remodeling: mechanisms: part 1 of 2</article-title>. <source>Circulation</source>. <year>2013</year>;<volume>128</volume>(<issue>4</issue>):<fpage>388</fpage>–<lpage>400</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/CIRCULATIONAHA.113.001878" xlink:type="simple">10.1161/CIRCULATIONAHA.113.001878</ext-link></comment> <object-id pub-id-type="pmid">23877061</object-id>; PubMed Central PMCID: PMCPMC3801217.</mixed-citation></ref>
+<ref id="pone.0201498.ref045"><label>45</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Xie</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Burchfield</surname> <given-names>JS</given-names></name>, <name name-style="western"><surname>Hill</surname> <given-names>JA</given-names></name>. <article-title>Pathological ventricular remodeling: therapies: part 2 of 2</article-title>. <source>Circulation</source>. <year>2013</year>;<volume>128</volume>(<issue>9</issue>):<fpage>1021</fpage>–<lpage>30</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/CIRCULATIONAHA.113.001879" xlink:type="simple">10.1161/CIRCULATIONAHA.113.001879</ext-link></comment> <object-id pub-id-type="pmid">23979628</object-id>; PubMed Central PMCID: PMCPMC3829603.</mixed-citation></ref>
+<ref id="pone.0201498.ref046"><label>46</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kass</surname> <given-names>DA</given-names></name>, <name name-style="western"><surname>Bronzwaer</surname> <given-names>JG</given-names></name>, <name name-style="western"><surname>Paulus</surname> <given-names>WJ</given-names></name>. <article-title>What mechanisms underlie diastolic dysfunction in heart failure?</article-title> <source>Circulation research</source>. <year>2004</year>;<volume>94</volume>(<issue>12</issue>):<fpage>1533</fpage>–<lpage>42</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/01.RES.0000129254.25507.d6" xlink:type="simple">10.1161/01.RES.0000129254.25507.d6</ext-link></comment> <object-id pub-id-type="pmid">15217918</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref047"><label>47</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Moreo</surname> <given-names>A</given-names></name>, <name name-style="western"><surname>Ambrosio</surname> <given-names>G</given-names></name>, <name name-style="western"><surname>De Chiara</surname> <given-names>B</given-names></name>, <name name-style="western"><surname>Pu</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Tran</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Mauri</surname> <given-names>F</given-names></name>, <etal>et al</etal>. <article-title>Influence of myocardial fibrosis on left ventricular diastolic function: noninvasive assessment by cardiac magnetic resonance and echo</article-title>. <source>Circ Cardiovasc Imaging</source>. <year>2009</year>;<volume>2</volume>(<issue>6</issue>):<fpage>437</fpage>–<lpage>43</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/CIRCIMAGING.108.838367" xlink:type="simple">10.1161/CIRCIMAGING.108.838367</ext-link></comment> <object-id pub-id-type="pmid">19920041</object-id>; PubMed Central PMCID: PMCPMC2782553.</mixed-citation></ref>
+<ref id="pone.0201498.ref048"><label>48</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Westermann</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Lindner</surname> <given-names>D</given-names></name>, <name name-style="western"><surname>Kasner</surname> <given-names>M</given-names></name>, <name name-style="western"><surname>Zietsch</surname> <given-names>C</given-names></name>, <name name-style="western"><surname>Savvatis</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Escher</surname> <given-names>F</given-names></name>, <etal>et al</etal>. <article-title>Cardiac inflammation contributes to changes in the extracellular matrix in patients with heart failure and normal ejection fraction</article-title>. <source>Circ Heart Fail</source>. <year>2011</year>;<volume>4</volume>(<issue>1</issue>):<fpage>44</fpage>–<lpage>52</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1161/CIRCHEARTFAILURE.109.931451" xlink:type="simple">10.1161/CIRCHEARTFAILURE.109.931451</ext-link></comment> <object-id pub-id-type="pmid">21075869</object-id>.</mixed-citation></ref>
+<ref id="pone.0201498.ref049"><label>49</label><mixed-citation publication-type="journal" xlink:type="simple"><name name-style="western"><surname>Kai</surname> <given-names>H</given-names></name>, <name name-style="western"><surname>Mori</surname> <given-names>T</given-names></name>, <name name-style="western"><surname>Tokuda</surname> <given-names>K</given-names></name>, <name name-style="western"><surname>Takayama</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Tahara</surname> <given-names>N</given-names></name>, <name name-style="western"><surname>Takemiya</surname> <given-names>K</given-names></name>, <etal>et al</etal>. <article-title>Pressure overload-induced transient oxidative stress mediates perivascular inflammation and cardiac fibrosis through angiotensin II</article-title>. <source>Hypertens Res</source>. <year>2006</year>;<volume>29</volume>(<issue>9</issue>):<fpage>711</fpage>–<lpage>8</lpage>. <comment>doi: <ext-link ext-link-type="uri" xlink:href="https://doi.org/10.1291/hypres.29.711" xlink:type="simple">10.1291/hypres.29.711</ext-link></comment> <object-id pub-id-type="pmid">17249527</object-id>.</mixed-citation></ref>
+</ref-list>
+</back>
+</article>

@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article
+  PUBLIC "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN" "http://dtd.nlm.nih.gov/publishing/3.0/journalpublishing3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" article-type="research-article" dtd-version="3.0" xml:lang="EN">
+  <front>
+    <journal-meta><journal-id journal-id-type="nlm-ta">PLoS ONE</journal-id><journal-id journal-id-type="publisher-id">plos</journal-id><journal-id journal-id-type="pmc">plosone</journal-id><!--===== Grouping journal title elements =====--><journal-title-group><journal-title>PLoS ONE</journal-title></journal-title-group><issn pub-type="epub">1932-6203</issn><publisher>
+        <publisher-name>Public Library of Science</publisher-name>
+        <publisher-loc>San Francisco, USA</publisher-loc>
+      </publisher></journal-meta>
+    <article-meta><article-id pub-id-type="publisher-id">PONE-D-12-10832</article-id><article-id pub-id-type="doi">10.1371/journal.pone.0041874</article-id><article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>Research Article</subject>
+        </subj-group>
+        <subj-group subj-group-type="Discipline-v2">
+          <subject>Biology</subject>
+          <subj-group>
+            <subject>Biochemistry</subject>
+            <subj-group>
+              <subject>Lipids</subject>
+              <subj-group>
+                <subject>Isoprenoids</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Plant biochemistry</subject>
+              <subj-group>
+                <subject>Secondary metabolism</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Proteins</subject>
+              <subj-group>
+                <subject>Coagulation factors</subject>
+                <subject>Proteome</subject>
+              </subj-group>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Biophysics</subject>
+            <subj-group>
+              <subject>Macromolecular assemblies</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Biotechnology</subject>
+            <subj-group>
+              <subject>Biomaterials</subject>
+              <subject>Bionanotechnology</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Genetics</subject>
+            <subj-group>
+              <subject>Gene expression</subject>
+              <subj-group>
+                <subject>RNA interference</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Gene function</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Genomics</subject>
+            <subj-group>
+              <subject>Functional genomics</subject>
+            </subj-group>
+          </subj-group>
+          <subj-group>
+            <subject>Plant science</subject>
+            <subj-group>
+              <subject>Plant biochemistry</subject>
+              <subj-group>
+                <subject>Secondary metabolism</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Plant biotechnology</subject>
+              <subj-group>
+                <subject>Transgenic plants</subject>
+              </subj-group>
+            </subj-group>
+            <subj-group>
+              <subject>Plant cell biology</subject>
+              <subject>Plant genetics</subject>
+              <subject>Plant physiology</subject>
+            </subj-group>
+          </subj-group>
+        </subj-group>
+        <subj-group subj-group-type="Discipline">
+          <subject>Genetics and Genomics</subject>
+          <subject>Plant Biology</subject>
+          <subject>Biotechnology</subject>
+          <subject>Biophysics</subject>
+          <subject>Biochemistry</subject>
+        </subj-group>
+      </article-categories><title-group><article-title>Down-Regulation of Small Rubber Particle Protein Expression Affects Integrity of Rubber Particles and Rubber Content in <italic>Taraxacum brevicorniculatum</italic></article-title><alt-title alt-title-type="running-head">Small Rubber Particle Protein and Rubber Synthesis</alt-title></title-group><contrib-group>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Hillebrand</surname>
+            <given-names>Andrea</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Post</surname>
+            <given-names>Janina J.</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Wurbs</surname>
+            <given-names>David</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Wahler</surname>
+            <given-names>Daniela</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Lenders</surname>
+            <given-names>Malte</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Krzyzanek</surname>
+            <given-names>Vladislav</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff2">
+            <sup>2</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff4">
+            <sup>4</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Prüfer</surname>
+            <given-names>Dirk</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff1">
+            <sup>1</sup>
+          </xref>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+        </contrib>
+        <contrib contrib-type="author" xlink:type="simple">
+          <name name-style="western">
+            <surname>Gronover</surname>
+            <given-names>Christian Schulze</given-names>
+          </name>
+          <xref ref-type="aff" rid="aff3">
+            <sup>3</sup>
+          </xref>
+          <xref ref-type="corresp" rid="cor1">
+            <sup>*</sup>
+          </xref>
+        </contrib>
+      </contrib-group><aff id="aff1"><label>1</label><addr-line>Institute of Plant Biology and Biotechnology, Westphalian Wilhelms-University, Münster, Germany</addr-line>       </aff><aff id="aff2"><label>2</label><addr-line>Institute for Medical Physics and Biophysics, Westphalian Wilhelms-University, Münster, Germany</addr-line>       </aff><aff id="aff3"><label>3</label><addr-line>Fraunhofer Institute for Molecular Biology and Applied Ecology, Aachen, Germany</addr-line>       </aff><aff id="aff4"><label>4</label><addr-line>Institute of Scientific Instruments of the ASCR, v.v.i., Academy of Sciences of the Czech Republic, Brno, Czech Republic</addr-line>       </aff><contrib-group>
+        <contrib contrib-type="editor" xlink:type="simple">
+          <name name-style="western">
+            <surname>Herrera-Estrella</surname>
+            <given-names>Luis</given-names>
+          </name>
+          <role>Editor</role>
+          <xref ref-type="aff" rid="edit1"/>
+        </contrib>
+      </contrib-group><aff id="edit1">Centro de Investigación y de Estudios Avanzados del IPN, Mexico</aff><author-notes>
+        <corresp id="cor1">* E-mail: <email xlink:type="simple">christian.schulze.gronover@ime.fraunhofer.de</email></corresp>
+        <fn fn-type="con">
+          <p>Conceived and designed the experiments: CSG DP AH. Performed the experiments: AH JP D. Wurbs D. Wahler ML VK CSG. Analyzed the data: AH CSG D. Wahler. Contributed reagents/materials/analysis tools: VK. Wrote the paper: AH DP CSG.</p>
+        </fn>
+      <fn fn-type="conflict">
+        <p>The authors have declared that no competing interests exist.</p>
+      </fn></author-notes><pub-date pub-type="collection">
+        <year>2012</year>
+      </pub-date><pub-date pub-type="epub">
+        <day>23</day>
+        <month>7</month>
+        <year>2012</year>
+      </pub-date><volume>7</volume><issue>7</issue><elocation-id>e41874</elocation-id><history>
+        <date date-type="received">
+          <day>16</day>
+          <month>4</month>
+          <year>2012</year>
+        </date>
+        <date date-type="accepted">
+          <day>26</day>
+          <month>6</month>
+          <year>2012</year>
+        </date>
+      </history><!--===== Grouping copyright info into permissions =====--><permissions><copyright-year>2012</copyright-year><copyright-holder>Hillebrand et al</copyright-holder><license><license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</license-p></license></permissions><abstract>
+        <p>The biosynthesis of rubber is thought to take place on the surface of rubber particles in laticifers, highly specialized cells that are present in more than 40 plant families. The small rubber particle protein (SRPP) has been supposed to be involved in rubber biosynthesis, and recently five SRPPs (TbSRPP1–5) were identified in the rubber-producing dandelion species <italic>Taraxacum brevicorniculatum</italic>. Here, we demonstrate by immunogold labeling that TbSRPPs are localized to rubber particles, and that rubber particles mainly consist of TbSRPP3, 4 and 5 as shown by high-resolution two-dimensional gel electrophoresis and mass spectrometric analysis. We also carried out an RNA-interference approach in transgenic plants to address the function of TbSRPPs in rubber biosynthesis as well as rubber particle morphology and stability. TbSRPP-RNAi transgenic <italic>T. brevicorniculatum</italic> plants showed a 40–50% reduction in the dry rubber content, but neither the rubber weight average molecular mass nor the polydispersity of the rubber were affected. Although no phenotypical differences to wild-type particles could be observed <italic>in vivo</italic>, rubber particles from the TbSRPP-RNAi transgenic lines were less stable and tend to rapidly aggregate in expelling latex after wounding of laticifers. Our results prove that TbSRPPs are very crucial for rubber production in <italic>T. brevicorniculatum</italic>, probably by contributing to a most favourable and stable rubber particle architecture for efficient rubber biosynthesis and eventually storage.</p>
+      </abstract><funding-group><funding-statement>This work was supported by a grant from the European Union Framework Program 7 (project no. 212827, EU-PEARLS), the Deutsche Bundesstiftung Umwelt (AZ13255) and the Ministry of Science and Education of Germany (grant no. FKZ 0315971C). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</funding-statement></funding-group><counts>
+        <page-count count="9"/>
+      </counts></article-meta>
+  </front>
+  <body>
+    <sec id="s1">
+      <title>Introduction</title>
+      <p>Approximately 2,500 plants produce natural rubber poly (<italic>cis</italic>-1,4-isoprene), which is stored in rubber particles dispersed throughout the cytosol of either laticifers or specialized parenchyma cells <xref ref-type="bibr" rid="pone.0041874-Cornish1">[1]</xref>. Natural rubber is synthesized by the successive addition of isopentenyl pyrophosphate (IPP) to an initiating allylic pyrophosphate, e.g. farnesyl pyrophosphate (FPP) <xref ref-type="bibr" rid="pone.0041874-Cornish1">[1]</xref>–<xref ref-type="bibr" rid="pone.0041874-Kharel1">[5]</xref>. This polymerization reaction is thought to take place on the surface of rubber particles, mediated by a particle bound <italic>cis</italic>-prenyltransferase (CPT) <xref ref-type="bibr" rid="pone.0041874-Cornish1">[1]</xref>, <xref ref-type="bibr" rid="pone.0041874-Archer1">[6]</xref>–<xref ref-type="bibr" rid="pone.0041874-Schmidt1">[8]</xref>. Recently, we identified three rubber particle bound long-chain CPTs in <italic>Taraxacum brevicorniculatum</italic> (<italic>T. brevicorniculatum</italic> was erroneously labeled as <italic>T. koksaghyz</italic> in botanical gardens <xref ref-type="bibr" rid="pone.0041874-Kirschner1">[9]</xref>) that appear to be the key enzymes for rubber biosynthesis in this species <xref ref-type="bibr" rid="pone.0041874-Schmidt1">[8]</xref>, <xref ref-type="bibr" rid="pone.0041874-Post1">[10]</xref>. Detailed analysis of rubber particles in different species revealed a conserved spherical structure with sizes ranging from 0.2–6.5 µm in <italic>Ficus carica</italic> and <italic>Ficus benghalensis</italic>, 1–2 µm in <italic>Parthenium argentatum,</italic> 0.08–2 µm in <italic>Hevea brasiliensis</italic> and 0.01–1 µm in <italic>T. brevicorniculatum</italic> <xref ref-type="bibr" rid="pone.0041874-Schmidt1">[8]</xref>, <xref ref-type="bibr" rid="pone.0041874-Gomez1">[11]</xref>–<xref ref-type="bibr" rid="pone.0041874-Singh1">[13]</xref>. Rubber particles comprise a homogenous rubber core surrounded by a monolayer membrane containing lipids, proteins, and several minor compounds <xref ref-type="bibr" rid="pone.0041874-Cornish3">[12]</xref>, <xref ref-type="bibr" rid="pone.0041874-Siler2">[14]</xref>, <xref ref-type="bibr" rid="pone.0041874-Wood1">[15]</xref>. This composite monolayer membrane probably mediates the colloidal stability of rubber particles by providing a net negative surface charge that prevents their coalescence in the cytosol <xref ref-type="bibr" rid="pone.0041874-Cornish3">[12]</xref>, <xref ref-type="bibr" rid="pone.0041874-Siler2">[14]</xref>. In principle, colloidal stability depends on the balance between repulsion and attractive van-der-Waals forces, and electrostatic forces are often responsible for the repulsion of colloids in a suspension <xref ref-type="bibr" rid="pone.0041874-Verwey1">[16]</xref>–<xref ref-type="bibr" rid="pone.0041874-Riddick1">[18]</xref>. The net surface charge of colloids can be estimated by the determination of their zeta (ζ)-potential, which is the electrical potential difference at the interface of the suspending fluid and the stationary fluid attached to the colloid surface <xref ref-type="bibr" rid="pone.0041874-Verwey1">[16]</xref>, <xref ref-type="bibr" rid="pone.0041874-Riddick1">[18]</xref>. In addition to repulsion through a similar (positive or negative) surface charge, repulsion of colloids can also be mediated by steric hindrance of adsorbed large molecules, such as proteins <xref ref-type="bibr" rid="pone.0041874-Heller1">[17]</xref>, <xref ref-type="bibr" rid="pone.0041874-Jucker1">[19]</xref>–<xref ref-type="bibr" rid="pone.0041874-Grasso1">[22]</xref>. Amongst others, two highly homologous proteins are associated with the surface of <italic>H. brasiliensis</italic> rubber particles, i.e. the small rubber particle protein (SRPP; here designated as HbSRPP) and the rubber elongation factor (REF; here designated as HbREF) <xref ref-type="bibr" rid="pone.0041874-Dennis1">[23]</xref>–<xref ref-type="bibr" rid="pone.0041874-Oh1">[25]</xref>. SRPP homologs were also identified in <italic>P. argentatum</italic> (guayule homolog of SRPP, GHS <xref ref-type="bibr" rid="pone.0041874-Kim1">[26]</xref>) and <italic>T. brevicorniculatum</italic> (TbSRPP1–5, previously designated as TkSRPP1–5 <xref ref-type="bibr" rid="pone.0041874-Schmidt2">[27]</xref>). The functions of SRPP and REF are yet unclear. However, there is some evidence indicating a potential role in rubber biosynthesis: <italic>In vitro</italic>-experiments revealed that the addition of recombinant HbSRPP to <italic>H. brasiliensis</italic> rubber particles suspended in latex cytosol increased the incorporation of IPP, while addition of antibodies directed against HbSRPP and HbREF inhibited IPP incorporation <xref ref-type="bibr" rid="pone.0041874-Dennis2">[24]</xref>, <xref ref-type="bibr" rid="pone.0041874-Oh1">[25]</xref>. Moreover, the analysis of HbREF gene expression in <italic>H. brasiliensis</italic> accessions with low to high rubber yields revealed that HbREF expression correlates positively with the amount of rubber <xref ref-type="bibr" rid="pone.0041874-Priya1">[28]</xref>. However, it has been proposed that the rubber-producing species <italic>F. carica</italic> and <italic>F. benghalensis</italic> do not possess a SRPP homolog, suggesting that SRPP is not a general and essential protein for rubber biosynthesis <xref ref-type="bibr" rid="pone.0041874-Singh1">[13]</xref>.</p>
+      <p>The recently identified SRPPs in <italic>T. brevicorniculatum</italic> (TbSRPP1–5) shared sequence identities of 41–66% to each other and 38–43% with HbSRPP. Except for TbSRPP2, all TbSRPPs are predominately expressed in latex and their spatiotemporal expression pattern correlates with latex and rubber production in <italic>T. brevicorniculatum</italic> <xref ref-type="bibr" rid="pone.0041874-Schmidt2">[27]</xref>. To analyze the function of TbSRPPs <italic>in vivo</italic>, we generated transgenic <italic>T. brevicorniculatum</italic> plants with strongly reduced TbSRPP protein levels, caused by RNA-interference. We revealed that exuded latex as well as freeze-dried roots of transgenic plants contain significantly lower amounts of natural rubber compared to wild-type plants. Rubber particles in expelling latex of transgenic plants appeared to be less stable compared to wild-type, whereas neither the rubber weight average molecular mass nor the polydispersity were affected. Hence, we conclude that TbSRPPs probably support rubber biosynthesis by the stabilization of rubber particles.</p>
+    </sec>
+    <sec id="s2">
+      <title>Results</title>
+      <sec id="s2a">
+        <title>TbSRPPs are the major rubber particle proteins</title>
+        <p>We recently identified and cloned five genes (<italic>TbSRPP1–5</italic>) encoding small rubber particle proteins from <italic>T. brevicorniculatum</italic> <xref ref-type="bibr" rid="pone.0041874-Schmidt2">[27]</xref>. As reported for other SRPPs <xref ref-type="bibr" rid="pone.0041874-Singh1">[13]</xref>, <xref ref-type="bibr" rid="pone.0041874-Oh1">[25]</xref>, we first set out to determine whether TbSRPP1–5 are associated with rubber particles by two-dimensional (2-D) gel electrophoresis followed by mass spectrometry. We revealed a cluster of highly abundant protein spots with isoelectric point (pI) values between pH 4 and pH 6 (<xref ref-type="fig" rid="pone-0041874-g001">Fig. 1A</xref>). Mass spectrometric (MS) analysis of these protein spots generated representative peptide sequences for TbSRPP2, TbSRPP3, TbSRPP4 and TbSRPP5, whereas no peptides were detected for TbSRPP1 (Tab. S1). The most abundant rubber particle protein was TbSRPP3, followed by TbSRPP4 and TbSRPP5, while TbSRPP2 was present only in small amounts (<xref ref-type="fig" rid="pone-0041874-g001">Fig. 1A</xref>, Tab. S1).</p>
+        <fig id="pone-0041874-g001" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0041874.g001</object-id>
+          <label>Figure 1</label>
+          <caption>
+            <title>Association of TbSRPPs with rubber particles. A.</title>
+            <p>Fifty micrograms of purified rubber particle proteins were separated by isoelectric focussing (pH 3–10 IPG strips) and subsequent SDS-PAGE. The gel was stained with colloidal Coomassie Brilliant Blue. <bold>B.</bold> Backscattered electron imaging of rubber particles labeled with 10 nm gold particles by immunodetection using the TbSRPP-antibody. <bold>C.</bold> Gold labeling of rubber particles was not appreciably detected in backscattered electron images, when the corresponding pre-immune serum was used as primary antibody. Micrographs are shown as inverted images. Scale bars  = 400 nm.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0041874.g001" xlink:type="simple"/>
+        </fig>
+        <p>Next, the presence of TbSRPPs on rubber particles was investigated by scanning electron microscopy (SEM) using a polyclonal antibody raised against TbSRPP3. In Western blot experiments, this antibody recognized all TbSRPPs with the same efficiency, most probably due to the high amino acid sequence conservation between members of this protein family <xref ref-type="bibr" rid="pone.0041874-Schmidt2">[27]</xref>, and will therefore be referred to as anti-TbSRPP (Fig. S1, Text S1). Immunogold labeling of rubber particles using anti-TbSRPP and a gold-coupled secondary antibody with subsequent visualization by SEM directly confirmed the presence of TbSRPPs on the rubber particle surface (<xref ref-type="fig" rid="pone-0041874-g001">Fig. 1B</xref>). Control experiments with pre-immune serum did not show significant staining of rubber particles (<xref ref-type="fig" rid="pone-0041874-g001">Fig. 1C</xref>).</p>
+      </sec>
+      <sec id="s2b">
+        <title>Depletion of TbSRPP1-5 by RNA-interference</title>
+        <p>To further address the function of TbSRPPs in rubber biosynthesis we developed transgenic <italic>T. brevicorniculatum</italic> plants with reduced <italic>TbSRPPs</italic> expression levels by RNA-interference (RNAi). Therefore, we introduced a <italic>TbSRPP3</italic>-RNAi construct into the genome of <italic>T. brevicorniculatum</italic> by <italic>Agrobacterium-</italic>mediated transformation. Out of ten independently regenerated transgenic plants, six lines displayed reduced transcript levels for all <italic>TbSRPP</italic> genes and were therefore designated as TbSRPP-RNAi transgenic plants (data not shown). Subsequently, three TbSRPP-RNAi transgenic plants, labeled S3, S76 and S85, were selected for further analysis of <italic>TbSRPP1–5</italic> expression by quantitative RT-PCR using total RNA from latex. The expression of all <italic>TbSRPP</italic> genes was severely reduced by the <italic>TbSRPP3</italic>-RNAi construct when compared to wild-type plants (<xref ref-type="fig" rid="pone-0041874-g002">Fig. 2A</xref>). The most severe reduction in <italic>TbSRPPs</italic> expression was found in S3, where only residual amounts of <italic>TbSRPP5</italic> are still visible.</p>
+        <fig id="pone-0041874-g002" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0041874.g002</object-id>
+          <label>Figure 2</label>
+          <caption>
+            <title>Analysis of <italic>TbSRPP1–5</italic> expression in TbSRPP-RNAi transgenic and wild-type plants. A.</title>
+            <p><italic>TbSRPP</italic> transcription levels in the latex of three independent TbSRPP-RNAi transgenic lines (designated S3, S76 and S85) were quantified by RT-PCR. Relative transcription of <italic>TbSRPPs</italic> was normalized to the constitutively expressed control gene <italic>TbACTIN</italic>. The ratios of <italic>TbSRPPs</italic>/<italic>TbACTIN</italic> transcription levels in wild-type (wt) served as a reference and were set to the value of one. Values represent mean ± SE (<italic>n</italic> = 3). <bold>B, C.</bold> Fifty microgram of rubber particle proteins from wild-type (B) and TbSRPP-RNAi lines (C, exemplarily shown for line S3) was separated by isoelectric focussing (pH 3–6 IPG strips) and subsequent SDS-PAGE. Proteins were transferred to nitrocellulose membranes and TbSRPPs were detected using an anti-TbSRPP antibody and a secondary antibody conjugated with horse radish peroxidase. <bold>D, E.</bold> Ponceau-S staining of the nitrocellulose membranes confirmed equal loading of gels prepared for wild-type (D) and line S3 (E), by showing that proteins spots of the C-terminus of the Polyphenoloxidase-1 (TbPPO-1) were present in similar amounts <xref ref-type="bibr" rid="pone.0041874-Wahler1">[29]</xref>, <xref ref-type="bibr" rid="pone.0041874-Wahler2">[30]</xref>.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0041874.g002" xlink:type="simple"/>
+        </fig>
+        <p>Next, the effect of the <italic>TbSRPP3</italic>-RNAi construct was analyzed on protein level by 2-D gel electrophoresis of rubber particle proteins followed by immunodetection using the anti-TbSRPP antibody. Equal loading of the gels was verified after Ponceau-S staining of the nitrocellulose membrane by comparing the intensities of the protein spots representing the C-terminus of the Polyphenoloxidase 1 (TbPPO-1), which is expressed consistently in <italic>T. brevicorniculatum</italic> and thus suitable as loading control <xref ref-type="bibr" rid="pone.0041874-Wahler1">[29]</xref>, <xref ref-type="bibr" rid="pone.0041874-Wahler2">[30]</xref>. Compared to wild-type plants (<xref ref-type="fig" rid="pone-0041874-g002">Fig. 2B</xref>), the levels for TbSRPPs were strongly reduced as exemplarily shown for S3 (<xref ref-type="fig" rid="pone-0041874-g002">Fig. 2C</xref>). It should be noted that <italic>TbSRPP</italic> transcription (<xref ref-type="fig" rid="pone-0041874-g002">Fig. 2A</xref>) strongly correlates with the observed protein levels as only residual amounts were identified for TbSRPP5 by 2-D gel electrophoresis (<xref ref-type="fig" rid="pone-0041874-g002">Fig. 2C</xref>). The transgenic lines showed regular growth and development under standard greenhouse conditions.</p>
+      </sec>
+      <sec id="s2c">
+        <title>Reduced TbSRPP protein levels had severe impacts on rubber production</title>
+        <p>To test if depleted TbSRPP levels affect rubber biosynthesis, the dry rubber content in exuding latex and freeze-dried roots was measured. Compared to wild-type, the latex of TbSRPP-RNAi transgenic plants contained significantly lower amounts of rubber (24–37% of wild-type, <xref ref-type="table" rid="pone-0041874-t001">Tab. 1</xref>) and the same was evident for the rubber content of freeze-dried roots (<xref ref-type="table" rid="pone-0041874-t001">Tab. 1</xref>). Additionally, a clear correlation between <italic>TbSRPP</italic> expression levels and rubber content was indicated (<xref ref-type="table" rid="pone-0041874-t001">Tab. 1</xref>, see also <xref ref-type="fig" rid="pone-0041874-g002">Fig. 2A</xref>).</p>
+        <table-wrap id="pone-0041874-t001" position="float"><object-id pub-id-type="doi">10.1371/journal.pone.0041874.t001</object-id><label>Table 1</label><caption>
+            <title>Table <bold>1.</bold> Content, molecular mass and polydispersity of rubber from exuded latex and freeze-dried roots and corresponding long-chain prenyltransferase activity.</title>
+          </caption><!--===== Grouping alternate versions of objects =====--><alternatives><graphic id="pone-0041874-t001-1" mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0041874.t001" xlink:type="simple"/><table>
+            <colgroup span="1">
+              <col align="left" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+              <col align="center" span="1"/>
+            </colgroup>
+            <thead>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">plant lines</td>
+                <td align="left" colspan="1" rowspan="1">
+                  <italic>latex dry rubber content</italic>
+                </td>
+                <td align="left" colspan="1" rowspan="1">
+                  <italic>root dry rubber content</italic>
+                </td>
+                <td align="left" colspan="3" rowspan="1"><italic>rubber molecular mass distribution</italic> <xref ref-type="table-fn" rid="nt102">a</xref></td>
+                <td align="left" colspan="1" rowspan="1">
+                  <italic>[1-<sup>14</sup>C] IPP transferase activty</italic>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1"/>
+                <td align="left" colspan="1" rowspan="1">[mg ml<sup>−1</sup>]</td>
+                <td align="left" colspan="1" rowspan="1">[mg ml<sup>−1</sup>]</td>
+                <td align="left" colspan="1" rowspan="1">Μw<xref ref-type="table-fn" rid="nt103">b</xref> [10<sup>6</sup> Da]</td>
+                <td align="left" colspan="1" rowspan="1">Μn<xref ref-type="table-fn" rid="nt104">c</xref> [10<sup>6</sup> Da]</td>
+                <td align="left" colspan="1" rowspan="1">ΜwΜn<sup>−1</sup></td>
+                <td align="left" colspan="1" rowspan="1">[pmol mg<sup>−1</sup> min<sup>−1</sup>]</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">wt</td>
+                <td align="left" colspan="1" rowspan="1">172.6 (±11.3)</td>
+                <td align="left" colspan="1" rowspan="1">3.88 (±0.65)</td>
+                <td align="left" colspan="1" rowspan="1">3.30 (±0.47)</td>
+                <td align="left" colspan="1" rowspan="1">2.21 (±0.32)</td>
+                <td align="left" colspan="1" rowspan="1">1.56 (±0.03)</td>
+                <td align="left" colspan="1" rowspan="1">1.83 (±0.29)</td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">S3</td>
+                <td align="left" colspan="1" rowspan="1">41.5 (±8.3) <xref ref-type="table-fn" rid="nt106">**</xref></td>
+                <td align="left" colspan="1" rowspan="1">1.93 (±0.17)<xref ref-type="table-fn" rid="nt106">**</xref></td>
+                <td align="left" colspan="1" rowspan="1">2.74 (±0.23)</td>
+                <td align="left" colspan="1" rowspan="1">1.97 (±0.15)</td>
+                <td align="left" colspan="1" rowspan="1">1.39 (±0.04)</td>
+                <td align="left" colspan="1" rowspan="1">1.09 (±0.04)<xref ref-type="table-fn" rid="nt105">*</xref></td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">S76</td>
+                <td align="left" colspan="1" rowspan="1">63.2 (±8.6) <xref ref-type="table-fn" rid="nt106">**</xref></td>
+                <td align="left" colspan="1" rowspan="1">2.32 (±0.09)<xref ref-type="table-fn" rid="nt106">**</xref></td>
+                <td align="left" colspan="1" rowspan="1">2.69 (±0.84)</td>
+                <td align="left" colspan="1" rowspan="1">1.86 (±0.11)</td>
+                <td align="left" colspan="1" rowspan="1">1.45 (±0.04)</td>
+                <td align="left" colspan="1" rowspan="1">0.96 (±0.09)<xref ref-type="table-fn" rid="nt106">**</xref></td>
+              </tr>
+              <tr>
+                <td align="left" colspan="1" rowspan="1">S85</td>
+                <td align="left" colspan="1" rowspan="1">61.4 (±0.4) <xref ref-type="table-fn" rid="nt106">**</xref></td>
+                <td align="left" colspan="1" rowspan="1">2.15 (±0.12)<xref ref-type="table-fn" rid="nt106">**</xref></td>
+                <td align="left" colspan="1" rowspan="1">3.14 (±0.27)</td>
+                <td align="left" colspan="1" rowspan="1">1.99 (±0.34)</td>
+                <td align="left" colspan="1" rowspan="1">1.62 (±0.23)</td>
+                <td align="left" colspan="1" rowspan="1">1.29 (±0.20)<xref ref-type="table-fn" rid="nt105">*</xref></td>
+              </tr>
+            </tbody>
+          </table></alternatives><table-wrap-foot>
+            <fn id="nt101">
+              <label/>
+              <p>The values are given as the mean of at least three repititions ± SD.</p>
+            </fn>
+            <fn id="nt102">
+              <label>a</label>
+              <p>Molecular mass distribution was measured by size exclusion chromatography of rubber from exuded latex.</p>
+            </fn>
+            <fn id="nt103">
+              <label>b</label>
+              <p>W, weight average molecular mass.</p>
+            </fn>
+            <fn id="nt104">
+              <label>c</label>
+              <p>N, number average molecular mass.</p>
+            </fn>
+            <fn id="nt105">
+              <label>*</label>
+              <p>statistically significant difference compared to wild type control (P, 0.05).</p>
+            </fn>
+            <fn id="nt106">
+              <label>**</label>
+              <p>statistically significant difference compared to wild type control (P, 0.01).</p>
+            </fn>
+          </table-wrap-foot></table-wrap>
+        <p>Next, we analyzed the weight average molecular mass (Μw) and number average molecular mass (Μn) of rubber obtained from exuding latex. Using size exclusion chromatography (SEC) no significant differences could be detected between rubber of wild-type and TbSRPP-RNAi transgenic plants indicating that polymer length and polydispersity of the residual rubber were not influenced by altered TbSRPPs expression (<xref ref-type="table" rid="pone-0041874-t001">Tab. 1</xref>).</p>
+        <p>To figure out whether reduced TbSRPP levels affected the activity of the long chain prenyltransferase in latex, we carried out <italic>in vitro</italic> [1-<sup>14</sup>C] IPP incorporation assays using whole latex from TbSRPP-RNAi transgenic and wild-type plants as described by Post <italic>et</italic> <italic>al</italic>. <xref ref-type="bibr" rid="pone.0041874-Post1">[10]</xref>. After removal of the short- and medium-chain polyprenol diphosphates by <italic>n</italic>-butanol extraction, the long-chain products were obtained with a mixture of toluene and hexane and the incorporated radioactivity was measured. This experiment revealed that the activity of the long-chain prenyltransferase in latex of TbSRPP-RNAi transgenic plants was indeed significantly lower under this condition (<xref ref-type="table" rid="pone-0041874-t001">Tab. 1</xref>).</p>
+      </sec>
+      <sec id="s2d">
+        <title>Silencing of TbSRPPs reduces the stability of rubber particles in exuding latex</title>
+        <p>We set out to analyze if the depleted levels of TbSRPPs affected the architecture of rubber particles by ultrastructural investigations using transmission electron microscopy (TEM). TEM images of ultra-thin cross sections from roots of TbSRPP-RNAi transgenic (<xref ref-type="fig" rid="pone-0041874-g003">Fig. 3A</xref>) and wild-type plants (<xref ref-type="fig" rid="pone-0041874-g003">Fig. 3C</xref>) showed laticifers with electron dense material, organelle-like structures, and rubber particles. In the analyzed sections, rubber particles appeared spherical and did not show any obvious morphological differences in both, TbSRPP-RNAi transgenic (<xref ref-type="fig" rid="pone-0041874-g003">Fig. 3B</xref>) and wild-type (<xref ref-type="fig" rid="pone-0041874-g003">Fig. 3D</xref>) plants.</p>
+        <fig id="pone-0041874-g003" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0041874.g003</object-id>
+          <label>Figure 3</label>
+          <caption>
+            <title><italic>In situ</italic> analysis of the ultra-structure of rubber particles from TbSRPP-RNAi transgenic plants and wild-type plants by transmission electron microscopy.</title>
+            <p><bold>A.</bold> Micrograph of ultra-thin cross sections of roots from TbSRPP-RNAi transgenic plant (S3) at low and <bold>B.</bold> higher magnification. <bold>C.</bold> Micrograph of ultra-thin cross sections of roots from a wild-type plant at low and <bold>D.</bold> higher magnification. Enlarged areas are indicated with dashed boxes. Key: RP, rubber particle; V, vacuole; CW, cell wall; PC, parenchyma cell. Scale bars  = 1 µm.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0041874.g003" xlink:type="simple"/>
+        </fig>
+        <p>We further studied the colloidal stability of purified rubber particles from exuding latex of TbSRPP-RNAi transgenic and wild-type plants by measuring their ζ-potential at different pH values. Both types of rubber particles showed a similar ζ-potential ranging from +14 mV at pH 2.2 to −18 mV at pH 7.2 (<xref ref-type="fig" rid="pone-0041874-g004">Fig. 4A</xref>). The pI was approximately pH 4.2. In contrast to the ζ-potential, significant differences were obtained for their size. Rubber particles from wild-type latex revealed a z-average size of 295 nm at pH 7.2 (<xref ref-type="fig" rid="pone-0041874-g004">Fig. 4B</xref>) and showed an increased diameter at pH-values near their pI (pH 3.2–4.8, <xref ref-type="fig" rid="pone-0041874-g004">Fig. 4B</xref>). Rubber particles obtained from TbSRPP-RNAi transgenic plants, however, displayed with 406 nm at pH 7.2 a significantly higher z-average diameter compared to the wild-type control. A similar increase in z-average diameter was also evident at other pH values (<xref ref-type="fig" rid="pone-0041874-g004">Fig. 4B</xref>).</p>
+        <fig id="pone-0041874-g004" position="float">
+          <object-id pub-id-type="doi">10.1371/journal.pone.0041874.g004</object-id>
+          <label>Figure 4</label>
+          <caption>
+            <title><italic>In vitro</italic> analysis of the colloidal stability of rubber particles from TbSRPP-RNAi transgenic plants and wild-type plants.</title>
+            <p><bold>A.</bold> Measurement of the zeta (ζ)-potential of rubber particles from wild-type plants (filled circles) and TbSRPP-RNAi transgenic plants (open circles) suspended in modified rubber extraction buffer (REB) at given pH values. Values represent mean ± SD of three independent plant lines (S3, S76 and S85) respectively of six wild-type plants (wt). No significant differences were detected among the plants using Students t-test (P, 0.05). <bold>B.</bold> Measurement of the z-average diameter of rubber particles from wild-type plants (filled circles) and TbSRPP-RNAi transgenic plants (open circles) suspended in modified REB with the indicated pH values. Values represent mean ± SD of three independent plant lines (S3, S76 and S85) respectively of six wild-type plants (wt). Significant differences have been detected among TbSRPP-RNAi lines and wild-type plants using Students t-test (P, 0.01). <bold>C, F.</bold> Confocal laser scanning microscopic analysis of isolated rubber particles from TbSRPP-RNAi transgenic plants (C) and wild-type plants (F) that were stained with nile red. <bold>D, E</bold> <bold>and</bold> <bold>G, H.</bold> Transmission electron microscopic analysis of isolated rubber particles from TbSRPP-RNAi transgenic and wild-type plants. <bold>D.</bold> Micrograph of isolated rubber particles from TbSRPP-RNAi transgenic plant line S3 suspended in modified rubber extraction buffer (REB) pH 7.2 at low and <bold>E.</bold> higher magnification. <bold>G.</bold> Micrograph of rubber particles from wild-type suspended in modified REB pH 7.2 at low and <bold>H.</bold> higher magnification. Enlarged areas are indicated with dashed boxes. Scale bars = 1 µm.</p>
+          </caption>
+          <graphic mimetype="image" position="float" xlink:href="info:doi/10.1371/journal.pone.0041874.g004" xlink:type="simple"/>
+        </fig>
+        <p>The increase of the z-average diameter could indicate an aggregation of rubber particles, although such structures have not been observed <italic>in situ</italic> (<xref ref-type="fig" rid="pone-0041874-g003">Fig. 3</xref>). To proof if the differences in z-average diameter point toward the formation of rubber particle aggregates, we stained the rubber particles with the lipophilic fluorescent dye nile red <xref ref-type="bibr" rid="pone.0041874-Sando1">[31]</xref> and analyzed the samples by confocal laser scanning microscopy (CLSM, <xref ref-type="fig" rid="pone-0041874-g004">Fig. 4C, F</xref>). While the rubber particles of TbSRPP-RNAi transgenic plants formed large aggregates at pH 7.2, their wild-type counterparts appeared to be evenly distributed in the suspending buffer. For more detailed observations we again carried out TEM-analysis and confirmed that rubber particles fromTbSRPP-RNAi transgenic plants indeed tend to aggregate at pH 7.2 and in some cases are also partially fused (<xref ref-type="fig" rid="pone-0041874-g004">Fig. 4D, E</xref>). No similar observations were made for rubber particles of wild-type latex (<xref ref-type="fig" rid="pone-0041874-g004">Fig. 4G, H</xref>).</p>
+      </sec>
+    </sec>
+    <sec id="s3">
+      <title>Discussion</title>
+      <p>The biosynthesis of rubber at the surface of rubber particles is only little understood. Recently, CPTs were identified as one important component of the polymer elongation process in <italic>T. brevicorniculatum</italic> <xref ref-type="bibr" rid="pone.0041874-Post1">[10]</xref>, however other proteinaceous and non-proteinaceous factors appear to be necessary for efficient rubber production.</p>
+      <p>In this study we showed that the three SRPP homologs TbSRPP3, 4 and 5 are the major rubber particle proteins in <italic>T. brevicorniculatum</italic> and confirmed their association with rubber particles by immunogold labeling and SEM (<xref ref-type="fig" rid="pone-0041874-g001">Fig. 1</xref>, Tab. S1). While we were also able to detect small amounts of TbSRPP2 at the rubber particle surface, TbSRPP1 seems to be not or only in non-detectable amounts (by 2D-gel electrophoresis) associated with the rubber particle surface, since no peptide sequences for TbSRPP1 could be detected. This could result from the washing steps during the purification procedure applied to the rubber particles by which more loosely associated proteins might detach from the rubber particle surface (<xref ref-type="fig" rid="pone-0041874-g001">Fig. 1A</xref>, Tab. S1). In <italic>H. brasiliensis,</italic> the closely related proteins HbREF and HbSRPP are also associated with rubber particles, whereby HbREF is the most abundant rubber particle protein followed by HbSRPP <xref ref-type="bibr" rid="pone.0041874-Singh1">[13]</xref>, <xref ref-type="bibr" rid="pone.0041874-Dennis2">[24]</xref>, <xref ref-type="bibr" rid="pone.0041874-Oh1">[25]</xref>. HbREF and HbSRPP as well as their homolog GHS from <italic>P. argentatum</italic> have been supposed to positively influence rubber biosynthesis: It has been shown that heterologously expressed GST-HbSRPP as well as His-GHS fusion proteins enhance IPP incorporation activity of rubber particles <italic>in vitro</italic>, while immunoinhibition by appropriate HbREF and HbSRPP antibodies reduces the IPP incorporation <xref ref-type="bibr" rid="pone.0041874-Dennis2">[24]</xref>–<xref ref-type="bibr" rid="pone.0041874-Kim1">[26]</xref>. Therefore, it has been suggested that HbSRPP is part of the rubber transferase complex or that it is involved in the synthesis or recruitment of substrates for rubber biosynthesis initiation and/or rubber chain elongation <xref ref-type="bibr" rid="pone.0041874-Oh1">[25]</xref>. However, Singh and co-workers speculated that SRPP is not crucial for rubber biosynthesis since its detection on <italic>F. carica</italic> and <italic>F. benghalensis</italic> rubber particles by immunogold labeling with an HbSRPP antibody failed <xref ref-type="bibr" rid="pone.0041874-Singh1">[13]</xref>. As SRPP homologs have been detected in species that produce rubber of high molecular mass (<italic>H. brasiliensis</italic> and <italic>P. argentatum</italic>) but not in species possessing only low molecular mass rubber (<italic>F. carica</italic> and <italic>F. benghalensis</italic>), it has been supposed that HbSRPP and GHS might be important factors for determination of the rubber molecular mass by assisting CPT function <xref ref-type="bibr" rid="pone.0041874-Kim1">[26]</xref>. Due to the lack of <italic>in vivo</italic> evidence, the roles of SRPP, REF, and GHS in rubber biosynthesis have yet not been sufficiently proven.</p>
+      <p>To elucidate the role of TbSRPPs in rubber biosynthesis <italic>in vivo</italic>, we generated transgenic plants expressing an RNAi construct directed against <italic>TbSRPPs</italic>. Quantitative RT-PCR and 2-D gel electrophoresis with subsequent immunodetection using the anti-TbSRPP antibody confirmed that expression of all TbSRPPs was severely silenced in the transgenic lines (<xref ref-type="fig" rid="pone-0041874-g002">Fig. 2</xref>). By determination of the dry rubber content from exuded latex and freeze-dried roots we were able to show that the TbSRPP-RNAi transgenic plants contained significantly lower amounts of natural rubber compared to wild-type controls (<xref ref-type="table" rid="pone-0041874-t001">Tab. 1</xref>) indicating an impaired rubber biosynthesis in the TbSRPP-RNAi transgenic lines. In contrast, SEC-analysis of the rubber samples revealed a wild-type like rubber chain elongation since neither the weight average molecular mass nor the polydispersity was affected by reduced TbSRPP protein levels (<xref ref-type="table" rid="pone-0041874-t001">Tab. 1</xref>). Therefore, we propose that TbSRPPs are not mandatory for the formation of high molecular mass rubber. Instead, the rubber biosynthesis seems to be less effective in TbSRPP-RNAi transgenic plants, probably resulting from an inefficient enzymatic activity of the long-chain prenyltransferase (TbCPT1–3) <xref ref-type="bibr" rid="pone.0041874-Post1">[10]</xref>, as also suggested by the data obtained from the <italic>in vitro</italic> prenyltransferase assay (<xref ref-type="table" rid="pone-0041874-t001">Tab. 1</xref>).</p>
+      <p>Rubber particles are not only required for the storage of rubber molecules, but also to provide a suitable and stable platform for rubber biosynthesis. Although one could expect that the depletion of major integral rubber particle proteins might have a dramatic effect on the morphology of rubber particles, TEM-analysis of ultra-thin cross sections of laticifers revealed no obvious differences in the architecture of rubber particles from TbSRPP-RNAi transgenic and wild-type plants (<xref ref-type="fig" rid="pone-0041874-g003">Fig. 3</xref>). In addition, TbSRPPs appear not to contribute to the surface charge and subsequently to the electrostatic repulsion of rubber particles since both, rubber particles from TbSRPP-RNAi transgenic and wild-type plants showed a nearly identical ζ-potential (<xref ref-type="fig" rid="pone-0041874-g004">Fig. 4A</xref>). This is in consistence with results obtained for <italic>H. brasiliensis</italic> rubber particles, whose negative surface charge is mainly derived from adsorbed long chain fatty acids and only little from proteins <xref ref-type="bibr" rid="pone.0041874-Ho1">[32]</xref>.</p>
+      <p>Depletion of the rubber particle surface charge by suspending rubber particles in a buffer with a pH-value close to their isoelectric point led to an increase of their z-average diameter, indicating the formation of aggregates (<xref ref-type="fig" rid="pone-0041874-g004">Fig. 4B</xref>). This suggests that electrostatic repulsion contributes to a great extent to the colloidal stability of <italic>T. brevicorniculatum</italic> rubber particles. Nevertheless, even at pH 7.2 the rubber particle ζ-potential of approximately −18 mV remains insufficient for electrostatic force to solely provide particle stabilization, which requires a ζ-potential of at least ±30 mV <xref ref-type="bibr" rid="pone.0041874-Riddick1">[18]</xref>, <xref ref-type="bibr" rid="pone.0041874-Genovese1">[33]</xref>. Therefore, the colloidal stability of <italic>T. brevicorniculatum</italic> rubber particles is not exclusively mediated by electrostatic repulsion. This is strongly supported by the fact that the depletion of TbSRPPs, which have no impact on the rubber particle surface charge, led to a significant increase of the z-average diameter of rubber particles from TbSRPP-RNAi transgenic plants compared to wild-type (<xref ref-type="fig" rid="pone-0041874-g004">Fig. 4A, B</xref>). Microscopic analysis of purified rubber particles using CLSM and TEM confirmed that even at pH 7.2, where the surface charge of the rubber particles is considerably high, rubber particles from TbSRPP-RNAi transgenic plants aggregated intensely, while wild-type particles remained solitary (<xref ref-type="fig" rid="pone-0041874-g004">Fig. 4A, C–H</xref>). Therefore, we suppose that in addition to the electrostatic repulsion of rubber particles (most probably provided by their membrane lipids) TbSRPPs contribute to their stabilization by steric hindrance. This is supported by the fact that at low surface charges rubber particles from TbSRPP<italic>-</italic>RNAi transgenic plants showed an even more intensive aggregation compared to wild-type particles, suggesting an additive effect of electrostatic repulsion and steric repulsion mediated by TbSRPPs as also considered for other colloidal systems (<xref ref-type="fig" rid="pone-0041874-g004">Fig. 4A, B</xref>) <xref ref-type="bibr" rid="pone.0041874-Jucker1">[19]</xref>–<xref ref-type="bibr" rid="pone.0041874-Grasso1">[22]</xref>. Accordingly, the monolayer-membrane surrounded seed oil bodies are sterically stabilized by oleosin, their major surface protein <xref ref-type="bibr" rid="pone.0041874-Tzen1">[34]</xref>, <xref ref-type="bibr" rid="pone.0041874-Peng1">[35]</xref>. The assumption that proteins on the surface of rubber particles contribute to their stability is also supported by the fact that <italic>H. brasiliensis</italic> rubber particles become unstable when treated with proteolytic enzymes <xref ref-type="bibr" rid="pone.0041874-Sansatsadeekul1">[36]</xref>.</p>
+      <p>In summary, our data obtained by photon correlation spectroscopy of rubber particles suggest that TbSRPPs are involved in the stabilization of the rubber particle membrane. As a consequence, TbSRPPs-depleted rubber particles may not provide a suitable environment for the CPT and subsequently efficient IPP-polymerization. To gain deeper insight into the functional role of individual SRPPs in rubber biosynthesis, it will be necessary to generate transcript specific knock-down plants and to analyze their respective effect on rubber biosynthesis and rubber particle biogenesis as well as rubber particle architecture and stability.</p>
+    </sec>
+    <sec id="s4" sec-type="materials|methods">
+      <title>Materials and Methods</title>
+      <sec id="s4a">
+        <title>Plant material and cultivation conditions</title>
+        <p><italic>T. brevicorniculatum</italic> plants and seeds were obtained from the Botanical Gardens Karlsruhe (Germany) and cultivated in a greenhouse at 18°C and a 16 h photoperiod with 20 kilolux light intensity.</p>
+      </sec>
+      <sec id="s4b">
+        <title>Preparation of <italic>T. brevicorniculatum</italic> rubber particles</title>
+        <p>Latex from <italic>T. brevicorniculatum</italic> was harvested as described previously <xref ref-type="bibr" rid="pone.0041874-Schmidt1">[8]</xref>. The latex suspension was separated into three phases by centrifugation at 4°C for 5 min and 8,000×g. The rubber phase and the soluble phase were transferred to a new tube and centrifuged at 4°C for 15 min at 10,000xg. The soluble phase was isolated using a syringe and afterwards the remaining rubber particle suspension, if not stated otherwise, was diluted with an appropriate volume rubber extraction buffer (REB) <xref ref-type="bibr" rid="pone.0041874-Schmidt1">[8]</xref>. All experiments described were carried out with freshly prepared rubber particles.</p>
+      </sec>
+      <sec id="s4c">
+        <title>Two-dimensional gel electrophoresis of rubber particle proteins</title>
+        <p>Fifty microliter of rubber particle suspension was used for protein extraction using the ZOOM® 2D Protein Solubilizer 1 according to the manufacturer's recommendations (Invitrogen, Karlsruhe, Germany) with the following modification: Before rehydration, acetone precipitation was carried out to concentrate proteins. After solubilising proteins in rehydration buffer for at least 4 h, 50 µg protein (determined according to Bradford) <xref ref-type="bibr" rid="pone.0041874-Bradford1">[37]</xref> was loaded on pH 3–10 7 cm or pH 3–6 7 cm ReadyStrip<sup>TM</sup> IPG strips (Biorad, Munich, Germany). The strips were rehydrated overnight and isoelectric focussing was carried out at 20°C and a maximum current of 50 µA using the following program: 300 V for 30 min, 1000 V for 30 min, 5000 V until 12 kVh were reached. Proteins were either stained with colloidal Coomassie Brilliant Blue (Fermentas, St. Leon-Rot, Germany) or transferred to nitrocellulose membranes, which were stained with 0.1% Ponceau-S in 5% acetic acid to confirm equal loading of proteins. Membranes were incubated with the anti-TbSRPP antibody (1∶250) for 1 h and a secondary mouse anti-rabbit IgG conjugated to horse radish peroxidase according to manufacturer's recommendation (Sigma, Schnelldorf, Germany). TbSRPPs were visualized on X-ray films by chemiluminescence detection.</p>
+      </sec>
+      <sec id="s4d">
+        <title>Protein identification by mass spectrometrical analysis</title>
+        <p>Protein bands were excised from gels and subjected to in-gel trypsin digestion following the descriptions in Shevchenko <italic>et</italic> <italic>al</italic>. <xref ref-type="bibr" rid="pone.0041874-Shevchenko1">[38]</xref>. Subsequent LC-MS/MS was accomplished using an Ultimate 3000 system (Dionex, Sunnyvale, CA, USA) for Nano-LC and a LTQ Orbitrap XL mass spectrometer (Thermo, Bremen, Germany) <xref ref-type="bibr" rid="pone.0041874-Naumann1">[39]</xref>. The five most abundant precursor ions in the first MS were used for MS/MS fragmentations. MS/MS data was searched against a database created from all protein data available at the public NCBI non-redundant (nr) database (<ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov/" xlink:type="simple">http://www.ncbi.nlm.nih.gov/</ext-link>, October 2009 status) using the OMSSA software (version 2.1.4) <xref ref-type="bibr" rid="pone.0041874-Geer1">[40]</xref>. Mass tolerances were set to 0.02 Da for the precursor ions and to 0.5 Da for the product ions. An estimation of true protein identification hits was achieved by searching a concatenated database of target and decoy peptide mass information and defining an adaptive E-value threshold for all hits originating from one sample in such a way that the estimated false positive rate was ≤1% and by a mass accuracy requirement of 5 ppm.</p>
+      </sec>
+      <sec id="s4e">
+        <title>Construction of expression vector for heterologous expression of TbSRPP3 and generation of antibodies against TbSRPPs</title>
+        <p>The full length cDNA encoding <italic>TbSRPP3</italic> was amplified using the primer combination srpp3-EcoRI and srpp3-rev_NotI (Tab. S1). The cDNA was subsequently inserted into the pCRII-TOPO® vector (Invitrogen, Karlsruhe, Germany), sequenced and then transferred into the expression vector pGEX4-T1, using the EcoRI and NotI restriction sites (GE Healthcare Europe GmbH, Freiburg, Germany). This allowed the expression of TbSRPP3 in C-terminal fusion to glutathione-S-transferase (GST) for heterologous expression in <italic>Escherichia coli</italic> BL21-cells and subsequent antibody generation. The <italic>TbSRPP3</italic> clone in pGEX4-T1 was expressed in 300-ml cultures of <italic>E. coli</italic> strain BL21, induced with 1 mM isopropyl-beta-D-thiogalactopyranoside (IPTG). The protein band containing heterologously expressed TbSRPP3 was excised from the gel, the eluted protein was sequenced by MALDI-MS and send to EUROGENTEC (Seraing, Belgium) for antibody production. The pre-immune and antibody sera were tested by western blot analysis against recombinant TbSRPP1-5 proteins.</p>
+      </sec>
+      <sec id="s4f">
+        <title>Total RNA extraction from <italic>T. brevicorniculatum</italic> latex and cDNA synthesis</title>
+        <p>Extraction of total RNA from <italic>T. brevicorniculatum</italic> latex and cDNA synthesis was carried out as previously described <xref ref-type="bibr" rid="pone.0041874-Schmidt2">[27]</xref>, whereas random hexamer primer were used to initiate the reverse transcription reaction (Fermentas, St. Leon-Rot, Germany).</p>
+      </sec>
+      <sec id="s4g">
+        <title>Quantitative real time PCR experiments</title>
+        <p>Quantitative real time PCR was carried out using an iCycler realtime PCR system (Biorad, Munich, Germany). 7.5 µl of serial cDNA dilutions was added to 12.5 µl IQ<sup>TM</sup>SYBRGreen Supermix and 5 µl Primermix (50 pmol each). The primers used for the amplification of the <italic>TbSRPP</italic> transcripts are listed in table S2. The transcript of the housekeeping gene <italic>TbACTIN</italic> was used as a reference (Tab. S2). Melting curves were analyzed to exclude false amplifications. After determination of the C<sub>t</sub>-values, the relative expression of the genes was calculated using the REST-MCS software <xref ref-type="bibr" rid="pone.0041874-Pfaffl1">[41]</xref>.</p>
+      </sec>
+      <sec id="s4h">
+        <title>Cloning of <italic>TbSRPP3</italic>-RNAi construct</title>
+        <p>For cloning of the <italic>TbSRPP3</italic>-RNAi construct, a 363 bp-fragment specific for all <italic>TbSRPP</italic> genes was obtained from <italic>TbSRPP3</italic> cDNA (coordinates 270–632 of cDNA) by PCR using the primers TbSRPP3 RNAi KpnI fw and TbSRPP3 RNAi XhoI rev (Tab. S2). To avoid off-target suppression of genes, we validated that the chosen cDNA fragment gave no hits for other than TbSRPP1–5 homologs in the public available sequences and especially in EST datasets for the closely related plant species <italic>T. koksaghyz</italic> and <italic>T. officinale</italic> using the Basic Local Alignment Search Tool (BLAST; <ext-link ext-link-type="uri" xlink:href="http://www.ncbi.nlm.nih.gov" xlink:type="simple">http://www.ncbi.nlm.nih.gov</ext-link>). The cDNA fragment was inserted into the KpnI and XhoI sites of the Gateway® pENTR<sup>TM</sup>4 and transferred into the pFGC5941 (<ext-link ext-link-type="uri" xlink:href="http://www.chromDB.org" xlink:type="simple">www.chromDB.org</ext-link>) using the Gateway®LR Clonase enzyme mix (Invitrogen, Karlsruhe, Germany). The integrity of the construct was verified by sequencing.</p>
+      </sec>
+      <sec id="s4i">
+        <title><italic>Agrobacterium</italic>-mediated transformation of <italic>T. brevicorniculatum</italic></title>
+        <p><italic>Agrobacterium</italic>-mediated transformation was done as previously described <xref ref-type="bibr" rid="pone.0041874-Wahler1">[29]</xref> using the <italic>Agrobacterium tumefaciens</italic> strain EHA105 that has been transformed with the binary plasmid.</p>
+      </sec>
+      <sec id="s4j">
+        <title>Determination of dry rubber content</title>
+        <p>To determine the dry rubber content in exuding latex, roots of <italic>T. brevicorniculatum</italic> plants were dissected with a razor blade and 20 µl of the expelling latex was transferred to 100 µl REB supplemented with 5 mM DTT. The samples were centrifuged at 4°C and 12000×g and overlaid with 100 µl methanol to coagulate rubber particles. The rubber coagulum was air-dried for 24 h and weighted. To determine the dry rubber content of whole roots, the freeze-dried entire roots were ground into a fine powder using a coffee grinder. For extraction, 200 mg root powder and 4 ml toluene were mixed thoroughly and incubated at 70°C for 18 h. The organic phase was transferred to a new glass vial and toluene was evaporated. The remaining material was dissolved in 300 µl toluene for 30 min and then 600 µl methanol was added to precipitate the rubber. After 30 min the samples were centrifuged at RT and 16,000×g for 2 min. The precipitated rubber was washed with water and acetone by vigorous shaking for 30 min at RT to remove proteins and resins. Subsequently the rubber samples were dried and weighted.</p>
+      </sec>
+      <sec id="s4k">
+        <title>Size exclusion chromatography of <italic>T. brevicorniculatum</italic> rubber</title>
+        <p>Toluene was added to air-dried rubber samples to a final concentration of 0.75 mg ml<sup>−1</sup> and dissolved at 60°C for 16 h. The samples were filtered with Cameo 3 N syringe (Nylon, 0.22 micron) filters (Roth, Karlsruhe, Germany) and transferred to new glass vials. Size exclusion chromatography (SEC)-analysis was carried out using a SECcurity GPC system with a column combination including a PSS SDV 20 µ 8.0×50 mm precolumn, a PSS SDV Linear XL 20 µ 8×300 nm analytical column and a PSS SDV 100 Å 20 µ 8×300 mm analytical column (Polymer Standards Service, Mainz, Germany).</p>
+      </sec>
+      <sec id="s4l">
+        <title>[1-<sup>14</sup>C] IPP incorporation assay</title>
+        <p>The [1-<sup>14</sup>C] IPP incorporation rate of crude latex was determined as described previously <xref ref-type="bibr" rid="pone.0041874-Post1">[10]</xref>.</p>
+      </sec>
+      <sec id="s4m">
+        <title>Determination of rubber particle ζ-potential and z-average diameter</title>
+        <p>20 µl of rubber particle suspension was diluted in 1180 µl modified REB (350 mM Sorbitol, 5 mM MgCl, 50 mM NaCl, 40 mM NaH<sub>2</sub>PO<sub>4</sub> titrated with 20 mM Citrate to the desired pH) to reach a minimal derived count rate of 250 kcps. One milliliter of the suspension was injected into a Malvern Clear Zeta Potential Cell. The Derjaguin-Landau-Verwey-Overbeek theory allows the quantification of the electrostatic stability of lyophobic colloids by measuring their ζ-potential (Verwey, 1947). The electrophoretic mobility of rubber particles was measured by Laser Doppler Velocimetry and was converted to ζ-potential by the Dispersion Technology Software (DTS) using Henrýs equation and the Smoluchowski approximation. The intensity weighted mean hydrodynamic diameter (z-average diameter) was measured by dynamic light scattering. The ζ-potential and z-average diameter of rubber particles at different pH-values were determined using a Zetasizer Nano ZS and DTS (Malvern Instruments Ltd., Worcestershire, United Kingdom).</p>
+      </sec>
+      <sec id="s4n">
+        <title>Scanning electron microscopy</title>
+        <p>Rubber particles were fixed with 2.5% glutaraldehyde in 0.05 M sodium cacodylate buffer for 1 hour at room temperature. After 3 times of washing with 0.05 M sodium cacodylate buffer pH 7.3 (at 5,000×g), they were postfixed with 1% osmium tetroxide for 1 hour. Finally the particles were washed 3 times with 0.05 M sodium cacodylate buffer and subsequently 3 times with PBS (pH 7.4), each for 5 minutes.</p>
+        <p>For immunogold labeling, 10 µl aliquots of the suspensions were placed on a freshly glow-discharged carbon-layer (thickness ∼10 nm) onto a Pioloform film supported by a Cu-mesh grid, let sediment for 5 minutes, and washed with PBS (pH 7.4) for 10 minutes. The grids were then incubated in PBS buffer containing 5% bovine serum albumin (BSA) (pH 7.4) for 15 minutes, followed by 3 times washing with PBS (pH 7.4) each for 5 minutes. After this, the grids were incubated for 3 hours either with the primary anti-TbSRPP antibody (1∶5 in PBS, pH 7.4) or with the pre-immunserum (1∶5 in PBS, pH 7.4) as a negative control. Subsequently, grids were washed 5 times for 5 minutes with PBS (pH 7.7) and then 5 minutes with Tris-BSA-buffer (pH 8.2). After this the samples were incubated with a secondary goat-anti rabbit IgG antibody coupled to 10 nm colloidal gold particles (Sigma-Aldrich, Schnelldorf, Germany) diluted 1∶20 in Tris-BSA-buffer (pH 8.2) for 2 hours. Finally, samples were washed with Tris-BSA-buffer (pH 8.2) 6 times for 5 minutes and once with distilled water for 5 minutes. After air drying, the sample was covered by 2 nm platinum/carbon. Images were recorded by a field emission SEM S-5000 (Hitachi, Japan) at electron energy of 20 kV; both, secondary and backscattered electron signals were recorded.</p>
+      </sec>
+      <sec id="s4o">
+        <title>Transmission electron microscopy</title>
+        <p>TEM of ultra-thin root cross sections was carried out as described previously <xref ref-type="bibr" rid="pone.0041874-Post1">[10]</xref>.</p>
+      </sec>
+      <sec id="s4p">
+        <title>Confocal laser scanning microscopy</title>
+        <p>Fifty microliters of freshly prepared rubber particles were supplemented with 1 µl nile red (15 µM solubilised in DMSO) and fluorescence was visualized by CLSM (excitation 514 nm, emission 509–620 nm, Leica DMIRE2, Wetzlar, Germany).</p>
+      </sec>
+    </sec>
+    <sec id="s5">
+      <title>Supporting Information</title>
+      <supplementary-material id="pone.0041874.s001" mimetype="image/tiff" position="float" xlink:href="info:doi/10.1371/journal.pone.0041874.s001" xlink:type="simple">
+        <label>Figure S1</label>
+        <caption>
+          <p><bold>Anti-TbSRPP antibody detects heterologously expressed TbSRPP1–5. A.</bold> Protein extracts from pellet and supernatant from <italic>E. coli</italic> cultures heterologously expressing TbSRPP1–5 proteins were separated by SDS-PAGE and subsequently stained with Coomassie Brilliant Blue. <bold>B.</bold> Protein extracts from pellet and supernatant from <italic>E. coli</italic> cultures heterologously expressing TbSRPP1–5 proteins were separated by SDS-PAGE and subsequently transferred to a nitrocellulose membrane. TbSRPP1–5 were detected using the anti-TbSRPP antibody and a secondary antibody coupled with alkaline phosphatase (1, TbSRPP1; 2, TbSRPP2; 3, TbSRPP3; 4, TbSRPP4; 5, TbSRPP5; P, pellet; S, supernatant).</p>
+          <p>(TIF)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0041874.s002" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0041874.s002" xlink:type="simple">
+        <label>Table S1</label>
+        <caption>
+          <p>
+            <bold>Identification of TbSRPP2, TbSRPP3, TbSRPP4, and TbSRPP5 on </bold>
+            <bold>
+              <italic>T. brevicorniculatum</italic>
+            </bold>
+            <bold> rubber particles by mass spectrometric analysis.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0041874.s003" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0041874.s003" xlink:type="simple">
+        <label>Table S2</label>
+        <caption>
+          <p>
+            <bold>Oligonucleotide sequences and respective assignments.</bold>
+          </p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+      <supplementary-material id="pone.0041874.s004" mimetype="application/msword" position="float" xlink:href="info:doi/10.1371/journal.pone.0041874.s004" xlink:type="simple">
+        <label>Text S1</label>
+        <caption>
+          <p><bold>Materials and Methods section regarding experiments performed for Figure</bold> <bold>S1.</bold></p>
+          <p>(DOC)</p>
+        </caption>
+      </supplementary-material>
+    </sec>
+  </body>
+  <back>
+    <ack>
+      <p>The technical assistance of Sandra Ponanta and Daniela Ahlert (Institute of Plant Biology and Biotechnology, Münster), Ulrike Keller and Ursula Malkus (Institute for Medical Physics and Biophysics, Münster) as well as Raphael Soeur (Fraunhofer Institute for Molecular Biology and Applied Ecology, Aachen) is kindly acknowledged. We thank Fabrice Brunel and Francisco M. Goycoolea (Institute of Plant Biology and Biotechnology, Münster) for their support concerning dynamic light scattering and size exclusion chromatography experiments.</p>
+    </ack>
+    <ref-list>
+      <title>References</title>
+      <ref id="pone.0041874-Cornish1">
+        <label>1</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cornish</surname><given-names>K</given-names></name></person-group>             <year>2001</year>             <article-title>Similarities and differences in rubber biochemistry among plant species.</article-title>             <source>Phytochemistry</source>             <volume>57</volume>             <fpage>1123</fpage>             <lpage>1134</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Poulter1">
+        <label>2</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Poulter</surname><given-names>CD</given-names></name><name name-style="western"><surname>Rilling</surname><given-names>HC</given-names></name></person-group>             <year>1976</year>             <article-title>Prenyltransferase – mechanism of reaction.</article-title>             <source>Biochemistry</source>             <volume>15</volume>             <fpage>1079</fpage>             <lpage>1083</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Poulter2">
+        <label>3</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Poulter</surname><given-names>CD</given-names></name><name name-style="western"><surname>Rilling</surname><given-names>HC</given-names></name></person-group>             <year>1978</year>             <article-title>The prenyl transfer-reaction. Enzymatic and mechanistic studies of 1′-4 coupling reaction in the terpene biosynthetic-pathway.</article-title>             <source>Accounts Chem Res</source>             <volume>11</volume>             <fpage>307</fpage>             <lpage>313</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Cornish2">
+        <label>4</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cornish</surname><given-names>K</given-names></name><name name-style="western"><surname>Backhaus</surname><given-names>RA</given-names></name></person-group>             <year>1990</year>             <article-title>Rubber transferase activity in rubber particles of guayule.</article-title>             <source>Phytochemistry</source>             <volume>29</volume>             <fpage>3809</fpage>             <lpage>3813</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Kharel1">
+        <label>5</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kharel</surname><given-names>Y</given-names></name><name name-style="western"><surname>Koyama</surname><given-names>T</given-names></name></person-group>             <year>2003</year>             <article-title>Molecular analysis of cis-prenyl chain elongating enzymes.</article-title>             <source>Nat Prod Rep</source>             <volume>20</volume>             <fpage>111</fpage>             <lpage>118</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Archer1">
+        <label>6</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Archer</surname><given-names>BL</given-names></name><name name-style="western"><surname>Audley</surname><given-names>BG</given-names></name><name name-style="western"><surname>Cockbain</surname><given-names>EG</given-names></name><name name-style="western"><surname>McSweeny</surname><given-names>GP</given-names></name></person-group>             <year>1963</year>             <article-title>The biosynthesis of rubber – incorporation of mevalonate and isopentenyl pyrophosphate into rubber by <italic>Hevea brasiliensis</italic> -latex fractions.</article-title>             <source>Biochem J</source>             <volume>89</volume>             <fpage>565</fpage>             <lpage>574</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Siler1">
+        <label>7</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Siler</surname><given-names>DJ</given-names></name><name name-style="western"><surname>Cornish</surname><given-names>K</given-names></name></person-group>             <year>1993</year>             <article-title>A protein from <italic>Ficus elastica</italic> rubber particles is related to proteins from <italic>Hevea brasiliensis</italic> and <italic>Parthenium argentatum</italic>.</article-title>             <source>Phytochemistry</source>             <volume>32</volume>             <fpage>1097</fpage>             <lpage>1102</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Schmidt1">
+        <label>8</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Schmidt</surname><given-names>T</given-names></name><name name-style="western"><surname>Lenders</surname><given-names>M</given-names></name><name name-style="western"><surname>Hillebrand</surname><given-names>A</given-names></name><name name-style="western"><surname>van Deenen</surname><given-names>N</given-names></name><name name-style="western"><surname>Munt</surname><given-names>O</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Characterization of rubber particles and rubber chain elongation in <italic>Taraxacum koksaghyz</italic>.</article-title>             <source>BMC Biochem</source>             <volume>11</volume>             <fpage>11</fpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Kirschner1">
+        <label>9</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kirschner</surname><given-names>J</given-names></name><name name-style="western"><surname>Štěpánek</surname><given-names>J</given-names></name><name name-style="western"><surname>Černý</surname><given-names>T</given-names></name><name name-style="western"><surname>De Heer</surname><given-names>P</given-names></name><name name-style="western"><surname>van Dijk</surname><given-names>PJ</given-names></name></person-group>             <year>2012</year>             <article-title>Available <italic>ex situ</italic> germplasm of the potential rubber crop <italic>Taraxacum koksaghyz</italic> belongs to a poor rubber producer, <italic>T. brevicorniculatum</italic> (Compositae-Crepidinae).</article-title>             <source>Genet Resour Crop Evol</source>             <comment>DOI:<ext-link ext-link-type="uri" xlink:href="http://dx.doi.org/10.1007/s10722-012-9848-0" xlink:type="simple">10.1007/s10722-012-9848-0</ext-link></comment>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Post1">
+        <label>10</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Post</surname><given-names>J</given-names></name><name name-style="western"><surname>van Deenen</surname><given-names>N</given-names></name><name name-style="western"><surname>Fricke</surname><given-names>J</given-names></name><name name-style="western"><surname>Kowalski</surname><given-names>N</given-names></name><name name-style="western"><surname>Wurbs</surname><given-names>D</given-names></name><etal/></person-group>             <year>2012</year>             <article-title>Laticifer-Specific cis-Prenyltransferase Silencing Affects the Rubber, Triterpene, and Inulin Content of <italic>Taraxacum brevicorniculatum</italic>.</article-title>             <source>Plant Physiol</source>             <volume>158</volume>             <fpage>1406</fpage>             <lpage>1417</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Gomez1">
+        <label>11</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Gomez</surname><given-names>JB</given-names></name><name name-style="western"><surname>Hamzah</surname><given-names>S</given-names></name></person-group>             <year>1989</year>             <article-title>Particle size distribution in <italic>Hevea</italic> latex – some observations on the electron microscopic method.</article-title>             <source>J Nat Rubber Res</source>             <volume>4</volume>             <fpage>204</fpage>             <lpage>211</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Cornish3">
+        <label>12</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Cornish</surname><given-names>K</given-names></name><name name-style="western"><surname>Wood</surname><given-names>DF</given-names></name><name name-style="western"><surname>Windle</surname><given-names>JJ</given-names></name></person-group>             <year>1999</year>             <article-title>Rubber particles from four different species, examined by transmission electron microscopy and electronparamagnetic-resonance spin labeling, are found to consist of a homogeneous rubber core enclosed by a contiguous, monolayer biomembrane.</article-title>             <source>Planta</source>             <volume>210</volume>             <fpage>85</fpage>             <lpage>96</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Singh1">
+        <label>13</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Singh</surname><given-names>AP</given-names></name><name name-style="western"><surname>Wi</surname><given-names>SG</given-names></name><name name-style="western"><surname>Chung</surname><given-names>GC</given-names></name><name name-style="western"><surname>Kim</surname><given-names>YS</given-names></name><name name-style="western"><surname>Kang</surname><given-names>H</given-names></name></person-group>             <year>2003</year>             <article-title>The micromorphology and protein characterization of rubber particles in <italic>Ficus carica</italic>, <italic>Ficus benghalensis</italic> and <italic>Hevea brasiliensis</italic>.</article-title>             <source>J Exp Bot</source>             <volume>54</volume>             <fpage>985</fpage>             <lpage>992</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Siler2">
+        <label>14</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Siler</surname><given-names>DJ</given-names></name><name name-style="western"><surname>Goodrich-Tanrikulu</surname><given-names>M</given-names></name><name name-style="western"><surname>Cornish</surname><given-names>K</given-names></name><name name-style="western"><surname>Stafford</surname><given-names>AE</given-names></name><name name-style="western"><surname>McKeon</surname><given-names>TA</given-names></name></person-group>             <year>1997</year>             <article-title>Composition of rubber particles of <italic>Hevea brasiliensis</italic>, <italic>Parthenium argentatum</italic>, <italic>Ficus elastica</italic>, and <italic>Euphorbia lactiflua</italic> indicates unconventional surface structure.</article-title>             <source>Plant Physiol Bioch</source>             <volume>35</volume>             <fpage>881</fpage>             <lpage>889</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Wood1">
+        <label>15</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wood</surname><given-names>DF</given-names></name><name name-style="western"><surname>Cornish</surname><given-names>K</given-names></name></person-group>             <year>2000</year>             <article-title>Microstructure of purified rubber particles.</article-title>             <source>Int J Plant Sci</source>             <volume>161</volume>             <fpage>435</fpage>             <lpage>445</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Verwey1">
+        <label>16</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Verwey</surname><given-names>EJW</given-names></name></person-group>             <year>1947</year>             <article-title>Theory of the stability of lyophobic colloids.</article-title>             <source>J Phys Chem</source>             <volume>51</volume>             <fpage>631</fpage>             <lpage>636</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Heller1">
+        <label>17</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Heller</surname><given-names>W</given-names></name><name name-style="western"><surname>Pugh</surname><given-names>TL</given-names></name></person-group>             <year>1960</year>             <article-title>“Steric” Stabilization of Colloidal Solutions by Adsorption of Flexible Macromolecules.</article-title>             <source>J Polym Sci</source>             <volume>47</volume>             <fpage>203</fpage>             <lpage>217</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Riddick1">
+        <label>18</label>
+        <element-citation publication-type="other" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Riddick</surname><given-names>TM</given-names></name></person-group>             <year>1968</year>             <article-title>Zeta-Meter Manual. Zeter Meter inc.</article-title>             <source>New York</source>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Jucker1">
+        <label>19</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Jucker</surname><given-names>BA</given-names></name><name name-style="western"><surname>Zehnder</surname><given-names>AJB</given-names></name><name name-style="western"><surname>Harms</surname><given-names>H</given-names></name></person-group>             <year>1998</year>             <article-title>Quantification of Polymer Interactions in Bacterial Adhesion.</article-title>             <source>Environ Sci Technol</source>             <volume>32</volume>             <fpage>2909</fpage>             <lpage>2915</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Giasson1">
+        <label>20</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Giasson</surname><given-names>S</given-names></name><name name-style="western"><surname>Kuhl</surname><given-names>TL</given-names></name><name name-style="western"><surname>Israelachvili</surname><given-names>JN</given-names></name></person-group>             <year>1998</year>             <article-title>Adsorption and Interaction Forces of Micellar and Microemulsion Solutions in Ultrathin Films.</article-title>             <source>Langmuir</source>             <volume>14</volume>             <fpage>891</fpage>             <lpage>898</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Freitas1">
+        <label>21</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Freitas</surname><given-names>AM</given-names></name><name name-style="western"><surname>Sharma</surname><given-names>MM</given-names></name></person-group>             <year>2001</year>             <article-title>Detachment of Particles from Surfaces: An AFM Study.</article-title>             <source>J Colloid Interface Sci</source>             <volume>233</volume>             <fpage>73</fpage>             <lpage>82</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Grasso1">
+        <label>22</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Grasso</surname><given-names>D</given-names></name><name name-style="western"><surname>Subramaniam</surname><given-names>K</given-names></name><name name-style="western"><surname>Butkus</surname><given-names>M</given-names></name><name name-style="western"><surname>Strevett</surname><given-names>K</given-names></name><name name-style="western"><surname>Bergendahl</surname><given-names>J</given-names></name></person-group>             <year>2002</year>             <article-title>A review of non-DLVO interactions in environmental colloidal systems.</article-title>             <source>Rev Environ Sci Biotechnol</source>             <volume>1</volume>             <fpage>17</fpage>             <lpage>38</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Dennis1">
+        <label>23</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Dennis</surname><given-names>MS</given-names></name><name name-style="western"><surname>Henzel</surname><given-names>WJ</given-names></name><name name-style="western"><surname>Bell</surname><given-names>J</given-names></name><name name-style="western"><surname>Kohr</surname><given-names>W</given-names></name><name name-style="western"><surname>Light</surname><given-names>DR</given-names></name></person-group>             <year>1989</year>             <article-title>Amino acid sequence of rubber elongation factor protein associated with rubber particles in <italic>Hevea</italic> Latex.</article-title>             <source>J Biol Chem</source>             <volume>264</volume>             <fpage>18618</fpage>             <lpage>18626</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Dennis2">
+        <label>24</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Dennis</surname><given-names>MS</given-names></name><name name-style="western"><surname>Light</surname><given-names>DR</given-names></name></person-group>             <year>1989</year>             <article-title>Rubber elongation factor from <italic>Hevea brasiliensis</italic>.</article-title>             <source>J Biol Chem</source>             <volume>264</volume>             <fpage>18608</fpage>             <lpage>1861</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Oh1">
+        <label>25</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Oh</surname><given-names>SK</given-names></name><name name-style="western"><surname>Kang</surname><given-names>H</given-names></name><name name-style="western"><surname>Shin</surname><given-names>DH</given-names></name><name name-style="western"><surname>Yang</surname><given-names>J</given-names></name><name name-style="western"><surname>Chow</surname><given-names>K-S</given-names></name><etal/></person-group>             <year>1999</year>             <article-title>Isolation, Characterization, and Functional Analysis of a Novel cDNA Clone Encoding a Small Rubber Particle Protein from <italic>Hevea brasiliensis</italic>.</article-title>             <source>J Biol Chem</source>             <volume>274</volume>             <fpage>17132</fpage>             <lpage>17138</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Kim1">
+        <label>26</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Kim</surname><given-names>IJ</given-names></name><name name-style="western"><surname>Ryu</surname><given-names>SB</given-names></name><name name-style="western"><surname>Kwak</surname><given-names>YS</given-names></name><name name-style="western"><surname>Kang</surname><given-names>H</given-names></name></person-group>             <year>2004</year>             <article-title>A novel cDNA from <italic>Parthenium argentatum</italic> Gray enhances the rubber biosynthetic activity <italic>in vitro</italic>.</article-title>             <source>J Exp Bot</source>             <volume>55</volume>             <fpage>377</fpage>             <lpage>385</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Schmidt2">
+        <label>27</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Schmidt</surname><given-names>T</given-names></name><name name-style="western"><surname>Hillebrand</surname><given-names>A</given-names></name><name name-style="western"><surname>Wurbs</surname><given-names>D</given-names></name><name name-style="western"><surname>Wahler</surname><given-names>D</given-names></name><name name-style="western"><surname>Lenders</surname><given-names>M</given-names></name><etal/></person-group>             <year>2010</year>             <article-title>Molecular cloning and characterization of rubber biosynthetic genes from <italic>Taraxacum koksaghyz</italic>.</article-title>             <source>Plant Mol Biol Rep</source>             <volume>28</volume>             <fpage>277</fpage>             <lpage>284</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Priya1">
+        <label>28</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Priya</surname><given-names>P</given-names></name><name name-style="western"><surname>Venkatachalan</surname><given-names>P</given-names></name><name name-style="western"><surname>Thulaseedharan</surname><given-names>A</given-names></name></person-group>             <year>2007</year>             <article-title>Differential expression pattern of rubber elongation factor (REF) mRNA transcripts from high and low yielding clones of rubber tree (<italic>Hevea brasiliensis</italic> Muell. Arg.).</article-title>             <source>Plant Cell Rep</source>             <volume>26</volume>             <fpage>1833</fpage>             <lpage>1838</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Wahler1">
+        <label>29</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wahler</surname><given-names>D</given-names></name><name name-style="western"><surname>Schulze Gronover</surname><given-names>C</given-names></name><name name-style="western"><surname>Richter</surname><given-names>C</given-names></name><name name-style="western"><surname>Foucu</surname><given-names>F</given-names></name><name name-style="western"><surname>Twyman</surname><given-names>RM</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Polyphenoloxidase Silencing Affects Latex Coagulation in <italic>Taraxacum</italic> Species.</article-title>             <source>Plant Physiol</source>             <volume>151</volume>             <fpage>334</fpage>             <lpage>346</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Wahler2">
+        <label>30</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Wahler</surname><given-names>D</given-names></name><name name-style="western"><surname>Colby</surname><given-names>T</given-names></name><name name-style="western"><surname>Kowalski</surname><given-names>NA</given-names></name><name name-style="western"><surname>Harzen</surname><given-names>A</given-names></name><name name-style="western"><surname>Wotzka</surname><given-names>SY</given-names></name><etal/></person-group>             <year>2012</year>             <article-title>Proteomic analysis of latex from the rubber-producing plant <italic>Taraxacum brevicorniculatum</italic>.</article-title>             <source>Proteomics</source>             <volume>12</volume>             <fpage>901</fpage>             <lpage>905</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Sando1">
+        <label>31</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Sando</surname><given-names>T</given-names></name><name name-style="western"><surname>Hayashi</surname><given-names>T</given-names></name><name name-style="western"><surname>Takeda</surname><given-names>T</given-names></name><name name-style="western"><surname>Akiyama</surname><given-names>Y</given-names></name><name name-style="western"><surname>Nakazawa</surname><given-names>Y</given-names></name><etal/></person-group>             <year>2009</year>             <article-title>Histochemical study of detailed laticifer structure and rubber biosynthesis-related protein localization in <italic>Hevea brasiliensis</italic> using spectral confocal laser scanning microscopy.</article-title>             <source>Planta</source>             <volume>230</volume>             <fpage>215</fpage>             <lpage>225</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Ho1">
+        <label>32</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Ho</surname><given-names>CC</given-names></name></person-group>             <year>1989</year>             <article-title>Changes in electrokinetic properties of natural rubber latex after surface chemical modifications.</article-title>             <source>Colloid Polym Sci</source>             <volume>267</volume>             <fpage>643</fpage>             <lpage>647</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Genovese1">
+        <label>33</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Genovese</surname><given-names>DB</given-names></name><name name-style="western"><surname>Lozano</surname><given-names>JE</given-names></name></person-group>             <year>2001</year>             <article-title>The effect of hydrocolloids on the stability and viscosity of cloudy apple juices.</article-title>             <source>Food Hydrocolloid</source>             <volume>15</volume>             <fpage>1</fpage>             <lpage>7</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Tzen1">
+        <label>34</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Tzen</surname><given-names>JTC</given-names></name><name name-style="western"><surname>Huang</surname><given-names>AHC</given-names></name></person-group>             <year>1992</year>             <article-title>Surface Structure and Properties of Plant Seed Oil Bodies.</article-title>             <source>J Cell Biol</source>             <volume>117</volume>             <fpage>327</fpage>             <lpage>335</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Peng1">
+        <label>35</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Peng</surname><given-names>C-C</given-names></name><name name-style="western"><surname>Lin</surname><given-names>I-P</given-names></name><name name-style="western"><surname>Lin</surname><given-names>C-K</given-names></name><name name-style="western"><surname>Tzen</surname><given-names>JTC</given-names></name></person-group>             <year>2003</year>             <article-title>Size and Stability of Reconstituted Sesame Oil Bodies.</article-title>             <source>Biotechnol</source>             <volume>Progr19</volume>             <fpage>1623</fpage>             <lpage>1626</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Sansatsadeekul1">
+        <label>36</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Sansatsadeekul</surname><given-names>J</given-names></name><name name-style="western"><surname>Sakdapipanich</surname><given-names>J</given-names></name><name name-style="western"><surname>Rojruthai</surname><given-names>P</given-names></name></person-group>             <year>2011</year>             <article-title>Characterization of associated proteins and phospholipids in natural rubber latex.</article-title>             <source>J Biosci Bioeng</source>             <volume>111</volume>             <fpage>628</fpage>             <lpage>634</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Bradford1">
+        <label>37</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Bradford</surname><given-names>MM</given-names></name></person-group>             <year>1976</year>             <article-title>A rapid and sensitive method for the quantitation of microgram quantities of protein utilizing the principle of protein-dye binding.</article-title>             <source>Anal</source>             <volume>Biochem72</volume>             <fpage>248</fpage>             <lpage>254</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Shevchenko1">
+        <label>38</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Shevchenko</surname><given-names>A</given-names></name><name name-style="western"><surname>Tomas</surname><given-names>H</given-names></name><name name-style="western"><surname>Havli</surname><given-names>J</given-names></name><name name-style="western"><surname>Olsen</surname><given-names>JV</given-names></name><name name-style="western"><surname>Mann</surname><given-names>M</given-names></name></person-group>             <year>2007</year>             <article-title>In-gel digestion for mass spectrometric characterization of proteins and proteomes.</article-title>             <source>Nat Protoc</source>             <volume>1</volume>             <fpage>2856</fpage>             <lpage>2860</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Naumann1">
+        <label>39</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Naumann</surname><given-names>B</given-names></name><name name-style="western"><surname>Stauber</surname><given-names>EJ</given-names></name><name name-style="western"><surname>Busch</surname><given-names>A</given-names></name><name name-style="western"><surname>Sommer</surname><given-names>F</given-names></name><name name-style="western"><surname>Hippler</surname><given-names>M</given-names></name></person-group>             <year>2005</year>             <article-title>N-terminal processing of Lhca3 is a key step in remodeling of the photosystem I-light-harvesting complex under iron deficiency in <italic>Chlamydomonas reinhardtii</italic>.</article-title>             <source>J Biol Chem</source>             <volume>280</volume>             <fpage>20431</fpage>             <lpage>20441</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Geer1">
+        <label>40</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Geer</surname><given-names>LY</given-names></name><name name-style="western"><surname>Markey</surname><given-names>SP</given-names></name><name name-style="western"><surname>Kowalak J</surname><given-names>A</given-names></name><name name-style="western"><surname>Wagner</surname><given-names>L</given-names></name><name name-style="western"><surname>Xu</surname><given-names>M</given-names></name><etal/></person-group>             <year>2004</year>             <article-title>Open mass spectrometry search algorithm.</article-title>             <source>J Proteome Res</source>             <volume>3</volume>             <fpage>958</fpage>             <lpage>964</lpage>          </element-citation>
+      </ref>
+      <ref id="pone.0041874-Pfaffl1">
+        <label>41</label>
+        <element-citation publication-type="journal" xlink:type="simple">             <person-group person-group-type="author"><name name-style="western"><surname>Pfaffl</surname><given-names>MW</given-names></name><name name-style="western"><surname>Horgan</surname><given-names>GW</given-names></name><name name-style="western"><surname>Dempfle</surname><given-names>L</given-names></name></person-group>             <year>2002</year>             <article-title>Relative expression software tool (REST<sup>©</sup>) for group-wise comparison and statistical analysis of relative expression results in real-time PCR.</article-title>             <source>Nucleic Acid Res</source>             <volume>30</volume>             <fpage>e36</fpage>          </element-citation>
+      </ref>
+    </ref-list>
+    
+  </back>
+</article>

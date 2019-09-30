@@ -12,7 +12,7 @@
   h4,
   h5 {
     font-family: $font-face-fancy;
-    font-weight: normal;
+    font-weight: $bold;
   }
 }
 
@@ -63,7 +63,7 @@
 
 #choose_plosone {
   font-family: $font-face-fancy;
-    width: rem-calc(830px);
+  width: rem-calc(830px);
   margin: 0 auto;
   display: block;
   min-height: 900px;
@@ -102,10 +102,14 @@
 .rows_columns {
   display: flex; flex-flow: row wrap;
   justify-content: center;
-  margin-top: 40px; margin-bottom: 40px;
+  
 }
 .rows_columns > div {
-  width: 33%;
+  width: 32%;
+  min-height: 300px;
+  margin-top: 30px; 
+  margin-right: 1%;
+  margin-bottom: 30px;
 }
 
 .pull_right {
@@ -116,12 +120,12 @@
   display: inline-block;
   margin: 0 auto;
   text-align: center;
-  padding: 0 $line-height-large;
+  padding: 0 $line-height;
 }
 
 .icon_item img {
   width: auto;
-  height: 50px;
+  height: 36px;
 }
 
 .icon_item a {
@@ -143,12 +147,12 @@
 }
 
 .icon_item h3 {
-  margin-top: $line-height-small;
+  margin-top: $line-height-large;
 
 }
 
 .icon_item h3 a {
-  font-weight: bold;
+  font-weight: $bold;
   font-size: 18px;
   text-transform: uppercase;
   text-decoration: none;

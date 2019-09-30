@@ -67,6 +67,7 @@
   margin: 0 auto;
   display: block;
   min-height: 900px;
+  padding-bottom: 50px;
 }
 
 #choose_plosone h2 {
@@ -77,10 +78,31 @@
   color: $plos-one-teal;
 }
 
+#choose_plosone .center {
+  text-align: center;
+}
+
+#choose_plosone .button, #orange_wrapper .button {
+  color: #fff;
+  min-width: 200px;
+  height: 36px;
+  line-height: 36px;
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  padding: 0;
+}
+#choose_plosone .button {
+  background-color: $plos-one-pink;
+}
+#orange_wrapper .button {
+  background-color: $plos-one-purple;
+}
 
 .rows_columns {
   display: flex; flex-flow: row wrap;
   justify-content: center;
+  margin-top: 40px; margin-bottom: 40px;
 }
 .rows_columns > div {
   width: 33%;
@@ -98,15 +120,16 @@
 }
 
 .icon_item img {
-  width: 75px;
-  height: auto;
+  width: auto;
+  height: 50px;
 }
 
 .icon_item a {
-  font-size: $txt-size-small;
+  font-size: $txt-size-mediumish;
   font-weight: $bold;
   font-family: $font-face-fancy;
   text-decoration: underline;
+  color: $plos-one-purple;
 }
 
 .icon_item p {
@@ -115,17 +138,21 @@
   text-align: center;
 }
 
+.icon_item p em {
+  letter-spacing: 1.2px;
+}
+
 .icon_item h3 {
   margin-top: $line-height-small;
 
 }
 
 .icon_item h3 a {
-  font-weight: normal;
+  font-weight: bold;
   font-size: 18px;
   text-transform: uppercase;
   text-decoration: none;
-  color: $plos-one-purple;
+  color: $plos-one-pink;
 }
 
 #orange_content_wrapper {
@@ -327,7 +354,7 @@ h3.white {
 
 #orange_wrapper {
   background-color: $plos-one-teal;
-  min-height: 270px;
+  min-height: 120px;
   min-width: 100% !important;
   position: relative;
 }

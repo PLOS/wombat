@@ -164,11 +164,6 @@
       <classifier>jdk15</classifier>
     </dependency>
     <dependency>
-      <groupId>com.io7m.xom</groupId>
-      <artifactId>xom</artifactId>
-      <version>1.2.10</version>
-    </dependency>
-    <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-scratchpad</artifactId>
       <version>3.8</version>

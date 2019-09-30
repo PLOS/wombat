@@ -29,9 +29,9 @@ import com.google.common.collect.ImmutableMap;
 
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
-import org.apache.xerces.impl.dv.util.Base64;
 import org.plos.ned_client.model.IndividualComposite;
 import org.plos.ned_client.model.Individualprofile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +69,7 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
   // There is probably a library for this. TODO
   private static BasicHeader createAuthorizationHeader(String authorizationAppName, String authorizationPassword) {
     String authorization = authorizationAppName + ":" + authorizationPassword;
-    String encoded = Base64.encode(authorization.getBytes(Charsets.ISO_8859_1));
+    String encoded = Base64.encodeBase64String(authorization.getBytes(Charsets.ISO_8859_1));
     return new BasicHeader("Authorization", "Basic " + encoded);
   }
 

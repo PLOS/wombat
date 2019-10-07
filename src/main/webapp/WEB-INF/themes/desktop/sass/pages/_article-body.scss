@@ -21,13 +21,6 @@ $line-height-large: ($line-height * 2);
 $line-height-medium: ($line-height * 1.5);
 $line-height-small: ($line-height * .5);
 
-// callout is for blockquotes.
-@mixin callout($clr-body: $off-white) {
-  padding: $line-height $pad-default 1px $pad-default; //TODO -  why is this 1px - not sure but its the only thing that seems to work
-  background: $clr-body;
-  margin-bottom: $line-height;
-}
-
 // this is the amount we want to offset the target so it doesn't butt up against the top of the window OR the floating header.
 .article-content {
   ol.references {
@@ -98,22 +91,10 @@ $line-height-small: ($line-height * .5);
     }
   }
 
-  .callout-standard,
-  .box {
-    @include callout();
-    background: $off-white;
-    h2:first-of-type,
-    h3:first-of-type {
-      margin-top: 0;
-    }  //TODO - abstract a little
-  }
-
-  .callout-alert {
-    @include callout($clr-warning-bg);
-  }
-
   .amendment {
-    margin-bottom: $line-height-medium;
+//   default background color is journal-branded via the `brandcolor` mixin
+    padding: $line-height $pad-default 1px $pad-default;
+    margin-bottom: $line-height;
     position: relative;
 
     a.info-link {
@@ -149,26 +130,29 @@ $line-height-small: ($line-height * .5);
   .amendment-eoc,
   .amendment-retraction,
   .amendment-uncorrected-proof {
-    @extend .callout-alert;
+    background: $clr-warning-bg;
     h2 {
       color: $clr-warning;
       margin-top: 0;
       &:before {
-        //TODO - make this a mixin? do we adjust line-height on all icons?
         @extend .icon-alert;
         font-size: $txt-size-medium-large;
       }
     }
   }
 
+  .box,
   .amendment-correction {
-    @extend .callout-standard;
-
+    background: $off-white;
     h2 {
       &:before {
         content: '';
         @extend .icon-correction;
       }
+    }
+    h2:first-of-type,
+    h3:first-of-type {
+      margin-top: 0;
     }
   }
 

@@ -25,12 +25,24 @@
 
 <div class="related-articles-container">
   <h3><#include "relatedArticleTitle.ftl"/></h3>
-  <ul>
+  <ul class="related-articles">
   <#list relatedArticles as relatedArticle>
       <li>
-        <a href="<@siteLink handlerName="article" journalKey=relatedArticle.journal.journalKey queryParameters={"id": relatedArticle.doi} />">
-          <@xform xml=relatedArticle.title/>
-        </a>
+        <@xform xml=relatedArticle.title/>
+        <ul class="related-article-links">
+          <li class="related-article-link-page">
+            <a href="<@siteLink handlerName="article" journalKey=relatedArticle.journal.journalKey
+                queryParameters={"id": relatedArticle.doi} />">View Page</a>
+          </li>
+          <!--  Annotations and issue images do not have printables. They can be filtered by doi. -->
+          <#if relatedArticle.doi?contains("10.1371/journal")>
+            <li class="related-article-link-download">
+              <a href="<@siteLink handlerName="assetFile" journalKey=relatedArticle.journal.journalKey
+                  queryParameters={"type": "printable", "id": relatedArticle.doi} />"
+                  target="_blank" title="PDF opens in new window">PDF</a>
+          </li>
+        </#if>
+        </ul>
       </li>
   </#list>
   </ul>

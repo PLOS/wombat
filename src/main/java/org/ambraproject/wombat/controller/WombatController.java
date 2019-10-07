@@ -42,10 +42,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.ambraproject.wombat.util.ReproxyUtil.X_PROXY_CAPABILITIES;
-import static org.ambraproject.wombat.util.ReproxyUtil.X_REPROXY_CACHE_FOR;
-import static org.ambraproject.wombat.util.ReproxyUtil.X_REPROXY_URL;
-
 /**
  * Base class with common functionality for all controllers in the application.
  */
@@ -107,15 +103,14 @@ public abstract class WombatController {
    * (Rhino or Content Repo).
    */
   protected static final ImmutableSet<String> ASSET_REQUEST_HEADER_WHITELIST = caseInsensitiveImmutableSet(
-      HttpHeaders.IF_MODIFIED_SINCE, X_PROXY_CAPABILITIES);
+      HttpHeaders.IF_MODIFIED_SINCE);
 
   /**
    * Names of headers that, in a response from the service tier (Rhino or Content Repo), should be passed through to the
    * client.
    */
   private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
-      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, HttpHeaders.LAST_MODIFIED,
-      X_REPROXY_URL, X_REPROXY_CACHE_FOR);
+      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, HttpHeaders.LAST_MODIFIED);
 
   protected static HttpMessageUtil.HeaderFilter getAssetResponseHeaderFilter(boolean isDownloadRequest) {
     return (Header header) -> {

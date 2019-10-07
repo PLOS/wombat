@@ -293,8 +293,11 @@ public class BrowseController extends WombatController {
     List<Map<String, String>> inbound = (List<Map<String, String>>) relationshipMetadata.get("inbound");
     List<Map<String, String>> outbound = (List<Map<String, String>>) relationshipMetadata.get("outbound");
     List<RelatedArticle> relatedArticles = Stream.concat(inbound.stream(), outbound.stream())
-        .map(amendment -> new RelatedArticle(amendment.get("doi"), amendment.get("title"),
-            LocalDate.parse(amendment.get("publicationDate"))))
+      .map(amendment -> RelatedArticle.builder()
+           .setDoi(amendment.get("doi"))
+           .setTitle(amendment.get("title"))
+           .setPublicationDate(LocalDate.parse(amendment.get("publicationDate")))
+           .build())
         .distinct()
         .sorted(Comparator.comparing(RelatedArticle::getPublicationDate).reversed())
         .collect(Collectors.toList());

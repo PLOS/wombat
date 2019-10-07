@@ -21,50 +21,25 @@
  */
 
 package org.ambraproject.wombat.model;
-
 import java.time.LocalDate;
+import com.google.auto.value.AutoValue;
 
-public class RelatedArticle {
-  private final String doi;
-  private final String title;
-  private final LocalDate publicationDate;
+@AutoValue
+public abstract class RelatedArticle {
+  public abstract String getDoi();
+  public abstract LocalDate getPublicationDate();
+  public abstract String getTitle();
 
-  public String getDoi() {
-    return doi;
+  public static Builder builder() {
+    return new AutoValue_RelatedArticle.Builder();
   }
 
-  public String getTitle() {
-    return title;
-  }
+  @AutoValue.Builder
+  public abstract static class Builder {
+    public abstract RelatedArticle build();
 
-  public LocalDate getPublicationDate() {
-    return publicationDate;
-  }
-
-  public RelatedArticle(String doi, String title, LocalDate publicationDate) {
-    this.doi = doi;
-    this.title = title;
-    this.publicationDate = publicationDate;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    RelatedArticle that = (RelatedArticle) o;
-
-    if (!doi.equals(that.doi)) return false;
-    if (!title.equals(that.title)) return false;
-    return publicationDate.equals(that.publicationDate);
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = doi.hashCode();
-    result = 31 * result + title.hashCode();
-    result = 31 * result + publicationDate.hashCode();
-    return result;
+    public abstract Builder setDoi(String doi);
+    public abstract Builder setTitle(String title);
+    public abstract Builder setPublicationDate(LocalDate title);
   }
 }

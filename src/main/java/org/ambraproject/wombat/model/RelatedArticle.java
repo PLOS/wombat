@@ -22,6 +22,8 @@
 
 package org.ambraproject.wombat.model;
 import java.time.LocalDate;
+import java.util.Map;
+
 import com.google.auto.value.AutoValue;
 
 @AutoValue
@@ -32,6 +34,14 @@ public abstract class RelatedArticle {
 
   public static Builder builder() {
     return new AutoValue_RelatedArticle.Builder();
+  }
+
+  public static RelatedArticle fromMap(Map<String, String> map) {
+    return RelatedArticle.builder()
+      .setDoi(map.get("doi"))
+      .setTitle(map.get("title"))
+      .setPublicationDate(LocalDate.parse(map.get("publicationDate")))
+      .build();
   }
 
   @AutoValue.Builder

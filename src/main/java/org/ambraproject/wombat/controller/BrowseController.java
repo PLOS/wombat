@@ -252,7 +252,8 @@ public class BrowseController extends WombatController {
       Map<String, ?> ingestion = (Map<String, ?>) article.get("ingestion");
       ArticleType articleType = typeDictionary.lookUp((String) ingestion.get("articleType"));
 
-      populateRelatedArticles(populatedArticle);
+      populatedArticle.put("relatedArticles",
+                           fetchRelatedArticles((String) populatedArticle.get("doi")));
 
       populateAuthors(populatedArticle, site);
 
@@ -285,19 +286,16 @@ public class BrowseController extends WombatController {
     return articleGroups;
   }
 
-  private void populateRelatedArticles(Map<String, Object> article) throws IOException {
-    Map<String, Object> relationshipMetadata = articleApi.requestObject(
-        ApiAddress.builder("articles").embedDoi((String) article.get("doi"))
-            .addToken("relationships").build(), Map.class);
+  public List<RelatedArticle> fetchRelatedArticles(String doi) throws IOException {
+    Map<String, Object> relationshipMetadata = articleApi.requestObject(ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build(), Map.class);
 
     List<Map<String, String>> inbound = (List<Map<String, String>>) relationshipMetadata.get("inbound");
     List<Map<String, String>> outbound = (List<Map<String, String>>) relationshipMetadata.get("outbound");
-    List<RelatedArticle> relatedArticles = Stream.concat(inbound.stream(), outbound.stream())
+    return Stream.concat(inbound.stream(), outbound.stream())
       .map(RelatedArticle::fromMap)
       .distinct()
       .sorted(Comparator.comparing(RelatedArticle::getPublicationDate).reversed())
       .collect(Collectors.toList());
-    article.put("relatedArticles", relatedArticles);
   }
 
   private void populateAuthors(Map<String, Object> article, Site site) throws IOException {

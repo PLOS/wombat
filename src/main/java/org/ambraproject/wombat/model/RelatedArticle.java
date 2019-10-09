@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.model;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.Optional;
 
 import com.google.auto.value.AutoValue;
 
@@ -30,17 +31,27 @@ import com.google.auto.value.AutoValue;
 public abstract class RelatedArticle {
   public abstract String getDoi();
   public abstract LocalDate getPublicationDate();
+  public abstract Optional<Integer> getRevisionNumber();
   public abstract String getTitle();
 
   public static Builder builder() {
     return new AutoValue_RelatedArticle.Builder();
   }
 
-  public static RelatedArticle fromMap(Map<String, String> map) {
+  public boolean isPublished() {
+    return this.getRevisionNumber().isPresent();
+  }
+
+
+  public static RelatedArticle fromMap(Map<String, Object> map) {
+    // GSON parses all numbers as Double.
+    Optional<Integer> revisionNumber = Optional.ofNullable((Double)map.get("revisionNumber")).map(Double::intValue);
+    
     return RelatedArticle.builder()
-      .setDoi(map.get("doi"))
-      .setTitle(map.get("title"))
-      .setPublicationDate(LocalDate.parse(map.get("publicationDate")))
+      .setDoi((String) map.get("doi"))
+      .setTitle((String) map.get("title"))
+      .setRevisionNumber(revisionNumber)
+      .setPublicationDate(LocalDate.parse((String) map.get("publicationDate")))
       .build();
   }
 
@@ -50,6 +61,7 @@ public abstract class RelatedArticle {
 
     public abstract Builder setDoi(String doi);
     public abstract Builder setTitle(String title);
+    public abstract Builder setRevisionNumber(Optional<Integer> revisionNumber);
     public abstract Builder setPublicationDate(LocalDate title);
   }
 }

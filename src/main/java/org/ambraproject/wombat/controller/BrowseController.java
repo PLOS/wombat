@@ -289,8 +289,8 @@ public class BrowseController extends WombatController {
   public List<RelatedArticle> fetchRelatedArticles(String doi) throws IOException {
     Map<String, Object> relationshipMetadata = articleApi.requestObject(ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build(), Map.class);
 
-    List<Map<String, String>> inbound = (List<Map<String, String>>) relationshipMetadata.get("inbound");
-    List<Map<String, String>> outbound = (List<Map<String, String>>) relationshipMetadata.get("outbound");
+    List<Map<String, Object>> inbound = (List<Map<String, Object>>) relationshipMetadata.get("inbound");
+    List<Map<String, Object>> outbound = (List<Map<String, Object>>) relationshipMetadata.get("outbound");
     return Stream.concat(inbound.stream(), outbound.stream())
       .map(RelatedArticle::fromMap)
       .distinct()

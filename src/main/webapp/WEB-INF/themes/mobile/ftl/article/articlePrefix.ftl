@@ -156,6 +156,11 @@
           This article has been retracted.
         </@amendment>
       </#if>
+      <#if amendmentGroup.type == 'update'>
+        <@amendment amendmentGroup.amendments "updated-article">
+          This article has an update.
+        </@amendment>
+      </#if>
     </#list>
 
     <#-- In articleSuffix.ftl: Close <article class="article-item"> -->

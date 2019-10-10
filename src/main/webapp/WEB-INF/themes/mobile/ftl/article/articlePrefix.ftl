@@ -122,17 +122,17 @@
 
     <#include "revision/revisionNotice.ftl" />
 
-    <#macro amendment amendmentObjects amendmentType>
-      <div class="retraction red-alert">
+    <#macro amendment amendmentGroup amendmentType>
+      <div class="amendment amendment-${amendmentGroup.type}">
         <span><h5>
           <#nested/>
-          <#if amendmentObjects?size == 1>
-            <a href="article?id=${amendmentObjects[0].doi}">
+          <#if amendmentGroup.amendments?size == 1>
+            <a href="article?id=${amendmentGroup.amendments[0].doi}">
               View ${amendmentType}
             </a>
           <#else>
             View
-            <#list amendmentObjects as amendmentObject>
+            <#list amendmentGroup.amendments as amendmentObject>
               <a href="article?id=${amendmentObject.doi}">
               ${amendmentType} ${amendmentObject_index + 1}</a><#if amendmentObject_has_next>,</#if>
             </#list>
@@ -142,23 +142,23 @@
     </#macro>
     <#list amendments as amendmentGroup>
       <#if amendmentGroup.type == 'correction'>
-        <@amendment amendmentGroup.amendments "correction">
+        <@amendment amendmentGroup "correction">
           This article has been corrected.
         </@amendment>
       </#if>
       <#if amendmentGroup.type == 'eoc'>
-        <@amendment amendmentGroup.amendments "expression of concern">
+        <@amendment amendmentGroup "expression of concern">
           There is an expression of concern about this article.
         </@amendment>
       </#if>
       <#if amendmentGroup.type == 'retraction'>
-        <@amendment amendmentGroup.amendments "retraction">
+        <@amendment amendmentGroup "retraction">
           This article has been retracted.
         </@amendment>
       </#if>
       <#if amendmentGroup.type == 'update'>
-        <@amendment amendmentGroup.amendments "updated-article">
-          This article has an update.
+        <@amendment amendmentGroup "update">
+          This article has been updated.
         </@amendment>
       </#if>
     </#list>

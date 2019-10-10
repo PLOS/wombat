@@ -17,6 +17,7 @@ public class RelatedArticleTest {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("doi", "10.1371/journal.pxxx.000000");
     map.put("title", "A new article");
+    map.put("type", "commentary");
     map.put("revisionNumber", new Double(1));
     map.put("publicationDate", "2019-10-08");
     RelatedArticle ra = RelatedArticle.fromMap(map);
@@ -24,6 +25,7 @@ public class RelatedArticleTest {
     assertEquals(map.get("title"), ra.getTitle());
     assertEquals(Optional.of(1), ra.getRevisionNumber());
     assertEquals(LocalDate.of(2019, 10, 8), ra.getPublicationDate());
+    assertEquals(map.get("type"), ra.getType());
     assertTrue(ra.isPublished());
   }
 
@@ -32,6 +34,7 @@ public class RelatedArticleTest {
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("doi", "10.1371/journal.pxxx.000000");
     map.put("title", "A new article");
+    map.put("type", "commentary");
     map.put("publicationDate", "2019-10-08");
     RelatedArticle ra = RelatedArticle.fromMap(map);
     assertEquals(map.get("doi"), ra.getDoi());

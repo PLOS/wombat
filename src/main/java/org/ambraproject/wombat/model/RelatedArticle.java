@@ -33,6 +33,7 @@ public abstract class RelatedArticle {
   public abstract LocalDate getPublicationDate();
   public abstract Optional<Integer> getRevisionNumber();
   public abstract String getTitle();
+  public abstract String getType();
 
   public static Builder builder() {
     return new AutoValue_RelatedArticle.Builder();
@@ -50,6 +51,7 @@ public abstract class RelatedArticle {
     return RelatedArticle.builder()
       .setDoi((String) map.get("doi"))
       .setTitle((String) map.get("title"))
+      .setType((String) map.get("type"))
       .setRevisionNumber(revisionNumber)
       .setPublicationDate(LocalDate.parse((String) map.get("publicationDate")))
       .build();
@@ -63,5 +65,6 @@ public abstract class RelatedArticle {
     public abstract Builder setTitle(String title);
     public abstract Builder setRevisionNumber(Optional<Integer> revisionNumber);
     public abstract Builder setPublicationDate(LocalDate title);
+    public abstract Builder setType(String type);
   }
 }

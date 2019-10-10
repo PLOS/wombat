@@ -50,6 +50,6 @@ public class BrowseControllerTest extends ControllerTest {
 
     when(articleApi.requestObject(address, Map.class)).thenReturn(map);
     List<RelatedArticle> ra = browseController.fetchRelatedArticles(doi);
-    assertEquals(1, ra.size());
+    assertEquals(2, ra.size());
   }
 }

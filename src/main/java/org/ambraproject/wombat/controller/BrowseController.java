@@ -252,8 +252,8 @@ public class BrowseController extends WombatController {
       Map<String, ?> ingestion = (Map<String, ?>) article.get("ingestion");
       ArticleType articleType = typeDictionary.lookUp((String) ingestion.get("articleType"));
 
-      populatedArticle.put("relatedArticles",
-                           fetchRelatedArticles((String) populatedArticle.get("doi")));
+      RelatedArticle.ArticleMetadata thisArticle = RelatedArticle.ArticleMetadata.fromMap(populatedArticle);
+      populatedArticle.put("relatedArticles", fetchRelatedArticles(thisArticle));
 
       populateAuthors(populatedArticle, site);
 
@@ -286,15 +286,14 @@ public class BrowseController extends WombatController {
     return articleGroups;
   }
 
-  public List<RelatedArticle> fetchRelatedArticles(String doi) throws IOException {
-    Map<String, Object> relationshipMetadata = articleApi.requestObject(ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build(), Map.class);
-
-    List<Map<String, Object>> inbound = (List<Map<String, Object>>) relationshipMetadata.get("inbound");
-    List<Map<String, Object>> outbound = (List<Map<String, Object>>) relationshipMetadata.get("outbound");
-    return Stream.concat(inbound.stream(), outbound.stream())
-      .map(RelatedArticle::fromMap)
+  public List<RelatedArticle> fetchRelatedArticles(RelatedArticle.ArticleMetadata otherArticle) throws IOException {
+    Map<String, Object> relationshipMetadata = articleApi.requestObject(ApiAddress.builder("articles").embedDoi(otherArticle.getDoi()).addToken("relationships").build(), Map.class);
+    Stream<RelatedArticle> inbound = ((List<Map<String, Object>>) relationshipMetadata.get("inbound")).stream()
+      .map((map)->RelatedArticle.fromInboundMap(otherArticle, map));
+    Stream<RelatedArticle> outbound = ((List<Map<String, Object>>) relationshipMetadata.get("outbound")).stream()
+      .map((map)->RelatedArticle.fromOutboundMap(otherArticle, map));
+    return Stream.concat(inbound, outbound)
       .distinct()
-      .sorted(Comparator.comparing(RelatedArticle::getPublicationDate).reversed())
       .collect(Collectors.toList());
   }
 

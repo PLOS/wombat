@@ -5,9 +5,12 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 
@@ -49,7 +52,15 @@ public class BrowseControllerTest extends ControllerTest {
     ApiAddress address = ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build();
 
     when(articleApi.requestObject(address, Map.class)).thenReturn(map);
-    List<RelatedArticle> ra = browseController.fetchRelatedArticles(doi);
+    RelatedArticle.ArticleMetadata thisArticle = RelatedArticle.ArticleMetadata.builder()
+      .setDoi(doi)
+      .setTitle(Optional.of("My title"))
+      .setRevisionNumber(Optional.of(1))
+      .setPublicationDate(Optional.of(LocalDate.of(2019, 10, 10)))
+      .build();
+    List<RelatedArticle> ra = browseController.fetchRelatedArticles(thisArticle);
     assertEquals(2, ra.size());
+    List<RelatedArticle> raDoubleInverted = ra.stream().map(RelatedArticle::invert).map(RelatedArticle::invert).collect(Collectors.toList());
+    assertEquals(ra, raDoubleInverted);
   }
 }

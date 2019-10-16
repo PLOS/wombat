@@ -1,0 +1,13 @@
+description: >
+  A Peer-Reviewed Open-Access Journal
+
+copyright: >
+  All PLOS articles are Open Access.
+
+image: "resource/img/favicon.ico"
+
+authorName: PLOS
+
+authorEmail: webmaster@plos.org
+
+publicationTimeOfDay: [14, 0]  # 2:00 PM

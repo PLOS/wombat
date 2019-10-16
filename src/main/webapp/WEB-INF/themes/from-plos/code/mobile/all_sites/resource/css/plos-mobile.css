@@ -1,0 +1,22 @@
+/* taxonomy hierarchy colors */
+.grey-on-gold {
+  background: #d7df23;
+  color: #333333;
+}
+
+#page-recent-history .recent-search-list > li a {
+  color: #3e0577;
+  font-weight: 600;
+}
+
+
+/* PLOS Color Branding: Blue */
+
+.figure-small figcaption a,
+.spotlight .item-link,
+#privacy-link,
+.post-comment a,
+a.member,
+.response-menu > a  {
+  color: #3e0577;
+}

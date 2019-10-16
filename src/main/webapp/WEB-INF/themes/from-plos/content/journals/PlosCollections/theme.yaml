@@ -1,0 +1,4 @@
+key: PlosCollectionsContent
+parents:
+  - PlosContent
+  - PlosCollections

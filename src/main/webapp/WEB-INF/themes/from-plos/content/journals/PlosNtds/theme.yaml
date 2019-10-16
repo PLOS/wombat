@@ -1,0 +1,4 @@
+key: PlosNtdsContent
+parents:
+  - PlosContent
+  - PlosNtds

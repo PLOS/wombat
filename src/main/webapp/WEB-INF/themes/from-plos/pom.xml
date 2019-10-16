@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.ambraproject</groupId>
+  <artifactId>plos-themes</artifactId>
+  <name>plos-themes</name>
+  <version>3.5.14-SNAPSHOT</version>
+  <description>PLOS themes support for wombat</description>
+  <url>https://github.com/PLOS/plos-themes</url>
+  <scm>
+    <connection>scm:git:git@github.com:PLOS/plos-themes.git</connection>
+    <developerConnection>scm:git:git@github.com:PLOS/plos-themes.git</developerConnection>
+    <url>https://github.com/PLOS/plos-themes</url>
+  </scm>
+
+
+  <properties>
+    <buildnumber.mvn.version>1.2</buildnumber.mvn.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+    <buildDate>${maven.build.timestamp}</buildDate>
+    <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+    <build.datestamp>${maven.build.timestamp}</build.datestamp>
+    <build.counter>0</build.counter>
+  </properties>
+
+  <build>
+    <plugins>
+
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+              <descriptors>
+                  <descriptor>assembly/assembly.xml</descriptor>
+              </descriptors>
+          </configuration>
+          <executions>
+              <execution>
+                  <id>make-assembly</id>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>single</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>
+
+      <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>buildnumber-maven-plugin</artifactId>
+          <version>${buildnumber.mvn.version}</version>
+          <executions>
+              <execution>
+                  <phase>validate</phase>
+                  <goals>
+                      <goal>create</goal>
+                  </goals>
+              </execution>
+          </executions>
+          <configuration>
+              <doCheck>false</doCheck>
+              <doUpdate>false</doUpdate>
+          </configuration>
+      </plugin>
+
+      <plugin>
+          <artifactId>jdeb</artifactId>
+          <groupId>org.vafer</groupId>
+          <version>1.5</version>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>jdeb</goal>
+                  </goals>
+                  <configuration>
+                      <deb>${project.build.directory}/${project.artifactId}_[[version]]+${build.datestamp}-plos${build.counter}.deb</deb>
+                      <dataSet>
+                          <data>
+                              <src>${project.build.directory}/${project.build.finalName}-bin.tar.gz</src>
+                              <type>archive</type>
+                              <mapper>
+                                  <type>perm</type>
+                                  <prefix>/opt/plos/wombat/var/themes</prefix>
+                                  <strip>1</strip>
+                                  <group>wombat</group>
+                                  <user>wombat</user>
+                              </mapper>
+                          </data>
+                      </dataSet>
+                  </configuration>
+              </execution>
+          </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>apt-repo</artifactId>
+        <groupId>org.m1theo</groupId>
+        <version>0.3.0</version>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <goals>
+              <goal>apt-repo</goal>
+            </goals>
+            <configuration>
+              <repoDir>/var/tmp/apt</repoDir>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+
+</project>

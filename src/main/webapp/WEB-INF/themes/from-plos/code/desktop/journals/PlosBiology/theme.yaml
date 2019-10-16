@@ -1,0 +1,5 @@
+key: DesktopPlosBiology
+parents:
+  - PlosBiologyContent
+  - DesktopPlos
+  - PlosBiology

@@ -1,0 +1,5 @@
+key: DesktopPlosCollections
+parents:
+  - PlosCollectionsContent
+  - DesktopPlos
+  - PlosCollections

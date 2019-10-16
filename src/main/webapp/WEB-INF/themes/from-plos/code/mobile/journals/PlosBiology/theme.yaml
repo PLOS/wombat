@@ -1,0 +1,5 @@
+key: MobilePlosBiology
+parents:
+  - PlosBiologyContent
+  - MobilePlos
+  - PlosBiology

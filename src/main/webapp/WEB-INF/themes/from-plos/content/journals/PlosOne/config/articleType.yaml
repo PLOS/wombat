@@ -1,0 +1,54 @@
+# The order is significant. When inserting a new type, the placement must be specified by Editorial stakeholders.
+
+types:
+
+  - name:   "Editorial"
+    plural: "Editorials"
+
+  - name:   "Overview"
+    plural: "Overviews"
+
+  - name:   "Essay"
+    plural: "Essays"
+    code:   "essay"
+
+  - name:   "Perspective"
+    plural: "Perspectives"
+    code:   "perspective"
+
+  - name:   "Book Review"
+    plural: "Book Reviews"
+
+  - name:   "Obituary"
+    plural: "Obituaries"
+
+  - name:   "Collection Review"
+    plural: "Collection Reviews"
+    code:   "collection_review"
+
+  - name:   "Case Report"
+    plural: "Case Reports"
+
+  - name:   "Review"
+    plural: "Reviews"
+    code:   "review"
+
+  - name:   "Research Article"
+    plural: "Research Articles"
+
+  - name:   "Correspondence"
+    plural: "Correspondence"
+
+  - name:   "Correction"
+    plural: "Corrections"
+
+  - name:   "Retraction"
+    plural: "Retractions"
+
+  - name:   "Expression of Concern"
+    plural: "Expressions of Concern"
+    code:   "expression_of_concern"
+
+  - name:   "Formal Comment"
+    plural: "Formal Comments"
+    code:   "formal_comment"

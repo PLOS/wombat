@@ -1,0 +1,5 @@
+key: MobilePlosClinicalTrials
+parents:
+  - PlosClinicalTrialsContent
+  - MobilePlos
+  - PlosClinicalTrials

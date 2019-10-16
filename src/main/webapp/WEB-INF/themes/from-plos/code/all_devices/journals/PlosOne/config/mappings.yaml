@@ -1,0 +1,17 @@
+{
+  "browse": {
+    "disabled": false
+  },
+
+  "browseSubjectArea": {
+    "disabled": false
+  },
+
+  "browseVolumes": {
+    "disabled": true
+  },
+
+  "browseIssues": {
+      "disabled": true
+  }
+}

@@ -1,0 +1,11 @@
+otherJournals: {
+  "PLoSBiology": "DesktopPlosBiology",
+  "PLoSCollections": "DesktopPlosCollections",
+  "PLoSCompBiol": "DesktopPlosCompBiol",
+  "PLoSGenetics": "DesktopPlosGenetics",
+  "PLoSMedicine": "DesktopPlosMedicine",
+  "PLoSNTD": "DesktopPlosNtds",
+  "PLoSONE": "DesktopPlosOne",
+  "PLoSPathogens": "DesktopPlosPathogens",
+  "PLoSClinicalTrials": "DesktopPlosClinicalTrials",
+}

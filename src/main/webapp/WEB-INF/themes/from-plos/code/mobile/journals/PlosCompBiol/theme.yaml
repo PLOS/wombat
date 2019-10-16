@@ -1,0 +1,5 @@
+key: MobilePlosCompBiol
+parents:
+  - PlosCompBiolContent
+  - MobilePlos
+  - PlosCompBiol

@@ -116,6 +116,11 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
     return requestObjectForType(address, (Type) responseClass);
   }
 
+  @Override
+  public <T> T requestObject(ApiAddress address, Type t) throws IOException {
+    return requestObjectForType(address, t);
+  }
+
   private <R extends HttpUriRequest & HttpEntityEnclosingRequest>
   HttpResponse uploadObject(ApiAddress address, Object object, Function<URI, R> requestConstructor)
       throws IOException {

@@ -49,7 +49,7 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
         mock(ArticlePointer.class),
         new HashMap(),
         new HashMap(),
-        new HashMap()));
+        new ArrayList()));
     doReturn(null).when(articleMetadata).getFigureView();
     doReturn(null).when(articleMetadata).getArticleType();
     doReturn(null).when(articleMetadata).getCommentCount();
@@ -91,7 +91,7 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
         mock(ArticlePointer.class),
         ingestionMetadata,
         new HashMap(),
-        new HashMap());
+        new ArrayList());
     
     articleMetadata.validateVisibility("whatever");
   }
@@ -117,7 +117,7 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
         mock(ArticlePointer.class),
         ingestionMetadata,
         new HashMap(),
-        new HashMap()));
+        new ArrayList()));
 
     Link mockLink = mock(Link.class);
     doReturn(mockLink).when(articleMetadata).buildCrossSiteRedirect(any(), any());
@@ -150,7 +150,7 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
         mock(ArticlePointer.class),
         ingestionMetadata,
         itemTable,
-        new HashMap());
+        new ArrayList());
 
     HashMap<String, String> expected = new HashMap<>();
     expected.put("type", "figure");

@@ -28,6 +28,8 @@ import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimaps;
+import com.google.gson.reflect.TypeToken;
+
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -53,6 +55,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -246,14 +249,13 @@ public class BrowseController extends WombatController {
     ListMultimap<ArticleType, Map<String, Object>> groupedArticles = LinkedListMultimap.create();
     for (Map<String, ?> article : articles) {
       if (!article.containsKey("revisionNumber")) continue; // Omit unpublished articles
-
+      String doi = (String) article.get("doi");
       Map<String, Object> populatedArticle = new HashMap<>(article);
 
       Map<String, ?> ingestion = (Map<String, ?>) article.get("ingestion");
       ArticleType articleType = typeDictionary.lookUp((String) ingestion.get("articleType"));
 
-      RelatedArticle.ArticleMetadata thisArticle = RelatedArticle.ArticleMetadata.fromMap(populatedArticle);
-      populatedArticle.put("relatedArticles", fetchRelatedArticles(thisArticle));
+      populatedArticle.put("relatedArticles", fetchRelatedArticles(doi));
 
       populateAuthors(populatedArticle, site);
 
@@ -286,15 +288,11 @@ public class BrowseController extends WombatController {
     return articleGroups;
   }
 
-  public List<RelatedArticle> fetchRelatedArticles(RelatedArticle.ArticleMetadata otherArticle) throws IOException {
-    Map<String, Object> relationshipMetadata = articleApi.requestObject(ApiAddress.builder("articles").embedDoi(otherArticle.getDoi()).addToken("relationships").build(), Map.class);
-    Stream<RelatedArticle> inbound = ((List<Map<String, Object>>) relationshipMetadata.get("inbound")).stream()
-      .map((map)->RelatedArticle.fromInboundMap(otherArticle, map));
-    Stream<RelatedArticle> outbound = ((List<Map<String, Object>>) relationshipMetadata.get("outbound")).stream()
-      .map((map)->RelatedArticle.fromOutboundMap(otherArticle, map));
-    return Stream.concat(inbound, outbound)
-      .distinct()
-      .collect(Collectors.toList());
+  public List<RelatedArticle> fetchRelatedArticles(String doi) throws IOException {
+    ApiAddress address = ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build();
+    Type t = TypeToken.getParameterized(List.class, Map.class).getType();
+    List<Map<String, Object>> relationshipMetadata = articleApi.<List<Map<String, Object>>>requestObject(address, t);
+    return relationshipMetadata.stream().map(RelatedArticle::fromMap).collect(Collectors.toList());
   }
 
   private void populateAuthors(Map<String, Object> article, Site site) throws IOException {

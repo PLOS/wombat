@@ -157,7 +157,8 @@ public class ArticleControllerTest extends ControllerTest {
 
     verify(articleResolutionService).toIngestion(expectedRequestedDoi);
     verify(articleService).getItemTable(expectedArticlePointer);
-    verify(articleApi, times(2)).requestObject(any(), eq(Map.class));
+    verify(articleApi, times(1)).requestObject(any(), eq(Map.class));
+    verify(articleApi, times(1)).requestObject(any(), eq(List.class));
     verify(articleMetadata).getArticlePointer();
     verify(corpusContentApi).readManuscript(any(), any(), any(), any());
   }

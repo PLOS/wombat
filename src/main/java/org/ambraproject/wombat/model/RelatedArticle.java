@@ -28,104 +28,43 @@ import java.util.Optional;
 import com.google.auto.value.AutoValue;
 import com.google.common.collect.ImmutableMap;
 
-
 @AutoValue
 public abstract class RelatedArticle {
-  @AutoValue
-  public abstract static class ArticleMetadata {
-    public abstract String getDoi();
-    public abstract Optional<LocalDate> getPublicationDate();
-    public abstract Optional<Integer> getRevisionNumber();
-    public abstract Optional<String> getTitle();
+  public abstract String getDoi();
+  public abstract Optional<LocalDate> getPublicationDate();
+  public abstract Optional<Integer> getRevisionNumber();
+  public abstract Optional<String> getTitle();
+  public abstract String getType();
 
-    public boolean isPublished() {
-      return this.getRevisionNumber().isPresent();
-    }
-
-    @AutoValue.Builder
-    public abstract static class Builder {
-      public abstract ArticleMetadata build();
-
-      public abstract Builder setDoi(String doi);
-
-      public abstract Builder setTitle(Optional<String> title);
-
-      public abstract Builder setRevisionNumber(Optional<Integer> revisionNumber);
-
-      public abstract Builder setPublicationDate(Optional<LocalDate> title);
-    }
-
-    public static Builder builder() {
-      return new AutoValue_RelatedArticle_ArticleMetadata.Builder();
-    }
-
-    public static ArticleMetadata fromMap(Map<String, Object> map) {
-      Optional<Integer> revisionNumber = Optional.ofNullable((Double) map.get("revisionNumber")).map(Double::intValue);
-      Optional<LocalDate> publicationDate = Optional.ofNullable((String) map.get("publicationDate")).map(LocalDate::parse);
-
-      return ArticleMetadata.builder()
-        .setDoi((String) map.get("doi"))
-        .setTitle(Optional.ofNullable((String) map.get("title")))
-        .setRevisionNumber(revisionNumber)
-        .setPublicationDate(publicationDate)
-        .build();
-    }
+  public boolean isPublished() {
+    return this.getRevisionNumber().isPresent();
   }
     
-  public abstract String getType();
-  public abstract ArticleMetadata getSource();
-  public abstract ArticleMetadata getTarget();
-
   public static Builder builder() {
     return new AutoValue_RelatedArticle.Builder();
   }
 
-  public RelatedArticle invert() {
-    return RelatedArticle.builder()
-      .setSource(this.getTarget())
-      .setTarget(this.getSource())
-      .setType(RelatedArticle.invertedTypes.get(this.getType()))
-      .build();
-  }
-
-  public static Map<String, String> invertedTypes = ImmutableMap.<String, String>builder()
-    .put("commentary", "commentary-article")
-    .put("commentary-article", "commentary")
-    .put("companion", "companion")
-    .put("corrected-article", "correction-forward")
-    .put("correction-forward", "corrected-article")
-    .put("retracted-article", "retraction-forward")
-    .put("retraction-forward", "retracted-article")
-    .put("object-of-concern", "concern-forward")
-    .put("concern-forward", "object-of-concern")
-    .build();
-
-  public static RelatedArticle fromInboundMap(ArticleMetadata target, Map<String, Object> map) {
-    ArticleMetadata source = ArticleMetadata.fromMap(map);
+  public static RelatedArticle fromMap(Map<String, Object> map) {
+    Optional<Integer> revisionNumber = Optional.ofNullable((Double) map.get("revisionNumber")).map(Double::intValue);
+    Optional<LocalDate> publicationDate = Optional.ofNullable((String) map.get("publicationDate")).map(LocalDate::parse);
 
     return RelatedArticle.builder()
-      .setTarget(target)
-      .setSource(source)
-      .setType((String) map.get("type"))
-      .build();
-  }
-
-  public static RelatedArticle fromOutboundMap(ArticleMetadata source, Map<String, Object> map) {
-    ArticleMetadata target = ArticleMetadata.fromMap(map);
-
-    return RelatedArticle.builder()
-      .setTarget(target)
-      .setSource(source)
+      .setDoi((String) map.get("doi"))
+      .setTitle(Optional.ofNullable((String) map.get("title")))
+      .setRevisionNumber(revisionNumber)
+      .setPublicationDate(publicationDate)
       .setType((String) map.get("type"))
       .build();
   }
 
   @AutoValue.Builder
-  public abstract static class Builder {
+    public abstract static class Builder {
     public abstract RelatedArticle build();
 
-    public abstract Builder setSource(ArticleMetadata source);
-    public abstract Builder setTarget(ArticleMetadata target);
     public abstract Builder setType(String type);
+    public abstract Builder setDoi(String doi);
+    public abstract Builder setTitle(Optional<String> title);
+    public abstract Builder setRevisionNumber(Optional<Integer> revisionNumber);
+    public abstract Builder setPublicationDate(Optional<LocalDate> title);
   }
 }

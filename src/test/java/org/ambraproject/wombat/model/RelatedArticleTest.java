@@ -19,13 +19,6 @@ public class RelatedArticleTest {
   Map<String, Object> map = new HashMap<String, Object>();
   String type = "retracted-article";
 
-  RelatedArticle.ArticleMetadata otherArticle = RelatedArticle.ArticleMetadata.builder()
-    .setDoi("10.9999/journal.pxxx.1")
-    .setTitle(Optional.of("Other article"))
-    .setRevisionNumber(Optional.of(2))
-    .setPublicationDate(Optional.of(LocalDate.of(2009, 1, 1)))
-    .build();
-
   @Before
   public void setup() {
     map.put("doi", doi);
@@ -35,45 +28,15 @@ public class RelatedArticleTest {
     map.put("type", type);
   }
 
-  @Test
-  public void testRoundTripTypeInverstion() {
-    for (String type: RelatedArticle.invertedTypes.keySet()) {
-      String inverted = RelatedArticle.invertedTypes.get(type);
-      String doubleInverted = RelatedArticle.invertedTypes.get(inverted);
-      assertEquals(type, doubleInverted);
-    }
-  }
 
   @Test
-  public void testCreateFromInboundMap() {
-    RelatedArticle ra = RelatedArticle.fromInboundMap(otherArticle, map);
-    assertEquals(otherArticle, ra.getTarget());
-    assertEquals(doi, ra.getSource().getDoi());
-    assertEquals(Optional.of(title), ra.getSource().getTitle());
-    assertEquals(Optional.of(1), ra.getSource().getRevisionNumber());
-    assertEquals(Optional.of(LocalDate.of(2019, 10, 8)), ra.getSource().getPublicationDate());
+  public void testCreateFromMap() {
+    RelatedArticle ra = RelatedArticle.fromMap(map);
+    assertEquals(doi, ra.getDoi());
+    assertEquals(Optional.of(title), ra.getTitle());
+    assertEquals(Optional.of(1), ra.getRevisionNumber());
+    assertEquals(Optional.of(LocalDate.of(2019, 10, 8)), ra.getPublicationDate());
     assertEquals(map.get("type"), ra.getType());
-    assertTrue(ra.getSource().isPublished());
-  }
-
-  @Test
-  public void testCreateFromOutboundMapNullRevisionNumber() {
-    map.remove("revisionNumber");
-    RelatedArticle ra = RelatedArticle.fromOutboundMap(otherArticle, map);
-    assertEquals(otherArticle, ra.getSource());
-    assertEquals(doi, ra.getTarget().getDoi());
-    assertEquals(Optional.of(title), ra.getTarget().getTitle());
-    assertEquals(Optional.of(LocalDate.of(2009, 1, 1)), ra.getSource().getPublicationDate());
-    assertEquals(map.get("type"), ra.getType());
-    assertFalse(ra.getTarget().isPublished());
-  }
-
-  @Test
-  public void testInvert() {
-    RelatedArticle ra = RelatedArticle.fromOutboundMap(otherArticle, map);
-    RelatedArticle inverted = ra.invert();
-    assertEquals(ra.getSource(), inverted.getTarget());
-    assertEquals(ra.getTarget(), inverted.getSource());
-    assertEquals("retraction-forward", inverted.getType());
+    assertTrue(ra.isPublished());
   }
 }

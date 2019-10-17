@@ -81,19 +81,19 @@ public class ArticleMetadata {
   private final ArticlePointer articlePointer;
   private final Map<String, ?> ingestionMetadata;
   private final Map<String, ?> itemTable;
-  private final Map<String, List<Map<String, ?>>> relationships;
+  private final List<Map<String, Object>> relationships;
 
   private ArticleMetadata(Factory factory, Site site,
                           RequestedDoiVersion articleId, ArticlePointer articlePointer,
                           Map<String, ?> ingestionMetadata, Map<String, ?> itemTable,
-                          Map<String, List<Map<String, ?>>> relationships) {
+                          List<Map<String, Object>> relationships) {
     this.factory = Objects.requireNonNull(factory);
     this.site = Objects.requireNonNull(site);
     this.articleId = Objects.requireNonNull(articleId);
     this.articlePointer = Objects.requireNonNull(articlePointer);
     this.ingestionMetadata = Collections.unmodifiableMap(ingestionMetadata);
     this.itemTable = Collections.unmodifiableMap(itemTable);
-    this.relationships = Collections.unmodifiableMap(relationships);
+    this.relationships = Collections.unmodifiableList(relationships);
   }
 
   /**
@@ -142,8 +142,7 @@ public class ArticleMetadata {
       Map<String, ?> itemTable = articleService.getItemTable(articlePointer);
       ApiAddress relationshipsApiAddress = ApiAddress.builder("articles")
           .embedDoi(articlePointer.getDoi()).addToken("relationships").build();
-      Map<String, List<Map<String, ?>>> relationships
-          = articleApi.requestObject(relationshipsApiAddress, Map.class);
+      List<Map<String, Object>> relationships = articleApi.requestObject(relationshipsApiAddress, List.class);
 
       final ArticleMetadata articleMetaData =
           newInstance(site, id, articlePointer, ingestionMetadata, itemTable, relationships);
@@ -166,7 +165,7 @@ public class ArticleMetadata {
                                        ArticlePointer articlePointer,
                                        Map<String, ?> ingestionMetadata,
                                        Map<String, ?> itemTable,
-                                       Map<String, List<Map<String, ?>>> relationships) {
+                                       List<Map<String, Object>> relationships) {
       final ArticleMetadata articleMetaData = new ArticleMetadata(this, site, articleId,
           articlePointer, ingestionMetadata, itemTable, relationships);
       return articleMetaData;
@@ -409,30 +408,11 @@ public class ArticleMetadata {
           LocalDate.parse((String) articleMetadata.get("publicationDate")))
       .reversed();
 
-  private static final ImmutableSet<String> RELATIONSHIP_DIRECTIONS = ImmutableSet.of("inbound", "outbound");
-
   List<Map<String, ?>> getRelatedArticles() {
-    // Eliminate duplicate DOIs (in case there are inbound and outbound relationships with the same article)
-    Map<String, Map<String, ?>> relationshipsByDoi = new HashMap<>();
-    for (String direction : RELATIONSHIP_DIRECTIONS) {
-      for (Map<String, ?> relatedArticle : relationships.get(direction)) {
-        String relatedArticleDoi = (String) relatedArticle.get("doi");
-        Map<String, ?> previous = relationshipsByDoi.put(relatedArticleDoi, relatedArticle);
-
-        if (previous != null) {
-          // Collisions are okay if a relationship exists in each direction. Verify that the data are consistent.
-          Preconditions.checkState(Objects.equals(relatedArticle.get("revisionNumber"), previous.get("revisionNumber"))
-              && Objects.equals(relatedArticle.get("title"), previous.get("title"))
-              && Objects.equals(relatedArticle.get("publicationDate"), previous.get("publicationDate")));
-          // It is fine for relatedArticle.get("type") and previous.get("type") to be unequal.
-        }
-      }
-    }
-
-    return relationshipsByDoi.values().stream()
-        .filter(ArticleMetadata::isPublished)
-        .sorted(BY_DESCENDING_PUB_DATE)
-        .collect(Collectors.toList());
+    return relationships.stream()
+      .filter(ArticleMetadata::isPublished)
+      .sorted(BY_DESCENDING_PUB_DATE)
+      .collect(Collectors.toList());
   }
 
   public Map<String, ?> getAuthors() throws IOException {
@@ -485,8 +465,7 @@ public class ArticleMetadata {
    * data about those articles from the service tier.
    */
   public ArticleMetadata fillAmendments(Model model) throws IOException {
-    List<Map<String, ?>> inboundRelationships = relationships.get("inbound");
-    List<Map<String, Object>> amendments = inboundRelationships.parallelStream()
+    List<Map<String, Object>> amendments = relationships.parallelStream()
         .filter((Map<String, ?> relatedArticle) -> isPublished(relatedArticle) && getAmendmentType(relatedArticle).isPresent())
         .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
         .sorted(BY_DESCENDING_PUB_DATE)

@@ -290,9 +290,8 @@ public class BrowseController extends WombatController {
 
   public List<RelatedArticle> fetchRelatedArticles(String doi) throws IOException {
     ApiAddress address = ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build();
-    Type t = TypeToken.getParameterized(List.class, Map.class).getType();
-    List<Map<String, Object>> relationshipMetadata = articleApi.<List<Map<String, Object>>>requestObject(address, t);
-    return relationshipMetadata.stream().map(RelatedArticle::fromMap).collect(Collectors.toList());
+    Type t = TypeToken.getParameterized(List.class, RelatedArticle.class).getType();
+    return articleApi.<List<RelatedArticle>>requestObject(address, t);
   }
 
   private void populateAuthors(Map<String, Object> article, Site site) throws IOException {

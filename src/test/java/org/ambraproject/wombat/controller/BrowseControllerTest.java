@@ -47,11 +47,11 @@ public class BrowseControllerTest extends ControllerTest {
   @Test
   public void testFetchRelatedArticles() throws Exception {
     String doi = "10.9999/journal.xxxx.0";
-    List<Map<String, Object>> map = new Gson().fromJson(read("articleMeta/ppat.1005446.related.json"), ArrayList.class);
+    Type t = TypeToken.getParameterized(List.class, RelatedArticle.class).getType();
+    List<RelatedArticle> map = new Gson().fromJson(read("articleMeta/ppat.1005446.related.json"), t);
 
     ApiAddress address = ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build();
 
-    Type t = TypeToken.getParameterized(List.class, Map.class).getType();
     when(articleApi.requestObject(address, t)).thenReturn(map);
     List<RelatedArticle> raList = browseController.fetchRelatedArticles(doi);
     assertEquals(1, raList.size());

@@ -21,15 +21,37 @@
  */
 
 package org.ambraproject.wombat.model;
+import java.lang.reflect.Type;
 import java.time.LocalDate;
-import java.util.Map;
 import java.util.Optional;
 
 import com.google.auto.value.AutoValue;
-import com.google.common.collect.ImmutableMap;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.annotations.JsonAdapter;
 
 @AutoValue
+@JsonAdapter(RelatedArticle.Deserializer.class)
 public abstract class RelatedArticle {
+  public class Deserializer implements JsonDeserializer<RelatedArticle> {  
+    @Override
+    public RelatedArticle deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        JsonObject jsonObject = json.getAsJsonObject();
+        Optional<Integer> revisionNumber = Optional.ofNullable(jsonObject.get("revisionNumber").getAsBigInteger().intValue());
+        Optional<LocalDate> publicationDate = Optional.ofNullable(jsonObject.get("publicationDate").getAsString()).map(LocalDate::parse);
+
+        return RelatedArticle.builder()
+          .setDoi(jsonObject.get("doi").getAsString())
+          .setTitle(Optional.ofNullable(jsonObject.get("title").getAsString()))
+          .setRevisionNumber(revisionNumber)
+          .setPublicationDate(publicationDate)
+          .setType(jsonObject.get("type").getAsString())
+          .build();
+    }
+}
   public abstract String getDoi();
   public abstract Optional<LocalDate> getPublicationDate();
   public abstract Optional<Integer> getRevisionNumber();
@@ -42,19 +64,6 @@ public abstract class RelatedArticle {
     
   public static Builder builder() {
     return new AutoValue_RelatedArticle.Builder();
-  }
-
-  public static RelatedArticle fromMap(Map<String, Object> map) {
-    Optional<Integer> revisionNumber = Optional.ofNullable((Double) map.get("revisionNumber")).map(Double::intValue);
-    Optional<LocalDate> publicationDate = Optional.ofNullable((String) map.get("publicationDate")).map(LocalDate::parse);
-
-    return RelatedArticle.builder()
-      .setDoi((String) map.get("doi"))
-      .setTitle(Optional.ofNullable((String) map.get("title")))
-      .setRevisionNumber(revisionNumber)
-      .setPublicationDate(publicationDate)
-      .setType((String) map.get("type"))
-      .build();
   }
 
   @AutoValue.Builder

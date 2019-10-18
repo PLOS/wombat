@@ -22,41 +22,9 @@
 
 package org.ambraproject.wombat.controller;
 
-import com.google.common.base.Preconditions;
-import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.site.url.Link;
-import org.ambraproject.wombat.identity.ArticlePointer;
-import org.ambraproject.wombat.identity.RequestedDoiVersion;
-import org.ambraproject.wombat.model.ArticleType;
-import org.ambraproject.wombat.service.ArticleResolutionService;
-import org.ambraproject.wombat.service.ArticleService;
-import org.ambraproject.wombat.service.ArticleTransformService;
-import org.ambraproject.wombat.service.EntityNotFoundException;
-import org.ambraproject.wombat.service.PeerReviewService;
-import org.ambraproject.wombat.service.XmlUtil;
-import org.ambraproject.wombat.service.remote.ApiAddress;
-import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.CorpusContentApi;
-import org.ambraproject.wombat.util.TextUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.LocalDate;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -72,6 +40,42 @@ import java.util.OptionalInt;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+
+import com.google.common.base.Preconditions;
+import com.google.common.base.Splitter;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.LinkedListMultimap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
+import com.google.gson.reflect.TypeToken;
+
+import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.ambraproject.wombat.model.ArticleType;
+import org.ambraproject.wombat.model.RelatedArticle;
+import org.ambraproject.wombat.service.ArticleResolutionService;
+import org.ambraproject.wombat.service.ArticleService;
+import org.ambraproject.wombat.service.ArticleTransformService;
+import org.ambraproject.wombat.service.EntityNotFoundException;
+import org.ambraproject.wombat.service.PeerReviewService;
+import org.ambraproject.wombat.service.XmlUtil;
+import org.ambraproject.wombat.service.remote.ApiAddress;
+import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
+import org.ambraproject.wombat.util.TextUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+
 public class ArticleMetadata {
   private static final Logger log = LoggerFactory.getLogger(ArticleMetadata.class);
 
@@ -81,12 +85,12 @@ public class ArticleMetadata {
   private final ArticlePointer articlePointer;
   private final Map<String, ?> ingestionMetadata;
   private final Map<String, ?> itemTable;
-  private final List<Map<String, Object>> relationships;
+  private final List<RelatedArticle> relationships;
 
   private ArticleMetadata(Factory factory, Site site,
                           RequestedDoiVersion articleId, ArticlePointer articlePointer,
                           Map<String, ?> ingestionMetadata, Map<String, ?> itemTable,
-                          List<Map<String, Object>> relationships) {
+                          List<RelatedArticle> relationships) {
     this.factory = Objects.requireNonNull(factory);
     this.site = Objects.requireNonNull(site);
     this.articleId = Objects.requireNonNull(articleId);
@@ -140,9 +144,7 @@ public class ArticleMetadata {
         throw new NotFoundException(e);
       }
       Map<String, ?> itemTable = articleService.getItemTable(articlePointer);
-      ApiAddress relationshipsApiAddress = ApiAddress.builder("articles")
-          .embedDoi(articlePointer.getDoi()).addToken("relationships").build();
-      List<Map<String, Object>> relationships = articleApi.requestObject(relationshipsApiAddress, List.class);
+      List<RelatedArticle> relationships = fetchRelatedArticles(articlePointer.getDoi());
 
       final ArticleMetadata articleMetaData =
           newInstance(site, id, articlePointer, ingestionMetadata, itemTable, relationships);
@@ -165,10 +167,17 @@ public class ArticleMetadata {
                                        ArticlePointer articlePointer,
                                        Map<String, ?> ingestionMetadata,
                                        Map<String, ?> itemTable,
-                                       List<Map<String, Object>> relationships) {
+                                       List<RelatedArticle> relationships) {
       final ArticleMetadata articleMetaData = new ArticleMetadata(this, site, articleId,
           articlePointer, ingestionMetadata, itemTable, relationships);
       return articleMetaData;
+    }
+
+    public static Type RELATED_ARTICLE_GSON_TYPE = TypeToken.getParameterized(List.class, RelatedArticle.class).getType();
+
+    public List<RelatedArticle> fetchRelatedArticles(String doi) throws IOException {
+      ApiAddress address = ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build();
+      return articleApi.<List<RelatedArticle>>requestObject(address, RELATED_ARTICLE_GSON_TYPE);
     }
   }
 
@@ -399,18 +408,13 @@ public class ArticleMetadata {
         .collect(Collectors.toList());
   }
 
-  private static boolean isPublished(Map<String, ?> relatedArticle) {
-    return relatedArticle.get("revisionNumber") != null;
-  }
+  private static final Comparator<RelatedArticle> BY_DESCENDING_PUB_DATE = Comparator.
+    comparing(RelatedArticle::getPublicationDate)
+    .reversed();
 
-  private static final Comparator<Map<String, ?>> BY_DESCENDING_PUB_DATE = Comparator
-      .comparing((Map<String, ?> articleMetadata) ->
-          LocalDate.parse((String) articleMetadata.get("publicationDate")))
-      .reversed();
-
-  List<Map<String, ?>> getRelatedArticles() {
+  List<RelatedArticle> getRelatedArticles() {
     return relationships.stream()
-      .filter(ArticleMetadata::isPublished)
+      .filter(RelatedArticle::isPublished)
       .sorted(BY_DESCENDING_PUB_DATE)
       .collect(Collectors.toList());
   }
@@ -465,11 +469,12 @@ public class ArticleMetadata {
    * data about those articles from the service tier.
    */
   public ArticleMetadata fillAmendments(Model model) throws IOException {
-    List<Map<String, Object>> amendments = relationships.parallelStream()
-        .filter((Map<String, ?> relatedArticle) -> isPublished(relatedArticle) && getAmendmentType(relatedArticle).isPresent())
-        .map((Map<String, ?> relatedArticle) -> createAmendment(site, relatedArticle))
-        .sorted(BY_DESCENDING_PUB_DATE)
-        .collect(Collectors.toList());
+    List<Map<String, Object>> amendments = relationships
+      .parallelStream()
+      .filter((article)->article.isPublished() && getAmendmentType(article).isPresent())
+      .sorted(BY_DESCENDING_PUB_DATE)
+      .map((article) -> createAmendment(site, article))
+      .collect(Collectors.toList());
     List<AmendmentGroup> amendmentGroups = buildAmendmentGroups(amendments);
     model.addAttribute("amendments", amendmentGroups);
 
@@ -506,8 +511,8 @@ public class ArticleMetadata {
   /**
    * @return the amendment type of the relationship, or empty if the relationship is not an amendment
    */
-  private Optional<AmendmentType> getAmendmentType(Map<String, ?> relatedArticle) {
-    String relationshipType = (String) relatedArticle.get("type");
+  private Optional<AmendmentType> getAmendmentType(RelatedArticle relatedArticle) {
+    String relationshipType = relatedArticle.getType();
     AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
     return Optional.ofNullable(amendmentType);
   }
@@ -521,10 +526,10 @@ public class ArticleMetadata {
    * @return a model of the amendment
    * @throws IllegalArgumentException if the relationship is not of an amendment type
    */
-  private Map<String, Object> createAmendment(Site site, Map<String, ?> relatedArticle) {
+  private Map<String, Object> createAmendment(Site site, RelatedArticle relatedArticle) {
     AmendmentType amendmentType = getAmendmentType(relatedArticle).orElseThrow(IllegalArgumentException::new);
 
-    String doi = (String) relatedArticle.get("doi");
+    String doi = (String) relatedArticle.getDoi();
 
     ArticlePointer amendmentId;
     Map<String, Object> amendment;

@@ -22,13 +22,21 @@
 
 package org.ambraproject.wombat.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimaps;
-import com.google.gson.reflect.TypeToken;
 
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
@@ -38,12 +46,11 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleType;
-import org.ambraproject.wombat.model.RelatedArticle;
-import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.XmlUtil;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.slf4j.Logger;
@@ -53,19 +60,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Controller for the browse page.
@@ -255,7 +249,7 @@ public class BrowseController extends WombatController {
       Map<String, ?> ingestion = (Map<String, ?>) article.get("ingestion");
       ArticleType articleType = typeDictionary.lookUp((String) ingestion.get("articleType"));
 
-      populatedArticle.put("relatedArticles", fetchRelatedArticles(doi));
+      populatedArticle.put("relatedArticles", articleMetadataFactory.fetchRelatedArticles(doi));
 
       populateAuthors(populatedArticle, site);
 
@@ -286,12 +280,6 @@ public class BrowseController extends WombatController {
     }
 
     return articleGroups;
-  }
-
-  public List<RelatedArticle> fetchRelatedArticles(String doi) throws IOException {
-    ApiAddress address = ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build();
-    Type t = TypeToken.getParameterized(List.class, RelatedArticle.class).getType();
-    return articleApi.<List<RelatedArticle>>requestObject(address, t);
   }
 
   private void populateAuthors(Map<String, Object> article, Site site) throws IOException {

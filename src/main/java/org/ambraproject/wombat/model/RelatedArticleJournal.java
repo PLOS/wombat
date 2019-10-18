@@ -22,7 +22,6 @@
 
 package org.ambraproject.wombat.model;
 import java.lang.reflect.Type;
-import java.time.LocalDate;
 
 import com.google.auto.value.AutoValue;
 import com.google.gson.JsonDeserializationContext;
@@ -33,49 +32,33 @@ import com.google.gson.JsonParseException;
 import com.google.gson.annotations.JsonAdapter;
 
 @AutoValue
-@JsonAdapter(RelatedArticle.Deserializer.class)
-public abstract class RelatedArticle {
-  public class Deserializer implements JsonDeserializer<RelatedArticle> {  
+@JsonAdapter(RelatedArticleJournal.Deserializer.class)
+public abstract class RelatedArticleJournal {
+  public class Deserializer implements JsonDeserializer<RelatedArticleJournal> {  
     @Override
-    public RelatedArticle deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        JsonObject jsonObject = json.getAsJsonObject();
-        Integer revisionNumber = jsonObject.get("revisionNumber").getAsBigInteger().intValue();
-        LocalDate publicationDate = LocalDate.parse(jsonObject.get("publicationDate").getAsString());
-
-        return RelatedArticle.builder()
-          .setDoi(jsonObject.get("doi").getAsString())
+    public RelatedArticleJournal deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+      JsonObject jsonObject = json.getAsJsonObject();
+       return RelatedArticleJournal.builder()
           .setTitle(jsonObject.get("title").getAsString())
-          .setRevisionNumber(revisionNumber)
-          .setPublicationDate(publicationDate)
-          .setType(jsonObject.get("type").getAsString())
-          .setJournal(context.deserialize(jsonObject.get("journal"), RelatedArticleJournal.class))
+          .setJournalKey(jsonObject.get("journalKey").getAsString())
+          .seteIssn(jsonObject.get("eIssn").getAsString())
           .build();
     }
 }
-  public abstract String getDoi();
-  public abstract LocalDate getPublicationDate();
-  public abstract Integer getRevisionNumber();
+  public abstract String getJournalKey();
   public abstract String getTitle();
-  public abstract String getType();
-  public abstract RelatedArticleJournal getJournal();
+  public abstract String geteIssn();
 
-  public boolean isPublished() {
-    return this.getRevisionNumber() != null;
-  }
-    
   public static Builder builder() {
-    return new AutoValue_RelatedArticle.Builder();
+    return new AutoValue_RelatedArticleJournal.Builder();
   }
 
   @AutoValue.Builder
     public abstract static class Builder {
-    public abstract RelatedArticle build();
+    public abstract RelatedArticleJournal build();
 
-    public abstract Builder setType(String type);
-    public abstract Builder setDoi(String doi);
+    public abstract Builder setJournalKey(String journalKey);
     public abstract Builder setTitle(String title);
-    public abstract Builder setRevisionNumber(Integer revisionNumber);
-    public abstract Builder setPublicationDate(LocalDate title);
-    public abstract Builder setJournal(RelatedArticleJournal journal);
+    public abstract Builder seteIssn(String eIssn);
   }
 }

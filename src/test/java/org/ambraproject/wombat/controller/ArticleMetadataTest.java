@@ -1,5 +1,6 @@
 package org.ambraproject.wombat.controller;
 
+import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
@@ -17,25 +18,40 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.google.gson.Gson;
+
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.ambraproject.wombat.model.RelatedArticle;
+import org.ambraproject.wombat.service.remote.ApiAddress;
+import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.ui.Model;
-import org.junit.Before;
-import org.junit.Test;
 
 @ContextConfiguration(classes = {ArticleMetadataTest.class})
 public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
 
   @InjectMocks
   public ArticleMetadata.Factory articleMetadataFactory;
+
+  @Autowired
+  ArticleApi articleApi;
+  
+  @Bean
+  protected ArticleApi articleApi() {
+    return mock(ArticleApi.class);
+  }
 
   @Before
   public void initMocks() {
@@ -158,5 +174,20 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
     List<Map<String, ?>> expectedFigureView = new ArrayList<>();
     expectedFigureView.add(expected);
     assertEquals(articleMetadata.getFigureView(), expectedFigureView);
+  }
+
+  @Test
+  public void testFetchRelatedArticles() throws Exception {
+    String doi = "10.9999/journal.xxxx.0";
+    List<RelatedArticle> map = new Gson().fromJson(read("articleMeta/ppat.1005446.related.json"),
+                                                   ArticleMetadata.Factory.RELATED_ARTICLE_GSON_TYPE);
+
+    ApiAddress address = ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build();
+
+    when(articleApi.requestObject(address, ArticleMetadata.Factory.RELATED_ARTICLE_GSON_TYPE)).thenReturn(map);
+    List<RelatedArticle> raList = articleMetadataFactory.fetchRelatedArticles(doi);
+    assertEquals(1, raList.size());
+    RelatedArticle ra = raList.get(0);
+    assertEquals("10.1371/journal.ppat.1006021", ra.getDoi());
   }
 }

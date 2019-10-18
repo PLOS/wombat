@@ -27,6 +27,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -34,15 +35,16 @@ import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.junit.After;
 import org.junit.Before;
@@ -110,9 +112,9 @@ public class CommentControllerTest extends ControllerTest {
 
     ImmutableMap<String, String> journal = ImmutableMap.of("journalKey", DESKTOP_PLOS_ONE);
     ImmutableMap<String, Object> ingestionMetadata = ImmutableMap.of("journal", journal);
-    ImmutableMap<String, List<Map<String, ?>>> relationships = ImmutableMap.of();
-
-    doReturn(ingestionMetadata, relationships).when(articleApi).requestObject(any(), eq(Map.class));
+    ApiAddress address = ApiAddress.builder("articles").embedDoi(EXPECTED_DOI).addToken("relationships").build();
+    when(articleApi.requestObject(address, ArticleMetadata.Factory.RELATED_ARTICLE_GSON_TYPE)).thenReturn(ImmutableList.of());
+    when(articleApi.requestObject(any(), eq(Map.class))).thenReturn(ingestionMetadata);
   }
 
   private static final String EXPECTED_DOI = "10.1371/journal.pbio.1001091";
@@ -123,8 +125,6 @@ public class CommentControllerTest extends ControllerTest {
   public void verifyCalls() throws IOException {
     verify(articleResolutionService).toIngestion(expectedRequestedDoi);
     verify(articleService).getItemTable(expectedArticlePointer);
-    verify(articleApi, times(1)).requestObject(any(), eq(Map.class));
-    verify(articleApi, times(1)).requestObject(any(), eq(List.class));
   }
 
   /**

@@ -11,10 +11,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -61,18 +63,15 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
 
   @Test
   public void testPopulate() throws IOException {
+    List<RelatedArticle> relations = ImmutableList.of();
+
     ArticleMetadata articleMetadata = spy(articleMetadataFactory.newInstance(mock(Site.class),
-        mock(RequestedDoiVersion.class),
-        mock(ArticlePointer.class),
-        new HashMap(),
-        new HashMap(),
-        new ArrayList()));
+        mock(RequestedDoiVersion.class), mock(ArticlePointer.class), new HashMap(), new HashMap(), relations));
     doReturn(null).when(articleMetadata).getFigureView();
     doReturn(null).when(articleMetadata).getArticleType();
     doReturn(null).when(articleMetadata).getCommentCount();
     doReturn(null).when(articleMetadata).getContainingArticleLists();
     doReturn(null).when(articleMetadata).getCategoryTerms();
-    doReturn(ImmutableList.of()).when(articleMetadata).getRelatedArticles();
     doReturn(null).when(articleMetadata).getRevisionMenu();
     doReturn(null).when(articleMetadata).getPeerReviewHtml();
     doNothing().when(articleMetadata).populateAuthors(any());
@@ -87,6 +86,44 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
     verify(articleMetadata).getRevisionMenu();
     verify(articleMetadata).getPeerReviewHtml();
     verify(articleMetadata).populateAuthors(any());
+  }
+
+  @Test
+  public void testGetRelatedArticlesSortInReversePublicationOrder() throws IOException {
+    RelatedArticle rel1 = mock(RelatedArticle.class);
+    RelatedArticle rel2 = mock(RelatedArticle.class);
+    when(rel1.isPublished()).thenReturn(true);
+    when(rel1.getPublicationDate()).thenReturn(LocalDate.of(2018, 1, 1));
+    when(rel2.isPublished()).thenReturn(true);
+    when(rel2.getPublicationDate()).thenReturn(LocalDate.of(2019, 1, 1));
+    List<RelatedArticle> relations = ImmutableList.of(rel1, rel2);
+    ArticleMetadata articleMetadata = articleMetadataFactory.newInstance(mock(Site.class),
+        mock(RequestedDoiVersion.class), mock(ArticlePointer.class), new HashMap(), new HashMap(), relations);
+    assertEquals(ImmutableList.of(rel2, rel1), articleMetadata.getRelatedArticles());
+  }
+
+  @Test
+  public void testGetRelatedArticeByType() throws IOException {
+    RelatedArticle rel1 = mock(RelatedArticle.class);
+    RelatedArticle rel2 = mock(RelatedArticle.class);
+    when(rel1.isPublished()).thenReturn(true);
+    when(rel1.getPublicationDate()).thenReturn(LocalDate.of(2018, 1, 1));
+    when(rel1.getDisplayType()).thenReturn("Retraction");
+    when(rel2.isPublished()).thenReturn(true);
+    when(rel2.getPublicationDate()).thenReturn(LocalDate.of(2019, 1, 1));
+    when(rel2.getDisplayType()).thenReturn("Companion");
+    List<RelatedArticle> relations = ImmutableList.of(rel1, rel2);
+    ArticleMetadata articleMetadata = articleMetadataFactory
+      .newInstance(mock(Site.class),
+                   mock(RequestedDoiVersion.class),
+                   mock(ArticlePointer.class),
+                   new HashMap(),
+                   new HashMap(),
+            relations);
+    SortedMap<String, List<RelatedArticle>> map =
+      articleMetadata.getRelatedArticlesByType();
+    assertEquals("Retraction", map.firstKey());
+    assertEquals(ImmutableList.of(rel1), map.get("Retraction"));
   }
 
   @Test

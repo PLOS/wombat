@@ -38,6 +38,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -202,10 +204,7 @@ public class ArticleMetadata {
     model.addAttribute("commentCount", getCommentCount());
     model.addAttribute("containingLists", getContainingArticleLists());
     model.addAttribute("categoryTerms", getCategoryTerms());
-    model.addAttribute("relatedArticlesByType",
-                       getRelatedArticles()
-                       .stream()
-                       .collect(Collectors.groupingBy(RelatedArticle::getDisplayType)));
+    model.addAttribute("relatedArticlesByType", getRelatedArticlesByType());
     populateAuthors(model);
 
     model.addAttribute("revisionMenu", getRevisionMenu());
@@ -420,6 +419,13 @@ public class ArticleMetadata {
       .filter(RelatedArticle::isPublished)
       .sorted(BY_DESCENDING_PUB_DATE)
       .collect(Collectors.toList());
+  }
+
+  SortedMap<String, List<RelatedArticle>> getRelatedArticlesByType() {
+    return getRelatedArticles().stream()
+      .collect(Collectors.groupingBy(RelatedArticle::getDisplayType,
+                                     ()-> new TreeMap<>(RelatedArticle.SORT_BY_TYPE_COMPARATOR),
+                                     Collectors.toList()));
   }
 
   public Map<String, ?> getAuthors() throws IOException {

@@ -23,6 +23,7 @@
 package org.ambraproject.wombat.model;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.Map;
 
 import com.google.auto.value.AutoValue;
@@ -82,6 +83,17 @@ public abstract class RelatedArticle {
     .put("updated-article", "Update Article")
     .put("update-forward", "Update Article")
     .build();
+
+  public static Map<String, Integer> typeDisplayOrder = ImmutableMap.<String, Integer>builder()
+    .put("Retraction", 1)
+    .put("Correction", 2)
+    .put("Expression of Concern", 3)
+    .put("Update Article", 4)
+    .put("Companion", 6)
+    .build();
+
+  public static Comparator<String> SORT_BY_TYPE_COMPARATOR =
+    Comparator.comparing((str)->typeDisplayOrder.get(str));
 
   public String getDisplayType() {
     return displayType.getOrDefault(getType(), getType());

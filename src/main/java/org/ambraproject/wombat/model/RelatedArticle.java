@@ -23,8 +23,10 @@
 package org.ambraproject.wombat.model;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
+import java.util.Map;
 
 import com.google.auto.value.AutoValue;
+import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -35,7 +37,7 @@ import com.google.gson.annotations.JsonAdapter;
 @AutoValue
 @JsonAdapter(RelatedArticle.Deserializer.class)
 public abstract class RelatedArticle {
-  public class Deserializer implements JsonDeserializer<RelatedArticle> {  
+  public class Deserializer implements JsonDeserializer<RelatedArticle> {
     @Override
     public RelatedArticle deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
@@ -62,9 +64,47 @@ public abstract class RelatedArticle {
   public boolean isPublished() {
     return this.getRevisionNumber() != null;
   }
-    
+
   public static Builder builder() {
     return new AutoValue_RelatedArticle.Builder();
+  }
+
+  public static Map<String, String> displayType = ImmutableMap.<String, String>builder()
+    .put("commentary", "Commentary")
+    .put("commentary-article", "Commentary")
+    .put("companion", "Companion")
+    .put("corrected-article", "Correction")
+    .put("correction-forward", "Correction")
+    .put("retracted-article", "Retraction")
+    .put("retraction-forward", "Retraction")
+    .put("object-of-concern", "Expression of Concern")
+    .put("concern-forward", "Expression of Concern")
+    .put("updated-article", "Update Article")
+    .put("update-forward", "Update Article")
+    .build();
+
+  public String getDisplayType() {
+    return displayType.getOrDefault(getType(), getType());
+  }
+
+  /*
+    * Return true if the related article here is a "has" type-relation
+    * to the article it is attached to. In other words, if the base
+    * article can be said to "has correction" of this article. Used
+    * for display.
+   */
+  public boolean isHasRelation() {
+    String type = getType();
+    return (type.equals("companion") ||
+            type.equals("corrected-article") ||
+            type.equals("object-of-concern") ||
+            type.equals("retracted-article") ||
+            type.equals("updated-article") ||
+            type.equals("commentary-article"));
+  }
+
+  public boolean isPertainsToRelation() {
+    return !isHasRelation();
   }
 
   @AutoValue.Builder

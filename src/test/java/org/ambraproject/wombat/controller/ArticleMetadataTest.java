@@ -18,6 +18,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 
 import org.ambraproject.wombat.config.site.Site;
@@ -71,7 +72,7 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
     doReturn(null).when(articleMetadata).getCommentCount();
     doReturn(null).when(articleMetadata).getContainingArticleLists();
     doReturn(null).when(articleMetadata).getCategoryTerms();
-    doReturn(null).when(articleMetadata).getRelatedArticles();
+    doReturn(ImmutableList.of()).when(articleMetadata).getRelatedArticles();
     doReturn(null).when(articleMetadata).getRevisionMenu();
     doReturn(null).when(articleMetadata).getPeerReviewHtml();
     doNothing().when(articleMetadata).populateAuthors(any());

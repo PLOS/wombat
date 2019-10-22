@@ -202,7 +202,10 @@ public class ArticleMetadata {
     model.addAttribute("commentCount", getCommentCount());
     model.addAttribute("containingLists", getContainingArticleLists());
     model.addAttribute("categoryTerms", getCategoryTerms());
-    model.addAttribute("relatedArticles", getRelatedArticles());
+    model.addAttribute("relatedArticlesByType",
+                       getRelatedArticles()
+                       .stream()
+                       .collect(Collectors.groupingBy(RelatedArticle::getDisplayType)));
     populateAuthors(model);
 
     model.addAttribute("revisionMenu", getRevisionMenu());

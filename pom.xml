@@ -630,6 +630,9 @@
     </plugins>
     <pluginManagement>
       <plugins>
+        <!-- Configure eclipse to skip building assets with gulp/npm.
+             If you are using the Eclipse language server this hangs
+             the build constantly. -->
         <plugin>
           <groupId>org.eclipse.m2e</groupId>
           <artifactId>lifecycle-mapping</artifactId>

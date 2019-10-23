@@ -93,7 +93,7 @@ public abstract class RelatedArticle {
     .build();
 
   public static Comparator<String> SORT_BY_TYPE_COMPARATOR =
-    Comparator.comparing((str)->typeDisplayOrder.get(str));
+    Comparator.comparing((str)->typeDisplayOrder.getOrDefault(str, 100));
 
   public String getDisplayType() {
     return displayType.getOrDefault(getType(), getType());

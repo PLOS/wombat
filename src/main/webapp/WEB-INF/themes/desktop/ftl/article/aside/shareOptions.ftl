@@ -13,9 +13,6 @@ titleFix = article.title?replace("<[^>]*>", "", "r"), journalTitle = article.jou
 <#-- reddit, but modified to not use JS for encoding -->
 <li><a href="https://www.reddit.com/submit?url=${urlParameter}" id="shareReddit" target="_blank" title="Submit to Reddit"><img src="<@siteLink path="/resource/img/icon.reddit.16.png"/>" width="16" height="16" alt="Reddit">Reddit</a></li>
 
-<#-- google plus, as per <https://developers.google.com/+/web/share/#sharelink>  -->
-<li><a href="https://plus.google.com/share?url=${urlParameter}" id="shareGoogle" target="_blank" title="Share on Google+"><img src="<@siteLink path="/resource/img/icon.gplus.16.png"/>" width="16" height="16" alt="Google+">Google+</a></li>
-
 <#-- facebook, as per previous implementation which uses the now
 deprecated share.php (which redirects to /sharer/sharer.php) -->
 <li><a href="https://www.facebook.com/share.php?u=${urlParameter}&t=${titleFix}" id="shareFacebook" target="_blank" title="Share on Facebook"><img src="<@siteLink path="/resource/img/icon.fb.16.png"/>" width="16" height="16" alt="Facebook">Facebook</a></li>

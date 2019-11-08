@@ -127,7 +127,7 @@ public abstract class RelatedArticle {
     public abstract Builder setDoi(String doi);
     public abstract Builder setTitle(String title);
     public abstract Builder setRevisionNumber(Integer revisionNumber);
-    public abstract Builder setPublicationDate(LocalDate title);
+    public abstract Builder setPublicationDate(LocalDate date);
     public abstract Builder setJournal(RelatedArticleJournal journal);
   }
 }

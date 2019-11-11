@@ -222,7 +222,9 @@
 
 /* Alerts */
 .red-alert,
-.amendment-uncorrected-proof {
+.amendment.amendment-retraction,
+.amendment.amendment-eoc,
+.amendment.amendment-uncorrected-proof {
   background: #fce2e5;
 }
 
@@ -238,6 +240,10 @@
 
 .amendment-uncorrected-proof h2 {
   margin-top: 0 !important;
+}
+
+.amendment.amendment-correction {
+  background-color: #efefef;
 }
 
 /* Buttons */

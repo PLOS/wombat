@@ -34,9 +34,6 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
   public abstract int getSortOrder();
   public abstract String getDisplayName();
   public abstract String getName();
-  public boolean isPertainsToRelation() {
-    return !isHasRelation();
-  }
 
   /**
    * Special css names that are not worth removing now. :(
@@ -54,6 +51,16 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
     * for display.
    */
   public abstract boolean isHasRelation();
+
+  /*
+    * Return true if the related article here is a "pertains"
+    * type-relation to the article it is attached to. In other words,
+    * if the base article can be said to be a "correction" that
+    * "pertains to" another article. Used for display.
+   */
+  public boolean isPertainsToRelation() {
+    return !isHasRelation();
+  }
 
   public abstract boolean isAmendment();
 

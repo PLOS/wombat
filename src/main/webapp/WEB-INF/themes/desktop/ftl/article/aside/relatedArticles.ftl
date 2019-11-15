@@ -27,9 +27,9 @@
       <#list relatedArticlesByType as type, articles>
         <li>
           <b>
-            <#if articles[0].hasRelation>has</#if>
-            <@pluralize count=articles?size value=type?upper_case />
-            <#if articles[0].pertainsToRelation>pertains to</#if>
+            <#if type.hasRelation>has</#if>
+            <@pluralize count=articles?size value=type.displayName?upper_case />
+            <#if type.pertainsToRelation>pertains to</#if>
           </b>
         </li>
           <#list articles as article>

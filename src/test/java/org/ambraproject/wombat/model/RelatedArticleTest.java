@@ -30,7 +30,7 @@ public class RelatedArticleTest {
     assertEquals(title, ra.getTitle());
     assertEquals(new Integer(1), ra.getRevisionNumber());
     assertEquals(LocalDate.of(2016, 11, 4), ra.getPublicationDate());
-    assertEquals("correction-forward", ra.getType());
+    assertEquals(RelatedArticleType.get("correction-forward"), ra.getType());
     assertEquals(journal, ra.getJournal());
     assertTrue(ra.isPublished());
   }

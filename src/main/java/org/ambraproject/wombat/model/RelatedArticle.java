@@ -44,13 +44,13 @@ public abstract class RelatedArticle {
         JsonObject jsonObject = json.getAsJsonObject();
         Integer revisionNumber = jsonObject.get("revisionNumber").getAsBigInteger().intValue();
         LocalDate publicationDate = LocalDate.parse(jsonObject.get("publicationDate").getAsString());
-
+        RelatedArticleType relatedArticleType = RelatedArticleType.get(jsonObject.get("type").getAsString());
         return RelatedArticle.builder()
           .setDoi(jsonObject.get("doi").getAsString())
           .setTitle(jsonObject.get("title").getAsString())
           .setRevisionNumber(revisionNumber)
           .setPublicationDate(publicationDate)
-          .setType(jsonObject.get("type").getAsString())
+          .setType(relatedArticleType)
           .setJournal(context.deserialize(jsonObject.get("journal"), RelatedArticleJournal.class))
           .build();
     }
@@ -59,7 +59,7 @@ public abstract class RelatedArticle {
   public abstract LocalDate getPublicationDate();
   public abstract Integer getRevisionNumber();
   public abstract String getTitle();
-  public abstract String getType();
+  public abstract RelatedArticleType getType();
   public abstract RelatedArticleJournal getJournal();
 
   public boolean isPublished() {
@@ -70,60 +70,11 @@ public abstract class RelatedArticle {
     return new AutoValue_RelatedArticle.Builder();
   }
 
-  public static Map<String, String> displayType = ImmutableMap.<String, String>builder()
-    .put("commentary", "Commentary")
-    .put("commentary-article", "Commentary")
-    .put("companion", "Companion")
-    .put("corrected-article", "Correction")
-    .put("correction-forward", "Correction")
-    .put("retracted-article", "Retraction")
-    .put("retraction-forward", "Retraction")
-    .put("object-of-concern", "Expression of Concern")
-    .put("concern-forward", "Expression of Concern")
-    .put("updated-article", "Update Article")
-    .put("update-forward", "Update Article")
-    .build();
-
-  public static Map<String, Integer> typeDisplayOrder = ImmutableMap.<String, Integer>builder()
-    .put("Retraction", 1)
-    .put("Correction", 2)
-    .put("Expression of Concern", 3)
-    .put("Update Article", 4)
-    .put("Companion", 6)
-    .build();
-
-  public static Comparator<String> SORT_BY_TYPE_COMPARATOR =
-    Comparator.comparing((str)->typeDisplayOrder.getOrDefault(str, 100));
-
-  public String getDisplayType() {
-    return displayType.getOrDefault(getType(), getType());
-  }
-
-  /*
-    * Return true if the related article here is a "has" type-relation
-    * to the article it is attached to. In other words, if the base
-    * article can be said to "has correction" of this article. Used
-    * for display.
-   */
-  public boolean isHasRelation() {
-    String type = getType();
-    return (type.equals("companion") ||
-            type.equals("corrected-article") ||
-            type.equals("object-of-concern") ||
-            type.equals("retracted-article") ||
-            type.equals("updated-article") ||
-            type.equals("commentary-article"));
-  }
-
-  public boolean isPertainsToRelation() {
-    return !isHasRelation();
-  }
-
   @AutoValue.Builder
     public abstract static class Builder {
     public abstract RelatedArticle build();
 
-    public abstract Builder setType(String type);
+    public abstract Builder setType(RelatedArticleType type);
     public abstract Builder setDoi(String doi);
     public abstract Builder setTitle(String title);
     public abstract Builder setRevisionNumber(Integer revisionNumber);

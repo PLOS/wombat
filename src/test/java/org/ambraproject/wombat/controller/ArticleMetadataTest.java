@@ -21,6 +21,7 @@ import java.util.SortedMap;
 import javax.servlet.http.HttpServletRequest;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 
 import org.ambraproject.wombat.config.site.Site;
@@ -30,6 +31,7 @@ import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.RelatedArticle;
+import org.ambraproject.wombat.model.RelatedArticleType;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.junit.Before;
@@ -103,15 +105,17 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
   }
 
   @Test
-  public void testGetRelatedArticeByType() throws IOException {
+  public void testGetRelatedArticleByType() throws IOException {
     RelatedArticle rel1 = mock(RelatedArticle.class);
     RelatedArticle rel2 = mock(RelatedArticle.class);
+    RelatedArticleType type1 = RelatedArticleType.get("retracted-article");
+    RelatedArticleType type2 = RelatedArticleType.get("retraction-forward");
     when(rel1.isPublished()).thenReturn(true);
     when(rel1.getPublicationDate()).thenReturn(LocalDate.of(2018, 1, 1));
-    when(rel1.getDisplayType()).thenReturn("Retraction");
+    when(rel1.getType()).thenReturn(type1);
     when(rel2.isPublished()).thenReturn(true);
     when(rel2.getPublicationDate()).thenReturn(LocalDate.of(2019, 1, 1));
-    when(rel2.getDisplayType()).thenReturn("Companion");
+    when(rel2.getType()).thenReturn(type2);
     List<RelatedArticle> relations = ImmutableList.of(rel1, rel2);
     ArticleMetadata articleMetadata = articleMetadataFactory
       .newInstance(mock(Site.class),
@@ -120,10 +124,9 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
                    new HashMap(),
                    new HashMap(),
             relations);
-    SortedMap<String, List<RelatedArticle>> map =
+    SortedMap<RelatedArticleType, List<RelatedArticle>> map =
       articleMetadata.getRelatedArticlesByType();
-    assertEquals("Retraction", map.firstKey());
-    assertEquals(ImmutableList.of(rel1), map.get("Retraction"));
+    assertEquals(ImmutableSet.of(type1, type2), map.keySet());
   }
 
   @Test

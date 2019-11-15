@@ -29,21 +29,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.OptionalInt;
-import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
-
 import javax.servlet.http.HttpServletRequest;
-
 import com.google.common.base.Preconditions;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
@@ -54,7 +49,6 @@ import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.gson.reflect.TypeToken;
-
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -63,6 +57,7 @@ import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleType;
 import org.ambraproject.wombat.model.RelatedArticle;
+import org.ambraproject.wombat.model.RelatedArticleType;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.ArticleTransformService;
@@ -421,10 +416,10 @@ public class ArticleMetadata {
       .collect(Collectors.toList());
   }
 
-  SortedMap<String, List<RelatedArticle>> getRelatedArticlesByType() {
+  SortedMap<RelatedArticleType, List<RelatedArticle>> getRelatedArticlesByType() {
     return getRelatedArticles().stream()
-      .collect(Collectors.groupingBy(RelatedArticle::getDisplayType,
-                                     ()-> new TreeMap<>(RelatedArticle.SORT_BY_TYPE_COMPARATOR),
+      .collect(Collectors.groupingBy(RelatedArticle::getType,
+                                     TreeMap::new,
                                      Collectors.toList()));
   }
 
@@ -480,7 +475,7 @@ public class ArticleMetadata {
   public ArticleMetadata fillAmendments(Model model) throws IOException {
     List<Map<String, Object>> amendments = relationships
       .parallelStream()
-      .filter((article)->article.isPublished() && getAmendmentType(article).isPresent())
+      .filter((article)->article.isPublished() && article.getType().isAmendment())
       .sorted(BY_DESCENDING_PUB_DATE)
       .map((article) -> createAmendment(site, article))
       .collect(Collectors.toList());
@@ -491,53 +486,12 @@ public class ArticleMetadata {
   }
 
   /**
-   * Types of related articles that get special display handling.
-   */
-  private static enum AmendmentType {
-    UPDATE("updated-article"),
-    CORRECTION("corrected-article"),
-    EOC("object-of-concern"),
-    RETRACTION("retracted-article");
-
-    /**
-     * A value of the "type" field of an object in the list of inbound relationships.
-     */
-    private final String relationshipType;
-
-    private AmendmentType(String relationshipType) {
-      this.relationshipType = relationshipType;
-    }
-
-    // For use as a key in maps destined for the FreeMarker model
-    private String getLabel() {
-      return name().toLowerCase();
-    }
-
-    private static final ImmutableMap<String, AmendmentType> BY_RELATIONSHIP_TYPE = Maps.uniqueIndex(
-        EnumSet.allOf(AmendmentType.class), input -> input.relationshipType);
-  }
-
-  /**
-   * @return the amendment type of the relationship, or empty if the relationship is not an amendment
-   */
-  private Optional<AmendmentType> getAmendmentType(RelatedArticle relatedArticle) {
-    String relationshipType = relatedArticle.getType();
-    AmendmentType amendmentType = AmendmentType.BY_RELATIONSHIP_TYPE.get(relationshipType);
-    return Optional.ofNullable(amendmentType);
-  }
-
-  //  These amendment types display the full body of the related article. Otherwise just show the citation.
-  private static Set<AmendmentType> FULL_BODY_AMENDMENTS = EnumSet.of(AmendmentType.EOC, AmendmentType.RETRACTION);
-
-  /**
    * @param site           the site being rendered
    * @param relatedArticle a relationship to an amendment to this article
    * @return a model of the amendment
    * @throws IllegalArgumentException if the relationship is not of an amendment type
    */
   private Map<String, Object> createAmendment(Site site, RelatedArticle relatedArticle) {
-    AmendmentType amendmentType = getAmendmentType(relatedArticle).orElseThrow(IllegalArgumentException::new);
-
     String doi = (String) relatedArticle.getDoi();
 
     ArticlePointer amendmentId;
@@ -553,7 +507,7 @@ public class ArticleMetadata {
 
     amendment.putAll(authors);
 
-    if (FULL_BODY_AMENDMENTS.contains(amendmentType)) {
+    if (relatedArticle.getType().isFullBodyAmendment()) {
       String body;
       try {
         body = getAmendmentBody(amendmentId);
@@ -563,7 +517,7 @@ public class ArticleMetadata {
       amendment.put("body", body);
     }
 
-    amendment.put("type", amendmentType.getLabel());
+    amendment.put("type", relatedArticle.getType());
     return amendment;
   }
 
@@ -579,9 +533,9 @@ public class ArticleMetadata {
 
     List<AmendmentGroup> amendmentGroups = new ArrayList<>(amendments.size());
     List<Map<String, Object>> nextGroup = null;
-    String type = null;
+    RelatedArticleType type = null;
     for (Map<String, Object> amendment : amendments) {
-      String nextType = (String) amendment.get("type");
+      RelatedArticleType nextType = (RelatedArticleType) amendment.get("type");
       if (nextGroup == null || !Objects.equals(type, nextType)) {
         if (nextGroup != null) {
           amendmentGroups.add(new AmendmentGroup(type, nextGroup));
@@ -596,16 +550,16 @@ public class ArticleMetadata {
   }
 
   public static class AmendmentGroup {
-    private final String type;
+    private final RelatedArticleType type;
     private final ImmutableList<Map<String, Object>> amendments;
 
-    private AmendmentGroup(String type, List<Map<String, Object>> amendments) {
+    private AmendmentGroup(RelatedArticleType type, List<Map<String, Object>> amendments) {
       this.type = Objects.requireNonNull(type);
       this.amendments = ImmutableList.copyOf(amendments);
       Preconditions.checkArgument(!this.amendments.isEmpty());
     }
 
-    public String getType() {
+    public RelatedArticleType getType() {
       return type;
     }
 

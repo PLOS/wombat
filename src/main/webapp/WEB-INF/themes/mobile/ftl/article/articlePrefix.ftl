@@ -141,22 +141,22 @@
       </div>
     </#macro>
     <#list amendments as amendmentGroup>
-      <#if amendmentGroup.type == 'correction'>
+      <#if amendmentGroup.type == 'corrected-article'>
         <@amendment amendmentGroup "correction">
           This article has been corrected.
         </@amendment>
       </#if>
-      <#if amendmentGroup.type == 'eoc'>
+      <#if amendmentGroup.type == 'object-of-concern'>
         <@amendment amendmentGroup "expression of concern">
           There is an expression of concern about this article.
         </@amendment>
       </#if>
-      <#if amendmentGroup.type == 'retraction'>
+      <#if amendmentGroup.type == 'retracted-article'>
         <@amendment amendmentGroup "retraction">
           This article has been retracted.
         </@amendment>
       </#if>
-      <#if amendmentGroup.type == 'update'>
+      <#if amendmentGroup.type == 'updated-article'>
         <@amendment amendmentGroup "update">
           This article has been updated.
         </@amendment>

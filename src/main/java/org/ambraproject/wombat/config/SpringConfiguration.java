@@ -46,6 +46,7 @@ import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
 import org.ambraproject.wombat.freemarker.GlobalConfigDirective;
 import org.ambraproject.wombat.freemarker.IsDevFeatureEnabledDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
+import org.ambraproject.wombat.freemarker.PluralizeDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
 import org.ambraproject.wombat.freemarker.SiteLinkDirective;
 import org.ambraproject.wombat.freemarker.ThemeConfigDirective;
@@ -226,6 +227,7 @@ public class SpringConfiguration {
     // TODO: should all of these be their own @Beans?  I'm only doing that now for
     // ones that have dependencies on spring-injection.
     ImmutableMap.Builder<String, Object> variables = ImmutableMap.builder();
+    variables.put("pluralize", new PluralizeDirective());
     variables.put("formatJsonDate", new Iso8601DateDirective());
     variables.put("replaceParams", new ReplaceParametersDirective());
     variables.put("siteLink", siteLinkDirective);

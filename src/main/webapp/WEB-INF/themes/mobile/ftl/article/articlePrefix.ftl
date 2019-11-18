@@ -123,7 +123,7 @@
     <#include "revision/revisionNotice.ftl" />
 
     <#macro amendment amendmentGroup amendmentType>
-      <div class="amendment amendment-${amendmentGroup.type}">
+      <div class="amendment amendment-${amendmentGroup.type.cssName}">
         <span><h5>
           <#nested/>
           <#if amendmentGroup.amendments?size == 1>
@@ -141,22 +141,22 @@
       </div>
     </#macro>
     <#list amendments as amendmentGroup>
-      <#if amendmentGroup.type == 'corrected-article'>
+      <#if amendmentGroup.type.name == 'correction-forward'>
         <@amendment amendmentGroup "correction">
           This article has been corrected.
         </@amendment>
       </#if>
-      <#if amendmentGroup.type == 'object-of-concern'>
+      <#if amendmentGroup.type.name == 'concern-forward'>
         <@amendment amendmentGroup "expression of concern">
           There is an expression of concern about this article.
         </@amendment>
       </#if>
-      <#if amendmentGroup.type == 'retracted-article'>
+      <#if amendmentGroup.type.name == 'retraction-forward'>
         <@amendment amendmentGroup "retraction">
           This article has been retracted.
         </@amendment>
       </#if>
-      <#if amendmentGroup.type == 'updated-article'>
+      <#if amendmentGroup.type.name == 'update-forward'>
         <@amendment amendmentGroup "update">
           This article has been updated.
         </@amendment>

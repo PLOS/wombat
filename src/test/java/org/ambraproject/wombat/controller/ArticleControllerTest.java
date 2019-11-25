@@ -27,6 +27,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mockingDetails;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -47,15 +48,17 @@ import com.google.common.collect.ImmutableMap;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.Reference;
+import org.ambraproject.wombat.model.RelatedArticle;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.junit.Test;
 
 @ContextConfiguration
 public class ArticleControllerTest extends ControllerTest {
@@ -129,10 +132,12 @@ public class ArticleControllerTest extends ControllerTest {
 
     ImmutableMap<String, String> journal = ImmutableMap.of("journalKey", DESKTOP_PLOS_ONE);
     ImmutableMap<String, Object> ingestionMetadata = ImmutableMap.of("journal", journal);
-    ImmutableMap<String, List<Map<String, ?>>> relationships = ImmutableMap.of();
 
-    doReturn(ingestionMetadata, relationships).when(articleApi)
-        .requestObject(any(), eq(Map.class));
+    ApiAddress address = ApiAddress.builder("articles").embedDoi(EXPECTED_DOI).addToken("relationships").build();
+    when(articleApi.requestObject(address, ArticleMetadata.Factory.RELATED_ARTICLE_GSON_TYPE))
+        .thenReturn(ImmutableList.<RelatedArticle>of());
+
+    when(articleApi.requestObject(any(), eq(Map.class))).thenReturn(ingestionMetadata);
 
     when(articleMetadata.getArticlePointer()).thenReturn(expectedArticlePointer);
 
@@ -157,7 +162,7 @@ public class ArticleControllerTest extends ControllerTest {
 
     verify(articleResolutionService).toIngestion(expectedRequestedDoi);
     verify(articleService).getItemTable(expectedArticlePointer);
-    verify(articleApi, times(2)).requestObject(any(), eq(Map.class));
+    verify(articleApi, times(1)).requestObject(any(), eq(Map.class));
     verify(articleMetadata).getArticlePointer();
     verify(corpusContentApi).readManuscript(any(), any(), any(), any());
   }

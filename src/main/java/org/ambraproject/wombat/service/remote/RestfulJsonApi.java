@@ -63,6 +63,7 @@ public interface RestfulJsonApi {
       throws IOException;
 
   public abstract <T> T requestObject(ApiAddress address, Class<T> responseClass) throws IOException;
+  public abstract <T> T requestObject(ApiAddress address, Type t) throws IOException;
 
   /**
    * Serialize an object to JSON and POST the JSON to a service path.

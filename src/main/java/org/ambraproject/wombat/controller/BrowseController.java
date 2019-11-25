@@ -22,12 +22,22 @@
 
 package org.ambraproject.wombat.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimaps;
+
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
@@ -36,12 +46,11 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.model.ArticleType;
-import org.ambraproject.wombat.model.RelatedArticle;
-import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.ArticleTransformService;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.XmlUtil;
+import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.slf4j.Logger;
@@ -51,18 +60,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Controller for the browse page.
@@ -246,13 +243,13 @@ public class BrowseController extends WombatController {
     ListMultimap<ArticleType, Map<String, Object>> groupedArticles = LinkedListMultimap.create();
     for (Map<String, ?> article : articles) {
       if (!article.containsKey("revisionNumber")) continue; // Omit unpublished articles
-
+      String doi = (String) article.get("doi");
       Map<String, Object> populatedArticle = new HashMap<>(article);
 
       Map<String, ?> ingestion = (Map<String, ?>) article.get("ingestion");
       ArticleType articleType = typeDictionary.lookUp((String) ingestion.get("articleType"));
 
-      populateRelatedArticles(populatedArticle);
+      populatedArticle.put("relatedArticles", articleMetadataFactory.fetchRelatedArticles(doi));
 
       populateAuthors(populatedArticle, site);
 
@@ -283,23 +280,6 @@ public class BrowseController extends WombatController {
     }
 
     return articleGroups;
-  }
-
-  private void populateRelatedArticles(Map<String, Object> article) throws IOException {
-    Map<String, Object> relationshipMetadata = articleApi.requestObject(
-        ApiAddress.builder("articles").embedDoi((String) article.get("doi"))
-            .addToken("relationships").build(), Map.class);
-
-    List<Map<String, String>> inbound = (List<Map<String, String>>) relationshipMetadata.get("inbound");
-    List<Map<String, String>> outbound = (List<Map<String, String>>) relationshipMetadata.get("outbound");
-    List<RelatedArticle> relatedArticles = Stream.concat(inbound.stream(), outbound.stream())
-        .map(amendment -> new RelatedArticle(amendment.get("doi"), amendment.get("title"),
-            LocalDate.parse(amendment.get("publicationDate"))))
-        .distinct()
-        .sorted(Comparator.comparing(RelatedArticle::getPublicationDate).reversed())
-        .collect(Collectors.toList());
-
-    article.put("relatedArticles", relatedArticles);
   }
 
   private void populateAuthors(Map<String, Object> article, Site site) throws IOException {

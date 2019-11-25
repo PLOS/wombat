@@ -21,18 +21,21 @@
   -->
 
 <#include "citation.ftl" />
-<#macro amendmentNotice amendmentGroup title linkText index>
-<div class="amendment amendment-${amendmentGroup.type} toc-section">
+<#list amendments as amendmentGroup>
+  <div class="amendment amendment-${amendmentGroup.type.cssName} toc-section">
+  <#assign title>
+    <@pluralize count=amendmentGroup.amendments?size value=amendmentGroup.type.displayName />
+  </#assign>
   <#assign tocTitle>
     <#t/>${title}<#if amendmentGroup.amendments?size gt 1> (${amendmentGroup.amendments?size})</#if>
   </#assign>
-  <a data-toc="amendment-${index?c}" title="${tocTitle}" id="amendment-${index?c}" name="amendment-${index?c}"></a>
+  <a data-toc="amendment-${amendmentGroup_index?c}" title="${tocTitle}" id="amendment-${amendmentGroup_index?c}" name="amendment-${amendmentGroup_index?c}"></a>
 
   <h2>${title}</h2>
   <#list amendmentGroup.amendments as amendment>
     <#if amendment.body??>
       <div class="amendment-body">
-      ${amendment.body}
+        ${amendment.body}
       </div>
     </#if>
     <div class="amendment-citation">
@@ -49,23 +52,12 @@
           <@siteLink path="article?id=" ; path>
             <span class="link-separator"> </span>
             <a href="${path + amendment.doi}" class="amendment-link">
-            ${linkText}</a>
+              View ${amendmentGroup.type.displayName?lower_case}
+            </a>
           </@siteLink>
         </#if>
       </p>
     </div>
   </#list>
-</div>
-</#macro>
-
-<#-- Supports custom singular and plural titles for amendment types -->
-<#assign customStrings = {"eoc": ["Expression of Concern", "Expressions of Concern"]}>
-<#list amendments as amendmentGroup>
-  <#assign type = amendmentGroup.type>
-  <#assign typeStrings = customStrings[type]![type?capitalize, "${type?capitalize}s"]>
-  <#assign singular = typeStrings[0]>
-  <#assign plural = typeStrings[1]>
-  <#assign title = (amendmentGroup.amendments?size == 1)?string(singular, plural)>
-  <#assign link_text = "View ${singular?lower_case}">
-  <@amendmentNotice amendmentGroup, title, link_text, amendmentGroup_index />
+  </div>
 </#list>

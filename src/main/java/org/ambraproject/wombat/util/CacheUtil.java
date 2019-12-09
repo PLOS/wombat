@@ -22,7 +22,7 @@
 
 package org.ambraproject.wombat.util;
 
-import org.ambraproject.rhombat.cache.Cache;
+import org.ambraproject.wombat.cache.Cache;
 
 import java.io.IOException;
 import java.io.Serializable;

@@ -29,7 +29,7 @@ import com.google.common.util.concurrent.Striped;
 import com.yahoo.platform.yui.compressor.CssCompressor;
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
 
-import org.ambraproject.rhombat.cache.Cache;
+import org.ambraproject.wombat.cache.Cache;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.Theme;

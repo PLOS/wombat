@@ -1198,10 +1198,10 @@
       <xsl:value-of select="@id"/>
     </xsl:variable>
     <xsl:variable name="apos">'</xsl:variable>
-    <xsl:if test=".//graphic">
+    <xsl:if test="./graphic|./alternatives/graphic">
       <xsl:variable name="imageURI">
         <xsl:variable name="tempImageURI">
-          <xsl:value-of select=".//graphic/@xlink:href"/>
+          <xsl:value-of select="(./graphic|./alternatives/graphic)/@xlink:href"/>
         </xsl:variable>
 
         <!-- For consistency in the UI, we strip of the URI scheme of the DOI when rendering links

@@ -25,10 +25,11 @@
     <h3><#include "relatedArticleTitle.ftl"/></h3>
     <ul class="related-articles">
       <#list relatedArticlesByType as type, articles>
+        <#assign titleDisplay><#include "relatedArticleTypeHeader.ftl"/></#assign>
         <li>
           <b>
             <#if type.hasRelation>has</#if>
-            <@pluralize count=articles?size value=type.displayName?upper_case />
+            <@pluralize count=articles?size value=titleDisplay?trim?upper_case />
             <#if type.pertainsToRelation>pertains to</#if>
           </b>
         </li>

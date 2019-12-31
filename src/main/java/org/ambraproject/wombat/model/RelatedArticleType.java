@@ -134,7 +134,7 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
         RelatedArticleType.builder()
         .setSortOrder(7)
         .setName("update-forward")
-        .setDisplayName("Update Article")
+        .setDisplayName("Update")
         .setSpecialCssName("update")
         .setHasRelation(true)
         .setAmendment(true)
@@ -142,7 +142,7 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
         RelatedArticleType.builder()
         .setSortOrder(8)
         .setName("updated-article")
-        .setDisplayName("Update Article")
+        .setDisplayName("Update")
         .build(),
         RelatedArticleType.builder()
         .setSortOrder(9)

@@ -1,0 +1,5 @@
+key: DesktopPlosClinicalTrials
+parents:
+  - PlosClinicalTrialsContent
+  - DesktopPlos
+  - PlosClinicalTrials

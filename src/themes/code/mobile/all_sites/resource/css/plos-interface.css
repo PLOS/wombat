@@ -1,0 +1,47 @@
+/* PLOS Branding: Logo */
+#site-logo {
+  overflow: hidden;
+  text-indent: -1000px;
+  display: block;
+  background-position: 0px -210px;
+  width: 180px;
+  height: 29px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/journals.png');
+  background-size: 450px 288px;
+  margin: 10px auto 0 auto;
+}
+
+
+/* PLOS Color Branding: Gold */
+
+.grey-on-gold {
+  background: #ddd;
+  color: #333;
+}
+
+.two-btn-container a {
+  color: #d7df23;
+}
+
+.full-menu-container .full-menu-tout h4 {
+  color: #fff;
+}
+
+.search-expanded .search-form-container {
+  background: #ddd;
+}
+
+.filter-box {
+  background: #ddd;
+}
+
+.save-article.full.saved {
+  background: #ddd;
+}
+
+/* PLOS Color Branding: Blue */
+
+.blue-link {
+  color: #369;
+}

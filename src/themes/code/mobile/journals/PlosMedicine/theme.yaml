@@ -1,0 +1,5 @@
+key: MobilePlosMedicine
+parents:
+  - PlosMedicineContent
+  - MobilePlos
+  - PlosMedicine

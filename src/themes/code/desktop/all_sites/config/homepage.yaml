@@ -1,0 +1,18 @@
+sections:
+  - name: recent
+    resultCount: 3
+    since: 7
+    shuffle: true
+    cacheTtl: 1800  # 30 minutes
+    articleTypes:
+      - "Research Article"
+    articleTypesToExclude:
+      - "Correction"
+      - "Retraction"
+      - "Expression of Concern"
+
+defaultSelection: null
+
+showsIssue: true
+
+cacheTtl: 60

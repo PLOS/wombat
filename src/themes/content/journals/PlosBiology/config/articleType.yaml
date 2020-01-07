@@ -1,0 +1,172 @@
+# The order is significant. When inserting a new type, the placement must be specified by Editorial stakeholders.
+
+types:
+
+  - name:   "Message from the Founders"
+    plural: "Messages from the Founders"
+
+  - name:   "Message from PLoS"
+    plural: "Messages from PLoS"
+
+  - name:   "Editorial"
+    plural: "Editorials"
+
+  - name:   "Synopsis"
+    plural: "Synopses"
+    code:   "synopsis"
+    description: >
+      Selected PLOS Biology research articles are accompanied by a synopsis
+      written for a general audience to provide non-experts with insight into
+      the significance of the published work.
+
+  - name:   "Open Highlights"
+    plural: "Open Highlights"
+    code:   "open_highlights"
+    description: >
+      Open Highlights present themed summaries of content from across the PLOS
+      journals and other Open Access sources.
+
+  - name:   "Education"
+    plural: "Education Articles"
+    code:   "education"
+    description: >
+      The Education Series features noteworthy, innovative open-education
+      programs to enhance understanding of biology.
+
+  - name:   "Essay"
+    plural: "Essays"
+    code:   "essay"
+    description: >
+      Essays articulate a specific perspective on a topic of broad interest to
+      scientists.
+
+  - name:   "Feature"
+    plural: "Features"
+
+  - name:   "Unsolved Mystery"
+    plural: "Unsolved Mysteries"
+    code:   "unsolved_mystery"
+    description: >
+      Unsolved Mysteries discuss a topic of biological importance that is
+      poorly understood and in need of research attention.
+
+  - name:   "Perspective"
+    plural: "Perspectives"
+    code:   "perspective"
+    description: >
+      The Perspective section provides experts with a forum to comment on
+      topical or controversial issues of broad interest.
+
+  - name:   "Historical and Philosophical Perspectives"
+    plural: "Historical and Philosophical Perspectives"
+    code:   "historical_and_philosophical_perspectives"
+    description: >
+      The Historical and Philosophical Perspectives series provides
+      professional historians and philosophers of science with a forum to
+      reflect on topical issues in contemporary biology.
+
+  - name:   "Book Review"
+    plural: "Book Reviews"
+
+  - name:   "Book Review/Science in the Media"
+    plural: "Book Reviews/Science in the Media"
+
+  - name:   "Obituary"
+    plural: "Obituaries"
+
+  - name:   "Journal Club"
+    plural: "Journal Clubs"
+    code:   "journal_club"
+    description: >
+      Journal Club is a forum for postdoctoral scientists and graduate students
+      to discuss an important paper in the context of their own scientific
+      interests.
+
+  - name:   "Primer"
+    plural: "Primers"
+    code:   "primer"
+    description: >
+      Primers provide a concise introduction into an important aspect of
+      biology highlighted by a current PLOS Biology research article.
+
+  - name:   "Community Page"
+    plural: "Community Pages"
+    code:   "community_page"
+    description: >
+      The Community Page is a forum for organizations and societies to
+      highlight their efforts to enhance the dissemination and value of
+      scientific knowledge.
+
+  - name:   "Case Report"
+    plural: "Case Reports"
+
+  - name:   "Research Article"
+    plural: "Research Articles"
+
+  - name:   "Short Reports"
+    plural: "Short Reports"
+    description: >
+      Short Reports offer exciting novel biological findings that may trigger
+      new research directions.
+
+  - name:   "Methods and Resources"
+    plural: "Methods and Resources"
+    description: >
+      Methods and Resources report novel methods, substantial improvements to
+      current methodologies, or informational datasets.
+
+  - name:   "Meta-Research Article"
+    plural: "Meta-Research Articles"
+    description: >
+      Meta-Research Articles feature data-driven examinations of the methods,
+      reporting, verification, and evaluation of scientific research.
+
+  - name: "Preregistered Research Article"
+    plural: "Preregistered Research Articles"
+    description: >
+      Preregistered Research Articles present research resulting from a 
+      Registered Report, where the study design and methods were peer 
+      reviewed before data collection.
+
+  - name: "Discovery Report"
+    plural: "Discovery Reports"
+    description: >
+      Discovery Reports capture exploratory initial findings centered around a 
+      valuable and interesting research question.
+
+  - name: "Update Article"
+    plural: "Update Articles"
+    description: >
+      Update Articles add follow up mechanistic analysis and elucidation of 
+      findings described in PLOS Biology Discovery Reports.
+
+  - name:   "Correspondence"
+    plural: "Correspondence"
+
+  - name:   "Correspondence and Other Communications"
+    plural: "Correspondence and Other Communications"
+
+  - name:   "Correction"
+    plural: "Corrections"
+
+  - name:   "Retraction"
+    plural: "Retractions"
+
+  - name:   "Issue Image"
+    plural: "Issue Images"
+
+  - name:   "Formal Comment"
+    plural: "Formal Comments"
+    code:   "formal_comment"
+    description: >
+      Formal Comments are critiques of specific published articles.
+
+  - name:   "Research Matters"
+    plural: "Research Matters"
+    description: >
+      Research Matters articles provide a forum for scientists to communicate
+      why basic research in their field matters.
+
+  - name: "Expression of Concern"
+    plural: "Expressions of Concern"
+    code: "expression_of_concern"

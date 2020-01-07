@@ -1,0 +1,4 @@
+key: PlosPathogensContent
+parents:
+  - PlosContent
+  - PlosPathogens

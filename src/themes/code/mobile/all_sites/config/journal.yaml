@@ -1,0 +1,11 @@
+otherJournals: {
+  "PLoSBiology": "MobilePlosBiology",
+  "PLoSCollections": "DesktopPlosCollections",
+  "PLoSCompBiol": "MobilePlosCompBiol",
+  "PLoSGenetics": "MobilePlosGenetics",
+  "PLoSMedicine": "MobilePlosMedicine",
+  "PLoSNTD": "MobilePlosNtds",
+  "PLoSONE": "MobilePlosOne",
+  "PLoSPathogens": "MobilePlosPathogens",
+  "PLoSClinicalTrials": "MobilePlosClinicalTrials"
+}

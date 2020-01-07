@@ -1,0 +1,57 @@
+.coloration-bg,
+.active.color-active,
+.expanded .expander.color-active,
+#page-browse #menu-browse,
+#page-saved-items #menu-saved,
+#page-recent-history #menu-recent,
+li.accordion-item.expanded .expander,
+.grey-on-gold,
+nav.menu-bar li.active,
+nav.menu-rounded li.active.coloration-white-on-color,
+nav.menu-rounded td.active.coloration-white-on-color,
+.coloration-white-on-color,
+.main-accordion li.accordion-item.expanded > a,
+.save-article.full.saved { background: #891fb1; }
+
+.content a,
+.coloration-text-color,
+.two-btn-container a,
+.full-menu-container .full-menu-tout h4,
+.blue-link  { color: #891fb1; }
+
+.coloration-light-text,
+.active.color-active,
+.expanded .expander.color-active,
+#page-browse #menu-browse,
+#page-saved-items #menu-saved,
+#page-recent-history #menu-recent,
+li.accordion-item.expanded .expander  { color: #fff; }
+
+.coloration-border-top { border-top-color: #891fb1;}
+
+body #site-logo,
+.accordion-item .accordion-logo {
+  background-position: 0px -140px;
+  width: 215px;
+  height: 28px;
+  background-repeat: no-repeat;
+  background-image: url('../img/sprites/journals.png');
+  background-size: 450px 288px; }
+
+li.accordion-item.expanded .accordion-logo {
+  background-position: -225px -140px;
+}
+
+.amendment {
+  background-color: #decbe4;
+}
+
+.brand-background-shade-lighter {
+  background-color: #decbe4;
+}
+.brand-background-shade {
+  background-color: #d4afe0;
+}
+.brand-background-shade-darker {
+  background-color: #c493d4;
+}

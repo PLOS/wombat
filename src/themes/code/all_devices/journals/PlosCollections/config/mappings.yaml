@@ -1,0 +1,13 @@
+externalContent:
+  pattern: "/{pageName}"
+
+homePage:
+  disabled: true
+
+siteContentHome:
+  pattern: "/"
+
+lockssYears:
+  disabled: true
+# Both because there are no articles to list and also, with production-style URLs, there would be a conflict
+# between http://collections.plos.org/lockss-manifest and https://journals.plos.org/lockss-manifest

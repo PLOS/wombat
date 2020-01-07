@@ -1,0 +1,4 @@
+key: PlosMedicineContent
+parents:
+  - PlosContent
+  - PlosMedicine

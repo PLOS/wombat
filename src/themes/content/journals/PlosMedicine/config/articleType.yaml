@@ -1,0 +1,181 @@
+# The order is significant. When inserting a new type, the placement must be specified by Editorial stakeholders.
+
+types:
+
+  - name:   "Message from the PLoS Founders"
+    plural: "Messages from the PLoS Founders"
+
+  - name:   "Editorial"
+    plural: "Editorials"
+
+  - name:   "Synopsis"
+    plural: "Synopses"
+    code:   "synopsis"
+    description: >
+      PLOS Medicine published a Synopsis with every Research Article until May
+      2006. An Editors' Summary aimed at all medical professionals, whatever
+      their specialty, and the general public, is now published at the end of
+      each Research Article.
+
+  - name:   "Open Highlights"
+    plural: "Open Highlights"
+    code:   "open_highlights"
+    description: >
+      Open Highlights present themed summaries of content from across the PLOS
+      journals and other Open Access sources.
+
+  - name:   "The PLoS Medicine Debate"
+    plural: "The PLoS Medicine Debates"
+    code:   "the_plos_medicine_debate"
+    description: >
+      The PLOS Medicine Debate discusses important but controversial issues in
+      clinical practice, public health policy, or health in general. Debates
+      will be commissioned from two or more authors with differing points of
+      view.
+
+  - name:   "Essay"
+    plural: "Essays"
+    code:   "essay"
+    description: >
+      Essays are opinion pieces on a topic of broad interest to a general
+      medical audience.
+
+  - name:   "Neglected Diseases"
+    plural: "Neglected Diseases"
+    code:   "neglected_diseases"
+    description: >
+      PLOS Medicine's Neglected Diseases section began with the launch of the
+      journal in October 2004. Up until February 2008, the section focused on
+      tropical infectious diseases, such as Buruli ulcer, trachoma, and
+      hookworm. A list of the 21 articles published from October 2004 to
+      February 2008 can be found in the Supporting Information section of our
+      February 2008 Editorial. With the launch of PLOS Neglected Tropical
+      Diseases in October 2007, the focus of the Neglected Diseases section of
+      PLOS Medicine shifted from tropical diseases to other health problems
+      that could be considered neglected and that have a significant global
+      burden (such as reproductive and maternal health problems, mental illness
+      in low- and middle-income countries, road traffic injuries, and health
+      problems related to migration and conflict.). Read the February 2008
+      Editorial for information about the section.
+
+  - name:   "Perspective"
+    plural: "Perspectives"
+    code:   "perspective"
+    description: >
+      Perspectives are commissioned from an expert and discuss the clinical
+      practice or public health implications of a published study. The original
+      publication must be freely available online.
+
+  - name:   "Book Review"
+    plural: "Book Reviews"
+
+  - name:   "Obituary"
+    plural: "Obituaries"
+
+  - name:   "Health in Action"
+    plural: "Health in Action"
+    code:   "health_in_action"
+    description: >
+      The Health in Action section provides a place where groups or individuals
+      who are not represented regularly in a medical journal have a forum to
+      describe the important issues from their perspective. Authors might
+      include patient advocacy groups, healthcare workers, or non-governmental
+      organizations.
+
+  - name:   "Policy Forum"
+    plural: "Policy Forums"
+    code:   "policy_forum"
+    description: >
+      Policy Forum articles provide a platform for health policy makers from
+      around the world to discuss the challenges and opportunities in improving
+      health care to their constituencies.
+
+  - name:   "Guidelines and Guidance"
+    plural: "Guidelines and Guidance"
+    code:   "guidelines_and_guidance"
+    description: >
+      The Guidelines and Guidance section contains advice on conducting and
+      reporting medical research.
+
+  - name:   "Collection Review"
+    plural: "Collection Reviews"
+    code:   "collection_review"
+    description: >
+      Collection Review articles synthesize in narrative form the best
+      available evidence on a topic. Submission of Collection Review articles
+      is by invitation only, and they are only published as part of a PLOS
+      Collection as agreed in advance by the PLOS Medicine Editors.
+
+  - name:   "Research in Translation"
+    plural: "Research in Translation"
+    code:   "research_in_translation"
+    description: >
+      Research in Translation articles discuss a particular drug, treatment, or
+      public health intervention in the context of translation from early
+      research to clinical research, or clinical evidence to practice.
+
+  - name:   "Best Practice"
+    plural: "Best Practices"
+    code:   "best_practice"
+    description: >
+      The Best Practice section, which was published until May 2006, summarized
+      the current evidence on an important health intervention. PLOS Medicine
+      no longer publishes this article type in the journal.
+
+  - name:   "Student Forum"
+    plural: "Student Forum"
+    code:   "student_forum"
+    description: >
+      Student Forum essays were published until August 2009. They gave a
+      medical student perspective on any topic related to medicine, health, or
+      medical education. Student contributions are now hosted on Speaking of
+      Medicine, the PLOS Medicine community blog.
+
+  - name:   "Learning Forum"
+    plural: "Learning Forums"
+    code:   "learning_forum"
+    description: >
+      Learning Forum articles are commissioned by our educational advisors. The
+      section provides a forum for learning about an important clinical problem
+      that is relevant to a general medical audience.
+
+  - name:   "Case Report"
+    plural: "Case Reports"
+
+  - name:   "Review"
+    plural: "Reviews"
+    code:   "review"
+    description: >
+      Review articles synthesize in narrative form the best available evidence
+      on a topic. Review articles are only published as part of Supplements to
+      PLOS Medicine and are not featured in the PLOS Medicine Magazine.
+
+  - name:   "Research Article"
+    plural: "Research Articles"
+
+  - name:   "Correspondence"
+    plural: "Correspondence"
+
+  - name:   "Quiz"
+    plural: "Quizzes"
+
+  - name:   "Correction"
+    plural: "Corrections"
+
+  - name:   "Retraction"
+    plural: "Retractions"
+
+  - name:   "Issue Image"
+    plural: "Issue Images"
+
+  - name:   "Formal Comment"
+    plural: "Formal Comments"
+    code:   "formal_comment"
+    description: >
+      Formal Comments are critiques of specific published articles.
+
+  - name:   "Research Matters"
+    plural: "Research Matters"
+    description: >
+      Research Matters articles provide a forum for scientists to communicate
+      why basic research in their field matters.

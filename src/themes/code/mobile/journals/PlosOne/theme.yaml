@@ -1,0 +1,5 @@
+key: MobilePlosOne
+parents:
+  - PlosOneContent
+  - MobilePlos
+  - PlosOne

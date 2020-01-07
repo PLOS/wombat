@@ -1,0 +1,3 @@
+[submodule "src/themes"]
+	path = src/themes
+	url = git@github.com:plos/plos-themes

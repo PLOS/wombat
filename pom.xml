@@ -604,6 +604,14 @@
                     <prefix>/opt/plos/wombat</prefix>
                   </mapper>
                 </data>
+                <data>
+                  <src>${project.basedir}/src/themes</src>
+                  <type>directory</type>
+                  <mapper>
+                    <type>perm</type>
+                    <prefix>/opt/plos/wombat/var/themes</prefix>
+                  </mapper>
+                </data>
               </dataSet>
             </configuration>
           </execution>

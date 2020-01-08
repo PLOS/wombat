@@ -39,18 +39,18 @@
     </#if>
     <div class="amendment-citation">
       <p>
-        <#if amendment.publicationDate??>
+        <#if amendment.relatedArticle.publicationDate??>
           <span class="amendment-date">
-            <@formatJsonDate date="${amendment.publicationDate}" format="d MMM yyyy" />:
+            <@formatJsonDate date="${amendment.relatedArticle.publicationDate}" format="d MMM yyyy" />:
           </span>
         </#if>
 
-        <@displayCitation amendment />
+        <@displayCitation amendment.articleMetadata amendment.authors />
 
-        <#if amendment.doi??>
+        <#if amendment.relatedArticle.doi??>
           <@siteLink path="article?id=" ; path>
             <span class="link-separator"> </span>
-            <a href="${path + amendment.doi}" class="amendment-link">
+            <a href="${path + amendment.relatedArticle.doi}" class="amendment-link">
               View ${title?lower_case}
             </a>
           </@siteLink>

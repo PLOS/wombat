@@ -55,6 +55,8 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
+import org.ambraproject.wombat.model.Amendment;
+import org.ambraproject.wombat.model.AmendmentGroup;
 import org.ambraproject.wombat.model.ArticleType;
 import org.ambraproject.wombat.model.RelatedArticle;
 import org.ambraproject.wombat.model.RelatedArticleType;
@@ -478,7 +480,7 @@ public class ArticleMetadata {
    * data about those articles from the service tier.
    */
   public ArticleMetadata fillAmendments(Model model) throws IOException {
-    List<Map<String, Object>> amendments = relationships
+    List<Amendment> amendments = relationships
       .parallelStream()
       .filter((article)->article.isPublished() && article.getType().isAmendment())
       .sorted(BY_DESCENDING_PUB_DATE)
@@ -496,34 +498,29 @@ public class ArticleMetadata {
    * @return a model of the amendment
    * @throws IllegalArgumentException if the relationship is not of an amendment type
    */
-  private Map<String, Object> createAmendment(Site site, RelatedArticle relatedArticle) {
+  private Amendment createAmendment(Site site, RelatedArticle relatedArticle) {
     String doi = (String) relatedArticle.getDoi();
 
-    ArticlePointer amendmentId;
-    Map<String, Object> amendment;
-    Map<String, Object> authors;
+    ArticlePointer relatedArticlePointer;
+    List<Map<String, Object>> authors;
+    Map<String, Object> articleMetadata;
+    String body = null;
     try {
-      amendmentId = factory.articleResolutionService.toIngestion(RequestedDoiVersion.of(doi)); // always uses latest revision
-      amendment = (Map<String, Object>) factory.articleApi.requestObject(amendmentId.asApiAddress().build(), Map.class);
-      authors = getAuthors(amendmentId);
+      relatedArticlePointer = factory.articleResolutionService.toIngestion(RequestedDoiVersion.of(doi)); // always uses latest revision
+      articleMetadata = (Map<String, Object>) factory.articleApi.requestObject(relatedArticlePointer.asApiAddress().build(), Map.class);
+      authors = (List<Map<String, Object>>) getAuthors(relatedArticlePointer).get("authors");
+      if (relatedArticle.getType().isFullBodyAmendment()) {
+        body = getAmendmentBody(relatedArticlePointer);
+      }
+      return Amendment.builder()
+        .setBody(body)
+        .setRelatedArticle(relatedArticle)
+        .setAuthors(authors)
+        .setArticleMetadata(articleMetadata)
+        .build();
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-
-    amendment.putAll(authors);
-
-    if (relatedArticle.getType().isFullBodyAmendment()) {
-      String body;
-      try {
-        body = getAmendmentBody(amendmentId);
-      } catch (IOException e) {
-        throw new RuntimeException("Could not get body for amendment: " + doi, e);
-      }
-      amendment.put("body", body);
-    }
-
-    amendment.put("type", relatedArticle.getType());
-    return amendment;
   }
 
   /**
@@ -533,45 +530,25 @@ public class ArticleMetadata {
    * @param amendments a list of amendment objects in their desired display order
    * @return the amendments grouped by type in the same order
    */
-  private static List<AmendmentGroup> buildAmendmentGroups(List<Map<String, Object>> amendments) {
+  private static List<AmendmentGroup> buildAmendmentGroups(List<Amendment> amendments) {
     if (amendments.isEmpty()) return ImmutableList.of();
 
-    List<AmendmentGroup> amendmentGroups = new ArrayList<>(amendments.size());
-    List<Map<String, Object>> nextGroup = null;
+    List<AmendmentGroup> retval = new ArrayList<>(amendments.size());
+    AmendmentGroup.Builder builder = null;
     RelatedArticleType type = null;
-    for (Map<String, Object> amendment : amendments) {
-      RelatedArticleType nextType = (RelatedArticleType) amendment.get("type");
-      if (nextGroup == null || !Objects.equals(type, nextType)) {
-        if (nextGroup != null) {
-          amendmentGroups.add(new AmendmentGroup(type, nextGroup));
+    for (Amendment amendment : amendments) {
+      RelatedArticleType nextType = amendment.getType();
+      if (builder == null || !Objects.equals(type, nextType)) {
+        if (builder != null) {
+          retval.add(builder.build());
         }
+        builder = AmendmentGroup.builder().setType(nextType);
         type = nextType;
-        nextGroup = new ArrayList<>();
       }
-      nextGroup.add(amendment);
+      builder.addAmendment(amendment);
     }
-    amendmentGroups.add(new AmendmentGroup(type, nextGroup));
-    return amendmentGroups;
-  }
-
-  public static class AmendmentGroup {
-    private final RelatedArticleType type;
-    private final ImmutableList<Map<String, Object>> amendments;
-
-    private AmendmentGroup(RelatedArticleType type, List<Map<String, Object>> amendments) {
-      this.type = Objects.requireNonNull(type);
-      this.amendments = ImmutableList.copyOf(amendments);
-      Preconditions.checkArgument(!this.amendments.isEmpty());
-    }
-
-    public RelatedArticleType getType() {
-      return type;
-    }
-
-    public ImmutableList<Map<String, Object>> getAmendments() {
-      return amendments;
-    }
-
+    retval.add(builder.build());
+    return retval;
   }
 
   /**

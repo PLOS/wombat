@@ -423,9 +423,14 @@ public class ArticleMetadata {
                                      Collectors.toList()));
   }
 
-  public Map<String, ?> getAuthors() throws IOException {
-    ApiAddress authorAddress = articlePointer.asApiAddress().addToken("authors").build();
-    return factory.articleApi.requestObject(authorAddress, Map.class);
+  private Map<String, Object> getAuthors(ArticlePointer ap) throws IOException {
+    Type tt = new TypeToken<Map<String, Object>>() {}.getType();
+    ApiAddress authorAddress = ap.asApiAddress().addToken("authors").build();
+    return factory.articleApi.<Map<String, Object>> requestObject(authorAddress, tt);
+  }
+
+  public Map<String, Object> getAuthors() throws IOException {
+    return getAuthors(this.articlePointer);
   }
 
   /**
@@ -496,11 +501,11 @@ public class ArticleMetadata {
 
     ArticlePointer amendmentId;
     Map<String, Object> amendment;
-    Map<String, ?> authors;
+    Map<String, Object> authors;
     try {
       amendmentId = factory.articleResolutionService.toIngestion(RequestedDoiVersion.of(doi)); // always uses latest revision
       amendment = (Map<String, Object>) factory.articleApi.requestObject(amendmentId.asApiAddress().build(), Map.class);
-      authors = factory.articleApi.requestObject(amendmentId.asApiAddress().addToken("authors").build(), Map.class);
+      authors = getAuthors(amendmentId);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

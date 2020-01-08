@@ -221,6 +221,24 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
   public void testFetchRelatedArticles() throws Exception {
     String doi = "10.9999/journal.xxxx.0";
     List<RelatedArticle> map = new Gson().fromJson(read("articleMeta/ppat.1005446.related.json"),
+        ArticleMetadata.Factory.RELATED_ARTICLE_GSON_TYPE);
+
+    ApiAddress address =
+        ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build();
+
+    when(articleApi.requestObject(address, ArticleMetadata.Factory.RELATED_ARTICLE_GSON_TYPE))
+        .thenReturn(map);
+    List<RelatedArticle> raList = articleMetadataFactory.fetchRelatedArticles(doi);
+    assertEquals(1, raList.size());
+    RelatedArticle ra = raList.get(0);
+    assertEquals("10.1371/journal.ppat.1006021", ra.getDoi());
+    assertEquals(null, ra.getSpecificUse());
+  }
+
+  @Test
+  public void testFetchRelatedArticlesWithSpecificUse() throws Exception {
+    String doi = "10.9999/journal.xxxx.0";
+    List<RelatedArticle> map = new Gson().fromJson(read("articleMeta/ppat.1005446.related2.json"),
                                                    ArticleMetadata.Factory.RELATED_ARTICLE_GSON_TYPE);
 
     ApiAddress address = ApiAddress.builder("articles").embedDoi(doi).addToken("relationships").build();
@@ -229,6 +247,6 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
     List<RelatedArticle> raList = articleMetadataFactory.fetchRelatedArticles(doi);
     assertEquals(1, raList.size());
     RelatedArticle ra = raList.get(0);
-    assertEquals("10.1371/journal.ppat.1006021", ra.getDoi());
+    assertEquals("foo", ra.getSpecificUse());
   }
 }

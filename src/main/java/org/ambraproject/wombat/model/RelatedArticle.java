@@ -23,11 +23,9 @@
 package org.ambraproject.wombat.model;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
-import java.util.Comparator;
-import java.util.Map;
-
+import java.util.Optional;
+import javax.annotation.Nullable;
 import com.google.auto.value.AutoValue;
-import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -44,13 +42,16 @@ public abstract class RelatedArticle {
         JsonObject jsonObject = json.getAsJsonObject();
         Integer revisionNumber = jsonObject.get("revisionNumber").getAsBigInteger().intValue();
         LocalDate publicationDate = LocalDate.parse(jsonObject.get("publicationDate").getAsString());
-        RelatedArticleType relatedArticleType = RelatedArticleType.get(jsonObject.get("type").getAsString());
+        RelatedArticleType relatedArticleType =
+          RelatedArticleType.get(jsonObject.get("type").getAsString());
+        Optional<String> specificUse = Optional.ofNullable(jsonObject.get("specificUse")).map(JsonElement::getAsString);
         return RelatedArticle.builder()
           .setDoi(jsonObject.get("doi").getAsString())
           .setTitle(jsonObject.get("title").getAsString())
           .setRevisionNumber(revisionNumber)
           .setPublicationDate(publicationDate)
           .setType(relatedArticleType)
+          .setSpecificUse(specificUse.orElse(null))
           .setJournal(context.deserialize(jsonObject.get("journal"), RelatedArticleJournal.class))
           .build();
     }
@@ -60,6 +61,8 @@ public abstract class RelatedArticle {
   public abstract Integer getRevisionNumber();
   public abstract String getTitle();
   public abstract RelatedArticleType getType();
+  // Optional would be better, but it is not well-supported in freemarker.
+  @Nullable public abstract String getSpecificUse();
   public abstract RelatedArticleJournal getJournal();
 
   public boolean isPublished() {
@@ -80,5 +83,6 @@ public abstract class RelatedArticle {
     public abstract Builder setRevisionNumber(Integer revisionNumber);
     public abstract Builder setPublicationDate(LocalDate date);
     public abstract Builder setJournal(RelatedArticleJournal journal);
+    public abstract Builder setSpecificUse(String specificUse);
   }
 }

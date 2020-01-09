@@ -632,6 +632,19 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.5</version>
+        <configuration>
+          <excludes>
+            <!-- Simple autovalue classes -->
+            <exclude>org/ambraproject/wombat/model/Amendment.class</exclude>
+            <exclude>org/ambraproject/wombat/model/AmendmentGroup.class</exclude>
+            <exclude>**/AutoValue_*.class</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
     </plugins>
     <pluginManagement>
       <plugins>

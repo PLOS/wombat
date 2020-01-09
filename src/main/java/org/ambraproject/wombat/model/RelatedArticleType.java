@@ -151,7 +151,7 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
         RelatedArticleType.builder()
         .setSortOrder(7)
         .setName("update-forward")
-        .setDisplayName("Update")
+        .setDisplayName("Research Article")
         .setSpecialCssName("update")
         .setSpecificUse("registered-report-protocol")
         .setHasRelation(true)
@@ -165,7 +165,7 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
         RelatedArticleType.builder()
         .setSortOrder(8)
         .setName("updated-article")
-        .setDisplayName("Registered Report Protocol")
+        .setDisplayName("Research Article")
         .setAmendment(true)
         .setSpecificUse("registered-report-protocol")
         .build(),

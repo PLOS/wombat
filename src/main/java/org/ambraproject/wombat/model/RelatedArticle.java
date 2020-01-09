@@ -42,16 +42,15 @@ public abstract class RelatedArticle {
         JsonObject jsonObject = json.getAsJsonObject();
         Integer revisionNumber = jsonObject.get("revisionNumber").getAsBigInteger().intValue();
         LocalDate publicationDate = LocalDate.parse(jsonObject.get("publicationDate").getAsString());
-        RelatedArticleType relatedArticleType =
-          RelatedArticleType.get(jsonObject.get("type").getAsString());
         Optional<String> specificUse = Optional.ofNullable(jsonObject.get("specificUse")).map(JsonElement::getAsString);
+        RelatedArticleType relatedArticleType =
+          RelatedArticleType.get(jsonObject.get("type").getAsString(), specificUse.orElse(null));
         return RelatedArticle.builder()
           .setDoi(jsonObject.get("doi").getAsString())
           .setTitle(jsonObject.get("title").getAsString())
           .setRevisionNumber(revisionNumber)
           .setPublicationDate(publicationDate)
           .setType(relatedArticleType)
-          .setSpecificUse(specificUse.orElse(null))
           .setJournal(context.deserialize(jsonObject.get("journal"), RelatedArticleJournal.class))
           .build();
     }
@@ -61,8 +60,6 @@ public abstract class RelatedArticle {
   public abstract Integer getRevisionNumber();
   public abstract String getTitle();
   public abstract RelatedArticleType getType();
-  // Optional would be better, but it is not well-supported in freemarker.
-  @Nullable public abstract String getSpecificUse();
   public abstract RelatedArticleJournal getJournal();
 
   public boolean isPublished() {
@@ -83,6 +80,5 @@ public abstract class RelatedArticle {
     public abstract Builder setRevisionNumber(Integer revisionNumber);
     public abstract Builder setPublicationDate(LocalDate date);
     public abstract Builder setJournal(RelatedArticleJournal journal);
-    public abstract Builder setSpecificUse(String specificUse);
   }
 }

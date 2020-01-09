@@ -232,7 +232,7 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
     assertEquals(1, raList.size());
     RelatedArticle ra = raList.get(0);
     assertEquals("10.1371/journal.ppat.1006021", ra.getDoi());
-    assertEquals(null, ra.getSpecificUse());
+    assertEquals(null, ra.getType().getSpecificUse());
   }
 
   @Test
@@ -247,6 +247,6 @@ public class ArticleMetadataTest extends AbstractJUnit4SpringContextTests {
     List<RelatedArticle> raList = articleMetadataFactory.fetchRelatedArticles(doi);
     assertEquals(1, raList.size());
     RelatedArticle ra = raList.get(0);
-    assertEquals("foo", ra.getSpecificUse());
+    assertEquals("foo", ra.getType().getSpecificUse());
   }
 }

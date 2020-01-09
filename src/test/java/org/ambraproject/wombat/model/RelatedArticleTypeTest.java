@@ -14,6 +14,15 @@ public class RelatedArticleTypeTest {
         RelatedArticleType.get("correction-forward"));
     assertEquals(RelatedArticleType.get("corrected-article"),
         RelatedArticleType.get("corrected-article"));
+    assertEquals("Correction",
+                 RelatedArticleType.get("corrected-article").getDisplayName());
+  }
+
+  @Test
+  public void testGetSpecificUse() {
+    RelatedArticleType type = RelatedArticleType.get("updated-article", "registered-report-protocol");
+    assertNotEquals(RelatedArticleType.get("updated-article"), type);
+    assertEquals("registered-report-protocol", type.getSpecificUse());
   }
 
   @Test

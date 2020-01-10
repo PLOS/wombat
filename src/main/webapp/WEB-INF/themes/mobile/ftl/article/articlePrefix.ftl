@@ -127,13 +127,13 @@
         <span><h5>
           <#nested/>
           <#if amendmentGroup.amendments?size == 1>
-            <a href="article?id=${amendmentGroup.amendments[0].doi}">
+            <a href="article?id=${amendmentGroup.amendments[0].relatedArticle.doi}">
               View ${amendmentType}
             </a>
           <#else>
             View
             <#list amendmentGroup.amendments as amendmentObject>
-              <a href="article?id=${amendmentObject.doi}">
+              <a href="article?id=${amendmentObject.relatedArticle.doi}">
               ${amendmentType} ${amendmentObject_index + 1}</a><#if amendmentObject_has_next>,</#if>
             </#list>
           </#if>

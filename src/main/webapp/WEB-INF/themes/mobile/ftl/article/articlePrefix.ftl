@@ -157,9 +157,22 @@
         </@amendment>
       </#if>
       <#if amendmentGroup.type.name == 'update-forward'>
-        <@amendment amendmentGroup "update">
-          This article has been updated.
-        </@amendment>
+        <#if amendmentGroup.type.specificUse == 'registered-report-protocol'>
+          <@amendment amendmentGroup "research article">
+            This article has a related research article.
+          </@amendment>
+        <#else>  
+          <@amendment amendmentGroup "update">
+            This article has been updated.
+          </@amendment>
+        </#if>
+      </#if>
+      <#if amendmentGroup.type.name == 'updated-article'>
+        <#if amendmentGroup.type.specificUse == 'registered-report-protocol'>
+          <@amendment amendmentGroup "protocol">
+            This article has a registered report protocol.
+          </@amendment>
+        </#if>
       </#if>
     </#list>
 

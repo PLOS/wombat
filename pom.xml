@@ -381,6 +381,12 @@
       <version>6.4.1</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
     <!-- Logging -->
     <!-- We don't actually want commons-logging because it conflicts with slf4j, this is a trick to exclude it. See "Alternative 2" here: https://www.slf4j.org/faq.html#excludingJCL -->
     <dependency>
@@ -625,6 +631,19 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.5</version>
+        <configuration>
+          <excludes>
+            <!-- Simple autovalue classes -->
+            <exclude>org/ambraproject/wombat/model/Amendment.class</exclude>
+            <exclude>org/ambraproject/wombat/model/AmendmentGroup.class</exclude>
+            <exclude>**/AutoValue_*.class</exclude>
+          </excludes>
+        </configuration>
       </plugin>
     </plugins>
     <pluginManagement>

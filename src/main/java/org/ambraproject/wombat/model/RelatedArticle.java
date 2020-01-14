@@ -23,11 +23,9 @@
 package org.ambraproject.wombat.model;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
-import java.util.Comparator;
-import java.util.Map;
-
+import java.util.Optional;
+import javax.annotation.Nullable;
 import com.google.auto.value.AutoValue;
-import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -44,7 +42,9 @@ public abstract class RelatedArticle {
         JsonObject jsonObject = json.getAsJsonObject();
         Integer revisionNumber = jsonObject.get("revisionNumber").getAsBigInteger().intValue();
         LocalDate publicationDate = LocalDate.parse(jsonObject.get("publicationDate").getAsString());
-        RelatedArticleType relatedArticleType = RelatedArticleType.get(jsonObject.get("type").getAsString());
+        Optional<String> specificUse = Optional.ofNullable(jsonObject.get("specificUse")).map(JsonElement::getAsString);
+        RelatedArticleType relatedArticleType =
+          RelatedArticleType.get(jsonObject.get("type").getAsString(), specificUse.orElse(null));
         return RelatedArticle.builder()
           .setDoi(jsonObject.get("doi").getAsString())
           .setTitle(jsonObject.get("title").getAsString())

@@ -127,13 +127,13 @@
         <span><h5>
           <#nested/>
           <#if amendmentGroup.amendments?size == 1>
-            <a href="article?id=${amendmentGroup.amendments[0].doi}">
+            <a href="article?id=${amendmentGroup.amendments[0].relatedArticle.doi}">
               View ${amendmentType}
             </a>
           <#else>
             View
             <#list amendmentGroup.amendments as amendmentObject>
-              <a href="article?id=${amendmentObject.doi}">
+              <a href="article?id=${amendmentObject.relatedArticle.doi}">
               ${amendmentType} ${amendmentObject_index + 1}</a><#if amendmentObject_has_next>,</#if>
             </#list>
           </#if>
@@ -157,9 +157,22 @@
         </@amendment>
       </#if>
       <#if amendmentGroup.type.name == 'update-forward'>
-        <@amendment amendmentGroup "update">
-          This article has been updated.
-        </@amendment>
+        <#if amendmentGroup.type.specificUse == 'registered-report-protocol'>
+          <@amendment amendmentGroup "research article">
+            This article has a related research article.
+          </@amendment>
+        <#else>  
+          <@amendment amendmentGroup "update">
+            This article has been updated.
+          </@amendment>
+        </#if>
+      </#if>
+      <#if amendmentGroup.type.name == 'updated-article'>
+        <#if amendmentGroup.type.specificUse == 'registered-report-protocol'>
+          <@amendment amendmentGroup "protocol">
+            This article has a registered report protocol.
+          </@amendment>
+        </#if>
       </#if>
     </#list>
 

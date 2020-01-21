@@ -412,7 +412,7 @@
           <container>
             <containerId>tomcat8x</containerId>
             <zipUrlInstaller>
-              <url>http://repo1.maven.org/maven2/org/apache/tomcat/tomcat/8.5.37/tomcat-8.5.37.zip</url>
+              <url>https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/8.5.37/tomcat-8.5.37.zip</url>
             </zipUrlInstaller>
             <systemProperties>
               <java.util.logging.manager>org.apache.juli.ClassLoaderLogManager</java.util.logging.manager>

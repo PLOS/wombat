@@ -44,15 +44,6 @@ This page has moved. Please click <a href="<@siteLink path='${defaultTarget}'/>"
     }
   }
 
-  // Ajax URL should be set as a redirect in Apache. The redirect destination is arbitrary and
-  // response is ignored. This request will allow logging of Javascript-based redirects as if
-  // they were standard Apache redirects.
-  var xmlhttp = new XMLHttpRequest();
-  var url = "<@siteLink path=''/>" + 'logRedirect/' + encodeURIComponent(source)
-      + '/' + encodeURIComponent(current_anchor.replace('#', ''));
-  xmlhttp.open('POST', url, false /*async*/);
-  xmlhttp.send();
-
   window.location.replace("<@siteLink path='" + target + "'/>");
 
 </script>

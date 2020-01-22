@@ -20,4 +20,9 @@
   ~ DEALINGS IN THE SOFTWARE.
   -->
 
-${amendmentGroup.type.displayName}
+<#if amendmentGroup.type.name == "updated-article">
+  Preceding Article
+<#else>
+  ${amendmentGroup.type.displayName}
+</#if>
+

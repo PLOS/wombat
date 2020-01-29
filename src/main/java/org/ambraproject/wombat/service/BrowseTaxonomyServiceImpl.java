@@ -21,7 +21,7 @@
  */
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.rhombat.cache.Cache;
+import org.ambraproject.wombat.cache.Cache;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;

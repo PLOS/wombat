@@ -33,8 +33,8 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 
-import org.ambraproject.rhombat.cache.Cache;
-import org.ambraproject.rhombat.cache.NullCache;
+import org.ambraproject.wombat.cache.Cache;
+import org.ambraproject.wombat.cache.NullCache;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.TestClasspathTheme;
 import org.ambraproject.wombat.config.theme.Theme;

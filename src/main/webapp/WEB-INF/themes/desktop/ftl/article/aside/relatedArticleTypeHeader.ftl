@@ -1,5 +1,5 @@
 <#--
-  ~ Copyright (c) 2017 Public Library of Science
+  ~ Copyright (c) 2019 Public Library of Science
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a
   ~ copy of this software and associated documentation files (the "Software"),
@@ -19,31 +19,4 @@
   ~ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
   ~ DEALINGS IN THE SOFTWARE.
   -->
-
-This page has moved. Please click <a href="<@siteLink path='${defaultTarget}'/>">here</a> if you are not redirected automatically.
-
-
-<#include "redirectList.ftl"/>
-
-<#include "journalRedirectList.ftl"/>
-
-<script type="text/javascript">
-
-  // override with any journal-specific redirects
-  for (var key in journal_redirects) {
-    redirects[key] = journal_redirects[key];
-  }
-
-  var current_anchor = window.location.hash;
-  var target = "${defaultTarget}";
-  var source = "${sourcePage}";
-  for (var anchor_regex in redirects) {
-    if (RegExp(anchor_regex).test(source + current_anchor)) {
-      target = redirects[anchor_regex];
-      break;
-    }
-  }
-
-  window.location.replace("<@siteLink path='" + target + "'/>");
-
-</script>
+${type.displayName}

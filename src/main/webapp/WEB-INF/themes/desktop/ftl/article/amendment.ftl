@@ -23,15 +23,14 @@
 <#include "citation.ftl" />
 <#list amendments as amendmentGroup>
   <div class="amendment amendment-${amendmentGroup.type.cssName} toc-section">
-  <#assign title>
-    <@pluralize count=amendmentGroup.amendments?size value=amendmentGroup.type.displayName />
-  </#assign>
+  <#assign title><#include "amendmentGroupTitle.ftl"></#assign>
+  <#assign pluralizedTitle><@pluralize count=amendmentGroup.amendments?size value=title?trim/></#assign>
   <#assign tocTitle>
-    <#t/>${title}<#if amendmentGroup.amendments?size gt 1> (${amendmentGroup.amendments?size})</#if>
+  <#t/>${pluralizedTitle}<#if amendmentGroup.amendments?size gt 1> (${amendmentGroup.amendments?size})</#if>
   </#assign>
   <a data-toc="amendment-${amendmentGroup_index?c}" title="${tocTitle}" id="amendment-${amendmentGroup_index?c}" name="amendment-${amendmentGroup_index?c}"></a>
 
-  <h2>${title}</h2>
+  <h2>${pluralizedTitle}</h2>
   <#list amendmentGroup.amendments as amendment>
     <#if amendment.body??>
       <div class="amendment-body">
@@ -40,19 +39,19 @@
     </#if>
     <div class="amendment-citation">
       <p>
-        <#if amendment.publicationDate??>
+        <#if amendment.relatedArticle.publicationDate??>
           <span class="amendment-date">
-            <@formatJsonDate date="${amendment.publicationDate}" format="d MMM yyyy" />:
+            <@formatJsonDate date="${amendment.relatedArticle.publicationDate}" format="d MMM yyyy" />:
           </span>
         </#if>
 
-        <@displayCitation amendment />
+        <@displayCitation amendment.articleMetadata amendment.authors />
 
-        <#if amendment.doi??>
+        <#if amendment.relatedArticle.doi??>
           <@siteLink path="article?id=" ; path>
             <span class="link-separator"> </span>
-            <a href="${path + amendment.doi}" class="amendment-link">
-              View ${amendmentGroup.type.displayName?lower_case}
+            <a href="${path + amendment.relatedArticle.doi}" class="amendment-link">
+              View ${title?lower_case}
             </a>
           </@siteLink>
         </#if>

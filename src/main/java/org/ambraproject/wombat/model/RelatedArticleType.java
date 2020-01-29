@@ -21,19 +21,23 @@
  */
 
 package org.ambraproject.wombat.model;
-import java.util.Comparator;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 import com.google.auto.value.AutoValue;
 import com.google.common.collect.ImmutableSet;
+import org.apache.commons.lang3.tuple.Pair;
 
 @AutoValue
 public abstract class RelatedArticleType implements Comparable<RelatedArticleType> {
+  public abstract Builder toBuilder();
   public abstract int getSortOrder();
   public abstract String getDisplayName();
   public abstract String getName();
+  // Optional would be better, but it is not well-supported in freemarker.
+  @Nullable public abstract String getSpecificUse();
 
   /**
    * Special css names that are not worth removing now. :(
@@ -73,8 +77,8 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
       .setFullBodyAmendment(false);
   }
 
-  public static RelatedArticleType get(String typeName) {
-    RelatedArticleType type = TYPEMAP.get(typeName);
+  public static RelatedArticleType get(String typeName, String specificUse) {
+    RelatedArticleType type = TYPEMAP.get(Pair.of(typeName, specificUse));
     if (type != null) {
       return type;
     } else {
@@ -83,11 +87,16 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
         .setName(typeName)
         .setDisplayName(typeName)
         .setHasRelation(true)
+        .setSpecificUse(specificUse)
         .setSortOrder(100)
         .build();
     }
   }
 
+  public static RelatedArticleType get(String typeName) {
+    return RelatedArticleType.get(typeName, null);
+  }
+              
   private static ImmutableSet<RelatedArticleType> TYPESET =
     ImmutableSet
     .of(RelatedArticleType.builder()
@@ -134,15 +143,32 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
         RelatedArticleType.builder()
         .setSortOrder(7)
         .setName("update-forward")
-        .setDisplayName("Update Article")
+        .setDisplayName("Update")
         .setSpecialCssName("update")
+        .setHasRelation(true)
+        .setAmendment(true)
+        .build(),
+        RelatedArticleType.builder()
+        .setSortOrder(7)
+        .setName("update-forward")
+        .setDisplayName("Research Article")
+        .setSpecialCssName("update")
+        .setSpecificUse("registered-report-protocol")
         .setHasRelation(true)
         .setAmendment(true)
         .build(),
         RelatedArticleType.builder()
         .setSortOrder(8)
         .setName("updated-article")
-        .setDisplayName("Update Article")
+        .setDisplayName("Update")
+        .setAmendment(true)
+        .build(),
+        RelatedArticleType.builder()
+        .setSortOrder(8)
+        .setName("updated-article")
+        .setDisplayName("Research Article")
+        .setAmendment(true)
+        .setSpecificUse("registered-report-protocol")
         .build(),
         RelatedArticleType.builder()
         .setSortOrder(9)
@@ -164,8 +190,8 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
         );
 
   /* Map from typename to RelatedArticleType */
-  private static Map<String, RelatedArticleType> TYPEMAP = TYPESET.stream()
-      .collect(Collectors.toMap(RelatedArticleType::getName, Function.identity()));
+  private static Map<Pair<String, String>, RelatedArticleType> TYPEMAP = TYPESET.stream()
+    .collect(Collectors.toMap((rat)->Pair.of(rat.getName(), rat.getSpecificUse()), Function.identity()));
 
   @Override
   public int compareTo(RelatedArticleType that) {
@@ -183,5 +209,6 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
     public abstract Builder setAmendment(boolean amendment);
     public abstract Builder setFullBodyAmendment(boolean fullBodyAmendment);
     public abstract Builder setSpecialCssName(String specialCssName);
+    public abstract Builder setSpecificUse(String specificUse);
   }
 }

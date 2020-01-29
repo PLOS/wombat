@@ -24,7 +24,7 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
-import org.ambraproject.rhombat.cache.Cache;
+import org.ambraproject.wombat.cache.Cache;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;

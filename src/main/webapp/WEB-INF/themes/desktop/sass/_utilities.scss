@@ -245,10 +245,13 @@ example | extension
 
 // set the journal-specific colors - ps this is a good example of things that can be
 // pulled into themes or a separate scss file when the maven sass compiler is installed & working
-.plosbiology,
+.plosbiology {
+  @include brandcolor($setcolor: $plos-bio, $shade1: $plos-bio-shade1, $shade2: $plos-bio-shade2, $shade3: $plos-bio-shade3);
+}
+
 .ploscompbiol,
 .plosgenetics {
-  @include brandcolor($setcolor: $plos-bio, $shade1: $plos-bio-shade1, $shade2: $plos-bio-shade2, $shade3: $plos-bio-shade3);
+  @include brandcolor($setcolor: $plos-gen, $shade1: $plos-gen-shade1, $shade2: $plos-gen-shade2, $shade3: $plos-gen-shade3);
 }
 
 .plosmedicine,

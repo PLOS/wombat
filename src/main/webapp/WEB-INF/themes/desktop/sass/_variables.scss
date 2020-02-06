@@ -18,7 +18,8 @@ For example: instead of using `font-size: 22px` you should  instead use `font-si
 
 //journal specific
 
-$plos-bio: #16a127; //green: biology, comp-bio, genetics
+$plos-bio: #ff7400; //orange: biology
+$plos-gen: #16a127; //green: comp-bio, genetics
 $plos-med: #891fb1; // purple: medicine, pathogens, ntds
 $plos-currents: #1dbfe0; // light blue
 $plos-blue: #3c63af;
@@ -40,9 +41,13 @@ $plos-one-shade1: #ecf09b;
 $plos-one-shade2: $plos-one;
 $plos-one-shade3: #f4f6c3;
 
-$plos-bio-shade1: #a8e2be;
-$plos-bio-shade2: #92e5ab;
-$plos-bio-shade3: #caeed7;
+$plos-bio-shade1: #f9ac5e;
+$plos-bio-shade2: #ff7400;
+$plos-bio-shade3: #3a3030;
+
+$plos-gen-shade1: #a8e2be;
+$plos-gen-shade2: #92e5ab;
+$plos-gen-shade3: #caeed7;
 
 $plos-med-shade1: #d4afe0;
 $plos-med-shade2: #c493d4;

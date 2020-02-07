@@ -228,7 +228,6 @@ example | extension
   }
 
   %brand-shaded-blocks {
-
     &:first-child,
     &:nth-child(2),
     &:last-child {
@@ -247,6 +246,10 @@ example | extension
 // pulled into themes or a separate scss file when the maven sass compiler is installed & working
 .plosbiology {
   @include brandcolor($setcolor: $plos-bio, $shade1: $plos-bio-shade1, $shade2: $plos-bio-shade2, $shade3: $plos-bio-shade3);
+
+  .hero.overlay-dark > a:before {
+    background: $plos-bio-gradient;
+  }
 }
 
 .ploscompbiol,

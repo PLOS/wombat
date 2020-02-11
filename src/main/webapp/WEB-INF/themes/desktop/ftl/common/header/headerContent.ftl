@@ -47,7 +47,12 @@
       </li>
 
       </ul>     <#--opened in siteMenu.ftl -->
+
       </section>  <#--opened in siteMenu.ftl -->
+
+      <h1 class="logo">
+        <a href="<@siteLink path="." />">${siteTitle}</a>
+      </h1>
     </nav>
   </div><#-- pagehdr-->
 

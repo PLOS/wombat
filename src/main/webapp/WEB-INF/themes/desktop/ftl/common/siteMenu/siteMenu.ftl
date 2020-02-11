@@ -126,10 +126,6 @@
 <#--Markup starts here
 MARKUP: using Foundation Top Bar for navigation -->
 
-<h1 class="logo">
-  <a href="<@siteLink path="." />">${siteTitle}</a>
-</h1>
-
 <section class="top-bar-section"> <#--closed in headerContainer.ftl-->
 
 <ul class="nav-elements">

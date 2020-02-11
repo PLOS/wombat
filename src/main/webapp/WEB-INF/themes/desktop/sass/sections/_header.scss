@@ -94,30 +94,33 @@ $width-nav: $block-grid-elements - $width-logo;
     }
   }
   
+header .top-bar-section {
+  float: right;
+}
+
+header .nav-main .logo {
+  height: 50px;
+  width: 565px;
+  margin-top: -24px;
+}
+
+.plosntds header .nav-main .logo {
+  height: 22px;
+}
 
 .logo {
   @include plos-grid-column($columns: $width-logo);
   @extend .title-area; // foundation
   @include icon-offscreen;
-  height: rem-calc(41);
   //brand-specific logo in plos-themes/code/desktop/[BRAND]/resource/img :
-  background: image-url('logo.png') no-repeat 0 0;
+  background: image-url('logo.svg') no-repeat 0 0;
+  background-size: contain;
 
   a{
     display:block;
     height: 100%;
     }
   }
-
-// Anniversary logo height and position override
-.plosone, .plosntd, .plosbiology {
-  header {
-    .logo {
-      margin-top: rem-calc(-9);
-      height: rem-calc(58);
-    }
-  }
-}
 
 /* using Foundation Top Bar
  all @extend .class are Foundation
@@ -126,7 +129,7 @@ $width-nav: $block-grid-elements - $width-logo;
 .nav-main {
   @extend .plos-row;
   @extend .top-bar; // foundation
-  margin-bottom: $pad-default;
+  margin-bottom: 50px;
   font-family: $font-face-navigation;
   > .dropdown {
     visibility: hidden;

@@ -1122,7 +1122,12 @@ body.article .ui-widget-overlay {
     margin-top: $pad-xsmall;
 
     &:before {
-      content: image-url('logo.png') !important;
+      height: 50px;
+      width: 100%;
+      background-image: image-url('logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: left bottom;
     }
 
     h1 {

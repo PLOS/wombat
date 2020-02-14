@@ -111,9 +111,11 @@ $width-nav: $block-grid-elements - $width-logo;
   }
 }
 
+// adding specificity to override included styles
 #pagehdr .nav-main .logo {
   position: absolute;
   float: none;
+  margin-left: .625rem;
 }
 
 .ploscompbiol .logo {

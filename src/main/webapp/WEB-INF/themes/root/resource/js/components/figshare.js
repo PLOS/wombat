@@ -32,13 +32,37 @@ if (window.figshare) {
       var doi = containers[i].getAttribute("doi");
       var groupStringId = doi.split(".")[2];
 
+      var theme = {
+        pbio: "green", pcbi: "green", pgen: "green",
+        pmed: "purple", ppat: "purple", pntd: "purple",
+        pone: "yellow"
+      }[groupStringId] || "yellow";
+
       var widget = new Widget({
-        doi: doi,
-        extraClass: groupStringId
+        // doi: doi,
+        // extraClass: groupStringId
+
+        version: "3",
+        theme: theme, // one of "yellow", "green", "purple",
+        mathJax: true, // true or false
+        width: 650,
+        height: 450,
+        breakPoint: 300,
+        showStats: false,
+        showPageInfo: true,
+        showShareButton: false,
+        showFileDetails: true,
+        collection: null,
+        item: {
+          doi: doi
+        }
       });
 
+
+      changeAsideToDiv(containers[i]);
       widget.initialize(); // initialize the widget
       widget.mount(containers[i]); // mount it in a tag that's on your page
+
       loadedWidgets.push(widget);
     }
 
@@ -47,4 +71,28 @@ if (window.figshare) {
     window.loadedWidgets = loadedWidgets;
 
   });
+
+
+  // doubleclickad gets added to <aside> element of this widget. so rename it to <div>
+  function changeAsideToDiv(container) {
+    var state = {timer: null, count: 0};
+    var handler = function () {
+      var aside = container.querySelector('aside');
+      if (aside) {
+        clearTimeout(state.timer);
+        console.log('changed <aside> to <div>');
+        var div = document.createElement('div');
+        div.className = aside.className;
+        div.innerHTML = aside.innerHTML;
+        aside.parentNode.replaceChild(div, aside);
+      } else {
+        state.count += 1;
+        if (state.count * 100 > 30000) { // stop after 30s
+          clearTimeout(state.timer);
+        }
+      }
+    };
+    state.timer = setInterval(handler, 100);
+  }
+
 }

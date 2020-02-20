@@ -22,41 +22,6 @@
       color: $text-color-hover;
     }
   }
-  //color shading variations on adjacent box headers
-  %brand-shading {
-    &:first-child {
-      .block-header {
-        background-color: darken($setcolor, 13%);
-
-        body.plos-one & {
-          background-color: $white;
-        }
-      }
-      .jcarousel-prev,
-      .jcarousel-next {
-        color: darken($setcolor, 20%);
-        &:hover {
-          @extend %brand-background-hover;
-        }
-      }
-    }
-    &:first-child + .carousel-wrap {
-      .block-header {
-        background-color: darken($setcolor, 0);
-
-        .plosone & {
-          background-color: $white;
-        }
-      }
-      .jcarousel-prev,
-      .jcarousel-next {
-        color: darken($setcolor, 10%);
-        &:hover {
-          @extend %brand-background-hover;
-        }
-      }
-    }
-  }
 
   .amendment {
     background-color: $shade3;

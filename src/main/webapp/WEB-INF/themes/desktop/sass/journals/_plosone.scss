@@ -6,7 +6,7 @@ $plos-one-shade3: #f4f6c3;
   @include brandcolor($setcolor: $plos-one, $shade1: $plos-one-shade1, $shade2: $plos-one-shade2, $shade3: $plos-one-shade3, $text-color: $clr-body-text, $text-color-hover: $white);
 
   .logo {
-    height: 58px;
+    height: 40px;
   }
 
   .article-content .table-download .definition-label {

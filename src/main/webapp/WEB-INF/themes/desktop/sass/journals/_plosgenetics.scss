@@ -1,0 +1,8 @@
+$plos-genetics: #16a127; //green
+$plos-genetics-shade1: #a8e2be;
+$plos-genetics-shade2: #92e5ab;
+$plos-genetics-shade3: #caeed7;
+
+.plosgenetics {
+  @include brandcolor($setcolor: $plos-genetics, $shade1: $plos-genetics-shade1, $shade2: $plos-genetics-shade2, $shade3: $plos-genetics-shade3);
+}

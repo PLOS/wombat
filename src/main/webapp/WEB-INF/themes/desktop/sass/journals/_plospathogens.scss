@@ -1,8 +1,0 @@
-$plos-pathogens: #891fb1; //purple
-$plos-pathogens-shade1: #d4afe0;
-$plos-pathogens-shade2: #c493d4;
-$plos-pathogens-shade3: #decbe4;
-
-.plospathogens {
-  @include brandcolor($setcolor: $plos-pathogens, $shade1: $plos-pathogens-shade1, $shade2: $plos-pathogens-shade2, $shade3: $plos-pathogens-shade3);
-}

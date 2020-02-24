@@ -1,8 +1,0 @@
-$plos-medicine: #891fb1; //purple
-$plos-medicine-shade1: #d4afe0;
-$plos-medicine-shade2: #c493d4;
-$plos-medicine-shade3: #decbe4;
-
-.plosmedicine {
-  @include brandcolor($setcolor: $plos-medicine, $shade1: $plos-medicine-shade1, $shade2: $plos-medicine-shade2, $shade3: $plos-medicine-shade3);
-}

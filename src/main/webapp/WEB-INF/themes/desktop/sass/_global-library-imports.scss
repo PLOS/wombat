@@ -34,13 +34,4 @@ These are the files that need to be on each stand alone stylesheet, this is the 
 @import "icons"; // all the icons
 @import "forms";      // forms styles
 
-@import "journals/branding";
-@import "journals/plosbiology";
-@import "journals/ploscompbiol";
-@import "journals/plosgenetics";
-@import "journals/plosmedicine";
-@import "journals/plosntd";
-@import "journals/plosone";
-@import "journals/plospathogens";
-@import "journals/ploscollections";
-@import "journals/plosclinicaltrials";
+//@import "journal"; //journal-specific  use this when the maven sass compiler is installed

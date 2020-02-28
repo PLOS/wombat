@@ -37,8 +37,6 @@
   <title><@titleFormat removeTags(title) /></title>
 
 
-  <#include "../macro/ifDevFeatureEnabled.ftl" />
-
 <@pageCSS/>
 
   <@renderCssLinks />

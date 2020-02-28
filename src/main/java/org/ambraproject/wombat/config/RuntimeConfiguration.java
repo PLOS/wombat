@@ -79,11 +79,6 @@ public interface RuntimeConfiguration {
    */
   String getEnvironment();
 
-  /**
-   * @return the set of enabled dev features, configured in wombat.yaml.
-   */
-  ImmutableSet<String> getEnabledDevFeatures();
-
   ImmutableList<ThemeSource<?>> getThemeSources();
 
   interface CasConfiguration {

@@ -80,19 +80,6 @@
 <h2>Wombat</h2>
 <@buildInfoDisplay 'webapp' />
 
-<h3>Enabled Dev Features</h3>
-<@buildInfo component='webapp' field='enabledDevFeatures' ; enabledDevFeatures>
-  <#if enabledDevFeatures?has_content>
-  <ul>
-    <#list enabledDevFeatures as featureFlag>
-      <li><code>${featureFlag}</code></li>
-    </#list>
-  </ul>
-  <#else>
-  <strong>None</strong>
-  </#if>
-</@buildInfo>
-
 <h2>Rhino</h2>
 <@buildInfoDisplay 'service' />
 

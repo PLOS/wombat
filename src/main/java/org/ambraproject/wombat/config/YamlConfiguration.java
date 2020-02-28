@@ -84,11 +84,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public ImmutableSet<String> getEnabledDevFeatures() {
-    return ImmutableSet.copyOf(MoreObjects.firstNonNull(input.enableDevFeatures, ImmutableSet.<String>of()));
-  }
-
-  @Override
   public String getRootPagePath() {
     return input.rootPagePath;
   }
@@ -317,7 +312,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String compiledAssetDir;
     private String rootPagePath;
     private String environment;
-    private List<String> enableDevFeatures;
     private List<Map<String, ?>> themeSources;
 
     private CacheConfigurationInput cache;
@@ -357,14 +351,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setEnvironment(String environment) {
       this.environment = environment;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setEnableDevFeatures(List<String> enableDevFeatures) {
-      this.enableDevFeatures = enableDevFeatures;
     }
 
     /**

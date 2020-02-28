@@ -105,7 +105,6 @@ public class BuildInfoServiceImpl implements BuildInfoService {
     buildInfo.putAll(properties);
 
     buildInfo.put("gitCommitIdAbbrev", gitInfo.getCommitIdAbbrev());
-    buildInfo.put("enabledDevFeatures", runtimeConfiguration.getEnabledDevFeatures());
     return parse(buildInfo);
   }
 
@@ -120,8 +119,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
         (String) propertyMap.get("version"),
         (String) propertyMap.get("buildDate"),
         (String) propertyMap.get("buildUser"),
-        (String) propertyMap.get("gitCommitIdAbbrev"),
-        (Collection<String>) propertyMap.get("enabledDevFeatures"));
+        (String) propertyMap.get("gitCommitIdAbbrev"));
   }
 
 }

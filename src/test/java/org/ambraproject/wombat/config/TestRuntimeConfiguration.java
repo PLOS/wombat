@@ -67,9 +67,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public ImmutableSet<String> getEnabledDevFeatures() { return ImmutableSet.of(); }
-
-  @Override
   public ImmutableList<ThemeSource<?>> getThemeSources() {
     return null;
   }

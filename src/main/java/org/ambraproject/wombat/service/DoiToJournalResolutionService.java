@@ -26,8 +26,8 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class DoiToJournalResolutionService {
-  private static final Logger log = LoggerFactory.getLogger(DoiToJournalResolutionService.class);
+  private static final Logger log = LogManager.getLogger(DoiToJournalResolutionService.class);
 
   @Autowired
   private SolrSearchApi solrSearchApi;

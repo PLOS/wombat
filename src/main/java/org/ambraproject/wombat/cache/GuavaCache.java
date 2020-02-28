@@ -23,14 +23,14 @@
 package org.ambraproject.wombat.cache;
 
 import com.google.common.cache.CacheBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import java.util.concurrent.TimeUnit;
 import com.google.common.cache.CacheLoader;
 import java.io.Serializable;
 
 public class GuavaCache implements Cache {
-  private static final Logger log = LoggerFactory.getLogger(GuavaCache.class);
+  private static final Logger log = LogManager.getLogger(GuavaCache.class);
   com.google.common.cache.Cache<String, Object> cache;
 
   public GuavaCache(int maximumSize) {

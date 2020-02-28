@@ -29,8 +29,8 @@ import org.ambraproject.wombat.model.NlmPerson;
 import org.ambraproject.wombat.model.Reference;
 import org.ambraproject.wombat.util.NodeListAdapter;
 import org.ambraproject.wombat.util.ParseXmlUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -44,7 +44,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ParseReferenceService {
-  private static final Logger log = LoggerFactory.getLogger(ParseReferenceService.class);
+  private static final Logger log = LogManager.getLogger(ParseReferenceService.class);
   private static final Pattern YEAR_FALLBACK = Pattern.compile("\\d{4,}");
   private static final Pattern VOL_NUM_RE = Pattern.compile("(\\d{1,})");
   private static final String WESTERN_NAME_STYLE = "western";

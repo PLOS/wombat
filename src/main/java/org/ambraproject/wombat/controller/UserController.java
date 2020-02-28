@@ -26,8 +26,8 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.Siteless;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +46,7 @@ import java.util.Map;
  */
 @Controller
 public class UserController extends WombatController {
-  private static final Logger log = LoggerFactory.getLogger(UserController.class);
+  private static final Logger log = LogManager.getLogger(UserController.class);
 
   @Autowired
   private ArticleApi articleApi;

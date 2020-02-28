@@ -28,8 +28,8 @@ import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 import com.google.common.io.BaseEncoding;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.nio.charset.Charset;
 import java.util.Iterator;
@@ -39,7 +39,7 @@ import java.util.Optional;
 
 public class CacheKey {
 
-  private static final Logger log = LoggerFactory.getLogger(CacheKey.class);
+  private static final Logger log = LogManager.getLogger(CacheKey.class);
 
   static final HashFunction HASH_ALGORITHM = Hashing.sha1();
   static final Charset HASH_CHARSET = Charsets.UTF_8;

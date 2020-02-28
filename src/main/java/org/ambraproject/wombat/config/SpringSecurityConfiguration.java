@@ -34,8 +34,8 @@ import org.apache.commons.io.Charsets;
 import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.jasig.cas.client.validation.Assertion;
 import org.jasig.cas.client.validation.Cas20ServiceTicketValidator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -81,7 +81,7 @@ import java.util.stream.Collectors;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  private static final Logger log = LoggerFactory.getLogger(SpringSecurityConfiguration.class);
+  private static final Logger log = LogManager.getLogger(SpringSecurityConfiguration.class);
 
   @Autowired
   private SiteSet siteSet;

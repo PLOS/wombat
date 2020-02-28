@@ -37,8 +37,8 @@ import org.ambraproject.wombat.util.CacheKey;
 import org.apache.commons.io.IOUtils;
 import org.mozilla.javascript.ErrorReporter;
 import org.mozilla.javascript.EvaluatorException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.BufferedOutputStream;
@@ -55,7 +55,7 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 public class AssetServiceImpl implements AssetService {
 
-  private static final Logger logger = LoggerFactory.getLogger(AssetServiceImpl.class);
+  private static final Logger logger = LogManager.getLogger(AssetServiceImpl.class);
 
   private static final int BUFFER_SIZE = 8192;
 

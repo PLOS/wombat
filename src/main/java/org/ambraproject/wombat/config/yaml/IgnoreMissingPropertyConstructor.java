@@ -3,8 +3,8 @@ package org.ambraproject.wombat.config.yaml;
 import java.util.List;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.error.YAMLException;
@@ -28,7 +28,7 @@ import org.yaml.snakeyaml.nodes.Tag;
  */
 public class IgnoreMissingPropertyConstructor extends Constructor {
 
-  private static final Logger LOG = LoggerFactory.getLogger(IgnoreMissingPropertyConstructor.class);
+  private static final Logger LOG = LogManager.getLogger(IgnoreMissingPropertyConstructor.class);
 
   /**
    * This is the class the handles the association between the YAML properties and a

@@ -41,8 +41,8 @@ import org.ambraproject.wombat.model.PowerPointDownload;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.poi.hslf.usermodel.SlideShow;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,7 +65,7 @@ import java.util.UUID;
  */
 @Controller
 public class PowerPointController extends WombatController {
-  private static final Logger log = LoggerFactory.getLogger(PowerPointController.class);
+  private static final Logger log = LogManager.getLogger(PowerPointController.class);
 
   @Autowired
   private RequestMappingContextDictionary requestMappingContextDictionary;

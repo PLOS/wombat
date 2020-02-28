@@ -34,8 +34,8 @@ import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.service.EntityNotFoundException;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -44,7 +44,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class FetchHtmlDirective implements TemplateDirectiveModel {
-  private static final Logger log = LoggerFactory.getLogger(FetchHtmlDirective.class);
+  private static final Logger log = LogManager.getLogger(FetchHtmlDirective.class);
 
   @Autowired
   private SiteResolver siteResolver;

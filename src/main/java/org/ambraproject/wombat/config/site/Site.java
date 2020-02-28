@@ -28,8 +28,8 @@ import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.RuntimeConfigurationException;
 import org.ambraproject.wombat.config.site.url.SiteRequestScheme;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class Site {
 
@@ -51,7 +51,7 @@ public class Site {
     this.journalName = findJournalName(theme);
   }
 
-  private static final Logger log = LoggerFactory.getLogger(Site.class);
+  private static final Logger log = LogManager.getLogger(Site.class);
 
   @VisibleForTesting
   public static final String JOURNAL_KEY_PATH = "journal";

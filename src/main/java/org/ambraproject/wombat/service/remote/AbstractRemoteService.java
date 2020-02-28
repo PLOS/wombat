@@ -34,8 +34,8 @@ import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.http.HttpStatus;
 
 import java.io.Closeable;
@@ -47,7 +47,7 @@ import java.util.Optional;
  * Superclass for service beans that make calls to remote APIs.
  */
 abstract class AbstractRemoteService<S extends Closeable> implements RemoteService<S> {
-  private static final Logger log = LoggerFactory.getLogger(AbstractRemoteService.class);
+  private static final Logger log = LogManager.getLogger(AbstractRemoteService.class);
 
   private final Optional<HttpClientConnectionManager> connectionManager;
 

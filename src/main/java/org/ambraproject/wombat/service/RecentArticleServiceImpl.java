@@ -29,8 +29,8 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -49,7 +49,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULT_COUNT;
 
 public class RecentArticleServiceImpl implements RecentArticleService {
-  private static final Logger log = LoggerFactory.getLogger(RecentArticleServiceImpl.class);
+  private static final Logger log = LogManager.getLogger(RecentArticleServiceImpl.class);
 
   //todo: turn this field into a flag in homepage.yaml instead of treating as an article type.
   //The current usage of this wildcard behaves like so: If the specified article types does not meet

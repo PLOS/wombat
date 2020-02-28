@@ -36,8 +36,8 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -66,7 +66,7 @@ import java.util.stream.Collectors;
  */
 public class SolrSearchApiImpl implements SolrSearchApi {
 
-  private static final Logger log = LoggerFactory.getLogger(SolrSearchApiImpl.class);
+  private static final Logger log = LogManager.getLogger(SolrSearchApiImpl.class);
 
   @Autowired
   private JsonService jsonService;

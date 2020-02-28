@@ -28,8 +28,8 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableTable;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Table;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +50,7 @@ import java.util.function.UnaryOperator;
  * This class is intended to be thread-safe. Writes are synchronized, and the object is immutable while being read.
  */
 public class RequestMappingContextDictionary {
-  private static final Logger log = LoggerFactory.getLogger(RequestMappingContextDictionary.class);
+  private static final Logger log = LogManager.getLogger(RequestMappingContextDictionary.class);
 
   // While false, this object is in a state to accept writes. Permanently set to true on first call to getPattern.
   private boolean isFrozen = false;

@@ -39,8 +39,8 @@ import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.utils.DateUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -50,7 +50,7 @@ import org.springframework.http.HttpStatus;
  * @param <S>
  */
 public class CachedRemoteService<S extends Closeable> implements RemoteService<S> {
-  private static final Logger log = LoggerFactory.getLogger(CachedRemoteService.class);
+  private static final Logger log = LogManager.getLogger(CachedRemoteService.class);
 
   private final RemoteService<S> remoteService;
   private final Cache cache;

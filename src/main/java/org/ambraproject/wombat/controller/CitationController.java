@@ -27,8 +27,8 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.CitationDownloadService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -50,7 +50,7 @@ import java.util.function.Function;
 @Controller
 public class CitationController extends WombatController {
 
-  private static final Logger log = LoggerFactory.getLogger(CitationController.class);
+  private static final Logger log = LogManager.getLogger(CitationController.class);
 
   @Autowired
   private CitationDownloadService citationDownloadService;

@@ -30,8 +30,8 @@ import org.ambraproject.wombat.model.Reference;
 import org.ambraproject.wombat.model.References;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -58,7 +58,7 @@ import java.util.Objects;
 import java.util.OptionalInt;
 
 public class ArticleTransformServiceImpl implements ArticleTransformService {
-  private static final Logger log = LoggerFactory.getLogger(ArticleTransformServiceImpl.class);
+  private static final Logger log = LogManager.getLogger(ArticleTransformServiceImpl.class);
 
   private static final SiteTransformerFactory SITE_TRANSFORMER_FACTORY = new SiteTransformerFactory(
       "xform/", "article-transform.xsl");

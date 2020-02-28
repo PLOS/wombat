@@ -27,8 +27,8 @@ import org.apache.commons.io.Charsets;
 import org.apache.http.HttpEntity;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.entity.ContentType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,7 +36,7 @@ import java.io.Reader;
 import java.nio.charset.Charset;
 
 public class ReaderService extends AbstractRemoteService<Reader> {
-  private static final Logger log = LoggerFactory.getLogger(ReaderService.class);
+  private static final Logger log = LogManager.getLogger(ReaderService.class);
 
   public ReaderService(HttpClientConnectionManager connectionManager) {
     super(connectionManager);

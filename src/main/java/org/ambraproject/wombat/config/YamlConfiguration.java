@@ -162,23 +162,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return cacheConfiguration;
   }
 
-  private final HttpConnectionPoolConfiguration httpConnectionPoolConfiguration = new HttpConnectionPoolConfiguration() {
-    @Override
-    public Integer getMaxTotal() {
-      return (input.httpConnectionPool == null) ? null : input.httpConnectionPool.maxTotal;
-    }
-
-    @Override
-    public Integer getDefaultMaxPerRoute() {
-      return (input.httpConnectionPool == null) ? null : input.httpConnectionPool.defaultMaxPerRoute;
-    }
-  };
-
-  @Override
-  public HttpConnectionPoolConfiguration getHttpConnectionPoolConfiguration() {
-    return httpConnectionPoolConfiguration;
-  }
-
   private final CasConfiguration casConfiguration = new CasConfiguration() {
     @Override
     public String getCasUrl() {
@@ -338,7 +321,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private List<Map<String, ?>> themeSources;
 
     private CacheConfigurationInput cache;
-    private HttpConnectionPoolConfigurationInput httpConnectionPool;
     private CasConfigurationInput cas;
     private SolrConfigurationInput solr;
     private UserApiConfigurationInput userApi;
@@ -405,14 +387,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setHttpConnectionPool(HttpConnectionPoolConfigurationInput httpConnectionPool) {
-      this.httpConnectionPool = httpConnectionPool;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
     public void setCas(CasConfigurationInput cas) {
       this.cas = cas;
     }
@@ -468,27 +442,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setCacheAppPrefix(String cacheAppPrefix) {
       this.cacheAppPrefix = cacheAppPrefix;
-    }
-  }
-
-  public static class HttpConnectionPoolConfigurationInput {
-    private Integer maxTotal;
-    private Integer defaultMaxPerRoute;
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setMaxTotal(Integer maxTotal) {
-      this.maxTotal = maxTotal;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setDefaultMaxPerRoute(Integer defaultMaxPerRoute) {
-      this.defaultMaxPerRoute = defaultMaxPerRoute;
     }
   }
 

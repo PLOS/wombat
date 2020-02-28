@@ -62,20 +62,6 @@ public interface RuntimeConfiguration {
 
   CacheConfiguration getCacheConfiguration();
 
-  interface HttpConnectionPoolConfiguration {
-    /**
-     * @see org.apache.http.pool.ConnPoolControl
-     */
-    Integer getMaxTotal();
-
-    /**
-     * @see org.apache.http.pool.ConnPoolControl
-     */
-    Integer getDefaultMaxPerRoute();
-  }
-
-  HttpConnectionPoolConfiguration getHttpConnectionPoolConfiguration();
-
   /**
    * Get the URL of the SOA server.
    *

@@ -125,11 +125,8 @@ public class RootConfiguration {
   public HttpClientConnectionManager httpClientConnectionManager(RuntimeConfiguration runtimeConfiguration) {
     PoolingHttpClientConnectionManager manager = new PoolingHttpClientConnectionManager();
 
-    final RuntimeConfiguration.HttpConnectionPoolConfiguration httpConnectionPoolConfiguration = runtimeConfiguration.getHttpConnectionPoolConfiguration();
-    Integer maxTotal = httpConnectionPoolConfiguration.getMaxTotal();
-    if (maxTotal != null) manager.setMaxTotal(maxTotal);
-    Integer defaultMaxPerRoute = httpConnectionPoolConfiguration.getDefaultMaxPerRoute();
-    if (defaultMaxPerRoute != null) manager.setDefaultMaxPerRoute(defaultMaxPerRoute);
+    manager.setMaxTotal(1000);
+    manager.setDefaultMaxPerRoute(1000);
 
     return manager;
   }

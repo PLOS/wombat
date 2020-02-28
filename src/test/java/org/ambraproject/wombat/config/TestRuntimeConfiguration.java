@@ -95,21 +95,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public HttpConnectionPoolConfiguration getHttpConnectionPoolConfiguration() {
-    return new HttpConnectionPoolConfiguration() {
-      @Override
-      public Integer getMaxTotal() {
-        return null;
-      }
-
-      @Override
-      public Integer getDefaultMaxPerRoute() {
-        return null;
-      }
-    };
-  }
-
-  @Override
   public Optional<CasConfiguration> getCasConfiguration() {
     return Optional.empty();
   }

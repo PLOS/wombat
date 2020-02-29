@@ -112,7 +112,4 @@ public interface RuntimeConfiguration {
   Optional<SolrConfiguration> getSolrConfiguration();
 
   Optional<UserApiConfiguration> getUserApiConfiguration();
-
-  boolean areCommentsDisabled();
-
 }

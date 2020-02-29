@@ -78,11 +78,6 @@ public class CommentController extends WombatController {
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
 
-
-  private void addCommentAvailability(Model model) {
-    model.addAttribute("areCommentsDisabled", runtimeConfiguration.areCommentsDisabled());
-  }
-
   /**
    * Serves a request for a list of all the root-level comments associated with an article.
    *
@@ -106,8 +101,6 @@ public class CommentController extends WombatController {
       model.addAttribute("userApiError", e);
     }
 
-    addCommentAvailability(model);
-
     return site + "/ftl/article/comment/comments";
   }
 
@@ -119,7 +112,6 @@ public class CommentController extends WombatController {
         .validateVisibility("articleCommentForm")
         .populate(request, model);
 
-    addCommentAvailability(model);
     return site + "/ftl/article/comment/newComment";
   }
 
@@ -174,17 +166,9 @@ public class CommentController extends WombatController {
         .populate(request, model);
 
     model.addAttribute("comment", comment);
-    addCommentAvailability(model);
     return site + "/ftl/article/comment/comment";
   }
 
-
-  private void checkCommentsAreEnabled() {
-    if (runtimeConfiguration.areCommentsDisabled()) {
-      // TODO: Need a special exception and handler to produce a 400-series response instead of 500?
-      throw new RuntimeException("Posting of comments is disabled");
-    }
-  }
 
   /**
    * @param parentArticleDoi null if a reply to another comment
@@ -209,8 +193,6 @@ public class CommentController extends WombatController {
     if (honeypotService.checkHoneypot(request, authorPhone, authorAffiliation)) {
       return ImmutableMap.of("status", "success");
     }
-
-    checkCommentsAreEnabled();
 
     Map<String, Object> validationErrors = commentValidationService.validateComment(site,
         commentTitle, commentBody, hasCompetingInterest, ciStatement);
@@ -244,7 +226,6 @@ public class CommentController extends WombatController {
                                    @RequestParam("comment") String flagCommentBody,
                                    @RequestParam("target") String targetCommentDoi)
       throws IOException {
-    checkCommentsAreEnabled();
 
     Map<String, Object> validationErrors = commentValidationService.validateFlag(flagCommentBody);
     if (!validationErrors.isEmpty()) {

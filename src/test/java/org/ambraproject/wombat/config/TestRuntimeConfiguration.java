@@ -97,11 +97,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public boolean areCommentsDisabled() {
-    return false;
-  }
-
-  @Override
   public Optional<UserApiConfiguration> getUserApiConfiguration() {
     return Optional.empty();
   }

@@ -235,11 +235,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return (input.userApi == null) ? Optional.empty() : Optional.of(userApiConfiguration);
   }
 
-  @Override
-  public boolean areCommentsDisabled() {
-    return (input.commentsDisabled != null) && input.commentsDisabled;
-  }
-
   /**
    * Validate values after deserializing.
    *
@@ -319,8 +314,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private SolrConfigurationInput solr;
     private UserApiConfigurationInput userApi;
 
-    private Boolean commentsDisabled;
-
     /**
      * @deprecated For access by reflective deserializer only
      */
@@ -391,13 +384,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setUserApi(UserApiConfigurationInput userApi) {
       this.userApi = userApi;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    public void setCommentsDisabled(Boolean commentsDisabled) {
-      this.commentsDisabled = commentsDisabled;
     }
   }
 

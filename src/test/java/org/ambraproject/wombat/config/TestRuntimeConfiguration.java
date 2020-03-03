@@ -39,11 +39,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public static final String SERVER_URL = "http://www.example.com/";
 
   @Override
-  public String getCompiledAssetDir() {
-    return System.getProperty("java.io.tmpdir");
-  }
-
-  @Override
   public URL getServer() {
     try {
       final URL serverUrl = new URL(SERVER_URL);

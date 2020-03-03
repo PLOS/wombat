@@ -308,7 +308,7 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public AssetService assetService() {
+  public AssetService assetService() throws IOException {
     return new AssetServiceImpl();
   }
 

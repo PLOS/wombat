@@ -74,11 +74,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getCompiledAssetDir() {
-    return input.compiledAssetDir;
-  }
-
-  @Override
   public URL getServer() {
     return buildUrl(input.server, null);
   }
@@ -299,7 +294,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
      */
 
     private String server;
-    private String compiledAssetDir;
     private String rootPagePath;
     private String environment;
     private List<Map<String, ?>> themeSources;
@@ -316,16 +310,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
     public void setServer(String server) {
       this.server = server;
     }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setCompiledAssetDir(String compiledAssetDir) {
-      this.compiledAssetDir = compiledAssetDir;
-    }
-
-    /**
+ 
+   /**
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated

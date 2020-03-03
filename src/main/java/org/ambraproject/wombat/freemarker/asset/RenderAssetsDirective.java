@@ -90,18 +90,11 @@ abstract class RenderAssetsDirective implements TemplateDirectiveModel {
 
     if (assetPaths != null && !assetPaths.isEmpty()) {
       SitePageContext sitePageContext = new SitePageContext(siteResolver, environment);
-      if (runtimeConfiguration.getCompiledAssetDir() == null) {
-        for (String assetPath : assetPaths) {
-          String assetAddress = Link.toLocalSite(sitePageContext.getSite()).toPath(assetPath).get(sitePageContext.getRequest());
-          environment.getOut().write(getHtml(assetAddress));
-        }
-      } else {
-        Site site = sitePageContext.getSite();
-        String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site);
-        String path = PathUtil.JOINER.join(AssetService.AssetUrls.RESOURCE_NAMESPACE, assetLink);
-        String assetAddress = Link.toLocalSite(site).toPath(path).get(request);
-        environment.getOut().write(getHtml(assetAddress));
-      }
+      Site site = sitePageContext.getSite();
+      String assetLink = assetService.getCompiledAssetLink(assetType, assetPaths, site);
+      String path = PathUtil.JOINER.join(AssetService.AssetUrls.RESOURCE_NAMESPACE, assetLink);
+      String assetAddress = Link.toLocalSite(site).toPath(path).get(request);
+      environment.getOut().write(getHtml(assetAddress));
     }
   }
 

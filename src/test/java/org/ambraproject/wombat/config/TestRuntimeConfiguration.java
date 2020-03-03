@@ -83,11 +83,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
       public int getMemcachedPort() {
         return -1;
       }
-
-      @Override
-      public String getCacheAppPrefix() {
-        return "testWombat";
-      }
     };
   }
 

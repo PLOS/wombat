@@ -145,11 +145,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
       return (input.cache == null || input.cache.memcachedPort == null) ? -1
           : input.cache.memcachedPort;
     }
-
-    @Override
-    public String getCacheAppPrefix() {
-      return (input.cache == null) ? null : input.cache.cacheAppPrefix;
-    }
   };
 
   @Override
@@ -406,14 +401,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setMemcachedPort(Integer memcachedPort) {
       this.memcachedPort = memcachedPort;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setCacheAppPrefix(String cacheAppPrefix) {
-      this.cacheAppPrefix = cacheAppPrefix;
     }
   }
 

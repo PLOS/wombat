@@ -52,12 +52,6 @@ public interface RuntimeConfiguration {
      * @return the memcached port, or -1 if it is not present in the config
      */
     int getMemcachedPort();
-
-    /**
-     * @return the cacheAppPrefix value, or null if it is not defined in the config.  This should be a String that is
-     * shared by all wombat app servers, defining a namespace for them.
-     */
-    String getCacheAppPrefix();
   }
 
   CacheConfiguration getCacheConfiguration();

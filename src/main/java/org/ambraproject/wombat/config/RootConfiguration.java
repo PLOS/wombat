@@ -79,7 +79,7 @@ public class RootConfiguration {
 
   private static final String CONFIG_DIR_PROPERTY_NAME = "wombat.configDir";
   private static final String MEMCACHE_PREFIX = "wombat";
-  private static final int MEMCACHE_TIMEOUT = 60 * 60;
+  private static final int MEMCACHE_TTL = 60 * 60;
   
   private static File getConfigDirectory() {
     String property = System.getProperty(CONFIG_DIR_PROPERTY_NAME);
@@ -141,7 +141,7 @@ public class RootConfiguration {
       MemcacheClient result = new MemcacheClient(cacheConfiguration.getMemcachedHost(),
                                                  cacheConfiguration.getMemcachedPort(),
                                                  MEMCACHE_PREFIX,
-                                                 MEMCACHE_TIMEOUT);
+                                                 MEMCACHE_TTL);
       result.connect();
       return result;
     } else {

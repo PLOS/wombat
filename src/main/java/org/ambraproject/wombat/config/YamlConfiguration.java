@@ -129,22 +129,14 @@ public class YamlConfiguration implements RuntimeConfiguration {
         .collect(ImmutableList.toImmutableList());
   }
 
-  private final CacheConfiguration cacheConfiguration = new CacheConfiguration() {
-    @Override
-    public String getMemcachedHost() {
-      return (input.cache == null) ? null : input.cache.memcachedHost;
-    }
-
-    @Override
-    public int getMemcachedPort() {
-      return (input.cache == null || input.cache.memcachedPort == null) ? -1
-          : input.cache.memcachedPort;
-    }
-  };
+  @Override
+  public String getMemcachedHost() {
+    return input.memcachedHost;
+  }
 
   @Override
-  public CacheConfiguration getCacheConfiguration() {
-    return cacheConfiguration;
+  public int getMemcachedPort() {
+    return input.memcachedPort == null ? -1 : input.memcachedPort;
   }
 
   private final CasConfiguration casConfiguration = new CasConfiguration() {
@@ -246,13 +238,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
         throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
       }
     }
-    if (input.cache != null) {
-      if (!Strings.isNullOrEmpty(input.cache.memcachedHost) && input.cache.memcachedPort == null) {
-        throw new RuntimeConfigurationException("No memcachedPort specified");
-      }
-      if (!Strings.isNullOrEmpty(input.cache.memcachedHost) && Strings.isNullOrEmpty(input.cache.cacheAppPrefix)) {
-        throw new RuntimeConfigurationException("If memcachedHost is specified, cacheAppPrefix must be as well");
-      }
+    if (!Strings.isNullOrEmpty(input.memcachedHost) && input.memcachedPort == null) {
+      throw new RuntimeConfigurationException("No memcachedPort specified");
     }
 
     if (input.userApi == null) {
@@ -298,10 +285,11 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String environment;
     private List<Map<String, ?>> themeSources;
 
-    private CacheConfigurationInput cache;
     private CasConfigurationInput cas;
     private SolrConfigurationInput solr;
     private UserApiConfigurationInput userApi;
+    private String memcachedHost;
+    private Integer memcachedPort;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -339,14 +327,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setCache(CacheConfigurationInput cache) {
-      this.cache = cache;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
     public void setCas(CasConfigurationInput cas) {
       this.cas = cas;
     }
@@ -366,12 +346,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     public void setUserApi(UserApiConfigurationInput userApi) {
       this.userApi = userApi;
     }
-  }
-
-  public static class CacheConfigurationInput {
-    private String memcachedHost;
-    private Integer memcachedPort;
-    private String cacheAppPrefix;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -389,7 +363,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
       this.memcachedPort = memcachedPort;
     }
   }
-
   public static class CasConfigurationInput {
     private String casUrl;
     private String loginUrl;

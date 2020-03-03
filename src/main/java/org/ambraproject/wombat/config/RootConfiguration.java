@@ -135,11 +135,10 @@ public class RootConfiguration {
 
   @Bean
   public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
-    final RuntimeConfiguration.CacheConfiguration cacheConfiguration = runtimeConfiguration.getCacheConfiguration();
-    if (!Strings.isNullOrEmpty(cacheConfiguration.getMemcachedHost())) {
+    if (!Strings.isNullOrEmpty(runtimeConfiguration.getMemcachedHost())) {
 
-      MemcacheClient result = new MemcacheClient(cacheConfiguration.getMemcachedHost(),
-                                                 cacheConfiguration.getMemcachedPort(),
+      MemcacheClient result = new MemcacheClient(runtimeConfiguration.getMemcachedHost(),
+                                                 runtimeConfiguration.getMemcachedPort(),
                                                  MEMCACHE_PREFIX,
                                                  MEMCACHE_TTL);
       result.connect();

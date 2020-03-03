@@ -35,19 +35,15 @@ import java.util.Optional;
  * Interface that represents configurable values that are only known at server startup time.
  */
 public interface RuntimeConfiguration {
-  interface CacheConfiguration {
-    /**
-     * @return the memcached host, or null if it is not present in the config
-     */
-    String getMemcachedHost();
+  /**
+   * @return the memcached host, or null if it is not present in the config
+   */
+  String getMemcachedHost();
 
-    /**
-     * @return the memcached port, or -1 if it is not present in the config
-     */
-    int getMemcachedPort();
-  }
-
-  CacheConfiguration getCacheConfiguration();
+  /**
+   * @return the memcached port, or -1 if it is not present in the config
+   */
+  int getMemcachedPort();
 
   /**
    * Get the URL of the SOA server.

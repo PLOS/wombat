@@ -54,7 +54,7 @@ public class GlobalConfigDirective extends VariableLookupDirective<Object> {
         if (!runtimeConfiguration.getSolrConfiguration().isPresent()) { return null; }
         return runtimeConfiguration.getSolrConfiguration().get().getUrl().map(URL::toString).orElse(null);
       case "isCasAvailable":
-        return runtimeConfiguration.getCasConfiguration().isPresent();
+        return runtimeConfiguration.getCasUrl() != null;
       // More cases may be added to expose other runtimeConfiguration getters as needed
       default:
         throw new TemplateException("key not matched", env);

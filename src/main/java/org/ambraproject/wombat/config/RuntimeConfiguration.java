@@ -64,9 +64,7 @@ public interface RuntimeConfiguration {
 
   ImmutableList<ThemeSource<?>> getThemeSources();
 
-  interface CasConfiguration {
-    String getCasUrl();
-  }
+  String getCasUrl();
 
   interface SolrConfiguration {
     Optional<URL> getUrl();
@@ -85,8 +83,6 @@ public interface RuntimeConfiguration {
 
     String getPassword();
   }
-
-  Optional<CasConfiguration> getCasConfiguration();
 
   Optional<SolrConfiguration> getSolrConfiguration();
 

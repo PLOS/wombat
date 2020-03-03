@@ -139,16 +139,9 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return input.memcachedPort == null ? -1 : input.memcachedPort;
   }
 
-  private final CasConfiguration casConfiguration = new CasConfiguration() {
-    @Override
-    public String getCasUrl() {
-      return input.cas.casUrl;
-    }
-  };
-
   @Override
-  public Optional<CasConfiguration> getCasConfiguration() {
-    return (input.cas == null) ? Optional.empty() : Optional.of(casConfiguration);
+  public String getCasUrl() {
+    return input.casUrl;
   }
 
   private final SolrConfiguration solrConfiguration = new SolrConfiguration() {
@@ -275,10 +268,10 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String environment;
     private List<Map<String, ?>> themeSources;
 
-    private CasConfigurationInput cas;
     private SolrConfigurationInput solr;
     private UserApiConfigurationInput userApi;
     private String memcachedHost;
+    private String casUrl;
     private Integer memcachedPort;
 
     /**
@@ -288,8 +281,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
     public void setServer(String server) {
       this.server = server;
     }
- 
-   /**
+
+    /**
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
@@ -311,14 +304,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setThemeSources(List<Map<String, ?>> themeSources) {
       this.themeSources = themeSources;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setCas(CasConfigurationInput cas) {
-      this.cas = cas;
     }
 
     /**
@@ -353,16 +338,15 @@ public class YamlConfiguration implements RuntimeConfiguration {
       this.memcachedPort = memcachedPort;
     }
   }
-  public static class CasConfigurationInput {
-    private String casUrl;
 
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setCasUrl(String casUrl) {
-      this.casUrl = casUrl;
-    }
+  private String casUrl;
+
+  /**
+   * @deprecated For access by reflective deserializer only
+   */
+  @Deprecated
+  public void setCasUrl(String casUrl) {
+    this.casUrl = casUrl;
   }
 
   public static class SolrConfigurationInput {

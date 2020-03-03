@@ -77,8 +77,8 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public Optional<CasConfiguration> getCasConfiguration() {
-    return Optional.empty();
+  public String getCasUrl() {
+    return null;
   }
 
   @Override

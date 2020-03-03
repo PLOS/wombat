@@ -199,7 +199,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
               .get(request);
 
           response.setStatus(HttpServletResponse.SC_OK);
-          response.sendRedirect(casConfiguration.getLogoutUrl()
+          response.sendRedirect(casConfiguration.getCasUrl() + "/logout"
               + "?service=" + URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name()));
         }).orElseThrow(CasConfigurationRequiredException::new);
   }
@@ -260,7 +260,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
           return getCasValidationPath(request);
         }
       };
-      casAuthenticationEntryPoint.setLoginUrl(casConfiguration.getLoginUrl());
+      casAuthenticationEntryPoint.setLoginUrl(casConfiguration.getCasUrl() + "/login");
       casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
       return casAuthenticationEntryPoint;
     }).orElseThrow(CasConfigurationRequiredException::new);

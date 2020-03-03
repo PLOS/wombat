@@ -144,16 +144,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     public String getCasUrl() {
       return input.cas.casUrl;
     }
-
-    @Override
-    public String getLoginUrl() {
-      return input.cas.loginUrl;
-    }
-
-    @Override
-    public String getLogoutUrl() {
-      return input.cas.logoutUrl;
-    }
   };
 
   @Override
@@ -365,8 +355,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
   public static class CasConfigurationInput {
     private String casUrl;
-    private String loginUrl;
-    private String logoutUrl;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -375,23 +363,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     public void setCasUrl(String casUrl) {
       this.casUrl = casUrl;
     }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setLoginUrl(String loginUrl) {
-      this.loginUrl = loginUrl;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setLogoutUrl(String logoutUrl) {
-      this.logoutUrl = logoutUrl;
-    }
-
   }
 
   public static class SolrConfigurationInput {

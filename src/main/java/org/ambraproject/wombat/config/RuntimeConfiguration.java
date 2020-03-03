@@ -66,10 +66,6 @@ public interface RuntimeConfiguration {
 
   interface CasConfiguration {
     String getCasUrl();
-
-    String getLoginUrl();
-
-    String getLogoutUrl();
   }
 
   interface SolrConfiguration {

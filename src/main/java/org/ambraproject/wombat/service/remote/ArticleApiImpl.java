@@ -39,7 +39,7 @@ public class ArticleApiImpl extends AbstractRestfulJsonApi implements ArticleApi
 
   @Override
   public URL getServerUrl() {
-    return runtimeConfiguration.getServer();
+    return runtimeConfiguration.getRhinoServerUrl();
   }
 
   @Override

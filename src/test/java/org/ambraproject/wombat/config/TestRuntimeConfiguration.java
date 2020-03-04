@@ -39,7 +39,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public static final String SERVER_URL = "http://www.example.com/";
 
   @Override
-  public URL getServer() {
+  public URL getRhinoServerUrl() {
     try {
       final URL serverUrl = new URL(SERVER_URL);
       return serverUrl;

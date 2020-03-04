@@ -74,8 +74,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public URL getServer() {
-    return buildUrl(input.server, null);
+  public URL getRhinoServerUrl() {
+    return buildUrl(input.rhinoServerUrl, null);
   }
 
   @Override
@@ -206,11 +206,11 @@ public class YamlConfiguration implements RuntimeConfiguration {
    * @throws RuntimeConfigurationException if a value is invalid
    */
   public void validate() {
-    if (Strings.isNullOrEmpty(input.server)) {
+    if (Strings.isNullOrEmpty(input.rhinoServerUrl)) {
       throw new RuntimeConfigurationException("Server address required");
     }
     try {
-      new URL(input.server);
+      new URL(input.rhinoServerUrl);
     } catch (MalformedURLException e) {
       throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
     }
@@ -263,7 +263,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * ---------------- Input fields (and boring boilerplate setters) are below this line ----------------
      */
 
-    private String server;
+    private String rhinoServerUrl;
     private String rootPagePath;
     private String environment;
     private List<Map<String, ?>> themeSources;
@@ -278,8 +278,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setServer(String server) {
-      this.server = server;
+    public void setServer(String rhinoServerUrl) {
+      this.rhinoServerUrl = rhinoServerUrl;
     }
 
     /**

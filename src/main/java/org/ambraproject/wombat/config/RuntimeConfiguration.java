@@ -46,11 +46,11 @@ public interface RuntimeConfiguration {
   int getMemcachedPort();
 
   /**
-   * Get the URL of the SOA server.
+   * Get the URL of the rhino server.
    *
    * @return the URL
    */
-  URL getServer();
+  URL getRhinoServerUrl();
 
   /**
    * Get the path of an HTML document to display on the root page

@@ -93,31 +93,43 @@ $width-nav: $block-grid-elements - $width-logo;
       }
     }
   }
-  
 
 .logo {
   @include plos-grid-column($columns: $width-logo);
   @extend .title-area; // foundation
   @include icon-offscreen;
-  height: rem-calc(41);
+  height: 34px;
+  width: 100%;
+  bottom: 0;
   //brand-specific logo in plos-themes/code/desktop/[BRAND]/resource/img :
   background: image-url('logo.png') no-repeat 0 0;
+  background-size: contain;
 
-  a{
+  a {
     display:block;
     height: 100%;
-    }
-  }
-
-// Anniversary logo height and position override
-.plosone, .plosntd, .plosbiology {
-  header {
-    .logo {
-      margin-top: rem-calc(-9);
-      height: rem-calc(58);
-    }
   }
 }
+
+// adding specificity to override included styles
+#pagehdr .nav-main .logo {
+  position: absolute;
+  float: none;
+  margin-left: .625rem;
+}
+
+.ploscompbiol .logo {
+  height: 27px;
+}
+
+.plosntd .logo {
+  height: 24px;
+}
+
+.plosone .logo {
+  height: 40px;
+}
+
 
 /* using Foundation Top Bar
  all @extend .class are Foundation
@@ -132,6 +144,10 @@ $width-nav: $block-grid-elements - $width-logo;
     visibility: hidden;
     }
   }
+
+.nav-main .top-bar-section {
+  float: right;
+}
 
 .top-bar-section {
   @extend .hide-for-print;
@@ -156,6 +172,7 @@ $width-nav: $block-grid-elements - $width-logo;
   // foundation
   @include plos-grid-column-nomargin($pixelwidth: columns, $columns: $width-nav, $float: right);
   width: 40.83333rem;
+
   h2, h3 {
     font-family: $font-face-navigation;
     font-size: $txt-size-xlarge;

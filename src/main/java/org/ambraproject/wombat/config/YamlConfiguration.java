@@ -130,13 +130,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getMemcachedHost() {
-    return input.memcachedHost;
-  }
-
-  @Override
-  public int getMemcachedPort() {
-    return input.memcachedPort == null ? -1 : input.memcachedPort;
+  public String getMemcachedServer() {
+    return input.memcachedServer;
   }
 
   @Override
@@ -186,9 +181,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
         throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
       }
     }
-    if (!Strings.isNullOrEmpty(input.memcachedHost) && input.memcachedPort == null) {
-      throw new RuntimeConfigurationException("No memcachedPort specified");
-    }
 
     try {
       new URL(input.userApiUrl);
@@ -230,9 +222,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String environment;
     private List<Map<String, ?>> themeSources;
 
-    private String memcachedHost;
+    private String memcachedServer;
     private String casUrl;
-    private Integer memcachedPort;
     private String solrUrl;
     private String userApiUrl;
     private String userApiUsername;
@@ -274,16 +265,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setMemcachedHost(String memcachedHost) {
-      this.memcachedHost = memcachedHost;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setMemcachedPort(Integer memcachedPort) {
-      this.memcachedPort = memcachedPort;
+    public void setMemcachedServer(String memcachedServer) {
+      this.memcachedServer = memcachedServer;
     }
 
     /**

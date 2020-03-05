@@ -64,13 +64,8 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getMemcachedHost() {
+  public String getMemcachedServer() {
     return null;
-  }
-
-  @Override
-  public int getMemcachedPort() {
-    return -1;
   }
 
   @Override

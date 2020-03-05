@@ -38,12 +38,7 @@ public interface RuntimeConfiguration {
   /**
    * @return the memcached host, or null if it is not present in the config
    */
-  String getMemcachedHost();
-
-  /**
-   * @return the memcached port, or -1 if it is not present in the config
-   */
-  int getMemcachedPort();
+  String getMemcachedServer();
 
   /**
    * Get the URL of the rhino server.

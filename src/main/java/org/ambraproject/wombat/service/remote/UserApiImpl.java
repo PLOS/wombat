@@ -39,6 +39,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -53,16 +54,14 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
     private final URL server;
     private final ImmutableCollection<BasicHeader> authorizationHeader;
 
-    private UserApiConfiguration(String server, String authorizationAppName, String authorizationPassword) {
+    private UserApiConfiguration(URI server) {
       try {
-        this.server = new URL(Objects.requireNonNull(server));
+        this.server = new URL(server.getScheme(), server.getHost(), server.getPort(), server.getPath());
       } catch (MalformedURLException e) {
         throw new RuntimeException(e);
       }
-
-      this.authorizationHeader = ((authorizationAppName != null) && (authorizationPassword != null))
-          ? ImmutableList.of(createAuthorizationHeader(authorizationAppName, authorizationPassword))
-          : ImmutableList.of();
+      String[] userInfo = server.getUserInfo().split(":");
+      this.authorizationHeader = ImmutableList.of(createAuthorizationHeader(userInfo[0], userInfo[1]));
     }
   }
 
@@ -85,9 +84,7 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
    * @return The {@link UserApiConfiguration}
    */
   private UserApiConfiguration fetchApiConfiguration() {
-    return new UserApiConfiguration(runtimeConfiguration.getUserApiUrl(),
-                                    runtimeConfiguration.getUserApiUsername(),
-                                    runtimeConfiguration.getUserApiPassword());
+    return new UserApiConfiguration(runtimeConfiguration.getUserApiUrl());
   }
 
   private transient UserApiConfiguration userApiConfiguration;

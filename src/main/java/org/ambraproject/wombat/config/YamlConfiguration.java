@@ -36,6 +36,8 @@ import org.ambraproject.wombat.config.theme.ThemeSource;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.EnumSet;
 import java.util.List;
@@ -97,7 +99,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
       @Override
       protected FilesystemThemeSource build(Map<String, ?> config) {
         String path = (String) config.get("path");
-        if (path == null) throw new RuntimeException("Filesystem theme source must have path");
+        if (path == null)
+          throw new RuntimeException("Filesystem theme source must have path");
         return new FilesystemThemeSource(new File(path));
       }
     };
@@ -108,24 +111,25 @@ public class YamlConfiguration implements RuntimeConfiguration {
       this.type = type;
     }
 
-    private static final ImmutableMap<String, ThemeSourceType> BY_TYPE = Maps.uniqueIndex(
-        EnumSet.allOf(ThemeSourceType.class), tst -> tst.type);
+    private static final ImmutableMap<String, ThemeSourceType> BY_TYPE =
+        Maps.uniqueIndex(EnumSet.allOf(ThemeSourceType.class), tst -> tst.type);
 
     protected abstract ThemeSource<?> build(Map<String, ?> config);
   }
 
   private static ThemeSource<?> parseThemeSource(Map<String, ?> map) {
     String typeStr = (String) map.get("type");
-    if (typeStr == null) throw new RuntimeException("Theme source must have type");
+    if (typeStr == null)
+      throw new RuntimeException("Theme source must have type");
     ThemeSourceType sourceType = ThemeSourceType.BY_TYPE.get(typeStr);
-    if (sourceType == null) throw new RuntimeException("Unrecognized theme source type: " + typeStr);
+    if (sourceType == null)
+      throw new RuntimeException("Unrecognized theme source type: " + typeStr);
     return sourceType.build(map);
   }
 
   @Override
   public ImmutableList<ThemeSource<?>> getThemeSources() {
-    return input.themeSources.stream()
-        .map(YamlConfiguration::parseThemeSource)
+    return input.themeSources.stream().map(YamlConfiguration::parseThemeSource)
         .collect(ImmutableList.toImmutableList());
   }
 
@@ -145,20 +149,13 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getUserApiUrl() {
-    return input.userApiUrl;
+  public URI getUserApiUrl() {
+    try {
+      return new URI(input.userApiUrl);
+    } catch (URISyntaxException ex) {
+      throw new IllegalStateException("Invalid URL should have been caught at validation", ex);
+    }
   }
-  
-  @Override
-  public String getUserApiUsername() {
-    return input.userApiUsername;
-  }
-  
-  @Override
-  public String getUserApiPassword() {
-    return input.userApiPassword;
-  }
-
 
   /**
    * Validate values after deserializing.
@@ -226,8 +223,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String casUrl;
     private String solrUrl;
     private String userApiUrl;
-    private String userApiUsername;
-    private String userApiPassword;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -283,22 +278,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setUserApiUrl(String userApiUrl) {
       this.userApiUrl = userApiUrl;
-    }
-    
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setUserApiUsername(String userApiUsername) {
-      this.userApiUsername = userApiUsername;
-    }
-    
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setUserApiPassword(String userApiPassword) {
-      this.userApiPassword = userApiPassword;
     }
   }
 }

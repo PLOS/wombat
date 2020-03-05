@@ -26,7 +26,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.theme.ThemeSource;
-
+import java.net.URI;
 import java.net.URL;
 import java.util.Optional;
 
@@ -63,9 +63,5 @@ public interface RuntimeConfiguration {
 
   URL getSolrUrl();
 
-  String getUserApiUrl();
-
-  String getUserApiUsername();
-
-  String getUserApiPassword();
+  URI getUserApiUrl();
 }

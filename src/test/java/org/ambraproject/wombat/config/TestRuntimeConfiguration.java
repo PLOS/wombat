@@ -27,6 +27,7 @@ import com.google.common.collect.ImmutableSet;
 import org.ambraproject.wombat.config.theme.ThemeSource;
 
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.Optional;
 
@@ -79,17 +80,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getUserApiUrl() {
-    return null;
-  }
-
-  @Override
-  public String getUserApiUsername() {
-    return null;
-  }
-
-  @Override
-  public String getUserApiPassword() {
+  public URI getUserApiUrl() {
     return null;
   }
 }

@@ -22,27 +22,12 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.gson.GsonBuilder;
-
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
-import org.ambraproject.wombat.config.theme.ThemeSource;
-
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.base.Strings;
+import com.google.gson.GsonBuilder;
 
 /**
  * Configuration for the webapp's runtime behavior as read from a YAML file.
@@ -90,49 +75,11 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return input.environment;
   }
 
-  /**
-   * Future-proofing against the need for other ThemeSource types that may exist in the future (mainly, one that reads
-   * from a remote source, probably by URL). Currently, the only supported type reads from the local filesystem.
-   */
-  private static enum ThemeSourceType {
-    FILESYSTEM("filesystem") {
-      @Override
-      protected FilesystemThemeSource build(Map<String, ?> config) {
-        String path = (String) config.get("path");
-        if (path == null)
-          throw new RuntimeException("Filesystem theme source must have path");
-        return new FilesystemThemeSource(new File(path));
-      }
-    };
-
-    private final String type;
-
-    private ThemeSourceType(String type) {
-      this.type = type;
-    }
-
-    private static final ImmutableMap<String, ThemeSourceType> BY_TYPE =
-        Maps.uniqueIndex(EnumSet.allOf(ThemeSourceType.class), tst -> tst.type);
-
-    protected abstract ThemeSource<?> build(Map<String, ?> config);
-  }
-
-  private static ThemeSource<?> parseThemeSource(Map<String, ?> map) {
-    String typeStr = (String) map.get("type");
-    if (typeStr == null)
-      throw new RuntimeException("Theme source must have type");
-    ThemeSourceType sourceType = ThemeSourceType.BY_TYPE.get(typeStr);
-    if (sourceType == null)
-      throw new RuntimeException("Unrecognized theme source type: " + typeStr);
-    return sourceType.build(map);
-  }
-
   @Override
-  public ImmutableList<ThemeSource<?>> getThemeSources() {
-    return input.themeSources.stream().map(YamlConfiguration::parseThemeSource)
-        .collect(ImmutableList.toImmutableList());
+  public String getThemePath() {
+    return input.themePath;
   }
-
+  
   @Override
   public String getMemcachedServer() {
     return input.memcachedServer;
@@ -217,8 +164,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String rhinoServerUrl;
     private String rootPagePath;
     private String environment;
-    private List<Map<String, ?>> themeSources;
-
+    private String themePath;
     private String memcachedServer;
     private String casUrl;
     private String solrUrl;
@@ -252,8 +198,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setThemeSources(List<Map<String, ?>> themeSources) {
-      this.themeSources = themeSources;
+    public void setThemePath(String themePath) {
+      this.themePath = themePath;
     }
 
     /**

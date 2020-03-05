@@ -22,14 +22,9 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.config.theme.ThemeSource;
-
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
-import java.util.Optional;
 
 /**
  * Instance of {@link RuntimeConfiguration} suitable for tests.  Many of the return values here will be null or
@@ -60,7 +55,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public ImmutableList<ThemeSource<?>> getThemeSources() {
+  public String getThemePath() {
     return null;
   }
 

@@ -79,12 +79,22 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public Optional<UserApiConfiguration> getUserApiConfiguration() {
-    return Optional.empty();
+  public URL getSolrUrl() {
+    return null;
   }
 
   @Override
-  public URL getSolrUrl() {
+  public String getUserApiUrl() {
+    return null;
+  }
+
+  @Override
+  public String getUserApiUsername() {
+    return null;
+  }
+
+  @Override
+  public String getUserApiPassword() {
     return null;
   }
 }

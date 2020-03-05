@@ -85,23 +85,9 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
    * @return The {@link UserApiConfiguration}
    */
   private UserApiConfiguration fetchApiConfiguration() {
-    final Optional<RuntimeConfiguration.UserApiConfiguration> userApiConfig =
-        runtimeConfiguration.getUserApiConfiguration();
-    final ImmutableMap<String, String> userConfigData = userApiConfig.map(
-        config -> ImmutableMap.of(
-            "server", config.getServerUrl(),
-            "authorizationAppName", config.getAppName(),
-            "authorizationPassword", config.getPassword()))
-        .orElseThrow(() -> new RuntimeException("userApi is not configured"));
-
-    final String server = userConfigData.get("server");
-    if (server == null) {
-      throw new RuntimeException("userApi is not configured");
-    }
-
-    return new UserApiConfiguration(server,
-        userConfigData.get("authorizationAppName"),
-        userConfigData.get("authorizationPassword"));
+    return new UserApiConfiguration(runtimeConfiguration.getUserApiUrl(),
+                                    runtimeConfiguration.getUserApiUsername(),
+                                    runtimeConfiguration.getUserApiPassword());
   }
 
   private transient UserApiConfiguration userApiConfiguration;

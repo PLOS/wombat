@@ -68,13 +68,9 @@ public interface RuntimeConfiguration {
 
   URL getSolrUrl();
 
-  interface UserApiConfiguration {
-    String getServerUrl();
+  String getUserApiUrl();
 
-    String getAppName();
+  String getUserApiUsername();
 
-    String getPassword();
-  }
-
-  Optional<UserApiConfiguration> getUserApiConfiguration();
+  String getUserApiPassword();
 }

@@ -149,27 +149,21 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return buildUrl(input.solrUrl, null);
   }
 
-  private final UserApiConfiguration userApiConfiguration = new UserApiConfiguration() {
-    @Override
-    public String getServerUrl() {
-      return input.userApi.server;
-    }
-
-    @Override
-    public String getAppName() {
-      return input.userApi.authorizationAppName;
-    }
-
-    @Override
-    public String getPassword() {
-      return input.userApi.authorizationPassword;
-    }
-  };
-
   @Override
-  public Optional<UserApiConfiguration> getUserApiConfiguration() {
-    return (input.userApi == null) ? Optional.empty() : Optional.of(userApiConfiguration);
+  public String getUserApiUrl() {
+    return input.userApiUrl;
   }
+  
+  @Override
+  public String getUserApiUsername() {
+    return input.userApiUsername;
+  }
+  
+  @Override
+  public String getUserApiPassword() {
+    return input.userApiPassword;
+  }
+
 
   /**
    * Validate values after deserializing.
@@ -196,11 +190,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
       throw new RuntimeConfigurationException("No memcachedPort specified");
     }
 
-    if (input.userApi == null) {
-      throw new RuntimeConfigurationException("User API connection properties are required");
-    }
     try {
-      new URL(input.userApi.server);
+      new URL(input.userApiUrl);
     } catch (MalformedURLException e) {
       throw new RuntimeConfigurationException(
           "Provided User API server address is not a valid URL", e);
@@ -239,12 +230,14 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String environment;
     private List<Map<String, ?>> themeSources;
 
-    private UserApiConfigurationInput userApi;
     private String memcachedHost;
     private String casUrl;
     private Integer memcachedPort;
     private String solrUrl;
-    
+    private String userApiUrl;
+    private String userApiUsername;
+    private String userApiPassword;
+
     /**
      * @deprecated For access by reflective deserializer only
      */
@@ -281,14 +274,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setUserApi(UserApiConfigurationInput userApi) {
-      this.userApi = userApi;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
     public void setMemcachedHost(String memcachedHost) {
       this.memcachedHost = memcachedHost;
     }
@@ -300,46 +285,37 @@ public class YamlConfiguration implements RuntimeConfiguration {
     public void setMemcachedPort(Integer memcachedPort) {
       this.memcachedPort = memcachedPort;
     }
-  }
-
-  private String casUrl;
-
-  /**
-   * @deprecated For access by reflective deserializer only
-   */
-  @Deprecated
-  public void setCasUrl(String casUrl) {
-    this.casUrl = casUrl;
-  }
-
-  public static class UserApiConfigurationInput {
-    private String server;
-    private String authorizationAppName;
-    private String authorizationPassword;
 
     /**
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setServer(String server) {
-      this.server = server;
+    public void setCasUrl(String casUrl) {
+      this.casUrl = casUrl;
     }
-
+    
     /**
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setAuthorizationAppName(String authorizationAppName) {
-      this.authorizationAppName = authorizationAppName;
+    public void setUserApiUrl(String userApiUrl) {
+      this.userApiUrl = userApiUrl;
     }
-
+    
     /**
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setAuthorizationPassword(String authorizationPassword) {
-      this.authorizationPassword = authorizationPassword;
+    public void setUserApiUsername(String userApiUsername) {
+      this.userApiUsername = userApiUsername;
     }
-
+    
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    @Deprecated
+    public void setUserApiPassword(String userApiPassword) {
+      this.userApiPassword = userApiPassword;
+    }
   }
 }

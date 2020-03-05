@@ -151,25 +151,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
     }
 
     @Override
-    public Optional<URL> getUrl(Site site) {
-      URL solrUrl;
-      //todo: make type optional
-      if (site.getType() != null && site.getType().equals("preprints")) {
-         solrUrl = buildUrl(input.solr.url + getPreprintsCollection() + "/select/", null);
-      } else {
-        solrUrl = buildUrl(input.solr.url + getJournalsCollection() + "/select/", null);
-      }
-      return Optional.ofNullable(solrUrl);
-    }
-
-    @Override
     public String getJournalsCollection() {
       return input.solr.journalsCollection;
-    }
-
-    @Override
-    public String getPreprintsCollection() {
-      return input.solr.preprintsCollection;
     }
   };
 
@@ -352,7 +335,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
   public static class SolrConfigurationInput {
     private String url;
     private String journalsCollection;
-    private String preprintsCollection;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -368,14 +350,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     @Deprecated
     public void setJournalsCollection(String collection) {
       this.journalsCollection = collection;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setpreprintsCollection(String collection) {
-      this.preprintsCollection = collection;
     }
   }
 

@@ -69,11 +69,7 @@ public interface RuntimeConfiguration {
   interface SolrConfiguration {
     Optional<URL> getUrl();
 
-    Optional<URL> getUrl(Site site);
-
     String getJournalsCollection();
-
-    String getPreprintsCollection();
   }
 
   interface UserApiConfiguration {

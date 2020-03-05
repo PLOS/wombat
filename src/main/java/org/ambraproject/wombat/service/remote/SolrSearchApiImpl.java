@@ -379,7 +379,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
       throw solrUndefinedException;
     }
     try {
-      URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl(site)
+      URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl()
           .orElseThrow(() -> solrUndefinedException);
       return new URL(solrServer, "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException | URISyntaxException e) {

@@ -66,11 +66,7 @@ public interface RuntimeConfiguration {
 
   String getCasUrl();
 
-  interface SolrConfiguration {
-    Optional<URL> getUrl();
-
-    String getJournalsCollection();
-  }
+  URL getSolrUrl();
 
   interface UserApiConfiguration {
     String getServerUrl();
@@ -79,8 +75,6 @@ public interface RuntimeConfiguration {
 
     String getPassword();
   }
-
-  Optional<SolrConfiguration> getSolrConfiguration();
 
   Optional<UserApiConfiguration> getUserApiConfiguration();
 }

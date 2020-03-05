@@ -144,21 +144,9 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return input.casUrl;
   }
 
-  private final SolrConfiguration solrConfiguration = new SolrConfiguration() {
-    @Override
-    public Optional<URL> getUrl() {
-      return Optional.ofNullable(buildUrl(input.solr.url + getJournalsCollection() + "/select/", null));
-    }
-
-    @Override
-    public String getJournalsCollection() {
-      return input.solr.journalsCollection;
-    }
-  };
-
   @Override
-  public Optional<SolrConfiguration> getSolrConfiguration() {
-    return (input.solr == null) ? Optional.empty() : Optional.of(solrConfiguration);
+  public URL getSolrUrl() {
+    return buildUrl(input.solrUrl, null);
   }
 
   private final UserApiConfiguration userApiConfiguration = new UserApiConfiguration() {
@@ -197,9 +185,9 @@ public class YamlConfiguration implements RuntimeConfiguration {
     } catch (MalformedURLException e) {
       throw new RuntimeConfigurationException("Provided server address is not a valid URL", e);
     }
-    if (input.solr != null && !Strings.isNullOrEmpty(input.solr.url)) {
+    if (!Strings.isNullOrEmpty(input.solrUrl)) {
       try {
-        new URL(input.solr.url);
+        new URL(input.solrUrl);
       } catch (MalformedURLException e) {
         throw new RuntimeConfigurationException("Provided solr server address is not a valid URL", e);
       }
@@ -251,12 +239,12 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String environment;
     private List<Map<String, ?>> themeSources;
 
-    private SolrConfigurationInput solr;
     private UserApiConfigurationInput userApi;
     private String memcachedHost;
     private String casUrl;
     private Integer memcachedPort;
-
+    private String solrUrl;
+    
     /**
      * @deprecated For access by reflective deserializer only
      */
@@ -293,14 +281,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setSolr(SolrConfigurationInput solr) {
-      this.solr = solr;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
     public void setUserApi(UserApiConfigurationInput userApi) {
       this.userApi = userApi;
     }
@@ -330,27 +310,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
   @Deprecated
   public void setCasUrl(String casUrl) {
     this.casUrl = casUrl;
-  }
-
-  public static class SolrConfigurationInput {
-    private String url;
-    private String journalsCollection;
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setUrl(String url) {
-      this.url = url;
-    }
-
-    /**
-     * @deprecated For access by reflective deserializer only
-     */
-    @Deprecated
-    public void setJournalsCollection(String collection) {
-      this.journalsCollection = collection;
-    }
   }
 
   public static class UserApiConfigurationInput {

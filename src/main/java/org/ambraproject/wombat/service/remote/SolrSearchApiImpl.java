@@ -375,12 +375,8 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     SolrUndefinedException solrUndefinedException = new SolrUndefinedException(
         "Solr server URI must be defined in wombat.yaml in order to use solr features such "
             + "as search, RSS, or listing recent articles on the homepage.");
-    if (!runtimeConfiguration.getSolrConfiguration().isPresent()) {
-      throw solrUndefinedException;
-    }
     try {
-      URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl()
-          .orElseThrow(() -> solrUndefinedException);
+      URL solrServer = runtimeConfiguration.getSolrUrl();
       return new URL(solrServer, "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
       //Solr server has already been validated - any exception here must be invalid values in params

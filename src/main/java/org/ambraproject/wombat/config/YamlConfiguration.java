@@ -61,7 +61,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public URL getRhinoServerUrl() {
+  public URL getRhinoUrl() {
     return buildUrl(input.rhinoServerUrl, null);
   }
 
@@ -96,7 +96,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public URI getUserApiUrl() {
+  public URI getNedUrl() {
     try {
       return new URI(input.userApiUrl);
     } catch (URISyntaxException ex) {

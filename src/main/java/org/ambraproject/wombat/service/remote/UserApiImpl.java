@@ -84,7 +84,7 @@ public class UserApiImpl extends AbstractRestfulJsonApi implements UserApi {
    * @return The {@link UserApiConfiguration}
    */
   private UserApiConfiguration fetchApiConfiguration() {
-    return new UserApiConfiguration(runtimeConfiguration.getUserApiUrl());
+    return new UserApiConfiguration(runtimeConfiguration.getNedUrl());
   }
 
   private transient UserApiConfiguration userApiConfiguration;

@@ -35,7 +35,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public static final String SERVER_URL = "http://www.example.com/";
 
   @Override
-  public URL getRhinoServerUrl() {
+  public URL getRhinoUrl() {
     try {
       final URL serverUrl = new URL(SERVER_URL);
       return serverUrl;
@@ -75,7 +75,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public URI getUserApiUrl() {
+  public URI getNedUrl() {
     return null;
   }
 }

@@ -40,7 +40,7 @@ public interface RuntimeConfiguration {
    *
    * @return the URL
    */
-  URL getRhinoServerUrl();
+  URL getRhinoUrl();
 
   /**
    * Get the path of an HTML document to display on the root page
@@ -58,5 +58,5 @@ public interface RuntimeConfiguration {
 
   URL getSolrUrl();
 
-  URI getUserApiUrl();
+  URI getNedUrl();
 }

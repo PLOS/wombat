@@ -30,7 +30,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
   <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-
+  <context:annotation-config/>
+  <context:property-placeholder/>
   <context:component-scan base-package="org.ambraproject.wombat.controller"/>
 
   <beans:bean class="org.ambraproject.wombat.config.SpringSecurityConfiguration" />
@@ -39,4 +40,16 @@
 
   <beans:bean class="org.ambraproject.wombat.config.SpringMvcConfiguration" />
 
+  <beans:bean class="org.ambraproject.wombat.config.RootConfiguration" />
+
+  <beans:bean id="runtimeConfiguration"
+        class="org.ambraproject.wombat.config.RuntimeConfigurationImpl">
+    <beans:property name="solrUrl" value="${SOLR_URL:}" />
+    <beans:property name="nedUrl" value="${NED_URL:}" />
+    <beans:property name="casUrl" value="${CAS_URL:}" />
+    <beans:property name="themePath" value="${THEME_PATH:}" />
+    <beans:property name="environment" value="${ENVIRONMENT:prod}" />
+    <beans:property name="rhinoUrl" value="${RHINO_URL:}" />
+    <beans:property name="memcachedServer" value="${MEMCACHED_SERVER:}" />
+  </beans:bean>
 </beans:beans>

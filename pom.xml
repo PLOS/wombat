@@ -396,8 +396,7 @@
               <java.util.logging.manager>org.apache.juli.ClassLoaderLogManager</java.util.logging.manager>
               <org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>true</org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>
               <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
-              <!-- Needed to pass on system properties to child process -->
-              <wombat.configDir>${wombat.configDir}</wombat.configDir>
+              <org.apache.tomcat.util.digester.PROPERTY_SOURCE>org.apache.tomcat.util.digester.Digester$EnvironmentPropertySource</org.apache.tomcat.util.digester.PROPERTY_SOURCE>
             </systemProperties>
           </container>
           <deployables>

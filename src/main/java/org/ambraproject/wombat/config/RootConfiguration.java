@@ -77,38 +77,9 @@ public class RootConfiguration {
     return yaml;
   }
 
-  private static final String CONFIG_DIR_PROPERTY_NAME = "wombat.configDir";
   private static final String MEMCACHE_PREFIX = "wombat";
   private static final int MEMCACHE_TTL = 60 * 60;
   
-  private static File getConfigDirectory() {
-    String property = System.getProperty(CONFIG_DIR_PROPERTY_NAME);
-    if (!Strings.isNullOrEmpty(property)) {
-      return new File(property);
-    } else {
-      throw new RuntimeException("Config directory not found. " + CONFIG_DIR_PROPERTY_NAME + " must be defined.");
-    }
-  }
-
-  @Bean
-  public RuntimeConfiguration runtimeConfiguration(Yaml yaml)
-      throws IOException {
-    File configDirectory = getConfigDirectory();
-    File configPath = new File(configDirectory, "wombat.yaml");
-    if (!configPath.exists()) {
-      throw new RuntimeConfigurationException(configPath.getPath() + " not found");
-    }
-
-    YamlConfiguration runtimeConfiguration;
-    try (Reader reader = new BufferedReader(new FileReader(configPath))) {
-      runtimeConfiguration = new YamlConfiguration(yaml.loadAs(reader, YamlConfiguration.ConfigurationInput.class));
-    } catch (JsonSyntaxException e) {
-      throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
-    }
-    runtimeConfiguration.validate();
-    return runtimeConfiguration;
-  }
-
   @Bean
   public ArticleApi articleApi() {
     return new ArticleApiImpl();

@@ -7,6 +7,10 @@
   margin-bottom: rem-calc($line-height-large);
 }
 
+a {
+  color: $plos-one-purple;
+}
+
 .editors-search-filter {
   width: 100%;
   display: table;

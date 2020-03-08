@@ -161,6 +161,7 @@ public abstract class RelatedArticleType implements Comparable<RelatedArticleTyp
         .setSortOrder(8)
         .setName("updated-article")
         .setDisplayName("Update")
+        .setAmendment(true)
         .build(),
         RelatedArticleType.builder()
         .setSortOrder(8)

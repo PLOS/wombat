@@ -1,0 +1,12 @@
+$plos-ntd: #891fb1; //purple
+$plos-ntd-shade1: #d4afe0;
+$plos-ntd-shade2: #c493d4;
+$plos-ntd-shade3: #decbe4;
+
+.plosntd {
+  @include brandcolor($setcolor: $plos-ntd, $shade1: $plos-ntd-shade1, $shade2: $plos-ntd-shade2, $shade3: $plos-ntd-shade3);
+}
+
+.plosntd .logo {
+  height: 24px;
+}

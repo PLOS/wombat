@@ -1,0 +1,12 @@
+$plos-compbiol: #16a127; //green
+$plos-compbiol-shade1: #a8e2be;
+$plos-compbiol-shade2: #92e5ab;
+$plos-compbiol-shade3: #caeed7;
+
+.ploscompbiol {
+  @include brandcolor($setcolor: $plos-compbiol, $shade1: $plos-compbiol-shade1, $shade2: $plos-compbiol-shade2, $shade3: $plos-compbiol-shade3);
+}
+
+.ploscompbiol .logo {
+  height: 27px;
+}

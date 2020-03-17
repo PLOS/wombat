@@ -45,6 +45,10 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   public void setNedUrl(URI nedUrl) {
     Preconditions.checkNotNull(nedUrl, "Please set NED_URL.");
     Preconditions.checkArgument(!nedUrl.toString().equals(""), "Please set NED_URL.");
+    Preconditions.checkArgument(((nedUrl.getUserInfo() != null) &&
+                                 !nedUrl.getUserInfo().equals("") &&
+                                 nedUrl.getUserInfo().split(":").length == 2),
+        "Please set username, password in NED_URL");
     this.nedUrl = nedUrl;
   }
 

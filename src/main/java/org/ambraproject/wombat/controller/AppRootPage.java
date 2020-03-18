@@ -36,8 +36,8 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.theme.ThemeGraph;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.ui.ExtendedModelMap;
@@ -86,7 +86,7 @@ public class AppRootPage {
   }
 
 
-  private static final Logger log = LoggerFactory.getLogger(AppRootPage.class);
+  private static final Logger log = LogManager.getLogger(AppRootPage.class);
 
   @Autowired
   private SiteSet siteSet;

@@ -50,8 +50,8 @@ import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.MediaType;
@@ -93,7 +93,7 @@ import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_
  */
 @Controller
 public class SearchController extends WombatController {
-  private static final Logger log = LoggerFactory.getLogger(SearchController.class);
+  private static final Logger log = LogManager.getLogger(SearchController.class);
 
   @Autowired
   private SiteSet siteSet;

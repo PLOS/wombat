@@ -36,8 +36,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -61,7 +61,7 @@ import java.util.List;
 @Controller
 public class MediaCurationController extends WombatController {
 
-  private static final Logger log = LoggerFactory.getLogger(MediaCurationController.class);
+  private static final Logger log = LogManager.getLogger(MediaCurationController.class);
 
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;

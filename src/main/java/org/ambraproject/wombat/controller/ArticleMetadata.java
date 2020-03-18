@@ -70,13 +70,13 @@ import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.util.TextUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 public class ArticleMetadata {
-  private static final Logger log = LoggerFactory.getLogger(ArticleMetadata.class);
+  private static final Logger log = LogManager.getLogger(ArticleMetadata.class);
 
   private final Factory factory; // for further service access
   private final Site site;

@@ -22,8 +22,8 @@
 
 package org.ambraproject.wombat.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
@@ -34,7 +34,7 @@ import java.util.Properties;
  * Information about git commit
  */
 public class GitInfo {
-  private static final Logger log = LoggerFactory.getLogger(GitInfo.class);
+  private static final Logger log = LogManager.getLogger(GitInfo.class);
 
   private final String branch;
   private final String describe;

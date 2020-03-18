@@ -22,13 +22,9 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.config.theme.ThemeSource;
-
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
-import java.util.Optional;
 
 /**
  * Instance of {@link RuntimeConfiguration} suitable for tests.  Many of the return values here will be null or
@@ -39,12 +35,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public static final String SERVER_URL = "http://www.example.com/";
 
   @Override
-  public String getCompiledAssetDir() {
-    return System.getProperty("java.io.tmpdir");
-  }
-
-  @Override
-  public URL getServer() {
+  public URL getRhinoUrl() {
     try {
       final URL serverUrl = new URL(SERVER_URL);
       return serverUrl;
@@ -52,9 +43,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
       return null;
     }
   }
-
-  @Override
-  public Optional<SolrConfiguration> getSolrConfiguration() { return Optional.empty(); }
 
   @Override
   public String getEnvironment() {
@@ -67,60 +55,27 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public ImmutableSet<String> getEnabledDevFeatures() { return ImmutableSet.of(); }
-
-  @Override
-  public ImmutableList<ThemeSource<?>> getThemeSources() {
+  public String getThemePath() {
     return null;
   }
 
   @Override
-  public CacheConfiguration getCacheConfiguration() {
-    return new CacheConfiguration() {
-      @Override
-      public String getMemcachedHost() {
-        return null;
-      }
-
-      @Override
-      public int getMemcachedPort() {
-        return -1;
-      }
-
-      @Override
-      public String getCacheAppPrefix() {
-        return "testWombat";
-      }
-    };
+  public String getMemcachedServer() {
+    return null;
   }
 
   @Override
-  public HttpConnectionPoolConfiguration getHttpConnectionPoolConfiguration() {
-    return new HttpConnectionPoolConfiguration() {
-      @Override
-      public Integer getMaxTotal() {
-        return null;
-      }
-
-      @Override
-      public Integer getDefaultMaxPerRoute() {
-        return null;
-      }
-    };
+  public String getCasUrl() {
+    return null;
   }
 
   @Override
-  public Optional<CasConfiguration> getCasConfiguration() {
-    return Optional.empty();
+  public URL getSolrUrl() {
+    return null;
   }
 
   @Override
-  public boolean areCommentsDisabled() {
-    return false;
-  }
-
-  @Override
-  public Optional<UserApiConfiguration> getUserApiConfiguration() {
-    return Optional.empty();
+  public URI getNedUrl() {
+    return null;
   }
 }

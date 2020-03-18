@@ -23,8 +23,8 @@
 package org.ambraproject.wombat.cache;
 
 import net.spy.memcached.MemcachedClient;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -39,7 +39,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class MemcacheClient implements Cache {
 
-  private static final Logger log = LoggerFactory.getLogger(MemcacheClient.class);
+  private static final Logger log = LogManager.getLogger(MemcacheClient.class);
 
   /**
    * Timeout for cache reads, in milliseconds.  If memcached doesn't respond within

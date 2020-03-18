@@ -43,8 +43,8 @@ import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenExpiredException;
 import org.ambraproject.wombat.service.remote.orcid.OrcidAuthenticationTokenReusedException;
 import org.apache.commons.io.output.WriterOutputStream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -81,7 +81,7 @@ import java.util.stream.Collectors;
 @Controller
 public class ArticleController extends WombatController {
 
-  private static final Logger log = LoggerFactory.getLogger(ArticleController.class);
+  private static final Logger log = LogManager.getLogger(ArticleController.class);
 
   /**
    * Initial size (in bytes) of buffer that holds transformed article HTML before passing it to the model.

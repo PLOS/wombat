@@ -33,8 +33,8 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
@@ -49,7 +49,7 @@ import java.util.Map;
 
 public class OrcidApiImpl implements OrcidApi {
 
-  private static final Logger log = LoggerFactory.getLogger(OrcidApiImpl.class);
+  private static final Logger log = LogManager.getLogger(OrcidApiImpl.class);
 
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;

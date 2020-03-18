@@ -29,15 +29,15 @@ import freemarker.cache.TemplateLoader;
 import freemarker.cache.WebappTemplateLoader;
 import org.ambraproject.wombat.config.DelegatingTemplateLoader;
 import org.ambraproject.wombat.config.theme.Theme;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.util.List;
 
 public class SiteTemplateLoader extends DelegatingTemplateLoader {
-  private static final Logger log = LoggerFactory.getLogger(SiteTemplateLoader.class);
+  private static final Logger log = LogManager.getLogger(SiteTemplateLoader.class);
 
   private final ImmutableMap<String, TemplateLoader> loaders; // mapped by site key
 

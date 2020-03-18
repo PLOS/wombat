@@ -26,6 +26,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class AssetServiceTest extends AbstractJUnit4SpringContextTests {
   @Configuration
   static class ContextConfiguration {
     @Bean
-    AssetService assetService() {
+    AssetServiceImpl assetService() throws IOException {
       return new AssetServiceImpl();
     }
   }
@@ -60,7 +61,7 @@ public class AssetServiceTest extends AbstractJUnit4SpringContextTests {
       "site1", AssetService.AssetUrls.RESOURCE_NAMESPACE, "js") + File.separator;
 
   @Autowired
-  AssetService assetService;
+  AssetServiceImpl assetService;
   
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
@@ -97,7 +98,7 @@ public class AssetServiceTest extends AbstractJUnit4SpringContextTests {
     Context jsContext = Context.enter();
     jsContext.setOptimizationLevel(-1);
     Scriptable jsScope = jsContext.initStandardObjects();
-    File file = new File(runtimeConfiguration.getCompiledAssetDir() + File.separator + basename);
+    File file = new File(assetService.assetDir + File.separator + basename);
     try (FileReader fr = new FileReader(file)) {
       Object actual = jsContext.evaluateReader(jsScope, fr, basename, 1, null);
       assertEquals(expected, actual);

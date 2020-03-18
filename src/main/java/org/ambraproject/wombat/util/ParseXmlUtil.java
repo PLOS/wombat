@@ -25,8 +25,8 @@ package org.ambraproject.wombat.util;
 
 import com.google.common.base.CharMatcher;
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -34,7 +34,7 @@ import org.w3c.dom.NodeList;
 import java.util.List;
 
 public class ParseXmlUtil {
-  private static final Logger log = LoggerFactory.getLogger(ParseXmlUtil.class);
+  private static final Logger log = LogManager.getLogger(ParseXmlUtil.class);
 
   public static String getElementSingleValue(Element element, String name) {
     NodeList node = element.getElementsByTagName(name);

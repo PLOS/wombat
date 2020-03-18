@@ -41,8 +41,8 @@ import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,7 +67,7 @@ import java.util.stream.Collectors;
  */
 @Controller
 public class HomeController extends WombatController {
-  private static final Logger log = LoggerFactory.getLogger(HomeController.class);
+  private static final Logger log = LogManager.getLogger(HomeController.class);
 
   @Autowired
   private SolrSearchApi solrSearchApi;

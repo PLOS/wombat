@@ -31,8 +31,8 @@ import org.apache.poi.hslf.model.Slide;
 import org.apache.poi.hslf.model.TextBox;
 import org.apache.poi.hslf.usermodel.RichTextRun;
 import org.apache.poi.hslf.usermodel.SlideShow;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
@@ -50,7 +50,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PowerPointDownload {
-  private static final Logger log = LoggerFactory.getLogger(PowerPointDownload.class);
+  private static final Logger log = LogManager.getLogger(PowerPointDownload.class);
 
   /**
    * Indicate that a journal's theme does not provide a logo file. In this case, it is best for the callback to log a

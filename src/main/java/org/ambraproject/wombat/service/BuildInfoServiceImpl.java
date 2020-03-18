@@ -27,8 +27,8 @@ import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.BuildInfo;
 import org.ambraproject.wombat.util.GitInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -39,7 +39,7 @@ import java.util.Map;
 import java.util.Properties;
 
 public class BuildInfoServiceImpl implements BuildInfoService {
-  private static final Logger log = LoggerFactory.getLogger(BuildInfoServiceImpl.class);
+  private static final Logger log = LogManager.getLogger(BuildInfoServiceImpl.class);
 
   @Autowired
   private ArticleApi articleApi;
@@ -105,7 +105,6 @@ public class BuildInfoServiceImpl implements BuildInfoService {
     buildInfo.putAll(properties);
 
     buildInfo.put("gitCommitIdAbbrev", gitInfo.getCommitIdAbbrev());
-    buildInfo.put("enabledDevFeatures", runtimeConfiguration.getEnabledDevFeatures());
     return parse(buildInfo);
   }
 
@@ -120,8 +119,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
         (String) propertyMap.get("version"),
         (String) propertyMap.get("buildDate"),
         (String) propertyMap.get("buildUser"),
-        (String) propertyMap.get("gitCommitIdAbbrev"),
-        (Collection<String>) propertyMap.get("enabledDevFeatures"));
+        (String) propertyMap.get("gitCommitIdAbbrev"));
   }
 
 }

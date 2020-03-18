@@ -24,9 +24,6 @@ package org.ambraproject.wombat.util;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableSet;
-
-import java.util.Collection;
 
 /**
  * An object encapsulating properties of a build of an application (either this one, or the service component).
@@ -39,15 +36,12 @@ public class BuildInfo {
   private final String date;
   private final String user;
   private final String gitCommitIdAbbrev;
-  private ImmutableSet<String> enabledDevFeatures;
 
-  public BuildInfo(String version, String date, String user, String gitCommitIdAbbrev,
-      Collection<String> enabledDevFeatures) {
+  public BuildInfo(String version, String date, String user, String gitCommitIdAbbrev) {
     this.version = Strings.nullToEmpty(version);
     this.date = Strings.nullToEmpty(date);
     this.user = Strings.nullToEmpty(user);
     this.gitCommitIdAbbrev = Strings.nullToEmpty(gitCommitIdAbbrev);
-    this.enabledDevFeatures = (enabledDevFeatures == null) ? ImmutableSet.<String>of() : ImmutableSet.copyOf(enabledDevFeatures);
   }
 
   /**
@@ -78,13 +72,6 @@ public class BuildInfo {
     return gitCommitIdAbbrev;
   }
 
-  /**
-   * @return a string describing the list of enabled dev features
-   */
-  public ImmutableSet<String> getEnabledDevFeatures() {
-    return enabledDevFeatures;
-  }
-
   @Override
   public String toString() {
     return MoreObjects.toStringHelper(this)
@@ -92,7 +79,6 @@ public class BuildInfo {
         .add("date", date)
         .add("user", user)
         .add("gitCommitIdAbbrev", gitCommitIdAbbrev)
-        .add("enabledDevFeatures", enabledDevFeatures)
         .toString();
   }
 
@@ -107,7 +93,6 @@ public class BuildInfo {
     if (!user.equals(buildInfo.user)) return false;
     if (!version.equals(buildInfo.version)) return false;
     if (!gitCommitIdAbbrev.equals(buildInfo.gitCommitIdAbbrev)) return false;
-    if (!enabledDevFeatures.equals(buildInfo.enabledDevFeatures)) return false;
 
     return true;
   }
@@ -118,7 +103,6 @@ public class BuildInfo {
     result = 31 * result + date.hashCode();
     result = 31 * result + user.hashCode();
     result = 31 * result + gitCommitIdAbbrev.hashCode();
-    result = 31 * result + enabledDevFeatures.hashCode();
     return result;
   }
 }

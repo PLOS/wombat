@@ -77,36 +77,9 @@ public class RootConfiguration {
     return yaml;
   }
 
-  private static final String CONFIG_DIR_PROPERTY_NAME = "wombat.configDir";
-
-  private static File getConfigDirectory() {
-    String property = System.getProperty(CONFIG_DIR_PROPERTY_NAME);
-    if (!Strings.isNullOrEmpty(property)) {
-      return new File(property);
-    } else {
-      throw new RuntimeException("Config directory not found. " + CONFIG_DIR_PROPERTY_NAME + " must be defined.");
-    }
-  }
-
-  @Bean
-  public RuntimeConfiguration runtimeConfiguration(Yaml yaml)
-      throws IOException {
-    File configDirectory = getConfigDirectory();
-    File configPath = new File(configDirectory, "wombat.yaml");
-    if (!configPath.exists()) {
-      throw new RuntimeConfigurationException(configPath.getPath() + " not found");
-    }
-
-    YamlConfiguration runtimeConfiguration;
-    try (Reader reader = new BufferedReader(new FileReader(configPath))) {
-      runtimeConfiguration = new YamlConfiguration(yaml.loadAs(reader, YamlConfiguration.ConfigurationInput.class));
-    } catch (JsonSyntaxException e) {
-      throw new RuntimeConfigurationException(configPath + " contains invalid JSON", e);
-    }
-    runtimeConfiguration.validate();
-    return runtimeConfiguration;
-  }
-
+  private static final String MEMCACHE_PREFIX = "wombat";
+  private static final int MEMCACHE_TTL = 60 * 60;
+  
   @Bean
   public ArticleApi articleApi() {
     return new ArticleApiImpl();
@@ -125,24 +98,20 @@ public class RootConfiguration {
   public HttpClientConnectionManager httpClientConnectionManager(RuntimeConfiguration runtimeConfiguration) {
     PoolingHttpClientConnectionManager manager = new PoolingHttpClientConnectionManager();
 
-    final RuntimeConfiguration.HttpConnectionPoolConfiguration httpConnectionPoolConfiguration = runtimeConfiguration.getHttpConnectionPoolConfiguration();
-    Integer maxTotal = httpConnectionPoolConfiguration.getMaxTotal();
-    if (maxTotal != null) manager.setMaxTotal(maxTotal);
-    Integer defaultMaxPerRoute = httpConnectionPoolConfiguration.getDefaultMaxPerRoute();
-    if (defaultMaxPerRoute != null) manager.setDefaultMaxPerRoute(defaultMaxPerRoute);
+    manager.setMaxTotal(1000);
+    manager.setDefaultMaxPerRoute(1000);
 
     return manager;
   }
 
   @Bean
   public Cache cache(RuntimeConfiguration runtimeConfiguration) throws IOException {
-    final RuntimeConfiguration.CacheConfiguration cacheConfiguration = runtimeConfiguration.getCacheConfiguration();
-    if (!Strings.isNullOrEmpty(cacheConfiguration.getMemcachedHost())) {
-
-      // TODO: consider defining this in wombat.yaml instead.
-      final int cacheTimeout = 60 * 60;
-      MemcacheClient result = new MemcacheClient(cacheConfiguration.getMemcachedHost(),
-          cacheConfiguration.getMemcachedPort(), cacheConfiguration.getCacheAppPrefix(), cacheTimeout);
+    if (!Strings.isNullOrEmpty(runtimeConfiguration.getMemcachedServer())) {
+      String[] parts  = runtimeConfiguration.getMemcachedServer().split(":");
+      MemcacheClient result = new MemcacheClient(parts[0],
+                                                 Integer.parseInt(parts[1]),
+                                                 MEMCACHE_PREFIX,
+                                                 MEMCACHE_TTL);
       result.connect();
       return result;
     } else {

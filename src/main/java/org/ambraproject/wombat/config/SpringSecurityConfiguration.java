@@ -34,8 +34,8 @@ import org.apache.commons.io.Charsets;
 import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.jasig.cas.client.validation.Assertion;
 import org.jasig.cas.client.validation.Cas20ServiceTicketValidator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -81,7 +81,7 @@ import java.util.stream.Collectors;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  private static final Logger log = LoggerFactory.getLogger(SpringSecurityConfiguration.class);
+  private static final Logger log = LogManager.getLogger(SpringSecurityConfiguration.class);
 
   @Autowired
   private SiteSet siteSet;
@@ -119,16 +119,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     return serviceProperties;
   }
 
-  public static class CasConfigurationRequiredException extends RuntimeException {
-    private CasConfigurationRequiredException() {
-      super("A bean was used that requires CAS configuration");
-    }
-  }
-
   private Cas20ServiceTicketValidator cas20ServiceTicketValidator() {
-    return runtimeConfiguration.getCasConfiguration()
-        .map(casConfiguration -> new Cas20ServiceTicketValidator(casConfiguration.getCasUrl()))
-        .orElseThrow(CasConfigurationRequiredException::new);
+    return new Cas20ServiceTicketValidator(runtimeConfiguration.getCasUrl());
   }
 
   private AuthenticationUserDetailsService authenticationUserDetailsService() {
@@ -182,26 +174,25 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   }
 
   private LogoutSuccessHandler getLogoutSuccessHandler() {
-    return runtimeConfiguration.getCasConfiguration().map(casConfiguration ->
-        (LogoutSuccessHandler) (HttpServletRequest request, HttpServletResponse response, Authentication authentication) -> {
-          if (authentication != null && authentication.getDetails() != null) {
-            try {
-              request.getSession().invalidate();
-            } catch (IllegalStateException e) {
-              // session is already invalid, so nothing to do, but log as error since it may indicate a config issue
-              log.error("Attempted to log out of an already logged out session");
-            }
-          }
+    return (LogoutSuccessHandler) (HttpServletRequest request, HttpServletResponse response, Authentication authentication) -> {
+      if (authentication != null && authentication.getDetails() != null) {
+        try {
+          request.getSession().invalidate();
+        } catch (IllegalStateException e) {
+          // session is already invalid, so nothing to do, but log as error since it may indicate a config issue
+          log.error("Attempted to log out of an already logged out session");
+        }
+      }
+      
+      validateHostname(request);
+      String logoutServiceUrl = Link.toSitelessHandler()
+        .toPattern(requestMappingContextDictionary, LOGOUT_HANDLER_NAME).build()
+        .get(request);
 
-          validateHostname(request);
-          String logoutServiceUrl = Link.toSitelessHandler()
-              .toPattern(requestMappingContextDictionary, LOGOUT_HANDLER_NAME).build()
-              .get(request);
-
-          response.setStatus(HttpServletResponse.SC_OK);
-          response.sendRedirect(casConfiguration.getLogoutUrl()
-              + "?service=" + URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name()));
-        }).orElseThrow(CasConfigurationRequiredException::new);
+      response.setStatus(HttpServletResponse.SC_OK);
+      response.sendRedirect(runtimeConfiguration.getCasUrl() + "/logout"
+                            + "?service=" + URLEncoder.encode(logoutServiceUrl, Charsets.UTF_8.name()));
+    };
   }
 
   @Override
@@ -219,31 +210,28 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    if (runtimeConfiguration.getCasConfiguration().isPresent()) {
-      http.addFilter(casAuthenticationFilter())
-          .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
-          .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
-          .authorizeRequests().antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
-          .and().authorizeRequests().requestMatchers(new RequestMatcher() {
-              public boolean matches(HttpServletRequest request) {
-                String path = "" + request.getServletPath() + request.getPathInfo();
-                String host = "" + request.getServerName().toLowerCase();
-                return (path != null && (path.contains("DesktopApertaRxiv") || host.contains("apertarxiv")));
-              }
-           }).permitAll()
-          .and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated()
-          .and().authorizeRequests().antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
+    http.addFilter(casAuthenticationFilter())
+        .addFilterBefore(requestLogoutFilter(), LogoutFilter.class)
+        .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class).authorizeRequests()
+        .antMatchers(USER_AUTH_INTERCEPT_PATTERN).fullyAuthenticated().and().authorizeRequests()
+        .requestMatchers(new RequestMatcher() {
+          public boolean matches(HttpServletRequest request) {
+            String path = "" + request.getServletPath() + request.getPathInfo();
+            String host = "" + request.getServerName().toLowerCase();
+            return (path != null
+                && (path.contains("DesktopApertaRxiv") || host.contains("apertarxiv")));
+          }
+        }).permitAll().and().authorizeRequests().antMatchers(NEW_COMMENT_AUTH_INTERCEPT_PATTERN)
+        .fullyAuthenticated().and().authorizeRequests()
+        .antMatchers(FLAG_COMMENT_AUTH_INTERCEPT_PATTERN).fullyAuthenticated();
 
-        http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
-      http.csrf().disable();
-    }
+    http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
+    http.csrf().disable();
   }
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    if (runtimeConfiguration.getCasConfiguration().isPresent()) {
-      auth.authenticationProvider(casAuthenticationProvider());
-    }
+    auth.authenticationProvider(casAuthenticationProvider());
   }
 
   @Bean
@@ -253,17 +241,16 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
   }
 
   private CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
-    return runtimeConfiguration.getCasConfiguration().map(casConfiguration -> {
-      CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint() {
-        @Override
-        protected String createServiceUrl(final HttpServletRequest request, final HttpServletResponse response) {
-          return getCasValidationPath(request);
-        }
-      };
-      casAuthenticationEntryPoint.setLoginUrl(casConfiguration.getLoginUrl());
-      casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
-      return casAuthenticationEntryPoint;
-    }).orElseThrow(CasConfigurationRequiredException::new);
+    CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint() {
+      @Override
+      protected String createServiceUrl(final HttpServletRequest request,
+          final HttpServletResponse response) {
+        return getCasValidationPath(request);
+      }
+    };
+    casAuthenticationEntryPoint.setLoginUrl(runtimeConfiguration.getCasUrl() + "/login");
+    casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
+    return casAuthenticationEntryPoint;
   }
 
   private String getCasValidationPath(HttpServletRequest request) {

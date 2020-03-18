@@ -36,8 +36,8 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -66,7 +66,7 @@ import java.util.stream.Collectors;
  */
 public class SolrSearchApiImpl implements SolrSearchApi {
 
-  private static final Logger log = LoggerFactory.getLogger(SolrSearchApiImpl.class);
+  private static final Logger log = LogManager.getLogger(SolrSearchApiImpl.class);
 
   @Autowired
   private JsonService jsonService;
@@ -372,18 +372,10 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   private URI getSolrUri(List<NameValuePair> params, Site site) throws SolrUndefinedException {
-    SolrUndefinedException solrUndefinedException = new SolrUndefinedException(
-        "Solr server URI must be defined in wombat.yaml in order to use solr features such "
-            + "as search, RSS, or listing recent articles on the homepage.");
-    if (!runtimeConfiguration.getSolrConfiguration().isPresent()) {
-      throw solrUndefinedException;
-    }
     try {
-      URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl(site)
-          .orElseThrow(() -> solrUndefinedException);
-      return new URL(solrServer, "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
+      URL solrServer = runtimeConfiguration.getSolrUrl();
+      return new URL(solrServer, "/select?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
-      //Solr server has already been validated - any exception here must be invalid values in params
       throw new IllegalArgumentException(e);
     }
   }

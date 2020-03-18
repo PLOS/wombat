@@ -22,25 +22,6 @@
 
 package org.ambraproject.wombat.service;
 
-import java.util.concurrent.locks.Lock;
-
-import com.google.common.base.Preconditions;
-import com.google.common.util.concurrent.Striped;
-import com.yahoo.platform.yui.compressor.CssCompressor;
-import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
-
-import org.ambraproject.wombat.cache.Cache;
-import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.util.CacheKey;
-import org.apache.commons.io.IOUtils;
-import org.mozilla.javascript.ErrorReporter;
-import org.mozilla.javascript.EvaluatorException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -52,10 +33,28 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import com.google.common.base.Preconditions;
+import com.google.common.util.concurrent.Striped;
+import com.yahoo.platform.yui.compressor.CssCompressor;
+import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
+import org.ambraproject.wombat.cache.Cache;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.theme.Theme;
+import org.ambraproject.wombat.util.CacheKey;
+import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.mozilla.javascript.ErrorReporter;
+import org.mozilla.javascript.EvaluatorException;
+import org.springframework.beans.factory.annotation.Autowired;
 public class AssetServiceImpl implements AssetService {
 
-  private static final Logger logger = LoggerFactory.getLogger(AssetServiceImpl.class);
+  private static final Logger logger = LogManager.getLogger(AssetServiceImpl.class);
 
   private static final int BUFFER_SIZE = 8192;
 
@@ -74,13 +73,16 @@ public class AssetServiceImpl implements AssetService {
   private static final int CACHE_TTL = 15 * 60;
 
   @Autowired
-  private RuntimeConfiguration runtimeConfiguration;
-
-  @Autowired
   private Cache cache;
 
+  File assetDir;
+  
   private static Striped<Lock> lockStripes = Striped.lock(10);
 
+  public AssetServiceImpl() throws IOException {
+    this.assetDir = Files.createTempDirectory("wombat-assets").toFile();
+    this.assetDir.deleteOnExit();
+  }
   /*
    * We cache data at two steps in the process of compiling assets:
    * (1) mapping source filenames onto compiled content, so that we don't have to compile them more than once; and
@@ -122,7 +124,7 @@ public class AssetServiceImpl implements AssetService {
      * @return absolute path to the asset file
      */
     private File getFile() {
-      return new File(runtimeConfiguration.getCompiledAssetDir(), name);
+      return new File(assetDir, name);
     }
 
     /**
@@ -237,7 +239,7 @@ public class AssetServiceImpl implements AssetService {
    * Simple class representing a File and its contents.  Useful since compile has to load the file into memory anyway,
    * and the caller also needs the contents.
    */
-  private static final class CompiledAsset {
+  private class CompiledAsset {
     private final CompiledDigest digest;
     private final byte[] contents;
 
@@ -250,7 +252,7 @@ public class AssetServiceImpl implements AssetService {
   /**
    * Instance of {@link ErrorReporter} passed to the javascript compiler.
    */
-  private static class JsErrorReporter implements ErrorReporter {
+  private class JsErrorReporter implements ErrorReporter {
 
     @Override
     public void error(String message, String sourceName, int line, String lineSource, int lineOffset) {

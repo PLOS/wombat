@@ -31,8 +31,8 @@ import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -41,7 +41,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class SitePageContext {
 
-  private static final Logger log = LoggerFactory.getLogger(SitePageContext.class);
+  private static final Logger log = LogManager.getLogger(SitePageContext.class);
 
   private HttpServletRequest extractRequest() throws TemplateModelException {
     return ((HttpRequestHashModel) environment.getDataModel().get("Request")).getRequest();

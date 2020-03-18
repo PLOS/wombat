@@ -23,15 +23,15 @@
 package org.ambraproject.wombat.service;
 
 import com.google.common.base.Strings;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class HoneypotServiceImpl implements HoneypotService {
 
-  private static final Logger log = LoggerFactory.getLogger(HoneypotService.class);
+  private static final Logger log = LogManager.getLogger(HoneypotService.class);
 
   /**
    * {@inheritDoc}

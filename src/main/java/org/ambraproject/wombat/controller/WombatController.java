@@ -51,17 +51,6 @@ public abstract class WombatController {
   private RuntimeConfiguration runtimeConfiguration;
 
   /**
-   * Use this method to enforce the presence of a given development feature in order to hide a controller implementation
-   * from users during development. Return a 404 if the given feature is not enabled.
-   * @param feature
-   */
-  protected void enforceDevFeature(String feature) {
-    if (!runtimeConfiguration.getEnabledDevFeatures().contains(feature)){
-      throw new NotFoundException("Required dev feature is not enabled");
-    }
-  }
-
-  /**
    * Check that a request parameter is not empty.
    * <p/>
    * This is useful for validating that the user didn't supply an empty string as a URL parameter, such as by typing

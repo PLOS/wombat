@@ -22,6 +22,14 @@
 
 package org.ambraproject.wombat.config;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.servlet.ServletContext;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -29,6 +37,7 @@ import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.SiteTemplateLoader;
+import org.ambraproject.wombat.config.theme.FilesystemThemeSource;
 import org.ambraproject.wombat.config.theme.InternalTheme;
 import org.ambraproject.wombat.config.theme.ThemeBuilder;
 import org.ambraproject.wombat.config.theme.ThemeGraph;
@@ -44,7 +53,6 @@ import org.ambraproject.wombat.freemarker.ArticleExcerptTransformDirective;
 import org.ambraproject.wombat.freemarker.BuildInfoDirective;
 import org.ambraproject.wombat.freemarker.FetchHtmlDirective;
 import org.ambraproject.wombat.freemarker.GlobalConfigDirective;
-import org.ambraproject.wombat.freemarker.IsDevFeatureEnabledDirective;
 import org.ambraproject.wombat.freemarker.Iso8601DateDirective;
 import org.ambraproject.wombat.freemarker.PluralizeDirective;
 import org.ambraproject.wombat.freemarker.ReplaceParametersDirective;
@@ -72,8 +80,6 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.BrowseTaxonomyServiceImpl;
 import org.ambraproject.wombat.service.BuildInfoService;
 import org.ambraproject.wombat.service.BuildInfoServiceImpl;
-import org.ambraproject.wombat.service.HoneypotService;
-import org.ambraproject.wombat.service.HoneypotServiceImpl;
 import org.ambraproject.wombat.service.CitationDownloadService;
 import org.ambraproject.wombat.service.CitationDownloadServiceImpl;
 import org.ambraproject.wombat.service.CommentCensorService;
@@ -83,6 +89,8 @@ import org.ambraproject.wombat.service.CommentServiceImpl;
 import org.ambraproject.wombat.service.CommentValidationService;
 import org.ambraproject.wombat.service.CommentValidationServiceImpl;
 import org.ambraproject.wombat.service.DoiToJournalResolutionService;
+import org.ambraproject.wombat.service.HoneypotService;
+import org.ambraproject.wombat.service.HoneypotServiceImpl;
 import org.ambraproject.wombat.service.ParseReferenceService;
 import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.ParseXmlServiceImpl;
@@ -90,11 +98,11 @@ import org.ambraproject.wombat.service.PeerReviewService;
 import org.ambraproject.wombat.service.PeerReviewServiceImpl;
 import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.RecentArticleServiceImpl;
+import org.ambraproject.wombat.service.SearchFilterService;
 import org.ambraproject.wombat.service.TopLevelLockssManifestService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
-import org.ambraproject.wombat.service.SearchFilterService;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApiImpl;
 import org.ambraproject.wombat.util.GitInfo;
@@ -103,14 +111,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
-
-import javax.servlet.ServletContext;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Configuration
 public class SpringConfiguration {
@@ -124,7 +124,8 @@ public class SpringConfiguration {
     InternalTheme mobile = new InternalTheme(".Mobile", ImmutableList.of(root), servletContext, path + "mobile/");
     Collection<InternalTheme> internalThemes = ImmutableList.of(root, desktop, mobile);
 
-    Collection<ThemeSource<?>> themeSources = runtimeConfiguration.getThemeSources();
+    Collection<ThemeSource<?>> themeSources =
+      ImmutableList.of(new FilesystemThemeSource(new File(runtimeConfiguration.getThemePath())));
     Collection<ThemeBuilder<?>> themeBuilders = themeSources.stream()
         .flatMap(ts -> ts.readThemes().stream())
         .collect(Collectors.toList());
@@ -135,7 +136,8 @@ public class SpringConfiguration {
   @Bean
   public SiteSet siteSet(RuntimeConfiguration runtimeConfiguration,
                          ThemeGraph themeGraph) {
-    Collection<ThemeSource<?>> themeSources = runtimeConfiguration.getThemeSources();
+    Collection<ThemeSource<?>> themeSources =
+      ImmutableList.of(new FilesystemThemeSource(new File(runtimeConfiguration.getThemePath())));
     List<Map<String, ?>> siteSpecs = themeSources.stream()
         .flatMap(ts -> ts.readSites().stream())
         .collect(Collectors.toList());
@@ -144,11 +146,6 @@ public class SpringConfiguration {
           themeSources.stream().map(Object::toString).collect(Collectors.joining(", ")));
     }
     return SiteSet.create(siteSpecs, themeGraph);
-  }
-
-  @Bean
-  public IsDevFeatureEnabledDirective isDevFeatureEnabledDirective() {
-    return new IsDevFeatureEnabledDirective();
   }
 
   @Bean
@@ -208,7 +205,6 @@ public class SpringConfiguration {
 
   @Bean
   public FreeMarkerConfig freeMarkerConfig(ServletContext servletContext, SiteSet siteSet,
-                                           IsDevFeatureEnabledDirective isDevFeatureEnabledDirective,
                                            SiteLinkDirective siteLinkDirective,
                                            RenderCssLinksDirective renderCssLinksDirective,
                                            RenderJsDirective renderJsDirective,
@@ -231,7 +227,6 @@ public class SpringConfiguration {
     variables.put("formatJsonDate", new Iso8601DateDirective());
     variables.put("replaceParams", new ReplaceParametersDirective());
     variables.put("siteLink", siteLinkDirective);
-    variables.put("isDevFeatureEnabled", isDevFeatureEnabledDirective);
     variables.put("cssLink", new CssLinkDirective());
     variables.put("renderCssLinks", renderCssLinksDirective);
     variables.put("js", new JsDirective());
@@ -316,7 +311,7 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public AssetService assetService() {
+  public AssetService assetService() throws IOException {
     return new AssetServiceImpl();
   }
 

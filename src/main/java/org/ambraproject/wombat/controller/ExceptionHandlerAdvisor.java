@@ -26,8 +26,8 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
 import org.ambraproject.wombat.service.remote.UserApi;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -49,7 +49,7 @@ import java.io.StringWriter;
 @ControllerAdvice
 class ExceptionHandlerAdvisor {
 
-  private static final Logger log = LoggerFactory.getLogger(WombatController.class);
+  private static final Logger log = LogManager.getLogger(WombatController.class);
 
   @Autowired
   private SiteResolver siteResolver;

@@ -23,8 +23,8 @@
 package org.ambraproject.wombat.config.site;
 
 import org.ambraproject.wombat.util.HttpDebug;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -41,7 +41,7 @@ import javax.servlet.http.HttpServletRequest;
  * {@link SiteSet} bean. This object exposes them to the view layer.
  */
 public class SiteResolver implements HandlerMethodArgumentResolver {
-  private static final Logger log = LoggerFactory.getLogger(SiteResolver.class);
+  private static final Logger log = LogManager.getLogger(SiteResolver.class);
 
   @Autowired
   private SiteSet siteSet;

@@ -53,8 +53,8 @@ import org.ambraproject.wombat.service.XmlUtil;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,7 +67,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class BrowseController extends WombatController {
 
-  private static final Logger log = LoggerFactory.getLogger(BrowseController.class);
+  private static final Logger log = LogManager.getLogger(BrowseController.class);
 
   @Autowired
   private ArticleApi articleApi;

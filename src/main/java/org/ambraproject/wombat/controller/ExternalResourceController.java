@@ -32,8 +32,8 @@ import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,7 +55,7 @@ public class ExternalResourceController extends WombatController {
 
   public static final String EXTERNAL_RESOURCE_NAMESPACE = "indirect";
 
-  private static final Logger log = LoggerFactory.getLogger(ExternalResourceController.class);
+  private static final Logger log = LogManager.getLogger(ExternalResourceController.class);
 
   @Autowired
   private EditorialContentApi editorialContentApi;

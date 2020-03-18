@@ -73,9 +73,6 @@ public class BuildInfoDirective extends VariableLookupDirective<Object> {
         case "commitIdAbbrev":
           value = info.getGitCommitIdAbbrev();
           break;
-        case "enabledDevFeatures":
-          value = info.getEnabledDevFeatures();
-          break;
         default:
           throw new TemplateModelException("field required");
       }

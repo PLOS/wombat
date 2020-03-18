@@ -22,66 +22,25 @@
 
 package org.ambraproject.wombat.config;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.theme.ThemeSource;
-
+import java.net.URI;
 import java.net.URL;
-import java.util.Optional;
 
 
 /**
  * Interface that represents configurable values that are only known at server startup time.
  */
 public interface RuntimeConfiguration {
-
   /**
-   * @return the directory in which to write and serve compiled assets (.js and .css), or {@code null} to not compile
-   * assets due to being in dev mode
+   * @return the memcached host, or null if it is not present in the config
    */
-  String getCompiledAssetDir();
-
-  interface CacheConfiguration {
-    /**
-     * @return the memcached host, or null if it is not present in the config
-     */
-    String getMemcachedHost();
-
-    /**
-     * @return the memcached port, or -1 if it is not present in the config
-     */
-    int getMemcachedPort();
-
-    /**
-     * @return the cacheAppPrefix value, or null if it is not defined in the config.  This should be a String that is
-     * shared by all wombat app servers, defining a namespace for them.
-     */
-    String getCacheAppPrefix();
-  }
-
-  CacheConfiguration getCacheConfiguration();
-
-  interface HttpConnectionPoolConfiguration {
-    /**
-     * @see org.apache.http.pool.ConnPoolControl
-     */
-    Integer getMaxTotal();
-
-    /**
-     * @see org.apache.http.pool.ConnPoolControl
-     */
-    Integer getDefaultMaxPerRoute();
-  }
-
-  HttpConnectionPoolConfiguration getHttpConnectionPoolConfiguration();
+  String getMemcachedServer();
 
   /**
-   * Get the URL of the SOA server.
+   * Get the URL of the rhino server.
    *
    * @return the URL
    */
-  URL getServer();
+  URL getRhinoUrl();
 
   /**
    * Get the path of an HTML document to display on the root page
@@ -93,45 +52,11 @@ public interface RuntimeConfiguration {
    */
   String getEnvironment();
 
-  /**
-   * @return the set of enabled dev features, configured in wombat.yaml.
-   */
-  ImmutableSet<String> getEnabledDevFeatures();
+  String getThemePath();
 
-  ImmutableList<ThemeSource<?>> getThemeSources();
+  String getCasUrl();
 
-  interface CasConfiguration {
-    String getCasUrl();
+  URL getSolrUrl();
 
-    String getLoginUrl();
-
-    String getLogoutUrl();
-  }
-
-  interface SolrConfiguration {
-    Optional<URL> getUrl();
-
-    Optional<URL> getUrl(Site site);
-
-    String getJournalsCollection();
-
-    String getPreprintsCollection();
-  }
-
-  interface UserApiConfiguration {
-    String getServerUrl();
-
-    String getAppName();
-
-    String getPassword();
-  }
-
-  Optional<CasConfiguration> getCasConfiguration();
-
-  Optional<SolrConfiguration> getSolrConfiguration();
-
-  Optional<UserApiConfiguration> getUserApiConfiguration();
-
-  boolean areCommentsDisabled();
-
+  URI getNedUrl();
 }

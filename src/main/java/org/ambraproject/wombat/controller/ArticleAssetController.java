@@ -39,8 +39,8 @@ import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
@@ -58,7 +58,7 @@ import java.util.UUID;
 @Controller
 public class ArticleAssetController extends WombatController {
 
-  private static final Logger log = LoggerFactory.getLogger(ArticleAssetController.class);
+  private static final Logger log = LogManager.getLogger(ArticleAssetController.class);
 
   @Autowired
   private CorpusContentApi corpusContentApi;

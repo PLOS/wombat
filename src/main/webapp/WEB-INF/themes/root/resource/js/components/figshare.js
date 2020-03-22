@@ -58,8 +58,6 @@ if (window.figshare) {
         }
       });
 
-
-      changeAsideToDiv(containers[i]);
       widget.initialize(); // initialize the widget
       widget.mount(containers[i]); // mount it in a tag that's on your page
 
@@ -71,28 +69,5 @@ if (window.figshare) {
     window.loadedWidgets = loadedWidgets;
 
   });
-
-
-  // doubleclickad gets added to <aside> element of this widget. so rename it to <div>
-  function changeAsideToDiv(container) {
-    var state = {timer: null, count: 0};
-    var handler = function () {
-      var aside = container.querySelector('aside');
-      if (aside) {
-        clearTimeout(state.timer);
-        console.log('changed <aside> to <div>');
-        var div = document.createElement('div');
-        div.className = aside.className;
-        div.innerHTML = aside.innerHTML;
-        aside.parentNode.replaceChild(div, aside);
-      } else {
-        state.count += 1;
-        if (state.count * 100 > 30000) { // stop after 30s
-          clearTimeout(state.timer);
-        }
-      }
-    };
-    state.timer = setInterval(handler, 100);
-  }
 
 }

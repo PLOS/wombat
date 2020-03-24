@@ -44,6 +44,7 @@
 
   <beans:bean id="runtimeConfiguration"
         class="org.ambraproject.wombat.config.RuntimeConfigurationImpl">
+    <beans:property name="awsRoleArn" value="${AWS_ROLE_ARN:}" />
     <beans:property name="solrUrl" value="${SOLR_URL:}" />
     <beans:property name="nedUrl" value="${NED_URL:}" />
     <beans:property name="casUrl" value="${CAS_URL:}" />

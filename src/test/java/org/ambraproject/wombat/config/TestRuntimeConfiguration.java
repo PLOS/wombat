@@ -78,4 +78,9 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public URI getNedUrl() {
     return null;
   }
+
+  @Override
+  public String getAwsRoleArn() {
+    return null;
+  }
 }

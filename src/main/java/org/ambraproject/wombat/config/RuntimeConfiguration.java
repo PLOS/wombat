@@ -59,4 +59,6 @@ public interface RuntimeConfiguration {
   URL getSolrUrl();
 
   URI getNedUrl();
+
+  String getAwsRoleArn();
 }

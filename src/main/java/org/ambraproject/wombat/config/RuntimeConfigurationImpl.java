@@ -36,7 +36,8 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   String casUrl;
   URL solrUrl;
   URI nedUrl;
-
+  String awsRoleArn;
+  
   @Override
   public URI getNedUrl() {
     return nedUrl;
@@ -125,6 +126,17 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
 
   public void setMemcachedServer(String memcachedServer) {
     this.memcachedServer = memcachedServer;
+  }
+
+  @Override
+  public String getAwsRoleArn() {
+    return awsRoleArn;
+  }
+
+  public void setAwsRoleArn(String awsRoleArn) {
+    Preconditions.checkNotNull(awsRoleArn, "AWS_ROLE_ARN is required");
+    Preconditions.checkState(!awsRoleArn.equals(""), "AWS_ROLE_ARN is required");
+    this.awsRoleArn = awsRoleArn;
   }
 }
 

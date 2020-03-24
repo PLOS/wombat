@@ -37,7 +37,8 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   URL solrUrl;
   URI nedUrl;
   String awsRoleArn;
-  
+  String editorialBucket;
+
   @Override
   public URI getNedUrl() {
     return nedUrl;
@@ -137,6 +138,15 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
     Preconditions.checkNotNull(awsRoleArn, "AWS_ROLE_ARN is required");
     Preconditions.checkState(!awsRoleArn.equals(""), "AWS_ROLE_ARN is required");
     this.awsRoleArn = awsRoleArn;
+  }
+
+  @Override
+  public String getEditorialBucket() {
+    return editorialBucket;
+  }
+
+  public void setEditorialBucket(String editorialBucket) {
+    this.editorialBucket = editorialBucket;
   }
 }
 

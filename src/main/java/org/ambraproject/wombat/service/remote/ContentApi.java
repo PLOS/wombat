@@ -27,6 +27,7 @@ import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.Collection;
 import java.util.Map;
 
@@ -42,6 +43,11 @@ public interface ContentApi {
    */
   public abstract CloseableHttpResponse request(ContentKey key, Collection<? extends Header> headers)
       throws IOException;
+
+  public abstract CloseableHttpResponse request(URI requestUri, Collection<? extends Header> headers)
+      throws IOException;
+
+  public abstract CloseableHttpResponse request(URI requestUri) throws IOException;
 
   public abstract Map<String, Object> requestMetadata(ContentKey key) throws IOException;
 }

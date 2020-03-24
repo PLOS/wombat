@@ -22,6 +22,7 @@
 
 package org.ambraproject.wombat.service.remote;
 
+import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.UrlParamBuilder;
@@ -100,10 +101,20 @@ public abstract class AbstractContentApi implements ContentApi {
   @Override
   public final CloseableHttpResponse request(ContentKey key, Collection<? extends Header> headers)
       throws IOException {
-    URI requestAddress = buildUri(key, RequestMode.OBJECT);
+    return this.request(buildUri(key, RequestMode.OBJECT), headers);
+  }
+
+  @Override
+  public final CloseableHttpResponse request(URI requestAddress, Collection<? extends Header> headers)
+      throws IOException {
     HttpGet get = new HttpGet(requestAddress);
     get.setHeaders(headers.toArray(new Header[headers.size()]));
     return remoteStreamer.getResponse(get);
+  }
+
+  @Override
+  public final CloseableHttpResponse request(URI requestAddress) throws IOException {
+    return request(requestAddress, ImmutableList.of());
   }
 
   /**

@@ -145,13 +145,19 @@ public abstract class AbstractContentApi implements ContentApi {
   }
 
   protected final Reader requestReader(ContentKey key) throws IOException {
-    HttpGet target = new HttpGet(buildUri(key, RequestMode.OBJECT));
-    return remoteReader.request(target);
+    return this.requestReader(buildUri(key, RequestMode.OBJECT));
+  }
+
+  protected final Reader requestReader(URI uri) throws IOException {
+    return remoteReader.request(new HttpGet(uri));
   }
 
   protected final InputStream requestStream(ContentKey key) throws IOException {
-    HttpGet target = new HttpGet(buildUri(key, RequestMode.OBJECT));
-    return remoteStreamer.request(target);
+    return this.requestStream(buildUri(key, RequestMode.OBJECT));
+  }
+
+  protected final InputStream requestStream(URI uri) throws IOException {
+    return remoteStreamer.request(new HttpGet(uri));
   }
 
   @Override

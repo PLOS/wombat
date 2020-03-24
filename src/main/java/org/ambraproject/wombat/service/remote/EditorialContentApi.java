@@ -91,7 +91,7 @@ public class EditorialContentApi extends AbstractContentApi {
    * <p/>
    * Returns a JSON object from a remote service
    */
-  public Object getJson(String pageType, String key) throws IOException {
+  public Object getJson(String key) throws IOException {
     ContentKey version = ContentKey.createForLatestVersion(key);
     Reader reader = requestReader(version);
     return gson.fromJson(reader, Object.class);

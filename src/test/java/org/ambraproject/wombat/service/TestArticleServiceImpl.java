@@ -26,11 +26,11 @@ import com.google.gson.Gson;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
-import org.ambraproject.wombat.service.remote.ContentKey;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,7 +51,7 @@ public class TestArticleServiceImpl implements ArticleService {
   }
 
   @Override
-  public ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException {
+  public URI getManuscriptUri(ArticlePointer articleId) throws IOException {
     throw new UnsupportedOperationException();
   }
 

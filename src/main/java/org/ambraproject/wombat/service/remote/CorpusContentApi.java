@@ -22,15 +22,13 @@
 
 package org.ambraproject.wombat.service.remote;
 
-import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.service.ArticleService;
-import org.ambraproject.wombat.util.CacheKey;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.function.Function;
+import java.net.URI;
 
 public class CorpusContentApi extends AbstractContentApi {
 
@@ -50,7 +48,7 @@ public class CorpusContentApi extends AbstractContentApi {
    * @throws IOException
    */
   public InputStream readManuscript(ArticlePointer articleId) throws IOException {
-    ContentKey manuscriptKey = articleService.getManuscriptKey(articleId);
-    return requestStream(manuscriptKey);
+    URI uri = articleService.getManuscriptUri(articleId);
+    return requestStream(uri);
   }
 }

@@ -28,10 +28,11 @@ import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
-import org.ambraproject.wombat.service.remote.ContentKey;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Map;
 import java.util.UUID;
 
@@ -72,7 +73,7 @@ public class ArticleServiceImpl implements ArticleService {
   }
 
   @Override
-  public ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException {
+  public URI getManuscriptUri(ArticlePointer articleId) throws IOException {
     Map<String, ?> itemTable = getItemTable(articleId);
     Map<String, ?> articleItem = (Map<String, ?>) itemTable.values().stream()
         .filter(itemObj -> ((Map<String, ?>) itemObj).get("itemType").equals("article"))
@@ -80,11 +81,10 @@ public class ArticleServiceImpl implements ArticleService {
     Map<String, ?> articleFiles = (Map<String, ?>) articleItem.get("files");
     Map<String, ?> manuscriptPointer = (Map<String, ?>) articleFiles.get("manuscript");
 
-    String crepoKey = (String) manuscriptPointer.get("crepoKey");
-    UUID crepoUuid = UUID.fromString((String) manuscriptPointer.get("crepoUuid"));
-    ContentKey key = ContentKey.createForUuid(crepoKey, crepoUuid);
-    String bucketName = (String) manuscriptPointer.get("bucketName");
-    key.setBucketName(bucketName);
-    return key;
+    try {
+      return new URI((String) manuscriptPointer.get("url"));
+    } catch (URISyntaxException ex) {
+      throw new RuntimeException(ex);
+    }
   }
 }

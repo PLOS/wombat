@@ -25,9 +25,9 @@ package org.ambraproject.wombat.service;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
-import org.ambraproject.wombat.service.remote.ContentKey;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.Map;
 
 /**
@@ -51,5 +51,5 @@ public interface ArticleService {
 
   Map<String, ?> getItemFiles(AssetPointer assetId) throws IOException;
 
-  ContentKey getManuscriptKey(ArticlePointer articleId) throws IOException;
+  URI getManuscriptUri(ArticlePointer articleId) throws IOException;
 }

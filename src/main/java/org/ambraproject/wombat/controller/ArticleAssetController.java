@@ -36,7 +36,6 @@ import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
-import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.logging.log4j.Logger;
@@ -50,6 +49,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.EnumSet;
 import java.util.Map;
 import java.util.Objects;
@@ -143,9 +144,10 @@ public class ArticleAssetController extends WombatController {
 
     // TODO: Check visibility against site?
 
-    ContentKey contentKey = createKey(fileRepoKey);
-    try (CloseableHttpResponse responseFromApi = corpusContentApi.request(contentKey, ImmutableList.of())) {
+    try (CloseableHttpResponse responseFromApi = corpusContentApi.request(new URI((String) fileRepoKey.get("url")))) {
       forwardAssetResponse(responseFromApi, responseToClient, isDownload);
+    } catch (URISyntaxException ex) {
+      throw new RuntimeException(ex);
     }
   }
 
@@ -213,15 +215,4 @@ public class ArticleAssetController extends WombatController {
       throws IOException {
     serve(request, response, AssetUrlStyle.FIGURE_IMAGE, site, id, figureSize, booleanParameter(isDownload));
   }
-
-  private static ContentKey createKey(Map<String, ?> fileRepoKey) {
-    String key = (String) fileRepoKey.get("crepoKey");
-    UUID uuid = UUID.fromString((String) fileRepoKey.get("crepoUuid"));
-    ContentKey contentKey = ContentKey.createForUuid(key, uuid);
-    if (fileRepoKey.get("bucketName") != null) {
-      contentKey.setBucketName(fileRepoKey.get("bucketName").toString());
-    }
-    return contentKey;
-  }
-
 }

@@ -44,9 +44,9 @@ public abstract class AbstractContentApi implements ContentApi {
   @Autowired
   private ArticleApi articleApi;
   @Autowired
-  private CachedRemoteService<InputStream> cachedRemoteStreamer;
+  private RemoteService<InputStream> remoteStreamer;
   @Autowired
-  private CachedRemoteService<Reader> cachedRemoteReader;
+  private RemoteService<Reader> remoteReader;
   @Autowired
   protected Gson gson;
 
@@ -103,7 +103,7 @@ public abstract class AbstractContentApi implements ContentApi {
     URI requestAddress = buildUri(key, RequestMode.OBJECT);
     HttpGet get = new HttpGet(requestAddress);
     get.setHeaders(headers.toArray(new Header[headers.size()]));
-    return cachedRemoteStreamer.getResponse(get);
+    return remoteStreamer.getResponse(get);
   }
 
   /**
@@ -133,20 +133,19 @@ public abstract class AbstractContentApi implements ContentApi {
         repoConfig.address, mode.getPathComponent(), repoBucketName, requestParams.format()));
   }
 
-  protected final <T> T requestCachedReader(CacheKey cacheKey, ContentKey key, CacheDeserializer<Reader, T> callback) throws IOException {
+  protected final Reader requestReader(ContentKey key) throws IOException {
     HttpGet target = new HttpGet(buildUri(key, RequestMode.OBJECT));
-    return cachedRemoteReader.requestCached(cacheKey, target, callback);
+    return remoteReader.request(target);
   }
 
-  protected final <T> T requestCachedStream(CacheKey cacheKey, ContentKey key, CacheDeserializer<InputStream, T> callback) throws IOException {
+  protected final InputStream requestStream(ContentKey key) throws IOException {
     HttpGet target = new HttpGet(buildUri(key, RequestMode.OBJECT));
-    return cachedRemoteStreamer.requestCached(cacheKey, target, callback);
+    return remoteStreamer.request(target);
   }
 
   @Override
-  public final Map<String, Object> requestMetadata(CacheKey cacheKey, ContentKey key) throws IOException {
-    return cachedRemoteReader.requestCached(cacheKey, new HttpGet(buildUri(key, RequestMode.METADATA)),
-        (Reader stream) -> gson.fromJson(stream, Map.class));
+  public final Map<String, Object> requestMetadata(ContentKey key) throws IOException {
+    return gson.fromJson(remoteReader.request(new HttpGet(buildUri(key, RequestMode.METADATA))), Map.class);
   }
 
 }

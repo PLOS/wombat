@@ -55,9 +55,9 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   @Autowired
   protected JsonService jsonService;
   @Autowired
-  protected CachedRemoteService<InputStream> cachedRemoteStreamer;
+  protected RemoteService<InputStream> remoteStreamer;
   @Autowired
-  protected CachedRemoteService<Reader> cachedRemoteReader;
+  protected RemoteService<Reader> remoteReader;
 
   /**
    * @return the base URL to which request addresses will be appended
@@ -83,7 +83,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
 
   /**
    * Execute a remote request that has been set up by another method. Every invocation by this class to {@link
-   * #cachedRemoteStreamer} and {@link #cachedRemoteReader} is wrapped in a call to {@link #makeRemoteRequest}.
+   * #remoteStreamer} and {@link #remoteReader} is wrapped in a call to {@link #makeRemoteRequest}.
    * <p>
    * Subclasses may override this method to add special exception handling. Each override must make a {@code super}
    * call.
@@ -94,21 +94,17 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
 
   @Override
   public final InputStream requestStream(ApiAddress address) throws IOException {
-    return makeRemoteRequest(() -> cachedRemoteStreamer.request(buildGet(address)));
+    return makeRemoteRequest(() -> remoteStreamer.request(buildGet(address)));
   }
 
   @Override
   public final Reader requestReader(ApiAddress address) throws IOException {
-    return makeRemoteRequest(() -> cachedRemoteReader.request(buildGet(address)));
+    return makeRemoteRequest(() -> remoteReader.request(buildGet(address)));
   }
 
   @Override
-  public final <T> T requestObjectForType(ApiAddress address, Type responseType)
-      throws IOException {
-    CacheKey cacheKey = CacheKey.create(getCachePrefix(), address.getAddress());
-
-    // Just try to cache everything. We may want to narrow this in the future.
-    return requestCachedObject(cacheKey, address, responseType);
+  public <T> T requestObjectForType(ApiAddress address, Type responseType) throws IOException {
+    return makeRemoteRequest(() ->(T) jsonService.requestObject(remoteReader, buildGet(address), responseType));
   }
 
   @Override
@@ -134,7 +130,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
 
     request.addHeader(HttpHeaders.CONTENT_TYPE, contentType.toString());
 
-    try (CloseableHttpResponse response = cachedRemoteReader.getResponse(request)) {
+    try (CloseableHttpResponse response = remoteReader.getResponse(request)) {
       //return closed response
       return response;
     }
@@ -155,7 +151,7 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
   @Override
   public final void deleteObject(ApiAddress address) throws IOException {
     HttpDelete delete = buildRequest(address, HttpDelete::new);
-    try (CloseableHttpResponse ignored = cachedRemoteReader.getResponse(delete)) {
+    try (CloseableHttpResponse ignored = remoteReader.getResponse(delete)) {
       ignored.close();
     }
   }
@@ -163,31 +159,9 @@ abstract class AbstractRestfulJsonApi implements RestfulJsonApi {
 
   @Override
   public final CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException {
-    return makeRemoteRequest(() -> cachedRemoteReader.getResponse(target));
+    return makeRemoteRequest(() -> remoteReader.getResponse(target));
   }
 
-  @Override
-  public final <T> T requestCachedStream(CacheKey cacheKey, ApiAddress address,
-                                         CacheDeserializer<InputStream, T> callback) throws IOException {
-    return makeRemoteRequest(() -> cachedRemoteStreamer.requestCached(cacheKey, buildGet(address), callback));
-  }
-
-  @Override
-  public final <T> T requestCachedReader(CacheKey cacheKey, ApiAddress address,
-                                         CacheDeserializer<Reader, T> callback) throws IOException {
-    return makeRemoteRequest(() -> cachedRemoteReader.requestCached(cacheKey, buildGet(address), callback));
-  }
-
-  @Override
-  public final <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Type responseType) throws IOException {
-    return makeRemoteRequest(() ->
-        (T) jsonService.requestCachedObject(cachedRemoteReader, cacheKey, buildGet(address), responseType));
-  }
-
-  @Override
-  public final <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Class<T> responseClass) throws IOException {
-    return requestCachedObject(cacheKey, address, (Type) responseClass);
-  }
 
   protected final HttpGet buildGet(ApiAddress address) {
     return buildRequest(address, HttpGet::new);

@@ -62,12 +62,10 @@ public class SiteContentController extends WombatController {
     }
     String repoKey = repoKeyPrefix + "." + pageName;
 
-    CacheKey cacheKey = CacheKey.create("siteContent_meta", repoKey);
-
     ContentKey version = ContentKey.createForLatestVersion(repoKey); // versioning is not supported for site content
     try {
       // Check for validity of the content repo key prior to rendering page. Return a 404 if no object found.
-      editorialContentApi.requestMetadata(cacheKey, version);
+      editorialContentApi.requestMetadata(version);
     } catch (EntityNotFoundException e) {
       throw new NotFoundException(e);
     }

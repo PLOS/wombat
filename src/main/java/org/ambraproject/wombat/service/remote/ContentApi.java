@@ -43,6 +43,5 @@ public interface ContentApi {
   public abstract CloseableHttpResponse request(ContentKey key, Collection<? extends Header> headers)
       throws IOException;
 
-  public abstract Map<String, Object> requestMetadata(CacheKey cacheKey, ContentKey key) throws IOException;
-
+  public abstract Map<String, Object> requestMetadata(ContentKey key) throws IOException;
 }

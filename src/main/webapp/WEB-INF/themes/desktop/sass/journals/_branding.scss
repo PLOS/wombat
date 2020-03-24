@@ -1,0 +1,47 @@
+@mixin brandcolor($setcolor: $plos-default, $shade1: $plos-default-shade1, $shade2: $plos-default-shade2, $shade3: $plos-default-shade3, $text-color: $white, $text-color-hover: $white) {
+  %more-icon {
+    color: $setcolor;
+  }
+  %brand-color {
+    color: $setcolor;
+  }
+
+  %brand-border {
+    border-color: $setcolor;
+  }
+  %brand-background {
+    background-color: $setcolor;
+    color: $text-color;
+  }
+
+  %brand-background-hover {
+    background-color: $setcolor;
+    color: $text-color;
+    &:hover {
+      background-color: darken($setcolor, 10%);
+      color: $text-color-hover;
+    }
+  }
+
+  .amendment {
+    background-color: $shade3;
+  }
+
+  %brand-shaded-blocks {
+    &:first-child,
+    &:nth-child(2),
+    &:last-child {
+      background-color: $shade1;
+    }
+    &:nth-child(3) {
+      background-color: $shade2;
+    }
+    &:nth-child(4) {
+      background-color: $shade3;
+    }
+  }
+}
+
+.generic {
+  @include brandcolor($setcolor: $plos-blue);
+}

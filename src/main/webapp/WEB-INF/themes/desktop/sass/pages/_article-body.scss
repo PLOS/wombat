@@ -208,6 +208,10 @@ $line-height-small: ($line-height * .5);
     .fw-download-trigger:hover {
       color: $white;   //sadly have to force this to overide styles. Yeah, it HS ot be this specific.
     }
+
+    footer > a {
+      text-decoration: none;
+    }
   }
 }
 

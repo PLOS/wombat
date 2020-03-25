@@ -24,7 +24,6 @@ package org.ambraproject.wombat.service.remote;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
 import java.net.URI;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.service.ArticleService;
@@ -39,8 +38,6 @@ public class CorpusContentApi {
   private ArticleService articleService;
   @Autowired
   private RemoteService<InputStream> remoteStreamer;
-  @Autowired
-  private RemoteService<Reader> remoteReader;
 
   public CloseableHttpResponse request(URI requestAddress) throws IOException {
     HttpGet get = new HttpGet(requestAddress);
@@ -51,10 +48,6 @@ public class CorpusContentApi {
     try (CloseableHttpResponse response = this.request(uri)) {
       return EntityUtils.toString(response.getEntity(), "UTF-8");
     }
-  }
-
-  public Reader requestReader(URI uri) throws IOException {
-    return remoteReader.request(new HttpGet(uri));
   }
 
   public InputStream requestStream(URI uri) throws IOException {

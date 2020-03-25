@@ -29,6 +29,7 @@ import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -99,21 +100,27 @@ public abstract class AbstractContentApi implements ContentApi {
   protected abstract String getRepoConfigKey();
 
   @Override
-  public final CloseableHttpResponse request(ContentKey key, Collection<? extends Header> headers)
+  public CloseableHttpResponse request(ContentKey key, Collection<? extends Header> headers)
       throws IOException {
     return this.request(buildUri(key, RequestMode.OBJECT), headers);
   }
 
   @Override
-  public final CloseableHttpResponse request(URI requestAddress, Collection<? extends Header> headers)
+  public CloseableHttpResponse request(URI requestAddress, Collection<? extends Header> headers)
       throws IOException {
     HttpGet get = new HttpGet(requestAddress);
     get.setHeaders(headers.toArray(new Header[headers.size()]));
     return remoteStreamer.getResponse(get);
   }
 
+  public String requestContent(URI uri) throws IOException {
+    try (CloseableHttpResponse response = this.request(uri)) {
+      return EntityUtils.toString(response.getEntity(), "UTF-8");
+    }
+  }
+
   @Override
-  public final CloseableHttpResponse request(URI requestAddress) throws IOException {
+  public CloseableHttpResponse request(URI requestAddress) throws IOException {
     return request(requestAddress, ImmutableList.of());
   }
 
@@ -144,25 +151,24 @@ public abstract class AbstractContentApi implements ContentApi {
         repoConfig.address, mode.getPathComponent(), repoBucketName, requestParams.format()));
   }
 
-  protected final Reader requestReader(ContentKey key) throws IOException {
+  protected Reader requestReader(ContentKey key) throws IOException {
     return this.requestReader(buildUri(key, RequestMode.OBJECT));
   }
 
-  protected final Reader requestReader(URI uri) throws IOException {
+  protected Reader requestReader(URI uri) throws IOException {
     return remoteReader.request(new HttpGet(uri));
   }
 
-  protected final InputStream requestStream(ContentKey key) throws IOException {
+  protected InputStream requestStream(ContentKey key) throws IOException {
     return this.requestStream(buildUri(key, RequestMode.OBJECT));
   }
 
-  protected final InputStream requestStream(URI uri) throws IOException {
+  protected InputStream requestStream(URI uri) throws IOException {
     return remoteStreamer.request(new HttpGet(uri));
   }
 
   @Override
-  public final Map<String, Object> requestMetadata(ContentKey key) throws IOException {
+  public Map<String, Object> requestMetadata(ContentKey key) throws IOException {
     return gson.fromJson(remoteReader.request(new HttpGet(buildUri(key, RequestMode.METADATA))), Map.class);
   }
-
 }

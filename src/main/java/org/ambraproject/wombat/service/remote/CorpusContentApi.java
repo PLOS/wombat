@@ -35,11 +35,6 @@ public class CorpusContentApi extends AbstractContentApi {
   @Autowired
   private ArticleService articleService;
 
-  @Override
-  protected String getRepoConfigKey() {
-    return "corpus";
-  }
-
   /**
    * Consume an article manuscript.
    *

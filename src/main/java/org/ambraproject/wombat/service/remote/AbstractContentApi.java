@@ -52,53 +52,6 @@ public abstract class AbstractContentApi {
   @Autowired
   protected Gson gson;
 
-  private static class RepoConfig {
-    private final String address;
-    private final String bucketName;
-
-    private RepoConfig(URI address, String bucketName) {
-      this.address = sanitizeAddress(address);
-      this.bucketName = Objects.requireNonNull(bucketName);
-    }
-
-    private static String sanitizeAddress(URI address) {
-      String addressString = address.toString();
-      return addressString.endsWith("/") ? addressString.substring(0, addressString.length() - 1) : addressString;
-    }
-  }
-
-  private static final ApiAddress REPO_CONFIG_ADDRESS = ApiAddress.builder("config").addParameter("type", "repo").build();
-
-  private transient RepoConfig repoConfig;
-
-  private RepoConfig getRepoConfig() throws IOException {
-    if (this.repoConfig != null) return repoConfig;
-    final String repoConfigKey = getRepoConfigKey();
-    Map<String, Object> serverRepoInfo = (Map<String, Object>) articleApi.requestObject(REPO_CONFIG_ADDRESS, Map.class);
-    Map<String, Object> repoInfo = (Map<String, Object>) serverRepoInfo.get(repoConfigKey);
-    if (repoInfo == null) {
-      throw new RuntimeException(String.format("config?type=repo did not provide \"%s\" config", repoConfigKey));
-    }
-    String address = (String) repoInfo.get("address");
-    if (address == null) {
-      throw new RuntimeException(String.format("config?type=repo did not provide \"%s.address\"", repoConfigKey));
-    }
-    String bucket = (String) repoInfo.get("bucket");
-    if (bucket == null) {
-      throw new RuntimeException(String.format("config?type=repo did not provide \"%s.bucket\"", repoConfigKey));
-    }
-
-    URI contentRepoAddress;
-    try {
-      contentRepoAddress = new URI(address);
-    } catch (URISyntaxException e) {
-      throw new RuntimeException("Invalid content repo URI returned from service", e);
-    }
-    return this.repoConfig = new RepoConfig(contentRepoAddress, bucket);
-  }
-
-  protected abstract String getRepoConfigKey();
-
   public CloseableHttpResponse request(URI requestAddress, Collection<? extends Header> headers)
       throws IOException {
     HttpGet get = new HttpGet(requestAddress);

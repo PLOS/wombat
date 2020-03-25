@@ -26,11 +26,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.net.URI;
-import java.util.Collection;
-import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.service.ArticleService;
-import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
@@ -45,10 +42,8 @@ public class CorpusContentApi {
   @Autowired
   private RemoteService<Reader> remoteReader;
 
-  public CloseableHttpResponse request(URI requestAddress, Collection<? extends Header> headers)
-      throws IOException {
+  public CloseableHttpResponse request(URI requestAddress) throws IOException {
     HttpGet get = new HttpGet(requestAddress);
-    get.setHeaders(headers.toArray(new Header[headers.size()]));
     return remoteStreamer.getResponse(get);
   }
 
@@ -56,10 +51,6 @@ public class CorpusContentApi {
     try (CloseableHttpResponse response = this.request(uri)) {
       return EntityUtils.toString(response.getEntity(), "UTF-8");
     }
-  }
-
-  public CloseableHttpResponse request(URI requestAddress) throws IOException {
-    return request(requestAddress, ImmutableList.of());
   }
 
   public Reader requestReader(URI uri) throws IOException {

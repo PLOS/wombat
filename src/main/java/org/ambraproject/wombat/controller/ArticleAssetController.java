@@ -132,7 +132,7 @@ public class ArticleAssetController extends WombatController {
       String location = redirectLink.get(requestFromClient);
       log.warn(String.format("Redirecting %s request for %s to <%s>. Bad link?",
           requestedStyle, asset.asParameterMap(), location));
-      redirectTo(responseToClient, location);
+      responseToClient.sendRedirect(location);
       return;
     }
 
@@ -141,14 +141,7 @@ public class ArticleAssetController extends WombatController {
     if (fileRepoKey == null) {
       fileRepoKey = handleUnmatchedFileType(id, itemType, fileType, files);
     }
-
-    // TODO: Check visibility against site?
-
-    try (CloseableHttpResponse responseFromApi = corpusContentApi.request(new URI((String) fileRepoKey.get("url")))) {
-      forwardAssetResponse(responseFromApi, responseToClient, isDownload);
-    } catch (URISyntaxException ex) {
-      throw new RuntimeException(ex);
-    }
+    responseToClient.sendRedirect((String) fileRepoKey.get("url"));
   }
 
   /**
@@ -185,15 +178,6 @@ public class ArticleAssetController extends WombatController {
     }
     String message = String.format("Unrecognized file type (\"%s\") for id: %s", fileType, id);
     throw new NotFoundException(message);
-  }
-
-  /**
-   * Redirect to a given link. (We can't just return a {@link org.springframework.web.servlet.view.RedirectView} because
-   * we ordinarily want to pass the raw response to {@link #forwardAssetResponse}. So we mess around with it directly.)
-   */
-  private void redirectTo(HttpServletResponse response, String location) {
-    response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-    response.setHeader(HttpHeaders.LOCATION, location);
   }
 
   @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})

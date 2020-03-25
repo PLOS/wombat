@@ -27,7 +27,6 @@ import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.net.HttpHeaders;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.util.HttpMessageUtil;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,55 +94,6 @@ public abstract class WombatController {
       HttpHeaders.IF_MODIFIED_SINCE);
 
   /**
-   * Names of headers that, in a response from the service tier (Rhino or Content Repo), should be passed through to the
-   * client.
-   */
-  private static final ImmutableSet<String> ASSET_RESPONSE_HEADER_WHITELIST = caseInsensitiveImmutableSet(
-      HttpHeaders.CONTENT_TYPE, HttpHeaders.CONTENT_DISPOSITION, HttpHeaders.LAST_MODIFIED);
-
-  protected static HttpMessageUtil.HeaderFilter getAssetResponseHeaderFilter(boolean isDownloadRequest) {
-    return (Header header) -> {
-      String name = header.getName();
-      if (!ASSET_RESPONSE_HEADER_WHITELIST.contains(name)) {
-        return null;
-      }
-      String value = header.getValue();
-      if (name.equalsIgnoreCase(HttpHeaders.CONTENT_DISPOSITION)) {
-        return sanitizeAssetFilename(setDispositionType(value, isDownloadRequest ? "attachment" : "inline"));
-      }
-      return value;
-    };
-  }
-
-  private static final Pattern CONTENT_DISPOSITION_PATTERN = Pattern.compile("^\\s*\\w+\\s*(;.*)");
-
-  private static String setDispositionType(String dispositionHeaderValue, String newType) {
-    Matcher matcher = CONTENT_DISPOSITION_PATTERN.matcher(dispositionHeaderValue);
-    if (matcher.find()) {
-      return newType + matcher.group(1);
-    }
-    return dispositionHeaderValue;
-  }
-
-
-  private static final Pattern BAD_THUMBNAIL_EXTENSION = Pattern.compile("\\.PNG_\\w+$", Pattern.CASE_INSENSITIVE);
-
-  /**
-   * Edit a "Content-Disposition" header value by changing a ".PNG_*" file extension to ".png". (The ".PNG_*" file
-   * extensions are an ugly system quirk that we don't want to expose to the user.)
-   *
-   * @param contentDispositionValue a "Content-Disposition" header value
-   * @return an edited value if it's bad; else the same value
-   */
-  private static String sanitizeAssetFilename(String contentDispositionValue) {
-    Matcher matcher = BAD_THUMBNAIL_EXTENSION.matcher(contentDispositionValue);
-    if (matcher.find()) {
-      return matcher.replaceFirst(".png");
-    }
-    return contentDispositionValue;
-  }
-
-  /**
    * If any validation errors from a form are present, set them up to be rendered.
    * <p>
    * If this method returns {@code true}, it generally means that the calling controller should halt and render a page
@@ -167,16 +117,6 @@ public abstract class WombatController {
 
     response.setStatus(HttpStatus.BAD_REQUEST.value());
     return true;
-  }
-
-  protected static void forwardAssetResponse(CloseableHttpResponse remoteResponse, HttpServletResponse responseToClient,
-                                             boolean isDownloadRequest)
-      throws IOException {
-    if (remoteResponse.getStatusLine().getStatusCode() == org.apache.http.HttpStatus.SC_NOT_MODIFIED) {
-      responseToClient.setStatus(org.apache.http.HttpStatus.SC_NOT_MODIFIED);
-    } else {
-      HttpMessageUtil.copyResponseWithHeaders(remoteResponse, responseToClient, getAssetResponseHeaderFilter(isDownloadRequest));
-    }
   }
 
   protected static int getFeedLength(Site site) throws IOException {

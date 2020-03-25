@@ -41,7 +41,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
-public abstract class AbstractContentApi implements ContentApi {
+public abstract class AbstractContentApi {
 
   @Autowired
   private ArticleApi articleApi;
@@ -99,7 +99,6 @@ public abstract class AbstractContentApi implements ContentApi {
 
   protected abstract String getRepoConfigKey();
 
-  @Override
   public CloseableHttpResponse request(URI requestAddress, Collection<? extends Header> headers)
       throws IOException {
     HttpGet get = new HttpGet(requestAddress);
@@ -113,7 +112,6 @@ public abstract class AbstractContentApi implements ContentApi {
     }
   }
 
-  @Override
   public CloseableHttpResponse request(URI requestAddress) throws IOException {
     return request(requestAddress, ImmutableList.of());
   }

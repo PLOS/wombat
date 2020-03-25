@@ -50,10 +50,6 @@ public class CorpusContentApi {
     }
   }
 
-  public InputStream requestStream(URI uri) throws IOException {
-    return remoteStreamer.request(new HttpGet(uri));
-  }
-
   /**
    * Consume an article manuscript.
    *
@@ -63,6 +59,6 @@ public class CorpusContentApi {
    */
   public InputStream readManuscript(ArticlePointer articleId) throws IOException {
     URI uri = articleService.getManuscriptUri(articleId);
-    return requestStream(uri);
+    return remoteStreamer.request(new HttpGet(uri));
   }
 }

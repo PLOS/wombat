@@ -23,29 +23,59 @@
 package org.ambraproject.wombat.service.remote;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.net.URL;
 import java.util.Collection;
-import java.util.Map;
+import java.util.Date;
 import java.util.Set;
+import com.amazonaws.HttpMethod;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
+import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.S3Object;
+import com.google.gson.Gson;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.SitePageContext;
-import org.ambraproject.wombat.util.CacheKey;
 import org.apache.commons.io.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class EditorialContentApi extends AbstractContentApi {
+public class EditorialContentApi {
 
   @Autowired
   private SiteSet siteSet;
 
-  @Override
-  protected String getRepoConfigKey() {
-    return "editorial";
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
+
+  @Autowired
+  private AmazonS3 amazonS3;
+
+  @Autowired
+  private Gson gson;
+
+  long PRESIGNED_URL_EXPIRY = 1000 * 60 * 60; // 1 hour
+
+  public boolean objectExists(String key) {
+    return amazonS3.doesObjectExist(runtimeConfiguration.getEditorialBucket(), key);
+  }
+
+  public URL getPublicUrl(String key) {
+    Date expiration = new Date();
+    long expTimeMillis = expiration.getTime() + PRESIGNED_URL_EXPIRY;
+    expiration.setTime(expTimeMillis);
+
+    GeneratePresignedUrlRequest generatePresignedUrlRequest =
+      new GeneratePresignedUrlRequest(runtimeConfiguration.getEditorialBucket(), key)
+      .withMethod(HttpMethod.GET)
+      .withExpiration(expiration);
+    return amazonS3.generatePresignedUrl(generatePresignedUrlRequest);
   }
 
   /**
@@ -57,20 +87,13 @@ public class EditorialContentApi extends AbstractContentApi {
                          final Set<HtmlElementTransformation> transformations,
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
-    Map<String, Object> pageConfig = sitePageContext.getSite().getTheme().getConfigMap(pageType);
-    ContentKey version = ContentKey.createForLatestVersion(key); // TODO May want to support page versioning at some point using fetchHtmlDirective
-    CacheKey cacheKey = CacheKey.create(pageType, key);
-    Number cacheTtl = (Number) pageConfig.get("cacheTtl");
-    if (cacheTtl != null) {
-      cacheKey = cacheKey.addTimeToLive(cacheTtl.intValue());
-    }
-
-    Reader htmlReader = requestReader(version);
+    GetObjectRequest request = new GetObjectRequest(runtimeConfiguration.getEditorialBucket(), key);
+    S3Object object = amazonS3.getObject(request);
     // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this
     // awkward.
     // The whole document will be in memory anyway, so buffering it into a string is no great
     // performance loss.
-    String htmlString = IOUtils.toString(htmlReader);
+    String htmlString = IOUtils.toString(object.getObjectContent());
     Document document = Jsoup.parseBodyFragment(htmlString);
 
     for (HtmlElementTransformation transformation : transformations) {
@@ -92,8 +115,8 @@ public class EditorialContentApi extends AbstractContentApi {
    * Returns a JSON object from a remote service
    */
   public Object getJson(String key) throws IOException {
-    ContentKey version = ContentKey.createForLatestVersion(key);
-    Reader reader = requestReader(version);
-    return gson.fromJson(reader, Object.class);
+    GetObjectRequest request = new GetObjectRequest(runtimeConfiguration.getEditorialBucket(), key);
+    S3Object object = amazonS3.getObject(request);
+    return gson.fromJson(new InputStreamReader(object.getObjectContent()), Object.class);
   }
 }

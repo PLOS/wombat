@@ -22,18 +22,53 @@
 
 package org.ambraproject.wombat.service.remote;
 
-import org.ambraproject.wombat.identity.ArticlePointer;
-import org.ambraproject.wombat.service.ArticleService;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.net.URI;
+import java.util.Collection;
+import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.identity.ArticlePointer;
+import org.ambraproject.wombat.service.ArticleService;
+import org.apache.http.Header;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class CorpusContentApi extends AbstractContentApi {
+public class CorpusContentApi {
 
   @Autowired
   private ArticleService articleService;
+  @Autowired
+  private RemoteService<InputStream> remoteStreamer;
+  @Autowired
+  private RemoteService<Reader> remoteReader;
+
+  public CloseableHttpResponse request(URI requestAddress, Collection<? extends Header> headers)
+      throws IOException {
+    HttpGet get = new HttpGet(requestAddress);
+    get.setHeaders(headers.toArray(new Header[headers.size()]));
+    return remoteStreamer.getResponse(get);
+  }
+
+  public String requestContent(URI uri) throws IOException {
+    try (CloseableHttpResponse response = this.request(uri)) {
+      return EntityUtils.toString(response.getEntity(), "UTF-8");
+    }
+  }
+
+  public CloseableHttpResponse request(URI requestAddress) throws IOException {
+    return request(requestAddress, ImmutableList.of());
+  }
+
+  public Reader requestReader(URI uri) throws IOException {
+    return remoteReader.request(new HttpGet(uri));
+  }
+
+  public InputStream requestStream(URI uri) throws IOException {
+    return remoteStreamer.request(new HttpGet(uri));
+  }
 
   /**
    * Consume an article manuscript.

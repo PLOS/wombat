@@ -116,24 +116,6 @@ public abstract class AbstractContentApi {
     return request(requestAddress, ImmutableList.of());
   }
 
-  /**
-   * Designates whether a request to the Content Repo service is for an object (file content) or metadata (JSON).
-   */
-  private static enum RequestMode {
-    OBJECT, METADATA;
-
-    private String getPathComponent() {
-      switch (this) {
-        case OBJECT:
-          return "objects";
-        case METADATA:
-          return "objects/meta";
-        default:
-          throw new AssertionError();
-      }
-    }
-  }
-
   protected Reader requestReader(URI uri) throws IOException {
     return remoteReader.request(new HttpGet(uri));
   }

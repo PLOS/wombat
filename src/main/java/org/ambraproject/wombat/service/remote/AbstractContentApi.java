@@ -100,12 +100,6 @@ public abstract class AbstractContentApi implements ContentApi {
   protected abstract String getRepoConfigKey();
 
   @Override
-  public CloseableHttpResponse request(ContentKey key, Collection<? extends Header> headers)
-      throws IOException {
-    return this.request(buildUri(key, RequestMode.OBJECT), headers);
-  }
-
-  @Override
   public CloseableHttpResponse request(URI requestAddress, Collection<? extends Header> headers)
       throws IOException {
     HttpGet get = new HttpGet(requestAddress);
@@ -142,33 +136,11 @@ public abstract class AbstractContentApi implements ContentApi {
     }
   }
 
-  private URI buildUri(ContentKey key, RequestMode mode) throws IOException {
-    RepoConfig repoConfig = getRepoConfig();
-    UrlParamBuilder requestParams = UrlParamBuilder.params();
-    key.setParameters(requestParams);
-    String repoBucketName = key.getBucketName() != null ? key.getBucketName() : repoConfig.bucketName;
-    return URI.create(String.format("%s/%s/%s?%s",
-        repoConfig.address, mode.getPathComponent(), repoBucketName, requestParams.format()));
-  }
-
-  protected Reader requestReader(ContentKey key) throws IOException {
-    return this.requestReader(buildUri(key, RequestMode.OBJECT));
-  }
-
   protected Reader requestReader(URI uri) throws IOException {
     return remoteReader.request(new HttpGet(uri));
   }
 
-  protected InputStream requestStream(ContentKey key) throws IOException {
-    return this.requestStream(buildUri(key, RequestMode.OBJECT));
-  }
-
   protected InputStream requestStream(URI uri) throws IOException {
     return remoteStreamer.request(new HttpGet(uri));
-  }
-
-  @Override
-  public Map<String, Object> requestMetadata(ContentKey key) throws IOException {
-    return gson.fromJson(remoteReader.request(new HttpGet(buildUri(key, RequestMode.METADATA))), Map.class);
   }
 }

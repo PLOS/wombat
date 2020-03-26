@@ -81,7 +81,7 @@ public class PeerReviewServiceImplTest extends ControllerTest {
   }
 
   @Test
-  public void testTransformXmlToHtml() {
+  public void testTransformXmlToHtml() throws IOException {
     String xml = read(prefix("peer-review.pone.0207232.xml"));
     String html = peerReviewServiceImpl.transformXmlToHtml(xml);
     Document doc = Jsoup.parse(html);

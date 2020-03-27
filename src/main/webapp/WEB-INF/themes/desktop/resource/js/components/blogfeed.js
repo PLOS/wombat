@@ -46,7 +46,7 @@ function feedLoaded(blog_feed, blogPostCount, blogContainer) {
 
           blogImg = entry.thumbnail;
           if (blogImg == null) {
-            blogImg = "resource/img/generic_blogfeed.png";
+            blogImg = "resource/img/logo-plos-imageonly.png";
           }
 
           // TODO - need to move the link to the default image out of the JS.

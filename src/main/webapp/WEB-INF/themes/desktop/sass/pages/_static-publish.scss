@@ -144,6 +144,7 @@ body.plosone #orange_wrapper .button {
 body.plosbiology #orange_wrapper .button {
   background-color: $plos-bio-teal;
   margin-left: 20px;
+  color: black;
 }
 
 .rows_columns {
@@ -166,8 +167,9 @@ body.plosbiology .rows_columns {
 }
 body.plosbiology .rows_columns > div {
   width: 45%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  min-height: 0px;
 }
 
 .pull_right {
@@ -189,6 +191,7 @@ body.plosone .icon_item {
 }
 body.plosbiology .icon_item img {
   height: 72px;
+  margin-bottom:10px;
 }
 
 body.plosone .icon_item a:last-child {
@@ -201,7 +204,6 @@ body.plosone .icon_item a:last-child {
 body.plosbiology .icon_item > a:last-child {
   font-size: $txt-size-mediumish;
   font-family: $font-face-fancy;
-  text-transform: uppercase;
   text-align: center;
   background-color: $plos-bio-blue;
   color: white;

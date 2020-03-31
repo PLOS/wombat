@@ -62,7 +62,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getRootPagePath() {
+  public String getRootRedirect() {
     return null;
   }
 

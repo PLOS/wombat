@@ -16,7 +16,7 @@
   }
 }
 
-#publish_banner_band {
+body.plosone #publish_banner_band {
   width: 830px;
   display: block;
   margin: 0 auto $line-height-large;
@@ -26,6 +26,15 @@
   background: image-url('ONEimage.png');
   background-size: cover;
   background-position: -30%;
+}
+body.plosbiology #publish_banner_band {
+  width: 830px; height: 352px;
+  display: block;
+  margin: 0 auto $line-height-large;
+  background-color: $white;
+  overflow: hidden;
+  background: image-url('top_header_image.png');
+  background-size: cover;
 }
 
 .submit_manuscript {
@@ -37,7 +46,7 @@
   background-color: $white;
 }
 
-#publish_banner_content {
+body.plosone #publish_banner_content {
   h1,
   h4 {
     color: $plos-one-purple;
@@ -56,18 +65,44 @@
   padding-left: rem-calc(-100px);
 }
 
+body.plosbiology #publish_banner_content {
+  h1 {
+    color: $plos-bio-orange;
+    font-weight: 500;
+    font-family: serif;
+    font-size: $txt-size-giant;
+  }
+
+  h4 {
+    color: $plos-bio-orange;
+    font-size: $txt-size-medium;
+    line-height: $line-height-medium;
+    font-weight: normal;
+  }
+
+  max-width: 449px;
+  margin-top: 29px;
+  padding-top: 40px;
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+
 #publish_banner_content h1 {
   font-size: $txt-size-xxxlarge;
   line-height: $line-height-large;
 }
 
-#choose_plosone {
+#choose_plosone, #choose_plosbio {
   font-family: $font-face-fancy;
   width: rem-calc(830px);
   margin: 0 auto;
   display: block;
   min-height: 900px;
   padding-bottom: 50px;
+}
+
+#choose_plosbio {
+  width: rem-calc(770px);
 }
 
 #choose_plosone h2 {
@@ -78,11 +113,19 @@
   color: $plos-one-teal;
 }
 
-#choose_plosone .center {
+#choose_plosbio h2 {
+  font-weight: normal;
+  font-size: $txt-size-giant;
+  line-height: $line-height-large;
+  margin-bottom: $line-height-large;
+  color: $plos-bio-blue;
+}
+
+#choose_plosone .center, #choose_plosbio .center {
   text-align: center;
 }
 
-#choose_plosone .button, #orange_wrapper .button {
+#choose_plosone .button, #choose_plosbio .button, #orange_wrapper .button {
   color: #fff;
   min-width: 200px;
   height: 36px;
@@ -92,24 +135,41 @@
   font-size: 14px;
   padding: 0;
 }
-#choose_plosone .button {
+#choose_plosone .button, #choose_plosbio .button {
   background-color: $plos-one-pink;
 }
-#orange_wrapper .button {
+body.plosone #orange_wrapper .button {
   background-color: $plos-one-purple;
+}
+body.plosbiology #orange_wrapper .button {
+  background-color: $plos-bio-teal;
+  margin-left: 20px;
+  color: black;
 }
 
 .rows_columns {
-  display: flex; flex-flow: row wrap;
-  justify-content: center;
-  
+  display: flex;
+  flex-flow: row wrap;
 }
+body.plosone .rows_columns {
+  justify-content: center;
+}
+body.plosbiology .rows_columns {
+  justify-content: space-between;
+}
+
 .rows_columns > div {
   width: 32%;
   min-height: 300px;
   margin-top: 30px; 
   margin-right: 1%;
   margin-bottom: 30px;
+}
+body.plosbiology .rows_columns > div {
+  width: 45%;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  min-height: 0px;
 }
 
 .pull_right {
@@ -119,6 +179,8 @@
 .icon_item {
   display: inline-block;
   margin: 0 auto;
+}
+body.plosone .icon_item {
   text-align: center;
   padding: 0 $line-height;
 }
@@ -127,18 +189,34 @@
   width: auto;
   height: 36px;
 }
+body.plosbiology .icon_item img {
+  height: 72px;
+  margin-bottom:10px;
+}
 
-.icon_item a {
+body.plosone .icon_item a:last-child {
   font-size: $txt-size-mediumish;
   font-weight: $bold;
   font-family: $font-face-fancy;
   text-decoration: underline;
   color: $plos-one-purple;
 }
+body.plosbiology .icon_item > a:last-child {
+  font-size: $txt-size-mediumish;
+  font-family: $font-face-fancy;
+  text-align: center;
+  background-color: $plos-bio-blue;
+  color: white;
+  min-width: 240px;
+  padding-top: 4px; padding-bottom: 4px;
+  display: inline-block;
+}
 
 .icon_item p {
   font-size: $txt-size-medium;
   line-height: $line-height;
+}
+body.plosone .icon_item p {
   text-align: center;
 }
 
@@ -146,7 +224,7 @@
   letter-spacing: 1.2px;
 }
 
-.icon_item h3 {
+body.plosone .icon_item h3 {
   margin-top: $line-height-large;
 
 }
@@ -154,9 +232,14 @@
 .icon_item h3 a {
   font-weight: $bold;
   font-size: 18px;
-  text-transform: uppercase;
   text-decoration: none;
+}
+body.plosone .icon_item h3 a {
+  text-transform: uppercase;
   color: $plos-one-pink;
+}
+body.plosbiology .icon_item h3 a {
+  color: $plos-bio-blue;
 }
 
 #orange_content_wrapper {
@@ -170,6 +253,9 @@
   text-align: center;
   padding-top: $line-height-medium;
   font-family: $font-face-fancy;
+}
+body.plosbiology #orange_content_container {
+  padding-top: 10px;
 }
 
 #orange_content_container h2 {
@@ -361,6 +447,18 @@ h3.white {
   min-height: 120px;
   min-width: 100% !important;
   position: relative;
+}
+body.plosbiology #orange_wrapper {
+  background-color: $plos-bio-blue;
+  min-height: 60px;
+  min-width: 100% !important;;
+  position: relative;
+
+  p {
+    display: inline-block;
+    color: $plos-bio-teal;
+    font-weight: bold;
+  }
 }
 
 .keyfacts h3 {

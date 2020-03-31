@@ -16,14 +16,7 @@ For example: instead of using `font-size: 22px` you should  instead use `font-si
    COLORS
 \*------------------------------------*/
 
-//journal specific
-
-$plos-bio: #16a127; //green: biology, comp-bio, genetics
-$plos-med: #891fb1; // purple: medicine, pathogens, ntds
-$plos-currents: #1dbfe0; // light blue
 $plos-blue: #3c63af;
-$plos-collections: $plos-blue;
-$generic-brand: $plos-blue;
 
 // plos one rebrand 2018
 $plos-one: #d7df23; //lime
@@ -31,23 +24,18 @@ $plos-one-purple: #3e0577;
 $plos-one-pink: #cc00a6;
 $plos-one-teal: #3daca0;
 
+// plos bio publish page
+$plos-bio-orange: #ff4000;
+$plos-bio-blue: #1334c6;
+$plos-bio-teal: #16FABC;
+
+
 //hues for background shading - mostly for signposts for article
 $plos-default-shade1: #f0f0f0;
 $plos-default-shade2: #e0e0e0;
 $plos-default-shade3: #d0d0d0;
-// the shades aren't straight percentages or hue variations, so it is necessary to list each one
-$plos-one-shade1: #ecf09b;
-$plos-one-shade2: $plos-one;
-$plos-one-shade3: #f4f6c3;
 
-$plos-bio-shade1: #a8e2be;
-$plos-bio-shade2: #92e5ab;
-$plos-bio-shade3: #caeed7;
-
-$plos-med-shade1: #d4afe0;
-$plos-med-shade2: #c493d4;
-$plos-med-shade3: #decbe4;
-
+$gradient-dark: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(250, 250, 250, 0) 46%,  rgba(0,0,0, 0.55) 77%, rgba(0, 0, 0, 0.75) 100%);
 
 $black: #202020;
 $white: #fff;

@@ -22,10 +22,10 @@
 
 package org.ambraproject.wombat.config;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
 import java.net.URI;
 import java.net.URL;
 import com.google.common.base.Preconditions;
-
 
 public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   String memcachedServer;
@@ -38,6 +38,13 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   URI nedUrl;
   String awsRoleArn;
   String editorialBucket;
+
+  public RuntimeConfigurationImpl() {
+    Preconditions.checkArgument(!isNullOrEmpty(System.getenv("AWS_ACCESS_KEY_ID")),
+        "Please set AWS_ACCESS_KEY_ID.");
+    Preconditions.checkArgument(!isNullOrEmpty(System.getenv("AWS_SECRET_ACCESS_KEY")),
+        "Please set AWS_SECRET_ACCESS_KEY.");
+  }
 
   @Override
   public URI getNedUrl() {
@@ -61,7 +68,7 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
 
   public void setSolrUrl(URL solrUrl) {
     Preconditions.checkNotNull(solrUrl, "Please set SOLR_URL.");
-    Preconditions.checkArgument(!solrUrl.toString().equals(""), "Please set SOLR_URL.");
+    Preconditions.checkArgument(!solrUrl.toString().isEmpty(), "Please set SOLR_URL.");
     this.solrUrl = solrUrl;
   }
 
@@ -71,8 +78,7 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   }
 
   public void setCasUrl(String casUrl) {
-    Preconditions.checkNotNull(casUrl, "Please set CAS_URL.");
-    Preconditions.checkArgument(!casUrl.equals(""), "Please set CAS_URL.");
+    Preconditions.checkArgument(!isNullOrEmpty(casUrl), "Please set CAS_URL.");
     this.casUrl = casUrl;
   }
 
@@ -82,8 +88,7 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   }
 
   public void setThemePath(String themePath) {
-    Preconditions.checkNotNull(themePath, "Please set THEME_PATH.");
-    Preconditions.checkArgument(!themePath.equals(""), "Please set THEME_PATH.");
+    Preconditions.checkArgument(!isNullOrEmpty(themePath), "Please set THEME_PATH.");
     this.themePath = themePath;
   }
 
@@ -93,8 +98,7 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   }
 
   public void setEnvironment(String environment) {
-    Preconditions.checkNotNull(environment, "Please set ENVIRONMENT.");
-    Preconditions.checkArgument(!environment.equals(""), "Please set ENVIRONMENT.");
+    Preconditions.checkArgument(!isNullOrEmpty(environment), "Please set ENVIRONMENT.");
     this.environment = environment;
   }
 
@@ -104,8 +108,7 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   }
 
   public void setRootPagePath(String rootPagePath) {
-    Preconditions.checkNotNull(rootPagePath, "Please set ROOT_PAGE_PATH.");
-    Preconditions.checkArgument(!rootPagePath.equals(""), "Please set ROOT_PAGE_PATH.");
+    Preconditions.checkArgument(!isNullOrEmpty(rootPagePath), "Please set ROOT_PAGE_PATH.");
     this.rootPagePath = rootPagePath;
   }
 
@@ -135,8 +138,7 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   }
 
   public void setAwsRoleArn(String awsRoleArn) {
-    Preconditions.checkNotNull(awsRoleArn, "AWS_ROLE_ARN is required");
-    Preconditions.checkState(!awsRoleArn.equals(""), "AWS_ROLE_ARN is required");
+    Preconditions.checkState(!isNullOrEmpty(awsRoleArn), "AWS_ROLE_ARN is required");
     this.awsRoleArn = awsRoleArn;
   }
 

@@ -267,7 +267,7 @@
         <xsl:if test="$isPreregisteredResearchArticle">
           <br/>
           <br/>
-          <strong>Note</strong>: As this is a Preregistered Research
+          <strong>Note:</strong> As this is a Preregistered Research
           Article, the study design and methods were peer-reviewed
           before data collection. The time to acceptance includes the
           experimental time taken to perform the study. Learn more

@@ -717,7 +717,7 @@ html:not(.positionfixed) #page-figure #site-header-container {
 }
 
 .references .label {
-  width: 2rem;
+  width: 2.75rem;
   text-align: right;
   position: absolute;
   left: -3em;

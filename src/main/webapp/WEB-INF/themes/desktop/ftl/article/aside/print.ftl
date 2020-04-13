@@ -24,10 +24,7 @@
 
   Print
   <ul class="print-options" data-js-tooltip-hover="target">
-    <li>
-        <a href="#" onclick="window.print(); return false;" class="preventDefault" id="printBrowser" title="Print
-        Article">Print article</a>
-    </li>
-  <#include "printService.ftl" />
+    <li><a href="#" onclick="window.print(); return false;" class="preventDefault" id="printBrowser">Print article</a></li>
+    <#include "printService.ftl" />
   </ul>
 </div>

@@ -86,7 +86,7 @@ public interface RuntimeConfiguration {
   /**
    * Get the path of an HTML document to display on the root page
    */
-  String getRootPagePath();
+  String getRootRedirect();
 
   /**
    * Get the name of the runtime environment ("prod", "dev", etc.)

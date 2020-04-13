@@ -89,8 +89,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getRootPagePath() {
-    return input.rootPagePath;
+  public String getRootRedirect() {
+    return input.rootRedirect;
   }
 
   @Override
@@ -332,7 +332,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
 
     private String server;
     private String compiledAssetDir;
-    private String rootPagePath;
+    private String rootRedirect;
     private String environment;
     private List<String> enableDevFeatures;
     private List<Map<String, ?>> themeSources;
@@ -365,8 +365,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setRootPagePath(String rootPagePath) {
-      this.rootPagePath = rootPagePath;
+    public void setRootRedirect(String rootRedirect) {
+      this.rootRedirect = rootRedirect;
     }
 
     /**

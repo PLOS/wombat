@@ -29,7 +29,6 @@
         <li>
           <b>
             <#if type.hasRelation>has</#if>
-            <@pluralize count=articles?size value=titleDisplay?trim?upper_case />
             <#if type.pertainsToRelation>pertains to</#if>
           </b>
         </li>

@@ -28,8 +28,8 @@
         <#assign titleDisplay><#include "relatedArticleTypeHeader.ftl"/></#assign>
         <li>
           <b>
-            <#if type.hasRelation>has</#if>
-            <#if type.pertainsToRelation>pertains to</#if>
+            <#if type.hasRelation>has <@pluralize count=articles?size value=titleDisplay?trim?upper_case /></#if>
+            <#if type.pertainsToRelation>pertains to ${titleDisplay}</#if>
           </b>
         </li>
           <#list articles as article>

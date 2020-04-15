@@ -39,7 +39,6 @@ services:
       - TAXONOMY_URL
       - THESAURUS
       - DATABASE_URL='jdbc:mysql://db:3306/ambra?user=root&password=password'
-      - JAVA_OPTS=-DDATABASE_URL='jdbc:mysql://db:3306/ambra?user=root&password=password'
     links:
       - db
     ports:

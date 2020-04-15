@@ -89,9 +89,9 @@ public interface RuntimeConfiguration {
   String getRootRedirect();
 
   /**
-   * Get the name of the runtime environment ("prod", "dev", etc.)
+   * Show debugging information?
    */
-  String getEnvironment();
+  boolean showDebug();
 
   /**
    * @return the set of enabled dev features, configured in wombat.yaml.
@@ -133,5 +133,5 @@ public interface RuntimeConfiguration {
   Optional<UserApiConfiguration> getUserApiConfiguration();
 
   boolean areCommentsDisabled();
-
+  
 }

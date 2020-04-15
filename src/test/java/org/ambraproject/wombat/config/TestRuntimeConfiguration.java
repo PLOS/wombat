@@ -57,8 +57,8 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public Optional<SolrConfiguration> getSolrConfiguration() { return Optional.empty(); }
 
   @Override
-  public String getEnvironment() {
-    return null;
+  public boolean showDebug() {
+    return false;
   }
 
   @Override

@@ -123,4 +123,9 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public Optional<UserApiConfiguration> getUserApiConfiguration() {
     return Optional.empty();
   }
+
+  @Override
+  public String getCollectionsUrl() {
+    return "";
+  }
 }

@@ -133,5 +133,7 @@ public interface RuntimeConfiguration {
   Optional<UserApiConfiguration> getUserApiConfiguration();
 
   boolean areCommentsDisabled();
+
+  String getCollectionsUrl();
   
 }

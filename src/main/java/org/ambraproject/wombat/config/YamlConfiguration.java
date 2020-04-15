@@ -266,6 +266,15 @@ public class YamlConfiguration implements RuntimeConfiguration {
     }
   }
 
+  @Override
+  public String getCollectionsUrl() {
+    if (input.collectionsUrl == null) {
+      return "";
+    } else {
+      return input.collectionsUrl;
+    }
+  }
+
   /**
    * Validate values after deserializing.
    *
@@ -337,6 +346,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String server;
     private String compiledAssetDir;
     private String rootRedirect;
+    private String collectionsUrl;
     private List<String> enableDevFeatures;
     private List<Map<String, ?>> themeSources;
 
@@ -442,6 +452,13 @@ public class YamlConfiguration implements RuntimeConfiguration {
      */
     public void setCommentsDisabled(Boolean commentsDisabled) {
       this.commentsDisabled = commentsDisabled;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    public void setCollectionsUrl(String collectionsUrl) {
+      this.collectionsUrl = collectionsUrl;
     }
   }
 

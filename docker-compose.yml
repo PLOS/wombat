@@ -1,0 +1,52 @@
+version: '3'
+
+# NOTE: You must set WOMBAT_TAG, RHINO_TAG and PLOS_THEMES_REPO environment variables
+#       as well as all environment variables not explicitly defined below (e.g. CAS_URL)
+
+services:
+
+  wombat:
+    image: plos/wombat:${WOMBAT_TAG}
+    depends_on:
+      - db
+      - rhino
+    environment:
+      - CAS_URL
+      - NED_URL
+      - SOLR_URL
+      - ENVIRONMENT=dev
+      - LOG_LEVEL=debug
+      - RHINO_URL=http://rhino:8080/rhino/
+      - THEME_PATH=/opt/plos/themes
+    links:
+      - db
+      - rhino
+    ports:
+      - 8015:8080
+    volumes:
+      - ${PLOS_THEMES_REPO}:/opt/plos/themes:ro
+
+  rhino:
+    image: plos/rhino:${RHINO_TAG}
+    depends_on:
+      - db
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_ROLE_ARN
+      - AWS_SECRET_ACCESS_KEY
+      - CONTENT_REPO_URL
+      - CORPUS_BUCKET
+      - TAXONOMY_URL
+      - THESAURUS
+      - DATABASE_URL='jdbc:mysql://db:3306/ambra?user=root&password=password'
+      - JAVA_OPTS=-DDATABASE_URL='jdbc:mysql://db:3306/ambra?user=root&password=password'
+    links:
+      - db
+    ports:
+      - 8006:8080
+
+  db:
+    image: mysql:5.7.29
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ambra

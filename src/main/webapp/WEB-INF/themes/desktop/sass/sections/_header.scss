@@ -115,9 +115,10 @@ $width-nav: $block-grid-elements - $width-logo;
 #pagehdr .nav-main .logo {
   position: absolute;
   float: none;
-  margin-left: .625rem;
 }
 
+// Adjustments to the height because some logos are longer or shorter
+// than others.
 .ploscompbiol .logo {
   height: 27px;
 }
@@ -129,7 +130,6 @@ $width-nav: $block-grid-elements - $width-logo;
 .plosone .logo {
   height: 40px;
 }
-
 
 /* using Foundation Top Bar
  all @extend .class are Foundation

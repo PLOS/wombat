@@ -31,14 +31,11 @@ services:
     depends_on:
       - db
     environment:
-      - AWS_ACCESS_KEY_ID
-      - AWS_ROLE_ARN
-      - AWS_SECRET_ACCESS_KEY
       - CONTENT_REPO_URL
       - CORPUS_BUCKET
       - TAXONOMY_URL
       - THESAURUS
-      - DATABASE_URL='jdbc:mysql://db:3306/ambra?user=root&password=password'
+      - DATABASE_URL=jdbc:mysql://db:3306/ambra?user=root&password=password
     links:
       - db
     ports:

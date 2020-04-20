@@ -1,12 +1,12 @@
 version: '3'
 
-# NOTE: You must set WOMBAT_TAG, RHINO_TAG and PLOS_THEMES_REPO environment variables
+# NOTE: You must set PLOS_THEMES_REPO environment variables
 #       as well as all environment variables not explicitly defined below (e.g. CAS_URL)
 
 services:
 
   wombat:
-    image: plos/wombat:${WOMBAT_TAG}
+    image: plos/wombat:latest
     depends_on:
       - db
       - rhino
@@ -27,7 +27,7 @@ services:
       - ${PLOS_THEMES_REPO}:/opt/plos/themes:ro
 
   rhino:
-    image: plos/rhino:${RHINO_TAG}
+    image: plos/rhino:latest
     depends_on:
       - db
     environment:

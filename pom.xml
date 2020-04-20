@@ -564,6 +564,9 @@
         <configuration>
           <to>
             <image>docker.io/plos/wombat:${project.version}</image>
+            <tags>
+              <tag>latest</tag>
+            </tags>
           </to>
           <from>
             <image>docker.io/plos/tomcat:latest</image>

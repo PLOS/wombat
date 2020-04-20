@@ -1,7 +1,7 @@
 version: '3'
 
-# NOTE: You must set PLOS_THEMES_REPO environment variables
-#       as well as all environment variables not explicitly defined below (e.g. CAS_URL)
+# NOTE: You must set the PLOS_THEMES_REPO environment variables as well as all
+#       environment variables not explicitly defined below (e.g. CAS_URL)
 
 services:
 

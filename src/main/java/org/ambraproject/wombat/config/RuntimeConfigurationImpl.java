@@ -30,7 +30,7 @@ import com.google.common.base.Preconditions;
 public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   String memcachedServer;
   URL rhinoUrl;
-  String rootPagePath;
+  String rootRedirect;
   String environment;
   String themePath;
   String casUrl;
@@ -97,14 +97,14 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   }
 
   @Override
-  public String getRootPagePath() {
-    return rootPagePath;
+  public String getRootRedirect() {
+    return rootRedirect;
   }
 
-  public void setRootPagePath(String rootPagePath) {
-    Preconditions.checkNotNull(rootPagePath, "Please set ROOT_PAGE_PATH.");
-    Preconditions.checkArgument(!rootPagePath.equals(""), "Please set ROOT_PAGE_PATH.");
-    this.rootPagePath = rootPagePath;
+  public void setRootRedirect(String rootRedirect) {
+    Preconditions.checkNotNull(rootRedirect, "Please set ROOT_REDIRECT.");
+    Preconditions.checkArgument(!rootRedirect.equals(""), "Please set ROOT_REDIRECT.");
+    this.rootRedirect = rootRedirect;
   }
 
   @Override

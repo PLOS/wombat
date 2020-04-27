@@ -19,7 +19,7 @@ Runtime configuration happens via environment variables:
 - `MECACHED_SERVER`: (optional) `hostname:port` for memcached server to use
 - `NED_URL`: the URL for the ned server, including username and password
 - `RHINO_URL`: complete url to rhino server
-- `ROOT_PAGE_PATH`: (optional) the path to the root page to use, only used if ENVIRONMENT is `prod`
+- `ROOT_REDIRECT`: (optional) the url to redirect to, only used if ENVIRONMENT is `prod`
 - `SOLR_URL`: complete url to solr server, including collection
 - `THEME_PATH`: path to the themes directory 
 

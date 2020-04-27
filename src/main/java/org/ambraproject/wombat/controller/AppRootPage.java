@@ -39,11 +39,11 @@ import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.ui.ExtendedModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
-
+import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -103,11 +103,13 @@ public class AppRootPage {
    * Show a page in response to the application root.
    */
   ModelAndView serveAppRoot() {
-    String rootPagePath = runtimeConfiguration.getRootPagePath();
-    if (Strings.isNullOrEmpty(rootPagePath)) {
+    if (!runtimeConfiguration.getEnvironment().equals("prod")) {
       return serveDebugPage();
     } else {
-      return serveCustomRootPage(rootPagePath);
+      RedirectView rv = new RedirectView();
+      rv.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
+      rv.setUrl(runtimeConfiguration.getRootRedirect());
+      return new ModelAndView(rv);
     }
   }
 
@@ -122,12 +124,6 @@ public class AppRootPage {
       log.error("Error displaying root page image", e);
     }
     return mav;
-  }
-
-  private ModelAndView serveCustomRootPage(String rootPagePath) {
-    ExtendedModelMap model = new ExtendedModelMap();
-    model.addAttribute("rootPage", new File(rootPagePath));
-    return new ModelAndView(HtmlFileView.INSTANCE, model);
   }
 
   private String getResourceAsBase64(String path) throws IOException {

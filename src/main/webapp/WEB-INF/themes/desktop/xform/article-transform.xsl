@@ -161,6 +161,8 @@
 
   <!-- Ambra-specific template (creates article metadata) -->
   <xsl:template name="make-article-meta">
+    <xsl:variable name="isPreregisteredResearchArticle"
+                  select="/article/front/article-meta/article-categories/subj-group[@subj-group-type='heading']/subject[text()='Preregistered Research Article']"/>
     <xsl:for-each select="front/article-meta">
       <!-- article citation -->
       <p>
@@ -285,6 +287,17 @@
           <xsl:value-of select="pub-date[@pub-type='epub']/day"/><xsl:text>, </xsl:text>
         </xsl:if>
         <xsl:value-of select="pub-date[@pub-type='epub']/year"/>
+        <xsl:if test="$isPreregisteredResearchArticle">
+          <br/>
+          <br/>
+          <strong>Note:</strong> As this is a Preregistered Research
+          Article, the study design and methods were peer-reviewed
+          before data collection. The time to acceptance includes the
+          experimental time taken to perform the study. Learn more
+          about <a
+          href="https://journals.plos.org/plosbiology/s/submission-guidelines#loc-preregistered-research-articles">Preregistered
+          Research Articles</a>.
+        </xsl:if>
       </p>
       <!-- copyright -->
       <p>

@@ -374,7 +374,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   private URI getSolrUri(List<NameValuePair> params, Site site) throws SolrUndefinedException {
     try {
       URL solrServer = runtimeConfiguration.getSolrUrl();
-      return new URL(solrServer, "/select?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
+      return new URL(solrServer, "select?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }

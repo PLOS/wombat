@@ -217,7 +217,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   @Override
   public Map<String, ?> search(ArticleSearchQuery query, Site site) throws IOException {
-    return SolrQueryBuilder.search(query, params -> getRawResults(params, site));
+    return SolrQueryBuilder.search(query, params -> getRawResults(params));
   }
 
   @Override
@@ -348,8 +348,8 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    * @return raw results from Solr
    * @throws IOException
    */
-  private Map<String, Map> getRawResults(List<NameValuePair> params, Site site) throws IOException {
-    URI uri = getSolrUri(params, site);
+  private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
+    URI uri = getSolrUri(params);
     log.debug("Solr request executing: " + uri);
     Map<String, Map> rawResults = new HashMap<>();
     if (params.contains(new BasicNameValuePair("wt", "csv"))) {

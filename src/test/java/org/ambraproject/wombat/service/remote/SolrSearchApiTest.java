@@ -46,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -88,7 +89,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assertSingle("foo", actualMap.get("q"));
 
     // empty query string
-    actual = buildCommonParams("", false, 0, 10, SolrSearchApiImpl.SolrSortOrder.MOST_CITED, true);
+    actual = buildCommonParams("*:*", false, 0, 10, SolrSearchApiImpl.SolrSortOrder.MOST_CITED, true);
     actualMap = convertToMap(actual);
     assertCommonParams(2, actualMap);
     assertEquals(0, actualMap.get("defType").size());
@@ -121,7 +122,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assertSingle("foo", actualMap.get("q"));
 
     // empty query string
-    actual = buildFacetParams("journal", "", false);
+    actual = buildFacetParams("journal", "*:*", false);
     actualMap = convertToMap(actual);
     assertFacetParams(2, actualMap);
     assertSingle("journal", actualMap.get("facet.field"));

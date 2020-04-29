@@ -46,7 +46,7 @@ public class SearchFilterServiceTest extends AbstractJUnit4SpringContextTests {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
         .setQuery("blah")
         .setSimple(true)
-        .setIsCsvSearch(false).build();
+        .setCsvSearch(false).build();
 
     ImmutableMap<String, SearchFilter> expected = ImmutableMap.of(
         "subject_area", mockFilter,

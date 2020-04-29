@@ -527,7 +527,7 @@ public class SearchController extends WombatController {
     Preconditions.checkArgument(!q.getFacet().isPresent());
 
     ImmutableListMultimap.Builder<String, String> builder = ImmutableListMultimap.builder();
-    builder.put(q.isSimple() ? "q" : "unformattedQuery", q.getQuery().orElse(""));
+    builder.put(q.isSimple() ? "q" : "unformattedQuery", q.getQuery());
 
     int rows = q.getRows();
     builder.put("resultsPerPage", Integer.toString(rows));
@@ -587,7 +587,7 @@ public class SearchController extends WombatController {
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(queryString)
         .setSimple(commonParams.isSimpleSearch(queryString))
-        .setIsRssSearch(true);
+        .setRssSearch(true);
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
 
@@ -736,7 +736,7 @@ public class SearchController extends WombatController {
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setQuery(queryString)
         .setSimple(commonParams.isSimpleSearch(queryString))
-        .setIsCsvSearch(isCsvExport);
+        .setCsvSearch(isCsvExport);
     commonParams.fill(query);
     ArticleSearchQuery queryObj = query.build();
     Map<?, ?> searchResults;
@@ -896,7 +896,6 @@ public class SearchController extends WombatController {
 
     CommonParams commonParams = modelCommonParams(request, model, site, params, false);
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setQuery("")
         .setSimple(false);
     commonParams.fill(query);
 

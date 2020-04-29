@@ -22,23 +22,25 @@
 
 package org.ambraproject.wombat.service.remote;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import com.google.auto.value.AutoValue;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-public class ArticleSearchQuery {
+@AutoValue
+public abstract class ArticleSearchQuery {
 
   /**
    * Specifies the article fields in the solr schema that we want returned in the results.
@@ -61,91 +63,17 @@ public class ArticleSearchQuery {
       "journal_key", "journal_name");
 
 
-  private static final int MAX_FACET_SIZE = 100;
-  private static final int MIN_FACET_COUNT = 1;
-
-  private final Optional<String> query;
-  private final boolean isSimple;
-  private final boolean isForRawResults;
-  private final boolean isPartialSearch;
-  private final boolean isRssSearch;
-  private final boolean isCsvSearch;
-  private final boolean isJournalSearch;
-
-  private final ImmutableList<String> filterQueries;
-
-  private final Optional<String> facet;
-
-  private final int maxFacetSize;
-  private final int minFacetCount;
-
-  private final int start;
-  private final int rows;
-
-  private final Optional<SolrSearchApi.SearchCriterion> sortOrder;
-
-  private final ImmutableList<String> journalKeys;
-  private final ImmutableList<String> articleTypes;
-  private final ImmutableList<String> articleTypesToExclude;
-  private final ImmutableList<String> subjects;
-  private final ImmutableList<String> authors;
-  private final ImmutableList<String> sections;
-  private final Optional<SolrSearchApi.SearchCriterion> dateRange;
-
-  private final String startDate;
-  private final String endDate;
-
-  private final Optional<String> cursor;
-
-  private final ImmutableMap<String, String> rawParameters;
-
-  private ArticleSearchQuery(Builder builder) {
-    this.query = getQueryString(builder.query);
-    this.isSimple = builder.isSimple;
-    this.isForRawResults = builder.isForRawResults;
-    this.isPartialSearch = builder.isPartialSearch;
-    this.isRssSearch = builder.isRssSearch;
-    this.isCsvSearch = builder.isCsvSearch;
-    this.isJournalSearch = builder.isJournalSearch;
-    this.filterQueries = ImmutableList.copyOf(builder.filterQueries);
-    this.facet = Optional.ofNullable(builder.facet);
-    this.minFacetCount = builder.minFacetCount;
-    this.maxFacetSize = builder.maxFacetSize;
-    this.start = builder.start;
-    this.rows = builder.rows;
-    this.sortOrder = Optional.ofNullable(builder.sortOrder);
-    this.journalKeys = ImmutableList.copyOf(builder.journalKeys);
-    this.articleTypes = ImmutableList.copyOf(builder.articleTypes);
-    this.articleTypesToExclude = ImmutableList.copyOf(builder.articleTypesToExclude);
-    this.subjects = ImmutableList.copyOf(builder.subjects);
-    this.authors = ImmutableList.copyOf(builder.authors);
-    this.sections = ImmutableList.copyOf(builder.sections);
-    this.startDate = builder.startDate;
-    this.endDate = builder.endDate;
-    this.cursor = Optional.ofNullable(builder.cursor);
-    this.dateRange = Optional.ofNullable(builder.dateRange);
-    this.rawParameters = ImmutableMap.copyOf(builder.rawParameters);
-  }
-
-  private static Optional<String> getQueryString(String query) {
-    // Treat empty string as absent query, which will be sent to Solr as "*:*"
-    if (Strings.isNullOrEmpty(query)) {
-      return Optional.empty();
-    }
-    return Optional.of(query);
-  }
-
   @VisibleForTesting
   List<NameValuePair> buildParameters() {
     List<NameValuePair> params = new ArrayList<>();
 
-    if (isCsvSearch) {
+    if (this.isCsvSearch()) {
       params.add(new BasicNameValuePair("wt", "csv"));
     } else {
       params.add(new BasicNameValuePair("wt", "json"));
     }
 
-    if (isPartialSearch) {
+    if (this.isPartialSearch()) {
       params.add(new BasicNameValuePair("qf", "doc_partial_body"));
       params.add(new BasicNameValuePair("fl", "*"));
       params.add(new BasicNameValuePair("fq", "doc_type:partial"));
@@ -154,38 +82,38 @@ public class ArticleSearchQuery {
     }
 
     params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
-    for (String filterQuery : filterQueries) {
+    for (String filterQuery : this.getFilterQueries()) {
       params.add(new BasicNameValuePair("fq", filterQuery));
     }
 
-    if (start > 0) {
-      params.add(new BasicNameValuePair("start", Integer.toString(start)));
+    if (this.getStart() > 0) {
+      params.add(new BasicNameValuePair("start", Integer.toString(this.getStart())));
     }
-    params.add(new BasicNameValuePair("rows", Integer.toString(rows)));
+    params.add(new BasicNameValuePair("rows", Integer.toString(this.getRows())));
 
     params.add(new BasicNameValuePair("hl", "false"));
 
-    String queryString = query.orElse("*:*");
+    String queryString = this.getQuery();
     params.add(new BasicNameValuePair("q", queryString));
-    if (query.isPresent() && isSimple) {
+    if (this.isSimple()) {
       // Use the dismax query parser, recommended for all user-entered queries.
       // See https://wiki.apache.org/solr/DisMax
       params.add(new BasicNameValuePair("defType", "dismax"));
     }
 
-    if (facet.isPresent()) {
+    if (this.getFacet().isPresent()) {
       params.add(new BasicNameValuePair("facet", "true"));
-      params.add(new BasicNameValuePair("facet.field", facet.get()));
-      params.add(new BasicNameValuePair("facet.mincount", Integer.toString(minFacetCount)));
-      params.add(new BasicNameValuePair("facet.limit", Integer.toString(maxFacetSize)));
+      params.add(new BasicNameValuePair("facet.field", this.getFacet().get()));
+      params.add(new BasicNameValuePair("facet.mincount", Integer.toString(this.getFacetMinCount())));
+      params.add(new BasicNameValuePair("facet.limit", Integer.toString(this.getFacetLimit())));
       params.add(new BasicNameValuePair("json.nl", "map"));
-    } else if (isRssSearch) {
+    } else if (this.isRssSearch()) {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", RSS_FIELDS));
-    } else if (isCsvSearch) {
+    } else if (this.isCsvSearch()) {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", CSV_FIELDS));
-    } else if (isJournalSearch) {
+    } else if (this.isJournalSearch()) {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", JOURNAL_FIELDS));
     } else {
@@ -193,42 +121,37 @@ public class ArticleSearchQuery {
       params.add(new BasicNameValuePair("fl", ARTICLE_FIELDS));
     }
 
-    cursor.ifPresent(cursor -> params.add(new BasicNameValuePair("cursorMark", cursor)));
+    this.getCursor().ifPresent(cursor -> params.add(new BasicNameValuePair("cursorMark", cursor)));
 
     setQueryFilters(params);
 
-    for (Map.Entry<String, String> entry : rawParameters.entrySet()) {
+    for (Map.Entry<String, String> entry : this.getRawParameters().entrySet()) {
       params.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
     }
 
     return params;
   }
 
-  private static boolean isNullOrEmpty(Collection<?> collection) {
-    return collection == null || collection.isEmpty();
-  }
-
-  @VisibleForTesting
   void setQueryFilters(List<NameValuePair> params) {
-    if (sortOrder.isPresent()) {
-      String sortOrderStr = sortOrder.get().getValue() + ",id desc";
+    if (this.getSortOrder().isPresent()) {
+      String sortOrderStr = this.getSortOrder().get().getValue() + ",id desc";
       params.add(new BasicNameValuePair("sort", sortOrderStr));
     }
 
-    if (dateRange.isPresent()) {
-      String dateRangeStr = dateRange.get().getValue();
+    if (this.getDateRange().isPresent()) {
+      String dateRangeStr = this.getDateRange().get().getValue();
       if (!Strings.isNullOrEmpty(dateRangeStr)) {
         params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
       }
     }
-    if (!isNullOrEmpty(journalKeys)) {
-      List<String> crossPublishedJournals = journalKeys.stream()
+    if (!CollectionUtils.isEmpty(this.getJournalKeys())) {
+      List<String> crossPublishedJournals = this.getJournalKeys().stream()
           .map(journalKey -> "journal_key:" + journalKey).collect(Collectors.toList());
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
     }
 
-    if (!isNullOrEmpty(articleTypes)) {
-      List<String> articleTypeQueryList = articleTypes.stream()
+    if (!CollectionUtils.isEmpty(this.getArticleTypes())) {
+      List<String> articleTypeQueryList = this.getArticleTypes().stream()
           .map(articleType ->
           {
             String articleTypeStr = articleType.equals("*") ? articleType : "\"" + articleType + "\"";
@@ -238,23 +161,23 @@ public class ArticleSearchQuery {
       params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
     }
 
-    if (!isNullOrEmpty(articleTypesToExclude)) {
-      List<String> articleTypeToExcludeQueryList = articleTypesToExclude.stream()
+    if (!CollectionUtils.isEmpty(this.getArticleTypesToExclude())) {
+      List<String> articleTypeToExcludeQueryList = this.getArticleTypesToExclude().stream()
           .map(articleType -> "!article_type_facet:\"" + articleType + "\"").collect(Collectors.toList());
       params.add(new BasicNameValuePair("fq", Joiner.on(" AND ").join(articleTypeToExcludeQueryList)));
     }
 
-    if (!isNullOrEmpty(subjects)) {
-      params.add(new BasicNameValuePair("fq", buildSubjectClause(subjects)));
+    if (!CollectionUtils.isEmpty(this.getSubjects())) {
+      params.add(new BasicNameValuePair("fq", buildSubjectClause(this.getSubjects())));
     }
 
-    if (!isNullOrEmpty(authors)) {
-      params.add(new BasicNameValuePair("fq", buildAuthorClause(authors)));
+    if (!CollectionUtils.isEmpty(this.getAuthors())) {
+      params.add(new BasicNameValuePair("fq", buildAuthorClause(this.getAuthors())));
     }
 
-    if (!isNullOrEmpty(sections)) {
+    if (!CollectionUtils.isEmpty(this.getSections())) {
       List<String> sectionQueryList = new ArrayList<>();
-      for (String section : sections) {
+      for (String section : this.getSections()) {
         //Convert friendly section name to Solr field name TODO:clean this up
         section = section.equals("References") ? "reference" : section;
         sectionQueryList.add(section.toLowerCase().replace(' ', '_'));
@@ -263,7 +186,6 @@ public class ArticleSearchQuery {
     }
   }
 
-  @VisibleForTesting
   static String buildSubjectClause(List<String> subjects) {
     List<String> quotedSubjects = new ArrayList<>();
     for (String subject : subjects) {
@@ -276,7 +198,6 @@ public class ArticleSearchQuery {
     return Joiner.on(" AND ").join(quotedSubjects);
   }
 
-  @VisibleForTesting
   static String buildAuthorClause(List<String> authors) {
     List<String> quotedAuthors = new ArrayList<>();
     for (String author : authors) {
@@ -324,358 +245,216 @@ public class ArticleSearchQuery {
    * @return the subset of those results that were queried for
    */
   private Map<String, ?> unpackResults(Map<String, Map> rawResults) {
-    if (isForRawResults) {
+    if (this.isForRawResults()) {
       return rawResults;
     }
-    if (facet.isPresent()) {
-      Map<String, Map> facetFields = (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
-      return facetFields.get(facet.get()); //We expect facet field to be the first element of the list
+    if (this.getFacet().isPresent()) {
+      Map<String, Map> facetFields =
+          (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
+      return facetFields.get(this.getFacet().get()); //We expect facet field to be the first element of the list
     } else {
       return (Map<String, ?>) rawResults.get("response");
     }
   }
 
+  public abstract Builder toBuilder();
 
-  /*
-   * These getters exist mainly for the benefit of SearchController.rebuildUrlParameters.
-   * In general, avoid calling them in favor of encapsulating the fields privately.
-   */
+  public abstract int getFacetLimit();
 
-  public Optional<String> getQuery() {
-    return query;
-  }
+  public abstract String getQuery();
 
-  public boolean isSimple() {
-    return isSimple;
-  }
+  public abstract Optional<String> getCursor();
 
-  public boolean isForRawResults() {
-    return isForRawResults;
-  }
+  public abstract boolean isSimple();
 
-  public boolean isCsvSearch() {
-    return isCsvSearch;
-  }
+  public abstract boolean isForRawResults();
 
-  public Optional<String> getFacet() {
-    return facet;
-  }
+  public abstract boolean isCsvSearch();
 
-  public int getStart() {
-    return start;
-  }
+  public abstract boolean isRssSearch();
 
-  public int getRows() {
-    return rows;
-  }
+  public abstract boolean isJournalSearch();
 
-  public Optional<SolrSearchApi.SearchCriterion> getSortOrder() {
-    return sortOrder;
-  }
+  public abstract boolean isPartialSearch();
 
-  public ImmutableList<String> getJournalKeys() {
-    return journalKeys;
-  }
+  public abstract Optional<String> getFacet();
 
-  public ImmutableList<String> getArticleTypes() {
-    return articleTypes;
-  }
+  public abstract int getFacetMinCount();
 
-  public ImmutableList<String> getSubjects() {
-    return subjects;
-  }
+  public abstract int getStart();
 
-  public ImmutableList<String> getAuthors() {
-    return authors;
-  }
+  public abstract int getRows();
 
-  public ImmutableList<String> getSections() {
-    return sections;
-  }
+  public abstract Optional<SolrSearchApi.SearchCriterion> getSortOrder();
 
-  public Optional<SolrSearchApi.SearchCriterion> getDateRange() {
-    return dateRange;
-  }
+  public abstract List<String> getJournalKeys();
 
-  public String getStartDate() {
-    return startDate;
-  }
+  public abstract List<String> getArticleTypes();
+  public abstract List<String> getArticleTypesToExclude();
 
-  public String getEndDate() {
-    return endDate;
-  }
+  public abstract List<String> getSubjects();
 
-  public ImmutableMap<String, String> getRawParameters() {
-    return rawParameters;
-  }
+  public abstract List<String> getAuthors();
 
+  public abstract List<String> getSections();
+
+  public abstract Optional<SolrSearchApi.SearchCriterion> getDateRange();
+
+  @Nullable public abstract String getStartDate();
+
+  @Nullable  public abstract String getEndDate();
+
+  public abstract Map<String, String> getRawParameters();
+
+  public abstract List<String> getFilterQueries();
 
   public static Builder builder() {
-    return new Builder();
+    return new AutoValue_ArticleSearchQuery.Builder()
+      .setArticleTypes(ImmutableList.of())
+      .setArticleTypesToExclude(ImmutableList.of())
+      .setAuthors(ImmutableList.of())
+      .setCsvSearch(false)
+      .setFacetLimit(100)
+      .setFacetMinCount(0)
+      .setFilterQueries(ImmutableList.of())
+      .setForRawResults(false)
+      .setJournalKeys(ImmutableList.of())
+      .setJournalSearch(false)
+      .setQuery("*:*")
+      .setPartialSearch(false)
+      .setRawParameters(ImmutableMap.of())
+      .setRows(0)
+      .setRssSearch(false)
+      .setSections(ImmutableList.of())
+      .setSimple(false)
+      .setStart(0)
+      .setSubjects(ImmutableList.of());
   }
 
-  public Builder copy() {
-    Builder builder = builder();
-    builder.query = this.query.orElse(null);
-    builder.isSimple = this.isSimple;
-    builder.isForRawResults = this.isForRawResults;
-    builder.isCsvSearch = this.isCsvSearch;
-    builder.filterQueries = this.filterQueries;
-    builder.facet = this.facet.orElse(null);
-    builder.minFacetCount = this.minFacetCount;
-    builder.maxFacetSize = this.maxFacetSize;
-    builder.start = this.start;
-    builder.rows = this.rows;
-    builder.sortOrder = this.sortOrder.orElse(null);
-    builder.journalKeys = this.journalKeys;
-    builder.articleTypes = this.articleTypes;
-    builder.subjects = this.subjects;
-    builder.dateRange = this.dateRange.orElse(null);
-    builder.authors = this.authors;
-    builder.sections = this.sections;
-    builder.cursor = this.cursor.orElse(null);
-    builder.rawParameters = this.rawParameters;
-    return builder;
-  }
-
-  public static class Builder {
-    private String query;
-    private boolean isSimple;
-    private boolean isForRawResults;
-    private boolean isPartialSearch;
-    private boolean isRssSearch;
-    private boolean isCsvSearch;
-    private boolean isJournalSearch;
-
-    private List<String> filterQueries = ImmutableList.of();
-
-    private String facet;
-
-    private int maxFacetSize = MAX_FACET_SIZE;
-    private int minFacetCount = MIN_FACET_COUNT;
-
-    private int start;
-    private int rows;
-
-    private SolrSearchApi.SearchCriterion sortOrder;
-
-    private List<String> journalKeys = ImmutableList.of();
-    private List<String> articleTypes = ImmutableList.of();
-    private List<String> articleTypesToExclude = ImmutableList.of();
-    private List<String> subjects = ImmutableList.of();
-    private List<String> authors = ImmutableList.of();
-    private List<String> sections = ImmutableList.of();
-    private SolrSearchApi.SearchCriterion dateRange;
-
-    private String startDate;
-    private String endDate;
-
-    private String cursor;
-
-    private Map<String, String> rawParameters = ImmutableMap.of();
-
-    private Builder() {
-    }
+  @AutoValue.Builder
+  public abstract static class Builder {
+    public abstract ArticleSearchQuery build();
 
     /**
      * Set the raw search query
      *
      * @param query raw string of text to search for
      */
-    public Builder setQuery(String query) {
-      this.query = query;
-      return this;
-    }
+    public abstract Builder setQuery(String query);
 
     /**
      * Set the search type. Simple search uses dismax in Solr, and is represented in the search URL
      * as the "q" parameter. Advanced search does not use dismax in Solr, and is represented in the
      * URL as the "unformattedQuery" parameter.
      */
-    public Builder setSimple(boolean isSimple) {
-      this.isSimple = isSimple;
-      return this;
-    }
+    public abstract Builder setSimple(boolean isSimple);
 
     /**
      * @param isForRawResults Flag the search to return raw results. Is only used to retrieve Solr stats.
      */
-    public Builder setForRawResults(boolean isForRawResults) {
-      this.isForRawResults = isForRawResults;
-      return this;
-    }
+    public abstract Builder setForRawResults(boolean forRawResults);
 
     /**
      * @param isPartialSearch Flag the search to search partial documents. Only used when searching
      *                        For which section a keyword appears in.
      */
-    public Builder setIsPartialSearch(boolean isPartialSearch) {
-      this.isPartialSearch = isPartialSearch;
-      return this;
-    }
+    public abstract Builder setPartialSearch(boolean partialSearch);
 
     /**
      * @param isRssSearch Flag the search to return only fields used by the RSS view
      */
-    public Builder setIsRssSearch(boolean isRssSearch) {
-      this.isRssSearch = isRssSearch;
-      return this;
-    }
+    public abstract Builder setRssSearch(boolean rssSearch);
 
     /**
      * @param isCsvSearch Flag the search to return only fields used by the RSS view
      */
-    public Builder setIsCsvSearch(boolean isCsvSearch) {
-      this.isCsvSearch = isCsvSearch;
-      return this;
-    }
+    public abstract Builder setCsvSearch(boolean csvSearch);
 
     /**
      * @param isJournalSearch Flag the search to return only fields used by the DoiToJournalResolutionService
      */
-    public Builder setIsJournalSearch(boolean isJournalSearch) {
-      this.isJournalSearch = isJournalSearch;
-      return this;
-    }
+    public abstract Builder setJournalSearch(boolean journalSearch);
 
     /**
      * @param filterQueries a list of additional filter queries to be executed in Solr
      */
-    public Builder setFilterQueries(List<String> filterQueries) {
-      this.filterQueries = filterQueries;
-      return this;
-    }
+    public abstract Builder setFilterQueries(List<String> filterQueries);
 
     /**
      * @param facet the facet to search for as it is stored in Solr. Setting this will also set the
      *              search itself as a "faceted" search.
      */
-    public Builder setFacet(String facet) {
-      this.facet = facet;
-      return this;
-    }
+    public abstract Builder setFacet(String facet);
 
     /**
-     * @param maxFacetSize maximum number of faceted results to return
+     * @param facetLimit maximum number of faceted results to return
      */
-    public Builder setMaxFacetSize(int maxFacetSize) {
-      this.maxFacetSize = maxFacetSize;
-      return this;
-    }
+    public abstract Builder setFacetLimit(int facetLimit);
 
     /**
-     * @param minFacetCount minimum number of facets to use
+     * @param facetMinCount minimum number of facets to use
      */
-    public Builder setMinFacetCount(int minFacetCount) {
-      this.minFacetCount = minFacetCount;
-      return this;
-    }
+    public abstract Builder setFacetMinCount(int facetMinCount);
 
     /**
      * @param start the start position to query from in Solr
      */
-    public Builder setStart(int start) {
-      this.start = start;
-      return this;
-    }
+    public abstract Builder setStart(int start);
 
     /**
      * @param rows the number of results to return from the Solr search
      */
-    public Builder setRows(int rows) {
-      this.rows = rows;
-      return this;
-    }
+    public abstract Builder setRows(int rows);
 
     /**
      * @param sortOrder the sort order of the results returned from Solr
      */
-    public Builder setSortOrder(SolrSearchApi.SearchCriterion sortOrder) {
-      this.sortOrder = sortOrder;
-      return this;
-    }
+    public abstract Builder setSortOrder(SolrSearchApi.SearchCriterion sortOrder);
 
     /**
      * @param journalKeys set the journals to filter by
      */
-    public Builder setJournalKeys(List<String> journalKeys) {
-      this.journalKeys = journalKeys;
-      return this;
-    }
+    public abstract Builder setJournalKeys(List<String> journalKeys);
 
     /**
      * @param articleTypes set the article types to filter by
      */
-    public Builder setArticleTypes(List<String> articleTypes) {
-      this.articleTypes = articleTypes;
-      return this;
-    }
+    public abstract Builder setArticleTypes(List<String> articleTypes);
 
     /**
      * @param articleTypesToExclude set the article types to exclude
      */
-    public Builder setArticleTypesToExclude(List<String> articleTypesToExclude) {
-      this.articleTypesToExclude = articleTypesToExclude;
-      return this;
-    }
+    public abstract Builder setArticleTypesToExclude(List<String> articleTypesToExclude);
 
     /**
      * @param subjects set the subjects to filter by
      */
-    public Builder setSubjects(List<String> subjects) {
-      this.subjects = subjects;
-      return this;
-    }
+    public abstract Builder setSubjects(List<String> subjects);
 
     /**
      * @param authors set the authors to filter by
      */
-    public Builder setAuthors(List<String> authors) {
-      this.authors = authors;
-      return this;
-    }
+    public abstract Builder setAuthors(List<String> authors);
 
     /**
      * @param sections set the sections to filter by
      */
-    public Builder setSections(List<String> sections) {
-      this.sections = sections;
-      return this;
-    }
+    public abstract Builder setSections(List<String> sections);
 
     /**
      * @param dateRange set the date range to filter by
      */
-    public Builder setDateRange(SolrSearchApi.SearchCriterion dateRange) {
-      this.dateRange = dateRange;
-      return this;
-    }
+    public abstract Builder setDateRange(@Nullable SolrSearchApi.SearchCriterion dateRange);
 
-    public Builder setStartDate(String startDate) {
-      this.startDate = startDate;
-      return this;
-    }
+    public abstract Builder setStartDate(String startDate);
 
-    public Builder setEndDate(String endDate) {
-      this.endDate = endDate;
-      return this;
-    }
+    public abstract Builder setEndDate(String endDate);
 
-    public Builder setCursor(String cursor) {
-      this.cursor = cursor;
-      return this;
-    }
+    public abstract Builder setCursor(String cursor);
 
     /**
      * @param rawParameters flag the query to use raw parameters. Is only used to retrieve Solr stats.
      */
-    public Builder setRawParameters(Map<String, String> rawParameters) {
-      this.rawParameters = rawParameters;
-      return this;
-    }
-
-    public ArticleSearchQuery build() {
-      return new ArticleSearchQuery(this);
-    }
+    public abstract Builder setRawParameters(Map<String, String> rawParameters);
   }
 }

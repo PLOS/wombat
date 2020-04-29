@@ -331,7 +331,7 @@ public class HomeController extends WombatController {
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
-        .setIsRssSearch(true);
+        .setRssSearch(true);
     Map<String, ?> recentArticles = solrSearchApi.search(query.build(), site);
 
     ModelAndView mav = new ModelAndView();

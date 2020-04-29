@@ -72,7 +72,7 @@ public class DoiToJournalResolutionService {
         .setSimple(false)
         .setRows(dois.size())
         .setQuery("id:(" + String.join(" OR ", quoted) + ")")
-        .setIsJournalSearch(true)
+        .setJournalSearch(true)
         .build();
 
     Map<String, ?> results = solrSearchApi.search(explicitDoiSearchQuery, site);

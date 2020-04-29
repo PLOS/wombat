@@ -314,7 +314,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setForRawResults(true)
         .setFacet("subject_hierarchy")
-        .setMaxFacetSize(MAX_FACET_SIZE)
+        .setFacetLimit(MAX_FACET_SIZE)
         .setJournalKeys(Collections.singletonList(journalKey));
 
     ArrayList<String> categories = new ArrayList<>();
@@ -334,7 +334,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
         .setForRawResults(true)
         .setFacet("subject_facet")
-        .setMaxFacetSize(MAX_FACET_SIZE)
+        .setFacetLimit(MAX_FACET_SIZE)
         .setJournalKeys(Collections.singletonList(journalKey));
 
     FacetedQueryResponse response = executeFacetedQuery(query.build(), site);

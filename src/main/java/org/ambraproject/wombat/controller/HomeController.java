@@ -135,13 +135,14 @@ public class HomeController extends WombatController {
     private static List<SolrArticleAdapter> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
                                                                 SolrSearchApiImpl.SolrSortOrder order)
         throws IOException {
-      ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-          .setStart(start)
-          .setRows(section.resultCount)
-          .setSortOrder(order)
-          .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-          .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
-      Map<String, Object> result = (Map<String, Object>) context.solrSearchApi.search(query.build(), site);
+      ArticleSearchQuery query = ArticleSearchQuery.builder()
+        .setStart(start)
+        .setRows(section.resultCount)
+        .setSortOrder(order)
+        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+        .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .build();
+      Map<String, Object> result = (Map<String, Object>) context.solrSearchApi.search(query, site);
       return SolrArticleAdapter.unpackSolrQuery(result);
     }
 
@@ -325,14 +326,14 @@ public class HomeController extends WombatController {
   public ModelAndView getRssFeedView(@SiteParam Site site, @PathVariable String feedType)
       throws IOException {
 
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+    ArticleSearchQuery query = ArticleSearchQuery.builder()
         .setStart(0)
         .setRows(getFeedLength(site))
         .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
-        .setRssSearch(true);
-    Map<String, ?> recentArticles = solrSearchApi.search(query.build(), site);
+      .setRssSearch(true).build();
+    Map<String, ?> recentArticles = solrSearchApi.search(query, site);
 
     ModelAndView mav = new ModelAndView();
     FeedMetadataField.SITE.putInto(mav, site);

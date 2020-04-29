@@ -230,11 +230,11 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     String doiQueryString = dois.stream().map(doi -> "id:" + QueryParser.escape(doi))
         .collect(Collectors.joining(" OR "));
 
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+    ArticleSearchQuery query = ArticleSearchQuery.builder()
         .setQuery(doiQueryString)
         .setStart(0)
-        .setRows(dois.size());
-    return search(query.build(), site);
+      .setRows(dois.size()).build();
+    return search(query, site);
   }
 
   @Override
@@ -279,14 +279,14 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     rawQueryParams.put("stats", "true");
     rawQueryParams.put("stats.field", fieldName);
 
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setForRawResults(true)
-        .setRawParameters(rawQueryParams)
-        .setSortOrder(SolrSortOrder.RELEVANCE)
-        .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
-        .setJournalKeys(Collections.singletonList(journalKey));
+    ArticleSearchQuery query = ArticleSearchQuery.builder()
+      .setForRawResults(true)
+      .setRawParameters(rawQueryParams)
+      .setSortOrder(SolrSortOrder.RELEVANCE)
+      .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
+      .setJournalKeys(Collections.singletonList(journalKey)).build();
 
-    Map<String, Map> rawResult = (Map<String, Map>) search(query.build(), site);
+    Map<String, Map> rawResult = (Map<String, Map>) search(query, site);
 
     Map<String, Map> statsField = (Map<String, Map>) rawResult.get("stats").get("stats_fields");
     Map<String, String> field = (Map<String, String>) statsField.get(fieldName);
@@ -306,14 +306,14 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    */
   @Override
   public List<String> getAllSubjects(String journalKey, Site site) throws IOException {
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+    ArticleSearchQuery query = ArticleSearchQuery.builder()
         .setForRawResults(true)
         .setFacet("subject_hierarchy")
         .setFacetLimit(MAX_FACET_SIZE)
-        .setJournalKeys(Collections.singletonList(journalKey));
+      .setJournalKeys(Collections.singletonList(journalKey)).build();
 
     ArrayList<String> categories = new ArrayList<>();
-    FacetedQueryResponse response = executeFacetedQuery(query.build(), site);
+    FacetedQueryResponse response = executeFacetedQuery(query, site);
     categories.addAll(response.getResultsMap().keySet()
         .stream().map(Object::toString)
         .collect(Collectors.toList()));
@@ -326,13 +326,13 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    */
   @Override
   public Collection<SubjectCount> getAllSubjectCounts(String journalKey, Site site) throws IOException {
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setForRawResults(true)
-        .setFacet("subject_facet")
-        .setFacetLimit(MAX_FACET_SIZE)
-        .setJournalKeys(Collections.singletonList(journalKey));
+    ArticleSearchQuery query = ArticleSearchQuery.builder()
+      .setForRawResults(true)
+      .setFacet("subject_facet")
+      .setFacetLimit(MAX_FACET_SIZE)
+      .setJournalKeys(Collections.singletonList(journalKey)).build();
 
-    FacetedQueryResponse response = executeFacetedQuery(query.build(), site);
+    FacetedQueryResponse response = executeFacetedQuery(query, site);
     List<SubjectCount> subjectCounts = response.getResultsMap().entrySet().stream()
         .map((Map.Entry<?, ?> entry) -> new SubjectCount((String) entry.getKey(),
             ((Double) entry.getValue()).longValue())).collect(Collectors.toList());

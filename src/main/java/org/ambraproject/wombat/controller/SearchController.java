@@ -400,8 +400,8 @@ public class SearchController extends WombatController {
       }
     }
 
-    private ArticleSearchQuery.Builder fill(ArticleSearchQuery.Builder builder) {
-      return builder
+    ArticleSearchQuery.Builder makeArticleSearchQueryBuilder() {
+      return ArticleSearchQuery.builder()
           .setJournalKeys(journalKeys)
           .setArticleTypes(articleTypes)
           .setSubjects(subjectList)
@@ -584,14 +584,12 @@ public class SearchController extends WombatController {
     CommonParams commonParams = modelCommonParams(request, model, site, params, false);
 
     String queryString = params.getFirst("q");
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+    ArticleSearchQuery query = commonParams.makeArticleSearchQueryBuilder()
         .setQuery(queryString)
         .setSimple(commonParams.isSimpleSearch(queryString))
-        .setRssSearch(true);
-    commonParams.fill(query);
-    ArticleSearchQuery queryObj = query.build();
+      .setRssSearch(true).build();
 
-    Map<String, ?> searchResults = solrSearchApi.search(queryObj, site);
+    Map<String, ?> searchResults = solrSearchApi.search(query, site);
 
     String feedTitle = representQueryParametersAsString(params);
     return getFeedModelAndView(site, feedType, feedTitle, searchResults);
@@ -733,15 +731,13 @@ public class SearchController extends WombatController {
     CommonParams commonParams = modelCommonParams(request, model, site, params, isCsvExport);
 
     String queryString = params.getFirst("q");
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+    ArticleSearchQuery query = commonParams.makeArticleSearchQueryBuilder()
         .setQuery(queryString)
         .setSimple(commonParams.isSimpleSearch(queryString))
-        .setCsvSearch(isCsvExport);
-    commonParams.fill(query);
-    ArticleSearchQuery queryObj = query.build();
+      .setCsvSearch(isCsvExport).build();
     Map<?, ?> searchResults;
     try {
-      searchResults = solrSearchApi.search(queryObj, site);
+      searchResults = solrSearchApi.search(query, site);
     } catch (ServiceRequestException sre) {
       model.addAttribute(isInvalidSolrRequest(queryString, sre)
           ? CANNOT_PARSE_QUERY_ERROR : UNKNOWN_QUERY_ERROR, true);
@@ -750,7 +746,7 @@ public class SearchController extends WombatController {
 
     if (!isCsvExport) {
       searchResults = solrSearchApi.addArticleLinks(searchResults, request, site, siteSet);
-      addFiltersToModel(request, model, site, commonParams, queryObj, searchResults);
+      addFiltersToModel(request, model, site, commonParams, query, searchResults);
     }
     model.addAttribute("searchResults", searchResults);
 
@@ -895,12 +891,10 @@ public class SearchController extends WombatController {
     }
 
     CommonParams commonParams = modelCommonParams(request, model, site, params, false);
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setSimple(false);
-    commonParams.fill(query);
+    ArticleSearchQuery query = commonParams.makeArticleSearchQueryBuilder()
+      .setSimple(false).build();
 
-    ArticleSearchQuery queryObj = query.build();
-    Map<String, ?> searchResults = solrSearchApi.search(queryObj, site);
+    Map<String, ?> searchResults = solrSearchApi.search(query, site);
 
     model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
     model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));

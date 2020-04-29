@@ -48,7 +48,7 @@ public class SearchFilterFactory {
    * 2. Parse the results from a faceted search into individual @code{SearchFilterItem}s
    * 3. Combine all SearchFilterItems into a @code{SearchFilter} object.
    *
-   * Note that the @code{ArticleSearchQuery.Builder} query must be set as a faceted search
+   * Note that the @code{ArticleSearchQuery} query must be set as a faceted search
    * by calling setFacet()
    *
    * @param results faceted search results returned from Solr

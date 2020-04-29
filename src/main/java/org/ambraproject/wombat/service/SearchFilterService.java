@@ -82,35 +82,35 @@ public class SearchFilterService {
   public Map<String, SearchFilter> getSearchFilters(ArticleSearchQuery query,
                                                     Multimap<String, String> urlParams,
                                                     Site site) throws IOException {
-    ArticleSearchQuery.Builder journalFacetQuery =
-      query.toBuilder().setFacet(JOURNAL_FACET_FIELD);
+    ArticleSearchQuery journalFacetQuery =
+      query.toBuilder().setFacet(JOURNAL_FACET_FIELD).build();
 
-    Map<?, ?> journalFacetResults = solrSearchApi.search(journalFacetQuery.build(), site);
+    Map<?, ?> journalFacetResults = solrSearchApi.search(journalFacetQuery, site);
     SearchFilter journalFilter = searchFilterFactory
         .createSearchFilter(journalFacetResults, JOURNAL, urlParams);
 
-    ArticleSearchQuery.Builder subjectAreaFacetQuery = query.toBuilder().setFacet(SUBJECT_AREA_FACET_FIELD);
+    ArticleSearchQuery subjectAreaFacetQuery = query.toBuilder().setFacet(SUBJECT_AREA_FACET_FIELD).build();
 
-    Map<?, ?> subjectAreaFacetResults = solrSearchApi.search(subjectAreaFacetQuery.build(), site);
+    Map<?, ?> subjectAreaFacetResults = solrSearchApi.search(subjectAreaFacetQuery, site);
     SearchFilter subjectAreaFilter = searchFilterFactory
         .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
 
-    ArticleSearchQuery.Builder authorFacetQuery = query.toBuilder().setFacet(AUTHOR_FACET);
+    ArticleSearchQuery authorFacetQuery = query.toBuilder().setFacet(AUTHOR_FACET).build();
 
-    Map<?, ?> authorFacetResults = solrSearchApi.search(authorFacetQuery.build(), site);
+    Map<?, ?> authorFacetResults = solrSearchApi.search(authorFacetQuery, site);
     SearchFilter authorFilter = searchFilterFactory.createSearchFilter(authorFacetResults, AUTHOR, urlParams);
 
-    ArticleSearchQuery.Builder articleTypeFacetQuery = query.toBuilder().setFacet(ARTICLE_TYPE_FACET);
+    ArticleSearchQuery articleTypeFacetQuery = query.toBuilder().setFacet(ARTICLE_TYPE_FACET).build();
 
-    Map<?, ?> articleTypeFacetResults = solrSearchApi.search(articleTypeFacetQuery.build(), site);
+    Map<?, ?> articleTypeFacetResults = solrSearchApi.search(articleTypeFacetQuery, site);
     SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(articleTypeFacetResults,
         ARTICLE_TYPE, urlParams);
 
-    ArticleSearchQuery.Builder sectionFacetQuery = query.toBuilder()
+    ArticleSearchQuery sectionFacetQuery = query.toBuilder()
       .setFacet(SECTION_FACET)
-      .setPartialSearch(true);
+      .setPartialSearch(true).build();
 
-    Map<?, ?> sectionFacetResults = solrSearchApi.search(sectionFacetQuery.build(), site);
+    Map<?, ?> sectionFacetResults = solrSearchApi.search(sectionFacetQuery, site);
     SearchFilter sectionFilter = searchFilterFactory.createSearchFilter(sectionFacetResults,
         SECTION, urlParams);
 

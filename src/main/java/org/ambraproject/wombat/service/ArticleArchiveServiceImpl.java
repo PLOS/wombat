@@ -86,14 +86,14 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
     SolrSearchApiImpl.SolrExplicitDateRange dateRange = new SolrSearchApiImpl.SolrExplicitDateRange
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setJournalKeys(Collections.singletonList(site.getJournalKey()))
-        .setRows(MAXIMUM_SOLR_RESULT_COUNT)
-        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_OLDEST_FIRST)
-        .setDateRange(dateRange)
-        .setCursor(cursor)
-        .setForRawResults(true);
-    Map<String, Map> rawResult = (Map<String, Map>) solrSearchApi.search(query.build(), site);
+    ArticleSearchQuery query = ArticleSearchQuery.builder()
+      .setJournalKeys(Collections.singletonList(site.getJournalKey()))
+      .setRows(MAXIMUM_SOLR_RESULT_COUNT)
+      .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_OLDEST_FIRST)
+      .setDateRange(dateRange)
+      .setCursor(cursor)
+      .setForRawResults(true).build();
+    Map<String, Map> rawResult = (Map<String, Map>) solrSearchApi.search(query, site);
     Map<String, Map> searchResult = rawResult.get("response");
     searchResult.put("nextCursorMark", rawResult.get("nextCursorMark"));
     return searchResult;

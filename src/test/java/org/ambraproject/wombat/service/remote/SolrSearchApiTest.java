@@ -65,13 +65,14 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   private static List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start,
                                                        int rows, SolrSearchApi.SearchCriterion sortOrder,
                                                        boolean forHomePage) {
-    return ArticleSearchQuery.builder()
+    ArticleSearchQuery asq = ArticleSearchQuery.builder()
         .setQuery(query)
         .setSimple(useDisMax)
         .setStart(start)
         .setRows(rows)
         .setSortOrder(sortOrder)
-        .build().buildParameters();
+      .build();
+    return SolrQueryBuilder.buildParameters(asq);
   }
 
   @Test
@@ -104,11 +105,12 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   }
 
   private List<NameValuePair> buildFacetParams(String facetField, String query, boolean useDisMax) {
-    return ArticleSearchQuery.builder()
+    ArticleSearchQuery asq = ArticleSearchQuery.builder()
         .setFacet(facetField)
         .setQuery(query)
         .setSimple(useDisMax)
-        .build().buildParameters();
+      .build();
+    return SolrQueryBuilder.buildParameters(asq);
   }
 
   @Test
@@ -133,12 +135,13 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   private static void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
                                       List<String> articleTypes, List<String> subjects,
                                       SolrSearchApi.SearchCriterion dateRange) {
-    ArticleSearchQuery.builder()
+    ArticleSearchQuery asq = ArticleSearchQuery.builder()
         .setJournalKeys(journalKeys)
         .setArticleTypes(articleTypes)
         .setSubjects(subjects)
         .setDateRange(dateRange)
-        .build().setQueryFilters(params);
+      .build();
+    SolrQueryBuilder.setQueryFilters(asq, params);
   }
 
   @Test
@@ -256,12 +259,12 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   @Test
   public void testBuildSearchClause() {
-    assertEquals("subject:\"foo\"", ArticleSearchQuery.buildSearchClause("subject", Arrays.asList("foo")));
+    assertEquals("subject:\"foo\"", SolrQueryBuilder.buildSearchClause("subject", Arrays.asList("foo")));
     assertEquals("subject:\"foo\" AND subject:\"2nd subject\"",
-                 ArticleSearchQuery.buildSearchClause("subject", Arrays.asList("foo", "2nd subject")));
-    assertEquals("author:\"author1\"", ArticleSearchQuery.buildSearchClause("author", Arrays.asList("author1")));
+                 SolrQueryBuilder.buildSearchClause("subject", Arrays.asList("foo", "2nd subject")));
+    assertEquals("author:\"author1\"", SolrQueryBuilder.buildSearchClause("author", Arrays.asList("author1")));
     assertEquals("author:\"author1\" AND author:\"author2\"",
-                 ArticleSearchQuery.buildSearchClause("author", Arrays.asList("author1", "author2")));
+                 SolrQueryBuilder.buildSearchClause("author", Arrays.asList("author1", "author2")));
   }
 
   /**

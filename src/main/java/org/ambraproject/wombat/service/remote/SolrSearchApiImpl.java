@@ -217,7 +217,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   @Override
   public Map<String, ?> search(ArticleSearchQuery query, Site site) throws IOException {
-    return query.search(params -> getRawResults(params, site));
+    return SolrQueryBuilder.search(query, params -> getRawResults(params, site));
   }
 
   @Override

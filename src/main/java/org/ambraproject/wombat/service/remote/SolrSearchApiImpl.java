@@ -217,7 +217,28 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   @Override
   public Map<String, ?> search(ArticleSearchQuery query) throws IOException {
-    return SolrQueryBuilder.search(query, params -> getRawResults(params));
+    List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
+    Map<String, Map> rawResults = getRawResults(params);
+    return unpackResults(query, rawResults);
+  }
+
+  /**
+   * Get a value from raw Solr results according to how the query was set up.
+   *
+   * @param rawResults the full map of results deserialized from Solr's response
+   * @return the subset of those results that were queried for
+   */
+  private static Map<String, ?> unpackResults(ArticleSearchQuery asq, Map<String, Map> rawResults) {
+    if (asq.isForRawResults()) {
+      return rawResults;
+    }
+    if (asq.getFacet().isPresent()) {
+      Map<String, Map> facetFields =
+          (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
+      return facetFields.get(asq.getFacet().get()); //We expect facet field to be the first element of the list
+    } else {
+      return (Map<String, ?>) rawResults.get("response");
+    }
   }
 
   @Override

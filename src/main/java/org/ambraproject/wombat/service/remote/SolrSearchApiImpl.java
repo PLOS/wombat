@@ -83,11 +83,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   private static final int MAX_FACET_SIZE = -1; //unlimited
 
   /**
-   * number of milliseconds to wait on a url connection to SOLR
-   */
-  private static final int CONNECTION_TIMEOUT = 100;
-
-  /**
    * Enumerates sort orders that we want to expose in the UI.
    */
   public static enum SolrSortOrder implements SearchCriterion {

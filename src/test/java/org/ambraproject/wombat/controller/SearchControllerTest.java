@@ -56,7 +56,7 @@ public class SearchControllerTest extends AbstractJUnit4SpringContextTests {
 
     Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal1Key");
     SearchController.CommonParams commonParams = new SearchController.CommonParams(siteSet, site);
-    commonParams.parseParams(params, false);
+    commonParams.parseParams(params);
 
     assertEquals(90, commonParams.start);  // Default results per page should be 15
     assertEquals(SolrSearchApiImpl.SolrSortOrder.RELEVANCE, commonParams.sortOrder);

@@ -45,12 +45,6 @@ public class SolrQueryBuilder {
   private static final String RSS_FIELDS = Joiner.on(',').join("id", "publication_date",
       "title", "title_display", "journal_name", "author_display", "abstract",
       "abstract_primary_display");
-  private static final String CSV_FIELDS = Joiner.on(',').join(
-      "id", "publication_date", "title", "author_display", "author_affiliate",
-      "article_type", "received_date", "accepted_date", "counter_total_all", "alm_scopusCiteCount",
-      "alm_connoteaCount", "alm_mendeleyCount", "alm_twitterCount",
-      "alm_facebookCount", "alm_pmc_usage_total_all", "alm_webOfScienceCount", "editor_display",
-      "abstract", "subject", "reference");
   private static final String JOURNAL_FIELDS = Joiner.on(',').join(
       "journal_key", "journal_name");
 
@@ -58,11 +52,7 @@ public class SolrQueryBuilder {
   public static List<NameValuePair> buildParameters(ArticleSearchQuery asq) {
     List<NameValuePair> params = new ArrayList<>();
 
-    if (asq.isCsvSearch()) {
-      params.add(new BasicNameValuePair("wt", "csv"));
-    } else {
-      params.add(new BasicNameValuePair("wt", "json"));
-    }
+    params.add(new BasicNameValuePair("wt", "json"));
 
     if (asq.isPartialSearch()) {
       params.add(new BasicNameValuePair("qf", "doc_partial_body"));
@@ -101,9 +91,6 @@ public class SolrQueryBuilder {
     } else if (asq.isRssSearch()) {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", RSS_FIELDS));
-    } else if (asq.isCsvSearch()) {
-      params.add(new BasicNameValuePair("facet", "false"));
-      params.add(new BasicNameValuePair("fl", CSV_FIELDS));
     } else if (asq.isJournalSearch()) {
       params.add(new BasicNameValuePair("facet", "false"));
       params.add(new BasicNameValuePair("fl", JOURNAL_FIELDS));

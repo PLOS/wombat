@@ -45,8 +45,6 @@ public abstract class ArticleSearchQuery {
 
   public abstract boolean isForRawResults();
 
-  public abstract boolean isCsvSearch();
-
   public abstract boolean isRssSearch();
 
   public abstract boolean isJournalSearch();
@@ -89,7 +87,6 @@ public abstract class ArticleSearchQuery {
       .setArticleTypes(ImmutableList.of())
       .setArticleTypesToExclude(ImmutableList.of())
       .setAuthors(ImmutableList.of())
-      .setCsvSearch(false)
       .setFacetLimit(100)
       .setFacetMinCount(0)
       .setFilterQueries(ImmutableList.of())
@@ -140,11 +137,6 @@ public abstract class ArticleSearchQuery {
      * @param isRssSearch Flag the search to return only fields used by the RSS view
      */
     public abstract Builder setRssSearch(boolean rssSearch);
-
-    /**
-     * @param isCsvSearch Flag the search to return only fields used by the RSS view
-     */
-    public abstract Builder setCsvSearch(boolean csvSearch);
 
     /**
      * @param isJournalSearch Flag the search to return only fields used by the DoiToJournalResolutionService

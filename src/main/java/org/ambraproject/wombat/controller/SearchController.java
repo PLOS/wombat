@@ -235,20 +235,13 @@ public class SearchController extends WombatController {
      * precedence and default values when ones aren't present.
      *
      * @param params
-     * @param isCsvExport
      * @throws IOException
      */
-    void parseParams(Map<String, List<String>> params, boolean isCsvExport) throws IOException {
-      if (isCsvExport) {
-        start = Integer.parseInt(getSingleParam(params, "start", null));
-        resultsPerPage = Integer.parseInt(getSingleParam(params, "rows", "15"));
-      } else {
-        String pageParam = getSingleParam(params, "page", null);
-        resultsPerPage = Integer.parseInt(getSingleParam(params, "resultsPerPage", "15"));
-        if (pageParam != null) {
-          int page = Integer.parseInt(pageParam);
-          start = (page - 1) * resultsPerPage;
-        }
+    void parseParams(Map<String, List<String>> params) throws IOException {
+      String pageParam = getSingleParam(params, "page", null);resultsPerPage=Integer.parseInt(getSingleParam(params, "resultsPerPage", "15"));
+      if (pageParam != null) {
+        int page = Integer.parseInt(pageParam);
+        start = (page - 1) * resultsPerPage;
       }
       sortOrder = SolrSearchApiImpl.SolrSortOrder.RELEVANCE;
       String sortOrderParam = getSingleParam(params, "sortOrder", null);
@@ -556,10 +549,10 @@ public class SearchController extends WombatController {
 
   private CommonParams modelCommonParams(HttpServletRequest request, Model model,
                                          @SiteParam Site site,
-                                         @RequestParam MultiValueMap<String, String> params,
-                                         boolean isCsvExport) throws IOException {
+                                         @RequestParam MultiValueMap<String, String> params
+                                         ) throws IOException {
     CommonParams commonParams = new CommonParams(siteSet, site);
-    commonParams.parseParams(params, isCsvExport);
+    commonParams.parseParams(params);
     commonParams.addToModel(model, request);
     model.addAttribute("sortOrders", SolrSearchApiImpl.SolrSortOrder.values());
     model.addAttribute("dateRanges", SolrSearchApiImpl.SolrEnumeratedDateRange.values());
@@ -581,7 +574,7 @@ public class SearchController extends WombatController {
       params = {"q"}, method = RequestMethod.GET)
   public ModelAndView getSearchRssFeedView(HttpServletRequest request, Model model, @SiteParam Site site,
                                            @PathVariable String feedType, @RequestParam MultiValueMap<String, String> params) throws IOException {
-    CommonParams commonParams = modelCommonParams(request, model, site, params, false);
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
 
     String queryString = params.getFirst("q");
     ArticleSearchQuery query = commonParams.makeArticleSearchQueryBuilder()
@@ -652,57 +645,10 @@ public class SearchController extends WombatController {
   @RequestMapping(name = "simpleSearch", value = "/search")
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
                        @RequestParam MultiValueMap<String, String> params) throws IOException {
-    if (!performValidSearch(request, model, site, params, false)) {
+    if (!performValidSearch(request, model, site, params)) {
       return advancedSearchAjax(model, site);
     }
     return site.getKey() + "/ftl/search/searchResults";
-  }
-
-  /**
-   * Performs a csv export of a search.
-   *
-   * @param request HttpServletRequest
-   * @param model   model that will contain search results
-   * @param site    site the request originates from
-   * @param params  all URL parameters
-   * @return String indicating template location
-   * @throws IOException
-   */
-
-  @RequestMapping(name = "csvExport", value = "/csvExport", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-  @ResponseBody
-  public FileSystemResource csvExport(HttpServletRequest request, Model model,
-                                      HttpServletResponse response, @SiteParam Site site,
-                                      @RequestParam MultiValueMap<String, String> params) throws IOException {
-    final Integer totalRows = Integer.parseInt(params.getFirst("rows"));
-    final String filename = String.format("solrCsvExport-%s-q-%s.csv", Instant.now(),
-        params.getFirst("q"));
-    response.setHeader("Content-Disposition", "attachment; filename=" + filename);
-    return convertToCsvFile(collateCsvResults(request, model, site, params, totalRows));
-  }
-
-  private String collateCsvResults(HttpServletRequest request, Model model, Site site,
-                                   MultiValueMap<String, String> params, Integer totalRows) throws IOException {
-    StringBuilder resultsBuilder = new StringBuilder();
-    for (Integer start = 0; start < totalRows; start += MAXIMUM_SOLR_RESULT_COUNT) {
-      final String rows = ((Integer) Math.min(MAXIMUM_SOLR_RESULT_COUNT, totalRows - start)).toString();
-      params.set("rows", rows);
-      params.set("start", start.toString());
-      if (!performValidSearch(request, model, site, params, true)) {
-        throw new IOException("Invalid solr query. Please alter and try again.");
-      }
-      // TODO: 10/24/17 decouple search results from the model
-      final Map<String, ?> searchResults = (Map<String, ?>) model.asMap().get("searchResults");
-      resultsBuilder.append(searchResults.get("stringResponse"));
-    }
-    return resultsBuilder.toString();
-  }
-
-  private FileSystemResource convertToCsvFile(String stringResponse) throws IOException {
-    File file = File.createTempFile("tmp", "csv");
-    file.deleteOnExit();
-    FileUtils.writeStringToFile(file, stringResponse);
-    return new FileSystemResource(file);
   }
 
   /**
@@ -721,20 +667,20 @@ public class SearchController extends WombatController {
   @ResponseBody
   public Object dynamicSearch(HttpServletRequest request, Model model, @SiteParam Site site,
                               @RequestParam MultiValueMap<String, String> params) throws IOException {
-    performValidSearch(request, model, site, params, false);
+    performValidSearch(request, model, site, params);
     return gson.toJson(model);
   }
 
   private boolean performValidSearch(HttpServletRequest request, Model model, @SiteParam Site site,
-                                     @RequestParam MultiValueMap<String, String> params,
-                                     boolean isCsvExport) throws IOException {
-    CommonParams commonParams = modelCommonParams(request, model, site, params, isCsvExport);
+                                     @RequestParam MultiValueMap<String, String> params
+                                     ) throws IOException {
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
 
     String queryString = params.getFirst("q");
     ArticleSearchQuery query = commonParams.makeArticleSearchQueryBuilder()
-        .setQuery(queryString)
-        .setSimple(commonParams.isSimpleSearch(queryString))
-      .setCsvSearch(isCsvExport).build();
+      .setQuery(queryString)
+      .setSimple(commonParams.isSimpleSearch(queryString))
+      .build();
     Map<?, ?> searchResults;
     try {
       searchResults = solrSearchApi.search(query);
@@ -744,10 +690,8 @@ public class SearchController extends WombatController {
       return false; //not a valid search - report errors
     }
 
-    if (!isCsvExport) {
-      searchResults = solrSearchApi.addArticleLinks(searchResults, request, site, siteSet);
-      addFiltersToModel(request, model, site, commonParams, query, searchResults);
-    }
+    searchResults = solrSearchApi.addArticleLinks(searchResults, request, site, siteSet);
+    addFiltersToModel(request, model, site, commonParams, query, searchResults);
     model.addAttribute("searchResults", searchResults);
 
     model.addAttribute("alertQuery", alertService.convertParamsToJson(params));
@@ -890,7 +834,7 @@ public class SearchController extends WombatController {
       params.add("filterJournals", site.getJournalKey());
     }
 
-    CommonParams commonParams = modelCommonParams(request, model, site, params, false);
+    CommonParams commonParams = modelCommonParams(request, model, site, params);
     ArticleSearchQuery query = commonParams.makeArticleSearchQueryBuilder()
       .setSimple(false).build();
 

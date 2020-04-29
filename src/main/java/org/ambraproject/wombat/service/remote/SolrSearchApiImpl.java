@@ -219,23 +219,14 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   public Map<String, ?> search(ArticleSearchQuery query) throws IOException {
     List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
     Map<String, Map> rawResults = getRawResults(params);
-    return unpackResults(query, rawResults);
-  }
 
-  /**
-   * Get a value from raw Solr results according to how the query was set up.
-   *
-   * @param rawResults the full map of results deserialized from Solr's response
-   * @return the subset of those results that were queried for
-   */
-  private static Map<String, ?> unpackResults(ArticleSearchQuery asq, Map<String, Map> rawResults) {
-    if (asq.isForRawResults()) {
+    if (query.isForRawResults()) {
       return rawResults;
     }
-    if (asq.getFacet().isPresent()) {
+    if (query.getFacet().isPresent()) {
       Map<String, Map> facetFields =
           (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
-      return facetFields.get(asq.getFacet().get()); //We expect facet field to be the first element of the list
+      return facetFields.get(query.getFacet().get()); //We expect facet field to be the first element of the list
     } else {
       return (Map<String, ?>) rawResults.get("response");
     }
@@ -373,18 +364,8 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     URI uri = getSolrUri(params);
     log.debug("Solr request executing: " + uri);
     Map<String, Map> rawResults = new HashMap<>();
-    if (params.contains(new BasicNameValuePair("wt", "csv"))) {
-      rawResults.put("response", ImmutableMap.of("stringResponse", getStringResponse(uri)));
-    } else {
-      rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
-    }
+    rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
     return rawResults;
-  }
-
-  private String getStringResponse(URI uri) throws IOException {
-    try(CloseableHttpResponse response = cachedRemoteReader.getResponse(new HttpGet(uri))) {
-      return EntityUtils.toString(response.getEntity());
-    }
   }
 
   private URI getSolrUri(List<NameValuePair> params, Site site) throws SolrUndefinedException {

@@ -539,11 +539,6 @@ public class SearchController extends WombatController {
 
     // TODO: Support dateRange. Note this is different from startDate and endDate
     // TODO: Support sortOrder
-
-    for (Map.Entry<String, String> entry : q.getRawParameters().entrySet()) {
-      builder.put(entry);
-    }
-
     return builder.build();
   }
 

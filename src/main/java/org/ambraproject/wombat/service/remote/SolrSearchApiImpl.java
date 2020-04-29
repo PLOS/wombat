@@ -287,13 +287,9 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   @Override
   public Map<?, ?> getStats(String fieldName, String journalKey, Site site) throws IOException {
-    Map<String, String> rawQueryParams = new HashMap();
-    rawQueryParams.put("stats", "true");
-    rawQueryParams.put("stats.field", fieldName);
-
     ArticleSearchQuery query = ArticleSearchQuery.builder()
       .setForRawResults(true)
-      .setRawParameters(rawQueryParams)
+      .setStatsField(fieldName)
       .setSortOrder(SolrSortOrder.RELEVANCE)
       .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
       .setJournalKeys(Collections.singletonList(journalKey)).build();

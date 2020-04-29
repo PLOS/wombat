@@ -76,10 +76,10 @@ public abstract class ArticleSearchQuery {
 
   @Nullable public abstract String getStartDate();
 
-  @Nullable  public abstract String getEndDate();
+  @Nullable public abstract String getEndDate();
 
-  public abstract Map<String, String> getRawParameters();
-
+  public abstract Optional<String> getStatsField();
+  
   public static Builder builder() {
     return new AutoValue_ArticleSearchQuery.Builder()
       .setArticleTypes(ImmutableList.of())
@@ -92,7 +92,6 @@ public abstract class ArticleSearchQuery {
       .setJournalSearch(false)
       .setQuery("*:*")
       .setPartialSearch(false)
-      .setRawParameters(ImmutableMap.of())
       .setRows(1000)
       .setRssSearch(false)
       .setSections(ImmutableList.of())
@@ -212,9 +211,6 @@ public abstract class ArticleSearchQuery {
 
     public abstract Builder setCursor(String cursor);
 
-    /**
-     * @param rawParameters flag the query to use raw parameters. Is only used to retrieve Solr stats.
-     */
-    public abstract Builder setRawParameters(Map<String, String> rawParameters);
+    public abstract Builder setStatsField(String statsField);
   }
 }

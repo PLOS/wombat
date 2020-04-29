@@ -100,8 +100,9 @@ public class SolrQueryBuilder {
 
     setQueryFilters(asq, params);
 
-    for (Map.Entry<String, String> entry : asq.getRawParameters().entrySet()) {
-      params.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+    if (asq.getStatsField().isPresent()) {
+      params.add(new BasicNameValuePair("stats", "true"));
+      params.add(new BasicNameValuePair("stats.field", asq.getStatsField().get()));
     }
 
     return params;

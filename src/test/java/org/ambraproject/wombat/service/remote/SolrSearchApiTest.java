@@ -255,17 +255,13 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   }
 
   @Test
-  public void testBuildSubjectClause() {
-    assertEquals("subject:\"foo\"", ArticleSearchQuery.buildSubjectClause(Arrays.asList("foo")));
-    assertEquals(ArticleSearchQuery.buildSubjectClause(Arrays.asList("foo", "2nd subject")),
-        "subject:\"foo\" AND subject:\"2nd subject\"");
-  }
-
-  @Test
-  public void testBuildAuthorClause() {
-    assertEquals(ArticleSearchQuery.buildAuthorClause(Arrays.asList("author1")), "author:\"author1\"");
-    assertEquals(ArticleSearchQuery.buildAuthorClause(Arrays.asList("author1", "author2")),
-        "author:\"author1\" AND author:\"author2\"");
+  public void testBuildSearchClause() {
+    assertEquals("subject:\"foo\"", ArticleSearchQuery.buildSearchClause("subject", Arrays.asList("foo")));
+    assertEquals("subject:\"foo\" AND subject:\"2nd subject\"",
+                 ArticleSearchQuery.buildSearchClause("subject", Arrays.asList("foo", "2nd subject")));
+    assertEquals("author:\"author1\"", ArticleSearchQuery.buildSearchClause("author", Arrays.asList("author1")));
+    assertEquals("author:\"author1\" AND author:\"author2\"",
+                 ArticleSearchQuery.buildSearchClause("author", Arrays.asList("author1", "author2")));
   }
 
   /**

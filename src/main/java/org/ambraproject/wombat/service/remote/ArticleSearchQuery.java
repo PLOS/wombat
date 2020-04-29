@@ -168,11 +168,11 @@ public abstract class ArticleSearchQuery {
     }
 
     if (!CollectionUtils.isEmpty(this.getSubjects())) {
-      params.add(new BasicNameValuePair("fq", buildSubjectClause(this.getSubjects())));
+      params.add(new BasicNameValuePair("fq", buildSearchClause("subject", this.getSubjects())));
     }
 
     if (!CollectionUtils.isEmpty(this.getAuthors())) {
-      params.add(new BasicNameValuePair("fq", buildAuthorClause(this.getAuthors())));
+      params.add(new BasicNameValuePair("fq", buildSearchClause("author", this.getAuthors())));
     }
 
     if (!CollectionUtils.isEmpty(this.getSections())) {
@@ -186,30 +186,9 @@ public abstract class ArticleSearchQuery {
     }
   }
 
-  static String buildSubjectClause(List<String> subjects) {
-    List<String> quotedSubjects = new ArrayList<>();
-    for (String subject : subjects) {
-      StringBuilder sb = new StringBuilder();
-      sb.append("subject:\"");
-      sb.append(subject);
-      sb.append('"');
-      quotedSubjects.add(sb.toString());
-    }
-    return Joiner.on(" AND ").join(quotedSubjects);
+  static String buildSearchClause(String what, List<String> clauses) {
+    return clauses.stream().map(clause -> what + ":\"" + clause + "\"").collect(Collectors.joining(" AND "));
   }
-
-  static String buildAuthorClause(List<String> authors) {
-    List<String> quotedAuthors = new ArrayList<>();
-    for (String author : authors) {
-      StringBuilder sb = new StringBuilder();
-      sb.append("author:\"");
-      sb.append(author);
-      sb.append('"');
-      quotedAuthors.add(sb.toString());
-    }
-    return Joiner.on(" AND ").join(quotedAuthors);
-  }
-
 
   /**
    * Callback object for exposing search service functionality.

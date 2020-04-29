@@ -96,7 +96,7 @@ public abstract class ArticleSearchQuery {
       .setQuery("*:*")
       .setPartialSearch(false)
       .setRawParameters(ImmutableMap.of())
-      .setRows(0)
+      .setRows(1000)
       .setRssSearch(false)
       .setSections(ImmutableList.of())
       .setSimple(false)

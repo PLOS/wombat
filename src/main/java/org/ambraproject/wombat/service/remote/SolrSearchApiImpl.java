@@ -80,7 +80,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   @VisibleForTesting
   protected Map<String, String> eIssnToJournalKey;
 
-  private static final int MAX_FACET_SIZE = -1; //unlimited
+  private static final int FACET_LIMIT = -1; //unlimited
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -309,7 +309,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
         .setForRawResults(true)
         .setFacet("subject_hierarchy")
-        .setFacetLimit(MAX_FACET_SIZE)
+        .setFacetLimit(FACET_LIMIT)
       .setJournalKeys(Collections.singletonList(journalKey)).build();
 
     ArrayList<String> categories = new ArrayList<>();
@@ -329,7 +329,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
       .setForRawResults(true)
       .setFacet("subject_facet")
-      .setFacetLimit(MAX_FACET_SIZE)
+      .setFacetLimit(FACET_LIMIT)
       .setJournalKeys(Collections.singletonList(journalKey)).build();
 
     FacetedQueryResponse response = executeFacetedQuery(query, site);

@@ -142,7 +142,7 @@ public class HomeController extends WombatController {
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
         .build();
-      Map<String, Object> result = (Map<String, Object>) context.solrSearchApi.search(query, site);
+      Map<String, Object> result = (Map<String, Object>) context.solrSearchApi.search(query);
       return SolrArticleAdapter.unpackSolrQuery(result);
     }
 
@@ -333,7 +333,7 @@ public class HomeController extends WombatController {
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
       .setRssSearch(true).build();
-    Map<String, ?> recentArticles = solrSearchApi.search(query, site);
+    Map<String, ?> recentArticles = solrSearchApi.search(query);
 
     ModelAndView mav = new ModelAndView();
     FeedMetadataField.SITE.putInto(mav, site);

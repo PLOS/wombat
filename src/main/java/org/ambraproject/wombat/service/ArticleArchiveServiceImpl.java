@@ -93,7 +93,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
       .setDateRange(dateRange)
       .setCursor(cursor)
       .setForRawResults(true).build();
-    Map<String, Map> rawResult = (Map<String, Map>) solrSearchApi.search(query, site);
+    Map<String, Map> rawResult = (Map<String, Map>) solrSearchApi.search(query);
     Map<String, Map> searchResult = rawResult.get("response");
     searchResult.put("nextCursorMark", rawResult.get("nextCursorMark"));
     return searchResult;

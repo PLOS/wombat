@@ -589,7 +589,7 @@ public class SearchController extends WombatController {
         .setSimple(commonParams.isSimpleSearch(queryString))
       .setRssSearch(true).build();
 
-    Map<String, ?> searchResults = solrSearchApi.search(query, site);
+    Map<String, ?> searchResults = solrSearchApi.search(query);
 
     String feedTitle = representQueryParametersAsString(params);
     return getFeedModelAndView(site, feedType, feedTitle, searchResults);
@@ -737,7 +737,7 @@ public class SearchController extends WombatController {
       .setCsvSearch(isCsvExport).build();
     Map<?, ?> searchResults;
     try {
-      searchResults = solrSearchApi.search(query, site);
+      searchResults = solrSearchApi.search(query);
     } catch (ServiceRequestException sre) {
       model.addAttribute(isInvalidSolrRequest(queryString, sre)
           ? CANNOT_PARSE_QUERY_ERROR : UNKNOWN_QUERY_ERROR, true);
@@ -894,7 +894,7 @@ public class SearchController extends WombatController {
     ArticleSearchQuery query = commonParams.makeArticleSearchQueryBuilder()
       .setSimple(false).build();
 
-    Map<String, ?> searchResults = solrSearchApi.search(query, site);
+    Map<String, ?> searchResults = solrSearchApi.search(query);
 
     model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
     model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));

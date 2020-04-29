@@ -85,24 +85,24 @@ public class SearchFilterService {
     ArticleSearchQuery journalFacetQuery =
       query.toBuilder().setFacet(JOURNAL_FACET_FIELD).build();
 
-    Map<?, ?> journalFacetResults = solrSearchApi.search(journalFacetQuery, site);
+    Map<?, ?> journalFacetResults = solrSearchApi.search(journalFacetQuery);
     SearchFilter journalFilter = searchFilterFactory
         .createSearchFilter(journalFacetResults, JOURNAL, urlParams);
 
     ArticleSearchQuery subjectAreaFacetQuery = query.toBuilder().setFacet(SUBJECT_AREA_FACET_FIELD).build();
 
-    Map<?, ?> subjectAreaFacetResults = solrSearchApi.search(subjectAreaFacetQuery, site);
+    Map<?, ?> subjectAreaFacetResults = solrSearchApi.search(subjectAreaFacetQuery);
     SearchFilter subjectAreaFilter = searchFilterFactory
         .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
 
     ArticleSearchQuery authorFacetQuery = query.toBuilder().setFacet(AUTHOR_FACET).build();
 
-    Map<?, ?> authorFacetResults = solrSearchApi.search(authorFacetQuery, site);
+    Map<?, ?> authorFacetResults = solrSearchApi.search(authorFacetQuery);
     SearchFilter authorFilter = searchFilterFactory.createSearchFilter(authorFacetResults, AUTHOR, urlParams);
 
     ArticleSearchQuery articleTypeFacetQuery = query.toBuilder().setFacet(ARTICLE_TYPE_FACET).build();
 
-    Map<?, ?> articleTypeFacetResults = solrSearchApi.search(articleTypeFacetQuery, site);
+    Map<?, ?> articleTypeFacetResults = solrSearchApi.search(articleTypeFacetQuery);
     SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(articleTypeFacetResults,
         ARTICLE_TYPE, urlParams);
 
@@ -110,7 +110,7 @@ public class SearchFilterService {
       .setFacet(SECTION_FACET)
       .setPartialSearch(true).build();
 
-    Map<?, ?> sectionFacetResults = solrSearchApi.search(sectionFacetQuery, site);
+    Map<?, ?> sectionFacetResults = solrSearchApi.search(sectionFacetQuery);
     SearchFilter sectionFilter = searchFilterFactory.createSearchFilter(sectionFacetResults,
         SECTION, urlParams);
 

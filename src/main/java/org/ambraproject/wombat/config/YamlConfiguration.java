@@ -93,11 +93,6 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return input.rootRedirect;
   }
 
-  @Override
-  public String getEnvironment() {
-    return input.environment;
-  }
-
   /**
    * Future-proofing against the need for other ThemeSource types that may exist in the future (mainly, one that reads
    * from a remote source, probably by URL). Currently, the only supported type reads from the local filesystem.
@@ -262,6 +257,24 @@ public class YamlConfiguration implements RuntimeConfiguration {
     return (input.commentsDisabled != null) && input.commentsDisabled;
   }
 
+  @Override
+  public boolean showDebug() {
+    if (input.showDebug == null) {
+      return false;
+    } else {
+      return input.showDebug;
+    }
+  }
+
+  @Override
+  public String getCollectionsUrl() {
+    if (input.collectionsUrl == null) {
+      return "";
+    } else {
+      return input.collectionsUrl;
+    }
+  }
+
   /**
    * Validate values after deserializing.
    *
@@ -333,7 +346,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private String server;
     private String compiledAssetDir;
     private String rootRedirect;
-    private String environment;
+    private String collectionsUrl;
     private List<String> enableDevFeatures;
     private List<Map<String, ?>> themeSources;
 
@@ -344,6 +357,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private UserApiConfigurationInput userApi;
 
     private Boolean commentsDisabled;
+    private Boolean showDebug;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -373,8 +387,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setEnvironment(String environment) {
-      this.environment = environment;
+    public void setShowDebug(boolean showDebug) {
+      this.showDebug = showDebug;
     }
 
     /**
@@ -438,6 +452,13 @@ public class YamlConfiguration implements RuntimeConfiguration {
      */
     public void setCommentsDisabled(Boolean commentsDisabled) {
       this.commentsDisabled = commentsDisabled;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    public void setCollectionsUrl(String collectionsUrl) {
+      this.collectionsUrl = collectionsUrl;
     }
   }
 

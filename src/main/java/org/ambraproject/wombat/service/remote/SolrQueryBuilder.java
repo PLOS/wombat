@@ -63,9 +63,6 @@ public class SolrQueryBuilder {
     }
 
     params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
-    for (String filterQuery : asq.getFilterQueries()) {
-      params.add(new BasicNameValuePair("fq", filterQuery));
-    }
 
     if (asq.getStart() > 0) {
       params.add(new BasicNameValuePair("start", Integer.toString(asq.getStart())));

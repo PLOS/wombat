@@ -80,8 +80,6 @@ public abstract class ArticleSearchQuery {
 
   public abstract Map<String, String> getRawParameters();
 
-  public abstract List<String> getFilterQueries();
-
   public static Builder builder() {
     return new AutoValue_ArticleSearchQuery.Builder()
       .setArticleTypes(ImmutableList.of())
@@ -89,7 +87,6 @@ public abstract class ArticleSearchQuery {
       .setAuthors(ImmutableList.of())
       .setFacetLimit(100)
       .setFacetMinCount(0)
-      .setFilterQueries(ImmutableList.of())
       .setForRawResults(false)
       .setJournalKeys(ImmutableList.of())
       .setJournalSearch(false)
@@ -142,11 +139,6 @@ public abstract class ArticleSearchQuery {
      * @param isJournalSearch Flag the search to return only fields used by the DoiToJournalResolutionService
      */
     public abstract Builder setJournalSearch(boolean journalSearch);
-
-    /**
-     * @param filterQueries a list of additional filter queries to be executed in Solr
-     */
-    public abstract Builder setFilterQueries(List<String> filterQueries);
 
     /**
      * @param facet the facet to search for as it is stored in Solr. Setting this will also set the

@@ -260,12 +260,17 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   @Test
   public void testBuildSearchClause() {
-    assertEquals("subject:\"foo\"", SolrQueryBuilder.buildSearchClause("subject", Arrays.asList("foo")));
+    assertEquals("subject:\"foo\"", SolrQueryBuilder.buildAndSearchClause("subject", Arrays.asList("foo")));
     assertEquals("subject:\"foo\" AND subject:\"2nd subject\"",
-                 SolrQueryBuilder.buildSearchClause("subject", Arrays.asList("foo", "2nd subject")));
-    assertEquals("author:\"author1\"", SolrQueryBuilder.buildSearchClause("author", Arrays.asList("author1")));
+                 SolrQueryBuilder.buildAndSearchClause("subject", Arrays.asList("foo", "2nd subject")));
+    assertEquals("author:\"author1\"", SolrQueryBuilder.buildAndSearchClause("author", Arrays.asList("author1")));
     assertEquals("author:\"author1\" AND author:\"author2\"",
-                 SolrQueryBuilder.buildSearchClause("author", Arrays.asList("author1", "author2")));
+                 SolrQueryBuilder.buildAndSearchClause("author", Arrays.asList("author1", "author2")));
+    assertEquals("author:\"author1\" AND author:\"author2\"",
+                 SolrQueryBuilder.buildAndSearchClause("author", Arrays.asList("author1", "author2")));
+    assertEquals("author:\"author1\" OR author:\"author2\"",
+                 SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("author1", "author2")));
+    assertEquals("author:*", SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("*")));
   }
 
   /**
@@ -353,12 +358,12 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assertNotNull(journals);
 
     // For multiple journals, the expected format of the param is
-    // "journal_key:PLoSBiology OR journal_key:PLoSONE"
+    // "journal_key:\"PLoSBiology\" OR journal_key:\"PLoSONE\""
     String[] parts = journals.split(" OR ");
     assertEquals(expectedJournals.length, parts.length);
     Set<String> actualJournals = new HashSet<>();
     for (String part : parts) {
-      actualJournals.add(part.substring("journal_key:".length()));
+      actualJournals.add(part.substring("journal_key:".length() + 1, part.length() - 1));
     }
     for (String expected : expectedJournals) {
       assertTrue(actualJournals.contains(expected));

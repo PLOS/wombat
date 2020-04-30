@@ -22,18 +22,14 @@
 
 package org.ambraproject.wombat.service.remote;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 
 public class SolrQueryBuilder {
   /**
@@ -122,32 +118,23 @@ public class SolrQueryBuilder {
       }
     }
     if (!CollectionUtils.isEmpty(asq.getJournalKeys())) {
-      List<String> crossPublishedJournals = asq.getJournalKeys().stream()
-        .map(journalKey -> "journal_key:" + journalKey).collect(Collectors.toList());
-      params.add("fq", Joiner.on(" OR ").join(crossPublishedJournals));
+      params.add("fq", buildOrSearchClause("journal_key", asq.getJournalKeys()));
     }
 
     if (!CollectionUtils.isEmpty(asq.getArticleTypes())) {
-      List<String> articleTypeQueryList = asq.getArticleTypes().stream()
-          .map(articleType ->
-          {
-            String articleTypeStr = articleType.equals("*") ? articleType : "\"" + articleType + "\"";
-            return "article_type_facet:" + articleTypeStr;
-          })
-        .collect(Collectors.toList());
-      params.add("fq", Joiner.on(" OR ").join(articleTypeQueryList));
+      params.add("fq", buildOrSearchClause("article_type_facet", asq.getArticleTypes()));
     }
 
     if (!CollectionUtils.isEmpty(asq.getArticleTypesToExclude())) {
-      params.add("fq", buildSearchClause("!article_type_facet", asq.getArticleTypesToExclude()));
+      params.add("fq", buildAndSearchClause("!article_type_facet", asq.getArticleTypesToExclude()));
     }
 
     if (!CollectionUtils.isEmpty(asq.getSubjects())) {
-      params.add("fq", buildSearchClause("subject", asq.getSubjects()));
+      params.add("fq", buildAndSearchClause("subject", asq.getSubjects()));
     }
 
     if (!CollectionUtils.isEmpty(asq.getAuthors())) {
-      params.add("fq", buildSearchClause("author", asq.getAuthors()));
+      params.add("fq", buildAndSearchClause("author", asq.getAuthors()));
     }
 
     if (!CollectionUtils.isEmpty(asq.getSections())) {
@@ -161,7 +148,17 @@ public class SolrQueryBuilder {
     }
   }
 
-  static String buildSearchClause(String what, List<String> clauses) {
-    return clauses.stream().map(clause -> what + ":\"" + clause + "\"").collect(Collectors.joining(" AND "));
+  private static String buildSearchClause(String what, List<String> clauses, String joiner) {
+    return clauses.stream().map(
+      clause -> what + ":" + (clause.equals("*") ? "*" : ("\"" + clause + "\""))
+    ).collect(Collectors.joining(joiner));
+  }
+
+  static String buildAndSearchClause(String what, List<String> clauses) {
+    return buildSearchClause(what, clauses, " AND ");
+  }
+
+  static String buildOrSearchClause(String what, List<String> clauses) {
+    return buildSearchClause(what, clauses, " OR ");
   }
 }

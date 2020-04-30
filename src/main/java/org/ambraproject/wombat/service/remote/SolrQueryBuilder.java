@@ -139,9 +139,7 @@ public class SolrQueryBuilder {
     }
 
     if (!CollectionUtils.isEmpty(asq.getArticleTypesToExclude())) {
-      List<String> articleTypeToExcludeQueryList = asq.getArticleTypesToExclude().stream()
-        .map(articleType -> "!article_type_facet:\"" + articleType + "\"").collect(Collectors.toList());
-      params.add("fq", Joiner.on(" AND ").join(articleTypeToExcludeQueryList));
+      params.add("fq", buildSearchClause("!article_type_facet", asq.getArticleTypesToExclude()));
     }
 
     if (!CollectionUtils.isEmpty(asq.getSubjects())) {

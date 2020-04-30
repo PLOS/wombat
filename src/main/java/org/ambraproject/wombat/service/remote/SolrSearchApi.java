@@ -48,6 +48,14 @@ public interface SolrSearchApi {
    */
   public Map<String, ?> search(ArticleSearchQuery query) throws IOException;
 
+  /**
+   * Queries Solr and returns the raw results
+   *
+   * @param ArticleSearchQuery the query
+   * @return raw results from Solr
+   * @throws IOException
+   */
+  public Map<String, Map> rawSearch(ArticleSearchQuery query) throws IOException;
 
   /**
    * Attempts to retrieve information about an article based on the DOI.

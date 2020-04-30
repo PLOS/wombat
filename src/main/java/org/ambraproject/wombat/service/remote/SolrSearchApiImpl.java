@@ -211,12 +211,8 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   @Override
   public Map<String, ?> search(ArticleSearchQuery query) throws IOException {
-    List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
-    Map<String, Map> rawResults = getRawResults(params);
+    Map<String, Map> rawResults = rawSearch(query);
 
-    if (query.isForRawResults()) {
-      return rawResults;
-    }
     if (query.getFacet().isPresent()) {
       Map<String, Map> facetFields =
           (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
@@ -282,13 +278,13 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   @Override
   public Map<?, ?> getStats(String fieldName, String journalKey, Site site) throws IOException {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
-      .setForRawResults(true)
       .setStatsField(fieldName)
       .setSortOrder(SolrSortOrder.RELEVANCE)
       .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
-      .setJournalKeys(ImmutableList.of(journalKey)).build();
+      .setJournalKeys(ImmutableList.of(journalKey))
+      .build();
 
-    Map<String, Map> rawResult = (Map<String, Map>) search(query);
+    Map<String, Map> rawResult = (Map<String, Map>) rawSearch(query);
 
     Map<String, Map> statsField = (Map<String, Map>) rawResult.get("stats").get("stats_fields");
     Map<String, String> field = (Map<String, String>) statsField.get(fieldName);
@@ -296,7 +292,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   private FacetedQueryResponse executeFacetedQuery(ArticleSearchQuery query) throws IOException {
-    Map<String, Map> rawResults = (Map<String, Map>) search(query);
+    Map<String, Map> rawResults = (Map<String, Map>) rawSearch(query);
     Map<?, ?> facetCounts = rawResults.get("facet_counts");
     Map<?, ?> facetFields = (Map<?, ?>) facetCounts.get("facet_fields");
     Map<?, ?> resultsMap = (Map<?, ?>) facetFields.get(query.getFacet().get());
@@ -309,7 +305,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   @Override
   public List<String> getAllSubjects(String journalKey, Site site) throws IOException {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
-        .setForRawResults(true)
         .setFacet("subject_hierarchy")
         .setFacetLimit(FACET_LIMIT)
       .setJournalKeys(ImmutableList.of(journalKey)).build();
@@ -326,10 +321,10 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   @Override
   public Map<String, Long> getAllSubjectCounts(String journalKey, Site site) throws IOException {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
-      .setForRawResults(true)
       .setFacet("subject_facet")
       .setFacetLimit(FACET_LIMIT)
-      .setJournalKeys(ImmutableList.of(journalKey)).build();
+      .setJournalKeys(ImmutableList.of(journalKey))
+      .build();
 
     FacetedQueryResponse response = executeFacetedQuery(query);
     Map<String, Long> subjectCounts = response
@@ -341,14 +336,11 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   /**
-   * Queries Solr and returns the raw results
-   *
-   * @param params Solr query parameters
-   * @param site the current site
-   * @return raw results from Solr
-   * @throws IOException
+   * @inheritDoc
    */
-  private Map<String, Map> getRawResults(List<NameValuePair> params) throws IOException {
+  @Override
+  public Map<String, Map> rawSearch(ArticleSearchQuery query) throws IOException {
+    List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
     URI uri = getSolrUri(params);
     log.debug("Solr request executing: " + uri);
     Map<String, Map> rawResults = new HashMap<>();

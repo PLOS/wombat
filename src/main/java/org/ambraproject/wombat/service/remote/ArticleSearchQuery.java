@@ -60,8 +60,6 @@ public abstract class ArticleSearchQuery {
 
   public abstract boolean isSimple();
 
-  public abstract boolean isForRawResults();
-
   public abstract boolean isRssSearch();
 
   public abstract boolean isJournalSearch();
@@ -104,7 +102,6 @@ public abstract class ArticleSearchQuery {
       .setAuthors(ImmutableList.of())
       .setFacetLimit(100)
       .setFacetMinCount(0)
-      .setForRawResults(false)
       .setJournalKeys(ImmutableList.of())
       .setJournalSearch(false)
       .setQuery("*:*")
@@ -134,11 +131,6 @@ public abstract class ArticleSearchQuery {
      * URL as the "unformattedQuery" parameter.
      */
     public abstract Builder setSimple(boolean isSimple);
-
-    /**
-     * @param isForRawResults Flag the search to return raw results. Is only used to retrieve Solr stats.
-     */
-    public abstract Builder setForRawResults(boolean forRawResults);
 
     /**
      * @param isPartialSearch Flag the search to search partial documents. Only used when searching

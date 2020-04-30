@@ -92,8 +92,8 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
       .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_OLDEST_FIRST)
       .setDateRange(dateRange)
       .setCursor(cursor)
-      .setForRawResults(true).build();
-    Map<String, Map> rawResult = (Map<String, Map>) solrSearchApi.search(query);
+      .build();
+    Map<String, Map> rawResult = (Map<String, Map>) solrSearchApi.rawSearch(query);
     Map<String, Map> searchResult = rawResult.get("response");
     searchResult.put("nextCursorMark", rawResult.get("nextCursorMark"));
     return searchResult;

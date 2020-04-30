@@ -29,17 +29,15 @@ import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.util.MockSiteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import com.google.common.collect.ImmutableList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -51,7 +49,7 @@ public class SearchControllerTest extends AbstractJUnit4SpringContextTests {
   @Test
   public void testCommonParams() throws IOException {
     Map<String, List<String>> params = new HashMap<>();
-    params.put("page", Collections.singletonList("7"));
+    params.put("page", ImmutableList.of("7"));
     params.put("filterSubjects", Arrays.asList("subject1", "subject2"));
 
     Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal1Key");

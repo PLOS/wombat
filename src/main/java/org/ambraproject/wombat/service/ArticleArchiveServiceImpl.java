@@ -87,7 +87,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 
     ArticleSearchQuery query = ArticleSearchQuery.builder()
-      .setJournalKeys(Collections.singletonList(site.getJournalKey()))
+      .setJournalKeys(ImmutableList.of(site.getJournalKey()))
       .setRows(MAXIMUM_SOLR_RESULT_COUNT)
       .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_OLDEST_FIRST)
       .setDateRange(dateRange)

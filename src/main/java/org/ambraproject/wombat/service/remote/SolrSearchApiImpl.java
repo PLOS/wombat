@@ -30,9 +30,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -288,7 +286,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
       .setStatsField(fieldName)
       .setSortOrder(SolrSortOrder.RELEVANCE)
       .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
-      .setJournalKeys(Collections.singletonList(journalKey)).build();
+      .setJournalKeys(ImmutableList.of(journalKey)).build();
 
     Map<String, Map> rawResult = (Map<String, Map>) search(query);
 
@@ -314,15 +312,12 @@ public class SolrSearchApiImpl implements SolrSearchApi {
         .setForRawResults(true)
         .setFacet("subject_hierarchy")
         .setFacetLimit(FACET_LIMIT)
-      .setJournalKeys(Collections.singletonList(journalKey)).build();
+      .setJournalKeys(ImmutableList.of(journalKey)).build();
 
-    ArrayList<String> categories = new ArrayList<>();
-    categories.addAll(response.getResultsMap().keySet()
     FacetedQueryResponse response = executeFacetedQuery(query);
+    return response.getResultsMap().keySet()
         .stream().map(Object::toString)
-        .collect(Collectors.toList()));
-
-    return categories;
+        .collect(Collectors.toList());
   }
 
   /**
@@ -334,7 +329,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
       .setForRawResults(true)
       .setFacet("subject_facet")
       .setFacetLimit(FACET_LIMIT)
-      .setJournalKeys(Collections.singletonList(journalKey)).build();
+      .setJournalKeys(ImmutableList.of(journalKey)).build();
 
     FacetedQueryResponse response = executeFacetedQuery(query);
     Map<String, Long> subjectCounts = response

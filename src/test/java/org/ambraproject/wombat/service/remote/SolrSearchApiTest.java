@@ -24,6 +24,7 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.SetMultimap;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
@@ -159,7 +160,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
     // date range
     actual = UrlParamBuilder.params();
-    setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, subjects,
+    setQueryFilters(actual, ImmutableList.of("foo"), articleTypes, subjects,
         SolrSearchApiImpl.SolrEnumeratedDateRange.LAST_3_MONTHS);
     actualMap = convertToMap(actual.build());
     assertEquals(2, actualMap.get("fq").size());
@@ -171,7 +172,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
     // null date range
     actual = UrlParamBuilder.params();
-    setQueryFilters(UrlParamBuilder.params(), Collections.singletonList("foo"), articleTypes, subjects, null);
+    setQueryFilters(UrlParamBuilder.params(), ImmutableList.of("foo"), articleTypes, subjects, null);
     actualMap = convertToMap(actual.build());
     Set<String> fq = actualMap.get("fq");
     for (String s : fq) {
@@ -187,7 +188,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     SolrSearchApiImpl.SolrExplicitDateRange edr
         = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
 
-    setQueryFilters(actual, Collections.singletonList("foo"), new ArrayList<String>(), new ArrayList<String>(), edr);
+    setQueryFilters(actual, ImmutableList.of("foo"), new ArrayList<String>(), new ArrayList<String>(), edr);
     SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
@@ -200,7 +201,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
         = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
-    setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, new ArrayList<String>(), edr);
+    setQueryFilters(actual, ImmutableList.of("foo"), articleTypes, new ArrayList<String>(), edr);
     SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
@@ -214,7 +215,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
         = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
-    setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, Arrays.asList("Skull", "Head", "Teeth"), edr);
+    setQueryFilters(actual, ImmutableList.of("foo"), articleTypes, Arrays.asList("Skull", "Head", "Teeth"), edr);
     SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");

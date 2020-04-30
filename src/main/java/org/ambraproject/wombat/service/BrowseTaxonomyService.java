@@ -22,11 +22,10 @@
 
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.model.TaxonomyCountTable;
-import org.ambraproject.wombat.model.TaxonomyGraph;
-
 import java.io.IOException;
+import java.util.Map;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.model.TaxonomyGraph;
 
 /**
  * Provides services related to reading and browsing the subject category taxonomy.
@@ -55,6 +54,6 @@ public interface BrowseTaxonomyService {
    * @param site the current site
    * @return map from taxonomy term to count of articles
    */
-  TaxonomyCountTable getCounts(TaxonomyGraph taxonomy, String journalKey, Site site) throws IOException;
+  Map<String, Long> getCounts(TaxonomyGraph taxonomy, String journalKey, Site site) throws IOException;
 
 }

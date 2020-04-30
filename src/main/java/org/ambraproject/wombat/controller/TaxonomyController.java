@@ -26,7 +26,6 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
-import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
 import org.ambraproject.wombat.service.remote.ApiAddress;
@@ -95,7 +94,7 @@ public class TaxonomyController extends WombatController {
       parent = Joiner.on("/").join(categoryParams);
     }
 
-    TaxonomyCountTable articleCounts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey(), site);
+    Map<String, Long> articleCounts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey(), site);
 
     final Collection<CategoryView> children;
     if (parent != null) {
@@ -113,12 +112,12 @@ public class TaxonomyController extends WombatController {
       String key = entry.getKey();
       String subjectName = Strings.nullToEmpty(parent) + '/' + key;
       long childCount = entry.getValue().size();
-      long articleCount = articleCounts.getCount(key);
+      long articleCount = articleCounts.get(key);
       results.add(new SubjectData(subjectName, articleCount, childCount));
     }
 
     if (parent == null) {
-      long rootArticleCount = articleCounts.getCount("ROOT");
+      long rootArticleCount = articleCounts.get("ROOT");
       results.add(new SubjectData("ROOT", rootArticleCount, (long) results.size()));
     }
 

@@ -24,6 +24,7 @@ package org.ambraproject.wombat.service.remote;
 
 import com.google.gson.Gson;
 import org.ambraproject.wombat.util.CacheKey;
+import org.ambraproject.wombat.util.UriUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -129,8 +130,10 @@ public abstract class AbstractContentApi implements ContentApi {
     UrlParamBuilder requestParams = UrlParamBuilder.params();
     key.setParameters(requestParams);
     String repoBucketName = key.getBucketName() != null ? key.getBucketName() : repoConfig.bucketName;
+    
     return URI.create(String.format("%s/%s/%s?%s",
-        repoConfig.address, mode.getPathComponent(), repoBucketName, requestParams.format()));
+                                    repoConfig.address, mode.getPathComponent(), repoBucketName,
+                                    UriUtil.formatMangledParams(requestParams.build())));
   }
 
   protected final <T> T requestCachedReader(CacheKey cacheKey, ContentKey key, CacheDeserializer<Reader, T> callback) throws IOException {

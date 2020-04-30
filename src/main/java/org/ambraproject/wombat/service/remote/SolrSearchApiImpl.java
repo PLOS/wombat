@@ -29,10 +29,10 @@ import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.config.site.url.Link;
+import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.apache.lucene.queryparser.classic.QueryParser;
@@ -368,7 +368,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     try {
       URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl(site)
           .orElseThrow(() -> solrUndefinedException);
-      return new URL(solrServer, "?" + URLEncodedUtils.format(params, "UTF-8")).toURI();
+      return new URL(solrServer, "?" + UriUtil.formatParams(params)).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
       //Solr server has already been validated - any exception here must be invalid values in params
       throw new IllegalArgumentException(e);

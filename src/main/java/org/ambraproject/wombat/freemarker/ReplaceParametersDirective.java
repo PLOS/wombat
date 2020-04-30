@@ -34,10 +34,9 @@ import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
+import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
-
 import java.io.IOException;
 import java.util.AbstractList;
 import java.util.ArrayList;
@@ -86,7 +85,7 @@ public class ReplaceParametersDirective implements TemplateDirectiveModel {
         paramList.add(new BasicNameValuePair(key, value));
       }
     }
-    environment.getOut().write(URLEncodedUtils.format(paramList, "UTF-8"));
+    environment.getOut().write(UriUtil.formatParams(paramList));
   }
 
   @VisibleForTesting

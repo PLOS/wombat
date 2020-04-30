@@ -23,11 +23,14 @@
 package org.ambraproject.wombat.util;
 
 import com.google.common.base.Preconditions;
-
+import org.apache.commons.io.Charsets;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.List;
 
 public class UriUtil {
   private UriUtil() {
@@ -50,4 +53,11 @@ public class UriUtil {
     }
   }
 
+  public static String formatParams(List<NameValuePair> params) {
+    return URLEncodedUtils.format(params, Charsets.UTF_8);
+  }
+
+  public static String formatMangledParams(List<NameValuePair> params) {
+    return formatParams(params).replace("%2F", "/");
+  }
 }

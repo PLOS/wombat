@@ -30,6 +30,7 @@ import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.ClientEndpoint;
+import org.ambraproject.wombat.util.UriUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -344,7 +345,7 @@ public class Link {
       for (Map.Entry<String, ?> paramEntry : queryParameters.entries()) {
         paramBuilder.add(paramEntry.getKey(), paramEntry.getValue().toString());
       }
-      path = path + "?" + paramBuilder.format();
+      path = path + "?" + UriUtil.formatMangledParams(paramBuilder.build());
     }
     return path;
   }

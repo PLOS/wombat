@@ -22,28 +22,19 @@
 
 package org.ambraproject.wombat.model;
 
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Maps;
-import org.ambraproject.wombat.service.remote.SolrSearchApi.SubjectCount;
-
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Map;
+import com.google.common.collect.ImmutableSortedMap;
 
 public class TaxonomyCountTable implements Serializable {
 
-  private final ImmutableSortedMap<String, SubjectCount> counts; // case-insensitive
+  private final ImmutableSortedMap<String, Long> counts; // case-insensitive
 
-  public TaxonomyCountTable(Collection<SubjectCount> counts) {
-    this.counts = ImmutableSortedMap.copyOf(Maps.uniqueIndex(counts, SubjectCount::getSubject),
-        String.CASE_INSENSITIVE_ORDER);
+  public TaxonomyCountTable(Map<String, Long> counts) {
+    this.counts = ImmutableSortedMap.copyOf(counts);
   }
 
   public long getCount(String subjectName) {
-    SubjectCount subjectCount = counts.get(subjectName);
-    if (subjectCount == null) {
-      throw new IllegalArgumentException();
-    }
-    return subjectCount.getCount();
+    return counts.get(subjectName);
   }
-
 }

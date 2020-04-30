@@ -105,26 +105,5 @@ public interface SolrSearchApi {
    * @param site the current site
    * @throws IOException
    */
-  public Collection<SubjectCount> getAllSubjectCounts(String journalKey, Site site) throws IOException;
-
-  /**
-   * Simple class wrapping the category -> count map returned by Solr subject searches.
-   */
-  public static final class SubjectCount implements Serializable {
-    private final String category;
-    private final long count;
-
-    public SubjectCount(String category, Long count) {
-      this.category = Objects.requireNonNull(category);
-      this.count = count;
-    }
-
-    public String getSubject() {
-      return category;
-    }
-
-    public long getCount() {
-      return count;
-    }
-  }
+  public Map<String, Long> getAllSubjectCounts(String journalKey, Site site) throws IOException;
 }

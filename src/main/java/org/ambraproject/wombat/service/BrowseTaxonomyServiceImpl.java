@@ -62,10 +62,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   public TaxonomyCountTable getCounts(TaxonomyGraph taxonomy, String journalKey, Site site) throws IOException {
     CacheKey cacheKey = CacheKey.create("categoryCount", journalKey);
     return CacheUtil.getOrCompute(cache, cacheKey,
-        () -> {
-          Collection<SolrSearchApi.SubjectCount> counts = solrSearchApi.getAllSubjectCounts(journalKey, site);
-          return new TaxonomyCountTable(counts);
-        });
+                                  () -> new TaxonomyCountTable(solrSearchApi.getAllSubjectCounts(journalKey, site)));
   }
 
 }

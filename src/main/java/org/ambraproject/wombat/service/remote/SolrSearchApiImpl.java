@@ -333,7 +333,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
    * @inheritDoc
    */
   @Override
-  public Collection<SubjectCount> getAllSubjectCounts(String journalKey, Site site) throws IOException {
+  public Map<String, Long> getAllSubjectCounts(String journalKey, Site site) throws IOException {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
       .setForRawResults(true)
       .setFacet("subject_facet")
@@ -341,10 +341,11 @@ public class SolrSearchApiImpl implements SolrSearchApi {
       .setJournalKeys(Collections.singletonList(journalKey)).build();
 
     FacetedQueryResponse response = executeFacetedQuery(query, site);
-    List<SubjectCount> subjectCounts = response.getResultsMap().entrySet().stream()
-        .map((Map.Entry<?, ?> entry) -> new SubjectCount((String) entry.getKey(),
-            ((Double) entry.getValue()).longValue())).collect(Collectors.toList());
-    subjectCounts.add(new SubjectCount("ROOT", response.getTotalArticles()));
+    Map<String, Long> subjectCounts = response
+      .getResultsMap().entrySet().stream()
+      .collect(Collectors.toMap(entry -> (String) entry.getKey(),
+                                entry -> ((Double) entry.getValue()).longValue()));
+    subjectCounts.put("ROOT", response.getTotalArticles());
     return subjectCounts;
   }
 

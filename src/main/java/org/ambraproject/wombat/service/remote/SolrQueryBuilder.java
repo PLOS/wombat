@@ -29,6 +29,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
+import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -48,82 +50,81 @@ public class SolrQueryBuilder {
   private static final String JOURNAL_FIELDS = Joiner.on(',').join(
       "journal_key", "journal_name");
 
-
   public static List<NameValuePair> buildParameters(ArticleSearchQuery asq) {
-    List<NameValuePair> params = new ArrayList<>();
+    UrlParamBuilder params = UrlParamBuilder.params();
 
-    params.add(new BasicNameValuePair("wt", "json"));
+    params.add("wt", "json");
 
     if (asq.isPartialSearch()) {
-      params.add(new BasicNameValuePair("qf", "doc_partial_body"));
-      params.add(new BasicNameValuePair("fl", "*"));
-      params.add(new BasicNameValuePair("fq", "doc_type:partial"));
+      params.add("qf", "doc_partial_body");
+      params.add("fl", "*");
+      params.add("fq", "doc_type:partial");
     } else {
-      params.add(new BasicNameValuePair("fq", "doc_type:full"));
+      params.add("fq", "doc_type:full");
     }
 
-    params.add(new BasicNameValuePair("fq", "!article_type_facet:\"Issue Image\""));
+    params.add("fq", "!article_type_facet:\"Issue Image\"");
 
     if (asq.getStart() > 0) {
-      params.add(new BasicNameValuePair("start", Integer.toString(asq.getStart())));
+      params.add("start", Integer.toString(asq.getStart()));
     }
-    params.add(new BasicNameValuePair("rows", Integer.toString(asq.getRows())));
+    params.add("rows", Integer.toString(asq.getRows()));
 
-    params.add(new BasicNameValuePair("hl", "false"));
+    params.add("hl", "false");
 
     String queryString = asq.getQuery();
-    params.add(new BasicNameValuePair("q", queryString));
+    params.add("q", queryString);
     if (asq.isSimple()) {
       // Use the dismax query parser, recommended for all user-entered queries.
       // See https://wiki.apache.org/solr/DisMax
-      params.add(new BasicNameValuePair("defType", "dismax"));
+      params.add("defType", "dismax");
     }
 
     if (asq.getFacet().isPresent()) {
-      params.add(new BasicNameValuePair("facet", "true"));
-      params.add(new BasicNameValuePair("facet.field", asq.getFacet().get()));
-      params.add(new BasicNameValuePair("facet.mincount", Integer.toString(asq.getFacetMinCount())));
-      params.add(new BasicNameValuePair("facet.limit", Integer.toString(asq.getFacetLimit())));
-      params.add(new BasicNameValuePair("json.nl", "map"));
+      params.add("facet", "true");
+      params.add("facet.field", asq.getFacet().get());
+      params.add("facet.mincount", Integer.toString(asq.getFacetMinCount()));
+      params.add("facet.limit", Integer.toString(asq.getFacetLimit()));
+      params.add("json.nl", "map");
     } else if (asq.isRssSearch()) {
-      params.add(new BasicNameValuePair("facet", "false"));
-      params.add(new BasicNameValuePair("fl", RSS_FIELDS));
+      params.add("facet", "false");
+      params.add("fl", RSS_FIELDS);
     } else if (asq.isJournalSearch()) {
-      params.add(new BasicNameValuePair("facet", "false"));
-      params.add(new BasicNameValuePair("fl", JOURNAL_FIELDS));
+      params.add("facet", "false");
+      params.add("fl", JOURNAL_FIELDS);
     } else {
-      params.add(new BasicNameValuePair("facet", "false"));
-      params.add(new BasicNameValuePair("fl", ARTICLE_FIELDS));
+      params.add("facet", "false");
+      params.add("fl", ARTICLE_FIELDS);
     }
 
-    asq.getCursor().ifPresent(cursor -> params.add(new BasicNameValuePair("cursorMark", cursor)));
+    asq.getCursor().ifPresent(cursor -> params.add("cursorMark", cursor));
 
     setQueryFilters(asq, params);
 
     if (asq.getStatsField().isPresent()) {
-      params.add(new BasicNameValuePair("stats", "true"));
-      params.add(new BasicNameValuePair("stats.field", asq.getStatsField().get()));
+      params.add("stats", "true");
+      params.add("stats.field", asq.getStatsField().get());
     }
 
-    return params;
+    return params.build();
   }
 
-  public static void setQueryFilters(ArticleSearchQuery asq, List<NameValuePair> params) {
+  public static void setQueryFilters(ArticleSearchQuery asq, UrlParamBuilder params) {
     if (asq.getSortOrder().isPresent()) {
       String sortOrderStr = asq.getSortOrder().get().getValue() + ",id desc";
-      params.add(new BasicNameValuePair("sort", sortOrderStr));
+      params.add("sort", sortOrderStr);
     }
 
     if (asq.getDateRange().isPresent()) {
       String dateRangeStr = asq.getDateRange().get().getValue();
       if (!Strings.isNullOrEmpty(dateRangeStr)) {
-        params.add(new BasicNameValuePair("fq", "publication_date:" + dateRangeStr));
+        params.add("fq", "publication_date:" + dateRangeStr);
       }
     }
     if (!CollectionUtils.isEmpty(asq.getJournalKeys())) {
       List<String> crossPublishedJournals = asq.getJournalKeys().stream()
-          .map(journalKey -> "journal_key:" + journalKey).collect(Collectors.toList());
-      params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(crossPublishedJournals)));
+        .map(journalKey -> "journal_key:" + journalKey).collect(Collectors.toList());
+      params.add("fq", Joiner.on(" OR ").join(crossPublishedJournals));
     }
 
     if (!CollectionUtils.isEmpty(asq.getArticleTypes())) {
@@ -133,22 +134,22 @@ public class SolrQueryBuilder {
             String articleTypeStr = articleType.equals("*") ? articleType : "\"" + articleType + "\"";
             return "article_type_facet:" + articleTypeStr;
           })
-          .collect(Collectors.toList());
-      params.add(new BasicNameValuePair("fq", Joiner.on(" OR ").join(articleTypeQueryList)));
+        .collect(Collectors.toList());
+      params.add("fq", Joiner.on(" OR ").join(articleTypeQueryList));
     }
 
     if (!CollectionUtils.isEmpty(asq.getArticleTypesToExclude())) {
       List<String> articleTypeToExcludeQueryList = asq.getArticleTypesToExclude().stream()
-          .map(articleType -> "!article_type_facet:\"" + articleType + "\"").collect(Collectors.toList());
-      params.add(new BasicNameValuePair("fq", Joiner.on(" AND ").join(articleTypeToExcludeQueryList)));
+        .map(articleType -> "!article_type_facet:\"" + articleType + "\"").collect(Collectors.toList());
+      params.add("fq", Joiner.on(" AND ").join(articleTypeToExcludeQueryList));
     }
 
     if (!CollectionUtils.isEmpty(asq.getSubjects())) {
-      params.add(new BasicNameValuePair("fq", buildSearchClause("subject", asq.getSubjects())));
+      params.add("fq", buildSearchClause("subject", asq.getSubjects()));
     }
 
     if (!CollectionUtils.isEmpty(asq.getAuthors())) {
-      params.add(new BasicNameValuePair("fq", buildSearchClause("author", asq.getAuthors())));
+      params.add("fq", buildSearchClause("author", asq.getAuthors()));
     }
 
     if (!CollectionUtils.isEmpty(asq.getSections())) {
@@ -158,7 +159,7 @@ public class SolrQueryBuilder {
         section = section.equals("References") ? "reference" : section;
         sectionQueryList.add(section.toLowerCase().replace(' ', '_'));
       }
-      params.add(new BasicNameValuePair("qf", Joiner.on(" OR ").join(sectionQueryList)));
+      params.add("qf", Joiner.on(" OR ").join(sectionQueryList));
     }
   }
 

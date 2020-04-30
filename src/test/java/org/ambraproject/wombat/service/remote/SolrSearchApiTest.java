@@ -30,6 +30,7 @@ import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.MockSiteUtil;
+import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.NameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -132,7 +133,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assertSingle("*:*", actualMap.get("q"));
   }
 
-  private static void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
+  private static void setQueryFilters(UrlParamBuilder params, List<String> journalKeys,
                                       List<String> articleTypes, List<String> subjects,
                                       SolrSearchApi.SearchCriterion dateRange) {
     ArticleSearchQuery asq = ArticleSearchQuery.builder()
@@ -146,21 +147,21 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   @Test
   public void testSetQueryFilters() {
-    List<NameValuePair> actual = new ArrayList<>();
+    UrlParamBuilder actual = UrlParamBuilder.params();
     List<String> articleTypes = new ArrayList<>();
     List<String> subjects = new ArrayList<>();
 
     // Multiple journals
     setQueryFilters(actual, Arrays.asList("foo", "bar", "blaz"), articleTypes, subjects,
         SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
-    SetMultimap<String, String> actualMap = convertToMap(actual);
+    SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertJournals(actualMap.get("fq"), "foo", "bar", "blaz");
 
     // date range
-    actual = new ArrayList<>();
+    actual = UrlParamBuilder.params();
     setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, subjects,
         SolrSearchApiImpl.SolrEnumeratedDateRange.LAST_3_MONTHS);
-    actualMap = convertToMap(actual);
+    actualMap = convertToMap(actual.build());
     assertEquals(2, actualMap.get("fq").size());
     for (String s : actualMap.get("fq")) {
       if (!s.contains("publication_date:") && !s.contains("journal_key:")) {
@@ -169,9 +170,9 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     }
 
     // null date range
-    actual = new ArrayList<>();
-    setQueryFilters(new ArrayList<NameValuePair>(), Collections.singletonList("foo"), articleTypes, subjects, null);
-    actualMap = convertToMap(actual);
+    actual = UrlParamBuilder.params();
+    setQueryFilters(UrlParamBuilder.params(), Collections.singletonList("foo"), articleTypes, subjects, null);
+    actualMap = convertToMap(actual.build());
     Set<String> fq = actualMap.get("fq");
     for (String s : fq) {
       if (s.startsWith("publication_date:")) {
@@ -182,25 +183,25 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   @Test
   public void testSetQueryFilters_ExplicitDateRange() throws IOException {
-    List<NameValuePair> actual = new ArrayList<>();
+    UrlParamBuilder actual = UrlParamBuilder.params();
     SolrSearchApiImpl.SolrExplicitDateRange edr
         = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
 
     setQueryFilters(actual, Collections.singletonList("foo"), new ArrayList<String>(), new ArrayList<String>(), edr);
-    SetMultimap<String, String> actualMap = convertToMap(actual);
+    SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
   }
 
   @Test
   public void testSetQueryFilters_IncludeArticleTypes() throws IOException {
-    List<NameValuePair> actual = new ArrayList<>();
+    UrlParamBuilder actual = UrlParamBuilder.params();
     SolrSearchApiImpl.SolrExplicitDateRange edr
         = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
     setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, new ArrayList<String>(), edr);
-    SetMultimap<String, String> actualMap = convertToMap(actual);
+    SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
     assertArticleTypes(actualMap.get("fq"));
@@ -208,13 +209,13 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   @Test
   public void testSetQueryFilters_IncludeSubjects() throws IOException {
-    List<NameValuePair> actual = new ArrayList<>();
+    UrlParamBuilder actual = UrlParamBuilder.params();
     SolrSearchApiImpl.SolrExplicitDateRange edr
         = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
     setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, Arrays.asList("Skull", "Head", "Teeth"), edr);
-    SetMultimap<String, String> actualMap = convertToMap(actual);
+    SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
     assertArticleTypes(actualMap.get("fq"));

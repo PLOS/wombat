@@ -32,6 +32,23 @@ import com.google.common.collect.ImmutableMap;
 
 @AutoValue
 public abstract class ArticleSearchQuery {
+  /**
+   * Type representing some restriction on the desired search results--for instance, a date range,
+   * or a sort order. Implementations of SearchService should also provide appropriate
+   * implementations of this interface.
+   */
+  public interface SearchCriterion {
+
+    /**
+     * @return description of this criterion, suitable for exposing in the UI
+     */
+    public String getDescription();
+
+    /**
+     * @return implementation-dependent String value specifying this criterion
+     */
+    public String getValue();
+  }
 
   public abstract Builder toBuilder();
 
@@ -59,7 +76,7 @@ public abstract class ArticleSearchQuery {
 
   public abstract int getRows();
 
-  public abstract Optional<SolrSearchApi.SearchCriterion> getSortOrder();
+  public abstract Optional<SearchCriterion> getSortOrder();
 
   public abstract List<String> getJournalKeys();
 
@@ -72,7 +89,7 @@ public abstract class ArticleSearchQuery {
 
   public abstract List<String> getSections();
 
-  public abstract Optional<SolrSearchApi.SearchCriterion> getDateRange();
+  public abstract Optional<SearchCriterion> getDateRange();
 
   @Nullable public abstract String getStartDate();
 
@@ -168,7 +185,7 @@ public abstract class ArticleSearchQuery {
     /**
      * @param sortOrder the sort order of the results returned from Solr
      */
-    public abstract Builder setSortOrder(SolrSearchApi.SearchCriterion sortOrder);
+    public abstract Builder setSortOrder(SearchCriterion sortOrder);
 
     /**
      * @param journalKeys set the journals to filter by
@@ -203,7 +220,7 @@ public abstract class ArticleSearchQuery {
     /**
      * @param dateRange set the date range to filter by
      */
-    public abstract Builder setDateRange(@Nullable SolrSearchApi.SearchCriterion dateRange);
+    public abstract Builder setDateRange(@Nullable SearchCriterion dateRange);
 
     public abstract Builder setStartDate(String startDate);
 

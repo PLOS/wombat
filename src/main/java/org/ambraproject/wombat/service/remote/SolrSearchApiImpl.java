@@ -85,7 +85,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   /**
    * Enumerates sort orders that we want to expose in the UI.
    */
-  public static enum SolrSortOrder implements SearchCriterion {
+  public static enum SolrSortOrder implements ArticleSearchQuery.SearchCriterion {
 
     // The order here determines the order in the UI.
     RELEVANCE("Relevance", "score desc,publication_date desc"),
@@ -120,7 +120,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   /**
    * Enumerates date ranges to expose in the UI.  Currently, these all start at some prior date and extend to today.
    */
-  public static enum SolrEnumeratedDateRange implements SearchCriterion {
+  public static enum SolrEnumeratedDateRange implements ArticleSearchQuery.SearchCriterion {
 
     ALL_TIME("All time", -1),
     LAST_YEAR("Last year", 365),
@@ -166,7 +166,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     }
   }
 
-  public static class SolrExplicitDateRange implements SearchCriterion {
+  public static class SolrExplicitDateRange implements ArticleSearchQuery.SearchCriterion {
 
     private String description;
     private Calendar startDate;

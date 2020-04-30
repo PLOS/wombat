@@ -181,7 +181,7 @@ public class SearchController extends WombatController {
 
     SolrSearchApiImpl.SolrSortOrder sortOrder;
 
-    SolrSearchApi.SearchCriterion dateRange;
+    ArticleSearchQuery.SearchCriterion dateRange;
 
     List<String> articleTypes;
 
@@ -367,8 +367,8 @@ public class SearchController extends WombatController {
      * @param endDate        desktop end date value
      * @return A generic @SearchCriterion object used by Solr
      */
-    private SolrSearchApi.SearchCriterion parseDateRange(String dateRangeParam, LocalDate startDate, LocalDate endDate) {
-      SolrSearchApi.SearchCriterion dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME;
+    private ArticleSearchQuery.SearchCriterion parseDateRange(String dateRangeParam, LocalDate startDate, LocalDate endDate) {
+      ArticleSearchQuery.SearchCriterion dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME;
       if (!Strings.isNullOrEmpty(dateRangeParam)) {
         dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.valueOf(dateRangeParam);
       } else if (startDate != null && endDate != null) {

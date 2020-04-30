@@ -64,7 +64,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   private SiteSet siteSet;
 
   private static List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start,
-                                                       int rows, SolrSearchApi.SearchCriterion sortOrder,
+                                                       int rows, ArticleSearchQuery.SearchCriterion sortOrder,
                                                        boolean forHomePage) {
     ArticleSearchQuery asq = ArticleSearchQuery.builder()
         .setQuery(query)
@@ -135,7 +135,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   private static void setQueryFilters(UrlParamBuilder params, List<String> journalKeys,
                                       List<String> articleTypes, List<String> subjects,
-                                      SolrSearchApi.SearchCriterion dateRange) {
+                                      ArticleSearchQuery.SearchCriterion dateRange) {
     ArticleSearchQuery asq = ArticleSearchQuery.builder()
         .setJournalKeys(journalKeys)
         .setArticleTypes(articleTypes)

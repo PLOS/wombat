@@ -41,23 +41,6 @@ public interface SolrSearchApi {
   public static final Integer MAXIMUM_SOLR_RESULT_COUNT = 1000;
 
   /**
-   * Type representing some restriction on the desired search results--for instance, a date range, or a sort order.
-   * Implementations of SearchService should also provide appropriate implementations of this interface.
-   */
-  public interface SearchCriterion {
-
-    /**
-     * @return description of this criterion, suitable for exposing in the UI
-     */
-    public String getDescription();
-
-    /**
-     * @return implementation-dependent String value specifying this criterion
-     */
-    public String getValue();
-  }
-
-  /**
    * Performs a search and returns the results.
    *
    * @return deserialized JSON returned by the search server

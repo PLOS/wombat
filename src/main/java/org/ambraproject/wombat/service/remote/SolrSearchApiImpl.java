@@ -297,7 +297,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     return field;
   }
 
-  private FacetedQueryResponse executeFacetedQuery(ArticleSearchQuery query, Site site) throws IOException {
+  private FacetedQueryResponse executeFacetedQuery(ArticleSearchQuery query) throws IOException {
     Map<String, Map> rawResults = (Map<String, Map>) search(query);
     Map<?, ?> facetCounts = rawResults.get("facet_counts");
     Map<?, ?> facetFields = (Map<?, ?>) facetCounts.get("facet_fields");
@@ -317,8 +317,8 @@ public class SolrSearchApiImpl implements SolrSearchApi {
       .setJournalKeys(Collections.singletonList(journalKey)).build();
 
     ArrayList<String> categories = new ArrayList<>();
-    FacetedQueryResponse response = executeFacetedQuery(query, site);
     categories.addAll(response.getResultsMap().keySet()
+    FacetedQueryResponse response = executeFacetedQuery(query);
         .stream().map(Object::toString)
         .collect(Collectors.toList()));
 
@@ -336,7 +336,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
       .setFacetLimit(FACET_LIMIT)
       .setJournalKeys(Collections.singletonList(journalKey)).build();
 
-    FacetedQueryResponse response = executeFacetedQuery(query, site);
+    FacetedQueryResponse response = executeFacetedQuery(query);
     Map<String, Long> subjectCounts = response
       .getResultsMap().entrySet().stream()
       .collect(Collectors.toMap(entry -> (String) entry.getKey(),

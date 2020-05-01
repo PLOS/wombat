@@ -42,7 +42,7 @@ public interface ArticleArchiveService {
    * @throws IOException
    * @throws ParseException
    */
-  public abstract Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException;
+  public abstract Map<String, String> getYearsForJournal(Site site) throws IOException, ParseException;
 
   /**
    * Returns all of the months for the requested year. If it's the current year,

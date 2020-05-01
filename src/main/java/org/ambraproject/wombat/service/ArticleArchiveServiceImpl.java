@@ -46,9 +46,8 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
   SolrSearchApiImpl solrSearchApi;
 
   @Override
-  public Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException {
-    Map<String, String> yearRange = (Map<String, String>) solrSearchApi.getStats("publication_date",
-        site.getJournalKey(), site);
+  public Map<String, String> getYearsForJournal(Site site) throws IOException, ParseException {
+    Map<String, String> yearRange = solrSearchApi.getStats("publication_date", site.getJournalKey());
     return yearRange;
   }
 

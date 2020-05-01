@@ -93,7 +93,7 @@ public interface SolrSearchApi {
    * @return Solr stats for the given field
    * @throws IOException
    */
-  public Map<?, ?> getStats(String fieldName, String journalKey, Site site) throws IOException;
+  public Map<String, String> getStats(String fieldName, String journalKey) throws IOException;
 
   /**
    * Returns a list of all subject categories associated with all papers ever published

@@ -276,7 +276,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   @Override
-  public Map<?, ?> getStats(String fieldName, String journalKey, Site site) throws IOException {
+  public Map<String, String> getStats(String fieldName, String journalKey) throws IOException {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
       .setStatsField(fieldName)
       .setSortOrder(SolrSortOrder.RELEVANCE)

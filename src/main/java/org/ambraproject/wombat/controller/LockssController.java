@@ -80,7 +80,7 @@ public class LockssController extends WombatController {
 
   @RequestMapping(name = "lockssYears", value = "/lockss-manifest", method = RequestMethod.GET)
   public String getYearsForJournal(@SiteParam Site site, Model model) throws IOException, ParseException {
-    Map<String, String> yearRange = (Map<String, String>) articleArchiveServiceImpl.getYearsForJournal(site);
+    Map<String, String> yearRange = articleArchiveServiceImpl.getYearsForJournal(site);
     model.addAttribute("yearRange", yearRange);
     return site + "/ftl/lockss/years";
   }

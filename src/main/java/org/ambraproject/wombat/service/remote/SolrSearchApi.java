@@ -24,7 +24,6 @@ package org.ambraproject.wombat.service.remote;
 
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
-
 import javax.servlet.http.HttpServletRequest;
 import com.google.auto.value.AutoValue;
 import com.google.gson.JsonDeserializationContext;
@@ -35,8 +34,10 @@ import com.google.gson.JsonParseException;
 import com.google.gson.annotations.JsonAdapter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Interface to the article search service for the application.
@@ -48,29 +49,66 @@ public interface SolrSearchApi {
     abstract int getNumFound();
     abstract int getStart();
     abstract List<Object> getDocs();
-    public static Builder builder() {
+    abstract Optional<FieldStatsResult<Date>> getPublicationDateStats();
+    static Builder builder() {
       return new AutoValue_SolrSearchApi_Result.Builder();
     }
-    
+
     @AutoValue.Builder
-      public abstract static class Builder {
+      abstract static class Builder {
       public abstract Result build();
 
       public abstract Builder setNumFound(int numFound);
       public abstract Builder setStart(int start);
       public abstract Builder setDocs(List<Object> docs);
+      public abstract Builder setPublicationDateStats(FieldStatsResult<Date> publicationDateStats);
     }
 
     public class Deserializer implements JsonDeserializer<Result> {
-    @Override
-    public Result deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+      @Override
+      public Result deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject responseData = json.getAsJsonObject().getAsJsonObject("response");
-        return Result.builder()
+        FieldStatsResult<Date> publicationDateStats = 
+          context.deserialize(json.getAsJsonObject()
+                              .getAsJsonObject("stats")
+                              .getAsJsonObject("stats_fields")
+                              .getAsJsonObject("publication_date"),
+                              FieldStatsResult.class);
+      return Result.builder()
           .setNumFound(responseData.get("numFound").getAsInt())
           .setStart(responseData.get("start").getAsInt())
           .setDocs(context.deserialize(responseData.get("docs"), List.class))
+          .setPublicationDateStats(publicationDateStats)
           .build();
+      }
     }
+  }
+
+  @AutoValue
+  @JsonAdapter(FieldStatsResult.Deserializer.class)
+  public static abstract class FieldStatsResult<T> {
+    abstract T getMin();
+    abstract T getMax();
+    static <T> Builder<T> builder() {
+      return new AutoValue_SolrSearchApi_FieldStatsResult.Builder<T>();
+    }
+    
+    @AutoValue.Builder
+      abstract static class Builder<T> {
+      public abstract FieldStatsResult<T> build();
+      public abstract Builder<T> setMin(T min);
+      public abstract Builder<T> setMax(T max);
+    }
+
+    public class Deserializer implements JsonDeserializer<FieldStatsResult<T>> {
+      @Override
+      public FieldStatsResult<T> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        JsonObject responseData = json.getAsJsonObject();
+        return FieldStatsResult.<T>builder()
+          .setMin(context.deserialize(responseData.get("min"), Date.class))
+          .setMax(context.deserialize(responseData.get("max"), Date.class))
+          .build();
+      }
     }
   }
 

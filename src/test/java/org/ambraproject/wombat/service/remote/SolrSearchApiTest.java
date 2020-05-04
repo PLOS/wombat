@@ -53,6 +53,7 @@ import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.MockSiteUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.NameValuePair;
+import java.time.LocalDateTime;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -286,6 +287,15 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   public void deserializeResult() throws IOException {
     SolrSearchApi.Result result = gson.fromJson(read("queries/stats.json"), SolrSearchApi.Result.class);
     assertEquals(result.getNumFound(), 4510);
+    SolrSearchApi.FieldStatsResult<Date> publicationDateStats = result.getPublicationDateStats().get();
+    Date minDate = publicationDateStats.getMin();
+    assertEquals(minDate.getYear() + 1900, 2003);
+    assertEquals(minDate.getMonth(), 7);
+    assertEquals(minDate.getDate(), 17);
+    Date maxDate = publicationDateStats.getMax();
+    assertEquals(maxDate.getYear() + 1900, 2019);
+    assertEquals(maxDate.getMonth(), 11);
+    assertEquals(maxDate.getDate(), 15);
   }
 
   @Test

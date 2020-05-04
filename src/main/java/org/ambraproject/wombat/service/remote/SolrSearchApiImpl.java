@@ -32,6 +32,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -376,10 +377,10 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   private class FacetedQueryResponse {
-    private Map<?, ?> resultsMap;
-    private Long totalArticles;
+    private final Map<?, ?> resultsMap;
+    private final Long totalArticles;
 
-    public FacetedQueryResponse(Map<?, ?> resultsMap, Long totalArticles) {
+    public FacetedQueryResponse(final Map<?, ?> resultsMap, final Long totalArticles) {
       this.resultsMap = resultsMap;
       this.totalArticles = totalArticles;
     }

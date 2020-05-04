@@ -24,10 +24,12 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.site.Site;
-
+import org.apache.commons.lang3.Range;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Map;
+import java.util.List;
+import java.util.Date;
 
 /**
  * Responsible for returning the DOIs of article published in a given year and month
@@ -42,7 +44,7 @@ public interface ArticleArchiveService {
    * @throws IOException
    * @throws ParseException
    */
-  public abstract Map<String, String> getYearsForJournal(Site site) throws IOException, ParseException;
+  public abstract Range<Date> getDatesForJournal(Site site) throws IOException, ParseException;
 
   /**
    * Returns all of the months for the requested year. If it's the current year,

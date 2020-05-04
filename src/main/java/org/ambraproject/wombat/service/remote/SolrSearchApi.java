@@ -46,22 +46,22 @@ public interface SolrSearchApi {
   @AutoValue
   @JsonAdapter(Result.Deserializer.class)
   public static abstract class Result {
-    abstract int getNumFound();
-    abstract int getStart();
-    abstract List<Object> getDocs();
-    abstract Optional<FieldStatsResult<Date>> getPublicationDateStats();
+    public abstract int getNumFound();
+    public abstract int getStart();
+    public abstract List<Object> getDocs();
+    public abstract Optional<FieldStatsResult<Date>> getPublicationDateStats();
     static Builder builder() {
       return new AutoValue_SolrSearchApi_Result.Builder();
     }
 
     @AutoValue.Builder
-      abstract static class Builder {
-      public abstract Result build();
+    abstract static class Builder {
+      abstract Result build();
 
-      public abstract Builder setNumFound(int numFound);
-      public abstract Builder setStart(int start);
-      public abstract Builder setDocs(List<Object> docs);
-      public abstract Builder setPublicationDateStats(FieldStatsResult<Date> publicationDateStats);
+      abstract Builder setNumFound(int numFound);
+      abstract Builder setStart(int start);
+      abstract Builder setDocs(List<Object> docs);
+      abstract Builder setPublicationDateStats(FieldStatsResult<Date> publicationDateStats);
     }
 
     public class Deserializer implements JsonDeserializer<Result> {
@@ -87,17 +87,17 @@ public interface SolrSearchApi {
   @AutoValue
   @JsonAdapter(FieldStatsResult.Deserializer.class)
   public static abstract class FieldStatsResult<T> {
-    abstract T getMin();
-    abstract T getMax();
+    public abstract T getMin();
+    public abstract T getMax();
     static <T> Builder<T> builder() {
       return new AutoValue_SolrSearchApi_FieldStatsResult.Builder<T>();
     }
     
     @AutoValue.Builder
       abstract static class Builder<T> {
-      public abstract FieldStatsResult<T> build();
-      public abstract Builder<T> setMin(T min);
-      public abstract Builder<T> setMax(T max);
+      abstract FieldStatsResult<T> build();
+      abstract Builder<T> setMin(T min);
+      abstract Builder<T> setMax(T max);
     }
 
     public class Deserializer implements JsonDeserializer<FieldStatsResult<T>> {
@@ -166,17 +166,6 @@ public interface SolrSearchApi {
    */
   public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet
       siteSet) throws IOException;
-
-  /**
-   * Retrieves Solr stats for a given field in a given journal
-   *
-   * @param fieldName  specifies the name of the field
-   * @param journalKey specifies the name of the journal
-   * @param site the current site
-   * @return Solr stats for the given field
-   * @throws IOException
-   */
-  public Map<String, String> getStats(String fieldName, String journalKey) throws IOException;
 
   /**
    * Returns a list of all subject categories associated with all papers ever published

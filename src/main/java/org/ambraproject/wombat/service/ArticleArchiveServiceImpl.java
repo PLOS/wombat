@@ -25,7 +25,11 @@ package org.ambraproject.wombat.service;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl.SolrEnumeratedDateRange;
+import org.ambraproject.wombat.service.remote.SolrSearchApiImpl.SolrSortOrder;
+import org.apache.commons.lang3.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -33,7 +37,7 @@ import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Collections;
+import java.util.Date;
 import java.util.Map;
 
 import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULT_COUNT;
@@ -44,11 +48,20 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
 
   @Autowired
   SolrSearchApiImpl solrSearchApi;
-
+  
   @Override
-  public Map<String, String> getYearsForJournal(Site site) throws IOException, ParseException {
-    Map<String, String> yearRange = solrSearchApi.getStats("publication_date", site.getJournalKey());
-    return yearRange;
+  public Range<Date> getDatesForJournal(Site site) throws IOException, ParseException {
+    ArticleSearchQuery query = ArticleSearchQuery.builder()
+      .setRows(0)
+      .setStatsField("publication_date")
+      .setSortOrder(SolrSortOrder.RELEVANCE)
+      .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
+      .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+      .build();
+    SolrSearchApi.Result result = solrSearchApi.cookedSearch(query);
+    Date minDate = result.getPublicationDateStats().get().getMin();
+    Date maxDate = result.getPublicationDateStats().get().getMax();
+    return Range.between(minDate, maxDate);
   }
 
   /**

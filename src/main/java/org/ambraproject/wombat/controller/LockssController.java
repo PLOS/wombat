@@ -27,6 +27,7 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.Siteless;
 import org.ambraproject.wombat.service.ArticleArchiveService;
 import org.ambraproject.wombat.service.TopLevelLockssManifestService;
+import org.apache.commons.lang3.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -41,6 +42,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -80,8 +82,9 @@ public class LockssController extends WombatController {
 
   @RequestMapping(name = "lockssYears", value = "/lockss-manifest", method = RequestMethod.GET)
   public String getYearsForJournal(@SiteParam Site site, Model model) throws IOException, ParseException {
-    Map<String, String> yearRange = articleArchiveServiceImpl.getYearsForJournal(site);
-    model.addAttribute("yearRange", yearRange);
+    Range<Date> dateRange = articleArchiveServiceImpl.getDatesForJournal(site);
+    model.addAttribute("minYear", dateRange.getMinimum().getYear() + 1900);
+    model.addAttribute("maxYear", dateRange.getMaximum().getYear() + 1900);
     return site + "/ftl/lockss/years";
   }
 

@@ -284,22 +284,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     }
   }
 
-  @Override
-  public Map<String, String> getStats(String fieldName, String journalKey) throws IOException {
-    ArticleSearchQuery query = ArticleSearchQuery.builder()
-      .setStatsField(fieldName)
-      .setSortOrder(SolrSortOrder.RELEVANCE)
-      .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
-      .setJournalKeys(ImmutableList.of(journalKey))
-      .build();
-
-    Map<String, Map> rawResult = (Map<String, Map>) rawSearch(query);
-
-    Map<String, Map> statsField = (Map<String, Map>) rawResult.get("stats").get("stats_fields");
-    Map<String, String> field = (Map<String, String>) statsField.get(fieldName);
-    return field;
-  }
-
   private FacetedQueryResponse executeFacetedQuery(ArticleSearchQuery query) throws IOException {
     Map<String, Map> rawResults = (Map<String, Map>) rawSearch(query);
     Map<?, ?> facetCounts = rawResults.get("facet_counts");

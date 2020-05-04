@@ -22,20 +22,11 @@
 
 package org.ambraproject.wombat.config;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
-import java.util.Date;
-
 import com.google.common.base.Strings;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.typeadapters.UtcDateTypeAdapter;
-
 import org.ambraproject.wombat.cache.Cache;
 import org.ambraproject.wombat.cache.MemcacheClient;
 import org.ambraproject.wombat.cache.NullCache;
@@ -50,7 +41,6 @@ import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.StreamService;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.service.remote.UserApiImpl;
-import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.beans.factory.annotation.Value;
@@ -114,11 +104,7 @@ public class RootConfiguration {
 
   @Bean
   public Gson gson() {
-    GsonBuilder builder = new GsonBuilder();
-    builder.setPrettyPrinting();
-    builder.registerTypeAdapter(Date.class, new UtcDateTypeAdapter());
-    builder.registerTypeAdapter(org.joda.time.LocalDate.class, JodaTimeLocalDateAdapter.INSTANCE);
-    return builder.create();
+    return RuntimeConfiguration.makeGson();
   }
 
   @Bean

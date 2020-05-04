@@ -22,47 +22,55 @@
 
 package org.ambraproject.wombat.service.remote;
 
+import static org.ambraproject.wombat.util.FileUtils.read;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.spy;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.SetMultimap;
+import com.google.gson.Gson;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.util.MockSiteUtil;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 import org.apache.http.NameValuePair;
+import org.junit.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 @ContextConfiguration(classes = TestSpringConfiguration.class)
 public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   @Autowired
   private SiteSet siteSet;
+
+  @Autowired
+  private Gson gson;
 
   private static List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start,
                                                        int rows, ArticleSearchQuery.SearchCriterion sortOrder,
@@ -272,6 +280,18 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assertEquals("author:\"author1\" OR author:\"author2\"",
                  SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("author1", "author2")));
     assertEquals("author:*", SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("*")));
+  }
+
+  @Test
+  public void deserializeResult() throws IOException {
+    SolrSearchApi.Result result = gson.fromJson(read("queries/stats.json"), SolrSearchApi.Result.class);
+    assertEquals(result.getNumFound(), 4510);
+  }
+
+  @Test
+  public void testDateParse() throws IOException {
+    Date map = gson.fromJson("'2014-12-05T04:00:00.000Z'", Date.class);
+    assertEquals(map.getClass(), Date.class);
   }
 
   /**

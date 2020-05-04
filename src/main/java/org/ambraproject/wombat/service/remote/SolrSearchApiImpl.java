@@ -24,6 +24,7 @@ package org.ambraproject.wombat.service.remote;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -39,10 +40,17 @@ import java.util.TimeZone;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
+import com.google.auto.value.AutoValue;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.annotations.JsonAdapter;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -346,6 +354,14 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     Map<String, Map> rawResults = new HashMap<>();
     rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
     return rawResults;
+  }
+
+  @Override
+  public Result cookedSearch(ArticleSearchQuery query) throws IOException {
+    List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
+    URI uri = getSolrUri(params);
+    log.debug("Solr request executing: " + uri);
+    return jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Result.class);
   }
 
   private URI getSolrUri(List<NameValuePair> params, Site site) throws SolrUndefinedException {

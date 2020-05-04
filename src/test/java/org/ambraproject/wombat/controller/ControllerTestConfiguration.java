@@ -5,20 +5,13 @@ import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
-
 import java.io.InputStream;
 import java.io.Reader;
 import java.nio.charset.Charset;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
-
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import com.google.gson.typeadapters.UtcDateTypeAdapter;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.TestRuntimeConfiguration;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
@@ -46,7 +39,6 @@ import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
-import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.ambraproject.wombat.util.ThemeTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -59,11 +51,7 @@ public class ControllerTestConfiguration {
 
   @Bean
   protected Gson gson() {
-    GsonBuilder builder = new GsonBuilder();
-    builder.setPrettyPrinting();
-    builder.registerTypeAdapter(Date.class, new UtcDateTypeAdapter());
-    builder.registerTypeAdapter(org.joda.time.LocalDate.class, JodaTimeLocalDateAdapter.INSTANCE);
-    return builder.create();
+    return RuntimeConfiguration.makeGson();
   }
 
   @Bean

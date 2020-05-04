@@ -26,17 +26,53 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 
 import javax.servlet.http.HttpServletRequest;
+import com.google.auto.value.AutoValue;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.annotations.JsonAdapter;
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.Collection;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Interface to the article search service for the application.
  */
 public interface SolrSearchApi {
+  @AutoValue
+  @JsonAdapter(Result.Deserializer.class)
+  public static abstract class Result {
+    abstract int getNumFound();
+    abstract int getStart();
+    abstract List<Object> getDocs();
+    public static Builder builder() {
+      return new AutoValue_SolrSearchApi_Result.Builder();
+    }
+    
+    @AutoValue.Builder
+      public abstract static class Builder {
+      public abstract Result build();
+
+      public abstract Builder setNumFound(int numFound);
+      public abstract Builder setStart(int start);
+      public abstract Builder setDocs(List<Object> docs);
+    }
+
+    public class Deserializer implements JsonDeserializer<Result> {
+    @Override
+    public Result deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        JsonObject responseData = json.getAsJsonObject().getAsJsonObject("response");
+        return Result.builder()
+          .setNumFound(responseData.get("numFound").getAsInt())
+          .setStart(responseData.get("start").getAsInt())
+          .setDocs(context.deserialize(responseData.get("docs"), List.class))
+          .build();
+    }
+    }
+  }
 
   public static final Integer MAXIMUM_SOLR_RESULT_COUNT = 1000;
 
@@ -56,6 +92,15 @@ public interface SolrSearchApi {
    * @throws IOException
    */
   public Map<String, Map> rawSearch(ArticleSearchQuery query) throws IOException;
+
+  /**
+   * Queries Solr and returns the cooked results
+   *
+   * @param ArticleSearchQuery the query
+   * @return results from Solr
+   * @throws IOException
+   */
+  public Result cookedSearch(ArticleSearchQuery query) throws IOException;
 
   /**
    * Attempts to retrieve information about an article based on the DOI.

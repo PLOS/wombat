@@ -38,6 +38,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -284,18 +285,26 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   }
 
   @Test
-  public void deserializeResult() throws IOException {
+  public void deserializeStatsResult() throws IOException {
     SolrSearchApi.Result result = gson.fromJson(read("queries/stats.json"), SolrSearchApi.Result.class);
-    assertEquals(result.getNumFound(), 4510);
+    assertEquals(4510, result.getNumFound(), 4510);
     SolrSearchApi.FieldStatsResult<Date> publicationDateStats = result.getPublicationDateStats().get();
     Date minDate = publicationDateStats.getMin();
-    assertEquals(minDate.getYear() + 1900, 2003);
-    assertEquals(minDate.getMonth(), 7);
-    assertEquals(minDate.getDate(), 17);
+    assertEquals(2003, minDate.getYear() + 1900);
+    assertEquals(7, minDate.getMonth());
+    assertEquals(17, minDate.getDate());
     Date maxDate = publicationDateStats.getMax();
-    assertEquals(maxDate.getYear() + 1900, 2019);
-    assertEquals(maxDate.getMonth(), 11);
-    assertEquals(maxDate.getDate(), 15);
+    assertEquals(2019, maxDate.getYear() + 1900);
+    assertEquals(11, maxDate.getMonth());
+    assertEquals(15, maxDate.getDate());
+  }
+
+  @Test
+  public void deserializeSimpleResult() throws IOException {
+    SolrSearchApi.Result result = gson.fromJson(read("queries/simple.json"), SolrSearchApi.Result.class);
+    assertEquals(1784487, result.getNumFound());
+    assertEquals(Optional.of("AoE/HjEwLjEzNzEvYW5ub3RhdGlvbi8wMGEzYjIyZS0zNmE5LTRkNTEtODllNS0xZTY1NjFlN2ExZTkvdGl0bGU="),
+                 result.getNextCursorMark());
   }
 
   @Test

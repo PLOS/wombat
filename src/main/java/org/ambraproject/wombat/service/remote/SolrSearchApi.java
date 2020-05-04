@@ -49,6 +49,7 @@ public interface SolrSearchApi {
     public abstract int getNumFound();
     public abstract int getStart();
     public abstract List<Object> getDocs();
+    public abstract Optional<String> getNextCursorMark();
     public abstract Optional<FieldStatsResult<Date>> getPublicationDateStats();
     static Builder builder() {
       return new AutoValue_SolrSearchApi_Result.Builder();
@@ -61,6 +62,7 @@ public interface SolrSearchApi {
       abstract Builder setNumFound(int numFound);
       abstract Builder setStart(int start);
       abstract Builder setDocs(List<Object> docs);
+      abstract Builder setNextCursorMark(String nextCursorMark);
       abstract Builder setPublicationDateStats(FieldStatsResult<Date> publicationDateStats);
     }
 
@@ -68,18 +70,23 @@ public interface SolrSearchApi {
       @Override
       public Result deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject responseData = json.getAsJsonObject().getAsJsonObject("response");
-        FieldStatsResult<Date> publicationDateStats = 
-          context.deserialize(json.getAsJsonObject()
-                              .getAsJsonObject("stats")
-                              .getAsJsonObject("stats_fields")
-                              .getAsJsonObject("publication_date"),
-                              FieldStatsResult.class);
-      return Result.builder()
+        Builder builder = Result.builder()
           .setNumFound(responseData.get("numFound").getAsInt())
           .setStart(responseData.get("start").getAsInt())
-          .setDocs(context.deserialize(responseData.get("docs"), List.class))
-          .setPublicationDateStats(publicationDateStats)
-          .build();
+          .setDocs(context.deserialize(responseData.get("docs"), List.class));
+        if (json.getAsJsonObject().has("stats")) {
+          FieldStatsResult<Date> publicationDateStats = 
+            context.deserialize(json.getAsJsonObject()
+                                .getAsJsonObject("stats")
+                                .getAsJsonObject("stats_fields")
+                                .getAsJsonObject("publication_date"),
+                                FieldStatsResult.class);
+          builder.setPublicationDateStats(publicationDateStats);
+        }
+        if (json.getAsJsonObject().has("nextCursorMark")) {
+          builder.setNextCursorMark(json.getAsJsonObject().get("nextCursorMark").getAsString());
+        }
+        return builder.build();
       }
     }
   }

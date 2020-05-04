@@ -27,6 +27,7 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.Siteless;
 import org.ambraproject.wombat.service.ArticleArchiveService;
 import org.ambraproject.wombat.service.TopLevelLockssManifestService;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.apache.commons.lang3.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,7 +45,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULT_COUNT;
 
@@ -109,18 +109,18 @@ public class LockssController extends WombatController {
                                     @PathVariable String month, @RequestParam String cursor,
                                     @RequestParam String pageNumber, Model model)
       throws IOException, ParseException {
-    Map<String, ?> searchResult = (Map<String, Map>) articleArchiveServiceImpl
-        .getArticleDoisPerMonth(site, year, month, cursor);
+    SolrSearchApi.Result searchResult = articleArchiveServiceImpl.getArticleDoisPerMonth(site, year, month, cursor);
+
     model.addAttribute("month", month);
     model.addAttribute("year", year);
-    model.addAttribute("searchResult", searchResult);
-    model.addAttribute("nextCursorMark", searchResult.get("nextCursorMark"));
+    model.addAttribute("docs", searchResult.getDocs());
+    model.addAttribute("nextCursorMark", searchResult.getNextCursorMark().orElse(""));
 
     int pageNumberCount = Integer.parseInt(pageNumber);
     final int listStartNumber = pageNumberCount * MAXIMUM_SOLR_RESULT_COUNT + 1;
     model.addAttribute("listStart", listStartNumber);
 
-    final boolean isLastPage = (Double) searchResult.get("numFound")
+    final boolean isLastPage = searchResult.getNumFound()
         < listStartNumber + MAXIMUM_SOLR_RESULT_COUNT;
     model.addAttribute("showMoreLink", !isLastPage);
 

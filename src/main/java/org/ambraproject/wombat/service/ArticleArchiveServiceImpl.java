@@ -84,8 +84,8 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month,
-                                          String cursor) throws IOException, ParseException {
+  public SolrSearchApi.Result getArticleDoisPerMonth(Site site, String year, String month,
+                                                     String cursor) throws IOException, ParseException {
     Calendar startDate = Calendar.getInstance();
     startDate.setTime(new SimpleDateFormat("MMMM").parse(month));
     startDate.set(Calendar.YEAR, Integer.parseInt(year));
@@ -105,9 +105,6 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
       .setDateRange(dateRange)
       .setCursor(cursor)
       .build();
-    Map<String, Map> rawResult = (Map<String, Map>) solrSearchApi.rawSearch(query);
-    Map<String, Map> searchResult = rawResult.get("response");
-    searchResult.put("nextCursorMark", rawResult.get("nextCursorMark"));
-    return searchResult;
+    return solrSearchApi.cookedSearch(query);
   }
 }

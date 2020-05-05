@@ -213,7 +213,8 @@ public class SpringConfiguration {
                                            ThemeConfigDirective themeConfigDirective,
                                            AppLinkDirective appLinkDirective,
                                            ArticleExcerptTransformDirective articleExcerptTransformDirective,
-                                           GlobalConfigDirective globalConfigDirective)
+                                           GlobalConfigDirective globalConfigDirective,
+                                           RuntimeConfiguration runtimeConfiguration)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -238,6 +239,7 @@ public class SpringConfiguration {
     variables.put("abbreviatedName", new AbbreviatedNameDirective());
     variables.put("xform", articleExcerptTransformDirective);
     variables.put("globalConfig", globalConfigDirective);
+    variables.put("collectionsUrl", runtimeConfiguration.getCollectionsUrl());
     config.setFreemarkerVariables(variables.build());
     return config;
   }

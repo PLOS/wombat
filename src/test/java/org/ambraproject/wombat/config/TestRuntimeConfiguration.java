@@ -45,8 +45,8 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getEnvironment() {
-    return null;
+  public boolean showDebug() {
+    return false;
   }
 
   @Override
@@ -77,5 +77,10 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   @Override
   public URI getNedUrl() {
     return null;
+  }
+
+  @Override
+  public String getCollectionsUrl() {
+    return "";
   }
 }

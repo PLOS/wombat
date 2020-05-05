@@ -103,7 +103,7 @@ public class AppRootPage {
    * Show a page in response to the application root.
    */
   ModelAndView serveAppRoot() {
-    if (!runtimeConfiguration.getEnvironment().equals("prod")) {
+    if (runtimeConfiguration.showDebug()) {
       return serveDebugPage();
     } else {
       RedirectView rv = new RedirectView();

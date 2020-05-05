@@ -48,9 +48,9 @@ public interface RuntimeConfiguration {
   String getRootRedirect();
 
   /**
-   * Get the name of the runtime environment ("prod", "dev", etc.)
+   * Show debugging information?
    */
-  String getEnvironment();
+  boolean showDebug();
 
   String getThemePath();
 

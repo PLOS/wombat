@@ -574,7 +574,7 @@ public class SearchController extends WombatController {
         .setSimple(commonParams.isSimpleSearch(queryString))
       .setRssSearch(true).build();
 
-    Map<String, ?> searchResults = solrSearchApi.rawSearch(query);
+    SolrSearchApi.Result searchResults = solrSearchApi.cookedSearch(query);
 
     String feedTitle = representQueryParametersAsString(params);
     return getFeedModelAndView(site, feedType, feedTitle, searchResults);
@@ -611,10 +611,10 @@ public class SearchController extends WombatController {
     return builder.toString();
   }
 
-  private ModelAndView getFeedModelAndView(Site site, String feedType, String title, Map<String, ?> searchResults) {
+  private ModelAndView getFeedModelAndView(Site site, String feedType, String title, SolrSearchApi.Result searchResults) {
     ModelAndView mav = new ModelAndView();
     FeedMetadataField.SITE.putInto(mav, site);
-    FeedMetadataField.FEED_INPUT.putInto(mav, searchResults.get("docs"));
+    FeedMetadataField.FEED_INPUT.putInto(mav, searchResults.getDocs());
     FeedMetadataField.TITLE.putInto(mav, title);
     mav.setView(FeedType.getView(articleFeedView, feedType));
     return mav;

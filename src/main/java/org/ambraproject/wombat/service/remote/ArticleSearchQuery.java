@@ -231,6 +231,8 @@ public abstract class ArticleSearchQuery {
   @Nullable public abstract String getEndDate();
 
   public abstract Optional<String> getStatsField();
+
+  public abstract Optional<List<String>> getFields();
   
   public static Builder builder() {
     return new AutoValue_ArticleSearchQuery.Builder()
@@ -359,5 +361,7 @@ public abstract class ArticleSearchQuery {
     public abstract Builder setCursor(String cursor);
 
     public abstract Builder setStatsField(String statsField);
+
+    public abstract Builder setFields(List<String> fields);
   }
 }

@@ -133,21 +133,12 @@ public interface SolrSearchApi {
   public static final Integer MAXIMUM_SOLR_RESULT_COUNT = 1000;
 
   /**
-   * Performs a search and returns the results.
+   * Performs a search and returns the raw results.
    *
    * @return deserialized JSON returned by the search server
    * @throws IOException
    */
-  public Map<String, ?> search(ArticleSearchQuery query) throws IOException;
-
-  /**
-   * Queries Solr and returns the raw results
-   *
-   * @param ArticleSearchQuery the query
-   * @return raw results from Solr
-   * @throws IOException
-   */
-  public Map<String, Map> rawSearch(ArticleSearchQuery query) throws IOException;
+  public Map<String, ?> rawSearch(ArticleSearchQuery query) throws IOException;
 
   /**
    * Queries Solr and returns the cooked results

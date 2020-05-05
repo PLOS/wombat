@@ -210,8 +210,12 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   @Override
-  public Map<String, ?> search(ArticleSearchQuery query) throws IOException {
-    Map<String, Map> rawResults = rawSearch(query);
+  public Map<String, ?> rawSearch(ArticleSearchQuery query) throws IOException {
+    List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
+    URI uri = getSolrUri(params);
+    log.debug("Solr request executing: " + uri);
+    Map<String, Map> rawResults = new HashMap<>();
+    rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
 
     if (query.getFacet().isPresent()) {
       Map<String, Map> facetFields =
@@ -236,7 +240,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
         .setQuery(doiQueryString)
         .setStart(0)
       .setRows(dois.size()).build();
-    return search(query);
+    return rawSearch(query);
   }
 
   @Override
@@ -311,19 +315,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     builder.putAll(results.getFacets().get().get("subject_facet"));
     builder.put("ROOT", results.getNumFound());
     return builder.build();
-  }
-
-  /**
-   * @inheritDoc
-   */
-  @Override
-  public Map<String, Map> rawSearch(ArticleSearchQuery query) throws IOException {
-    List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
-    URI uri = getSolrUri(params);
-    log.debug("Solr request executing: " + uri);
-    Map<String, Map> rawResults = new HashMap<>();
-    rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
-    return rawResults;
   }
 
   @Override

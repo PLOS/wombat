@@ -305,6 +305,9 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assertEquals(1784487, result.getNumFound());
     assertEquals(Optional.of("AoE/HjEwLjEzNzEvYW5ub3RhdGlvbi8wMGEzYjIyZS0zNmE5LTRkNTEtODllNS0xZTY1NjFlN2ExZTkvdGl0bGU="),
                  result.getNextCursorMark());
+    assertEquals(10, result.getDocs().size());
+    Map<String, Object> doc = result.getDocs().get(0);
+    assertEquals("10.1371/annotation/008b05a8-229b-4aca-94ae-91e6dd5ca5ba", doc.get("id"));
   }
 
   @Test

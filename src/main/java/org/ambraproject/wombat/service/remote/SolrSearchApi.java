@@ -49,7 +49,7 @@ public interface SolrSearchApi {
   public static abstract class Result {
     public abstract int getNumFound();
     public abstract int getStart();
-    public abstract List<Object> getDocs();
+    public abstract List<Map<String, Object>> getDocs();
     public abstract Optional<String> getNextCursorMark();
     public abstract Optional<FieldStatsResult<Date>> getPublicationDateStats();
     public abstract Optional<Map<String, Map<String,Integer>>> getFacets();
@@ -63,7 +63,7 @@ public interface SolrSearchApi {
 
       abstract Builder setNumFound(int numFound);
       abstract Builder setStart(int start);
-      abstract Builder setDocs(List<Object> docs);
+      abstract Builder setDocs(List<Map<String, Object>> docs);
       abstract Builder setNextCursorMark(String nextCursorMark);
       abstract Builder setPublicationDateStats(FieldStatsResult<Date> publicationDateStats);
       abstract Builder setFacets(Map<String, Map<String,Integer>> facets);
@@ -73,10 +73,11 @@ public interface SolrSearchApi {
       @Override
       public Result deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject responseData = json.getAsJsonObject().getAsJsonObject("response");
+        Type docsType = new TypeToken<List<Map<String, Object>>>() {}.getType();
         Builder builder = Result.builder()
           .setNumFound(responseData.get("numFound").getAsInt())
           .setStart(responseData.get("start").getAsInt())
-          .setDocs(context.deserialize(responseData.get("docs"), List.class));
+          .setDocs(context.deserialize(responseData.get("docs"), docsType));
         if (json.getAsJsonObject().has("facet_counts")) {
           Type facetType = new TypeToken<Map<String, Map<String, Integer>>>() {}.getType();
           builder.setFacets(context.deserialize(json.getAsJsonObject()

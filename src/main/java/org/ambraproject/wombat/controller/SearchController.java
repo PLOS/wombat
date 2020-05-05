@@ -689,8 +689,11 @@ public class SearchController extends WombatController {
   @RequestMapping(name = "simpleSearch", value = "/search")
   public String search(HttpServletRequest request, Model model, @SiteParam Site site,
                        @RequestParam MultiValueMap<String, String> params) throws IOException {
-    if (!performValidSearch(request, model, site, params)) {
-      return advancedSearchAjax(model, site);
+    if (site.isMobile()) {
+      /* Desktop site uses dynamic search, so do not populate the search now. */
+      if (!performValidSearch(request, model, site, params)) {
+        return advancedSearchAjax(model, site);
+      }
     }
     return site.getKey() + "/ftl/search/searchResults";
   }

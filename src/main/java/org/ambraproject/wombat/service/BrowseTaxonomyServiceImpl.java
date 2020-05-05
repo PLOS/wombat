@@ -55,10 +55,11 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
     return CacheUtil
       .getOrCompute(cache, cacheKey, () -> {
           ArticleSearchQuery query = ArticleSearchQuery.builder()
-            .setRows(0)
             .setFacetFields(ImmutableList.of("subject_hierarchy"))
             .setFacetLimit(-1)
-            .setJournalKeys(ImmutableList.of(journalKey)).build();
+            .setJournalKeys(ImmutableList.of(journalKey))
+            .setRows(0)
+            .build();
 
           List<String> subjects = solrSearchApi.search(query)
             .getFacets()
@@ -83,6 +84,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
           .setFacetFields(ImmutableList.of("subject_facet"))
           .setFacetLimit(-1)
           .setJournalKeys(ImmutableList.of(journalKey))
+          .setRows(0)
           .build();
 
         SolrSearchApi.Result results = solrSearchApi.search(query);

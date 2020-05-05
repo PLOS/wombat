@@ -673,18 +673,17 @@ public class SearchController extends WombatController {
       .setQuery(queryString)
       .setSimple(commonParams.isSimpleSearch(queryString))
       .build();
-    Map<?, ?> searchResults;
+    SolrSearchApi.Result searchResults;
     try {
-      searchResults = solrSearchApi.rawSearch(query);
+      searchResults = solrSearchApi.cookedSearch(query);
     } catch (ServiceRequestException sre) {
       model.addAttribute(isInvalidSolrRequest(queryString, sre)
           ? CANNOT_PARSE_QUERY_ERROR : UNKNOWN_QUERY_ERROR, true);
       return false; //not a valid search - report errors
     }
 
-    searchResults = solrSearchApi.addArticleLinks(searchResults, request, site, siteSet);
     addFiltersToModel(request, model, site, commonParams, query, searchResults);
-    model.addAttribute("searchResults", searchResults);
+    model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
 
     model.addAttribute("alertQuery", alertService.convertParamsToJson(params));
     return true; //valid search - proceed to return results
@@ -692,10 +691,10 @@ public class SearchController extends WombatController {
 
   private void addFiltersToModel(HttpServletRequest request, Model model, @SiteParam Site site,
                                  CommonParams commonParams, ArticleSearchQuery queryObj,
-                                 Map<?, ?> searchResults) throws IOException {
+                                 SolrSearchApi.Result searchResults) throws IOException {
     Set<SearchFilterItem> activeFilterItems;
 
-    if ((Double) searchResults.get("numFound") == 0.0) {
+    if (searchResults.getNumFound() == 0) {
       activeFilterItems = commonParams.setActiveFilterParams(model, request);
     } else {
       Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj,
@@ -830,10 +829,9 @@ public class SearchController extends WombatController {
     ArticleSearchQuery query = commonParams.makeArticleSearchQueryBuilder()
       .setSimple(false).build();
 
-    Map<String, ?> searchResults = solrSearchApi.rawSearch(query);
+    SolrSearchApi.Result searchResults = solrSearchApi.cookedSearch(query);
 
-    // TODO: reduce dup query here.
-    model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(solrSearchApi.cookedSearch(query)));
+    model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
     model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());

@@ -47,26 +47,27 @@ public interface SolrSearchApi {
   @AutoValue
   @JsonAdapter(Result.Deserializer.class)
   public static abstract class Result {
+    public abstract Builder toBuilder();
     public abstract int getNumFound();
     public abstract int getStart();
     public abstract List<Map<String, Object>> getDocs();
     public abstract Optional<String> getNextCursorMark();
     public abstract Optional<FieldStatsResult<Date>> getPublicationDateStats();
     public abstract Optional<Map<String, Map<String,Integer>>> getFacets();
-    static Builder builder() {
+    public static Builder builder() {
       return new AutoValue_SolrSearchApi_Result.Builder();
     }
 
     @AutoValue.Builder
-    abstract static class Builder {
-      abstract Result build();
+    public abstract static class Builder {
+      public abstract Result build();
 
-      abstract Builder setNumFound(int numFound);
-      abstract Builder setStart(int start);
-      abstract Builder setDocs(List<Map<String, Object>> docs);
-      abstract Builder setNextCursorMark(String nextCursorMark);
-      abstract Builder setPublicationDateStats(FieldStatsResult<Date> publicationDateStats);
-      abstract Builder setFacets(Map<String, Map<String,Integer>> facets);
+      public abstract Builder setNumFound(int numFound);
+      public abstract Builder setStart(int start);
+      public abstract Builder setDocs(List<Map<String, Object>> docs);
+      public abstract Builder setNextCursorMark(String nextCursorMark);
+      public abstract Builder setPublicationDateStats(FieldStatsResult<Date> publicationDateStats);
+      public abstract Builder setFacets(Map<String, Map<String,Integer>> facets);
     }
 
     public class Deserializer implements JsonDeserializer<Result> {
@@ -162,6 +163,6 @@ public interface SolrSearchApi {
    * @return searchResults decorated with the new property
    * @throws IOException
    */
-  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet
+  public Result addArticleLinks(Result results, HttpServletRequest request, Site site, SiteSet
       siteSet) throws IOException;
 }

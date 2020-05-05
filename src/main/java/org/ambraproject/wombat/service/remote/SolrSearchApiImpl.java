@@ -36,10 +36,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -215,19 +217,23 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   @Override
-  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site,
+  public SolrSearchApi.Result addArticleLinks(SolrSearchApi.Result results, HttpServletRequest request, Site site,
                                    SiteSet siteSet) throws IOException {
     initializeEIssnToJournalKeyMap(siteSet, site);
-    List<Map> docs = (List<Map>) searchResults.get("docs");
-    for (Map doc : docs) {
-      String doi = (String) doc.get("id");
-      String eIssn = (String) doc.get("eissn");
-      String foreignJournalKey = eIssnToJournalKey.get(eIssn);
-      String link = Link.toForeignSite(site, foreignJournalKey, siteSet).toPath("/article?id=" + doi).get(request);
-      doc.put("link", link);
-      doc.put("journalKey", foreignJournalKey);
-    }
-    return searchResults;
+    SolrSearchApi.Result.Builder builder = results.toBuilder();
+    List<Map<String, Object>> docs = results.getDocs().stream().map(doc -> {
+        ImmutableMap.Builder<String, Object> newDoc = ImmutableMap.builder();
+        String doi = (String) doc.get("id");
+        String eIssn = (String) doc.get("eissn");
+        String foreignJournalKey = eIssnToJournalKey.get(eIssn);
+        String link = Link.toForeignSite(site, foreignJournalKey, siteSet).toPath("/article?id=" + doi).get(request);
+        newDoc.putAll(doc);
+        newDoc.put("link", link);
+        newDoc.put("journalKey", foreignJournalKey);
+        return newDoc.build();
+      })
+      .collect(Collectors.toList());
+    return builder.setDocs(docs).build();
   }
 
   /**

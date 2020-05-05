@@ -248,23 +248,26 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   @Test
   public void testAddArticleLinks() throws IOException {
     SolrSearchApi solrSearchApiForTest = new SearchApiForAddArticleLinksTest();
-    Map<String, List<Map<String,String>>> searchResults = new HashMap<>();
-    List<Map<String,String>> docs = new ArrayList<>(1);
-    Map<String,String> doc = new HashMap<>();
+    List<Map<String,Object>> docs = new ArrayList<>(1);
+    Map<String,Object> doc = new HashMap<>();
     List<String> crossPubbedJournals = new ArrayList<>(1);
     crossPubbedJournals.add("journal1Key");
     doc.put("id", "12345");
     doc.put("eissn", "123");
     docs.add(doc);
-    searchResults.put("docs", docs);
+    SolrSearchApi.Result searchResults =
+      SolrSearchApi.Result.builder()
+      .setDocs(docs)
+      .setNumFound(1)
+      .setStart(0)
+      .build();
     MockHttpServletRequest request = new MockHttpServletRequest();
     request.setContextPath("someContextPath");
     Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal2Key");
 
-    Map<?, ?> actual = solrSearchApiForTest.addArticleLinks(searchResults, request, site, siteSet);
-    List<Map> actualDocs = (List) actual.get("docs");
+    List<Map<String, Object>> actualDocs = solrSearchApiForTest.addArticleLinks(searchResults, request, site, siteSet).getDocs();
     assertEquals(1, actualDocs.size());
-    Map actualDoc = (Map) actualDocs.get(0);
+    Map<String, Object> actualDoc = actualDocs.get(0);
     assertEquals("12345", actualDoc.get("id"));
     assertTrue(actualDoc.get("link").toString().endsWith("someContextPath/site1/article?id=12345"));
   }

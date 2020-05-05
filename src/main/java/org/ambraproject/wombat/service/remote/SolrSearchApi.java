@@ -150,16 +150,6 @@ public interface SolrSearchApi {
    */
   public Result cookedSearch(ArticleSearchQuery query) throws IOException;
 
-  /**
-   * Attempts to retrieve information about an article based on the DOI.
-   *
-   * @param doi identifies the article
-   * @param site
-   * @return information about the article, if it exists; otherwise an empty result set
-   * @throws IOException
-   */
-  public Map<?, ?> lookupArticleByDoi(String doi, Site site) throws IOException;
-
   public Map<?, ?> lookupArticlesByDois(List<String> dois, Site site) throws IOException;
 
   /**

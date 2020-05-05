@@ -220,11 +220,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   @Override
-  public Map<?, ?> lookupArticleByDoi(String doi, Site site) throws IOException {
-    return lookupArticlesByDois(ImmutableList.of(doi), site);
-  }
-
-  @Override
   public Map<?, ?> lookupArticlesByDois(List<String> dois, Site site) throws IOException {
     String doiQueryString = dois.stream().map(doi -> "id:" + QueryParser.escape(doi))
         .collect(Collectors.joining(" OR "));

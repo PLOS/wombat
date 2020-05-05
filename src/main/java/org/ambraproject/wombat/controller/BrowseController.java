@@ -283,7 +283,7 @@ public class BrowseController extends WombatController {
   }
 
   private void populateAuthors(Map<String, Object> article, Site site) throws IOException {
-    Map<String, ?> solrResult = (Map<String, ?>) solrSearchApi.lookupArticleByDoi((String) article.get("doi"), site);
+    Map<String, ?> solrResult = (Map<String, ?>) solrSearchApi.lookupArticlesByDois(ImmutableList.of((String) article.get("doi")), site);
     List<SolrArticleAdapter> solrArticles = SolrArticleAdapter.unpackSolrQuery(solrResult);
     article.put("authors", solrArticles.size() > 0 ? solrArticles.get(0).getAuthors() : ImmutableList.of());
   }

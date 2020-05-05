@@ -74,9 +74,14 @@ public class SearchFilterFactory {
 
       ListMultimap<String, String> changedParams = applyFilterToParams(displayName, params,
           filterType);
-      SearchFilterItem filterItem = new SearchFilterItem(displayName, numberOfHits.floatValue(),
-          filterType.getParameterName(), filterType.getFilterValue(displayName),
-          Multimaps.asMap(changedParams));
+          SearchFilterItem filterItem = SearchFilterItem.builder()
+            .setDisplayName(displayName)
+            .setNumberOfHits(numberOfHits)
+            .setFilterParamName(filterType.getParameterName())
+            .setFilterValue(filterType.getFilterValue(displayName))
+            .setFilteredResultsParameters(Multimaps.asMap(changedParams))
+            .build();
+
       searchFilterResult.add(filterItem);
     }
     return new SearchFilter(searchFilterResult, filterTypeMapKey);

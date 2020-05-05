@@ -467,8 +467,13 @@ public class SearchController extends WombatController {
           } else {
             displayName = filterValue;
           }
-          SearchFilterItem filterItem = new SearchFilterItem(displayName, 0,
-              filterName, filterValue, queryParamMap);
+          SearchFilterItem filterItem = SearchFilterItem.builder()
+            .setDisplayName(displayName)
+            .setNumberOfHits(0)
+            .setFilterParamName(filterName)
+            .setFilterValue(filterValue)
+            .setFilteredResultsParameters(queryParamMap)
+            .build();
           activeFilterItems.add(filterItem);
         } catch (UnmatchedSiteException umse) {
           log.info("Search on an invalid journal filter: %s".format(filterValue));

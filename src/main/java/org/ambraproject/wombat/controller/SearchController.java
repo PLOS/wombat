@@ -633,7 +633,8 @@ public class SearchController extends WombatController {
     ArticleSearchQuery query = commonParams.makeArticleSearchQueryBuilder()
         .setQuery(queryString)
         .setSimple(commonParams.isSimpleSearch(queryString))
-      .setRssSearch(true).build();
+        .setFields(ArticleSearchQuery.RSS_FIELDS)
+        .build();
 
     SolrSearchApi.Result searchResults = solrSearchApi.search(query);
 

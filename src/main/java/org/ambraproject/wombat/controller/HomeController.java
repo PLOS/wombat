@@ -39,6 +39,7 @@ import org.ambraproject.wombat.service.RecentArticleService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
+import org.ambraproject.wombat.service.remote.SolrQueryBuilder;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.slf4j.Logger;
@@ -332,7 +333,8 @@ public class HomeController extends WombatController {
         .setSortOrder(ArticleSearchQuery.SolrSortOrder.DATE_NEWEST_FIRST)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(ArticleSearchQuery.SolrEnumeratedDateRange.ALL_TIME)
-      .setRssSearch(true).build();
+        .setFields(ArticleSearchQuery.RSS_FIELDS)
+        .build();
     SolrSearchApi.Result recentArticles = solrSearchApi.search(query);
 
     ModelAndView mav = new ModelAndView();

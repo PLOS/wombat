@@ -36,11 +36,17 @@ import com.google.common.collect.ImmutableList;
 
 @AutoValue
 public abstract class ArticleSearchQuery {
-  static final List<String> ARTICLE_FIELDS = ImmutableList.of("id", "eissn",
+  /**
+   * Specifies the article fields in the solr schema that we want returned in the results.
+   */
+  public static final List<String> ARTICLE_FIELDS = ImmutableList.of("id", "eissn",
       "publication_date", "title", "title_display", "journal_name", "author_display",
       "article_type", "counter_total_all", "alm_scopusCiteCount", 
       "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction",
       "expression_of_concern", "striking_image", "figure_table_caption", "journal_key");
+  public static final List<String> RSS_FIELDS = ImmutableList.of("id", "publication_date",
+      "title", "title_display", "journal_name", "author_display", "abstract",
+      "abstract_primary_display");
 
   /**
    * Type representing some restriction on the desired search results--for instance, a date range,
@@ -203,8 +209,6 @@ public abstract class ArticleSearchQuery {
 
   public abstract boolean isSimple();
 
-  public abstract boolean isRssSearch();
-
   public abstract boolean isJournalSearch();
 
   public abstract boolean isPartialSearch();
@@ -253,7 +257,6 @@ public abstract class ArticleSearchQuery {
       .setQuery("*:*")
       .setPartialSearch(false)
       .setRows(1000)
-      .setRssSearch(false)
       .setSections(ImmutableList.of())
       .setSimple(false)
       .setStart(0)
@@ -283,11 +286,6 @@ public abstract class ArticleSearchQuery {
      *                        For which section a keyword appears in.
      */
     public abstract Builder setPartialSearch(boolean partialSearch);
-
-    /**
-     * @param isRssSearch Flag the search to return only fields used by the RSS view
-     */
-    public abstract Builder setRssSearch(boolean rssSearch);
 
     /**
      * @param isJournalSearch Flag the search to return only fields used by the DoiToJournalResolutionService

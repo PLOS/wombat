@@ -32,12 +32,6 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.http.NameValuePair;
 
 public class SolrQueryBuilder {
-  /**
-   * Specifies the article fields in the solr schema that we want returned in the results.
-   */
-  private static final String RSS_FIELDS = Joiner.on(',').join("id", "publication_date",
-      "title", "title_display", "journal_name", "author_display", "abstract",
-      "abstract_primary_display");
   private static final String JOURNAL_FIELDS = Joiner.on(',').join(
       "journal_key", "journal_name");
 
@@ -79,9 +73,6 @@ public class SolrQueryBuilder {
       params.add("facet.mincount", Integer.toString(asq.getFacetMinCount()));
       params.add("facet.limit", Integer.toString(asq.getFacetLimit()));
       params.add("json.nl", "map");
-    } else if (asq.isRssSearch()) {
-      params.add("facet", "false");
-      params.add("fl", RSS_FIELDS);
     } else if (asq.isJournalSearch()) {
       params.add("facet", "false");
       params.add("fl", JOURNAL_FIELDS);

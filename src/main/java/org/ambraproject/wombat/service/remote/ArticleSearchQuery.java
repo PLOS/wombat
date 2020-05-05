@@ -209,8 +209,6 @@ public abstract class ArticleSearchQuery {
 
   public abstract boolean isSimple();
 
-  public abstract boolean isJournalSearch();
-
   public abstract boolean isPartialSearch();
 
   public abstract ImmutableList<String> getFacetFields();
@@ -253,7 +251,6 @@ public abstract class ArticleSearchQuery {
       .setFacetLimit(100)
       .setFacetMinCount(0)
       .setJournalKeys(ImmutableList.of())
-      .setJournalSearch(false)
       .setQuery("*:*")
       .setPartialSearch(false)
       .setRows(1000)
@@ -286,11 +283,6 @@ public abstract class ArticleSearchQuery {
      *                        For which section a keyword appears in.
      */
     public abstract Builder setPartialSearch(boolean partialSearch);
-
-    /**
-     * @param isJournalSearch Flag the search to return only fields used by the DoiToJournalResolutionService
-     */
-    public abstract Builder setJournalSearch(boolean journalSearch);
 
     /**
      * @param facet the facet to search for as it is stored in Solr. Setting this will also set the

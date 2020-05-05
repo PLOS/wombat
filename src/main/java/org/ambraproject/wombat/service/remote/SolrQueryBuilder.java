@@ -32,9 +32,6 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.http.NameValuePair;
 
 public class SolrQueryBuilder {
-  private static final String JOURNAL_FIELDS = Joiner.on(',').join(
-      "journal_key", "journal_name");
-
   public static List<NameValuePair> buildParameters(ArticleSearchQuery asq) {
     UrlParamBuilder params = UrlParamBuilder.params();
 
@@ -73,9 +70,6 @@ public class SolrQueryBuilder {
       params.add("facet.mincount", Integer.toString(asq.getFacetMinCount()));
       params.add("facet.limit", Integer.toString(asq.getFacetLimit()));
       params.add("json.nl", "map");
-    } else if (asq.isJournalSearch()) {
-      params.add("facet", "false");
-      params.add("fl", JOURNAL_FIELDS);
     } else {
       params.add("facet", "false");
     }

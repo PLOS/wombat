@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
 
 public class DoiToJournalResolutionService {
   private static final Logger log = LoggerFactory.getLogger(DoiToJournalResolutionService.class);
@@ -71,7 +72,7 @@ public class DoiToJournalResolutionService {
         .setSimple(false)
         .setRows(dois.size())
         .setQuery("id:(" + String.join(" OR ", quoted) + ")")
-        .setJournalSearch(true)
+        .setFields(ImmutableList.of("journal_key", "journal_name"))
         .build();
 
     List<Map<String, Object>> docs = solrSearchApi.search(explicitDoiSearchQuery).getDocs();

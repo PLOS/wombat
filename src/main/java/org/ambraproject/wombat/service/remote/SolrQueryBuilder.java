@@ -35,11 +35,6 @@ public class SolrQueryBuilder {
   /**
    * Specifies the article fields in the solr schema that we want returned in the results.
    */
-  private static final String ARTICLE_FIELDS = Joiner.on(',').join("id", "eissn",
-      "publication_date", "title", "title_display", "journal_name", "author_display",
-      "article_type", "counter_total_all", "alm_scopusCiteCount", 
-      "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction",
-      "expression_of_concern", "striking_image", "figure_table_caption", "journal_key");
   private static final String RSS_FIELDS = Joiner.on(',').join("id", "publication_date",
       "title", "title_display", "journal_name", "author_display", "abstract",
       "abstract_primary_display");
@@ -92,8 +87,10 @@ public class SolrQueryBuilder {
       params.add("fl", JOURNAL_FIELDS);
     } else {
       params.add("facet", "false");
-      params.add("fl", ARTICLE_FIELDS);
     }
+
+    List<String> fields = asq.getFields().orElse(ArticleSearchQuery.ARTICLE_FIELDS);
+    params.add("fl", Joiner.on(",").join(fields));
 
     asq.getCursor().ifPresent(cursor -> params.add("cursorMark", cursor));
 

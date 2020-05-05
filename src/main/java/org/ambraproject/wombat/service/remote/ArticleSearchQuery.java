@@ -36,6 +36,12 @@ import com.google.common.collect.ImmutableList;
 
 @AutoValue
 public abstract class ArticleSearchQuery {
+  static final List<String> ARTICLE_FIELDS = ImmutableList.of("id", "eissn",
+      "publication_date", "title", "title_display", "journal_name", "author_display",
+      "article_type", "counter_total_all", "alm_scopusCiteCount", 
+      "alm_mendeleyCount", "alm_twitterCount", "alm_facebookCount", "retraction",
+      "expression_of_concern", "striking_image", "figure_table_caption", "journal_key");
+
   /**
    * Type representing some restriction on the desired search results--for instance, a date range,
    * or a sort order. Implementations of SearchService should also provide appropriate

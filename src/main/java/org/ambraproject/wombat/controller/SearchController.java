@@ -848,7 +848,7 @@ public class SearchController extends WombatController {
   }
 
   private TaxonomyGraph modelSubjectHierarchy(Model model, Site site, String subject) throws IOException {
-    TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey(), site);
+    TaxonomyGraph fullTaxonomyView = browseTaxonomyService.parseCategories(site.getJournalKey());
 
     Collection<String> subjectParents;
     Collection<String> subjectChildren;

@@ -40,10 +40,9 @@ public interface BrowseTaxonomyService {
    * For the current journal return a complete structured map of the taxonomic categories
    *
    * @param journalKey the current journal
-   * @param site the current site
    * @return a complete structured map of the taxonomic categories
    */
-  TaxonomyGraph parseCategories(String journalKey, Site site) throws IOException;
+  TaxonomyGraph parseCategories(String journalKey) throws IOException;
 
   /**
    * Returns the number of articles, for a given journal, associated with the parent term and all
@@ -51,9 +50,8 @@ public interface BrowseTaxonomyService {
    *
    * @param taxonomy       the term in the taxonomy to examine, as well as its direct children
    * @param journalKey specifies the journal
-   * @param site the current site
    * @return map from taxonomy term to count of articles
    */
-  Map<String, Integer> getCounts(TaxonomyGraph taxonomy, String journalKey, Site site) throws IOException;
+  Map<String, Integer> getCounts(TaxonomyGraph taxonomy, String journalKey) throws IOException;
 
 }

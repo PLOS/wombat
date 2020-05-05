@@ -332,11 +332,11 @@ public class HomeController extends WombatController {
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
       .setRssSearch(true).build();
-    Map<String, ?> recentArticles = solrSearchApi.rawSearch(query);
+    SolrSearchApi.Result recentArticles = solrSearchApi.cookedSearch(query);
 
     ModelAndView mav = new ModelAndView();
     FeedMetadataField.SITE.putInto(mav, site);
-    FeedMetadataField.FEED_INPUT.putInto(mav, recentArticles.get("docs"));
+    FeedMetadataField.FEED_INPUT.putInto(mav, recentArticles.getDocs());
     mav.setView(FeedType.getView(articleFeedView, feedType));
     return mav;
   }

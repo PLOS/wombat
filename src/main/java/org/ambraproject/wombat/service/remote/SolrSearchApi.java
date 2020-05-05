@@ -25,6 +25,7 @@ package org.ambraproject.wombat.service.remote;
 import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Type;
+import java.lang.reflect.ParameterizedType;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -110,12 +111,13 @@ public class SolrSearchApi {
         }
 
         if (json.getAsJsonObject().has("stats")) {
+          Type t = new TypeToken<FieldStatsResult<Date>>() {}.getType();
           FieldStatsResult<Date> publicationDateStats = 
             context.deserialize(json.getAsJsonObject()
                                 .getAsJsonObject("stats")
                                 .getAsJsonObject("stats_fields")
                                 .getAsJsonObject("publication_date"),
-                                FieldStatsResult.class);
+                                t);
           builder.setPublicationDateStats(publicationDateStats);
         }
         if (json.getAsJsonObject().has("nextCursorMark")) {
@@ -146,9 +148,10 @@ public class SolrSearchApi {
       @Override
       public FieldStatsResult<T> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject responseData = json.getAsJsonObject();
+        Type param = ((ParameterizedType)typeOfT).getActualTypeArguments()[0];
         return FieldStatsResult.<T>builder()
-          .setMin(context.deserialize(responseData.get("min"), Date.class))
-          .setMax(context.deserialize(responseData.get("max"), Date.class))
+          .setMin(context.deserialize(responseData.get("min"), param))
+          .setMax(context.deserialize(responseData.get("max"), param))
           .build();
       }
     }

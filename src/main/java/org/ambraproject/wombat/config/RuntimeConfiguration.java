@@ -58,5 +58,7 @@ public interface RuntimeConfiguration {
 
   URL getSolrUrl();
 
+  URL getCollectionsUrl();
+  
   URI getNedUrl();
 }

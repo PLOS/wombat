@@ -30,6 +30,7 @@ import com.google.common.base.Preconditions;
 public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   String memcachedServer;
   URL rhinoUrl;
+  URL collectionsUrl;
   String rootRedirect;
   boolean debug;
   String themePath;
@@ -123,6 +124,17 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
 
   public void setMemcachedServer(String memcachedServer) {
     this.memcachedServer = memcachedServer;
+  }
+
+  @Override
+  public URL getCollectionsUrl() {
+    return collectionsUrl;
+  }
+
+  public void setCollectionsUrl(URL collectionsUrl) {
+    Preconditions.checkNotNull(collectionsUrl, "Please set COLLECTIONS_URL.");
+    Preconditions.checkArgument(!collectionsUrl.toString().equals(""), "Please set COLLECTIONS_URL.");
+    this.collectionsUrl = collectionsUrl;
   }
 }
 

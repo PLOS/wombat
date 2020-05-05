@@ -80,7 +80,7 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getCollectionsUrl() {
-    return "";
+  public URL getCollectionsUrl() {
+    return null;
   }
 }

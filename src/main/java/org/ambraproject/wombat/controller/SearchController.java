@@ -643,8 +643,13 @@ public class SearchController extends WombatController {
 
     SolrSearchApi.Result searchResults = solrSearchApi.search(query);
 
-    String feedTitle = representQueryParametersAsString(params);
-    return getFeedModelAndView(site, feedType, feedTitle, searchResults);
+    String feedTitle = new UrlParamBuilder().addAll(params).build().toString();;
+    ModelAndView mav = new ModelAndView();
+    FeedMetadataField.SITE.putInto(mav, site);
+    FeedMetadataField.FEED_INPUT.putInto(mav, searchResults.getDocs());
+    FeedMetadataField.TITLE.putInto(mav, feedTitle);
+    mav.setView(FeedType.getView(articleFeedView, feedType));
+    return mav;
   }
 
   /**
@@ -665,26 +670,6 @@ public class SearchController extends WombatController {
     params.remove("unformattedQuery");
     params.add("q", queryString);
     return getSearchRssFeedView(request, model, site, feedType, params);
-  }
-
-  private static String representQueryParametersAsString(MultiValueMap<String, String> params) {
-    UrlParamBuilder builder = UrlParamBuilder.params();
-    for (Map.Entry<String, List<String>> entry : params.entrySet()) {
-      String key = entry.getKey();
-      for (String value : entry.getValue()) {
-        builder.add(key, value);
-      }
-    }
-    return builder.toString();
-  }
-
-  private ModelAndView getFeedModelAndView(Site site, String feedType, String title, SolrSearchApi.Result searchResults) {
-    ModelAndView mav = new ModelAndView();
-    FeedMetadataField.SITE.putInto(mav, site);
-    FeedMetadataField.FEED_INPUT.putInto(mav, searchResults.getDocs());
-    FeedMetadataField.TITLE.putInto(mav, title);
-    mav.setView(FeedType.getView(articleFeedView, feedType));
-    return mav;
   }
 
   /**

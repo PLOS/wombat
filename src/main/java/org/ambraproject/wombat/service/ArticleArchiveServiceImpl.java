@@ -58,7 +58,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
       .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
       .setJournalKeys(ImmutableList.of(site.getJournalKey()))
       .build();
-    SolrSearchApi.Result result = solrSearchApi.cookedSearch(query);
+    SolrSearchApi.Result result = solrSearchApi.search(query);
     Date minDate = result.getPublicationDateStats().get().getMin();
     Date maxDate = result.getPublicationDateStats().get().getMax();
     return Range.between(minDate, maxDate);
@@ -105,6 +105,6 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
       .setDateRange(dateRange)
       .setCursor(cursor)
       .build();
-    return solrSearchApi.cookedSearch(query);
+    return solrSearchApi.search(query);
   }
 }

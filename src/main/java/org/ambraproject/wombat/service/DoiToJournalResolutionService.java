@@ -50,7 +50,7 @@ public class DoiToJournalResolutionService {
         .setQuery("id:\"" + QueryParser.escape(doi) + "\"")
         .build();
 
-    List<SolrArticleAdapter> solrArticleAdapters = SolrArticleAdapter.unpackSolrQuery(solrSearchApi.cookedSearch(explicitDoiSearchQuery));
+    List<SolrArticleAdapter> solrArticleAdapters = SolrArticleAdapter.unpackSolrQuery(solrSearchApi.search(explicitDoiSearchQuery));
     String journalKey = null;
     if (solrArticleAdapters.size() == 1) {
       journalKey = solrArticleAdapters.get(0).getJournalKey();
@@ -74,7 +74,7 @@ public class DoiToJournalResolutionService {
         .setJournalSearch(true)
         .build();
 
-    List<Map<String, Object>> docs = solrSearchApi.cookedSearch(explicitDoiSearchQuery).getDocs();
+    List<Map<String, Object>> docs = solrSearchApi.search(explicitDoiSearchQuery).getDocs();
 
     Map<String, String> keysMap = new HashMap<String,String>();
     docs.forEach(data -> {

@@ -141,7 +141,7 @@ public interface SolrSearchApi {
    * @return results from Solr
    * @throws IOException
    */
-  public Result cookedSearch(ArticleSearchQuery query) throws IOException;
+  public Result search(ArticleSearchQuery query) throws IOException;
 
   /**
    * Adds a new property, link, to each search result passed in.  The value of this property is the correct URL to the

@@ -52,7 +52,7 @@ public class SearchFilterServiceTest extends AbstractJUnit4SpringContextTests {
     when(result.getFacets()).thenReturn(facets);
     when(facetMap.get(any())).thenReturn(ImmutableMap.of());
     
-    when(solrSearchApi.cookedSearch(any())).thenReturn(result);
+    when(solrSearchApi.search(any())).thenReturn(result);
 
     ImmutableMap<String, SearchFilter> expected = ImmutableMap.of(
         "subject_area", mockFilter,

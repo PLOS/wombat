@@ -60,7 +60,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
             .setFacetLimit(-1)
             .setJournalKeys(ImmutableList.of(journalKey)).build();
 
-          List<String> subjects = solrSearchApi.cookedSearch(query)
+          List<String> subjects = solrSearchApi.search(query)
             .getFacets()
             .get()
             .get("subject_hierarchy")
@@ -85,7 +85,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
           .setJournalKeys(ImmutableList.of(journalKey))
           .build();
 
-        SolrSearchApi.Result results = solrSearchApi.cookedSearch(query);
+        SolrSearchApi.Result results = solrSearchApi.search(query);
         ImmutableSortedMap.Builder<String, Integer> builder = ImmutableSortedMap.naturalOrder();
         builder.putAll(results.getFacets().get().get("subject_facet"));
         builder.put("ROOT", results.getNumFound());

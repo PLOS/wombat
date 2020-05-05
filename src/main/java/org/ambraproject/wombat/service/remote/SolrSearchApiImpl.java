@@ -247,7 +247,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   @Override
-  public Result cookedSearch(ArticleSearchQuery query) throws IOException {
+  public Result search(ArticleSearchQuery query) throws IOException {
     List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
     URI uri = getSolrUri(params);
     log.debug("Solr request executing: " + uri);

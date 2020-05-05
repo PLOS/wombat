@@ -24,7 +24,6 @@ package org.ambraproject.wombat.service.remote;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -32,7 +31,6 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -41,17 +39,10 @@ import java.util.TimeZone;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
-import com.google.auto.value.AutoValue;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.annotations.JsonAdapter;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -284,48 +275,42 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     }
   }
 
-  private FacetedQueryResponse executeFacetedQuery(ArticleSearchQuery query) throws IOException {
-    Map<String, Map> rawResults = (Map<String, Map>) rawSearch(query);
-    Map<?, ?> facetCounts = rawResults.get("facet_counts");
-    Map<?, ?> facetFields = (Map<?, ?>) facetCounts.get("facet_fields");
-    Map<?, ?> resultsMap = (Map<?, ?>) facetFields.get(query.getFacet().get());
-    return new FacetedQueryResponse(resultsMap, ((Double) rawResults.get("response").get("numFound")).longValue());
-  }
-
   /**
    * @inheritDoc
    */
   @Override
-  public List<String> getAllSubjects(String journalKey, Site site) throws IOException {
+  public List<String> getAllSubjects(String journalKey) throws IOException {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
-        .setFacet("subject_hierarchy")
-        .setFacetLimit(FACET_LIMIT)
+      .setRows(0)
+      .setFacet("subject_hierarchy")
+      .setFacetLimit(FACET_LIMIT)
       .setJournalKeys(ImmutableList.of(journalKey)).build();
 
-    FacetedQueryResponse response = executeFacetedQuery(query);
-    return response.getResultsMap().keySet()
-        .stream().map(Object::toString)
-        .collect(Collectors.toList());
+    return cookedSearch(query)
+      .getFacets()
+      .get()
+      .get("subject_hierarchy")
+      .keySet()
+      .stream()
+      .collect(Collectors.toList());
   }
 
   /**
    * @inheritDoc
    */
   @Override
-  public Map<String, Long> getAllSubjectCounts(String journalKey, Site site) throws IOException {
+  public Map<String, Integer> getAllSubjectCounts(String journalKey) throws IOException {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
       .setFacet("subject_facet")
       .setFacetLimit(FACET_LIMIT)
       .setJournalKeys(ImmutableList.of(journalKey))
       .build();
 
-    FacetedQueryResponse response = executeFacetedQuery(query);
-    Map<String, Long> subjectCounts = response
-      .getResultsMap().entrySet().stream()
-      .collect(Collectors.toMap(entry -> (String) entry.getKey(),
-                                entry -> ((Double) entry.getValue()).longValue()));
-    subjectCounts.put("ROOT", response.getTotalArticles());
-    return ImmutableSortedMap.copyOf(subjectCounts);
+    SolrSearchApi.Result results = cookedSearch(query);
+    ImmutableSortedMap.Builder<String, Integer> builder = ImmutableSortedMap.naturalOrder();
+    builder.putAll(results.getFacets().get().get("subject_facet"));
+    builder.put("ROOT", results.getNumFound());
+    return builder.build();
   }
 
   /**
@@ -357,24 +342,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     } catch (MalformedURLException | URISyntaxException e) {
       //Solr server has already been validated - any exception here must be invalid values in params
       throw new IllegalArgumentException(e);
-    }
-  }
-
-  private class FacetedQueryResponse {
-    private final Map<?, ?> resultsMap;
-    private final Long totalArticles;
-
-    public FacetedQueryResponse(final Map<?, ?> resultsMap, final Long totalArticles) {
-      this.resultsMap = resultsMap;
-      this.totalArticles = totalArticles;
-    }
-
-    public Map<?, ?> getResultsMap() {
-      return resultsMap;
-    }
-
-    public Long getTotalArticles() {
-      return totalArticles;
     }
   }
 }

@@ -32,6 +32,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Date;
@@ -51,6 +52,7 @@ public interface SolrSearchApi {
     public abstract List<Object> getDocs();
     public abstract Optional<String> getNextCursorMark();
     public abstract Optional<FieldStatsResult<Date>> getPublicationDateStats();
+    public abstract Optional<Map<String, Map<String,Integer>>> getFacets();
     static Builder builder() {
       return new AutoValue_SolrSearchApi_Result.Builder();
     }
@@ -64,6 +66,7 @@ public interface SolrSearchApi {
       abstract Builder setDocs(List<Object> docs);
       abstract Builder setNextCursorMark(String nextCursorMark);
       abstract Builder setPublicationDateStats(FieldStatsResult<Date> publicationDateStats);
+      abstract Builder setFacets(Map<String, Map<String,Integer>> facets);
     }
 
     public class Deserializer implements JsonDeserializer<Result> {
@@ -74,6 +77,14 @@ public interface SolrSearchApi {
           .setNumFound(responseData.get("numFound").getAsInt())
           .setStart(responseData.get("start").getAsInt())
           .setDocs(context.deserialize(responseData.get("docs"), List.class));
+        if (json.getAsJsonObject().has("facet_counts")) {
+          Type facetType = new TypeToken<Map<String, Map<String, Integer>>>() {}.getType();
+          builder.setFacets(context.deserialize(json.getAsJsonObject()
+                                                .getAsJsonObject("facet_counts")
+                                                .getAsJsonObject("facet_fields"),
+                                                facetType));
+        }
+
         if (json.getAsJsonObject().has("stats")) {
           FieldStatsResult<Date> publicationDateStats = 
             context.deserialize(json.getAsJsonObject()
@@ -179,18 +190,16 @@ public interface SolrSearchApi {
    * for the given journal.
    *
    * @param journalKey name of the journal in question
-   * @param site the current site
    * @return List of category names
    */
-  public List<String> getAllSubjects(String journalKey, Site site) throws IOException;
+  public List<String> getAllSubjects(String journalKey) throws IOException;
 
   /**
    * Returns the number of articles, for a given journal, associated with all the subject
    * categories in the taxonomy.
    *
    * @param journalKey specifies the journal
-   * @param site the current site
    * @throws IOException
    */
-  public Map<String, Long> getAllSubjectCounts(String journalKey, Site site) throws IOException;
+  public Map<String, Integer> getAllSubjectCounts(String journalKey) throws IOException;
 }

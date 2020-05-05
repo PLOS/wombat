@@ -94,7 +94,7 @@ public class TaxonomyController extends WombatController {
       parent = Joiner.on("/").join(categoryParams);
     }
 
-    Map<String, Long> articleCounts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey(), site);
+    Map<String, Integer> articleCounts = browseTaxonomyService.getCounts(taxonomyGraph, site.getJournalKey(), site);
 
     final Collection<CategoryView> children;
     if (parent != null) {

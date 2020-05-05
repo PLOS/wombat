@@ -49,17 +49,16 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
 
     CacheKey cacheKey = CacheKey.create("categories", journalKey);
     return CacheUtil.getOrCompute(cache, cacheKey,
-        () -> TaxonomyGraph.create(solrSearchApi.getAllSubjects(journalKey, site)));
+        () -> TaxonomyGraph.create(solrSearchApi.getAllSubjects(journalKey)));
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public Map<String, Long> getCounts(TaxonomyGraph taxonomy, String journalKey, Site site)
+  public Map<String, Integer> getCounts(TaxonomyGraph taxonomy, String journalKey, Site site)
       throws IOException {
     CacheKey cacheKey = CacheKey.create("categoryCount", journalKey);
-    return CacheUtil.getOrCompute(cache, cacheKey,
-        () -> solrSearchApi.getAllSubjectCounts(journalKey, site));
+    return CacheUtil.getOrCompute(cache, cacheKey, () -> solrSearchApi.getAllSubjectCounts(journalKey));
   }
 }

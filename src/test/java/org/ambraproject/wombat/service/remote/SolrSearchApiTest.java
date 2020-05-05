@@ -308,6 +308,16 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   }
 
   @Test
+  public void deserializeFacetResult() throws IOException {
+    SolrSearchApi.Result result = gson.fromJson(read("queries/facet.json"), SolrSearchApi.Result.class);
+    assertEquals(6, result.getNumFound());
+    Map<String, Map<String, Integer>> facets = result.getFacets().get();
+    assert(facets.keySet().contains("subject_facet"));
+    Map<String, Integer> subjectFacet = facets.get("subject_facet");
+    assertEquals(Integer.valueOf(2), subjectFacet.get("Gene mapping"));
+  }
+
+  @Test
   public void testDateParse() throws IOException {
     Date map = gson.fromJson("'2014-12-05T04:00:00.000Z'", Date.class);
     assertEquals(map.getClass(), Date.class);

@@ -54,6 +54,6 @@ public interface BrowseTaxonomyService {
    * @param site the current site
    * @return map from taxonomy term to count of articles
    */
-  Map<String, Long> getCounts(TaxonomyGraph taxonomy, String journalKey, Site site) throws IOException;
+  Map<String, Integer> getCounts(TaxonomyGraph taxonomy, String journalKey, Site site) throws IOException;
 
 }

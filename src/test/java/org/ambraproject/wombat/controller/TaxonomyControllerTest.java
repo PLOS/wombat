@@ -74,8 +74,8 @@ public class TaxonomyControllerTest extends ControllerTest {
     TaxonomyGraph taxonomyGraph = mock(TaxonomyGraph.class);
     when(taxonomyGraph.getRootCategoryViews()).thenReturn(new ArrayList<CategoryView>());
 
-    Map<String, Long> articleCounts = mock(Map.class);
-    when(articleCounts.get("ROOT")).thenReturn(0L);
+    Map<String, Integer> articleCounts = mock(Map.class);
+    when(articleCounts.get("ROOT")).thenReturn(0);
 
     when(browseTaxonomyService.parseCategories(any(), any())).thenReturn(taxonomyGraph);
     when(browseTaxonomyService.getCounts(any(), any(), any())).thenReturn(articleCounts);

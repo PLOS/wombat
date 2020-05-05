@@ -36,13 +36,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
-import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSortedMap;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -73,8 +70,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
 
   @VisibleForTesting
   protected Map<String, String> eIssnToJournalKey;
-
-  private static final int FACET_LIMIT = -1; //unlimited
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -253,44 +248,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
       }
       eIssnToJournalKey = ImmutableMap.copyOf(mutable);
     }
-  }
-
-  /**
-   * @inheritDoc
-   */
-  @Override
-  public List<String> getAllSubjects(String journalKey) throws IOException {
-    ArticleSearchQuery query = ArticleSearchQuery.builder()
-      .setRows(0)
-      .setFacetFields(ImmutableList.of("subject_hierarchy"))
-      .setFacetLimit(FACET_LIMIT)
-      .setJournalKeys(ImmutableList.of(journalKey)).build();
-
-    return cookedSearch(query)
-      .getFacets()
-      .get()
-      .get("subject_hierarchy")
-      .keySet()
-      .stream()
-      .collect(Collectors.toList());
-  }
-
-  /**
-   * @inheritDoc
-   */
-  @Override
-  public Map<String, Integer> getAllSubjectCounts(String journalKey) throws IOException {
-    ArticleSearchQuery query = ArticleSearchQuery.builder()
-      .setFacetFields(ImmutableList.of("subject_facet"))
-      .setFacetLimit(FACET_LIMIT)
-      .setJournalKeys(ImmutableList.of(journalKey))
-      .build();
-
-    SolrSearchApi.Result results = cookedSearch(query);
-    ImmutableSortedMap.Builder<String, Integer> builder = ImmutableSortedMap.naturalOrder();
-    builder.putAll(results.getFacets().get().get("subject_facet"));
-    builder.put("ROOT", results.getNumFound());
-    return builder.build();
   }
 
   @Override

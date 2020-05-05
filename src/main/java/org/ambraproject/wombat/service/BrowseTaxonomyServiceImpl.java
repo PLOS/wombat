@@ -22,10 +22,14 @@
 package org.ambraproject.wombat.service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSortedMap;
 import org.ambraproject.wombat.cache.Cache;
-import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.model.TaxonomyGraph;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.CacheUtil;
@@ -48,8 +52,23 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   public TaxonomyGraph parseCategories(final String journalKey) throws IOException {
 
     CacheKey cacheKey = CacheKey.create("categories", journalKey);
-    return CacheUtil.getOrCompute(cache, cacheKey,
-        () -> TaxonomyGraph.create(solrSearchApi.getAllSubjects(journalKey)));
+    return CacheUtil
+      .getOrCompute(cache, cacheKey, () -> {
+          ArticleSearchQuery query = ArticleSearchQuery.builder()
+            .setRows(0)
+            .setFacetFields(ImmutableList.of("subject_hierarchy"))
+            .setFacetLimit(-1)
+            .setJournalKeys(ImmutableList.of(journalKey)).build();
+
+          List<String> subjects = solrSearchApi.cookedSearch(query)
+            .getFacets()
+            .get()
+            .get("subject_hierarchy")
+            .keySet()
+            .stream()
+            .collect(Collectors.toList());
+          return TaxonomyGraph.create(subjects);
+        });
   }
 
   /**
@@ -59,6 +78,18 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
   public Map<String, Integer> getCounts(TaxonomyGraph taxonomy, String journalKey)
       throws IOException {
     CacheKey cacheKey = CacheKey.create("categoryCount", journalKey);
-    return CacheUtil.getOrCompute(cache, cacheKey, () -> solrSearchApi.getAllSubjectCounts(journalKey));
+    return CacheUtil.getOrCompute(cache, cacheKey, () -> {
+        ArticleSearchQuery query = ArticleSearchQuery.builder()
+          .setFacetFields(ImmutableList.of("subject_facet"))
+          .setFacetLimit(-1)
+          .setJournalKeys(ImmutableList.of(journalKey))
+          .build();
+
+        SolrSearchApi.Result results = solrSearchApi.cookedSearch(query);
+        ImmutableSortedMap.Builder<String, Integer> builder = ImmutableSortedMap.naturalOrder();
+        builder.putAll(results.getFacets().get().get("subject_facet"));
+        builder.put("ROOT", results.getNumFound());
+        return builder.build();
+      });
   }
 }

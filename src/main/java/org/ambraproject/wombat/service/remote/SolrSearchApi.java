@@ -164,22 +164,4 @@ public interface SolrSearchApi {
    */
   public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet
       siteSet) throws IOException;
-
-  /**
-   * Returns a list of all subject categories associated with all papers ever published
-   * for the given journal.
-   *
-   * @param journalKey name of the journal in question
-   * @return List of category names
-   */
-  public List<String> getAllSubjects(String journalKey) throws IOException;
-
-  /**
-   * Returns the number of articles, for a given journal, associated with all the subject
-   * categories in the taxonomy.
-   *
-   * @param journalKey specifies the journal
-   * @throws IOException
-   */
-  public Map<String, Integer> getAllSubjectCounts(String journalKey) throws IOException;
 }

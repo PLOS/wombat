@@ -76,9 +76,11 @@ public class SolrQueryBuilder {
       params.add("defType", "dismax");
     }
 
-    if (asq.getFacet().isPresent()) {
+    if (asq.getFacetFields().size() > 0) {
       params.add("facet", "true");
-      params.add("facet.field", asq.getFacet().get());
+      for (String field: asq.getFacetFields()) {
+        params.add("facet.field", field);
+      }
       params.add("facet.mincount", Integer.toString(asq.getFacetMinCount()));
       params.add("facet.limit", Integer.toString(asq.getFacetLimit()));
       params.add("json.nl", "map");

@@ -23,12 +23,10 @@
 package org.ambraproject.wombat.service.remote;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 import com.google.auto.value.AutoValue;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 
 @AutoValue
 public abstract class ArticleSearchQuery {
@@ -66,7 +64,7 @@ public abstract class ArticleSearchQuery {
 
   public abstract boolean isPartialSearch();
 
-  public abstract Optional<String> getFacet();
+  public abstract ImmutableList<String> getFacetFields();
 
   public abstract int getFacetMinCount();
 
@@ -100,6 +98,7 @@ public abstract class ArticleSearchQuery {
       .setArticleTypes(ImmutableList.of())
       .setArticleTypesToExclude(ImmutableList.of())
       .setAuthors(ImmutableList.of())
+      .setFacetFields(ImmutableList.of())
       .setFacetLimit(100)
       .setFacetMinCount(0)
       .setJournalKeys(ImmutableList.of())
@@ -152,7 +151,7 @@ public abstract class ArticleSearchQuery {
      * @param facet the facet to search for as it is stored in Solr. Setting this will also set the
      *              search itself as a "faceted" search.
      */
-    public abstract Builder setFacet(String facet);
+    public abstract Builder setFacetFields(ImmutableList<String> facet);
 
     /**
      * @param facetLimit maximum number of faceted results to return

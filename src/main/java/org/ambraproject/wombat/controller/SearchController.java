@@ -514,7 +514,7 @@ public class SearchController extends WombatController {
    * @return ImmutableListMultimap that contains the URL parameter list
    */
   private static ImmutableListMultimap<String, String> rebuildUrlParameters(ArticleSearchQuery q) {
-    Preconditions.checkArgument(!q.getFacet().isPresent());
+    Preconditions.checkArgument(q.getFacetFields().size() == 0);
 
     ImmutableListMultimap.Builder<String, String> builder = ImmutableListMultimap.builder();
     builder.put(q.isSimple() ? "q" : "unformattedQuery", q.getQuery());

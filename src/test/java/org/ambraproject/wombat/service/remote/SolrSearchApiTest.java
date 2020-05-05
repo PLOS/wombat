@@ -118,9 +118,9 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   private List<NameValuePair> buildFacetParams(String facetField, String query, boolean useDisMax) {
     ArticleSearchQuery asq = ArticleSearchQuery.builder()
-        .setFacet(facetField)
-        .setQuery(query)
-        .setSimple(useDisMax)
+      .setFacetFields(ImmutableList.of(facetField))
+      .setQuery(query)
+      .setSimple(useDisMax)
       .build();
     return SolrQueryBuilder.buildParameters(asq);
   }

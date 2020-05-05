@@ -217,10 +217,10 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     Map<String, Map> rawResults = new HashMap<>();
     rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
 
-    if (query.getFacet().isPresent()) {
+    if (query.getFacetFields().size() > 0) {
       Map<String, Map> facetFields =
           (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
-      return facetFields.get(query.getFacet().get()); //We expect facet field to be the first element of the list
+      return facetFields.get(query.getFacetFields().get(0)); //We expect facet field to be the first element of the list
     } else {
       return (Map<String, ?>) rawResults.get("response");
     }
@@ -286,7 +286,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   public List<String> getAllSubjects(String journalKey) throws IOException {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
       .setRows(0)
-      .setFacet("subject_hierarchy")
+      .setFacetFields(ImmutableList.of("subject_hierarchy"))
       .setFacetLimit(FACET_LIMIT)
       .setJournalKeys(ImmutableList.of(journalKey)).build();
 
@@ -305,7 +305,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   @Override
   public Map<String, Integer> getAllSubjectCounts(String journalKey) throws IOException {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
-      .setFacet("subject_facet")
+      .setFacetFields(ImmutableList.of("subject_facet"))
       .setFacetLimit(FACET_LIMIT)
       .setJournalKeys(ImmutableList.of(journalKey))
       .build();

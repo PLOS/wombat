@@ -207,16 +207,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   }
 
   @Override
-  public Map<String, ?> rawSearch(ArticleSearchQuery query) throws IOException {
-    List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
-    URI uri = getSolrUri(params);
-    log.debug("Solr request executing: " + uri);
-    Map<String, Map> rawResults = new HashMap<>();
-    rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
-    return (Map<String, ?>) rawResults.get("response");
-  }
-
-  @Override
   public SolrSearchApi.Result addArticleLinks(SolrSearchApi.Result results, HttpServletRequest request, Site site,
                                    SiteSet siteSet) throws IOException {
     initializeEIssnToJournalKeyMap(siteSet, site);

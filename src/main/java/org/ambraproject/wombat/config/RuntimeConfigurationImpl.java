@@ -31,7 +31,7 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   String memcachedServer;
   URL rhinoUrl;
   String rootRedirect;
-  String environment;
+  boolean debug;
   String themePath;
   String casUrl;
   URL solrUrl;
@@ -86,14 +86,12 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   }
 
   @Override
-  public String getEnvironment() {
-    return environment;
+  public boolean showDebug() {
+    return this.debug;
   }
 
-  public void setEnvironment(String environment) {
-    Preconditions.checkNotNull(environment, "Please set ENVIRONMENT.");
-    Preconditions.checkArgument(!environment.equals(""), "Please set ENVIRONMENT.");
-    this.environment = environment;
+  public void setDebug(boolean debug) {
+    this.debug = debug;
   }
 
   @Override

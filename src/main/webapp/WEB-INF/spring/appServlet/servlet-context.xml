@@ -48,7 +48,7 @@
     <beans:property name="nedUrl" value="${NED_URL:}" />
     <beans:property name="casUrl" value="${CAS_URL:}" />
     <beans:property name="themePath" value="${THEME_PATH:}" />
-    <beans:property name="environment" value="${ENVIRONMENT:prod}" />
+    <beans:property name="debug" value="${DEBUG:false}" />
     <beans:property name="rhinoUrl" value="${RHINO_URL:}" />
     <beans:property name="memcachedServer" value="${MEMCACHED_SERVER:}" />
   </beans:bean>

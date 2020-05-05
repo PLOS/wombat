@@ -58,19 +58,19 @@ public class SearchFilterFactory {
    * the faceted search results. The SearchFilterItems also house a /search URL that represents
    * how the filter would be applied or removed from a search.
    */
-  public SearchFilter createSearchFilter(Map<?, ?> results, String filterTypeMapKey,
+  public SearchFilter createSearchFilter(Map<String, Integer> results, String filterTypeMapKey,
       Multimap<String, String> params) {
 
     SearchFilterType filterType = filterTypeMap.getSearchFilterByKey(filterTypeMapKey);
 
     List<SearchFilterItem> searchFilterResult = new ArrayList<>();
 
-    for (Map.Entry<?, ?> entry : results.entrySet()) {
+    for (Map.Entry<String, Integer> entry : results.entrySet()) {
 
-      Double numberOfHits = (Double) entry.getValue();
+      Integer numberOfHits = entry.getValue();
 
       //displayName is often represented by the filter value
-      String displayName = entry.getKey().toString();
+      String displayName = entry.getKey();
 
       ListMultimap<String, String> changedParams = applyFilterToParams(displayName, params,
           filterType);

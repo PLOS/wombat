@@ -46,7 +46,7 @@ public class SearchFilterFactoryTest extends AbstractJUnit4SpringContextTests {
     doReturn("PLoSCompBiol").when(filterType).getFilterValue("PLOS Computational Biology");
     when(filterTypeMap.getSearchFilterByKey("journal")).thenReturn(filterType);
 
-    ImmutableMap<String, Double> results = ImmutableMap.of("PLOS ONE", 19.0d, "PLOS Computational Biology", 412.0d);
+    ImmutableMap<String, Integer> results = ImmutableMap.of("PLOS ONE", 19, "PLOS Computational Biology", 412);
     String filterTypeMapKey = "journal";
     SearchFilter searchFilter = searchFilterFactory.createSearchFilter(results, filterTypeMapKey, params);
 

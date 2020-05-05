@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Map;
-
+import java.util.Optional;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -42,11 +42,17 @@ public class SearchFilterServiceTest extends AbstractJUnit4SpringContextTests {
   public void testGetSearchFilters() throws IOException {
     SearchFilter mockFilter = mock(SearchFilter.class);
     when(searchFilterFactory.createSearchFilter(any(), any(),any())).thenReturn(mockFilter);
-
     ArticleSearchQuery query = ArticleSearchQuery.builder()
         .setQuery("blah")
         .setSimple(true)
         .build();
+    SolrSearchApi.Result result = mock(SolrSearchApi.Result.class);
+    Map<String, Map<String, Integer>> facetMap = mock(Map.class);
+    Optional<Map<String, Map<String, Integer>>> facets = Optional.of(facetMap);
+    when(result.getFacets()).thenReturn(facets);
+    when(facetMap.get(any())).thenReturn(ImmutableMap.of());
+    
+    when(solrSearchApi.cookedSearch(any())).thenReturn(result);
 
     ImmutableMap<String, SearchFilter> expected = ImmutableMap.of(
         "subject_area", mockFilter,
@@ -55,7 +61,7 @@ public class SearchFilterServiceTest extends AbstractJUnit4SpringContextTests {
         "author", mockFilter,
         "section", mockFilter);
 
-    Map<String, SearchFilter> searchFilters = searchFilterService.getSearchFilters(query, null, null);
+    Map<String, SearchFilter> searchFilters = searchFilterService.getSearchFilters(query, null);
     assertEquals(expected, searchFilters);
   }
 

@@ -81,29 +81,30 @@ public class SearchFilterService {
    * @throws IOException
    */
   public Map<String, SearchFilter> getSearchFilters(ArticleSearchQuery query,
-                                                    Multimap<String, String> urlParams,
-                                                    Site site) throws IOException {
-    ArticleSearchQuery journalFacetQuery =
-      query.toBuilder().setFacetFields(ImmutableList.of(JOURNAL_FACET_FIELD)).build();
+                                                    Multimap<String, String> urlParams
+                                                    ) throws IOException {
+    ArticleSearchQuery journalFacetQuery = query.toBuilder().setFacetFields(ImmutableList.of(JOURNAL_FACET_FIELD)).build();
 
-    Map<?, ?> journalFacetResults = solrSearchApi.rawSearch(journalFacetQuery);
-    SearchFilter journalFilter = searchFilterFactory
-        .createSearchFilter(journalFacetResults, JOURNAL, urlParams);
+    Map<String, Integer> journalFacetResults = solrSearchApi.cookedSearch(journalFacetQuery)
+      .getFacets().get().get(JOURNAL_FACET_FIELD);
+    SearchFilter journalFilter = searchFilterFactory.createSearchFilter(journalFacetResults, JOURNAL, urlParams);
 
     ArticleSearchQuery subjectAreaFacetQuery = query.toBuilder().setFacetFields(ImmutableList.of(SUBJECT_AREA_FACET_FIELD)).build();
 
-    Map<?, ?> subjectAreaFacetResults = solrSearchApi.rawSearch(subjectAreaFacetQuery);
-    SearchFilter subjectAreaFilter = searchFilterFactory
-        .createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
+    Map<String, Integer> subjectAreaFacetResults = solrSearchApi.cookedSearch(subjectAreaFacetQuery)
+      .getFacets().get().get(SUBJECT_AREA_FACET_FIELD);
+    SearchFilter subjectAreaFilter = searchFilterFactory.createSearchFilter(subjectAreaFacetResults, SUBJECT_AREA, urlParams);
 
     ArticleSearchQuery authorFacetQuery = query.toBuilder().setFacetFields(ImmutableList.of(AUTHOR_FACET)).build();
 
-    Map<?, ?> authorFacetResults = solrSearchApi.rawSearch(authorFacetQuery);
+    Map<String, Integer> authorFacetResults = solrSearchApi.cookedSearch(authorFacetQuery)
+      .getFacets().get().get(AUTHOR_FACET);
     SearchFilter authorFilter = searchFilterFactory.createSearchFilter(authorFacetResults, AUTHOR, urlParams);
 
     ArticleSearchQuery articleTypeFacetQuery = query.toBuilder().setFacetFields(ImmutableList.of(ARTICLE_TYPE_FACET)).build();
 
-    Map<?, ?> articleTypeFacetResults = solrSearchApi.rawSearch(articleTypeFacetQuery);
+    Map<String, Integer> articleTypeFacetResults = solrSearchApi.cookedSearch(articleTypeFacetQuery)
+      .getFacets().get().get(ARTICLE_TYPE_FACET);
     SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(articleTypeFacetResults,
         ARTICLE_TYPE, urlParams);
 
@@ -111,7 +112,8 @@ public class SearchFilterService {
       .setFacetFields(ImmutableList.of(SECTION_FACET))
       .setPartialSearch(true).build();
 
-    Map<?, ?> sectionFacetResults = solrSearchApi.rawSearch(sectionFacetQuery);
+    Map<String, Integer> sectionFacetResults = solrSearchApi.cookedSearch(sectionFacetQuery)
+      .getFacets().get().get(SECTION_FACET);
     SearchFilter sectionFilter = searchFilterFactory.createSearchFilter(sectionFacetResults,
         SECTION, urlParams);
 

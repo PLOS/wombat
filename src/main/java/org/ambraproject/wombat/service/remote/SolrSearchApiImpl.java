@@ -216,14 +216,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     log.debug("Solr request executing: " + uri);
     Map<String, Map> rawResults = new HashMap<>();
     rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
-
-    if (query.getFacetFields().size() > 0) {
-      Map<String, Map> facetFields =
-          (Map<String, Map>) rawResults.get("facet_counts").get("facet_fields");
-      return facetFields.get(query.getFacetFields().get(0)); //We expect facet field to be the first element of the list
-    } else {
-      return (Map<String, ?>) rawResults.get("response");
-    }
+    return (Map<String, ?>) rawResults.get("response");
   }
 
   @Override

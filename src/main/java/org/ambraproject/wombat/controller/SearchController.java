@@ -699,7 +699,7 @@ public class SearchController extends WombatController {
       activeFilterItems = commonParams.setActiveFilterParams(model, request);
     } else {
       Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj,
-          rebuildUrlParameters(queryObj), site);
+          rebuildUrlParameters(queryObj));
       filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
       activeFilterItems = new LinkedHashSet<>();

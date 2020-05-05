@@ -51,7 +51,7 @@ import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.util.UrlParamBuilder;
 <<<<<<< HEAD
 import org.apache.commons.io.FileUtils;
@@ -183,7 +183,7 @@ public class SearchController extends WombatController {
      */
     int start;
 
-    SolrSearchApiImpl.SolrSortOrder sortOrder;
+    SolrSearchApi.SolrSortOrder sortOrder;
 
     ArticleSearchQuery.SearchCriterion dateRange;
 
@@ -247,10 +247,10 @@ public class SearchController extends WombatController {
         int page = Integer.parseInt(pageParam);
         start = (page - 1) * resultsPerPage;
       }
-      sortOrder = SolrSearchApiImpl.SolrSortOrder.RELEVANCE;
+      sortOrder = SolrSearchApi.SolrSortOrder.RELEVANCE;
       String sortOrderParam = getSingleParam(params, "sortOrder", null);
       if (!Strings.isNullOrEmpty(sortOrderParam)) {
-        sortOrder = SolrSearchApiImpl.SolrSortOrder.valueOf(sortOrderParam);
+        sortOrder = SolrSearchApi.SolrSortOrder.valueOf(sortOrderParam);
       }
       dateRange = parseDateRange(getSingleParam(params, "dateRange", null),
           getDateParam(params, "filterStartDate"), getDateParam(params, "filterEndDate"));
@@ -287,7 +287,7 @@ public class SearchController extends WombatController {
           ? new ArrayList<String>() : params.get("filterSections");
 
       isFiltered = !filterJournalNames.isEmpty() || !subjectList.isEmpty() || !articleTypes.isEmpty()
-          || dateRange != SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME || !authors.isEmpty()
+          || dateRange != SolrSearchApi.SolrEnumeratedDateRange.ALL_TIME || !authors.isEmpty()
           || startDate != null || endDate != null || !sections.isEmpty();
     }
 
@@ -372,11 +372,11 @@ public class SearchController extends WombatController {
      * @return A generic @SearchCriterion object used by Solr
      */
     private ArticleSearchQuery.SearchCriterion parseDateRange(String dateRangeParam, LocalDate startDate, LocalDate endDate) {
-      ArticleSearchQuery.SearchCriterion dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME;
+      ArticleSearchQuery.SearchCriterion dateRange = SolrSearchApi.SolrEnumeratedDateRange.ALL_TIME;
       if (!Strings.isNullOrEmpty(dateRangeParam)) {
-        dateRange = SolrSearchApiImpl.SolrEnumeratedDateRange.valueOf(dateRangeParam);
+        dateRange = SolrSearchApi.SolrEnumeratedDateRange.valueOf(dateRangeParam);
       } else if (startDate != null && endDate != null) {
-        dateRange = new SolrSearchApiImpl.SolrExplicitDateRange("explicit date range",
+        dateRange = new SolrSearchApi.SolrExplicitDateRange("explicit date range",
             startDate.toString(), endDate.toString());
       }
       return dateRange;
@@ -607,8 +607,8 @@ public class SearchController extends WombatController {
     CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
-    model.addAttribute("sortOrders", SolrSearchApiImpl.SolrSortOrder.values());
-    model.addAttribute("dateRanges", SolrSearchApiImpl.SolrEnumeratedDateRange.values());
+    model.addAttribute("sortOrders", SolrSearchApi.SolrSortOrder.values());
+    model.addAttribute("dateRanges", SolrSearchApi.SolrEnumeratedDateRange.values());
     return commonParams;
   }
 

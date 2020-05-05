@@ -43,6 +43,7 @@ import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -89,13 +90,13 @@ public class HomeController extends WombatController {
     RECENT {
       @Override
       public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return getArticlesFromSolr(context, section, site, start, SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST);
+        return getArticlesFromSolr(context, section, site, start, SolrSearchApi.SolrSortOrder.DATE_NEWEST_FIRST);
       }
     },
     POPULAR {
       @Override
       public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return getArticlesFromSolr(context, section, site, start, SolrSearchApiImpl.SolrSortOrder.MOST_VIEWS_30_DAYS);
+        return getArticlesFromSolr(context, section, site, start, SolrSearchApi.SolrSortOrder.MOST_VIEWS_30_DAYS);
       }
     },
     CURATED {
@@ -133,14 +134,14 @@ public class HomeController extends WombatController {
     };
 
     private static List<SolrArticleAdapter> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
-                                                                SolrSearchApiImpl.SolrSortOrder order)
+                                                                SolrSearchApi.SolrSortOrder order)
         throws IOException {
       ArticleSearchQuery query = ArticleSearchQuery.builder()
         .setStart(start)
         .setRows(section.resultCount)
         .setSortOrder(order)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-        .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setDateRange(SolrSearchApi.SolrEnumeratedDateRange.ALL_TIME)
         .build();
       return SolrArticleAdapter.unpackSolrQuery(context.solrSearchApi.search(query));
     }
@@ -328,9 +329,9 @@ public class HomeController extends WombatController {
     ArticleSearchQuery query = ArticleSearchQuery.builder()
         .setStart(0)
         .setRows(getFeedLength(site))
-        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setSortOrder(SolrSearchApi.SolrSortOrder.DATE_NEWEST_FIRST)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-        .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
+        .setDateRange(SolrSearchApi.SolrEnumeratedDateRange.ALL_TIME)
       .setRssSearch(true).build();
     SolrSearchApi.Result recentArticles = solrSearchApi.search(query);
 

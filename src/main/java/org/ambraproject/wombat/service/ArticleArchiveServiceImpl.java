@@ -26,9 +26,9 @@ import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl.SolrEnumeratedDateRange;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl.SolrSortOrder;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.ambraproject.wombat.service.remote.SolrSearchApi.SolrEnumeratedDateRange;
+import org.ambraproject.wombat.service.remote.SolrSearchApi.SolrSortOrder;
 import org.apache.commons.lang3.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -47,7 +47,7 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
   private static final ImmutableList<String> MONTHS = ImmutableList.copyOf(new DateFormatSymbols().getMonths());
 
   @Autowired
-  SolrSearchApiImpl solrSearchApi;
+  SolrSearchApi solrSearchApi;
   
   @Override
   public Range<Date> getDatesForJournal(Site site) throws IOException, ParseException {
@@ -95,13 +95,13 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
     endDate.add(Calendar.MONTH, 1);
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    SolrSearchApiImpl.SolrExplicitDateRange dateRange = new SolrSearchApiImpl.SolrExplicitDateRange
+    SolrSearchApi.SolrExplicitDateRange dateRange = new SolrSearchApi.SolrExplicitDateRange
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 
     ArticleSearchQuery query = ArticleSearchQuery.builder()
       .setJournalKeys(ImmutableList.of(site.getJournalKey()))
       .setRows(MAXIMUM_SOLR_RESULT_COUNT)
-      .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_OLDEST_FIRST)
+      .setSortOrder(SolrSearchApi.SolrSortOrder.DATE_OLDEST_FIRST)
       .setDateRange(dateRange)
       .setCursor(cursor)
       .build();

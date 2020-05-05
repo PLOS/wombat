@@ -36,7 +36,7 @@ import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.util.ThemeTest;
@@ -117,7 +117,7 @@ public class ControllerTestConfiguration {
 
   @Bean
   protected SolrSearchApi solrSearchApi() {
-    final SolrSearchApi solrSearchApi = spy(SolrSearchApiImpl.class);
+    final SolrSearchApi solrSearchApi = spy(SolrSearchApi.class);
     return solrSearchApi;
   }
 

@@ -90,7 +90,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   @Test
   public void testBuildCommonParams() {
     // query string not null
-    List<NameValuePair> actual = buildCommonParams("foo", true, 0, 10, SolrSearchApiImpl.SolrSortOrder.MOST_CITED, true);
+    List<NameValuePair> actual = buildCommonParams("foo", true, 0, 10, SolrSearchApi.SolrSortOrder.MOST_CITED, true);
     SetMultimap<String, String> actualMap = convertToMap(actual);
     assertCommonParams(2, actualMap);
     assertSingle("10", actualMap.get("rows"));
@@ -102,14 +102,14 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assertSingle("foo", actualMap.get("q"));
 
     // empty query string
-    actual = buildCommonParams("*:*", false, 0, 10, SolrSearchApiImpl.SolrSortOrder.MOST_CITED, true);
+    actual = buildCommonParams("*:*", false, 0, 10, SolrSearchApi.SolrSortOrder.MOST_CITED, true);
     actualMap = convertToMap(actual);
     assertCommonParams(2, actualMap);
     assertEquals(0, actualMap.get("defType").size());
     assertSingle("*:*", actualMap.get("q"));
 
     // not home page
-    actual = buildCommonParams("", false, 0, 10, SolrSearchApiImpl.SolrSortOrder.RELEVANCE, false);
+    actual = buildCommonParams("", false, 0, 10, SolrSearchApi.SolrSortOrder.RELEVANCE, false);
     actualMap = convertToMap(actual);
     assertSingle("score desc,publication_date desc,id desc", actualMap.get("sort"));
     assertCommonParams(2, actualMap);
@@ -164,14 +164,14 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
     // Multiple journals
     setQueryFilters(actual, Arrays.asList("foo", "bar", "blaz"), articleTypes, subjects,
-        SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
+        SolrSearchApi.SolrEnumeratedDateRange.ALL_TIME);
     SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertJournals(actualMap.get("fq"), "foo", "bar", "blaz");
 
     // date range
     actual = UrlParamBuilder.params();
     setQueryFilters(actual, ImmutableList.of("foo"), articleTypes, subjects,
-        SolrSearchApiImpl.SolrEnumeratedDateRange.LAST_3_MONTHS);
+        SolrSearchApi.SolrEnumeratedDateRange.LAST_3_MONTHS);
     actualMap = convertToMap(actual.build());
     assertEquals(2, actualMap.get("fq").size());
     for (String s : actualMap.get("fq")) {
@@ -195,8 +195,8 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   @Test
   public void testSetQueryFilters_ExplicitDateRange() throws IOException {
     UrlParamBuilder actual = UrlParamBuilder.params();
-    SolrSearchApiImpl.SolrExplicitDateRange edr
-        = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    SolrSearchApi.SolrExplicitDateRange edr
+        = new SolrSearchApi.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
 
     setQueryFilters(actual, ImmutableList.of("foo"), new ArrayList<String>(), new ArrayList<String>(), edr);
     SetMultimap<String, String> actualMap = convertToMap(actual.build());
@@ -207,8 +207,8 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   @Test
   public void testSetQueryFilters_IncludeArticleTypes() throws IOException {
     UrlParamBuilder actual = UrlParamBuilder.params();
-    SolrSearchApiImpl.SolrExplicitDateRange edr
-        = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    SolrSearchApi.SolrExplicitDateRange edr
+        = new SolrSearchApi.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
     setQueryFilters(actual, ImmutableList.of("foo"), articleTypes, new ArrayList<String>(), edr);
@@ -221,8 +221,8 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   @Test
   public void testSetQueryFilters_IncludeSubjects() throws IOException {
     UrlParamBuilder actual = UrlParamBuilder.params();
-    SolrSearchApiImpl.SolrExplicitDateRange edr
-        = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    SolrSearchApi.SolrExplicitDateRange edr
+        = new SolrSearchApi.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
     setQueryFilters(actual, ImmutableList.of("foo"), articleTypes, Arrays.asList("Skull", "Head", "Teeth"), edr);

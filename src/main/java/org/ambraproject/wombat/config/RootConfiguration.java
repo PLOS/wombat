@@ -37,7 +37,7 @@ import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ReaderService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.StreamService;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.service.remote.UserApiImpl;
@@ -138,7 +138,7 @@ public class RootConfiguration {
 
   @Bean
   public SolrSearchApi searchService() {
-    return new SolrSearchApiImpl();
+    return new SolrSearchApi();
   }
 
   @Bean

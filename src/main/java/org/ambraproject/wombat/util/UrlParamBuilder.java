@@ -22,9 +22,12 @@
 
 package org.ambraproject.wombat.util;
 
+import java.util.List;
+import java.util.Map;
 import com.google.common.collect.ImmutableList;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.springframework.util.MultiValueMap;
 
 /**
  * Builder pattern applied as a convenience over
@@ -48,6 +51,17 @@ public class UrlParamBuilder {
 
   public UrlParamBuilder add(String name, String value) {
     this.builder.add(new BasicNameValuePair(name, value));
+    return this;
+
+  }
+
+  public UrlParamBuilder addAll(MultiValueMap<String, String> params) {
+    for (Map.Entry<String, List<String>> entry : params.entrySet()) {
+      String key = entry.getKey();
+      for (String value : entry.getValue()) {
+        this.add(key, value);
+      }
+    }
     return this;
   }
 }

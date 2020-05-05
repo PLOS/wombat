@@ -25,7 +25,8 @@ package org.ambraproject.wombat.service;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
+import org.apache.lucene.queryparser.classic.QueryParser;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
@@ -77,6 +78,16 @@ public class SolrArticleAdapter implements Serializable {
     this.authors = ImmutableList.copyOf(authors);
     this.articleType = Objects.requireNonNull(articleType);
     this.journalKey = Objects.requireNonNull(journalKey);
+  }
+
+  public static ArticleSearchQuery lookupArticlesByDoisQuery(List<String> dois) {
+    String doiQueryString = dois.stream().map(doi -> "id:" + QueryParser.escape(doi))
+        .collect(Collectors.joining(" OR "));
+
+    return ArticleSearchQuery.builder()
+      .setQuery(doiQueryString)
+      .setStart(0)
+      .setRows(dois.size()).build();
   }
 
   /**

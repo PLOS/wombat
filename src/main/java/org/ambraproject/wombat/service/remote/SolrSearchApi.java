@@ -150,8 +150,6 @@ public interface SolrSearchApi {
    */
   public Result cookedSearch(ArticleSearchQuery query) throws IOException;
 
-  public Map<?, ?> lookupArticlesByDois(List<String> dois, Site site) throws IOException;
-
   /**
    * Adds a new property, link, to each search result passed in.  The value of this property is the correct URL to the
    * article on this environment.  Calling this method is necessary since article URLs need to be specific to the site

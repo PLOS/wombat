@@ -114,7 +114,8 @@ public class HomeController extends WombatController {
             .map(article -> (String) article.get("doi"))
             .collect(Collectors.toList());
 
-        Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.lookupArticlesByDois(dois, site);
+        ArticleSearchQuery query = SolrArticleAdapter.lookupArticlesByDoisQuery(dois);
+        Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.rawSearch(query);
         List<SolrArticleAdapter> unpacked = SolrArticleAdapter.unpackSolrQuery(results);
         validateSolrResultsFromList(section, dois, unpacked);
         return Ordering.explicit(dois).onResultOf(SolrArticleAdapter::getDoi).sortedCopy(unpacked);

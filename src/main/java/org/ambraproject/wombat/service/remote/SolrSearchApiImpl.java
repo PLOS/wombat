@@ -51,8 +51,8 @@ import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -217,18 +217,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
     Map<String, Map> rawResults = new HashMap<>();
     rawResults = jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Map.class);
     return (Map<String, ?>) rawResults.get("response");
-  }
-
-  @Override
-  public Map<?, ?> lookupArticlesByDois(List<String> dois, Site site) throws IOException {
-    String doiQueryString = dois.stream().map(doi -> "id:" + QueryParser.escape(doi))
-        .collect(Collectors.joining(" OR "));
-
-    ArticleSearchQuery query = ArticleSearchQuery.builder()
-        .setQuery(doiQueryString)
-        .setStart(0)
-      .setRows(dois.size()).build();
-    return rawSearch(query);
   }
 
   @Override

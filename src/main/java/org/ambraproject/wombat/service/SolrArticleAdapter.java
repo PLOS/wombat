@@ -26,6 +26,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import java.io.Serializable;
 import java.util.Collection;
@@ -93,8 +94,8 @@ public class SolrArticleAdapter implements Serializable {
   /**
    * Adapt a set of results, as provided by {@link org.ambraproject.wombat.service.remote.SolrSearchApi#search(org.ambraproject.wombat.service.remote.ArticleSearchQuery, org.ambraproject.wombat.config.site.Site)}.
    */
-  public static List<SolrArticleAdapter> unpackSolrQuery(Map<String, ?> solrResult) {
-    List<Map<String, ?>> docs = (List<Map<String, ?>>) solrResult.get("docs");
+  public static List<SolrArticleAdapter> unpackSolrQuery(SolrSearchApi.Result solrResult) {
+    List<Map<String, Object>> docs = solrResult.getDocs();
     return docs.stream().map(SolrArticleAdapter::adaptFromSolr).collect(Collectors.toList());
   }
 
@@ -104,7 +105,7 @@ public class SolrArticleAdapter implements Serializable {
    * @param solrArticle the map of Solr results representing the article
    * @return the extracted fields
    */
-  public static SolrArticleAdapter adaptFromSolr(Map<String, ?> solrArticle) {
+  public static SolrArticleAdapter adaptFromSolr(Map<String, Object> solrArticle) {
     String doi = (String) solrArticle.get("id");
     String title = Strings.isNullOrEmpty((String) solrArticle.get("title_display")) ? (String) solrArticle.get("title")
         : (String) solrArticle.get("title_display");

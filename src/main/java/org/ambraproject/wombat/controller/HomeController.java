@@ -115,8 +115,7 @@ public class HomeController extends WombatController {
             .collect(Collectors.toList());
 
         ArticleSearchQuery query = SolrArticleAdapter.lookupArticlesByDoisQuery(dois);
-        Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.rawSearch(query);
-        List<SolrArticleAdapter> unpacked = SolrArticleAdapter.unpackSolrQuery(results);
+        List<SolrArticleAdapter> unpacked = SolrArticleAdapter.unpackSolrQuery(context.solrSearchApi.cookedSearch(query));
         validateSolrResultsFromList(section, dois, unpacked);
         return Ordering.explicit(dois).onResultOf(SolrArticleAdapter::getDoi).sortedCopy(unpacked);
       }
@@ -143,8 +142,7 @@ public class HomeController extends WombatController {
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
         .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
         .build();
-      Map<String, Object> result = (Map<String, Object>) context.solrSearchApi.rawSearch(query);
-      return SolrArticleAdapter.unpackSolrQuery(result);
+      return SolrArticleAdapter.unpackSolrQuery(context.solrSearchApi.cookedSearch(query));
     }
 
     /**

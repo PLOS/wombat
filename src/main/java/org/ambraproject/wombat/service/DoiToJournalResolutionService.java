@@ -50,8 +50,7 @@ public class DoiToJournalResolutionService {
         .setQuery("id:\"" + QueryParser.escape(doi) + "\"")
         .build();
 
-    Map<String, ?> results = solrSearchApi.rawSearch(explicitDoiSearchQuery);
-    List<SolrArticleAdapter> solrArticleAdapters = SolrArticleAdapter.unpackSolrQuery(results);
+    List<SolrArticleAdapter> solrArticleAdapters = SolrArticleAdapter.unpackSolrQuery(solrSearchApi.cookedSearch(explicitDoiSearchQuery));
     String journalKey = null;
     if (solrArticleAdapters.size() == 1) {
       journalKey = solrArticleAdapters.get(0).getJournalKey();

@@ -205,8 +205,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
         .setJournalKeys(journalKeys)
         .build();
 
-    Map<String, ?> results = solrSearchApi.rawSearch(recentArticleSearchQuery);
-    return SolrArticleAdapter.unpackSolrQuery(results);
+    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.cookedSearch(recentArticleSearchQuery));
   }
 
   private List<SolrArticleAdapter> getAllRecentArticles(List<String> articleTypesToExclude,
@@ -223,8 +222,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
         .setJournalKeys(journalKeys)
         .build();
 
-    Map<String, ?> results = solrSearchApi.rawSearch(recentArticleSearchQuery);
-    return SolrArticleAdapter.unpackSolrQuery(results);
+    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.cookedSearch(recentArticleSearchQuery));
   }
 
   private List<SolrArticleAdapter> getAllArticlesByType(List<String> articleTypes,
@@ -240,7 +238,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
         .setArticleTypesToExclude(articleTypesToExclude)
         .setJournalKeys(journalKeys)
         .build();
-    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.rawSearch(allArticleSearchQuery));
+    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.cookedSearch(allArticleSearchQuery));
   }
 
 }

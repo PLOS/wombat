@@ -832,7 +832,8 @@ public class SearchController extends WombatController {
 
     Map<String, ?> searchResults = solrSearchApi.rawSearch(query);
 
-    model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
+    // TODO: reduce dup query here.
+    model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(solrSearchApi.cookedSearch(query)));
     model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());

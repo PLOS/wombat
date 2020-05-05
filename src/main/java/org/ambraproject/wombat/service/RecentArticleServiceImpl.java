@@ -138,7 +138,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     List<String> journalKeys = ImmutableList.of(journalKey);
 
     LocalDate startDate = LocalDate.now().minusDays((long) numberOfDaysAgo);
-    SolrSearchApi.SolrExplicitDateRange dateRange = new SolrSearchApi.SolrExplicitDateRange
+    ArticleSearchQuery.SolrExplicitDateRange dateRange = new ArticleSearchQuery.SolrExplicitDateRange
         ("Recent Articles", startDate.toString(), LocalDate.now().toString());
 
     Set<String> uniqueDois = new HashSet<>();
@@ -193,13 +193,13 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   private List<SolrArticleAdapter> getRecentArticlesByType(String articleType,
                                                            List<String> articleTypesToExclude,
                                                            List<String> journalKeys,
-                                                           SolrSearchApi.SolrExplicitDateRange dateRange,
+                                                           ArticleSearchQuery.SolrExplicitDateRange dateRange,
                                                            Site site)
       throws IOException {
     ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
         .setRows(MAXIMUM_SOLR_RESULT_COUNT)
-        .setSortOrder(SolrSearchApi.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setSortOrder(ArticleSearchQuery.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypes(ImmutableList.of(articleType))
         .setArticleTypesToExclude(articleTypesToExclude)
         .setDateRange(dateRange)
@@ -211,13 +211,13 @@ public class RecentArticleServiceImpl implements RecentArticleService {
 
   private List<SolrArticleAdapter> getAllRecentArticles(List<String> articleTypesToExclude,
                                                         List<String> journalKeys,
-                                                        SolrSearchApi.SolrExplicitDateRange dateRange,
+                                                        ArticleSearchQuery.SolrExplicitDateRange dateRange,
                                                         Site site)
       throws IOException {
     ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
         .setRows(MAXIMUM_SOLR_RESULT_COUNT)
-        .setSortOrder(SolrSearchApi.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setSortOrder(ArticleSearchQuery.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypesToExclude(articleTypesToExclude)
         .setDateRange(dateRange)
         .setJournalKeys(journalKeys)
@@ -234,7 +234,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     ArticleSearchQuery allArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
         .setRows(limit)
-        .setSortOrder(SolrSearchApi.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setSortOrder(ArticleSearchQuery.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypes(articleTypes)
         .setArticleTypesToExclude(articleTypesToExclude)
         .setJournalKeys(journalKeys)

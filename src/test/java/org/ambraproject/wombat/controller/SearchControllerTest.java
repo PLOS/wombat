@@ -25,7 +25,7 @@ package org.ambraproject.wombat.controller;
 import org.ambraproject.wombat.config.TestSpringConfiguration;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.util.MockSiteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,8 +61,8 @@ public class SearchControllerTest extends AbstractJUnit4SpringContextTests {
     commonParams.parseParams(params);
 
     assertEquals(90, commonParams.start);  // Default results per page should be 15
-    assertEquals(SolrSearchApi.SolrSortOrder.RELEVANCE, commonParams.sortOrder);
-    assertEquals(SolrSearchApi.SolrEnumeratedDateRange.ALL_TIME, commonParams.dateRange);
+    assertEquals(ArticleSearchQuery.SolrSortOrder.RELEVANCE, commonParams.sortOrder);
+    assertEquals(ArticleSearchQuery.SolrEnumeratedDateRange.ALL_TIME, commonParams.dateRange);
     assertTrue(commonParams.articleTypes.isEmpty());
     assertTrue(commonParams.journalKeys.isEmpty());
     assertTrue(commonParams.filterJournalNames.isEmpty());

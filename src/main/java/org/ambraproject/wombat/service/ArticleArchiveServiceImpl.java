@@ -27,8 +27,8 @@ import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
-import org.ambraproject.wombat.service.remote.SolrSearchApi.SolrEnumeratedDateRange;
-import org.ambraproject.wombat.service.remote.SolrSearchApi.SolrSortOrder;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery.SolrEnumeratedDateRange;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery.SolrSortOrder;
 import org.apache.commons.lang3.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -95,13 +95,13 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
     endDate.add(Calendar.MONTH, 1);
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    SolrSearchApi.SolrExplicitDateRange dateRange = new SolrSearchApi.SolrExplicitDateRange
+    ArticleSearchQuery.SolrExplicitDateRange dateRange = new ArticleSearchQuery.SolrExplicitDateRange
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 
     ArticleSearchQuery query = ArticleSearchQuery.builder()
       .setJournalKeys(ImmutableList.of(site.getJournalKey()))
       .setRows(MAXIMUM_SOLR_RESULT_COUNT)
-      .setSortOrder(SolrSearchApi.SolrSortOrder.DATE_OLDEST_FIRST)
+      .setSortOrder(ArticleSearchQuery.SolrSortOrder.DATE_OLDEST_FIRST)
       .setDateRange(dateRange)
       .setCursor(cursor)
       .build();

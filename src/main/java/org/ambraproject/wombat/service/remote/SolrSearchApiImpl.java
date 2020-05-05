@@ -31,21 +31,11 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.TimeZone;
-import java.util.stream.Collectors;
-import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
@@ -66,12 +56,7 @@ public class SolrSearchApiImpl implements SolrSearchApi {
   @Autowired
   private CachedRemoteService<Reader> cachedRemoteReader;
   @Autowired
-  private ArticleApi articleApi;
-  @Autowired
   private RuntimeConfiguration runtimeConfiguration;
-
-  @VisibleForTesting
-  protected Map<String, String> eIssnToJournalKey;
 
   /**
    * Enumerates sort orders that we want to expose in the UI.
@@ -204,46 +189,6 @@ public class SolrSearchApiImpl implements SolrSearchApi {
           DatatypeConverter.printDateTime(endDate));
     }
 
-  }
-
-  @Override
-  public SolrSearchApi.Result addArticleLinks(SolrSearchApi.Result results, HttpServletRequest request, Site site,
-                                   SiteSet siteSet) throws IOException {
-    initializeEIssnToJournalKeyMap(siteSet, site);
-    SolrSearchApi.Result.Builder builder = results.toBuilder();
-    List<Map<String, Object>> docs = results.getDocs().stream().map(doc -> {
-        ImmutableMap.Builder<String, Object> newDoc = ImmutableMap.builder();
-        String doi = (String) doc.get("id");
-        String eIssn = (String) doc.get("eissn");
-        String foreignJournalKey = eIssnToJournalKey.get(eIssn);
-        String link = Link.toForeignSite(site, foreignJournalKey, siteSet).toPath("/article?id=" + doi).get(request);
-        newDoc.putAll(doc);
-        newDoc.put("link", link);
-        newDoc.put("journalKey", foreignJournalKey);
-        return newDoc.build();
-      })
-      .collect(Collectors.toList());
-    return builder.setDocs(docs).build();
-  }
-
-  /**
-   * Initializes the eIssnToJournalKey map if necessary by calling rhino to get eISSNs for all journals.
-   *
-   * @param siteSet     set of all sites
-   * @param currentSite site associated with the current request
-   * @throws IOException
-   */
-  @VisibleForTesting
-  protected synchronized void initializeEIssnToJournalKeyMap(SiteSet siteSet, Site currentSite) throws IOException {
-    if (eIssnToJournalKey == null) {
-      Map<String, String> mutable = new HashMap<>();
-      for (Site site : siteSet.getSites()) {
-        Map<String, String> rhinoResult = (Map<String, String>) articleApi.requestObject(
-            ApiAddress.builder("journals").addToken(site.getJournalKey()).build(), Map.class);
-        mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());
-      }
-      eIssnToJournalKey = ImmutableMap.copyOf(mutable);
-    }
   }
 
   @Override

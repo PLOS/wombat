@@ -22,9 +22,6 @@
 
 package org.ambraproject.wombat.service.remote;
 
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
-import javax.servlet.http.HttpServletRequest;
 import com.google.auto.value.AutoValue;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -142,19 +139,4 @@ public interface SolrSearchApi {
    * @throws IOException
    */
   public Result search(ArticleSearchQuery query) throws IOException;
-
-  /**
-   * Adds a new property, link, to each search result passed in.  The value of this property is the correct URL to the
-   * article on this environment.  Calling this method is necessary since article URLs need to be specific to the site
-   * of the journal the article is published in, not the site in which the search results are being viewed.
-   *
-   * @param searchResults deserialized search results JSON
-   * @param request       current request
-   * @param site          site of the current request (for the search results)
-   * @param siteSet       site set of the current request
-   * @return searchResults decorated with the new property
-   * @throws IOException
-   */
-  public Result addArticleLinks(Result results, HttpServletRequest request, Site site, SiteSet
-      siteSet) throws IOException;
 }

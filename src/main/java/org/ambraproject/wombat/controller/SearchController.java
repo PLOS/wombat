@@ -32,6 +32,7 @@ import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.config.site.url.Link;
 import org.ambraproject.wombat.feed.ArticleFeedView;
 import org.ambraproject.wombat.feed.FeedMetadataField;
 import org.ambraproject.wombat.feed.FeedType;
@@ -45,6 +46,8 @@ import org.ambraproject.wombat.service.BrowseTaxonomyService;
 import org.ambraproject.wombat.service.SearchFilterService;
 import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
+import org.ambraproject.wombat.service.remote.ApiAddress;
+import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.ServiceRequestException;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
@@ -113,6 +116,9 @@ public class SearchController extends WombatController {
 
   @Autowired
   private AlertService alertService;
+
+  @Autowired
+  private ArticleApi articleApi;
 
   private final String BROWSE_RESULTS_PER_PAGE = "13";
   private final String CANNOT_PARSE_QUERY_ERROR = "cannotParseQueryError";
@@ -502,6 +508,61 @@ public class SearchController extends WombatController {
     }
   }
 
+  @VisibleForTesting
+  protected Map<String, String> eIssnToJournalKey;
+
+  /**
+   * Initializes the eIssnToJournalKey map if necessary by calling rhino to get eISSNs for all journals.
+   *
+   * @param siteSet     set of all sites
+   * @param currentSite site associated with the current request
+   * @throws IOException
+   */
+  @VisibleForTesting
+  protected synchronized void initializeEIssnToJournalKeyMap(SiteSet siteSet, Site currentSite) throws IOException {
+    if (eIssnToJournalKey == null) {
+      Map<String, String> mutable = new HashMap<>();
+      for (Site site : siteSet.getSites()) {
+        Map<String, String> rhinoResult = (Map<String, String>) articleApi.requestObject(
+            ApiAddress.builder("journals").addToken(site.getJournalKey()).build(), Map.class);
+        mutable.put(rhinoResult.get("eIssn"), site.getJournalKey());
+      }
+      eIssnToJournalKey = ImmutableMap.copyOf(mutable);
+    }
+  }
+
+
+  /**
+   * Adds a new property, link, to each search result passed in.  The value of this property is the correct URL to the
+   * article on this environment.  Calling this method is necessary since article URLs need to be specific to the site
+   * of the journal the article is published in, not the site in which the search results are being viewed.
+   *
+   * @param searchResults deserialized search results JSON
+   * @param request       current request
+   * @param site          site of the current request (for the search results)
+   * @param siteSet       site set of the current request
+   * @return searchResults decorated with the new property
+   * @throws IOException
+   */
+  public SolrSearchApi.Result addArticleLinks(SolrSearchApi.Result results, HttpServletRequest request, Site site,
+                                   SiteSet siteSet) throws IOException {
+    initializeEIssnToJournalKeyMap(siteSet, site);
+    SolrSearchApi.Result.Builder builder = results.toBuilder();
+    List<Map<String, Object>> docs = results.getDocs().stream().map(doc -> {
+        ImmutableMap.Builder<String, Object> newDoc = ImmutableMap.builder();
+        String doi = (String) doc.get("id");
+        String eIssn = (String) doc.get("eissn");
+        String foreignJournalKey = eIssnToJournalKey.get(eIssn);
+        String link = Link.toForeignSite(site, foreignJournalKey, siteSet).toPath("/article?id=" + doi).get(request);
+        newDoc.putAll(doc);
+        newDoc.put("link", link);
+        newDoc.put("journalKey", foreignJournalKey);
+        return newDoc.build();
+      })
+      .collect(Collectors.toList());
+    return builder.setDocs(docs).build();
+  }
+
   private static boolean isNullOrEmpty(Collection<?> collection) {
     return collection == null || collection.isEmpty();
   }
@@ -683,7 +744,7 @@ public class SearchController extends WombatController {
     }
 
     addFiltersToModel(request, model, site, commonParams, query, searchResults);
-    model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
+    model.addAttribute("searchResults", addArticleLinks(searchResults, request, site, siteSet));
 
     model.addAttribute("alertQuery", alertService.convertParamsToJson(params));
     return true; //valid search - proceed to return results
@@ -832,7 +893,7 @@ public class SearchController extends WombatController {
     SolrSearchApi.Result searchResults = solrSearchApi.search(query);
 
     model.addAttribute("articles", SolrArticleAdapter.unpackSolrQuery(searchResults));
-    model.addAttribute("searchResults", solrSearchApi.addArticleLinks(searchResults, request, site, siteSet));
+    model.addAttribute("searchResults", addArticleLinks(searchResults, request, site, siteSet));
     model.addAttribute("page", commonParams.getSingleParam(params, "page", "1"));
     model.addAttribute("journalKey", site.getKey());
     model.addAttribute("isBrowse", true);

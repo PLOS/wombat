@@ -74,8 +74,7 @@ public class DoiToJournalResolutionService {
         .setJournalSearch(true)
         .build();
 
-    Map<String, ?> results = solrSearchApi.rawSearch(explicitDoiSearchQuery);
-    List<Map<String, ?>> docs = (List<Map<String, ?>>) results.get("docs");
+    List<Map<String, Object>> docs = solrSearchApi.cookedSearch(explicitDoiSearchQuery).getDocs();
 
     Map<String, String> keysMap = new HashMap<String,String>();
     docs.forEach(data -> {

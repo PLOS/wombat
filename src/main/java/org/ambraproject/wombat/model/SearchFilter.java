@@ -23,9 +23,9 @@
 package org.ambraproject.wombat.model;
 
 import com.google.common.collect.ImmutableList;
-
-import java.util.LinkedHashSet;
+import com.google.common.collect.ImmutableSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -61,25 +61,18 @@ public class SearchFilter {
   }
 
   public void setActiveAndInactiveFilterItems(List<String> filterDisplayNames) {
-    this.activeFilterItems = getSearchFilterResult().stream()
-        .filter((SearchFilterItem filterItem) -> isFilterItemActive(filterDisplayNames, filterItem))
-        .collect(Collectors.toCollection(LinkedHashSet::new));
-    this.inactiveFilterItems = getSearchFilterResult().stream()
-        .filter((SearchFilterItem filterItem) -> isFilterItemInactive(filterDisplayNames, filterItem))
-        .collect(Collectors.toCollection(LinkedHashSet::new));
+    Map<Boolean, List<SearchFilterItem>> results =
+        this.searchFilterResult.stream().collect(Collectors.partitioningBy(
+            filterItem -> isFilterItemActive(filterDisplayNames, filterItem)));
+    this.activeFilterItems = ImmutableSet.copyOf(results.get(true));
+    this.inactiveFilterItems = ImmutableSet.copyOf(results.get(false));
   }
 
   private boolean isFilterItemActive(List<String> filterDisplayNames,
-      SearchFilterItem searchFilterItem) {
-    return filterDisplayNames.stream()
-        .anyMatch(filterDisplayName ->
-            filterDisplayName.equalsIgnoreCase(searchFilterItem.getFilterValue()));
-  }
-
-  private boolean isFilterItemInactive(List<String> filterDisplayNames,
-      SearchFilterItem searchFilterItem) {
-    return filterDisplayNames.stream()
-        .noneMatch(filterDisplayName ->
-            filterDisplayName.equalsIgnoreCase(searchFilterItem.getFilterValue()));
+                                     SearchFilterItem searchFilterItem) {
+    return filterDisplayNames.stream().anyMatch(
+        filterDisplayName
+        -> filterDisplayName.equalsIgnoreCase(
+            searchFilterItem.getFilterValue()));
   }
 }

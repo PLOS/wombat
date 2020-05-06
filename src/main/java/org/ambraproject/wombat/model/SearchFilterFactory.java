@@ -27,7 +27,7 @@ import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Qualifier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,12 +39,13 @@ import java.util.Map;
 public class SearchFilterFactory {
 
   @Autowired
-  private SearchFilterTypeMap filterTypeMap;
+  @Qualifier("searchFilters")
+  private Map<String,SearchFilterType> filterTypeMap;
 
   /**
    * The main create method of the factory. Creates a @code{SearchFilter} in three steps:
    *
-   * 1. Retrieve the specified @code{SearchFilterType} using the @code{SearchFilterTypeMap}
+   * 1. Retrieve the specified @code{SearchFilterType}
    * 2. Parse the results from a faceted search into individual @code{SearchFilterItem}s
    * 3. Combine all SearchFilterItems into a @code{SearchFilter} object.
    *
@@ -61,7 +62,7 @@ public class SearchFilterFactory {
   public SearchFilter createSearchFilter(Map<String, Integer> results, String filterTypeMapKey,
       Multimap<String, String> params) {
 
-    SearchFilterType filterType = filterTypeMap.getSearchFilterByKey(filterTypeMapKey);
+    SearchFilterType filterType = filterTypeMap.get(filterTypeMapKey);
 
     List<SearchFilterItem> searchFilterResult = new ArrayList<>();
 

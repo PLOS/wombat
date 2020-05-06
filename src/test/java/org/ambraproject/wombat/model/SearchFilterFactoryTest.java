@@ -14,13 +14,14 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+import java.util.Map;
 
 
 @ContextConfiguration(classes = {ArticleResolutionServiceTest.class})
 public class SearchFilterFactoryTest extends AbstractJUnit4SpringContextTests {
 
   @Mock
-  private SearchFilterTypeMap filterTypeMap;
+  private Map<String,SearchFilterType> filterTypeMap;
 
   @InjectMocks
   private SearchFilterFactory searchFilterFactory;
@@ -44,7 +45,7 @@ public class SearchFilterFactoryTest extends AbstractJUnit4SpringContextTests {
     JournalFilterType filterType = spy(JournalFilterType.class);
     doReturn("PLoSONE").when(filterType).getFilterValue("PLOS ONE");
     doReturn("PLoSCompBiol").when(filterType).getFilterValue("PLOS Computational Biology");
-    when(filterTypeMap.getSearchFilterByKey("journal")).thenReturn(filterType);
+    when(filterTypeMap.get("journal")).thenReturn(filterType);
 
     ImmutableMap<String, Integer> results = ImmutableMap.of("PLOS ONE", 19, "PLOS Computational Biology", 412);
     String filterTypeMapKey = "journal";

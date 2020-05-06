@@ -1413,6 +1413,7 @@
               </xsl:attribute>
               <xsl:attribute name="alt">thumbnail</xsl:attribute>
               <xsl:attribute name="class">thumbnail</xsl:attribute>
+              <xsl:attribute name="loading">lazy</xsl:attribute>
             </xsl:element>
           </xsl:element>
           <div class="expand"/>

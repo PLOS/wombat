@@ -203,7 +203,7 @@ public class SearchController extends WombatController {
                                          @SiteParam Site site,
                                          @RequestParam MultiValueMap<String, String> params
                                          ) throws IOException {
-    CommonParams commonParams = new CommonParams(siteSet, site);
+    CommonParams commonParams = new CommonParams(siteSet);
     commonParams.parseParams(params);
     commonParams.addToModel(model, request);
     model.addAttribute("sortOrders", ArticleSearchQuery.SolrSortOrder.values());

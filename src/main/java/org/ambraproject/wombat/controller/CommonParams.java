@@ -41,7 +41,6 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
@@ -139,8 +138,6 @@ public class CommonParams {
 
   private SiteSet siteSet;
 
-  private Site site;
-
   private int resultsPerPage;
 
   private LocalDate startDate;
@@ -159,9 +156,8 @@ public class CommonParams {
    * @param siteSet siteSet associated with the request
    * @param site    site of the request
    */
-  CommonParams(SiteSet siteSet, Site site) {
+  CommonParams(SiteSet siteSet) {
     this.siteSet = siteSet;
-    this.site = site;
   }
 
   /**

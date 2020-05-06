@@ -48,8 +48,7 @@ public class SearchFilterServiceTest extends AbstractJUnit4SpringContextTests {
         .build();
     SolrSearchApi.Result result = mock(SolrSearchApi.Result.class);
     Map<String, Map<String, Integer>> facetMap = mock(Map.class);
-    Optional<Map<String, Map<String, Integer>>> facets = Optional.of(facetMap);
-    when(result.getFacets()).thenReturn(facets);
+    when(result.getFacets()).thenReturn(facetMap);
     when(facetMap.get(any())).thenReturn(ImmutableMap.of());
     
     when(solrSearchApi.search(any())).thenReturn(result);

@@ -59,8 +59,8 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
       .setJournalKeys(ImmutableList.of(site.getJournalKey()))
       .build();
     SolrSearchApi.Result result = solrSearchApi.search(query);
-    Date minDate = result.getPublicationDateStats().get().getMin();
-    Date maxDate = result.getPublicationDateStats().get().getMax();
+    Date minDate = result.getPublicationDateStats().getMin();
+    Date maxDate = result.getPublicationDateStats().getMax();
     return Range.between(minDate, maxDate);
   }
 

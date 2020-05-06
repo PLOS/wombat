@@ -63,7 +63,6 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
 
           List<String> subjects = solrSearchApi.search(query)
             .getFacets()
-            .get()
             .get("subject_hierarchy")
             .keySet()
             .stream()
@@ -89,7 +88,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
 
         SolrSearchApi.Result results = solrSearchApi.search(query);
         ImmutableSortedMap.Builder<String, Integer> builder = ImmutableSortedMap.naturalOrder();
-        builder.putAll(results.getFacets().get().get("subject_facet"));
+        builder.putAll(results.getFacets().get("subject_facet"));
         builder.put("ROOT", results.getNumFound());
         return builder.build();
       });

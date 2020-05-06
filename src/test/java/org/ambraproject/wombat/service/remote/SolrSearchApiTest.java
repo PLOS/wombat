@@ -252,7 +252,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   public void deserializeStatsResult() throws IOException {
     SolrSearchApi.Result result = gson.fromJson(read("queries/stats.json"), SolrSearchApi.Result.class);
     assertEquals(4510, result.getNumFound(), 4510);
-    SolrSearchApi.FieldStatsResult<Date> publicationDateStats = result.getPublicationDateStats().get();
+    SolrSearchApi.FieldStatsResult<Date> publicationDateStats = result.getPublicationDateStats();
     Date minDate = publicationDateStats.getMin();
     assertEquals(2003, minDate.getYear() + 1900);
     assertEquals(7, minDate.getMonth());
@@ -267,7 +267,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   public void deserializeSimpleResult() throws IOException {
     SolrSearchApi.Result result = gson.fromJson(read("queries/simple.json"), SolrSearchApi.Result.class);
     assertEquals(1784487, result.getNumFound());
-    assertEquals(Optional.of("AoE/HjEwLjEzNzEvYW5ub3RhdGlvbi8wMGEzYjIyZS0zNmE5LTRkNTEtODllNS0xZTY1NjFlN2ExZTkvdGl0bGU="),
+    assertEquals("AoE/HjEwLjEzNzEvYW5ub3RhdGlvbi8wMGEzYjIyZS0zNmE5LTRkNTEtODllNS0xZTY1NjFlN2ExZTkvdGl0bGU=",
                  result.getNextCursorMark());
     assertEquals(10, result.getDocs().size());
     Map<String, Object> doc = result.getDocs().get(0);
@@ -278,7 +278,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   public void deserializeFacetResult() throws IOException {
     SolrSearchApi.Result result = gson.fromJson(read("queries/facet.json"), SolrSearchApi.Result.class);
     assertEquals(6, result.getNumFound());
-    Map<String, Map<String, Integer>> facets = result.getFacets().get();
+    Map<String, Map<String, Integer>> facets = result.getFacets();
     assert(facets.keySet().contains("subject_facet"));
     Map<String, Integer> subjectFacet = facets.get("subject_facet");
     assertEquals(Integer.valueOf(2), subjectFacet.get("Gene mapping"));

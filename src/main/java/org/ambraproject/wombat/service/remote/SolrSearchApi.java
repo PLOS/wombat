@@ -24,6 +24,7 @@ package org.ambraproject.wombat.service.remote;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.lang.reflect.ParameterizedType;
 import java.net.MalformedURLException;
@@ -34,6 +35,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import javax.annotation.Nullable;
 import com.google.auto.value.AutoValue;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -43,6 +45,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.reflect.TypeToken;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
@@ -69,14 +72,15 @@ public class SolrSearchApi {
 
   @AutoValue
   @JsonAdapter(Result.Deserializer.class)
-  public static abstract class Result {
+  public static abstract class Result implements Serializable {
+    static final long serialVersionUID = 1L;
     public abstract Builder toBuilder();
     public abstract int getNumFound();
     public abstract int getStart();
     public abstract List<Map<String, Object>> getDocs();
-    public abstract Optional<String> getNextCursorMark();
-    public abstract Optional<FieldStatsResult<Date>> getPublicationDateStats();
-    public abstract Optional<Map<String, Map<String,Integer>>> getFacets();
+    @Nullable public abstract String getNextCursorMark();
+    @Nullable public abstract FieldStatsResult<Date> getPublicationDateStats();
+    @Nullable public abstract Map<String, Map<String,Integer>> getFacets();
     public static Builder builder() {
       return new AutoValue_SolrSearchApi_Result.Builder();
     }
@@ -130,7 +134,8 @@ public class SolrSearchApi {
 
   @AutoValue
   @JsonAdapter(FieldStatsResult.Deserializer.class)
-  public static abstract class FieldStatsResult<T> {
+  public static abstract class FieldStatsResult<T> implements Serializable {
+    static final long serialVersionUID = 1L;
     public abstract T getMin();
     public abstract T getMax();
     static <T> Builder<T> builder() {
@@ -167,8 +172,8 @@ public class SolrSearchApi {
   public Result search(ArticleSearchQuery query) throws IOException {
     List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
     URI uri = getSolrUri(params);
-    log.debug("Solr request executing: " + uri);
-    return jsonService.requestObject(cachedRemoteReader, new HttpGet(uri), Result.class);
+    CacheKey cacheKey = CacheKey.create("solr", uri.toString());
+    return jsonService.requestCachedObject(cachedRemoteReader, cacheKey, new HttpGet(uri), Result.class);
   }
 
   private URI getSolrUri(List<NameValuePair> params) {

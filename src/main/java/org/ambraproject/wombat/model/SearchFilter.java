@@ -39,7 +39,8 @@ public class SearchFilter {
 
   private final String filterTypeMapKey;
 
-  public SearchFilter(List<SearchFilterItem> searchFilterResult, String filterTypeMapKey) {
+  public SearchFilter(List<SearchFilterItem> searchFilterResult,
+                      String filterTypeMapKey) {
     this.searchFilterResult = ImmutableList.copyOf(searchFilterResult);
     this.filterTypeMapKey = filterTypeMapKey;
   }
@@ -48,9 +49,7 @@ public class SearchFilter {
     return searchFilterResult;
   }
 
-  public String getFilterTypeMapKey() {
-    return filterTypeMapKey;
-  }
+  public String getFilterTypeMapKey() { return filterTypeMapKey; }
 
   public Set<SearchFilterItem> getActiveFilterItems() {
     return activeFilterItems;
@@ -61,18 +60,15 @@ public class SearchFilter {
   }
 
   public void setActiveAndInactiveFilterItems(List<String> filterDisplayNames) {
+    Set<String> displayNameFilterSet = filterDisplayNames.stream()
+                                           .map(String::toLowerCase)
+                                           .collect(Collectors.toSet());
     Map<Boolean, List<SearchFilterItem>> results =
         this.searchFilterResult.stream().collect(Collectors.partitioningBy(
-            filterItem -> isFilterItemActive(filterDisplayNames, filterItem)));
+            filterItem
+            -> displayNameFilterSet.contains(
+                filterItem.getFilterValueLowerCase())));
     this.activeFilterItems = ImmutableSet.copyOf(results.get(true));
     this.inactiveFilterItems = ImmutableSet.copyOf(results.get(false));
-  }
-
-  private boolean isFilterItemActive(List<String> filterDisplayNames,
-                                     SearchFilterItem searchFilterItem) {
-    return filterDisplayNames.stream().anyMatch(
-        filterDisplayName
-        -> filterDisplayName.equalsIgnoreCase(
-            searchFilterItem.getFilterValue()));
   }
 }

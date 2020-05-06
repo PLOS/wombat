@@ -25,6 +25,7 @@ package org.ambraproject.wombat.model;
 import java.util.List;
 import java.util.Map;
 import com.google.auto.value.AutoValue;
+import com.google.auto.value.extension.memoized.Memoized;
 
 @AutoValue
 public abstract class SearchFilterItem {
@@ -38,6 +39,11 @@ public abstract class SearchFilterItem {
 
   public static Builder builder() {
     return new AutoValue_SearchFilterItem.Builder();
+  }
+
+  @Memoized
+  public String getFilterValueLowerCase() {
+    return this.getFilterValue().toLowerCase();
   }
 
   @AutoValue.Builder

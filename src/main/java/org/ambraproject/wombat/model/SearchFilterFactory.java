@@ -22,10 +22,6 @@
 
 package org.ambraproject.wombat.model;
 
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Multimaps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import java.util.ArrayList;
@@ -59,8 +55,7 @@ public class SearchFilterFactory {
    * the faceted search results. The SearchFilterItems also house a /search URL that represents
    * how the filter would be applied or removed from a search.
    */
-  public SearchFilter createSearchFilter(Map<String, Integer> results, String filterTypeMapKey,
-      Multimap<String, String> params) {
+  public SearchFilter createSearchFilter(Map<String, Integer> results, String filterTypeMapKey) {
 
     SearchFilterType filterType = filterTypeMap.get(filterTypeMapKey);
 

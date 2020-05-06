@@ -41,7 +41,7 @@ public class SearchFilterServiceTest extends AbstractJUnit4SpringContextTests {
   @Test
   public void testGetSearchFilters() throws IOException {
     SearchFilter mockFilter = mock(SearchFilter.class);
-    when(searchFilterFactory.createSearchFilter(any(), any(),any())).thenReturn(mockFilter);
+    when(searchFilterFactory.createSearchFilter(any(), any())).thenReturn(mockFilter);
     ArticleSearchQuery query = ArticleSearchQuery.builder()
         .setQuery("blah")
         .setSimple(true)
@@ -61,7 +61,7 @@ public class SearchFilterServiceTest extends AbstractJUnit4SpringContextTests {
         "author", mockFilter,
         "section", mockFilter);
 
-    Map<String, SearchFilter> searchFilters = searchFilterService.getSearchFilters(query, null);
+    Map<String, SearchFilter> searchFilters = searchFilterService.getSearchFilters(query);
     assertEquals(expected, searchFilters);
   }
 

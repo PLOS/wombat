@@ -40,7 +40,6 @@ public class SearchFilterFactoryTest extends AbstractJUnit4SpringContextTests {
     builder.putAll("filterJournals", ImmutableList.of("PlosCompBiol"));
     builder.putAll("filterStartDate", "");
     builder.putAll("filterEndDate", "");
-    ImmutableListMultimap<String, String> params = builder.build();
 
     JournalFilterType filterType = spy(JournalFilterType.class);
     doReturn("PLoSONE").when(filterType).getFilterValue("PLOS ONE");
@@ -49,7 +48,7 @@ public class SearchFilterFactoryTest extends AbstractJUnit4SpringContextTests {
 
     ImmutableMap<String, Integer> results = ImmutableMap.of("PLOS ONE", 19, "PLOS Computational Biology", 412);
     String filterTypeMapKey = "journal";
-    SearchFilter searchFilter = searchFilterFactory.createSearchFilter(results, filterTypeMapKey, params);
+    SearchFilter searchFilter = searchFilterFactory.createSearchFilter(results, filterTypeMapKey);
     searchFilter.setActiveAndInactiveFilterItems(ImmutableList.of("plosone"));
     assertEquals(searchFilter.getFilterTypeMapKey(), "journal");
     SearchFilterItem inactive = searchFilter.getInactiveFilterItems().iterator().next();

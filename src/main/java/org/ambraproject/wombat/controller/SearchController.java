@@ -33,9 +33,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.site.Site;
@@ -164,39 +162,6 @@ public class SearchController extends WombatController {
 
   public static boolean isNullOrEmpty(Collection<?> collection) {
     return collection == null || collection.isEmpty();
-  }
-
-  /**
-   * Examine the current @code{ArticleSearchQuery} object and build a single URL parameter
-   * string to append to the current search URL.
-   *
-   * @param q the search query to rebuild search URL parameters from
-   * @return ImmutableListMultimap that contains the URL parameter list
-   */
-  private static ImmutableListMultimap<String, String> rebuildUrlParameters(ArticleSearchQuery q) {
-    Preconditions.checkArgument(q.getFacetFields().size() == 0);
-
-    ImmutableListMultimap.Builder<String, String> builder = ImmutableListMultimap.builder();
-    builder.put(q.isSimple() ? "q" : "unformattedQuery", q.getQuery());
-
-    int rows = q.getRows();
-    builder.put("resultsPerPage", Integer.toString(rows));
-    if (rows > 0) {
-      int page = q.getStart() / rows + 1;
-      builder.put("page", Integer.toString(page));
-    }
-
-    builder.putAll("filterJournals", q.getJournalKeys());
-    builder.putAll("filterSubjects", q.getSubjects());
-    builder.putAll("filterAuthors", q.getAuthors());
-    builder.putAll("filterSections", q.getSections());
-    builder.putAll("filterArticleTypes", q.getArticleTypes());
-    builder.putAll("filterStartDate", q.getStartDate() == null ? "" : q.getStartDate());
-    builder.putAll("filterEndDate", q.getEndDate() == null ? "" : q.getEndDate());
-
-    // TODO: Support dateRange. Note this is different from startDate and endDate
-    // TODO: Support sortOrder
-    return builder.build();
   }
 
   private CommonParams modelCommonParams(HttpServletRequest request, Model model,
@@ -346,8 +311,7 @@ public class SearchController extends WombatController {
     if (searchResults.getNumFound() == 0) {
       activeFilterItems = commonParams.setActiveFilterParams(model, request);
     } else {
-      Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj,
-          rebuildUrlParameters(queryObj));
+      Map<String, SearchFilter> filters = searchFilterService.getSearchFilters(queryObj);
       filters.values().forEach(commonParams::setActiveAndInactiveFilterItems);
 
       activeFilterItems = new LinkedHashSet<>();

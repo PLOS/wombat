@@ -80,9 +80,7 @@ public class SearchFilterService {
    * @return HashMap containing all applicable filters
    * @throws IOException
    */
-  public Map<String, SearchFilter> getSearchFilters(ArticleSearchQuery query,
-                                                    Multimap<String, String> urlParams
-                                                    ) throws IOException {
+  public Map<String, SearchFilter> getSearchFilters(ArticleSearchQuery query) throws IOException {
     ImmutableList<String> facetFields = ImmutableList.of(JOURNAL_FACET_FIELD,
                                                          ARTICLE_TYPE_FACET,
                                                          AUTHOR_FACET,
@@ -91,10 +89,10 @@ public class SearchFilterService {
     ArticleSearchQuery facetQuery = query.toBuilder().setRows(0).setFacetFields(facetFields).build();
     SolrSearchApi.Result results = solrSearchApi.search(facetQuery);
     Map<String, Map<String, Integer>> facets = results.getFacets().get();
-    SearchFilter journalFilter = searchFilterFactory.createSearchFilter(facets.get(JOURNAL_FACET_FIELD), JOURNAL, urlParams);
-    SearchFilter subjectAreaFilter = searchFilterFactory.createSearchFilter(facets.get(SUBJECT_AREA_FACET_FIELD), SUBJECT_AREA, urlParams);
-    SearchFilter authorFilter = searchFilterFactory.createSearchFilter(facets.get(AUTHOR_FACET), AUTHOR, urlParams);
-    SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(facets.get(ARTICLE_TYPE_FACET), ARTICLE_TYPE, urlParams);
+    SearchFilter journalFilter = searchFilterFactory.createSearchFilter(facets.get(JOURNAL_FACET_FIELD), JOURNAL);
+    SearchFilter subjectAreaFilter = searchFilterFactory.createSearchFilter(facets.get(SUBJECT_AREA_FACET_FIELD), SUBJECT_AREA);
+    SearchFilter authorFilter = searchFilterFactory.createSearchFilter(facets.get(AUTHOR_FACET), AUTHOR);
+    SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(facets.get(ARTICLE_TYPE_FACET), ARTICLE_TYPE);
 
     ArticleSearchQuery sectionFacetQuery = query.toBuilder()
       .setFacetFields(ImmutableList.of(SECTION_FACET)) 
@@ -104,7 +102,7 @@ public class SearchFilterService {
     Map<String, Integer> sectionFacetResults = solrSearchApi.search(sectionFacetQuery)
       .getFacets().get().get(SECTION_FACET);
     SearchFilter sectionFilter = searchFilterFactory.createSearchFilter(sectionFacetResults,
-        SECTION, urlParams);
+        SECTION);
 
     // TODO: add other filters here
 

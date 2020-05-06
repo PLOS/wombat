@@ -36,8 +36,6 @@ public abstract class SearchFilterItem {
 
   public abstract String getFilterValue();
 
-  public abstract Map<String, List<String>> getFilteredResultsParameters();
-
   public static Builder builder() {
     return new AutoValue_SearchFilterItem.Builder();
   }
@@ -49,6 +47,5 @@ public abstract class SearchFilterItem {
     public abstract Builder setNumberOfHits(int numberOfHits);
     public abstract Builder setFilterParamName(String filterParamName);
     public abstract Builder setFilterValue(String filterValue);
-    public abstract Builder setFilteredResultsParameters(Map<String, List<String>> filterResultsParameters);
   }
 }

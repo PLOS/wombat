@@ -380,15 +380,9 @@ public class CommonParams {
 
     for (String filterValue : filterValues) {
       List<String> filterValueList = new ArrayList<>(Arrays.asList(filterValues));
-      Map<String, List<String>> queryParamMap = new HashMap<>();
-      // covert Map<String, String[]> to Map<String, List<String> for code re-usability
-      queryParamMap.putAll(parameterMap.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey,
-          (Map.Entry<String, String[]> entry) -> new ArrayList<>(Arrays.asList(entry.getValue())))));
-      queryParamMap.remove(filterName);
       // include the rest of filter values for that specific filter
       if (filterValueList.size() > 1) {
         filterValueList.remove(filterValue);
-        queryParamMap.put(filterName, filterValueList);
       }
       String displayName;
       try {
@@ -402,7 +396,6 @@ public class CommonParams {
           .setNumberOfHits(0)
           .setFilterParamName(filterName)
           .setFilterValue(filterValue)
-          .setFilteredResultsParameters(queryParamMap)
           .build();
         activeFilterItems.add(filterItem);
       } catch (UnmatchedSiteException umse) {

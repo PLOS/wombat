@@ -73,41 +73,15 @@ public class SearchFilterFactory {
       //displayName is often represented by the filter value
       String displayName = entry.getKey();
 
-      ListMultimap<String, String> changedParams = applyFilterToParams(displayName, params,
-          filterType);
-          SearchFilterItem filterItem = SearchFilterItem.builder()
-            .setDisplayName(displayName)
-            .setNumberOfHits(numberOfHits)
-            .setFilterParamName(filterType.getParameterName())
-            .setFilterValue(filterType.getFilterValue(displayName))
-            .setFilteredResultsParameters(Multimaps.asMap(changedParams))
-            .build();
+      SearchFilterItem filterItem = SearchFilterItem.builder()
+        .setDisplayName(displayName)
+        .setNumberOfHits(numberOfHits)
+        .setFilterParamName(filterType.getParameterName())
+        .setFilterValue(filterType.getFilterValue(displayName))
+        .build();
 
       searchFilterResult.add(filterItem);
     }
     return new SearchFilter(searchFilterResult, filterTypeMapKey);
   }
-
-  /**
-   * Examines the current URL parameters, and toggles the selected parameter.
-   *
-   * @param displayName used to retrieve the filter value from the filter type map
-   * @param params current URL parameters to be modified
-   * @param filterType used to retrieve selected filter parameter name and value
-   * @return filtered URL parameter List
-   */
-  private ListMultimap<String, String> applyFilterToParams(String displayName,
-      Multimap<String, String> params, SearchFilterType filterType) {
-    String filterValue = filterType.getFilterValue(displayName);
-    String parameterName = filterType.getParameterName();
-
-    ListMultimap<String, String> changedParams = LinkedListMultimap.create(params);
-    if (params.containsEntry(parameterName, filterValue)) {
-      changedParams.remove(parameterName, filterValue);
-    } else {
-      changedParams.put(parameterName, filterValue);
-    }
-    return changedParams;
-  }
-
 }

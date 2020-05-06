@@ -249,7 +249,7 @@ public abstract class ArticleSearchQuery {
       .setAuthors(ImmutableList.of())
       .setFacetFields(ImmutableList.of())
       .setFacetLimit(100)
-      .setFacetMinCount(0)
+      .setFacetMinCount(1)
       .setJournalKeys(ImmutableList.of())
       .setQuery("*:*")
       .setPartialSearch(false)

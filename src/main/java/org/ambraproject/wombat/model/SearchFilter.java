@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 
 public class SearchFilter {
 
-  private final ImmutableList<SearchFilterItem> searchFilterResult;
+  private final transient ImmutableList<SearchFilterItem> searchFilterResult;
 
   private Set<SearchFilterItem> activeFilterItems;
 

@@ -57,7 +57,7 @@ public class SearchControllerTest extends AbstractJUnit4SpringContextTests {
     params.put("filterSubjects", Arrays.asList("subject1", "subject2"));
 
     Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal1Key");
-    SearchController.CommonParams commonParams = new SearchController.CommonParams(siteSet, site);
+    CommonParams commonParams = new CommonParams(siteSet, site);
     commonParams.parseParams(params);
 
     assertEquals(90, commonParams.start);  // Default results per page should be 15

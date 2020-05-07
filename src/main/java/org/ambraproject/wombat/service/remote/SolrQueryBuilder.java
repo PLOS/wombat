@@ -69,6 +69,8 @@ public class SolrQueryBuilder {
       }
       params.add("facet.mincount", Integer.toString(asq.getFacetMinCount()));
       params.add("facet.limit", Integer.toString(asq.getFacetLimit()));
+      /* Use a thread per facet. */
+      params.add("facet.threads", Integer.toString(-1));
       params.add("json.nl", "map");
     } else {
       params.add("facet", "false");

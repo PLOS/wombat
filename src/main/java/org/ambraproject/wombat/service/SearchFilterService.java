@@ -86,7 +86,7 @@ public class SearchFilterService {
                                                          AUTHOR_FACET,
                                                          SUBJECT_AREA_FACET_FIELD);
 
-    ArticleSearchQuery facetQuery = query.toBuilder().setRows(0).setFacetFields(facetFields).build();
+    ArticleSearchQuery facetQuery = query.toBuilder().setRows(0).setFacetFields(facetFields).setSortOrder(null).build();
     SolrSearchApi.Result results = solrSearchApi.search(facetQuery);
     Map<String, Map<String, Integer>> facets = results.getFacets();
     SearchFilter journalFilter = searchFilterFactory.createSearchFilter(facets.get(JOURNAL_FACET_FIELD), JOURNAL);
@@ -97,6 +97,7 @@ public class SearchFilterService {
     ArticleSearchQuery sectionFacetQuery = query.toBuilder()
       .setFacetFields(ImmutableList.of(SECTION_FACET)) 
       .setRows(0)
+      .setSortOrder(null)
       .setPartialSearch(true).build();
 
     Map<String, Integer> sectionFacetResults = solrSearchApi.search(sectionFacetQuery)

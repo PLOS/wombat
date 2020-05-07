@@ -313,7 +313,7 @@ public abstract class ArticleSearchQuery {
     /**
      * @param sortOrder the sort order of the results returned from Solr
      */
-    public abstract Builder setSortOrder(SearchCriterion sortOrder);
+    public abstract Builder setSortOrder(@Nullable SearchCriterion sortOrder);
 
     /**
      * @param journalKeys set the journals to filter by

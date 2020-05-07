@@ -172,6 +172,7 @@ public class SolrSearchApi {
   public Result search(ArticleSearchQuery query) throws IOException {
     List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
     URI uri = getSolrUri(params);
+    log.debug("Solr request executing: " + uri);
     CacheKey cacheKey = CacheKey.create("solr", uri.toString());
     return jsonService.requestCachedObject(cachedRemoteReader, cacheKey, new HttpGet(uri), Result.class);
   }

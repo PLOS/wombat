@@ -22,11 +22,15 @@
 
 package org.ambraproject.wombat.config;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import com.google.common.base.Strings;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import org.ambraproject.wombat.cache.Cache;
 import org.ambraproject.wombat.cache.MemcacheClient;
 import org.ambraproject.wombat.cache.NullCache;

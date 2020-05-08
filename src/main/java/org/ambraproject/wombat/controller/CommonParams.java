@@ -48,8 +48,8 @@ import org.ambraproject.wombat.model.SearchFilterItem;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.service.UnmatchedSiteException;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 
 /**
@@ -63,7 +63,7 @@ import org.springframework.ui.Model;
  */
 
 public class CommonParams {
-  private static final Logger log = LogManager.getLogger(CommonParams.class);
+  private static final Logger log = LoggerFactory.getLogger(CommonParams.class);
 
   private enum AdvancedSearchTerms {
     EVERYTHING("everything:"),

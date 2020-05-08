@@ -49,8 +49,8 @@ import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -59,7 +59,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SolrSearchApi {
   public static final Integer MAXIMUM_SOLR_RESULT_COUNT = 1000;
 
-  private static final Logger log = LogManager.getLogger(SolrSearchApi.class);
+  private static final Logger log = LoggerFactory.getLogger(SolrSearchApi.class);
 
   @Autowired
   private JsonService jsonService;
@@ -179,7 +179,7 @@ public class SolrSearchApi {
 
   private URI getSolrUri(List<NameValuePair> params) {
     try {
-      URL solrServer = runtimeConfiguration.getSolrUrl();
+      URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl().get();
       return new URL(solrServer, "select?" + UriUtil.formatParams(params)).toURI();
     } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);

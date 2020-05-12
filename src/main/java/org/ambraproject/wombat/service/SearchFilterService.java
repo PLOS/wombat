@@ -59,15 +59,15 @@ public class SearchFilterService {
 
   private final String AUTHOR = SingletonSearchFilterType.AUTHOR.getFilterMapKey();
 
-  private final String AUTHOR_FACET = "author_facet";
+  private final String AUTHOR_FACET_FIELD = "author_facet";
 
   private final String ARTICLE_TYPE = SingletonSearchFilterType.ARTICLE_TYPE.getFilterMapKey();
 
-  private final String ARTICLE_TYPE_FACET = "article_type_facet";
+  private final String ARTICLE_TYPE_FACET_FIELD = "article_type_facet";
 
   private final String SECTION = SingletonSearchFilterType.SECTION.getFilterMapKey();
 
-  private final String SECTION_FACET = "doc_partial_type";
+  private final String SECTION_FACET_FIELD = "doc_partial_type";
 
   /**
    * Retrieves a map of search filters to be added to the model. The filters displayed will change
@@ -82,8 +82,8 @@ public class SearchFilterService {
    */
   public Map<String, SearchFilter> getSearchFilters(ArticleSearchQuery query) throws IOException {
     ImmutableList<String> facetFields = ImmutableList.of(JOURNAL_FACET_FIELD,
-                                                         ARTICLE_TYPE_FACET,
-                                                         AUTHOR_FACET,
+                                                         ARTICLE_TYPE_FACET_FIELD,
+                                                         AUTHOR_FACET_FIELD,
                                                          SUBJECT_AREA_FACET_FIELD);
 
     ArticleSearchQuery facetQuery = query.toBuilder().setRows(0).setFacetFields(facetFields).setSortOrder(null).build();
@@ -91,17 +91,17 @@ public class SearchFilterService {
     Map<String, Map<String, Integer>> facets = results.getFacets();
     SearchFilter journalFilter = searchFilterFactory.createSearchFilter(facets.get(JOURNAL_FACET_FIELD), JOURNAL);
     SearchFilter subjectAreaFilter = searchFilterFactory.createSearchFilter(facets.get(SUBJECT_AREA_FACET_FIELD), SUBJECT_AREA);
-    SearchFilter authorFilter = searchFilterFactory.createSearchFilter(facets.get(AUTHOR_FACET), AUTHOR);
-    SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(facets.get(ARTICLE_TYPE_FACET), ARTICLE_TYPE);
+    SearchFilter authorFilter = searchFilterFactory.createSearchFilter(facets.get(AUTHOR_FACET_FIELD), AUTHOR);
+    SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(facets.get(ARTICLE_TYPE_FACET_FIELD), ARTICLE_TYPE);
 
     ArticleSearchQuery sectionFacetQuery = query.toBuilder()
-      .setFacetFields(ImmutableList.of(SECTION_FACET)) 
+      .setFacetFields(ImmutableList.of(SECTION_FACET_FIELD)) 
       .setRows(0)
       .setSortOrder(null)
       .setPartialSearch(true).build();
 
     Map<String, Integer> sectionFacetResults = solrSearchApi.search(sectionFacetQuery)
-      .getFacets().get(SECTION_FACET);
+      .getFacets().get(SECTION_FACET_FIELD);
     SearchFilter sectionFilter = searchFilterFactory.createSearchFilter(sectionFacetResults,
         SECTION);
 

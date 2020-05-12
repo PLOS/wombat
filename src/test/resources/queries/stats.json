@@ -1,0 +1,21 @@
+{
+  "response": {
+    "numFound": 4510,
+    "start": 0,
+    "docs": []
+  },
+  "stats": {
+    "stats_fields": {
+      "publication_date": {
+        "min": "2003-08-18T00:00:00Z",
+        "max": "2019-12-16T00:00:00Z",
+        "count": 4510,
+        "missing": 0,
+        "sum": 5704826716800000,
+        "mean": "2010-01-31T08:58:38.580Z",
+        "sumOfSquares": 7292757222443308000000000000,
+        "stddev": 130305231995.70164
+      }
+    }
+  }
+}

@@ -52,6 +52,7 @@ import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.XmlUtil;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -283,8 +284,8 @@ public class BrowseController extends WombatController {
   }
 
   private void populateAuthors(Map<String, Object> article, Site site) throws IOException {
-    Map<String, ?> solrResult = (Map<String, ?>) solrSearchApi.lookupArticleByDoi((String) article.get("doi"), site);
-    List<SolrArticleAdapter> solrArticles = SolrArticleAdapter.unpackSolrQuery(solrResult);
+    ArticleSearchQuery query = SolrArticleAdapter.lookupArticlesByDoisQuery(ImmutableList.of((String) article.get("doi")));
+    List<SolrArticleAdapter> solrArticles = SolrArticleAdapter.unpackSolrQuery(solrSearchApi.search(query));
     article.put("authors", solrArticles.size() > 0 ? solrArticles.get(0).getAuthors() : ImmutableList.of());
   }
 }

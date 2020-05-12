@@ -25,7 +25,11 @@ package org.ambraproject.wombat.service;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery.SolrEnumeratedDateRange;
+import org.ambraproject.wombat.service.remote.ArticleSearchQuery.SolrSortOrder;
+import org.apache.commons.lang3.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -33,7 +37,7 @@ import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Collections;
+import java.util.Date;
 import java.util.Map;
 
 import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULT_COUNT;
@@ -43,13 +47,21 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
   private static final ImmutableList<String> MONTHS = ImmutableList.copyOf(new DateFormatSymbols().getMonths());
 
   @Autowired
-  SolrSearchApiImpl solrSearchApi;
-
+  SolrSearchApi solrSearchApi;
+  
   @Override
-  public Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException {
-    Map<String, String> yearRange = (Map<String, String>) solrSearchApi.getStats("publication_date",
-        site.getJournalKey(), site);
-    return yearRange;
+  public Range<Date> getDatesForJournal(Site site) throws IOException, ParseException {
+    ArticleSearchQuery query = ArticleSearchQuery.builder()
+      .setRows(0)
+      .setStatsField("publication_date")
+      .setSortOrder(SolrSortOrder.RELEVANCE)
+      .setDateRange(SolrEnumeratedDateRange.ALL_TIME)
+      .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+      .build();
+    SolrSearchApi.Result result = solrSearchApi.search(query);
+    Date minDate = result.getPublicationDateStats().getMin();
+    Date maxDate = result.getPublicationDateStats().getMax();
+    return Range.between(minDate, maxDate);
   }
 
   /**
@@ -72,8 +84,8 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
    * {@inheritDoc}
    */
   @Override
-  public Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month,
-                                          String cursor) throws IOException, ParseException {
+  public SolrSearchApi.Result getArticleDoisPerMonth(Site site, String year, String month,
+                                                     String cursor) throws IOException, ParseException {
     Calendar startDate = Calendar.getInstance();
     startDate.setTime(new SimpleDateFormat("MMMM").parse(month));
     startDate.set(Calendar.YEAR, Integer.parseInt(year));
@@ -83,19 +95,16 @@ public class ArticleArchiveServiceImpl implements ArticleArchiveService {
     endDate.add(Calendar.MONTH, 1);
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    SolrSearchApiImpl.SolrExplicitDateRange dateRange = new SolrSearchApiImpl.SolrExplicitDateRange
+    ArticleSearchQuery.SolrExplicitDateRange dateRange = new ArticleSearchQuery.SolrExplicitDateRange
         ("Monthly Search", dateFormat.format(startDate.getTime()), dateFormat.format(endDate.getTime()));
 
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-        .setJournalKeys(Collections.singletonList(site.getJournalKey()))
-        .setRows(MAXIMUM_SOLR_RESULT_COUNT)
-        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_OLDEST_FIRST)
-        .setDateRange(dateRange)
-        .setCursor(cursor)
-        .setForRawResults(true);
-    Map<String, Map> rawResult = (Map<String, Map>) solrSearchApi.search(query.build(), site);
-    Map<String, Map> searchResult = rawResult.get("response");
-    searchResult.put("nextCursorMark", rawResult.get("nextCursorMark"));
-    return searchResult;
+    ArticleSearchQuery query = ArticleSearchQuery.builder()
+      .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+      .setRows(MAXIMUM_SOLR_RESULT_COUNT)
+      .setSortOrder(ArticleSearchQuery.SolrSortOrder.DATE_OLDEST_FIRST)
+      .setDateRange(dateRange)
+      .setCursor(cursor)
+      .build();
+    return solrSearchApi.search(query);
   }
 }

@@ -25,9 +25,8 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.Charsets;
-import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URL;
@@ -40,7 +39,7 @@ import java.util.stream.Collectors;
 public class ApiAddress {
 
   private final String path;
-  private final ImmutableList<BasicNameValuePair> parameters;
+  private final ImmutableList<NameValuePair> parameters;
 
   private ApiAddress(Builder builder) {
     this.path = builder.pathTokens.stream()
@@ -62,7 +61,7 @@ public class ApiAddress {
   }
 
   public String getAddress() {
-    return path + (parameters.isEmpty() ? "" : "?" + URLEncodedUtils.format(parameters, Charsets.UTF_8));
+    return path + (parameters.isEmpty() ? "" : "?" + UriUtil.formatParams(parameters));
   }
 
   private static String escapeDoi(String doi) {

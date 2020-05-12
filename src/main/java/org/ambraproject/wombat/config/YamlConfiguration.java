@@ -199,7 +199,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
   private final SolrConfiguration solrConfiguration = new SolrConfiguration() {
     @Override
     public Optional<URL> getUrl() {
-      return Optional.ofNullable(buildUrl(input.solr.url + getJournalsCollection() + "/select/", null));
+      return Optional.ofNullable(buildUrl(input.solr.url + getJournalsCollection() + "/", null));
     }
 
     @Override

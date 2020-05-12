@@ -79,8 +79,6 @@
     </fieldset>
 </script>
 
-<#--<@siteLink handlerName="advancedSearch" queryParameters=searchFilterItem.filteredResultsParameters>-->
-
 <script type="text/template" id="advanced-search-controls">
     <div class="advanced-search-inputs-container">
     </div>

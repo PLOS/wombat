@@ -32,6 +32,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.http.NameValuePair;
 
 public class SolrQueryBuilder {
+  private static final int THREAD_PER_FACET = -1;
+
   public static List<NameValuePair> buildParameters(ArticleSearchQuery asq) {
     UrlParamBuilder params = UrlParamBuilder.params();
 
@@ -69,8 +71,7 @@ public class SolrQueryBuilder {
       }
       params.add("facet.mincount", Integer.toString(asq.getFacetMinCount()));
       params.add("facet.limit", Integer.toString(asq.getFacetLimit()));
-      /* Use a thread per facet. */
-      params.add("facet.threads", Integer.toString(-1));
+      params.add("facet.threads", Integer.toString(THREAD_PER_FACET));
       params.add("json.nl", "map");
     } else {
       params.add("facet", "false");

@@ -65,16 +65,13 @@ public class SolrQueryBuilder {
     }
 
     if (asq.getFacetFields().size() > 0) {
-      params.add("facet", "true");
       for (String field: asq.getFacetFields()) {
-        params.add("facet.field", field);
+        String prefix = "json.facet." + field + ".terms.";
+        params.add(prefix + "field", field);
+        params.add(prefix + "mincount", Integer.toString(asq.getFacetMinCount()));
+        params.add(prefix + "limit", Integer.toString(asq.getFacetLimit()));
+        params.add(prefix + "threads", Integer.toString(THREAD_PER_FACET));
       }
-      params.add("facet.mincount", Integer.toString(asq.getFacetMinCount()));
-      params.add("facet.limit", Integer.toString(asq.getFacetLimit()));
-      params.add("facet.threads", Integer.toString(THREAD_PER_FACET));
-      params.add("json.nl", "map");
-    } else {
-      params.add("facet", "false");
     }
 
     List<String> fields = asq.getFields().orElse(ArticleSearchQuery.ARTICLE_FIELDS);

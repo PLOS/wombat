@@ -81,7 +81,7 @@ public class SearchFilterService {
    * @throws IOException
    */
   public Map<String, SearchFilter> getSearchFilters(ArticleSearchQuery query) throws IOException {
-    ImmutableList<String> facetFields = ImmutableList.of(JOURNAL_FACET_FIELD,
+    ImmutableList<String> facetFields = ImmutableList.of(b*scJOURNAL_FACET_FIELD,
                                                          ARTICLE_TYPE_FACET_FIELD,
                                                          AUTHOR_FACET_FIELD,
                                                          SUBJECT_AREA_FACET_FIELD);

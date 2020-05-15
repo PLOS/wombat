@@ -290,6 +290,7 @@ public class SearchController extends WombatController {
     SolrSearchApi.Result searchResults;
     try {
       searchResults = solrSearchApi.search(query);
+      System.out.println(searchResults.getFacets());
     } catch (ServiceRequestException sre) {
       model.addAttribute(isInvalidSolrRequest(queryString, sre)
           ? CANNOT_PARSE_QUERY_ERROR : UNKNOWN_QUERY_ERROR, true);

@@ -37,6 +37,9 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 import com.google.auto.value.AutoValue;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -47,6 +50,7 @@ import com.google.gson.reflect.TypeToken;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.util.CacheKey;
 import org.ambraproject.wombat.util.UriUtil;
+import org.apache.commons.lang.NotImplementedException;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.slf4j.Logger;
@@ -81,6 +85,7 @@ public class SolrSearchApi {
     @Nullable public abstract String getNextCursorMark();
     @Nullable public abstract FieldStatsResult<Date> getPublicationDateStats();
     @Nullable public abstract Map<String, Map<String,Integer>> getFacets();
+
     public static Builder builder() {
       return new AutoValue_SolrSearchApi_Result.Builder();
     }
@@ -106,14 +111,24 @@ public class SolrSearchApi {
           .setNumFound(responseData.get("numFound").getAsInt())
           .setStart(responseData.get("start").getAsInt())
           .setDocs(context.deserialize(responseData.get("docs"), docsType));
-        if (json.getAsJsonObject().has("facet_counts")) {
-          Type facetType = new TypeToken<Map<String, Map<String, Integer>>>() {}.getType();
-          builder.setFacets(context.deserialize(json.getAsJsonObject()
-                                                .getAsJsonObject("facet_counts")
-                                                .getAsJsonObject("facet_fields"),
-                                                facetType));
+        if (json.getAsJsonObject().has("facets")) {
+          JsonObject facets = json.getAsJsonObject().getAsJsonObject("facets");
+          ImmutableMap.Builder<String, Map<String,Integer>> facetBuilder = ImmutableMap.builder();
+          for (String key: facets.keySet()) {
+            if (key.equals("count")) {
+              continue;
+            } else {
+              Type bucketsType = new TypeToken<List<FacetResults>>() {}.getType();
+              JsonObject o = facets.getAsJsonObject(key);
+              JsonArray buckets = o.getAsJsonArray("buckets");
+              List<Map.Entry<String, Integer>> l = context.deserialize(buckets, bucketsType);
+              ImmutableMap<String, Integer> tmp = ImmutableMap.<String, Integer>builder().putAll(l).build();
+              facetBuilder.put(key, tmp);
+            }
+          }
+          builder.setFacets(facetBuilder.build());
         }
-
+        
         if (json.getAsJsonObject().has("stats")) {
           Type t = new TypeToken<FieldStatsResult<Date>>() {}.getType();
           FieldStatsResult<Date> publicationDateStats = 
@@ -161,6 +176,41 @@ public class SolrSearchApi {
       }
     }
   }
+      
+  @AutoValue
+  @JsonAdapter(FacetResults.Deserializer.class)
+  static abstract class FacetResults implements Map.Entry<String, Integer>, Serializable {
+    static final long serialVersionUID = 1L;
+    public abstract String getKey();
+    
+    public abstract Integer getValue();
+
+    public Integer setValue(Integer value) {
+      throw new NotImplementedException();
+    }
+
+    static Builder builder() {
+      return new AutoValue_SolrSearchApi_FacetResults.Builder();
+    }
+
+    @AutoValue.Builder
+    abstract static class Builder {
+      abstract FacetResults build();
+      abstract Builder setKey(String key);
+      abstract Builder setValue(Integer value);
+    }
+
+    public class Deserializer implements JsonDeserializer<FacetResults> {
+      @Override
+      public FacetResults deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        FacetResults.Builder builder = FacetResults.builder();
+        JsonObject jo = json.getAsJsonObject();
+        builder.setKey(jo.get("val").getAsString());
+        builder.setValue(jo.get("count").getAsInt());
+        return builder.build();
+      }
+    }
+  }
 
   /**
    * Queries Solr and returns the cooked results
@@ -180,7 +230,9 @@ public class SolrSearchApi {
   private URI getSolrUri(List<NameValuePair> params) {
     try {
       URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl().get();
-      return new URL(solrServer, "select?" + UriUtil.formatParams(params)).toURI();
+      URI uri = new URL(solrServer, "select?" + UriUtil.formatParams(params)).toURI();
+      System.out.println(uri);
+      return uri;
     } catch (MalformedURLException | URISyntaxException e) {
       throw new IllegalArgumentException(e);
     }

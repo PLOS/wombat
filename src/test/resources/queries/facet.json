@@ -1,123 +1,115 @@
 {
-  "response": {
-    "numFound": 6,
-    "start": 0,
-    "maxScore": 28.769592,
-    "docs": [
+  "response":{"numFound":2,"start":0,"maxScore":13.394488,"docs":[
       {
-        "id": "10.1371/journal.pone.0057033",
-        "journal": "PLoS ONE",
-        "eissn": "1932-6203",
-        "publication_date": "2013-03-22T00:00:00Z",
-        "article_type": "Research Article",
-        "author_display": [
-          "Riccardo Papa",
-          "Durrell D. Kapan",
-          "Brian A. Counterman",
-          "Karla Maldonado",
-          "Daniel P. Lindstrom",
-          "Robert D. Reed",
-          "H. Frederik Nijhout",
-          "Tomas Hrbek",
-          "W. Owen McMillan"
-        ],
-        "abstract": [
-          "\n        Recent studies indicate that relatively few genomic regions are repeatedly involved in the evolution of Heliconius butterfly wing patterns. Although this work demonstrates a number of cases where homologous loci underlie both convergent and divergent wing pattern change among different Heliconius species, it is still unclear exactly how many loci underlie pattern variation across the genus. To address this question for Heliconius erato, we created fifteen independent crosses utilizing the four most distinct color pattern races and analyzed color pattern segregation across a total of 1271 F2 and backcross offspring. Additionally, we used the most variable brood, an F2 cross between H. himera and the east Ecuadorian H. erato notabilis, to perform a quantitative genetic analysis of color pattern variation and produce a detailed map of the loci likely involved in the H. erato color pattern radiation. Using AFLP and gene based markers, we show that fewer major genes than previously envisioned control the color pattern variation in H. erato. We describe for the first time the genetic architecture of H. erato wing color pattern by assessing quantitative variation in addition to traditional linkage mapping. In particular, our data suggest three genomic intervals modulate the bulk of the observed variation in color. Furthermore, we also identify several modifier loci of moderate effect size that contribute to the quantitative wing pattern variation. Our results are consistent with the two-step model for the evolution of mimetic wing patterns in Heliconius and support a growing body of empirical data demonstrating the importance of major effect loci in adaptive change.\n      "
-        ],
-        "title_display": "Multi-Allelic Major Effect Genes Interact with Minor Effect QTLs to Control Adaptive Color Pattern Variation in <i>Heliconius erato</i>",
-        "score": 28.769592
-      }
-    ]
+        "id":"10.1371/journal.pone.0142806",
+        "journal":"PLOS ONE",
+        "eissn":"1932-6203",
+        "publication_date":"2015-11-16T00:00:00Z",
+        "article_type":"Research Article",
+        "author_display":["V. Adam Cruickshank",
+          "Patrycja Sroczynska",
+          "Aditya Sankar",
+          "Satoru Miyagi",
+          "Carsten Friis Rundsten",
+          "Jens Vilstrup Johansen",
+          "Kristian Helin"],
+        "abstract":["\nAlterations in chromatin structure caused by deregulated epigenetic mechanisms collaborate with underlying genetic lesions to promote cancer. SMARCA4/BRG1, a core component of the SWI/SNF ATP-dependent chromatin-remodelling complex, has been implicated by its mutational spectrum as exerting a tumour-suppressor function in many solid tumours; recently however, it has been reported to sustain leukaemogenic transformation in MLL-rearranged leukaemia in mice. Here we further explore the role of SMARCA4 and the two SWI/SNF subunits SMARCD2/BAF60B and DPF2/BAF45D in leukaemia. We observed the selective requirement for these proteins for leukaemic cell expansion and self-renewal in-vitro as well as in leukaemia. Gene expression profiling in human cells of each of these three factors suggests that they have overlapping functions in leukaemia. The gene expression changes induced by loss of the three proteins demonstrate that they are required for the expression of haematopoietic stem cell associated genes but in contrast to previous results obtained in mouse cells, the three proteins are not required for the expression of c-MYC regulated genes.\n"],
+        "title_display":"SWI/SNF Subunits SMARCA4, SMARCD2 and DPF2 Collaborate in MLL-Rearranged Leukaemia Maintenance",
+        "score":13.394488},
+      {
+        "id":"10.1371/journal.pone.0172763",
+        "journal":"PLOS ONE",
+        "eissn":"1932-6203",
+        "publication_date":"2017-02-23T00:00:00Z",
+        "article_type":"Research Article",
+        "author_display":["Ilse Tromp",
+          "Jessica Kiefte-de Jong",
+          "Hein Raat",
+          "Vincent Jaddoe",
+          "Oscar Franco",
+          "Albert Hofman",
+          "Johan de Jongste",
+          "Henriëtte Moll"],
+        "abstract":["Background: The protection of breastfeeding against respiratory tract infections in the first year of life has often been suggested. Few studies examined the effect of breastfeeding on respiratory tract infections after infancy. Objective: To examine the association between breastfeeding with lower respiratory tract infections (LRTI) and upper respiratory tract infections (URTI) after infancy up to 4 years of age (n = 5322). Methods: This study was embedded in The Generation R study, a Dutch population-based prospective cohort study from fetal life until young adulthood. Information on breastfeeding duration (never; <3 months; 3–6 months; ≥6 months) and dose (never; partially until 4 months; predominantly until 4 months) were collected by questionnaire at 2, 6, and 12 months of age. Information on doctor attendance for LRTI and URTI were obtained by questionnaire at 2, 3, and 4 years of age. Results: Breastfeeding for 6 months or longer was significantly associated with a reduced risk of LRTI up to 4 years of age (aOR: 0.71; 95% CI: 0.51–0.98). Similar ORs for LRTI were found with breastfeeding for less than 3 months and 3–6 months. Although in the same direction, weaker ORs were found for URTI and breastfeeding duration. The same trend was found for partial and predominant breastfeeding until 4 months and LRTI and URTI. Conclusion: Breastfeeding duration for 6 months or longer is associated with a reduced risk of LRTI in pre-school children. These findings are compatible with the hypothesis that the protective effect of breastfeeding for respiratory tract infections persist after infancy therefore supporting current recommendations for breastfeeding for at least 6 months. "],
+        "title_display":"Breastfeeding and the risk of respiratory tract infections after infancy: The Generation R Study",
+        "score":12.811094}]
   },
-  "facet_counts": {
-    "facet_queries": {},
-    "facet_fields": {
-      "subject_facet": {
-        "Alleles": 2,
-        "Amplified fragment length polymorphism": 1,
-        "Anatomy": 2,
-        "Animal anatomy": 2,
-        "Animal genomics": 1,
-        "Animal wings": 2,
-        "Animals": 2,
-        "Ants": 1,
-        "Approximation methods": 1,
-        "Arachnida": 1,
-        "Arthropoda": 2,
-        "Artificial gene amplification and extension": 1,
-        "BAC cloning": 1,
-        "Biogeography": 2,
-        "Biology and life sciences": 6,
-        "Cell biology": 1,
-        "Chromosome biology": 1,
-        "Chromosome mapping": 1,
-        "Chromosomes": 1,
-        "Cloning": 1,
-        "Coevolution": 2,
-        "Computer and information sciences": 2,
-        "Convergent evolution": 1,
-        "Data management": 2,
-        "Earth sciences": 2,
-        "Ecology and environmental sciences": 2,
-        "Effective population size": 1,
-        "Entomology": 2,
-        "Epistasis": 2,
-        "Eukaryota": 2,
-        "Evolutionary biology": 5,
-        "Evolutionary genetics": 1,
-        "Evolutionary processes": 3,
-        "Evolutionary systematics": 2,
-        "Fitness epistasis": 1,
-        "Gene expression": 2,
-        "Gene flow": 1,
-        "Gene mapping": 2,
-        "Gene regulation": 2,
-        "Genetic loci": 4,
-        "Genetic mapping": 1,
-        "Genetic polymorphism": 2,
-        "Genetics": 6,
-        "Genomics": 1,
-        "Geography": 2,
-        "Heredity": 2,
-        "Hymenoptera": 1,
-        "Insects": 2,
-        "Introgression": 1,
-        "Invertebrate genomics": 1,
-        "Invertebrates": 2,
-        "Linkage mapping": 1,
-        "Locus control region": 2,
-        "Manduca": 1,
-        "Mathematics": 1,
-        "Medicine and health sciences": 2,
-        "Molecular biology": 2,
-        "Molecular biology techniques": 2,
-        "Moths and butterflies": 1,
-        "Natural selection": 1,
-        "Organisms": 2,
-        "Paleogenetics": 1,
-        "Paleontology": 1,
-        "Phenotypes": 1,
-        "Phylogenetic analysis": 2,
-        "Phylogenetics": 2,
-        "Phylogeography": 1,
-        "Physical sciences": 1,
-        "Population biology": 5,
-        "Population genetics": 5,
-        "Population metrics": 1,
-        "Population size": 1,
-        "Quantitative trait loci": 1,
-        "Research and analysis methods": 2,
-        "Sex chromosomes": 1,
-        "Spiders": 1,
-        "Taxonomy": 2,
-        "Variant genotypes": 1,
-        "Vector cloning": 1,
-        "Wasps": 1,
-        "Zoology": 4
-      }
-    },
-    "facet_ranges": {},
-    "facet_intervals": {},
-    "facet_heatmaps": {}
-  }
-}
+  "facets":{
+    "count":2,
+    "author_facet":{
+      "buckets":[{
+          "val":"Aditya Sankar",
+          "count":1},
+        {
+          "val":"Albert Hofman",
+          "count":1},
+        {
+          "val":"Carsten Friis Rundsten",
+          "count":1},
+        {
+          "val":"Hein Raat",
+          "count":1},
+        {
+          "val":"Henriëtte Moll",
+          "count":1},
+        {
+          "val":"Ilse Tromp",
+          "count":1},
+        {
+          "val":"Jens Vilstrup Johansen",
+          "count":1},
+        {
+          "val":"Jessica Kiefte-de Jong",
+          "count":1},
+        {
+          "val":"Johan de Jongste",
+          "count":1},
+        {
+          "val":"Kristian Helin",
+          "count":1},
+        {
+          "val":"Oscar Franco",
+          "count":1},
+        {
+          "val":"Patrycja Sroczynska",
+          "count":1},
+        {
+          "val":"Satoru Miyagi",
+          "count":1},
+        {
+          "val":"V Adam Cruickshank",
+          "count":1},
+        {
+          "val":"Vincent Jaddoe",
+          "count":1}]},
+    "subject_facet":{
+      "buckets":[{
+          "val":"Biology and life sciences",
+          "count":2},
+        {
+          "val":"Medicine and health sciences",
+          "count":2},
+        {
+          "val":"Research and analysis methods",
+          "count":2},
+        {
+          "val":"Age groups",
+          "count":1},
+        {
+          "val":"Anatomy",
+          "count":1},
+        {
+          "val":"Apoptosis",
+          "count":1},
+        {
+          "val":"Beverages",
+          "count":1},
+        {
+          "val":"Bioassays and physiological analysis",
+          "count":1},
+        {
+          "val":"Biochemistry",
+          "count":1},
+        {
+          "val":"Body fluids",
+          "count":1}]}}}

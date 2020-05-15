@@ -277,11 +277,14 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   @Test
   public void deserializeFacetResult() throws IOException {
     SolrSearchApi.Result result = gson.fromJson(read("queries/facet.json"), SolrSearchApi.Result.class);
-    assertEquals(6, result.getNumFound());
+    assertEquals(2, result.getNumFound());
     Map<String, Map<String, Integer>> facets = result.getFacets();
     assert(facets.keySet().contains("subject_facet"));
+    assert(facets.keySet().contains("author_facet"));
     Map<String, Integer> subjectFacet = facets.get("subject_facet");
-    assertEquals(Integer.valueOf(2), subjectFacet.get("Gene mapping"));
+    Map<String, Integer> authorFacet = facets.get("author_facet");
+    assertEquals(Integer.valueOf(2), subjectFacet.get("Biology and life sciences"));
+    assertEquals(Integer.valueOf(1), authorFacet.get("Henriëtte Moll"));
   }
 
   @Test

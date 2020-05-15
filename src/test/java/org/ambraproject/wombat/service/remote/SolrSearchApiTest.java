@@ -24,6 +24,7 @@ package org.ambraproject.wombat.service.remote;
 
 import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -282,6 +283,15 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assert(facets.keySet().contains("subject_facet"));
     Map<String, Integer> subjectFacet = facets.get("subject_facet");
     assertEquals(Integer.valueOf(2), subjectFacet.get("Gene mapping"));
+  }
+
+  @Test
+  public void testEmptyQuery() throws IOException {
+    ArticleSearchQuery asq = ArticleSearchQuery.builder()
+      .setQuery("")
+      .build();
+    assertFalse(asq.isSimple());
+    assertEquals("*:*", asq.getQuery());
   }
 
   @Test

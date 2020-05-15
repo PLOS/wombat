@@ -262,7 +262,18 @@ public abstract class ArticleSearchQuery {
 
   @AutoValue.Builder
   public abstract static class Builder {
-    public abstract ArticleSearchQuery build();
+    abstract String getQuery();
+
+    abstract ArticleSearchQuery autoBuild();
+
+    public ArticleSearchQuery build() {
+      /* An empty query is meaningless and means find all.*/
+      if (this.getQuery().equals("")) {
+        this.setQuery("*:*");
+        this.setSimple(false);
+      }
+      return autoBuild();
+    }
 
     /**
      * Set the raw search query

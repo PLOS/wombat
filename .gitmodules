@@ -1,0 +1,3 @@
+[submodule "src/main/jib/opt/plos/themes"]
+	path = src/main/jib/opt/plos/themes
+	url = https://github.com/PLOS/plos-themes

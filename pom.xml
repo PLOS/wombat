@@ -572,7 +572,7 @@
             <image>docker.io/plos/tomcat:latest</image>
           </from>
           <container>
-            <appRoot>/usr/local/tomcat/webapps/wombat</appRoot>
+            <appRoot>/usr/local/tomcat/webapps/ROOT</appRoot>
           </container>
         </configuration>
       </plugin>

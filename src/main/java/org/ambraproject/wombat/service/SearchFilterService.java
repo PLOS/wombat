@@ -22,9 +22,14 @@
 
 package org.ambraproject.wombat.service;
 
+import static org.ambraproject.wombat.service.remote.ArticleSearchQuery.ARTICLE_TYPE_FACET_FIELD;
+import static org.ambraproject.wombat.service.remote.ArticleSearchQuery.ARTICLE_TYPE_TAG;
+import static org.ambraproject.wombat.service.remote.ArticleSearchQuery.JOURNAL_FACET_FIELD;
+import static org.ambraproject.wombat.service.remote.ArticleSearchQuery.JOURNAL_TAG;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Multimap;
-import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilter;
 import org.ambraproject.wombat.model.SearchFilterFactory;
@@ -32,10 +37,6 @@ import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Responsible for performing faceted search on different fields used for filtering search results
@@ -51,8 +52,6 @@ public class SearchFilterService {
 
   private final String JOURNAL = JournalFilterType.JOURNAL_FILTER_MAP_KEY;
 
-  private final String JOURNAL_FACET_FIELD = "journal_name";
-
   private final String SUBJECT_AREA = SingletonSearchFilterType.SUBJECT_AREA.getFilterMapKey();
 
   private final String SUBJECT_AREA_FACET_FIELD = "subject_facet";
@@ -63,8 +62,6 @@ public class SearchFilterService {
 
   private final String ARTICLE_TYPE = SingletonSearchFilterType.ARTICLE_TYPE.getFilterMapKey();
 
-  private final String ARTICLE_TYPE_FACET_FIELD = "article_type_facet";
-
   private final String SECTION = SingletonSearchFilterType.SECTION.getFilterMapKey();
 
   private final String SECTION_FACET_FIELD = "doc_partial_type";
@@ -74,7 +71,7 @@ public class SearchFilterService {
    * depending on the query executed, but the number and type of filters is constant.
    *
    * @param query Execute query to determine the search filter results.
-   *              Must be set as faceted with the setFacetFields() method
+   *              Must be set as faceted with the addFacet() method
    * @param urlParams search URL parameters that have been rebuilt from the ArticleSearchQuery object
    * @param site The site to perform the searches in
    * @return HashMap containing all applicable filters
@@ -85,17 +82,41 @@ public class SearchFilterService {
                                                          ARTICLE_TYPE_FACET_FIELD,
                                                          AUTHOR_FACET_FIELD,
                                                          SUBJECT_AREA_FACET_FIELD);
+    /* The journal and article type facets are special because we want
+     * to do an OR query with them, not an AND query. For example, a
+     * client wants to find articles in One OR in Medicine - an
+     * article can't be in both. For the rest of the facets the user
+     * wants to find content that matches ALL the conditions (AND) -
+     * not articles about neurons OR organisms, but articles about
+     * neurons AND organisms. This complicates the facets because we
+     * want to exclude the existing certain filter queries (fq) when
+     * calculating these facet. See
+     * https://lucene.apache.org/solr/guide/7_4/faceting.html#Faceting-TaggingandExcludingFilters
+     * for how this mechanism works.
+     */
+    ArticleSearchQuery.Facet journalFacet = ArticleSearchQuery.Facet.builder()
+      .setField(JOURNAL_FACET_FIELD)
+      .setExcludeKey(JOURNAL_TAG).build();
+    ArticleSearchQuery.Facet articleTypeFacet = ArticleSearchQuery.Facet.builder()
+      .setField(ARTICLE_TYPE_FACET_FIELD)
+      .setExcludeKey(ARTICLE_TYPE_TAG).build();
 
-    ArticleSearchQuery facetQuery = query.toBuilder().setRows(0).setFacetFields(facetFields).setSortOrder(null).build();
+    ArticleSearchQuery facetQuery = query.toBuilder().setRows(0).setSortOrder(null)
+      .addFacet(journalFacet)
+      .addFacet(articleTypeFacet)
+      .addFacet(AUTHOR_FACET_FIELD)
+      .addFacet(SUBJECT_AREA_FACET_FIELD)
+      .build();
     SolrSearchApi.Result results = solrSearchApi.search(facetQuery);
     Map<String, Map<String, Integer>> facets = results.getFacets();
+    
     SearchFilter journalFilter = searchFilterFactory.createSearchFilter(facets.get(JOURNAL_FACET_FIELD), JOURNAL);
     SearchFilter subjectAreaFilter = searchFilterFactory.createSearchFilter(facets.get(SUBJECT_AREA_FACET_FIELD), SUBJECT_AREA);
     SearchFilter authorFilter = searchFilterFactory.createSearchFilter(facets.get(AUTHOR_FACET_FIELD), AUTHOR);
     SearchFilter articleTypeFilter = searchFilterFactory.createSearchFilter(facets.get(ARTICLE_TYPE_FACET_FIELD), ARTICLE_TYPE);
 
     ArticleSearchQuery sectionFacetQuery = query.toBuilder()
-      .setFacetFields(ImmutableList.of(SECTION_FACET_FIELD)) 
+      .addFacet(SECTION_FACET_FIELD)
       .setRows(0)
       .setSortOrder(null)
       .setPartialSearch(true).build();

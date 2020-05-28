@@ -119,7 +119,7 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   private List<NameValuePair> buildFacetParams(String facetField, String query, boolean useDisMax) {
     ArticleSearchQuery asq = ArticleSearchQuery.builder()
-      .setFacetFields(ImmutableList.of(facetField))
+      .addFacet(facetField)
       .setQuery(query)
       .setSimple(useDisMax)
       .build();
@@ -143,6 +143,19 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assertSingle("journal", actualMap.get("facet.field"));
     assertEquals(actualMap.get("defType").size(), 0);
     assertSingle("*:*", actualMap.get("q"));
+
+    ArticleSearchQuery.Facet facet = ArticleSearchQuery.Facet.builder()
+      .setField("foo")
+      .setExcludeKey("bar")
+      .build();
+    ArticleSearchQuery asq = ArticleSearchQuery.builder()
+      .addFacet(facet)
+      .setQuery("query")
+      .build();
+    actual = SolrQueryBuilder.buildParameters(asq);
+    actualMap = convertToMap(actual);
+    assertSingle("{!ex=bar}foo", actualMap.get("facet.field"));
+    assertSingle("query", actualMap.get("q"));
   }
 
   private static void setQueryFilters(UrlParamBuilder params, List<String> journalKeys,
@@ -246,6 +259,10 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
                  SolrQueryBuilder.buildAndSearchClause("author", Arrays.asList("author1", "author2")));
     assertEquals("author:\"author1\" OR author:\"author2\"",
                  SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("author1", "author2")));
+    assertEquals("author:\"author1\" OR author:\"author2\"",
+                 SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("author1", "author2")));
+    assertEquals("{!tag=foo}author:\"author1\" OR author:\"author2\"",
+                 SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("author1", "author2"), "foo"));
     assertEquals("author:*", SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("*")));
   }
 
@@ -377,8 +394,8 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   private void assertJournals(Set<String> actualFq, String... expectedJournals) {
     String journals = null;
     for (String s : actualFq) {
-      if (s.startsWith("journal_key:")) {
-        journals = s;
+      if (s.startsWith("{!tag=journal}")) {
+        journals = s.substring("{!tag=journal}".length(), s.length());
         break;
       }
     }
@@ -400,8 +417,8 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   private void assertArticleTypes(Set<String> actualFq) {
     String articleType = null;
     for (String s : actualFq) {
-      if (s.startsWith("article_type_facet:")) {
-        articleType = s;
+      if (s.startsWith("{!tag=article_type}")) {
+        articleType = s.substring("{!tag=article_type}".length(), s.length());
         break;
       }
     }

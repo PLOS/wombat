@@ -55,7 +55,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
     return CacheUtil
       .getOrCompute(cache, cacheKey, () -> {
           ArticleSearchQuery query = ArticleSearchQuery.builder()
-            .setFacetFields(ImmutableList.of("subject_hierarchy"))
+            .addFacet("subject_hierarchy")
             .setFacetLimit(-1)
             .setJournalKeys(ImmutableList.of(journalKey))
             .setRows(0)
@@ -80,7 +80,7 @@ public class BrowseTaxonomyServiceImpl implements BrowseTaxonomyService {
     CacheKey cacheKey = CacheKey.create("categoryCount", journalKey);
     return CacheUtil.getOrCompute(cache, cacheKey, () -> {
         ArticleSearchQuery query = ArticleSearchQuery.builder()
-          .setFacetFields(ImmutableList.of("subject_facet"))
+          .addFacet("subject_facet")
           .setFacetLimit(-1)
           .setJournalKeys(ImmutableList.of(journalKey))
           .setRows(0)

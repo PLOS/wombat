@@ -48,6 +48,12 @@ public abstract class ArticleSearchQuery {
       "title", "title_display", "journal_name", "author_display", "abstract",
       "abstract_primary_display");
 
+  public static final String ARTICLE_TYPE_FACET_FIELD = "article_type_facet";
+  public static final String ARTICLE_TYPE_TAG = "article_type";
+  public static final String JOURNAL_FACET_FIELD = "journal_name";
+  public static final String JOURNAL_KEY_FIELD = "journal_key";
+  public static final String JOURNAL_TAG = "journal";
+
   /**
    * Type representing some restriction on the desired search results--for instance, a date range,
    * or a sort order. Implementations of SearchService should also provide appropriate
@@ -211,7 +217,7 @@ public abstract class ArticleSearchQuery {
 
   public abstract boolean isPartialSearch();
 
-  public abstract ImmutableList<String> getFacetFields();
+  public abstract ImmutableList<Facet> getFacetFields();
 
   public abstract int getFacetMinCount();
 
@@ -247,7 +253,6 @@ public abstract class ArticleSearchQuery {
       .setArticleTypes(ImmutableList.of())
       .setArticleTypesToExclude(ImmutableList.of())
       .setAuthors(ImmutableList.of())
-      .setFacetFields(ImmutableList.of())
       .setFacetLimit(100)
       .setFacetMinCount(1)
       .setJournalKeys(ImmutableList.of())
@@ -295,11 +300,21 @@ public abstract class ArticleSearchQuery {
      */
     public abstract Builder setPartialSearch(boolean partialSearch);
 
+    public abstract ImmutableList.Builder<Facet> facetFieldsBuilder();
     /**
      * @param facet the facet to search for as it is stored in Solr. Setting this will also set the
      *              search itself as a "faceted" search.
      */
-    public abstract Builder setFacetFields(ImmutableList<String> facet);
+    public Builder addFacet(Facet facet) {
+      facetFieldsBuilder().add(facet);
+      return this;
+    }
+
+    public Builder addFacet(String facetField) {
+      Facet facet = Facet.builder().setField(facetField).build();
+      facetFieldsBuilder().add(facet);
+      return this;
+    }
 
     /**
      * @param facetLimit maximum number of faceted results to return
@@ -370,5 +385,21 @@ public abstract class ArticleSearchQuery {
     public abstract Builder setStatsField(String statsField);
 
     public abstract Builder setFields(List<String> fields);
+  }
+
+  @AutoValue
+  public static abstract class Facet {
+    public abstract String getField();
+    public abstract Optional<String> getExcludeKey();
+    public static Builder builder() {
+      return new AutoValue_ArticleSearchQuery_Facet.Builder();
+    }
+    
+    @AutoValue.Builder
+    public abstract static class Builder {
+      public abstract Facet build();
+      public abstract Builder setField(String query);
+      public abstract Builder setExcludeKey(String excludeKey);
+    }
   }
 }

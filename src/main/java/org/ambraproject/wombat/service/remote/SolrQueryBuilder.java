@@ -22,8 +22,13 @@
 
 package org.ambraproject.wombat.service.remote;
 
+import static org.ambraproject.wombat.service.remote.ArticleSearchQuery.ARTICLE_TYPE_FACET_FIELD;
+import static org.ambraproject.wombat.service.remote.ArticleSearchQuery.ARTICLE_TYPE_TAG;
+import static org.ambraproject.wombat.service.remote.ArticleSearchQuery.JOURNAL_KEY_FIELD;
+import static org.ambraproject.wombat.service.remote.ArticleSearchQuery.JOURNAL_TAG;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
@@ -66,8 +71,11 @@ public class SolrQueryBuilder {
 
     if (asq.getFacetFields().size() > 0) {
       params.add("facet", "true");
-      for (String field: asq.getFacetFields()) {
-        params.add("facet.field", field);
+      for (ArticleSearchQuery.Facet field: asq.getFacetFields()) {
+        String query = field.getExcludeKey()
+          .map(excludeKey->String.format("{!ex=%s}", excludeKey)).orElse("") +
+          field.getField();
+        params.add("facet.field", query);
       }
       params.add("facet.mincount", Integer.toString(asq.getFacetMinCount()));
       params.add("facet.limit", Integer.toString(asq.getFacetLimit()));
@@ -105,11 +113,15 @@ public class SolrQueryBuilder {
       }
     }
     if (!CollectionUtils.isEmpty(asq.getJournalKeys())) {
-      params.add("fq", buildOrSearchClause("journal_key", asq.getJournalKeys()));
+      params.add("fq", buildOrSearchClause(JOURNAL_KEY_FIELD,
+                                           asq.getJournalKeys(),
+                                           JOURNAL_TAG));
     }
 
     if (!CollectionUtils.isEmpty(asq.getArticleTypes())) {
-      params.add("fq", buildOrSearchClause("article_type_facet", asq.getArticleTypes()));
+      params.add("fq", buildOrSearchClause(ARTICLE_TYPE_FACET_FIELD,
+                                           asq.getArticleTypes(),
+                                           ARTICLE_TYPE_TAG));
     }
 
     if (!CollectionUtils.isEmpty(asq.getArticleTypesToExclude())) {
@@ -135,17 +147,22 @@ public class SolrQueryBuilder {
     }
   }
 
-  private static String buildSearchClause(String what, List<String> clauses, String joiner) {
-    return clauses.stream().map(
-      clause -> what + ":" + (clause.equals("*") ? "*" : ("\"" + clause + "\""))
+  private static String buildSearchClause(String field, List<String> clauses, String joiner, Optional<String> rawTag) {
+    String tag = rawTag.map(t->String.format("{!tag=%s}", t)).orElse("");
+    return tag + clauses.stream().map(
+      clause -> field + ":" + (clause.equals("*") ? "*" : ("\"" + clause + "\""))
     ).collect(Collectors.joining(joiner));
   }
 
   static String buildAndSearchClause(String what, List<String> clauses) {
-    return buildSearchClause(what, clauses, " AND ");
+    return buildSearchClause(what, clauses, " AND ", Optional.empty());
   }
 
   static String buildOrSearchClause(String what, List<String> clauses) {
-    return buildSearchClause(what, clauses, " OR ");
+    return buildSearchClause(what, clauses, " OR ", Optional.empty());
+  }
+
+  static String buildOrSearchClause(String what, List<String> clauses, String tag) {
+    return buildSearchClause(what, clauses, " OR ", Optional.of(tag));
   }
 }

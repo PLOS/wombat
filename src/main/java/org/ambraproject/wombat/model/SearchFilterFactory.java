@@ -46,7 +46,7 @@ public class SearchFilterFactory {
    * 3. Combine all SearchFilterItems into a @code{SearchFilter} object.
    *
    * Note that the @code{ArticleSearchQuery} query must be set as a faceted search
-   * by calling setFacetFields()
+   * by calling addFacet()
    *
    * @param results faceted search results returned from Solr
    * @param filterTypeMapKey key for the filter type

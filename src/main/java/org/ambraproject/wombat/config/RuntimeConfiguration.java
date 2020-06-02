@@ -24,12 +24,27 @@ package org.ambraproject.wombat.config;
 
 import java.net.URI;
 import java.net.URL;
+import java.util.Optional;
+import java.util.Date;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.typeadapters.UtcDateTypeAdapter;
+import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 
 
 /**
  * Interface that represents configurable values that are only known at server startup time.
  */
 public interface RuntimeConfiguration {
+
+  public static Gson makeGson() {
+    GsonBuilder builder = new GsonBuilder();
+    builder.setPrettyPrinting();
+    builder.registerTypeAdapter(Date.class, new UtcDateTypeAdapter());
+    builder.registerTypeAdapter(org.joda.time.LocalDate.class, JodaTimeLocalDateAdapter.INSTANCE);
+    return builder.create();
+  }
+
   /**
    * @return the memcached host, or null if it is not present in the config
    */

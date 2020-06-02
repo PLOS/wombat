@@ -1413,6 +1413,7 @@
               </xsl:attribute>
               <xsl:attribute name="alt">thumbnail</xsl:attribute>
               <xsl:attribute name="class">thumbnail</xsl:attribute>
+              <xsl:attribute name="loading">lazy</xsl:attribute>
             </xsl:element>
           </xsl:element>
           <div class="expand"/>
@@ -1623,6 +1624,9 @@
           <xsl:value-of select="concat('article/file?type=thumbnail&amp;id=',$graphicDOI,$versionLinkParameter)"/><!-- TODO: Avoid relative path -->
         </xsl:attribute>
       </xsl:if>
+      <xsl:attribute name="loading">
+        <xsl:value-of>lazy</xsl:value-of>
+      </xsl:attribute>
       <xsl:attribute name="class">
         <xsl:value-of>inline-graphic</xsl:value-of>
       </xsl:attribute>

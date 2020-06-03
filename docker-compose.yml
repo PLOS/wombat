@@ -14,10 +14,11 @@ services:
       - CAS_URL
       - NED_URL
       - SOLR_URL
-      - ENVIRONMENT=dev
-      - LOG_LEVEL=debug
+      - DEBUG
+      - LOG_LEVEL
       - RHINO_URL=http://rhino:8080/rhino/
       - THEME_PATH=/opt/plos/themes
+      - COLLECTIONS_URL
     links:
       - db
       - rhino

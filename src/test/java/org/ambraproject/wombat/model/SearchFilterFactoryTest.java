@@ -14,13 +14,14 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+import java.util.Map;
 
 
 @ContextConfiguration(classes = {ArticleResolutionServiceTest.class})
 public class SearchFilterFactoryTest extends AbstractJUnit4SpringContextTests {
 
   @Mock
-  private SearchFilterTypeMap filterTypeMap;
+  private Map<String,SearchFilterType> filterTypeMap;
 
   @InjectMocks
   private SearchFilterFactory searchFilterFactory;
@@ -39,21 +40,22 @@ public class SearchFilterFactoryTest extends AbstractJUnit4SpringContextTests {
     builder.putAll("filterJournals", ImmutableList.of("PlosCompBiol"));
     builder.putAll("filterStartDate", "");
     builder.putAll("filterEndDate", "");
-    ImmutableListMultimap<String, String> params = builder.build();
 
     JournalFilterType filterType = spy(JournalFilterType.class);
     doReturn("PLoSONE").when(filterType).getFilterValue("PLOS ONE");
     doReturn("PLoSCompBiol").when(filterType).getFilterValue("PLOS Computational Biology");
-    when(filterTypeMap.getSearchFilterByKey("journal")).thenReturn(filterType);
+    when(filterTypeMap.get("journal")).thenReturn(filterType);
 
-    ImmutableMap<String, Double> results = ImmutableMap.of("PLOS ONE", 19.0d, "PLOS Computational Biology", 412.0d);
+    ImmutableMap<String, Integer> results = ImmutableMap.of("PLOS ONE", 19, "PLOS Computational Biology", 412);
     String filterTypeMapKey = "journal";
-    SearchFilter searchFilter = searchFilterFactory.createSearchFilter(results, filterTypeMapKey, params);
-
+    SearchFilter searchFilter = searchFilterFactory.createSearchFilter(results, filterTypeMapKey);
+    searchFilter.setActiveAndInactiveFilterItems(ImmutableList.of("plosone"));
     assertEquals(searchFilter.getFilterTypeMapKey(), "journal");
-    assertEquals(searchFilter.getSearchFilterResult().get(0).getDisplayName(), "PLOS ONE");
-    assertEquals(new Float(searchFilter.getSearchFilterResult().get(0).getNumberOfHits()), new Float(19.0f));
-    assertEquals(searchFilter.getSearchFilterResult().get(1).getDisplayName(), "PLOS Computational Biology");
-    assertEquals(new Float(searchFilter.getSearchFilterResult().get(1).getNumberOfHits()), new Float(412.0f));
+    SearchFilterItem inactive = searchFilter.getInactiveFilterItems().iterator().next();
+    SearchFilterItem active = searchFilter.getActiveFilterItems().iterator().next();
+    assertEquals(active.getDisplayName(), "PLOS ONE");
+    assertEquals(active.getNumberOfHits(), 19);
+    assertEquals(inactive.getDisplayName(), "PLOS Computational Biology");
+    assertEquals(inactive.getNumberOfHits(), 412);
   }
 }

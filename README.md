@@ -15,11 +15,11 @@ Runtime configuration happens via environment variables:
 
 - `CAS_URL`: base url for CAS server
 - `LOG_LEVEL`: (optional) level of logging, defaults to `warn`
-- `ENVIRONMENT`: (optional) environment, e.g. `dev`. defaults to `prod`
+- `DEBUG`: (optional) set to true to show debug info if a page errors
 - `MECACHED_SERVER`: (optional) `hostname:port` for memcached server to use
 - `NED_URL`: the URL for the ned server, including username and password
 - `RHINO_URL`: complete url to rhino server
-- `ROOT_REDIRECT`: (optional) the url to redirect to, only used if ENVIRONMENT is `prod`
+- `ROOT_REDIRECT`: (optional) the url to redirect to; if `DEBUG` is set, a landing page will be shown instead
 - `SOLR_URL`: complete url to solr server, including collection
 - `THEME_PATH`: path to the themes directory 
 

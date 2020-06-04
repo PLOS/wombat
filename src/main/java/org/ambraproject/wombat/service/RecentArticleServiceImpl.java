@@ -28,7 +28,6 @@ import org.ambraproject.wombat.cache.Cache;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,7 +136,7 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     List<String> journalKeys = ImmutableList.of(journalKey);
 
     LocalDate startDate = LocalDate.now().minusDays((long) numberOfDaysAgo);
-    SolrSearchApiImpl.SolrExplicitDateRange dateRange = new SolrSearchApiImpl.SolrExplicitDateRange
+    ArticleSearchQuery.SolrExplicitDateRange dateRange = new ArticleSearchQuery.SolrExplicitDateRange
         ("Recent Articles", startDate.toString(), LocalDate.now().toString());
 
     Set<String> uniqueDois = new HashSet<>();
@@ -192,39 +191,37 @@ public class RecentArticleServiceImpl implements RecentArticleService {
   private List<SolrArticleAdapter> getRecentArticlesByType(String articleType,
                                                            List<String> articleTypesToExclude,
                                                            List<String> journalKeys,
-                                                           SolrSearchApiImpl.SolrExplicitDateRange dateRange,
+                                                           ArticleSearchQuery.SolrExplicitDateRange dateRange,
                                                            Site site)
       throws IOException {
     ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
         .setRows(MAXIMUM_SOLR_RESULT_COUNT)
-        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setSortOrder(ArticleSearchQuery.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypes(ImmutableList.of(articleType))
         .setArticleTypesToExclude(articleTypesToExclude)
         .setDateRange(dateRange)
         .setJournalKeys(journalKeys)
         .build();
 
-    Map<String, ?> results = solrSearchApi.search(recentArticleSearchQuery, site);
-    return SolrArticleAdapter.unpackSolrQuery(results);
+    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.search(recentArticleSearchQuery));
   }
 
   private List<SolrArticleAdapter> getAllRecentArticles(List<String> articleTypesToExclude,
                                                         List<String> journalKeys,
-                                                        SolrSearchApiImpl.SolrExplicitDateRange dateRange,
+                                                        ArticleSearchQuery.SolrExplicitDateRange dateRange,
                                                         Site site)
       throws IOException {
     ArticleSearchQuery recentArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
         .setRows(MAXIMUM_SOLR_RESULT_COUNT)
-        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setSortOrder(ArticleSearchQuery.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypesToExclude(articleTypesToExclude)
         .setDateRange(dateRange)
         .setJournalKeys(journalKeys)
         .build();
 
-    Map<String, ?> results = solrSearchApi.search(recentArticleSearchQuery, site);
-    return SolrArticleAdapter.unpackSolrQuery(results);
+    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.search(recentArticleSearchQuery));
   }
 
   private List<SolrArticleAdapter> getAllArticlesByType(List<String> articleTypes,
@@ -235,12 +232,12 @@ public class RecentArticleServiceImpl implements RecentArticleService {
     ArticleSearchQuery allArticleSearchQuery = ArticleSearchQuery.builder()
         .setStart(0)
         .setRows(limit)
-        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setSortOrder(ArticleSearchQuery.SolrSortOrder.DATE_NEWEST_FIRST)
         .setArticleTypes(articleTypes)
         .setArticleTypesToExclude(articleTypesToExclude)
         .setJournalKeys(journalKeys)
         .build();
-    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.search(allArticleSearchQuery, site));
+    return SolrArticleAdapter.unpackSolrQuery(solrSearchApi.search(allArticleSearchQuery));
   }
 
 }

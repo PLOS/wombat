@@ -24,10 +24,11 @@ package org.ambraproject.wombat.service;
 
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.config.site.Site;
-
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.apache.commons.lang3.Range;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Map;
+import java.util.Date;
 
 /**
  * Responsible for returning the DOIs of article published in a given year and month
@@ -42,7 +43,7 @@ public interface ArticleArchiveService {
    * @throws IOException
    * @throws ParseException
    */
-  public abstract Map<?, ?> getYearsForJournal(Site site) throws IOException, ParseException;
+  public abstract Range<Date> getDatesForJournal(Site site) throws IOException, ParseException;
 
   /**
    * Returns all of the months for the requested year. If it's the current year,
@@ -64,7 +65,7 @@ public interface ArticleArchiveService {
    * @return list of articles published in a given year and month in a journal
    * @throws IOException
    */
-  public abstract Map<?, ?> getArticleDoisPerMonth(Site site, String year, String month,
-                                                   String cursor) throws IOException, ParseException;
+  public abstract SolrSearchApi.Result getArticleDoisPerMonth(Site site, String year, String month,
+                                                              String cursor) throws IOException, ParseException;
 
 }

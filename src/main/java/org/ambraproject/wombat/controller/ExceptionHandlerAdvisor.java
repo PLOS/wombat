@@ -83,7 +83,7 @@ class ExceptionHandlerAdvisor {
     exception.printStackTrace(new PrintWriter(stackTrace));
     mav.addObject("stackTrace", stackTrace.toString());
 
-    mav.addObject("environment", runtimeConfiguration.getEnvironment().toString());
+    mav.addObject("showDebug", runtimeConfiguration.showDebug());
 
     return mav;
   }

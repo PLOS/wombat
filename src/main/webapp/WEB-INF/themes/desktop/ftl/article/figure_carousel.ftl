@@ -34,6 +34,7 @@
 
               <@siteLink handlerName="figureImage" queryParameters=(versionPtr + {"size": "inline", "id": figure.doi}) ; src>
                 <img src="${src?html}"
+                     loading="lazy"
                      <#if figure.title?has_content >
                      alt="${figure.title?html}"
                      </#if>

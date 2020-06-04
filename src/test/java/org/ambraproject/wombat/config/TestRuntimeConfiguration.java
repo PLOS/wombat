@@ -57,12 +57,12 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   public Optional<SolrConfiguration> getSolrConfiguration() { return Optional.empty(); }
 
   @Override
-  public String getEnvironment() {
-    return null;
+  public boolean showDebug() {
+    return false;
   }
 
   @Override
-  public String getRootPagePath() {
+  public String getRootRedirect() {
     return null;
   }
 
@@ -122,5 +122,10 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   @Override
   public Optional<UserApiConfiguration> getUserApiConfiguration() {
     return Optional.empty();
+  }
+
+  @Override
+  public String getCollectionsUrl() {
+    return "";
   }
 }

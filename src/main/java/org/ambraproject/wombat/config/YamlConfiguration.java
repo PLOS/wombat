@@ -89,13 +89,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getRootPagePath() {
-    return input.rootPagePath;
-  }
-
-  @Override
-  public String getEnvironment() {
-    return input.environment;
+  public String getRootRedirect() {
+    return input.rootRedirect;
   }
 
   /**
@@ -204,7 +199,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
   private final SolrConfiguration solrConfiguration = new SolrConfiguration() {
     @Override
     public Optional<URL> getUrl() {
-      return Optional.ofNullable(buildUrl(input.solr.url + getJournalsCollection() + "/select/", null));
+      return Optional.ofNullable(buildUrl(input.solr.url + getJournalsCollection() + "/", null));
     }
 
     @Override
@@ -260,6 +255,24 @@ public class YamlConfiguration implements RuntimeConfiguration {
   @Override
   public boolean areCommentsDisabled() {
     return (input.commentsDisabled != null) && input.commentsDisabled;
+  }
+
+  @Override
+  public boolean showDebug() {
+    if (input.showDebug == null) {
+      return false;
+    } else {
+      return input.showDebug;
+    }
+  }
+
+  @Override
+  public String getCollectionsUrl() {
+    if (input.collectionsUrl == null) {
+      return "";
+    } else {
+      return input.collectionsUrl;
+    }
   }
 
   /**
@@ -332,8 +345,8 @@ public class YamlConfiguration implements RuntimeConfiguration {
 
     private String server;
     private String compiledAssetDir;
-    private String rootPagePath;
-    private String environment;
+    private String rootRedirect;
+    private String collectionsUrl;
     private List<String> enableDevFeatures;
     private List<Map<String, ?>> themeSources;
 
@@ -344,6 +357,7 @@ public class YamlConfiguration implements RuntimeConfiguration {
     private UserApiConfigurationInput userApi;
 
     private Boolean commentsDisabled;
+    private Boolean showDebug;
 
     /**
      * @deprecated For access by reflective deserializer only
@@ -365,16 +379,16 @@ public class YamlConfiguration implements RuntimeConfiguration {
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setRootPagePath(String rootPagePath) {
-      this.rootPagePath = rootPagePath;
+    public void setRootRedirect(String rootRedirect) {
+      this.rootRedirect = rootRedirect;
     }
 
     /**
      * @deprecated For access by reflective deserializer only
      */
     @Deprecated
-    public void setEnvironment(String environment) {
-      this.environment = environment;
+    public void setShowDebug(boolean showDebug) {
+      this.showDebug = showDebug;
     }
 
     /**
@@ -438,6 +452,13 @@ public class YamlConfiguration implements RuntimeConfiguration {
      */
     public void setCommentsDisabled(Boolean commentsDisabled) {
       this.commentsDisabled = commentsDisabled;
+    }
+
+    /**
+     * @deprecated For access by reflective deserializer only
+     */
+    public void setCollectionsUrl(String collectionsUrl) {
+      this.collectionsUrl = collectionsUrl;
     }
   }
 

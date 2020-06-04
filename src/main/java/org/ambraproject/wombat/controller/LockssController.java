@@ -27,6 +27,8 @@ import org.ambraproject.wombat.config.site.SiteParam;
 import org.ambraproject.wombat.config.site.Siteless;
 import org.ambraproject.wombat.service.ArticleArchiveService;
 import org.ambraproject.wombat.service.TopLevelLockssManifestService;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
+import org.apache.commons.lang3.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -41,9 +43,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-
+import java.util.Optional;
 import static org.ambraproject.wombat.service.remote.SolrSearchApi.MAXIMUM_SOLR_RESULT_COUNT;
 
 /**
@@ -80,8 +82,9 @@ public class LockssController extends WombatController {
 
   @RequestMapping(name = "lockssYears", value = "/lockss-manifest", method = RequestMethod.GET)
   public String getYearsForJournal(@SiteParam Site site, Model model) throws IOException, ParseException {
-    Map<String, String> yearRange = (Map<String, String>) articleArchiveServiceImpl.getYearsForJournal(site);
-    model.addAttribute("yearRange", yearRange);
+    Range<Date> dateRange = articleArchiveServiceImpl.getDatesForJournal(site);
+    model.addAttribute("minYear", dateRange.getMinimum().getYear() + 1900);
+    model.addAttribute("maxYear", dateRange.getMaximum().getYear() + 1900);
     return site + "/ftl/lockss/years";
   }
 
@@ -106,18 +109,18 @@ public class LockssController extends WombatController {
                                     @PathVariable String month, @RequestParam String cursor,
                                     @RequestParam String pageNumber, Model model)
       throws IOException, ParseException {
-    Map<String, ?> searchResult = (Map<String, Map>) articleArchiveServiceImpl
-        .getArticleDoisPerMonth(site, year, month, cursor);
+    SolrSearchApi.Result searchResult = articleArchiveServiceImpl.getArticleDoisPerMonth(site, year, month, cursor);
+
     model.addAttribute("month", month);
     model.addAttribute("year", year);
-    model.addAttribute("searchResult", searchResult);
-    model.addAttribute("nextCursorMark", searchResult.get("nextCursorMark"));
+    model.addAttribute("docs", searchResult.getDocs());
+    model.addAttribute("nextCursorMark", Optional.ofNullable(searchResult.getNextCursorMark()).orElse(""));
 
     int pageNumberCount = Integer.parseInt(pageNumber);
     final int listStartNumber = pageNumberCount * MAXIMUM_SOLR_RESULT_COUNT + 1;
     model.addAttribute("listStart", listStartNumber);
 
-    final boolean isLastPage = (Double) searchResult.get("numFound")
+    final boolean isLastPage = searchResult.getNumFound()
         < listStartNumber + MAXIMUM_SOLR_RESULT_COUNT;
     model.addAttribute("showMoreLink", !isLastPage);
 

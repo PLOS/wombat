@@ -32,7 +32,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
-
+import com.google.gson.Gson;
 import org.ambraproject.wombat.cache.Cache;
 import org.ambraproject.wombat.cache.NullCache;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -40,6 +40,7 @@ import org.ambraproject.wombat.config.theme.TestClasspathTheme;
 import org.ambraproject.wombat.config.theme.Theme;
 import org.ambraproject.wombat.config.theme.ThemeGraph;
 import org.ambraproject.wombat.service.AssetService;
+import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -48,6 +49,11 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class TestSpringConfiguration {
+  
+  @Bean
+  protected Gson gson() {
+    return RuntimeConfiguration.makeGson();
+  }
 
   @Bean
   public RuntimeConfiguration runtimeConfiguration() {

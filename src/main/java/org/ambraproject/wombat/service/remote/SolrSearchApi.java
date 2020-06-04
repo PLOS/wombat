@@ -22,126 +22,167 @@
 
 package org.ambraproject.wombat.service.remote;
 
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Serializable;
-import java.util.Collection;
+import java.lang.reflect.Type;
+import java.lang.reflect.ParameterizedType;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import com.google.auto.value.AutoValue;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.reflect.TypeToken;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.util.CacheKey;
+import org.ambraproject.wombat.util.UriUtil;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.methods.HttpGet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Interface to the article search service for the application.
+ * Class to use to search a solr api. 
  */
-public interface SolrSearchApi {
-
+public class SolrSearchApi {
   public static final Integer MAXIMUM_SOLR_RESULT_COUNT = 1000;
 
-  /**
-   * Type representing some restriction on the desired search results--for instance, a date range, or a sort order.
-   * Implementations of SearchService should also provide appropriate implementations of this interface.
-   */
-  public interface SearchCriterion {
+  private static final Logger log = LoggerFactory.getLogger(SolrSearchApi.class);
 
-    /**
-     * @return description of this criterion, suitable for exposing in the UI
-     */
-    public String getDescription();
+  @Autowired
+  private JsonService jsonService;
 
-    /**
-     * @return implementation-dependent String value specifying this criterion
-     */
-    public String getValue();
+  @Autowired
+  private CachedRemoteService<Reader> cachedRemoteReader;
+
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
+
+  @AutoValue
+  @JsonAdapter(Result.Deserializer.class)
+  public static abstract class Result implements Serializable {
+    static final long serialVersionUID = 1L;
+    public abstract Builder toBuilder();
+    public abstract int getNumFound();
+    public abstract int getStart();
+    public abstract List<Map<String, Object>> getDocs();
+    @Nullable public abstract String getNextCursorMark();
+    @Nullable public abstract FieldStatsResult<Date> getPublicationDateStats();
+    @Nullable public abstract Map<String, Map<String,Integer>> getFacets();
+    public static Builder builder() {
+      return new AutoValue_SolrSearchApi_Result.Builder();
+    }
+
+    @AutoValue.Builder
+    public abstract static class Builder {
+      public abstract Result build();
+
+      public abstract Builder setNumFound(int numFound);
+      public abstract Builder setStart(int start);
+      public abstract Builder setDocs(List<Map<String, Object>> docs);
+      public abstract Builder setNextCursorMark(String nextCursorMark);
+      public abstract Builder setPublicationDateStats(FieldStatsResult<Date> publicationDateStats);
+      public abstract Builder setFacets(Map<String, Map<String,Integer>> facets);
+    }
+
+    public class Deserializer implements JsonDeserializer<Result> {
+      @Override
+      public Result deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        JsonObject responseData = json.getAsJsonObject().getAsJsonObject("response");
+        Type docsType = new TypeToken<List<Map<String, Object>>>() {}.getType();
+        Builder builder = Result.builder()
+          .setNumFound(responseData.get("numFound").getAsInt())
+          .setStart(responseData.get("start").getAsInt())
+          .setDocs(context.deserialize(responseData.get("docs"), docsType));
+        if (json.getAsJsonObject().has("facet_counts")) {
+          Type facetType = new TypeToken<Map<String, Map<String, Integer>>>() {}.getType();
+          builder.setFacets(context.deserialize(json.getAsJsonObject()
+                                                .getAsJsonObject("facet_counts")
+                                                .getAsJsonObject("facet_fields"),
+                                                facetType));
+        }
+
+        if (json.getAsJsonObject().has("stats")) {
+          Type t = new TypeToken<FieldStatsResult<Date>>() {}.getType();
+          FieldStatsResult<Date> publicationDateStats = 
+            context.deserialize(json.getAsJsonObject()
+                                .getAsJsonObject("stats")
+                                .getAsJsonObject("stats_fields")
+                                .getAsJsonObject("publication_date"),
+                                t);
+          builder.setPublicationDateStats(publicationDateStats);
+        }
+        if (json.getAsJsonObject().has("nextCursorMark")) {
+          builder.setNextCursorMark(json.getAsJsonObject().get("nextCursorMark").getAsString());
+        }
+        return builder.build();
+      }
+    }
+  }
+
+  @AutoValue
+  @JsonAdapter(FieldStatsResult.Deserializer.class)
+  public static abstract class FieldStatsResult<T> implements Serializable {
+    static final long serialVersionUID = 1L;
+    public abstract T getMin();
+    public abstract T getMax();
+    static <T> Builder<T> builder() {
+      return new AutoValue_SolrSearchApi_FieldStatsResult.Builder<T>();
+    }
+    
+    @AutoValue.Builder
+      abstract static class Builder<T> {
+      abstract FieldStatsResult<T> build();
+      abstract Builder<T> setMin(T min);
+      abstract Builder<T> setMax(T max);
+    }
+
+    public class Deserializer implements JsonDeserializer<FieldStatsResult<T>> {
+      @Override
+      public FieldStatsResult<T> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        JsonObject responseData = json.getAsJsonObject();
+        Type param = ((ParameterizedType)typeOfT).getActualTypeArguments()[0];
+        return FieldStatsResult.<T>builder()
+          .setMin(context.deserialize(responseData.get("min"), param))
+          .setMax(context.deserialize(responseData.get("max"), param))
+          .build();
+      }
+    }
   }
 
   /**
-   * Performs a search and returns the results.
+   * Queries Solr and returns the cooked results
    *
-   * @return deserialized JSON returned by the search server
+   * @param ArticleSearchQuery the query
+   * @return results from Solr
    * @throws IOException
    */
-  public Map<String, ?> search(ArticleSearchQuery query, Site site) throws IOException;
+  public Result search(ArticleSearchQuery query) throws IOException {
+    List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
+    URI uri = getSolrUri(params);
+    log.debug("Solr request executing: " + uri);
+    CacheKey cacheKey = CacheKey.create("solr", uri.toString());
+    return jsonService.requestCachedObject(cachedRemoteReader, cacheKey, new HttpGet(uri), Result.class);
+  }
 
-
-  /**
-   * Attempts to retrieve information about an article based on the DOI.
-   *
-   * @param doi identifies the article
-   * @param site
-   * @return information about the article, if it exists; otherwise an empty result set
-   * @throws IOException
-   */
-  public Map<?, ?> lookupArticleByDoi(String doi, Site site) throws IOException;
-
-  public Map<?, ?> lookupArticlesByDois(List<String> dois, Site site) throws IOException;
-
-  /**
-   * Adds a new property, link, to each search result passed in.  The value of this property is the correct URL to the
-   * article on this environment.  Calling this method is necessary since article URLs need to be specific to the site
-   * of the journal the article is published in, not the site in which the search results are being viewed.
-   *
-   * @param searchResults deserialized search results JSON
-   * @param request       current request
-   * @param site          site of the current request (for the search results)
-   * @param siteSet       site set of the current request
-   * @return searchResults decorated with the new property
-   * @throws IOException
-   */
-  public Map<?, ?> addArticleLinks(Map<?, ?> searchResults, HttpServletRequest request, Site site, SiteSet
-      siteSet) throws IOException;
-
-  /**
-   * Retrieves Solr stats for a given field in a given journal
-   *
-   * @param fieldName  specifies the name of the field
-   * @param journalKey specifies the name of the journal
-   * @param site the current site
-   * @return Solr stats for the given field
-   * @throws IOException
-   */
-  public Map<?, ?> getStats(String fieldName, String journalKey, Site site) throws IOException;
-
-  /**
-   * Returns a list of all subject categories associated with all papers ever published
-   * for the given journal.
-   *
-   * @param journalKey name of the journal in question
-   * @param site the current site
-   * @return List of category names
-   */
-  public List<String> getAllSubjects(String journalKey, Site site) throws IOException;
-
-  /**
-   * Returns the number of articles, for a given journal, associated with all the subject
-   * categories in the taxonomy.
-   *
-   * @param journalKey specifies the journal
-   * @param site the current site
-   * @throws IOException
-   */
-  public Collection<SubjectCount> getAllSubjectCounts(String journalKey, Site site) throws IOException;
-
-  /**
-   * Simple class wrapping the category -> count map returned by Solr subject searches.
-   */
-  public static final class SubjectCount implements Serializable {
-    private final String category;
-    private final long count;
-
-    public SubjectCount(String category, Long count) {
-      this.category = Objects.requireNonNull(category);
-      this.count = count;
-    }
-
-    public String getSubject() {
-      return category;
-    }
-
-    public long getCount() {
-      return count;
+  private URI getSolrUri(List<NameValuePair> params) {
+    try {
+      URL solrServer = runtimeConfiguration.getSolrConfiguration().get().getUrl().get();
+      return new URL(solrServer, "select?" + UriUtil.formatParams(params)).toURI();
+    } catch (MalformedURLException | URISyntaxException e) {
+      throw new IllegalArgumentException(e);
     }
   }
 }

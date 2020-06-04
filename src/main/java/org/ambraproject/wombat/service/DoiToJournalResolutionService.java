@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
 
 public class DoiToJournalResolutionService {
   private static final Logger log = LoggerFactory.getLogger(DoiToJournalResolutionService.class);
@@ -50,8 +51,7 @@ public class DoiToJournalResolutionService {
         .setQuery("id:\"" + QueryParser.escape(doi) + "\"")
         .build();
 
-    Map<String, ?> results = solrSearchApi.search(explicitDoiSearchQuery, site);
-    List<SolrArticleAdapter> solrArticleAdapters = SolrArticleAdapter.unpackSolrQuery(results);
+    List<SolrArticleAdapter> solrArticleAdapters = SolrArticleAdapter.unpackSolrQuery(solrSearchApi.search(explicitDoiSearchQuery));
     String journalKey = null;
     if (solrArticleAdapters.size() == 1) {
       journalKey = solrArticleAdapters.get(0).getJournalKey();
@@ -72,11 +72,10 @@ public class DoiToJournalResolutionService {
         .setSimple(false)
         .setRows(dois.size())
         .setQuery("id:(" + String.join(" OR ", quoted) + ")")
-        .setIsJournalSearch(true)
+        .setFields(ImmutableList.of("journal_key", "journal_name"))
         .build();
 
-    Map<String, ?> results = solrSearchApi.search(explicitDoiSearchQuery, site);
-    List<Map<String, ?>> docs = (List<Map<String, ?>>) results.get("docs");
+    List<Map<String, Object>> docs = solrSearchApi.search(explicitDoiSearchQuery).getDocs();
 
     Map<String, String> keysMap = new HashMap<String,String>();
     docs.forEach(data -> {

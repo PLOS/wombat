@@ -29,12 +29,25 @@ import org.ambraproject.wombat.config.theme.ThemeSource;
 
 import java.net.URL;
 import java.util.Optional;
+import java.util.Date;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.typeadapters.UtcDateTypeAdapter;
+import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 
 
 /**
  * Interface that represents configurable values that are only known at server startup time.
  */
 public interface RuntimeConfiguration {
+
+  public static Gson makeGson() {
+    GsonBuilder builder = new GsonBuilder();
+    builder.setPrettyPrinting();
+    builder.registerTypeAdapter(Date.class, new UtcDateTypeAdapter());
+    builder.registerTypeAdapter(org.joda.time.LocalDate.class, JodaTimeLocalDateAdapter.INSTANCE);
+    return builder.create();
+  }
 
   /**
    * @return the directory in which to write and serve compiled assets (.js and .css), or {@code null} to not compile
@@ -86,12 +99,12 @@ public interface RuntimeConfiguration {
   /**
    * Get the path of an HTML document to display on the root page
    */
-  String getRootPagePath();
+  String getRootRedirect();
 
   /**
-   * Get the name of the runtime environment ("prod", "dev", etc.)
+   * Show debugging information?
    */
-  String getEnvironment();
+  boolean showDebug();
 
   /**
    * @return the set of enabled dev features, configured in wombat.yaml.
@@ -134,4 +147,6 @@ public interface RuntimeConfiguration {
 
   boolean areCommentsDisabled();
 
+  String getCollectionsUrl();
+  
 }

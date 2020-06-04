@@ -1,0 +1,39 @@
+{
+  "response": {
+    "numFound": 1784487,
+    "start": 0,
+    "docs": [
+      {
+        "id": "10.1371/annotation/008b05a8-229b-4aca-94ae-91e6dd5ca5ba"
+      },
+      {
+        "id": "10.1371/annotation/008b05a8-229b-4aca-94ae-91e6dd5ca5ba/abstract"
+      },
+      {
+        "id": "10.1371/annotation/008b05a8-229b-4aca-94ae-91e6dd5ca5ba/body"
+      },
+      {
+        "id": "10.1371/annotation/008b05a8-229b-4aca-94ae-91e6dd5ca5ba/references"
+      },
+      {
+        "id": "10.1371/annotation/008b05a8-229b-4aca-94ae-91e6dd5ca5ba/title"
+      },
+      {
+        "id": "10.1371/annotation/00a3b22e-36a9-4d51-89e5-1e6561e7a1e9"
+      },
+      {
+        "id": "10.1371/annotation/00a3b22e-36a9-4d51-89e5-1e6561e7a1e9/abstract"
+      },
+      {
+        "id": "10.1371/annotation/00a3b22e-36a9-4d51-89e5-1e6561e7a1e9/body"
+      },
+      {
+        "id": "10.1371/annotation/00a3b22e-36a9-4d51-89e5-1e6561e7a1e9/references"
+      },
+      {
+        "id": "10.1371/annotation/00a3b22e-36a9-4d51-89e5-1e6561e7a1e9/title"
+      }
+    ]
+  },
+  "nextCursorMark": "AoE/HjEwLjEzNzEvYW5ub3RhdGlvbi8wMGEzYjIyZS0zNmE5LTRkNTEtODllNS0xZTY1NjFlN2ExZTkvdGl0bGU="
+}

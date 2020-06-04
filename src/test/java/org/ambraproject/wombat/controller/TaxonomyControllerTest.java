@@ -35,7 +35,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.ambraproject.wombat.config.theme.Theme;
-import org.ambraproject.wombat.model.TaxonomyCountTable;
 import org.ambraproject.wombat.model.TaxonomyGraph;
 import org.ambraproject.wombat.model.TaxonomyGraph.CategoryView;
 import org.ambraproject.wombat.service.BrowseTaxonomyService;
@@ -75,11 +74,11 @@ public class TaxonomyControllerTest extends ControllerTest {
     TaxonomyGraph taxonomyGraph = mock(TaxonomyGraph.class);
     when(taxonomyGraph.getRootCategoryViews()).thenReturn(new ArrayList<CategoryView>());
 
-    TaxonomyCountTable articleCounts = mock(TaxonomyCountTable.class);
-    when(articleCounts.getCount("ROOT")).thenReturn(0L);
+    Map<String, Integer> articleCounts = mock(Map.class);
+    when(articleCounts.get("ROOT")).thenReturn(0);
 
-    when(browseTaxonomyService.parseCategories(any(), any())).thenReturn(taxonomyGraph);
-    when(browseTaxonomyService.getCounts(any(), any(), any())).thenReturn(articleCounts);
+    when(browseTaxonomyService.parseCategories(any())).thenReturn(taxonomyGraph);
+    when(browseTaxonomyService.getCounts(any(), any())).thenReturn(articleCounts);
   }
 
   @Test

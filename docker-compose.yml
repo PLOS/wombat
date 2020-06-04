@@ -16,7 +16,7 @@ services:
       - SOLR_URL
       - DEBUG
       - LOG_LEVEL
-      - RHINO_URL=http://rhino:8080/rhino/
+      - RHINO_URL=${RHINO_URL:-http://rhino:8080/rhino/}
       - THEME_PATH=/opt/plos/themes
       - COLLECTIONS_URL
       - MEMCACHED_SERVER=memcached:11211

@@ -19,9 +19,11 @@ services:
       - RHINO_URL=http://rhino:8080/rhino/
       - THEME_PATH=/opt/plos/themes
       - COLLECTIONS_URL
+      - MEMCACHED_SERVER=memcached:11211
     links:
       - db
       - rhino
+      - memcached
     ports:
       - 8015:8080
     volumes:
@@ -47,3 +49,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: ambra
+
+  memcached:
+    image: memcached:latest

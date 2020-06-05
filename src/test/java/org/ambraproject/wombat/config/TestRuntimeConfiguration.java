@@ -45,12 +45,12 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getEnvironment() {
-    return null;
+  public boolean showDebug() {
+    return false;
   }
 
   @Override
-  public String getRootPagePath() {
+  public String getRootRedirect() {
     return null;
   }
 
@@ -86,6 +86,11 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
 
   @Override
   public String getEditorialBucket() {
+    return null;
+  }
+  
+  @Override
+  public URL getCollectionsUrl() {
     return null;
   }
 }

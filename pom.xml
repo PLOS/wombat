@@ -29,7 +29,7 @@
   <artifactId>wombat</artifactId>
   <name>wombat</name>
   <packaging>war</packaging>
-  <version>3.7.17-SNAPSHOT</version>
+  <version>3.7.18-SNAPSHOT</version>
   <url>https://github.com/PLOS/wombat</url>
   <scm>
     <connection>scm:git:git@github.com:PLOS/wombat.git</connection>
@@ -578,7 +578,28 @@
           <workingDirectory>src/main/webapp/WEB-INF/themes/desktop</workingDirectory>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>2.1.0</version>
+        <configuration>
+          <to>
+            <image>docker.io/plos/wombat:${project.version}</image>
+            <tags>
+              <tag>latest</tag>
+            </tags>
+          </to>
+          <from>
+            <image>docker.io/plos/tomcat:latest</image>
+          </from>
+          <container>
+            <appRoot>/usr/local/tomcat/webapps/wombat</appRoot>
+          </container>
+        </configuration>
+      </plugin>
     </plugins>
+
     <pluginManagement>
       <plugins>
         <!-- Configure eclipse to skip building assets with gulp/npm.

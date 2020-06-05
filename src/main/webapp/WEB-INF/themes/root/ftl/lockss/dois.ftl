@@ -30,21 +30,18 @@
   <body>
     <h1>${month} ${year}</h1>
     <div style="padding-left: 10px">
-      <#if searchResult??>
-        <#assign docs = searchResult["docs"] />
-        <ol start="${listStart?c}">
-          <#list docs as doc>
-            <#assign doi = doc["id"] />
-            <li style="b">
-              <a href="<@siteLink handlerName="article" queryParameters={"id": doi} />">
-                ${doi}
-              </a>
-            </li>
-          </#list>
-        </ol>
-        <#if showMoreLink>
-          <a href="<@siteLink path="lockss-manifest/vol_" + year + "/" + month + "?pageNumber=" + pageNumber+ "&cursor=" + nextCursorMark?url("UTF-8")/>">View more...</a>
-        </#if>
+      <ol start="${listStart?c}">
+        <#list docs as doc>
+          <#assign doi = doc["id"] />
+          <li style="b">
+            <a href="<@siteLink handlerName="article" queryParameters={"id": doi} />">
+              ${doi}
+            </a>
+          </li>
+        </#list>
+      </ol>
+      <#if showMoreLink>
+        <a href="<@siteLink path="lockss-manifest/vol_" + year + "/" + month + "?pageNumber=" + pageNumber+ "&cursor=" + nextCursorMark?url("UTF-8")/>">View more...</a>
       </#if>
     </div>
     <br/>

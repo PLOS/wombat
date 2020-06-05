@@ -22,38 +22,49 @@
 
 package org.ambraproject.wombat.service.remote;
 
-import com.google.common.base.Joiner;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.SetMultimap;
-import org.ambraproject.wombat.config.TestSpringConfiguration;
-import org.ambraproject.wombat.config.site.Site;
-import org.ambraproject.wombat.config.site.SiteSet;
-import org.ambraproject.wombat.util.MockSiteUtil;
-import org.apache.http.NameValuePair;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-import org.junit.Test;
-
+import static org.ambraproject.wombat.util.FileUtils.read;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.spy;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import com.google.common.base.Joiner;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.SetMultimap;
+import com.google.gson.Gson;
+import org.ambraproject.wombat.config.TestSpringConfiguration;
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.config.site.SiteSet;
+import org.ambraproject.wombat.util.MockSiteUtil;
+import org.ambraproject.wombat.util.UrlParamBuilder;
+import org.apache.http.NameValuePair;
+import java.time.LocalDateTime;
+import org.junit.Test;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 @ContextConfiguration(classes = TestSpringConfiguration.class)
 public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
@@ -61,22 +72,26 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   @Autowired
   private SiteSet siteSet;
 
+  @Autowired
+  private Gson gson;
+
   private static List<NameValuePair> buildCommonParams(String query, boolean useDisMax, int start,
-                                                       int rows, SolrSearchApi.SearchCriterion sortOrder,
+                                                       int rows, ArticleSearchQuery.SearchCriterion sortOrder,
                                                        boolean forHomePage) {
-    return ArticleSearchQuery.builder()
+    ArticleSearchQuery asq = ArticleSearchQuery.builder()
         .setQuery(query)
         .setSimple(useDisMax)
         .setStart(start)
         .setRows(rows)
         .setSortOrder(sortOrder)
-        .build().buildParameters();
+      .build();
+    return SolrQueryBuilder.buildParameters(asq);
   }
 
   @Test
   public void testBuildCommonParams() {
     // query string not null
-    List<NameValuePair> actual = buildCommonParams("foo", true, 0, 10, SolrSearchApiImpl.SolrSortOrder.MOST_CITED, true);
+    List<NameValuePair> actual = buildCommonParams("foo", true, 0, 10, ArticleSearchQuery.SolrSortOrder.MOST_CITED, true);
     SetMultimap<String, String> actualMap = convertToMap(actual);
     assertCommonParams(2, actualMap);
     assertSingle("10", actualMap.get("rows"));
@@ -88,14 +103,14 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assertSingle("foo", actualMap.get("q"));
 
     // empty query string
-    actual = buildCommonParams("", false, 0, 10, SolrSearchApiImpl.SolrSortOrder.MOST_CITED, true);
+    actual = buildCommonParams("*:*", false, 0, 10, ArticleSearchQuery.SolrSortOrder.MOST_CITED, true);
     actualMap = convertToMap(actual);
     assertCommonParams(2, actualMap);
     assertEquals(0, actualMap.get("defType").size());
     assertSingle("*:*", actualMap.get("q"));
 
     // not home page
-    actual = buildCommonParams("", false, 0, 10, SolrSearchApiImpl.SolrSortOrder.RELEVANCE, false);
+    actual = buildCommonParams("", false, 0, 10, ArticleSearchQuery.SolrSortOrder.RELEVANCE, false);
     actualMap = convertToMap(actual);
     assertSingle("score desc,publication_date desc,id desc", actualMap.get("sort"));
     assertCommonParams(2, actualMap);
@@ -103,11 +118,12 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   }
 
   private List<NameValuePair> buildFacetParams(String facetField, String query, boolean useDisMax) {
-    return ArticleSearchQuery.builder()
-        .setFacet(facetField)
-        .setQuery(query)
-        .setSimple(useDisMax)
-        .build().buildParameters();
+    ArticleSearchQuery asq = ArticleSearchQuery.builder()
+      .addFacet(facetField)
+      .setQuery(query)
+      .setSimple(useDisMax)
+      .build();
+    return SolrQueryBuilder.buildParameters(asq);
   }
 
   @Test
@@ -121,42 +137,56 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     assertSingle("foo", actualMap.get("q"));
 
     // empty query string
-    actual = buildFacetParams("journal", "", false);
+    actual = buildFacetParams("journal", "*:*", false);
     actualMap = convertToMap(actual);
     assertFacetParams(2, actualMap);
     assertSingle("journal", actualMap.get("facet.field"));
     assertEquals(actualMap.get("defType").size(), 0);
     assertSingle("*:*", actualMap.get("q"));
+
+    ArticleSearchQuery.Facet facet = ArticleSearchQuery.Facet.builder()
+      .setField("foo")
+      .setExcludeKey("bar")
+      .build();
+    ArticleSearchQuery asq = ArticleSearchQuery.builder()
+      .addFacet(facet)
+      .setQuery("query")
+      .build();
+    actual = SolrQueryBuilder.buildParameters(asq);
+    actualMap = convertToMap(actual);
+    assertSingle("{!ex=bar}foo", actualMap.get("facet.field"));
+    assertSingle("query", actualMap.get("q"));
   }
 
-  private static void setQueryFilters(List<NameValuePair> params, List<String> journalKeys,
+  private static void setQueryFilters(UrlParamBuilder params, List<String> journalKeys,
                                       List<String> articleTypes, List<String> subjects,
-                                      SolrSearchApi.SearchCriterion dateRange) {
-    ArticleSearchQuery.builder()
+                                      ArticleSearchQuery.SearchCriterion dateRange) {
+    ArticleSearchQuery asq = ArticleSearchQuery.builder()
         .setJournalKeys(journalKeys)
         .setArticleTypes(articleTypes)
         .setSubjects(subjects)
         .setDateRange(dateRange)
-        .build().setQueryFilters(params);
+      .build();
+    SolrQueryBuilder.setQueryFilters(asq, params);
   }
 
   @Test
   public void testSetQueryFilters() {
-    List<NameValuePair> actual = new ArrayList<>();
+    UrlParamBuilder actual = UrlParamBuilder.params();
     List<String> articleTypes = new ArrayList<>();
     List<String> subjects = new ArrayList<>();
 
     // Multiple journals
     setQueryFilters(actual, Arrays.asList("foo", "bar", "blaz"), articleTypes, subjects,
-        SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
-    SetMultimap<String, String> actualMap = convertToMap(actual);
+        ArticleSearchQuery.SolrEnumeratedDateRange.ALL_TIME);
+    SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertJournals(actualMap.get("fq"), "foo", "bar", "blaz");
 
     // date range
-    actual = new ArrayList<>();
-    setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, subjects,
-        SolrSearchApiImpl.SolrEnumeratedDateRange.LAST_3_MONTHS);
-    actualMap = convertToMap(actual);
+    actual = UrlParamBuilder.params();
+    setQueryFilters(actual, ImmutableList.of("foo"), articleTypes, subjects,
+        ArticleSearchQuery.SolrEnumeratedDateRange.LAST_3_MONTHS);
+    actualMap = convertToMap(actual.build());
     assertEquals(2, actualMap.get("fq").size());
     for (String s : actualMap.get("fq")) {
       if (!s.contains("publication_date:") && !s.contains("journal_key:")) {
@@ -165,9 +195,9 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
     }
 
     // null date range
-    actual = new ArrayList<>();
-    setQueryFilters(new ArrayList<NameValuePair>(), Collections.singletonList("foo"), articleTypes, subjects, null);
-    actualMap = convertToMap(actual);
+    actual = UrlParamBuilder.params();
+    setQueryFilters(UrlParamBuilder.params(), ImmutableList.of("foo"), articleTypes, subjects, null);
+    actualMap = convertToMap(actual.build());
     Set<String> fq = actualMap.get("fq");
     for (String s : fq) {
       if (s.startsWith("publication_date:")) {
@@ -178,25 +208,25 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   @Test
   public void testSetQueryFilters_ExplicitDateRange() throws IOException {
-    List<NameValuePair> actual = new ArrayList<>();
-    SolrSearchApiImpl.SolrExplicitDateRange edr
-        = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    UrlParamBuilder actual = UrlParamBuilder.params();
+    ArticleSearchQuery.SolrExplicitDateRange edr
+        = new ArticleSearchQuery.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
 
-    setQueryFilters(actual, Collections.singletonList("foo"), new ArrayList<String>(), new ArrayList<String>(), edr);
-    SetMultimap<String, String> actualMap = convertToMap(actual);
+    setQueryFilters(actual, ImmutableList.of("foo"), new ArrayList<String>(), new ArrayList<String>(), edr);
+    SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
   }
 
   @Test
   public void testSetQueryFilters_IncludeArticleTypes() throws IOException {
-    List<NameValuePair> actual = new ArrayList<>();
-    SolrSearchApiImpl.SolrExplicitDateRange edr
-        = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    UrlParamBuilder actual = UrlParamBuilder.params();
+    ArticleSearchQuery.SolrExplicitDateRange edr
+        = new ArticleSearchQuery.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
-    setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, new ArrayList<String>(), edr);
-    SetMultimap<String, String> actualMap = convertToMap(actual);
+    setQueryFilters(actual, ImmutableList.of("foo"), articleTypes, new ArrayList<String>(), edr);
+    SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
     assertArticleTypes(actualMap.get("fq"));
@@ -204,67 +234,87 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
 
   @Test
   public void testSetQueryFilters_IncludeSubjects() throws IOException {
-    List<NameValuePair> actual = new ArrayList<>();
-    SolrSearchApiImpl.SolrExplicitDateRange edr
-        = new SolrSearchApiImpl.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
+    UrlParamBuilder actual = UrlParamBuilder.params();
+    ArticleSearchQuery.SolrExplicitDateRange edr
+        = new ArticleSearchQuery.SolrExplicitDateRange("test", "2011-01-01", "2015-06-01");
     ArrayList<String> articleTypes = new ArrayList<>();
     articleTypes.add("Research Article");
-    setQueryFilters(actual, Collections.singletonList("foo"), articleTypes, Arrays.asList("Skull", "Head", "Teeth"), edr);
-    SetMultimap<String, String> actualMap = convertToMap(actual);
+    setQueryFilters(actual, ImmutableList.of("foo"), articleTypes, Arrays.asList("Skull", "Head", "Teeth"), edr);
+    SetMultimap<String, String> actualMap = convertToMap(actual.build());
     assertPubDate(actualMap.get("fq"));
     assertJournals(actualMap.get("fq"), "foo");
     assertArticleTypes(actualMap.get("fq"));
     assertSubjects(actualMap.get("fq"), "\"Skull\"", "\"Head\"", "\"Teeth\"");
   }
 
-  private static class SearchApiForAddArticleLinksTest extends SolrSearchApiImpl {
-
-    @Override
-    protected void initializeEIssnToJournalKeyMap(SiteSet siteSet, Site currentSite) throws IOException {
-      ImmutableMap.Builder<String, String> builder = new ImmutableMap.Builder<>();
-      builder.put("123", "journal1Key")
-          .put("456", "journal2Key")
-          .put("789", "collectionJournalKey");
-      eIssnToJournalKey = builder.build();
-    }
+  @Test
+  public void testBuildSearchClause() {
+    assertEquals("subject:\"foo\"", SolrQueryBuilder.buildAndSearchClause("subject", Arrays.asList("foo")));
+    assertEquals("subject:\"foo\" AND subject:\"2nd subject\"",
+                 SolrQueryBuilder.buildAndSearchClause("subject", Arrays.asList("foo", "2nd subject")));
+    assertEquals("author:\"author1\"", SolrQueryBuilder.buildAndSearchClause("author", Arrays.asList("author1")));
+    assertEquals("author:\"author1\" AND author:\"author2\"",
+                 SolrQueryBuilder.buildAndSearchClause("author", Arrays.asList("author1", "author2")));
+    assertEquals("author:\"author1\" AND author:\"author2\"",
+                 SolrQueryBuilder.buildAndSearchClause("author", Arrays.asList("author1", "author2")));
+    assertEquals("author:\"author1\" OR author:\"author2\"",
+                 SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("author1", "author2")));
+    assertEquals("author:\"author1\" OR author:\"author2\"",
+                 SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("author1", "author2")));
+    assertEquals("{!tag=foo}author:\"author1\" OR author:\"author2\"",
+                 SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("author1", "author2"), "foo"));
+    assertEquals("author:*", SolrQueryBuilder.buildOrSearchClause("author", Arrays.asList("*")));
   }
 
   @Test
-  public void testAddArticleLinks() throws IOException {
-    SolrSearchApi solrSearchApiForTest = new SearchApiForAddArticleLinksTest();
-    Map<String, List<Map<String,String>>> searchResults = new HashMap<>();
-    List<Map<String,String>> docs = new ArrayList<>(1);
-    Map<String,String> doc = new HashMap<>();
-    List<String> crossPubbedJournals = new ArrayList<>(1);
-    crossPubbedJournals.add("journal1Key");
-    doc.put("id", "12345");
-    doc.put("eissn", "123");
-    docs.add(doc);
-    searchResults.put("docs", docs);
-    MockHttpServletRequest request = new MockHttpServletRequest();
-    request.setContextPath("someContextPath");
-    Site site = MockSiteUtil.getByUniqueJournalKey(siteSet, "journal2Key");
-
-    Map<?, ?> actual = solrSearchApiForTest.addArticleLinks(searchResults, request, site, siteSet);
-    List<Map> actualDocs = (List) actual.get("docs");
-    assertEquals(1, actualDocs.size());
-    Map actualDoc = (Map) actualDocs.get(0);
-    assertEquals("12345", actualDoc.get("id"));
-    assertTrue(actualDoc.get("link").toString().endsWith("someContextPath/site1/article?id=12345"));
+  public void deserializeStatsResult() throws IOException {
+    SolrSearchApi.Result result = gson.fromJson(read("queries/stats.json"), SolrSearchApi.Result.class);
+    assertEquals(4510, result.getNumFound(), 4510);
+    SolrSearchApi.FieldStatsResult<Date> publicationDateStats = result.getPublicationDateStats();
+    Date minDate = publicationDateStats.getMin();
+    assertEquals(2003, minDate.getYear() + 1900);
+    assertEquals(7, minDate.getMonth());
+    assertEquals(17, minDate.getDate());
+    Date maxDate = publicationDateStats.getMax();
+    assertEquals(2019, maxDate.getYear() + 1900);
+    assertEquals(11, maxDate.getMonth());
+    assertEquals(15, maxDate.getDate());
   }
 
   @Test
-  public void testBuildSubjectClause() {
-    assertEquals("subject:\"foo\"", ArticleSearchQuery.buildSubjectClause(Arrays.asList("foo")));
-    assertEquals(ArticleSearchQuery.buildSubjectClause(Arrays.asList("foo", "2nd subject")),
-        "subject:\"foo\" AND subject:\"2nd subject\"");
+  public void deserializeSimpleResult() throws IOException {
+    SolrSearchApi.Result result = gson.fromJson(read("queries/simple.json"), SolrSearchApi.Result.class);
+    assertEquals(1784487, result.getNumFound());
+    assertEquals("AoE/HjEwLjEzNzEvYW5ub3RhdGlvbi8wMGEzYjIyZS0zNmE5LTRkNTEtODllNS0xZTY1NjFlN2ExZTkvdGl0bGU=",
+                 result.getNextCursorMark());
+    assertEquals(10, result.getDocs().size());
+    Map<String, Object> doc = result.getDocs().get(0);
+    assertEquals("10.1371/annotation/008b05a8-229b-4aca-94ae-91e6dd5ca5ba", doc.get("id"));
   }
 
   @Test
-  public void testBuildAuthorClause() {
-    assertEquals(ArticleSearchQuery.buildAuthorClause(Arrays.asList("author1")), "author:\"author1\"");
-    assertEquals(ArticleSearchQuery.buildAuthorClause(Arrays.asList("author1", "author2")),
-        "author:\"author1\" AND author:\"author2\"");
+  public void deserializeFacetResult() throws IOException {
+    SolrSearchApi.Result result = gson.fromJson(read("queries/facet.json"), SolrSearchApi.Result.class);
+    assertEquals(6, result.getNumFound());
+    Map<String, Map<String, Integer>> facets = result.getFacets();
+    assert(facets.keySet().contains("subject_facet"));
+    Map<String, Integer> subjectFacet = facets.get("subject_facet");
+    assertEquals(Integer.valueOf(2), subjectFacet.get("Gene mapping"));
+  }
+
+  @Test
+  public void testEmptyQuery() throws IOException {
+    ArticleSearchQuery asq = ArticleSearchQuery.builder()
+      .setQuery("")
+      .build();
+    assertFalse(asq.isSimple());
+    assertEquals("*:*", asq.getQuery());
+  }
+
+  @Test
+  public void testDateParse() throws IOException {
+    Date map = gson.fromJson("'2014-12-05T04:00:00.000Z'", Date.class);
+    assertEquals(map.getClass(), Date.class);
   }
 
   /**
@@ -344,20 +394,20 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   private void assertJournals(Set<String> actualFq, String... expectedJournals) {
     String journals = null;
     for (String s : actualFq) {
-      if (s.startsWith("journal_key:")) {
-        journals = s;
+      if (s.startsWith("{!tag=journal}")) {
+        journals = s.substring("{!tag=journal}".length(), s.length());
         break;
       }
     }
     assertNotNull(journals);
 
     // For multiple journals, the expected format of the param is
-    // "journal_key:PLoSBiology OR journal_key:PLoSONE"
+    // "journal_key:\"PLoSBiology\" OR journal_key:\"PLoSONE\""
     String[] parts = journals.split(" OR ");
     assertEquals(expectedJournals.length, parts.length);
     Set<String> actualJournals = new HashSet<>();
     for (String part : parts) {
-      actualJournals.add(part.substring("journal_key:".length()));
+      actualJournals.add(part.substring("journal_key:".length() + 1, part.length() - 1));
     }
     for (String expected : expectedJournals) {
       assertTrue(actualJournals.contains(expected));
@@ -367,8 +417,8 @@ public class SolrSearchApiTest extends AbstractJUnit4SpringContextTests {
   private void assertArticleTypes(Set<String> actualFq) {
     String articleType = null;
     for (String s : actualFq) {
-      if (s.startsWith("article_type_facet:")) {
-        articleType = s;
+      if (s.startsWith("{!tag=article_type}")) {
+        articleType = s.substring("{!tag=article_type}".length(), s.length());
         break;
       }
     }

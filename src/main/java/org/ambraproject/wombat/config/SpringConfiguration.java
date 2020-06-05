@@ -65,7 +65,6 @@ import org.ambraproject.wombat.freemarker.asset.RenderJsDirective;
 import org.ambraproject.wombat.model.JournalFilterType;
 import org.ambraproject.wombat.model.SearchFilterFactory;
 import org.ambraproject.wombat.model.SearchFilterType;
-import org.ambraproject.wombat.model.SearchFilterTypeMap;
 import org.ambraproject.wombat.model.SingletonSearchFilterType;
 import org.ambraproject.wombat.service.AlertService;
 import org.ambraproject.wombat.service.ArticleArchiveServiceImpl;
@@ -105,6 +104,7 @@ import org.ambraproject.wombat.service.remote.EditorialContentApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApiImpl;
 import org.ambraproject.wombat.util.GitInfo;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
@@ -212,7 +212,8 @@ public class SpringConfiguration {
                                            ThemeConfigDirective themeConfigDirective,
                                            AppLinkDirective appLinkDirective,
                                            ArticleExcerptTransformDirective articleExcerptTransformDirective,
-                                           GlobalConfigDirective globalConfigDirective)
+                                           GlobalConfigDirective globalConfigDirective,
+                                           RuntimeConfiguration runtimeConfiguration)
       throws IOException {
     SiteTemplateLoader loader = new SiteTemplateLoader(servletContext, siteSet);
     FreeMarkerConfigurer config = new FreeMarkerConfigurer();
@@ -237,6 +238,7 @@ public class SpringConfiguration {
     variables.put("abbreviatedName", new AbbreviatedNameDirective());
     variables.put("xform", articleExcerptTransformDirective);
     variables.put("globalConfig", globalConfigDirective);
+    variables.put("collectionsUrl", runtimeConfiguration.getCollectionsUrl());
     config.setFreemarkerVariables(variables.build());
     return config;
   }
@@ -257,14 +259,15 @@ public class SpringConfiguration {
   }
 
   @Bean
-  public SearchFilterTypeMap searchFilterTypeMap(JournalFilterType journalFilterType) {
+  @Qualifier("searchFilters")
+  public Map<String, SearchFilterType> searchFilterTypeMap(JournalFilterType journalFilterType) {
     ImmutableMap.Builder<String, SearchFilterType> builder = ImmutableMap.builder();
     builder.put("journal", journalFilterType);
 
     for (SingletonSearchFilterType value : SingletonSearchFilterType.values()) {
       builder.put(value.name().toLowerCase(), value);
     }
-    return new SearchFilterTypeMap(builder.build());
+    return builder.build();
   }
 
   @Bean

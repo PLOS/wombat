@@ -96,6 +96,14 @@ public class Site {
     return theme;
   }
 
+  public boolean isMobile() {
+    return getKey().toLowerCase().contains("mobile");
+  }
+
+  public boolean isDesktop() {
+    return !this.isMobile();
+  }
+
   public String getType() { return type; }
 
   public String getJournalKey() {

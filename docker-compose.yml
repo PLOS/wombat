@@ -1,0 +1,49 @@
+version: '3'
+
+# NOTE: You must set the PLOS_THEMES_REPO environment variables as well as all
+#       environment variables not explicitly defined below (e.g. CAS_URL)
+
+services:
+
+  wombat:
+    image: plos/wombat:latest
+    depends_on:
+      - db
+      - rhino
+    environment:
+      - CAS_URL
+      - NED_URL
+      - SOLR_URL
+      - DEBUG
+      - LOG_LEVEL
+      - RHINO_URL=http://rhino:8080/rhino/
+      - THEME_PATH=/opt/plos/themes
+      - COLLECTIONS_URL
+    links:
+      - db
+      - rhino
+    ports:
+      - 8015:8080
+    volumes:
+      - ${PLOS_THEMES_REPO}:/opt/plos/themes:ro
+
+  rhino:
+    image: plos/rhino:latest
+    depends_on:
+      - db
+    environment:
+      - CONTENT_REPO_URL
+      - CORPUS_BUCKET
+      - TAXONOMY_URL
+      - THESAURUS
+      - DATABASE_URL=jdbc:mysql://db:3306/ambra?user=root&password=password
+    links:
+      - db
+    ports:
+      - 8006:8080
+
+  db:
+    image: mysql:5.7.29
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ambra

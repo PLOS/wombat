@@ -11,11 +11,22 @@ The "theme" is a means for the user to customize each site in various ways. It
 provides the user with options to override individual template and resource
 files, as well as containing several configuration options.
 
+Runtime configuration happens via environment variables:
+
+- `CAS_URL`: base url for CAS server
+- `LOG_LEVEL`: (optional) level of logging, defaults to `warn`
+- `DEBUG`: (optional) set to true to show debug info if a page errors
+- `MECACHED_SERVER`: (optional) `hostname:port` for memcached server to use
+- `NED_URL`: the URL for the ned server, including username and password
+- `RHINO_URL`: complete url to rhino server
+- `ROOT_REDIRECT`: (optional) the url to redirect to; if `DEBUG` is set, a landing page will be shown instead
+- `SOLR_URL`: complete url to solr server, including collection
+- `THEME_PATH`: path to the themes directory 
+
 See the [Ambra Project documentation](https://plos.github.io/ambraproject/) for
 an overview of the stack and user instructions. If you have any questions or
 comments, please email dev@ambraproject.org, open a [GitHub
 issue](https://github.com/PLOS/wombat/issues), or submit a pull request.
-
 
 [Build Status]: https://teamcity.plos.org/teamcity/viewType.html?buildTypeId=Wombat_Build
 [Build Status Badge]: https://teamcity.plos.org/teamcity/app/rest/builds/buildType:(id:Wombat_Build)/statusIcon.svg

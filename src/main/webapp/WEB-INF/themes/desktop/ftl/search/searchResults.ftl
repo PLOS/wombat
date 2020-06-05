@@ -55,7 +55,7 @@
   <#assign isNewSearch = false />
 </#if>
 
-<#if isNewSearch || (searchResults.numFound == 0)>
+<#if isNewSearch>
   <#assign advancedOpen = true />
 </#if>
 

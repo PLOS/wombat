@@ -20,24 +20,28 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package org.ambraproject.wombat.model;
+package org.ambraproject.wombat.util;
 
-import com.google.common.collect.ImmutableMap;
+import com.google.common.base.Preconditions;
+import org.apache.commons.io.Charsets;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.List;
 
-import java.util.Map;
-
-/**
- * This class is a wrapper for @code{Map<String, SearchFilterType>}. The map is populated as a
- * bean in @code{SpringConfiguration}.
- */
-public class SearchFilterTypeMap {
-  private final Map<String, SearchFilterType> map;
-
-  public SearchFilterTypeMap(Map<String, SearchFilterType> map) {
-    this.map = ImmutableMap.copyOf(map);
+public class UriUtil {
+  private UriUtil() {
+    throw new AssertionError("Not instantiable");
   }
 
-  public SearchFilterType getSearchFilterByKey(String key) {
-    return map.get(key);
+  public static String formatParams(List<NameValuePair> params) {
+    return URLEncodedUtils.format(params, Charsets.UTF_8);
+  }
+
+  public static String formatMangledParams(List<NameValuePair> params) {
+    return formatParams(params).replace("%2F", "/");
   }
 }

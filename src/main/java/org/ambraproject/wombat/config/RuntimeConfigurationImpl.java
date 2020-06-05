@@ -30,8 +30,9 @@ import com.google.common.base.Preconditions;
 public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   String memcachedServer;
   URL rhinoUrl;
-  String rootPagePath;
-  String environment;
+  URL collectionsUrl;
+  String rootRedirect;
+  boolean debug;
   String themePath;
   String casUrl;
   URL solrUrl;
@@ -93,23 +94,23 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   }
 
   @Override
-  public String getEnvironment() {
-    return environment;
+  public boolean showDebug() {
+    return this.debug;
   }
 
-  public void setEnvironment(String environment) {
-    Preconditions.checkArgument(!isNullOrEmpty(environment), "Please set ENVIRONMENT.");
-    this.environment = environment;
+  public void setDebug(boolean debug) {
+    this.debug = debug;
   }
 
   @Override
-  public String getRootPagePath() {
-    return rootPagePath;
+  public String getRootRedirect() {
+    return rootRedirect;
   }
 
-  public void setRootPagePath(String rootPagePath) {
-    Preconditions.checkArgument(!isNullOrEmpty(rootPagePath), "Please set ROOT_PAGE_PATH.");
-    this.rootPagePath = rootPagePath;
+  public void setRootRedirect(String rootRedirect) {
+    Preconditions.checkNotNull(rootRedirect, "Please set ROOT_REDIRECT.");
+    Preconditions.checkArgument(!rootRedirect.equals(""), "Please set ROOT_REDIRECT.");
+    this.rootRedirect = rootRedirect;
   }
 
   @Override
@@ -149,6 +150,17 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
 
   public void setEditorialBucket(String editorialBucket) {
     this.editorialBucket = editorialBucket;
+  }
+
+  @Override
+  public URL getCollectionsUrl() {
+    return collectionsUrl;
+  }
+
+  public void setCollectionsUrl(URL collectionsUrl) {
+    Preconditions.checkNotNull(collectionsUrl, "Please set COLLECTIONS_URL.");
+    Preconditions.checkArgument(!collectionsUrl.toString().equals(""), "Please set COLLECTIONS_URL.");
+    this.collectionsUrl = collectionsUrl;
   }
 }
 

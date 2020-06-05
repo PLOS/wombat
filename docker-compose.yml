@@ -24,8 +24,8 @@ services:
       - db
       - rhino
       - memcached
-    ports:
-      - 8015:8080
+    expose:
+      - 8080
     volumes:
       - ${PLOS_THEMES_REPO}:/opt/plos/themes:ro
 
@@ -52,3 +52,12 @@ services:
 
   memcached:
     image: memcached:latest
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - wombat
+    ports:
+      - "8080:8080"

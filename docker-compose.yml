@@ -40,6 +40,7 @@ services:
       - CORPUS_BUCKET
       - TAXONOMY_URL
       - THESAURUS
+      - LOG_LEVEL
       - DATABASE_URL=jdbc:mysql://db:3306/ambra?user=root&password=password
     links:
       - db

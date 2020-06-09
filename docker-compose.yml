@@ -16,14 +16,16 @@ services:
       - SOLR_URL
       - DEBUG
       - LOG_LEVEL
-      - RHINO_URL=http://rhino:8080/rhino/
+      - RHINO_URL=${RHINO_URL:-http://rhino:8080/rhino/}
       - THEME_PATH=/opt/plos/themes
       - COLLECTIONS_URL
+      - MEMCACHED_SERVER=memcached:11211
     links:
       - db
       - rhino
-    ports:
-      - 8015:8080
+      - memcached
+    expose:
+      - 8080
     volumes:
       - ${PLOS_THEMES_REPO}:/opt/plos/themes:ro
 
@@ -47,3 +49,15 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: ambra
+
+  memcached:
+    image: memcached:latest
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - wombat
+    ports:
+      - "8080:8080"

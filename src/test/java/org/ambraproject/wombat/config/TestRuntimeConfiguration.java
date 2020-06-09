@@ -80,11 +80,6 @@ public class TestRuntimeConfiguration implements RuntimeConfiguration {
   }
 
   @Override
-  public String getAwsRoleArn() {
-    return null;
-  }
-
-  @Override
   public String getEditorialBucket() {
     return null;
   }

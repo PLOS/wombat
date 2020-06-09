@@ -77,7 +77,5 @@ public interface RuntimeConfiguration {
   
   URI getNedUrl();
 
-  String getAwsRoleArn();
-
   String getEditorialBucket();
 }

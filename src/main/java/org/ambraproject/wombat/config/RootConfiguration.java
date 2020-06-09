@@ -29,10 +29,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.util.Date;
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.STSAssumeRoleSessionCredentialsProvider;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
 import com.google.common.base.Strings;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -130,12 +128,8 @@ public class RootConfiguration {
   }
 
   @Bean
-  public AmazonS3 amazonS3(RuntimeConfiguration runtimeConfiguration) {
-    String role = runtimeConfiguration.getAwsRoleArn();
-    AWSCredentialsProvider credentialsProvider =
-        new STSAssumeRoleSessionCredentialsProvider.Builder(role,
-            java.util.UUID.randomUUID().toString()).build();
-    return new AmazonS3Client(credentialsProvider);
+  public Storage storage(RuntimeConfiguration runtimeConfiguration) {
+    return StorageOptions.newBuilder().build().getService();
   }
 
   @Bean

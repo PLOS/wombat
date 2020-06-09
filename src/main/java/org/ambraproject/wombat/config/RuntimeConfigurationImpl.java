@@ -37,14 +37,11 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
   String casUrl;
   URL solrUrl;
   URI nedUrl;
-  String awsRoleArn;
   String editorialBucket;
 
   public RuntimeConfigurationImpl() {
-    Preconditions.checkArgument(!isNullOrEmpty(System.getenv("AWS_ACCESS_KEY_ID")),
-        "Please set AWS_ACCESS_KEY_ID.");
-    Preconditions.checkArgument(!isNullOrEmpty(System.getenv("AWS_SECRET_ACCESS_KEY")),
-        "Please set AWS_SECRET_ACCESS_KEY.");
+    Preconditions.checkArgument(!isNullOrEmpty(System.getenv("GOOGLE_APPLICATION_CREDENTIALS")),
+        "Please set GOOGLE_APPLICATION_CREDENTIALS.");
   }
 
   @Override
@@ -131,16 +128,6 @@ public class RuntimeConfigurationImpl implements RuntimeConfiguration {
 
   public void setMemcachedServer(String memcachedServer) {
     this.memcachedServer = memcachedServer;
-  }
-
-  @Override
-  public String getAwsRoleArn() {
-    return awsRoleArn;
-  }
-
-  public void setAwsRoleArn(String awsRoleArn) {
-    Preconditions.checkState(!isNullOrEmpty(awsRoleArn), "AWS_ROLE_ARN is required");
-    this.awsRoleArn = awsRoleArn;
   }
 
   @Override

@@ -30,11 +30,11 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
-import com.amazonaws.HttpMethod;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
-import com.amazonaws.services.s3.model.GetObjectRequest;
-import com.amazonaws.services.s3.model.S3Object;
+import java.util.concurrent.TimeUnit;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Storage;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
 import org.ambraproject.wombat.config.site.SiteSet;
@@ -55,27 +55,22 @@ public class EditorialContentApi {
   private RuntimeConfiguration runtimeConfiguration;
 
   @Autowired
-  private AmazonS3 amazonS3;
+  private Storage storage;
 
   @Autowired
   private Gson gson;
 
-  long PRESIGNED_URL_EXPIRY = 1000 * 60 * 60; // 1 hour
+  long PRESIGNED_URL_EXPIRY = 1; // HOUR
 
   public boolean objectExists(String key) {
-    return amazonS3.doesObjectExist(runtimeConfiguration.getEditorialBucket(), key);
+    BlobId blobId = BlobId.of(runtimeConfiguration.getEditorialBucket(), key);
+    return storage.get(blobId).exists();
   }
 
   public URL getPublicUrl(String key) {
-    Date expiration = new Date();
-    long expTimeMillis = expiration.getTime() + PRESIGNED_URL_EXPIRY;
-    expiration.setTime(expTimeMillis);
-
-    GeneratePresignedUrlRequest generatePresignedUrlRequest =
-      new GeneratePresignedUrlRequest(runtimeConfiguration.getEditorialBucket(), key)
-      .withMethod(HttpMethod.GET)
-      .withExpiration(expiration);
-    return amazonS3.generatePresignedUrl(generatePresignedUrlRequest);
+    BlobId blobId = BlobId.of(runtimeConfiguration.getEditorialBucket(), key);
+    BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
+    return storage.signUrl(blobInfo, PRESIGNED_URL_EXPIRY, TimeUnit.HOURS, Storage.SignUrlOption.withV4Signature());
   }
 
   /**
@@ -87,13 +82,12 @@ public class EditorialContentApi {
                          final Set<HtmlElementTransformation> transformations,
                          final Collection<HtmlElementSubstitution> substitutions)
           throws IOException {
-    GetObjectRequest request = new GetObjectRequest(runtimeConfiguration.getEditorialBucket(), key);
-    S3Object object = amazonS3.getObject(request);
+    BlobId blobId = BlobId.of(runtimeConfiguration.getEditorialBucket(), key);
     // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this
     // awkward.
     // The whole document will be in memory anyway, so buffering it into a string is no great
     // performance loss.
-    String htmlString = IOUtils.toString(object.getObjectContent());
+    String htmlString = IOUtils.toString(storage.readAllBytes(blobId), "UTF-8");
     Document document = Jsoup.parseBodyFragment(htmlString);
 
     for (HtmlElementTransformation transformation : transformations) {
@@ -115,8 +109,8 @@ public class EditorialContentApi {
    * Returns a JSON object from a remote service
    */
   public Object getJson(String key) throws IOException {
-    GetObjectRequest request = new GetObjectRequest(runtimeConfiguration.getEditorialBucket(), key);
-    S3Object object = amazonS3.getObject(request);
-    return gson.fromJson(new InputStreamReader(object.getObjectContent()), Object.class);
+    BlobId blobId = BlobId.of(runtimeConfiguration.getEditorialBucket(), key);
+    String jsonString = IOUtils.toString(storage.readAllBytes(blobId), "UTF-8");
+    return gson.fromJson(jsonString, Object.class);
   }
 }

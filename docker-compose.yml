@@ -36,7 +36,6 @@ services:
     depends_on:
       - db
     environment:
-      - CONTENT_REPO_URL
       - GOOGLE_APPLICATION_CREDENTIALS=/etc/credentials.json
       - CORPUS_BUCKET
       - TAXONOMY_URL

@@ -44,6 +44,7 @@ import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 /**
@@ -63,9 +64,10 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
       custom().
       setMaxObjectSize(100000000)
       .build();
-
+    File tmpdir = Paths.get(System.getProperty("java.io.tmpdir"), "wombat").toFile();
+    tmpdir.mkdirs();
     this.clientBuilder = CachingHttpClientBuilder.create()
-      .setCacheDir(new File("/tmp/wombat-cache"))
+      .setCacheDir(tmpdir)
       .setCacheConfig(cacheConfig);
     this.connectionManager.map((mgr)->clientBuilder.setConnectionManager(mgr));
   }

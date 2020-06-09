@@ -11,6 +11,7 @@ services:
       - db
       - rhino
     environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/etc/credentials.json
       - CAS_URL
       - NED_URL
       - SOLR_URL
@@ -28,6 +29,7 @@ services:
       - 8080
     volumes:
       - ${PLOS_THEMES_REPO}:/opt/plos/themes:ro
+      - ${GOOGLE_APPLICATION_CREDENTIALS}:/etc/credentials.json:ro
 
   rhino:
     image: plos/rhino:latest
@@ -35,6 +37,7 @@ services:
       - db
     environment:
       - CONTENT_REPO_URL
+      - GOOGLE_APPLICATION_CREDENTIALS=/etc/credentials.json
       - CORPUS_BUCKET
       - TAXONOMY_URL
       - THESAURUS
@@ -43,6 +46,8 @@ services:
       - db
     ports:
       - 8006:8080
+    volumes:
+      - ${GOOGLE_APPLICATION_CREDENTIALS}:/etc/credentials.json:ro
 
   db:
     image: mysql:5.7.29

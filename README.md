@@ -29,6 +29,27 @@ an overview of the stack and user instructions. If you have any questions or
 comments, please email dev@ambraproject.org, open a [GitHub
 issue](https://github.com/PLOS/wombat/issues), or submit a pull request.
 
+## Running locally
+
+To run a local tomcat container, use `mvn cargo:run`. You will need to set all the appropriate environment variables (see above). Here is an example:
+
+```
+$ RHINO_URL=http://journals-dev1-backend1.soma.plos.org:8006/v2/ \
+  SOLR_URL=http://solr-mega-dev.soma.plos.org:80/solr/journals_dev/ \
+  CAS_URL=https://nedcas-integration.plos.org/cas \
+  NED_URL=http://dipro:XXXXX@nac-390.soma.plos.org:8888/v1/ \
+  COLLECTIONS_URL=http://collections-dev.plos.org \
+  THEME_PATH=/path/to/plos-themes \
+  mvn package cargo:run
+```
+
+Once you have a running tomcat server, you can hot deploy your changes into it from another container using:
+```
+mvn package cargo:undeploy && sleep 5 && mvn cargo:deploy
+```
+
+The sleep seems to be necessary to give tomcat a chance to undeploy.
+
 ## Docker
 
 Wombat is intended to be run in docker.

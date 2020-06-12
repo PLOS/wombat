@@ -40,6 +40,8 @@
 
   <beans:bean class="org.ambraproject.wombat.config.SpringMvcConfiguration" />
 
+  <beans:bean class="org.ambraproject.wombat.config.BugsnagConfiguration" />
+
   <beans:bean class="org.ambraproject.wombat.config.RootConfiguration" />
 
   <beans:bean id="runtimeConfiguration"
@@ -50,7 +52,8 @@
     <beans:property name="themePath" value="${THEME_PATH:}" />
     <beans:property name="debug" value="${DEBUG:false}" />
     <beans:property name="rhinoUrl" value="${RHINO_URL:}" />
-    <beans:property name="collectionsUrl" value="${COLLECTIONS_URL:}" />
+    <beans:property name="collectionsUrl" value="${COLLECTIONS_URL}" />
     <beans:property name="memcachedServer" value="${MEMCACHED_SERVER:}" />
+    <beans:property name="bugsnagApiKey" value="${BUGSNAG_API_KEY:null}" />
   </beans:bean>
 </beans:beans>

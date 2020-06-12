@@ -355,6 +355,13 @@
       <artifactId>spring-security-web</artifactId>
       <version>${org.springsecurity-version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.bugsnag</groupId>
+      <version>[3.0,4.0)</version>
+      <artifactId>bugsnag-spring</artifactId>
+    </dependency>
+
     <!-- Used for Reference Object to XML transform for xslt use -->
     <dependency>
       <groupId>com.sun.xml.bind</groupId>

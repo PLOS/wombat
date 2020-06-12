@@ -45,7 +45,8 @@ public class RuntimeConfiguration {
   String casUrl;
   URL solrUrl;
   URI nedUrl;
-
+  String bugsnagApiKey;
+  
   public static Gson makeGson() {
     GsonBuilder builder = new GsonBuilder();
     builder.setPrettyPrinting();
@@ -144,5 +145,13 @@ public class RuntimeConfiguration {
     Preconditions.checkArgument(!collectionsUrl.toString().equals(""),
                                 "Please set COLLECTIONS_URL.");
     this.collectionsUrl = collectionsUrl;
+  }
+
+  public String getBugsnagApiKey() {
+    return this.bugsnagApiKey;
+  }
+
+  public void setBugsnagApiKey(String bugsnagApiKey) {
+    this.bugsnagApiKey = bugsnagApiKey;
   }
 }

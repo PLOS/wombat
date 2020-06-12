@@ -92,9 +92,11 @@ public class AlertController extends WombatController {
         alertService.addSearchAlert(authId, name, query, freq);
       }
     } catch (AlertService.AlertException e) {
+      bugsnag.notify(e);
       log.error("Error while changing search alert", e);
       return respondFailure(e.getMessage());
     } catch (UserApi.UserApiException e) {
+      bugsnag.notify(e);
       log.error("Error from UserApi while changing search alert", e);
       return respondFailure("User data is temporarily unavailable");
     }

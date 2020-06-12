@@ -22,21 +22,19 @@
 
 package org.ambraproject.wombat.service;
 
-import org.ambraproject.wombat.config.RuntimeConfiguration;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Properties;
+import com.bugsnag.Bugsnag;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.util.BuildInfo;
 import org.ambraproject.wombat.util.GitInfo;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Properties;
 
 public class BuildInfoServiceImpl implements BuildInfoService {
   private static final Logger log = LogManager.getLogger(BuildInfoServiceImpl.class);
@@ -48,7 +46,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
   private GitInfo gitInfo;
 
   @Autowired
-  private RuntimeConfiguration runtimeConfiguration;
+  private Bugsnag bugsnag;
 
   /*
    * Cache the results in the service object. This may not be the best place to cache them, especially if the data is
@@ -90,6 +88,7 @@ public class BuildInfoServiceImpl implements BuildInfoService {
     try {
       return serviceBuildInfo = fetchServiceBuildInfo();
     } catch (Exception e) {
+      bugsnag.notify(e);
       log.error("Could not fetch service build info", e);
       return null;
     }

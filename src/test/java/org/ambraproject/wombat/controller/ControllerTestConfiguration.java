@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import javax.servlet.http.HttpServletRequest;
+import com.bugsnag.Bugsnag;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
@@ -180,6 +181,11 @@ public class ControllerTestConfiguration {
   @Bean
   protected CorpusContentApi corpusContentApi() {
     return mock(CorpusContentApi.class);
+  }
+
+  @Bean
+  protected Bugsnag bugsnag() {
+    return mock(Bugsnag.class);
   }
 
   @Bean

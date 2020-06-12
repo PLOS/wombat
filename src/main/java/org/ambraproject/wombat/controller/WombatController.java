@@ -22,6 +22,7 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.bugsnag.Bugsnag;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.net.HttpHeaders;
@@ -49,6 +50,9 @@ public abstract class WombatController {
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
+
+  @Autowired
+  protected Bugsnag bugsnag;
 
   /**
    * Check that a request parameter is not empty.

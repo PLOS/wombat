@@ -97,6 +97,7 @@ public class CommentController extends WombatController {
     try {
       model.addAttribute("articleComments", commentService.getArticleComments(articleId, site));
     } catch (UserApi.UserApiException e) {
+      bugsnag.notify(e);
       log.error(e.getMessage(), e);
       model.addAttribute("userApiError", e);
     }
@@ -151,6 +152,7 @@ public class CommentController extends WombatController {
     } catch (CommentService.CommentNotFoundException e) {
       throw new NotFoundException(e);
     } catch (UserApi.UserApiException e) {
+      bugsnag.notify(e);
       log.error(e.getMessage(), e);
       model.addAttribute("userApiError", e);
 

@@ -46,6 +46,7 @@ public class RuntimeConfiguration {
   URL solrUrl;
   URI nedUrl;
   String bugsnagApiKey;
+  String bugsnagReleaseStage;
   
   public static Gson makeGson() {
     GsonBuilder builder = new GsonBuilder();
@@ -153,5 +154,13 @@ public class RuntimeConfiguration {
 
   public void setBugsnagApiKey(String bugsnagApiKey) {
     this.bugsnagApiKey = bugsnagApiKey;
+  }
+
+  public String getBugsnagReleaseStage() {
+    return this.bugsnagReleaseStage;
+  }
+
+  public void setBugsnagReleaseStage(String bugsnagReleaseStage) {
+    this.bugsnagReleaseStage = bugsnagReleaseStage;
   }
 }

@@ -24,6 +24,8 @@ package org.ambraproject.wombat.config;
 
 import com.bugsnag.Bugsnag;
 import com.bugsnag.BugsnagSpringConfiguration;
+import org.ambraproject.wombat.util.GitInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -31,8 +33,15 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @Import(BugsnagSpringConfiguration.class)
 public class BugsnagConfiguration {
+
+    @Autowired
+    private GitInfo gitInfo;
+
     @Bean
     public Bugsnag bugsnag(RuntimeConfiguration runtimeConfiguration) {
-      return new Bugsnag(runtimeConfiguration.getBugsnagApiKey());
+      Bugsnag bugsnag = new Bugsnag(runtimeConfiguration.getBugsnagApiKey());
+      bugsnag.setAppVersion(gitInfo.getCommitId());
+      bugsnag.setReleaseStage(runtimeConfiguration.getBugsnagReleaseStage());
+      return bugsnag;
     }
 }

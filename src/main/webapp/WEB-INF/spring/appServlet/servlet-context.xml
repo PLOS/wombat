@@ -55,5 +55,6 @@
     <beans:property name="collectionsUrl" value="${COLLECTIONS_URL}" />
     <beans:property name="memcachedServer" value="${MEMCACHED_SERVER:}" />
     <beans:property name="bugsnagApiKey" value="${BUGSNAG_API_KEY:null}" />
+    <beans:property name="bugsnagReleaseStage" value="${BUGSNAG_RELEASE_STAGE:production}" />
   </beans:bean>
 </beans:beans>

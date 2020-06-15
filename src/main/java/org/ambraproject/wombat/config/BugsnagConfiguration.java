@@ -42,6 +42,7 @@ public class BugsnagConfiguration {
       Bugsnag bugsnag = new Bugsnag(runtimeConfiguration.getBugsnagApiKey());
       bugsnag.setAppVersion(gitInfo.getCommitId());
       bugsnag.setReleaseStage(runtimeConfiguration.getBugsnagReleaseStage());
+      bugsnag.setAppType("wombat");
       return bugsnag;
     }
 }

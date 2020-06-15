@@ -284,6 +284,7 @@ public class HomeController extends WombatController {
         List<SolrArticleAdapter> articles = section.getArticles(site, start);
         sectionsForModel.put(section.getName(), articles);
       } catch (IOException | EntityNotFoundException e) {
+        bugsnag.notify(e);
         log.error("Could not populate home page section: " + section.getName(), e);
         // Render the rest of the page without the article list
         // The FreeMarker template should provide an error message if there is a null value in sectionsForModel
@@ -294,6 +295,7 @@ public class HomeController extends WombatController {
       try {
         model.addAttribute("currentIssue", fetchCurrentIssue(site));
       } catch (IOException e) {
+        bugsnag.notify(e);
         log.error("Could not retrieve current issue for: " + site.getJournalKey(), e);
       }
     }

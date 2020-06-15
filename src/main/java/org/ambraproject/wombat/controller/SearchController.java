@@ -329,6 +329,7 @@ public class SearchController extends WombatController {
       return true;
     } else {
       log.error("Unknown error returned from Solr: " + sre.getMessage());
+      bugsnag.notify(sre);
       return false;
     }
   }

@@ -9,11 +9,11 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import javax.servlet.http.HttpServletRequest;
+import com.bugsnag.Bugsnag;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.TestRuntimeConfiguration;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
@@ -45,8 +45,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @WebAppConfiguration
 public class ControllerTestConfiguration {
-  private static final RuntimeConfiguration runtimeConfiguration = new TestRuntimeConfiguration();
-
   protected static final String DESKTOP_PLOS_ONE = "DesktopPlosOne";
 
   @Bean
@@ -61,7 +59,7 @@ public class ControllerTestConfiguration {
 
   @Bean
   protected RuntimeConfiguration runtimeConfiguration() {
-    return runtimeConfiguration;
+    return mock(RuntimeConfiguration.class);
   }
 
   @Bean
@@ -183,6 +181,11 @@ public class ControllerTestConfiguration {
   @Bean
   protected CorpusContentApi corpusContentApi() {
     return mock(CorpusContentApi.class);
+  }
+
+  @Bean
+  protected Bugsnag bugsnag() {
+    return mock(Bugsnag.class);
   }
 
   @Bean

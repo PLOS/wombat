@@ -101,7 +101,6 @@ import org.ambraproject.wombat.service.SearchFilterService;
 import org.ambraproject.wombat.service.TopLevelLockssManifestService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.EditorialContentApi;
-import org.ambraproject.wombat.service.remote.EditorialContentApiImpl;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApiImpl;
 import org.ambraproject.wombat.util.GitInfo;
@@ -340,7 +339,7 @@ public class SpringConfiguration {
 
   @Bean
   public EditorialContentApi editorialContentApi() {
-    return new EditorialContentApiImpl();
+    return new EditorialContentApi();
   }
 
   @Bean

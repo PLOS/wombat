@@ -1,11 +1,7 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.MoreCollectors;
-import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -26,6 +22,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -34,7 +32,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.UUID;
 
 
 public class PeerReviewServiceImpl implements PeerReviewService {
@@ -230,18 +227,11 @@ public class PeerReviewServiceImpl implements PeerReviewService {
    */
   String getContentXml(Map<String, ?> metadata, String itemType) throws IOException {
     Map<String, ?> files = (Map<String, ?>) metadata.get("files");
-    Map<String, ?> contentRepoMetadata = (Map<String, ?>) files.get(itemType);
-
-    String crepoKey = (String) contentRepoMetadata.get("crepoKey");
-    UUID uuid = UUID.fromString((String) contentRepoMetadata.get("crepoUuid"));
-    ContentKey contentKey = ContentKey.createForUuid(crepoKey, uuid);
-
-    return getContent(contentKey);
-  }
-
-  String getContent(ContentKey contentKey) throws IOException {
-    CloseableHttpResponse response = corpusContentApi.request(contentKey, ImmutableList.of());
-    String content = EntityUtils.toString(response.getEntity(), "UTF-8");
-    return content;
+    Map<String, ?> fileMetadata = (Map<String, ?>) files.get(itemType);
+    try {
+      return corpusContentApi.requestContent(new URI((String) fileMetadata.get("url")));
+    } catch (URISyntaxException ex) {
+      throw new RuntimeException(ex);
+    }
   }
 }

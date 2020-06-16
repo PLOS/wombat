@@ -22,7 +22,6 @@
 
 package org.ambraproject.wombat.controller;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.MoreCollectors;
 import com.google.common.io.ByteSource;
 import com.google.common.net.HttpHeaders;
@@ -38,7 +37,6 @@ import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
 import org.ambraproject.wombat.model.PowerPointDownload;
-import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.poi.hslf.usermodel.SlideShow;
 import org.apache.logging.log4j.Logger;
@@ -53,12 +51,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.UUID;
 
 /**
  * Endpoint for downloading PowerPoint slides of figures.
@@ -155,12 +154,15 @@ public class PowerPointController extends WombatController {
   private ByteSource getImageFile(AssetPointer assetId) throws IOException {
     Map<String, ?> files = articleService.getItemFiles(assetId);
     Map<String, ?> file = (Map<String, ?>) files.get(IMAGE_SIZE);
-    ContentKey key = ContentKey.createForUuid((String) file.get("crepoKey"),
-        UUID.fromString((String) file.get("crepoUuid")));
+    String url = (String) file.get("url");
     return new ByteSource() {
       @Override
       public InputStream openStream() throws IOException {
-        return corpusContentApi.request(key, ImmutableList.of()).getEntity().getContent();
+        try {
+          return corpusContentApi.request(new URI(url)).getEntity().getContent();
+        } catch (URISyntaxException ex) {
+          throw new RuntimeException(ex);
+        }
       }
     };
   }

@@ -22,19 +22,38 @@
 
 package org.ambraproject.wombat.service;
 
+import org.ambraproject.wombat.config.site.Site;
+import org.ambraproject.wombat.identity.ArticlePointer;
 import org.ambraproject.wombat.model.Reference;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
+
+import com.google.common.collect.ImmutableList;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This class is used to parse the article xml
  */
 public interface ParseXmlService {
+
+  @SuppressWarnings("serial")
+  static class XmlContent implements Serializable {
+    public final String html;
+    public final ImmutableList<Reference> references;
+
+    public XmlContent(String html, List<Reference> references) {
+      this.html = Objects.requireNonNull(html);
+      this.references = ImmutableList.copyOf(references);
+    }
+  }
 
   /**
    * @param xml article xml
@@ -55,4 +74,6 @@ public interface ParseXmlService {
    */
   List<Reference> parseArticleReferences(Document doc,
                                          ParseReferenceService.DoiToJournalLinkService linkService) throws IOException;
+
+  XmlContent getXmlContent(Site site, ArticlePointer articlePointer, HttpServletRequest request) throws IOException;
 }

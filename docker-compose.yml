@@ -11,12 +11,13 @@ services:
       - db
       - rhino
     environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/etc/credentials.json
       - CAS_URL
       - NED_URL
       - SOLR_URL
       - DEBUG
       - LOG_LEVEL
-      - RHINO_URL=${RHINO_URL:-http://rhino:8080/rhino/}
+      - RHINO_URL=${RHINO_URL:-http://rhino:8080/v2/}
       - THEME_PATH=/opt/plos/themes
       - COLLECTIONS_URL
       - MEMCACHED_SERVER=memcached:11211
@@ -28,21 +29,25 @@ services:
       - 8080
     volumes:
       - ${PLOS_THEMES_REPO}:/opt/plos/themes:ro
+      - ${GOOGLE_APPLICATION_CREDENTIALS}:/etc/credentials.json:ro
 
   rhino:
     image: plos/rhino:latest
     depends_on:
       - db
     environment:
-      - CONTENT_REPO_URL
+      - GOOGLE_APPLICATION_CREDENTIALS=/etc/credentials.json
       - CORPUS_BUCKET
       - TAXONOMY_URL
       - THESAURUS
+      - LOG_LEVEL
       - DATABASE_URL=jdbc:mysql://db:3306/ambra?user=root&password=password
     links:
       - db
     ports:
       - 8006:8080
+    volumes:
+      - ${GOOGLE_APPLICATION_CREDENTIALS}:/etc/credentials.json:ro
 
   db:
     image: mysql:5.7.29

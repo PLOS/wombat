@@ -52,7 +52,7 @@ public class ArticleApiImpl extends AbstractRestfulJsonApi implements ArticleApi
       throws IOException {
     HttpGet get = buildGet(ApiAddress.builder("assetfiles").addToken(assetId).build());
     get.setHeaders(headers.toArray(new Header[headers.size()]));
-    return cachedRemoteStreamer.getResponse(get);
+    return remoteStreamer.getResponse(get);
   }
 
 }

@@ -3,7 +3,7 @@ package org.ambraproject.wombat.model;
 import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class RelatedArticleTest {
     .build();
 
   @Test
-  public void testCreateFromJson() {
+  public void testCreateFromJson() throws IOException {
     RelatedArticle ra = new Gson().<List<RelatedArticle>>fromJson(read("articleMeta/ppat.1005446.related.json"),
                                                                   ArticleMetadata.Factory.RELATED_ARTICLE_GSON_TYPE).get(0);
 

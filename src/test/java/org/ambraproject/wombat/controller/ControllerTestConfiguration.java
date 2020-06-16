@@ -32,9 +32,9 @@ import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.PeerReviewService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.RemoteService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.UserApi;
@@ -107,25 +107,12 @@ public class ControllerTestConfiguration {
   }
 
   @Bean
-  protected CachedRemoteService<Reader> cachedRemoteReader() {
-    @SuppressWarnings("unchecked")
-    final CachedRemoteService<Reader> cachedRemoteReader = mock(CachedRemoteService.class);
-    return cachedRemoteReader;
-  }
-
-  @Bean
   protected SolrSearchApi solrSearchApi() {
     final SolrSearchApi solrSearchApi = spy(SolrSearchApi.class);
     return solrSearchApi;
   }
 
-  @Bean
-  protected CachedRemoteService<InputStream> cachedRemoteInputStream() {
-    @SuppressWarnings("unchecked")
-    final CachedRemoteService<InputStream> cachedRemoteReader = mock(CachedRemoteService.class);
-    return cachedRemoteReader;
-  }
-
+  
   @Bean
   protected ArticleApi articleApi() {
     final ArticleApi articleApi = mock(ArticleApiImpl.class);
@@ -227,4 +214,16 @@ public class ControllerTestConfiguration {
   protected DoiToJournalResolutionService doiToJournalResolutionService() {
     return mock(DoiToJournalResolutionService.class);
   }
+
+  
+  @Bean
+  protected RemoteService<InputStream> remoteStreamer(){
+    return mock(RemoteService.class);
+  }
+
+  @Bean
+  protected RemoteService<Reader> remoteReader(){
+    return mock(RemoteService.class);
+  }
+
 }

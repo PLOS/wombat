@@ -46,6 +46,7 @@
 
   <beans:bean id="runtimeConfiguration"
         class="org.ambraproject.wombat.config.RuntimeConfiguration">
+    <beans:property name="editorialBucket" value="${EDITORIAL_BUCKET:}" />
     <beans:property name="solrUrl" value="${SOLR_URL:}" />
     <beans:property name="nedUrl" value="${NED_URL:}" />
     <beans:property name="casUrl" value="${CAS_URL:}" />

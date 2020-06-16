@@ -28,6 +28,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.util.Date;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
 import com.google.common.base.Strings;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -37,7 +40,7 @@ import org.ambraproject.wombat.cache.NullCache;
 import org.ambraproject.wombat.config.yaml.IgnoreMissingPropertyConstructor;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
+import org.ambraproject.wombat.service.remote.RemoteService;
 import org.ambraproject.wombat.service.remote.JsonService;
 import org.ambraproject.wombat.service.remote.ReaderService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
@@ -125,14 +128,17 @@ public class RootConfiguration {
   }
 
   @Bean
-  public CachedRemoteService<InputStream> cachedRemoteStreamer(HttpClientConnectionManager httpClientConnectionManager,
-                                                               Cache cache) {
-    return new CachedRemoteService<>(new StreamService(httpClientConnectionManager), cache);
+  public Storage storage(RuntimeConfiguration runtimeConfiguration) {
+    return StorageOptions.newBuilder().build().getService();
   }
 
   @Bean
-  public CachedRemoteService<Reader> cachedRemoteReader(HttpClientConnectionManager httpClientConnectionManager,
-                                                        Cache cache) {
-    return new CachedRemoteService<>(new ReaderService(httpClientConnectionManager), cache);
+  public RemoteService<InputStream> remoteStreamer(HttpClientConnectionManager httpClientConnectionManager) {
+    return new StreamService(httpClientConnectionManager);
+  }
+
+  @Bean
+  public RemoteService<Reader> remoteReader(HttpClientConnectionManager httpClientConnectionManager) {
+    return new ReaderService(httpClientConnectionManager);
   }
 }

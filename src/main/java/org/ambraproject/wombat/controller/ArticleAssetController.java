@@ -36,7 +36,6 @@ import org.ambraproject.wombat.identity.AssetPointer;
 import org.ambraproject.wombat.identity.RequestedDoiVersion;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
-import org.ambraproject.wombat.service.remote.ContentKey;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.logging.log4j.Logger;
@@ -50,6 +49,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.EnumSet;
 import java.util.Map;
 import java.util.Objects;
@@ -131,7 +132,7 @@ public class ArticleAssetController extends WombatController {
       String location = redirectLink.get(requestFromClient);
       log.warn(String.format("Redirecting %s request for %s to <%s>. Bad link?",
           requestedStyle, asset.asParameterMap(), location));
-      redirectTo(responseToClient, location);
+      responseToClient.sendRedirect(location);
       return;
     }
 
@@ -140,13 +141,7 @@ public class ArticleAssetController extends WombatController {
     if (fileRepoKey == null) {
       fileRepoKey = handleUnmatchedFileType(id, itemType, fileType, files);
     }
-
-    // TODO: Check visibility against site?
-
-    ContentKey contentKey = createKey(fileRepoKey);
-    try (CloseableHttpResponse responseFromApi = corpusContentApi.request(contentKey, ImmutableList.of())) {
-      forwardAssetResponse(responseFromApi, responseToClient, isDownload);
-    }
+    responseToClient.sendRedirect((String) fileRepoKey.get("url"));
   }
 
   /**
@@ -185,15 +180,6 @@ public class ArticleAssetController extends WombatController {
     throw new NotFoundException(message);
   }
 
-  /**
-   * Redirect to a given link. (We can't just return a {@link org.springframework.web.servlet.view.RedirectView} because
-   * we ordinarily want to pass the raw response to {@link #forwardAssetResponse}. So we mess around with it directly.)
-   */
-  private void redirectTo(HttpServletResponse response, String location) {
-    response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-    response.setHeader(HttpHeaders.LOCATION, location);
-  }
-
   @RequestMapping(name = "assetFile", value = "/article/file", params = {"type"})
   public void serveAssetFile(HttpServletRequest request, HttpServletResponse response,
                              @SiteParam Site site,
@@ -213,15 +199,4 @@ public class ArticleAssetController extends WombatController {
       throws IOException {
     serve(request, response, AssetUrlStyle.FIGURE_IMAGE, site, id, figureSize, booleanParameter(isDownload));
   }
-
-  private static ContentKey createKey(Map<String, ?> fileRepoKey) {
-    String key = (String) fileRepoKey.get("crepoKey");
-    UUID uuid = UUID.fromString((String) fileRepoKey.get("crepoUuid"));
-    ContentKey contentKey = ContentKey.createForUuid(key, uuid);
-    if (fileRepoKey.get("bucketName") != null) {
-      contentKey.setBucketName(fileRepoKey.get("bucketName").toString());
-    }
-    return contentKey;
-  }
-
 }

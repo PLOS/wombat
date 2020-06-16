@@ -51,6 +51,7 @@ import org.ambraproject.wombat.model.Reference;
 import org.ambraproject.wombat.model.RelatedArticle;
 import org.ambraproject.wombat.service.ArticleResolutionService;
 import org.ambraproject.wombat.service.ArticleService;
+import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.remote.ApiAddress;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
@@ -147,11 +148,11 @@ public class ArticleControllerTest extends ControllerTest {
         Reference.build().setTitle("Reference title").setPublisherName("Publisher Name")
             .setAuthors(ImmutableList.of()).setCollabAuthors(ImmutableList.of()).build();
     ImmutableList<Reference> expectedReferences = ImmutableList.of(reference);
-    ArticleController.HtmlWithReferences expectedHtmlWithReferences =
-        new ArticleController.HtmlWithReferences(expectedHtml, expectedReferences);
+    final ParseXmlService.XmlContent expectedXmlContent =
+        new ParseXmlService.XmlContent(expectedHtml, expectedReferences);
 
-    when(corpusContentApi.readManuscript(any(), any(), any(), any()))
-        .thenReturn(expectedHtmlWithReferences);
+    final ParseXmlService mockParseXmlService = applicationContext.getBean(ParseXmlService.class);
+    when(mockParseXmlService.getXmlContent(any(), any(), any())).thenReturn(expectedXmlContent);
 
     String expectedViewName = NOSPACE_JOINER.join(DESKTOP_PLOS_ONE, "/ftl/article/article");
     String requestUri = NOSPACE_JOINER.join("/article?id=", EXPECTED_DOI);
@@ -164,6 +165,5 @@ public class ArticleControllerTest extends ControllerTest {
     verify(articleService).getItemTable(expectedArticlePointer);
     verify(articleApi, times(1)).requestObject(any(), eq(Map.class));
     verify(articleMetadata).getArticlePointer();
-    verify(corpusContentApi).readManuscript(any(), any(), any(), any());
   }
 }

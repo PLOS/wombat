@@ -47,6 +47,7 @@ public class RuntimeConfiguration {
   URI nedUrl;
   String bugsnagApiKey;
   String bugsnagReleaseStage;
+  String editorialBucket;
   
   public static Gson makeGson() {
     GsonBuilder builder = new GsonBuilder();
@@ -120,7 +121,6 @@ public class RuntimeConfiguration {
    *
    * @return the URL
    */
-
   public URL getRhinoUrl() { return rhinoUrl; }
 
   public void setRhinoUrl(URL rhinoUrl) {
@@ -150,6 +150,14 @@ public class RuntimeConfiguration {
 
   public String getBugsnagApiKey() {
     return this.bugsnagApiKey;
+  }
+
+  public String getEditorialBucket() {
+    return editorialBucket;
+  }
+
+  public void setEditorialBucket(String editorialBucket) {
+    this.editorialBucket = editorialBucket;
   }
 
   public void setBugsnagApiKey(String bugsnagApiKey) {

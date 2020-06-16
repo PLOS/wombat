@@ -65,7 +65,7 @@ public class SolrSearchApi {
   private JsonService jsonService;
 
   @Autowired
-  private CachedRemoteService<Reader> cachedRemoteReader;
+  private RemoteService<Reader> remoteReader;
 
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
@@ -173,8 +173,7 @@ public class SolrSearchApi {
     List<NameValuePair> params = SolrQueryBuilder.buildParameters(query);
     URI uri = getSolrUri(params);
     log.debug("Solr request executing: " + uri);
-    CacheKey cacheKey = CacheKey.create("solr", uri.toString());
-    return jsonService.requestCachedObject(cachedRemoteReader, cacheKey, new HttpGet(uri), Result.class);
+    return jsonService.requestObject(remoteReader, new HttpGet(uri), Result.class);
   }
 
   private URI getSolrUri(List<NameValuePair> params) {

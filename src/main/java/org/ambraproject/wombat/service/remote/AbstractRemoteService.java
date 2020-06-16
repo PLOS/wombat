@@ -36,11 +36,15 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.http.impl.client.cache.CacheConfig;
+import org.apache.http.impl.client.cache.CachingHttpClientBuilder;
 import org.springframework.http.HttpStatus;
 
 import java.io.Closeable;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 /**
@@ -51,16 +55,28 @@ abstract class AbstractRemoteService<S extends Closeable> implements RemoteServi
 
   private final Optional<HttpClientConnectionManager> connectionManager;
 
+  HttpClientBuilder clientBuilder;
+  CloseableHttpClient client;
+
   protected AbstractRemoteService(HttpClientConnectionManager connectionManager) {
     this.connectionManager = Optional.ofNullable(connectionManager);
+    CacheConfig cacheConfig = CacheConfig.
+      custom().
+      setMaxObjectSize(100000000)
+      .build();
+    File tmpdir = Paths.get(System.getProperty("java.io.tmpdir"), "wombat").toFile();
+    tmpdir.mkdirs();
+    this.clientBuilder = CachingHttpClientBuilder.create()
+      .setCacheDir(tmpdir)
+      .setCacheConfig(cacheConfig);
+    this.connectionManager.map((mgr)->clientBuilder.setConnectionManager(mgr));
   }
 
   private CloseableHttpClient createClient() {
-    HttpClientBuilder clientBuilder = HttpClientBuilder.create();
-    if (connectionManager.isPresent()) {
-      clientBuilder = clientBuilder.setConnectionManager(connectionManager.get());
+    if (client == null) {
+      client = clientBuilder.build();
     }
-    return clientBuilder.build();
+    return client;
   }
 
   @Override

@@ -22,39 +22,95 @@
 
 package org.ambraproject.wombat.service.remote;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
+import java.net.URL;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import com.google.cloud.storage.Blob;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Storage;
+import com.google.gson.Gson;
+import org.ambraproject.wombat.config.RuntimeConfiguration;
+import org.ambraproject.wombat.config.site.SiteSet;
 import org.ambraproject.wombat.freemarker.HtmlElementSubstitution;
 import org.ambraproject.wombat.freemarker.HtmlElementTransformation;
 import org.ambraproject.wombat.freemarker.SitePageContext;
+import org.apache.commons.io.IOUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.Set;
+public class EditorialContentApi {
 
-public interface EditorialContentApi extends ContentApi {
+  @Autowired
+  private SiteSet siteSet;
+
+  @Autowired
+  private RuntimeConfiguration runtimeConfiguration;
+
+  @Autowired
+  private Storage storage;
+
+  @Autowired
+  private Gson gson;
+
+  long PRESIGNED_URL_EXPIRY = 1; // HOUR
+
+  public boolean objectExists(String key) {
+    BlobId blobId = BlobId.of(runtimeConfiguration.getEditorialBucket(), key);
+    return storage.get(blobId).exists();
+  }
+
+  public URL getPublicUrl(String key) {
+    BlobId blobId = BlobId.of(runtimeConfiguration.getEditorialBucket(), key);
+    BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
+    return storage.signUrl(blobInfo, PRESIGNED_URL_EXPIRY, TimeUnit.HOURS, Storage.SignUrlOption.withV4Signature());
+  }
 
   /**
-   * Fetch a block of HTML from
-   * Transform the raw HTML receives from a remote service.
-   *
-   * @param sitePageContext the site of the context into which the HTML will be inserted
-   * @param key             a key identifying the HTML to fetch
-   * @param substitutions   substitutions to apply to the HTML
-   * @param transformations transformations to apply to the HTML elements
-   * @return an HTML block
-   * @throws IOException
+   * {@inheritDoc}
+   * <p/>
+   * Applies transforms to HTML attributes and performs substitution of placeholder HTML elements with stored content
    */
-  public Reader readHtml(SitePageContext sitePageContext, String pageType, String key,
-                         Set<HtmlElementTransformation> transformations,
-                         Collection<HtmlElementSubstitution> substitutions) throws IOException;
+  public Reader readHtml(final SitePageContext sitePageContext, String pageType, String key,
+                         final Set<HtmlElementTransformation> transformations,
+                         final Collection<HtmlElementSubstitution> substitutions)
+          throws IOException {
+    BlobId blobId = BlobId.of(runtimeConfiguration.getEditorialBucket(), key);
+    // It would be nice to feed the reader directly into the parser, but Jsoup's API makes this
+    // awkward.
+    // The whole document will be in memory anyway, so buffering it into a string is no great
+    // performance loss.
+    String htmlString = IOUtils.toString(storage.readAllBytes(blobId), "UTF-8");
+    Document document = Jsoup.parseBodyFragment(htmlString);
+
+    for (HtmlElementTransformation transformation : transformations) {
+      transformation.apply(sitePageContext, siteSet, document);
+    }
+    for (HtmlElementSubstitution substitution : substitutions) {
+      substitution.substitute(document);
+    }
+
+    // We received a snippet, which Jsoup has automatically turned into a complete HTML document.
+    // We want to return only the transformed snippet, so retrieve it from the body tag.
+    String transformedHtml = document.getElementsByTag("body").html();
+    return new StringReader(transformedHtml);
+  }
 
   /**
-   * Fetch a JSON object from a remote service.
-   *
-   * @param key             a key identifying the JSON string to fetch
-   * @return an HTML block
-   * @throws IOException
+   * {@inheritDoc}
+   * <p/>
+   * Returns a JSON object from a remote service
    */
-  public Object getJson(String pageType, String key) throws IOException;
-
+  public Object getJson(String key) throws IOException {
+    BlobId blobId = BlobId.of(runtimeConfiguration.getEditorialBucket(), key);
+    String jsonString = IOUtils.toString(storage.readAllBytes(blobId), "UTF-8");
+    return gson.fromJson(jsonString, Object.class);
+  }
 }

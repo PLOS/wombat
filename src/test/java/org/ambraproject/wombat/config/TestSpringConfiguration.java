@@ -57,7 +57,7 @@ public class TestSpringConfiguration {
 
   @Bean
   public RuntimeConfiguration runtimeConfiguration() {
-    return new TestRuntimeConfiguration();
+    return mock(RuntimeConfiguration.class);
   }
 
   @Bean

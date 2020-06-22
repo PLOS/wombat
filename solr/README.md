@@ -3,13 +3,8 @@
 This folder contains the solr schema and configuration for the PLOS journals
 stack. 
 
-In SOMA, solr is deployed and managed via 
-[solrcloud-formula](https://github.com/PLOS-formulas/solrcloud-formula).
-
-In GCP, solr is deployed and managed via kubernetes and deployed via the 
-[solr](https://gitlab.com/plos/gcp-global/-/tree/master/modules/solr) 
-terraform module in 
-[gcp-global](https://gitlab.com/plos/gcp-global).
+PLOS deployment details can be found in
+[confluence](https://confluence.plos.org/confluence/display/DEV/SOLR).
 
 # Cloud Configuration 
 
@@ -28,8 +23,8 @@ For example ...
 
 ```
 docker run --rm -v ~/repos/plos/wombat/solr:/solrconf solr:7.7 \
-./server/scripts/cloud-scripts/zkcli.sh -z solr-zoo-201.soma.plos.org:2181/solr-mega \
--cmd upconfig -confdir /solrconf/config -confname wombat_31d72ab_2020-06-22
+./server/scripts/cloud-scripts/zkcli.sh -z $zkhost:2181/$zkchroot  \
+-cmd upconfig -confdir /solrconf/config -confname wombat_2020-06-22_31d72ab
 ```
 
 You can also download configurations and perform a handful of other useful
@@ -45,63 +40,26 @@ release and run `zkcli.sh` from there.
 
 ## Naming Conventions
 
-When uploading a configuration to solr, name it after the repo and hash where
-the configuration can be found in version control, along with the date of
-creation. This will make it easy to see at glance which configuration is
+When uploading a configuration to solr, name it after the repo, date, and 
+hash. This will make it easy to see at glance which configuration is
 newest, while also providing an easy reference to the source code where the
 config can be located. For configurations deployed from this repo, the name in
-solr should generally look something like `wombat_31d72ab_2020-06-22`.
+solr should generally look something like `wombat_2020-06-22_31d72ab`.
 
 If you're uploading a configuration for testing in a dev environment, include
 the ticket number and/or your username in the name of the collection. This will
 aid future garbage collection. Examples might be `ENG-299-schema-change` or
-`chaumesser-test`.
+`jsmith-test`.
 
 
 ## zookeeper
 
-### SOMA
+PLOS-specific details can be found on
+[confluence](https://confluence.plos.org/confluence/display/DEV/SOLR).
 
-In SOMA, our zookeepers are listed in 
-[Solr Cloud Architecture](https://confluence.plos.org/confluence/display/DEV/Solr+Cloud+Architecture).
+Note that if your solr cluster uses a zookeeper chroot, you will need to
+specify it in the connection string, e.g. `$zkhost:2181/$chroot`.
 
-Another easy way to get a list: `pogos dewey hosts list | grep zookeeper`
-
-You can connect directly to any zookeeper host on port 2181 from office or vpn.
-
-SOMA solr clusters use a zookeeper chroot of either `solr-mini` or `solr-mega`,
-which you must specify in the zookeeper connection string, e.g.
-`solr-zoo-201.soma.plos.org:2181/solr-mega`.
-
-### GCP
-
-In GCP, zookeeper is not exposed outside of the kubernetes cluster, so you will
-need to forward a port using `kubectl`.
-
-```
-# if you don't already have credentials, get 'em
-gcloud container clusters get-credentials plos-dev-gke-1 --region us-east1 --project plos-dev
-
-# otherwise use the right k8s context (using kubectx)
-kubectx gke_plos-dev_us-east1_plos-dev-gke-1
-
-# or (without kubectx)
-# kubectl config use-context gke_plos-dev_us-east1_plos-dev-gke-1
-
-# set namespace (using kubens) and forward ports
-kubens solr
-kubectl port-forward \
-$(kubectl get pod --selector="app=zookeeper,release=plos-solr" --output jsonpath='{.items[0].metadata.name}') \
-2181:2181
-
-# or (without kubens) specify the namespace directly in the port-forward command
-# kubectl port-forward --namespace solr \
-# $(kubectl get pod --namespace solr --selector="app=zookeeper,release=plos-solr" --output jsonpath='{.items[0].metadata.name}') \
-# 2181:2181
-```
-
-There are no chroots used in GCP, so you can then specify your zookeeper
-connection string as `localhost:2181`.
 
 # Running solr locally
 

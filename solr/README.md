@@ -3,6 +3,14 @@
 This folder contains the solr schema and configuration for the PLOS journals
 stack. 
 
+In SOMA, solr is deployed and managed via 
+[solrcloud-formula](https://github.com/PLOS-formulas/solrcloud-formula).
+
+In GCP, solr is deployed and managed via kubernetes and deployed via the 
+[solr](https://gitlab.com/plos/gcp-global/-/tree/master/modules/solr) 
+terraform module in 
+[gcp-global](https://gitlab.com/plos/gcp-global).
+
 # Cloud Configuration 
 
 ## Overview

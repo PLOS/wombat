@@ -121,18 +121,7 @@
       width: 100%;
       text-align: left;
 
-      label.error_consent {
-        display: none;
-        width: 100%;
-        float: left;
-        margin-top: $line-height-small;
-        font-size: $txt-size-xsmall;
-        color: $warning;
-        background-color: $clr-warning-bg !important;
-        padding: $pad-xsmall;
-      }
-
-      label.email_consent {
+      .email_consent {
         color: $grey-dark;
         width: 100%;
         line-height: $line-height;
@@ -197,7 +186,7 @@
     form {
       .consent {
         color: $grey-dark;
-        label.email_consent {
+        .email_consent {
           a {
             color: $plos-one-purple;
             &:hover {
@@ -207,7 +196,6 @@
         }
       }
 
-      label.error_consent,
       label.error {
         @extend %brand-background;
 

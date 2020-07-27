@@ -79,41 +79,6 @@ public interface RestfulJsonApi {
 
   public abstract void deleteObject(ApiAddress address) throws IOException;
 
-  /**
-   * Get a stream either through a REST request or from the cache. If there is a cached value, and the REST service does
-   * not indicate that the value has been modified since the value was inserted into the cache, return that value. Else,
-   * query the service for a new stream and convert that stream to a cacheable return value using the provided
-   * callback.
-   *
-   * @param cacheKey the cache parameters object containing the cache key at which to retrieve and store the value
-   * @param address  the address to query the SOA service if the value is not cached
-   * @param callback how to deserialize a new value from the stream, to return and insert into the cache
-   * @param <T>      the type of value to deserialize and return
-   * @return the value from the service or cache
-   * @throws IOException
-   */
-  public abstract <T> T requestCachedStream(CacheKey cacheKey, ApiAddress address,
-                                            CacheDeserializer<InputStream, T> callback) throws IOException;
-
-  public abstract <T> T requestCachedReader(CacheKey cacheKey, ApiAddress address,
-                                            CacheDeserializer<Reader, T> callback) throws IOException;
-
-  /**
-   * Serialize an object either through a REST request or from the cache. If there is a cached value, and the REST
-   * service does not indicate that the value has been modified since the value was inserted into the cache, return that
-   * value. Else, query the service for JSON and deserialize it to an object as usual.
-   *
-   * @param cacheKey     the cache parameters object containing the cache key at which to retrieve and store the value
-   * @param address      the address to query the SOA service if the value is not cached
-   * @param responseType the type of object to deserialize
-   * @param <T>          the type of {@code responseClass}
-   * @return the deserialized object
-   * @throws IOException
-   */
-  public abstract <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Type responseType) throws IOException;
-
-  public abstract <T> T requestCachedObject(CacheKey cacheKey, ApiAddress address, Class<T> responseClass) throws IOException;
-
   public abstract CloseableHttpResponse getResponse(HttpUriRequest target) throws IOException;
 
 }

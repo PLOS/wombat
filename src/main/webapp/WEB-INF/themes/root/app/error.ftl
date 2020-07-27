@@ -42,7 +42,7 @@
     <p>Thank you for your patience.</p>
 
 
-    <#if environment != "prod">
+    <#if showDebug>
       <div title="Technical Information for Developers">
         <pre>${stackTrace?html}</pre>
       </div>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Public Library of Science
+ * Copyright (c) 2020 Public Library of Science
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -20,28 +20,29 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-package org.ambraproject.wombat.service.remote;
+package org.ambraproject.wombat.config;
 
-import java.io.Closeable;
-import java.io.IOException;
+import com.bugsnag.Bugsnag;
+import com.bugsnag.BugsnagSpringConfiguration;
+import org.ambraproject.wombat.util.GitInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
-/**
- * How to convert a data stream into a cacheable value.
- *
- * @param <S> the type of stream (typically {@link java.io.InputStream} or {@link java.io.Reader})
- * @param <T> the type of data
- */
-@FunctionalInterface
-public interface CacheDeserializer<S extends Closeable, T> {
+@Configuration
+@Import(BugsnagSpringConfiguration.class)
+public class BugsnagConfiguration {
 
-  /**
-   * Take a stream that is read in the event of a cache miss and convert it into an object that will be inserted into
-   * the cache.
-   *
-   * @param stream the stream from a remote service
-   * @return the stream contents in a cacheable form
-   * @throws IOException
-   */
-  public abstract T read(S stream) throws IOException;
+    @Autowired
+    private GitInfo gitInfo;
 
+    @Bean
+    public Bugsnag bugsnag(RuntimeConfiguration runtimeConfiguration) {
+      Bugsnag bugsnag = new Bugsnag(runtimeConfiguration.getBugsnagApiKey());
+      bugsnag.setAppVersion(gitInfo.getCommitId());
+      bugsnag.setReleaseStage(runtimeConfiguration.getBugsnagReleaseStage());
+      bugsnag.setAppType("wombat");
+      return bugsnag;
+    }
 }

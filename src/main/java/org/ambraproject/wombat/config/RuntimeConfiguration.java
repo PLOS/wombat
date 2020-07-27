@@ -22,41 +22,153 @@
 
 package org.ambraproject.wombat.config;
 
+import com.google.common.base.Preconditions;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.typeadapters.UtcDateTypeAdapter;
 import java.net.URI;
 import java.net.URL;
-
+import java.util.Date;
+import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 
 /**
- * Interface that represents configurable values that are only known at server startup time.
+ * Class that represents configurable values that are only known at server
+ * startup time.
  */
-public interface RuntimeConfiguration {
+public class RuntimeConfiguration {
+  String memcachedServer;
+  URL rhinoUrl;
+  URL collectionsUrl;
+  String rootRedirect;
+  boolean debug;
+  String themePath;
+  String casUrl;
+  URL solrUrl;
+  URI nedUrl;
+  String bugsnagApiKey;
+  String bugsnagReleaseStage;
+  String editorialBucket;
+  
+  public static Gson makeGson() {
+    GsonBuilder builder = new GsonBuilder();
+    builder.setPrettyPrinting();
+    builder.registerTypeAdapter(Date.class, new UtcDateTypeAdapter());
+    builder.registerTypeAdapter(org.joda.time.LocalDate.class,
+                                JodaTimeLocalDateAdapter.INSTANCE);
+    return builder.create();
+  }
+
+  public URI getNedUrl() { return nedUrl; }
+
+  public void setNedUrl(URI nedUrl) {
+    Preconditions.checkNotNull(nedUrl, "Please set NED_URL.");
+    Preconditions.checkArgument(!nedUrl.toString().equals(""),
+                                "Please set NED_URL.");
+    Preconditions.checkArgument(((nedUrl.getUserInfo() != null) &&
+                                 !nedUrl.getUserInfo().equals("") &&
+                                 nedUrl.getUserInfo().split(":").length == 2),
+                                "Please set username, password in NED_URL");
+    this.nedUrl = nedUrl;
+  }
+
+  public URL getSolrUrl() { return solrUrl; }
+
+  public void setSolrUrl(URL solrUrl) {
+    Preconditions.checkNotNull(solrUrl, "Please set SOLR_URL.");
+    Preconditions.checkArgument(!solrUrl.toString().equals(""),
+                                "Please set SOLR_URL.");
+    this.solrUrl = solrUrl;
+  }
+
+  public String getCasUrl() { return casUrl; }
+
+  public void setCasUrl(String casUrl) {
+    Preconditions.checkNotNull(casUrl, "Please set CAS_URL.");
+    Preconditions.checkArgument(!casUrl.equals(""), "Please set CAS_URL.");
+    this.casUrl = casUrl;
+  }
+
+  public String getThemePath() { return themePath; }
+
+  public void setThemePath(String themePath) {
+    Preconditions.checkNotNull(themePath, "Please set THEME_PATH.");
+    Preconditions.checkArgument(!themePath.equals(""),
+                                "Please set THEME_PATH.");
+    this.themePath = themePath;
+  }
+
   /**
-   * @return the memcached host, or null if it is not present in the config
+   * Show debugging information?
    */
-  String getMemcachedServer();
+  public boolean showDebug() { return this.debug; }
+
+  public void setDebug(boolean debug) { this.debug = debug; }
+
+  /**
+   * Get the path of an HTML document to display on the root page
+   */
+  public String getRootRedirect() { return rootRedirect; }
+
+  public void setRootRedirect(String rootRedirect) {
+    Preconditions.checkNotNull(rootRedirect, "Please set ROOT_REDIRECT.");
+    Preconditions.checkArgument(!rootRedirect.equals(""),
+                                "Please set ROOT_REDIRECT.");
+    this.rootRedirect = rootRedirect;
+  }
 
   /**
    * Get the URL of the rhino server.
    *
    * @return the URL
    */
-  URL getRhinoUrl();
+  public URL getRhinoUrl() { return rhinoUrl; }
+
+  public void setRhinoUrl(URL rhinoUrl) {
+    Preconditions.checkNotNull(rhinoUrl, "Please set RHINO_URL.");
+    Preconditions.checkArgument(!rhinoUrl.toString().equals(""),
+                                "Please set RHINO_URL.");
+    this.rhinoUrl = rhinoUrl;
+  }
 
   /**
-   * Get the path of an HTML document to display on the root page
+   * @return the memcached host, or null if it is not present in the config
    */
-  String getRootRedirect();
+  public String getMemcachedServer() { return memcachedServer; }
 
-  /**
-   * Get the name of the runtime environment ("prod", "dev", etc.)
-   */
-  String getEnvironment();
+  public void setMemcachedServer(String memcachedServer) {
+    this.memcachedServer = memcachedServer;
+  }
 
-  String getThemePath();
+  public URL getCollectionsUrl() { return collectionsUrl; }
 
-  String getCasUrl();
+  public void setCollectionsUrl(URL collectionsUrl) {
+    Preconditions.checkNotNull(collectionsUrl, "Please set COLLECTIONS_URL.");
+    Preconditions.checkArgument(!collectionsUrl.toString().equals(""),
+                                "Please set COLLECTIONS_URL.");
+    this.collectionsUrl = collectionsUrl;
+  }
 
-  URL getSolrUrl();
+  public String getBugsnagApiKey() {
+    return this.bugsnagApiKey;
+  }
 
-  URI getNedUrl();
+  public String getEditorialBucket() {
+    return editorialBucket;
+  }
+
+  public void setEditorialBucket(String editorialBucket) {
+    this.editorialBucket = editorialBucket;
+  }
+
+  public void setBugsnagApiKey(String bugsnagApiKey) {
+    this.bugsnagApiKey = bugsnagApiKey;
+  }
+
+  public String getBugsnagReleaseStage() {
+    return this.bugsnagReleaseStage;
+  }
+
+  public void setBugsnagReleaseStage(String bugsnagReleaseStage) {
+    this.bugsnagReleaseStage = bugsnagReleaseStage;
+  }
 }

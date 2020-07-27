@@ -92,7 +92,7 @@
 </@siteLink>
 
 <div class="button-row">
-  <a class="rounded coloration-white-on-color full" href="mailto:?subject=${titleFix}&body=I%20thought%20you%20would%20find%20this%20article%20interesting.%20From%20${journalTitle}:%20http://dx.plos.org/${article.doi}">Email this Article</a>
+  <a class="rounded coloration-white-on-color full" href="mailto:?subject=${titleFix}&body=I%20thought%20you%20would%20find%20this%20article%20interesting.%20From%20${journalTitle}:%20https://dx.plos.org/${article.doi}">Email this Article</a>
 </div>
 
 </nav><#--end article-save-options-->

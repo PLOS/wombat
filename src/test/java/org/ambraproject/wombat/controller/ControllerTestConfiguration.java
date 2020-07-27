@@ -5,22 +5,15 @@ import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
-
 import java.io.InputStream;
 import java.io.Reader;
 import java.nio.charset.Charset;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
-
+import com.bugsnag.Bugsnag;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import com.google.gson.typeadapters.UtcDateTypeAdapter;
 import org.ambraproject.wombat.config.RuntimeConfiguration;
-import org.ambraproject.wombat.config.TestRuntimeConfiguration;
 import org.ambraproject.wombat.config.site.RequestMappingContextDictionary;
 import org.ambraproject.wombat.config.site.Site;
 import org.ambraproject.wombat.config.site.SiteResolver;
@@ -39,31 +32,24 @@ import org.ambraproject.wombat.service.ParseXmlService;
 import org.ambraproject.wombat.service.PeerReviewService;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleApiImpl;
-import org.ambraproject.wombat.service.remote.CachedRemoteService;
 import org.ambraproject.wombat.service.remote.CorpusContentApi;
 import org.ambraproject.wombat.service.remote.JsonService;
+import org.ambraproject.wombat.service.remote.RemoteService;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
+import org.ambraproject.wombat.service.remote.SolrSearchApi;
 import org.ambraproject.wombat.service.remote.UserApi;
 import org.ambraproject.wombat.service.remote.orcid.OrcidApi;
-import org.ambraproject.wombat.util.JodaTimeLocalDateAdapter;
 import org.ambraproject.wombat.util.ThemeTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 @WebAppConfiguration
 public class ControllerTestConfiguration {
-  private static final RuntimeConfiguration runtimeConfiguration = new TestRuntimeConfiguration();
-
   protected static final String DESKTOP_PLOS_ONE = "DesktopPlosOne";
 
   @Bean
   protected Gson gson() {
-    GsonBuilder builder = new GsonBuilder();
-    builder.setPrettyPrinting();
-    builder.registerTypeAdapter(Date.class, new UtcDateTypeAdapter());
-    builder.registerTypeAdapter(org.joda.time.LocalDate.class, JodaTimeLocalDateAdapter.INSTANCE);
-    return builder.create();
+    return RuntimeConfiguration.makeGson();
   }
 
   @Bean
@@ -73,7 +59,7 @@ public class ControllerTestConfiguration {
 
   @Bean
   protected RuntimeConfiguration runtimeConfiguration() {
-    return runtimeConfiguration;
+    return mock(RuntimeConfiguration.class);
   }
 
   @Bean
@@ -121,25 +107,12 @@ public class ControllerTestConfiguration {
   }
 
   @Bean
-  protected CachedRemoteService<Reader> cachedRemoteReader() {
-    @SuppressWarnings("unchecked")
-    final CachedRemoteService<Reader> cachedRemoteReader = mock(CachedRemoteService.class);
-    return cachedRemoteReader;
-  }
-
-  @Bean
   protected SolrSearchApi solrSearchApi() {
-    final SolrSearchApi solrSearchApi = spy(SolrSearchApiImpl.class);
+    final SolrSearchApi solrSearchApi = spy(SolrSearchApi.class);
     return solrSearchApi;
   }
 
-  @Bean
-  protected CachedRemoteService<InputStream> cachedRemoteInputStream() {
-    @SuppressWarnings("unchecked")
-    final CachedRemoteService<InputStream> cachedRemoteReader = mock(CachedRemoteService.class);
-    return cachedRemoteReader;
-  }
-
+  
   @Bean
   protected ArticleApi articleApi() {
     final ArticleApi articleApi = mock(ArticleApiImpl.class);
@@ -198,6 +171,11 @@ public class ControllerTestConfiguration {
   }
 
   @Bean
+  protected Bugsnag bugsnag() {
+    return mock(Bugsnag.class);
+  }
+
+  @Bean
   protected PeerReviewService peerReviewService() {
     return mock(PeerReviewService.class);
   }
@@ -236,4 +214,16 @@ public class ControllerTestConfiguration {
   protected DoiToJournalResolutionService doiToJournalResolutionService() {
     return mock(DoiToJournalResolutionService.class);
   }
+
+  
+  @Bean
+  protected RemoteService<InputStream> remoteStreamer(){
+    return mock(RemoteService.class);
+  }
+
+  @Bean
+  protected RemoteService<Reader> remoteReader(){
+    return mock(RemoteService.class);
+  }
+
 }

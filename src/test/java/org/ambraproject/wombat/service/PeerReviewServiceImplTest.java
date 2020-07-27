@@ -1,52 +1,57 @@
 package org.ambraproject.wombat.service;
 
-import com.google.common.collect.ImmutableMap;
-
-import java.io.IOException;
-import java.util.Map;
-import java.util.UUID;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-
-import org.junit.Test;
-
-import org.ambraproject.wombat.service.remote.ContentKey;
-
 import static java.lang.String.format;
-import static junit.framework.TestCase.assertNull;
-import static org.ambraproject.wombat.util.FileUtils.deserialize;
-import static org.ambraproject.wombat.util.FileUtils.getFile;
 import static org.ambraproject.wombat.util.FileUtils.read;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.spy;
+import java.io.IOException;
+import java.net.URI;
+import java.util.Map;
+import com.google.gson.Gson;
+import org.ambraproject.wombat.controller.ControllerTest;
+import org.ambraproject.wombat.service.remote.CorpusContentApi;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.junit.Test;
+import org.mockito.invocation.InvocationOnMock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.ContextConfiguration;
 
-@ContextConfiguration(classes = {PeerReviewServiceImplTest.class})
-public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests {
+@ContextConfiguration
+public class PeerReviewServiceImplTest extends ControllerTest {
+  @Configuration
+  static class ContextConfiguration {
+    @Bean
+    PeerReviewServiceImpl peerReviewServiceImpl() {
+      return spy(new PeerReviewServiceImpl());
+    }
+  }
 
-  private PeerReviewServiceImpl service = new PeerReviewServiceImpl();
+  @Autowired
+  CorpusContentApi corpusContentApi;
 
+  @Autowired
+  PeerReviewServiceImpl peerReviewServiceImpl;
+
+  @Autowired
+  Gson gson;
+  
   @Test
   public void testAttachmentLink() throws IOException {
+    doAnswer(invocation -> read(prefix(getFilename(invocation).toLowerCase())))
+        .when(corpusContentApi).requestContent(any(URI.class));
 
-    PeerReviewServiceImpl spy = spy(service);
-
-    doAnswer(invocation -> read(prefix(getFilename(invocation.getArgument(0).toString()).toLowerCase())))
-      .when(spy).getContent(any(ContentKey.class));
-
-    Map<String,?> itemTable = (Map<String,?>) deserialize(getFile(prefix("item-table.pone.0207232.ser")));
-
-    String html = spy.asHtml(itemTable);
-
+    Map<String, ?> itemTable =
+        (Map<String, ?>) gson.fromJson(read(prefix("item-table.pone.0207232.json")), Map.class);
+    String html = peerReviewServiceImpl.asHtml(itemTable);
     Document doc = Jsoup.parse(html);
 
     Element firstAttachment = doc.select(".review-history .review-files .supplementary-material").first();
@@ -61,7 +66,7 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
 
     String xml = read(prefix("peer-review-attachment-filenames.pone.0207232.xml"));
  
-    String html = service.transformXmlToHtml(xml);
+    String html = peerReviewServiceImpl.transformXmlToHtml(xml);
 
     Document doc = Jsoup.parse(html);
 
@@ -76,9 +81,9 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
   }
 
   @Test
-  public void testTransformXmlToHtml() {
+  public void testTransformXmlToHtml() throws IOException {
     String xml = read(prefix("peer-review.pone.0207232.xml"));
-    String html = service.transformXmlToHtml(xml);
+    String html = peerReviewServiceImpl.transformXmlToHtml(xml);
     Document doc = Jsoup.parse(html);
 
     // SUBMISSION
@@ -133,7 +138,7 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
 
     for (int i=0; i < expectedDates.length; ++i) {
       String receivedDate = read(prefix("article-received-date/" + format("received-date.%d.xml",i)));
-      assertThat(service.parseArticleReceivedDate(receivedDate), is(expectedDates[i]));
+      assertThat(peerReviewServiceImpl.parseArticleReceivedDate(receivedDate), is(expectedDates[i]));
     }
   }
 
@@ -156,7 +161,7 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
     };
 
     for (int i=0; i < acceptedDates.length; ++i) {
-      assertThat(service.formatDate(acceptedDates[i]), is(expectedDates[i]));
+      assertThat(peerReviewServiceImpl.formatDate(acceptedDates[i]), is(expectedDates[i]));
     }
 
     String rejectedDates[] = {
@@ -168,13 +173,14 @@ public class PeerReviewServiceImplTest extends AbstractJUnit4SpringContextTests 
     };
 
     for (int i=0; i < rejectedDates.length; ++i) {
-      assertThat(service.formatDate(rejectedDates[i]), is(""));
+      assertThat(peerReviewServiceImpl.formatDate(rejectedDates[i]), is(""));
     }
   }
 
-  private String getFilename(String uuidKey) {
-    // [key: info:doi/10.1371/journal.pone.0207232.r001.xml, uuid: cbcdde53-66f4-4885-85b0-50966be2ba28]
-    return uuidKey.substring(uuidKey.indexOf("10.1371/journal.")+16, uuidKey.lastIndexOf(", uuid:"));
+  private String getFilename(InvocationOnMock invocation) {
+    URI uri = invocation.getArgument(0);
+    String path = uri.getPath();
+    return path.substring(path.lastIndexOf('/') + 9).toLowerCase();
   }
 
   private String prefix(String file) {

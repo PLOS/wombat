@@ -29,15 +29,11 @@
 
   <body>
     <h1>Publication Years</h1>
-    <#if yearRange??>
-      <#assign min = yearRange["min"] />
-      <#assign max = yearRange["max"] />
-      <ul>
-        <#list min[0..3]?number..max[0..3]?number as year>
-          <li><a href="<@siteLink path="lockss-manifest/vol_${year?c}"/>">${year?c}</a></li>
-        </#list>
-      </ul>
-    </#if>
+    <ul>
+      <#list minYear..maxYear as year>
+        <li><a href="<@siteLink path="lockss-manifest/vol_${year?c}"/>">${year?c}</a></li>
+      </#list>
+    </ul>
     <#include "permission.ftl" />
   </body>
 </html>

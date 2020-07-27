@@ -1,0 +1,523 @@
+{
+  "10.1371/journal.pone.0207232.t007": {
+    "doi": "10.1371/journal.pone.0207232.t007",
+    "itemType": "table",
+    "files": {
+      "inline": {
+        "bucketName": "corpus",
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371.journal.pone.0207232.t007.PNG_I",
+        "size": 67692
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371.journal.pone.0207232.t007.PNG_L",
+        "size": 409181
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371.journal.pone.0207232.t007.PNG_M",
+        "size": 144131
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371.journal.pone.0207232.t007.PNG_S",
+        "size": 17160
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371.journal.pone.0207232.t007.tif",
+        "size": 891112
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.t008": {
+    "doi": "10.1371/journal.pone.0207232.t008",
+    "itemType": "table",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t008.PNG_I",
+        "size": 10917
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t008.PNG_L",
+        "size": 66660
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t008.PNG_M",
+        "size": 24606
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t008.PNG_S",
+        "size": 3715
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t008.tif",
+        "size": 161888
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.t005": {
+    "doi": "10.1371/journal.pone.0207232.t005",
+    "itemType": "table",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t005.PNG_I",
+        "size": 38862
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t005.PNG_L",
+        "size": 285514
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t005.PNG_M",
+        "size": 84783
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t005.PNG_S",
+        "size": 10664
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t005.tif",
+        "size": 551724
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.r002": {
+    "doi": "10.1371/journal.pone.0207232.r002",
+    "itemType": "reviewLetter",
+    "files": {
+      "letter": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.r002.xml",
+        "size": 14363
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.t006": {
+    "doi": "10.1371/journal.pone.0207232.t006",
+    "itemType": "table",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t006.PNG_I",
+        "size": 22797
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t006.PNG_L",
+        "size": 140841
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t006.PNG_M",
+        "size": 37580
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t006.PNG_S",
+        "size": 6247
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t006.tif",
+        "size": 318956
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.r001": {
+    "doi": "10.1371/journal.pone.0207232.r001",
+    "itemType": "reviewLetter",
+    "files": {
+      "letter": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.r001.xml",
+        "size": 16818
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.t003": {
+    "doi": "10.1371/journal.pone.0207232.t003",
+    "itemType": "table",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t003.PNG_I",
+        "size": 29418
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t003.PNG_L",
+        "size": 186147
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t003.PNG_M",
+        "size": 69358
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t003.PNG_S",
+        "size": 7872
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t003.tif",
+        "size": 423928
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.r004": {
+    "doi": "10.1371/journal.pone.0207232.r004",
+    "itemType": "reviewLetter",
+    "files": {
+      "letter": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.r004.xml",
+        "size": 2492
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.t004": {
+    "doi": "10.1371/journal.pone.0207232.t004",
+    "itemType": "table",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t004.PNG_I",
+        "size": 41067
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t004.PNG_L",
+        "size": 229939
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t004.PNG_M",
+        "size": 93787
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t004.PNG_S",
+        "size": 10530
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t004.tif",
+        "size": 560180
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.r003": {
+    "doi": "10.1371/journal.pone.0207232.r003",
+    "itemType": "reviewLetter",
+    "files": {
+      "letter": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.r003.xml",
+        "size": 7246
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.t001": {
+    "doi": "10.1371/journal.pone.0207232.t001",
+    "itemType": "table",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t001.PNG_I",
+        "size": 19042
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t001.PNG_L",
+        "size": 119281
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t001.PNG_M",
+        "size": 43606
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t001.PNG_S",
+        "size": 5301
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t001.tif",
+        "size": 171536
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.t002": {
+    "doi": "10.1371/journal.pone.0207232.t002",
+    "itemType": "table",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t002.PNG_I",
+        "size": 17218
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t002.PNG_L",
+        "size": 81905
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t002.PNG_M",
+        "size": 36965
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t002.PNG_S",
+        "size": 5440
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.t002.tif",
+        "size": 147004
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232": {
+    "doi": "10.1371/journal.pone.0207232",
+    "itemType": "article",
+    "files": {
+      "printable": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.pdf",
+        "size": 2420963
+      },
+      "manuscript": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.XML",
+        "size": 178948
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.g002": {
+    "doi": "10.1371/journal.pone.0207232.g002",
+    "itemType": "figure",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g002.PNG_I",
+        "size": 43690
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g002.PNG_L",
+        "size": 343779
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g002.PNG_M",
+        "size": 86099
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g002.PNG_S",
+        "size": 18242
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g002.tif",
+        "size": 965476
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.g003": {
+    "doi": "10.1371/journal.pone.0207232.g003",
+    "itemType": "figure",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g003.PNG_I",
+        "size": 94289
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g003.PNG_L",
+        "size": 901474
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g003.PNG_M",
+        "size": 235963
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g003.PNG_S",
+        "size": 27085
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g003.tif",
+        "size": 1419460
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.e001": {
+    "doi": "10.1371/journal.pone.0207232.e001",
+    "itemType": "graphic",
+    "files": {
+      "thumbnail": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e001.PNG",
+        "size": 2363
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e001.tif",
+        "size": 22936
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.g004": {
+    "doi": "10.1371/journal.pone.0207232.g004",
+    "itemType": "figure",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g004.PNG_I",
+        "size": 97897
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g004.PNG_L",
+        "size": 1540215
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g004.PNG_M",
+        "size": 263325
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g004.PNG_S",
+        "size": 25497
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g004.tif",
+        "size": 2219984
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.e002": {
+    "doi": "10.1371/journal.pone.0207232.e002",
+    "itemType": "graphic",
+    "files": {
+      "thumbnail": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e002.PNG",
+        "size": 1954
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e002.tif",
+        "size": 21964
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.g005": {
+    "doi": "10.1371/journal.pone.0207232.g005",
+    "itemType": "figure",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g005.PNG_I",
+        "size": 100694
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g005.PNG_L",
+        "size": 1687025
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g005.PNG_M",
+        "size": 274253
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g005.PNG_S",
+        "size": 25833
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g005.tif",
+        "size": 2535788
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.e003": {
+    "doi": "10.1371/journal.pone.0207232.e003",
+    "itemType": "graphic",
+    "files": {
+      "thumbail": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e003.PNG",
+        "size": 2532
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e003.tif",
+        "size": 23384
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.e004": {
+    "doi": "10.1371/journal.pone.0207232.e004",
+    "itemType": "graphic",
+    "files": {
+      "thumbail": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e004.PNG",
+        "size": 2486
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e004.tif",
+        "size": 23176
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.e005": {
+    "doi": "10.1371/journal.pone.0207232.e005",
+    "itemType": "graphic",
+    "files": {
+      "thumbail": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e005.PNG",
+        "size": 2689
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e005.tif",
+        "size": 23584
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.e006": {
+    "doi": "10.1371/journal.pone.0207232.e006",
+    "itemType": "graphic",
+    "files": {
+      "thumbail": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e006.PNG",
+        "size": 2601
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e006.tif",
+        "size": 23416
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.e007": {
+    "doi": "10.1371/journal.pone.0207232.e007",
+    "itemType": "graphic",
+    "files": {
+      "thumbail": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e007.PNG",
+        "size": 3049
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.e007.tif",
+        "size": 24712
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.g001": {
+    "doi": "10.1371/journal.pone.0207232.g001",
+    "itemType": "figure",
+    "files": {
+      "inline": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g001.PNG_I",
+        "size": 54783
+      },
+      "large": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g001.PNG_L",
+        "size": 1911332
+      },
+      "medium": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g001.PNG_M",
+        "size": 182998
+      },
+      "small": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g001.PNG_S",
+        "size": 11751
+      },
+      "original": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.g001.tif",
+        "size": 2013712
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.s002": {
+    "doi": "10.1371/journal.pone.0207232.s002",
+    "itemType": "supplementaryMaterial",
+    "files": {
+      "supplementary": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.s002.docx",
+        "size": 13628
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.s003": {
+    "doi": "10.1371/journal.pone.0207232.s003",
+    "itemType": "supplementaryMaterial",
+    "files": {
+      "supplementary": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.s003.docx",
+        "size": 25447
+      }
+    }
+  },
+  "10.1371/journal.pone.0207232.s001": {
+    "doi": "10.1371/journal.pone.0207232.s001",
+    "itemType": "supplementaryMaterial",
+    "files": {
+      "supplementary": {
+        "url": "http://example.s3.amazon.com/10.1371.journal.pone.0207232/1/10.1371/journal.pone.0207232.s001.pdf",
+        "size": 872755
+      }
+    }
+  }
+}

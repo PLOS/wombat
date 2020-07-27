@@ -618,6 +618,12 @@
   margin: 2rem auto 4rem;
 }
 
+.logo-footer {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
 /* Search */
 .search-expanded {
   position: absolute;

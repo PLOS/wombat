@@ -25,22 +25,28 @@ package org.ambraproject.wombat.service.remote;
 import com.google.common.collect.ImmutableList;
 import org.ambraproject.wombat.util.UriUtil;
 import org.apache.commons.io.Charsets;
-import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
+import org.apache.commons.io.Charsets;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.message.BasicNameValuePair;
 
 public class ApiAddress {
 
   private final String path;
-  private final ImmutableList<BasicNameValuePair> parameters;
+  private final ImmutableList<NameValuePair> parameters;
 
   private ApiAddress(Builder builder) {
     this.path = builder.pathTokens.stream()
@@ -58,11 +64,15 @@ public class ApiAddress {
   }
 
   public URI buildUri(URL root) {
-    return UriUtil.concatenate(root, getAddress());
+    try {
+      return new URL(root, Preconditions.checkNotNull(getAddress())).toURI();
+    } catch (MalformedURLException | URISyntaxException e) {
+      throw new IllegalArgumentException(e);
+    }
   }
 
   public String getAddress() {
-    return path + (parameters.isEmpty() ? "" : "?" + URLEncodedUtils.format(parameters, Charsets.UTF_8));
+    return path + (parameters.isEmpty() ? "" : "?" + UriUtil.formatParams(parameters));
   }
 
   private static String escapeDoi(String doi) {

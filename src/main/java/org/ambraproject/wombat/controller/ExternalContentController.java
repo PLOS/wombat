@@ -53,7 +53,7 @@ public class ExternalContentController extends WombatController {
     model.addAttribute("externalServiceName", "ember"); // may not need, but kept for prototype
 
     try {
-      model.addAttribute("externalData", editorialContentApi.getJson("externalContent", repoKey));
+      model.addAttribute("externalData", editorialContentApi.getJson(repoKey));
     } catch (EntityNotFoundException e) {
       // Return a 404 if no object found.
       throw new NotFoundException(e);

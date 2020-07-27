@@ -40,7 +40,6 @@ import org.ambraproject.wombat.service.SolrArticleAdapter;
 import org.ambraproject.wombat.service.remote.ArticleApi;
 import org.ambraproject.wombat.service.remote.ArticleSearchQuery;
 import org.ambraproject.wombat.service.remote.SolrSearchApi;
-import org.ambraproject.wombat.service.remote.SolrSearchApiImpl;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,13 +88,13 @@ public class HomeController extends WombatController {
     RECENT {
       @Override
       public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return getArticlesFromSolr(context, section, site, start, SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST);
+        return getArticlesFromSolr(context, section, site, start, ArticleSearchQuery.SolrSortOrder.DATE_NEWEST_FIRST);
       }
     },
     POPULAR {
       @Override
       public List<SolrArticleAdapter> getArticles(HomeController context, SectionSpec section, Site site, int start) throws IOException {
-        return getArticlesFromSolr(context, section, site, start, SolrSearchApiImpl.SolrSortOrder.MOST_VIEWS_30_DAYS);
+        return getArticlesFromSolr(context, section, site, start, ArticleSearchQuery.SolrSortOrder.MOST_VIEWS_30_DAYS);
       }
     },
     CURATED {
@@ -114,8 +113,8 @@ public class HomeController extends WombatController {
             .map(article -> (String) article.get("doi"))
             .collect(Collectors.toList());
 
-        Map<String, Object> results = (Map<String, Object>) context.solrSearchApi.lookupArticlesByDois(dois, site);
-        List<SolrArticleAdapter> unpacked = SolrArticleAdapter.unpackSolrQuery(results);
+        ArticleSearchQuery query = SolrArticleAdapter.lookupArticlesByDoisQuery(dois);
+        List<SolrArticleAdapter> unpacked = SolrArticleAdapter.unpackSolrQuery(context.solrSearchApi.search(query));
         validateSolrResultsFromList(section, dois, unpacked);
         return Ordering.explicit(dois).onResultOf(SolrArticleAdapter::getDoi).sortedCopy(unpacked);
       }
@@ -133,16 +132,16 @@ public class HomeController extends WombatController {
     };
 
     private static List<SolrArticleAdapter> getArticlesFromSolr(HomeController context, SectionSpec section, Site site, int start,
-                                                                SolrSearchApiImpl.SolrSortOrder order)
+                                                                ArticleSearchQuery.SolrSortOrder order)
         throws IOException {
-      ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
-          .setStart(start)
-          .setRows(section.resultCount)
-          .setSortOrder(order)
-          .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-          .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME);
-      Map<String, Object> result = (Map<String, Object>) context.solrSearchApi.search(query.build(), site);
-      return SolrArticleAdapter.unpackSolrQuery(result);
+      ArticleSearchQuery query = ArticleSearchQuery.builder()
+        .setStart(start)
+        .setRows(section.resultCount)
+        .setSortOrder(order)
+        .setJournalKeys(ImmutableList.of(site.getJournalKey()))
+        .setDateRange(ArticleSearchQuery.SolrEnumeratedDateRange.ALL_TIME)
+        .build();
+      return SolrArticleAdapter.unpackSolrQuery(context.solrSearchApi.search(query));
     }
 
     /**
@@ -285,6 +284,7 @@ public class HomeController extends WombatController {
         List<SolrArticleAdapter> articles = section.getArticles(site, start);
         sectionsForModel.put(section.getName(), articles);
       } catch (IOException | EntityNotFoundException e) {
+        bugsnag.notify(e);
         log.error("Could not populate home page section: " + section.getName(), e);
         // Render the rest of the page without the article list
         // The FreeMarker template should provide an error message if there is a null value in sectionsForModel
@@ -295,6 +295,7 @@ public class HomeController extends WombatController {
       try {
         model.addAttribute("currentIssue", fetchCurrentIssue(site));
       } catch (IOException e) {
+        bugsnag.notify(e);
         log.error("Could not retrieve current issue for: " + site.getJournalKey(), e);
       }
     }
@@ -325,18 +326,19 @@ public class HomeController extends WombatController {
   public ModelAndView getRssFeedView(@SiteParam Site site, @PathVariable String feedType)
       throws IOException {
 
-    ArticleSearchQuery.Builder query = ArticleSearchQuery.builder()
+    ArticleSearchQuery query = ArticleSearchQuery.builder()
         .setStart(0)
         .setRows(getFeedLength(site))
-        .setSortOrder(SolrSearchApiImpl.SolrSortOrder.DATE_NEWEST_FIRST)
+        .setSortOrder(ArticleSearchQuery.SolrSortOrder.DATE_NEWEST_FIRST)
         .setJournalKeys(ImmutableList.of(site.getJournalKey()))
-        .setDateRange(SolrSearchApiImpl.SolrEnumeratedDateRange.ALL_TIME)
-        .setIsRssSearch(true);
-    Map<String, ?> recentArticles = solrSearchApi.search(query.build(), site);
+        .setDateRange(ArticleSearchQuery.SolrEnumeratedDateRange.ALL_TIME)
+        .setFields(ArticleSearchQuery.RSS_FIELDS)
+        .build();
+    SolrSearchApi.Result recentArticles = solrSearchApi.search(query);
 
     ModelAndView mav = new ModelAndView();
     FeedMetadataField.SITE.putInto(mav, site);
-    FeedMetadataField.FEED_INPUT.putInto(mav, recentArticles.get("docs"));
+    FeedMetadataField.FEED_INPUT.putInto(mav, recentArticles.getDocs());
     mav.setView(FeedType.getView(articleFeedView, feedType));
     return mav;
   }

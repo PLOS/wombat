@@ -22,6 +22,7 @@
 
 package org.ambraproject.wombat.controller;
 
+import com.bugsnag.Bugsnag;
 import com.google.common.base.Strings;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableList;
@@ -98,12 +99,14 @@ public class AppRootPage {
   private RequestMappingContextDictionary requestMappingContextDictionary;
   @Autowired
   private RuntimeConfiguration runtimeConfiguration;
+  @Autowired
+  private Bugsnag bugsnag;
 
   /**
    * Show a page in response to the application root.
    */
   ModelAndView serveAppRoot() {
-    if (!runtimeConfiguration.getEnvironment().equals("prod")) {
+    if (runtimeConfiguration.showDebug()) {
       return serveDebugPage();
     } else {
       RedirectView rv = new RedirectView();
@@ -121,6 +124,7 @@ public class AppRootPage {
     try {
       mav.addObject("imageCode", getResourceAsBase64("/WEB-INF/themes/root/app/wombat.jpg"));
     } catch (IOException e) {
+      bugsnag.notify(e);
       log.error("Error displaying root page image", e);
     }
     return mav;

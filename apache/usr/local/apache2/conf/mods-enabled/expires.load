@@ -1,0 +1,1 @@
+LoadModule expires_module /usr/local/apache2/modules/mod_expires.so

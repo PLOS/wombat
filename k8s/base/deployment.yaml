@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wombat
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: "wombat"
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 2
+  template:
+    spec:
+      serviceAccountName: wombat-sa
+      restartPolicy: Always
+      containers:
+      - name: wombat
+        image: gcr.io/plos-mgmt/wombat:latest
+        ports:
+        - containerPort: 8080 
+        envFrom:
+        - secretRef:
+            name: wombat-secrets
+        - configMapRef:
+            name: wombat-configmap
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 1280
+      - name: wombat-apache
+        image: gcr.io/plos-mgmt/wombat-apache:latest
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: wombat-configmap
+        resources:
+          requests:
+            cpu: 500m
+            memory: 1280
+      - name: wombat-memcached
+        image: memcached:1.6.6-alpine
+        ports:
+        - containerPort: 11211
+        command: ["memchanged"]
+        args: ["-m", "1024", "-p", "11211"]
+        envFrom:
+        - configMapRef:
+            name: wombat-configmap
+        resources:
+          requests:
+            cpu: 500m
+            memory: 1280

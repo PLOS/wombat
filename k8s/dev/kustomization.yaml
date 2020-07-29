@@ -1,0 +1,7 @@
+namespace: dev
+bases:
+  - ../base
+resources:
+  - cert.yaml
+patchesStrategicMerge:
+  - ingress.yaml

@@ -1,0 +1,1 @@
+LoadModule unixd_module /usr/local/apache2/modules/mod_unixd.so

@@ -1,0 +1,8 @@
+User-agent: *
+Crawl-delay: 30
+
+Disallow: */article/figure/powerpoint
+Disallow: */search
+Disallow: */article/metrics
+Disallow: */user
+Sitemap: https://${JOURNALS_HOST}/sitemaps/sitemap-index.xml

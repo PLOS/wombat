@@ -1,0 +1,8 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: journals-frontend-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "plos-dev-journals-frontend-ip"
+    networking.gke.io/managed-certificates: "journals-dev-plos-org-cert"
+  

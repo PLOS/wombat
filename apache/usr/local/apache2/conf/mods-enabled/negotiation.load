@@ -1,0 +1,1 @@
+LoadModule negotiation_module /usr/local/apache2/modules/mod_negotiation.so

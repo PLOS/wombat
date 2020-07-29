@@ -37,3 +37,7 @@ plos-mobile-themes
 plos-themes
 src/main/webapp/WEB-INF/themes/desktop/codekit-config.json
 .DS_Store
+
+# terraform state files
+.terraform
+

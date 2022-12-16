@@ -38,7 +38,7 @@
   </scm>
   <properties>
     <java-version>1.8</java-version>
-    <org.springframework-version>4.3.14.RELEASE</org.springframework-version>
+    <org.springframework-version>5.2.20.RELEASE</org.springframework-version>
     <org.springsecurity-version>4.1.5.RELEASE</org.springsecurity-version>
     <org.slf4j-version>1.6.6</org.slf4j-version>
     <maven.tomcat.uriEncoding>UTF-8</maven.tomcat.uriEncoding>
